@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="//aurora.datasektionen.se/" type="text/css" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+	<title>Konglig Datasektionen - D-Dagen</title>
+</head>
+<body>
+	<ul id="menu">
+		<li><img src="{{ url_for('static', filename='fluga.svg') }}" alt=""></li>
+		<li><a href="#introduction">VÄLKOMMEN!</a></li>
+		<li><a href="#exhibit">OM MÄSSAN</a></li>
+		<li><a href="#event">EVENT</a></li>
+		<li><a href="#contact">KONTAKT</a></li>
+	</ul>
+		<div id="intro">
+			<p>Konglig Datasektionen vid KTH presenterar stolt</p>
+			<img src="{{ url_for('static', filename='logo.svg') }}" alt=""><br>
+			<h1 class="date">5 OKTOBER</h1><p class="date">NYMBLE</p>
+		</div>
+		<p id="shield"><img src="{{ url_for('static', filename='shield.png') }}" alt="">Datasektionens årliga arbetsmarknadsdag</p>
+		<div class="info-box">
+			<img style="width: 30%; float: left; margin: 5%; " src="{{ url_for('static', filename='linn.jpg') }}">
+			<a name="introduction"></a>
+			<p class="cerise head">VARMT VÄLKOMMEN TILL</p>
+			<h1>D-DAGEN 2017!</h1>
+			<p class="info-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora dolor rerum dolorem impedit cumque earum neque non reprehenderit laudantium esse. Possimus quia exercitationem consectetur praesentium rem aperiam quos repudiandae, officia voluptatibus eos harum assumenda dolores consequatur eius quam sint nihil a incidunt, vel voluptas suscipit omnis? Et odio eius saepe sequi minima atque autem minus ad repellat eveniet ex, ea qui dolorum temporibus ducimus accusamus iusto debitis fuga sint. Vero, blanditiis, praesentium. Tenetur maxime asperiores quo, magnam quam, est cum sapiente similique doloribus voluptatem numquam, reiciendis. Aliquam repellat sit porro cumque labore velit laborum vel facilis sequi quo asperiores, voluptate.</p>
+		</div>
+		<div class="info">
+			<a name="exhibit"></a>
+			<h1>OM MÄSSAN</h1>
+			<p>Konglig Datasektionen anordnar årligen D-dagen, som är en arbetsmarknadsdag där D-studenter och företagen får chans att utveckla en närmare kontakt med varandra. I år äger denna heldagsmässa rum den 5e oktober på campus Valhallavägen. Senare på kvällen har vi en traditionsenlig sittning som även följs av en pub, där ni har möjligheten att träffa studenterna i en mer avslappnad miljö. Under puben finns det möjlighet att bjuda studenter på valfri dryck i baren med hjälp av barbongar. Under dagen blir företagsrepresentanterna bjudna på frukost, lunch, fika och middag.</p>
+			<ul>
+				<li>
+					<h1>48</h1>
+					<p>UTSTÄLLARE 2016</p>
+				</li>
+				<li>
+					<h1>400+</h1>
+					<p>KATALOGER 2016</p>
+				</li>
+			</ul>
+		</div>
+		<div class="ribbon">
+			<a name="event"></a>
+			<ul>
+				<li>
+					<p>FÅ UT MER AV D-DAGEN - ARRANGERA</p>
+					<h1>EVENT</h1>
+				</li>
+				<li style="text-align: left; float: right">
+					<b>Under årets upplaga av D-Dagen satsar vi mer på event än tidigare.</b>
+					<p>Vi vill, tillsammans med er, skapa nya och spännande sätt att nå ut till studenterna - som ett komplement till mässan. Event kan vara CV-granskning på plats, ett föredrag, en workshop - eller något helt annat. Hör av er med era idéer och tankar!</p>
+				</li>
+			</ul>
+		</div>
+		<div class="info-box">
+			<a name="contact"></a>
+			<p class="cerise head" style="text-align: center">KONTAKTA <b>D-DAGEN</b></p>
+			<ul class="contact-list">
+				<li>
+					<img src="{{ url_for('static', filename='linn.jpg') }}" alt="">
+					<p class="cerise"><b>Linn Jensen</b></p>
+					<p>D-Dagenansvarig</p>
+					<a href="emailto:dda@d.kth.se" class="cerise">dda@d.kth.se</a>
+				</li>
+				<li><img src="{{ url_for('static', filename='linn.jpg') }}" alt="">
+					<p class="cerise"><b>Shahin Saleh</b></p><p>Säljansvarig</p><a class="cerise" href="emailto:d.dagen-sales@d.kth.se">d.dagen-sales@d.kth.se</a>
+				</li>
+				<li><img src="{{ url_for('static', filename='linn.jpg') }}" alt=""><p class="cerise"><b>Victor Sellstedt</b></p><p>Eventansvarig</p><a class="cerise" href="emailto:d.dagen-event@d.kth.se">d.dagen-event@d.kth.se</a></li>
+			</ul>
+		</div>
+		<div id="footer" class="row">
+			<div class="col-sm-5 col-md-3 text">
+				<p class="cerise-light">D-DAGEN 2017 HÅLLS DEN 5 OKTOBER I</p>
+				<h2 style="display: inline" >THS KÅRHUS </h2><h2 style="display: inline" class="cerise-light">NYMBLE</h2>
+				<p><b>Drottning Kristinas väg 15</b></p>
+				<p class="cerise-light" style="display: inline">114 28 </p><p style="display: inline">Stockholm</p>
+				<br>
+				<p><b>Datasektionen</b> är en ideell studentsektion under Tekniska Högskolans Studentkår som finns till för att alla studenter som läser datateknik på KTH ska få en så bra och givande studietid som möjligt.</p>
+				<p class="cerise-light">Organisationsnummer 802412-7709</p>
+			</div>
+			<div class="col-sm-6 col-md-9" id="map"><div class="gmap_canvas"><iframe height="350px" width="100%" id="gmap_canvas" src="https://maps.google.com/maps?q=Nymble - Tekniska Högskolans Kårhus, Drottning Kristinas väg, Stockholm, Sweden, &t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div></div>
+		</div>
+	<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script src="{{ url_for('static', filename='jquery.fullPage.min.js') }}"></script>
+  <script> $(document).ready(function() {
+	$('#fullpage').fullpage({
+		anchors:['home', 'introduction', 'exhibit', 'event', 'companies', 'contact']
+	}); 
+}); </script>
+</body>
+</html>
