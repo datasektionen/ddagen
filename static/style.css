@@ -1,0 +1,182 @@
+body {
+	color: white;
+	font-family: Lato;
+	background-color: rgba(232, 19, 108, 0.8);
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+}
+
+.cerise {
+	color: #E83D84;
+}
+
+.cerise-light {
+	color: #EC5F99;
+}
+
+ul {
+	list-style-type: none;
+	height: 100%;
+	margin-bottom: 0;
+}
+
+#footer {
+	margin: 0;
+	margin-top: 2%;
+	padding-top: 1%;
+	background-color: #252525;
+	width: 100%;
+}
+
+#footer #map {
+	padding: 0;
+	height: 300px;
+	width: 50%;
+	overflow: hidden;
+}
+
+#footer .text {
+	margin-left: 10%;
+}
+
+ul#menu {
+	position: absolute;
+	top: 1%;
+	list-style-type: none;
+	text-align: left;
+	z-index: 1;
+}
+
+#menu li {
+	display: inline-block;
+	padding: 15px;
+}
+
+#menu img {
+	vertical-align: middle;
+}
+
+#intro {
+	text-align: center;
+	font-size: 15px;
+	margin-bottom: 10%;
+	margin-top: 10%;
+}
+
+#intro img {
+	width: 30%;
+}
+
+.date {
+	display: inline;
+}
+
+#shield {
+	text-align: center;
+}
+
+#shield img {
+	width: 4%;
+	vertical-align: middle;
+	margin-right: 1%;
+}
+
+p.date {
+	padding-left: 5px;
+	font-size: 2em;
+}
+
+.info-box p.cerise {
+	color: #E83D84;
+}
+
+.info-box p.head {
+	font-size: 2em;
+	margin-bottom: 0;
+}
+
+.info-box {
+	width: 80%;
+	margin-left: 9%;
+	background-color: white;
+	padding: 2%;
+	overflow: hidden;
+}
+
+.info-box h1 {
+	color: #E83D84;
+	margin-top: 0;
+	margin: 1%;
+}
+
+p.info-text {
+	color: black;
+	margin-right: 5%;
+}
+
+.info {
+	width: 80%;
+	padding: 7%;
+	margin-left: 6%;
+	padding-top: 2%;
+}
+
+.info p {
+	width: 50%;
+	float: left;
+}
+
+.info ul {
+	width: 50%;
+	margin-left: 45%;
+}
+
+.info li {
+	display: inline-block;
+	text-align: center;
+	margin-left: 10%;
+}
+
+.info li p {
+	width: 100%;
+}
+
+.ribbon {
+	background-color: #ec5f99;
+	padding: 1%;
+	padding-left: 15%;
+	padding-right: 15%;
+	margin-bottom: 2%;
+}
+
+.ribbon li {
+	display: inline-block;
+	text-align: center;
+	width: 50%;
+}
+
+ul.contact-list {
+	padding-left: 0;
+	text-align: center;
+}
+
+ul.contact-list li {
+	display: inline-block;
+	margin: 2%;
+	width: 20%;
+}
+
+ul.contact-list li img {
+	width: 80%;
+	margin-bottom: 10%;
+}
+
+ul.contact-list p {
+	margin: 0;
+	color: black;
+}
