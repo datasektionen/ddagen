@@ -131,19 +131,14 @@ p.info-text {
 	float: left;
 }
 
-.info ul {
+.info div.row {
 	width: 50%;
-	margin-left: 45%;
-}
-
-.info li {
-	display: inline-block;
+	margin-left: 50%;
 	text-align: center;
-	margin-left: 10%;
 }
 
-.info li p {
-	width: 100%;
+.info div.row p {
+	margin-left: 25%;
 }
 
 .ribbon {
@@ -154,29 +149,25 @@ p.info-text {
 	margin-bottom: 2%;
 }
 
-.ribbon li {
-	display: inline-block;
+.ribbon div {
 	text-align: center;
-	width: 50%;
 }
 
-ul.contact-list {
+.contact-list {
 	padding-left: 0;
 	text-align: center;
 }
 
-ul.contact-list li {
-	display: inline-block;
-	margin: 2%;
-	width: 20%;
+.contact-list div {
+	margin-top: 2%;
 }
 
-ul.contact-list li img {
-	width: 80%;
+.contact-list div img {
+	width: 65%;
 	margin-bottom: 10%;
 }
 
-ul.contact-list p {
+.contact-list p {
 	margin: 0;
 	color: black;
 }
