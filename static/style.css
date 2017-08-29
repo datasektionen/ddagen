@@ -47,8 +47,17 @@ ul {
 	margin-bottom: 5%;
 }
 
+#footer div {
+	height: 355px;
+}
+
 #footer .text {
-	padding-top: 1%;
+	padding-top: 2%;
+}
+
+#footer .text .cerise-light {
+	font-weight: 200;
+	font-size: 15px;
 }
 
 #footer-container {
@@ -182,8 +191,8 @@ p.info-text {
 	padding-top: 55px;
 	padding-bottom: 50px;
 	margin-right: 0;
-	border-top: 1px #ec5d98;
-	border-bottom: 1px #ec5d98;
+	border-top: 1px rgba(255, 255, 255, 0.2);
+	border-bottom: 1px rgba(255, 255, 255, 0.2);
 }
 
 .ribbon div {
