@@ -78,6 +78,10 @@ ul#menu {
 	z-index: 1;
 }
 
+ul#menu a:hover {
+	color: white;
+}
+
 #menu li {
 	display: inline-block;
 	padding: 15px;
@@ -138,7 +142,7 @@ p.date {
 	margin-right: auto;
 	background-color: white;
 	padding-top: 50px;
-	padding-right: 1%;
+	padding-right: 3%;
 	overflow: hidden;
 	color: #6a6a6a;
 	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.12);
@@ -146,13 +150,22 @@ p.date {
 
 .info-box h1 {
 	color: #E83D84;
-	margin-bottom: 45px;
+	margin-bottom: 20px;
 	margin-top: 0;
 }
 
 p.info-text {
 	color: #6a6a6a;
 	margin-right: 5%;
+}
+
+#sign {
+	margin-top: 3%;
+	margin-bottom: 2%;
+}
+
+#sign p {
+	margin: 0;
 }
 
 .info {
