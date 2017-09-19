@@ -15,5 +15,9 @@ def epc():
 def visma():
 	return flask.redirect("https://goo.gl/forms/fvXTY7HovErr8WxA2", code=302)
 
+@app.route("/sittningen")
+def sittning():
+	return flask.redirect("https://docs.google.com/forms/d/e/1FAIpQLSdwurt5xIhaUo6Tr6vfd6wmz1GgEj-nZggcrRYMkxxekqyLcA/viewform", code=302)
+
 if __name__ == "__main__":
 	app.run(host='0.0.0.0', port=5000)
