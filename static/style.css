@@ -60,7 +60,8 @@ ul {
 	font-size: 15px;
 }
 
-#footer-container {
+#footer div#footer-container {
+	height: auto;
 	max-width: 1200px;
 	margin: 0 auto;
 }
@@ -152,6 +153,15 @@ p.date {
 	color: #E83D84;
 	margin-bottom: 20px;
 	margin-top: 0;
+}
+
+img#linn {
+	width: 40%; 
+	float: left; 
+	margin-top: 90px; 
+	margin-left: 50px; 
+	margin-right: 50px; 
+	margin-bottom: 100px;
 }
 
 p.info-text {
@@ -257,6 +267,46 @@ p.info-text {
 	font-size: 70px;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 768px) {
+	.menu-container {
+		max-width: 600px;
+	}
 
+	img#bg {
+		width: 100%;
+	}
+
+	ul#menu {
+		width: 50%;
+		margin: 0 25%;
+		padding: 0;
+		position: relative;
+	}
+
+	.info-box {
+		width: 90%;
+		padding: 20px;
+	}
+
+	.info-box img#linn {
+		width: 50%;
+		margin: 20px 25%;
+	}
+
+	#shield img {
+		width: 16%;
+		margin-right: 10px;
+	}
+
+	div#exhibit div.row div {
+		margin-top: 50%;
+	}
+
+	div#exhibit div.row h1 {
+		font-size: 45px;
+	}
+
+	.ribbon {
+		padding-left: 15%;
+	}
 }

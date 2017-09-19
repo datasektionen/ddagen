@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://fonts.googleapis.com/css?family=Lato:400,600,900" rel="stylesheet">
 	<link rel="stylesheet" href="//aurora.datasektionen.se/" type="text/css" />
 	<link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
@@ -26,7 +27,7 @@
 		</div>
 		<p id="shield"><img src="{{ url_for('static', filename='shield.png') }}" alt="">Datasektionens årliga arbetsmarknadsdag</p>
 		<div class="info-box" id="introduction">
-			<img style="width: 40%; float: left; margin-top: 90px; margin-left: 50px; margin-right: 50px; margin-bottom: 100px;" src="{{ url_for('static', filename='linn.jpg') }}">
+			<img id="linn" src="{{ url_for('static', filename='linn.jpg') }}">
 			<p class="cerise head">VARMT VÄLKOMMEN TILL</p>
 			<h1 class="lato-black">D-DAGEN 2017!</h1>
 			<p class="lato-black">Tillsammans med en supertaggad projektgrupp och hela Näringslivsgruppen på Datasektionen vill jag önska just dig varmt välkommen till den största D-Dagen någonsin!</p>
@@ -79,7 +80,7 @@ Vi är enormt stolta över årets upplaga av D-Dagen som vi hoppas inte bara ska
 		</div>
 		<div id="footer">
 			<div id="footer-container" class="row">
-				<div class="col-sm-5 col-md-5 text">
+				<div class="col-sm-6 col-md-6 text">
 					<p class="cerise-light">D-DAGEN 2017 HÅLLS DEN 5 OKTOBER I</p>
 					<h2 style="display: inline" >THS KÅRHUS </h2><h2 style="display: inline" class="cerise-light">NYMBLE</h2>
 					<p><b>Drottning Kristinas väg 15</b></p>
@@ -88,8 +89,7 @@ Vi är enormt stolta över årets upplaga av D-Dagen som vi hoppas inte bara ska
 					<p><b>Datasektionen</b> är en ideell studentsektion under Tekniska Högskolans Studentkår som finns till för att alla studenter som läser datateknik på KTH ska få en så bra och givande studietid som möjligt.</p>
 					<p class="cerise-light" style="margin-bottom: 0">Organisationsnummer 802412-7709</p>
 				</div>
-				<div class="col-sm-1 col-md-1"></div>
-				<div class="col-sm-6 col-md-6" id="map"><div class="gmap_canvas"><iframe height="350px" width="100%" id="gmap_canvas" src="https://maps.google.com/maps?q=Nymble - Tekniska Högskolans Kårhus, Drottning Kristinas väg, Stockholm, Sweden, &t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div></div>
+				<div class="col-sm-6 col-md-6" id="map"><div class="gmap_canvas"><iframe id="gmap_canvas" height="350px" width="100%" src="https://maps.google.com/maps?q=Nymble - Tekniska Högskolans Kårhus, Drottning Kristinas väg, Stockholm, Sweden, &t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div></div>
 			</div>
 		</div>
 		<script>
