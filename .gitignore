@@ -1,2 +1,7 @@
 # Ignore IDE files
 .idea/*
+
+# Ignore pycache files
+*.pyc
+
+
