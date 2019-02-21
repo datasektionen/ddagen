@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+	<meta charset="UTF-8">
+	<meta name="theme-color" content="#e83d84">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,600,900" rel="stylesheet">
+	<link rel="stylesheet" href="//aurora.datasektionen.se/" type="text/css" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}"/>
+	<script src="{{ url_for('static', filename='smooth-scroll.min.js') }}"></script>
+	<title>Konglig Datasektionen - D-Dagen</title>
+</head>
+
+<body id="home_body">
+<div id="intro">
+    {% block intro %}
+    <span>Konglig Datasektionen vid KTH presenterar stolt</span><br>
+    <img src="{{ url_for('static', filename='logo-white-ageless.png') }}" alt=""><br>
+    <h1><span class="lato-black">10 oktober 2019</span><br><span class="lato-light">Nymble</span></h1>
+    {% endblock %}
+</div>
+<p id="shield"><img src="{{ url_for('static', filename='shield.png') }}" alt="">Datasektionens årliga arbetsmarknadsdag</p>
+{% block content %}{% endblock %}
+{% block footer %}
+<div class="info-box" id="contact">
+	<p class="cerise head" style="text-align: center">KONTAKTA <b>D-DAGEN</b></p>
+	<div class="contact-list row">
+		<div class="col-sm-4">
+			<p class="cerise"><b>Säljgruppen</b></p><a class="cerise" href="emailto:d-dagen.sales@d.kth.se">d-dagen.sales@d.kth.se</a>
+		</div>
+		<div class="col-sm-4">
+            <p class="cerise"><b>Victor Sellstedt<br>Simone de Blasio</b></p>
+			<p>D-Dagenansvarig</p>
+			<a href="emailto:d-dagen@d.kth.se" class="cerise">d-dagen@d.kth.se</a>
+		</div>
+		<div class="col-sm-4"><p class="cerise"><b>Eventgruppen</b></p><a class="cerise" href="emailto:d-dagen.sales@d.kth.se">d-dagen.sales@d.kth.se</a></div>
+	</div>
+</div>
+<div id="footer">
+	<div id="footer-container" class="row">
+		<div class="col-sm-6 col-md-6 text">
+			<p class="cerise-light">D-DAGEN 2019 HÅLLS DEN&nbsp;10&nbsp;OKTOBER&nbsp;I</p>
+			<h2 style="display: inline" >THS KÅRHUS </h2><h2 style="display: inline" class="cerise-light">NYMBLE</h2>
+			<p><b>Drottning Kristinas väg 15</b></p>
+			<p class="cerise-light" style="display: inline">114 28 </p><p style="display: inline">Stockholm</p>
+			<br>
+			<p><b>Datasektionen</b> är en ideell studentsektion under Tekniska Högskolans Studentkår som finns till för att alla studenter som läser datateknik på KTH ska få en så bra och givande studietid som möjligt.</p>
+			<p class="cerise-light" style="margin-bottom: 0">Organisationsnummer 802412-7709</p>
+		</div>
+		<div class="col-sm-6 col-md-6" id="map"><div class="gmap_canvas"><iframe id="gmap_canvas" height="350px" width="100%" src="https://maps.google.com/maps?q=Nymble - Tekniska Högskolans Kårhus, Drottning Kristinas väg, Stockholm, Sweden, &t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div></div>
+	</div>
+</div>
+<script>
+			var scroll = new SmoothScroll('a[href*="#"]');
+</script>
+{% endblock %}
+</body>
+</html>

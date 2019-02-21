@@ -1,4 +1,3 @@
-
 #home_body {
     color: white;
     font-family: Lato;
@@ -10,7 +9,6 @@
     padding: 0;
     line-height: 175%;
 }
-
 
 #mobile-menu {
     display: none;
@@ -145,17 +143,24 @@ ul#menu {
 }
 
 #intro {
+    width: 100%;
     text-align: center;
     font-size: 18px;
     color: rgb(255, 255, 255);
     margin-bottom: 10%;
     margin-top: 10%;
+    padding-left:5%;
+    padding-right:5%;
     font-weight: 200;
 }
 
 #intro img {
     width: 30%;
     margin-bottom: 85px;
+}
+
+#intro h1 {
+    text-transform: uppercase;
 }
 
 .date {

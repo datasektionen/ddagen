@@ -1,67 +1,39 @@
-<!DOCTYPE html>
-<html lang="sv">
-<head>
-	<meta charset="UTF-8">
-	<meta name="theme-color" content="#e83d84">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="https://fonts.googleapis.com/css?family=Lato:400,600,900" rel="stylesheet">
-	<link rel="stylesheet" href="//aurora.datasektionen.se/" type="text/css" />
-	<link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}"/>
-	<script src="{{ url_for('static', filename='smooth-scroll.min.js') }}"></script>
-	<title>Konglig Datasektionen - D-Dagen</title>
-</head>
+{% extends "layout.html" %}
 
-<body id="home_body">
-<div class="menu-container">
-	<ul id="menu">
-		<li><img src="{{ url_for('static', filename='fluga.svg') }}" alt=""></li>
-		<li><a href="#introduction">VÄLKOMMEN!</a></li>
-		<li><a href="#exhibit">OM MÄSSAN</a></li>
-		<li><a href="#event">EVENT</a></li>
-		<li><a href="#contact">KONTAKT</a></li>
-		<li><a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSeWdTma7qprNi-emaCIejwYhTpiSxHldbE7y_Yc_c0ri6S0Gg/viewform">ANSÖKAN TILL PROJEKTGRUPPEN 2019</a></li>
-	</ul>
-</div>
-<div id="intro">
-	<center>Konglig Datasektionen vid KTH presenterar stolt</center>
-	<center><img src="{{ url_for('static', filename='logo-vit.png') }}" alt="" align="middle"><br></center>
-	<center><h1><span class="lato-black">11 OKTOBER </span><span class="lato-light">NYMBLE</span></h1></center>
-</div>
-<p id="shield"><img src="{{ url_for('static', filename='shield.png') }}" alt="">Datasektionens årliga arbetsmarknadsdag</p>
+{% block content %}
+<!--
 <div class="info-box" id="introduction">
-	<img id="linn" src="{{ url_for('static', filename='Nils-D-Day.jpg') }}">
-	<p class="cerise head"><br><br><br>
+	<p class="cerise head">
 		VARMT VÄLKOMMEN TILL</p>
-	<h1 class="lato-black">D-DAGEN 2018!</h1>
+	<h1 class="lato-black">D-DAGEN 2019!</h1>
 	<p class="lato-black">Tillsammans med en supertaggad projektgrupp och hela Näringslivsgruppen på Datasektionen vill jag önska just dig varmt välkommen till den största D-Dagen någonsin!</p>
 	<p class="info-text">Allt sedan flytten 2016 till Nymble har D-Dagen vuxit för varje år och nu för att möta efterfrågan har vi återigen fått utöka våra lokaler.
 		D-Dagen riktar sig både till studenter som läser datateknik samt till studenter som är intresserade att komma i kontakt med företag som är verksamma inom IT.
 		Vi i projektgruppen hoppas kunna erbjuda en intressant mässa som gör mötet mellan studenter och näringslivet enkelt, oavsett hur långt man har kommit i sin utbildning.
 	</p>
-	<div id="sign">
-		<p class="lato-black cerise">Nils Streijffert</p>
-		<p>D-dagenansvarig 2018</p>
-	</div>
 </div>
+
 <div class="info" id="exhibit">
 	<h1 class="lato-bold cerise-shadow">OM MÄSSAN</h1>
 	<p> <span class="lato-black">Konglig Datasektionen anordnar årligen D-dagen, som är en arbetsmarknadsdag där D-studenter och företagen får chans att utveckla en närmare kontakt med varandra. I år äger denna heldagsmässa rum den 11 oktober på campus Valhallavägen.</span> Senare på kvällen anordnas en traditionsenlig sittning samt efterföljande pub, där utställarna har möjlighet att träffa studenterna i en mer avslappnad miljö.</p>
 	<div class="row">
 		<div class="col-sm-6 col-md-6 ">
-			<h1 class="yellow-shadow lato-black">60</h1>
-			<p class="fade">UTSTÄLLARE 2017</p>
+			<h1 class="yellow-shadow lato-black">75</h1>
+			<p class="fade">UTSTÄLLARE 2018</p>
 		</div>
 		<div class="col-sm-6 col-md-6">
-			<h1 class="yellow-shadow lato-black">500</h1>
-			<p class="fade">KATALOGER 2017</p>
+			<h1 class="yellow-shadow lato-black">800</h1>
+			<p class="fade">KATALOGER 2018</p>
 		</div>
 	</div>
 </div>
+-->
 <!--
 <div class="info-box" id="project-group">
 	<img id="p-group" src="{{ url_for('static', filename='Nils-D-Day.jpg') }}">
 </div>
 //-->
+<!--
 <div class="ribbon row" id="event">
 	<div class="col-sm-2 col-md-2"></div>
 	<div class="col-sm-6 col-md-6">
@@ -71,46 +43,13 @@
 	<div class="col-sm-4 col-md-4" style="text-align: left;">
 		<b>Under årets upplaga av D-Dagen satsar vi mer på event än tidigare.</b>
 
-		<!--
         <ul>
             <li><b>26/9 </b><a href="https://www.facebook.com/events/231462617382631/">Ericsson Programming Challenge&raquo;</a></li>
             <li><b>4/10 </b><a href="https://www.facebook.com/events/132283497505047/">Lunchföreläsning med Yelp&raquo;</a></li>
             <li><b>5/10 </b><a href="https://www.facebook.com/events/1150755441692750/">Kontaktsamtal med Visma&raquo;</a></li>
             <li><b>5/10 </b><a href="">Cygni Snakebot Challenge</a></li>
         </ul>
-        //-->
 	</div>
 </div>
-<div class="info-box" id="contact">
-	<p class="cerise head" style="text-align: center">KONTAKTA <b>D-DAGEN</b></p>
-	<div class="contact-list row">
-		<div class="col-sm-4">
-			<p class="cerise"><b>Säljgruppen</b></p><a class="cerise" href="emailto:D-dagen.sales@d.kth.se">D-dagen.sales@d.kth.se</a>
-		</div>
-		<div class="col-sm-4">
-			<p class="cerise"><b>Nils Streijffert</b></p>
-			<p>D-Dagenansvarig</p>
-			<a href="emailto:D-dagen@d.kth.se" class="cerise">D-dagen@d.kth.se</a>
-		</div>
-		<div class="col-sm-4"><p class="cerise"><b>Eventgruppen</b></p><a class="cerise" href="emailto:D-dagen.sales@d.kth.se">D-dagen.sales@d.kth.se</a></div>
-	</div>
-</div>
-<div id="footer">
-	<div id="footer-container" class="row">
-		<div class="col-sm-6 col-md-6 text">
-			<p class="cerise-light">D-DAGEN 2018 HÅLLS DEN 11 OKTOBER I</p>
-			<h2 style="display: inline" >THS KÅRHUS </h2><h2 style="display: inline" class="cerise-light">NYMBLE</h2>
-			<p><b>Drottning Kristinas väg 15</b></p>
-			<p class="cerise-light" style="display: inline">114 28 </p><p style="display: inline">Stockholm</p>
-			<br>
-			<p><b>Datasektionen</b> är en ideell studentsektion under Tekniska Högskolans Studentkår som finns till för att alla studenter som läser datateknik på KTH ska få en så bra och givande studietid som möjligt.</p>
-			<p class="cerise-light" style="margin-bottom: 0">Organisationsnummer 802412-7709</p>
-		</div>
-		<div class="col-sm-6 col-md-6" id="map"><div class="gmap_canvas"><iframe id="gmap_canvas" height="350px" width="100%" src="https://maps.google.com/maps?q=Nymble - Tekniska Högskolans Kårhus, Drottning Kristinas väg, Stockholm, Sweden, &t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div></div>
-	</div>
-</div>
-<script>
-			var scroll = new SmoothScroll('a[href*="#"]');
-		</script>
-</body>
-</html>
+//-->
+{% endblock %}
