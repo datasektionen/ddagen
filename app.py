@@ -15,6 +15,10 @@ def foretag():
 def industry():
     return redirect('https://docs.google.com/forms/d/e/1FAIpQLSe_UJAnD-3Anweftecf3iOo_MBLLuLt1bBMHqI5bGNYFk90BQ/closedform', code=302)
 
+@app.route("/survey")
+def survey():
+    return redirect('https://goo.gl/forms/TxOWfvzxPfI9IH3Y2', code=302)
+
 @app.errorhandler(404)
 def not_found_error(error):
     return render_template('404.html'), 404
