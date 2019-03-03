@@ -4,22 +4,33 @@
 	<meta charset="UTF-8">
 	<meta name="theme-color" content="#e83d84">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="apple-touch-icon" sizes="180x180" href="/static/icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/static/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/static/icons/favicon-16x16.png">
+	<link rel="manifest" href="/static/icons/site.webmanifest">
+	<link rel="mask-icon" href="/static/icons/safari-pinned-tab.svg" color="#5bbad5">
+	<link rel="shortcut icon" href="/static/icons/favicon.ico">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="msapplication-config" content="/static/icons/browserconfig.xml">
+	<meta name="theme-color" content="#ffffff">
 	<link href="https://fonts.googleapis.com/css?family=Lato:400,600,900" rel="stylesheet">
 	<link rel="stylesheet" href="//aurora.datasektionen.se/" type="text/css" />
 	<link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}"/>
 	<script src="{{ url_for('static', filename='smooth-scroll.min.js') }}"></script>
-	<title>Konglig Datasektionen - D-Dagen</title>
+	<title>D-Dagen - Konglig Datasektionen</title>
 </head>
 
 <body id="home_body">
-<div id="intro">
+<div id="intro-box">
     {% block intro %}
+    <div id="intro">
     <span>Konglig Datasektionen vid KTH presenterar stolt</span><br>
-    <img src="{{ url_for('static', filename='logo-white-ageless.png') }}" alt=""><br>
+    <img src="{{ url_for('static', filename='new-logo-white-ageless.svg') }}" alt=""><br>
     <h1><span class="lato-black">10 oktober 2019</span><br><span class="lato-light">Nymble</span></h1>
+    <p id="shield"><img src="{{ url_for('static', filename='shield.png') }}" alt="">Datasektionens årliga arbetsmarknadsdag</p>
+    </div>
     {% endblock %}
 </div>
-<p id="shield"><img src="{{ url_for('static', filename='shield.png') }}" alt="">Datasektionens årliga arbetsmarknadsdag</p>
 {% block content %}{% endblock %}
 {% block footer %}
 <div class="info-box" id="contact">
