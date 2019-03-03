@@ -1,119 +1,30 @@
 #home_body {
     color: white;
     font-family: Lato;
-    background-color: rgba(232, 19, 108, 0.8);
-    background-image: url(/static/bakgrund.jpg);
-    background-repeat: no-repeat;
-    background-size: 100% auto;
+    background-color: rgba(232,19,108,0.8);
     margin: 0;
     padding: 0;
     line-height: 175%;
 }
-
-#mobile-menu {
-    display: none;
-}
-
-a {
-    color: white;
-    text-decoration: none;
-}
-
-#sok {
-    font-size: 20pt;
-    text-decoration: underline !important;
-}
-
-#sok-container {
-    margin-top: -7.5%;
-}
-
-#contact a.cerise:hover {
-    color: #e83d84;
-}
-
-/*
-
-video#myVideo {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -100;
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
-    background: url(bakgrund.jpg) no-repeat;
-    background-size: cover;
-}
-*/
-
-/*
-
-FÖR HTML FILEN OM MAN VILL GÖRA VIDEO BAKGRUND
-<video autoplay muted loop id="myVideo">
-	<source src="{{ url_for('static', filename='rosa.mp4') }}" type="video/mp4">
-</video>
-*/
-
-
-img#bg {
-    position: absolute;
-    width: 100%;
-    top: 0;
-    z-index: -1;
-}
-
 
 .cerise {
     color: #E83D84;
 }
 
 .cerise-light {
-    color: #EC5F99;
-}
-
-ul {
-    list-style-type: none;
-    height: 100%;
-    margin-bottom: 0;
+    color: #ec5F99;
 }
 
 .lato-black {
     font-weight: 900;
 }
 
-#footer {
-    margin: 0 auto;
-    margin-top: 2%;
-    background-color: #252525;
+.lato-bold {
+    font-weight: 600;
 }
 
-#footer p {
-    margin-bottom: 5%;
-}
-
-#footer div {
-    height: 355px;
-}
-
-#footer .text {
-    padding-top: 2%;
-}
-
-#footer .text .cerise-light {
+.lato-light {
     font-weight: 200;
-    font-size: 15px;
-}
-
-#footer div#footer-container {
-    height: auto;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 .menu-container {
@@ -129,42 +40,34 @@ ul#menu {
     z-index: 1;
 }
 
-/*a:hover {*/
-    /*color: white;*/
-/*}*/
-
-#menu li {
-    display: inline-block;
-    padding: 15px;
-}
-
-#menu img {
-    vertical-align: middle;
+#intro-box {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background: url(/static/bakgrund.jpg);
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
 }
 
 #intro {
-    width: 100%;
     text-align: center;
     font-size: 18px;
-    color: rgb(255, 255, 255);
-    margin-bottom: 10%;
+    color: white;
     margin-top: 10%;
-    padding-left:5%;
-    padding-right:5%;
+    padding-left: 5%;
+    padding-right: 5%;
     font-weight: 200;
 }
 
-#intro img {
+#intro > img {
     width: 30%;
     margin-bottom: 85px;
 }
 
 #intro h1 {
     text-transform: uppercase;
-}
-
-.date {
-    display: inline;
 }
 
 #shield {
@@ -175,24 +78,10 @@ ul#menu {
 }
 
 #shield img {
-    width: 4%;
+    width: 6%;
     vertical-align: middle;
-    margin-right: 40px;
-}
-
-p.date {
-    padding-left: 5px;
-    font-size: 2em;
-}
-
-.info-box p.cerise {
-    color: #E83D84;
-}
-
-.info-box p.head {
-    font-size: 2em;
+    margin-right: 5px;
     margin-bottom: 0;
-    font-weight: 200;
 }
 
 .info-box {
@@ -201,48 +90,28 @@ p.date {
     margin-right: auto;
     background-color: white;
     padding-top: 50px;
-    padding-right: 3%;
+    padding-right: 5%;
+    padding-left: 5%;
+    padding-bottom: 50px;
     overflow: hidden;
-    color: #6a6a6a;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.12);
+    color: #6A6A6A;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.12);
 }
 
 .info-box h1 {
-    color: #E83D84;
-    margin-bottom: 20px;
     margin-top: 0;
+    margin-bottom: 20px;
 }
 
-img#linn {
-    width: 50%;
-    float: left;
-    margin-top: 90px;
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-bottom: 100px;
-}
-
-img#p-group {
-    width: 50%;
-    float: left;
-    margin-top: 90px;
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-bottom: 100px;
+.info-box .head {
+    font-size: 2em;
+    margin-bottom: 0;
+    font-weight: 200;
 }
 
 p.info-text {
-    color: #6a6a6a;
-    margin-right: 5%;
-}
-
-#sign {
-    margin-top: 3%;
-    margin-bottom: 2%;
-}
-
-#sign p {
-    margin: 0;
+  color: #6a6a6a;
+  margin-right: 5%;
 }
 
 .info {
@@ -255,7 +124,7 @@ p.info-text {
 }
 
 .info p {
-    width: 50%;
+    width: 95%;
     float: left;
     margin-bottom: 30px;
 }
@@ -268,7 +137,7 @@ p.info-text {
 
 .info div.row p {
     font-size: 16px;
-    width: 100%;
+    width: 100%
 }
 
 .info div.row h1 {
@@ -280,14 +149,18 @@ p.info-text {
     margin-bottom: 2%;
     padding-right: 15%;
     padding-top: 55px;
-    padding-bottom: 50px;
+    padding-bottom:50px;
     margin-right: 0;
-    border-top: 1px rgba(255, 255, 255, 0.2);
-    border-bottom: 1px rgba(255, 255, 255, 0.2);
+    border-top: 1px rgba(255,255,255,0.2);
+    border-bottom: 1px rgba(255,255,255,0.2);
 }
 
 .ribbon div {
     text-align: center;
+}
+
+.ribbon.row h1 {
+    font-size: 70px;
 }
 
 .contact-list {
@@ -322,28 +195,40 @@ p.info-text {
     opacity: 0.5;
 }
 
-.lato-bold {
-    font-weight: 600;
+#footer {
+    margin: 0 auto;
+    margin-top: 2%;
+    background-color: #252525;
 }
 
-.lato-light {
+#footer p {
+    margin-bottom: 5%;
+}
+
+#footer div {
+    height: 355px;
+}
+
+#footer .text {
+    padding-top: 2%;
+}
+
+#footer .text .cerise-light {
     font-weight: 200;
+    font-size: 15px;
 }
 
-.ribbon.row h1 {
-    font-size: 70px;
+#footer div#footer-container {
+    height: auto;
+    max-width: 1200px;
+    margin: 0 auto;
 }
+
+
+
 
 @media (max-width: 768px) {
-    .menu-container {
-        max-width: 600px;
-    }
-
-    body {
-        background-size: auto 100vh;
-    }
-
-    #intro img {
+    #intro > img {
         width: 80%;
         margin-bottom: 100px;
         min-width: 300px;
@@ -353,28 +238,13 @@ p.info-text {
         margin-bottom: 110px;
     }
 
-    ul#menu {
-        display: block;
-        position: relative;
-    }
-
-    ul#menu li {
-        display: block;
-    }
-
     .info-box {
         width: 90%;
         padding: 20px;
     }
 
-    .info-box img#linn {
-        width: 80%;
-        margin: 20px 10%;
-    }
-
     #shield {
-        margin-top: 15px;
-        margin-bottom: 200px;
+        margin-top: 150px;
     }
 
     #shield img {
@@ -385,21 +255,13 @@ p.info-text {
         display: block;
     }
 
-    div#exhibit div.row div {
-        margin-top: 50%;
-    }
-
-    div#exhibit div.row h1 {
-        font-size: 45px;
-    }
-
     .ribbon {
         padding-left: 15%;
     }
 }
 
 @media (max-width: 350px) {
-    #intro img {
+    #intro > img {
         margin-bottom: 60px;
         min-width: 275px;
     }
@@ -408,24 +270,15 @@ p.info-text {
         margin-bottom: 100px;
     }
 
+
     #shield {
-        margin-top: 50px;
+        margin-top: 0;
         font-size: 16px;
-    }
-
-    #shield img {
-        min-width: 30px;
-    }
-
-    #exhibit {
-        padding-left: 25px;
-    }
-
-    div#exhibit div.row h1 {
-        font-size: 35px;
     }
 
     .info-box {
         margin-right: auto;
     }
 }
+
+
