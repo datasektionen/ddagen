@@ -2,18 +2,12 @@
 Flask project for D-Dagen's website.
 
 ## Setup
-### Set up a virtual environment:
+### Install dependencies
 ```
-$ python3 -m venv venv      # only first time
-$ source venv/bin/activate
-```
-
-### Install dependencies:
-```
-$ pip install -r requirements.txt
+$ pipenv install
 ```
 
 ## Run
 ```
-$ flask run
+$ pipenv run flask run
 ```
