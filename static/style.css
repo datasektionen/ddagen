@@ -37,6 +37,7 @@ a {
     display: block;
     height: 60px;
     background-color: #e83d84;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
 }
 
 #menu {
@@ -106,6 +107,7 @@ ul#menu {
 
 #intro-header {
     margin-bottom: 20px;
+    text-align: center;
 }
 
 #faq ul {
@@ -140,6 +142,10 @@ ul#menu {
     font-size: 2em;
     margin-bottom: 0;
     font-weight: 200;
+}
+
+.info-box a {
+    color: #e83d84;
 }
 
 p.info-text {

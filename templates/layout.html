@@ -28,6 +28,7 @@
         <li><a href="{{ url_for('faq') }}">FAQ</a></li>
     </ul>
 </div>
+{% block intro_full %}
 <div id="intro-box">
     <div id="intro">
         {% block intro %}
@@ -35,9 +36,10 @@
         <img src="{{ url_for('static', filename='new-logo-white-ageless.svg') }}" alt=""><br>
         <h1><span class="lato-black">10 oktober 2019</span><br><span class="lato-light">Nymble</span></h1>
         <p id="shield"><img src="{{ url_for('static', filename='shield.png') }}" alt="">Datasektionens årliga arbetsmarknadsdag</p>
-        {% endblock %}
+        {% endblock intro %}
     </div>
 </div>
+{% endblock intro_full %}
 {% block content %}{% endblock %}
 {% block footer %}
 <div class="info-box" id="contact">

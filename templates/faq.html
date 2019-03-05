@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
-{% block intro %}
-<h1 class="lato-bold cerise-shadow">FAQ</h1>
+{% block intro_full %}
+<h1 class="lato-bold cerise-shadow" id="intro-header">FAQ</h1>
 <div class="info-box" id="faq">
         <ul>
             <li><a href="#q1">Vad är D-Dagen?</a></li>
@@ -12,8 +12,8 @@
             <li><a href="#q6">Vad är D-Dagenkatalogen och var hittar jag kataloger från tidigare år?</a></li>
             <li><a href="#q7">Fler frågor?</a></li>
         </ul>
-</div>
-{% endblock %}
+</div><br>
+{% endblock intro_full %}
 
 {% block content %}
 <div class="info-box" id="introduction">
@@ -24,11 +24,12 @@
     </p>
 
     <p class="lato-black" id="q2">Hur många företag har deltagit i D-Dagen tidigare år?</p>
-	2018 75
-    2017 59
-    2016 45
-    2015 35
-    </p>
+    <ul>
+        <li>2018: 75</li>
+        <li>2017: 59</li>
+        <li>2016: 45</li>
+        <li>2015: 35</li>
+    </ul>
 
     <p class="lato-black" id="q3">Hur många besökare brukar komma till D-Dagen?</p>
 	<p class="info-text">Tidigare har D-dagen haft mellan 1000 och 1500 besökare per år.</p>
@@ -47,13 +48,15 @@
         viktigaste informationen om mässan och de deltagande företagen. Katalogen innehåller en karta över placeringen
         av företag samt information om varje företag. I år kommer katalogen att finnas tillgänglig i elektroniskt format
         på ddagen.se för att minska vår klimatpåverkan. Detta kommer också att möjliggöra sök- och filtreringsfunktioner
-        för att öka användarvänligheten.
+        för att öka användarvänligheten.<br>
 
         Kataloger från tidigare år:
-        [länk till katalog 2018]
-        [länk till katalog 2017]
-        [länk till katalog 2016]
-        [länk till katalog 2015]</p>
+        <ul>
+            <li><a href="{{ url_for('katalog2018') }}">Länk till katalog 2018</a> </li>
+            <li><a href="{{ url_for('katalog2017') }}">Länk till katalog 2017</a> </li>
+            <li><a href="{{ url_for('katalog2016') }}">Länk till katalog 2016</a> </li>
+            <li><a href="{{ url_for('katalog2015') }}">Länk till katalog 2015</a> </li>
+        </ul>
 
     <p class="lato-black" id="q7">Fler frågor?</p>
 	<p class="info-text">Vänligen maila <a href="mailto:d-dagen@d.kth.se" class="cerise">d-dagen@d.kth.se</a></p>

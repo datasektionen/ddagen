@@ -28,6 +28,34 @@ def faq():
     return render_template('faq.html')
 
 
+@app.route('/katalog2018')
+def katalog2018():
+    return redirect(
+        'https://static.datasektionen.se/naringsliv/d-dagen/katalog_2018',
+        code=302)
+
+
+@app.route('/katalog2017')
+def katalog2017():
+    return redirect(
+        'https://static.datasektionen.se/naringsliv/d-dagen/katalog_2017',
+        code=302)
+
+
+@app.route('/katalog2016')
+def katalog2016():
+    return redirect(
+        'https://static.datasektionen.se/naringsliv/d-dagen/katalog_2016',
+        code=302)
+
+
+@app.route('/katalog2015')
+def katalog2015():
+    return redirect(
+        'https://static.datasektionen.se/naringsliv/d-dagen/katalog_2015',
+        code=302)
+
+
 @app.route('/foretag')
 def foretag():
     return redirect(
