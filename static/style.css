@@ -1,6 +1,6 @@
 #home_body {
     color: white;
-    background-color: rgba(232, 19, 108, 0.8);
+    background-color: rgba(236, 95, 153, 1);
     padding: 0;
     line-height: 175%;
 }
@@ -37,7 +37,7 @@ a {
     display: block;
     height: 60px;
     background-color: #e83d84;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+    box-shadow: rgba(0, 0, 0, 0.2) 0 1px 8px;;
 }
 
 #menu {
@@ -67,7 +67,7 @@ ul#menu {
     justify-content: center;
     align-content: center;
     background-size: cover;
-    background: url(/static/bakgrund.jpg) center;
+    /*background: url(/static/bakgrund.jpg) center;*/
     overflow: hidden;
 }
 
