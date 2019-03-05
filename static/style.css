@@ -1,18 +1,16 @@
 #home_body {
     color: white;
-    font-family: Lato;
-    background-color: rgba(232,19,108,0.8);
-    margin: 0;
+    background-color: rgba(232, 19, 108, 0.8);
     padding: 0;
     line-height: 175%;
 }
 
 .cerise {
-    color: #E83D84;
+    color: #e83d84;
 }
 
 .cerise-light {
-    color: #ec5F99;
+    color: #ec5f99;
 }
 
 .lato-black {
@@ -27,27 +25,48 @@
     font-weight: 200;
 }
 
+.bigger-font {
+    font-size: 18px;
+}
+
+a {
+    color: white;
+}
+
 .menu-container {
-    max-width: 1200px;
-    margin: 0 auto;
+    display: block;
+    height: 60px;
+    background-color: #e83d84;
+}
+
+#menu {
+    width: 100%;
+}
+
+#menu li {
+    display: inline-block;
+    padding: 15px;
+}
+
+#menu img {
+    vertical-align: middle;
+    width: 120px;
 }
 
 ul#menu {
     position: absolute;
-    top: 1%;
     list-style-type: none;
     text-align: center;
     z-index: 1;
+    padding: 0;
 }
 
 #intro-box {
     height: 100vh;
-    display: flex;
     justify-content: center;
     align-content: center;
-    background: url(/static/bakgrund.jpg);
     background-size: cover;
-    background-position: center;
+    background: url(/static/bakgrund.jpg) center;
     overflow: hidden;
 }
 
@@ -68,6 +87,7 @@ ul#menu {
 
 #intro h1 {
     text-transform: uppercase;
+    margin-bottom: 20px;
 }
 
 #shield {
@@ -84,18 +104,31 @@ ul#menu {
     margin-bottom: 0;
 }
 
+#intro-header {
+    margin-bottom: 20px;
+}
+
+#faq ul {
+    text-align: left;
+}
+
+#faq li {
+    margin: 10px 0;
+}
+
+#faq a {
+    color: #6a6a6a;
+}
+
 .info-box {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
     background-color: white;
-    padding-top: 50px;
-    padding-right: 5%;
-    padding-left: 5%;
-    padding-bottom: 50px;
+    padding: 50px 5%;
     overflow: hidden;
     color: #6A6A6A;
-    box-shadow: 0px 5px 15px rgba(0,0,0,0.12);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
 }
 
 .info-box h1 {
@@ -116,7 +149,7 @@ p.info-text {
 
 .info {
     max-width: 1200px;
-    padding-left: 60px;
+    padding-left: 5%;
     padding-bottom: 0;
     margin-left: auto;
     margin-right: auto;
@@ -196,8 +229,7 @@ p.info-text {
 }
 
 #footer {
-    margin: 0 auto;
-    margin-top: 2%;
+    margin: 2% auto 0;
     background-color: #252525;
 }
 
@@ -224,18 +256,11 @@ p.info-text {
     margin: 0 auto;
 }
 
-
-
-
 @media (max-width: 768px) {
     #intro > img {
         width: 80%;
         margin-bottom: 100px;
         min-width: 300px;
-    }
-
-    #intro h1 {
-        margin-bottom: 110px;
     }
 
     .info-box {
@@ -265,11 +290,6 @@ p.info-text {
         margin-bottom: 60px;
         min-width: 275px;
     }
-
-    #intro h1 {
-        margin-bottom: 100px;
-    }
-
 
     #shield {
         margin-top: 0;

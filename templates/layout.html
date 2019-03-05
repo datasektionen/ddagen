@@ -21,15 +21,22 @@
 </head>
 
 <body id="home_body">
+<div class="menu-container">
+    <ul id="menu">
+        <li><a href="{{ url_for('companies') }}">Företag</a></li>
+        <li><a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='new-logo-white-ageless.svg') }}" alt="D-Dagen"></a></li>
+        <li><a href="{{ url_for('faq') }}">FAQ</a></li>
+    </ul>
+</div>
 <div id="intro-box">
-    {% block intro %}
     <div id="intro">
-    <span>Konglig Datasektionen vid KTH presenterar stolt</span><br>
-    <img src="{{ url_for('static', filename='new-logo-white-ageless.svg') }}" alt=""><br>
-    <h1><span class="lato-black">10 oktober 2019</span><br><span class="lato-light">Nymble</span></h1>
-    <p id="shield"><img src="{{ url_for('static', filename='shield.png') }}" alt="">Datasektionens årliga arbetsmarknadsdag</p>
+        {% block intro %}
+        <span>Konglig Datasektionen vid KTH presenterar stolt</span><br>
+        <img src="{{ url_for('static', filename='new-logo-white-ageless.svg') }}" alt=""><br>
+        <h1><span class="lato-black">10 oktober 2019</span><br><span class="lato-light">Nymble</span></h1>
+        <p id="shield"><img src="{{ url_for('static', filename='shield.png') }}" alt="">Datasektionens årliga arbetsmarknadsdag</p>
+        {% endblock %}
     </div>
-    {% endblock %}
 </div>
 {% block content %}{% endblock %}
 {% block footer %}
@@ -37,14 +44,14 @@
 	<p class="cerise head" style="text-align: center">KONTAKTA <b>D-DAGEN</b></p>
 	<div class="contact-list row">
 		<div class="col-sm-4">
-			<p class="cerise"><b>Säljgruppen</b></p><a class="cerise" href="emailto:d-dagen.sales@d.kth.se">d-dagen.sales@d.kth.se</a>
+			<p class="cerise"><b>Säljgruppen</b></p><a class="cerise" href="mailto:d-dagen.sales@d.kth.se">d-dagen.sales@d.kth.se</a>
 		</div>
 		<div class="col-sm-4">
             <p class="cerise"><b>Victor Sellstedt<br>Simone de Blasio</b></p>
 			<p>D-Dagenansvarig</p>
-			<a href="emailto:d-dagen@d.kth.se" class="cerise">d-dagen@d.kth.se</a>
+			<a href="mailto:d-dagen@d.kth.se" class="cerise">d-dagen@d.kth.se</a>
 		</div>
-		<div class="col-sm-4"><p class="cerise"><b>Eventgruppen</b></p><a class="cerise" href="emailto:d-dagen.event@d.kth.se">d-dagen.event@d.kth.se</a></div>
+		<div class="col-sm-4"><p class="cerise"><b>Eventgruppen</b></p><a class="cerise" href="mailto:d-dagen.event@d.kth.se">d-dagen.event@d.kth.se</a></div>
 	</div>
 </div>
 <div id="footer">
@@ -62,7 +69,7 @@
 	</div>
 </div>
 <script>
-			var scroll = new SmoothScroll('a[href*="#"]');
+    let scroll = new SmoothScroll('a[href*="#"]');
 </script>
 {% endblock %}
 </body>
