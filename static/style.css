@@ -1,6 +1,7 @@
 #home_body {
     color: white;
-    background-color: rgba(236, 95, 153, 1);
+    background: url(/static/bakgrund.jpg) fixed center;
+    /* background-color: rgba(232,19,108,0.8);*/
     padding: 0;
     line-height: 175%;
 }
@@ -33,15 +34,14 @@ a {
     color: white;
 }
 
-.menu-container {
-    display: block;
-    height: 60px;
-    background-color: #e83d84;
-    box-shadow: rgba(0, 0, 0, 0.2) 0 1px 8px;;
+a:hover {
+    text-decoration: underline !important;
+    color: white;
 }
 
-#menu {
-    width: 100%;
+.menu-container {
+    font-size: 20px;
+    text-transform: uppercase;
 }
 
 #menu li {
@@ -55,9 +55,8 @@ a {
 }
 
 ul#menu {
-    position: absolute;
+    /*position: absolute;*/
     list-style-type: none;
-    text-align: center;
     z-index: 1;
     padding: 0;
 }
@@ -66,9 +65,9 @@ ul#menu {
     height: 100vh;
     justify-content: center;
     align-content: center;
-    background-size: cover;
-    /*background: url(/static/bakgrund.jpg) center;*/
-    overflow: hidden;
+    /*background-size: cover;
+    background: url(/static/bakgrund.jpg) fixed center;
+    overflow: hidden;*/
 }
 
 #intro {
