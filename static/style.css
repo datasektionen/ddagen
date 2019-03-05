@@ -40,6 +40,7 @@ a:hover {
 }
 
 .menu-container {
+    padding: 20px;
     font-size: 20px;
     text-transform: uppercase;
 }
@@ -128,7 +129,7 @@ ul#menu {
     background-color: white;
     padding: 50px 5%;
     overflow: hidden;
-    color: #6A6A6A;
+    color: #6a6a6a;
     box-shadow: 0 5px 15px rgba(0,0,0,0.12);
 }
 
@@ -145,6 +146,38 @@ ul#menu {
 
 .info-box a {
     color: #e83d84;
+}
+
+#flex-boxes {
+    display: flex;
+    justify-content: center;
+}
+
+.flex-box {
+    float: left;
+    width: 360px;
+    margin-right: 10px;
+    background-color: white;
+    overflow: hidden;
+    color: #6a6a6a;
+    padding: 30px;
+    height: 400px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.flex-box a {
+    color: #e83d84;
+}
+
+.flex-box h1 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.flex-box .head {
+    font-size: 2em;
+    font-weight: 200;
 }
 
 p.info-text {
@@ -259,6 +292,17 @@ p.info-text {
     height: auto;
     max-width: 1200px;
     margin: 0 auto;
+}
+
+@media (max-width: 1200px) {
+    #flex-boxes {
+        display: block;
+    }
+    .flex-box {
+        width: auto;
+        height: auto;
+        padding: 5%;
+    }
 }
 
 @media (max-width: 768px) {
