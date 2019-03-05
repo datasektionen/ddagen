@@ -22,12 +22,16 @@
 
 <body id="home_body">
 <div class="menu-container">
-    <ul id="menu">
+    <ul class="navbar" id="menu">
         <li><a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='new-logo-white-ageless.svg') }}" alt="D-Dagen"></a></li>
         <li><a href="{{ url_for('companies') }}">Företag</a></li>
         <li><a href="{{ url_for('faq') }}">FAQ</a></li>
+        <li><a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <img src="static/menu_icon.svg" class="hamburger" alt="Menu">
+        </a></li>
     </ul>
 </div>
+
 {% block intro_full %}
 <div id="intro-box">
     <div id="intro">
@@ -72,6 +76,15 @@
 </div>
 <script>
     let scroll = new SmoothScroll('a[href*="#"]');
+
+    function myFunction() {
+        var x = document.getElementById("menu");
+        if (x.className === "navbar") {
+            x.className += " dropdown";
+        } else {
+            x.className = "navbar";
+        }
+    }
 </script>
 {% endblock %}
 </body>

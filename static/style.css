@@ -1,5 +1,6 @@
 #home_body {
     color: white;
+    background-size: cover;
     background: url(/static/bakgrund.jpg) fixed center;
     /* background-color: rgba(232,19,108,0.8);*/
     padding: 0;
@@ -43,6 +44,14 @@ a:hover {
     padding: 20px;
     font-size: 20px;
     text-transform: uppercase;
+}
+
+.menu-container .icon {
+    display: none;
+}
+
+.dropdown {
+    display:none;
 }
 
 #menu li {
@@ -262,6 +271,10 @@ p.info-text {
     text-shadow: 3px 3px 0 #ec5f99;
 }
 
+.yellow-shadow2 {
+    text-shadow: 3px 3px 0 #fcda04;
+}
+
 .fade {
     opacity: 0.5;
 }
@@ -306,6 +319,17 @@ p.info-text {
 }
 
 @media (max-width: 768px) {
+    .menu-container .icon {
+        position: absolute;
+        display: block;
+        float: right;
+    }
+
+    .menu-container .icon img {
+        width: 30px;
+        height: 30px;
+    }
+
     #intro > img {
         width: 80%;
         margin-bottom: 100px;
