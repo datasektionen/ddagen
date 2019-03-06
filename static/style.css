@@ -1,10 +1,15 @@
 #home_body {
     color: white;
-    background-size: cover;
-    background: url(/static/bakgrund.jpg) fixed center;
-    /* background-color: rgba(232,19,108,0.8);*/
+    background-color: #ec5f99; /*rgba(232,19,108,0.8);*/
     padding: 0;
     line-height: 175%;
+}
+
+@media (min-width: 600px) {
+    #home_body {
+        background-size: cover;
+        background: url(/static/bakgrund.jpg) fixed center;
+    }
 }
 
 .cerise {
@@ -46,12 +51,14 @@ a:hover {
     text-transform: uppercase;
 }
 
+
+
 .menu-container .icon {
     display: none;
 }
 
-.dropdown {
-    display:none;
+.menu-container .logo {
+    display: none;
 }
 
 #menu li {
@@ -76,8 +83,8 @@ ul#menu {
     justify-content: center;
     align-content: center;
     /*background-size: cover;
-    background: url(/static/bakgrund.jpg) fixed center;
-    overflow: hidden;*/
+    background: url(/static/bakgrund.jpg) fixed center;*/
+    overflow: hidden;
 }
 
 #intro {
@@ -170,7 +177,7 @@ ul#menu {
     overflow: hidden;
     color: #6a6a6a;
     padding: 30px;
-    height: 400px;
+    height: 450px;
     border-radius: 15px;
     margin-bottom: 20px;
 }
@@ -196,11 +203,9 @@ p.info-text {
 
 .info {
     max-width: 1200px;
-    padding-left: 5%;
-    padding-bottom: 0;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 2%;
+    padding: 2% 5% 0;
 }
 
 .info p {
@@ -272,7 +277,7 @@ p.info-text {
 }
 
 .yellow-shadow2 {
-    text-shadow: 3px 3px 0 #fcda04;
+    text-shadow: 2px 2px 0 #fcda04;
 }
 
 .fade {
@@ -319,16 +324,7 @@ p.info-text {
 }
 
 @media (max-width: 768px) {
-    .menu-container .icon {
-        position: absolute;
-        display: block;
-        float: right;
-    }
 
-    .menu-container .icon img {
-        width: 30px;
-        height: 30px;
-    }
 
     #intro > img {
         width: 80%;
@@ -355,6 +351,56 @@ p.info-text {
 
     .ribbon {
         padding-left: 15%;
+    }
+}
+
+@media (max-width: 600px) {
+    .menu-container {
+        background-color: #e83d84;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 8px;
+    }
+
+        .menu-container .icon {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+    }
+
+    .menu-container .icon img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .menu-container .logo {
+        display: flex;
+        justify-content: center;
+    }
+
+    .menu-container .logo img {
+        display: block;
+        height: 40px;
+    }
+
+    .menu-container .nav_bar {
+        display: none;
+    }
+
+    .menu-container .drop_down {
+        display: block;
+        height: 100vh;
+        background-color: #e83d84;
+        font-size: 36px;
+    }
+
+    .menu-container .drop_down a#logo {
+        display: none;
+    }
+
+    #menu li {
+        display: block;
+        text-align: center;
+        margin-bottom: 40px;
     }
 }
 
