@@ -20,7 +20,7 @@ def visitors():
 
 @app.route('/contact')
 def contact():
-    return render_template('index.html')
+    return render_template('contact.html')
 
 
 @app.route('/faq')

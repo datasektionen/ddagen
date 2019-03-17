@@ -229,6 +229,20 @@ p.info-text {
     font-size: 76px;
 }
 
+.d-dagenansvarig {
+}
+
+.portrait {
+    float: left;
+    text-align: center;
+    padding-right: 20px;
+}
+
+.portrait img {
+    border-radius: 50%;
+    width: 250px;
+}
+
 .ribbon {
     background-color: #ec5f99;
     margin-bottom: 2%;
