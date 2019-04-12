@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block intro_full %}
+<h1 class="lato-bold yellow-shadow2" id="intro-header">The Project Group</h1>
+{% endblock intro_full %}
+
+{% block content %}
+    <div class="info-box">
+        <div class="d-dagenansvarig">
+            <div class="portrait">
+                <img src="{{ url_for('static', filename='project-group/victor_sellstedt.jpg') }}" alt="Victor Sellstedt" />
+                <h3>Victor Sellstedt</h3>
+                <h5>Project Leader</h5>
+            </div>
+            <div class="portrait">
+                <img src="{{ url_for('static', filename='project-group/simone_de_blasio.jpg') }}" alt="Simone de Blasio" />
+                <h3>Simone de Blasio</h3>
+                <h5>Project Leader</h5>
+            </div>
+        </div>
+    </div>
+<br>
+{% endblock %}
