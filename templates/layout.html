@@ -35,6 +35,16 @@
 
 </div>
 
+<div class="select-language-wrapper">
+    <p>{{ url_for(request.endpoint) }}</p>
+    <a href="{{ url_for(request.endpoint, language='en') }}">
+        <img src="{{ url_for('static', filename='eng_flag.png') }}"/>
+    </a>
+    <a href="{{ url_for(request.endpoint, language='en') }}">
+        <img src="{{ url_for('static', filename='swe_flag.png') }}"/>
+    </a>
+</div>
+
 {% block intro_full %}
 <div id="intro-box">
     <div id="intro">
