@@ -5,27 +5,27 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('SV/index.html')
 
 
 @app.route('/companies')
 def companies():
-    return render_template('companies.html')
+    return render_template('SV/companies.html')
 
 
 @app.route('/visitors')
 def visitors():
-    return render_template('index.html')
+    return render_template('SV/index.html')
 
 
 @app.route('/contact')
 def contact():
-    return render_template('contact.html')
+    return render_template('SV/contact.html')
 
 
 @app.route('/faq')
 def faq():
-    return render_template('faq.html')
+    return render_template('SV/faq.html')
 
 
 @app.route('/katalog2018')
