@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block intro_full %}
+<h1 class="lato-bold yellow-shadow2" id="intro-header">Företag</h1>
+{% endblock intro_full %}
+
+{% block content %}
+
+<div class="info" id="interest">
+    <h1 class="lato-bold yellow-shadow2">ANMÄLAN</h1>
+    <h3> Anmälningsprocessen för D-Dagen sker i tre steg:</h3>
+</div>
+<div class="info" id="flex-boxes">
+    <div class="flex-box">
+        <p class="cerise head">STEG 1</p>
+        <p>Det första steget går ut på att fylla i en <a href="{{ url_for('foretag') }}">intresseanmälan</a>. Efter att den är ifylld kommer ni få ett mejl
+            senast
+            den 1:a juni med information om ni gått vidare i anmälningsprocessen. Om vi har möjlighet att erbjuda er
+            plats
+            kommer det finnas ett avtal bifogat.</p>
+    </div>
+
+    <div class="flex-box">
+        <p class="cerise head">STEG 2</p>
+        <p>Nästa steg går ut på att signera avtalet (inklusive ett beställningsformulär), scanna det och inom tre (3)
+            veckor
+            skicka det till <a class="cerise" href="mailto:d-dagen@d.kth.se">d&#8209;dagen@d.kth.se</a> med rubriken
+            “Kontrakt D-Dagen 2019 - Företagsnamn”. Observera att om vi inte
+            får detta kontrakt inom tre veckor efter det att vi skickat kontraktet till den angivna epostadressen kan
+            anmälan
+            komma att plockas bort.</p>
+    </div>
+
+    <div class="flex-box">
+        <p class="cerise head">STEG 3</p>
+        <p>Det sista steget är att ni får tillbaka ett signerat avtal av D-Dagen inom två (2) veckor från det att vi
+            fått tillbaka kontraktet, då är anmälan slutförd.</p>
+    </div>
+</div>
+
+<div class="info-box lato-light bigger-font" id="intro-other">
+    <p class="cerise head">STÄLL UT <b>D&#8209;DAGEN 2019</b></p>
+    <h2>BASPAKET</h2>
+    <ul>
+        <li>5 m<sup>2</sup> yta</li>
+        <li>Bord, 1 st</li>
+        <li>Frukost och lunch, 2 personer</li>
+        <li>Kvällssittning, 2 personer</li>
+        <li>Barbongar, 10 st</li>
+        <li>El och Wi-Fi</li>
+        <li>Tillgång till företagslounge med fika och förfriskningar under dagen</li>
+        <li>En företagsvärd som hjälper er under dagen</li>
+        <li>Mottagning och förvaring av leveranser</li>
+    </ul>
+    <h3>Pris: 25 000 kr</h3>
+    <h2>Extra tillägg</h2>
+    <ul>
+        <li>Bord 1st, 500 kr</li>
+        <li>Barstol 1st, 300 kr</li>
+        <li>Företagsrepresentant dag, 1 st 300 kr</li>
+        <li>Företagsrepresentant kväll, 1 st 500 kr</li>
+        <li>Barbongar, 10 st 500 kr</li>
+
+    </ul><br>
+
+    <p class="cerise head">EVENT</p><br>
+    <p>Det finns möjlighet att hålla företagsevent tillsammans med D-Dagen. Vänligen kontakta oss på <a
+            href="mailto:d-dagen.event@d.kth.se">d-dagen.event@d.kth.se</a> för mer information.</p>
+
+</div>
+
+<div class="info-box">
+    <p class="cerise head">Vad händer efter intresseanmälan?</p><br>
+    <p>Senast den 1 juli blir ni kontaktade av oss via mejl med information om ni har fått en plats på mässan den 10 oktober
+    2019 eller ej, i samband med detta mejl bifogas även ett kontrakt till de företag som får möjlighet att ställa ut under
+    mässan. Signering av kontrakt ska ske inom 3 veckor från det att mejlet mottagits. Under ett senare skede kommer information
+    om mässan och möjligheterna att beställa extra tillägg inför mässan. Det är viktigt att svar inkommer inom angivna tidsramar.</p>
+
+    <p>Fakturering kommer sker som tidigast den 9 september 2019 och innan detta datum ska information mottagits om leveranser.
+    Mot slutet av september kommer deltagande företag kontaktas av en representant från D-Dagen med mer detaljerad
+    information om mässdagen.</p>
+
+</div><br>
+{% endblock %}
