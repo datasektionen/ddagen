@@ -29,8 +29,11 @@ def visitors():
 
 @app.route('/contact')
 def contact():
-    # TODO Add contact page
-    return render_template('SV/contact.html')
+    language = request.args.get('language')
+    if language == 'en':
+        return render_template('EN/contact.html')
+    else:
+        return render_template('SV/contact.html')
 
 
 @app.route('/faq')

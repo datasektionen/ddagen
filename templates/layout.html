@@ -22,28 +22,40 @@
 
 <body id="home_body">
 <div class="menu-container">
-    <a href="{{ url_for('index') }}" class="logo"><img src="{{ url_for('static', filename='new-logo-white-ageless.svg') }}" alt="D-Dagen"></a>
+{#    <a href="{{ url_for('index') }}" class="logo"><img src="{{ url_for('static', filename='new-logo-white-ageless.svg') }}" alt="D-Dagen"></a>#}
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <img src="{{ url_for('static', filename='menu_icon.svg') }}" class="hamburger" alt="Menu">
     </a>
-    <ul class="nav_bar" id="menu">
-        <li><a href="{{ url_for('index') }}" id="logo"><img src="{{ url_for('static', filename='new-logo-white-ageless.svg') }}" alt="D-Dagen"></a></li>
-        <li><a href="{{ url_for('companies') }}">Företag</a></li>
-        <li><a href="{{ url_for('faq') }}">FAQ</a></li>
-        <li><a href="{{ url_for('contact') }}">Kontakta Oss</a></li>
-    </ul>
+    {% if  request.args.get('language') == 'en'%}
+        <ul class="nav_bar" id="menu">
+            <li><a href="{{ url_for('index', language='en') }}" id="logo"><img src="{{ url_for('static', filename='new-logo-white-ageless.svg') }}" alt="D-Dagen"></a></li>
+            <li><a href="{{ url_for('companies', language='en') }}">Companies</a></li>
+            <li><a href="{{ url_for('faq', language='en') }}">FAQ</a></li>
+            <li><a href="{{ url_for('contact', language='en') }}">Contact us</a></li>
+            <li>
+                <a href="{{ url_for(request.endpoint, language='sv') }}">
+                    <img style="width: 32px" src="{{ url_for('static', filename='swe_flag.png') }}"/>
+                </a>
+            </li>
+        </ul>
+    {% else %}
+        <ul class="nav_bar" id="menu">
+            <li><a href="{{ url_for('index') }}" id="logo"><img src="{{ url_for('static', filename='new-logo-white-ageless.svg') }}" alt="D-Dagen"></a></li>
+            <li><a href="{{ url_for('companies') }}">Företag</a></li>
+            <li><a href="{{ url_for('faq') }}">FAQ</a></li>
+            <li><a href="{{ url_for('contact') }}">Kontakta Oss</a></li>
+            <li id="select-language-menu-item">
+                    <a href="{{ url_for(request.endpoint, language='en') }}">
+                        <img style="width: 32px" src="{{ url_for('static', filename='eng_flag.png') }}"/>
+                    </a>
+            </li>
+        </ul>
+    {% endif %}
+
 
 </div>
 
-<div class="select-language-wrapper">
-    <p>{{ url_for(request.endpoint) }}</p>
-    <a href="{{ url_for(request.endpoint, language='en') }}">
-        <img src="{{ url_for('static', filename='eng_flag.png') }}"/>
-    </a>
-    <a href="{{ url_for(request.endpoint, language='en') }}">
-        <img src="{{ url_for('static', filename='swe_flag.png') }}"/>
-    </a>
-</div>
+
 
 {% block intro_full %}
 <div id="intro-box">
