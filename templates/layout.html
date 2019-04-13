@@ -22,19 +22,19 @@
 
 <body id="home_body">
 <div class="menu-container">
-{#    <a href="{{ url_for('index') }}" class="logo"><img src="{{ url_for('static', filename='new-logo-white-ageless.svg') }}" alt="D-Dagen"></a>#}
+    <a href="{{ url_for('index') }}" class="logo"><img src="{{ url_for('static', filename='new-logo-white-ageless.svg') }}" alt="D-Dagen"></a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <img src="{{ url_for('static', filename='menu_icon.svg') }}" class="hamburger" alt="Menu">
     </a>
-    {% if  request.args.get('language') == 'en'%}
+    {% if request.args.get('language') == 'en'%}
         <ul class="nav_bar" id="menu">
             <li><a href="{{ url_for('index', language='en') }}" id="logo"><img src="{{ url_for('static', filename='new-logo-white-ageless.svg') }}" alt="D-Dagen"></a></li>
             <li><a href="{{ url_for('companies', language='en') }}">Companies</a></li>
             <li><a href="{{ url_for('faq', language='en') }}">FAQ</a></li>
             <li><a href="{{ url_for('contact', language='en') }}">Contact us</a></li>
-            <li>
+            <li class="select-language-menu-item">
                 <a href="{{ url_for(request.endpoint, language='sv') }}">
-                    <img style="width: 32px" src="{{ url_for('static', filename='swe_flag.png') }}"/>
+                    <img style="width: 32px" src="{{ url_for('static', filename='swe_flag.png') }}" alt="Svenska"/>
                 </a>
             </li>
         </ul>
@@ -44,9 +44,9 @@
             <li><a href="{{ url_for('companies') }}">Företag</a></li>
             <li><a href="{{ url_for('faq') }}">FAQ</a></li>
             <li><a href="{{ url_for('contact') }}">Kontakta Oss</a></li>
-            <li id="select-language-menu-item">
+            <li class="select-language-menu-item">
                     <a href="{{ url_for(request.endpoint, language='en') }}">
-                        <img style="width: 32px" src="{{ url_for('static', filename='eng_flag.png') }}"/>
+                        <img style="width: 32px" src="{{ url_for('static', filename='eng_flag.png') }}" alt="English"/>
                     </a>
             </li>
         </ul>
@@ -61,10 +61,28 @@
 <div id="intro-box">
     <div id="intro">
         {% block intro %}
-        <span>Konglig Datasektionen vid KTH presenterar stolt</span><br>
+        <span>
+        {% if request.args.get('language') == 'en'%}
+            Konglig Datasektionen at KTH proudly presents
+        {% else %}
+            Konglig Datasektionen vid KTH presenterar stolt
+        {% endif %}
+        </span><br>
         <img src="{{ url_for('static', filename='new-logo-white-ageless.svg') }}" alt=""><br>
-        <h1><span class="lato-black">10 oktober 2019</span><br><span class="lato-light">Nymble</span></h1>
-        <p id="shield"><img src="{{ url_for('static', filename='shield.png') }}" alt="">Datasektionens årliga arbetsmarknadsdag</p>
+        <h1><span class="lato-black">
+        {% if request.args.get('language') == 'en'%}
+            10th of October 2019
+        {% else %}
+            10 oktober 2019
+        {% endif %}
+        </span><br><span class="lato-light">Nymble</span></h1>
+        <p id="shield"><img src="{{ url_for('static', filename='shield.png') }}" alt="">
+        {% if request.args.get('language') == 'en'%}
+            Datasektionen's annual career fair
+        {% else %}
+            Datasektionens årliga arbetsmarknadsdag
+        {% endif %}
+        </p>
         {% endblock intro %}
     </div>
 </div>
@@ -72,29 +90,80 @@
 {% block content %}{% endblock %}
 {% block footer %}
 <div class="info-box" id="contact">
-	<p class="cerise head" style="text-align: center">KONTAKTA <b>D&#8209;DAGEN</b></p>
+	<p class="cerise head" style="text-align: center">
+        {% if request.args.get('language') == 'en'%}
+            CONTACT
+        {% else %}
+            KONTAKTA
+        {% endif %}
+         <b>D&#8209;DAGEN
+    </b></p>
 	<div class="contact-list row">
 		<div class="col-sm-4">
-			<p class="cerise"><b>Säljgruppen</b></p><a class="cerise" href="mailto:d-dagen.sales@d.kth.se">d-dagen.sales@d.kth.se</a>
+			<p class="cerise"><b>
+            {% if request.args.get('language') == 'en'%}
+                The Sales Team
+            {% else %}
+                Säljgruppen
+            {% endif %}
+            </b></p><a class="cerise" href="mailto:d-dagen.sales@d.kth.se">d-dagen.sales@d.kth.se</a>
 		</div>
 		<div class="col-sm-4">
             <p class="cerise"><b>Victor Sellstedt<br>Simone de Blasio</b></p>
-			<p>D-Dagenansvarig</p>
+			<p>
+            {% if request.args.get('language') == 'en'%}
+                Project Leader for D-Dagen
+            {% else %}
+                D-Dagenansvarig
+            {% endif %}
+            </p>
 			<a href="mailto:d-dagen@d.kth.se" class="cerise">d-dagen@d.kth.se</a>
 		</div>
-		<div class="col-sm-4"><p class="cerise"><b>Eventgruppen</b></p><a class="cerise" href="mailto:d-dagen.event@d.kth.se">d-dagen.event@d.kth.se</a></div>
+		<div class="col-sm-4"><p class="cerise"><b>
+        {% if request.args.get('language') == 'en'%}
+            The Event Team
+        {% else %}
+            Eventgruppen
+        {% endif %}
+        </b></p><a class="cerise" href="mailto:d-dagen.event@d.kth.se">d-dagen.event@d.kth.se</a></div>
 	</div>
 </div>
 <div id="footer">
 	<div id="footer-container" class="row">
 		<div class="col-sm-6 col-md-6 text">
-			<p class="cerise-light">D-DAGEN 2019 HÅLLS DEN&nbsp;10&nbsp;OKTOBER&nbsp;I</p>
-			<h2 style="display: inline" >THS KÅRHUS </h2><h2 style="display: inline" class="cerise-light">NYMBLE</h2>
+			<p class="cerise-light">
+            {% if request.args.get('language') == 'en'%}
+                D-DAGEN 2019 BEING HELD ON OCTOBER 10 IN
+            {% else %}
+                D-DAGEN 2019 HÅLLS DEN&nbsp;10&nbsp;OKTOBER&nbsp;I
+            {% endif %}
+            </p>
+			<h2 style="display: inline" >
+            {% if request.args.get('language') == 'en'%}
+                THS STUDENT UNION HOUSE
+            {% else %}
+                THS KÅRHUS
+            {% endif %}
+            </h2><h2 style="display: inline" class="cerise-light">NYMBLE</h2>
 			<p><b>Drottning Kristinas väg 15</b></p>
 			<p class="cerise-light" style="display: inline">114 28 </p><p style="display: inline">Stockholm</p>
 			<br>
-			<p><b>Datasektionen</b> är en ideell studentsektion under Tekniska Högskolans Studentkår som finns till för att alla studenter som läser datateknik på KTH ska få en så bra och givande studietid som möjligt.</p>
-			<p class="cerise-light" style="margin-bottom: 0">Organisationsnummer 802412-7709</p>
+			<p><b>Datasektionen</b>
+            {% if request.args.get('language') == 'en'%}
+                is a non-profit student chapter under the Student Union at the Royal Institute of Technology that exists
+                to give students studying computer science at KTH a more rewarding time here during their studies.
+            {% else %}
+                är en ideell studentsektion under Tekniska Högskolans Studentkår som finns till för att alla studenter
+                som läser datateknik på KTH ska få en så bra och givande studietid som möjligt.
+            {% endif %}
+            </p>
+			<p class="cerise-light" style="margin-bottom: 0">
+            {% if request.args.get('language') == 'en'%}
+                Corporate Identity Number
+            {% else %}
+                Organisationsnummer
+            {% endif %}
+                802412-7709</p>
 		</div>
 		<div class="col-sm-6 col-md-6" id="map"><div class="gmap_canvas"><iframe id="gmap_canvas" height="350px" width="100%" src="https://maps.google.com/maps?q=Nymble - Tekniska Högskolans Kårhus, Drottning Kristinas väg, Stockholm, Sweden, &t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div></div>
 	</div>
@@ -103,7 +172,7 @@
     let scroll = new SmoothScroll('a[href*="#"]');
 
     function myFunction() {
-        var x = document.getElementById("menu");
+        const x = document.getElementById("menu");
         if (x.className === "nav_bar") {
             x.className += " drop_down";
         } else {
