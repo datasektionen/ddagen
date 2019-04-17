@@ -49,6 +49,10 @@ a:visited {
     color: white;
 }
 
+#home_body > h1 {
+    text-transform: uppercase;
+}
+
 .menu-container {
     padding: 20px;
     font-size: 20px;
@@ -173,7 +177,7 @@ ul#menu {
 
 #flex-boxes {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding: 0;
     margin-top: 20px;
 }
@@ -363,6 +367,7 @@ p.info-text {
         display: block;
         margin-left: 10px;
     }
+
     .flex-box {
         width: auto;
         height: auto;
@@ -370,9 +375,13 @@ p.info-text {
     }
 }
 
+@media (max-width: 1100px) {
+    .break-image-container {
+        width: 100%;
+    }
+}
+
 @media (max-width: 768px) {
-
-
     #intro > img {
         width: 80%;
         margin-bottom: 100px;
