@@ -92,6 +92,17 @@ def survey():
     return redirect('https://goo.gl/forms/TxOWfvzxPfI9IH3Y2', code=302)
 
 
+@app.route("/fairform")
+def fairform():
+    return redirect('https://docs.google.com/forms/d/e/1FAIpQLSdNFAajJVoABRuuevItMI4BYtz_pGgfv0NUNATKVpmk8FeStw'
+                    '/viewform?usp=sf_link', code=302)
+
+@app.route("/adform")
+def adform():
+    return redirect('https://docs.google.com/forms/d/e/1FAIpQLSf6nzrK90GzsuttVVK5O0iR9Kzls8MQy3t6fnGtHyVnhgND6A'
+                    '/viewform?usp=sf_link', code=302)
+
+
 @app.errorhandler(404)
 def not_found_error(error):
     return render_template('404.html'), 404
