@@ -34,7 +34,7 @@
             <li><a href="{{ url_for('contact', language='en') }}">Contact us</a></li>
             <li class="select-language-menu-item">
                 <a href="{{ url_for(request.endpoint, language='sv') }}">
-                    <img style="width: 32px" src="{{ url_for('static', filename='swe_flag.png') }}" alt="Svenska"/>
+                    <img style="width: 32px" src="{{ url_for('static', filename='swe_flag.svg') }}" alt="Svenska"/>
                 </a>
             </li>
         </ul>
@@ -46,7 +46,7 @@
             <li><a href="{{ url_for('contact') }}">Kontakta Oss</a></li>
             <li class="select-language-menu-item">
                     <a href="{{ url_for(request.endpoint, language='en') }}">
-                        <img style="width: 32px" src="{{ url_for('static', filename='eng_flag.png') }}" alt="English"/>
+                        <img style="width: 32px" src="{{ url_for('static', filename='eng_flag.svg') }}" alt="English"/>
                     </a>
             </li>
         </ul>
