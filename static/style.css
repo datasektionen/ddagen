@@ -49,13 +49,15 @@ a:visited {
     color: white;
 }
 
+#home_body > h1 {
+    text-transform: uppercase;
+}
+
 .menu-container {
     padding: 20px;
     font-size: 20px;
     text-transform: uppercase;
 }
-
-
 
 .menu-container .icon {
     display: none;
@@ -63,6 +65,10 @@ a:visited {
 
 .menu-container .logo {
     display: none;
+}
+
+.select-language-menu-item {
+    float: right;
 }
 
 #menu li {
@@ -146,6 +152,7 @@ ul#menu {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 40px;
     background-color: white;
     padding: 50px 5%;
     overflow: hidden;
@@ -170,18 +177,20 @@ ul#menu {
 
 #flex-boxes {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+    padding: 0;
+    margin-top: 20px;
 }
 
 .flex-box {
     float: left;
-    width: 360px;
+    width: 380px;
     margin-right: 10px;
     background-color: white;
     overflow: hidden;
     color: #6a6a6a;
     padding: 30px;
-    height: 450px;
+    height: 400px;
     border-radius: 15px;
     margin-bottom: 20px;
 }
@@ -239,6 +248,35 @@ p.info-text {
 
 .info div.row h1 {
     font-size: 76px;
+}
+
+.image-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+}
+
+.pr-image-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.image-container-text {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.portrait {
+    float: left;
+    text-align: center;
+}
+
+.portrait img {
+    border-radius: 50%;
+    width: 230px;
 }
 
 .ribbon {
@@ -327,7 +365,9 @@ p.info-text {
 @media (max-width: 1200px) {
     #flex-boxes {
         display: block;
+        margin-left: 10px;
     }
+
     .flex-box {
         width: auto;
         height: auto;
@@ -335,9 +375,13 @@ p.info-text {
     }
 }
 
+@media (max-width: 1100px) {
+    .break-image-container {
+        width: 100%;
+    }
+}
+
 @media (max-width: 768px) {
-
-
     #intro > img {
         width: 80%;
         margin-bottom: 100px;
@@ -372,7 +416,7 @@ p.info-text {
         box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 8px;
     }
 
-        .menu-container .icon {
+    .menu-container .icon {
         display: block;
         position: absolute;
         right: 20px;
@@ -407,6 +451,13 @@ p.info-text {
 
     .menu-container .drop_down a#logo {
         display: none;
+    }
+
+    .select-language-menu-item {
+        float: none;
+        position: absolute;
+        bottom: 0;
+        right: 10px;
     }
 
     #menu li {

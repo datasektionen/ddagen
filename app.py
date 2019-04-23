@@ -5,27 +5,44 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    language = request.args.get('language')
+    if language == 'en':
+        return render_template('EN/index.html')
+    else:
+        return render_template('SV/index.html')
 
 
 @app.route('/companies')
 def companies():
-    return render_template('companies.html')
+    language = request.args.get('language')
+    if language == 'en':
+        return render_template('EN/companies.html')
+    else:
+        return render_template('SV/companies.html')
 
 
 @app.route('/visitors')
 def visitors():
-    return render_template('index.html')
+    # TODO Add visitors page
+    return render_template('SV/index.html')
 
 
 @app.route('/contact')
 def contact():
-    return render_template('index.html')
+    language = request.args.get('language')
+    if language == 'en':
+        return render_template('EN/contact.html')
+    else:
+        return render_template('SV/contact.html')
 
 
 @app.route('/faq')
 def faq():
-    return render_template('faq.html')
+    language = request.args.get('language')
+    if language == 'en':
+        return render_template('EN/faq.html')
+    else:
+        return render_template('SV/faq.html')
 
 
 @app.route('/katalog2018')

@@ -1,0 +1,125 @@
+{% extends "layout.html" %}
+
+{% block intro_full %}
+<h1 class="lato-bold yellow-shadow2" id="intro-header">Projektgruppen</h1>
+{% endblock intro_full %}
+
+{% block content %}
+    <div class="info-box">
+        <div class="image-container project-leaders-image-container">
+            <div class="portrait">
+                <img src="{{ url_for('static', filename='project-group/victor_sellstedt.jpg') }}" alt="Victor Sellstedt" />
+                <h3>Victor Sellstedt</h3>
+                <h5>D-Dagenansvarig</h5>
+            </div>
+            <div class="portrait">
+                <img src="{{ url_for('static', filename='project-group/simone_de_blasio.jpg') }}" alt="Simone de Blasio" />
+                <h3>Simone de Blasio</h3>
+                <h5>D-Dagenansvarig</h5>
+            </div>
+        </div>
+        <p class="cerise head image-container-text">Sälj</p>
+        <div class="image-container">
+            <div class="portrait">
+                <img src="{{ url_for('static', filename='project-group/andreas_ostrom.jpg') }}" alt="Andreas Öström" />
+                <h3>Andreas Öström</h3>
+                <h5>Säljansvarig</h5>
+            </div>
+            <div class="portrait">
+                <img src="{{ url_for('static', filename='project-group/emilia_stalhane.jpg') }}" alt="Emilia Stålhane" />
+                <h3>Emilia Stålhane</h3>
+                <h5>Säljare</h5>
+            </div>
+            <div class="break-image-container"></div>
+            <div class="portrait">
+                <img src="{{ url_for('static', filename='project-group/klas_wijk.jpg') }}" alt="Klas Wijk" />
+                <h3>Klas Wijk</h3>
+                <h5>Säljare</h5>
+            </div>
+            <div class="portrait">
+                <img src="{{ url_for('static', filename='project-group/alexander_brokking.jpg') }}" alt="Alexander Brokking" />
+                <h3>Alexander Brokking</h3>
+                <h5>Säljare</h5>
+            </div>
+        </div>
+
+        <p class="cerise head image-container-text">Mässa</p>
+        <div class="image-container">
+            <div class="portrait">
+                <img src="{{ url_for('static', filename='project-group/edvin_ardo.jpg') }}" alt="Edvin Ardö" />
+                <h3>Edvin Ardö</h3>
+                <h5>Personalansvarig</h5>
+            </div>
+            <div class="portrait">
+                <img src="{{ url_for('static', filename='project-group/jacob_wirgard_wiklund.jpg') }}" alt="Jacob Wirgård Wiklund" />
+                <h3>Jacob Wirgård Wiklund</h3>
+                <h5>Logistikansvarig</h5>
+            </div>
+            <div class="break-image-container"></div>
+            <div class="portrait">
+                <img src="{{ url_for('static', filename='project-group/christian_stjernberg.jpg') }}" alt="Christian Stjernberg" />
+                <h3>Christian Stjernberg</h3>
+                <h5>Lokalansvarig</h5>
+            </div>
+            <div class="portrait">
+                <img src="{{ url_for('static', filename='project-group/sara_videfors.jpg') }}" alt="Sara Videfors" />
+                <h3>Sara Videfors</h3>
+                <h5>Loungeansvarig</h5>
+            </div>
+        </div>
+        <div class="image-container">
+            <div class="portrait">
+                <img src="{{ url_for('static', filename='project-group/gustav_ung.jpg') }}" alt="Gustav Ung" />
+                <h3>Gustav Ung</h3>
+                <h5>Ekonomiansvarig</h5>
+            </div>
+            <div class="portrait">
+                <img src="{{ url_for('static', filename='project-group/niklas_vatn.jpg') }}" alt="Niklas Vatn" />
+                <h3>Niklas Vatn</h3>
+                <h5>Eventansvarig</h5>
+            </div>
+            <div class="break-image-container"></div>
+            <div class="portrait">
+                <img src="{{ url_for('static', filename='project-group/tobias_hansson.jpg') }}" alt="Tobias Hansson" />
+                <h3>Tobias Hansson</h3>
+                <h5>Mingelansvarig</h5>
+            </div>
+            <div class="portrait">
+                <img src="{{ url_for('static', filename='project-group/johan_lindholm.jpg') }}" alt="Johan Lindholm" />
+                <h3>Johan Lindholm</h3>
+                <h5>Festansvarig</h5>
+            </div>
+        </div>
+        <p class="cerise head image-container-text">PR</p>
+        <div class="pr-image-container">
+            <div class="portrait">
+                <img src="{{ url_for('static', filename='project-group/loulou_pei.jpg') }}" alt="LouLou Pei" />
+                <h3>LouLou Pei</h3>
+                <h5>PR-ansvarig</h5>
+            </div>
+            <div class="portrait">
+                <img src="{{ url_for('static', filename='project-group/oskar_stromberg.jpg') }}" alt="Oskar Strömberg" />
+                <h3>Oskar Strömberg</h3>
+                <h5>Webbansvarig</h5>
+            </div>
+            <div class="portrait">
+                <img src="{{ url_for('static', filename='project-group/fredrik_karpers.jpg') }}" alt="Fredrik Karpers" />
+                <h3>Fredrik Karpers</h3>
+                <h5>Art Director</h5>
+            </div>
+        </div>
+        <div class="pr-image-container">
+            <div class="portrait">
+                <img src="{{ url_for('static', filename='project-group/michael_wink.jpg') }}" alt="Michael Wink" />
+                <h3>Michael Wink</h3>
+                <h5>Inköpsansvarig</h5>
+            </div>
+            <div class="portrait">
+                <img src="{{ url_for('static', filename='project-group/julia_bystrom.jpg') }}" alt="Julia Byström" />
+                <h3>Julia Byström</h3>
+                <h5>Marknadsföringsansvarig</h5>
+            </div>
+        </div>
+    </div>
+<br>
+{% endblock %}
