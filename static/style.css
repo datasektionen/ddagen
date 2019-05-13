@@ -217,6 +217,10 @@ ul#menu {
     border-radius: 15px;
 }
 
+.flex-box a {
+    text-decoration: none !important;
+}
+
 p.info-text {
   color: #6a6a6a;
   margin-right: 5%;
