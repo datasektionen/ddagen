@@ -147,7 +147,10 @@ ul#menu {
 #faq a {
     color: #6a6a6a;
 }
-
+#huvudsponsor {
+    text-align: center;
+    width: 100%;
+}
 .info-box {
     max-width: 1200px;
     margin-left: auto;
@@ -482,5 +485,3 @@ p.info-text {
         margin-right: auto;
     }
 }
-
-
