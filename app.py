@@ -103,6 +103,18 @@ def adform():
                     '/viewform?usp=sf_link', code=302)
 
 
+@app.route("/2020")
+def interest_ddagen2020():
+        """ Redirect to application of interest for D-Dagen 2020 in swedish """
+        return redirect('https://forms.gle/pMMGNaQXVWYtAGga7', code=302)
+
+
+@app.route("/2020en")
+def interest_ddagen2020en():
+        """ Redirect to application of interest for D-Dagen 2020 in english """
+        return redirect('https://forms.gle/YHN4tJQxKvKMqHaZ7', code=302)
+
+
 @app.errorhandler(404)
 def not_found_error(error):
     return render_template('404.html'), 404
