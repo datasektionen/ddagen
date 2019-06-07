@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block intro_full %}
+<h1 class="lato-bold yellow-shadow2" id="intro-header">Huvudsponsor 2019</h1>
+
+{% endblock intro_full %}
+
+{% block content %}
+<br><br>
+<div class="info-box">
+  <p class="cerise head">Hälsning från <b>ERICSSON</b></p>
+  <br>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <br><br>
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    <br><br>
+  </p>
+</div>
+<div id="huvudsponsor">
+  <img src="{{ url_for('static', filename='Ddagen+Ericsson.svg') }}" alt="D-Dagen <3 Ericsson"/>
+</div>
+
+{% endblock %}

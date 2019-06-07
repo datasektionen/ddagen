@@ -47,6 +47,14 @@ def faq():
     else:
         return render_template('SV/faq.html')
 
+@app.route('/huvudsponsor')
+def huvudsponsor():
+    language = request.args.get('language')
+    if language == 'en':
+        return render_template('EN/huvudsponsor.html')
+    else:
+        return render_template('SV/huvudsponsor.html')
+
 @app.route('/event')
 def event():
     language = request.args.get('language')
