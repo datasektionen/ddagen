@@ -33,16 +33,30 @@
   </p>
 </div>
 <div class="info-box">
-  <p class="cerise head">Hälsning från vår <b>huvudsponsor 2019</b></p>
+  <p class="cerise head">Greetings from our <b>Main Sponsor 2019</b></p>
   <br>
   <p>
-    <img align="left" class="greeting-portrait" width="450px" style="border-radius:100%;" src="{{ url_for('static', filename='DDA-portrait.jpg') }}" alt="Victor och Simone"/>
+    <img align="left" class="greeting-portrait" width="450px" style="border-radius:100%;" src="{{ url_for('static', filename='FridaochLisa-square.jpg') }}" alt="Lisa och Frida"/>
     <br>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Hej!
     <br><br>
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    Ericsson här, vi är så så glada och stolta över att få vara huvudsponsor för D-dagen 2019!
     <br><br>
-    <a href="{{ url_for('huvudsponsor') }}">Läs mer här</a>
-  </p>
+    Vi ser fram emot att lära känna er alla på D-dagen den 11 oktober, fram till dess kan ni läsa mer om oss <a href="{{ url_for('huvudsponsor', language='sv') }}">här</a>.
+    </p>
+</div>
+
+<div class="info">
+	<h1 class="lato-bold yellow-shadow2">Vi vill även tacka...</h1>
+    <p>Vi vill börja med att tacka Ericsson som är vår huvudsponsor för D-Dagen 2019. Tack vare deras stöd och goda samarbetsanda har vi kunnat skapa den största D-Dagen någonsin. Vi vill även tacka Celab Communications AB för sponsring av utrustning till vår mässpersonal. </p>
+
+    <img style="display:block; margin-left: auto; margin-right: auto; border-radius: 5px" width="200px" src="{{ url_for('static', filename='celab.jpg') }}" alt="Celab"/>
+    <br><br>
+    <div class="row">
+  		<div class="col-sm-6 col-md-6 ">
+  		</div>
+  		<div class="col-sm-6 col-md-6">
+  		</div>
+  	</div>
 </div>
 {% endblock %}

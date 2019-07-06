@@ -527,3 +527,18 @@ p.info-text {
 img.greeting-portrait {
   padding: 10px 20px 40px 20px;
 }
+
+.video-wrapper {
+  position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+}
+
+.video-wrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
