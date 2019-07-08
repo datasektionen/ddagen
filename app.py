@@ -55,14 +55,6 @@ def huvudsponsor():
     else:
         return render_template('SV/huvudsponsor.html')
 
-@app.route('/event')
-def event():
-    language = request.args.get('language')
-    if language == 'en':
-        return render_template('EN/event.html')
-    else:
-        return render_template('SV/event.html')
-
 @app.route('/katalog2018')
 def katalog2018():
     return redirect(
