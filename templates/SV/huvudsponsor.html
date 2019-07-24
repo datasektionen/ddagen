@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block intro_full %}
+<h1 class="lato-bold yellow-shadow2" id="intro-header">Huvudsponsor 2019</h1>
+
+{% endblock intro_full %}
+
+{% block content %}
+<br><br>
+<div class="info-box">
+  <p class="cerise head">Hälsning från <b>ERICSSON</b></p>
+  <br>
+  <p>
+    År 1876 startade Lars Magnus Ericsson en verkstad i Stockholm som gick under namnet Ericsson. Idag är vi lite större - med 100 000 kollegor runtom i världen och där cirka 13 000 av dessa är placerade runtom i Sverige. I Stockholm finns det globala huvudkontoret där ungefär 10 000 av oss jobbar med den senaste teknologin och allt som kommer med det – men du kan även hitta oss i Göteborg (kontoret med bästa pendlingen – du kan ta båten), Linköping, Lund (dit våren kommer först), Borås, Kumla, Karlskrona och Luleå (dit våren kommer sist).
+    <br><br>
+    Beroende på vem du är som person (nybliven mjukvaruutvecklare, ett ess i hårdvaruteckling, eller framtidens projektledare) och vad du vill göra, så finns det en möjlighet för dig att skapa din egen framtid – tillsammans med oss på Ericsson.
+    <br><br>
+  </p>
+    <div class="video-wrapper">
+    <iframe width="560" height="349" src="https://www.youtube.com/embed/0CP13u68_MY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</div>
+<div id="huvudsponsor">
+  <img src="{{ url_for('static', filename='Ddagen+Ericsson.svg') }}" alt="D-Dagen <3 Ericsson"/>
+</div>
+
+{% endblock %}

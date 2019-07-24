@@ -23,8 +23,11 @@ def companies():
 
 @app.route('/visitors')
 def visitors():
-    # TODO Add visitors page
-    return render_template('SV/index.html')
+    language = request.args.get('language')
+    if language == 'en':
+        return render_template('EN/visitors.html')
+    else:
+        return render_template('SV/visitors.html')
 
 
 @app.route('/contact')
@@ -44,6 +47,13 @@ def faq():
     else:
         return render_template('SV/faq.html')
 
+@app.route('/huvudsponsor')
+def huvudsponsor():
+    language = request.args.get('language')
+    if language == 'en':
+        return render_template('EN/huvudsponsor.html')
+    else:
+        return render_template('SV/huvudsponsor.html')
 
 @app.route('/katalog2018')
 def katalog2018():
