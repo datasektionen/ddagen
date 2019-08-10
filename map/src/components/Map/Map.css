@@ -1,0 +1,30 @@
+.map {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  background-color: #fafafa;
+  margin: 4pt;
+  padding: 8pt;
+}
+
+@media (max-width: 768px) {
+  .map {
+    width: 96%;
+    padding: 1%;
+    margin: 1%;
+  }
+}
+
+@media (min-width: 769px) {
+  .map {
+    min-width: 600px;
+  }
+}
+
+img {
+  flex: 1;
+  width: 100%;
+}
