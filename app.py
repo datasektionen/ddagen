@@ -23,8 +23,11 @@ def companies():
 
 @app.route('/visitors')
 def visitors():
-    # TODO Add visitors page
-    return render_template('SV/index.html')
+    language = request.args.get('language')
+    if language == 'en':
+        return render_template('EN/visitors.html')
+    else:
+        return render_template('SV/visitors.html')
 
 
 @app.route('/contact')
@@ -44,6 +47,13 @@ def faq():
     else:
         return render_template('SV/faq.html')
 
+@app.route('/huvudsponsor')
+def huvudsponsor():
+    language = request.args.get('language')
+    if language == 'en':
+        return render_template('EN/huvudsponsor.html')
+    else:
+        return render_template('SV/huvudsponsor.html')
 
 @app.route('/katalog2018')
 def katalog2018():
@@ -105,6 +115,18 @@ def adform():
 @app.route("/claimbanquet")
 def claim_banquet_tickets():
         return redirect('https://forms.gle/AmCwxs8rRSAuSNSZ9', code=302)
+
+@app.route("/2020")
+def interest_ddagen2020():
+        """ Redirect to application of interest for D-Dagen 2020 in swedish """
+        return redirect('https://forms.gle/pMMGNaQXVWYtAGga7', code=302)
+
+
+@app.route("/2020en")
+def interest_ddagen2020en():
+        """ Redirect to application of interest for D-Dagen 2020 in english """
+        return redirect('https://forms.gle/YHN4tJQxKvKMqHaZ7', code=302)
+
 
 @app.route("/2020")
 def interest_ddagen2020():
