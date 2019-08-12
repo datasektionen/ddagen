@@ -180,7 +180,7 @@ ul#menu {
 
 #flex-boxes {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     padding: 0;
     margin-top: 20px;
 }
@@ -193,7 +193,7 @@ ul#menu {
     overflow: hidden;
     color: #6a6a6a;
     padding: 30px;
-    height: 400px;
+    height: 500px;
     border-radius: 15px;
     margin-bottom: 20px;
 }
