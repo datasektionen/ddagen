@@ -47,6 +47,7 @@ def faq():
     else:
         return render_template('SV/faq.html')
 
+
 @app.route('/huvudsponsor')
 def huvudsponsor():
     language = request.args.get('language')
@@ -54,6 +55,7 @@ def huvudsponsor():
         return render_template('EN/huvudsponsor.html')
     else:
         return render_template('SV/huvudsponsor.html')
+
 
 @app.route('/katalog2018')
 def katalog2018():
@@ -107,37 +109,28 @@ def fairform():
     return redirect('https://docs.google.com/forms/d/e/1FAIpQLSdNFAajJVoABRuuevItMI4BYtz_pGgfv0NUNATKVpmk8FeStw'
                     '/viewform?usp=sf_link', code=302)
 
+
 @app.route("/adform")
 def adform():
     return redirect('https://docs.google.com/forms/d/e/1FAIpQLSf6nzrK90GzsuttVVK5O0iR9Kzls8MQy3t6fnGtHyVnhgND6A'
                     '/viewform?usp=sf_link', code=302)
 
+
 @app.route("/claimbanquet")
 def claim_banquet_tickets():
-        return redirect('https://forms.gle/AmCwxs8rRSAuSNSZ9', code=302)
-
-@app.route("/2020")
-def interest_ddagen2020():
-        """ Redirect to application of interest for D-Dagen 2020 in swedish """
-        return redirect('https://forms.gle/pMMGNaQXVWYtAGga7', code=302)
-
-
-@app.route("/2020en")
-def interest_ddagen2020en():
-        """ Redirect to application of interest for D-Dagen 2020 in english """
-        return redirect('https://forms.gle/YHN4tJQxKvKMqHaZ7', code=302)
+    return redirect('https://forms.gle/AmCwxs8rRSAuSNSZ9', code=302)
 
 
 @app.route("/2020")
 def interest_ddagen2020():
-        """ Redirect to application of interest for D-Dagen 2020 in swedish """
-        return redirect('https://forms.gle/pMMGNaQXVWYtAGga7', code=302)
+    """ Redirect to application of interest for D-Dagen 2020 in swedish """
+    return redirect('https://forms.gle/pMMGNaQXVWYtAGga7', code=302)
 
 
 @app.route("/2020en")
 def interest_ddagen2020en():
-        """ Redirect to application of interest for D-Dagen 2020 in english """
-        return redirect('https://forms.gle/YHN4tJQxKvKMqHaZ7', code=302)
+    """ Redirect to application of interest for D-Dagen 2020 in english """
+    return redirect('https://forms.gle/YHN4tJQxKvKMqHaZ7', code=302)
 
 
 @app.errorhandler(404)
