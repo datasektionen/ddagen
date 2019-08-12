@@ -188,7 +188,6 @@ ul#menu {
 .flex-box {
     float: left;
     width: 380px;
-    margin-right: 10px;
     background-color: white;
     overflow: hidden;
     color: #6a6a6a;
@@ -218,6 +217,10 @@ ul#menu {
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     border-radius: 15px;
+}
+
+.flex-box a {
+    text-decoration: none !important;
 }
 
 p.info-text {
