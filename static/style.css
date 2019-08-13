@@ -212,6 +212,14 @@ ul#menu {
     justify-content: center;
 }
 
+.button-link .button {
+	color: white !important;
+	background-color: #e83d84;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+
 .flex-box .button {
     background-color: #e83d84;
     -webkit-border-radius: 15px;
