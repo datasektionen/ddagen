@@ -132,6 +132,19 @@ def interest_ddagen2020en():
     """ Redirect to application of interest for D-Dagen 2020 in english """
     return redirect('https://forms.gle/YHN4tJQxKvKMqHaZ7', code=302)
 
+@app.route("/sok")
+def sok():
+    """ Redirect to application of working at the fair for D-Dagen 2019"""
+    return redirect('https://forms.gle/uaoxkSFwCXGa5pr47', code=302)
+
+
+@app.route('/apply')
+def apply():
+    language = request.args.get('language')
+    if language == 'en':
+        return render_template('EN/apply.html')
+    else:
+        return render_template('SV/apply.html')
 
 @app.errorhandler(404)
 def not_found_error(error):
