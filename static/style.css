@@ -89,7 +89,6 @@ ul#menu {
 }
 
 #intro-box {
-    height: 100vh;
     justify-content: center;
     align-content: center;
     /*background-size: cover;
@@ -119,7 +118,7 @@ ul#menu {
 
 #shield {
     text-align: center;
-    margin-top: 200px;
+    margin-top: 125px;
     margin-bottom: 125px;
     font-weight: 600;
 }
@@ -210,6 +209,17 @@ ul#menu {
 .button-link {
     display: flex;
     justify-content: center;
+}
+
+.button-link .button {
+	color: white !important;
+  font-size: 24px;
+  padding: 15px 25px 15px 25px;
+	background-color: #e83d84;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+  text-decoration: none !important;
 }
 
 .flex-box .button {
