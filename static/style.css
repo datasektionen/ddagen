@@ -89,7 +89,6 @@ ul#menu {
 }
 
 #intro-box {
-    height: 100vh;
     justify-content: center;
     align-content: center;
     /*background-size: cover;
@@ -119,7 +118,7 @@ ul#menu {
 
 #shield {
     text-align: center;
-    margin-top: 200px;
+    margin-top: 125px;
     margin-bottom: 125px;
     font-weight: 600;
 }
