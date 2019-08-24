@@ -177,6 +177,41 @@ ul#menu {
     color: #e83d84;
 }
 
+
+.event-box-container {
+    display: inline-block;
+    width: 100%;
+}
+
+
+.event-box {
+    max-width: 500px;
+    margin-bottom: 20px;
+    padding: 20px 40px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+    border-radius: 20px; 
+    border-style: solid;
+    border-color: white; 
+    background-color: white; 
+    color: grey;
+}
+
+.event-box.left {
+    float: left;
+    margin-left: 25%;
+}
+
+.event-box.right {
+    float: right;
+    margin-right: 25%;
+}
+
+.event-box h2 {
+    color: #e83d84;
+    font-size: 2em;
+}
+
 #flex-boxes {
     display: flex;
     justify-content: space-between;

@@ -20,6 +20,13 @@ def companies():
     else:
         return render_template('SV/companies.html')
 
+@app.route('/events')
+def events():
+    language = request.args.get('language')
+    if language == 'en':
+        return render_template('EN/events.html')
+    else:
+        return render_template('SV/events.html')
 
 @app.route('/visitors')
 def visitors():
