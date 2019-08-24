@@ -183,7 +183,6 @@ ul#menu {
     width: 100%;
 }
 
-
 .event-box {
     max-width: 600px;
     margin-bottom: 20px;
@@ -197,16 +196,31 @@ ul#menu {
     color: grey;
 }
 
-.event-box.left {
-    float: left;
-    margin-left: 15%;
+@media (max-width: 900px) {
+    .event-box {
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 40px;
+        padding: 50px 5%;
+    }
 }
 
-.event-box.right {
-    float: right;
-    margin-right: 15%;
-}
+@media (min-width: 900px) {
 
+
+    .event-box.left {
+        float: left;
+        margin-left: 15%;
+    }
+
+    .event-box.right {
+        float: right;
+        margin-right: 15%;
+    }
+}
+.event-box a {
+    color: #e83d84;
+}
 .event-box .text-container {
     float: left; 
     width: 60%;
