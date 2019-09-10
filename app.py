@@ -20,6 +20,13 @@ def companies():
     else:
         return render_template('SV/companies.html')
 
+@app.route('/events')
+def events():
+    language = request.args.get('language')
+    if language == 'en':
+        return render_template('EN/events.html')
+    else:
+        return render_template('SV/events.html')
 
 @app.route('/visitors')
 def visitors():
@@ -145,6 +152,23 @@ def apply():
         return render_template('EN/apply.html')
     else:
         return render_template('SV/apply.html')
+
+""" Redirects to event forms """
+@app.route("/cvevent")
+def cvevent():
+    """ Redirect to application for CV event with Sveriges Ingenjörer (lunch lecture)"""
+    return redirect('https://forms.gle/6dJ7aHafJDWeJ1MN9', code=302)
+
+@app.route("/yelp")
+def yelp():
+    """ Redirect to application for Yelp lunch lecture"""
+    return redirect('https://forms.gle/YrBmj5p7UoUTgGLp6', code=302)
+
+@app.route("/kontaktsamtal")
+def kontaktsamtal():
+    """ Redirect to application for Yelp lunch lecture"""
+    return redirect('https://forms.gle/5GwZmujpfDivBAXk6', code=302)
+
 
 @app.errorhandler(404)
 def not_found_error(error):
