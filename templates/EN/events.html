@@ -1,45 +1,140 @@
 {% extends "layout.html" %}
 
 {% block intro_full %}
-<h1 class="lato-bold yellow-shadow2" id="intro-header">Besökare</h1>
+<h1 class="lato-bold yellow-shadow2" id="intro-header">Events</h1>
 {% endblock intro_full %}
 
 {% block content %}
 <div class="info-box">
-  <p class="cerise head">Välkomna till <b>D&#8209;DAGEN 2019</b></p>
+  <p class="cerise head"><b></b>Events Associated with D-Dagen 2019</b></p>
   <br>
   <p>
-    Vad roligt att du har valt att besöka D-Dagen 2019! Varje år kommer många intressanta företag och myndigheter verksamma inom data- och IT-sektorn till D-Dagen för att nätverka med studenter på data. Förra året deltog över 70 företag i D-Dagen!
-    <br><br>
-    Just nu jobbar vi i projektgruppen i full fart för att skapa en så givande och rolig mässa som möjligt. På denna sida kommer nyttig information för besökare att dyka upp inför och under mässan den 10e oktober. Bland annat kommer det att finnas en interaktiv karta med filtreringsfunktion att finnas för att underlätta för taggade studenter!
-    <br><br>
+    D-Dagen is not only a labor market day, but we also arrange many exciting events in association with the fair! The events are planned together with partner companies with the goal of creating more value for us students. We have events such as lunch lectures, competitions, CV events where you learn how to make your CV as attractive as possible, and informal interviews where you as a student get personal contact with companies. Further down on this page you will find the events D-Dagen organizes. Feel free to follow us on our social media for more information on registration and other updates!  
   </p>
 </div>
-<div class="info-box">
-  <p class="cerise head">Hälsning från <b>D-Dagenansvariga</b></p>
-  <br>
-  <p>
-    <img align="right" class="greeting-portrait" width="450px" style="border-radius:100%;" src="{{ url_for('static', filename='DDA-portrait.jpg') }}" alt="Victor och Simone"/>
-    <br>
-    Tillsammans med årets supertaggade projektgrupp vill vi önska er varmt välkomna till D-Dagen 2019!
-    Vi arbetar alltid aktivt med att förbättra D-Dagen så att den är så bra som möjligt för alla som studerar Datateknik på KTH. För oss har det inneburit att vidareutveckla eventen kring mässan och bredda utbudet för att skapa ytterligare värde för de studenter som deltar.
-    <br><br>
-    Vi har också fortsatt vårt arbete med att få en bra spridning på företag från olika områden av näringslivet för att erbjuda en intressant mässa där studenter och företag kan mötas på ett enkelt sätt vare sig du precis börjat eller snart tar examen! Utöver det har storleken på mässan fortsatt öka och vi är större än någonsin tidigare med totalt 79 företag som deltar på mässan.
-    <br><br>
-    Vi i projektgruppen hoppas att vi ser er under D-Dagen 2019!
-  </p>
-</div>
-<div class="info-box">
-  <p class="cerise head">Hälsning från vår <b>Huvudsponsor 2019</b></p>
-  <br>
-  <p>
-    <img align="left" class="greeting-portrait" width="450px" style="border-radius:100%;" src="{{ url_for('static', filename='FridaochLisa-square.jpg') }}" alt="Lisa och Frida"/>
-    <br>
-    Hej!
-    <br><br>
-    Ericsson här, vi är så så glada och stolta över att få vara huvudsponsor för D-dagen 2019!
-    <br><br>
-    Vi ser fram emot att lära känna er alla på D-Dagen den 10e oktober, fram till dess kan ni läsa mer om oss <a href="{{ url_for('huvudsponsor', language='sv') }}">här</a>.
-    </p>
+
+<div class="events-container">
+        <div class="event-box-container">
+            <div class="event-box right">
+                <div class="text-container">
+                    <h2>Recruitment Pub</h2>
+                    <br>
+                    <p>
+                        <b>Date:</b> 11th of September 2019 <br>
+                        <b>Time:</b> 17:17 - sent <br>
+                        <b>Place:</b> META <br>
+                        <b>Description:</b> On September 11, D-Dagen's project group will take over the Wednesday pub in META to answer what it is like to work as a staff member on D-Dagen! If you are curious about what we do and want to find out if it is something for you, this is a good time to find out! No application is required. There will be free food and cheap drinks.
+                    </p>
+                </div>
+                <div class="img-container">
+                    <img width="100%" src="{{ url_for('static', filename='fluga_ny.svg') }}" alt="D-Dagen"/>
+                </div>
+            </div>
+         </div>
+    <div class="event-box-container">
+        <div class="event-box left">
+            <div class="text-container">
+                <h2>CV-Event with Sveriges Ingenjörer</h2>
+                <br>
+                <p>
+                    <b>Date:</b> 1st of October 2019 <br>
+                    <b>Time:</b> 12:15 - 13:00 <br>
+                    <b>Place:</b> B2 <br>
+                    <b>Description:</b> Come and listen to a representative from Sveriges Ingenjörer talk about how you create a good LinkedIn profile and a resume that highlights your best side. The event consists of two parts; a lunch lecture and an evening event. At the lunch lecture, food is offered to the first 100 participants. You can participate in either one or both of the events.
+                </p>
+            </div>
+            <div class="img-container">
+                <img width="100%" src="{{ url_for('static', filename='sverigesing.png') }}" alt="Sveriges Ingenjörer"/>
+                <p class="button-link" style="text-align:center;"><a class="button" href="{{ url_for('cvevent') }}">Sign up</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="event-box-container">
+        <div class="event-box right">
+            <div class="text-container">
+                <h2>Ericsson Programming Challenge</h2>
+                <br>
+                <p>
+                    <b>Date:</b> 8th of October 2019 <br>
+                    <b>Time:</b> 17:30 - 20:30 <br>
+                    <b>Place:</b> TBA <br>
+                    <b>Description:</b> Are you ready to awaken your competitive side? Then you should participate in the Ericsson Programming Challenge. The competition consists of solving three problems of different difficulty levels, and your goal is to solve as many as possible in as short a time as possible. You can compete on your own or in a two person team. Food is included. The registration link will soon appear on this page, so keep your eyes open!
+                </p>
+            </div>
+            <div class="img-container">
+                <img width="100%" src="{{ url_for('static', filename='ERI_vertical_RGB.png') }}" alt="Ericsson"/>
+            </div>
+        </div>
+    </div>
+    <div class="event-box-container">
+        <div class="event-box left">
+            <div class="text-container">
+                <h2>Lunch Lecture with YELP</h2>
+                <br>
+                <p>
+                    <b>Date:</b> 9th of October 2019 <br>
+                    <b>Time:</b> 12:15 - 13:00 <br>
+                    <b>Place:</b> L1 <br>
+                    <b>Description:</b> The topic of this lunch lecture is "The state of Mobile Application Development". Food will be available to the first 100 applicants, so sign up as soon as possible to secure your seat!
+                </p>
+            </div>
+            <div class="img-container">
+                <img width="100%" src="{{ url_for('static', filename='yelplogo.png') }}" alt="Yelp"/>
+                <p class="button-link" style="text-align:center;"><a class="button" href="{{ url_for('yelp') }}">Sign up</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="event-box-container">
+        <div class="event-box right">
+            <div class="text-container">
+                <h2>Informal Interviews</h2>
+                <br>
+                <p>
+                    <b>Date:</b> 10 October 2019 <br>
+                    <b>Time:</b> 10:00 - 16:00 <br>
+                    <b>Place:</b> Nymble <br>
+                    <b>Description:</b> Take the chance to hold an informal interview with a company representative from Ericsson, Bontouch or Facebook. This is a great opportunity for you as a student to get in close contact with and get to know key people at companies that interest you. In order to sign up, please click on the button to the right. 
+                </p>
+            </div>
+            <div class="img-container">
+                    <img width="100%" src="{{ url_for('static', filename='kontaktsamtal.png') }}" alt="Ericsson, Facebook and Bontouch"/>
+                    <p class="button-link" style="text-align:center;"><a class="button" href="{{ url_for('kontaktsamtal') }}">Apply</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="event-box-container">
+        <div class="event-box left">
+            <div class="text-container">
+                <h2>THE Fair</h2>
+                <br>
+                <p>
+                    <b>Date:</b> 10th of October 2019 <br>
+                    <b>Time:</b> 10:00-16:00 <br>
+                    <b>Place:</b> Nymble <br>
+                    <b>Description:</b> D-Dagen we have all been waiting for! The fair takes place in Nymble and this year we have as many as 80 companies exhibiting, a record of all time. The selection of companies include many different industries and specializations, which is a great advantage for those who are looking for a graduate job, a summer job, a part-time job or have general thoughts about your future career. You don't want to miss this! You can find more information about the fair <a href="{{ url_for('visitors')}}">here.</a>
+                </p>
+            </div>
+            <div class="img-container">
+                    <img width="100%" src="{{ url_for('static', filename='fluga_ny.svg') }}" alt="D-dagen"/>
+            </div>
+        </div>
+    </div>
+    <div class="event-box-container">
+        <div class="event-box right">
+            <div class="text-container">
+                <h2>D-Dagensittningen</h2>
+                <br>
+                <p>
+                    <b>Date:</b> 10th of October 2019 <br>
+                    <b>Time:</b> In the evening <br>
+                    <b>Place:</b> Syster O Bror <br>
+                    <b>Description:</b> As a conclusion to the all-day fair, a traditional "sittning" is organized for D-students and company representatives! This is a good opportunity to get in closer contact with the companies that have participated in the fair in a more relaxed environment. Make sure to sign up in time to secure your place! This is an event you don't want to miss :)
+                </p>
+            </div>
+            <div class="img-container">
+                    <img width="100%" src="{{ url_for('static', filename='fluga_ny.svg') }}" alt="D-Dagen"/>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

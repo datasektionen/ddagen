@@ -229,17 +229,18 @@ ul#menu {
     float: right;
     width: 40%;
     height: 100% !important;
-    vertical-align: middle;
-    margin-top: 25%;
+    margin-top: 20%;
+    display: table;
     padding: 5%;
     text-align: center;
 }
 
 .event-box .img-container img{
     vertical-align: middle;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    max-width: 100px;
+    display: table-cell;
+    margin-top: 0px;
+    margin-bottom: 25px;
+    max-width: 120px;
 }
 
 .event-box:after {

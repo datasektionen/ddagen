@@ -153,6 +153,23 @@ def apply():
     else:
         return render_template('SV/apply.html')
 
+""" Redirects to event forms """
+@app.route("/cvevent")
+def cvevent():
+    """ Redirect to application for CV event with Sveriges Ingenjörer (lunch lecture)"""
+    return redirect('https://forms.gle/6dJ7aHafJDWeJ1MN9', code=302)
+
+@app.route("/yelp")
+def yelp():
+    """ Redirect to application for Yelp lunch lecture"""
+    return redirect('https://forms.gle/YrBmj5p7UoUTgGLp6', code=302)
+
+@app.route("/kontaktsamtal")
+def kontaktsamtal():
+    """ Redirect to application for Yelp lunch lecture"""
+    return redirect('https://forms.gle/5GwZmujpfDivBAXk6', code=302)
+
+
 @app.errorhandler(404)
 def not_found_error(error):
     return render_template('404.html'), 404
