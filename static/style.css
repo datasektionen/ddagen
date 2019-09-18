@@ -177,6 +177,83 @@ ul#menu {
     color: #e83d84;
 }
 
+
+.event-box-container {
+    display: inline-block;
+    width: 100%;
+}
+
+.event-box {
+    max-width: 600px;
+    margin-bottom: 20px;
+    padding: 20px 40px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+    border-radius: 20px; 
+    border-style: solid;
+    border-color: white; 
+    background-color: white; 
+    color: grey;
+}
+
+@media (max-width: 900px) {
+    .event-box {
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 40px;
+        padding: 50px 5%;
+    }
+}
+
+@media (min-width: 900px) {
+
+
+    .event-box.left {
+        float: left;
+        margin-left: 15%;
+    }
+
+    .event-box.right {
+        float: right;
+        margin-right: 15%;
+    }
+}
+.event-box a {
+    color: #e83d84;
+}
+.event-box .text-container {
+    float: left; 
+    width: 60%;
+}
+.event-box .img-container{
+    float: right;
+    width: 40%;
+    height: 100% !important;
+    margin-top: 20%;
+    display: table;
+    padding: 5%;
+    text-align: center;
+}
+
+.event-box .img-container img{
+    vertical-align: middle;
+    display: table-cell;
+    margin-top: 0px;
+    margin-bottom: 25px;
+    max-width: 120px;
+}
+
+.event-box:after {
+    content: "";
+    display: table;
+    clear:both;
+}
+
+.event-box h2 {
+    color: #e83d84;
+    font-size: 2em;
+}
+
 #flex-boxes {
     display: flex;
     justify-content: space-between;
