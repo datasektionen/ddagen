@@ -145,10 +145,11 @@ def interest_ddagen2020en():
     """ Redirect to application of interest for D-Dagen 2020 in english """
     return redirect('https://forms.gle/YHN4tJQxKvKMqHaZ7', code=302)
 
-@app.route("/sok")
-def sok():
-    """ Redirect to application of working at the fair for D-Dagen 2019"""
-    return redirect('https://forms.gle/uaoxkSFwCXGa5pr47', code=302)
+
+# @app.route("/sok")
+# def sok():
+#     """ Redirect to application of working at the fair for D-Dagen 2019"""
+#     return redirect('https://forms.gle/uaoxkSFwCXGa5pr47', code=302)
 
 
 @app.route('/apply')
