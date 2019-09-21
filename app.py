@@ -27,7 +27,7 @@ def events():
         return render_template('EN/events.html')
     else:
         return render_template('SV/events.html')
-    
+
 @app.route('/sittningen')
 def sittningen():
     return redirect(
