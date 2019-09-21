@@ -27,15 +27,12 @@ def events():
         return render_template('EN/events.html')
     else:
         return render_template('SV/events.html')
-<<<<<<< HEAD
-=======
-    
+
 @app.route('/sittningen')
 def sittningen():
     return redirect(
         'https://docs.google.com/forms/d/e/1FAIpQLSerDQ213eHNUAp8CYKFohniv17-hb9W0QT9qMQtkK09ZvVaig/viewform',
         code=302)
->>>>>>> master
 
 @app.route('/visitors')
 def visitors():
