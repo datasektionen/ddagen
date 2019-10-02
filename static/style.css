@@ -637,4 +637,23 @@ img.greeting-portrait {
     display: block;
     margin-left: auto;
     margin-right: auto;
-  }
+}
+
+.map {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+@media (min-width: 900px) {
+    .map {
+        width: 80%;
+    }
+}
+
+@media (min-width: 1000px) {
+    .map {
+        width: 70%;
+    }
+}
