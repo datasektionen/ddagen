@@ -6,8 +6,9 @@
   align-items: center;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   background-color: #fafafa;
-  margin: 4pt;
+  margin: 0 4pt;
   padding: 8pt;
+  height: inherit;
 }
 
 @media (max-width: 768px) {

@@ -10,33 +10,26 @@ div#root {
   align-self: stretch;
 }
 
-div.app-container-left {
-  display: flex;
-  flex-grow: 1;
-  flex-direction: column;
-  min-width: 30%;
-}
-
-div.app-container-right {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex-grow: 1;
-  min-width: 70%;
-}
-
 .container {
   background-color: #e83d84;
   display: flex;
+  align-items: center;
 }
 
 @media screen and (max-width: 768px) {
   .container {
     flex-direction: column;
-    min-width: 320px;
-    max-width: 100%;
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
     padding: 0;
+  }
+
+  div.app-container-left {
+    width: 100vw;
+  }
+
+  div.app-container-right {
+    width: 100vw;
   }
 }
 
@@ -45,6 +38,24 @@ div.app-container-right {
     flex-direction: row;
     min-width: 900px;
     max-width: 1200px;
+    height: 750px;
     padding: 48px;
+  }
+
+  div.app-container-left {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    min-width: 30%;
+    height: 600px;
+  }
+
+  div.app-container-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    min-width: 70%;
+    height: 600px;
   }
 }

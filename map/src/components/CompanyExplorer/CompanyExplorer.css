@@ -1,3 +1,8 @@
+.company-explorer-wrapper {
+  background-color: white;
+  height: inherit;
+}
+
 .company-explorer-wrapper .company-filters-container {
   display: flex;
   flex-direction: row;
@@ -6,7 +11,8 @@
 
 .company-explorer-wrapper .company-list {
   margin: 4pt;
-  height: 500px;
+  height: 600px;
+  max-height: inherit;
   overflow-x: hidden;
   overflow-y: scroll;
   scrollbar-width: none;

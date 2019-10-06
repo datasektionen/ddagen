@@ -1,38 +1,41 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Map from "components/Map/Map";
-import FilterBar from "components/FilterBar/FilterBar";
+// import FilterBar from "components/FilterBar/FilterBar";
 import CompanyExplorer from "components/CompanyExplorer/CompanyExplorer";
 
 function useWindowResize() {
-  const [width, setWidth] = useState(window.innerWidth);
-  const listener = () => {
-    setWidth(window.innerWidth);
-  };
+  const [dimensions, setDimensions] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight
+  })
+  const dimensionListener = () => {
+    setDimensions({
+      width: window.innerWidth,
+      height: window.innerHeight
+    })
+  }
 
   useEffect(() => {
-    window.addEventListener("resize", listener);
+    window.addEventListener("resize", dimensionListener);
     return () => {
-      window.removeEventListener("resize", listener);
+      window.removeEventListener("resize", dimensionListener);
     };
   }, []);
 
-  return { width };
+  return dimensions;
 }
 
 function App() {
-  const { width } = useWindowResize();
+  const { width, height } = useWindowResize();
 
   if (width <= 768) {
     return (
-      <div className="container">
+      <div className="container" style={{ maxHeight: height }}>
         <div className="app-container-right">
           <Map />
         </div>
         <div className="app-container-left">
-          <div className="company-filters-container full-width">
-            <FilterBar />
-          </div>
           <CompanyExplorer />
         </div>
       </div>
@@ -41,9 +44,6 @@ function App() {
   return (
     <div className="container">
       <div className="app-container-left">
-        <div className="company-filters-container full-width">
-          <FilterBar />
-        </div>
         <CompanyExplorer />
       </div>
       <div className="app-container-right">
