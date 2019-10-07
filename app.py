@@ -35,6 +35,7 @@ def sittningen():
         'https://docs.google.com/forms/d/e/1FAIpQLSerDQ213eHNUAp8CYKFohniv17-hb9W0QT9qMQtkK09ZvVaig/viewform',
         code=302)
 
+@app.route('/karta')
 @app.route('/visitors')
 def visitors():
     language = request.args.get('language')
@@ -70,6 +71,12 @@ def huvudsponsor():
     else:
         return render_template('SV/huvudsponsor.html')
 
+@app.route('/katalog')
+@app.route('/katalog2019')
+def katalog2019():
+    return redirect(
+        'https://static.datasektionen.se/naringsliv/d-dagen/katalog_2019',
+        code=302)
 
 @app.route('/katalog2018')
 def katalog2018():
