@@ -1,17 +1,18 @@
 .company-explorer-wrapper {
   background-color: white;
   height: inherit;
+  padding: 4px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .company-explorer-wrapper .company-filters-container {
   display: flex;
   flex-direction: row;
-  margin: 4pt;
+  margin: 4px;
 }
 
 .company-explorer-wrapper .company-list {
-  margin: 4pt;
-  height: 600px;
+  height: inherit;
   max-height: inherit;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -21,4 +22,10 @@
 
 .company-explorer-wrapper .company-list::-webkit-scrollbar {
   display: none;
+}
+
+@media (min-width: 769px) {
+  .company-explorer-wrapper .company-list {
+    height: 590px;
+  }
 }

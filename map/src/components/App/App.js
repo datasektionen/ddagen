@@ -28,17 +28,18 @@ function useWindowResize() {
 
 function App() {
   const { width, height } = useWindowResize();
-
   if (width <= 768) {
+    const mapHeight = height * 0.4
+    const listHeight = height - mapHeight
     return (
-      <div className="container" style={{ maxHeight: height }}>
-        <div className="app-container-right">
+      <div className="container" style={{ height }}>
+        <div className="app-container-right" style={{ height: mapHeight, width }}>
           <Map />
         </div>
-        <div className="app-container-left">
+        <div className="app-container-left" style={{ height: listHeight, width }}>
           <CompanyExplorer />
         </div>
-      </div>
+      </div >
     );
   }
   return (

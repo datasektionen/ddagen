@@ -13,7 +13,7 @@
 
 @media (max-width: 768px) {
   .map {
-    width: 96%;
+    height: 94%;
     padding: 1%;
     margin: 1%;
   }

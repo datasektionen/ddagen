@@ -12,9 +12,6 @@ const ConnectedMap = ({ selectedCompany }) => {
   return (
     <div className="map">
       <img alt="fairmap" src={fairMap} />
-      <p className="full-width" style={{ textAlign: "right", margin: "4pt" }}>
-        {selectedCompany || "None"}
-      </p>
     </div>
   );
 };

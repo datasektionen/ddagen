@@ -2,7 +2,6 @@ import React from "react";
 import "./CompanyDisplay.css";
 import { PropTypes } from "prop-types";
 import companyType from "types/company";
-import tgLogo from "assets/company-logos/tg-toptracer-logo-vertical-blue - Ludvig Jansson.svg";
 
 import {
   Card,
@@ -18,23 +17,27 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(1)
   },
   imgLogo: {
-    width: "50px",
-    height: "50px"
+    width: "auto",
+    maxWidth: "100px",
+    maxHeight: "50px",
+    minWidth: "60px",
   },
   cardHeaderTitle: {
     fontSize: "16px",
     display: "flex",
-    flexWrap: "wrap"
+    flexWrap: "wrap",
   },
   cardHeaderRoot: {
-    flexDirection: "row-reverse"
+    flexDirection: "row-reverse",
+    height: "70px",
+    padding: "10px"
   }
 }));
 
 // const avatar = () => {return <Avatar>Logo</Avatar>}
 function avatar(inputProps) {
-  const { classes } = inputProps;
-  return <img src={tgLogo} alt="logo" className={classes.imgLogo} />;
+  const { classes, srcImg } = inputProps;
+  return <img src={srcImg} alt="logo" className={classes.imgLogo} />;
 }
 
 const CompanyDisplay = ({ company, selected, onMouseDown }) => {
@@ -43,7 +46,8 @@ const CompanyDisplay = ({ company, selected, onMouseDown }) => {
   const avatarInputProps = {
     classes: {
       imgLogo: classes.imgLogo
-    }
+    },
+    srcImg: company.img.default
   };
 
   const cardHeaderClasses = {
@@ -56,9 +60,9 @@ const CompanyDisplay = ({ company, selected, onMouseDown }) => {
       raised
       onMouseDown={onMouseDown}
       className={classes.card}
-      // className={`company-list-item animated-transition ${
-      //   selected ? "selected" : ""
-      // }`}
+    // className={`company-list-item animated-transition ${
+    //   selected ? "selected" : ""
+    // }`}
     >
       <CardHeader
         avatar={avatar(avatarInputProps)}

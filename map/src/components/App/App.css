@@ -11,7 +11,7 @@ div#root {
 }
 
 .container {
-  background-color: #e83d84;
+  background-color: #ec5f99;
   display: flex;
   align-items: center;
 }
@@ -24,12 +24,12 @@ div#root {
     padding: 0;
   }
 
-  div.app-container-left {
-    width: 100vw;
+  .app-container-right {
+    flex-grow: 0;
   }
 
-  div.app-container-right {
-    width: 100vw;
+  .app-container-left {
+    flex-grow: 1;
   }
 }
 
@@ -55,7 +55,7 @@ div#root {
     flex-direction: column;
     justify-content: center;
     flex-grow: 1;
-    min-width: 70%;
+    min-width: 60%;
     height: 600px;
   }
 }
