@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template, redirect, send_from_directory
 
 app = Flask(__name__)
 
@@ -153,6 +153,13 @@ def interest_ddagen2020en():
     """ Redirect to application of interest for D-Dagen 2020 in english """
     return redirect('https://forms.gle/YHN4tJQxKvKMqHaZ7', code=302)
 
+@app.route("/map", methods=["GET"])
+def map():
+        return send_from_directory("static/map", "map.html")
+
+@app.route("/static/map/favicon.ico")
+def favicon():
+        return send_from_directory('static/icons', 'favicon.ico')
 
 # @app.route("/sok")
 # def sok():

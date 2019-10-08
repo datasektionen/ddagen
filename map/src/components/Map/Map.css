@@ -1,0 +1,31 @@
+.map {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  background-color: #fafafa;
+  margin: 0 4px;
+  padding: 4px;
+  height: inherit;
+}
+
+@media (max-width: 768px) {
+  .map {
+    height: 94%;
+    padding: 1%;
+    margin: 1%;
+  }
+}
+
+@media (min-width: 769px) {
+  .map {
+    min-width: 600px;
+  }
+}
+
+svg {
+  flex: 1;
+  max-height: 100%;
+}

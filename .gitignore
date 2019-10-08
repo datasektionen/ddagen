@@ -1,5 +1,6 @@
 # Ignore IDE files
 .idea/*
+**/*.vscode/
 
 # Ignore pycache files
 *.pyc

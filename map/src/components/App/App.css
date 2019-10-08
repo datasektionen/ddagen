@@ -1,0 +1,72 @@
+/* div {
+  border: 1px solid black;
+}
+
+div#root {
+  border: none;
+} */
+
+.full-width {
+  align-self: stretch;
+}
+
+.container {
+  background-color: #e83d84;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* .center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+} */
+
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+  }
+
+  .app-container-right {
+    flex-grow: 0;
+  }
+
+  .app-container-left {
+    flex-grow: 1;
+  }
+}
+
+@media (min-width: 769px) {
+  div.container {
+    flex-direction: row;
+    min-width: 900px;
+    max-width: 1920px;
+    height: 750px;
+    padding: 48px;
+  }
+
+  div.app-container-left {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    min-width: 30%;
+    height: inherit;
+  }
+
+  div.app-container-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    min-width: 60%;
+    height: inherit;
+  }
+}
