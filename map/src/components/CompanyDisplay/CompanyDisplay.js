@@ -19,8 +19,8 @@ const useStyles = makeStyles(theme => ({
   imgLogo: {
     width: "auto",
     maxWidth: "100px",
-    maxHeight: "50px",
-    minWidth: "60px",
+    maxHeight: "60px",
+    minWidth: "40px",
   },
   cardHeaderTitle: {
     fontSize: "16px",

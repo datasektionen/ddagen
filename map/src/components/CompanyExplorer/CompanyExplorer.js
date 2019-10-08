@@ -10,7 +10,7 @@ const mapStateToProps = state => {
   return { companies: state.companies, selectedCompany: state.selectedCompany };
 };
 
-function maptDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
     selectCompany: companyId => dispatch(actions.selectCompany(companyId)),
     unselectCompany: () => dispatch(actions.unselectCompany())
@@ -62,7 +62,7 @@ ConnectedCompanyExplorer.defaultProps = {
 
 const CompanyExplorer = connect(
   mapStateToProps,
-  maptDispatchToProps
+  mapDispatchToProps
 )(ConnectedCompanyExplorer);
 
 export default CompanyExplorer;
