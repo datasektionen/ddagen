@@ -18,6 +18,19 @@ function mapDispatchToProps(dispatch) {
 }
 
 class ConnectedCompanyExplorer extends React.Component {
+  constructor() {
+    super()
+    this.selfRef = React.createRef()
+    this.itemRefs = {}
+  }
+
+  componentDidUpdate() {
+    const { selectedCompany } = this.props
+    if (selectedCompany) {
+      this.itemRefs[selectedCompany].scrollIntoView({ behaviour: "smooth" })
+    }
+  }
+
   handleSelectCompany(id) {
     const { selectedCompany, unselectCompany, selectCompany } = this.props;
     console.log(`selecting company`);
@@ -33,9 +46,10 @@ class ConnectedCompanyExplorer extends React.Component {
 
     return (
       <div className="company-explorer-wrapper ">
-        <div className="company-list full-width">
+        <div className="company-list full-width" ref={this.selfRef}>
           {companies.map(companyEl => (
             <CompanyDisplay
+              ref={el => { this.itemRefs[companyEl.position] = el }}
               company={companyEl}
               key={companyEl.position}
               selected={selectedCompany === companyEl.position}

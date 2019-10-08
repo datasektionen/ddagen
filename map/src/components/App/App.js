@@ -29,7 +29,7 @@ function useWindowResize() {
 function App() {
   const { width, height } = useWindowResize();
   if (width <= 768) {
-    const mapHeight = height * 0.4
+    const mapHeight = height * 0.5
     const listHeight = height - mapHeight
     return (
       <div className="container" style={{ height }}>
@@ -39,11 +39,11 @@ function App() {
         <div className="app-container-left" style={{ height: listHeight, width }}>
           <CompanyExplorer />
         </div>
-      </div >
+      </div>
     );
   }
   return (
-    <div className="container">
+    <div className="container center">
       <div className="app-container-left">
         <CompanyExplorer />
       </div>

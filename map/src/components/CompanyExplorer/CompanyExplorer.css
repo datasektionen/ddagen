@@ -26,6 +26,8 @@
 
 @media (min-width: 769px) {
   .company-explorer-wrapper .company-list {
-    height: 590px;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 98.5%;
   }
 }

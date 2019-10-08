@@ -40,7 +40,7 @@ function avatar(inputProps) {
   return <img src={srcImg} alt="logo" className={classes.imgLogo} />;
 }
 
-const CompanyDisplay = ({ company, selected, onMouseDown }) => {
+const CompanyDisplay = React.forwardRef(({ company, selected, onMouseDown }, ref) => {
   const classes = useStyles();
 
   const avatarInputProps = {
@@ -57,6 +57,7 @@ const CompanyDisplay = ({ company, selected, onMouseDown }) => {
 
   return (
     <Card
+      ref={ref}
       raised
       onMouseDown={onMouseDown}
       className={classes.card}
@@ -70,13 +71,13 @@ const CompanyDisplay = ({ company, selected, onMouseDown }) => {
         classes={cardHeaderClasses}
       />
       <Collapse in={selected}>
-        <CardContent>
+        <CardContent >
           <Typography>{company.description}</Typography>
         </CardContent>
       </Collapse>
     </Card>
   );
-};
+});
 
 CompanyDisplay.propTypes = {
   company: companyType.isRequired,

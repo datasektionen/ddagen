@@ -21,6 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "homepage": "https://ddagen.se/static/map",
   "eslintConfig": {
     "extends": "react-app"
   },

@@ -11,10 +11,21 @@ div#root {
 }
 
 .container {
-  background-color: #ec5f99;
+  background-color: #e83d84;
   display: flex;
   align-items: center;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+/* .center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+} */
 
 @media screen and (max-width: 768px) {
   .container {
@@ -37,7 +48,7 @@ div#root {
   div.container {
     flex-direction: row;
     min-width: 900px;
-    max-width: 1200px;
+    max-width: 1920px;
     height: 750px;
     padding: 48px;
   }
@@ -47,7 +58,7 @@ div#root {
     flex-grow: 1;
     flex-direction: column;
     min-width: 30%;
-    height: 600px;
+    height: inherit;
   }
 
   div.app-container-right {
@@ -56,6 +67,6 @@ div#root {
     justify-content: center;
     flex-grow: 1;
     min-width: 60%;
-    height: 600px;
+    height: inherit;
   }
 }
