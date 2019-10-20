@@ -122,7 +122,7 @@ def industry():
 
 @app.route("/survey")
 def survey():
-    return redirect('https://goo.gl/forms/TxOWfvzxPfI9IH3Y2', code=302)
+    return redirect('https://forms.gle/aFVS3WFJcHW1NuJq9', code=302)
 
 
 @app.route("/fairform")
