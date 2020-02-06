@@ -161,10 +161,10 @@ def map():
 def favicon():
         return send_from_directory('static/icons', 'favicon.ico')
 
-# @app.route("/sok")
-# def sok():
-#     """ Redirect to application of working at the fair for D-Dagen 2019"""
-#     return redirect('https://forms.gle/uaoxkSFwCXGa5pr47', code=302)
+@app.route("/sok")
+def sok():
+     """ Redirect to application of working at the fair for D-Dagen 2020"""
+     return redirect('https://docs.google.com/forms/d/e/1FAIpQLSe2tBIeOxCuqNjJdXpB6GRn03XVo-xtpuuh0rniuphEhkkG_w/viewform', code=302)
 
 
 @app.route('/apply')
