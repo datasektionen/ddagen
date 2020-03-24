@@ -109,14 +109,14 @@ def katalog2015():
 @app.route('/foretag')
 def foretag():
     return redirect(
-        'https://docs.google.com/forms/d/e/1FAIpQLSfqnMtyUMAc4IPxwAKdv5vKGR-PLam4XMqNwWQVyL9cl_Pt5w/closedform',
+        'https://docs.google.com/forms/d/e/1FAIpQLSe4vMqA_BJcwH8haK79M0WyVDtGGebiSF-DR1pTmXgvFez6zw/viewform',
         code=302)
 
 
 @app.route('/industry')
 def industry():
     return redirect(
-        'https://docs.google.com/forms/d/e/1FAIpQLSe_UJAnD-3Anweftecf3iOo_MBLLuLt1bBMHqI5bGNYFk90BQ/closedform',
+        'https://docs.google.com/forms/d/e/1FAIpQLSdjSG917dUM8OlFXhPNqb_XwF7hAEdZEjhckz2QcWK8kwJCJA/viewform',
         code=302)
 
 
