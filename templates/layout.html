@@ -127,6 +127,15 @@
             </p>
 			<a href="mailto:d-dagen@d.kth.se" class="cerise">d-dagen@d.kth.se</a>
             <br>
+            <br>
+
+            <p>
+            {% if request.args.get('language') == 'en'%}
+                The Sales Team
+            {% else %}
+                Säljgruppen
+            {% endif %}
+            </p>
             <a href="mailto:sales@ddagen.se" class="cerise">sales@ddagen.se</a>
 		</div>
 		<div class="col-sm-4">
