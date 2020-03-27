@@ -30,11 +30,11 @@
     {% if request.args.get('language') == 'en' %}
         <ul class="nav_bar" id="menu">
             <li><a href="{{ url_for('index', language='en') }}" id="logo"><img src="{{ url_for('static', filename='new-logo-white-ageless.svg') }}" alt="D-Dagen"></a></li>
-            <li><a href="{{ url_for('events', language='en') }}">Events</a></li>
-            <li><a href="{{ url_for('visitors', language='en') }}">Visitors</a></li>
+            <!--<li><a href="{{ url_for('events', language='en') }}">Events</a></li>-->
+            <!--<li><a href="{{ url_for('visitors', language='en') }}">Visitors</a></li>-->
             <li><a href="{{ url_for('companies', language='en') }}">Companies</a></li>
-            <li><a href="{{ url_for('faq', language='en') }}">FAQ</a></li>
-            <li><a href="{{ url_for('contact', language='en') }}">Contact us</a></li>
+            <!--<li><a href="{{ url_for('faq', language='en') }}">FAQ</a></li>-->
+            <!--<li><a href="{{ url_for('contact', language='en') }}">Contact us</a></li>-->
             <li class="select-language-menu-item">
                 <a href="{{ url_for(request.endpoint, language='sv') if request.endpoint else url_for('index', language='sv') }}">
                     <img style="width: 32px" src="{{ url_for('static', filename='swe_flag.svg') }}" alt="Svenska"/>
@@ -44,11 +44,11 @@
     {% else %}
         <ul class="nav_bar" id="menu">
             <li><a href="{{ url_for('index') }}" id="logo"><img src="{{ url_for('static', filename='new-logo-white-ageless.svg') }}" alt="D-Dagen"></a></li>
-            <li><a href="{{ url_for('events') }}">Event</a></li>
-            <li><a href="{{ url_for('visitors') }}">Besökare</a></li>
+            <!--<li><a href="{{ url_for('events') }}">Event</a></li>-->
+            <!--<li><a href="{{ url_for('visitors') }}">Besökare</a></li>-->
             <li><a href="{{ url_for('companies') }}">Företag</a></li>
-            <li><a href="{{ url_for('faq') }}">FAQ</a></li>
-            <li><a href="{{ url_for('contact') }}">Kontakta Oss</a></li>
+            <!--<li><a href="{{ url_for('faq') }}">FAQ</a></li>-->
+            <!--<li><a href="{{ url_for('contact') }}">Kontakta Oss</a></li>-->
             <li class="select-language-menu-item">
                 <a href="{{ url_for(request.endpoint, language='en') if request.endpoint else url_for('index', language='en') }}">
                     <img style="width: 32px" src="{{ url_for('static', filename='eng_flag.svg') }}" alt="English"/>
