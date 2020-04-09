@@ -154,8 +154,42 @@
 	</div>
 </div>
 
+<div class="info-box" id="contact">
+	<p class="cerise head" style="text-align: center">
+        {% if request.args.get('language') == 'en'%}
+            FOLLOW US ON SOCIAL MEDIA
+        {% else %}
+            FÖLJ OSS I SOCIALA MEDIER
+        {% endif %}
+    </p>
+	<div class="contact-list row">
+		<div class="col-sm-4">
+            <!--
+			<p class="cerise"><b>
+            {% if request.args.get('language') == 'en'%}
+                The Sales Team
+            {% else %}
+                Säljgruppen
+            {% endif %}
+            </b></p><a class="cerise" href="mailto:d-dagen.sales@d.kth.se">d-dagen.sales@d.kth.se</a>
+            -->
+		</div>
+		<div class="col-sm-4">
+			<a href="https://www.facebook.com/kongligddagen/"><i class="fa fa-facebook fa-3x fa-fw" ></i>&nbsp; /kongligddagen</a>
+            <br>
+            <a href="https://www.instagram.com/ddagenkth/"><i class="fa fa-instagram fa-3x fa-fw" ></i>&nbsp; /ddagenkth</a>
+            <br>
+            <a href="https://www.linkedin.com/company/kongligddagen/"><i class="fa fa-linkedin fa-3x fa-fw" ></i>&nbsp; /kongligddagen</a>
+            <br>
 
+		</div>
+		<div class="col-sm-4">
+          
+        </div>
+	</div>
+</div>
 
+<!--
 <div class = "social-box" style=" text-align: center;">
     <h2 style=" text-align: center;" >
         {% if request.args.get('language') == 'en'%}
@@ -171,7 +205,7 @@
         <li><a href="https://www.linkedin.com/company/kongligddagen/"><i class="fa fa-linkedin fa-3x fa-fw" ></i>&nbsp; /kongligddagen</a></li>
         </ul>
     </div>
-
+-->
 
 
 <div id="footer">
