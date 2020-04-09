@@ -155,13 +155,24 @@
 </div>
 
 
-<div style="text-align: center">
 
-    <a href="https://www.facebook.com/kongligddagen/" class="fa fa-facebook fa-3x fa-fw"></a>
-    <a href="https://www.instagram.com/ddagenkth/" class="fa fa-instagram fa-3x fa-fw"></a>
-    <a href="https://www.linkedin.com/company/kongligddagen/" class="fa fa-linkedin fa-3x fa-fw"></a>
+<div class = "social-box" style=" text-align: center;">
+    <h2 style=" text-align: center;" >
+        {% if request.args.get('language') == 'en'%}
+            FOLLOW US ON SOCIAL MEDIA
+        {% else %}
+            FÖLJ OSS I SOCIALA MEDIER
+        {% endif %}
+    </h2>
+    <br>
+         <ul>
+         <li><a href="https://www.facebook.com/kongligddagen/"><i class="fa fa-facebook fa-3x fa-fw" ></i>&nbsp; /kongligddagen</a></li>
+         <li><a href="https://www.instagram.com/ddagenkth/"><i class="fa fa-instagram fa-3x fa-fw" ></i>&nbsp; /ddagenkth</a></li>
+        <li><a href="https://www.linkedin.com/company/kongligddagen/"><i class="fa fa-linkedin fa-3x fa-fw" ></i>&nbsp; /kongligddagen</a></li>
+        </ul>
+    </div>
 
-</div>
+
 
 <div id="footer">
 	<div id="footer-container" class="row">
