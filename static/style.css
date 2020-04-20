@@ -367,11 +367,15 @@ p.info-text {
 .portrait {
     float: left;
     text-align: center;
+    display: block;
+    margin: 0 auto;
 }
 
 .portrait img {
     border-radius: 50%;
     width: 230px;
+    
+    
 }
 
 .ribbon {
@@ -617,7 +621,7 @@ p.info-text {
 }
 
 img.greeting-portrait {
-  padding: 10px 20px 40px 20px;
+  padding: 100px 20px 100px 20px;
 }
 
 .video-wrapper {
