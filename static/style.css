@@ -757,3 +757,10 @@ vertical-align: middle;
         width: 70%;
     }
 }
+
+@media (max-width: 500px) {
+    #time li { width: 60px; } /* On small screens, show one list item per row */
+    #time-label li { width: 60px; } 
+    #clock{width:300px;}
+}
+
