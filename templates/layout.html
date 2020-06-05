@@ -17,7 +17,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato:400,600,900" rel="stylesheet">
 	<link rel="stylesheet" href="//aurora.datasektionen.se/" type="text/css" />
     <!--<link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}"/>-->
-    <link rel="stylesheet" href="/static/style.css?v=1.5"/>
+    <link rel="stylesheet" href="/static/style.css?v=1.6"/>
     <!-- Add icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="{{ url_for('static', filename='smooth-scroll.min.js') }}"></script>
@@ -64,6 +64,38 @@
 
 
 
+<script>
+
+var countDownDate = new Date("Oct 7, 2020 23:59:59").getTime();
+
+var days, hours, minutes, seconds;
+
+var daysTimer = document.getElementById("dayTimer");
+var hoursTimer = document.getElementById("hourTimer");
+var minutesTimer = document.getElementById("minuteTimer");
+var secondsTimer = document.getElementById("secondTimer");
+
+
+var x = setInterval(function() {
+
+  var now = new Date().getTime();
+
+  var distance = countDownDate - now;
+
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    dayTimer.innerHTML = days;
+    hourTimer.innerHTML = hours;
+    minuteTimer.innerHTML = minutes;
+    secondTimer.innerHTML = seconds;
+
+ 
+}, 1000);
+</script>
+
 {% block intro_full %}
  
 <div id="intro-box">
@@ -84,6 +116,32 @@
             8 oktober 2020
         {% endif %}
         </span><br><span class="lato-light">Nymble</span></h1>
+        <br>
+        <div id="clock">
+            <div>
+              <ul id=time>
+                <li id="dayTimer"></li>
+                <li id="hourTimer"></li>
+                <li id="minuteTimer"></li>
+                <li id="secondTimer"></li>
+              </ul>
+            </div>
+            <div>
+              <ul id="time-label" >
+                {% if request.args.get('language') == 'en'%}
+                <li>days</li>
+                <li>hours</li>
+                <li>minutes</li>
+                <li>seconds</li>
+                {% else %}
+                <li>dagar</li>
+                <li>timmar</li>
+                <li>minuter</li>
+                <li>sekunder</li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
         <p id="shield"><img src="{{ url_for('static', filename='shield.png') }}" alt="">
         {% if request.args.get('language') == 'en'%}
             The Computer Science chapter's annual career fair

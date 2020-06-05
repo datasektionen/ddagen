@@ -708,6 +708,43 @@ vertical-align: middle;
 }
 
 
+#clock {
+    
+    background:linear-gradient(rgb(255, 126, 227),rgb(235, 0, 117));
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width:750px;
+    border-radius: 25px;
+    
+  }
+  
+  #clock div{
+    font-family:helvetica;
+  }
+  
+  #time li{
+    display:inline-block;
+    width:150px;
+    height:20px;
+    text-align:center;
+    font-size:20px;
+    text-shadow: 2px 2px #ff0000;
+    color:rgb(255, 255, 255);
+  }
+  
+  #time-label li{
+    color:rgb(255, 255, 255);
+    display:inline-block;
+    position:relative;
+    text-align:center;
+    width:150px;
+    text-shadow: 2px 2px #ff0000;
+    list-style:none;
+  }
+
+
 
 @media (min-width: 900px) {
     .map {
