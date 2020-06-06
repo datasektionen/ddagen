@@ -17,7 +17,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato:400,600,900" rel="stylesheet">
 	<link rel="stylesheet" href="//aurora.datasektionen.se/" type="text/css" />
     <!--<link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}"/>-->
-    <link rel="stylesheet" href="/static/style.css?v=1.7"/>
+    <link rel="stylesheet" href="/static/style.css?v=1.8"/>
     <!-- Add icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="{{ url_for('static', filename='smooth-scroll.min.js') }}"></script>
@@ -156,6 +156,21 @@ var x = setInterval(function() {
 {% endblock intro_full %}
 {% block content %}{% endblock %}
 {% block footer %}
+
+<div class="info-box" id="sponsor">
+	<p class="cerise head" style="text-align: center">
+        {% if request.args.get('language') == 'en'%}
+            A BIG THANK YOU TO OUR <b>MAIN SPONSOR 2020 </b>
+        {% else %}
+            STORT TACK TILL VÅR <b>HUVUDSPONSOR 2020</b>
+        {% endif %}
+        <br>
+        <br>
+    </p>
+    <img class = "main-sponsor" src="{{ url_for('static', filename='Ddagen+Ericsson.png') }}"  alt="D-Dagen <3 Ericsson"/>
+    
+</div>
+
 <div class="info-box" id="contact">
 	<p class="cerise head" style="text-align: center">
         {% if request.args.get('language') == 'en'%}
@@ -220,7 +235,7 @@ br {
 </style>
 
 
-<div class="info-box" id="contact">
+<div class="info-box" id="social-media">
 	<p class="cerise head" style="text-align: center">
         {% if request.args.get('language') == 'en'%}
             FOLLOW US ON SOCIAL MEDIA
@@ -248,19 +263,7 @@ br {
 </div>
 
 
-<div class="info-box" id="contact">
-	<p class="cerise head" style="text-align: center">
-        {% if request.args.get('language') == 'en'%}
-            MAIN SPONSOR 2020
-        {% else %}
-            HUVUDSPONSOR 2020
-        {% endif %}
-        <br>
-        <br>
-    </p>
-    <img class="main-sponsor" src="{{ url_for('static', filename='ERI_vertical_RGB.png') }}" alt="Main sponsor Ericsson"/>
-</div>
-    
+
 
 
 
