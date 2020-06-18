@@ -17,7 +17,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato:400,600,900" rel="stylesheet">
 	<link rel="stylesheet" href="//aurora.datasektionen.se/" type="text/css" />
     <!--<link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}"/>-->
-    <link rel="stylesheet" href="/static/style.css?v=1.8"/>
+    <link rel="stylesheet" href="/static/style.css?v=1.813323"/>
     <!-- Add icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="{{ url_for('static', filename='smooth-scroll.min.js') }}"></script>
@@ -36,8 +36,8 @@
             <!--<li><a href="{{ url_for('events', language='en') }}">Events</a></li>-->
             <!--<li><a href="{{ url_for('visitors', language='en') }}">Visitors</a></li>-->
             <li><a href="{{ url_for('companies', language='en') }}">Companies</a></li>
-            <!--<li><a href="{{ url_for('faq', language='en') }}">FAQ</a></li>-->
-            <!--<li><a href="{{ url_for('contact', language='en') }}">Contact us</a></li>-->
+            <li><a href="{{ url_for('faq', language='en') }}">FAQ</a></li>
+            <li><a href="{{ url_for('contact', language='en') }}">Contact us</a></li>
             <li class="select-language-menu-item">
                 <a href="{{ url_for(request.endpoint, language='sv') if request.endpoint else url_for('index', language='sv') }}">
                     <img style="width: 32px" src="{{ url_for('static', filename='swe_flag.svg') }}" alt="Svenska"/>
@@ -50,8 +50,8 @@
             <!--<li><a href="{{ url_for('events') }}">Event</a></li>-->
             <!--<li><a href="{{ url_for('visitors') }}">Besökare</a></li>-->
             <li><a href="{{ url_for('companies') }}">Företag</a></li>
-            <!--<li><a href="{{ url_for('faq') }}">FAQ</a></li>-->
-            <!--<li><a href="{{ url_for('contact') }}">Kontakta Oss</a></li>-->
+            <li><a href="{{ url_for('faq') }}">FAQ</a></li>
+            <li><a href="{{ url_for('contact') }}">Kontakta Oss</a></li>
             <li class="select-language-menu-item">
                 <a href="{{ url_for(request.endpoint, language='en') if request.endpoint else url_for('index', language='en') }}">
                     <img style="width: 32px" src="{{ url_for('static', filename='eng_flag.svg') }}" alt="English"/>

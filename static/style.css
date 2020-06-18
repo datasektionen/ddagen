@@ -383,8 +383,8 @@ p.info-text {
 }
 
 .portrait img {
-    border-radius: 50%;
-    width: 230px;
+    
+    width: 200px;
     
     
 }
@@ -546,7 +546,7 @@ img.greeting-portrait {
 
 .main-sponsor{
     display: block;
-    margin-left: auto;
+    margin-left: 10%;
     margin-right: auto;
     width: 1000px;
     height:auto;
