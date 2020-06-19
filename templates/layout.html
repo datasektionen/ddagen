@@ -17,7 +17,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato:400,600,900" rel="stylesheet">
 	<link rel="stylesheet" href="//aurora.datasektionen.se/" type="text/css" />
     <!--<link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}"/>-->
-    <link rel="stylesheet" href="/static/style.css?v=1.813323"/>
+    <link rel="stylesheet" href="/static/style.css?v=1.824133423"/>
     <!-- Add icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="{{ url_for('static', filename='smooth-scroll.min.js') }}"></script>
@@ -167,8 +167,18 @@ var x = setInterval(function() {
         <br>
         <br>
     </p>
-    <img class = "main-sponsor" src="{{ url_for('static', filename='Ddagen+Ericsson.png') }}"  alt="D-Dagen <3 Ericsson"/>
-    
+    <!--<img class = "main-sponsor" src="{{ url_for('static', filename='Ddagen+Ericsson.png') }}"  alt="D-Dagen <3 Ericsson"/>!-->
+    <div class="main-sponsor-row">
+        <div class="main-sponsor-column">
+          <img src="{{ url_for('static', filename='Ddagen_long.png') }}" alt="Ddagen" style="width:100%; margin-top:10%;">
+        </div>
+        <div class="main-sponsor-column" >
+          <img src="{{ url_for('static', filename='Heart.png') }}" alt="Heart" style="width:50%; display: block;margin-left: auto;margin-right: auto;">
+        </div>
+        <div class="main-sponsor-column">
+          <img  src="{{ url_for('static', filename='Ericsson_long.png') }}" alt="Ericsson" style="width:100%;margin-top:10%;">
+        </div>
+      </div>
 </div>
 
 <div class="info-box" id="contact">

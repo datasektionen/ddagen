@@ -553,6 +553,21 @@ img.greeting-portrait {
     filter: invert(41%) sepia(30%) saturate(5301%) hue-rotate(311deg) brightness(93%) contrast(96%);
 }
 
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.main-sponsor-column {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+    filter: invert(41%) sepia(30%) saturate(5301%) hue-rotate(311deg) brightness(93%) contrast(96%);
+  }
+  
+  /* Clear floats after image containers */
+  .main-sponsor-row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
 ul {
     overflow: auto;
     list-style-type: none;
