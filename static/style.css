@@ -382,10 +382,22 @@ p.info-text {
     
 }
 
+.portrait-photo{
+    float: left;
+    text-align: center;
+    
+}
+
 .portrait img {
     
     width: 200px;
     
+}
+
+.portrait-photo img {
+    
+    width: 200px;
+    border-radius: 15%;
     
 }
 
