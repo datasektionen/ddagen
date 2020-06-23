@@ -11,18 +11,26 @@
 
 -->
 
+
 <div class="info-box">
-  <p class="cerise head">Greeting from our <b>Project Leaders</b></p>
-  <br>
-  <br>
-  <p>
-    <img align="right" class="greeting-portrait" width="550px" style="border-radius:100%;" src="{{ url_for('static', filename='DDA-gruppbild.jpg') }}" alt="Julia and Andreas"/>
-    Together with this years super excited project group we, Andreas Wallström and Julia Byström, are welcoming you to D-Dagen 2020!
-    <br><br><br>
-    The preparations and planning for the fair started a long time ago. As project leaders for D-Dagen we are always working on improving the fair. One of the primary focuses this year has been to improve how we reach out to students through both physical och digital channels. Another area we are emphasizing this year is to create more sponsor opportunities where we can add value for both us students and our companies. The largest challenge this year has been to work entirely remotely, due to the COVID-19 situation. We thought it would be really tough to motivate, inspire and communicate entirely virtually with the project group of 19 people. It turns out that the entire project group despite the situation is motivated and excited to create an amazing D-Dagen 2020 fair. 
-    <br><br><br>
-    We and the project group are looking forward to see you during D-Dagen 2020!
-  </p>
+  <p class="cerise head" style="text-align: center">Greeting from our <b>Project Leaders</b></p>
+      <br>
+  <div class="greeting-row">
+    <div class="greeting-column">
+      <p>
+        <br>
+        Together with this years super excited project group we, Andreas Wallström and Julia Byström, are welcoming you to D-Dagen 2020!
+        <br><br>
+        The preparations and planning for the fair started a long time ago. As project leaders for D-Dagen we are always working on improving the fair. One of the primary focuses this year has been to improve how we reach out to students through both physical och digital channels. Another area we are emphasizing this year is to create more sponsor opportunities where we can add value for both us students and our companies. The largest challenge this year has been to work entirely remotely, due to the COVID-19 situation. We thought it would be really tough to motivate, inspire and communicate entirely virtually with the project group of 19 people. It turns out that the entire project group despite the situation is motivated and excited to create an amazing D-Dagen 2020 fair. 
+        <br><br>
+        We and the project group are looking forward to see you during D-Dagen 2020!
+      </p>
+    </div>
+    <div class="greeting-column"  style="margin-top: 30px;">
+      <img class="greeting-portrait" width="550px" style="border-radius:10%;" src="{{ url_for('static', filename='DDA-gruppbild.jpg') }}" alt="Julia och Andreas"/>
+    </div>
+    
+  </div>
 </div>
 
 {% endblock %}

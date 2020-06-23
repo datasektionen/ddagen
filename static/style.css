@@ -495,7 +495,9 @@ p.info-text {
 }
 
 img.greeting-portrait {
-  padding: 100px 20px 100px 20px;
+    margin-top: 40px;
+    
+      
 }
 
 .video-wrapper {
@@ -575,6 +577,21 @@ img.greeting-portrait {
   
   /* Clear floats after image containers */
   .main-sponsor-row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.greeting-column {
+    float: left;
+    width: 50%;
+    padding: 5px;
+   
+  }
+  
+  /* Clear floats after image containers */
+  .greeting-row::after {
     content: "";
     clear: both;
     display: table;
@@ -734,6 +751,10 @@ vertical-align: middle;
         width: 500px;
     }
 
+    .greeting-column{
+        width: 100%;
+    }
+
     #time li { width: 120px; } /* On small screens, show one list item per row */
     #time-label li { width: 120px; } 
     #clock{width:600px;}
@@ -745,6 +766,8 @@ vertical-align: middle;
         background-color: #e83d84;
         box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 8px;
     }
+
+    
 
     .menu-container .icon {
         display: block;
@@ -804,6 +827,10 @@ vertical-align: middle;
         width: 400px;
     }
 
+    .greeting-column{
+        width: 100%;
+    }
+
     #time li { width: 80px; } /* On small screens, show one list item per row */
     #time-label li { width: 80px; } 
     #clock{width:400px;}
@@ -825,6 +852,10 @@ vertical-align: middle;
     }
     #huvudsponsor {
       margin-right: auto;
+    }
+
+    .greeting-column{
+        width: 100%;
     }
 
 
