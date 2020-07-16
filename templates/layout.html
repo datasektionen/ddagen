@@ -206,7 +206,7 @@ var x = setInterval(function() {
             <p class="cerise"><b>Andreas Wallström<br>Julia Byström</b></p>
 			<p>
             {% if request.args.get('language') == 'en'%}
-                Project Leader for D-Dagen
+                Project Leaders for D-Dagen
             {% else %}
                 D-Dagenansvariga
             {% endif %}
@@ -272,7 +272,42 @@ br {
     </div>
 </div>
 
-
+<div class="info-box" id="sponsorer">
+	<p class="cerise head" style="text-align: center">
+        {% if request.args.get('language') == 'en'%}
+            A BIG THANK YOU TO OUR <b>SPONSORS 2020 </b>
+        {% else %}
+            STORT TACK TILL VÅRA <b>SPONSORER 2020</b>
+        {% endif %}
+        <br>
+        <br>
+    </p>
+    <!--<img class = "main-sponsor" src="{{ url_for('static', filename='Ddagen+Ericsson.png') }}"  alt="D-Dagen <3 Ericsson"/>!-->
+    <div class="pr-image-container">
+        <div class="portrait">
+          <img src="{{ url_for('static', filename='sponsorer/carmenta.jpg') }}" alt="Ddagen" style=" margin-top:30%;">
+        </div>
+        <div class="portrait" >
+          <img src="{{ url_for('static', filename='sponsorer/ida.png') }}" alt="Heart" style=" margin-top:30%;">
+        </div>
+        <div class="portrait">
+          <img  src="{{ url_for('static', filename='sponsorer/syntronic.jpg') }}" alt="Ericsson"style=" margin-top:30%;" >
+        </div>
+      </div>
+      <div class="pr-image-container">
+        <div class="portrait" >
+          <img src="{{ url_for('static', filename='sponsorer/metaforce.png') }}" alt="Heart" style=" margin-top:55%; ">
+        </div>
+        <div class="portrait">
+            <img src="{{ url_for('static', filename='sponsorer/if.png') }}" alt="Ddagen" style=" width:35%; margin-top:6%;">
+          </div>
+        <div class="portrait">
+            <img  src="{{ url_for('static', filename='sponsorer/sakerhetspolisen.jpg') }}" alt="Ericsson" >
+          </div>
+        
+        
+      </div>
+</div>
 
 
 
