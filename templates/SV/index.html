@@ -1,10 +1,33 @@
 {% extends "layout.html" %} {% block content %}
-
+<!--
 <div class="info-box" id="introduction">
   <h1 class="lato-black cerise">Hemsidan håller på att uppdateras</h1>
   <p class="lato-black">
     Vi har nu startat arbetet med att anordna D-Dagen 2020! D-Dagen 2020 kommer att ske den 8 Oktober. Om ert företag är intresserade av att delta på D-Dagen 2020 kan ni kontakta vårat sälj team på <a href="mailto:sales@ddagen.se">sales@ddagen.se</a>. Vi syns i höst!
   </p>
+</div>
+-->
+
+
+<div class="info-box">
+  <p class="cerise head" style="text-align: center">Hälsning från <b>D-Dagenansvariga</b></p>
+      <br>
+  <div class="greeting-row">
+    <div class="greeting-column">
+      <p>
+        <br>
+        Tillsammans med årets supertaggade projektgrupp vill vi, Andreas Wallström och Julia Byström, önska er varmt välkomna till D-Dagen 2020!
+        <br><br>
+        Förberedelserna har sedan länge börjat. Som projektledare för D-Dagen vill vi arbeta aktivt för att alltid skapa en bättre mässa. Detta innebär att också göra ett bättre arbete inför mässan. För oss har det inneburit att se över nya möjligheter för företag att nå ut till oss studenter via fysisk och digital marknadsföring, samt nya sponsringsmöjligheter där både företag och studenter gynnas. Den största utmaningen har varit att förbättra arbetet inför D-Dagen. När vi planerade för fler möjligheter för projektgruppen att ses tillsammans kunde vi inte veta att vårt arbete skulle ske på distans. Vi likt många andra har anpassat vårt arbete för att minimera smittan av covid-19. Vi trodde att det skulle vara tufft att motivera, inspirera och kommunicera helt digitalt med projektgruppen på 19 personer. Det visade sig att hela projektgruppen trots omständigheterna var motiverade och har varit med på att anpassa sitt arbetssätt.
+        <br><br>
+        Vi och hela projektgruppen ser fram emot att träffa er under D-Dagen 2020!
+      </p>
+    </div>
+    <div class="greeting-column"  style="margin-top: 45px; ">
+      <img class="greeting-portrait" width="550px" style="border-radius:10%;" src="{{ url_for('static', filename='DDA-gruppbild.jpg') }}" alt="Julia och Andreas"/>
+    </div>
+    
+  </div>
 </div>
 
 {% endblock %}

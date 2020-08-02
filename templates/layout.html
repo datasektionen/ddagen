@@ -16,7 +16,10 @@
 	<meta name="google-site-verification" content="MNj-G5h7DoEv4j26SQgrOESA177JmHehgLqvY6naNeA" />
 	<link href="https://fonts.googleapis.com/css?family=Lato:400,600,900" rel="stylesheet">
 	<link rel="stylesheet" href="//aurora.datasektionen.se/" type="text/css" />
-	<link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}"/>
+    <!--<link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}"/>-->
+    <link rel="stylesheet" href="/static/style.css?v=2.1243"/>
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="{{ url_for('static', filename='smooth-scroll.min.js') }}"></script>
 	<title>D-Dagen - Konglig Datasektionen</title>
 </head>
@@ -33,8 +36,8 @@
             <!--<li><a href="{{ url_for('events', language='en') }}">Events</a></li>-->
             <!--<li><a href="{{ url_for('visitors', language='en') }}">Visitors</a></li>-->
             <li><a href="{{ url_for('companies', language='en') }}">Companies</a></li>
-            <!--<li><a href="{{ url_for('faq', language='en') }}">FAQ</a></li>-->
-            <!--<li><a href="{{ url_for('contact', language='en') }}">Contact us</a></li>-->
+            <li><a href="{{ url_for('faq', language='en') }}">FAQ</a></li>
+            <li><a href="{{ url_for('contact', language='en') }}">Contact us</a></li>
             <li class="select-language-menu-item">
                 <a href="{{ url_for(request.endpoint, language='sv') if request.endpoint else url_for('index', language='sv') }}">
                     <img style="width: 32px" src="{{ url_for('static', filename='swe_flag.svg') }}" alt="Svenska"/>
@@ -47,8 +50,8 @@
             <!--<li><a href="{{ url_for('events') }}">Event</a></li>-->
             <!--<li><a href="{{ url_for('visitors') }}">Besökare</a></li>-->
             <li><a href="{{ url_for('companies') }}">Företag</a></li>
-            <!--<li><a href="{{ url_for('faq') }}">FAQ</a></li>-->
-            <!--<li><a href="{{ url_for('contact') }}">Kontakta Oss</a></li>-->
+            <li><a href="{{ url_for('faq') }}">FAQ</a></li>
+            <li><a href="{{ url_for('contact') }}">Kontakta Oss</a></li>
             <li class="select-language-menu-item">
                 <a href="{{ url_for(request.endpoint, language='en') if request.endpoint else url_for('index', language='en') }}">
                     <img style="width: 32px" src="{{ url_for('static', filename='eng_flag.svg') }}" alt="English"/>
@@ -61,8 +64,40 @@
 
 
 
+<script>
+
+var countDownDate = new Date("Oct 7, 2020 23:59:59").getTime();
+
+var days, hours, minutes, seconds;
+
+var daysTimer = document.getElementById("dayTimer");
+var hoursTimer = document.getElementById("hourTimer");
+var minutesTimer = document.getElementById("minuteTimer");
+var secondsTimer = document.getElementById("secondTimer");
+
+
+var x = setInterval(function() {
+
+  var now = new Date().getTime();
+
+  var distance = countDownDate - now;
+
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    dayTimer.innerHTML = days;
+    hourTimer.innerHTML = hours;
+    minuteTimer.innerHTML = minutes;
+    secondTimer.innerHTML = seconds;
+
+ 
+}, 1000);
+</script>
+
 {% block intro_full %}
-<!--
+ 
 <div id="intro-box">
     <div id="intro">
         {% block intro %}
@@ -76,14 +111,40 @@
         <img src="{{ url_for('static', filename='new-logo-white-ageless.svg') }}" alt=""><br>
         <h1><span class="lato-black">
         {% if request.args.get('language') == 'en'%}
-            10th of October 2019
+            8th of October 2020
         {% else %}
-            10 oktober 2019
+            8 oktober 2020
         {% endif %}
         </span><br><span class="lato-light">Nymble</span></h1>
+        <br>
+        <div id="clock">
+            <div>
+              <ul id=time>
+                <li id="dayTimer"></li>
+                <li id="hourTimer"></li>
+                <li id="minuteTimer"></li>
+                <li id="secondTimer"></li>
+              </ul>
+            </div>
+            <div>
+              <ul id="time-label" >
+                {% if request.args.get('language') == 'en'%}
+                <li>days</li>
+                <li>hours</li>
+                <li>minutes</li>
+                <li>seconds</li>
+                {% else %}
+                <li>dagar</li>
+                <li>timmar</li>
+                <li>minuter</li>
+                <li>sekunder</li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
         <p id="shield"><img src="{{ url_for('static', filename='shield.png') }}" alt="">
         {% if request.args.get('language') == 'en'%}
-            Datasektionen's annual career fair
+            The Computer Science chapter's annual career fair
         {% else %}
             Datasektionens årliga arbetsmarknadsdag
         {% endif %}
@@ -91,10 +152,35 @@
         {% endblock intro %}
     </div>
 </div>
--->
+
 {% endblock intro_full %}
 {% block content %}{% endblock %}
 {% block footer %}
+
+<div class="info-box" id="sponsor">
+	<p class="cerise head" style="text-align: center">
+        {% if request.args.get('language') == 'en'%}
+            A BIG THANK YOU TO OUR <b>MAIN SPONSOR 2020 </b>
+        {% else %}
+            STORT TACK TILL VÅR <b>HUVUDSPONSOR 2020</b>
+        {% endif %}
+        <br>
+        <br>
+    </p>
+    <!--<img class = "main-sponsor" src="{{ url_for('static', filename='Ddagen+Ericsson.png') }}"  alt="D-Dagen <3 Ericsson"/>!-->
+    <div class="main-sponsor-row">
+        <div class="main-sponsor-column">
+          <img src="{{ url_for('static', filename='Ddagen_long.png') }}" alt="Ddagen" style="width:100%; margin-top:10%;">
+        </div>
+        <div class="main-sponsor-column" >
+          <img src="{{ url_for('static', filename='Heart.png') }}" alt="Heart" style="width:50%; display: block;margin-left: auto;margin-right: auto;">
+        </div>
+        <div class="main-sponsor-column">
+          <img  src="{{ url_for('static', filename='Ericsson_long.png') }}" alt="Ericsson" style="width:100%;margin-top:10%;">
+        </div>
+      </div>
+</div>
+
 <div class="info-box" id="contact">
 	<p class="cerise head" style="text-align: center">
         {% if request.args.get('language') == 'en'%}
@@ -120,12 +206,12 @@
             <p class="cerise"><b>Andreas Wallström<br>Julia Byström</b></p>
 			<p>
             {% if request.args.get('language') == 'en'%}
-                Project Leader for D-Dagen
+                Project Leaders for D-Dagen
             {% else %}
-                D-Dagenansvarig
+                D-Dagenansvariga
             {% endif %}
             </p>
-			<a href="mailto:d-dagen@d.kth.se" class="cerise">d-dagen@d.kth.se</a>
+			<a href="mailto:projectmanager@ddagen.se" class="cerise">projectmanager@ddagen.se</a>
             <br>
             <br>
 
@@ -151,6 +237,100 @@
         </div>
 	</div>
 </div>
+
+<style>
+br {
+        line-height: 20%;
+     }
+</style>
+
+
+<div class="info-box" id="social-media">
+	<p class="cerise head" style="text-align: center">
+        {% if request.args.get('language') == 'en'%}
+            FOLLOW US ON SOCIAL MEDIA
+        {% else %}
+            FÖLJ OSS I SOCIALA MEDIER
+        {% endif %}
+    </p>
+	<div class="contact-list row">
+		<div class="col-sm-4">
+        
+		</div>
+		<div class="col-sm-4">
+			<a href="https://www.facebook.com/kongligddagen/"><i class="fa fa-facebook fa-3x fa-fw" ></i>&nbsp; /kongligddagen</a>
+            <br>
+            <a href="https://www.instagram.com/ddagenkth/"><i class="fa fa-instagram fa-3x fa-fw" ></i>&nbsp; /ddagenkth</a>
+            <br>
+            <a href="https://www.linkedin.com/company/kongligddagen/"><i class="fa fa-linkedin fa-3x fa-fw" ></i>&nbsp; /kongligddagen</a>
+            
+
+		</div>
+		<div class="col-sm-4">
+          
+        </div>
+    </div>
+</div>
+
+<div class="info-box" id="sponsorer">
+	<p class="cerise head" style="text-align: center">
+        {% if request.args.get('language') == 'en'%}
+            A BIG THANK YOU TO OUR <b>SPONSORS 2020 </b>
+        {% else %}
+            STORT TACK TILL VÅRA <b>SPONSORER 2020</b>
+        {% endif %}
+        <br>
+        <br>
+    </p>
+    <!--<img class = "main-sponsor" src="{{ url_for('static', filename='Ddagen+Ericsson.png') }}"  alt="D-Dagen <3 Ericsson"/>!-->
+    <div class="pr-image-container">
+        <div class="portrait">
+          <img src="{{ url_for('static', filename='sponsorer/carmenta.jpg') }}" alt="Ddagen" style=" margin-top:30%;">
+        </div>
+        <div class="portrait" >
+          <img src="{{ url_for('static', filename='sponsorer/ida.png') }}" alt="Heart" style=" margin-top:30%;">
+        </div>
+        <div class="portrait">
+          <img  src="{{ url_for('static', filename='sponsorer/syntronic.jpg') }}" alt="Ericsson"style=" margin-top:30%;" >
+        </div>
+      </div>
+      <div class="pr-image-container">
+        <div class="portrait" >
+          <img src="{{ url_for('static', filename='sponsorer/metaforce.png') }}" alt="Heart" style=" margin-top:55%; ">
+        </div>
+        <div class="portrait">
+            <img src="{{ url_for('static', filename='sponsorer/if.png') }}" alt="Ddagen" style=" margin-top:6%;">
+          </div>
+        <div class="portrait">
+            <img  src="{{ url_for('static', filename='sponsorer/sakerhetspolisen.jpg') }}" alt="Ericsson" >
+          </div>
+        
+        
+      </div>
+</div>
+
+
+
+
+<!--
+<div class = "social-box" style=" text-align: center;">
+    <h2 style=" text-align: center;" >
+        {% if request.args.get('language') == 'en'%}
+            FOLLOW US ON SOCIAL MEDIA
+        {% else %}
+            FÖLJ OSS I SOCIALA MEDIER
+        {% endif %}
+    </h2>
+    <br>
+         <ul>
+         <li><a href="https://www.facebook.com/kongligddagen/"><i class="fa fa-facebook fa-3x fa-fw" ></i>&nbsp; /kongligddagen</a></li>
+         <li><a href="https://www.instagram.com/ddagenkth/"><i class="fa fa-instagram fa-3x fa-fw" ></i>&nbsp; /ddagenkth</a></li>
+        <li><a href="https://www.linkedin.com/company/kongligddagen/"><i class="fa fa-linkedin fa-3x fa-fw" ></i>&nbsp; /kongligddagen</a></li>
+        </ul>
+    </div>
+-->
+
+
 <div id="footer">
 	<div id="footer-container" class="row">
 		<div class="col-sm-6 col-md-6 text">
