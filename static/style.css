@@ -118,7 +118,7 @@ ul#menu {
 
 #shield {
     text-align: center;
-    margin-top: 125px;
+    margin-top: 15px;
     margin-bottom: 125px;
     font-weight: 600;
 }
@@ -859,7 +859,7 @@ vertical-align: middle;
     }
 
     #shield {
-        margin-top: 0;
+        margin-top: 5px;
         font-size: 16px;
     }
 
