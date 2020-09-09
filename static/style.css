@@ -8,7 +8,7 @@
 @media (min-width: 600px) {
     #home_body {
         background-size: cover;
-        background: url(/static/bakgrund.jpg) fixed center;
+        background: url(/static/bakgrund.png) fixed center;
     }
 }
 
