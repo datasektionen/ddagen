@@ -498,6 +498,7 @@ p.info-text {
 
 img.greeting-portrait {
     margin-top: 40px;
+    width:550px;
     
       
 }
@@ -701,8 +702,22 @@ vertical-align: middle;
     }
 
     img.greeting-portrait {
-      width: 40%;
+        width: 200px;
+        margin-top:20px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    
+      }
+
+    
+    .greeting-column{
+        width: 100%;
     }
+
+    
+
+    
 
     .info-box {
         width: 90%;
@@ -715,17 +730,16 @@ vertical-align: middle;
         width: 100%;
     }
     img.greeting-portrait {
-      width: 50%;
+      width: 100%;
+      
     }
+   
 
     .info-box {
         width: 90%;
         padding: 20px;
     }
 
-    
-
-   
 }
 
 @media (max-width: 768px) {
@@ -747,10 +761,11 @@ vertical-align: middle;
 
     img.greeting-portrait {
       width: 100%;
+      margin-top: 20px;
     }
 
     #shield {
-        margin-top: 150px;
+        margin-top: 100px;
     }
 
     #shield img {
@@ -839,6 +854,7 @@ vertical-align: middle;
 
     img.greeting-portrait {
       width: 100%;
+      margin-top: 10px;
     }
 
     .main-sponsor{
@@ -861,7 +877,7 @@ vertical-align: middle;
     }
 
     #shield {
-        margin-top: 5px;
+        margin-top: 20px;
         font-size: 16px;
     }
 
@@ -874,11 +890,13 @@ vertical-align: middle;
 
     .greeting-column{
         width: 100%;
+
     }
 
 
     img.greeting-portrait {
       width: 100%;
+      margin-top: 5px;
     }
 
     .main-sponsor{
@@ -888,5 +906,48 @@ vertical-align: middle;
     #time li { width: 60px; } /* On small screens, show one list item per row */
     #time-label li { width: 60px; } 
     #clock{width:300px;}
+
+}
+
+@media (max-width: 300px) {
+    #intro > img {
+        margin-bottom: 60px;
+        min-width: 250px;
+    }
+
+    #shield {
+        margin-top: 20px;
+        font-size: 16px;
+    }
+
+    
+
+    .info-box .head {
+        font-size: 1em;
+        margin-bottom: 0;
+        font-weight: 200;
+    }
+    #huvudsponsor {
+      margin-right: auto;
+    }
+
+    .greeting-column{
+        width: 100%;
+
+    }
+
+
+    img.greeting-portrait {
+      width: 100%;
+      margin-top: 5px;
+    }
+
+    .main-sponsor{
+        width: 100px;
+    }
+
+    #time li { width: 50px; } /* On small screens, show one list item per row */
+    #time-label li { width: 50px;font-size:10px; } 
+    #clock{width:250px;}
 
 }
