@@ -602,21 +602,30 @@ img.greeting-portrait {
     display: table;
   }
 
-ul {
+  ul {
     overflow: auto;
-    
+    list-style-type: none;
     margin: 0;
     padding: 0;
     display: inline;
     
 }
-
-li{
-    margin-bottom : 1em;
+ 
+ul li {
+    list-style-type: none;
+    
+    
+    
 }
  
 .li_indent{
     margin-left : 1em;
+    margin-top : 1em;
+    margin-bottom:1em;
+}
+
+.li_contract{
+    margin-bottom:1em;
 }
 
 .fa-3x {
@@ -648,6 +657,8 @@ vertical-align: middle;
     font-size:20px;
     text-shadow: 2px 2px #ff0000;
     color:rgb(255, 255, 255);
+    margin-bottom : 0.8em;
+    margin-top:0.5em;
   }
   
   #time-label li{
