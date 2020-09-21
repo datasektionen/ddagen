@@ -230,6 +230,8 @@ ul#menu {
         margin-right: 15%;
     }
 }
+
+
 .event-box a {
     color: #e83d84;
 }
@@ -602,18 +604,21 @@ img.greeting-portrait {
 
 ul {
     overflow: auto;
-    list-style-type: none;
+    
     margin: 0;
     padding: 0;
     display: inline;
     
 }
- 
-ul li {
-    list-style-type: none;
-    
-    
+
+li{
+    margin-bottom : 1em;
 }
+ 
+.li_indent{
+    margin-left : 1em;
+}
+
 .fa-3x {
 vertical-align: middle;
 }
@@ -693,6 +698,7 @@ vertical-align: middle;
     #flex-boxes {
         display: block;
         margin-left: 10px;
+        margin-right: 10px;
     }
 
     .flex-box {
