@@ -167,6 +167,19 @@ var x = setInterval(function() {
 {% block content %}{% endblock %}
 {% block footer %}
 
+<div class="info-box">
+    {% if request.args.get('language') == 'en'%}
+        <p class="cerise head">WORK AT THE FAIR</p><br>
+        <p class="lato-black">The recruitment for D-dagen 2020 has now started! </p>
+        <p>Join us in creating D-dagen 2020, the first digital D-dagen ever. During the day of the fair the 5th of November we will arrange several events, hand out coffee, goodiebags and a lot of other things. The last day to apply is the 1st of October. The application and information about the fair and roles is in this <a href="https://docs.google.com/forms/d/e/1FAIpQLSd9sB8SIFN_X1XlkoLHE2mem8HFgryaY8wBFLb29_fBQV7C9g/viewform?usp=sf_link" target="_blank">form</a>.</p>
+            
+        {% else %}
+        <p class="cerise head">JOBBA PÅ MÄSSAN</p><br>
+        <p class="lato-black">Nu har rekryteringen inför D-Dagen 2020 påbörjats!</p>
+        <p>Var med och hjälp oss att skapa D-Dagen 2020 den första digitala D-Dagen någonsin. Under mässdagen den 5 november kommer vi ha flera event, dela ut kaffe, goodiebags och massa mer. Sista dagen att anmäla sig är den 1 Oktober. Ansökan samt mer information om mässan och roller finns i <a href="https://docs.google.com/forms/d/e/1FAIpQLSd9sB8SIFN_X1XlkoLHE2mem8HFgryaY8wBFLb29_fBQV7C9g/viewform?usp=sf_link" target="_blank">formuläret</a>.</p>
+        {% endif %}
+</div>
+
 <div class="info-box" id="sponsor">
 	<p class="cerise head" style="text-align: center">
         {% if request.args.get('language') == 'en'%}

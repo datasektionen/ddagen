@@ -164,7 +164,7 @@ def favicon():
 @app.route("/sok")
 def sok():
      """ Redirect to application of working at the fair for D-Dagen 2020"""
-     return redirect('https://docs.google.com/forms/d/e/1FAIpQLSe2tBIeOxCuqNjJdXpB6GRn03XVo-xtpuuh0rniuphEhkkG_w/viewform', code=302)
+     return redirect('https://docs.google.com/forms/d/e/1FAIpQLSd9sB8SIFN_X1XlkoLHE2mem8HFgryaY8wBFLb29_fBQV7C9g/viewform?usp=sf_link', code=302)
 
 
 @app.route('/apply')
