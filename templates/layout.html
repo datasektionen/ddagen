@@ -48,6 +48,7 @@
             <li><a href="{{ url_for('companies', language='en') }}">Companies</a></li>
             <li><a href="{{ url_for('faq', language='en') }}">FAQ</a></li>
             <li><a href="{{ url_for('contact', language='en') }}">Contact us</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://digital.ddagen.se/">Digital platform</a></li>
             <li class="select-language-menu-item">
                 <a href="{{ url_for(request.endpoint, language='sv') if request.endpoint else url_for('index', language='sv') }}">
                     <img style="width: 32px" src="{{ url_for('static', filename='swe_flag.svg') }}" alt="Svenska"/>
@@ -62,6 +63,7 @@
             <li><a href="{{ url_for('companies') }}">Företag</a></li>
             <li><a href="{{ url_for('faq') }}">FAQ</a></li>
             <li><a href="{{ url_for('contact') }}">Kontakta Oss</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://digital.ddagen.se/">Den digitala plattformen</a></li>
             <li class="select-language-menu-item">
                 <a href="{{ url_for(request.endpoint, language='en') if request.endpoint else url_for('index', language='en') }}">
                     <img style="width: 32px" src="{{ url_for('static', filename='eng_flag.svg') }}" alt="English"/>
