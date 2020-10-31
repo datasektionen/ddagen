@@ -383,6 +383,8 @@ p.info-text {
 .portrait {
     float: left;
     text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
    
     
 }
