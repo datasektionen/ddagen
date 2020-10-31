@@ -1,10 +1,162 @@
 {% extends "layout.html" %}
 
 {% block intro_full %}
-<h1 class="lato-bold yellow-shadow2" id="intro-header">Companies</h1>
+<h1 class="lato-bold yellow-shadow2" id="intro-header">Companies 2020</h1>
 {% endblock intro_full %}
 
 {% block content %}
+
+<div class="info-box" id="companies">
+
+  <div class = "pr-image-container">
+   
+    <div class="portrait">
+      <img src="{{ url_for('static', filename='companies_2020/ericsson.png') }}" >
+    </div>
+   
+
+  </div>
+  <br>
+  
+	
+  <div class="pr-image-container">
+        
+        
+        
+        <div class="portrait">
+          <img  src="{{ url_for('static', filename='companies_2020/avalanche.png') }}"style=" margin-top:5%;">
+        </div>
+        <div class="portrait">
+            <img  src="{{ url_for('static', filename='companies_2020/bontouch.svg') }}"style=" margin-top:5%;">
+          </div>
+          <div class="portrait">
+            <img  src="{{ url_for('static', filename='companies_2020/carmenta.png') }}"style=" margin-top:10%;">
+          </div>
+          
+          <div class="portrait">
+            <img  src="{{ url_for('static', filename='companies_2020/digpro.svg') }}">
+          </div>
+      </div>
+      <br>
+      <div class="pr-image-container">
+        <div class="portrait">
+          <img  src="{{ url_for('static', filename='companies_2020/visma.png') }}"style=" margin-top:10%;">
+        </div>
+        
+        <div class="portrait">
+          <img  src="{{ url_for('static', filename='companies_2020/cygni.png') }}" style=" margin-top:20%;">
+        </div>
+        <div class="portrait">
+          <img  src="{{ url_for('static', filename='companies_2020/decerno.png') }}" style=" margin-top:30%;">
+        </div>
+        <div class="portrait">
+          <img  src="{{ url_for('static', filename='companies_2020/del.png') }}"style=" margin-top:30%;">
+        </div>
+      </div>
+      <div class="pr-image-container">
+        <div class="portrait">
+          <img  src="{{ url_for('static', filename='companies_2020/futurice.svg') }}"style=" margin-top:40%;">
+        </div>
+        
+        <div class="portrait">
+          <img  src="{{ url_for('static', filename='companies_2020/ea_dice.png') }}">
+        </div>
+        <div class="portrait">
+          <img  src="{{ url_for('static', filename='companies_2020/svt.png') }}"style=" margin-top:20%;">
+        </div>
+        <div class="portrait">
+          <img  src="{{ url_for('static', filename='companies_2020/scania.png') }}"style=" margin-top:20%;">
+        </div>
+        
+
+      </div>
+
+      <div class = "pr-image-container">
+
+        <div class="portrait">
+          <img  src="{{ url_for('static', filename='companies_2020/toptracer.svg') }}">
+        </div>
+        
+        <div class="portrait">
+          <img  src="{{ url_for('static', filename='companies_2020/hw.jpeg') }}">
+        </div>
+        <div class="portrait">
+          <img  src="{{ url_for('static', filename='companies_2020/if.png') }}"style=" margin-top:-10%;">
+        </div>
+        <div class="portrait">
+          <img  src="{{ url_for('static', filename='companies_2020/king.png') }}"style=" margin-top:10%;">
+        </div>
+
+      </div>
+      <br>
+      <div class = "pr-image-container">
+        <div class="portrait">
+          <img  src="{{ url_for('static', filename='companies_2020/nl.png') }}">
+        </div>
+        <div class="portrait">
+          <img  src="{{ url_for('static', filename='companies_2020/nore.png') }}">
+        </div>
+        <div class="portrait">
+          <img  src="{{ url_for('static', filename='companies_2020/omegapoint.png') }}"style=" margin-top:-20%;">
+        </div>
+        <div class="portrait">
+          <img  src="{{ url_for('static', filename='companies_2020/saab.png') }}"style=" margin-top:-5%;">
+        </div>
+
+
+      </div>
+      <br>
+      <div class = "pr-image-container">
+        <div class="portrait">
+          <img  src="{{ url_for('static', filename='companies_2020/savelend.svg') }}">
+        </div>
+        
+        <div class="portrait">
+          <img  src="{{ url_for('static', filename='companies_2020/schibsted.png') }}">
+        </div>
+        <div class="portrait">
+          <img  src="{{ url_for('static', filename='companies_2020/sentor.png') }}"style=" margin-top:-5%;">
+        </div>
+        <div class="portrait" >
+          <img src="{{ url_for('static', filename='companies_2020/accenture.png') }}" style=" margin-top:-15%;">
+        </div>
+
+      </div>
+      <br>
+      <div class = "pr-image-container">
+        <div class="portrait">
+          <img  src="{{ url_for('static', filename='companies_2020/sigma.jpg') }}">
+        </div>
+        <div class="portrait">
+          <img  src="{{ url_for('static', filename='companies_2020/skv.png') }}"style=" margin-top:-10%;">
+        </div>
+        <div class="portrait">
+          <img  src="{{ url_for('static', filename='companies_2020/sopra.png') }}"style=" margin-top:10%;">
+        </div>
+        <div class="portrait">
+          <img  src="{{ url_for('static', filename='companies_2020/subset.svg') }}">
+        </div>
+
+      </div>
+      <br>
+      <div class = "pr-image-container">
+        <div class="portrait">
+          <img  src="{{ url_for('static', filename='companies_2020/sv_kraft.png') }}">
+        </div>
+        
+        <div class="portrait">
+          <img  src="{{ url_for('static', filename='companies_2020/syntronic.png') }}"style=" margin-top:10%;">
+        </div>
+        <div class="portrait">
+          <img  src="{{ url_for('static', filename='companies_2020/gd.png') }}">
+        </div>
+        
+      </div>
+      
+
+</div>
+
+<!--
 
 <div class="info" id="interest">
     <h2 class="lato-bold yellow-shadow2">APPLICATION</h2>
@@ -31,6 +183,8 @@
         <p>During the last step you will receive a signed contract from D-Dagen within 2 weeks from the date we received the contract. The application process is thus completed.</p>
     </div>
 </div>
+
+-->
 
 <!--
 
@@ -71,6 +225,8 @@
     <p>If you have any questions regarding this, contact us at <a href = "mailto:sales@ddagen.se">sales@ddagen.se</a></p>
 </div>
 -->
+
+<!--
 <div class="info-box">
     <p class="cerise head">Signed contract - What happens now?</p><br>
     <ul>
@@ -92,6 +248,8 @@
     <p class="info-text">If you want extra visibility for your company before D-dagen a perfect way to do this is to arrange events with the computer science chapter the days or the week before D-dagen. If you want to arange a lunch lecture or some other event you can contact NLG (the computer science chapters business group) at <a class="cerise" href="mailto:foretag@d.kth.se">foretag@d.kth.se</a>. State that you want to arrange an event in connection to D-dagen and they will handle the communication with you surrounding the event</p>
     <p class="lato-black">We wish you a warm welcome to D-dagen 2020!</p>
 </div>
+
+-->
 
 
 {% endblock %}
