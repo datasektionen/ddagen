@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, redirect, send_from_directory, make_response
-from scrape import *
+#from scrape import *
 
 
 app = Flask(__name__)
@@ -13,13 +13,14 @@ def index():
         return render_template('EN/index.html')
     else:
         return render_template('SV/index.html')
-    
+
+"""
 
 @app.route("/get_counter")
 def count():
     return str(get_count())
 
-
+"""
 @app.route('/companies')
 def companies():
     language = request.args.get('language')

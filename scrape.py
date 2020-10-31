@@ -1,4 +1,4 @@
-import requests
+"""import requests
 from bs4 import BeautifulSoup
 
 import requests
@@ -18,7 +18,7 @@ def get_count():
     return count.text
 
 
-
+"""
 
 
 
