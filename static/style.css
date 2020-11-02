@@ -392,6 +392,7 @@ p.info-text {
 .portrait-photo{
     float: left;
     text-align: center;
+    object-fit: fill;
     
 }
 
