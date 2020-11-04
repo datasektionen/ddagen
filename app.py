@@ -162,6 +162,18 @@ def interest_ddagen2020en():
     """ Redirect to application of interest for D-Dagen 2020 in english """
     return redirect('https://forms.gle/YHN4tJQxKvKMqHaZ7', code=302)
 
+@app.route("/competition-true-false")
+def comp_true_false():
+    return redirect('https://forms.gle/39kpBCiX6nBBv4SW7', code=302)
+
+@app.route("/competition-ericsson")
+def comp_ericsson():
+    return redirect('https://www.facebook.com/kongligddagen/posts/1430321623820394', code=302)
+
+@app.route("/competition-chat")
+def comp_chat():
+    return redirect('https://forms.gle/tYZay2SS6E6obRP26', code=302)
+
 @app.route("/map", methods=["GET"])
 def map():
         return send_from_directory("static/map", "map.html")
