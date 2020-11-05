@@ -170,6 +170,8 @@ var x = setInterval(function() {
         {% endif %}
         </span><!--<br><span class="lato-light">Nymble</span>--></h1>
         <br>
+
+        <!--
         <div id="clock">
             <div>
               <ul id=time>
@@ -195,6 +197,7 @@ var x = setInterval(function() {
               </ul>
             </div>
           </div>
+        -->
         <div><p id="shield"><img src="{{ url_for('static', filename='shield.png') }}" alt="">
         {% if request.args.get('language') == 'en'%}
             The Computer Science chapter's annual career fair
