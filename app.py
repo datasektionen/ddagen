@@ -174,6 +174,10 @@ def comp_ericsson():
 def comp_chat():
     return redirect('https://forms.gle/tYZay2SS6E6obRP26', code=302)
 
+@app.route("/goodiebag")
+def goodiebag():
+    return redirect('https://forms.gle/rSDaiVnUYwNu3DKo9', code=302)
+
 @app.route("/map", methods=["GET"])
 def map():
         return send_from_directory("static/map", "map.html")
