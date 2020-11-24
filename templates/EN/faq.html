@@ -8,8 +8,8 @@
 {% block content %}
 <div class="info-box">
     <p class="lato-black" align = "center">An introduction to Graduateland</p>    
-    <p align = "center"><iframe width="560" height="315" src="https://www.youtube.com/embed/AYt-2L9gOpo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
-    <p align = "center"><a href="/static/VirtualFairGuide.pdf" target="_blank">A step-by-step PDF guide on how to attend the virtual fair 2020</a></p>
+    <p class = "container_iframe"align = "center"><iframe class="resp-iframe"width="560" height="315" src="https://www.youtube.com/embed/AYt-2L9gOpo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+    
 </div>
 
 <h1 class="lato-bold yellow-shadow2" id="intro-header">FAQ</h1>
@@ -43,13 +43,13 @@
     </ul>
 
     <p class="lato-black">How many visitors usually attend D-Dagen?</p>
-	<p class="info-text">Last year D-Dagen had 2000 visitor.</p>
+	<p class="info-text">Last year D-Dagen had 2000 visitors.</p>
 
     <p class="lato-black">Who is D-dagen for?</p>
 	<p class="info-text">D-Dagen is for students active within the Computer Science and IT sector.</p>
 
     <p class="lato-black">Why should my company participate in D-Dagen?</p>
-	<p class="info-text">D-Dagen is an outstanding opportunity for Computer Science and IT companies to connect with students in different stages in their studies. Maybe you are looking for Master thesis students, part time employees, summer internships, or newly graduated MSc or PhD students? Do you want to boost your visibility as an employer, showcase your ongoing projects or share your corporate culture? Then don’t hesitate to apply to D-Dagen!</p>
+	<p class="info-text">D-Dagen is an outstanding opportunity for Computer Science and IT companies to connect with students in different stages in their studies. Maybe you are looking for Master thesis students, part time employees, summer interns, or newly graduated MSc or PhD students? Do you want to boost your visibility as an employer, showcase your ongoing projects or share your company culture? Then don’t hesitate to apply to D-Dagen!</p>
 
     <p class="lato-black">What else is there to do in connection to D-Dagen?</p>
     <p class="info-text">There is a possibility of arranging company events in connection to D-Dagen. Please contact
@@ -58,7 +58,7 @@
     
 
     <p class="lato-black">What is the D-Dagen catalogue and where can I find the catalogues from previous years?</p>
-	<p class="info-text">The D-Dagen catalogue is given out to visitors in connection with the event every year. It is a collection of the most important information about the fair as well as information about the participating companies. The catalogue contains a map over the placement of the company booths. This year the catalogue will be available in an electronic format at ddagen.se and only a condensed brochure will be printed in order to minimize our climate impact. The electronic catalogue will also allow for search- and filter functions will increase the usability.
+	<p class="info-text">The <a href="{{ url_for('static', filename='katalog2020.pdf') }}">D-Dagen catalogue </a> is given out to visitors in connection with the event every year. It is a collection of the most important information about the fair as well as information about the participating companies. The catalogue contains a map over the placement of the company booths. This year the catalogue will be available in an electronic format at ddagen.se and only a condensed brochure will be printed in order to minimize our climate impact. The electronic catalogue will also allow for search- and filter functions and will increase the usability.
     <br>
     Catalogues from previous years:
         <ul>

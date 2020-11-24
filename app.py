@@ -1,4 +1,6 @@
-from flask import Flask, request, render_template, redirect, send_from_directory
+from flask import Flask, request, render_template, redirect, send_from_directory, make_response
+#from scrape import *
+
 
 app = Flask(__name__)
 
@@ -6,12 +8,19 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     language = request.args.get('language')
+  
     if language == 'en':
         return render_template('EN/index.html')
     else:
         return render_template('SV/index.html')
 
+"""
 
+@app.route("/get_counter")
+def count():
+    return str(get_count())
+
+"""
 @app.route('/companies')
 def companies():
     language = request.args.get('language')
@@ -153,6 +162,22 @@ def interest_ddagen2020en():
     """ Redirect to application of interest for D-Dagen 2020 in english """
     return redirect('https://forms.gle/YHN4tJQxKvKMqHaZ7', code=302)
 
+@app.route("/competition-true-false")
+def comp_true_false():
+    return redirect('https://forms.gle/39kpBCiX6nBBv4SW7', code=302)
+
+@app.route("/competition-ericsson")
+def comp_ericsson():
+    return redirect('https://www.facebook.com/kongligddagen/posts/1430321623820394', code=302)
+
+@app.route("/competition-chat")
+def comp_chat():
+    return redirect('https://forms.gle/tYZay2SS6E6obRP26', code=302)
+
+@app.route("/goodiebag")
+def goodiebag():
+    return redirect('https://forms.gle/rSDaiVnUYwNu3DKo9', code=302)
+
 @app.route("/map", methods=["GET"])
 def map():
         return send_from_directory("static/map", "map.html")
@@ -164,7 +189,7 @@ def favicon():
 @app.route("/sok")
 def sok():
      """ Redirect to application of working at the fair for D-Dagen 2020"""
-     return redirect('https://docs.google.com/forms/d/e/1FAIpQLSe2tBIeOxCuqNjJdXpB6GRn03XVo-xtpuuh0rniuphEhkkG_w/viewform', code=302)
+     return redirect('https://docs.google.com/forms/d/e/1FAIpQLSd9sB8SIFN_X1XlkoLHE2mem8HFgryaY8wBFLb29_fBQV7C9g/viewform?usp=sf_link', code=302)
 
 
 @app.route('/apply')

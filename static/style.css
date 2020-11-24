@@ -8,7 +8,7 @@
 @media (min-width: 600px) {
     #home_body {
         background-size: cover;
-        background: url(/static/bakgrund.jpg) fixed center;
+        background: url(/static/bakgrund.png) fixed center;
     }
 }
 
@@ -118,7 +118,7 @@ ul#menu {
 
 #shield {
     text-align: center;
-    margin-top: 125px;
+    margin-top: 15px;
     margin-bottom: 125px;
     font-weight: 600;
 }
@@ -230,6 +230,8 @@ ul#menu {
         margin-right: 15%;
     }
 }
+
+
 .event-box a {
     color: #e83d84;
 }
@@ -364,6 +366,8 @@ p.info-text {
     margin-bottom: 60px;
 }
 
+
+
 .pr-image-container {
     display: flex;
     justify-content: space-evenly;
@@ -379,12 +383,16 @@ p.info-text {
 .portrait {
     float: left;
     text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+   
     
 }
 
 .portrait-photo{
     float: left;
     text-align: center;
+    object-fit: fill;
     
 }
 
@@ -496,6 +504,7 @@ p.info-text {
 
 img.greeting-portrait {
     margin-top: 40px;
+    width:550px;
     
       
 }
@@ -597,7 +606,7 @@ img.greeting-portrait {
     display: table;
   }
 
-ul {
+  ul {
     overflow: auto;
     list-style-type: none;
     margin: 0;
@@ -610,7 +619,19 @@ ul li {
     list-style-type: none;
     
     
+    
 }
+ 
+.li_indent{
+    margin-left : 1em;
+    margin-top : 1em;
+    margin-bottom:1em;
+}
+
+.li_contract{
+    margin-bottom:1em;
+}
+
 .fa-3x {
 vertical-align: middle;
 }
@@ -640,6 +661,8 @@ vertical-align: middle;
     font-size:20px;
     text-shadow: 2px 2px #ff0000;
     color:rgb(255, 255, 255);
+    margin-bottom : 0.8em;
+    margin-top:0.5em;
   }
   
   #time-label li{
@@ -651,6 +674,22 @@ vertical-align: middle;
     text-shadow: 2px 2px #ff0000;
     list-style:none;
   }
+
+  .container_iframe {
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%;
+}
+
+.resp-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
 
 
 
@@ -674,6 +713,7 @@ vertical-align: middle;
     #flex-boxes {
         display: block;
         margin-left: 10px;
+        margin-right: 10px;
     }
 
     .flex-box {
@@ -683,8 +723,22 @@ vertical-align: middle;
     }
 
     img.greeting-portrait {
-      width: 40%;
+        width: 200px;
+        margin-top:20px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    
+      }
+
+    
+    .greeting-column{
+        width: 100%;
     }
+
+    
+
+    
 
     .info-box {
         width: 90%;
@@ -697,17 +751,16 @@ vertical-align: middle;
         width: 100%;
     }
     img.greeting-portrait {
-      width: 50%;
+      width: 100%;
+      
     }
+   
 
     .info-box {
         width: 90%;
         padding: 20px;
     }
 
-    
-
-   
 }
 
 @media (max-width: 768px) {
@@ -729,10 +782,11 @@ vertical-align: middle;
 
     img.greeting-portrait {
       width: 100%;
+      margin-top: 20px;
     }
 
     #shield {
-        margin-top: 150px;
+        margin-top: 100px;
     }
 
     #shield img {
@@ -821,6 +875,7 @@ vertical-align: middle;
 
     img.greeting-portrait {
       width: 100%;
+      margin-top: 10px;
     }
 
     .main-sponsor{
@@ -843,7 +898,7 @@ vertical-align: middle;
     }
 
     #shield {
-        margin-top: 0;
+        margin-top: 20px;
         font-size: 16px;
     }
 
@@ -856,11 +911,13 @@ vertical-align: middle;
 
     .greeting-column{
         width: 100%;
+
     }
 
 
     img.greeting-portrait {
       width: 100%;
+      margin-top: 5px;
     }
 
     .main-sponsor{
@@ -870,5 +927,48 @@ vertical-align: middle;
     #time li { width: 60px; } /* On small screens, show one list item per row */
     #time-label li { width: 60px; } 
     #clock{width:300px;}
+
+}
+
+@media (max-width: 300px) {
+    #intro > img {
+        margin-bottom: 60px;
+        min-width: 250px;
+    }
+
+    #shield {
+        margin-top: 20px;
+        font-size: 16px;
+    }
+
+    
+
+    .info-box .head {
+        font-size: 1em;
+        margin-bottom: 0;
+        font-weight: 200;
+    }
+    #huvudsponsor {
+      margin-right: auto;
+    }
+
+    .greeting-column{
+        width: 100%;
+
+    }
+
+
+    img.greeting-portrait {
+      width: 100%;
+      margin-top: 5px;
+    }
+
+    .main-sponsor{
+        width: 100px;
+    }
+
+    #time li { width: 50px; } /* On small screens, show one list item per row */
+    #time-label li { width: 50px;font-size:10px; } 
+    #clock{width:250px;}
 
 }

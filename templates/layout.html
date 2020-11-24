@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-177853051-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-177853051-1');
+    </script>
+
 	<meta charset="UTF-8">
 	<meta name="theme-color" content="#e83d84">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +27,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato:400,600,900" rel="stylesheet">
 	<link rel="stylesheet" href="//aurora.datasektionen.se/" type="text/css" />
     <!--<link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}"/>-->
-    <link rel="stylesheet" href="/static/style.css?v=2.1243"/>
+    <link rel="stylesheet" href="/static/style.css?v=4.349590927"/>
     <!-- Add icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="{{ url_for('static', filename='smooth-scroll.min.js') }}"></script>
@@ -36,8 +46,10 @@
             <!--<li><a href="{{ url_for('events', language='en') }}">Events</a></li>-->
             <!--<li><a href="{{ url_for('visitors', language='en') }}">Visitors</a></li>-->
             <li><a href="{{ url_for('companies', language='en') }}">Companies</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="{{ url_for('static', filename='katalog2020.pdf') }}">Catalogue</a></li>
             <li><a href="{{ url_for('faq', language='en') }}">FAQ</a></li>
             <li><a href="{{ url_for('contact', language='en') }}">Contact us</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://digital.ddagen.se/">Digital platform</a></li>
             <li class="select-language-menu-item">
                 <a href="{{ url_for(request.endpoint, language='sv') if request.endpoint else url_for('index', language='sv') }}">
                     <img style="width: 32px" src="{{ url_for('static', filename='swe_flag.svg') }}" alt="Svenska"/>
@@ -50,8 +62,10 @@
             <!--<li><a href="{{ url_for('events') }}">Event</a></li>-->
             <!--<li><a href="{{ url_for('visitors') }}">Besökare</a></li>-->
             <li><a href="{{ url_for('companies') }}">Företag</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="{{ url_for('static', filename='katalog2020.pdf') }}">Katalog</a></li>
             <li><a href="{{ url_for('faq') }}">FAQ</a></li>
-            <li><a href="{{ url_for('contact') }}">Kontakta Oss</a></li>
+            <li><a href="{{ url_for('contact') }}">Kontakta oss</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://digital.ddagen.se/">Den digitala plattformen</a></li>
             <li class="select-language-menu-item">
                 <a href="{{ url_for(request.endpoint, language='en') if request.endpoint else url_for('index', language='en') }}">
                     <img style="width: 32px" src="{{ url_for('static', filename='eng_flag.svg') }}" alt="English"/>
@@ -66,14 +80,43 @@
 
 <script>
 
-var countDownDate = new Date("Nov 5, 2020 23:59:59").getTime();
+var countDownDate = new Date("Nov 5, 2020 10:00:00").getTime();
 
-var days, hours, minutes, seconds;
+var days, hours, minutes, seconds,count;
 
 var daysTimer = document.getElementById("dayTimer");
 var hoursTimer = document.getElementById("hourTimer");
 var minutesTimer = document.getElementById("minuteTimer");
 var secondsTimer = document.getElementById("secondTimer");
+
+
+/*
+
+var y = setInterval(function() {
+
+    var countClicker = document.getElementById("countClicker");
+    
+    function loadDoc() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(this.responseText)
+            count= this.responseText
+            countClicker.innerHTML = count
+            }
+        };
+        xhttp.open("GET", "get_counter", true);
+        xhttp.send();
+    }
+
+    loadDoc();
+
+}, 1000);
+
+*/
+
+
+
 
 
 var x = setInterval(function() {
@@ -92,8 +135,16 @@ var x = setInterval(function() {
     minuteTimer.innerHTML = minutes;
     secondTimer.innerHTML = seconds;
 
+
+
+
  
 }, 1000);
+</script>
+
+<script>
+
+
 </script>
 
 {% block intro_full %}
@@ -104,6 +155,8 @@ var x = setInterval(function() {
         <span>
         {% if request.args.get('language') == 'en'%}
             Konglig Datasektionen at KTH proudly presents
+            <!--<li id = "countClicker"></li>-->
+            
         {% else %}
             Konglig Datasektionen vid KTH presenterar stolt
         {% endif %}
@@ -117,6 +170,8 @@ var x = setInterval(function() {
         {% endif %}
         </span><!--<br><span class="lato-light">Nymble</span>--></h1>
         <br>
+
+        <!--
         <div id="clock">
             <div>
               <ul id=time>
@@ -142,13 +197,14 @@ var x = setInterval(function() {
               </ul>
             </div>
           </div>
-        <p id="shield"><img src="{{ url_for('static', filename='shield.png') }}" alt="">
+        -->
+        <div><p id="shield"><img src="{{ url_for('static', filename='shield.png') }}" alt="">
         {% if request.args.get('language') == 'en'%}
             The Computer Science chapter's annual career fair
         {% else %}
             Datasektionens årliga arbetsmarknadsdag
         {% endif %}
-        </p>
+        </p></div>
         {% endblock intro %}
     </div>
 </div>
@@ -156,6 +212,8 @@ var x = setInterval(function() {
 {% endblock intro_full %}
 {% block content %}{% endblock %}
 {% block footer %}
+
+
 
 <div class="info-box" id="sponsor">
 	<p class="cerise head" style="text-align: center">
@@ -272,7 +330,7 @@ br {
     </div>
 </div>
 
-<!--
+
 <div class="info-box" id="sponsorer">
 	<p class="cerise head" style="text-align: center">
         {% if request.args.get('language') == 'en'%}
@@ -288,31 +346,52 @@ br {
     
   <div class="pr-image-container">
         <div class="portrait">
-          <img src="{{ url_for('static', filename='sponsorer/carmenta.jpg') }}" alt="Ddagen" style=" margin-top:30%;">
+          <img src="{{ url_for('static', filename='sponsorer_2020/gide.png') }}" alt="Ddagen" style=" margin-top:40%;">
         </div>
         <div class="portrait" >
-          <img src="{{ url_for('static', filename='sponsorer/ida.png') }}" alt="Heart" style=" margin-top:30%;">
+          <img src="{{ url_for('static', filename='sponsorer_2020/king.png') }}" alt="Heart" >
         </div>
         <div class="portrait">
-          <img  src="{{ url_for('static', filename='sponsorer/syntronic.jpg') }}" alt="Ericsson"style=" margin-top:30%;" >
+          <img  src="{{ url_for('static', filename='sponsorer_2020/metricio.svg') }}" alt="Ericsson"style=" margin-top:40%;" >
         </div>
+        <div class="portrait">
+            <img  src="{{ url_for('static', filename='sponsorer_2020/savelend.svg') }}" alt="Ericsson"style=" margin-top:40%;" >
+          </div>
       </div>
       <div class="pr-image-container">
         <div class="portrait" >
-          <img src="{{ url_for('static', filename='sponsorer/metaforce.png') }}" alt="Heart" style=" margin-top:55%; ">
+          <img src="{{ url_for('static', filename='sponsorer_2020/nore.png') }}" alt="Heart" style=" margin-top:15%;">
         </div>
         <div class="portrait">
-            <img src="{{ url_for('static', filename='sponsorer/if.png') }}" alt="Ddagen" style=" margin-top:6%;">
+            <img src="{{ url_for('static', filename='sponsorer_2020/omicron.png') }}" alt="Ddagen" style=" margin-top:10%;">
           </div>
         <div class="portrait">
-            <img  src="{{ url_for('static', filename='sponsorer/sakerhetspolisen.jpg') }}" alt="Ericsson" >
+            <img  src="{{ url_for('static', filename='sponsorer_2020/oracle.png') }}" alt="Ericsson" >
           </div>
-        
-        
+          <div class="portrait">
+            <img  src="{{ url_for('static', filename='sponsorer_2020/schibsted.png') }}" alt="Ericsson" style=" margin-top:20%;">
+          </div>
       </div>
+      <div class="pr-image-container">
+        <div class="portrait">
+            
+          </div>
+        <div class="portrait">
+            <img  src="{{ url_for('static', filename='sponsorer_2020/visma.png') }}" alt="Ericsson" style=" margin-top:20%;" >
+          </div>
+          <div class="portrait">
+            <img  src="{{ url_for('static', filename='sponsorer_2020/voi.svg') }}" alt="Ericsson"style=" margin-top:20%;" >
+          </div>
+          <div class="portrait">
+            
+        </div>
+
+      </div>
+      
+
 </div>
 
--->
+
 
 
 <!--
