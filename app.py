@@ -162,18 +162,6 @@ def interest_ddagen2020en():
     """ Redirect to application of interest for D-Dagen 2020 in english """
     return redirect('https://forms.gle/YHN4tJQxKvKMqHaZ7', code=302)
 
-@app.route("/competition-true-false")
-def comp_true_false():
-    return redirect('https://forms.gle/39kpBCiX6nBBv4SW7', code=302)
-
-@app.route("/competition-ericsson")
-def comp_ericsson():
-    return redirect('https://www.facebook.com/kongligddagen/posts/1430321623820394', code=302)
-
-@app.route("/competition-chat")
-def comp_chat():
-    return redirect('https://forms.gle/tYZay2SS6E6obRP26', code=302)
-
 @app.route("/goodiebag")
 def goodiebag():
     return redirect('https://forms.gle/rSDaiVnUYwNu3DKo9', code=302)
@@ -188,8 +176,8 @@ def favicon():
 
 @app.route("/sok")
 def sok():
-     """ Redirect to application of working at the fair for D-Dagen 2020"""
-     return redirect('https://docs.google.com/forms/d/e/1FAIpQLSd9sB8SIFN_X1XlkoLHE2mem8HFgryaY8wBFLb29_fBQV7C9g/viewform?usp=sf_link', code=302)
+     """ Redirect to application of working at the fair for D-Dagen 2021"""
+     return redirect('https://forms.gle/cuoUwgQtcyJiZ79b8', code=302)
 
 
 @app.route('/apply')
