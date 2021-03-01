@@ -145,27 +145,29 @@ def adform():
     return redirect('https://docs.google.com/forms/d/e/1FAIpQLSf6nzrK90GzsuttVVK5O0iR9Kzls8MQy3t6fnGtHyVnhgND6A'
                     '/viewform?usp=sf_link', code=302)
 
-
+## Old Link
 @app.route("/claimbanquet")
 def claim_banquet_tickets():
     return redirect('https://forms.gle/AmCwxs8rRSAuSNSZ9', code=302)
 
+# This is where we redirect intrest for companies
+@app.route("/2021")
+def interest_ddagen2021():
+    """ Redirect to application of interest for D-Dagen 2021 in swedish """
+    return redirect('https://forms.gle/JtG9WcqH9BkGveHT7', code=302)
 
-@app.route("/2020")
-def interest_ddagen2020():
-    """ Redirect to application of interest for D-Dagen 2020 in swedish """
-    return redirect('https://forms.gle/pMMGNaQXVWYtAGga7', code=302)
 
-
-@app.route("/2020en")
+@app.route("/2021en")
 def interest_ddagen2020en():
-    """ Redirect to application of interest for D-Dagen 2020 in english """
-    return redirect('https://forms.gle/YHN4tJQxKvKMqHaZ7', code=302)
+    """ Redirect to application of interest for D-Dagen 2021 in english """
+    return redirect('https://forms.gle/JtG9WcqH9BkGveHT7', code=302)
 
-@app.route("/goodiebag")
-def goodiebag():
-    return redirect('https://forms.gle/rSDaiVnUYwNu3DKo9', code=302)
+@app.route("/intresseanmalan")
+def interest_ddagenintresseanmalan():
+    """ Redirect to application of interest for D-Dagen 2021 in english """
+    return redirect('https://forms.gle/JtG9WcqH9BkGveHT7', code=302)
 
+# This is redirect for the map
 @app.route("/map", methods=["GET"])
 def map():
         return send_from_directory("static/map", "map.html")
