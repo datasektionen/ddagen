@@ -141,9 +141,9 @@
         <img src="{{ url_for('static', filename='new-logo-white-ageless.svg') }}" alt=""><br>
         <h1><span class="lato-black">
         {% if request.args.get('language') == 'en'%}
-            5th of November 2020
+            7th of October 2021
         {% else %}
-            5 November 2020
+            7 Oktober 2021
         {% endif %}
         </span><!--<br><span class="lato-light">Nymble</span>--></h1>
         <br>
@@ -193,7 +193,7 @@
 
 
 
-<div class="info-box" id="sponsor">
+<div class="info-box" id="sponsor" hidden>
 	<p class="cerise head" style="text-align: center">
         {% if request.args.get('language') == 'en'%}
             A BIG THANK YOU TO OUR <b>MAIN SPONSOR 2020 </b>
@@ -203,7 +203,6 @@
         <br>
         <br>
     </p>
-    <!--<img class = "main-sponsor" src="{{ url_for('static', filename='Ddagen+Ericsson.png') }}"  alt="D-Dagen <3 Ericsson"/>!-->
     <div class="main-sponsor-row">
         <div class="main-sponsor-column">
           <img src="{{ url_for('static', filename='Ddagen_long.png') }}" alt="Ddagen" style="width:100%; margin-top:10%;">
@@ -239,7 +238,7 @@
             -->
 		</div>
 		<div class="col-sm-4">
-            <p class="cerise"><b>Andreas Wallström<br>Julia Byström</b></p>
+            <p class="cerise"><b>Adam Sjöberg<br>Erik Nordlöf</b></p>
 			<p>
             {% if request.args.get('language') == 'en'%}
                 Project Leaders for D-Dagen
@@ -309,7 +308,7 @@ br {
 </div>
 
 
-<div class="info-box" id="sponsorer">
+<div class="info-box" id="sponsorer" hidden>
 	<p class="cerise head" style="text-align: center">
         {% if request.args.get('language') == 'en'%}
             A BIG THANK YOU TO OUR <b>SPONSORS 2020 </b>
