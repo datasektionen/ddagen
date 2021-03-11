@@ -46,7 +46,7 @@
             <!--<li><a href="{{ url_for('events', language='en') }}">Events</a></li>-->
             <!--<li><a href="{{ url_for('visitors', language='en') }}">Visitors</a></li>-->
             <li><a href="{{ url_for('companies', language='en') }}">Companies</a></li>
-            <li><a target="_blank" rel="noopener noreferrer" href="{{ url_for('static', filename='katalog2020.pdf') }}">Catalogue</a></li>
+            <!-- <li><a target="_blank" rel="noopener noreferrer" href="{{ url_for('static', filename='katalog2020.pdf') }}">Catalogue</a></li> -->
             <li><a href="{{ url_for('faq', language='en') }}">FAQ</a></li>
             <li><a href="{{ url_for('contact', language='en') }}">Contact us</a></li>
             <li class="select-language-menu-item">
@@ -61,7 +61,7 @@
             <!--<li><a href="{{ url_for('events') }}">Event</a></li>-->
             <!--<li><a href="{{ url_for('visitors') }}">Besökare</a></li>-->
             <li><a href="{{ url_for('companies') }}">Företag</a></li>
-            <li><a target="_blank" rel="noopener noreferrer" href="{{ url_for('static', filename='katalog2020.pdf') }}">Katalog</a></li>
+            <!-- <li><a target="_blank" rel="noopener noreferrer" href="{{ url_for('static', filename='katalog2020.pdf') }}">Katalog</a></li> -->
             <li><a href="{{ url_for('faq') }}">FAQ</a></li>
             <li><a href="{{ url_for('contact') }}">Kontakta oss</a></li>
             <li class="select-language-menu-item">
@@ -93,7 +93,7 @@ var secondsTimer = document.getElementById("secondTimer");
 var y = setInterval(function() {
 
     var countClicker = document.getElementById("countClicker");
-    
+
     function loadDoc() {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
@@ -136,7 +136,7 @@ var x = setInterval(function() {
 
 
 
- 
+
 }, 1000);
 </script>
 
@@ -146,7 +146,7 @@ var x = setInterval(function() {
 </script>
 
 {% block intro_full %}
- 
+
 <div id="intro-box">
     <div id="intro">
         {% block intro %}
@@ -154,7 +154,7 @@ var x = setInterval(function() {
         {% if request.args.get('language') == 'en'%}
             Konglig Datasektionen at KTH proudly presents
             <!--<li id = "countClicker"></li>-->
-            
+
         {% else %}
             Konglig Datasektionen vid KTH presenterar stolt
         {% endif %}
@@ -311,7 +311,7 @@ br {
     </p>
 	<div class="contact-list row">
 		<div class="col-sm-4">
-        
+
 		</div>
 		<div class="col-sm-4">
 			<a href="https://www.facebook.com/kongligddagen/"><i class="fa fa-facebook fa-3x fa-fw" ></i>&nbsp; /kongligddagen</a>
@@ -319,11 +319,11 @@ br {
             <a href="https://www.instagram.com/ddagenkth/"><i class="fa fa-instagram fa-3x fa-fw" ></i>&nbsp; /ddagenkth</a>
             <br>
             <a href="https://www.linkedin.com/company/kongligddagen/"><i class="fa fa-linkedin fa-3x fa-fw" ></i>&nbsp; /kongligddagen</a>
-            
+
 
 		</div>
 		<div class="col-sm-4">
-          
+
         </div>
     </div>
 </div>
@@ -341,7 +341,7 @@ br {
     </p>
 
 
-    
+
   <div class="pr-image-container">
         <div class="portrait">
           <img src="{{ url_for('static', filename='sponsorer_2020/gide.png') }}" alt="Ddagen" style=" margin-top:40%;">
@@ -372,7 +372,7 @@ br {
       </div>
       <div class="pr-image-container">
         <div class="portrait">
-            
+
           </div>
         <div class="portrait">
             <img  src="{{ url_for('static', filename='sponsorer_2020/visma.png') }}" alt="Ericsson" style=" margin-top:20%;" >
@@ -381,11 +381,11 @@ br {
             <img  src="{{ url_for('static', filename='sponsorer_2020/voi.svg') }}" alt="Ericsson"style=" margin-top:20%;" >
           </div>
           <div class="portrait">
-            
+
         </div>
 
       </div>
-      
+
 
 </div>
 
