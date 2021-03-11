@@ -76,74 +76,53 @@
 
 
 
-<script>
+<!-- Scritp to update the countdown clock -->
+<!-- <script>
+    var countDownDate = new Date("Oct 7, 2021 10:00:00").getTime();
 
-var countDownDate = new Date("Nov 5, 2020 10:00:00").getTime();
+    var days, hours, minutes, seconds,count;
 
-var days, hours, minutes, seconds,count;
-
-var daysTimer = document.getElementById("dayTimer");
-var hoursTimer = document.getElementById("hourTimer");
-var minutesTimer = document.getElementById("minuteTimer");
-var secondsTimer = document.getElementById("secondTimer");
-
-
-/*
-
-var y = setInterval(function() {
-
-    var countClicker = document.getElementById("countClicker");
-
-    function loadDoc() {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                console.log(this.responseText)
-            count= this.responseText
-            countClicker.innerHTML = count
-            }
-        };
-        xhttp.open("GET", "get_counter", true);
-        xhttp.send();
-    }
-
-    loadDoc();
-
-}, 1000);
-
-*/
+    var daysTimer = document.getElementByqId("dayTimer");
+    var hoursTimer = document.getElementById("hourTimer");
+    var minutesTimer = document.getElementById("minuteTimer");
+    var secondsTimer = document.getElementById("secondTimer");
 
 
+    var y = setInterval(function() {
+        var countClicker = document.getElementById("countClicker");
 
+        function loadDoc() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(this.responseText)
+                count= this.responseText
+                countClicker.innerHTML = count
+                }
+            };
+            xhttp.open("GET", "get_counter", true);
+            xhttp.send();
+        }
 
+        loadDoc();
+    }, 1000);
 
-var x = setInterval(function() {
+    var x = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
 
-  var now = new Date().getTime();
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  var distance = countDownDate - now;
+            dayTimer.innerHTML = days;
+            hourTimer.innerHTML = hours;
+            minuteTimer.innerHTML = minutes;
+            secondTimer.innerHTML = seconds;
+    }, 1000);
+</script> -->
 
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    dayTimer.innerHTML = days;
-    hourTimer.innerHTML = hours;
-    minuteTimer.innerHTML = minutes;
-    secondTimer.innerHTML = seconds;
-
-
-
-
-
-}, 1000);
-</script>
-
-<script>
-
-
-</script>
 
 {% block intro_full %}
 
@@ -169,18 +148,19 @@ var x = setInterval(function() {
         </span><!--<br><span class="lato-light">Nymble</span>--></h1>
         <br>
 
-        <!--
-        <div id="clock">
+        
+        <!-- The countdown clock -->
+        <!-- <div id="clock">
             <div>
-              <ul id=time>
+                <ul id=time>
                 <li id="dayTimer"></li>
                 <li id="hourTimer"></li>
                 <li id="minuteTimer"></li>
                 <li id="secondTimer"></li>
-              </ul>
+                </ul>
             </div>
             <div>
-              <ul id="time-label" >
+                <ul id="time-label" >
                 {% if request.args.get('language') == 'en'%}
                 <li>days</li>
                 <li>hours</li>
@@ -192,10 +172,10 @@ var x = setInterval(function() {
                 <li>minuter</li>
                 <li>sekunder</li>
                 {% endif %}
-              </ul>
+                </ul>
             </div>
-          </div>
-        -->
+        </div> -->
+
         <div><p id="shield"><img src="{{ url_for('static', filename='shield.png') }}" alt="">
         {% if request.args.get('language') == 'en'%}
             The Computer Science chapter's annual career fair
