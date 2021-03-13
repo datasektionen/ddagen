@@ -1,12 +1,12 @@
 {% extends "layout.html" %}
 
 {% block intro_full %}
-<h1 class="lato-bold yellow-shadow2" id="intro-header">Companies 2020</h1>
+<h1 class="lato-bold yellow-shadow2" id="intro-header" hidden>Companies 2021</h1>
 {% endblock intro_full %}
 
 {% block content %}
 
-<div class="info-box" id="companies">
+<div class="info-box" id="companies" hidden>
 
   <div class = "pr-image-container">
    
@@ -166,11 +166,11 @@
 
 </div>
 
-<!--
 
+<!-- Anmälningsprocess -->
 <div class="info" id="interest">
     <h2 class="lato-bold yellow-shadow2">APPLICATION</h2>
-    <h3>The application process to exhibit on D-Dagen 2020 contains three steps:
+    <h3>The application process to exhibit on D-Dagen consists of three steps:
 </h3>
 </div>
 <div class="info" id="flex-boxes">
@@ -180,26 +180,27 @@
             After the form is submitted you will receive an email informing you if you have received a spot at the fair.
             If you have been allocated a spot, an agreement will be attached in the email.
         </p>
-        <p class="button-link"><a class="button" href="{{ url_for('industry') }}">Interest Form 2020</a></p>
+        <p class="button-link"><a class="button" href="{{ url_for('industry') }}">Interest Form 2021</a></p>
     </div>
 
     <div class="flex-box">
         <p class="cerise head">STEP 2</p>
-        <p>The next step is to sign the contract (including the order information form), scan it within three (3) weeks and send it to <a class="cerise" href="mailto:d-dagen@d.kth.se">d&#8209;dagen@d.kth.se</a> with the title “Contract D-Dagen 2020 - [Company name]”. Please note that if  we do not receive the contract within 3 weeks from the date the contract is sent, your spot in the fair will be removed. </p>
+        <p>The next step is to sign the contract (including the order information form), scan 
+          it within three (3) weeks and send it to <a class="cerise" href="mailto:d-dagen@d.kth.se">d&#8209;dagen@d.kth.se</a>
+           with the title “Contract D-Dagen 2021 - [Company name]”. Please note that if  we do not receive the contract 
+           within 3 weeks from the date the contract is sent, your spot in the fair will be removed. </p>
     </div>
 
     <div class="flex-box">
         <p class="cerise head">STEP 3</p>
-        <p>During the last step you will receive a signed contract from D-Dagen within 2 weeks from the date we received the contract. The application process is thus completed.</p>
+        <p>During the last step you will receive a signed contract from D-Dagen within 2 weeks 
+          from the date we received the contract. The application process is thus completed.</p>
     </div>
 </div>
 
--->
-
-<!--
-
+<!-- Utställningspaket -->
 <div class="info-box lato-light bigger-font" id="intro-other">
-    <p class="cerise head">EXHIBITION PACKAGES <b>D&#8209;DAGEN 2020</b></p>
+    <p class="cerise head">EXHIBITION PACKAGES <b>D&#8209;DAGEN 2021</b></p>
     <h2>BASE PACKAGE</h2>
     <ul>
         <li>An area of 5 m<sup>2</sup></li>
@@ -212,7 +213,8 @@
         <li>Receipt and storage of shipments</li>
     </ul>
     <h3>Price: 28 000 kr</h3>
-    <h2>STARTUP PACKAGE</h2>
+
+    <!-- <h2>STARTUP PACKAGE</h2>
     <p>This year we want to allocate a whole floor only for smaller startups. This will be on the top floor in conjunction with the rest of the fair with room for 16 companies. We have developed a special package which means that your startup, for 5000kr, get a spot on the startup-floor including everything in the regular base package, except for dinner tickets to the evening event. You will have the opportunity to purchase these tickets separately as far as space allows. This package is mainly for smaller startups that are either part of a startup hub or have been part of a startup competition in recent years. </p>
     <h3>Included in the startup package:</h3>
     <ul>
@@ -224,7 +226,8 @@
         <li>A company host who will assist you throughout the day</li>
         <li>Receipt and storage of shipments</li>
     </ul>
-    <h3>Price: 5 000 kr</h3>
+    <h3>Price: 5 000 kr</h3> -->
+
     <h2>Additional orders</h2>
     <ul>
         <li>1 table, 500 kr</li>
@@ -233,8 +236,12 @@
         <li>An extra company representative during the evening, 900 kr</li>
     </ul><br>
     <p>If you have any questions regarding this, contact us at <a href = "mailto:sales@ddagen.se">sales@ddagen.se</a></p>
+
+    <p class="cerise head">EVENTS</p><br>
+    <p>It's possible to hold events together with D-Dagen. Please contact us at <a
+            href="mailto:projectmanager@ddagen.se">projectmanager@ddagen.se</a> for more information.</p>
 </div>
--->
+
 
 <!--
 <div class="info-box">
