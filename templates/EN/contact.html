@@ -5,129 +5,157 @@
 {% endblock intro_full %}
 
 {% block content %}
+<!-- D-Dagen Ansvarig(a)  -->
 <div class="info-box">
     <div class="image-container project-leaders-image-container">
+        <!-- D-Dagen Ansvarig -->
         <div class="portrait-photo">
-            <img src="{{ url_for('static', filename='projektgruppen_bilder/julia.jpg') }}" alt="Julia Byström" />
-            <h3>Julia Byström</h3>
+            <img src="{{ url_for('static', filename='projektgruppen_bilder/erik.jpg') }}" alt="Erik Nordlöf" />
+            <h3>Erik Nordlöf</h3>
             <h5>Project Leader</h5>
             <a href="mailto:projectmanager@ddagen.se" class="cerise">projectmanager@ddagen.se</a>
         </div>
+        <!-- D-Dagen Ansvarig -->
         <div class="portrait-photo">
-            <img src="{{ url_for('static', filename='projektgruppen_bilder/andreas.jpg') }}" alt="Andreas Wallström" />
-            <h3>Andreas Wallström</h3>
+            <img src="{{ url_for('static', filename='projektgruppen_bilder/adam.jpg') }}" alt="Adam Sjöberg" />
+            <h3>Adam Sjöberg</h3>
             <h5>Project Leader</h5>
             <a href="mailto:projectmanager@ddagen.se" class="cerise">projectmanager@ddagen.se</a>
         </div>
     </div>
-  
-    <p class="cerise head image-container-text">Sales</p>
+ 
+    <!-- Säljgruppen  -->
+    <p class="cerise head image-container-text">Sälj</p>
     <div class="image-container">
+        <!-- Säljansvarig -->
         <div class="portrait-photo">
             <img src="{{ url_for('static', filename='projektgruppen_bilder/emmy.jpg') }}" alt="Emmy Yin" />
             <h3>Emmy Yin</h3>
             <h5>Head of Sales</h5>
             <a href="mailto:sales@ddagen.se" class="cerise">sales@ddagen.se</a>
         </div>
+        <!-- Säljare -->
         <div class="portrait-photo">
-            <img src="{{ url_for('static', filename='projektgruppen_bilder/douglas.jpg') }}" alt="Douglas Bengtsson" />
-            <h3>Douglas Bengtsson</h3>
+            <img src="{{ url_for('static', filename='maskot-bilder/alpa02-sälj.png') }}" alt="Markus Videfors" />
+            <h3>Markus Videfors</h3>
             <h5>Sales Associate</h5>
             <a href="mailto:sales@ddagen.se" class="cerise">sales@ddagen.se</a>
         </div>
-        <div class="portrait">
-            <img src="{{ url_for('static', filename='maskot-bilder/alpa02-sälj.png') }}" alt="Noah Mannberg" />
-            <h3>Noah Mannberg</h3>
+        <!-- Säljare -->
+        <div class="portrait-photo">
+            <img src="{{ url_for('static', filename='maskot-bilder/alpa02-sälj.png') }}" alt="Ludvig Siljeholm" />
+            <h3>Ludvig Siljeholm</h3>
+            <h5>Sales Associate</h5>
+            <a href="mailto:sales@ddagen.se" class="cerise">sales@ddagen.se</a>
+        </div>
+        <!-- Säljare -->
+        <div class="portrait-photo">
+            <img src="{{ url_for('static', filename='maskot-bilder/alpa02-sälj.png') }}" alt="Rickard Mårtensson" />
+            <h3>Rickard Mårtensson</h3>
             <h5>Sales Associate</h5>
             <a href="mailto:sales@ddagen.se" class="cerise">sales@ddagen.se</a>
         </div>
     </div>
 
-    <p class="cerise head image-container-text">Fair</p>
+    <!-- Mässgruppen  -->
+    <p class="cerise head image-container-text">Mässa</p>
     <div class="image-container">
+        <!-- Mässansvarig -->
         <div class="portrait-photo">
-            <img src="{{ url_for('static', filename='projektgruppen_bilder/emil.jpg') }}" alt="Emil Sörqvist" />
-            <h3>Emil Sörqvist</h3>
+            <img src="{{ url_for('static', filename='projektgruppen_bilder/marcus.jpg') }}" alt="Marcus Erlandsson" />
+            <h3>Marcus Erlandsson</h3>
             <h5>Head of Staff</h5>
             <a href="mailto:masschef@ddagen.se" class="cerise">masschef@ddagen.se</a>
         </div>
-        <div class="portrait">
+        <!-- Lokalansvarig -->
+        <div class="portrait-photo">
+            <img src="{{ url_for('static', filename='maskot-bilder/alpa02-lokalansvarig.png') }}" alt="Hanna Peters" />
+            <h3>Hanna Peters</h3>
+            <h5>Head of Venue</h5>
+            <a href="mailto:lokal@ddagen.se" class="cerise">lokal@ddagen.se</a>
+        </div>
+        <!-- Logistikansvarig -->
+        <div class="portrait-photo">
             <img src="{{ url_for('static', filename='maskot-bilder/alpa02-logistik.png') }}" alt="David Puustinen" />
             <h3>David Puustinen</h3>
             <h5>Head of Logistics</h5>
             <a href="mailto:logistik@ddagen.se" class="cerise">logistik@ddagen.se</a>
         </div>
-        
+        <!-- Loungeansvarig -->
         <div class="portrait-photo">
-            <img src="{{ url_for('static', filename='projektgruppen_bilder/marcus.jpg') }}" alt="Marcus Erlandsson" />
-            <h3>Marcus Erlandsson</h3>
-            <h5>Head of Venue</h5>
-            <a href="mailto:lokal@ddagen.se" class="cerise">lokal@ddagen.se</a>
-        </div>
-        <div class="portrait-photo">
-            <img src="{{ url_for('static', filename='projektgruppen_bilder/amanda.jpg') }}" alt="Amanda Berg" />
-            <h3>Amanda Berg</h3>
+            <img src="{{ url_for('static', filename='maskot-bilder/alpa02-lounge.png') }}" alt="Tim Jonsson" />
+            <h3>Tim Jonsson</h3>
             <h5>Head of Lounge</h5>
             <a href="mailto:lounge@ddagen.se" class="cerise">lounge@ddagen.se</a>
         </div>
-        
     </div>
-    <p class="cerise head image-container-text">Celebration</p>
+
+    <!-- Festgruppen -->
+    <p class="cerise head image-container-text">Fest</p>
     <div class="image-container">
+        <!-- Festansvarig -->
         <div class="portrait-photo">
-            <img src="{{ url_for('static', filename='projektgruppen_bilder/artin.jpg') }}" alt="Artin Mirzaian" />
-            <h3>Artin Mirzaian</h3>
+            <img src="{{ url_for('static', filename='maskot-bilder/alpa02-fest.png') }}" alt="Douglas Fischer" />
+            <h3>Douglas Fischer</h3>
             <h5>Head of Celebration</h5>
-            <a href="mailto:artin@ddagen.se" class="cerise">artin@ddagen.se</a>
+            <a href="mailto:fest@ddagen.se" class="cerise">fest@ddagen.se</a>
         </div>
+        <!-- Festansvarig -->
         <div class="portrait-photo">
-            <img src="{{ url_for('static', filename='projektgruppen_bilder/erik.jpg') }}" alt="Erik Nordlöf" />
-            <h3>Erik Nordlöf</h3>
+            <img src="{{ url_for('static', filename='maskot-bilder/alpa02-fest.png') }}" alt="Ebba Bråtman" />
+            <h3>Ebba Bråtman</h3>
             <h5>Head of Celebration</h5>
-            <a href="mailto:erik@ddagen.se" class="cerise">erik@ddagen.se</a>
+            <a href="mailto:fest@ddagen.se" class="cerise">fest@ddagen.se</a>
         </div>
     </div>
+
+    <!-- PRgruppen -->
     <p class="cerise head image-container-text">PR</p>
     <div class="pr-image-container">
+        <!-- PR-Ansvarig -->
         <div class="portrait-photo">
-            <img src="{{ url_for('static', filename='projektgruppen_bilder/adam.jpg') }}" alt="Adam Sjöberg" />
-            <h3>Adam Sjöberg</h3>
+            <img src="{{ url_for('static', filename='maskot-bilder/alpa02-pransvarig.png') }}" alt="Sara Strandberg" />
+            <h3>Sara Strandberg</h3>
             <h5>Head of PR</h5>
             <a href="mailto:pr@ddagen.se" class="cerise">pr@ddagen.se</a>
         </div>
+        <!-- Webbansvarig -->
         <div class="portrait-photo">
-            <img src="{{ url_for('static', filename='projektgruppen_bilder/sabrina.jpeg') }}" alt="Sabrina Chowdhury" />
-            <h3>Sabrina Chowdhury</h3>
+            <img src="{{ url_for('static', filename='maskot-bilder/alpa02-webansvarig.png') }}" alt="Pontus Söderlund" />
+            <h3>Pontus Söderlund</h3>
             <h5>Head of Web Development</h5>
             <a href="mailto:webb@ddagen.se" class="cerise">webb@ddagen.se</a>
         </div>
+        <!-- Art Director -->
         <div class="portrait-photo">
-            <img src="{{ url_for('static', filename='projektgruppen_bilder/michaela.jpg') }}" alt="Michaela Stjerndal" />
-            <h3>Michaela Stjerndal</h3>
+            <img src="{{ url_for('static', filename='maskot-bilder/alpa02-grafik.png') }}" alt="Amanda Hedlund" />
+            <h3>Amanda Hedlund</h3>
             <h5>Art Director</h5>
             <a href="mailto:graphics@ddagen.se" class="cerise">graphics@ddagen.se</a>
         </div>
     </div>
     <div class="pr-image-container">
-        <div class="portrait">
+        <!-- Fotoansvarig -->
+        <!-- <div class="portrait">
             <img src="{{ url_for('static', filename='maskot-bilder/alpa02-foto.png') }}" alt="André Brogärd" />
             <h3>André Brogärd</h3>
-            <h5>Head of Photo</h5>
+            <h5>Fotoansvarig</h5>
             <a href="mailto:photo@ddagen.se" class="cerise">photo@ddagen.se</a>
-        </div>
+        </div> -->
+        <!-- Socialmedieansvarig -->
         <div class="portrait-photo">
-            <img src="{{ url_for('static', filename='projektgruppen_bilder/siri.jpg') }}" alt="Siri Kilpeläinen Johansson" />
-            <h3>Siri Kilpeläinen Johansson</h3>
+            <img src="{{ url_for('static', filename='maskot-bilder/alpa02-socialamedier.png') }}" alt="Michael Morales Sundstedt" />
+            <h3>Michael Morales Sundstedt</h3>
             <h5>Head of Social Media</h5>
             <a href="mailto:socialmedia@ddagen.se" class="cerise">socialmedia@ddagen.se</a>
         </div>
+        <!-- Spons- och Tryckansvarig -->
         <div class="portrait-photo">
-            <img src="{{ url_for('static', filename='projektgruppen_bilder/fonzie.jpg') }}" alt="Fonzie Forsman" />
-            <h3>Fonzie Forsman</h3>
+            <img src="{{ url_for('static', filename='maskot-bilder/alpa02-tryck-sponsor.png') }}" alt="Ann Abeysekera" />
+            <h3>Ann Abeysekera</h3>
             <h5>Head of Sponsorship and Print</h5>
             <a href="mailto:sponsorship@ddagen.se" class="cerise">sponsorship@ddagen.se</a>
         </div>
     </div>
 </div>
-<br>
 {% endblock %}

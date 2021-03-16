@@ -46,7 +46,7 @@
             <!--<li><a href="{{ url_for('events', language='en') }}">Events</a></li>-->
             <!--<li><a href="{{ url_for('visitors', language='en') }}">Visitors</a></li>-->
             <li><a href="{{ url_for('companies', language='en') }}">Companies</a></li>
-            <li><a target="_blank" rel="noopener noreferrer" href="{{ url_for('static', filename='katalog2020.pdf') }}">Catalogue</a></li>
+            <!-- <li><a target="_blank" rel="noopener noreferrer" href="{{ url_for('static', filename='katalog2020.pdf') }}">Catalogue</a></li> -->
             <li><a href="{{ url_for('faq', language='en') }}">FAQ</a></li>
             <li><a href="{{ url_for('contact', language='en') }}">Contact us</a></li>
             <li class="select-language-menu-item">
@@ -61,7 +61,7 @@
             <!--<li><a href="{{ url_for('events') }}">Event</a></li>-->
             <!--<li><a href="{{ url_for('visitors') }}">Besökare</a></li>-->
             <li><a href="{{ url_for('companies') }}">Företag</a></li>
-            <li><a target="_blank" rel="noopener noreferrer" href="{{ url_for('static', filename='katalog2020.pdf') }}">Katalog</a></li>
+            <!-- <li><a target="_blank" rel="noopener noreferrer" href="{{ url_for('static', filename='katalog2020.pdf') }}">Katalog</a></li> -->
             <li><a href="{{ url_for('faq') }}">FAQ</a></li>
             <li><a href="{{ url_for('contact') }}">Kontakta oss</a></li>
             <li class="select-language-menu-item">
@@ -76,77 +76,56 @@
 
 
 
-<script>
+<!-- Scritp to update the countdown clock -->
+<!-- <script>
+    var countDownDate = new Date("Oct 7, 2021 10:00:00").getTime();
 
-var countDownDate = new Date("Nov 5, 2020 10:00:00").getTime();
+    var days, hours, minutes, seconds,count;
 
-var days, hours, minutes, seconds,count;
-
-var daysTimer = document.getElementById("dayTimer");
-var hoursTimer = document.getElementById("hourTimer");
-var minutesTimer = document.getElementById("minuteTimer");
-var secondsTimer = document.getElementById("secondTimer");
-
-
-/*
-
-var y = setInterval(function() {
-
-    var countClicker = document.getElementById("countClicker");
-    
-    function loadDoc() {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                console.log(this.responseText)
-            count= this.responseText
-            countClicker.innerHTML = count
-            }
-        };
-        xhttp.open("GET", "get_counter", true);
-        xhttp.send();
-    }
-
-    loadDoc();
-
-}, 1000);
-
-*/
+    var daysTimer = document.getElementByqId("dayTimer");
+    var hoursTimer = document.getElementById("hourTimer");
+    var minutesTimer = document.getElementById("minuteTimer");
+    var secondsTimer = document.getElementById("secondTimer");
 
 
+    var y = setInterval(function() {
+        var countClicker = document.getElementById("countClicker");
 
+        function loadDoc() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(this.responseText)
+                count= this.responseText
+                countClicker.innerHTML = count
+                }
+            };
+            xhttp.open("GET", "get_counter", true);
+            xhttp.send();
+        }
 
+        loadDoc();
+    }, 1000);
 
-var x = setInterval(function() {
+    var x = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
 
-  var now = new Date().getTime();
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  var distance = countDownDate - now;
+            dayTimer.innerHTML = days;
+            hourTimer.innerHTML = hours;
+            minuteTimer.innerHTML = minutes;
+            secondTimer.innerHTML = seconds;
+    }, 1000);
+</script> -->
 
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    dayTimer.innerHTML = days;
-    hourTimer.innerHTML = hours;
-    minuteTimer.innerHTML = minutes;
-    secondTimer.innerHTML = seconds;
-
-
-
-
- 
-}, 1000);
-</script>
-
-<script>
-
-
-</script>
 
 {% block intro_full %}
- 
+
 <div id="intro-box">
     <div id="intro">
         {% block intro %}
@@ -154,7 +133,7 @@ var x = setInterval(function() {
         {% if request.args.get('language') == 'en'%}
             Konglig Datasektionen at KTH proudly presents
             <!--<li id = "countClicker"></li>-->
-            
+
         {% else %}
             Konglig Datasektionen vid KTH presenterar stolt
         {% endif %}
@@ -162,25 +141,26 @@ var x = setInterval(function() {
         <img src="{{ url_for('static', filename='new-logo-white-ageless.svg') }}" alt=""><br>
         <h1><span class="lato-black">
         {% if request.args.get('language') == 'en'%}
-            5th of November 2020
+            7th of October 2021
         {% else %}
-            5 November 2020
+            7 Oktober 2021
         {% endif %}
         </span><!--<br><span class="lato-light">Nymble</span>--></h1>
         <br>
 
-        <!--
-        <div id="clock">
+        
+        <!-- The countdown clock -->
+        <!-- <div id="clock">
             <div>
-              <ul id=time>
+                <ul id=time>
                 <li id="dayTimer"></li>
                 <li id="hourTimer"></li>
                 <li id="minuteTimer"></li>
                 <li id="secondTimer"></li>
-              </ul>
+                </ul>
             </div>
             <div>
-              <ul id="time-label" >
+                <ul id="time-label" >
                 {% if request.args.get('language') == 'en'%}
                 <li>days</li>
                 <li>hours</li>
@@ -192,10 +172,10 @@ var x = setInterval(function() {
                 <li>minuter</li>
                 <li>sekunder</li>
                 {% endif %}
-              </ul>
+                </ul>
             </div>
-          </div>
-        -->
+        </div> -->
+
         <div><p id="shield"><img src="{{ url_for('static', filename='shield.png') }}" alt="">
         {% if request.args.get('language') == 'en'%}
             The Computer Science chapter's annual career fair
@@ -213,7 +193,7 @@ var x = setInterval(function() {
 
 
 
-<div class="info-box" id="sponsor">
+<div class="info-box" id="sponsor" hidden>
 	<p class="cerise head" style="text-align: center">
         {% if request.args.get('language') == 'en'%}
             A BIG THANK YOU TO OUR <b>MAIN SPONSOR 2020 </b>
@@ -223,7 +203,6 @@ var x = setInterval(function() {
         <br>
         <br>
     </p>
-    <!--<img class = "main-sponsor" src="{{ url_for('static', filename='Ddagen+Ericsson.png') }}"  alt="D-Dagen <3 Ericsson"/>!-->
     <div class="main-sponsor-row">
         <div class="main-sponsor-column">
           <img src="{{ url_for('static', filename='Ddagen_long.png') }}" alt="Ddagen" style="width:100%; margin-top:10%;">
@@ -259,7 +238,7 @@ var x = setInterval(function() {
             -->
 		</div>
 		<div class="col-sm-4">
-            <p class="cerise"><b>Andreas Wallström<br>Julia Byström</b></p>
+            <p class="cerise"><b>Adam Sjöberg<br>Erik Nordlöf</b></p>
 			<p>
             {% if request.args.get('language') == 'en'%}
                 Project Leaders for D-Dagen
@@ -311,7 +290,7 @@ br {
     </p>
 	<div class="contact-list row">
 		<div class="col-sm-4">
-        
+
 		</div>
 		<div class="col-sm-4">
 			<a href="https://www.facebook.com/kongligddagen/"><i class="fa fa-facebook fa-3x fa-fw" ></i>&nbsp; /kongligddagen</a>
@@ -319,17 +298,17 @@ br {
             <a href="https://www.instagram.com/ddagenkth/"><i class="fa fa-instagram fa-3x fa-fw" ></i>&nbsp; /ddagenkth</a>
             <br>
             <a href="https://www.linkedin.com/company/kongligddagen/"><i class="fa fa-linkedin fa-3x fa-fw" ></i>&nbsp; /kongligddagen</a>
-            
+
 
 		</div>
 		<div class="col-sm-4">
-          
+
         </div>
     </div>
 </div>
 
 
-<div class="info-box" id="sponsorer">
+<div class="info-box" id="sponsorer" hidden>
 	<p class="cerise head" style="text-align: center">
         {% if request.args.get('language') == 'en'%}
             A BIG THANK YOU TO OUR <b>SPONSORS 2020 </b>
@@ -341,7 +320,7 @@ br {
     </p>
 
 
-    
+
   <div class="pr-image-container">
         <div class="portrait">
           <img src="{{ url_for('static', filename='sponsorer_2020/gide.png') }}" alt="Ddagen" style=" margin-top:40%;">
@@ -372,7 +351,7 @@ br {
       </div>
       <div class="pr-image-container">
         <div class="portrait">
-            
+
           </div>
         <div class="portrait">
             <img  src="{{ url_for('static', filename='sponsorer_2020/visma.png') }}" alt="Ericsson" style=" margin-top:20%;" >
@@ -381,11 +360,11 @@ br {
             <img  src="{{ url_for('static', filename='sponsorer_2020/voi.svg') }}" alt="Ericsson"style=" margin-top:20%;" >
           </div>
           <div class="portrait">
-            
+
         </div>
 
       </div>
-      
+
 
 </div>
 
