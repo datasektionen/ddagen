@@ -35,415 +35,413 @@
 </head>
 
 <body id="home_body">
-<div class="menu-container">
-    <a href="{{ url_for('index') }}" class="logo"><img src="{{ url_for('static', filename='assets/logo-white-ageless_v2.svg') }}" alt="D-Dagen"></a>
-    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <img src="{{ url_for('static', filename='assets/menu_icon.svg') }}" class="hamburger" alt="Menu">
-    </a>
-    {% if request.args.get('language') == 'en' %}
-        <ul class="nav_bar" id="menu">
-            <li><a href="{{ url_for('index', language='en') }}" id="logo"><img src="{{ url_for('static', filename='assets/logo-white-ageless_v2.svg') }}" alt="D-Dagen"></a></li>
-            <!--<li><a href="{{ url_for('events', language='en') }}">Events</a></li>-->
-            <!--<li><a href="{{ url_for('visitors', language='en') }}">Visitors</a></li>-->
-            <li><a href="{{ url_for('companies', language='en') }}">Companies</a></li>
-            <!-- <li><a target="_blank" rel="noopener noreferrer" href="{{ url_for('static', filename='katalog2020.pdf') }}">Catalogue</a></li> -->
-            <li><a href="{{ url_for('faq', language='en') }}">FAQ</a></li>
-            <li><a href="{{ url_for('contact', language='en') }}">Contact us</a></li>
-            <li class="select-language-menu-item">
-                <a href="{{ url_for(request.endpoint, language='sv') if request.endpoint else url_for('index', language='sv') }}">
-                    <img style="width: 32px" src="{{ url_for('static', filename='assets/flag_swe.svg') }}" alt="Svenska"/>
-                </a>
-            </li>
-        </ul>
-    {% else %}
-        <ul class="nav_bar" id="menu">
-            <li><a href="{{ url_for('index') }}" id="logo"><img src="{{ url_for('static', filename='assets/logo-white-ageless_v2.svg') }}" alt="D-Dagen"></a></li>
-            <!--<li><a href="{{ url_for('events') }}">Event</a></li>-->
-            <!--<li><a href="{{ url_for('visitors') }}">Besökare</a></li>-->
-            <li><a href="{{ url_for('companies') }}">Företag</a></li>
-            <!-- <li><a target="_blank" rel="noopener noreferrer" href="{{ url_for('static', filename='katalog2020.pdf') }}">Katalog</a></li> -->
-            <li><a href="{{ url_for('faq') }}">FAQ</a></li>
-            <li><a href="{{ url_for('contact') }}">Kontakta oss</a></li>
-            <li class="select-language-menu-item">
-                <a href="{{ url_for(request.endpoint, language='en') if request.endpoint else url_for('index', language='en') }}">
-                    <img style="width: 32px" src="{{ url_for('static', filename='assets/flag_eng.svg') }}" alt="English"/>
-                </a>
-            </li>
-        </ul>
-    {% endif %}
 
-</div>
-
-
-
-<!-- Scritp to update the countdown clock -->
-<!-- <script>
-    var countDownDate = new Date("Oct 7, 2021 10:00:00").getTime();
-
-    var days, hours, minutes, seconds,count;
-
-    var daysTimer = document.getElementByqId("dayTimer");
-    var hoursTimer = document.getElementById("hourTimer");
-    var minutesTimer = document.getElementById("minuteTimer");
-    var secondsTimer = document.getElementById("secondTimer");
-
-
-    var y = setInterval(function() {
-        var countClicker = document.getElementById("countClicker");
-
-        function loadDoc() {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    console.log(this.responseText)
-                count= this.responseText
-                countClicker.innerHTML = count
-                }
-            };
-            xhttp.open("GET", "get_counter", true);
-            xhttp.send();
-        }
-
-        loadDoc();
-    }, 1000);
-
-    var x = setInterval(function() {
-        var now = new Date().getTime();
-        var distance = countDownDate - now;
-
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            dayTimer.innerHTML = days;
-            hourTimer.innerHTML = hours;
-            minuteTimer.innerHTML = minutes;
-            secondTimer.innerHTML = seconds;
-    }, 1000);
-</script> -->
-
-
-{% block intro_full %}
-
-<div id="intro-box">
-    <div id="intro">
-        {% block intro %}
-        <span>
-        {% if request.args.get('language') == 'en'%}
-            Konglig Datasektionen at KTH proudly presents
-            <!--<li id = "countClicker"></li>-->
-
+    <!-- Header -->
+    <header class="menu-container">
+        <a href="{{ url_for('index') }}" class="logo"><img src="{{ url_for('static', filename='assets/logo-white-ageless_v2.svg') }}" alt="D-Dagen"></a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <img src="{{ url_for('static', filename='assets/menu_icon.svg') }}" class="hamburger" alt="Menu">
+        </a>
+        {% if request.args.get('language') == 'en' %}
+            <ul class="nav_bar" id="menu">
+                <li><a href="{{ url_for('index', language='en') }}" id="logo"><img src="{{ url_for('static', filename='assets/logo-white-ageless_v2.svg') }}" alt="D-Dagen"></a></li>
+                <!--<li><a href="{{ url_for('events', language='en') }}">Events</a></li>-->
+                <!--<li><a href="{{ url_for('visitors', language='en') }}">Visitors</a></li>-->
+                <li><a href="{{ url_for('companies', language='en') }}">Companies</a></li>
+                <!-- <li><a target="_blank" rel="noopener noreferrer" href="{{ url_for('static', filename='katalog2020.pdf') }}">Catalogue</a></li> -->
+                <li><a href="{{ url_for('faq', language='en') }}">FAQ</a></li>
+                <li><a href="{{ url_for('contact', language='en') }}">Contact us</a></li>
+                <li class="select-language-menu-item">
+                    <a href="{{ url_for(request.endpoint, language='sv') if request.endpoint else url_for('index', language='sv') }}">
+                        <img style="width: 32px" src="{{ url_for('static', filename='assets/flag_swe.svg') }}" alt="Svenska"/>
+                    </a>
+                </li>
+            </ul>
         {% else %}
-            Konglig Datasektionen vid KTH presenterar stolt
+            <ul class="nav_bar" id="menu">
+                <li><a href="{{ url_for('index') }}" id="logo"><img src="{{ url_for('static', filename='assets/logo-white-ageless_v2.svg') }}" alt="D-Dagen"></a></li>
+                <!--<li><a href="{{ url_for('events') }}">Event</a></li>-->
+                <!--<li><a href="{{ url_for('visitors') }}">Besökare</a></li>-->
+                <li><a href="{{ url_for('companies') }}">Företag</a></li>
+                <!-- <li><a target="_blank" rel="noopener noreferrer" href="{{ url_for('static', filename='katalog2020.pdf') }}">Katalog</a></li> -->
+                <li><a href="{{ url_for('faq') }}">FAQ</a></li>
+                <li><a href="{{ url_for('contact') }}">Kontakta oss</a></li>
+                <li class="select-language-menu-item">
+                    <a href="{{ url_for(request.endpoint, language='en') if request.endpoint else url_for('index', language='en') }}">
+                        <img style="width: 32px" src="{{ url_for('static', filename='assets/flag_eng.svg') }}" alt="English"/>
+                    </a>
+                </li>
+            </ul>
         {% endif %}
-        </span><br>
-        <img src="{{ url_for('static', filename='assets/logo-white-ageless_v2.svg') }}" alt=""><br>
-        <h1><span class="lato-black">
-        {% if request.args.get('language') == 'en'%}
-            7th of October 2021
-        {% else %}
-            7 Oktober 2021
-        {% endif %}
-        </span><!--<br><span class="lato-light">Nymble</span>--></h1>
-        <br>
 
-        
-        <!-- The countdown clock -->
-        <!-- <div id="clock">
-            <div>
-                <ul id=time>
-                <li id="dayTimer"></li>
-                <li id="hourTimer"></li>
-                <li id="minuteTimer"></li>
-                <li id="secondTimer"></li>
-                </ul>
+        </header>
+
+
+
+    <!-- Scritp to update the countdown clock -->
+    <!-- <script>
+        var countDownDate = new Date("Oct 7, 2021 10:00:00").getTime();
+
+        var days, hours, minutes, seconds,count;
+
+        var daysTimer = document.getElementByqId("dayTimer");
+        var hoursTimer = document.getElementById("hourTimer");
+        var minutesTimer = document.getElementById("minuteTimer");
+        var secondsTimer = document.getElementById("secondTimer");
+
+
+        var y = setInterval(function() {
+            var countClicker = document.getElementById("countClicker");
+
+            function loadDoc() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        console.log(this.responseText)
+                    count= this.responseText
+                    countClicker.innerHTML = count
+                    }
+                };
+                xhttp.open("GET", "get_counter", true);
+                xhttp.send();
+            }
+
+            loadDoc();
+        }, 1000);
+
+        var x = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                dayTimer.innerHTML = days;
+                hourTimer.innerHTML = hours;
+                minuteTimer.innerHTML = minutes;
+                secondTimer.innerHTML = seconds;
+        }, 1000);
+    </script> -->
+
+
+    {% block intro_full %}
+
+    <div id="intro-box">
+        <div id="intro">
+            {% block intro %}
+            <span>
+            {% if request.args.get('language') == 'en'%}
+                Konglig Datasektionen at KTH proudly presents
+                <!--<li id = "countClicker"></li>-->
+
+            {% else %}
+                Konglig Datasektionen vid KTH presenterar stolt
+            {% endif %}
+            </span><br>
+            <img src="{{ url_for('static', filename='assets/logo-white-ageless_v2.svg') }}" alt=""><br>
+            <h1><span class="lato-black">
+            {% if request.args.get('language') == 'en'%}
+                7th of October 2021
+            {% else %}
+                7 Oktober 2021
+            {% endif %}
+            </span><!--<br><span class="lato-light">Nymble</span>--></h1>
+            <br>
+
+            
+            <!-- The countdown clock -->
+            <!-- <div id="clock">
+                <div>
+                    <ul id=time>
+                    <li id="dayTimer"></li>
+                    <li id="hourTimer"></li>
+                    <li id="minuteTimer"></li>
+                    <li id="secondTimer"></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul id="time-label" >
+                    {% if request.args.get('language') == 'en'%}
+                    <li>days</li>
+                    <li>hours</li>
+                    <li>minutes</li>
+                    <li>seconds</li>
+                    {% else %}
+                    <li>dagar</li>
+                    <li>timmar</li>
+                    <li>minuter</li>
+                    <li>sekunder</li>
+                    {% endif %}
+                    </ul>
+                </div>
+            </div> -->
+
+            <div><p id="shield"><img src="{{ url_for('static', filename='assets/shield.png') }}" alt="">
+            {% if request.args.get('language') == 'en'%}
+                The Computer Science chapter's annual career fair
+            {% else %}
+                Datasektionens årliga arbetsmarknadsdag
+            {% endif %}
+            </p></div>
+            {% endblock intro %}
+        </div>
+    </div>
+
+    {% endblock intro_full %}
+    {% block content %}{% endblock %}
+    {% block footer %}
+
+
+
+    <div class="info-box" id="sponsor" hidden>
+        <p class="cerise head" style="text-align: center">
+            {% if request.args.get('language') == 'en'%}
+                A BIG THANK YOU TO OUR <b>MAIN SPONSOR 2020 </b>
+            {% else %}
+                STORT TACK TILL VÅR <b>HUVUDSPONSOR 2020</b>
+            {% endif %}
+            <br>
+            <br>
+        </p>
+        <div class="main-sponsor-row">
+            <div class="main-sponsor-column">
+            <img src="{{ url_for('static', filename='assets/ddagen_long.png') }}" alt="Ddagen" style="width:100%; margin-top:10%;">
             </div>
-            <div>
-                <ul id="time-label" >
+            <div class="main-sponsor-column" >
+            <img src="{{ url_for('static', filename='assets/heart.png') }}" alt="Heart" style="width:50%; display: block;margin-left: auto;margin-right: auto;">
+            </div>
+            <div class="main-sponsor-column">
+            <img  src="{{ url_for('static', filename='Ericsson_long.png') }}" alt="Ericsson" style="width:100%;margin-top:10%;">
+            </div>
+        </div>
+    </div>
+
+    <div class="info-box" id="contact">
+        <p class="cerise head" style="text-align: center">
+            {% if request.args.get('language') == 'en'%}
+                CONTACT
+            {% else %}
+                KONTAKTA
+            {% endif %}
+            <b>D&#8209;DAGEN
+        </b></p>
+        <div class="contact-list row">
+            <div class="col-sm-4">
+                <!--
+                <p class="cerise"><b>
                 {% if request.args.get('language') == 'en'%}
-                <li>days</li>
-                <li>hours</li>
-                <li>minutes</li>
-                <li>seconds</li>
+                    The Sales Team
                 {% else %}
-                <li>dagar</li>
-                <li>timmar</li>
-                <li>minuter</li>
-                <li>sekunder</li>
+                    Säljgruppen
                 {% endif %}
-                </ul>
+                </b></p><a class="cerise" href="mailto:d-dagen.sales@d.kth.se">d-dagen.sales@d.kth.se</a>
+                -->
             </div>
-        </div> -->
+            <div class="col-sm-4">
+                <p class="cerise"><b>Adam Sjöberg<br>Erik Nordlöf</b></p>
+                <p>
+                {% if request.args.get('language') == 'en'%}
+                    Project Leaders for D-Dagen
+                {% else %}
+                    D-Dagenansvariga
+                {% endif %}
+                </p>
+                <a href="mailto:projectmanager@ddagen.se" class="cerise">projectmanager@ddagen.se</a>
+                <br>
+                <br>
 
-        <div><p id="shield"><img src="{{ url_for('static', filename='assets/shield.png') }}" alt="">
-        {% if request.args.get('language') == 'en'%}
-            The Computer Science chapter's annual career fair
-        {% else %}
-            Datasektionens årliga arbetsmarknadsdag
-        {% endif %}
-        </p></div>
-        {% endblock intro %}
-    </div>
-</div>
-
-{% endblock intro_full %}
-{% block content %}{% endblock %}
-{% block footer %}
-
-
-
-<div class="info-box" id="sponsor" hidden>
-	<p class="cerise head" style="text-align: center">
-        {% if request.args.get('language') == 'en'%}
-            A BIG THANK YOU TO OUR <b>MAIN SPONSOR 2020 </b>
-        {% else %}
-            STORT TACK TILL VÅR <b>HUVUDSPONSOR 2020</b>
-        {% endif %}
-        <br>
-        <br>
-    </p>
-    <div class="main-sponsor-row">
-        <div class="main-sponsor-column">
-          <img src="{{ url_for('static', filename='assets/ddagen_long.png') }}" alt="Ddagen" style="width:100%; margin-top:10%;">
-        </div>
-        <div class="main-sponsor-column" >
-          <img src="{{ url_for('static', filename='assets/heart.png') }}" alt="Heart" style="width:50%; display: block;margin-left: auto;margin-right: auto;">
-        </div>
-        <div class="main-sponsor-column">
-          <img  src="{{ url_for('static', filename='Ericsson_long.png') }}" alt="Ericsson" style="width:100%;margin-top:10%;">
-        </div>
-      </div>
-</div>
-
-<div class="info-box" id="contact">
-	<p class="cerise head" style="text-align: center">
-        {% if request.args.get('language') == 'en'%}
-            CONTACT
-        {% else %}
-            KONTAKTA
-        {% endif %}
-         <b>D&#8209;DAGEN
-    </b></p>
-	<div class="contact-list row">
-		<div class="col-sm-4">
-            <!--
-			<p class="cerise"><b>
-            {% if request.args.get('language') == 'en'%}
-                The Sales Team
-            {% else %}
-                Säljgruppen
-            {% endif %}
-            </b></p><a class="cerise" href="mailto:d-dagen.sales@d.kth.se">d-dagen.sales@d.kth.se</a>
+                <p>
+                {% if request.args.get('language') == 'en'%}
+                    The Sales Team
+                {% else %}
+                    Säljgruppen
+                {% endif %}
+                </p>
+                <a href="mailto:sales@ddagen.se" class="cerise">sales@ddagen.se</a>
+            </div>
+            <div class="col-sm-4">
+                <!--
+                <p class="cerise"><b>
+                {% if request.args.get('language') == 'en'%}
+                    The Event Team
+                {% else %}
+                    Eventgruppen
+                {% endif %}
+                </b></p><a class="cerise" href="mailto:d-dagen.event@d.kth.se">d-dagen.event@d.kth.se</a>
             -->
-		</div>
-		<div class="col-sm-4">
-            <p class="cerise"><b>Adam Sjöberg<br>Erik Nordlöf</b></p>
-			<p>
-            {% if request.args.get('language') == 'en'%}
-                Project Leaders for D-Dagen
-            {% else %}
-                D-Dagenansvariga
-            {% endif %}
-            </p>
-			<a href="mailto:projectmanager@ddagen.se" class="cerise">projectmanager@ddagen.se</a>
-            <br>
-            <br>
-
-            <p>
-            {% if request.args.get('language') == 'en'%}
-                The Sales Team
-            {% else %}
-                Säljgruppen
-            {% endif %}
-            </p>
-            <a href="mailto:sales@ddagen.se" class="cerise">sales@ddagen.se</a>
-		</div>
-		<div class="col-sm-4">
-            <!--
-            <p class="cerise"><b>
-            {% if request.args.get('language') == 'en'%}
-                The Event Team
-            {% else %}
-                Eventgruppen
-            {% endif %}
-            </b></p><a class="cerise" href="mailto:d-dagen.event@d.kth.se">d-dagen.event@d.kth.se</a>
-        -->
-        </div>
-	</div>
-</div>
-
-<style>
-br {
-        line-height: 20%;
-     }
-</style>
-
-
-<div class="info-box" id="social-media">
-	<p class="cerise head" style="text-align: center">
-        {% if request.args.get('language') == 'en'%}
-            FOLLOW US ON SOCIAL MEDIA
-        {% else %}
-            FÖLJ OSS I SOCIALA MEDIER
-        {% endif %}
-    </p>
-	<div class="contact-list row">
-		<div class="col-sm-4">
-
-		</div>
-		<div class="col-sm-4">
-			<a href="https://www.facebook.com/kongligddagen/"><i class="fa fa-facebook fa-3x fa-fw" ></i>&nbsp; /kongligddagen</a>
-            <br>
-            <a href="https://www.instagram.com/ddagenkth/"><i class="fa fa-instagram fa-3x fa-fw" ></i>&nbsp; /ddagenkth</a>
-            <br>
-            <a href="https://www.linkedin.com/company/kongligddagen/"><i class="fa fa-linkedin fa-3x fa-fw" ></i>&nbsp; /kongligddagen</a>
-
-
-		</div>
-		<div class="col-sm-4">
-
+            </div>
         </div>
     </div>
-</div>
 
-
-<div class="info-box" id="sponsorer" hidden>
-	<p class="cerise head" style="text-align: center">
-        {% if request.args.get('language') == 'en'%}
-            A BIG THANK YOU TO OUR <b>SPONSORS 2020 </b>
-        {% else %}
-            STORT TACK TILL VÅRA <b>SPONSORER 2020</b>
-        {% endif %}
-        <br>
-        <br>
-    </p>
-
-
-
-  <div class="pr-image-container">
-        <div class="portrait">
-          <img src="{{ url_for('static', filename='sponsorer_2020/gide.png') }}" alt="Ddagen" style=" margin-top:40%;">
-        </div>
-        <div class="portrait" >
-          <img src="{{ url_for('static', filename='sponsorer_2020/king.png') }}" alt="Heart" >
-        </div>
-        <div class="portrait">
-          <img  src="{{ url_for('static', filename='sponsorer_2020/metricio.svg') }}" alt="Ericsson"style=" margin-top:40%;" >
-        </div>
-        <div class="portrait">
-            <img  src="{{ url_for('static', filename='sponsorer_2020/savelend.svg') }}" alt="Ericsson"style=" margin-top:40%;" >
-          </div>
-      </div>
-      <div class="pr-image-container">
-        <div class="portrait" >
-          <img src="{{ url_for('static', filename='sponsorer_2020/nore.png') }}" alt="Heart" style=" margin-top:15%;">
-        </div>
-        <div class="portrait">
-            <img src="{{ url_for('static', filename='sponsorer_2020/omicron.png') }}" alt="Ddagen" style=" margin-top:10%;">
-          </div>
-        <div class="portrait">
-            <img  src="{{ url_for('static', filename='sponsorer_2020/oracle.png') }}" alt="Ericsson" >
-          </div>
-          <div class="portrait">
-            <img  src="{{ url_for('static', filename='sponsorer_2020/schibsted.png') }}" alt="Ericsson" style=" margin-top:20%;">
-          </div>
-      </div>
-      <div class="pr-image-container">
-        <div class="portrait">
-
-          </div>
-        <div class="portrait">
-            <img  src="{{ url_for('static', filename='sponsorer_2020/visma.png') }}" alt="Ericsson" style=" margin-top:20%;" >
-          </div>
-          <div class="portrait">
-            <img  src="{{ url_for('static', filename='sponsorer_2020/voi.svg') }}" alt="Ericsson"style=" margin-top:20%;" >
-          </div>
-          <div class="portrait">
-
-        </div>
-
-      </div>
-
-
-</div>
-
-
-
-
-<!--
-<div class = "social-box" style=" text-align: center;">
-    <h2 style=" text-align: center;" >
-        {% if request.args.get('language') == 'en'%}
-            FOLLOW US ON SOCIAL MEDIA
-        {% else %}
-            FÖLJ OSS I SOCIALA MEDIER
-        {% endif %}
-    </h2>
-    <br>
-         <ul>
-         <li><a href="https://www.facebook.com/kongligddagen/"><i class="fa fa-facebook fa-3x fa-fw" ></i>&nbsp; /kongligddagen</a></li>
-         <li><a href="https://www.instagram.com/ddagenkth/"><i class="fa fa-instagram fa-3x fa-fw" ></i>&nbsp; /ddagenkth</a></li>
-        <li><a href="https://www.linkedin.com/company/kongligddagen/"><i class="fa fa-linkedin fa-3x fa-fw" ></i>&nbsp; /kongligddagen</a></li>
-        </ul>
-    </div>
--->
-<!--
-
-<div id="footer">
-	<div id="footer-container" class="row">
-		<div class="col-sm-6 col-md-6 text">
-			<p class="cerise-light">
-            {% if request.args.get('language') == 'en'%}
-                D-DAGEN 2020 BEING HELD ON NOVEMBER 5 IN
-            {% else %}
-                D-DAGEN 2020 HÅLLS DEN&nbsp;5&nbsp;NOVEMBER&nbsp;I
-            {% endif %}
-            </p>
-			<h2 style="display: inline" >
-            {% if request.args.get('language') == 'en'%}
-                THS STUDENT UNION HOUSE
-            {% else %}
-                THS KÅRHUS
-            {% endif %}
-            </h2><h2 style="display: inline" class="cerise-light">NYMBLE</h2>
-			<p><b>Drottning Kristinas väg 15</b></p>
-			<p class="cerise-light" style="display: inline">114 28 </p><p style="display: inline">Stockholm</p>
-			<br>
-			<p><b>Datasektionen</b>
-            {% if request.args.get('language') == 'en'%}
-                is a non-profit student chapter under the Student Union at the Royal Institute of Technology that exists
-                to give students studying computer science at KTH a more rewarding time here during their studies.
-            {% else %}
-                är en ideell studentsektion under Tekniska Högskolans Studentkår som finns till för att alla studenter
-                som läser datateknik på KTH ska få en så bra och givande studietid som möjligt.
-            {% endif %}
-            </p>
-			<p class="cerise-light" style="margin-bottom: 0">
-            {% if request.args.get('language') == 'en'%}
-                Corporate Identity Number
-            {% else %}
-                Organisationsnummer
-            {% endif %}
-                802412-7709</p>
-		</div>
-		<div class="col-sm-6 col-md-6" id="map"><div class="gmap_canvas"><iframe id="gmap_canvas" height="350px" width="100%" src="https://maps.google.com/maps?q=Nymble - Tekniska Högskolans Kårhus, Drottning Kristinas väg, Stockholm, Sweden, &t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div></div>
-	</div>
-</div>
--->
-
-<script>
-    let scroll = new SmoothScroll('a[href*="#"]');
-
-    function myFunction() {
-        const x = document.getElementById("menu");
-        if (x.className === "nav_bar") {
-            x.className += " drop_down";
-        } else {
-            x.className = "nav_bar";
+    <style>
+    br {
+            line-height: 20%;
         }
-    }
-</script>
-{% endblock %}
+    </style>
+
+    <div class="info-box" id="social-media">
+        <p class="cerise head" style="text-align: center">
+            {% if request.args.get('language') == 'en'%}
+                FOLLOW US ON SOCIAL MEDIA
+            {% else %}
+                FÖLJ OSS I SOCIALA MEDIER
+            {% endif %}
+        </p>
+        <div class="contact-list row">
+            <div class="col-sm-4">
+
+            </div>
+            <div class="col-sm-4">
+                <a href="https://www.facebook.com/kongligddagen/"><i class="fa fa-facebook fa-3x fa-fw" ></i>&nbsp; /kongligddagen</a>
+                <br>
+                <a href="https://www.instagram.com/ddagenkth/"><i class="fa fa-instagram fa-3x fa-fw" ></i>&nbsp; /ddagenkth</a>
+                <br>
+                <a href="https://www.linkedin.com/company/kongligddagen/"><i class="fa fa-linkedin fa-3x fa-fw" ></i>&nbsp; /kongligddagen</a>
+
+
+            </div>
+            <div class="col-sm-4">
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="info-box" id="sponsorer" hidden>
+        <p class="cerise head" style="text-align: center">
+            {% if request.args.get('language') == 'en'%}
+                A BIG THANK YOU TO OUR <b>SPONSORS 2020 </b>
+            {% else %}
+                STORT TACK TILL VÅRA <b>SPONSORER 2020</b>
+            {% endif %}
+            <br>
+            <br>
+        </p>
+
+
+
+    <div class="pr-image-container">
+            <div class="portrait">
+            <img src="{{ url_for('static', filename='sponsorer_2020/gide.png') }}" alt="Ddagen" style=" margin-top:40%;">
+            </div>
+            <div class="portrait" >
+            <img src="{{ url_for('static', filename='sponsorer_2020/king.png') }}" alt="Heart" >
+            </div>
+            <div class="portrait">
+            <img  src="{{ url_for('static', filename='sponsorer_2020/metricio.svg') }}" alt="Ericsson"style=" margin-top:40%;" >
+            </div>
+            <div class="portrait">
+                <img  src="{{ url_for('static', filename='sponsorer_2020/savelend.svg') }}" alt="Ericsson"style=" margin-top:40%;" >
+            </div>
+        </div>
+        <div class="pr-image-container">
+            <div class="portrait" >
+            <img src="{{ url_for('static', filename='sponsorer_2020/nore.png') }}" alt="Heart" style=" margin-top:15%;">
+            </div>
+            <div class="portrait">
+                <img src="{{ url_for('static', filename='sponsorer_2020/omicron.png') }}" alt="Ddagen" style=" margin-top:10%;">
+            </div>
+            <div class="portrait">
+                <img  src="{{ url_for('static', filename='sponsorer_2020/oracle.png') }}" alt="Ericsson" >
+            </div>
+            <div class="portrait">
+                <img  src="{{ url_for('static', filename='sponsorer_2020/schibsted.png') }}" alt="Ericsson" style=" margin-top:20%;">
+            </div>
+        </div>
+        <div class="pr-image-container">
+            <div class="portrait">
+
+            </div>
+            <div class="portrait">
+                <img  src="{{ url_for('static', filename='sponsorer_2020/visma.png') }}" alt="Ericsson" style=" margin-top:20%;" >
+            </div>
+            <div class="portrait">
+                <img  src="{{ url_for('static', filename='sponsorer_2020/voi.svg') }}" alt="Ericsson"style=" margin-top:20%;" >
+            </div>
+            <div class="portrait">
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <!--
+    <div class = "social-box" style=" text-align: center;">
+        <h2 style=" text-align: center;" >
+            {% if request.args.get('language') == 'en'%}
+                FOLLOW US ON SOCIAL MEDIA
+            {% else %}
+                FÖLJ OSS I SOCIALA MEDIER
+            {% endif %}
+        </h2>
+        <br>
+            <ul>
+            <li><a href="https://www.facebook.com/kongligddagen/"><i class="fa fa-facebook fa-3x fa-fw" ></i>&nbsp; /kongligddagen</a></li>
+            <li><a href="https://www.instagram.com/ddagenkth/"><i class="fa fa-instagram fa-3x fa-fw" ></i>&nbsp; /ddagenkth</a></li>
+            <li><a href="https://www.linkedin.com/company/kongligddagen/"><i class="fa fa-linkedin fa-3x fa-fw" ></i>&nbsp; /kongligddagen</a></li>
+            </ul>
+        </div>
+    -->
+    <!--
+
+    <div id="footer">
+        <div id="footer-container" class="row">
+            <div class="col-sm-6 col-md-6 text">
+                <p class="cerise-light">
+                {% if request.args.get('language') == 'en'%}
+                    D-DAGEN 2020 BEING HELD ON NOVEMBER 5 IN
+                {% else %}
+                    D-DAGEN 2020 HÅLLS DEN&nbsp;5&nbsp;NOVEMBER&nbsp;I
+                {% endif %}
+                </p>
+                <h2 style="display: inline" >
+                {% if request.args.get('language') == 'en'%}
+                    THS STUDENT UNION HOUSE
+                {% else %}
+                    THS KÅRHUS
+                {% endif %}
+                </h2><h2 style="display: inline" class="cerise-light">NYMBLE</h2>
+                <p><b>Drottning Kristinas väg 15</b></p>
+                <p class="cerise-light" style="display: inline">114 28 </p><p style="display: inline">Stockholm</p>
+                <br>
+                <p><b>Datasektionen</b>
+                {% if request.args.get('language') == 'en'%}
+                    is a non-profit student chapter under the Student Union at the Royal Institute of Technology that exists
+                    to give students studying computer science at KTH a more rewarding time here during their studies.
+                {% else %}
+                    är en ideell studentsektion under Tekniska Högskolans Studentkår som finns till för att alla studenter
+                    som läser datateknik på KTH ska få en så bra och givande studietid som möjligt.
+                {% endif %}
+                </p>
+                <p class="cerise-light" style="margin-bottom: 0">
+                {% if request.args.get('language') == 'en'%}
+                    Corporate Identity Number
+                {% else %}
+                    Organisationsnummer
+                {% endif %}
+                    802412-7709</p>
+            </div>
+            <div class="col-sm-6 col-md-6" id="map"><div class="gmap_canvas"><iframe id="gmap_canvas" height="350px" width="100%" src="https://maps.google.com/maps?q=Nymble - Tekniska Högskolans Kårhus, Drottning Kristinas väg, Stockholm, Sweden, &t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div></div>
+        </div>
+    </div>
+    -->
+
+    <script>
+        let scroll = new SmoothScroll('a[href*="#"]');
+
+        function myFunction() {
+            const x = document.getElementById("menu");
+            if (x.className === "nav_bar") {
+                x.className += " drop_down";
+            } else {
+                x.className = "nav_bar";
+            }
+        }
+    </script>
+    {% endblock %}
 </body>
 </html>
