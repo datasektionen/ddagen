@@ -109,6 +109,7 @@ def interest_ddagen2020en():
 def interest_ddagenintresseanmalan():
     return redirect('https://forms.gle/JtG9WcqH9BkGveHT7', code=302)
 
+
 # This is redirect for the map
 #####################################
 @app.route("/map", methods=["GET"])
@@ -119,38 +120,30 @@ def map():
 def favicon():
         return send_from_directory('static/icons', 'favicon.ico')
 
+
 # Kataloger
 #####################################
 @app.route('/katalog')
 @app.route('/katalog2019')
 def katalog2019():
-    return redirect(
-        'https://static.datasektionen.se/naringsliv/d-dagen/katalog_2019',
-        code=302)
+    return redirect('https://static.datasektionen.se/naringsliv/d-dagen/katalog_2019', code=302)
 
 @app.route('/katalog2018')
 def katalog2018():
-    return redirect(
-        'https://static.datasektionen.se/naringsliv/d-dagen/katalog_2018',
-        code=302)
+    return redirect('https://static.datasektionen.se/naringsliv/d-dagen/katalog_2018', code=302)
 
 @app.route('/katalog2017')
 def katalog2017():
-    return redirect(
-        'https://static.datasektionen.se/naringsliv/d-dagen/katalog_2017',
-        code=302)
+    return redirect('https://static.datasektionen.se/naringsliv/d-dagen/katalog_2017', code=302)
 
 @app.route('/katalog2016')
 def katalog2016():
-    return redirect(
-        'https://static.datasektionen.se/naringsliv/d-dagen/katalog_2016',
-        code=302)
+    return redirect('https://static.datasektionen.se/naringsliv/d-dagen/katalog_2016', code=302)
 
 @app.route('/katalog2015')
 def katalog2015():
-    return redirect(
-        'https://static.datasektionen.se/naringsliv/d-dagen/katalog_2015',
-        code=302)
+    return redirect('https://static.datasektionen.se/naringsliv/d-dagen/katalog_2015', code=302)
+
 
 # Error handlers
 #####################################
