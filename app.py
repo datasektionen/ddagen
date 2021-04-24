@@ -96,15 +96,7 @@ def sok():
 # Company Forms
 # Redirect to application of interest for D-Dagen 2021 in swedish
 @app.route("/2021")
-def interest_ddagen2021():
-    return redirect('https://forms.gle/JtG9WcqH9BkGveHT7', code=302)
-
-# Redirect to application of interest for D-Dagen 2021 in english
 @app.route("/2021en")
-def interest_ddagen2020en():
-    return redirect('https://forms.gle/JtG9WcqH9BkGveHT7', code=302)
-
-# Redirect to application of interest for D-Dagen 2021 in english
 @app.route("/intresseanmalan")
 def interest_ddagenintresseanmalan():
     return redirect('https://forms.gle/JtG9WcqH9BkGveHT7', code=302)
