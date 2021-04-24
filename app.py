@@ -88,51 +88,25 @@ def visitors():
 
 # Formulär
 #####################################
-
-# Ta bort
-@app.route('/foretag')
-def foretag():
-    return redirect(
-        'https://docs.google.com/forms/d/e/1FAIpQLSe4vMqA_BJcwH8haK79M0WyVDtGGebiSF-DR1pTmXgvFez6zw/viewform',
-        code=302)
-
-# Ta bort
-@app.route('/industry')
-def industry():
-    return redirect(
-        'https://docs.google.com/forms/d/e/1FAIpQLSdjSG917dUM8OlFXhPNqb_XwF7hAEdZEjhckz2QcWK8kwJCJA/viewform',
-        code=302)
-
-# Ta bort
-@app.route("/survey")
-def survey():
-    return redirect('https://forms.gle/aFVS3WFJcHW1NuJq9', code=302)
-
-# Ta bort
-@app.route("/claimbanquet")
-def claim_banquet_tickets():
-    return redirect('https://forms.gle/AmCwxs8rRSAuSNSZ9', code=302)
-
+# Redirect to application of working at the fair for D-Dagen 2021
 @app.route("/sok")
 def sok():
-     """ Redirect to application of working at the fair for D-Dagen 2021"""
      return redirect('https://forms.gle/cuoUwgQtcyJiZ79b8', code=302)
 
 # Company Forms
-#####################################
+# Redirect to application of interest for D-Dagen 2021 in swedish
 @app.route("/2021")
 def interest_ddagen2021():
-    """ Redirect to application of interest for D-Dagen 2021 in swedish """
     return redirect('https://forms.gle/JtG9WcqH9BkGveHT7', code=302)
 
+# Redirect to application of interest for D-Dagen 2021 in english
 @app.route("/2021en")
 def interest_ddagen2020en():
-    """ Redirect to application of interest for D-Dagen 2021 in english """
     return redirect('https://forms.gle/JtG9WcqH9BkGveHT7', code=302)
 
+# Redirect to application of interest for D-Dagen 2021 in english
 @app.route("/intresseanmalan")
 def interest_ddagenintresseanmalan():
-    """ Redirect to application of interest for D-Dagen 2021 in english """
     return redirect('https://forms.gle/JtG9WcqH9BkGveHT7', code=302)
 
 # This is redirect for the map
