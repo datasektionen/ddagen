@@ -35,9 +35,9 @@
 </head>
 
 <body id="home_body">
+
     <!-- Header -->
-    <!-- ####################### -->
-    <div class="menu-container">
+    <header class="menu-container">
         <a href="{{ url_for('index') }}" class="logo"><img src="{{ url_for('static', filename='assets/logo-white-ageless_v2.svg') }}" alt="D-Dagen"></a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <img src="{{ url_for('static', filename='assets/menu_icon.svg') }}" class="hamburger" alt="Menu">
@@ -74,10 +74,9 @@
             </ul>
         {% endif %}
 
-    </div>
+        </header>
 
-    <!-- Main Content -->
-    <!-- ####################### -->
+
 
     <!-- Scritp to update the countdown clock -->
     <!-- <script>
