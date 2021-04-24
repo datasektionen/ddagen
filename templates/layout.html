@@ -37,6 +37,7 @@
 <body id="home_body">
 
     <!-- Header -->
+    <!-- ####################### -->
     <header class="menu-container">
         <a href="{{ url_for('index') }}" class="logo"><img src="{{ url_for('static', filename='assets/logo-white-ageless_v2.svg') }}" alt="D-Dagen"></a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -74,10 +75,10 @@
             </ul>
         {% endif %}
 
-        </header>
+    </header>
 
-
-
+    <!-- Main Content -->
+    <!-- ####################### -->
     <!-- Scritp to update the countdown clock -->
     <!-- <script>
         var countDownDate = new Date("Oct 7, 2021 10:00:00").getTime();
@@ -189,6 +190,30 @@
     </div>
     {% endblock intro_full %}
     
+    <!-- Tack till huvudsponsor -->
+    <div class="info-box" id="sponsor">
+        <p class="cerise head" style="text-align: center">
+            {% if request.args.get('language') == 'en'%}
+                A BIG THANK YOU TO OUR <b>MAIN SPONSOR 2021 </b>
+            {% else %}
+                STORT TACK TILL VÅR <b>HUVUDSPONSOR 2021</b>
+            {% endif %}
+            <br>
+            <br>
+        </p>
+        <div class="main-sponsor-row">
+            <div class="main-sponsor-column">
+            <img src="{{ url_for('static', filename='assets/ddagen_long.png') }}" alt="Ddagen" style="width:100%; margin-top:10%;">
+            </div>
+            <div class="main-sponsor-column" >
+            <img src="{{ url_for('static', filename='assets/heart.png') }}" alt="Heart" style="width:50%; display: block;margin-left: auto;margin-right: auto;">
+            </div>
+            <div class="main-sponsor-column">
+            <img  src="{{ url_for('static', filename='company_logos/Ericsson_long.png') }}" alt="Ericsson" style="width:100%;margin-top:10%;">
+            </div>
+        </div>
+    </div>
+
     {% block content %}{% endblock %}
     
     <!-- Page Footer -->
