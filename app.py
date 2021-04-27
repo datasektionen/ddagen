@@ -101,6 +101,12 @@ def sok():
 def interest_ddagenintresseanmalan():
     return redirect('https://forms.gle/JtG9WcqH9BkGveHT7', code=302)
 
+# Start-Up Forms
+# Redirect to application of interest for D-Dagen 2021
+@app.route("/startup")
+def interest_ddagenstartup():
+    return redirect('https://forms.gle/vMPQyhLFumnceu666', code=302)
+
 
 # This is redirect for the map
 #####################################
