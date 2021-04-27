@@ -1,0 +1,83 @@
+/* Variables */
+:root{
+    --cerise: #e83d84;
+    --cerise-light: #ec5f99; /*rgba(232,19,108,0.8);*/
+}
+
+img.greeting-portrait {
+    margin-top: 40px;
+    width:550px;
+}
+
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.greeting-column {
+    float: left;
+    width: 50%;
+    padding: 5px;
+}
+
+/* Clear floats after image containers */
+.greeting-row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* For devices narrower than 1200px */
+@media (max-width: 1200px) {
+    img.greeting-portrait {
+        width: 200px;
+        margin-top:20px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .greeting-column{
+        width: 100%;
+    }
+}
+
+/* For devices narrower than 1100px */
+@media (max-width: 1100px) {
+    img.greeting-portrait {
+      width: 100%;
+
+    }
+}
+
+/* For devices narrower than 768px */
+@media (max-width: 768px) {
+    img.greeting-portrait {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .greeting-column{
+        width: 100%;
+    }
+}
+
+/* For devices narrower than 600px */
+@media (max-width: 600px) {
+    img.greeting-portrait {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .greeting-column{
+        width: 100%;
+    }
+}
+
+/* For devices narrower than 414px */
+@media (max-width: 414px) {
+    .greeting-column{
+        width: 100%;
+    }
+
+    img.greeting-portrait {
+        width: 100%;
+        margin-top: 5px;
+    }
+}
