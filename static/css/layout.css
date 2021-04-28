@@ -16,6 +16,10 @@
 }
 
 .menu-container {
+    background-color: rgba(255, 87, 204, 0.67);
+    border-bottom: var(--cerise);
+    border-width: 0px 0px 0.25rem 0px;
+    height: 7.5vh;
     padding: 20px;
     font-size: 20px;
     text-transform: uppercase;
@@ -51,6 +55,7 @@ ul#menu {
 }
 
 #intro-box {
+    height: 67.5vh;
     justify-content: center;
     align-content: center;
     overflow: hidden;
@@ -148,10 +153,6 @@ ul#menu {
     display: table;
 }
 
-.fa-3x {
-    vertical-align: middle;
-}
-
 #clock {
     background:linear-gradient(rgb(255, 126, 227),rgb(235, 0, 117));
     display: block;
@@ -186,6 +187,13 @@ ul#menu {
     width:150px;
     text-shadow: 2px 2px #ff0000;
     list-style:none;
+}
+
+.grid-container{
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-row-gap: 0;
+	grid-column-gap: 0;
 }
 
 @media (min-width: 600px) {

@@ -29,6 +29,7 @@
     <!--<link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}"/>-->
     <link rel="stylesheet" href="/static/css/style.css?v=4.349590927"/>
     <link rel="stylesheet" href="/static/css/layout.css"/>
+    <link rel="stylesheet" href="/static/css/footer.css"/>
     <link rel="stylesheet" href="/static/css/index.css"/>
     <link rel="stylesheet" href="/static/css/companies.css"/>
     <link rel="stylesheet" href="/static/css/contact.css"/>
@@ -196,7 +197,7 @@
     </div>
 
     <!-- Tack till huvudsponsor -->
-    <div class="info-box" id="sponsor">
+    <div class="info-box" id="sponsor" hidden>
         <p class="cerise head" style="text-align: center">
             {% if request.args.get('language') == 'en'%}
                 A BIG THANK YOU TO OUR <b>MAIN SPONSOR 2021 </b>
@@ -227,87 +228,73 @@
     <!-- Page Footer -->
     <!-- ####################### -->
     {% block footer %}
-    <div class="info-box" id="contact">
-        <p class="cerise head" style="text-align: center">
-            {% if request.args.get('language') == 'en'%}
-                CONTACT
-            {% else %}
-                KONTAKTA
-            {% endif %}
-            <b>D&#8209;DAGEN
-        </b></p>
-        <div class="contact-list row">
-            <div class="col-sm-4">
-                <!--
-                <p class="cerise"><b>
+    <footer class="grid-container">
+        <div id="footer-item1" class="footer-item">
+            <h2 class="head">
                 {% if request.args.get('language') == 'en'%}
-                    The Sales Team
+                    A BIG THANK YOU TO OUR <b>MAIN SPONSOR</b>
                 {% else %}
-                    Säljgruppen
+                    STORT TACK TILL VÅR <b>HUVUDSPONSOR</b>
                 {% endif %}
-                </b></p><a class="cerise" href="mailto:d-dagen.sales@d.kth.se">d-dagen.sales@d.kth.se</a>
-                -->
-            </div>
-            <div class="col-sm-4">
-                <p class="cerise"><b>Adam Sjöberg<br>Erik Nordlöf</b></p>
-                <p>
-                {% if request.args.get('language') == 'en'%}
-                    Project Leaders for D-Dagen
-                {% else %}
-                    D-Dagenansvariga
-                {% endif %}
-                </p>
-                <a href="mailto:projectmanager@ddagen.se" class="cerise">projectmanager@ddagen.se</a>
-                <br>
-                <br>
-
-                <p>
-                {% if request.args.get('language') == 'en'%}
-                    The Sales Team
-                {% else %}
-                    Säljgruppen
-                {% endif %}
-                </p>
-                <a href="mailto:sales@ddagen.se" class="cerise">sales@ddagen.se</a>
-            </div>
-            <div class="col-sm-4">
-                <!--
-                <p class="cerise"><b>
-                {% if request.args.get('language') == 'en'%}
-                    The Event Team
-                {% else %}
-                    Eventgruppen
-                {% endif %}
-                </b></p><a class="cerise" href="mailto:d-dagen.event@d.kth.se">d-dagen.event@d.kth.se</a>
-            -->
+            </h2>
+            <div id="footer-sponsor-container">
+                <img id="sponsor-item-ddagen" class="sponsor-item"
+                src="{{ url_for('static', filename='assets/ddagen_long.png') }}" alt="D-Dagen">
+                <img id="sponsor-item-heart" class="sponsor-item"
+                src="{{ url_for('static', filename='assets/heart.png') }}" alt="Heart">
+                <img id="sponsor-item-ericsson" class="sponsor-item"
+                src="{{ url_for('static', filename='company_logos/Ericsson_long.png') }}" alt="Ericsson">
             </div>
         </div>
-    </div>
 
-    <style>
-        br {
-            line-height: 20%;
-        }
-    </style>
+        <div id="footer-item2" class="footer-item">
+            <h2>
+                {% if request.args.get('language') == 'en'%}
+                    Social Medias
+                {% else %}
+                    Sociala Medier
+                {% endif %}
+            </h2>
+            <ul>
+                <li><a href="https://www.facebook.com/kongligddagen/"><i class="fa fa-facebook fa-3x fa-fw" ></i>&nbsp; /kongligddagen</a></li>
+                <li><a href="https://www.instagram.com/ddagenkth/"><i class="fa fa-instagram fa-3x fa-fw" ></i>&nbsp; /ddagenkth</a></li>
+                <li><a href="https://www.linkedin.com/company/kongligddagen/"><i class="fa fa-linkedin fa-3x fa-fw" ></i>&nbsp; /kongligddagen</a></li>
+            </ul>
+        </div>
 
-    <div class="info-box" id="social-media">
-        <p class="cerise head" style="text-align: center">
-            {% if request.args.get('language') == 'en'%}
-                FOLLOW US ON SOCIAL MEDIA
-            {% else %}
-                FÖLJ OSS I SOCIALA MEDIER
-            {% endif %}
-        </p>
-        <div class="contact-list row">
-            <div class="col-sm-4">
-                <a href="https://www.facebook.com/kongligddagen/"><i class="fa fa-facebook fa-3x fa-fw" ></i>&nbsp; /kongligddagen</a>
-                <br>
-                <a href="https://www.instagram.com/ddagenkth/"><i class="fa fa-instagram fa-3x fa-fw" ></i>&nbsp; /ddagenkth</a>
-                <br>
-                <a href="https://www.linkedin.com/company/kongligddagen/"><i class="fa fa-linkedin fa-3x fa-fw" ></i>&nbsp; /kongligddagen</a>
+        <div id="footer-item3" class="footer-item">
+            <h2>
+                {% if request.args.get('language') == 'en'%}
+                    Contact Us
+                {% else %}
+                    Kontakta Oss
+                {% endif %}
+            </h2>
+            <div>
+                <ul>
+                    <li><b>Adam Sjöberg</b></li>
+                    <li><b>Erik Nordlöf</b></li>
+                    <li>
+                        {% if request.args.get('language') == 'en'%}
+                            Project Leaders for D-Dagen
+                        {% else %}
+                            D-Dagenansvariga
+                        {% endif %}
+                    </li>
+                    <li><a href="mailto:projectmanager@ddagen.se" class="cerise">projectmanager@ddagen.se</a></li>
+                    <li>&nbsp;</li>
+                    <li>
+                        {% if request.args.get('language') == 'en'%}
+                            The Sales Team
+                        {% else %}
+                            Säljgruppen
+                        {% endif %}
+                    </li>
+                    <li><a href="mailto:sales@ddagen.se" class="cerise">sales@ddagen.se</a></li>
+                </ul>
             </div>
         </div>
-    </div>
+    </footer>
 
     <script>
         let scroll = new SmoothScroll('a[href*="#"]');
