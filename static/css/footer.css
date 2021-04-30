@@ -20,16 +20,23 @@ footer {
     font-size: 2rem;
 }
 
-a:hover {
-	background-color: var(--hover-color);
+/* Make the main sponsor container flexible */
+#footer-item1 div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 60%;
+}
+
+/* Make the text for the social media icons centerd */
+#footer-item2 ul li{
+    display: flex;
+    align-items: center;
 }
 
 /* Classes */
 /*****************/
-.fa-3x {
-    vertical-align: middle;
-}
-
+/* Each item in the footer is a footer item */
 .footer-item {
     margin-bottom: 5%;
     padding-left: 1em;
@@ -38,9 +45,10 @@ a:hover {
 	border-color: var(--border-color);
 }
 
+/* Style the headers */
 .footer-item h2 {
-	padding-bottom: 1.5%;
-    margin-top: 1%;
+	padding-bottom: 0.125em;
+    margin-top: 0.125em;
     margin-bottom: 2%;
     border-width: 0px 0px 0.25rem 0px;
 	border-style: solid;
@@ -48,21 +56,24 @@ a:hover {
 }
 
 .sponsor-item {
+    /* Change the color of the icons to pink */
     filter: invert(41%) sepia(30%) saturate(5301%) hue-rotate(311deg) brightness(93%) contrast(96%);
     width: 66%;
     display: block;
     margin: auto;
-}
-
-#footer-item1 div {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    height: 60%;
 } 
+
+.icon {
+    /* Change the color of the icons to white */
+    filter: invert(100%) sepia(3%) saturate(113%) hue-rotate(222deg) brightness(115%) contrast(88%);
+    width: 7.5%;
+    height: 7.5%;
+    padding-right: 2.5%;
+}
 
 /* ID's */
 /*****************/
+/* Inital layout of the footer */
 #footer-item1 {
 	grid-row: 1;
 	grid-column: span 12;
@@ -76,10 +87,7 @@ a:hover {
     grid-column: span 12;
 }
 
-#fippel {
-    max-height: 80%;
-}
-
+/* Define the initial position for the ddagen<3ericsson */
 #sponsor-item-ddagen {
     grid-row: 1;
     grid-column: span 12;
@@ -96,6 +104,7 @@ a:hover {
     grid-column: span 12;
 }
 
+/* For large phones */
 @media only screen and (min-width: 600px) {
     #footer-item1 div {
         flex-direction: row;
@@ -118,7 +127,7 @@ a:hover {
     }
 } 
 
-/*For Desktops and larger*/
+/* Large phones and tablets */
 @media only screen and (min-width: 768px) {
 }
 
