@@ -5,3 +5,103 @@
     --border-color: var(--cerise);
     --hover-color: var(--cerise);
 }
+
+.menu-container {
+    background-color: var(--cerise);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 8px;
+}
+
+.menu-container .icon {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.menu-container .icon img {
+    width: 30px;
+    height: 30px;
+}
+
+.menu-container .logo {
+    display: flex;
+    justify-content: center;
+}
+
+.menu-container .logo img {
+    display: block;
+    height: 40px;
+}
+
+.menu-container .nav_bar {
+    display: none;
+}
+
+.menu-container .drop_down {
+    display: block;
+    height: 100vh;
+    background-color: var(--cerise);
+    font-size: 36px;
+}
+
+.menu-container .drop_down a#logo {
+    display: none;
+}
+
+#menu li {
+    display: block;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* For large phones */
+@media only screen and (min-width: 600px) {
+
+}
+
+
+/* Large phones and tablets */
+@media only screen and (min-width: 768px) {
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .menu-container {
+        border-bottom: var(--cerise);
+        border-width: 0px 0px 0.25rem 0px;
+        height: 7.5vh;
+        padding: 20px;
+        font-size: 20px;
+        text-transform: uppercase;
+    }
+    
+    .menu-container .icon {
+        display: none;
+    }
+    
+    .menu-container .logo {
+        display: none;
+    }
+
+    #menu li {
+        display: inline-block;
+        padding: 15px;
+    }
+    
+    #menu img {
+        vertical-align: middle;
+        width: 120px;
+    }
+    
+    ul#menu {
+        /*position: absolute;*/
+        list-style-type: none;
+        z-index: 1;
+        padding: 0;
+    }
+
+    .select-language-menu-item {
+        float: right;
+    }
+}

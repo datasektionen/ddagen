@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="/static/css/style.css?v=4.349590927"/>
     <link rel="stylesheet" href="/static/css/layout.css"/>
     <link rel="stylesheet" href="/static/css/footer.css"/>
+    <link rel="stylesheet" href="/static/css/header.css"/>
     <link rel="stylesheet" href="/static/css/index.css"/>
     <link rel="stylesheet" href="/static/css/companies.css"/>
     <link rel="stylesheet" href="/static/css/contact.css"/>
@@ -52,10 +53,7 @@
         {% if request.args.get('language') == 'en' %}
             <ul class="nav_bar" id="menu">
                 <li><a href="{{ url_for('index', language='en') }}" id="logo"><img src="{{ url_for('static', filename='assets/logo-white-ageless_v2.svg') }}" alt="D-Dagen"></a></li>
-                <!--<li><a href="{{ url_for('events', language='en') }}">Events</a></li>-->
-                <!--<li><a href="{{ url_for('visitors', language='en') }}">Visitors</a></li>-->
                 <li><a href="{{ url_for('companies', language='en') }}">Companies</a></li>
-                <!-- <li><a target="_blank" rel="noopener noreferrer" href="{{ url_for('static', filename='katalog2020.pdf') }}">Catalogue</a></li> -->
                 <li><a href="{{ url_for('faq', language='en') }}">FAQ</a></li>
                 <li><a href="{{ url_for('contact', language='en') }}">Contact us</a></li>
                 <li class="select-language-menu-item">
@@ -67,10 +65,7 @@
         {% else %}
             <ul class="nav_bar" id="menu">
                 <li><a href="{{ url_for('index') }}" id="logo"><img src="{{ url_for('static', filename='assets/logo-white-ageless_v2.svg') }}" alt="D-Dagen"></a></li>
-                <!--<li><a href="{{ url_for('events') }}">Event</a></li>-->
-                <!--<li><a href="{{ url_for('visitors') }}">Besökare</a></li>-->
                 <li><a href="{{ url_for('companies') }}">Företag</a></li>
-                <!-- <li><a target="_blank" rel="noopener noreferrer" href="{{ url_for('static', filename='katalog2020.pdf') }}">Katalog</a></li> -->
                 <li><a href="{{ url_for('faq') }}">FAQ</a></li>
                 <li><a href="{{ url_for('contact') }}">Kontakta oss</a></li>
                 <li class="select-language-menu-item">
@@ -80,7 +75,6 @@
                 </li>
             </ul>
         {% endif %}
-
     </header>
 
     <!-- Main Content -->
