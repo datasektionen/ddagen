@@ -1,0 +1,7 @@
+:root{
+    --cerise: #e83d84;
+    --cerise-light: #ec5f99; /*rgba(232,19,108,0.8);*/
+    --footer-backgrond: rgba(69, 69, 69, 0.8);
+    --border-color: var(--cerise);
+    --hover-color: var(--cerise);
+}
