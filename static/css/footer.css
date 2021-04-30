@@ -12,7 +12,7 @@ footer {
     padding-right: 3%;
     padding-bottom: 2%;
     padding-top: 2%;
-	display: flex;
+	display: grid;
 
     border-width: 0.5em 0px 0px 0px;
 	border-style: solid;
@@ -66,9 +66,10 @@ footer {
 .icon {
     /* Change the color of the icons to white */
     filter: invert(100%) sepia(3%) saturate(113%) hue-rotate(222deg) brightness(115%) contrast(88%);
-    width: 7.5%;
-    height: 7.5%;
-    padding-right: 2.5%;
+    width: 1.5em;
+    height: 1.5em;
+    padding-right: 0.25em;
+    margin-bottom: 0.125em;
 }
 
 /* ID's */
