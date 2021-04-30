@@ -16,6 +16,9 @@
 }
 
 .menu-container {
+    border-bottom: var(--cerise);
+    border-width: 0px 0px 0.25rem 0px;
+    height: 7.5vh;
     padding: 20px;
     font-size: 20px;
     text-transform: uppercase;
@@ -51,6 +54,7 @@ ul#menu {
 }
 
 #intro-box {
+    height: 67.5vh;
     justify-content: center;
     align-content: center;
     overflow: hidden;
@@ -124,34 +128,6 @@ ul#menu {
     border-bottom: none;
 }
 
-.main-sponsor{
-    display: block;
-    margin-left: 10%;
-    margin-right: auto;
-    width: 1000px;
-    height:auto;
-    filter: invert(41%) sepia(30%) saturate(5301%) hue-rotate(311deg) brightness(93%) contrast(96%);
-}
-
-/* Three image containers (use 25% for four, and 50% for two, etc) */
-.main-sponsor-column {
-    float: left;
-    width: 33.33%;
-    padding: 5px;
-    filter: invert(41%) sepia(30%) saturate(5301%) hue-rotate(311deg) brightness(93%) contrast(96%);
-}
-
-  /* Clear floats after image containers */
-.main-sponsor-row::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
-.fa-3x {
-    vertical-align: middle;
-}
-
 #clock {
     background:linear-gradient(rgb(255, 126, 227),rgb(235, 0, 117));
     display: block;
@@ -186,6 +162,13 @@ ul#menu {
     width:150px;
     text-shadow: 2px 2px #ff0000;
     list-style:none;
+}
+
+.grid-container{
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-row-gap: 0;
+	grid-column-gap: 0;
 }
 
 @media (min-width: 600px) {
@@ -280,10 +263,6 @@ ul#menu {
         margin-bottom: 40px;
     }
 
-    .main-sponsor{
-        width: 400px;
-    }
-
     #time li { width: 80px; } /* On small screens, show one list item per row */
     #time-label li { width: 80px; }
     #clock{width:400px;}
@@ -299,10 +278,6 @@ ul#menu {
     #shield {
         margin-top: 20px;
         font-size: 16px;
-    }
-
-    .main-sponsor{
-        width: 200px;
     }
 
     #time li { width: 60px; } /* On small screens, show one list item per row */

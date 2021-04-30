@@ -1,0 +1,166 @@
+:root{
+    --cerise: #e83d84;
+    --cerise-light: #ec5f99; /*rgba(232,19,108,0.8);*/
+    --footer-backgrond: rgba(69, 69, 69, 0.8);
+    --border-color: var(--cerise);
+    --hover-color: var(--cerise);
+}
+
+footer {
+	background-color: var(--footer-backgrond);
+	padding-left: 3%;
+    padding-right: 3%;
+    padding-bottom: 2%;
+    padding-top: 2%;
+	display: flex;
+
+    border-width: 0.5em 0px 0px 0px;
+	border-style: solid;
+	border-color: var(--border-color);
+    font-size: 2rem;
+}
+
+/* Make the main sponsor container flexible */
+#footer-item1 div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 60%;
+}
+
+/* Make the text for the social media icons centerd */
+#footer-item2 ul li{
+    display: flex;
+    align-items: center;
+}
+
+/* Classes */
+/*****************/
+/* Each item in the footer is a footer item */
+.footer-item {
+    margin-bottom: 5%;
+    padding-left: 1em;
+    padding-right: 1em;
+	border-left: solid;
+	border-color: var(--border-color);
+}
+
+/* Style the headers */
+.footer-item h2 {
+	padding-bottom: 0.125em;
+    margin-top: 0.125em;
+    margin-bottom: 2%;
+    border-width: 0px 0px 0.25rem 0px;
+	border-style: solid;
+	border-color: var(--border-color);
+}
+
+.sponsor-item {
+    /* Change the color of the icons to pink */
+    filter: invert(41%) sepia(30%) saturate(5301%) hue-rotate(311deg) brightness(93%) contrast(96%);
+    width: 66%;
+    display: block;
+    margin: auto;
+} 
+
+.icon {
+    /* Change the color of the icons to white */
+    filter: invert(100%) sepia(3%) saturate(113%) hue-rotate(222deg) brightness(115%) contrast(88%);
+    width: 7.5%;
+    height: 7.5%;
+    padding-right: 2.5%;
+}
+
+/* ID's */
+/*****************/
+/* Inital layout of the footer */
+#footer-item1 {
+	grid-row: 1;
+	grid-column: span 12;
+}
+#footer-item2 {
+	grid-row: 2;
+	grid-column: span 12;
+}
+#footer-item3 {
+    grid-row: 3;
+    grid-column: span 12;
+}
+
+/* Define the initial position for the ddagen<3ericsson */
+#sponsor-item-ddagen {
+    grid-row: 1;
+    grid-column: span 12;
+}
+
+#sponsor-item-heart {
+    grid-row: 2;
+    grid-column: span 12;
+    width: 15%;
+}
+
+#sponsor-item-ericsson {
+    grid-row: 3;
+    grid-column: span 12;
+}
+
+/* For large phones */
+@media only screen and (min-width: 600px) {
+    #footer-item1 div {
+        flex-direction: row;
+    } 
+
+    .sponsor-item {
+        width: 40%;
+    }
+
+    #sponsor-item-ddagen {
+        margin-right: 0;
+    }
+    
+    #sponsor-item-heart {
+        width: 10%;
+    }
+    
+    #sponsor-item-ericsson {
+        margin-left: 0;
+    }
+} 
+
+/* Large phones and tablets */
+@media only screen and (min-width: 768px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    #footer-item1 div {
+        flex-direction: column;
+    }
+
+    .footer-item {
+        margin-right: 5%;
+        margin-left: 5%;
+        margin-bottom: 0px;
+    }
+    .footer-item{margin-top: 0;}
+    
+    .sponsor-item {
+        width: 40%;
+    }
+
+    #footer-item1{grid-column: 4 / span 6; grid-row: 1;}
+    #footer-item2{grid-column: 1 / span 3; grid-row: 1;}
+    #footer-item3{grid-column: span 3; grid-row: 1;}
+
+    #sponsor-item-ddagen {
+        margin-right: auto;
+    }
+    
+    #sponsor-item-heart {
+        width: 10%;
+    }
+    
+    #sponsor-item-ericsson {
+        margin-left: auto;
+    }
+} 
