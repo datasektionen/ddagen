@@ -276,6 +276,15 @@
                         {% endif %}
                     </li>
                     <li><a href="mailto:sales@ddagen.se" class="cerise">sales@ddagen.se</a></li>
+                    <li>&nbsp;</li>
+                    <li>
+                        {% if request.args.get('language') == 'en'%}
+                            Site manager
+                        {% else %}
+                            Sidansvarig
+                        {% endif %}
+                    </li>
+                    <li><a href="mailto:web@ddagen.se" class="cerise">web@ddagen.se</a></li>
                 </ul>
             </div>
         </div>
