@@ -71,7 +71,34 @@ header {
 }
 
 @media only screen and (min-width: 600px) {
+    header {
+        height: 7.5vh;
+        font-size: 2rem;
+        display: flex;
+        align-items: center;
+    }
+
     .navigation-bar #header-hamburger {
         display: none;
+    }
+
+    .navigation-bar a:not(:first-child) {
+        display: block;
+    }
+
+    .navigation-bar {
+        /* display: flex; */
+    }
+
+    .navigation-bar a {
+        padding: 0.5em;
+        padding-top: auto;
+        padding-bottom: auto;
+    }
+
+    #ddagen-logo {
+        height: 1.5em;
+        margin: 0em;
+        margin-left: 2%;
     }
 }
