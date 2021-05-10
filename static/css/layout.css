@@ -15,44 +15,6 @@
     text-transform: uppercase;
 }
 
-.menu-container {
-    border-bottom: var(--cerise);
-    border-width: 0px 0px 0.25rem 0px;
-    height: 7.5vh;
-    padding: 20px;
-    font-size: 20px;
-    text-transform: uppercase;
-}
-
-.menu-container .icon {
-    display: none;
-}
-
-.menu-container .logo {
-    display: none;
-}
-
-#menu li {
-    display: inline-block;
-    padding: 15px;
-}
-
-#menu img {
-    vertical-align: middle;
-    width: 120px;
-}
-
-ul#menu {
-    /*position: absolute;*/
-    list-style-type: none;
-    z-index: 1;
-    padding: 0;
-}
-
-.select-language-menu-item {
-    float: right;
-}
-
 #intro-box {
     height: 67.5vh;
     justify-content: center;
@@ -92,40 +54,6 @@ ul#menu {
     vertical-align: middle;
     margin-right: 5px;
     margin-bottom: 0;
-}
-
-.contact-list {
-    padding-left: 0;
-    text-align: center;
-    margin-bottom: 2%;
-}
-
-.contact-list div {
-    margin-top: 2%;
-}
-
-.contact-list div img {
-    width: 65%;
-    margin-bottom: 10%;
-}
-
-.contact-list p {
-    margin: 0;
-    color: #6a6a6a;
-}
-
-.fa {
-    padding : 10px;
-    font-size: 100px;
-    width: 30px;
-    text-align: center;
-    text-decoration: none;
-    margin-right : 10px
-}
-
-.fa:hover{
-    text-decoration: none;
-    border-bottom: none;
 }
 
 #clock {
@@ -180,48 +108,6 @@ ul#menu {
 
 /* For devices narrower than 600px */
 @media (max-width: 600px) {
-    .menu-container {
-        background-color: var(--cerise);
-        box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 8px;
-    }
-
-    .menu-container .icon {
-        display: block;
-        position: absolute;
-        right: 20px;
-        top: 20px;
-    }
-
-    .menu-container .icon img {
-        width: 30px;
-        height: 30px;
-    }
-
-    .menu-container .logo {
-        display: flex;
-        justify-content: center;
-    }
-
-    .menu-container .logo img {
-        display: block;
-        height: 40px;
-    }
-
-    .menu-container .nav_bar {
-        display: none;
-    }
-
-    .menu-container .drop_down {
-        display: block;
-        height: 100vh;
-        background-color: var(--cerise);
-        font-size: 36px;
-    }
-
-    .menu-container .drop_down a#logo {
-        display: none;
-    }
-
     .select-language-menu-item {
         float: none;
         position: absolute;
@@ -257,12 +143,6 @@ ul#menu {
 
 /* For devices narrower than 600px */
 @media (max-width: 600px) {
-    #menu li {
-        display: block;
-        text-align: center;
-        margin-bottom: 40px;
-    }
-
     #time li { width: 80px; } /* On small screens, show one list item per row */
     #time-label li { width: 80px; }
     #clock{width:400px;}
