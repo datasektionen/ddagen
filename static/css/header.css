@@ -1,8 +1,8 @@
 :root{
     --cerise: #e83d84;
     --cerise-light: #ec5f99; /*rgba(232,19,108,0.8);*/
-    --header-backgrond: rgba(69, 69, 69, 0.8);
-    --border-color: var(--cerise);
+    --header-backgrond: rgba(69, 69, 69, 1);
+    --header-backgrond-transparent: rgba(69, 69, 69, 0.8);
     --hover-color: var(--cerise);
 }
 
@@ -11,7 +11,10 @@ header {
     border: 0em;
     border-bottom: 0.5em;
 	border-style: solid;
-	border-color: var(--border-color);
+	border-color: var(--cerise);
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 #ddagen-logo {
@@ -72,6 +75,7 @@ header {
         font-size: 2rem;
         display: flex;
         align-items: center;
+        background-color: var(--header-backgrond-transparent);
     }
 
     .navigation-bar #header-hamburger {
