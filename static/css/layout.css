@@ -2,59 +2,78 @@
 :root{
     --cerise: #e83d84;
     --cerise-light: #ec5f99; /*rgba(232,19,108,0.8);*/
+    --grey: rgba(69, 69, 69, 1);
+    --grey-transparent: rgba(69, 69, 69, 0.8);
 }
 
 #home_body {
     color: white;
     background-color: var(--cerise-light);
-    padding: 0;
-    line-height: 175%;
-}
-
-#home_body > h1 {
-    text-transform: uppercase;
 }
 
 #intro-box {
-    height: 67.5vh;
-    justify-content: center;
-    align-content: center;
-    overflow: hidden;
-}
-
-#intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    font-size: 18px;
-    color: white;
-    margin-top: 10%;
-    padding-left: 5%;
-    padding-right: 5%;
-    font-weight: 200;
+    padding: 10%;
+    font-size: 2rem;
 }
 
-#intro > img {
-    width: 30%;
-    margin-bottom: 85px;
+#page-title {
+
 }
 
-#intro h1 {
-    text-transform: uppercase;
-    margin-bottom: 20px;
+#ddagen-logo-intro {
+    width: 66%;
 }
 
-#shield {
-    text-align: center;
-    margin-top: 15px;
-    margin-bottom: 125px;
-    font-weight: 600;
+#datasektionen-shield {
+    width: 20%;
+    margin-bottom: 1%;
 }
 
-#shield img {
-    width: 6%;
-    vertical-align: middle;
-    margin-right: 5px;
-    margin-bottom: 0;
+#intro-box h4 {
+    margin: 0px;
+    padding: 5% 0 5% 0;
+    font-size: 3rem;
 }
+
+@media (min-width: 600px) {
+    #home_body {
+        background-size: cover;
+        background: url(/static/assets/bakgrund_v2.png) fixed center;
+    }
+
+    #ddagen-logo-intro {
+        width: 45%;
+    }
+    
+    #datasektionen-shield {
+        width: 10%;
+    }
+}
+
+@media (min-width: 992px) {
+    #intro-box {
+        padding: 6.7% 0 6.7% 0;
+    }
+
+    #ddagen-logo-intro {
+        width: 33%;
+    }
+    
+    #datasektionen-shield {
+        width: 6.7%;
+    }
+
+    #intro-box h4 {
+        padding: 3% 0 3% 0;
+    }
+}
+
+
+
 
 #clock {
     background:linear-gradient(rgb(255, 126, 227),rgb(235, 0, 117));
@@ -92,33 +111,8 @@
     list-style:none;
 }
 
-@media (min-width: 600px) {
-    #home_body {
-        background-size: cover;
-        background: url(/static/assets/bakgrund_v2.png) fixed center;
-    }
-}
-
 /* For devices narrower than 768px */
 @media (max-width: 768px) {
-    #intro > img {
-        width: 80%;
-        margin-bottom: 100px;
-        min-width: 300px;
-    }
-
-    #shield {
-        margin-top: 100px;
-    }
-
-    #shield img {
-        width: 16%;
-        min-width: 64px;
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-    }
-
     #time li { width: 120px; } /* On small screens, show one list item per row */
     #time-label li { width: 120px; }
     #clock{width:600px;}
@@ -133,16 +127,6 @@
 
 /* For devices narrower than 414px */
 @media (max-width: 414px) {
-    #intro > img {
-        margin-bottom: 60px;
-        min-width: 275px;
-    }
-
-    #shield {
-        margin-top: 20px;
-        font-size: 16px;
-    }
-
     #time li { width: 60px; } /* On small screens, show one list item per row */
     #time-label li { width: 60px; }
     #clock{width:300px;}

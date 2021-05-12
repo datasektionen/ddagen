@@ -1,13 +1,13 @@
 :root{
     --cerise: #e83d84;
     --cerise-light: #ec5f99; /*rgba(232,19,108,0.8);*/
-    --header-backgrond: rgba(69, 69, 69, 1);
-    --header-backgrond-transparent: rgba(69, 69, 69, 0.8);
+    --grey: rgba(69, 69, 69, 1);
+    --grey-transparent: rgba(69, 69, 69, 0.8);
     --hover-color: var(--cerise);
 }
 
 header {
-    background-color: var(--header-backgrond);
+    background-color: var(--grey);
     border: 0em;
     border-bottom: 0.5em;
 	border-style: solid;
@@ -17,7 +17,7 @@ header {
     width: 100%;
 }
 
-#ddagen-logo {
+#ddagen-logo-header {
     height: 1.5em;
     margin: 2%;
 }
@@ -53,7 +53,9 @@ header {
 }
 
 .navigation-bar.responsive {
-    position: relative;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 .responsive #header-hamburger {
@@ -75,7 +77,7 @@ header {
         font-size: 2rem;
         display: flex;
         align-items: center;
-        background-color: var(--header-backgrond-transparent);
+        background-color: var(--grey-transparent);
     }
 
     .navigation-bar #header-hamburger {
@@ -94,7 +96,7 @@ header {
         background-color: var(--hover-color);
     }
 
-    #ddagen-logo {
+    #ddagen-logo-header {
         height: 1.5em;
         margin: 0em;
         margin-left: 1%;

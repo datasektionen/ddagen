@@ -1,14 +1,14 @@
 :root{
     --cerise: #e83d84;
     --cerise-light: #ec5f99; /*rgba(232,19,108,0.8);*/
-    --footer-backgrond: rgba(69, 69, 69, 1);
-    --footer-backgrond-transparent: rgba(69, 69, 69, 0.8);
+    --grey: rgba(69, 69, 69, 1);
+    --grey-transparent: rgba(69, 69, 69, 0.8);
     --hover-color: var(--cerise);
     --border-color: var(--cerise);
 }
 
 footer {
-	background-color: var(--footer-backgrond);
+	background-color: var(--grey);
 	padding-left: 3%;
     padding-right: 3%;
     padding-bottom: 2%;
@@ -116,7 +116,7 @@ footer {
 /* For large phones */
 @media only screen and (min-width: 600px) {
     footer {
-        background-color: var(--footer-backgrond-transparent);
+        background-color: var(--grey-transparent);
     }
 
     #footer-item1 div {

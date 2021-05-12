@@ -25,7 +25,9 @@
 	<meta name="msapplication-config" content="/static/icons/browserconfig.xml">
 	<meta name="google-site-verification" content="MNj-G5h7DoEv4j26SQgrOESA177JmHehgLqvY6naNeA" />
 	<link href="https://fonts.googleapis.com/css?family=Lato:400,600,900" rel="stylesheet">
-	<link rel="stylesheet" href="//aurora.datasektionen.se/" type="text/css" />
+	
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="//aurora.datasektionen.se/" type="text/css" />
     <link rel="stylesheet" href="/static/css/style.css?v=4.349590927"/>
     <link rel="stylesheet" href="/static/css/layout.css"/>
     <link rel="stylesheet" href="/static/css/footer.css"/>
@@ -34,6 +36,11 @@
     <link rel="stylesheet" href="/static/css/companies.css"/>
     <link rel="stylesheet" href="/static/css/contact.css"/>
     <link rel="stylesheet" href="/static/css/faq.css"/>
+    
+    <!-- Scripts -->
+    <script type="text/javascript" src="static/js/script.js"></script>
+    <script type="text/javascript" src="static/js/navbar.js"></script>
+
     <!-- Add icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="{{ url_for('static', filename='smooth-scroll.min.js') }}"></script>
@@ -41,11 +48,10 @@
 </head>
 
 <body id="home_body">
-
     <!-- Header -->
     <!-- ####################### -->
     <header id="navigation-bar" class="navigation-bar">
-        <img id="ddagen-logo" src="static/assets/logo-white-ageless_v2.svg">
+        <img id="ddagen-logo-header" src="static/assets/logo-white-ageless_v2.svg">
 
         {% if request.args.get('language') == 'en' %}
         <a href="{{ url_for('companies') }}"    >Companies</a>
@@ -85,121 +91,19 @@
 
     <!-- Main Content -->
     <!-- ####################### -->
-    <!-- Scritp to update the countdown clock -->
-    <!-- <script>
-        var countDownDate = new Date("Oct 7, 2021 10:00:00").getTime();
-
-        var days, hours, minutes, seconds,count;
-
-        var daysTimer = document.getElementByqId("dayTimer");
-        var hoursTimer = document.getElementById("hourTimer");
-        var minutesTimer = document.getElementById("minuteTimer");
-        var secondsTimer = document.getElementById("secondTimer");
-
-
-        var y = setInterval(function() {
-            var countClicker = document.getElementById("countClicker");
-
-            function loadDoc() {
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        console.log(this.responseText)
-                    count= this.responseText
-                    countClicker.innerHTML = count
-                    }
-                };
-                xhttp.open("GET", "get_counter", true);
-                xhttp.send();
-            }
-
-            loadDoc();
-        }, 1000);
-
-        var x = setInterval(function() {
-            var now = new Date().getTime();
-            var distance = countDownDate - now;
-
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                dayTimer.innerHTML = days;
-                hourTimer.innerHTML = hours;
-                minuteTimer.innerHTML = minutes;
-                secondTimer.innerHTML = seconds;
-        }, 1000);
-    </script> -->
-
-
-    {% block intro_full %}
-    <!-- ddagen intro -->
-    <div id="intro-box">
-        <div id="intro">
+    <div id="page-content">
+        <!-- This is where the title of the page is inserted -->
+        <div id="page-title">
+            {% block intro_full %}
             {% block intro %}
-            <span>
-            {% if request.args.get('language') == 'en'%}
-                Konglig Datasektionen at KTH proudly presents
-                <!--<li id = "countClicker"></li>-->
-
-            {% else %}
-                Konglig Datasektionen vid KTH presenterar stolt
-            {% endif %}
-            </span><br>
-            <img src="{{ url_for('static', filename='assets/logo-white-ageless_v2.svg') }}" alt=""><br>
-            <h1><span class="lato-black">
-            {% if request.args.get('language') == 'en'%}
-                7th of October 2021
-            {% else %}
-                7 Oktober 2021
-            {% endif %}
-            </span><!--<br><span class="lato-light">Nymble</span>--></h1>
-            <br>
-
-
-            <!-- The countdown clock -->
-            <!-- <div id="clock">
-                <div>
-                    <ul id=time>
-                    <li id="dayTimer"></li>
-                    <li id="hourTimer"></li>
-                    <li id="minuteTimer"></li>
-                    <li id="secondTimer"></li>
-                    </ul>
-                </div>
-                <div>
-                    <ul id="time-label" >
-                    {% if request.args.get('language') == 'en'%}
-                    <li>days</li>
-                    <li>hours</li>
-                    <li>minutes</li>
-                    <li>seconds</li>
-                    {% else %}
-                    <li>dagar</li>
-                    <li>timmar</li>
-                    <li>minuter</li>
-                    <li>sekunder</li>
-                    {% endif %}
-                    </ul>
-                </div>
-            </div> -->
-
-            <div><p id="shield"><img src="{{ url_for('static', filename='assets/shield.png') }}" alt="">
-            {% if request.args.get('language') == 'en'%}
-                The Computer Science chapter's annual career fair
-            {% else %}
-                Datasektionens årliga arbetsmarknadsdag
-            {% endif %}
-            </p></div>
             {% endblock intro %}
+            {% endblock intro_full %}
         </div>
+            
+        <!-- This is where the content of the other pages is inserted -->
+        {% block content %}
+        {% endblock %}
     </div>
-    {% endblock intro_full %}
-
-    <!-- This is where the content of the other pages is inserted -->
-    {% block content %}
-    {% endblock %}
 
     <!-- Page Footer -->
     <!-- ####################### -->
