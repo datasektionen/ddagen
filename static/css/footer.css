@@ -1,13 +1,14 @@
 :root{
     --cerise: #e83d84;
     --cerise-light: #ec5f99; /*rgba(232,19,108,0.8);*/
-    --footer-backgrond: rgba(69, 69, 69, 0.8);
-    --border-color: var(--cerise);
+    --grey: rgba(69, 69, 69, 1);
+    --grey-transparent: rgba(69, 69, 69, 0.8);
     --hover-color: var(--cerise);
+    --border-color: var(--cerise);
 }
 
 footer {
-	background-color: var(--footer-backgrond);
+	background-color: var(--grey);
 	padding-left: 3%;
     padding-right: 3%;
     padding-bottom: 2%;
@@ -72,6 +73,13 @@ footer {
     margin-bottom: 0.125em;
 }
 
+.grid-container{
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-row-gap: 0;
+	grid-column-gap: 0;
+}
+
 /* ID's */
 /*****************/
 /* Inital layout of the footer */
@@ -107,6 +115,10 @@ footer {
 
 /* For large phones */
 @media only screen and (min-width: 600px) {
+    footer {
+        background-color: var(--grey-transparent);
+    }
+
     #footer-item1 div {
         flex-direction: row;
     } 
