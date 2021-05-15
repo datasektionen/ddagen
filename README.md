@@ -19,7 +19,7 @@ Generally this means that you should never set values in pixels or cm, instead u
 
 ## Setup
 If you're running Windows I can highly recommend Windows Subsystem for Linux (WSL) as
-it allows you to run a Linux terminal in Windows. This can be of tremendous help as it allows you to gather everything related to the development of [ddagen.se](ddagen.se) in one place (git, React, Flask).
+it allows you to run a Linux terminal in Windows. This can be of tremendous help as it allows you to gather everything related to the development of [ddagen.se](https://ddagen.se/) in one place (git, React, Flask).
 
 Link to installation  guide: [https://docs.microsoft.com/en-us/windows/wsl/install-win10](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
 
