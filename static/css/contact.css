@@ -23,24 +23,16 @@
     padding-bottom: 20px;
 }
 
-.portrait {
-    float: left;
-    text-align: center;
-    padding-top: 40px;
-    padding-bottom: 40px;
-}
-
 .portrait-photo{
     float: left;
     text-align: center;
     object-fit: fill;
 }
 
-.portrait img {
-    width: 200px;
-}
-
 .portrait-photo img {
+    height: 300px;
     width: 200px;
     border-radius: 15%;
+    background-size: cover;
+    background-position: center center;
 }
