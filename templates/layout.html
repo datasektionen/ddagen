@@ -51,7 +51,9 @@
     <!-- Header -->
     <!-- ####################### -->
     <header id="navigation-bar" class="navigation-bar">
-        <img id="ddagen-logo-header" src="static/assets/logo-white-ageless_v2.svg">
+        <a href="{{ url_for('index') }}">
+            <img id="ddagen-logo-header" src="static/assets/logo-white-ageless_v2.svg">
+        </a>
 
         {% if request.args.get('language') == 'en' %}
         <a href="{{ url_for('companies') }}"    >Companies</a>
