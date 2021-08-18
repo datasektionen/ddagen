@@ -67,7 +67,7 @@
         {% else %}
         <a href="{{ url_for('companies') }}"    >Företag</a>
         <a href="{{ url_for('faq') }}"          >FAQ</a>
-        <a href="{{ url_for('contact') }}"      >Kontakta Oss</a>
+        <a href="{{ url_for('contact') }}"      >Kontakta oss</a>
         <a href="{{ url_for(request.endpoint, language='en') if request.endpoint else url_for('index', language='en') }}"
             id="language">
             <img style="width: 1em" src="{{ url_for('static', filename='assets/flag_eng.svg') }}" alt="English"/>
@@ -134,7 +134,7 @@
                 {% if request.args.get('language') == 'en'%}
                     Social Medias
                 {% else %}
-                    Sociala Medier
+                    Sociala medier
                 {% endif %}
             </h2>
             <ul>
@@ -158,7 +158,7 @@
                 {% if request.args.get('language') == 'en'%}
                     Contact Us
                 {% else %}
-                    Kontakta Oss
+                    Kontakta oss
                 {% endif %}
             </h2>
             <div>
