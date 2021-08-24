@@ -48,8 +48,7 @@
 @media (max-width: 1200px) {
     #flex-boxes {
         display: block;
-        margin-left: 10px;
-        margin-right: 10px;
+        margin: 20px 5% 0;
     }
 
     .flex-box {
