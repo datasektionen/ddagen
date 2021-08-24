@@ -1,83 +1,57 @@
 /* Variables */
-:root{
+:root {
     --cerise: #e83d84;
-    --cerise-light: #ec5f99; /*rgba(232,19,108,0.8);*/
+    --cerise-light: #ec5f99;
+    --grey: rgba(69, 69, 69, 1);
 }
 
-img.greeting-portrait {
-    margin-top: 40px;
-    width:550px;
+#countdown {
+    display: grid;
+    gap: 0.2em;
+    grid-template-areas: 
+        'cd-day day'
+        'cd-hrs hrs'
+        'cd-min min'
+        'cd-sec sec';
+
+    width: 40vw;
+    margin: auto;
+    margin-bottom: 10%;
+
+    color: white;
+    font-family: 'Black Ops One', cursive;
+    font-size: xx-large;
 }
 
-/* Three image containers (use 25% for four, and 50% for two, etc) */
-.greeting-column {
-    float: left;
-    width: 50%;
-    padding: 5px;
+#cd-day { grid-area: cd-day; }
+#cd-hrs { grid-area: cd-hrs; }
+#cd-min { grid-area: cd-min; }
+#cd-sec { grid-area: cd-sec; }
+#day { grid-area: day; }
+#hrs { grid-area: hrs; }
+#min { grid-area: min; }
+#sec { grid-area: sec; }
+
+.cd-label {
+
 }
 
-/* Clear floats after image containers */
-.greeting-row::after {
-    content: "";
-    clear: both;
-    display: table;
+.cd {
+    text-align: right;
 }
 
-/* For devices narrower than 1200px */
-@media (max-width: 1200px) {
-    img.greeting-portrait {
-        width: 200px;
-        margin-top:20px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
+@media only screen and (min-width: 600px) {
+    #countdown {
+        grid-template-areas: 
+        'cd-day cd-hrs cd-min cd-sec'
+        'day hrs min sec';
     }
 
-    .greeting-column{
-        width: 100%;
-    }
-}
-
-/* For devices narrower than 1100px */
-@media (max-width: 1100px) {
-    img.greeting-portrait {
-      width: 100%;
-
-    }
-}
-
-/* For devices narrower than 768px */
-@media (max-width: 768px) {
-    img.greeting-portrait {
-        width: 100%;
-        margin-top: 20px;
+    .cd {
+        text-align: center;
     }
 
-    .greeting-column{
-        width: 100%;
-    }
-}
-
-/* For devices narrower than 600px */
-@media (max-width: 600px) {
-    img.greeting-portrait {
-      width: 100%;
-      margin-top: 10px;
-    }
-
-    .greeting-column{
-        width: 100%;
-    }
-}
-
-/* For devices narrower than 414px */
-@media (max-width: 414px) {
-    .greeting-column{
-        width: 100%;
-    }
-
-    img.greeting-portrait {
-        width: 100%;
-        margin-top: 5px;
+    .cd-label {
+        text-align: center;
     }
 }

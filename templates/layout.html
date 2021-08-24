@@ -1,50 +1,57 @@
 <!DOCTYPE html>
 <html lang="sv">
+
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-177853051-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
         gtag('config', 'UA-177853051-1');
     </script>
 
-	<meta charset="UTF-8">
-	<meta name="theme-color" content="#e83d84">
-	<meta name="theme-color" content="#ffffff">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="apple-touch-icon" sizes="180x180" href="/static/icons/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/static/icons/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/static/icons/favicon-16x16.png">
-	<link rel="manifest" href="/static/icons/site.webmanifest">
-	<link rel="mask-icon" href="/static/icons/safari-pinned-tab.svg" color="#5bbad5">
-	<link rel="shortcut icon" href="/static/icons/favicon.ico">
-	<meta name="msapplication-TileColor" content="#da532c">
-	<meta name="msapplication-config" content="/static/icons/browserconfig.xml">
-	<meta name="google-site-verification" content="MNj-G5h7DoEv4j26SQgrOESA177JmHehgLqvY6naNeA" />
-	<link href="https://fonts.googleapis.com/css?family=Lato:400,600,900" rel="stylesheet">
-	
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#e83d84">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/icons/favicon-16x16.png">
+    <link rel="manifest" href="/static/icons/site.webmanifest">
+    <link rel="mask-icon" href="/static/icons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/static/icons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/static/icons/browserconfig.xml">
+    <meta name="google-site-verification" content="MNj-G5h7DoEv4j26SQgrOESA177JmHehgLqvY6naNeA" />
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,600,900" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+
     <!-- Stylesheets -->
     <link rel="stylesheet" href="//aurora.datasektionen.se/" type="text/css" />
-    <link rel="stylesheet" href="/static/css/style.css?v=4.349590927"/>
-    <link rel="stylesheet" href="/static/css/layout.css"/>
-    <link rel="stylesheet" href="/static/css/footer.css"/>
-    <link rel="stylesheet" href="/static/css/header.css"/>
-    <link rel="stylesheet" href="/static/css/index.css"/>
-    <link rel="stylesheet" href="/static/css/companies.css"/>
-    <link rel="stylesheet" href="/static/css/contact.css"/>
-    <link rel="stylesheet" href="/static/css/faq.css"/>
-    
+    <link rel="stylesheet" href="/static/css/style.css?v=4.349590927" />
+    <link rel="stylesheet" href="/static/css/layout.css" />
+    <link rel="stylesheet" href="/static/css/footer.css" />
+    <link rel="stylesheet" href="/static/css/header.css" />
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <link rel="stylesheet" href="/static/css/companies.css" />
+    <link rel="stylesheet" href="/static/css/contact.css" />
+    <link rel="stylesheet" href="/static/css/faq.css" />
+
     <!-- Scripts -->
     <script type="text/javascript" src="static/js/script.js"></script>
     <script type="text/javascript" src="static/js/navbar.js"></script>
+    <script type="text/javascript" src="static/js/countdown.js"></script>
 
     <!-- Add icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="{{ url_for('static', filename='smooth-scroll.min.js') }}"></script>
-	<title>D-Dagen - Konglig Datasektionen</title>
+    <script src="{{ url_for('static', filename='smooth-scroll.min.js') }}"></script>
+    <title>D-Dagen - Konglig Datasektionen</title>
 </head>
 
 <body id="home_body">
@@ -56,21 +63,21 @@
         </a>
 
         {% if request.args.get('language') == 'en' %}
-        <a href="{{ url_for('companies') }}"    >Companies</a>
-        <a href="{{ url_for('faq') }}"          >FAQ</a>
-        <a href="{{ url_for('contact') }}"      >Contact Us</a>
+        <a href="{{ url_for('companies') }}">Companies</a>
+        <a href="{{ url_for('faq') }}">FAQ</a>
+        <a href="{{ url_for('contact') }}">Contact Us</a>
         <a href="{{ url_for(request.endpoint, language='sv') if request.endpoint else url_for('index', language='sv') }}"
             id="language">
-            <img style="width: 1em" src="{{ url_for('static', filename='assets/flag_swe.svg') }}" alt="English"/>
+            <img style="width: 1em" src="{{ url_for('static', filename='assets/flag_swe.svg') }}" alt="English" />
             Svenska
         </a>
         {% else %}
-        <a href="{{ url_for('companies') }}"    >Företag</a>
-        <a href="{{ url_for('faq') }}"          >FAQ</a>
-        <a href="{{ url_for('contact') }}"      >Kontakta oss</a>
+        <a href="{{ url_for('companies') }}">Företag</a>
+        <a href="{{ url_for('faq') }}">FAQ</a>
+        <a href="{{ url_for('contact') }}">Kontakta oss</a>
         <a href="{{ url_for(request.endpoint, language='en') if request.endpoint else url_for('index', language='en') }}"
             id="language">
-            <img style="width: 1em" src="{{ url_for('static', filename='assets/flag_eng.svg') }}" alt="English"/>
+            <img style="width: 1em" src="{{ url_for('static', filename='assets/flag_eng.svg') }}" alt="English" />
             English
         </a>
         {% endif %}
@@ -101,7 +108,7 @@
             {% endblock intro %}
             {% endblock intro_full %}
         </div>
-            
+
         <!-- This is where the content of the other pages is inserted -->
         {% block content %}
         {% endblock %}
@@ -114,27 +121,27 @@
         <div id="footer-item1" class="footer-item">
             <h2 class="head">
                 {% if request.args.get('language') == 'en'%}
-                    A BIG THANK YOU TO OUR <b>MAIN SPONSOR</b>
+                A BIG THANK YOU TO OUR <b>MAIN SPONSOR</b>
                 {% else %}
-                    STORT TACK TILL VÅR <b>HUVUDSPONSOR</b>
+                STORT TACK TILL VÅR <b>HUVUDSPONSOR</b>
                 {% endif %}
             </h2>
             <div id="footer-sponsor-container">
                 <img id="sponsor-item-ddagen" class="sponsor-item"
-                src="{{ url_for('static', filename='assets/ddagen_long.png') }}" alt="D-Dagen">
+                    src="{{ url_for('static', filename='assets/ddagen_long.png') }}" alt="D-Dagen">
                 <img id="sponsor-item-heart" class="sponsor-item"
-                src="{{ url_for('static', filename='assets/heart.png') }}" alt="Heart">
+                    src="{{ url_for('static', filename='assets/heart.png') }}" alt="Heart">
                 <img id="sponsor-item-ericsson" class="sponsor-item"
-                src="{{ url_for('static', filename='company_logos/Ericsson_long.png') }}" alt="Ericsson">
+                    src="{{ url_for('static', filename='company_logos/Ericsson_long.png') }}" alt="Ericsson">
             </div>
         </div>
 
         <div id="footer-item2" class="footer-item">
             <h2>
                 {% if request.args.get('language') == 'en'%}
-                    Social Medias
+                Social Medias
                 {% else %}
-                    Sociala medier
+                Sociala medier
                 {% endif %}
             </h2>
             <ul>
@@ -156,9 +163,9 @@
         <div id="footer-item3" class="footer-item">
             <h2>
                 {% if request.args.get('language') == 'en'%}
-                    Contact Us
+                Contact Us
                 {% else %}
-                    Kontakta oss
+                Kontakta oss
                 {% endif %}
             </h2>
             <div>
@@ -167,27 +174,27 @@
                     <li><b>Erik Nordlöf</b></li>
                     <li>
                         {% if request.args.get('language') == 'en'%}
-                            Project Leaders for D-Dagen
+                        Project Leaders for D-Dagen
                         {% else %}
-                            D-Dagenansvariga
+                        D-Dagenansvariga
                         {% endif %}
                     </li>
                     <li><a href="mailto:projectmanager@ddagen.se" class="cerise">projectmanager@ddagen.se</a></li>
                     <li>&nbsp;</li>
                     <li>
                         {% if request.args.get('language') == 'en'%}
-                            The Sales Team
+                        The Sales Team
                         {% else %}
-                            Säljgruppen
+                        Säljgruppen
                         {% endif %}
                     </li>
                     <li><a href="mailto:sales@ddagen.se" class="cerise">sales@ddagen.se</a></li>
                     <li>&nbsp;</li>
                     <li>
                         {% if request.args.get('language') == 'en'%}
-                            Site manager
+                        Site manager
                         {% else %}
-                            Sidansvarig
+                        Sidansvarig
                         {% endif %}
                     </li>
                     <li><a href="mailto:web@ddagen.se" class="cerise">web@ddagen.se</a></li>
@@ -201,4 +208,5 @@
         let scroll = new SmoothScroll('a[href*="#"]');
     </script>
 </body>
+
 </html>
