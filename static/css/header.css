@@ -46,10 +46,6 @@ header {
     position: absolute;
     right: 0;
     top: 0;
-    width: 1.5em;
-    height: 1.5em;
-    margin: 2%;
-    padding: 0px;
 }
 
 .navigation-bar.responsive {
