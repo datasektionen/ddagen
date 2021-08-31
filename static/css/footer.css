@@ -35,6 +35,18 @@ footer {
     align-items: center;
 }
 
+#contact-footer {
+    overflow: auto;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: inline;
+}
+
+#contact-footer li {
+    list-style-type: none;
+}
+
 /* Classes */
 /*****************/
 /* Each item in the footer is a footer item */

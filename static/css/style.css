@@ -159,18 +159,6 @@ p.info-text {
     margin: 0 auto;
 }
 
-ul {
-    overflow: auto;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: inline;
-}
-
-ul li {
-    list-style-type: none;
-}
-
 .container_iframe {
     position: relative;
     overflow: hidden;
