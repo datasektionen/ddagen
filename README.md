@@ -20,7 +20,7 @@ Generally this means that you should never set values in pixels or cm, instead u
 ### Fonts
 | Font      | Link                                                        | Usecase                                 |
 | --------- | ----------------------------------------------------------- | --------------------------------------- |
-| Comfortaa | https://fonts.google.com/specimen/Lato?query=lato           | used for most things on the page        |
+| Lato      | https://fonts.google.com/specimen/Lato?query=lato           | used for most things on the page        |
 | Comfortaa | https://fonts.google.com/specimen/Comfortaa?query=comfortaa | the font the d-dagen logo is written in |
 
 
