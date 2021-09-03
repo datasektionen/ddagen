@@ -27,11 +27,11 @@
     <meta name="google-site-verification" content="MNj-G5h7DoEv4j26SQgrOESA177JmHehgLqvY6naNeA" />
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,600,900" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,600,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet"> 
+    
     <!-- Stylesheets -->
     <link rel="stylesheet" href="//aurora.datasektionen.se/" type="text/css" />
     <link rel="stylesheet" href="/static/css/style.css?v=4.349590927" />
@@ -57,45 +57,36 @@
 <body id="home_body">
     <!-- Header -->
     <!-- ####################### -->
-    <header id="navigation-bar" class="navigation-bar">
+    <header id="navbar">
         <a href="{{ url_for('index') }}">
-            <img id="ddagen-logo-header" src="static/assets/logo-white-ageless_v2.svg">
+            <img id="ddagen-logo-header" src="{{ url_for('static', filename='assets/logo-white-ageless_v2.svg') }}" alt="d-dagen logo">
         </a>
 
-        {% if request.args.get('language') == 'en' %}
-        <a href="{{ url_for('companies') }}">Companies</a>
-        <a href="{{ url_for('faq') }}">FAQ</a>
-        <a href="{{ url_for('contact') }}">Contact Us</a>
-        <a href="{{ url_for(request.endpoint, language='sv') if request.endpoint else url_for('index', language='sv') }}"
-            id="language">
-            <img style="width: 1em" src="{{ url_for('static', filename='assets/flag_swe.svg') }}" alt="English" />
-            Svenska
-        </a>
-        {% else %}
-        <a href="{{ url_for('companies') }}">Företag</a>
-        <a href="{{ url_for('faq') }}">FAQ</a>
-        <a href="{{ url_for('contact') }}">Kontakta oss</a>
-        <a href="{{ url_for(request.endpoint, language='en') if request.endpoint else url_for('index', language='en') }}"
-            id="language">
-            <img style="width: 1em" src="{{ url_for('static', filename='assets/flag_eng.svg') }}" alt="English" />
-            English
-        </a>
-        {% endif %}
-
-        <a href="javascript:void(0);" id="header-hamburger" onclick="navbar()">
+        <button id="header-hamburger" onclick="toggleDropdown()">
             <i class="fa fa-bars fa-2x"></i>
-        </a>
+        </button>
 
-        <script>
-            function navbar() {
-                var x = document.getElementById("navigation-bar");
-                if (x.className === "navigation-bar") {
-                    x.className += " responsive";
-                } else {
-                    x.className = "navigation-bar";
-                }
-            }
-        </script>
+        <div>
+            {% if request.args.get('language') == 'en' %}
+                <a class="navbar-item" href="{{ url_for('companies') }}">Companies</a>
+                <a class="navbar-item" href="{{ url_for('faq') }}">FAQ</a>
+                <a class="navbar-item" href="{{ url_for('contact') }}">Contact Us</a>
+                <a class="navbar-item" href="{{ url_for(request.endpoint, language='sv') if request.endpoint else url_for('index', language='sv') }}"
+                id="language">
+                    <img style="width: 1em" src="{{ url_for('static', filename='assets/flag_swe.svg') }}" alt="English" />
+                    Svenska
+                </a>
+            {% else %}
+                <a class="navbar-item" href="{{ url_for('companies') }}">Företag</a>
+                <a class="navbar-item" href="{{ url_for('faq') }}">FAQ</a>
+                <a class="navbar-item" href="{{ url_for('contact') }}">Kontakta oss</a>
+                <a class="navbar-item" href="{{ url_for(request.endpoint, language='en') if request.endpoint else url_for('index', language='en') }}"
+                id="language">
+                    <img style="width: 1em" src="{{ url_for('static', filename='assets/flag_eng.svg') }}" alt="English" />
+                    English
+                </a>
+            {% endif %}
+        </div>
     </header>
 
     <!-- Main Content -->

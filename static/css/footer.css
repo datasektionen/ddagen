@@ -15,7 +15,7 @@ footer {
     padding-top: 2%;
 	display: grid;
 
-    border-width: 0.5em 0px 0px 0px;
+    border-width: 0.3em 0px 0px 0px;
 	border-style: solid;
 	border-color: var(--border-color);
     font-size: 2rem;
