@@ -91,7 +91,10 @@ def visitors():
 # Redirect to application of working at the fair for D-Dagen 2021
 @app.route("/sok")
 def sok():
-     return redirect('https://forms.gle/cuoUwgQtcyJiZ79b8', code=302)
+     return redirect('https://forms.gle/huKbwntFe37EpJMr5', code=302)
+@app.route("/sök")
+def sök():
+     return redirect('https://forms.gle/huKbwntFe37EpJMr5', code=302)
 
 # Company Forms
 # Redirect to application of interest for D-Dagen 2021 in swedish
