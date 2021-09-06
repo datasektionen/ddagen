@@ -129,6 +129,14 @@ p.info-text {
     text-shadow: 2px 2px 0 #fcda04;
 }
 
+.page-title {
+    font-weight: 600;
+    font-size: 4rem;
+    display: flex;
+    justify-content: center;
+    padding: 1.5% 0 1.5% 0;
+}
+
 /* Footer */
 /***************************/
 #footer {
