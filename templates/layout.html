@@ -55,40 +55,40 @@
 </head>
 
 <body id="home_body">
+    <!-- ####################### -->
     <!-- Header -->
     <!-- ####################### -->
     <header id="navbar">
-        <a href="{{ url_for('index') }}">
-            <img id="ddagen-logo-header" src="{{ url_for('static', filename='assets/logo-white-ageless_v2.svg') }}" alt="d-dagen logo">
+        <a id="logo-container" href="{{ url_for('index') }}">
+            <img id="ddagen-logo-navbar" src="{{ url_for('static', filename='assets/logo-white-ageless_v2.svg') }}" alt="d-dagen logo">
         </a>
 
-        <button id="header-hamburger" onclick="toggleDropdown()">
+        <button id="navbar-hamburger" onclick="toggleDropdown()">
             <i class="fa fa-bars fa-2x"></i>
         </button>
 
-        <div>
+        <div id="navbar-link-container">
             {% if request.args.get('language') == 'en' %}
                 <a class="navbar-item" href="{{ url_for('companies') }}">Companies</a>
                 <a class="navbar-item" href="{{ url_for('faq') }}">FAQ</a>
                 <a class="navbar-item" href="{{ url_for('contact') }}">Contact Us</a>
-                <a class="navbar-item" href="{{ url_for(request.endpoint, language='sv') if request.endpoint else url_for('index', language='sv') }}"
+                <a id="language" class="navbar-item" href="{{ url_for(request.endpoint, language='sv') if request.endpoint else url_for('index', language='sv') }}"
                 id="language">
-                    <img style="width: 1em" src="{{ url_for('static', filename='assets/flag_swe.svg') }}" alt="English" />
-                    Svenska
+                    Svenska&nbsp;<img style="width: 1em" src="{{ url_for('static', filename='assets/flag_swe.svg') }}" alt="Svenska" />
                 </a>
             {% else %}
                 <a class="navbar-item" href="{{ url_for('companies') }}">Företag</a>
                 <a class="navbar-item" href="{{ url_for('faq') }}">FAQ</a>
-                <a class="navbar-item" href="{{ url_for('contact') }}">Kontakta oss</a>
-                <a class="navbar-item" href="{{ url_for(request.endpoint, language='en') if request.endpoint else url_for('index', language='en') }}"
+                <a class="navbar-item" href="{{ url_for('contact') }}">Kontakta&nbsp;oss</a>
+                <a id="language" class="navbar-item" href="{{ url_for(request.endpoint, language='en') if request.endpoint else url_for('index', language='en') }}"
                 id="language">
-                    <img style="width: 1em" src="{{ url_for('static', filename='assets/flag_eng.svg') }}" alt="English" />
-                    English
+                    English&nbsp;<img style="width: 1em" src="{{ url_for('static', filename='assets/flag_eng.svg') }}" alt="English" />
                 </a>
             {% endif %}
         </div>
     </header>
 
+    <!-- ####################### -->
     <!-- Main Content -->
     <!-- ####################### -->
     <div id="page-content">
@@ -105,6 +105,7 @@
         {% endblock %}
     </div>
 
+    <!-- ####################### -->
     <!-- Page Footer -->
     <!-- ####################### -->
     {% block footer %}

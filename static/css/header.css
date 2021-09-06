@@ -8,7 +8,7 @@
 
 header {
     background-color: var(--grey);
-    border: 0em;
+    border: 0;
     border-bottom: 0.3em;
 	border-style: solid;
 	border-color: var(--cerise);
@@ -19,8 +19,7 @@ header {
 
 #navbar {
     display: grid;
-    align-items: center;
-    grid-template-columns: 99fr 1fr;
+    grid-template-columns: auto auto;
     padding: 1%;
 }
 
@@ -50,49 +49,69 @@ header {
     text-align: left;
 }
 
-#header-hamburger {
+#navbar-hamburger {
     background-color: transparent;
-    justify-content: right;
+    justify-self: self-end;
     padding: 0%;
-    /* width: 200px; */
 }
 
-#ddagen-logo-header {
-    height: 2em;
+#ddagen-logo-navbar {
+    height: 3rem;
     color: white;
+}
+
+#logo-container {
+    display: flex;
+    justify-self: self-start;
+    align-items: center;
 }
 
 /* For everything larger than mobile */
 @media only screen and (min-width: 600px) {
 
-    header {
-        font-size: 2rem;
-        background-color: var(--grey-transparent);
-    }
-
-    #navigation-bar #header-hamburger {
-        display: none;
-    }
-
-    #navigation-bar a:not(:first-child) {
-        display: block;
-    }
-
-    #navigation-bar a {
+    .navbar-item {
+        background-color: transparent;
+        align-items: center;
+        display: flex;
         height: 100%;
-        padding: 0.5% 0.5% 0.5% 0.5%;
+        padding:0 0.5em 0 0.5em;
     }
 
-    #navigation-bar a:hover{
+    .navbar-item:hover{
         background-color: var(--hover-color);
     }
 
-    #ddagen-logo-header {
-
+    #navbar {
+        font-size: 2rem;
+        background-color: var(--grey-transparent);
+        padding: 0%;
+        grid-template-columns: auto 1fr;
     }
 
+    #navbar-link-container {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        align-items: center;
+        grid-template-columns: auto auto auto 1fr;
+    }
+
+    #navbar-hamburger {
+        display: none;
+    }
+
+    #ddagen-logo-navbar {
+        height: 3rem;
+    }
+    
+    #logo-container {
+        padding: 0.33em;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+    }
+    
     #language {
-        position: absolute;
-        right: 0;
+        display: flex;
+        justify-self: self-end;
     }
 }
