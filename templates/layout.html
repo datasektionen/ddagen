@@ -16,14 +16,14 @@
     <meta name="theme-color" content="#e83d84">
     <meta name="theme-color" content="#ffffff">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="apple-touch-icon" sizes="180x180" href="/static/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/static/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/static/icons/favicon-16x16.png">
-    <link rel="manifest" href="/static/icons/site.webmanifest">
-    <link rel="mask-icon" href="/static/icons/safari-pinned-tab.svg" color="#5bbad5">
-    <link rel="shortcut icon" href="/static/icons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/img/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/img/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/img/icons/favicon-16x16.png">
+    <link rel="manifest" href="/static/img/icons/site.webmanifest">
+    <link rel="mask-icon" href="/static/img/icons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/static/img/icons/favicon.ico">
     <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="msapplication-config" content="/static/icons/browserconfig.xml">
+    <meta name="msapplication-config" content="/static/img/icons/browserconfig.xml">
     <meta name="google-site-verification" content="MNj-G5h7DoEv4j26SQgrOESA177JmHehgLqvY6naNeA" />
     
     <!-- Fonts -->
@@ -60,7 +60,7 @@
     <!-- ####################### -->
     <header id="navbar">
         <a id="logo-container" href="{{ url_for('index') }}">
-            <img id="ddagen-logo-navbar" src="{{ url_for('static', filename='assets/logo-white-ageless_v2.svg') }}" alt="d-dagen logo">
+            <img id="ddagen-logo-navbar" src="{{ url_for('static', filename='img/assets//logo-white-ageless_v2.svg') }}" alt="d-dagen logo">
         </a>
 
         <button id="navbar-hamburger" onclick="toggleDropdown()">
@@ -74,7 +74,7 @@
                 <a class="navbar-item" href="{{ url_for('contact') }}">Contact Us</a>
                 <a id="language" class="navbar-item" href="{{ url_for(request.endpoint, language='sv') if request.endpoint else url_for('index', language='sv') }}"
                 id="language">
-                    Svenska&nbsp;<img style="width: 1em" src="{{ url_for('static', filename='assets/flag_swe.svg') }}" alt="Svenska" />
+                    Svenska&nbsp;<img style="width: 1em" src="{{ url_for('static', filename='img/assets//flag_swe.svg') }}" alt="Svenska" />
                 </a>
             {% else %}
                 <a class="navbar-item" href="{{ url_for('companies') }}">Företag</a>
@@ -82,7 +82,7 @@
                 <a class="navbar-item" href="{{ url_for('contact') }}">Kontakta&nbsp;oss</a>
                 <a id="language" class="navbar-item" href="{{ url_for(request.endpoint, language='en') if request.endpoint else url_for('index', language='en') }}"
                 id="language">
-                    English&nbsp;<img style="width: 1em" src="{{ url_for('static', filename='assets/flag_eng.svg') }}" alt="English" />
+                    English&nbsp;<img style="width: 1em" src="{{ url_for('static', filename='img/assets//flag_eng.svg') }}" alt="English" />
                 </a>
             {% endif %}
         </div>
@@ -120,11 +120,11 @@
             </h2>
             <div id="footer-sponsor-container">
                 <img id="sponsor-item-ddagen" class="sponsor-item"
-                    src="{{ url_for('static', filename='assets/ddagen_long.png') }}" alt="D-Dagen">
+                    src="{{ url_for('static', filename='img/assets//ddagen_long.png') }}" alt="D-Dagen">
                 <img id="sponsor-item-heart" class="sponsor-item"
-                    src="{{ url_for('static', filename='assets/heart.png') }}" alt="Heart">
+                    src="{{ url_for('static', filename='img/assets//heart.png') }}" alt="Heart">
                 <img id="sponsor-item-ericsson" class="sponsor-item"
-                    src="{{ url_for('static', filename='company_logos/Ericsson_long.png') }}" alt="Ericsson">
+                    src="{{ url_for('static', filename='img/company_logos/Ericsson_long.png') }}" alt="Ericsson">
             </div>
         </div>
 
