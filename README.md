@@ -12,8 +12,6 @@ Solution? Wait a few hours.
 structure. Nothing of the following is set in stone! Feel free to change anything nonsensical or 
 make exceptions.
 
-### Files and File Structure
-
 ### Responsive Web Design
 When designing a feature, design it with mobile first in mind.
 Generally this means that you should never set values in pixels or cm, instead use %, em, rem,
