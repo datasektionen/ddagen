@@ -9,42 +9,25 @@
 
 footer {
 	background-color: var(--grey);
-	padding-left: 3%;
-    padding-right: 3%;
-    padding-bottom: 2%;
-    padding-top: 2%;
+    padding: 2% 3% 2% 3%;
 	display: grid;
+    grid-template-rows: repeat(1fr, 3);
 
-    border-width: 0.3em 0px 0px 0px;
+    border-width: 0.3em 0 0 0;
 	border-style: solid;
 	border-color: var(--border-color);
     font-size: 2rem;
 }
 
-/* Make the main sponsor container flexible */
-#footer-item1 div {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    height: 60%;
-}
-
 /* Make the text for the social media icons centerd */
-#footer-item2 ul li{
+#footer-item2 ul li {
     display: flex;
     align-items: center;
 }
 
-#contact-footer {
-    overflow: auto;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: inline;
-}
-
-#contact-footer li {
-    list-style-type: none;
+#footer-item2 ul {
+    padding: 0%;
+    margin: 0%;
 }
 
 /* Classes */
@@ -58,12 +41,16 @@ footer {
 	border-color: var(--border-color);
 }
 
+.footer-item:last-child {
+    margin-bottom: 0;
+}
+
 /* Style the headers */
 .footer-item h2 {
 	padding-bottom: 0.125em;
     margin-top: 0.125em;
     margin-bottom: 2%;
-    border-width: 0px 0px 0.25rem 0px;
+    border-width: 0 0 0.25rem 0;
 	border-style: solid;
 	border-color: var(--border-color);
 }
@@ -71,9 +58,8 @@ footer {
 .sponsor-item {
     /* Change the color of the icons to pink */
     filter: invert(41%) sepia(30%) saturate(5301%) hue-rotate(311deg) brightness(93%) contrast(96%);
-    width: 66%;
-    display: block;
-    margin: auto;
+    height: 5rem;
+    margin: 0 auto 0 auto;
 } 
 
 .icon {
@@ -85,44 +71,20 @@ footer {
     margin-bottom: 0.125em;
 }
 
-.grid-container{
-	display: grid;
-	grid-template-columns: repeat(12, 1fr);
-	grid-row-gap: 0;
-	grid-column-gap: 0;
-}
-
 /* ID's */
 /*****************/
-/* Inital layout of the footer */
-#footer-item1 {
-	grid-row: 1;
-	grid-column: span 12;
-}
-#footer-item2 {
-	grid-row: 2;
-	grid-column: span 12;
-}
-#footer-item3 {
-    grid-row: 3;
-    grid-column: span 12;
+#footer-sponsor-container {
+    display: grid;
+    grid-template-rows: auto auto auto;
 }
 
-/* Define the initial position for the ddagen<3ericsson */
-#sponsor-item-ddagen {
-    grid-row: 1;
-    grid-column: span 12;
+#contact-footer {
+    margin: 0;
+    padding: 0;
 }
 
-#sponsor-item-heart {
-    grid-row: 2;
-    grid-column: span 12;
-    width: 15%;
-}
-
-#sponsor-item-ericsson {
-    grid-row: 3;
-    grid-column: span 12;
+#contact-footer div:not(:last-child) {
+    margin-bottom: 3%;
 }
 
 /* For large phones */

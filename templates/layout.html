@@ -109,7 +109,7 @@
     <!-- Page Footer -->
     <!-- ####################### -->
     {% block footer %}
-    <footer class="grid-container">
+    <footer>
         <div id="footer-item1" class="footer-item">
             <h2 class="head">
                 {% if request.args.get('language') == 'en'%}
@@ -160,36 +160,41 @@
                 Kontakta oss
                 {% endif %}
             </h2>
-                <ul id="contact-footer">
-                    <li><b>Adam Sjöberg</b></li>
-                    <li><b>Erik Nordlöf</b></li>
-                    <li>
-                        {% if request.args.get('language') == 'en'%}
-                        Project Leaders for D-Dagen
-                        {% else %}
-                        D-Dagenansvariga
-                        {% endif %}
-                    </li>
-                    <li><a href="mailto:projectmanager@ddagen.se" class="cerise">projectmanager@ddagen.se</a></li>
-                    <li>&nbsp;</li>
-                    <li>
-                        {% if request.args.get('language') == 'en'%}
-                        The Sales Team
-                        {% else %}
-                        Säljgruppen
-                        {% endif %}
-                    </li>
-                    <li><a href="mailto:sales@ddagen.se" class="cerise">sales@ddagen.se</a></li>
-                    <li>&nbsp;</li>
-                    <li>
-                        {% if request.args.get('language') == 'en'%}
-                        Site manager
-                        {% else %}
-                        Sidansvarig
-                        {% endif %}
-                    </li>
-                    <li><a href="mailto:web@ddagen.se" class="cerise">web@ddagen.se</a></li>
-                </ul>
+            <div id="contact-footer">
+                <div>
+                    <b>Adam Sjöberg</b> <br>
+                    <b>Erik Nordlöf</b> <br>
+                    
+                    {% if request.args.get('language') == 'en'%}
+                    Project Leaders for D-Dagen
+                    {% else %}
+                    D-Dagenansvariga
+                    {% endif %} 
+                    <br>
+                    
+                    <a href="mailto:projectmanager@ddagen.se" class="cerise">projectmanager@ddagen.se</a>
+                </div>
+                <div>
+                    {% if request.args.get('language') == 'en'%}
+                    The Sales Team
+                    {% else %}
+                    Säljgruppen
+                    {% endif %}
+                    <br>
+
+                    <a href="mailto:sales@ddagen.se" class="cerise">sales@ddagen.se</a>
+                </div>
+                <div>
+                    {% if request.args.get('language') == 'en'%}
+                    Site manager
+                    {% else %}
+                    Sidansvarig
+                    {% endif %}
+                    <br>
+                    
+                    <a href="mailto:web@ddagen.se" class="cerise">web@ddagen.se</a>
+                </div>
+            </div>
         </div>
     </footer>
     {% endblock %}

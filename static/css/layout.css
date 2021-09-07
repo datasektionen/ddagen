@@ -22,7 +22,9 @@
     font-size: 2rem;
 }
 
-#page-title {}
+#page-content {
+    height: 100vh;
+}
 
 #ddagen-logo-intro {
     width: 66%;
