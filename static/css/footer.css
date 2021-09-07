@@ -119,12 +119,14 @@ footer {
     .footer-item {
         margin: 0 5% 0 5%;
     }
-    /* .footer-item:last-child {
+    
+    .footer-item:last-child {
         margin-right: 0;
     }
+
     #footer-item2 {
         margin-left: 0;
-    } */
+    }
 
     #footer-item1{grid-column: 4 / span 6; grid-row: 1;}
     #footer-item2{grid-column: 1 / span 3; grid-row: 1;}
