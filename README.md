@@ -1,12 +1,57 @@
 # D-Dagen
 Flask project for D-Dagen's website.
 
+## Notes
+* Sometimes when pushing or merging ddagen.se might look different to your local developement 
+environment, this is because the CSS might not have been updated on the server while the HTML has.
+Solution? Wait a few hours.
+
 ## General Guidelines
+
+**NOTE:** I wrote down these guidelines since the repo was a mess previously with very little 
+structure. Nothing of the following is set in stone! Feel free to change anything nonsensical or 
+make exceptions.
+
+### Files and File Structure
 
 ### Responsive Web Design
 When designing a feature, design it with mobile first in mind.
-Generally this means that you should never set values in pixels or cm, instead use %, em, rem, vh, and vw, more information can be found [here](https://www.w3schools.com/CSSref/css_units.asp). Yes, it is more work to design the site responsivley, but it creates a much better user experience.
+Generally this means that you should never set values in pixels or cm, instead use %, em, rem,
+vh, and vw, more information can be found [here](https://www.w3schools.com/CSSref/css_units.asp).
+Yes, it is more work to design the site responsivley, but it creates a much better user experience.
 
+### CSS
+
+#### Organization
+It is my belief that the CSS should be divided into files in a logical structure. At the time of
+writing there's different files for the header, footer, faq-page, etc. The reason for this is that
+most of the CSS for the header has nothing to do with the faq-page and it's therefore pointless to
+have them in the same file. A major benefit of this is that if changes need to be made to the
+faq-page on mobile there's no need to sift through the footer styling. 
+
+For those thinking about duplication of common stylings, I feel it's better to duplicate it where
+it's needed since it creates fewer headaches than when you have one class affecting 15 divs on
+three pages.
+
+Within the CSS files the current structure is:
+* Variables
+* Selectors
+* Classes
+* ID's
+* media querries
+
+This is just to make it easier to find what you're looking for. However, there's times when it is
+more logical to put ID's and classes, or ID's and selectors next to each other if they are
+related.
+
+#### Be specific! 
+When styling be specific, try to avoid using general selectors such as "div a" or ".class p ul" 
+since it is A), hard to understand which elements are refered to, and B), there's a large risk of it
+having unintended side effects. 
+
+Instead use selectors such as id's or classes that are named specifically, e.g. "header-logo-container" 
+or "footer-item". It makes it clear what's being refered to and significantly reduces the risk of 
+side effects on other elements on the site.
 
 ## Style
 
