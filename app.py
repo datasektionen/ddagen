@@ -96,6 +96,12 @@ def sok():
 def sök():
      return redirect('https://forms.gle/huKbwntFe37EpJMr5', code=302)
 
+# Redirect to ticket form for then banket
+@app.route('/sittning')
+def sittning():
+    return redirect('https://forms.gle/UGbrFsL46wTEHcbWA', code=302)
+
+
 # Company Forms
 # Redirect to application of interest for D-Dagen 2021 in swedish
 @app.route("/2021")
