@@ -47,44 +47,6 @@ def faq():
     else:
         return render_template('SV/faq.html')
 
-# Huvudsponsor (Remove) 
-@app.route('/huvudsponsor')
-def huvudsponsor():
-    language = request.args.get('language')
-    if language == 'en':
-        return render_template('EN/huvudsponsor.html')
-    else:
-        return render_template('SV/huvudsponsor.html')
-
-# Sök d-dagen (remove)
-@app.route('/apply')
-def apply():
-    language = request.args.get('language')
-    if language == 'en':
-        return render_template('EN/apply.html')
-    else:
-        return render_template('SV/apply.html')
-
-# Events (Remove)
-@app.route('/event')
-@app.route('/events')
-def events():
-    language = request.args.get('language')
-    if language == 'en':
-        return render_template('EN/events.html')
-    else:
-        return render_template('SV/events.html')
-
-# Visitors (Remove)
-@app.route('/karta')
-@app.route('/visitors')
-def visitors():
-    language = request.args.get('language')
-    if language == 'en':
-        return render_template('EN/visitors.html')
-    else:
-        return render_template('SV/visitors.html')
-
 
 # Formulär
 #####################################
