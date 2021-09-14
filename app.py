@@ -77,7 +77,18 @@ def interest_ddagenintresseanmalan():
 @app.route("/startup")
 def interest_ddagenstartup():
     return redirect('https://forms.gle/vMPQyhLFumnceu666', code=302)
-    
+
+
+# This is redirect for the map
+#####################################
+@app.route("/map", methods=["GET"])
+def map():
+        return send_from_directory("static/map", "map.html")
+
+@app.route("/static/map/favicon.ico")
+def favicon():
+        return send_from_directory('static/icons', 'favicon.ico')
+
 
 # Kataloger
 #####################################
