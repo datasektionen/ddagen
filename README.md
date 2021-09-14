@@ -5,6 +5,8 @@ Flask project for D-Dagen's website.
 * Sometimes when pushing or merging ddagen.se might look different to your local developement 
 environment, this is because the CSS might not have been updated on the server while the HTML has.
 Solution? Wait a few hours.
+* If you're goint to develope something, make sure it is maintainable. It sucks to remove features
+just because there's no way to maintain them.
 
 ## General Guidelines
 
