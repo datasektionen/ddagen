@@ -7,6 +7,7 @@
     "@material-ui/styles": "^4.11.3",
     "autosuggest-highlight": "^3.1.1",
     "is-svg": "^3.0.0",
+    "npm": "^7.23.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-autosuggest": "^10.1.0",
@@ -46,7 +47,7 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.23.1",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "prettier": "^2.2.1",
+    "prettier": "^2.4.0",
     "pretty-quick": "^3.1.0"
   }
 }
