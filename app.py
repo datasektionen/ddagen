@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, redirect, send_from_directory, make_response
-#from scrape import *
+from werkzeug.routing import BaseConverter
 
 app = Flask(__name__)
 
@@ -8,6 +8,14 @@ app = Flask(__name__)
 def count():
     return str(get_count())
 """
+
+class RegexConverter(BaseConverter):
+    def __init__(self, url_map, *items):
+        super(RegexConverter, self).__init__(url_map)
+        self.regex = items[0]
+
+
+app.url_map.converters['regex'] = RegexConverter
 
 # Pages
 #####################################
@@ -51,12 +59,9 @@ def faq():
 # Formulär
 #####################################
 # Redirect to application of working at the fair for D-Dagen 2021
-@app.route("/sok")
-def sok():
-     return redirect('https://forms.gle/huKbwntFe37EpJMr5', code=302)
-@app.route("/sök")
-def sök():
-     return redirect('https://forms.gle/huKbwntFe37EpJMr5', code=302)
+@app.route('/<regex("[SOÖKsoök]{3,3}"):link>/')
+def sok(link):
+    return redirect('https://forms.gle/huKbwntFe37EpJMr5', code=302)
 
 # Redirect to ticket form for then banket
 @app.route('/sittning')
