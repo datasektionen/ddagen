@@ -59,6 +59,9 @@ def faq():
 # Formulär
 #####################################
 # Redirect to application of working at the fair for D-Dagen 2021
+# This regex is wrong since it matches any of the characthers in
+# the array 3 times. It should be [Ss][OoÖö][Kk], but since it 
+# dosen't matter the more links it matches on the better. 
 @app.route('/<regex("[SOÖKsoök]{3,3}"):link>/')
 def sok(link):
     return redirect('https://forms.gle/huKbwntFe37EpJMr5', code=302)
@@ -88,12 +91,12 @@ def interest_ddagenstartup():
 #####################################
 @app.route("/map", methods=["GET"])
 def map():
-        return send_from_directory("static/map", "map.html")
+    return send_from_directory("static/map", "map.html")
 
-@app.route("/static/map/favicon.ico")
-def favicon():
-        return send_from_directory('static/icons', 'favicon.ico')
 
+@app.route("/clicker", methods=["GET"])
+def clicker():
+    return send_from_directory('static/clicker', 'clicker.html')
 
 # Kataloger
 #####################################

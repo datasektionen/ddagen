@@ -1,0 +1,14 @@
+:root {
+    --cerise: #e83d84;
+    --cerise-light: #ec5f99;
+}
+
+body {
+    background-color: var(--cerise-light);
+    color: white;
+}
+
+#main {
+    height: 100vh;
+    text-align: center;
+}

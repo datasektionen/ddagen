@@ -1,0 +1,52 @@
+:root {
+    --cerise: #e83d84;
+    --cerise-light: #ec5f99;
+    --increase: #4CAF50;
+    --decrease: #f44336;
+    --update: rgb(69, 69, 69);
+    --set: #0099cc;
+}
+
+button {
+    color: white;
+    padding: 0;
+    border: 0;
+    height: 100%;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+#horizontal {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+}
+
+#count {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+#clicker {
+    display: grid;
+    grid-template-rows: 10% 10% 10% auto auto;
+    height: 100%;
+}
+
+#inc {
+    background-color: var(--increase);
+}
+
+#dec {
+    background-color: var(--decrease);
+}
+
+#upd {
+    background-color: var(--update);
+}
+
+#set {
+    background-color: var(--set);
+}
