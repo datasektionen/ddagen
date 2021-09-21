@@ -121,6 +121,21 @@ def katalog2016():
 def katalog2015():
     return redirect('https://static.datasektionen.se/naringsliv/d-dagen/katalog_2015', code=302)
 
+# Lunchföreläsningar 2021
+####################################
+@app.route('/lfscania')
+def lfscania():
+    return redirect('https://forms.gle/RbmKCJCfTeWN6L2Z8', code=302)
+@app.route('/lfskatteverket')
+def lfskatteverket():
+    return redirect('https://forms.gle/wHNkCupyJdsopAAs6', code=302)
+@app.route('/lftietoevry')
+def lftietoevry():
+    return redirect('https://forms.gle/mbRAXu9Yt4SJugJ69', code=302)
+@app.route('/lftink')
+def lftink():
+    return redirect('https://forms.gle/z4NYd3DpQeHJqjLr6', code=302)
+
 
 # Error handlers
 #####################################
