@@ -55,6 +55,13 @@ def faq():
     else:
         return render_template('SV/faq.html')
 
+@app.route('/visitors')
+def visitors():
+    language = request.args.get('language')
+    if language == 'en':
+        return render_template('EN/visitors.html')
+    else:
+        return render_template('SV/visitors.html')
 
 # Formulär
 #####################################

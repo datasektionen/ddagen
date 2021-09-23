@@ -41,6 +41,7 @@
     #home_body {
         background-size: cover;
         background: url(/static/img/assets/bakgrund_v2.png) fixed center;
+        filter: grayscale(100%);
     }
     #ddagen-logo-intro {
         width: 45%;

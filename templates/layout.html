@@ -42,9 +42,10 @@
     <link rel="stylesheet" href="/static/css/companies.css" />
     <link rel="stylesheet" href="/static/css/contact.css" />
     <link rel="stylesheet" href="/static/css/faq.css" />
+    <link rel="stylesheet" href="/static/css/visitors.css" />
 
     <!-- Scripts -->
-    <script type="text/javascript" src="static/js/script.js"></script>
+    <script type="text/javascript" src="static/js/scripts.js"></script>
     <script type="text/javascript" src="static/js/navbar.js"></script>
     <script type="text/javascript" src="static/js/countdown.js"></script>
 
@@ -73,6 +74,7 @@
                 <a class="navbar-item" href="{{ url_for('faq') }}">FAQ</a>
                 <a class="navbar-item" href="{{ url_for('contact') }}">Contact Us</a>
                 <a class="navbar-item" href="https://forms.gle/huKbwntFe37EpJMr5">Apply</a>
+                <a class="navbar-item" href="{{ url_for('visitors')}}">Visitors</a>
                 <a id="language" class="navbar-item" href="{{ url_for(request.endpoint, language='sv') if request.endpoint else url_for('index', language='sv') }}"
                 id="language">
                     Svenska&nbsp;<img style="width: 1em" src="{{ url_for('static', filename='img/assets//flag_swe.svg') }}" alt="Svenska" />
@@ -82,6 +84,7 @@
                 <a class="navbar-item" href="{{ url_for('faq') }}">FAQ</a>
                 <a class="navbar-item" href="{{ url_for('contact') }}">Kontakta&nbsp;oss</a>
                 <a class="navbar-item" href="https://forms.gle/huKbwntFe37EpJMr5">Sök</a>
+                <a class="navbar-item" href="{{ url_for('visitors')}}">Besökare</a>
                 <a id="language" class="navbar-item" href="{{ url_for(request.endpoint, language='en') if request.endpoint else url_for('index', language='en') }}"
                 id="language">
                     English&nbsp;<img style="width: 1em" src="{{ url_for('static', filename='img/assets//flag_eng.svg') }}" alt="English" />
