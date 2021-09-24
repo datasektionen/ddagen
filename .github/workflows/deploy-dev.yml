@@ -20,4 +20,6 @@ jobs:
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SIPS_SSH_KEY }}
       # https://stackoverflow.com/a/2462357/16911837
-      run: ./dev-deploy.sh
+      run: |
+        chmod +x ./dev-deploy.sh
+        ./dev-deploy.sh
