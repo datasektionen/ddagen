@@ -15,11 +15,11 @@ jobs:
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
-
-    - name: Push to sips
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SIPS_SSH_KEY }}
       # https://stackoverflow.com/a/2462357/16911837
       run: |
         chmod +x ./dev-deploy.sh
         ./dev-deploy.sh
+
+    # - name: Push to sips
