@@ -17,6 +17,6 @@ jobs:
         fetch-depth: 0
 
     - name: Push to sips
-      with:
+      env:
         SSH_PRIVATE_KEY: ${{ secrets.SIPS_SSH_KEY }}
       run: sh dev-deploy.sh
