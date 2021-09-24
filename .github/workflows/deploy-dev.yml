@@ -16,12 +16,8 @@ jobs:
       with:
         fetch-depth: 0
 
-    # https://github.com/marketplace/actions/dokku-deploy-action?version=v1
     - name: Push to sips
       uses: idoberko2/dokku-deploy-github-action@v1
       with:
-        ssh-private-key: ${{ secrets.SIPS_SSH_KEY }}
-        dokku-user: 'dokku'
-        remote-branch: 'develop:master'
-        dokku-host: 'sips.datasektionen.se'
-        app-name: 'ddagen-development'
+        SSH_PRIVATE_KEY: ${{ secrets.SIPS_SSH_KEY }}
+      run: sh dev-deploy.sh
