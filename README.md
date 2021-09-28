@@ -1,7 +1,30 @@
 # D-Dagen
 Flask project for D-Dagen's website.
 
+## Development
+
+### Setup
+If you're running Windows I can highly recommend Windows Subsystem for Linux (WSL) as it allows you
+to run a Linux terminal in Windows. This can be of tremendous help as it allows you to gather
+everything related to the development of [ddagen.se](https://ddagen.se/) in one place (git, React, Flask, etc).
+
+Link to installation  guide: [https://docs.microsoft.com/en-us/windows/wsl/install-win10](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
+
+### Install dependencies
+
+```
+$ pipenv install
+```
+
+### Run
+
+```
+$ flask run
+```
+
 ## Notes
+* Commits pushed to the develop branch show up on [dev.ddagen.se](https://dev.ddagen.se/).
+When you're satisfied with the state of the site, create a pull request to update [ddagen.se](https://ddagen.se).
 * Sometimes when pushing or merging ddagen.se might look different to your local developement 
 environment, this is because the CSS might not have been updated on the server while the HTML has.
 Solution? Wait a few hours.
@@ -67,22 +90,3 @@ side effects on other elements on the site.
 | --------- | ----------------------------------------------------------- | --------------------------------------- |
 | Lato      | https://fonts.google.com/specimen/Lato?query=lato           | used for most things on the page        |
 | Comfortaa | https://fonts.google.com/specimen/Comfortaa?query=comfortaa | the font the d-dagen logo is written in |
-
-
-## Setup
-If you're running Windows I can highly recommend Windows Subsystem for Linux (WSL) as
-it allows you to run a Linux terminal in Windows. This can be of tremendous help as it allows you to gather everything related to the development of [ddagen.se](https://ddagen.se/) in one place (git, React, Flask).
-
-Link to installation  guide: [https://docs.microsoft.com/en-us/windows/wsl/install-win10](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
-
-
-## Install dependencies
-```
-$ pipenv install
-```
-
-## Run
-
-```
-$ flask run
-```
