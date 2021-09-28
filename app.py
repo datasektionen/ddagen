@@ -95,12 +95,11 @@ def interest_ddagenstartup():
 
 
 # This is redirect for the map
-#####################################
 @app.route("/map", methods=["GET"])
 def map():
     return send_from_directory("static/map", "map.html")
 
-
+# Redirect to the clicker app.
 @app.route("/clicker", methods=["GET"])
 def clicker():
     return send_from_directory('static/clicker', 'clicker.html')
@@ -142,6 +141,9 @@ def lftietoevry():
 @app.route('/lftink')
 def lftink():
     return redirect('https://forms.gle/z4NYd3DpQeHJqjLr6', code=302)
+@app.route('/lunch')
+def lunch():
+    return redirect('https://kth-se.zoom.us/j/8226325905', code=302)
 
 
 # Error handlers
