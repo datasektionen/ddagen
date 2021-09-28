@@ -143,7 +143,7 @@ def lftink():
     return redirect('https://forms.gle/z4NYd3DpQeHJqjLr6', code=302)
 @app.route('/lunch')
 def lunch():
-    return redirect('https://kth-se.zoom.us/j/8226325905', code=302)
+    return redirect('https://kth-se.zoom.us/my/ddagenlunch', code=302)
 
 
 # Error handlers
