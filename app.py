@@ -95,9 +95,9 @@ def interest_ddagenstartup():
 
 
 # This is redirect for the map
-@app.route("/map", methods=["GET"])
-def map():
-    return send_from_directory("static/map", "map.html")
+# @app.route("/map", methods=["GET"])
+# def map():
+#     return send_from_directory("static/map", "map.html")
 
 # Redirect to the clicker app.
 @app.route("/clicker", methods=["GET"])

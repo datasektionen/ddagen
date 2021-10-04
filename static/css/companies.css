@@ -4,11 +4,31 @@
     --cerise-light: #ec5f99; /*rgba(232,19,108,0.8);*/
 }
 
+#logos div img {
+    /* width: 15vw; */
+    height: 10rem;
+}
+
+#logos div a {
+    font-size: 2rem;
+}
+
 #flex-boxes {
     display: flex;
     justify-content: space-between;
     padding: 0;
     margin-top: 20px;
+}
+
+#logos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+}
+
+.company-container {
+    /* display: flex;
+    flex-direction: column; */
 }
 
 .flex-box {
