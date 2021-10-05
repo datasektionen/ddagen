@@ -93,7 +93,7 @@ header {
         height: 100%;
         display: grid;
         align-items: center;
-        grid-template-columns: repeat(7, auto) 1fr;
+        grid-template-columns: repeat(6, auto) 1fr;
     }
 
     #navbar-hamburger {
