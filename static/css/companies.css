@@ -4,11 +4,33 @@
     --cerise-light: #ec5f99; /*rgba(232,19,108,0.8);*/
 }
 
+#logos div img {
+    height: 7rem;
+}
+
+#logos div a {
+    font-size: 2rem;
+}
+
+#logos div {
+    display: flex;
+    padding: 3%;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+
 #flex-boxes {
     display: flex;
     justify-content: space-between;
     padding: 0;
     margin-top: 20px;
+}
+
+#logos {
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
 }
 
 .flex-box {

@@ -95,18 +95,31 @@ def interest_ddagenstartup():
 
 
 # This is redirect for the map
-@app.route("/map", methods=["GET"])
-def map():
-    return send_from_directory("static/map", "map.html")
+# @app.route("/map", methods=["GET"])
+# def map():
+#     return send_from_directory("static/map", "map.html")
 
 # Redirect to the clicker app.
 @app.route("/clicker", methods=["GET"])
 def clicker():
     return send_from_directory('static/clicker', 'clicker.html')
 
+@app.route("/karta", methods=["GET"])
+def karta():
+    return redirect('https://static.datasektionen.se/naringsliv/d-dagen/karta', code=302)
+
+
 # Kataloger
 #####################################
 @app.route('/katalog')
+@app.route('/katalog2021')
+def katalog2021():
+    return redirect('https://static.datasektionen.se/naringsliv/d-dagen/katalog_2021.pdf', code=302)
+
+@app.route('/katalog2020')
+def katalog2020():
+    return redirect('https://static.datasektionen.se/naringsliv/d-dagen/katalog_2020', code=302)
+
 @app.route('/katalog2019')
 def katalog2019():
     return redirect('https://static.datasektionen.se/naringsliv/d-dagen/katalog_2019', code=302)
