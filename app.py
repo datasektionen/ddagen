@@ -106,7 +106,7 @@ def clicker():
 
 @app.route("/karta", methods=["GET"])
 def karta():
-    return redirect('https://static.datasektionen.se/naringsliv/d-dagen/karta', code=302)
+    return redirect('https://dsekt-assets.s3.amazonaws.com/naringsliv/d-dagen/karta', code=302)
 
 
 # Kataloger
@@ -114,31 +114,31 @@ def karta():
 @app.route('/katalog')
 @app.route('/katalog2021')
 def katalog2021():
-    return redirect('https://static.datasektionen.se/naringsliv/d-dagen/katalog_2021.pdf', code=302)
+    return redirect('https://dsekt-assets.s3.amazonaws.com/naringsliv/d-dagen/katalog_2021.pdf', code=302)
 
 @app.route('/katalog2020')
 def katalog2020():
-    return redirect('https://static.datasektionen.se/naringsliv/d-dagen/katalog_2020', code=302)
+    return redirect('https://dsekt-assets.s3.amazonaws.com/naringsliv/d-dagen/katalog_2020', code=302)
 
 @app.route('/katalog2019')
 def katalog2019():
-    return redirect('https://static.datasektionen.se/naringsliv/d-dagen/katalog_2019', code=302)
+    return redirect('https://dsekt-assets.s3.amazonaws.com/naringsliv/d-dagen/katalog_2019', code=302)
 
 @app.route('/katalog2018')
 def katalog2018():
-    return redirect('https://static.datasektionen.se/naringsliv/d-dagen/katalog_2018', code=302)
+    return redirect('https://dsekt-assets.s3.amazonaws.com/naringsliv/d-dagen/katalog_2018', code=302)
 
 @app.route('/katalog2017')
 def katalog2017():
-    return redirect('https://static.datasektionen.se/naringsliv/d-dagen/katalog_2017', code=302)
+    return redirect('https://dsekt-assets.s3.amazonaws.com/naringsliv/d-dagen/katalog_2017', code=302)
 
 @app.route('/katalog2016')
 def katalog2016():
-    return redirect('https://static.datasektionen.se/naringsliv/d-dagen/katalog_2016', code=302)
+    return redirect('https://dsekt-assets.s3.amazonaws.com/naringsliv/d-dagen/katalog_2016', code=302)
 
 @app.route('/katalog2015')
 def katalog2015():
-    return redirect('https://static.datasektionen.se/naringsliv/d-dagen/katalog_2015', code=302)
+    return redirect('https://dsekt-assets.s3.amazonaws.com/naringsliv/d-dagen/katalog_2015', code=302)
 
 # Lunchföreläsningar 2021
 ####################################
