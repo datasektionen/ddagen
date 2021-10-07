@@ -1,7 +1,9 @@
 /* Variables */
-:root{
+
+:root {
     --cerise: #e83d84;
-    --cerise-light: #ec5f99; /*rgba(232,19,108,0.8);*/
+    --cerise-light: #ec5f99;
+    /*rgba(232,19,108,0.8);*/
 }
 
 #logos div img {
@@ -67,19 +69,24 @@
 }
 
 /* For devices narrower than 1200px */
+
 @media (max-width: 1200px) {
     #flex-boxes {
         display: block;
         margin: 20px 5% 0;
     }
-
     .flex-box {
         width: auto;
         height: auto;
         padding: 5%;
     }
-
     #logos {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    #logos div img {
+        height: 4rem;
     }
 }
