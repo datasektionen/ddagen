@@ -25,7 +25,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://ddagen.se/static/clicker",
+  "homepage": "https://ddagen.se/clicker",
   "eslintConfig": {
     "extends": [
       "react-app",
