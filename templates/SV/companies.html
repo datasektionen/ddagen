@@ -6,7 +6,7 @@
 
 {% block content %}
 <!-- Anmälningsprocess -->
-<!-- <div>
+<div hidden>
   <div id="interest">
     <h2>ANMÄLAN</h2>
     <h3> Anmälningsprocessen för D-Dagen sker i tre steg:</h3>
@@ -22,31 +22,32 @@
       </p>
       <p><a class="button" href="https://ddagen.se/2021">Intresseanmälan 2021</a></p>
       <p>
-        Nytt för i år är att vi erbjuder ett startup-paket. 
+        Nytt för i år är att vi erbjuder ett startup-paket.
         Är ni ett mindre startup och vill stå på D-Dagen så kan ni anmäla er här
       </p>
       <p><a class="button" href="https://ddagen.se/startup">Startup 2021</a></p>
     </div>
-    
+
     <div class="flex-box">
       <p class="cerise head">STEG 2</p>
       <p>Nästa steg går ut på att signera avtalet (inklusive ett beställningsformulär), scanna det och inom tre (3)
-        veckor skicka det till <a class="cerise" href="mailto:projectmanager@ddagen.se">d&#8209;projectmanager@ddagen.se</a> med rubriken
+        veckor skicka det till <a class="cerise"
+          href="mailto:projectmanager@ddagen.se">d&#8209;projectmanager@ddagen.se</a> med rubriken
         “Kontrakt D-Dagen 2021 - Företagsnamn”. Observera att om vi inte får detta kontrakt inom tre veckor efter det
         att vi skickat kontraktet till den angivna epostadressen kan anmälan komma att plockas bort.
       </p>
     </div>
-    
+
     <div class="flex-box">
       <p class="cerise head">STEG 3</p>
       <p>Det sista steget är att ni får tillbaka ett signerat avtal av D-Dagen inom två (2) veckor från det att vi
         fått tillbaka kontraktet, då är anmälan slutförd.</p>
-      </div>
+    </div>
   </div>
-</div> -->
+</div>
 
 <!-- Utställningspaket -->
-<div class="info-box" id="intro-other">
+<div class="info-box" id="intro-other" hidden>
   <div>
     <p class="cerise head">STÄLL UT <b>D&#8209;DAGEN 2021</b></p>
     <br>
@@ -157,8 +158,10 @@
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Company Logos -->
+<!-- Company Logos -->
+<div class="info-box" id="intro-other">
   <div id="logos">
     <div>
       <img src="https://assets.appian.com/uploads/2019/04/Acc_Logo_Black_Purple_RGB-2.png">
@@ -171,7 +174,8 @@
     </div>
 
     <div>
-      <img src="https://uploads-ssl.webflow.com/5d69330c8cc2811f92af16c5/5ed4f270ef82ae57a98854a0_alex-therapeutics-logo.png">
+      <img
+        src="https://uploads-ssl.webflow.com/5d69330c8cc2811f92af16c5/5ed4f270ef82ae57a98854a0_alex-therapeutics-logo.png">
       <a href="https://www.alextherapeutics.com/">Alex Therapeutics</a>
     </div>
 
@@ -181,22 +185,22 @@
     </div>
 
     <div>
-      <img src="">
+      <img src="{{ url_for('static', filename='img/companies2021/avalanch.png') }}">
       <a href="https://avalanchestudios.com/">Avalanch Studios</a>
     </div>
 
     <div>
-      <img src="">
+      <img src="{{ url_for('static', filename='img/companies2021/bonnier.png') }}">
       <a href="https://www.bonniernews.se">Bonnier News</a>
     </div>
 
     <div>
-      <img src="https://billionjourneyproject.com/wp-content/uploads/2018/06/BonTouch.png">
-      <a href="https://www.bontouch.com/">bontouch</a>
+      <img src="{{ url_for('static', filename='img/companies2021/bontouch.png') }}">
+      <a href="https://www.bontouch.com/">Bontouch</a>
     </div>
 
     <div>
-      <img src="">
+      <img src="{{ url_for('static', filename='img/companies2021/businessvision.png') }}">
       <a href="https://www.businessvision.se/">Buisness Vision Consulting</a>
     </div>
 
@@ -211,7 +215,7 @@
     </div>
 
     <div>
-      <img src="">
+      <img src="{{ url_for('static', filename='img/companies2021/columbiaroad.png') }}">
       <a href="https://www.columbiaroad.com/">Columbia Road</a>
     </div>
 
@@ -221,7 +225,7 @@
     </div>
 
     <div>
-      <img src="">
+      <img src="{{ url_for('static', filename='img/companies2021/cygni.png') }}">
       <a href="https://cygni.se/">Cygni</a>
     </div>
 
@@ -231,32 +235,38 @@
     </div>
 
     <div>
-      <img src="https://resources.mynewsdesk.com/image/upload/c_limit,dpr_auto,f_auto,h_700,q_auto,w_auto/wnqmfl77bmwhmi5vrfv4.jpg">
+      <img
+        src="https://resources.mynewsdesk.com/image/upload/c_limit,dpr_auto,f_auto,h_700,q_auto,w_auto/wnqmfl77bmwhmi5vrfv4.jpg">
       <a href="https://www.decerno.se/">Decarno</a>
     </div>
 
     <div>
-      <img src="">
+      <img src="{{ url_for('static', filename='img/companies2021/digipro.png') }}">
       <a href="https://digpro.com/sv/">Digipro</a>
     </div>
 
     <div>
-      <img src="">
+      <img src="https://cdn.freebiesupply.com/logos/large/2x/ericsson-1-logo-black-and-white.png">
+      <a href="https://www.ericsson.com/en/careers/student-young-professionals">Ericsson</a>
+    </div>
+
+    <div>
+      <img src="{{ url_for('static', filename='img/companies2021/exsitec.png') }}">
       <a href="https://www.exsitec.se/">Exsitec</a>
     </div>
 
     <div>
-      <img src="https://3.bp.blogspot.com/-ONHrv1E11bE/T7VruqYLZlI/AAAAAAAAJmQ/xP0o4DDf2hs/s1600/foi-logo-300dpi.jpg">
+      <img src="{{ url_for('static', filename='img/companies2021/FOI.png') }}">
       <a href="https://www.foi.se/jobba-hos-oss/student-som-gillar-utmaningar-exjobba-hos-oss.html">FOI</a>
     </div>
 
     <div>
-      <img src="">
+      <img src="{{ url_for('static', filename='img/companies2021/fra.png') }}">
       <a href="https://fra.se/">FRA</a>
     </div>
 
     <div>
-      <img src="">
+      <img src="{{ url_for('static', filename='img/companies2021/flygresor.png') }}">
       <a href="https://www.flygresor.se/">Flygresor.se</a>
     </div>
 
@@ -271,7 +281,7 @@
     </div>
 
     <div>
-      <img src="">
+      <img src="{{ url_for('static', filename='img/companies2021/insurely.png') }}">
       <a href="https://www.insurely.se/">Insurely</a>
     </div>
 
@@ -301,12 +311,13 @@
     </div>
 
     <div>
-      <img src="https://itdagene.no/uploads/cache/ee/80/ee8041d24104e6686e980fd009e033d3.png">
+      <img src="{{ url_for('static', filename='img/companies2021/netcompany.png') }}">
       <a href="https://www.netcompany.com/">Netcompany</a>
     </div>
 
     <div>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Netlight_Consulting_logo.svg/800px-Netlight_Consulting_logo.svg.png">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Netlight_Consulting_logo.svg/800px-Netlight_Consulting_logo.svg.png">
       <a href="https://www.netlight.com">Netlight</a>
     </div>
 
@@ -316,12 +327,12 @@
     </div>
 
     <div>
-      <img src="">
+      <img src="{{ url_for('static', filename='img/companies2021/nore.png') }}">
       <a href="http://www.noretech.se/">Nore</a>
     </div>
 
     <div>
-      <img src="https://1.bp.blogspot.com/-h6y7mVBcRIg/VEfjcVB6b6I/AAAAAAAAF7g/MIDp7DtpiNw/s1600/Logo%2BOracle.png">
+      <img src="{{ url_for('static', filename='img/companies2021/oracle.png') }}">
       <a href="https://www.oracle.com/index.html">Oracle</a>
     </div>
 
@@ -332,11 +343,12 @@
 
     <div>
       <img src="https://afklint.se/files/2020/05/PM-logga-1200x574.png">
-      <a href="https://www.pensionsmyndigheten.se/om-pensionsmyndigheten.category.jobba-hos-oss#pm-category-filter-last-card">Pensionsmyndigheten</a>
+      <a
+        href="https://www.pensionsmyndigheten.se/om-pensionsmyndigheten.category.jobba-hos-oss#pm-category-filter-last-card">Pensionsmyndigheten</a>
     </div>
 
     <div>
-      <img src="https://polisen.se/siteassets/bilder/polisen_twitter_image.png">
+      <img src="{{ url_for('static', filename='img/companies2021/polisen.png') }}">
       <a href="https://polisen.se/om-polisen/jobba-hos-polisen/var-verksamhet/jobb-it-avdelningen/">Polisen</a>
     </div>
 
@@ -351,27 +363,29 @@
     </div>
 
     <div>
-      <img src="">
+      <img src="{{ url_for('static', filename='img/companies2021/randomforest.png') }}">
       <a href="https://www.randomforest.se/">Random Forest</a>
     </div>
 
     <div>
-      <img src="https://d2uetvsama7sl8.cloudfront.net/prod/wp-content/uploads/2019/09/11132758/Schibsted_Logotype_L1_Dust-black_CMYK_png-1024x214.png">
+      <img
+        src="https://d2uetvsama7sl8.cloudfront.net/prod/wp-content/uploads/2019/09/11132758/Schibsted_Logotype_L1_Dust-black_CMYK_png-1024x214.png">
       <a href="https://schibsted.com/">Schibsted</a>
     </div>
 
     <div>
-      <img src="https://media.cdn.teamtailor.com/images/s3/teamtailor-production/gallery_picture-v1/image_uploads/c0075653-c485-4fb8-9a51-f99c59c4305a/original.png">
+      <img
+        src="https://media.cdn.teamtailor.com/images/s3/teamtailor-production/gallery_picture-v1/image_uploads/c0075653-c485-4fb8-9a51-f99c59c4305a/original.png">
       <a href="https://www.sellpy.se/">Sellpy</a>
     </div>
 
     <div>
-      <img src="">
+      <img src="{{ url_for('static', filename='img/companies2021/sentor.png') }}">
       <a href="https://www.sentor.se/">Sentor</a>
     </div>
 
     <div>
-      <img src="">
+      <img src="{{ url_for('static', filename='img/companies2021/signality.png') }}">
       <a href="https://www.signality.com/">Signality</a>
     </div>
 
@@ -381,12 +395,13 @@
     </div>
 
     <div>
-      <img src="">
+      <img src="{{ url_for('static', filename='img/companies2021/subset.png') }}">
       <a href="https://karriar.subset.se/">Subset</a>
     </div>
 
     <div>
-      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Svenska_kraftn%C3%A4t_logo.svg/440px-Svenska_kraftn%C3%A4t_logo.svg.png">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Svenska_kraftn%C3%A4t_logo.svg/440px-Svenska_kraftn%C3%A4t_logo.svg.png">
       <a href="https://www.svk.se/">Svenska Kraftnät</a>
     </div>
 
@@ -444,7 +459,6 @@
       <img src="http://affarsstaden.se/wordpress/wp-content/uploads/2016/07/Xlent_logo_web.jpg">
       <a href="https://www.xlent.se/">Xlent</a>
     </div>
-
   </div>
 </div>
 
