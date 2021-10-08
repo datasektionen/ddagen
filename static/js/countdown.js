@@ -1,4 +1,5 @@
 let ddagen = new Date("Oct 7, 2021 10:00:00");
+let intervalID;
 
 /**
  * No, this is not the most efficent or pretty way to do this. But it works.
@@ -13,7 +14,7 @@ function updateTime() {
         let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         let seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-        if(days == 1) {
+        if (days == 1) {
             updateID("day", "dag");
         } else {
             updateID("day", "dagar");
@@ -43,19 +44,19 @@ function updateTime() {
         updateID("cd-min", minutes);
         updateID("cd-sec", seconds);
     } else {
-        // This makes the countdown not show negative numbers when done.
-        updateID("cd-day", 0);
-        updateID("cd-hrs", 0);
-        updateID("cd-min", 0);
-        updateID("cd-sec", 0);
+        // Removes the countdown from the page when it has reached it's time.
+        document.getElementById("countdown").remove();
+        clearInterval(intervalID);
     }
 }
 
 function updateID(id, value) {
-    document.getElementById(id).innerHTML = value;
+    try {
+        document.getElementById(id).innerHTML = value;
+    } catch (error) { }
 }
 
-setInterval(() => {
+intervalID = setInterval(() => {
     updateTime();
 }, 1000);
 

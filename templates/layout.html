@@ -75,9 +75,7 @@
                 <a class="navbar-item" href="{{ url_for('contact') }}">Contact Us</a>
                 <a class="navbar-item" href="{{ url_for('visitors')}}">Visitors</a>
                 <a class="navbar-item" href="{{ url_for('katalog2021')}}">Catalog</a>
-                <a class="navbar-item" href="{{ url_for('karta')}}">Map</a>
-                <a id="language" class="navbar-item" href="{{ url_for(request.endpoint, language='sv') if request.endpoint else url_for('index', language='sv') }}"
-                id="language">
+                <a id="language" class="navbar-item" href="{{ url_for(request.endpoint, language='sv') if request.endpoint else url_for('index', language='sv') }}" id="language">
                     Svenska&nbsp;<img style="width: 1em" src="{{ url_for('static', filename='img/assets//flag_swe.svg') }}" alt="Svenska" />
                 </a>
             {% else %}
@@ -86,9 +84,7 @@
                 <a class="navbar-item" href="{{ url_for('contact') }}">Kontakta&nbsp;oss</a>
                 <a class="navbar-item" href="{{ url_for('visitors')}}">Besökare</a>
                 <a class="navbar-item" href="{{ url_for('katalog2021')}}">Katalog</a>
-                <a class="navbar-item" href="{{ url_for('karta')}}">Karta</a>
-                <a id="language" class="navbar-item" href="{{ url_for(request.endpoint, language='en') if request.endpoint else url_for('index', language='en') }}"
-                id="language">
+                <a id="language" class="navbar-item" href="{{ url_for(request.endpoint, language='en') if request.endpoint else url_for('index', language='en') }}" id="language">
                     English&nbsp;<img style="width: 1em" src="{{ url_for('static', filename='img/assets//flag_eng.svg') }}" alt="English" />
                 </a>
             {% endif %}
