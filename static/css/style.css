@@ -61,6 +61,10 @@ a:visited {
     padding: 1.5% 0 1.5% 0;
 }
 
+#page-content {
+    min-height: 100vh;
+}
+
 /* || Size adjustemnt CSS */
 
 /* For devices narrower than 1200px */
