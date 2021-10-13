@@ -13,7 +13,8 @@ Link to installation  guide: [https://docs.microsoft.com/en-us/windows/wsl/insta
 ### Install dependencies
 
 ```
-$ pipenv install
+$ sudo apt install python3
+$ sudo apt install python3-flask
 ```
 
 ### Run
