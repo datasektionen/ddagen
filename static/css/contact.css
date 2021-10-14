@@ -27,6 +27,7 @@
     float: left;
     text-align: center;
     object-fit: fill;
+    padding-bottom: 3%;
 }
 
 .portrait-photo img {
