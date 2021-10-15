@@ -13,8 +13,7 @@ Link to installation  guide: [https://docs.microsoft.com/en-us/windows/wsl/insta
 ### Install dependencies
 
 ```
-$ sudo apt install python3
-$ sudo apt install python3-flask
+$ sudo apt install python3.9 python3-flask
 ```
 
 ### Run
@@ -29,8 +28,6 @@ When you're satisfied with the state of the site, create a pull request to updat
 * Sometimes when pushing or merging ddagen.se might look different to your local developement 
 environment, this is because the CSS might not have been updated on the server while the HTML has.
 Solution? Wait a few hours.
-* If you're goint to develope something, make sure it is maintainable. It sucks to remove features
-just because there's no way to maintain them.
 
 ## General Guidelines
 
@@ -78,6 +75,10 @@ or "footer-item". It makes it clear what's being refered to and significantly re
 side effects on other elements on the site.
 
 ## Style
+
+I'm sure there's something to be said here about how [ddagen.se](https://ddagen.se/) should follow 
+Datasektionens style guidelines and whatever, however, I feel that d-dagen is it's own thing and doesn't
+need to adhere to all the guidelines. If you feel differently, feel free to change it!
 
 ### Colors
 | Color             | Code                  | Usecase                                   |

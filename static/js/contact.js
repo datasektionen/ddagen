@@ -60,12 +60,6 @@ function addContactInfo(lang) {
     } catch (error) {}
 }
 
-/**
- * 
- * @param {["name", "img-path", "email", "swedish-title", "english-title"]} p a person 
- * @param {boolean} titleLang swe if it's in Swedish. 
- * @returns a representation of the person for the contacts page.
- */
 function getElement(person, titleLang) {
     const elem = document.createElement("div");
     elem.className = "portrait-photo";

@@ -1,9 +1,3 @@
-/* Variables */
-:root{
-    --cerise: #e83d84;
-    --cerise-light: #ec5f99; /*rgba(232,19,108,0.8);*/
-}
-
 .image-container {
     display: flex;
     justify-content: space-evenly;
