@@ -1,5 +1,4 @@
 let ddagen = new Date("Oct 7, 2021 10:00:00");
-let intervalID;
 
 /**
  * No, this is not the most efficent or pretty way to do this. But it works.
@@ -45,7 +44,9 @@ function updateTime() {
         updateID("cd-sec", seconds);
     } else {
         // Removes the countdown from the page when it has reached it's time.
-        document.getElementById("countdown").remove();
+        try {
+            document.getElementById("countdown").remove();
+        } catch (error) { }
         clearInterval(intervalID);
     }
 }
@@ -56,8 +57,6 @@ function updateID(id, value) {
     } catch (error) { }
 }
 
-intervalID = setInterval(() => {
-    updateTime();
-}, 1000);
+var intervalID = setInterval(updateTime(), 1000);
 
 window.onload = updateTime();

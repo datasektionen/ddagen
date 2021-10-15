@@ -5,155 +5,34 @@
 {% endblock intro_full %}
 
 {% block content %}
-<!-- D-Dagen Ansvarig(a)  -->
 <div class="info-box">
+
+    <!-- DDA -->
     <p class="cerise head image-container-text">Project Managers</p>
-    <div class="image-container">
-        <!-- D-Dagen Ansvarig -->
-        <div class="portrait-photo">
-            <img src="{{ url_for('static', filename='img/projektgruppen/erik-n.jpg') }}" alt="Erik Nordlöf" />
-            <h3>Erik Nordlöf</h3>
-            <h5>Project Leader</h5>
-            <a href="mailto:projectmanager@ddagen.se" class="cerise">projectmanager@ddagen.se</a>
-        </div>
-        <!-- D-Dagen Ansvarig -->
-        <div class="portrait-photo">
-            <img src="{{ url_for('static', filename='img/projektgruppen/adam-s.jpg') }}" alt="Adam Sjöberg" />
-            <h3>Adam Sjöberg</h3>
-            <h5>Project Leader</h5>
-            <a href="mailto:projectmanager@ddagen.se" class="cerise">projectmanager@ddagen.se</a>
-        </div>
-    </div>
- 
+    <div id="dda" class="image-container"></div>
+
     <!-- Ekonomi ansvarig -->
     <p class="cerise head image-container-text">Finance</p>
-    <div class="image-container">
-        <div class="portrait-photo">
-            <img src="{{ url_for('static', filename='img/projektgruppen/felix-a.jpg') }}" alt="Felix Almay" />
-            <h3>Felix Almay</h3>
-            <h5>Head of Finance</h5>
-            <a href="mailto:ekonomi@ddagen.se" class="cerise">ekonomi@ddagen.se</a>
-        </div>
-    </div>
-
+    <div id="fin" class="image-container"></div>
+    
     <!-- Säljgruppen  -->
     <p class="cerise head image-container-text">Sales</p>
-    <div class="image-container">
-        <!-- Säljansvarig -->
-        <div class="portrait-photo">
-            <img src="{{ url_for('static', filename='img/projektgruppen/emmy.jpg') }}" alt="Emmy Yin" />
-            <h3>Emmy Yin</h3>
-            <h5>Head of Sales</h5>
-            <a href="mailto:emmy@ddagen.se" class="cerise">emmy@ddagen.se</a>
-        </div>
-        <!-- Säljare -->
-        <div class="portrait-photo">
-            <img src="{{ url_for('static', filename='img/projektgruppen/markus-v.jpg') }}" alt="Markus Videfors" />
-            <h3>Markus Videfors</h3>
-            <h5>Sales Associate</h5>
-            <a href="mailto:markus@ddagen.se" class="cerise">markus@ddagen.se</a>
-        </div>
-        <!-- Säljare -->
-        <div class="portrait-photo">
-            <img src="{{ url_for('static', filename='img/projektgruppen/ludvig-s.jpg') }}" alt="Ludvig Siljeholm" />
-            <h3>Ludvig Siljeholm</h3>
-            <h5>Sales Associate</h5>
-            <a href="mailto:ludvig@ddagen.se" class="cerise">ludvig@ddagen.se</a>
-        </div>
-    </div>
-
+    <div id="sales" class="image-container"></div>
+    
     <!-- Mässgruppen  -->
     <p class="cerise head image-container-text">Fair</p>
-    <div class="image-container">
-        <!-- Mässansvarig -->
-        <div class="portrait-photo">
-            <img src="{{ url_for('static', filename='img/projektgruppen/marcus.jpg') }}" alt="Marcus Erlandsson" />
-            <h3>Marcus Erlandsson</h3>
-            <h5>Head of Staff</h5>
-            <a href="mailto:fair@ddagen.se" class="cerise">fair@ddagen.se</a>
-        </div>
-        <!-- Lokalansvarig -->
-        <div class="portrait-photo">
-            <img src="{{ url_for('static', filename='img/projektgruppen/hanna-p.jpg') }}" alt="Hanna Peters" />
-            <h3>Hanna Peters</h3>
-            <h5>Head of Venue</h5>
-            <a href="mailto:lokal@ddagen.se" class="cerise">lokal@ddagen.se</a>
-        </div>
-        <!-- Logistikansvarig -->
-        <div class="portrait-photo">
-            <img src="{{ url_for('static', filename='img/projektgruppen/david-p.jpg') }}" alt="David Puustinen" />
-            <h3>David Puustinen</h3>
-            <h5>Head of Logistics</h5>
-            <a href="mailto:venue@ddagen.se" class="cerise">venue@ddagen.se</a>
-        </div>
-        <!-- Loungeansvarig -->
-        <div class="portrait-photo">
-            <img src="{{ url_for('static', filename='img/projektgruppen/tim-j.jpg') }}" alt="Tim Jonsson" />
-            <h3>Tim Jonsson</h3>
-            <h5>Head of Lounge</h5>
-            <a href="mailto:lounge@ddagen.se" class="cerise">lounge@ddagen.se</a>
-        </div>
-    </div>
+    <div id="fair" class="image-container"></div>
 
     <!-- Festgruppen -->
     <p class="cerise head image-container-text">Event</p>
-    <div class="image-container">
-        <!-- Festansvarig -->
-        <div class="portrait-photo">
-            <img src="{{ url_for('static', filename='img/projektgruppen/douglas-f.jpg') }}" alt="Douglas Fischer" />
-            <h3>Douglas Fischer</h3>
-            <h5>Head of Events</h5>
-            <a href="mailto:fest@ddagen.se" class="cerise">fest@ddagen.se</a>
-        </div>
-        <!-- Festansvarig -->
-        <div class="portrait-photo">
-            <img src="{{ url_for('static', filename='img/maskot-bilder/alpa02-fest.png') }}" alt="Ebba Bråtman" />
-            <h3>Ebba Bråtman</h3>
-            <h5>Head of Events</h5>
-            <a href="mailto:fest@ddagen.se" class="cerise">fest@ddagen.se</a>
-        </div>
-    </div>
+    <div id="event" class="image-container"></div>
 
-    <!-- PRgruppen -->
+    <!-- PR-gruppen -->
     <p class="cerise head image-container-text">PR</p>
-    <div class="pr-image-container">
-        <!-- PR-Ansvarig -->
-        <div class="portrait-photo">
-            <img src="{{ url_for('static', filename='img/projektgruppen/sara-s.jpg') }}" alt="Sara Strandberg" />
-            <h3>Sara Strandberg</h3>
-            <h5>Head of PR</h5>
-            <a href="mailto:pr@ddagen.se" class="cerise">pr@ddagen.se</a>
-        </div>
-        <!-- Webbansvarig -->
-        <div class="portrait-photo">
-            <img src="{{ url_for('static', filename='img/maskot-bilder/alpa02-webansvarig.png') }}" alt="Pontus Söderlund" />
-            <h3>Pontus Söderlund</h3>
-            <h5>Head of Web Development</h5>
-            <a href="mailto:webb@ddagen.se" class="cerise">web@ddagen.se</a>
-        </div>
-        <!-- Art Director -->
-        <div class="portrait-photo">
-            <img src="{{ url_for('static', filename='img/projektgruppen/amanda-h.jpg') }}" alt="Amanda Hedlund" />
-            <h3>Amanda Hedlund</h3>
-            <h5>Art Director</h5>
-            <a href="mailto:graphics@ddagen.se" class="cerise">graphics@ddagen.se</a>
-        </div>
-    </div>
-    <div class="pr-image-container">
-        <!-- Socialmedieansvarig -->
-        <div class="portrait-photo">
-            <img src="{{ url_for('static', filename='img/projektgruppen/michael-ms.jpg') }}" alt="Michael Morales Sundstedt" />
-            <h3>Michael Morales Sundstedt</h3>
-            <h5>Head of Social Media</h5>
-            <a href="mailto:socialmedia@ddagen.se" class="cerise">socialmedia@ddagen.se</a>
-        </div>
-        <!-- Spons- och Tryckansvarig -->
-        <div class="portrait-photo">
-            <img src="{{ url_for('static', filename='img/projektgruppen/ann-a.jpg') }}" alt="Ann Abeysekera" />
-            <h3>Ann Abeysekera</h3>
-            <h5>Head of Sponsorship and Print</h5>
-            <a href="mailto:sponsorship@ddagen.se" class="cerise">sponsorship@ddagen.se</a>
-        </div>
-    </div>
+    <div id="pr" class="image-container"></div>
+
+    <script type="text/javascript">
+        addContactInfo("eng");
+     </script>
 </div>
 {% endblock %}

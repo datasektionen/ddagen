@@ -2,6 +2,10 @@
 :root{
     --cerise: #e83d84;
     --cerise-light: #ec5f99; /*rgba(232,19,108,0.8);*/
+    --grey: rgba(69, 69, 69, 1);
+    --grey-transparent: rgba(52, 52, 52, 0.9);
+    --hover-color: var(--cerise);
+    --border-color: var(--cerise);
 }
 
 * {

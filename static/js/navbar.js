@@ -1,5 +1,5 @@
 // Makes it so that the header doesn't hide the page content.
-window.onload = function () {
+function addNavbarMargin() {
     let height = document.getElementById("navbar").offsetHeight;
     document.getElementById("page-content").style.marginTop = height + "px";
 }
