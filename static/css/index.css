@@ -25,10 +25,6 @@
 #min { grid-area: min; }
 #sec { grid-area: sec; }
 
-.cd-label {
-
-}
-
 .cd {
     text-align: right;
 }

@@ -26,7 +26,6 @@ class SettingsTab extends Component {
     render() {
         return (
             <div>
-                {/* <div id="repo-link">psoder/dclicker-frontend</div> */}
                 <div id="settings" className="horizontal">
                     <button id="upd"><Refresh fontSize="medium" /></button>
                     <input value={this.state.text} onChange={this.handleChange} />
