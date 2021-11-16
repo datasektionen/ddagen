@@ -142,9 +142,9 @@ def katalog2018():
 def katalog2017():
     return redirect('https://dsekt-assets.s3.amazonaws.com/naringsliv/d-dagen/katalog_2017', code=302)
 
-@app.route('/katalog2016')
-def katalog2016():
-    return redirect('https://dsekt-assets.s3.amazonaws.com/naringsliv/d-dagen/katalog_2016', code=302)
+# @app.route('/katalog2016')
+# def katalog2016():
+#    return redirect('https://dsekt-assets.s3.amazonaws.com/naringsliv/d-dagen/katalog_2016', code=302)
 
 @app.route('/katalog2015')
 def katalog2015():
