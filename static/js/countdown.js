@@ -57,6 +57,11 @@ function updateID(id, value) {
     } catch (error) { }
 }
 
-var intervalID = setInterval(updateTime(), 1000);
 
-window.onload = updateTime();
+var intervalID;
+function start() {
+    updateTime();
+    intervalID = setInterval(updateTime(), 1000);
+};
+
+window.onload = start();

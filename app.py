@@ -3,17 +3,11 @@ from werkzeug.routing import BaseConverter
 
 app = Flask(__name__)
 
-"""
-@app.route("/get_counter")
-def count():
-    return str(get_count())
-"""
-
+# This is to make regex legal in the url
 class RegexConverter(BaseConverter):
     def __init__(self, url_map, *items):
         super(RegexConverter, self).__init__(url_map)
         self.regex = items[0]
-
 
 app.url_map.converters['regex'] = RegexConverter
 
@@ -55,6 +49,7 @@ def faq():
     else:
         return render_template('SV/faq.html')
 
+# Visitors
 @app.route('/visitors')
 def visitors():
     language = request.args.get('language')
@@ -63,7 +58,7 @@ def visitors():
     else:
         return render_template('SV/visitors.html')
 
-# Formulär
+# Forms
 #####################################
 # Redirect to application of working at the fair for D-Dagen 2021
 # This regex is wrong since it matches any of the characthers in
@@ -77,7 +72,6 @@ def sok(link):
 @app.route('/sittning')
 def sittning():
     return redirect('https://forms.gle/UGbrFsL46wTEHcbWA', code=302)
-
 
 # Company Forms
 # Redirect to application of interest for D-Dagen 2021 in swedish
@@ -93,11 +87,27 @@ def interest_ddagenintresseanmalan():
 def interest_ddagenstartup():
     return redirect('https://forms.gle/vMPQyhLFumnceu666', code=302)
 
+# Lunchseminars 2021
+@app.route('/lfscania')
+def lfscania():
+    return redirect('https://forms.gle/RbmKCJCfTeWN6L2Z8', code=302)
+@app.route('/lfskatteverket')
+def lfskatteverket():
+    return redirect('https://forms.gle/wHNkCupyJdsopAAs6', code=302)
+@app.route('/lftietoevry')
+def lftietoevry():
+    return redirect('https://forms.gle/mbRAXu9Yt4SJugJ69', code=302)
+@app.route('/lftink')
+def lftink():
+    return redirect('https://forms.gle/z4NYd3DpQeHJqjLr6', code=302)
 
+
+# Links for apps
+#####################################
 # This is redirect for the map
-# @app.route("/map", methods=["GET"])
-# def map():
-#     return send_from_directory("static/map", "map.html")
+@app.route("/map", methods=["GET"])
+def map():
+    return send_from_directory("static/map", "map.html")
 
 # Redirect to the clicker app.
 @app.route("/clicker", methods=["GET"])
@@ -132,31 +142,13 @@ def katalog2018():
 def katalog2017():
     return redirect('https://dsekt-assets.s3.amazonaws.com/naringsliv/d-dagen/katalog_2017', code=302)
 
-@app.route('/katalog2016')
-def katalog2016():
-    return redirect('https://dsekt-assets.s3.amazonaws.com/naringsliv/d-dagen/katalog_2016', code=302)
+# @app.route('/katalog2016')
+# def katalog2016():
+#    return redirect('https://dsekt-assets.s3.amazonaws.com/naringsliv/d-dagen/katalog_2016', code=302)
 
 @app.route('/katalog2015')
 def katalog2015():
     return redirect('https://dsekt-assets.s3.amazonaws.com/naringsliv/d-dagen/katalog_2015', code=302)
-
-# Lunchföreläsningar 2021
-####################################
-@app.route('/lfscania')
-def lfscania():
-    return redirect('https://forms.gle/RbmKCJCfTeWN6L2Z8', code=302)
-@app.route('/lfskatteverket')
-def lfskatteverket():
-    return redirect('https://forms.gle/wHNkCupyJdsopAAs6', code=302)
-@app.route('/lftietoevry')
-def lftietoevry():
-    return redirect('https://forms.gle/mbRAXu9Yt4SJugJ69', code=302)
-@app.route('/lftink')
-def lftink():
-    return redirect('https://forms.gle/z4NYd3DpQeHJqjLr6', code=302)
-@app.route('/lunch')
-def lunch():
-    return redirect('https://kth-se.zoom.us/my/ddagenlunch', code=302)
 
 
 # Error handlers
