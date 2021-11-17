@@ -1,10 +1,13 @@
+// Skrivet på formatet [Namn, länk till bild från "static/img/", mail, Svensk titel, Engelsk titel]
+// Scriptet körs när contact.html laddas in.
+
 dda = [
     ["Erik Nordlöf", "projektgruppen/erik-n.jpg", "projectmanager@ddagen.se", "D-Dagenansvarig", "Project Leader"], 
     ["Adam Sjöberg", "projektgruppen/adam-s.jpg", "projectmanager@ddagen.se", "D-Dagenansvarig", "Project Leader"]
 ];
 
 fin = [
-    ["", "maskot-bilder/alpa02-ekonomi.png", "ekonomi@ddagen.se", "Ekonomiansvarig", "Head of Finance"]
+    ["Ekonomiansvarig", "maskot-bilder/alpa02-ekonomi.png", "ekonomi@ddagen.se", "Ekonomiansvarig", "Head of Finance"]
 ];
 
 sales = [
@@ -33,6 +36,11 @@ pr = [
     ["Ann Abeysekera", "projektgruppen/ann-a.jpg", "socialmedia@ddagen.se", "Spons- och Tryckansvarig", "Head of Sponsorship and Print"]
 ];
 
+/**
+ * Lägger till personerna definerade i listorna ovan till "Kontakta oss" sidan.
+ * 
+ * @param lang "swe" eller "eng" beroende på språk 
+ */
 function addContactInfo(lang) {
     try {        
         appendElem("dda", lang, dda[0]);
@@ -60,6 +68,14 @@ function addContactInfo(lang) {
     } catch (error) {}
 }
 
+/**
+ * Creates a html element of a person
+ * 
+ * @param person is a list with info about the person
+ * @param titleLang is the language of the title, "swe" or "eng"
+ * 
+ * @returns a html element of a person
+ */
 function getElement(person, titleLang) {
     const elem = document.createElement("div");
     elem.className = "portrait-photo";
@@ -83,12 +99,27 @@ function getElement(person, titleLang) {
     return elem;
 }
 
+/**
+ * Creates a text element. e.g. <type>text</type>, <h1>title</h1>
+ * 
+ * @param type is the type of html element to create.
+ * @param text is the text to put inside.
+ * 
+ * @returns a html element with text inside 
+ */
 function ctxtelem(type, text) {
     const elem = document.createElement(type);
     elem.append(document.createTextNode(text));
     return elem;
 }
 
+/**
+ * Appends a person to specified div.
+ * 
+ * @param id is the id of the div to append the person to.
+ * @param lang is the language to use
+ * @param person is a list with the details
+ */
 function appendElem(id, lang, person) {
     document.getElementById(id).append(getElement(person, lang));
 }
