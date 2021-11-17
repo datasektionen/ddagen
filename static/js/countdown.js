@@ -47,6 +47,11 @@ function remove() {
 }
 
 window.onload = () => {
+    if (document.getElementById("countdown") == null) {
+        remove();
+        return;
+    }
+    
     tick();
     var intervalID = setInterval(() => { tick(); }, 1000);
 };

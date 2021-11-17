@@ -124,7 +124,7 @@ def karta():
 @app.route('/katalog')
 @app.route('/katalog2021')
 def katalog2021():
-    return redirect('https://dsekt-assets.s3.amazonaws.com/naringsliv/d-dagen/katalog_2021.pdf', code=302)
+    return redirect('https://dsekt-assets.s3.amazonaws.com/naringsliv/d-dagen/katalog_2021', code=302)
 
 @app.route('/katalog2020')
 def katalog2020():
