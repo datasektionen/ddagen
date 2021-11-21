@@ -2,7 +2,7 @@
 Flask project for D-Dagen's website.
 
 ## Notes
-* Look at the wiki for more information about the different features of [ddagen.se](https://ddagen.se)! 
+* Look at the [wiki](https://github.com/datasektionen/ddagen/wiki) for more information about the different features of [ddagen.se](https://ddagen.se)! 
 While you're there make sure to contribute some information and documentation about new (and old) features. 
 * Commits pushed to the develop branch show up on [dev.ddagen.se](https://dev.ddagen.se/).
 When you're satisfied with the state of the site, create a pull request to update [ddagen.se](https://ddagen.se).
