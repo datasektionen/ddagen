@@ -9,11 +9,9 @@ environment, this is because the CSS might not have been updated on the server w
 Solution? Wait a few hours.
 
 ## Instalation
-If you're running Windows I can highly recommend Windows Subsystem for Linux (WSL) as it allows you
+If you're running Windows I can highly recommend Windows Subsystem for Linux (WSL, [https://docs.microsoft.com/en-us/windows/wsl/install-win10](https://docs.microsoft.com/en-us/windows/wsl/install-win10)) as it allows you
 to run a Linux terminal in Windows. This is helpful as it allows you to gather everything related 
 to the development of [ddagen.se](https://ddagen.se/) in one place.
-
-Link to installation  guide: [https://docs.microsoft.com/en-us/windows/wsl/install-win10](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
 
 ### Install dependencies
 To install python 3 and flask run:
