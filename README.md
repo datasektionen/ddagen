@@ -9,6 +9,9 @@ When you're satisfied with the state of the site, create a pull request to updat
 * Sometimes when pushing or merging ddagen.se might look different to your local developement 
 environment, this is because the CSS might not have been updated on the server while the HTML has.
 Solution? Wait a few hours.
+* [layout.html](https://github.com/datasektionen/ddagen/blob/develop/templates/layout.html) is the "main" page, i.e. the page into which the other content is inserted.
+* The reason the background for (ddagen.se/companies)[https://ddagen.se/companies] is white at first is because it has to wait for all the company logos to load before it loads the background. Currently some of the company logos are very large (some are like 5000px wide and 3000px high), so keep in mind to have smaller sizes for logos in the future.
+* If you include "fixes #69" or "closes #42" (where #XX is the issue number) the coresponding issue is automatically closed.   
 
 ## Instalation
 If you're running Windows I can highly recommend Windows Subsystem for Linux (WSL) as it allows you
