@@ -1,4 +1,4 @@
-# D-Dagen
+![d-dagen](https://github.com/datasektionen/ddagen/blob/develop/static/img/assets/d-dagen-logo-ny.svg)
 Flask project for D-Dagen's website.
 
 ## Notes
