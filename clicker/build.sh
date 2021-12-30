@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "Building map app"
+echo "Building clicker app"
 yarn build
 echo "Copying files to suitable directories"
 mkdir -p ../static/clicker/
