@@ -1,11 +1,24 @@
-{% extends "layout.html" %}
+{% extends "layout.html" %} {% block content %}
 
-{% block content %}
 <div id="intro-box">
-  <p>Konglig Datasektionen at KTH proudly presents</p>
-  <img id="ddagen-logo-intro" src="{{ url_for('static', filename='img/assets/logo-white-ageless_v2.svg') }}" alt="D-Dagen">
-  <h4 class="lato-black"><b>13th of October 2022 </b></h4>
-  <img id="datasektionen-shield" src="{{ url_for('static', filename='img/assets/shield.png') }}" alt="Datassektionen">
-  <p>The Computer Science chapter's annual career fair </p>
+    <p>Konglig Datasektionen at KTH proudly presents</p>
+    <img id="ddagen-logo-intro" src="{{ url_for('static', filename='img/assets/logo-white-ageless_v2.svg') }}" alt="D-Dagen">
+    <h4 class="lato-black"><b>13th of October 2022 </b></h4>
+    <img id="datasektionen-shield" src="{{ url_for('static', filename='img/assets/shield.png') }}" alt="Datassektionen">
+    <p>The Computer Science chapter's annual career fair </p>
 </div>
+
+<!-- The countdown clock -->
+<div id="countdown">
+    <div id="cd-day" class="cd"></div>
+    <div id="cd-hrs" class="cd"></div>
+    <div id="cd-min" class="cd"></div>
+    <div id="cd-sec" class="cd"></div>
+
+    <div id="day" class="cd-label"></div>
+    <div id="hrs" class="cd-label"></div>
+    <div id="min" class="cd-label"></div>
+    <div id="sec" class="cd-label"></div>
+</div>
+
 {% endblock %}
