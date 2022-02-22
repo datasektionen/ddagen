@@ -71,7 +71,7 @@
 
         <div id="navbar-link-container">
             {% if request.args.get('language') == 'en' %}
-                <a class="navbar-item" href="{{ url_for('companies') }}">Companies</a>
+                <!-- <a class="navbar-item" href="{{ url_for('companies') }}">Companies</a> -->
                 <a class="navbar-item" href="{{ url_for('faq') }}">FAQ</a>
                 <a class="navbar-item" href="{{ url_for('contact') }}">Contact Us</a>
                 <a class="navbar-item" href="{{ url_for('visitors')}}">Visitors</a>
@@ -80,7 +80,7 @@
                     Svenska&nbsp;<img style="width: 1em" src="{{ url_for('static', filename='img/assets//flag_swe.svg') }}" alt="Svenska" />
                 </a>
             {% else %}
-                <a class="navbar-item" href="{{ url_for('companies') }}">Företag</a>
+                <!-- <a class="navbar-item" href="{{ url_for('companies') }}">Företag</a> -->
                 <a class="navbar-item" href="{{ url_for('faq') }}">FAQ</a>
                 <a class="navbar-item" href="{{ url_for('contact') }}">Kontakta&nbsp;oss</a>
                 <a class="navbar-item" href="{{ url_for('visitors')}}">Besökare</a>
