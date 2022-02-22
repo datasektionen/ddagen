@@ -115,6 +115,7 @@
     {% block footer %}
     <footer>
         <div id="footer-item1" class="footer-item">
+            <!--
             <h2>
                 {% if request.args.get('language') == 'en'%}
                 A BIG THANK YOU TO OUR <b>MAIN SPONSOR</b>
@@ -130,6 +131,7 @@
                 <img id="sponsor-item-ericsson" class="sponsor-item"
                     src="{{ url_for('static', filename='img/company_logos/Ericsson_long.png') }}" alt="Ericsson">
             </div>
+            -->
         </div>
     
         <div id="footer-item2" class="footer-item">
@@ -166,8 +168,8 @@
             </h2>
             <div id="contact-footer">
                 <div>
-                    <b>Adam Sjöberg</b> <br>
-                    <b>Erik Nordlöf</b> <br>
+                    <b>Carl Chemnitz</b> <br>
+                    <b>Kevin Wenström</b> <br>
                     
                     {% if request.args.get('language') == 'en'%}
                     Project Leaders for D-Dagen
@@ -176,7 +178,7 @@
                     {% endif %} 
                     <br>
                     
-                    <a href="mailto:projectmanager@ddagen.se" class="cerise">projectmanager@ddagen.se</a>
+                    <a href="mailto:ansvarig@ddagen.se" class="cerise">ansvarig@ddagen.se</a>
                 </div>
                 <div>
                     {% if request.args.get('language') == 'en'%}
