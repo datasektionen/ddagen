@@ -1,4 +1,5 @@
-let ddagen = new Date("Oct 7, 2021 10:00:00");
+let ddagen = new Date("Oct 13, 2022 10:00:00");
+let lang = getLang();
 
 function tick() {
     now = new Date();
@@ -9,29 +10,51 @@ function tick() {
     diff >= 0 ? timeTo(diff) : remove();
 }
 
-// No, this is not the most efficent or pretty way to do this. But it works.
+function getLang() {
+    let queryString = window.location.search;
+    let urlParams = new URLSearchParams(queryString);
+    let lang = urlParams.get("language");
+    if (lang)
+        return lang
+    else
+        return "sv"
+}
+
 function timeTo(time) {
     let days = Math.floor(time / (1000 * 60 * 60 * 24));
     let hours = Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     let minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((time % (1000 * 60)) / 1000);
 
-    let d = ["day", "dagar"];
-    let h = ["hrs", "timmar"];
-    let m = ["min", "minuter"];
-    let s = ["sec", "sekunder"];
-
-    days == 1 ? d[1] = "dag" : false;
-    hours == 1 ? h[1] = "timme" : false;
-    minutes == 1 ? m[1] = "minut" : false;
-    seconds == 1 ? s[1] = "sekund" : false;
+    let str = {
+        d: {
+            id: "day",
+            sv: days == 1 ? "dag" : "dagar",
+            en: days == 1 ? "day" : "days"
+        },
+        h: {
+            id: "hrs",
+            sv: hours == 1 ? "timme" : "timmar",
+            en: hours == 1 ? "hour" : "hours"
+        },
+        m: {
+            id: "min",
+            sv: minutes == 1 ? "minut" : "minuter",
+            en: minutes == 1 ? "minute" : "minutes"
+        },
+        s: {
+            id: "sec",
+            sv: seconds == 1 ? "sekund" : "sekunder",
+            en: seconds == 1 ? "second" : "seconds"
+        }
+    }
 
     let updateID = (id, text) => document.getElementById(id).innerHTML = text;
 
-    updateID(d[0], d[1]);
-    updateID(h[0], h[1]);
-    updateID(m[0], m[1]);
-    updateID(s[0], s[1]);
+    updateID(str.d.id, str.d[lang]);
+    updateID(str.h.id, str.h[lang]);
+    updateID(str.m.id, str.m[lang]);
+    updateID(str.s.id, str.s[lang]);
 
     updateID("cd-day", days);
     updateID("cd-hrs", hours);
