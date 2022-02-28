@@ -8,22 +8,19 @@ dda = [
 
 fin = [
     ["Felix Almay", "maskot-bilder/alpa02-ekonomi.png", "ekonomi@ddagen.se", "Ekonomiansvarig", "Head of Finance"],
-    ["Axel Johansson", "maskot-bilder/alpa02-ekonomi.png", "ekonomi@ddagen.se", "Vice ekonomiansvarig", "Finance"]
+    ["Axel Johansson", "maskot-bilder/alpa02-ekonomi.png", "v.ekonomi@ddagen.se", "Vice ekonomiansvarig", "Finance"]
 ];
 
 sales = [
-    ["Carl Peterson", "maskot-bilder/alpa02-säljansvarig.png", "emmy@ddagen.se", "Säljansvarig", "Head of Sales"],
-    ["Kalle Lindblad", "maskot-bilder/alpa02-sälj.png", "markus@ddagen.se", "Säljare", "Sales Associate"],
-    ["Vilmer Jonsson", "maskot-bilder/alpa02-sälj.png", "ludvig@ddagen.se", "Säljare", "Sales Associate"]
-];
-
-events = [
-    ["Amanda Berg", "maskot-bilder/alpa02-fest.png", "fest@ddagen.se", "Festansvarig", "Head of Events"]
+    ["Carl Peterson", "maskot-bilder/alpa02-säljansvarig.png", "carl.peterson@ddagen.se", "Säljare", "Sales"],
+    ["Karl Lindblad", "maskot-bilder/alpa02-sälj.png", "karl.lindblad@ddagen.se", "Säljare", "Sales"],
+    ["Vilmer Jonsson", "maskot-bilder/alpa02-sälj.png", "vilmer.jonsson@ddagen.se", "Säljare", "Sales"],
+    ["Johan Abdi", "maskot-bilder/alpa02-tryck-sponsor.png", "sponsorship@ddagen.se", "Sponsansvarig", "Head of Sponsorship"]
 ];
 
 fair = [
-    ["Tobias Hansson", "maskot-bilder/alpa02-personalansvarig.png", "fair@ddagen.se", "Mässansvarig", "Head of Staff"],
-    ["Emil Hultcrantz", "maskot-bilder/alpa02-lokalansvarig.png", "venue@ddagen.se", "Lokalansvarig", "Head of Venue"],
+    ["Tobias Hansson", "maskot-bilder/alpa02-personalansvarig.png", "fair-temp@ddagen.se", "Mässansvarig", "Head of Staff"],
+    ["Emil Hultcrantz", "maskot-bilder/alpa02-lokalansvarig.png", "facility@ddagen.se", "Lokalansvarig", "Head of Venue"],
     ["David Peilitz", "maskot-bilder/alpa02-logistik.png", "logistics@ddagen.se", "Logistikansvarig", "Head of Logistics"],
     ["Rafael Bechara", "maskot-bilder/alpa02-lounge.png", "lounge@ddagen.se", "Loungeansvarig", "Head of Lounge"]
 ];
@@ -31,8 +28,11 @@ fair = [
 pr = [
     ["Mortada Nasser", "maskot-bilder/alpa02-pransvarig.png", "pr@ddagen.se", "PR-ansvarig", "Head of PR"],
     ["Gustav Ekner", "maskot-bilder/alpa02-webansvarig.png", "web@ddagen.se", "Webbansvarig", "Web Admin"],
-    ["Joseph Karroum", "maskot-bilder/alpa02-grafik.png", "graphics@ddagen.se", "Art Director", "Art Director"],
-    ["Johan Abdi", "maskot-bilder/alpa02-tryck-sponsor.png", "socialmedia@ddagen.se", "Sponsansvarig", "Head of Sponsorship"]
+    ["Joseph Karroum", "maskot-bilder/alpa02-grafik.png", "art@ddagen.se", "Art Director", "Art Director"],  
+];
+
+events = [
+    ["Amanda Berg", "maskot-bilder/alpa02-fest.png", "fest-temp@ddagen.se", "Festansvarig", "Head of Events"]
 ];
 
 /**
@@ -51,18 +51,18 @@ function addContactInfo(lang) {
         appendElem("sales", lang, sales[0]);
         appendElem("sales", lang, sales[1]);
         appendElem("sales", lang, sales[2]);
-        
+        appendElem("sales", lang, sales[3]);
+
         appendElem("fair", lang, fair[0]);
         appendElem("fair", lang, fair[1]);
         appendElem("fair", lang, fair[2]);
         appendElem("fair", lang, fair[3]);
         
-        appendElem("event", lang, events[0]);
-        
         appendElem("pr", lang, pr[0]);
         appendElem("pr", lang, pr[1]);
         appendElem("pr", lang, pr[2]);
-        appendElem("pr", lang, pr[3]);
+
+        appendElem("event", lang, events[0]);
     } catch (error) {
         console.log(error);
     }
