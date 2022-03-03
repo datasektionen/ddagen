@@ -73,7 +73,7 @@
             {% if request.args.get('language') == 'en' %}
                 <!-- <a class="navbar-item" href="{{ url_for('companies') }}">Companies</a> -->
                 <a class="navbar-item" href="{{ url_for('faq') }}">FAQ</a>
-                <!-- <a class="navbar-item" href="{{ url_for('contact') }}">Contact Us</a> -->
+                <a class="navbar-item" href="{{ url_for('contact') }}">Contact Us</a>
                 <!-- <a class="navbar-item" href="{{ url_for('visitors')}}">Visitors</a> -->
                 <!-- <a class="navbar-item" href="{{ url_for('katalog2021')}}">Catalog</a> -->
                 <a id="language" class="navbar-item" href="{{ url_for(request.endpoint, language='sv') if request.endpoint else url_for('index', language='sv') }}" id="language">
@@ -82,7 +82,7 @@
             {% else %}
                 <!-- <a class="navbar-item" href="{{ url_for('companies') }}">Företag</a> -->
                 <a class="navbar-item" href="{{ url_for('faq') }}">FAQ</a>
-                <!-- <a class="navbar-item" href="{{ url_for('contact') }}">Kontakta&nbsp;oss</a> -->
+                <a class="navbar-item" href="{{ url_for('contact') }}">Kontakta&nbsp;oss</a>
                 <!-- <a class="navbar-item" href="{{ url_for('visitors')}}">Besökare</a> -->
                 <!-- <a class="navbar-item" href="{{ url_for('katalog2021')}}">Katalog</a> -->
                 <a id="language" class="navbar-item" href="{{ url_for(request.endpoint, language='en') if request.endpoint else url_for('index', language='en') }}" id="language">

@@ -2,38 +2,37 @@
 // Scriptet körs när contact.html laddas in.
 
 dda = [
-    ["Erik Nordlöf", "projektgruppen/erik-n.jpg", "projectmanager@ddagen.se", "D-Dagenansvarig", "Project Leader"], 
-    ["Adam Sjöberg", "projektgruppen/adam-s.jpg", "projectmanager@ddagen.se", "D-Dagenansvarig", "Project Leader"]
+    ["Carl Chemnitz", "maskot-bilder/alpa02-dda.png", "ansvarig@ddagen.se", "D-Dagenansvarig", "Project Leader"], 
+    ["Kevin Wenström", "maskot-bilder/alpa02-dda.png", "ansvarig@ddagen.se", "D-Dagenansvarig", "Project Leader"]
 ];
 
 fin = [
-    ["Ekonomiansvarig", "maskot-bilder/alpa02-ekonomi.png", "ekonomi@ddagen.se", "Ekonomiansvarig", "Head of Finance"]
+    ["Felix Almay", "maskot-bilder/alpa02-ekonomi.png", "ekonomi@ddagen.se", "Kassör", "Treasurer"],
+    ["Axel Johansson", "maskot-bilder/alpa02-ekonomi.png", "v.ekonomi@ddagen.se", "Vice kassör", "Vice-Treasurer"]
 ];
 
 sales = [
-    ["Emmy Yin", "projektgruppen/emmy.jpg", "emmy@ddagen.se", "Säljansvarig", "Head of Sales"],
-    ["Markus Videfors", "projektgruppen/markus-v.jpg", "markus@ddagen.se", "Säljare", "Sales Associate"],
-    ["Ludvig Siljeholm", "projektgruppen/ludvig-s.jpg", "ludvig@ddagen.se", "Säljare", "Sales Associate"]
+    ["Carl Peterson", "maskot-bilder/alpa02-säljansvarig.png", "carl.peterson@ddagen.se", "Säljare", "Sales Associate"],
+    ["Karl Lindblad", "maskot-bilder/alpa02-sälj.png", "karl.lindblad@ddagen.se", "Säljare", "Sales Associate"],
+    ["Vilmer Jonsson", "maskot-bilder/alpa02-sälj.png", "vilmer.jonsson@ddagen.se", "Säljare", "Sales Associate"],
+    ["Johan Abdi", "maskot-bilder/alpa02-tryck-sponsor.png", "sponsorship@ddagen.se", "Sponsansvarig", "Head of Sponsorship"]
 ];
 
 fair = [
-    ["Marcus Erlandsson", "projektgruppen/marcus.jpg", "fair@ddagen.se", "Mässansvarig", "Head of Staff"],
-    ["Hanna Peters", "projektgruppen/hanna-p.jpg", "venue@ddagen.se", "Lokalansvarig", "Head of Venue"],
-    ["David Puustinen", "projektgruppen/david-p.jpg", "logistics@ddagen.se", "Logistikansvarig", "Head of Logistics"],
-    ["Tim Jonsson", "projektgruppen/tim-j.jpg", "lounge@ddagen.se", "Loungeansvarig", "Head of Lounge"]
-];
-
-events = [
-    ["Douglas Fischer", "projektgruppen/douglas-f.jpg", "fest@ddagen.se", "Festansvarig", "Head of Events"],
-    ["Ebba Bråtman", "maskot-bilder/alpa02-fest.png", "fest@ddagen.se", "Festansvarig", "Head of Events"]
+    ["Tobias Hansson", "maskot-bilder/alpa02-personalansvarig.png", "fair-temp@ddagen.se", "Mässansvarig", "Head of Staff"],
+    ["Emil Hultcrantz", "maskot-bilder/alpa02-lokalansvarig.png", "facility@ddagen.se", "Lokalansvarig", "Head of Venue"],
+    ["David Peilitz", "maskot-bilder/alpa02-logistik.png", "logistics@ddagen.se", "Logistikansvarig", "Head of Logistics"],
+    ["Rafael Bechara", "maskot-bilder/alpa02-lounge.png", "lounge@ddagen.se", "Loungeansvarig", "Head of Lounge"]
 ];
 
 pr = [
-    ["Sara Strandberg", "projektgruppen/sara-s.jpg", "pr@ddagen.se", "PR-ansvarig", "Head of PR"],
-    ["Pontus Söderlund", "maskot-bilder/alpa02-webansvarig.png", "web@ddagen.se", "Webbansvarig", "Head of Web Development"],
-    ["Amanda Hedlund", "projektgruppen/amanda-h.jpg", "graphics@ddagen.se", "Art Director", "Art Director"],
-    ["Michael Morales Sundstedt", "projektgruppen/michael-ms.jpg", "socialmedia@ddagen.se", "Socialamedieansvarig", "Head of Social Media"],
-    ["Ann Abeysekera", "projektgruppen/ann-a.jpg", "socialmedia@ddagen.se", "Spons- och Tryckansvarig", "Head of Sponsorship and Print"]
+    ["Mortada Nasser", "maskot-bilder/alpa02-pransvarig.png", "pr@ddagen.se", "PR-ansvarig", "Head of PR"],
+    ["Gustav Ekner", "maskot-bilder/alpa02-webansvarig.png", "web@ddagen.se", "Webbansvarig", "Webmaster"],
+    ["Joseph Karroum", "maskot-bilder/alpa02-grafik.png", "art@ddagen.se", "Art Director", "Art Director"],  
+];
+
+events = [
+    ["Amanda Berg", "maskot-bilder/alpa02-fest.png", "fest-temp@ddagen.se", "Festansvarig", "Head of Events"]
 ];
 
 /**
@@ -47,25 +46,26 @@ function addContactInfo(lang) {
         appendElem("dda", lang, dda[1]);
         
         appendElem("fin", lang, fin[0]);
+        appendElem("fin", lang, fin[1]);
         
         appendElem("sales", lang, sales[0]);
         appendElem("sales", lang, sales[1]);
         appendElem("sales", lang, sales[2]);
-        
+        appendElem("sales", lang, sales[3]);
+
         appendElem("fair", lang, fair[0]);
         appendElem("fair", lang, fair[1]);
         appendElem("fair", lang, fair[2]);
         appendElem("fair", lang, fair[3]);
         
-        appendElem("event", lang, events[0]);
-        appendElem("event", lang, events[1]);
-        
         appendElem("pr", lang, pr[0]);
         appendElem("pr", lang, pr[1]);
         appendElem("pr", lang, pr[2]);
-        appendElem("pr", lang, pr[3]);
-        appendElem("pr", lang, pr[4]);
-    } catch (error) {}
+
+        appendElem("event", lang, events[0]);
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 /**
