@@ -5,17 +5,19 @@
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/styles": "^4.11.3",
-    "autosuggest-highlight": "^3.1.1",
-    "is-svg": ">=4.2.2",
-    "npm": "^7.23.0",
-    "prop-types": "^15.7.2",
+    "autosuggest-highlight": "^3.2.1",
+    "is-svg": ">=4.3.2",
+    "npm": "^8.5.2",
+    "postcss": "^8.4.7",
+    "postcss-normalize": "^10.0.1",
+    "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-autosuggest": "^10.1.0",
     "react-dom": "^17.0.2",
-    "react-redux": "^7.2.3",
-    "react-scripts": "^4.0.3",
-    "react-svgmt": "^1.1.11",
-    "redux": "^4.0.5"
+    "react-redux": "^7.2.6",
+    "react-scripts": "^5.0.0",
+    "react-svgmt": "^1.2.0",
+    "redux": "^4.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -40,14 +42,14 @@
     ]
   },
   "devDependencies": {
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-react": "^7.23.1",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "prettier": "^2.4.0",
-    "pretty-quick": "^3.1.0"
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.29.2",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "prettier": "^2.5.1",
+    "pretty-quick": "^3.1.3"
   }
 }
