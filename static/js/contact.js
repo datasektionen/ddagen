@@ -7,14 +7,14 @@ dda = [
 ];
 
 fin = [
-    ["Felix Almay", "maskot-bilder/alpa02-ekonomi.png", "ekonomi@ddagen.se", "Ekonomiansvarig", "Head of Finance"],
-    ["Axel Johansson", "maskot-bilder/alpa02-ekonomi.png", "v.ekonomi@ddagen.se", "Vice ekonomiansvarig", "Finance"]
+    ["Felix Almay", "maskot-bilder/alpa02-ekonomi.png", "ekonomi@ddagen.se", "Kassör", "Treasurer"],
+    ["Axel Johansson", "maskot-bilder/alpa02-ekonomi.png", "v.ekonomi@ddagen.se", "Vice kassör", "Vice-Treasurer"]
 ];
 
 sales = [
-    ["Carl Peterson", "maskot-bilder/alpa02-säljansvarig.png", "carl.peterson@ddagen.se", "Säljare", "Sales"],
-    ["Karl Lindblad", "maskot-bilder/alpa02-sälj.png", "karl.lindblad@ddagen.se", "Säljare", "Sales"],
-    ["Vilmer Jonsson", "maskot-bilder/alpa02-sälj.png", "vilmer.jonsson@ddagen.se", "Säljare", "Sales"],
+    ["Carl Peterson", "maskot-bilder/alpa02-säljansvarig.png", "carl.peterson@ddagen.se", "Säljare", "Sales Associate"],
+    ["Karl Lindblad", "maskot-bilder/alpa02-sälj.png", "karl.lindblad@ddagen.se", "Säljare", "Sales Associate"],
+    ["Vilmer Jonsson", "maskot-bilder/alpa02-sälj.png", "vilmer.jonsson@ddagen.se", "Säljare", "Sales Associate"],
     ["Johan Abdi", "maskot-bilder/alpa02-tryck-sponsor.png", "sponsorship@ddagen.se", "Sponsansvarig", "Head of Sponsorship"]
 ];
 
@@ -27,7 +27,7 @@ fair = [
 
 pr = [
     ["Mortada Nasser", "maskot-bilder/alpa02-pransvarig.png", "pr@ddagen.se", "PR-ansvarig", "Head of PR"],
-    ["Gustav Ekner", "maskot-bilder/alpa02-webansvarig.png", "web@ddagen.se", "Webbansvarig", "Web Admin"],
+    ["Gustav Ekner", "maskot-bilder/alpa02-webansvarig.png", "web@ddagen.se", "Webbansvarig", "Webmaster"],
     ["Joseph Karroum", "maskot-bilder/alpa02-grafik.png", "art@ddagen.se", "Art Director", "Art Director"],  
 ];
 
