@@ -1,24 +1,59 @@
-{% extends "layout.html" %} {% block content %}
+{% extends "layout.html" %} 
 
-<div id="intro-box">
-    <p>Konglig Datasektionen at KTH proudly presents</p>
-    <img id="ddagen-logo-intro" src="{{ url_for('static', filename='img/assets/logo-white-ageless_v2.svg') }}" alt="D-Dagen">
-    <h4 class="lato-black"><b>13th of October 2022 </b></h4>
-    <img id="datasektionen-shield" src="{{ url_for('static', filename='img/assets/shield.png') }}" alt="Datassektionen">
-    <p>The Computer Science chapter's annual career fair </p>
+{% block content %}
+
+<div class="uk-section uk-light" id="main-content">
+    <div class="uk-container">
+        <h3 class="uk-text-light uk-text-center">
+            Konglig Datasektionen at KTH proudly presents
+        </h3>
+
+        <img class="uk-align-center" data-src="/static/img/assets/logo-white-ageless_v1.png" width="750px" alt="D-Dagen logo" uk-img>
+
+        <h2 class="uk-text-normal uk-text-center">
+            13th of October 2022
+        </h2>
+
+        <div class="uk-flex uk-flex-middle uk-flex-center transparent">
+            <div class="uk-card uk-card-default uk-card-body uk-padding-small">
+                <img class="uk-align-center" data-src="/static/img/assets/shield.png" width="70px" alt="D-logo" uk-img>
+            </div>
+            <div class="uk-card uk-card-default uk-card-body uk-margin-left uk-padding-small">
+                <p class="uk-light uk-text-bold">The Computer Science chapter's annual career fair</p>
+            </div>
+        </div>
+
+        <!-- Countdown: -->
+        <div class="uk-grid-small uk-child-width-auto uk-flex-center uk-text-light uk-margin-medium-top"
+             uk-grid uk-countdown="date: 2022-10-13T10:00:00+01:00">
+            <div>
+                <div class="uk-countdown-number uk-countdown-days"></div>
+                <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s uk-text-normal">Days</div>
+            </div>
+            <div class="uk-countdown-separator">:</div>
+            <div>
+                <div class="uk-countdown-number uk-countdown-hours"></div>
+                <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s uk-text-normal">Hours</div>
+            </div>
+            <div class="uk-countdown-separator">:</div>
+            <div>
+                <div class="uk-countdown-number uk-countdown-minutes"></div>
+                <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s uk-text-normal">Minutes</div>
+            </div>
+            <div class="uk-countdown-separator">:</div>
+            <div>
+                <div class="uk-countdown-number uk-countdown-seconds"></div>
+                <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s uk-text-normal">Seconds</div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<!-- The countdown clock -->
-<div id="countdown">
-    <div id="cd-day" class="cd"></div>
-    <div id="cd-hrs" class="cd"></div>
-    <div id="cd-min" class="cd"></div>
-    <div id="cd-sec" class="cd"></div>
-
-    <div id="day" class="cd-label"></div>
-    <div id="hrs" class="cd-label"></div>
-    <div id="min" class="cd-label"></div>
-    <div id="sec" class="cd-label"></div>
-</div>
+<script>
+    // Set highlight of navbar item for this page:
+    document.querySelectorAll(".nav-start").forEach(element => {
+        element.classList.add("uk-active");
+    });
+</script>
 
 {% endblock %}

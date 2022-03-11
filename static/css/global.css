@@ -1,0 +1,49 @@
+* {
+    font-family: 'Lato', sans-serif !important;
+}
+
+.transparent * {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+body {
+    background-image: url(/static/img/assets/background.png);
+}
+
+a {
+    color: #e83d84;
+}
+
+.cerise {
+    color: #e83d84;
+}
+
+.cerise-light {
+    color: #ec5f99;
+}
+
+#page-footer .uk-description-list > dt {
+    color: white;
+}
+
+/*
+    Custom modifications/additions of UIKit:
+*/
+
+.uk-text-m {
+    font-size: 1rem !important;
+}
+
+.uk-text-ml {
+    font-size: 1.125rem !important;
+}
+
+.uk-text-l {
+    font-size: 1.25rem !important;
+}
+
+.uk-text-xl {
+    font-size: 1.5rem !important;
+}

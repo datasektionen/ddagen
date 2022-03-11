@@ -1,214 +1,160 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html>
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-177853051-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
 
-<head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-177853051-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+            gtag('config', 'UA-177853051-1');
+        </script>
 
-        gtag('config', 'UA-177853051-1');
-    </script>
+        <title>D-Dagen - Konglig Datasektionen</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" sizes="180x180" href="/static/img/icons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/static/img/icons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/static/img/icons/favicon-16x16.png">
+        <link rel="manifest" href="/static/img/icons/site.webmanifest">
+        <link rel="mask-icon" href="/static/img/icons/safari-pinned-tab.svg" color="#5bbad5">
+        <link rel="shortcut icon" href="/static/img/icons/favicon.ico">
 
-    <meta charset="UTF-8">
-    <meta name="theme-color" content="#e83d84">
-    <meta name="theme-color" content="#ffffff">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="apple-touch-icon" sizes="180x180" href="/static/img/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/static/img/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/static/img/icons/favicon-16x16.png">
-    <link rel="manifest" href="/static/img/icons/site.webmanifest">
-    <link rel="mask-icon" href="/static/img/icons/safari-pinned-tab.svg" color="#5bbad5">
-    <link rel="shortcut icon" href="/static/img/icons/favicon.ico">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="msapplication-config" content="/static/img/icons/browserconfig.xml">
-    <meta name="google-site-verification" content="MNj-G5h7DoEv4j26SQgrOESA177JmHehgLqvY6naNeA" />
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,600,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet"> 
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="//aurora.datasektionen.se/" type="text/css" />
-    <link rel="stylesheet" href="/static/css/style.css?v=4.349590927" />
-    <link rel="stylesheet" href="/static/css/layout.css" />
-    <link rel="stylesheet" href="/static/css/footer.css" />
-    <link rel="stylesheet" href="/static/css/header.css" />
-    <link rel="stylesheet" href="/static/css/index.css" />
-    <link rel="stylesheet" href="/static/css/companies.css" />
-    <link rel="stylesheet" href="/static/css/contact.css" />
-    <link rel="stylesheet" href="/static/css/faq.css" />
-    <link rel="stylesheet" href="/static/css/visitors.css" />
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet"> 
 
-    <!-- Scripts -->
-    <script type="text/javascript" src="static/js/scripts.js"></script>
-    <script type="text/javascript" src="static/js/navbar.js"></script>
-    <script type="text/javascript" src="static/js/countdown.js"></script>
-    <script type="text/javascript" src="static/js/contact.js"></script>
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="/static/css/uikit.min.css" />
+        <link rel="stylesheet" href="/static/css/global.css" />
+        <link rel="stylesheet" href="/static/css/index.css" />
+        <link rel="stylesheet" href="/static/css/contact.css" />
+        <link rel="stylesheet" href="/static/css/companies.css" />
+        <link rel="stylesheet" href="/static/css/faq.css" />
 
-    <!-- Add icon library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="{{ url_for('static', filename='js/smooth-scroll.min.js') }}"></script>
-    <title>D-Dagen - Konglig Datasektionen</title>
-</head>
+        <!-- Scripts -->
+        <script src="/static/js/uikit.min.js"></script>
+        <script src="/static/js/uikit-icons.min.js"></script>
+        <script type="text/javascript" src="/static/js/countdown.js"></script>
+        <script type="text/javascript" src="/static/js/contact.js"></script>
+    </head>
+    <body>
+        <!-- ####################### -->
+        <!-- Navbar -->
+        <!-- ####################### -->
 
-<body id="home_body">
-    <!-- ####################### -->
-    <!-- Header -->
-    <!-- ####################### -->
-    <header id="navbar">
-        <a id="logo-container" href="{{ url_for('index') }}">
-            <img id="ddagen-logo-navbar" src="{{ url_for('static', filename='img/assets//logo-white-ageless_v2.svg') }}" alt="d-dagen logo">
-        </a>
+        <!-- Desktop/Tablet navbar -->
+        <div class="uk-container uk-container-medium">
+            <nav class="uk-navbar-container uk-navbar-transparent uk-light" uk-navbar>
+                <div class="uk-navbar-left">
+                    <a href="{{ pages[0][1] }}" class="uk-navbar-item uk-logo">
+                        <img class="uk-align-center" data-src="/static/img/assets/logo-white-ageless_v1.png" width="160px" alt="D-Dagen logo" uk-img>
+                    </a>
+                </div>
+                <div class="uk-navbar-right uk-visible@m">
+                    <ul class="uk-navbar-nav">
+                        {% for page in pages %}
+                            <li class="{{page[2]}}"><a href="{{ page[1] }}">{{page[0]}}</a></li>
+                        {% endfor %}
+                        <li><a href="{{ lang[1] }}" id="language">
+                            {{ lang[0] }}<img style="width: 1em; margin-left: 5px;" src="{{ lang[2] }}"/>
+                        </a></li>
+                    </ul>
+                </div>
 
-        <button id="navbar-hamburger" onclick="toggleDropdown()">
-            <i class="fa fa-bars fa-2x"></i>
-        </button>
-
-        <div id="navbar-link-container">
-            {% if request.args.get('language') == 'en' %}
-                <!-- <a class="navbar-item" href="{{ url_for('companies') }}">Companies</a> -->
-                <a class="navbar-item" href="{{ url_for('faq') }}">FAQ</a>
-                <a class="navbar-item" href="{{ url_for('contact') }}">Contact Us</a>
-                <!-- <a class="navbar-item" href="{{ url_for('visitors')}}">Visitors</a> -->
-                <!-- <a class="navbar-item" href="{{ url_for('katalog2021')}}">Catalog</a> -->
-                <a id="language" class="navbar-item" href="{{ url_for(request.endpoint, language='sv') if request.endpoint else url_for('index', language='sv') }}" id="language">
-                    Svenska&nbsp;<img style="width: 1em" src="{{ url_for('static', filename='img/assets//flag_swe.svg') }}" alt="Svenska" />
-                </a>
-            {% else %}
-                <!-- <a class="navbar-item" href="{{ url_for('companies') }}">Företag</a> -->
-                <a class="navbar-item" href="{{ url_for('faq') }}">FAQ</a>
-                <a class="navbar-item" href="{{ url_for('contact') }}">Kontakta&nbsp;oss</a>
-                <!-- <a class="navbar-item" href="{{ url_for('visitors')}}">Besökare</a> -->
-                <!-- <a class="navbar-item" href="{{ url_for('katalog2021')}}">Katalog</a> -->
-                <a id="language" class="navbar-item" href="{{ url_for(request.endpoint, language='en') if request.endpoint else url_for('index', language='en') }}" id="language">
-                    English&nbsp;<img style="width: 1em" src="{{ url_for('static', filename='img/assets//flag_eng.svg') }}" alt="English" />
-                </a>
-            {% endif %}
-        </div>
-    </header>
-
-    <!-- ####################### -->
-    <!-- Main Content -->
-    <!-- ####################### -->
-    <div id="page-content">
-        <!-- This is where the title of the page is inserted -->
-        <div id="page-title">
-            {% block intro_full %}
-            {% block intro %}
-            {% endblock intro %}
-            {% endblock intro_full %}
+                <div class="uk-navbar-right uk-hidden@m">
+                    <a class="uk-navbar-toggle" uk-navbar-toggle-icon uk-toggle="target: #offcanvas-nav"></a>
+                </div>
+            </nav>
         </div>
 
-        <!-- This is where the content of the other pages is inserted -->
-        {% block content %}
-        {% endblock %}
-    </div>
+        <!-- Mobile navbar -->
+        <div id="offcanvas-nav" uk-offcanvas="overlay: true">
+            <div class="uk-offcanvas-bar">
+                <ul class="uk-nav uk-nav-default">
+                    
+                        {% for page in pages %}
+                            <li class="{{page[2]}}"><a href="{{ page[1] }}">{{page[0]}}</a></li>
+                        {% endfor %}
+                        <li><a href="{{ lang[1] }}" id="language">
+                            {{ lang[0] }}<img style="width: 1em; margin-left: 5px;" src="{{ lang[2] }}"/>
+                        </a></li>
 
-    <!-- ####################### -->
-    <!-- Page Footer -->
-    <!-- ####################### -->
-    {% block footer %}
-    <footer>
-        <div id="footer-item1" class="footer-item">
-            <!--
-            <h2>
-                {% if request.args.get('language') == 'en'%}
-                A BIG THANK YOU TO OUR <b>MAIN SPONSOR</b>
-                {% else %}
-                STORT TACK TILL VÅR <b>HUVUDSPONSOR</b>
-                {% endif %}
-            </h2>
-            <div id="footer-sponsor-container">
-                <img id="sponsor-item-ddagen" class="sponsor-item"
-                    src="{{ url_for('static', filename='img/assets//ddagen_long.png') }}" alt="D-Dagen">
-                <img id="sponsor-item-heart" class="sponsor-item"
-                    src="{{ url_for('static', filename='img/assets//heart.png') }}" alt="Heart">
-                <img id="sponsor-item-ericsson" class="sponsor-item"
-                    src="{{ url_for('static', filename='img/company_logos/Ericsson_long.png') }}" alt="Ericsson">
+                    <!--<li class="uk-active"><a href="#">Active</a></li>-->
+                </ul>
             </div>
-            -->
         </div>
-    
-        <div id="footer-item2" class="footer-item">
-            <h2>
-                {% if request.args.get('language') == 'en'%}
-                Social Medias
-                {% else %}
-                Sociala medier
-                {% endif %}
-            </h2>
-            <ul>
-                <li>
-                    <img class="icon" src="static/img/icons/facebook-icon.svg" alt="facebook-logo">
-                    <a href="https://www.facebook.com/kongligddagen/">/kongligddagen</a>
-                </li>
-                <li>
-                    <img class="icon" src="static/img/icons/instagram-icon.svg" alt="instagram-logo">
-                    <a href="https://www.instagram.com/ddagenkth/">/ddagenkth</a>
-                </li>
-                <li>
-                    <img class="icon" src="static/img/icons/linkedin-icon.svg" alt="linkedin-logo">
-                    <a href="https://www.linkedin.com/company/kongligddagen/">/kongligddagen</a>
-                </li>
-            </ul>
+
+        <!-- ####################### -->
+        <!-- Main Content -->
+        <!-- ####################### -->
+        <div id="page-content">
+            <!-- This is where the content of the other pages is inserted -->
+            {% block content %}
+            {% endblock %}
         </div>
-    
-        <div id="footer-item3" class="footer-item">
-            <h2>
-                {% if request.args.get('language') == 'en'%}
-                Contact Us
-                {% else %}
-                Kontakta oss
-                {% endif %}
-            </h2>
-            <div id="contact-footer">
-                <div>
-                    <b>Carl Chemnitz</b> <br>
-                    <b>Kevin Wenström</b> <br>
-                    
-                    {% if request.args.get('language') == 'en'%}
-                    Project Leaders for D-Dagen
-                    {% else %}
-                    D-Dagenansvariga
-                    {% endif %} 
-                    <br>
-                    
-                    <a href="mailto:ansvarig@ddagen.se" class="cerise">ansvarig@ddagen.se</a>
-                </div>
-                <div>
-                    {% if request.args.get('language') == 'en'%}
-                    The Sales Team
-                    {% else %}
-                    Säljgruppen
-                    {% endif %}
-                    <br>
-    
-                    <a href="mailto:sales@ddagen.se" class="cerise">sales@ddagen.se</a>
-                </div>
-                <div>
-                    {% if request.args.get('language') == 'en'%}
-                    Site manager
-                    {% else %}
-                    Sidansvarig
-                    {% endif %}
-                    <br>
-                    
-                    <a href="mailto:web@ddagen.se" class="cerise">web@ddagen.se</a>
+
+        <!-- ####################### -->
+        <!-- Page Footer -->
+        <!-- ####################### -->
+        <div id="page-footer" class="uk-section uk-section-secondary uk-light">
+            <div class="uk-container uk-container-large">
+                <div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
+                    <div>
+                        <dl class="uk-description-list uk-description-list-divider">
+                            <dt class="uk-text-m">
+                                {% if request.args.get('language') == 'en'%}
+                                Social Medias
+                                {% else %}
+                                Sociala medier
+                                {% endif %}
+                            </dt>
+                            
+                            <dd class="uk-text-l"><a class="uk-link-muted" href="https://www.facebook.com/kongligddagen/"><span uk-icon="facebook"></span> /kongligddagen</a></dd>
+                            <dd class="uk-text-l"><a class="uk-link-muted" href="https://www.instagram.com/ddagenkth/"><span uk-icon="instagram"></span> /ddagenkth</a></dd>
+                            <dd class="uk-text-l"><a class="uk-link-muted" href="https://www.linkedin.com/company/kongligddagen/"><span uk-icon="linkedin"></span> /kongligddagen</a></dd>
+                            <dt class="uk-text-m">
+                                {% if request.args.get('language') == 'en'%}
+                                Project Leaders for D-Dagen
+                                {% else %}
+                                D-Dagenansvariga
+                                {% endif %} 
+                            </dt>
+                            <dd>
+                                <span class="uk-text-ml">
+                                    Carl Chemnitz<br>
+                                    Kevin Wenström
+                                </span><br>
+                                <span class="uk-text-ml"><a href="mailto:ansvarig@ddagen.se">ansvarig@ddagen.se</a></span>
+                            </dd>
+                            <dd></dd>
+                        </dl>
+                    </div>
+                    <div><p class="uk-text-center">
+                        {% if request.args.get('language') == 'en'%}
+                            Main Sponsor...
+                        {% else %}
+                            Huvudsponsor...
+                        {% endif %} 
+                        </p></div>
+                    <div>
+                        {% if request.args.get('language') == 'en'%}
+                            D-DAGEN 2022 TAKES PLACE 13th OF OCTOBER IN<br>
+                            THS BUILDING NYMBLE<br>
+                            Drottning Kristinas väg 15<br>
+                            114 28 Stockholm<br>
+                        {% else %}
+                            D-DAGEN 2022 HÅLLS DEN 13 OKTOBER I<br>
+                            THS KÅRHUS NYMBLE<br>
+                            Drottning Kristinas väg 15<br>
+                            114 28 Stockholm<br>
+                        {% endif %} 
+                    </div>
                 </div>
             </div>
         </div>
-    </footer>
-    {% endblock %}
-
-    <script>
-        let scroll = new SmoothScroll('a[href*="#"]');
-        addNavbarMargin();
-    </script>
-</body>
-
+    </body>
 </html>

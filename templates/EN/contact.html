@@ -1,38 +1,24 @@
 {% extends "layout.html" %}
 
-{% block intro_full %}
-<div class="page-title">The Project Group</div>
-{% endblock intro_full %}
-
 {% block content %}
-<div class="info-box">
 
-    <!-- DDA -->
-    <p class="cerise head image-container-text">Project Managers</p>
-    <div id="dda" class="image-container"></div>
-
-    <!-- Ekonomi ansvarig -->
-    <p class="cerise head image-container-text">Finance</p>
-    <div id="fin" class="image-container"></div>
-    
-    <!-- Säljgruppen  -->
-    <p class="cerise head image-container-text">Sales</p>
-    <div id="sales" class="image-container"></div>
-    
-    <!-- Mässgruppen  -->
-    <p class="cerise head image-container-text">Fair</p>
-    <div id="fair" class="image-container"></div>
-
-    <!-- PR-gruppen -->
-    <p class="cerise head image-container-text">PR</p>
-    <div id="pr" class="image-container"></div>
-
-    <!-- Festgruppen -->
-    <p class="cerise head image-container-text">Event</p>
-    <div id="event" class="image-container"></div>
-
-    <script type="text/javascript">
-        addContactInfo("eng");
-     </script>
+<div class="uk-section uk-background-default">
+    <div class="uk-container uk-container-medium">
+        <h1 class="uk-text-center">The Project Group</h1>
+        <hr class="uk-divider-icon uk-margin-medium-top">
+        <div class="uk-grid-column-small uk-grid-small uk-child-width-1-1 uk-text-center uk-grid-divider" uk-grid id="main-grid">
+            <!-- Element läggs till här dynamiskt med JavaScript, se contact.js -->
+        </div>
+    </div>
 </div>
+
+<script type="text/javascript">
+    addContactInfo("en");
+
+    // Set highlight of navbar item for this page:
+    document.querySelectorAll(".nav-contact").forEach(element => {
+        element.classList.add("uk-active");
+    });
+ </script>
+
 {% endblock %}

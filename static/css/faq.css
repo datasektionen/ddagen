@@ -1,1 +1,9 @@
 /* Comment */
+#faq-list dt {
+    font-weight: 700;
+    font-size: 1.125rem;
+}
+
+#faq-list dd {
+    margin-top: 4px;
+}
