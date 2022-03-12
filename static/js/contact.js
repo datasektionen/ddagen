@@ -33,13 +33,13 @@ var pageData = [
             new Person("Carl Peterson", "maskot-bilder/alpa02-säljansvarig.png", "carl.peterson@ddagen.se", "Säljare", "Sales Associate"),
             new Person("Karl Lindblad", "maskot-bilder/alpa02-sälj.png", "karl.lindblad@ddagen.se", "Säljare", "Sales Associate"),
             new Person("Vilmer Jonsson", "maskot-bilder/alpa02-sälj.png", "vilmer.jonsson@ddagen.se", "Säljare", "Sales Associate"),
-            new Person("Johan Abdi", "maskot-bilder/alpa02-tryck-sponsor.png", "sponsorship@ddagen.se", "Sponsansvarig", "Head of Sponsorship")
+            new Person("Johan Abdi", "maskot-bilder/alpa02-tryck-sponsor.png", "johan.abdi@ddagen.se", "Sponsansvarig", "Head of Sponsorship")
         ]
     },
     {
         title: {sv: "Mässa", en: "Fair"},
         persons: [
-            new Person("Tobias Hansson", "maskot-bilder/alpa02-personalansvarig.png", "fair-temp@ddagen.se", "Mässansvarig", "Head of Staff"),
+            new Person("Tobias Hansson", "maskot-bilder/alpa02-personalansvarig.png", "fair@ddagen.se", "Mässansvarig", "Head of Staff"),
             new Person("Emil Hultcrantz", "maskot-bilder/alpa02-lokalansvarig.png", "facility@ddagen.se", "Lokalansvarig", "Head of Venue"),
             new Person("David Peilitz", "maskot-bilder/alpa02-logistik.png", "logistics@ddagen.se", "Logistikansvarig", "Head of Logistics"),
             new Person("Rafael Bechara", "maskot-bilder/alpa02-lounge.png", "lounge@ddagen.se", "Loungeansvarig", "Head of Lounge")
@@ -56,7 +56,7 @@ var pageData = [
     {
         title: {sv: "Fest", en: "Event"},
         persons: [
-            new Person("Amanda Berg", "maskot-bilder/alpa02-fest.png", "fest-temp@ddagen.se", "Festansvarig", "Head of Events")
+            new Person("Amanda Berg", "maskot-bilder/alpa02-fest.png", "event@ddagen.se", "Festansvarig", "Head of Events")
         ]
     }
 ];
