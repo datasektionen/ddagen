@@ -1,374 +1,88 @@
 {% extends "layout.html" %}
 
-{% block intro_full %}
-<div class="page-title">Companies</div>
-{% endblock intro_full %}
-
 {% block content %}
-<!-- Anmälningsprocess -->
-<div hidden>
-  <div class="info" id="interest">
-    <h2>APPLICATION</h2>
-    <h3>The application process to exhibit on D-Dagen consists of three steps:
-    </h3>
-  </div>
 
-  <div class="info" id="flex-boxes">
-    <div class="flex-box">
-      <p class="cerise head">STEP 1</p>
-      <p>The first step is to fill out the interest form.
-        After the form is submitted you will receive an email informing you if you have received a spot at the fair.
-        If you have been allocated a spot, an agreement will be attached in the email.
-      </p>
-      <p><a class="button" href="https://ddagen.se/2021">Interest Form 2021</a></p>
-      New for this year is that we are offering a startup package.
-      You can sign up here if you are a smaller startup and want to attend D-Dagen.
-      <p><a class="button" href="https://ddagen.se/startup">Startup 2021</a></p>
-    </div>
+<div class="uk-section uk-background-default">
+    <div class="uk-container uk-container-medium">
 
-    <div class="flex-box">
-      <p class="cerise head">STEP 2</p>
-      <p>The next step is to sign the contract (including the order information form), scan
-        it within three (3) weeks and send it to <a class="cerise"
-          href="mailto:projectmanager@ddagen.se">projectmanager@ddagen.se</a>
-        with the title “Contract D-Dagen 2021 - [Company name]”. Please note that if we do not receive the contract
-        within 3 weeks from the date the contract is sent, your spot in the fair will be removed. </p>
-    </div>
+        <div uk-alert class="uk-text-center">
+            Soon open for registration
+        </div>
 
-    <div class="flex-box">
-      <p class="cerise head">STEP 3</p>
-      <p>During the last step you will receive a signed contract from D-Dagen within 2 weeks
-        from the date we received the contract. The application process is thus completed.</p>
+        <h1 class="uk-text-center">Companies</h1>
+        <hr class="uk-divider-icon uk-margin-medium-top">
+        <h3 class="uk-text-light uk-text-center uk-margin-medium-bottom">The application process to exhibit on D-Dagen consists of three steps:</h3>
+        <div class="uk-child-width-1-3@s uk-grid-match" uk-grid id="main-grid">
+            <div>
+                <div class="uk-card uk-card-default uk-card-body">
+                    <h3 class="uk-text-normal uk-text-center cerise">Step 1</h3>
+                    <p>The first step is to fill out the interest form.
+                      After the form is submitted you will receive an email informing you if you have received a spot at
+                      the fair. If you have been allocated a spot, an agreement will be attached in the email.</p>
+                        
+                    <p>New for this year is that we are offering a startup package.
+                      You can sign up here if you are a smaller startup and want to attend D-Dagen.</p>
+                </div>
+            </div>
+            <div>
+                <div class="uk-card uk-card-default uk-card-body">
+                    <h3 class="uk-text-normal uk-text-center cerise">Step 2</h3>
+                    <p>
+                      The next step is to sign the contract (including the order information form), scan
+                      it within three (3) weeks and send it to <a href="ansvarig@ddagen.se">ansvarig@ddagen.se</a>
+                      with the title “Contract D-Dagen 2022 - [Company name]”. Please note that if we do not receive the
+                      contract within 3 weeks from the date the contract is sent, your spot in the fair will be removed.
+                    </p>
+                </div>
+            </div>
+            <div>
+                <div class="uk-card uk-card-default uk-card-body">
+                    <h3 class="uk-text-normal uk-text-center cerise">Step 3</h3>
+                    <p>
+                      During the last step you will receive a signed contract from D-Dagen within 2 weeks
+                      from the date we received the contract. The application process is thus completed.
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
-<!-- Utställningspaket -->
-<div class="info-box" hidden>
-  <p class="cerise head">EXHIBITION PACKAGES <b>D&#8209;DAGEN 2021</b></p>
-  <h2>BASE PACKAGE</h2>
-  <ul>
-    <li>An area of 5 m<sup>2</sup></li>
-    <li>1 table</li>
-    <li>Breakfast and lunch for 2 people</li>
-    <li>Dinner tickets to the evening event for 2 people</li>
-    <li>Electricity and Wi-Fi</li>
-    <li>Access to a company lounge with fika and refreshment during the day</li>
-    <li>A company host who will assist you throughout the day</li>
-    <li>Receipt and storage of shipments</li>
-  </ul>
-  <h3>Price: 28 000 kr</h3>
+<div class="uk-section uk-background-default uk-padding-remove-top">
+    <div class="uk-container uk-container-medium">
+        <div class="info-box">
+            <p class="cerise head">EXHIBITION PACKAGES <b>D&#8209;DAGEN 2022</b></p>
+            <h2>BASE PACKAGE</h2>
+            <ul>
+            <li>An area of 5 m<sup>2</sup></li>
+            <li>1 table</li>
+            <li>Breakfast and lunch for 2 people</li>
+            <li>Dinner tickets to the evening event for 2 people</li>
+            <li>Electricity and Wi-Fi</li>
+            <li>Access to a company lounge with fika and refreshment during the day</li>
+            <li>A company host who will assist you throughout the day</li>
+            <li>Receipt and storage of shipments</li>
+            </ul>
+            <h3>Price: 30 000 kr</h3>
 
-  <h2>Additional orders</h2>
-  <p>
-    It is possible to order extra of things such as tables or dinner tickets.
-    Please kontact us at <a href="mailto:sales@ddagen.se">sales@ddagen.se</a> if you have any questions regarding this.
-  </p>
+            <h2>Additional orders</h2>
+            <p>
+            It is possible to order extra of things such as tables or dinner tickets.
+            Please kontact us at <a href="mailto:sales@ddagen.se">sales@ddagen.se</a> if you have any questions regarding this.
+            </p>
 
-  <h2>Additional Information</h2>
-  <p>Please contact <a href="mailto:projectmanager@ddagen.se">projectmanager@ddagen.se</a> if you have any questions
-    regarding D-Dagen and covid-19 or any other questions about D-Dagen.</p>
+            <h2>Additional Information</h2>
+            <p>Please contact <a href="mailto:ansvarig@ddagen.se">ansvarig@ddagen.se</a> if you have any questions
+            regarding D-Dagen and covid-19 or any other questions about D-Dagen.</p>
+        </div>
+    </div>
 </div>
 
-<!-- Company Logos -->
-<div class="info-box" hidden>
-  <div id="logos">
-    <div>
-      <img src="https://assets.appian.com/uploads/2019/04/Acc_Logo_Black_Purple_RGB-2.png">
-      <a href="https://www.accenture.com/se-en">Accenture</a>
-    </div>
+<script>
+    // Set highlight of navbar item for this page:
+    document.querySelectorAll(".nav-companies").forEach(element => {
+        element.classList.add("uk-active");
+    });
+</script>
 
-    <div>
-      <img src="https://afry.com/sites/default/files/2019-11/AFRY_Logotyp_Liggande_PNG.png">
-      <a href="https://afry.com/en">Afry</a>
-    </div>
-
-    <div>
-      <img
-        src="https://uploads-ssl.webflow.com/5d69330c8cc2811f92af16c5/5ed4f270ef82ae57a98854a0_alex-therapeutics-logo.png">
-      <a href="https://www.alextherapeutics.com/">Alex Therapeutics</a>
-    </div>
-
-    <div>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Atlas-Copco-Logo.svg">
-      <a href="https://www.atlascopcogroup.com/en">Atlas Copco</a>
-    </div>
-
-    <div>
-      <img src="{{ url_for('static', filename='img/companies2021/avalanch.png') }}">
-      <a href="https://avalanchestudios.com/">Avalanch Studios</a>
-    </div>
-
-    <div>
-      <img src="{{ url_for('static', filename='img/companies2021/bonnier.png') }}">
-      <a href="https://www.bonniernews.se">Bonnier News</a>
-    </div>
-
-    <div>
-      <img src="{{ url_for('static', filename='img/companies2021/bontouch.png') }}">
-      <a href="https://www.bontouch.com/">Bontouch</a>
-    </div>
-
-    <div>
-      <img src="{{ url_for('static', filename='img/companies2021/businessvision.png') }}">
-      <a href="https://www.businessvision.se/">Buisness Vision Consulting</a>
-    </div>
-
-    <div>
-      <img src="https://www.her-career.com/dokumente/logo/119585_rgb_72.jpg">
-      <a href="https://carmenta.com/en/">Carmenta Geospatial Technologies</a>
-    </div>
-
-    <div>
-      <img src="https://nordic.icpc.io/gfx/challengermode.png">
-      <a href="https://www.challengermode.com/">Challangermode</a>
-    </div>
-
-    <div>
-      <img src="{{ url_for('static', filename='img/companies2021/columbiaroad.png') }}">
-      <a href="https://www.columbiaroad.com/">Columbia Road</a>
-    </div>
-
-    <div>
-      <img src="https://www.colan.org/wp-content/uploads/2015/06/COMSOL_logo.png">
-      <a href="https://www.comsol.se/">Comsol</a>
-    </div>
-
-    <div>
-      <img src="{{ url_for('static', filename='img/companies2021/cygni.png') }}">
-      <a href="https://cygni.se/">Cygni</a>
-    </div>
-
-    <div>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Datatjej_logotyp.png">
-      <a href="https://datatjej.se">Datatjej</a>
-    </div>
-
-    <div>
-      <img
-        src="https://resources.mynewsdesk.com/image/upload/c_limit,dpr_auto,f_auto,h_700,q_auto,w_auto/wnqmfl77bmwhmi5vrfv4.jpg">
-      <a href="https://www.decerno.se/">Decarno</a>
-    </div>
-
-    <div>
-      <img src="{{ url_for('static', filename='img/companies2021/digipro.png') }}">
-      <a href="https://digpro.com/sv/">Digipro</a>
-    </div>
-
-    <div>
-      <img src="https://cdn.freebiesupply.com/logos/large/2x/ericsson-1-logo-black-and-white.png">
-      <a href="https://www.ericsson.com/en/careers/student-young-professionals">Ericsson</a>
-    </div>
-
-    <div>
-      <img src="{{ url_for('static', filename='img/companies2021/exsitec.png') }}">
-      <a href="https://www.exsitec.se/">Exsitec</a>
-    </div>
-
-    <div>
-      <img src="{{ url_for('static', filename='img/companies2021/FOI.png') }}">
-      <a href="https://www.foi.se/jobba-hos-oss/student-som-gillar-utmaningar-exjobba-hos-oss.html">FOI</a>
-    </div>
-
-    <div>
-      <img src="{{ url_for('static', filename='img/companies2021/fra.png') }}">
-      <a href="https://fra.se/">FRA</a>
-    </div>
-
-    <div>
-      <img src="{{ url_for('static', filename='img/companies2021/flygresor.png') }}">
-      <a href="https://www.flygresor.se/">Flygresor.se</a>
-    </div>
-
-    <div>
-      <img src="https://www.tadviser.ru/images/d/d5/GD_Logo_GieseckeDevrient.png">
-      <a href="https://www.gi-de.com/en/">Giesecke + Devrient Mobile</a>
-    </div>
-
-    <div>
-      <img src="https://losningarforoffentligsektor.se/wp-content/uploads/sites/45/2020/10/logo_highres.png">
-      <a href="https://www.idainfront.se/">Ida Infront</a>
-    </div>
-
-    <div>
-      <img src="{{ url_for('static', filename='img/companies2021/insurely.png') }}">
-      <a href="https://www.insurely.se/">Insurely</a>
-    </div>
-
-    <div>
-      <img src="https://cfed.federationer.internetstiftelsen.se/images/iis.png">
-      <a href="https://internetstiftelsen.se/">Internetstiftelsen</a>
-    </div>
-
-    <div>
-      <img src="https://försäkring.se/images/company-logos/if-skadeforsakring-logotyp.png">
-      <a href="https://www.if-insurance.com/about-if/work-at-if/tech-that-matters">If</a>
-    </div>
-
-    <div>
-      <img src="https://mma.prnewswire.com/media/472457/Klarna_Logo.jpg?p=publish">
-      <a href="https://www.klarna.com/careers/">Klarna</a>
-    </div>
-
-    <div>
-      <img src="https://ipmhvc-eic-2022.com/wp-content/uploads/2020/03/Megger-logo.jpg">
-      <a href="https://se.megger.com/">Megger</a>
-    </div>
-
-    <div>
-      <img src="https://metricio.se/wp-content/uploads/2021/01/MetricioLogoColor_liten-e1612188698520.png">
-      <a href="https://metricio.se/">Metricio</a>
-    </div>
-
-    <div>
-      <img src="{{ url_for('static', filename='img/companies2021/netcompany.png') }}">
-      <a href="https://www.netcompany.com/">Netcompany</a>
-    </div>
-
-    <div>
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Netlight_Consulting_logo.svg/800px-Netlight_Consulting_logo.svg.png">
-      <a href="https://www.netlight.com">Netlight</a>
-    </div>
-
-    <div>
-      <img src="https://marketingwam.co.uk/wp-content/uploads/2020/12/Nexer_Logo_Black_RGB.png">
-      <a href="https://www.nexertechtalent.com/">Nexer</a>
-    </div>
-
-    <div>
-      <img src="{{ url_for('static', filename='img/companies2021/nore.png') }}">
-      <a href="http://www.noretech.se/">Nore</a>
-    </div>
-
-    <div>
-      <img src="{{ url_for('static', filename='img/companies2021/oracle.png') }}">
-      <a href="https://www.oracle.com/index.html">Oracle</a>
-    </div>
-
-    <div>
-      <img src="https://theshift.fi/wp-content/uploads/2019/05/peltarion_logotype_vertical_red.png">
-      <a href="https://peltarion.com/">Peltarion</a>
-    </div>
-
-    <div>
-      <img src="https://afklint.se/files/2020/05/PM-logga-1200x574.png">
-      <a
-        href="https://www.pensionsmyndigheten.se/om-pensionsmyndigheten.category.jobba-hos-oss#pm-category-filter-last-card">Pensionsmyndigheten</a>
-    </div>
-
-    <div>
-      <img src="{{ url_for('static', filename='img/companies2021/polisen.png') }}">
-      <a href="https://polisen.se/om-polisen/jobba-hos-polisen/var-verksamhet/jobb-it-avdelningen/">Polisen</a>
-    </div>
-
-    <div>
-      <img src="https://s3.amazonaws.com/awsmp-logos/primekey.jpg">
-      <a href="https://www.primekey.com/">Primekey</a>
-    </div>
-
-    <div>
-      <img src="http://www.energyboardroom.com/wp-content/uploads/2013/09/PwC-logo.png">
-      <a href="https://www.pwc.se/student">Pwc</a>
-    </div>
-
-    <div>
-      <img src="{{ url_for('static', filename='img/companies2021/randomforest.png') }}">
-      <a href="https://www.randomforest.se/">Random Forest</a>
-    </div>
-
-    <div>
-      <img
-        src="https://d2uetvsama7sl8.cloudfront.net/prod/wp-content/uploads/2019/09/11132758/Schibsted_Logotype_L1_Dust-black_CMYK_png-1024x214.png">
-      <a href="https://schibsted.com/">Schibsted</a>
-    </div>
-
-    <div>
-      <img
-        src="https://media.cdn.teamtailor.com/images/s3/teamtailor-production/gallery_picture-v1/image_uploads/c0075653-c485-4fb8-9a51-f99c59c4305a/original.png">
-      <a href="https://www.sellpy.se/">Sellpy</a>
-    </div>
-
-    <div>
-      <img src="{{ url_for('static', filename='img/companies2021/sentor.png') }}">
-      <a href="https://www.sentor.se/">Sentor</a>
-    </div>
-
-    <div>
-      <img src="{{ url_for('static', filename='img/companies2021/signality.png') }}">
-      <a href="https://www.signality.com/">Signality</a>
-    </div>
-
-    <div>
-      <img src="https://assets.appian.com/uploads/2018/08/SOPRASTERIA_RVB.jpg">
-      <a href="https://www.soprasteria.se/">Sopra Steria</a>
-    </div>
-
-    <div>
-      <img src="{{ url_for('static', filename='img/companies2021/subset.png') }}">
-      <a href="https://karriar.subset.se/">Subset</a>
-    </div>
-
-    <div>
-      <img
-        src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Svenska_kraftn%C3%A4t_logo.svg/440px-Svenska_kraftn%C3%A4t_logo.svg.png">
-      <a href="https://www.svk.se/">Svenska Kraftnät</a>
-    </div>
-
-    <div>
-      <img src="https://fackforbundsguiden.se/img/sveriges-ingenjorer.svg">
-      <a href="https://www.sverigesingenjorer.se/bli-medlem/bli-medlem-student/">Sveriges Ingenjörere</a>
-    </div>
-
-    <div>
-      <img src="https://flint-prodcms-forge.s3.amazonaws.com/prod/s3fs-public/2018-08/Sweco%20Logo_Edge2Edge_Svart.png">
-      <a href="https://www.sweco.se">Sweco</a>
-    </div>
-
-    <div>
-      <img src="https://www.syntronic.com/wp-content/uploads/2017/03/Syntronic-logo.jpg">
-      <a href="https://www.syntronic.com/">Syntronic</a>
-    </div>
-
-    <div>
-      <img src="https://www.sakerhetspolisen.se/images/18.4c7cab6d1465fb27b018b9/1486041985747/Logga_webb_vit.jpg">
-      <a href="https://www.sakerhetspolisen.se/">Säkerhetspolisen</a>
-    </div>
-
-    <div>
-      <img src="https://s3-eu-west-1.amazonaws.com/tpd/logos/59b78ed10000ff0005aaf500/0x0.png">
-      <a href="https://www.soderbergpartners.se/">Söderberg & Partners</a>
-    </div>
-
-    <div>
-      <img src="https://www.traineeguiden.se/uploads/media/logo_image/0001/03/tietoevry-logo-black-rgb-m-1.png">
-      <a href="https://www.tietoevry.com">TietoEvry</a>
-    </div>
-
-    <div>
-      <img src="https://www.finsmes.com/wp-content/uploads/2020/01/tink.jpg">
-      <a href="https://tink.com/">Tink</a>
-    </div>
-
-    <div>
-      <img src="https://portal.fpg.pt/wp-content/uploads/2019/12/logo-toptracer.jpeg">
-      <a href="https://www.toptracer.com/">Toptracer</a>
-    </div>
-
-    <div>
-      <img src="https://uploads-ssl.webflow.com/5cb04091c08e6f219fa419e8/5cb04091c08e6fd7eea41a82_visma.png">
-      <a href="https://www.visma.se/karriar-pa-visma/">Visma</a>
-    </div>
-
-    <div>
-      <img src="https://yabs.se/wp-content/uploads/2019/10/Logo.png">
-      <a href="https://yabs.se/">Yabs</a>
-    </div>
-
-    <div>
-      <img src="http://affarsstaden.se/wordpress/wp-content/uploads/2016/07/Xlent_logo_web.jpg">
-      <a href="https://www.xlent.se/">Xlent</a>
-    </div>
-  </div>
-</div>
 {% endblock %}

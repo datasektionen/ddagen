@@ -1,33 +1,3 @@
-.image-container {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    margin-bottom: 60px;
-}
-
-.pr-image-container {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    margin-bottom: 30px;
-}
-
-.image-container-text {
-    text-align: center;
-    padding-bottom: 20px;
-}
-
-.portrait-photo{
-    float: left;
-    text-align: center;
-    object-fit: fill;
-    padding-bottom: 3%;
-}
-
-.portrait-photo img {
-    height: 300px;
-    width: 200px;
-    border-radius: 15%;
-    background-size: cover;
-    background-position: center center;
+#main-grid > div > div {
+    box-shadow: none;
 }

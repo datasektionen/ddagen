@@ -1,5 +1,35 @@
-from flask import Flask, request, render_template, redirect, send_from_directory, make_response
+from flask import Flask, request, render_template, redirect, send_from_directory, make_response, url_for
 from werkzeug.routing import BaseConverter
+
+def getPagesSv():
+    return [
+        ["Start", url_for('.index'), "nav-start"],
+        ["Företag", url_for('companies'), "nav-companies"],
+        ["Kontakta oss", url_for('contact'), "nav-contact"],
+        ["FAQ", url_for('faq'), "nav-faq"]
+    ]
+
+def getPagesEn():
+    return [
+        ["Start", url_for('.index', language='en'), "nav-start"],
+        ["Companies", url_for('companies', language='en'), "nav-companies"],
+        ["Contact Us", url_for('contact', language='en'), "nav-contact"],
+        ["FAQ", url_for('faq', language='en'), "nav-faq"]
+    ]
+
+def getLangSv(request):
+    return [
+        "Svenska ",
+        url_for(request.endpoint, language='sv') if request.endpoint else url_for('.index', language='sv'),
+        url_for('static', filename='img/assets//flag_swe.svg')
+    ]
+
+def getLangEn(request):
+    return [
+        "English ",
+        url_for(request.endpoint, language='en') if request.endpoint else url_for('.index', language='en'),
+        url_for('static', filename='img/assets//flag_eng.svg')
+    ]
 
 app = Flask(__name__)
 
@@ -18,45 +48,45 @@ app.url_map.converters['regex'] = RegexConverter
 def index():
     language = request.args.get('language')
     if language == 'en':
-        return render_template('EN/index.html')
+        return render_template('EN/index.html', pages=getPagesEn(), lang=getLangSv(request))
     else:
-        return render_template('SV/index.html')
+        return render_template('SV/index.html', pages=getPagesSv(), lang=getLangEn(request))
 
 # Companies
 @app.route('/companies')
 def companies():
     language = request.args.get('language')
     if language == 'en':
-        return render_template('EN/companies.html')
+        return render_template('EN/companies.html', pages=getPagesEn(), lang=getLangSv(request))
     else:
-        return render_template('SV/companies.html')
+        return render_template('SV/companies.html', pages=getPagesSv(), lang=getLangEn(request))
 
 # Contact
 @app.route('/contact')
 def contact():
     language = request.args.get('language')
     if language == 'en':
-        return render_template('EN/contact.html')
+        return render_template('EN/contact.html', pages=getPagesEn(), lang=getLangSv(request))
     else:
-        return render_template('SV/contact.html')
+        return render_template('SV/contact.html', pages=getPagesSv(), lang=getLangEn(request))
 
 # FAQ
 @app.route('/faq')
 def faq():
     language = request.args.get('language')
     if language == 'en':
-        return render_template('EN/faq.html')
+        return render_template('EN/faq.html', pages=getPagesEn(), lang=getLangSv(request))
     else:
-        return render_template('SV/faq.html')
+        return render_template('SV/faq.html', pages=getPagesSv(), lang=getLangEn(request))
 
 # Visitors
 @app.route('/visitors')
 def visitors():
     language = request.args.get('language')
     if language == 'en':
-        return render_template('EN/visitors.html')
+        return render_template('EN/visitors.html', pages=getPagesEn(), lang=getLangSv(request))
     else:
-        return render_template('SV/visitors.html')
+        return render_template('SV/visitors.html', pages=getPagesSv(), lang=getLangEn(request))
 
 # Forms
 #####################################
