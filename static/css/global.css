@@ -24,8 +24,32 @@ a {
     color: #ec5f99;
 }
 
+.cerise-back {
+    background-color: #e83d84;
+}
+
+.cerise-light-back {
+    background-color: #ec5f99;
+}
+
+.yellow-shadow {
+    text-shadow: 2px 2px 0 #fcda04;
+    font-weight: 600;
+    font-size: 36px;
+    text-transform: uppercase;
+    /*color: #ff70ab;*/
+    color: white;
+}
+
 #page-footer .uk-description-list > dt {
     color: white;
+}
+
+h1 {
+    color: #e83d84;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 2.4rem;
 }
 
 /*

@@ -1,0 +1,22 @@
+.package {
+    background: url(/static/img/assets/companies_background.jpg);
+    color: white;
+}
+
+.package h3 {
+    color: white;
+}
+
+.package a {
+    color: #535482;
+}
+
+dt {
+    text-transform: none !important;
+}
+
+#companies-title {
+    height: 340px;
+    background: url(/static/img/assets/2017.jpg);
+    background-position: center -100px;
+}
