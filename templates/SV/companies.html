@@ -1,10 +1,14 @@
 {% extends "layout.html" %}
 
+{% block page_css %}
+<link rel="stylesheet" href="/static/css/companies.css" />
+{% endblock %}
+
 {% block content %}
 
 <div id="companies-title" class="uk-section">
     <br>
-    <h1 class="uk-text-center cerise">STÄLL UT <b class="uk-text-bold">D&#8209;DAGEN 2022</b></h1>
+    <h1 class="uk-text-center cerise">STÄLL UT D-DAGEN 2022</h1>
 </div>
 
 <div class="uk-section uk-background-default">
@@ -64,7 +68,7 @@
             <div class="uk-width-2-3@m">
                 <div class="uk-card uk-card-default uk-card-body package">
                     <!-- Baspaket -->
-                    <h2 class="yellow-shadow">BASPAKET</h2>
+                    <h2>BASPAKET</h2>
                     <ul>
                     <li>5 m<sup>2</sup> yta</li>
                     <li>Bord, 1 st</li>
@@ -84,10 +88,10 @@
                     <div class="uk-width-1-1">
                         <div class="uk-card uk-card-default uk-card-body package">
                             <!-- Extra tillägg -->
-                            <h2 class="yellow-shadow">Extra tillägg</h2>
+                            <h2>Extra tillägg</h2>
                             <p>
                             Det går att beställa till extra av det som kan behövas. Exempel på detta är fler ståbord eller
-                            biljetter till sittningen. Kontakta gärna oss om ni har några frågor.
+                            biljetter till sittningen.
                             <br>
                             Har ni några frågor kring detta hör av er till oss på <a href="mailto:sales@ddagen.se">sales@ddagen.se</a>
                             </p>
@@ -97,9 +101,11 @@
                 <div class="uk-grid-medium" uk-grid>
                     <div class="uk-width-1-1">
                         <div class="uk-card uk-card-default uk-card-body package">
-                            <h2 class="yellow-shadow">Event</h2>
-                            Det finns möjlighet att anordna företagsevent i samband med D-Dagen.
-                            Vänligen kontakta <a href="mailto:ansvarig@ddagen.se">event@ddagen.se</a> för mer information.
+                            <h2>Event</h2>
+                            <p>
+                                Det finns möjlighet att anordna företagsevent i samband med D-Dagen.
+                                Vänligen kontakta <a href="mailto:ansvarig@ddagen.se">event@ddagen.se</a> för mer information.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -107,7 +113,6 @@
         </div>        
     </div>
 </div>
-
 
 <div class="uk-section uk-background-default uk-padding-remove-top">
     <div class="uk-container uk-container-medium">
@@ -121,10 +126,10 @@
                     <dl class="uk-description-list" id="faq-list">
 
                         <dt>Kan vi som företag synas mer än att enbart deltaga på mässan eller sponsra D-Dagen på något sätt?</dt>
-                        <dd>Kontakta <a href="mailto:sponsorship@ddagen.se">sponsorship@ddagen.se</a> och skriv ett mejl om vad era tankar
-                            är så bör ni komma
-                            fram med någon lösning. Det kan bland annat vara att ha sin logotyp på goodiebag påsen eller något annat
-                            roligt.</dd>
+                        <dd>Kontakta <a href="mailto:sponsorship@ddagen.se">sponsorship@ddagen.se</a> och skriv ett mejl
+                            om vad era tankar är så bör vi komma
+                            fram med någon lösning. Det kan bland annat vara att ha sin logotyp på goodiebag-påsen
+                            eller något annat roligt.</dd>
 
                         <dt>Jag undrar något annat, vem ska jag kontakta?</dt>
                         <dd>Skicka iväg ett mejl till <a href="mailto:ansvarig@ddagen.se">ansvarig@ddagen.se</a>, så ser vi
