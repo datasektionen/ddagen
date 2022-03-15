@@ -24,8 +24,33 @@ a {
     color: #ec5f99;
 }
 
+.cerise-back {
+    background-color: #e83d84;
+}
+
+.cerise-light-back {
+    background-color: #ec5f99;
+}
+
 #page-footer .uk-description-list > dt {
     color: white;
+}
+
+#page-footer .d-logo {
+    max-width: 150px;
+    width: 100%;
+}
+
+#page-footer .social-media {
+    width: 100px;
+    height: 100px;
+}
+
+h1 {
+    color: #e83d84;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 2.4rem;
 }
 
 /*

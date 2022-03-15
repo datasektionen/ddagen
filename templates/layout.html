@@ -30,10 +30,7 @@
         <!-- Stylesheets -->
         <link rel="stylesheet" href="/static/css/uikit.min.css" />
         <link rel="stylesheet" href="/static/css/global.css" />
-        <link rel="stylesheet" href="/static/css/index.css" />
-        <link rel="stylesheet" href="/static/css/contact.css" />
-        <link rel="stylesheet" href="/static/css/companies.css" />
-        <link rel="stylesheet" href="/static/css/faq.css" />
+        {% block page_css %}{% endblock %}
 
         <!-- Scripts -->
         <script src="/static/js/uikit.min.js"></script>
@@ -72,7 +69,7 @@
         </div>
 
         <!-- Mobile navbar -->
-        <div id="offcanvas-nav" uk-offcanvas="overlay: true">
+        <div id="offcanvas-nav" uk-offcanvas="overlay: true; flip: true">
             <div class="uk-offcanvas-bar">
                 <ul class="uk-nav uk-nav-default">
                     
@@ -102,52 +99,83 @@
         <!-- ####################### -->
         <div id="page-footer" class="uk-section uk-section-secondary uk-light">
             <div class="uk-container uk-container-large">
-                <div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
+                <div class="uk-grid-divider uk-child-width-expand@m" uk-grid>
                     <div>
-                        <dl class="uk-description-list uk-description-list-divider">
-                            <dt class="uk-text-m">
-                                {% if request.args.get('language') == 'en'%}
-                                Social Medias
-                                {% else %}
-                                Sociala medier
-                                {% endif %}
-                            </dt>
-                            
-                            <dd class="uk-text-l"><a class="uk-link-muted" href="https://www.facebook.com/kongligddagen/"><span uk-icon="facebook"></span> /kongligddagen</a></dd>
-                            <dd class="uk-text-l"><a class="uk-link-muted" href="https://www.instagram.com/ddagenkth/"><span uk-icon="instagram"></span> /ddagenkth</a></dd>
-                            <dd class="uk-text-l"><a class="uk-link-muted" href="https://www.linkedin.com/company/kongligddagen/"><span uk-icon="linkedin"></span> /kongligddagen</a></dd>
-                            <dt class="uk-text-m">
-                                {% if request.args.get('language') == 'en'%}
-                                Project Leaders for D-Dagen
-                                {% else %}
-                                D-Dagenansvariga
-                                {% endif %} 
-                            </dt>
-                            <dd>
-                                <span class="uk-text-ml">
-                                    Carl Chemnitz<br>
-                                    Kevin Wenström
-                                </span><br>
-                                <span class="uk-text-ml"><a href="mailto:ansvarig@ddagen.se">ansvarig@ddagen.se</a></span>
-                            </dd>
-                            <dd></dd>
-                        </dl>
+                        <div class="uk-flex uk-flex-middle uk-flex-center uk-text-center">
+                            <div class="uk-card uk-card-body uk-padding-remove uk-width-1-3">
+                                <a class="uk-link-muted" href="https://www.facebook.com/kongligddagen/"><span class="social-media" uk-icon="icon: facebook; ratio: 3"></span></a>
+                            </div>
+                            <div class="uk-card uk-card-body uk-margin-left uk-padding-remove uk-width-1-3">
+                                <a class="uk-link-muted" href="https://www.instagram.com/ddagenkth/"><span class="social-media" uk-icon="icon: instagram; ratio: 3"></span></a>
+                            </div>
+                            <div class="uk-card uk-card-body uk-margin-left uk-padding-remove uk-width-1-3">
+                                <a class="uk-link-muted" href="https://www.linkedin.com/company/kongligddagen/"><span class="social-media" uk-icon="icon: linkedin; ratio: 3"></span></a>
+                            </div>
+                        </div>    
+                        <hr>                       
+                        <div class="uk-flex uk-flex-middle uk-flex-center">
+                            <div class="uk-card uk-card-body uk-padding-remove uk-width-2-3">
+                                <p>
+                                    {% if request.args.get('language') == 'en'%}
+                                        <span class="uk-light uk-text-bold">Organized by Datasektionen</span><br>
+                                        The Computer Science Chapter (Datasektionen) is an non-profit student organisation under THS.
+                                        It exists to give all CS students the best time possible. 
+                                    {% else %}
+                                        <span class="uk-light uk-text-bold">Arrangeras av Datasektionen</span><br>
+                                        Datasektionen är en ideell studentsektion under Tekniska Högskolans Studentkår som finns till för
+                                        att alla studenter som läser datateknik på KTH ska få en så bra och givande studietid som möjligt.
+                                    {% endif %} 
+                                </p>
+                            </div>
+                            <div class="uk-card uk-card-body uk-margin-left uk-padding-remove uk-width-1-3">
+                                <a href="https://datasektionen.se">
+                                    <img class="d-logo" data-src="/static/img/assets/shield.png" alt="D-logo" uk-img>
+                                </a>
+                            </div>
+                        </div>                        
+                        <hr>
+                        <table>
+                            <tr>
+                                <td>
+                                    {% if request.args.get('language') == 'en'%}
+                                        Project Leaders D-Dagen:
+                                    {% else %}
+                                        D-Dagenansvariga:
+                                    {% endif %} 
+                                </td>
+                                <td><span style="margin-left: 10px;"><a href="mailto:ansvarig@ddagen.se">ansvarig@ddagen.se</a></span></td>                                
+                            </tr>
+                            <tr>
+                                <td>
+                                    {% if request.args.get('language') == 'en'%}
+                                        Sales:
+                                    {% else %}
+                                        Säljgruppen:
+                                    {% endif %} 
+                                </td>
+                                <td><span style="margin-left: 10px;"><a href="mailto:sales@ddagen.se">sales@ddagen.se</a></span></td>
+                            </tr>
+                        </table>
                     </div>
                     <div>
                         
                     </div>
                     <div>
                         {% if request.args.get('language') == 'en'%}
-                            D-DAGEN 2022 TAKES PLACE 13th OF OCTOBER IN<br>
-                            THS BUILDING NYMBLE<br>
+                            D-Dagen 2022 takes place 13th of October in<br>
+                            THS building Nymble<br>
                             Drottning Kristinas väg 15<br>
                             114 28 Stockholm<br>
                         {% else %}
-                            D-DAGEN 2022 HÅLLS DEN 13 OKTOBER I<br>
-                            THS KÅRHUS NYMBLE<br>
+                            D-Dagen 2022 hålls den 13 oktober i<br>
+                            THS kårhus Nymble<br>
                             Drottning Kristinas väg 15<br>
                             114 28 Stockholm<br>
                         {% endif %} 
+
+                        <hr></hr>
+                        
+                        <iframe style="width: 100%" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1357.6407284850984!2d18.070400594564077!3d59.346932172976636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f9d6a81336fab%3A0x14e9ab643d0ee70e!2sDrottning%20Kristinas%20v%C3%A4g%2015%2C%20114%2028%20Stockholm!5e0!3m2!1ssv!2sse!4v1647349797032!5m2!1ssv!2sse" width="600" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
             </div>

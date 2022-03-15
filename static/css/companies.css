@@ -1,0 +1,34 @@
+.package {
+    background: url(/static/img/assets/companies_background.jpg);
+    color: white;
+}
+
+.package h3 {
+    color: white;
+}
+
+.package h2 {
+    font-weight: 600;
+    font-size: 36px;
+    text-transform: uppercase;
+    color: white;
+}
+
+.package a {
+    color: #535482;
+}
+
+dt {
+    text-transform: none !important;
+}
+
+#faq-list dt {
+    font-weight: 700;
+    font-size: 1.125rem;
+}
+
+#companies-title {
+    height: 340px;
+    background: url(/static/img/assets/2017.jpg);
+    background-position: center -100px;
+}

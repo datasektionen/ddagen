@@ -4,7 +4,7 @@ from werkzeug.routing import BaseConverter
 def getPagesSv():
     return [
         ["Start", url_for('.index'), "nav-start"],
-        ["Företag", url_for('companies'), "nav-companies"],
+        ["För företag", url_for('companies'), "nav-companies"],
         ["Kontakta oss", url_for('contact'), "nav-contact"],
         ["FAQ", url_for('faq'), "nav-faq"]
     ]
@@ -12,7 +12,7 @@ def getPagesSv():
 def getPagesEn():
     return [
         ["Start", url_for('.index', language='en'), "nav-start"],
-        ["Companies", url_for('companies', language='en'), "nav-companies"],
+        ["For Companies", url_for('companies', language='en'), "nav-companies"],
         ["Contact Us", url_for('contact', language='en'), "nav-contact"],
         ["FAQ", url_for('faq', language='en'), "nav-faq"]
     ]

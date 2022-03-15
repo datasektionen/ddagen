@@ -1,27 +1,41 @@
 {% extends "layout.html" %}
 
+{% block page_css %}
+<link rel="stylesheet" href="/static/css/companies.css" />
+{% endblock %}
+
 {% block content %}
+
+<div id="companies-title" class="uk-section">
+    <br>
+    <h1 class="uk-text-center cerise">EXHIBIT AT DAGEN 2022</h1>
+</div>
 
 <div class="uk-section uk-background-default">
     <div class="uk-container uk-container-medium">
 
-        <div uk-alert class="uk-text-center">
-            Soon open for registration
-        </div>
+        <!--<hr class="uk-divider-icon uk-margin-medium-top">-->
 
-        <h1 class="uk-text-center">Companies</h1>
+        <div uk-grid class="uk-flex-center">
+            <div class="uk-width-4-5">
+                <div class="uk-card uk-card-default uk-card-body">
+                    <h2 class="cerise">Why should my company participate in D-Dagen?</h2>
+                    <p>D-Dagen is an outstanding opportunity for Computer Science and IT companies to connect with students in different stages in their studies. Maybe you are looking for Master thesis students, part time employees, summer interns, or newly graduated MSc or PhD students? Do you want to boost your visibility as an employer, showcase your ongoing projects or share your company culture? Then don't hesitate to apply to D-Dagen!</p>
+                </div>
+            </div>
+        </div>
+        
         <hr class="uk-divider-icon uk-margin-medium-top">
+
+        <div uk-alert class="uk-text-center">Soon open for registration</div>
         <h3 class="uk-text-light uk-text-center uk-margin-medium-bottom">The application process to exhibit on D-Dagen consists of three steps:</h3>
         <div class="uk-child-width-1-3@s uk-grid-match" uk-grid id="main-grid">
             <div>
                 <div class="uk-card uk-card-default uk-card-body">
                     <h3 class="uk-text-normal uk-text-center cerise">Step 1</h3>
-                    <p>The first step is to fill out the interest form.
+                    <p>The first step is to fill out the interest form (coming soon).
                       After the form is submitted you will receive an email informing you if you have received a spot at
                       the fair. If you have been allocated a spot, an agreement will be attached in the email.</p>
-                        
-                    <p>New for this year is that we are offering a startup package.
-                      You can sign up here if you are a smaller startup and want to attend D-Dagen.</p>
                 </div>
             </div>
             <div>
@@ -50,30 +64,81 @@
 
 <div class="uk-section uk-background-default uk-padding-remove-top">
     <div class="uk-container uk-container-medium">
-        <div class="info-box">
-            <p class="cerise head">EXHIBITION PACKAGES <b>D&#8209;DAGEN 2022</b></p>
-            <h2>BASE PACKAGE</h2>
-            <ul>
-            <li>An area of 5 m<sup>2</sup></li>
-            <li>1 table</li>
-            <li>Breakfast and lunch for 2 people</li>
-            <li>Dinner tickets to the evening event for 2 people</li>
-            <li>Electricity and Wi-Fi</li>
-            <li>Access to a company lounge with fika and refreshment during the day</li>
-            <li>A company host who will assist you throughout the day</li>
-            <li>Receipt and storage of shipments</li>
-            </ul>
-            <h3>Price: 30 000 kr</h3>
+        <div class="uk-grid-medium uk-grid-match" uk-grid>
+            <div class="uk-width-2-3@m">
+                <div class="uk-card uk-card-default uk-card-body package">
+                    <!-- Baspaket -->
+                    <h2>BASE PACKAGE</h2>
+                    <ul>
+                    <li>An area of 5 m<sup>2</sup></li>
+                    <li>1 table</li>
+                    <li>Breakfast and lunch for 2 people</li>
+                    <li>Dinner tickets to the evening event for 2 people</li>
+                    <li>Electricity and Wi-Fi</li>
+                    <li>Access to a company lounge with fika and refreshment during the day</li>
+                    <li>A company host who will assist you throughout the day</li>
+                    <li>Receipt and storage of shipments</li>
+                    </ul>
+                    <h3>Price: 30 000 kr</h3>
+                </div>
+            </div>
+            <div class="uk-width-1-3@m">
+                <div class="uk-grid-medium" uk-grid>
+                    <div class="uk-width-1-1">
+                        <div class="uk-card uk-card-default uk-card-body package">
+                            <!-- Extra tillägg -->
+                            <h2>Addons</h2>
+                            <p>
+                                It is possible to place additional orders on things that could be needed. For example,
+                                this could be extra tables or tickets to the dinner.
+                                <br>
+                                If you have any questions regarding this, please send an email to
+                                <a href="mailto:sales@ddagen.se">sales@ddagen.se</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-grid-medium" uk-grid>
+                    <div class="uk-width-1-1">
+                        <div class="uk-card uk-card-default uk-card-body package">
+                            <h2>Event</h2>
+                            <p>
+                                There is a possibility of arranging company events in connection to D-Dagen. Please contact
+                                <a href="mailto:event@ddagen.se">event@ddagen.se</a> for more information.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
+</div>
 
-            <h2>Additional orders</h2>
-            <p>
-            It is possible to order extra of things such as tables or dinner tickets.
-            Please kontact us at <a href="mailto:sales@ddagen.se">sales@ddagen.se</a> if you have any questions regarding this.
-            </p>
+<div class="uk-section uk-background-default uk-padding-remove-top">
+    <div class="uk-container uk-container-medium">
+        <hr class="uk-divider-icon uk-margin-medium-bottom">
+        <div uk-grid class="uk-flex-center">
+            <div class="uk-width-4-5">
+                <div class="uk-card uk-card-default uk-card-body">
 
-            <h2>Additional Information</h2>
-            <p>Please contact <a href="mailto:ansvarig@ddagen.se">ansvarig@ddagen.se</a> if you have any questions
-            regarding D-Dagen and covid-19 or any other questions about D-Dagen.</p>
+                    <h2>Additional Information</h2>
+
+                    <dl class="uk-description-list" id="faq-list">
+
+                        <dt>Can we make our company visible in some other way than only participating on D-Dagen?</dt>
+
+                        <dd>Please contact <a href="mailto:sponsorship@ddagen.se">sponsorship@ddagen.se</a> 
+                            and write an email containing your thoughts, and we should be able to form a solution.
+                            For example, it could consist of having the company logo on the goodiebag or something
+                            similar.
+                        </dd>
+
+                        <dt>I wonder something else, who should I contact?</dt>
+                        <dd>Send an email to <a href="mailto:ansvarig@ddagen.se">ansvarig@ddagen.se</a>, and we will make
+                            sure to answer your question.
+                    </dl>
+                </div>
+            </div>
         </div>
     </div>
 </div>
