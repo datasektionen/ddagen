@@ -15,7 +15,7 @@
 }
 
 .package a {
-    color: #535482;
+    color: #3e3e3e;
 }
 
 dt {
@@ -31,4 +31,8 @@ dt {
     height: 340px;
     background: url(/static/img/assets/2017.jpg);
     background-position: center -100px;
+}
+
+.uk-button-default {
+    color: #1e87f0;
 }

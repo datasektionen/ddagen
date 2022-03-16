@@ -1,3 +1,8 @@
 #main-content {
     min-height: calc(100vh - 80px);
-} 
+}
+
+.register-button a {
+    font-size: 1.5rem;
+    padding: 10px;
+}
