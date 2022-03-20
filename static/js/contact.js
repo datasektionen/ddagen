@@ -16,23 +16,23 @@ var pageData = [
     {
         title: {sv: "Projektledare", en: "Project Managers"},
         persons: [
-            new Person("Carl Chemnitz", "maskot-bilder/alpa02-dda.png", "ansvarig@ddagen.se", "D-Dagenansvarig", "Project Leader"), 
-            new Person("Kevin Wenström", "maskot-bilder/alpa02-dda.png", "ansvarig@ddagen.se", "D-Dagenansvarig", "Project Leader")
+            new Person("Carl Chemnitz", "projektgruppen/chemnitz.jpg", "ansvarig@ddagen.se", "D-Dagenansvarig", "Project Leader"), 
+            new Person("Kevin Wenström", "projektgruppen/wenstrom.jpg", "ansvarig@ddagen.se", "D-Dagenansvarig", "Project Leader")
         ]
     },
     {
         title: {sv: "Ekonomi", en: "Finance"},
         persons: [
-            new Person("Felix Almay", "maskot-bilder/alpa02-ekonomi.png", "ekonomi@ddagen.se", "Kassör", "Treasurer"),
-            new Person("Axel Johansson", "maskot-bilder/alpa02-ekonomi.png", "v.ekonomi@ddagen.se", "Vice kassör", "Vice-Treasurer")
+            new Person("Felix Almay", "projektgruppen/almay.jpg", "ekonomi@ddagen.se", "Kassör", "Treasurer"),
+            new Person("Axel Johansson", "projektgruppen/johansson.jpg", "v.ekonomi@ddagen.se", "Vice kassör", "Vice-Treasurer")
         ]
     },
     {
         title: {sv: "Sälj", en: "Sales"},
         persons: [
             new Person("Carl Peterson", "maskot-bilder/alpa02-säljansvarig.png", "carl.peterson@ddagen.se", "Säljare", "Sales Associate"),
-            new Person("Karl Lindblad", "maskot-bilder/alpa02-sälj.png", "karl.lindblad@ddagen.se", "Säljare", "Sales Associate"),
-            new Person("Vilmer Jonsson", "maskot-bilder/alpa02-sälj.png", "vilmer.jonsson@ddagen.se", "Säljare", "Sales Associate"),
+            new Person("Karl Lindblad", "projektgruppen/lindblad.jpg", "karl.lindblad@ddagen.se", "Säljare", "Sales Associate"),
+            new Person("Vilmer Jonsson", "projektgruppen/jonsson.jpg", "vilmer.jonsson@ddagen.se", "Säljare", "Sales Associate"),
             new Person("Johan Abdi", "maskot-bilder/alpa02-tryck-sponsor.png", "johan.abdi@ddagen.se", "Sponsansvarig", "Head of Sponsorship")
         ]
     },
@@ -40,7 +40,7 @@ var pageData = [
         title: {sv: "Mässa", en: "Fair"},
         persons: [
             new Person("Tobias Hansson", "maskot-bilder/alpa02-personalansvarig.png", "fair@ddagen.se", "Mässansvarig", "Head of Staff"),
-            new Person("Emil Hultcrantz", "maskot-bilder/alpa02-lokalansvarig.png", "facility@ddagen.se", "Lokalansvarig", "Head of Venue"),
+            new Person("Emil Hultcrantz", "projektgruppen/hultcrantz.jpg", "facility@ddagen.se", "Lokalansvarig", "Head of Venue"),
             new Person("David Peilitz", "maskot-bilder/alpa02-logistik.png", "logistics@ddagen.se", "Logistikansvarig", "Head of Logistics"),
             new Person("Rafael Bechara", "maskot-bilder/alpa02-lounge.png", "lounge@ddagen.se", "Loungeansvarig", "Head of Lounge")
         ]
@@ -48,8 +48,8 @@ var pageData = [
     {
         title: {sv: "PR", en: "PR"},
         persons: [
-            new Person("Mortada Nasser", "maskot-bilder/alpa02-pransvarig.png", "pr@ddagen.se", "PR-ansvarig", "Head of PR"),
-            new Person("Gustav Ekner", "maskot-bilder/alpa02-webansvarig.png", "web@ddagen.se", "Webbansvarig", "Webmaster"),
+            new Person("Mortada Nasser", "projektgruppen/nasser.jpg", "pr@ddagen.se", "PR-ansvarig", "Head of PR"),
+            new Person("Gustav Ekner", "projektgruppen/ekner.jpg", "web@ddagen.se", "Webbansvarig", "Webmaster"),
             new Person("Joseph Karroum", "maskot-bilder/alpa02-grafik.png", "art@ddagen.se", "Art Director", "Art Director")
         ]
     },
@@ -74,8 +74,8 @@ var teamHTML = `
 
 // HTML-kod för elementet som innehåller en person, t.ex. Säljansvarig:
 var personHTML = `
-    <div class="uk-card uk-card-default uk-card-body">
-        <img class="uk-border-circle" width="180px" style="height: 180px; object-fit: cover;" alt="" uk-img>
+    <div class="uk-card uk-card-default uk-card-body" style="padding: 30px;">
+        <img class="uk-border-circle" width="200px" style="object-fit: scale-down; max-height: 200px;" alt="" uk-img>
         <h3 class="uk-margin-remove-bottom"></h3>
         <h4 class="uk-margin-small"></h4>
         <p class="uk-margin-remove-top"><p>
