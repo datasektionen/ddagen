@@ -67,7 +67,7 @@ var imgLocation = "/static/img/";
 var teamHTML = `
     <div class="uk-card uk-card-default uk-card-body">
         <h2></h2>
-        <div class="uk-grid-column-small uk-grid-row-large uk-child-width-1-4@s uk-text-center uk-flex-center" uk-grid>
+        <div class="uk-grid-column-small uk-grid-row-large uk-child-width-1-2@s uk-child-width-1-4@m uk-text-center uk-flex-center" uk-grid>
         </div>
     </div>
 `;
@@ -75,7 +75,7 @@ var teamHTML = `
 // HTML-kod för elementet som innehåller en person, t.ex. Säljansvarig:
 var personHTML = `
     <div class="uk-card uk-card-default uk-card-body" style="padding: 30px;">
-        <img class="uk-border-circle" width="200px" style="object-fit: scale-down; max-height: 200px;" alt="" uk-img>
+        <img class="uk-border-circle person" width="200px" alt="" uk-img>
         <h3 class="uk-margin-remove-bottom"></h3>
         <h4 class="uk-margin-small"></h4>
         <p class="uk-margin-remove-top"><p>
