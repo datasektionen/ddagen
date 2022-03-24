@@ -11,3 +11,9 @@
     text-transform: none;
     font-weight: 600;
 }
+
+.logo {
+    margin-top: 50px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
