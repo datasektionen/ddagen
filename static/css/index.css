@@ -17,3 +17,10 @@
     padding-left: 5%;
     padding-right: 5%;
 }
+
+.about-picture {
+    display: block;
+    max-width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}

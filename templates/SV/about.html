@@ -1,0 +1,199 @@
+{% extends "layout.html" %}
+
+{% block page_css %}
+<link rel="stylesheet" href="/static/css/about.css" />
+{% endblock %}
+
+{% block content %}
+
+<div class="uk-section uk-background-default">
+    <div class="uk-container">
+
+        <h1 class="uk-text-center uk-margin-large-bottom">Tidigare mässor</h1>
+
+        <div uk-grid class="main-grid">
+            <div class="uk-width-1-1@m">
+
+                <div>
+                    <div class="uk-timeline-item timeline-left">
+                        <div class="uk-timeline-content">
+                            <div class="uk-card uk-card-default uk-margin-medium-bottom uk-overflow-auto">
+                                <div class="uk-card-header">
+                                    <div class="uk-grid-small uk-flex-middle" uk-grid>
+                                        <h3 class="uk-card-title">D-Dagen 2021</h3>
+                                        <a class="uk-margin-auto-left" href="{{ url_for('katalog2021') }}" target="_blank">
+                                            <span class="uk-label uk-label-primary">Katalog</span>
+                                        </a>
+                                        <p>D-Dagen 2021 ägde rum den 7 oktober i Nymble med 59 företag och cirka 2000 besökare.</p>
+                                    </div>
+                                </div>
+                                <div class="uk-card-body uk-padding-remove">
+                                    <img data-src="/static/img/timeline/2021.jpg" uk-img>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-timeline-icon">
+                            <span class="uk-badge"><span uk-icon="check"></span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="uk-timeline-item timeline-right">
+                        <div class="uk-timeline-content">
+                            <div class="uk-card uk-card-default uk-margin-medium-bottom uk-overflow-auto">
+                                <div class="uk-card-header">
+                                    <div class="uk-grid-small uk-flex-middle" uk-grid>
+                                        <h3 class="uk-card-title">D-Dagen 2020</h3>
+                                        <a class="uk-margin-auto-left" href="{{ url_for('katalog2020') }}" target="_blank">
+                                            <span class="uk-label uk-label-primary">Katalog</span>
+                                        </a>
+                                        <p>D-Dagen 2020 ägde rum den 5 november och hade 34 företag och cirka 1000 besökare.
+                                            På grund av pandemin var denna mässa digital.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="uk-card-body uk-padding-remove">
+                                    <img data-src="/static/img/timeline/2020.jpg" uk-img>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-timeline-icon">
+                            <span class="uk-badge"><span uk-icon="check"></span></span>
+                        </div>                        
+                    </div>
+                </div>
+
+                <div>
+                    <div class="uk-timeline-item timeline-left">
+                        <div class="uk-timeline-content">
+                            <div class="uk-card uk-card-default uk-margin-medium-bottom uk-overflow-auto">
+                                <div class="uk-card-header">
+                                    <div class="uk-grid-small uk-flex-middle" uk-grid>
+                                        <h3 class="uk-card-title">D-Dagen 2019</h3>
+                                        <a class="uk-margin-auto-left" href="{{ url_for('katalog2019') }}" target="_blank">
+                                            <span class="uk-label uk-label-primary">Katalog</span>
+                                        </a>
+                                        <p>D-Dagen 2019 ägde rum den 10 oktober i Nymble med 81 företag och cirka 2000 besökare.</p>
+                                    </div>
+                                </div>
+                                <div class="uk-card-body uk-padding-remove">
+                                    <img data-src="/static/img/timeline/2019.jpg" uk-img>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-timeline-icon">
+                            <span class="uk-badge"><span uk-icon="check"></span></span>
+                        </div>                        
+                    </div>
+                </div>
+
+                <div>
+                    <div class="uk-timeline-item timeline-right">
+                        <div class="uk-timeline-content">
+                            <div class="uk-card uk-card-default uk-margin-medium-bottom uk-overflow-auto">
+                                <div class="uk-card-header">
+                                    <div class="uk-grid-small uk-flex-middle" uk-grid>
+                                        <h3 class="uk-card-title">D-Dagen 2018</h3>
+                                        <a class="uk-margin-auto-left" href="{{ url_for('katalog2018') }}" target="_blank">
+                                            <span class="uk-label uk-label-primary">Katalog</span>
+                                        </a>
+                                        <p>D-Dagen 2018 ägde rum den 11 oktober i Nymble och hade 75 företag.</p>
+                                    </div>
+                                </div>
+                                <div class="uk-card-body uk-padding-remove">
+                                    <img data-src="/static/img/timeline/2018.jpg" uk-img>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-timeline-icon">
+                            <span class="uk-badge"><span uk-icon="check"></span></span>
+                        </div>                        
+                    </div>
+                </div>
+
+                <div>
+                    <div class="uk-timeline-item timeline-left">
+                        <div class="uk-timeline-content">
+                            <div class="uk-card uk-card-default uk-margin-medium-bottom uk-overflow-auto">
+                                <div class="uk-card-header">
+                                    <div class="uk-grid-small uk-flex-middle" uk-grid>
+                                        <h3 class="uk-card-title">D-Dagen 2017</h3>
+                                        <a class="uk-margin-auto-left" href="{{ url_for('katalog2017') }}" target="_blank">
+                                            <span class="uk-label uk-label-primary">Katalog</span>
+                                        </a>
+                                        <p>D-Dagen 2017 ägde rum den 5 oktober i Nymble och hade 59 företag.</p>
+                                    </div>
+                                </div>
+                                <div class="uk-card-body uk-padding-remove">
+                                    <img data-src="/static/img/timeline/2017.jpg" uk-img>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-timeline-icon">
+                            <span class="uk-badge"><span uk-icon="check"></span></span>
+                        </div>                        
+                    </div>
+                </div>
+
+                <div>
+                    <div class="uk-timeline-item timeline-right">
+                        <div class="uk-timeline-content">
+                            <div class="uk-card uk-card-default uk-margin-medium-bottom uk-overflow-auto">
+                                <div class="uk-card-header">
+                                    <div class="uk-grid-small uk-flex-middle" uk-grid>
+                                        <h3 class="uk-card-title">D-Dagen 2016</h3>
+                                        <a class="uk-margin-auto-left" href="{{ url_for('katalog2016') }}" target="_blank">
+                                            <span class="uk-label uk-label-primary">Katalog</span>
+                                        </a>
+                                        <p>D-Dagen 2016 ägde rum den 6 oktober i Nymble och hade 45 företag.</p>
+                                    </div>
+                                </div>
+                                <div class="uk-card-body uk-padding-remove">
+                                    <img data-src="/static/img/timeline/2016.jpg" uk-img>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-timeline-icon">
+                            <span class="uk-badge"><span uk-icon="check"></span></span>
+                        </div>                        
+                    </div>
+                </div>
+
+                <div>
+                    <div class="uk-timeline-item timeline-left">
+                        <div class="uk-timeline-content">
+                            <div class="uk-card uk-card-default uk-margin-medium-bottom uk-overflow-auto">
+                                <div class="uk-card-header">
+                                    <div class="uk-grid-small uk-flex-middle" uk-grid>
+                                        <h3 class="uk-card-title">D-Dagen 2015</h3>
+                                        <a class="uk-margin-auto-left" href="{{ url_for('katalog2015') }}" target="_blank">
+                                            <span class="uk-label uk-label-primary">Katalog</span>
+                                        </a>
+                                        <p>D-Dagen 2015 ägde rum den 1 oktober i Ljusgården, E-huset, och hade 35 företag.</p>
+                                    </div>
+                                </div>
+                                <div class="uk-card-body uk-padding-remove">
+                                    <img data-src="/static/img/timeline/2015.jpg" uk-img>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-timeline-icon">
+                            <span class="uk-badge"><span uk-icon="check"></span></span>
+                        </div>                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Set highlight of navbar item for this page:
+    document.querySelectorAll(".nav-about").forEach(element => {
+        element.classList.add("uk-active");
+    });
+</script>
+
+{% endblock %} 
