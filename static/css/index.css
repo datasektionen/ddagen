@@ -17,3 +17,38 @@
     padding-left: 5%;
     padding-right: 5%;
 }
+
+.about-picture {
+    display: block;
+    max-width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sponsor-apply {
+    position: relative;
+    top: -30px;
+    border: 2px solid #dae83d;
+    background: none;
+    color: white;
+    font-style: italic;
+    font-size: 1.125rem;
+}
+
+@media screen and (min-width: 960px) {
+    .sponsor-apply {
+        width: 850px;
+        font-size: 1.25rem;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .presents-text {
+        margin-top: 0;
+    }
+
+    .sponsor-apply {
+        margin-bottom: 10px;
+    }
+}
+

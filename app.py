@@ -6,7 +6,7 @@ def getPagesSv():
         ["Start", url_for('.index'), "nav-start"],
         ["För företag", url_for('companies'), "nav-companies"],
         ["Kontakta oss", url_for('contact'), "nav-contact"],
-        ["FAQ", url_for('faq'), "nav-faq"]
+        ["Tidigare mässor", url_for('about'), "nav-about"]
     ]
 
 def getPagesEn():
@@ -14,7 +14,7 @@ def getPagesEn():
         ["Start", url_for('.index', language='en'), "nav-start"],
         ["For Companies", url_for('companies', language='en'), "nav-companies"],
         ["Contact Us", url_for('contact', language='en'), "nav-contact"],
-        ["FAQ", url_for('faq', language='en'), "nav-faq"]
+        ["Previous Fairs", url_for('about', language='en'), "nav-about"]
     ]
 
 def getLangSv(request):
@@ -79,6 +79,15 @@ def faq():
     else:
         return render_template('SV/faq.html', pages=getPagesSv(), lang=getLangEn(request))
 
+# About
+@app.route('/about')
+def about():
+    language = request.args.get('language')
+    if language == 'en':
+        return render_template('EN/about.html', pages=getPagesEn(), lang=getLangSv(request))
+    else:
+        return render_template('SV/about.html', pages=getPagesSv(), lang=getLangEn(request))
+
 # Visitors
 @app.route('/visitors')
 def visitors():
@@ -99,38 +108,22 @@ def sok(link):
     return redirect('https://forms.gle/huKbwntFe37EpJMr5', code=302)
 
 # Redirect to ticket form for then banket
-@app.route('/sittning')
-def sittning():
-    return redirect('https://forms.gle/UGbrFsL46wTEHcbWA', code=302)
+#@app.route('/sittning')
+#def sittning():
+#    return redirect('https://forms.gle/UGbrFsL46wTEHcbWA', code=302)
 
 # Company Forms
-# Redirect to application of interest for D-Dagen 2021 in swedish
-@app.route("/2021")
-@app.route("/2021en")
+# Redirect to application of interest for D-Dagen 2022 in swedish
+@app.route("/2022")
+@app.route("/2022en")
 @app.route("/intresseanmalan")
 def interest_ddagenintresseanmalan():
-    return redirect('https://forms.gle/JtG9WcqH9BkGveHT7', code=302)
-
-# Start-Up Forms
-# Redirect to application of interest for D-Dagen 2021
-@app.route("/startup")
-def interest_ddagenstartup():
-    return redirect('https://forms.gle/vMPQyhLFumnceu666', code=302)
+    return redirect('https://docs.google.com/forms/d/e/1FAIpQLSdHSky4KmmDbMzPjUKk6wpkiHkkysjnqRRlQ6jKzl4f7IKgUA/viewform', code=302)
 
 # Lunchseminars 2021
-@app.route('/lfscania')
-def lfscania():
-    return redirect('https://forms.gle/RbmKCJCfTeWN6L2Z8', code=302)
-@app.route('/lfskatteverket')
-def lfskatteverket():
-    return redirect('https://forms.gle/wHNkCupyJdsopAAs6', code=302)
-@app.route('/lftietoevry')
-def lftietoevry():
-    return redirect('https://forms.gle/mbRAXu9Yt4SJugJ69', code=302)
-@app.route('/lftink')
-def lftink():
-    return redirect('https://forms.gle/z4NYd3DpQeHJqjLr6', code=302)
-
+#@app.route('/lfscania')
+#def lfscania():
+#    return redirect('https://forms.gle/RbmKCJCfTeWN6L2Z8', code=302)
 
 # Links for apps
 #####################################
@@ -144,9 +137,9 @@ def map():
 def clicker():
     return send_from_directory('static/clicker', 'clicker.html')
 
-@app.route("/karta", methods=["GET"])
-def karta():
-    return redirect('https://dsekt-assets.s3.amazonaws.com/naringsliv/d-dagen/karta', code=302)
+#@app.route("/karta", methods=["GET"])
+#def karta():
+#    return redirect('https://dsekt-assets.s3.amazonaws.com/naringsliv/d-dagen/karta', code=302)
 
 
 # Kataloger
@@ -164,16 +157,21 @@ def katalog2020():
 def katalog2019():
     return redirect('https://dsekt-assets.s3.amazonaws.com/naringsliv/d-dagen/katalog_2019', code=302)
 
+@app.route('/katalog2018')
+def katalog2018():
+    return redirect('https://dsekt-assets.s3.amazonaws.com/naringsliv/d-dagen/katalog_2018', code=302)
+
 @app.route('/katalog2017')
 def katalog2017():
     return redirect('https://dsekt-assets.s3.amazonaws.com/naringsliv/d-dagen/katalog_2017', code=302)
 
-# Someone didn't want /katalog2016 to be indexed by google
+@app.route('/katalog2016')
+def katalog2016():
+    return redirect('https://dsekt-assets.s3.amazonaws.com/naringsliv/d-dagen/katalog_2016', code=302)
 
 @app.route('/katalog2015')
 def katalog2015():
     return redirect('https://dsekt-assets.s3.amazonaws.com/naringsliv/d-dagen/katalog_2015', code=302)
-
 
 # Error handlers
 #####################################
