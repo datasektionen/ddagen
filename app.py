@@ -84,7 +84,7 @@ def faq():
 def about():
     language = request.args.get('language')
     if language == 'en':
-        return render_template('SV/about.html', pages=getPagesEn(), lang=getLangSv(request))
+        return render_template('EN/about.html', pages=getPagesEn(), lang=getLangSv(request))
     else:
         return render_template('SV/about.html', pages=getPagesSv(), lang=getLangEn(request))
 
