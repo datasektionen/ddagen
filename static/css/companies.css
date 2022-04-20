@@ -1,3 +1,13 @@
+.top-text {
+    width: 500px;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 10px white;
+    padding: 10px;
+}
+
 .package {
     background: url(/static/img/assets/companies_background.jpg);
     color: white;
