@@ -157,8 +157,24 @@
                             </tr>
                         </table>
                     </div>
-                    <div class="no-display-mobile">
-                        
+                    <div>
+                        <div class="uk-flex uk-text-center" style="height: 100%;">
+                            <div class="uk-margin-auto uk-margin-auto-vertical uk-width-1-1">
+                                {% if request.args.get('language') == 'en'%}
+                                    <h3 class="uk-text-center uk-margin-medium-bottom">Main Sponsor 2022</h3>
+                                    <a href="https://www.basalt.se/en/" target="_blank">
+                                        <img data-src="/static/img/assets/basalt.svg" uk-img>
+                                    </a>
+                                {% else %}
+                                    <h3 class="uk-text-center uk-margin-medium-bottom">Huvudsponsor 2022</h3>
+                                    <a href="https://www.basalt.se/" target="_blank">
+                                        <img data-src="/static/img/assets/basalt.svg" uk-img>
+                                    </a>
+                                {% endif %} 
+                                
+                                <br><br><br>
+                            </div>
+                        </div>
                     </div>
                     <div>
                         {% if request.args.get('language') == 'en'%}
