@@ -70,15 +70,6 @@ def contact():
     else:
         return render_template('SV/contact.html', pages=getPagesSv(), lang=getLangEn(request))
 
-# FAQ
-@app.route('/faq')
-def faq():
-    language = request.args.get('language')
-    if language == 'en':
-        return render_template('EN/faq.html', pages=getPagesEn(), lang=getLangSv(request))
-    else:
-        return render_template('SV/faq.html', pages=getPagesSv(), lang=getLangEn(request))
-
 # About
 @app.route('/about')
 def about():
@@ -87,15 +78,6 @@ def about():
         return render_template('EN/about.html', pages=getPagesEn(), lang=getLangSv(request))
     else:
         return render_template('SV/about.html', pages=getPagesSv(), lang=getLangEn(request))
-
-# Visitors
-@app.route('/visitors')
-def visitors():
-    language = request.args.get('language')
-    if language == 'en':
-        return render_template('EN/visitors.html', pages=getPagesEn(), lang=getLangSv(request))
-    else:
-        return render_template('SV/visitors.html', pages=getPagesSv(), lang=getLangEn(request))
 
 # Forms
 #####################################
