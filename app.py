@@ -1,10 +1,14 @@
 from flask import Flask, request, render_template, redirect, send_from_directory, make_response, url_for
 from werkzeug.routing import BaseConverter
 
+# To add/modify entries in the top navigation bar, modify these two functions: getPagesSv and getPagesEn.
+# The info will be used in layout.html to generate desktop and mobile navbars automatically.
+
 def getPagesSv():
     return [
         ["Start", url_for('.index'), "nav-start"],
-        ["För företag", url_for('companies'), "nav-companies"],
+        ["Företag", url_for('info4visitors'), "nav-companies"],
+        ["Event", url_for('event'), "nav-event"],
         ["Kontakta oss", url_for('contact'), "nav-contact"],
         ["Tidigare mässor", url_for('about'), "nav-about"]
     ]
@@ -12,7 +16,8 @@ def getPagesSv():
 def getPagesEn():
     return [
         ["Start", url_for('.index', language='en'), "nav-start"],
-        ["For Companies", url_for('companies', language='en'), "nav-companies"],
+        ["Companies", url_for('info4visitors', language='en'), "nav-companies"],
+        ["Events", url_for('event', language='en'), "nav-event"],
         ["Contact Us", url_for('contact', language='en'), "nav-contact"],
         ["Previous Fairs", url_for('about', language='en'), "nav-about"]
     ]
@@ -52,14 +57,23 @@ def index():
     else:
         return render_template('SV/index.html', pages=getPagesSv(), lang=getLangEn(request))
 
-# Companies
-@app.route('/companies')
-def companies():
+# Info for companies (packages, etc)
+@app.route('/info4companies')
+def info4companies():
     language = request.args.get('language')
     if language == 'en':
-        return render_template('EN/companies.html', pages=getPagesEn(), lang=getLangSv(request))
+        return render_template('EN/info4companies.html', pages=getPagesEn(), lang=getLangSv(request))
     else:
-        return render_template('SV/companies.html', pages=getPagesSv(), lang=getLangEn(request))
+        return render_template('SV/info4companies.html', pages=getPagesSv(), lang=getLangEn(request))
+
+# Info for visitors (list of companies, etc)
+@app.route('/info4visitors')
+def info4visitors():
+    language = request.args.get('language')
+    if language == 'en':
+        return render_template('EN/info4visitors.html', pages=getPagesEn(), lang=getLangSv(request))
+    else:
+        return render_template('SV/info4visitors.html', pages=getPagesSv(), lang=getLangEn(request))
 
 # Contact
 @app.route('/contact')
@@ -78,6 +92,15 @@ def about():
         return render_template('EN/about.html', pages=getPagesEn(), lang=getLangSv(request))
     else:
         return render_template('SV/about.html', pages=getPagesSv(), lang=getLangEn(request))
+
+# Event
+@app.route('/event')
+def event():
+    language = request.args.get('language')
+    if language == 'en':
+        return render_template('EN/event.html', pages=getPagesEn(), lang=getLangSv(request))
+    else:
+        return render_template('SV/event.html', pages=getPagesSv(), lang=getLangEn(request))
 
 # Forms
 #####################################
