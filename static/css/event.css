@@ -1,5 +1,5 @@
 .top-text {
-    width: 500px;
+    width: 300px;
     max-width: 80%;
     margin-left: auto;
     margin-right: auto;
@@ -39,8 +39,9 @@ dt {
 
 #companies-title {
     height: 340px;
-    background: url(/static/img/assets/2017.jpg);
-    background-position: center -100px;
+    background: url(/static/img/assets/event.jpg);
+    background-position: center -300px;
+    background-size: cover;
 }
 
 .uk-button-default {
