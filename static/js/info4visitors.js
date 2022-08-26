@@ -38,7 +38,6 @@ var pageData = [
     new Company("companies2022/syntronic.svg", "https://syntronic.com/"),
     new Company("companies2022/Polisen.svg", "https://polisen.se/"),
     new Company("companies2022/sana.png", "https://www.sanalabs.com/"),
-    new Company("companies2022/basalt.jpg", "https://www.basalt.se/"),
     new Company("companies2022/challengermode.jpg", "https://www.challengermode.com/?lang=sv"),
     new Company("companies2022/sellpy_logo_black.png", "https://www.sellpy.se/"),
     new Company("companies2022/randomforest.png", "https://www.randomforest.se/"),
@@ -59,7 +58,7 @@ var pageData = [
     new Company("companies2022/saab.png", "https://www.saab.com/"),
     new Company("companies2022/SAVR-logotyp-kopia.png", "https://savr.com/"),
     new Company("companies2022/tobii.webp", "https://www.tobii.com/sv/"),
-    new Company("companies2022/", ""),
+    new Company("companies2022/BITREFILL.png", "https://www.bitrefill.com/"),
     new Company("companies2022/EQT.png", "https://eqtgroup.com/"),
     new Company("companies2022/keyfactor.webp", "https://www.keyfactor.com/"),
     new Company("companies2022/sopra-steria_0.jpeg", "https://www.soprasteria.se"),
@@ -87,13 +86,11 @@ var pageData = [
     new Company("companies2022/tradera.png", "https://www.tradera.com/"),
 ];
 
-// new Company("companies2022/", ""),
-
 var imgLocation = "/static/img/";
 
 // HTML-kod för elementet som innehåller ett företag:
 var personHTML = `
-    <div class="uk-card uk-card-default uk-card-body" style="padding: 60px;">
+    <div class="uk-card uk-card-default uk-card-hover uk-card-body" style="height: 120px;">
         <a class="uk-position-center" target="_blank">
             <img class="company" width="200px" alt="" uk-img>
         </a>
