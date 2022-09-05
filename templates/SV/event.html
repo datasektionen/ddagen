@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block page_css %}
+<link rel="stylesheet" href="/static/css/event.css" />
+{% endblock %}
+
+{% block content %}
+
+<div id="companies-title" class="uk-section">
+    <br>
+    <h1 class="uk-text-center cerise top-text">Event</h1>
+</div>
+
+<div class="uk-section uk-background-default">
+    <div class="uk-container uk-container-medium">
+        <div uk-grid class="uk-flex-center">
+            <div class="uk-width-4-5@m">
+                <div class="uk-card uk-card-default uk-card-body">
+
+                    <h2>Lunchföreläsningar</h2>
+
+                    <dl class="uk-description-list" id="faq-list">
+
+                        <dt>Basalt - 6 oktober</dt>
+                        <dd>...</dd>
+
+                        <dt>Scania - ?</dt>
+                        <dd>...</dd>
+
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Set highlight of navbar item for this page:
+    document.querySelectorAll(".nav-event").forEach(element => {
+        element.classList.add("uk-active");
+    });
+</script>
+
+{% endblock %}
