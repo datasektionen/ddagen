@@ -7,7 +7,7 @@ function Company(img, url) {
 
 var bottomSponsors = [
     new Company("sponsors2022/logo-alecta.svg", "https://www.alecta.se/"),
-    new Company("sponsors2022/atlas.svg", "https://www.atlascopco.com/sv-se"),
+    new Company("sponsors2022/atlas.png", "https://www.atlascopco.com/sv-se"),
     new Company("sponsors2022/bitrefill.svg", "https://www.bitrefill.com/"),
     new Company("companies2022/decerno_logo.png", "https://www.decerno.se/"),
     new Company("companies2022/EQT.png", "https://eqtgroup.com/"),
