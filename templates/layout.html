@@ -35,6 +35,7 @@
         <!-- Scripts -->
         <script src="/static/js/uikit.min.js"></script>
         <script src="/static/js/uikit-icons.min.js"></script>
+        <script src="/static/js/global.js"></script>
     </head>
     <body>
         <!-- ####################### -->
@@ -159,18 +160,26 @@
                         <div class="uk-flex uk-text-center" style="height: 100%;">
                             <div class="uk-margin-auto uk-margin-auto-vertical uk-width-1-1">
                                 {% if request.args.get('language') == 'en'%}
-                                    <h3 class="uk-text-center uk-margin-medium-bottom">Main Sponsor 2022</h3>
+                                    <h3 class="uk-text-center uk-margin-small-bottom">Main Sponsor 2022</h3>
                                     <a href="https://www.basalt.se/en/" target="_blank">
                                         <img data-src="/static/img/assets/basalt.svg" uk-img>
                                     </a>
                                 {% else %}
-                                    <h3 class="uk-text-center uk-margin-medium-bottom">Huvudsponsor 2022</h3>
+                                    <h3 class="uk-text-center uk-margin-small-bottom">Huvudsponsor 2022</h3>
                                     <a href="https://www.basalt.se/" target="_blank">
                                         <img data-src="/static/img/assets/basalt.svg" uk-img>
                                     </a>
                                 {% endif %} 
-                                
-                                <br><br><br>
+
+                                <br>
+                                {% if request.args.get('language') == 'en'%}
+                                    <h4 class="uk-text-center uk-margin-medium-bottom">Other sponsors</h4>
+                                {% else %}
+                                    <h4 class="uk-text-center uk-margin-medium-bottom">Övriga sponsorer</h4>
+                                {% endif %} 
+
+                                <div class="uk-grid-column-small uk-grid-small uk-child-width-1-2@s uk-child-width-1-3@m uk-text-center uk-grid-match" uk-grid id="bottom-sponsors">                         
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -194,5 +203,9 @@
                 </div>
             </div>
         </div>
+
+        <script type="text/javascript">
+            addCompanyInfoBottom();
+        </script>
     </body>
 </html>

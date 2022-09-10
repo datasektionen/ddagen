@@ -97,7 +97,7 @@ var sponsors = [
 var imgLocation = "/static/img/";
 
 // HTML-kod för elementet som innehåller ett företag:
-var personHTML = `
+var companyHTML = `
     <div class="uk-card" style="height: 120px;">
         <a class="uk-position-center" target="_blank">
             <img class="company" width="200px" alt="" uk-img>
@@ -112,7 +112,7 @@ var personHTML = `
     for (i = 0; i < regularCompanies.length; i++) {
         var company = regularCompanies[i];
         var companyDiv = document.createElement("div");
-        companyDiv.innerHTML = personHTML.trim();
+        companyDiv.innerHTML = companyHTML.trim();
 
         var url = companyDiv.children[0].children[0];
         var img = companyDiv.children[0].children[0].children[0];
@@ -126,7 +126,7 @@ var personHTML = `
     for (i = 0; i < sponsors.length; i++) {
         var company = sponsors[i];
         var companyDiv = document.createElement("div");
-        companyDiv.innerHTML = personHTML.trim();
+        companyDiv.innerHTML = companyHTML.trim();
 
         var url = companyDiv.children[0].children[0];
         var img = companyDiv.children[0].children[0].children[0];
