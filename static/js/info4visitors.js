@@ -8,6 +8,18 @@ function Company(img, url) {
 // För att lägga till/ta bort företag är det bara att ändra i den här listan,
 // inga ändringar i HTML-koden behöver göras.
 var regularCompanies = [
+    new Company("companies2022/alecta.jpg", "https://www.alecta.se/"),
+    new Company("companies2022/atlas_copco.svg", "https://www.atlascopco.com/sv-se"),
+    new Company("companies2022/BITREFILL.png", "https://www.bitrefill.com/"),
+    new Company("companies2022/decerno_logo.png", "https://www.decerno.se/"),
+    new Company("companies2022/EQT.png", "https://eqtgroup.com/"),
+    new Company("companies2022/hemnet.svg", "https://www.hemnet.se/"),
+    new Company("companies2022/omicron.png", "https://www.omicron.se/public/sv.html"),
+    new Company("companies2022/oracle.png", "https://www.oracle.com/se/index.html"),
+    new Company("companies2022/SVT.png", "https://svt.se"),
+    new Company("companies2022/tradera.png", "https://www.tradera.com/"),
+    new Company("companies2022/vermiculus.jpg", "https://vermiculus.se/"),
+    new Company("companies2022/xlent.jpg", "https://www.xlent.se/"),
     new Company("companies2022/fm.svg", "https://www.forsvarsmakten.se/sv/"),
     new Company("companies2022/Avalanche_Studios_Group.jpg", "https://avalanchestudios.com/"),
     new Company("companies2022/sweco.svg", "https://www.sweco.se/hallbarhet/"),
@@ -79,21 +91,6 @@ var regularCompanies = [
     new Company("companies2022/capgemini.svg", "https://www.capgemini.com/"),
 ];
 
-var sponsors = [
-    new Company("companies2022/alecta.jpg", "https://www.alecta.se/"),
-    new Company("companies2022/atlas_copco.svg", "https://www.atlascopco.com/sv-se"),
-    new Company("companies2022/BITREFILL.png", "https://www.bitrefill.com/"),
-    new Company("companies2022/decerno_logo.png", "https://www.decerno.se/"),
-    new Company("companies2022/EQT.png", "https://eqtgroup.com/"),
-    new Company("companies2022/hemnet.svg", "https://www.hemnet.se/"),
-    new Company("companies2022/omicron.png", "https://www.omicron.se/public/sv.html"),
-    new Company("companies2022/oracle.png", "https://www.oracle.com/se/index.html"),
-    new Company("companies2022/SVT.png", "https://svt.se"),
-    new Company("companies2022/tradera.png", "https://www.tradera.com/"),
-    new Company("companies2022/vermiculus.jpg", "https://vermiculus.se/"),
-    new Company("companies2022/xlent.jpg", "https://www.xlent.se/"),
-]
-
 var imgLocation = "/static/img/";
 
 // HTML-kod för elementet som innehåller ett företag:
@@ -121,19 +118,5 @@ var companyHTML = `
         img.setAttribute("data-src", imgLocation + company.img);
 
         document.getElementById("regular-companies").appendChild(companyDiv);
-    }
-
-    for (i = 0; i < sponsors.length; i++) {
-        var company = sponsors[i];
-        var companyDiv = document.createElement("div");
-        companyDiv.innerHTML = companyHTML.trim();
-
-        var url = companyDiv.children[0].children[0];
-        var img = companyDiv.children[0].children[0].children[0];
-
-        url.setAttribute("href", company.url);
-        img.setAttribute("data-src", imgLocation + company.img);
-
-        document.getElementById("sponsors").appendChild(companyDiv);
     }
 }
