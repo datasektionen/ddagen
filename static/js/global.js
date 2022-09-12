@@ -18,6 +18,8 @@ var bottomSponsors = [
     new Company("sponsors2022/Tradera.svg", "https://www.tradera.com/"),
     new Company("sponsors2022/vermiculus.svg", "https://vermiculus.se/"),
     new Company("sponsors2022/xlent-logo-orange-white.svg", "https://www.xlent.se/"),
+    new Company("sponsors2022/trafikverket.png", "https://www.trafikverket.se/"),
+    new Company("sponsors2022/bonnier_news.svg", "https://www.bonniernews.se/"),
 ]
 
 var imgLocation = "/static/img/";
