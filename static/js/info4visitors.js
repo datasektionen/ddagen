@@ -52,7 +52,7 @@ var regularCompanies = [
     new Company("companies2022/sentor.png", "https://www.sentor.se"),
     new Company("companies2022/subset.png", "https://www.subset.se/"),
     new Company("companies2022/megger.svg", "https://se.megger.com/"),
-    new Company("companies2022/scania-wordmark.svg", "https://scania.se"),
+    new Company("companies2022/scania.png", "https://scania.se"),
     new Company("companies2022/msab.jpeg", "https://www.msab.com/"),
     new Company("companies2022/fra.png", "https://www.fra.se/"),
     new Company("companies2022/svenska_kraftnat.svg", "https://www.svk.se/"),
