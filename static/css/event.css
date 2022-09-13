@@ -40,8 +40,14 @@ dt {
 #companies-title {
     height: 340px;
     background: url(/static/img/assets/event.jpg);
-    background-position: center -300px;
+    background-position: center 0px;
     background-size: cover;
+}
+
+@media screen and (min-width: 1300px) {
+    #companies-title {
+        background-position: center -300px;
+    }
 }
 
 .uk-button-default {
