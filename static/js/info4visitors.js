@@ -120,3 +120,14 @@ var companyHTML = `
         document.getElementById("regular-companies").appendChild(companyDiv);
     }
 }
+
+// from https://stackoverflow.com/questions/4817029/whats-the-best-way-to-detect-a-touch-screen-device-using-javascript
+function isTouchDevice() {
+    return (('ontouchstart' in window) ||
+    (navigator.maxTouchPoints > 0) ||
+    (navigator.msMaxTouchPoints > 0));
+}
+
+if (!isTouchDevice()) {
+    document.getElementById("desktop-url").setAttribute("href", "https://basalt.se/");
+}
