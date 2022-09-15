@@ -104,13 +104,13 @@ def event():
 
 # Forms
 #####################################
-# Redirect to application of working at the fair for D-Dagen 2021
+# Redirect to application of working at the fair for D-Dagen 2022
 # This regex is wrong since it matches any of the characthers in
 # the array 3 times. It should be [Ss][OoÖö][Kk], but since it 
 # dosen't matter the more links it matches on the better. 
 @app.route('/<regex("[SOÖKsoök]{3,3}"):link>/')
 def sok(link):
-    return redirect('https://forms.gle/huKbwntFe37EpJMr5', code=302)
+    return redirect('https://forms.gle/67pCFajCSgnWhdvN6', code=302)
 
 # Redirect to ticket form for then banket
 #@app.route('/sittning')
