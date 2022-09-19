@@ -89,6 +89,7 @@ var regularCompanies = [
     new Company("companies2022/columbia.webp", "https://www.columbiaroad.com/"),
     new Company("companies2022/Ericsson-Logo.png", "https://www.ericsson.com/"),
     new Company("companies2022/capgemini.svg", "https://www.capgemini.com/"),
+    new Company("companies2022/astrazeneca.png", "https://www.astrazeneca.se/"),
 ];
 
 var imgLocation = "/static/img/";
