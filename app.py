@@ -113,9 +113,9 @@ def sok(link):
     return redirect('https://forms.gle/67pCFajCSgnWhdvN6', code=302)
 
 # Redirect to ticket form for then banket
-#@app.route('/sittning')
-#def sittning():
-#    return redirect('https://forms.gle/UGbrFsL46wTEHcbWA', code=302)
+@app.route('/sittning')
+def sittning():
+    return redirect('https://forms.gle/8zoFQSNXsXmHemU57', code=302)
 
 # Company Forms
 # Redirect to application of interest for D-Dagen 2022 in swedish
