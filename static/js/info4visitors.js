@@ -77,7 +77,6 @@ var regularCompanies = [
     new Company("companies2022/agio.png", "https://agio.se/"),
     new Company("companies2022/zwap_RGB_plume.svg", "https://www.zwapgrid.com"),
     new Company("companies2022/prevas.svg", "https://www.prevas.se/"),
-    new Company("companies2022/alecta.jpg", "https://www.alecta.se/"),
     new Company("companies2022/ef-logo.jpg", "https://www.ef.se"),
     new Company("companies2022/enfo-logo.png", "https://www.enfo.se/"),
     new Company("companies2022/ida.png", "https://idainfront.se/"),
@@ -90,6 +89,8 @@ var regularCompanies = [
     new Company("companies2022/Ericsson-Logo.png", "https://www.ericsson.com/"),
     new Company("companies2022/capgemini.svg", "https://www.capgemini.com/"),
     new Company("companies2022/astrazeneca.png", "https://www.astrazeneca.se/"),
+    new Company("companies2022/toptracer.png", "https://www.toptracer.com/"),
+    new Company("companies2022/tietoevry.webp", "https://www.tietoevry.com/se/"),
 ];
 
 var imgLocation = "/static/img/";
