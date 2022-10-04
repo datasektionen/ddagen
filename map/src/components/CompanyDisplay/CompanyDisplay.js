@@ -18,9 +18,10 @@ const useStyles = makeStyles(theme => ({
   },
   imgLogo: {
     width: "auto",
-    maxWidth: "100px",
+    maxWidth: "120px",
     maxHeight: "60px",
     minWidth: "40px",
+    minHeight: "25px",
   },
   cardHeaderTitle: {
     fontSize: "16px",
@@ -47,7 +48,7 @@ const CompanyDisplay = React.forwardRef(({ company, selected, onMouseDown }, ref
     classes: {
       imgLogo: classes.imgLogo
     },
-    srcImg: company.img.default
+    srcImg: "https://ddagen.se/static/img/companies2022/" + company.img.default
   };
 
   const cardHeaderClasses = {

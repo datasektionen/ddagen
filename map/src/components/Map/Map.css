@@ -29,3 +29,47 @@ svg {
   flex: 1;
   max-height: 100%;
 }
+
+.selectedStyle {
+  fill:#3d84e8;
+  r:27;
+  transition:all 700ms ease-in-out;
+  z-index:1000;
+  filter: drop-shadow( 0 0 5px yellow);
+  animation-name: blink-animation;
+  animation-duration: 0.2s;
+  animation-timing-function: steps(3, start);
+  animation-delay: 0s;
+  animation-iteration-count: 4;
+}
+
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+
+.defaultStyle {
+  fill: #ff357c;
+  transition:all 700ms ease-in-out;
+}
+
+.Tabs {
+  font-size: 15px;
+  color: black;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  background-color: #fafafa;
+  margin: 0 4px;
+  padding: 4px;
+  height: inherit;
+}
+
+ul.nav li.active {
+  background: #39A2DB;
+}
