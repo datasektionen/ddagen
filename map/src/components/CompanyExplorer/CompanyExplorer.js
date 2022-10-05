@@ -27,7 +27,7 @@ class ConnectedCompanyExplorer extends React.Component {
   componentDidUpdate() {
     const { selectedCompany } = this.props
     if (selectedCompany) {
-      this.itemRefs[selectedCompany].scrollIntoView({ behaviour: "smooth" })
+      this.itemRefs[selectedCompany].scrollIntoView({ block: "center", inline: "nearest", behaviour: "smooth" })
     }
   }
 

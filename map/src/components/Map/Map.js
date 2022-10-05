@@ -41,13 +41,21 @@ class ConnectedMap extends React.Component {
   }
 
   handleTab1 = () => {
-    if (this.state.activeTab !== "tab1")
+    const { unselectCompany, selectedCompany } = this.props
+    if (this.state.activeTab !== "tab1") {
+      if (selectedCompany >= 100)
+        unselectCompany()
       this.setState({ activeTab: "tab1" })
+    }
   }
 
   handleTab2 = () => {
-    if (this.state.activeTab !== "tab2")
+    const { unselectCompany, selectedCompany } = this.props
+    if (this.state.activeTab !== "tab2") {
+      if (selectedCompany < 100)
+        unselectCompany()
       this.setState({ activeTab: "tab2" })
+    }
   }
 
   /*
@@ -70,8 +78,8 @@ class ConnectedMap extends React.Component {
     return (
       <div className="Tabs">
         <ul className="nav">
-          <li className={this.state.activeTab === "tab1" ? "active" : ""} onClick={this.handleTab1}>Tab 1</li>
-          <li className={this.state.activeTab === "tab2" ? "active" : ""} onClick={this.handleTab2}>Tab 2</li>
+          <li className={this.state.activeTab === "tab1" ? "active first" : "first"  } onClick={this.handleTab1}>Plan 2</li>
+          <li className={this.state.activeTab === "tab2" ? "active second" : "second"} onClick={this.handleTab2}>Plan 3</li>
         </ul>
         <div className="outlet">
           {this.state.activeTab === "tab1" ? <Level1 /> : <Level2 />}
