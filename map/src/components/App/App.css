@@ -50,7 +50,7 @@ div#root {
     min-width: 900px;
     max-width: 1920px;
     height: 750px;
-    padding: 48px;
+    padding: calc(50vh - 375px);
   }
 
   div.app-container-left {

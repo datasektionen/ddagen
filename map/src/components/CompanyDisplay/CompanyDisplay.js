@@ -18,9 +18,10 @@ const useStyles = makeStyles(theme => ({
   },
   imgLogo: {
     width: "auto",
-    maxWidth: "100px",
+    maxWidth: "130px",
     maxHeight: "60px",
-    minWidth: "40px",
+    minWidth: "90px",
+    minHeight: "30px",
   },
   cardHeaderTitle: {
     fontSize: "16px",
@@ -47,7 +48,7 @@ const CompanyDisplay = React.forwardRef(({ company, selected, onMouseDown }, ref
     classes: {
       imgLogo: classes.imgLogo
     },
-    srcImg: company.img.default
+    srcImg: "https://ddagen.se/static/img/companies2022/" + company.img.default
   };
 
   const cardHeaderClasses = {
@@ -60,7 +61,7 @@ const CompanyDisplay = React.forwardRef(({ company, selected, onMouseDown }, ref
       ref={ref}
       raised
       onMouseDown={onMouseDown}
-      className={classes.card}
+      className={classes.card + " " + (selected ? "selected" : "") }
     // className={`company-list-item animated-transition ${
     //   selected ? "selected" : ""
     // }`}

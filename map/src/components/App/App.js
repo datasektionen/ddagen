@@ -28,6 +28,11 @@ function useWindowResize() {
 
 function App() {
   const { width, height } = useWindowResize();
+
+  useEffect(() => {
+    document.title = `Karta - D-Dagen`;
+  });
+
   if (width <= 768) {
     const mapHeight = height * 0.5
     const listHeight = height - mapHeight
@@ -42,6 +47,7 @@ function App() {
       </div>
     );
   }
+
   return (
     <div className="container center">
       <div className="app-container-left">

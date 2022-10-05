@@ -6,16 +6,128 @@
   align-items: center;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   background-color: #fafafa;
-  margin: 0 4px;
+  margin: 0 0px;
   padding: 4px;
+  height: 100%;
+  width: 100%;
+}
+
+svg {
+  flex: 1;
+  position: relative;
   height: inherit;
+  height: 100%;
+  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  z-index: 10;
+}
+
+.selectedStyle {
+  fill:#3d84e8;
+  transition:all 700ms ease-in-out;
+  z-index:1000;
+  filter: drop-shadow( 0 0 5px yellow);
+  animation: blinkingText 2s infinite;
+}
+
+@keyframes blinkingText{
+  0%		{ fill: #10c018; r: 17.57px; }
+  25%		{ fill: #1056c0; }
+  50%		{ fill: #fccf03; r: 20.57px; }
+  75%		{ fill: #254878; }
+  100%	{ fill: #04a1d5; r: 17.57px; }
+}
+
+.defaultStyle {
+  fill: #ff357c;
+  transition:all 700ms ease-in-out;
+}
+
+.Tabs {
+  font-size: 15px;
+  color: black;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  background-color: #fafafa;
+  margin: 0 4px;
+  padding: 0px;
+  height: inherit;
+}
+
+.nav {
+  position: absolute;
+  top: 15px;
+  left: 0px;
+  z-index: 100;
+  list-style-type: none;
+}
+
+.nav li {
+  font-size: 25px;
+  padding: 7px;
+  cursor: pointer;
+}
+
+.nav li.first {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.nav li.second {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.nav li.active {
+  background: #39A2DB;
+  color: white;
+}
+
+.outlet {
+  height: 100%;
+  width: 100%;
+}
+
+.Level1 {
+  height: inherit;
+  width: inherit;
+}
+
+.Level2 {
+  height: inherit;
+  width: inherit;
 }
 
 @media (max-width: 768px) {
   .map {
-    height: 94%;
-    padding: 1%;
-    margin: 1%;
+    /*height: 94%;*/
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav {
+    top: 2px;
+    left: -4px;
+  }
+  
+  .nav li {
+    font-size: 15px;
+    padding: 4px;
+  }
+  
+  .nav li.first {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+  
+  .nav li.second {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
   }
 }
 
@@ -23,9 +135,4 @@
   .map {
     min-width: 600px;
   }
-}
-
-svg {
-  flex: 1;
-  max-height: 100%;
 }
