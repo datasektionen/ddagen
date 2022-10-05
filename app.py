@@ -135,7 +135,7 @@ def interest_ddagenintresseanmalan():
 # This is redirect for the map
 @app.route("/map", methods=["GET"])
 def map():
-    return send_from_directory("static/map", "map.html")
+    return send_from_directory("static/map", "index.html")
 
 # Redirect to the clicker app.
 @app.route("/clicker", methods=["GET"])
