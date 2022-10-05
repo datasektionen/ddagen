@@ -18,10 +18,10 @@ const useStyles = makeStyles(theme => ({
   },
   imgLogo: {
     width: "auto",
-    maxWidth: "120px",
+    maxWidth: "130px",
     maxHeight: "60px",
-    minWidth: "40px",
-    minHeight: "25px",
+    minWidth: "90px",
+    minHeight: "30px",
   },
   cardHeaderTitle: {
     fontSize: "16px",
@@ -61,7 +61,7 @@ const CompanyDisplay = React.forwardRef(({ company, selected, onMouseDown }, ref
       ref={ref}
       raised
       onMouseDown={onMouseDown}
-      className={classes.card}
+      className={classes.card + " " + (selected ? "selected" : "") }
     // className={`company-list-item animated-transition ${
     //   selected ? "selected" : ""
     // }`}

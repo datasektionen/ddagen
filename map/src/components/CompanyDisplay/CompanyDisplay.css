@@ -29,3 +29,8 @@
   background: red;
 }
 */
+
+.selected {
+  /*background-color: rgb(230, 230, 230) !important;*/
+  border: 3px solid #39A2DB;
+}

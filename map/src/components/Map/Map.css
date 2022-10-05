@@ -25,21 +25,18 @@ svg {
 
 .selectedStyle {
   fill:#3d84e8;
-  r:27;
   transition:all 700ms ease-in-out;
   z-index:1000;
   filter: drop-shadow( 0 0 5px yellow);
-  animation-name: blink-animation;
-  animation-duration: 0.2s;
-  animation-timing-function: steps(3, start);
-  animation-delay: 0s;
-  animation-iteration-count: 4;
+  animation: blinkingText 2s infinite;
 }
 
-@keyframes blink-animation {
-  to {
-    visibility: hidden;
-  }
+@keyframes blinkingText{
+  0%		{ fill: #10c018; r: 17.57px; }
+  25%		{ fill: #1056c0; }
+  50%		{ fill: #fccf03; r: 20.57px; }
+  75%		{ fill: #254878; }
+  100%	{ fill: #04a1d5; r: 17.57px; }
 }
 
 .defaultStyle {
@@ -64,14 +61,14 @@ svg {
 
 .nav {
   position: absolute;
-  top: 30px;
-  left: 30px;
+  top: 15px;
+  left: 0px;
   z-index: 100;
   list-style-type: none;
 }
 
 .nav li {
-  font-size: 22px;
+  font-size: 25px;
   padding: 7px;
   cursor: pointer;
 }
@@ -88,6 +85,7 @@ svg {
 
 .nav li.active {
   background: #39A2DB;
+  color: white;
 }
 
 .outlet {
