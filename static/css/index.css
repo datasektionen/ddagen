@@ -52,3 +52,34 @@
     }
 }
 
+.map-icon {
+    position: absolute;
+    left: 10vw;
+    top: 35vh;
+}
+
+.map-icon-2 {
+    width: 140px;
+}
+
+.small-map-div {
+    display: none;
+}
+
+@media screen and (max-width: 1400px) {
+    .map-icon {
+        width: 180px;
+        left: 5vw;
+        top: 40vh;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .map-icon {
+        display: none;
+    }
+
+    .small-map-div {
+        display: block;
+    }
+}

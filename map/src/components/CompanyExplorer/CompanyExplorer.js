@@ -26,7 +26,7 @@ class ConnectedCompanyExplorer extends React.Component {
 
   componentDidUpdate() {
     const { selectedCompany } = this.props
-    if (selectedCompany) {
+    if (selectedCompany && selectedCompany % 100 != 99) {
       this.itemRefs[selectedCompany].scrollIntoView({ block: "center", inline: "nearest", behaviour: "smooth" })
     }
   }

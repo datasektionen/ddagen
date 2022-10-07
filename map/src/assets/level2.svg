@@ -570,17 +570,50 @@
            id="polyline1377" />
         <polygon
            class="a2e923ad-90af-4e08-b5b1-f7ce61988c8d"
-           points="870.16,327.81 859.05,323.09 847.94,327.81 859.05,301.48 "
+           points="859.05,323.09 847.94,327.81 859.05,301.48 870.16,327.81 "
            id="polygon1379" />
       </g>
     </g>
+    <g
+       id="g1383-3"
+       transform="matrix(1.009742,0,0,-0.99992174,-474.769,1011.9413)">
+      <polyline
+         class="72fa0491-577e-46be-b45a-d253e54cd4df"
+         points="787.21 366.91 806.05 366.91 806.05 356.24 824.3 356.24 824.3 344.63 841.24 344.63 841.24 333.24 859.05 333.24 859.05 319.38"
+         id="polyline1375-6" />
+      <g
+         id="g1381-7">
+        <polyline
+           class="af35e063-e748-4344-96ef-6d7df34da6e9"
+           points="787.21 366.91 806.05 366.91 806.05 356.24 824.3 356.24 824.3 344.63 841.24 344.63 841.24 333.24 859.05 333.24 859.05 319.38"
+           id="polyline1377-5" />
+        <polygon
+           class="a2e923ad-90af-4e08-b5b1-f7ce61988c8d"
+           points="859.05,301.48 870.16,327.81 859.05,323.09 847.94,327.81 "
+           id="polygon1379-3" />
+      </g>
+    </g>
+    <rect
+       style="fill:#ffffff;fill-opacity:0;stroke-width:11.3386"
+       id="rect1292"
+       width="90.418678"
+       height="70.564133"
+       x="320.10999"
+       y="645.06" />
+    <rect
+       style="fill:#ffffff;fill-opacity:0;stroke-width:13.8247"
+       id="rect1294"
+       width="84.409676"
+       height="83.794868"
+       x="781.16321"
+       y="353.80414" />
   </g>
   <g
      id="6918c61c-e65b-4b27-b933-ac3477768c0b"
      data-name="Skuggning">
     <polygon
        class="2a73deed-031f-4768-be11-bd9bbc9cb5f2"
-       points="543.99,182.35 543.99,156.8 487.7,150.61 487.7,182.92 "
+       points="543.99,156.8 487.7,150.61 487.7,182.92 543.99,182.35 "
        id="polygon1386-6"
        style="fill:url(#linearGradient2142)"
        transform="matrix(0.65897076,0.31516947,-0.289977,0.71622046,-29.300595,380.47646)" />
@@ -681,27 +714,6 @@
        class="5ed4523f-d5ac-45a3-bd33-d819cd207bba"
        style="fill:url(#601c83a8-af63-4025-9a94-4a1e2189fc3b);stroke:#000000;stroke-width:0.75px;stroke-miterlimit:10"
        d="m 350.28,493.52 -16.59,-3.24 -21.64,102.16 18.09,3.86 z" />
-    <g
-       id="g2716"
-       transform="translate(-473.56066,359.31371)"
-       style="display:inline">
-      <polyline
-         class="72fa0491-577e-46be-b45a-d253e54cd4df"
-         points="787.21 366.91 806.05 366.91 806.05 356.24 824.3 356.24 824.3 344.63 841.24 344.63 841.24 333.24 859.05 333.24 859.05 319.38"
-         id="polyline2708" />
-      <g
-         id="g2714"
-         style="display:inline">
-        <polyline
-           class="af35e063-e748-4344-96ef-6d7df34da6e9"
-           points="787.21 366.91 806.05 366.91 806.05 356.24 824.3 356.24 824.3 344.63 841.24 344.63 841.24 333.24 859.05 333.24 859.05 319.38"
-           id="polyline2710" />
-        <polygon
-           class="a2e923ad-90af-4e08-b5b1-f7ce61988c8d"
-           points="859.05,323.09 847.94,327.81 859.05,301.48 870.16,327.81 "
-           id="polygon2712" />
-      </g>
-    </g>
     <path
        id="polygon1390"
        style="fill:#b3b3b3"
