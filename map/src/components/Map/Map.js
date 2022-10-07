@@ -117,6 +117,11 @@ class ConnectedLevel1 extends React.Component {
     }
   }
 
+  up = () => {
+    const { selectCompany } = this.props
+    selectCompany({ companyId: 199 })
+  }
+
   render() {
     const { selectedCompany } = this.props;
 
@@ -135,6 +140,8 @@ class ConnectedLevel1 extends React.Component {
                 key={idx}
                 onClick={() => this.handleSelected(idx, selectedCompany)} selector={`#g${idx}`} />
             })}
+            <SvgProxy key={1675} onClick={() => this.up()} selector={`#rect1675`} />
+            <SvgProxy key={1571} onClick={() => this.up()} selector={`#rect1571`} />
           </SvgLoader>
         </div>
       </div>
@@ -172,6 +179,11 @@ class ConnectedLevel2 extends React.Component {
     console.log("selecteddd: " + companyId);
   }
 
+  down = () => {
+    const { selectCompany } = this.props
+    selectCompany({ companyId: 99 })
+  }
+
   render() {
     const { selectedCompany } = this.props;
     
@@ -190,6 +202,8 @@ class ConnectedLevel2 extends React.Component {
                 key={idx}
                 onClick={() => this.handleSelected(idx, selectedCompany)} selector={`#g${idx}`} />
             })}
+            <SvgProxy key={1292} onClick={() => this.down()} selector={`#rect1292`} />
+            <SvgProxy key={1294} onClick={() => this.down()} selector={`#rect1294`} />
           </SvgLoader>
         </div>
       </div>
