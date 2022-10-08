@@ -5,12 +5,26 @@
 
 @font-face {
     font-family: ModulusMedium;
+    src: url(/static/font/Modulus_Medium.ttf);
+}
+
+@font-face {
+    font-family: ModulusBold;
     src: url(/static/font/Modulus-Bold.otf);
 }
 
+@font-face {
+    font-family: GluckBold;
+    src: url(/static/font/gluck-bold.ttf);
+}
+
+@font-face {
+    font-family: Gluck;
+    src: url(/static/font/gluck.ttf);
+}
+
 * {
-    /*font-family: 'Lato', sans-serif !important;*/
-    font-family: 'ModulusMedium' !important;
+    font-family: 'Lato', sans-serif !important;
 }
 
 .transparent * {
@@ -62,6 +76,11 @@ h1 {
     font-weight: bold;
     text-transform: uppercase;
     font-size: 2.4rem;
+    font-family: 'Gluck' !important;
+}
+
+h2, h3, h4, h5, h6 {
+    font-family: 'Gluck' !important;
 }
 
 @media screen and (max-width: 960px) {
