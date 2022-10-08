@@ -1,19 +1,4 @@
 @font-face {
-    font-family: Modulus;
-    src: url(/static/font/Modulus.ttf);
-}
-
-@font-face {
-    font-family: ModulusMedium;
-    src: url(/static/font/Modulus_Medium.ttf);
-}
-
-@font-face {
-    font-family: ModulusBold;
-    src: url(/static/font/Modulus-Bold.otf);
-}
-
-@font-face {
     font-family: GluckBold;
     src: url(/static/font/gluck-bold.ttf);
 }
@@ -55,6 +40,10 @@ a {
 
 .cerise-light-back {
     background-color: #ec5f99;
+}
+
+.uk-navbar-nav li a {
+    font-family: "GluckBold" !important;
 }
 
 #page-footer .uk-description-list > dt {
