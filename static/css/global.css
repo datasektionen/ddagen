@@ -1,5 +1,16 @@
+@font-face {
+    font-family: Modulus;
+    src: url(/static/font/Modulus.ttf);
+}
+
+@font-face {
+    font-family: ModulusMedium;
+    src: url(/static/font/Modulus-Bold.otf);
+}
+
 * {
-    font-family: 'Lato', sans-serif !important;
+    /*font-family: 'Lato', sans-serif !important;*/
+    font-family: 'ModulusMedium' !important;
 }
 
 .transparent * {
