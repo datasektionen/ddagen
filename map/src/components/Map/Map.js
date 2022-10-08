@@ -6,6 +6,7 @@ import { PropTypes } from "prop-types";
 import { SvgLoader, SvgProxy } from 'react-svgmt';
 import fairMapLevel1 from "../../assets/level1.svg";
 import fairMapLevel2 from "../../assets/level2.svg";
+import exitImage from '../../assets/exit.jpg';
 
 const mapStateToProps = state => {
   return { companies: state.companies, selectedCompany: state.selectedCompany };
@@ -78,11 +79,16 @@ class ConnectedMap extends React.Component {
     return (
       <div className="Tabs">
         <ul className="nav">
-          <li className={this.state.activeTab === "tab1" ? "active first" : "first"  } onClick={this.handleTab1}>Plan 2</li>
           <li className={this.state.activeTab === "tab2" ? "active second" : "second"} onClick={this.handleTab2}>Plan 3</li>
+          <li className={this.state.activeTab === "tab1" ? "active first" : "first"  } onClick={this.handleTab1}>Plan 2</li>
         </ul>
         <div className="outlet">
           {this.state.activeTab === "tab1" ? <Level1 /> : <Level2 />}
+        </div>
+        <div className="exit-button">
+          <a href="/">
+            <img title="Till ddagen.se" src={exitImage} />
+          </a>
         </div>
       </div>
     );
