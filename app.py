@@ -144,7 +144,7 @@ def map():
 # Redirect to the clicker app.
 @app.route("/clicker", methods=["GET"])
 def clicker():
-    return send_from_directory('static/clicker', 'clicker.html')
+    return redirect('https://clicker.ddagen.se', code=302)
 
 #@app.route("/karta", methods=["GET"])
 #def karta():
