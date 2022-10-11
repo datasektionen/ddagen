@@ -34,3 +34,8 @@
   /*background-color: rgb(230, 230, 230) !important;*/
   border: 3px solid #39A2DB;
 }
+
+.MuiCardHeader-title {
+  font-weight: bold !important;
+  font-size: 18px !important;
+}

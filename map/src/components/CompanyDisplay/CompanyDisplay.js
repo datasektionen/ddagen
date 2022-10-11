@@ -73,7 +73,11 @@ const CompanyDisplay = React.forwardRef(({ company, selected, onMouseDown }, ref
       />
       <Collapse in={selected}>
         <CardContent >
-          <Typography>{company.description}</Typography>
+          <Typography>
+            {company.description}
+            <br/><br/>
+            Webbsida: <a href={company.website} target="_blank">{company.website}</a>
+          </Typography>
         </CardContent>
       </Collapse>
     </Card>
@@ -83,7 +87,7 @@ const CompanyDisplay = React.forwardRef(({ company, selected, onMouseDown }, ref
 CompanyDisplay.propTypes = {
   company: companyType.isRequired,
   selected: PropTypes.bool.isRequired,
-  onMouseDown: PropTypes.func.isRequired
+  onMouseDown: PropTypes.func.isRequired,
 };
 
 export default CompanyDisplay;

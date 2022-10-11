@@ -133,6 +133,10 @@ def interest_ddagenintresseanmalan():
 # Links for apps
 #####################################
 # This is redirect for the map
+@app.route('/karta')
+@app.route('/faq')
+@app.route('/katalog')
+@app.route('/katalog2022')
 @app.route("/map", methods=["GET"])
 def map():
     return send_from_directory("static/map", "index.html")
@@ -149,7 +153,6 @@ def clicker():
 
 # Kataloger
 #####################################
-@app.route('/katalog')
 @app.route('/katalog2021')
 def katalog2021():
     return redirect('https://dsekt-assets.s3.amazonaws.com/naringsliv/d-dagen/katalog_2021', code=302)

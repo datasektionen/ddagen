@@ -26,12 +26,17 @@ class ConnectedCompanyExplorer extends React.Component {
 
   componentDidUpdate() {
     const { selectedCompany } = this.props
-    if (selectedCompany && selectedCompany % 100 != 99) {
+    if (typeof selectedCompany !== "undefined" && selectedCompany % 100 != 99) {
       this.itemRefs[selectedCompany].scrollIntoView({ block: "center", inline: "nearest", behaviour: "smooth" })
     }
   }
 
-  handleSelectCompany(id) {
+  handleSelectCompany(id, e) {
+    // Make sure, if we click a company website link, the box doesn't close:
+    if (e && e.target && e.target.nodeName === "A") {
+      return;
+    }
+
     const { selectedCompany, unselectCompany, selectCompany } = this.props;
     console.log(`selecting company`);
     if (id === selectedCompany) {
@@ -53,7 +58,7 @@ class ConnectedCompanyExplorer extends React.Component {
               company={companyEl}
               key={companyEl.position}
               selected={selectedCompany === companyEl.position}
-              onMouseDown={() => this.handleSelectCompany(companyEl.position)}
+              onMouseDown={(e) => this.handleSelectCompany(companyEl.position, e)}
             />
           ))}
         </div>
