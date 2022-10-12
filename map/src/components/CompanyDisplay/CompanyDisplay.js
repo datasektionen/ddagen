@@ -41,6 +41,23 @@ function avatar(inputProps) {
   return <img src={srcImg} alt="logo" className={classes.imgLogo} />;
 }
 
+function Opportunities(props) {
+  if (props.opportunities) {
+    var opportunities = props.opportunities.split(",") 
+    return (
+      <ul>
+        {opportunities.map(txt => {
+          return (
+            <li>{ txt }</li>
+          );
+        })}
+      </ul>
+    )
+  } else {
+    return ""
+  }
+}
+
 const CompanyDisplay = React.forwardRef(({ company, selected, onMouseDown }, ref) => {
   const classes = useStyles();
 
@@ -76,7 +93,11 @@ const CompanyDisplay = React.forwardRef(({ company, selected, onMouseDown }, ref
           <Typography>
             {company.description}
             <br/><br/>
-            Webbsida: <a href={company.website} target="_blank">{company.website}</a>
+            <span className="bold">Webbsida:</span> <a href={company.website} target="_blank">{company.website}</a>
+            <br/><br/>
+            <span className="bold">Erbjuder:</span>
+            
+            <Opportunities opportunities={company.opportunities}/>
           </Typography>
         </CardContent>
       </Collapse>
