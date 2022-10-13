@@ -117,6 +117,11 @@ def sok(link):
 def sittning():
     return redirect('https://forms.gle/8zoFQSNXsXmHemU57', code=302)
 
+# Redirect to ticket form for then banket
+@app.route('/foto')
+def foto():
+    return redirect('https://forms.gle/GAh9wmkuAqEGkqF67', code=302)
+
 # Company Forms
 # Redirect to application of interest for D-Dagen 2022 in swedish
 @app.route("/2022")
