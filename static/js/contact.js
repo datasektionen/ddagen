@@ -23,7 +23,7 @@ var pageData = [
     {
         title: {sv: "Ekonomi", en: "Finance"},
         persons: [
-            new Person("Felix Almay", "projektgruppen/almay.jpg", "ekonomi@ddagen.se", "Kassör", "Treasurer"),
+            new Person("-", "maskot-bilder/alpa02-ekonomi.png", "ekonomi@ddagen.se", "Kassör", "Treasurer"),
             new Person("Axel Johansson", "projektgruppen/johansson.jpg", "v.ekonomi@ddagen.se", "Vice kassör", "Vice-Treasurer")
         ]
     },
