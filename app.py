@@ -140,8 +140,6 @@ def interest_ddagenintresseanmalan():
 # This is redirect for the map
 @app.route('/karta')
 @app.route('/faq')
-@app.route('/katalog')
-@app.route('/katalog2022')
 @app.route("/map", methods=["GET"])
 def map():
     return send_from_directory("static/map", "index.html")
@@ -158,6 +156,11 @@ def clicker():
 
 # Kataloger
 #####################################
+@app.route('/katalog')
+@app.route('/katalog2022')
+def katalog2022():
+    return redirect('https://dsekt-assets.s3.amazonaws.com/naringsliv/d-dagen/katalog_2022', code=302)
+
 @app.route('/katalog2021')
 def katalog2021():
     return redirect('https://dsekt-assets.s3.amazonaws.com/naringsliv/d-dagen/katalog_2021', code=302)
@@ -170,9 +173,11 @@ def katalog2020():
 def katalog2019():
     return redirect('https://dsekt-assets.s3.amazonaws.com/naringsliv/d-dagen/katalog_2019', code=302)
 
-@app.route('/katalog2018')
-def katalog2018():
-    return redirect('https://dsekt-assets.s3.amazonaws.com/naringsliv/d-dagen/katalog_2018', code=302)
+# Removed because of request from member of Datasektionen that didn't want it to appear among search results
+# on Google.
+#@app.route('/katalog2018')
+#def katalog2018():
+    #return redirect('https://dsekt-assets.s3.amazonaws.com/naringsliv/d-dagen/katalog_2018', code=302)
 
 @app.route('/katalog2017')
 def katalog2017():
