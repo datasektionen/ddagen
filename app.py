@@ -8,7 +8,7 @@ def getPagesSv():
     return [
         ["Start", url_for('.index'), "nav-start"],
         ["Företag", url_for('info4visitors'), "nav-companies"],
-        ["Event", url_for('event'), "nav-event"],
+        #["Event", url_for('event'), "nav-event"],
         ["Kontakta oss", url_for('contact'), "nav-contact"],
         ["Tidigare mässor", url_for('about'), "nav-about"]
     ]
@@ -17,7 +17,7 @@ def getPagesEn():
     return [
         ["Start", url_for('.index', language='en'), "nav-start"],
         ["Companies", url_for('info4visitors', language='en'), "nav-companies"],
-        ["Events", url_for('event', language='en'), "nav-event"],
+        #["Events", url_for('event', language='en'), "nav-event"],
         ["Contact Us", url_for('contact', language='en'), "nav-contact"],
         ["Previous Fairs", url_for('about', language='en'), "nav-about"]
     ]
@@ -94,13 +94,22 @@ def about():
         return render_template('SV/about.html', pages=getPagesSv(), lang=getLangEn(request))
 
 # Event
-@app.route('/event')
-def event():
-    language = request.args.get('language')
-    if language == 'en':
-        return render_template('EN/event.html', pages=getPagesEn(), lang=getLangSv(request))
-    else:
-        return render_template('SV/event.html', pages=getPagesSv(), lang=getLangEn(request))
+#@app.route('/event')
+#def event():
+#    language = request.args.get('language')
+#    if language == 'en':
+#        return render_template('EN/event.html', pages=getPagesEn(), lang=getLangSv(request))
+#    else:
+#        return render_template('SV/event.html', pages=getPagesSv(), lang=getLangEn(request))
+
+# Sök
+@app.route('/2023')
+@app.route('/Sök')
+@app.route('/Sok')
+@app.route('/sök')
+@app.route('/sok')
+def sok():
+    return render_template('SV/sok.html', pages=getPagesSv(), lang=getLangEn(request))
 
 # Forms
 #####################################
@@ -108,9 +117,9 @@ def event():
 # This regex is wrong since it matches any of the characthers in
 # the array 3 times. It should be [Ss][OoÖö][Kk], but since it 
 # dosen't matter the more links it matches on the better. 
-@app.route('/<regex("[SOÖKsoök]{3,3}"):link>/')
-def sok(link):
-    return redirect('https://forms.gle/67pCFajCSgnWhdvN6', code=302)
+#@app.route('/<regex("[SOÖKsoök]{3,3}"):link>/')
+#def sok(link):
+#    return redirect('https://forms.gle/67pCFajCSgnWhdvN6', code=302)
 
 # Redirect to ticket form for then banket
 @app.route('/sittning')
@@ -124,16 +133,9 @@ def foto():
 
 # Company Forms
 # Redirect to application of interest for D-Dagen 2022 in swedish
-@app.route("/2022")
-@app.route("/2022en")
 @app.route("/intresseanmalan")
 def interest_ddagenintresseanmalan():
     return redirect('https://docs.google.com/forms/d/e/1FAIpQLSdHSky4KmmDbMzPjUKk6wpkiHkkysjnqRRlQ6jKzl4f7IKgUA/viewform', code=302)
-
-# Lunchseminars 2021
-#@app.route('/lfscania')
-#def lfscania():
-#    return redirect('https://forms.gle/RbmKCJCfTeWN6L2Z8', code=302)
 
 # Links for apps
 #####################################
