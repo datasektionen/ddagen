@@ -1,0 +1,57 @@
+.uk-card {
+    text-align: left;
+}
+
+.uk-card h3 {
+    text-align: center;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.sok-img img {
+    margin-bottom: 60px;
+}
+
+p {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.uk-card {
+    padding-bottom: 5px;
+    padding-top: 20px;
+}
+
+.uk-container-small {
+    text-align: center;
+    font-size: 20px;
+}
+
+.emoj {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.apply-link {
+    font-size: 27px;
+}
+
+.search-bottom {
+    margin-top: 50px;
+}
+
+@media only screen and (max-width: 960px) {
+    .sok-title {
+        font-size: 30px;
+    }
+
+    .sok-img img {
+        margin-bottom: 10px;
+    }
+}
