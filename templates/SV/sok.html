@@ -13,7 +13,7 @@
         <div class="uk-container uk-container-small">
             <p>Inför D-Dagen 2023 ska vi skala upp verksamheten i både volym och funktioner, det ska bli Datasektionens största och bästa arbetsmarknadsmässa  någonsin! Detta är iallafall visionen vi har som ansvariga i år. Dock är det omöjligt för oss att arrangera ett så här stort evenemang helt själva. Till vår hjälp behöver vi en ambitiös projektgrupp som har drivet att skapa någonting extraordinärt. Vi vill förbättra den interna kommunikation från tidigare år och kommer därför satsa extra mycket på teambuilding för att få en tajt grupp. Vi förväntar oss också att alla i projektgruppen är sociala med god samarbetsförmåga och självgående i sina uppgifter.</p>
             <br>
-            <p class="apply-link">Sök här! <span class="emoj">👉</span> <a href="https://forms.gle/2NnPnoXUXhPhWWim6"> https://forms.gle/2NnPnoXUXhPhWWim6</a></p>
+            <p class="apply-link">Sök här! <span id="firstEmoj" class="emoj">👉</span> <a id="firstLink" href="https://forms.gle/2NnPnoXUXhPhWWim6"> https://forms.gle/2NnPnoXUXhPhWWim6</a></p>
         </div>
 
         <br><br>
@@ -263,5 +263,23 @@
         </div>
     </div>
 </div>
+
+<script>
+    let firstEmoj = document.getElementById("firstEmoj");
+    let firstLink = document.getElementById("firstLink");
+    window.onresize = function(event) {
+        let emojRect = firstEmoj.getBoundingClientRect();
+        let linkRect = firstLink.getBoundingClientRect();
+        if (Math.abs(emojRect.top - linkRect.top) > 10) {
+            document.querySelectorAll(".emoj").forEach((elem) => {
+                elem.innerHTML = "👇";
+            });
+        } else {
+            document.querySelectorAll(".emoj").forEach((elem) => {
+                elem.innerHTML = "👉";
+            });
+        }
+    };
+</script>
 
 {% endblock %}
