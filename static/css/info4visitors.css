@@ -1,8 +1,0 @@
-#main-grid > div > div {
-    box-shadow: none;
-}
-
-.company {
-    object-fit: scale-down;
-    max-height: 200px;
-}
