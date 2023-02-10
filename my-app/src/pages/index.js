@@ -1,9 +1,15 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '@/styles/Home.module.css'
+import en from "@/locales/en";
+import sv from "@/locales/sv";
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const router = useRouter();
+  const t = router.locale === 'sv' ? sv : en;
+
   return (
-    <div><p>Hello World!</p></div>
+    <div>
+      <p>Hello World!</p>
+      <p>{t.home}</p>
+    </div>
   )
 }
