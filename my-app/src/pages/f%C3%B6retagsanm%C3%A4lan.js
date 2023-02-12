@@ -1,6 +1,8 @@
 import en from "@/locales/en";
 import sv from "@/locales/sv";
 import { useRouter } from "next/router";
+import CompanyForm from "@/components/CompanyForm";
+
 
 export default function CTA() {
     const router = useRouter();
@@ -9,6 +11,7 @@ export default function CTA() {
     return (
         <div>
             <p>Företagsanmälan</p>
+            <CompanyForm t={t} />
         </div>
     )
 }
