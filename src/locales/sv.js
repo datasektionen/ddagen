@@ -8,6 +8,14 @@ export default {
         email: 'Meljadress',
         invAddress: 'Faktureringsadress',
         invEmail: 'Mejladress För Fakturering',
-        next: 'Nästa'
-    }
+        next: 'Nästa',
+    },
+    nav: {
+        toContent: 'Till innehåll',
+        home: 'Hem',
+        forCompanies: 'För företag',
+        forStudents: 'För studenter',
+        about: 'Om D-Dagen',
+        companyForm: 'Företagsanmälan',
+    },
 };
