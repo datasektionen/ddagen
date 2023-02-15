@@ -8,6 +8,14 @@ export default {
         email: 'Email Address',
         invAddress: 'Billing Address',
         invEmail: 'Email Address for Billing',
-        next: 'Next'
-    }
+        next: 'Next',
+    },
+    nav: {
+        toContent: 'To content',
+        home: 'Home',
+        forCompanies: 'For companies',
+        forStudents: 'For students',
+        about: 'About D-Dagen',
+        companyForm: 'Company Registration',
+    },
 };
