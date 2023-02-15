@@ -1,6 +1,7 @@
 import en from "@/locales/en";
 import sv from "@/locales/sv";
 import { useRouter } from "next/router";
+import Companies from "./f%C3%B6rf%C3%B6retag";
 
 export default function Home() {
   const router = useRouter();
