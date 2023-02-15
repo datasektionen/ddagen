@@ -8,8 +8,8 @@ export default function Companies() {
 
     return (
         <div className="flex items-center flex-col">
-            <div className="text-center bg-black w-screen py-52 bg-gradient-to-t from-cerise to-black">
-                <h1 className="text-2xl text-white">80+ FÖRETAG 2022</h1>
+            <div className="flex flex-col justify-center text-center w-screen h-screen bg-white bg-foretagBanner bg-cover bg-center bg-no-repeat">
+                <h1 className="text-4xl text-white">80+ FÖRETAG 2022</h1>
                 <p className="text-white">DATASEKTIONEN  VID KTH:S  ARBETSMARKNADSDAG</p>
             </div>
             <div className="flex items-center flex-col text-center m-12">

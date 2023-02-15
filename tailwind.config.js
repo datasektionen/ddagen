@@ -13,6 +13,9 @@ module.exports = {
           light: '#ec5f99',
           DEFAULT: '#e83d84',
         },
+      },
+      backgroundImage: {
+        'foretagBanner': "url('/img/foretag-banner.svg')",
       }
     },
     fontFamily: {
