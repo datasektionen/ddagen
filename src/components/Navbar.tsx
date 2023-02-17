@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import en from "@/locales/en";
 import sv from "@/locales/sv";
 
-function NavLink({ href, children }) {
+function NavLink({ href, children }: { href: string, children: React.ReactNode }) {
     const router = useRouter();
 
     return <Link
@@ -12,11 +12,10 @@ function NavLink({ href, children }) {
     >{children}</Link>;
 }
 
-
 export default function Navbar() {
     const router = useRouter();
     const { locale } = router;
-    const { nav } = locale === "sv" ? sv : en;
+    const { nav } = locale === "en" ? en : sv;
 
     function swapLocale() {
         router.push(router.pathname, router.pathname, {
