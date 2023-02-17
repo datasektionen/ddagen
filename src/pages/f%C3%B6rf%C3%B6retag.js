@@ -1,3 +1,4 @@
+import Link from "next/link";
 import en from "@/locales/en";
 import sv from "@/locales/sv";
 import { useRouter } from "next/router";
@@ -5,6 +6,7 @@ import { useRouter } from "next/router";
 export default function Companies() {
     const router = useRouter();
     const t = router.locale === 'sv' ? sv : en;
+    
 
     return (
         <div className="flex items-center flex-col">
@@ -19,7 +21,10 @@ export default function Companies() {
             <div className="text-center m-12">
                 <h2 className="text-cerise text-2xl mb-6">ANMÄLAN TILL MÄSSAN</h2>
                 <p className="mb-8">BLAH BLAH BLAH BLAH</p>
-                <a className="bg-cerise text-white p-4 mt-8 rounded-full cursor-pointer">FÖRETAGSANMÄLAN</a>
+                <Link
+                    className="bg-cerise-strong p-2.5 rounded-full uppercase text-white"
+                    href="/företagsanmälan"
+                >Företagsanmälan</Link>
             </div>
         </div>
     )
