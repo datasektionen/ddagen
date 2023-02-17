@@ -9,7 +9,7 @@ export default function CTA() {
     const t = router.locale === 'sv' ? sv : en;
 
     return (
-        <div>
+        <div className="bg-webBackground bg-cover bg-center">
             <p>Företagsanmälan</p>
             <CompanyForm t={t} />
         </div>

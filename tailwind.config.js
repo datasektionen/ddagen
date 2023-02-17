@@ -16,6 +16,7 @@ module.exports = {
       },
       backgroundImage: {
         'foretagBanner': "url('/img/foretag-banner.svg')",
+        'webBackground': "url('/img/website-background.svg')",
       }
     },
     fontFamily: {

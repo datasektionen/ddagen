@@ -30,6 +30,7 @@ export default function Navbar() {
             flex justify-between items-center
             bg-gradient-to-t from-transparent to-[#000b]
             uppercase text-white
+            z-50
         ">
             <div className="flex gap-8 items-center ml-14">
                 <a
