@@ -7,12 +7,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        cerise: {
-          strong: '#ee2a7b',
-          regular: '#e83d84',
-          light: '#ec5f99',
-          DEFAULT: '#e83d84',
-        },
+        cerise: '#ee2a7b',
+        darkblue: '#06091d',
+        blue: '#090e2f',
+        gray: '#313234',
+        yellow: '#ffc800',
+        white: '#ffffff',
       }
     },
     fontFamily: {

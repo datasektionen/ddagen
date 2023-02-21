@@ -57,7 +57,7 @@ export default function Navbar() {
             <div className="flex gap-8 items-center mr-10">
                 <NavLink href="/mässan">{nav.about}</NavLink>
                 <Link
-                    className="bg-cerise-strong p-2.5 rounded-full"
+                    className="bg-cerise p-2.5 rounded-full"
                     href="/företagsanmälan"
                 >{nav.companyForm}</Link>
                 <button onClick={swapLocale} className={`
