@@ -4,17 +4,35 @@
 
 @font-face {
     font-family: 'Lato';
-    src: url('/lato/Lato-Regular.ttf') format('truetype');
+    src: url('/fonts/Lato/Lato-Regular.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Lato';
-    src: url('/lato/Lato-Black.ttf') format('truetype');
+    src: url('/fonts/Lato/Lato-Black.ttf') format('truetype');
     font-weight: bold;
 }
 
 @font-face {
     font-family: 'Lato';
-    src: url('/lato/Lato-Italic.ttf') format('truetype');
+    src: url('/fonts/Lato/Lato-Italic.ttf') format('truetype');
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'NeueHaasDisplay';
+    src: url('/fonts/NeueHaasDisplay/NeueHaasDisplayLight.ttf') format('truetype');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NeueHaasDisplay';
+    src: url('/fonts/NeueHaasDisplay/NeueHaasDisplayBold.ttf') format('truetype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'NeueHaasDisplay';
+    src: url('/fonts/NeueHaasDisplay/NeueHaasDisplayLightItalic.ttf') format('truetype');
     font-style: italic;
 }
