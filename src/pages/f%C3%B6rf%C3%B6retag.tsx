@@ -5,7 +5,7 @@ export default function Companies() {
     const t = useLocale()
 
     return (
-        <div className="bg-slate-700 flex h-min-screen flex-col items-center">
+        <div className="bg-[url('/img/website-background3.svg')] bg-cover bg-center flex h-min-screen w-full flex-col items-center">
             <h1 className="text-cerise my-32 text-3xl">För Företag</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-16 bg-white/50 h-30 sm:w-4/5 py-16 sm:px-8 px-2 mx-2 mb-32">
                 <div className="bg-white p-6 sm:p-8 m-auto sm:min-w-[20rem] z-10">
