@@ -65,6 +65,7 @@ export default function Navbar() {
             <nav className="
                 w-full fixed
                 uppercase text-white
+                z-50
             ">
                 <div className="
                     h-20 px-7 flex justify-between items-center
@@ -86,10 +87,10 @@ export default function Navbar() {
                 <div className={`
                     flex justify-between flex-col items-stretch gap-8
                     bg-darkblue lg:bg-transparent
-                    relative transition-all duration-300
-                    -top-20 pt-20
+                    absolute w-full transition-all duration-300
+                    top-0 pt-20
 
-                    lg:left-0 lg:flex-row lg:items-center lg:px-8
+                    lg:left-0 lg:flex-row lg:items-center lg:px-8 lg:pt-0
                 ` + (open ? "left-0" : "-left-full")
                 }>
                     <a
@@ -118,9 +119,6 @@ export default function Navbar() {
                     </div>
                 </div>
             </nav>
-            <div className="h-20">{
-                /* Just here to take up the space of the actual navbar (when it is minimized on small screens) */
-            }</div>
         </>
     );
 }
