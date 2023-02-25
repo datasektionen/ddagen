@@ -100,7 +100,7 @@ export default function Footer() {
               <span className="ml-[8px] text-cerise">ansvarig@ddagen.se</span>
             </p>
             <p className="pl-[15%] md:pl-[0%] mb-[1px]  text-xs text-[#DADADA] pointer-events-none">
-              <FooterLink href="about">{footer.saleGroup}:</FooterLink>
+              <FooterLink href="about">{footer.salesGroup}:</FooterLink>
               <span className="ml-[52px] text-cerise">sales@ddagen.se</span>
             </p>
           </div>
