@@ -24,12 +24,27 @@ export default function ExhibitorRegistration() {
     const [registationDone, setRegistationDone] = useState(false);
 
     return (
-        <div className="bg-webBackground bg-cover bg-top">
-            {registationDone ? (
-                <RegistrationConfirmation t={t.postCompanyForm} />
-            ) : (
-                <CompanyForm t={t} onRegistationDone={() => setRegistationDone(true)} />
-            )}
+        <div className="
+            bg-gradient-to-b
+            from-[rgb(17,12,48)]
+            to-[rgb(238,42,123)]
+        ">
+            <div className="
+                bg-webBackground bg-cover bg-top
+            ">
+                <div className="
+                    bg-blend-color
+                    bg-gradient-to-b
+                    from-[rgba(17,12,48,0)]
+                    to-[rgba(238,42,123,0.38)]
+                ">
+                    {registationDone ? (
+                        <RegistrationConfirmation t={t.postCompanyForm} />
+                    ) : (
+                        <CompanyForm t={t} onRegistationDone={() => setRegistationDone(true)} />
+                    )}
+                </div>
+            </div>
         </div>
     );
 }

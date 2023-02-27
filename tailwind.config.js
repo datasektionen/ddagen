@@ -15,7 +15,7 @@ module.exports = {
         white: '#ffffff',
       },
       backgroundImage: {
-        'webBackground': "url('/img/website-background.svg')",
+        'webBackground': "url('/img/bg.webp')",
       }
     },
     fontFamily: {
