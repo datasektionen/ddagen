@@ -2,110 +2,124 @@ import { type FormEvent, useState } from "react";
 import firebase from "../../firebase/clientApp";
 import type Locale from "@/locales";
 
-export default function CompanyForm({ t }: { t: Locale }) {
+function InputField({
+    name,
+    type = "text",
+    pattern,
+    value,
+    setValue,
+    t,
+}: {
+    name: keyof Locale["companyForm"],
+    type?: React.HTMLInputTypeAttribute,
+    pattern?: string,
+    value: string,
+    setValue: (value: string) => void,
+    t: Locale,
+}) {
+    return (
+        <div className="my-16 relative">
+            <input
+                required
+                placeholder=" "
+                type={type}
+                pattern={pattern}
+                className="
+                    w-full py-2 px-1 leading-tight
+                    bg-transparent appearance-none
+                    text-slate-400
+                    border-b-2 border-red-500 valid:border-slate-400
+                    placeholder-shown:border-slate-400 focus:border-cerise
+                    focus:outline-none focus:shadow-outline
+                    peer
+                "
+                id={name}
+                name={name}
+                value={value}
+                onChange={(e) => setValue(e.target.value)} />
+            <label htmlFor={name} className="
+                transform transition-all absolute top-0 left-0 -translate-y-full
+                text-slate-400 peer-focus:text-cerise font-medium
+                peer-focus:-translate-y-full peer-placeholder-shown:translate-y-0
+                cursor-text autofill:bg-transparent uppercase
+                md:peer-placeholder-shown:text-lg md:text-sm md:peer-focus:text-sm
+                peer-placeholder-shown:text-xs text-[9px] peer-focus:text-[9px]
+            ">{t.companyForm[name]}:</label>
+        </div>
+    );
+}
+
+export default function CompanyForm({ t, onRegistationDone }: { t: Locale, onRegistationDone: () => void }) {
     const db = firebase.firestore();
 
-    const [name, setName] = useState("");
-    const [orgNum, setOrgNum] = useState("");
-    const [contact, setContact] = useState("");
+    const [companyName, setCompanyName] = useState("");
+    const [organizationNumber, setOrganizationNumber] = useState("");
     const [email, setEmail] = useState("");
-    const [invAddress, setInvAddress] = useState("");
-    const [invEmail, setInvEmail] = useState("");
+    const [contactPerson, setContactPerson] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
+
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
 
     async function addCompanyDocument(e: FormEvent) {
         e.preventDefault();
         // TODO Decide on how user id
-        await db.collection('Företag').add({
-            Företagsnamn: name,
-            Organisationsnummer: orgNum,
-            Kontaktperson: contact,
-            Meljadress: email,
-            Faktureringsadress: invAddress,
-            MejladressFörFakturering: invEmail
-        });
+        try {
+            setLoading(true);
+            await db.collection("exhibitor").add({
+                companyName,
+                organizationNumber,
+                email,
+                contactPerson,
+                phoneNumber,
+            });
+        } catch (err) {
+            console.error(err);
+            setError(true);
+            return;
+        } finally {
+            setLoading(false);
+        }
+        onRegistationDone();
     }
 
     return (
-        <div className="w-full max-w-lg ">
+        <div className="w-full flex flex-col justify-center items-center py-40">
+            <h1 className="text-3xl md:text-5xl text-cerise uppercase">{t.companyForm.title}</h1>
 
-            <form method="post" className="px-8 pt-6 pb-8 mb-4 bg-white rounded shadow-md ">
-                <div className="mb-4">
-                    <label htmlFor="name" className="block text-gray-700 font-bold mb-2 text-lg">{t.companyForm.name}:</label>
-                    <input
-                        type="text"
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="name"
-                        name="name"
-                        value={name}
-                        onChange={(e) => {setName(e.target.value);}} />
+            <form
+                method="post"
+                className="bg-transparent w-3/5 mt-12"
+                onSubmit={addCompanyDocument}
+            >
+                <InputField name="name" value={companyName} setValue={setCompanyName} t={t} />
+                <InputField
+                    name="organizationNumber"
+                    pattern="[- ]*(\d[- ]*){10}"
+                    value={organizationNumber}
+                    setValue={setOrganizationNumber}
+                    t={t}
+                />
+                <InputField name="email" type="email" value={email} setValue={setEmail} t={t} />
+                <InputField name="contactPerson" value={contactPerson} setValue={setContactPerson} t={t} />
+                <InputField name="phoneNumber" type="tel" value={phoneNumber} setValue={setPhoneNumber} t={t} />
+
+                <div className="flex flex-col items-center justify-between">
+                    <input type="submit" disabled={loading} value={t.companyForm.confirm} className="
+                        bg-cerise transition-transform hover:scale-110 focus:scale-110 focus:outline-none
+                        text-white font-bold uppercase
+                        py-2 px-4 rounded-full cursor-pointer disabled:cursor-wait disabled:grayscale
+                    "/>
                 </div>
-
-                <div className="mb-4">
-                    <label htmlFor="orgNum" className="block text-gray-700 font-bold mb-2 text-lg">{t.companyForm.orgNum}:</label>
-                    <input
-                        type="text"
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="orgNum"
-                        name="orgNum"
-                        value={orgNum}
-                        onChange={(e) => {setOrgNum(e.target.value);}}
-                    />
-                </div>
-
-                <div className="mb-4">
-                    <label htmlFor="contact" className="block text-gray-700 font-bold mb-2 text-lg">{t.companyForm.contact}:</label>
-                    <input
-                        type="text"
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="contact"
-                        name="contact"
-                        value={contact}
-                        onChange={(e) => {setContact(e.target.value);}}
-                    />
-                </div>
-
-                <div className="mb-4">
-                    <label htmlFor="email" className="block text-gray-700 font-bold mb-2 text-lg">{t.companyForm.email}:</label>
-                    <input
-                        type="text"
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="email"
-                        name="email"
-                        value={email}
-                        onChange={(e) => {setEmail(e.target.value);}}
-                    />
-                </div>
-
-                <div className="mb-4">
-                    <label htmlFor="invAddress" className="block text-gray-700 font-bold mb-2 text-lg">{t.companyForm.invAddress}:</label>
-                    <input
-                        type="text"
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="invAddress"
-                        name="invAddress"
-                        value={invAddress}
-                        onChange={(e) => {setInvAddress(e.target.value);}}
-                    />
-                </div>
-
-                <div className="mb-6">
-                    <label htmlFor="invEmail" className="block text-gray-700 font-bold mb-2 text-lg">{t.companyForm.invEmail}:</label>
-                    <input
-                        type="text"
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="invEmail"
-                        name="invEmail"
-                        value={invEmail}
-                        onChange={(e) => {setInvEmail(e.target.value);}}
-                    />
-                </div>
-
-                <div className="flex items-center justify-between">
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={(e) => addCompanyDocument(e)}>
-                        {t.companyForm.next}
-                    </button>
-                </div>
-
+                {error && <p className="text-red-500 text-center mt-5">
+                    {t.companyForm.error} <a href={"mailto:sales@ddagen.se?body=" + encodeURIComponent(
+                        `Namn: ${companyName}.\n` +
+                        `Organisationsnummer: ${organizationNumber}.\n` +
+                        `E-post: ${email}.\n` +
+                        `Kontaktperson: ${contactPerson}.\n` +
+                        `Telefonnummer: ${phoneNumber}.\n`
+                    )} className="text-cerise hover:underline">sales@ddagen.se</a>
+                </p>}
             </form>
         </div>
     );
