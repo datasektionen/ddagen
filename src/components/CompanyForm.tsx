@@ -14,7 +14,7 @@ function InputField({
     type?: React.HTMLInputTypeAttribute,
     pattern?: string,
     value: string,
-    setValue: (value: string) => void,
+    setValue: (value: string, element: HTMLInputElement) => void,
     t: Locale,
 }) {
     return (
@@ -36,7 +36,7 @@ function InputField({
                 id={name}
                 name={name}
                 value={value}
-                onChange={(e) => setValue(e.target.value)} />
+                onChange={(e) => setValue(e.target.value, e.target)} />
             <label htmlFor={name} className="
                 transform transition-all absolute top-0 left-0 -translate-y-full
                 text-slate-400 peer-focus:text-cerise font-medium
@@ -83,6 +83,29 @@ export default function CompanyForm({ t, onRegistationDone }: { t: Locale, onReg
         onRegistationDone();
     }
 
+    function trySetOrganizationNumber(value: string, element: HTMLInputElement) {
+        value = value.replace(/[^0-9- ]/g, "");
+        setOrganizationNumber(value);
+
+        let numbers = value.split("").filter(c => !"- ".includes(c)).map(c => parseInt(c));
+        if (numbers.length !== 10) {
+            element.setCustomValidity(t.companyForm.organizationNumberLength);
+            return;
+        }
+
+        // https://sv.wikipedia.org/wiki/Luhn-algoritmen
+        let checksum = numbers
+            .map((x, i) => i % 2 > 0 ? x : (x < 5 ? x * 2 : x * 2 - 9))
+            .reduce((a, b) => a + b, 0)
+            % 10;
+        if (checksum !== 0) {
+            element.setCustomValidity(t.companyForm.organizationNumberChecksum);
+            return;
+        }
+
+        element.setCustomValidity("");
+    }
+
     return (
         <div className="w-full flex flex-col justify-center items-center py-40">
             <h1 className="text-3xl md:text-5xl text-cerise uppercase">{t.companyForm.title}</h1>
@@ -95,9 +118,8 @@ export default function CompanyForm({ t, onRegistationDone }: { t: Locale, onReg
                 <InputField name="name" value={companyName} setValue={setCompanyName} t={t} />
                 <InputField
                     name="organizationNumber"
-                    pattern="[- ]*(\d[- ]*){10}"
                     value={organizationNumber}
-                    setValue={setOrganizationNumber}
+                    setValue={trySetOrganizationNumber}
                     t={t}
                 />
                 <InputField name="email" type="email" value={email} setValue={setEmail} t={t} />

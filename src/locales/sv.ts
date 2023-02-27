@@ -10,6 +10,8 @@ export default {
         phoneNumber: "Telefonnummer",
         confirm: "Skicka",
         error: "Något gick fel! Försök igen eller skicka oss istället ett mail till",
+        organizationNumberLength: 'Organisationsnumret måste vara 10 siffror',
+        organizationNumberChecksum: 'Felaktig kontrollsiffra, kontrollera att du skrivit rätt',
     },
     postCompanyForm: {
         title: "Intresseanmälan bekräftad",
