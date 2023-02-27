@@ -10,6 +10,8 @@ export default {
         phoneNumber: "Phone Number",
         confirm: "Send",
         error: "Something went wrong! Try again or send us an email instead to",
+        organizationNumberLength: 'The organization number must be 10 digits',
+        organizationNumberChecksum: 'Invalid check digit, check that you have entered the number correctly',
     },
     postCompanyForm: {
         title: "Registration confirmed",
