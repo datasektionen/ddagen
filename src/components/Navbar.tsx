@@ -8,7 +8,7 @@ function NavLink({ href, children, "class": className }: { href: string, childre
     const router = useRouter();
 
     return <Link
-        className={className + (router.pathname == encodeURI(href) ? " text-cerise" : "")}
+        className={className + " hover:text-cerise" + (router.pathname == encodeURI(href) ? " text-cerise" : "")}
         href={href}
     >{children}</Link>;
 }
@@ -40,7 +40,8 @@ export default function Navbar() {
 
     function swapLocale() {
         router.push(router.pathname, router.pathname, {
-            locale: locale === "sv" ? "en" : "sv"
+            locale: locale === "sv" ? "en" : "sv",
+            scroll: false,
         });
     }
 
@@ -71,9 +72,9 @@ export default function Navbar() {
                     h-20 px-7 flex justify-between items-center
                     bg-gradient-to-t from-transparent to-[#000b]
                     w-full
-                    lg:absolute
+                    lg:absolute lg:justify-center
                 ">
-                    <Logo class="lg:hidden z-10" />
+                    <Logo class="z-10" />
                     <button className="w-9 h-8 z-10 relative lg:hidden" data-dont-close onClick={() => setOpen(open => !open)}>
                         <div data-dont-close className={"transition-all absolute h-1/5 bg-white rounded-md " +
                             (open ? "rotate-45 top-[40%] w-[120%]" : "top-0 w-full")} />
@@ -100,22 +101,26 @@ export default function Navbar() {
                     <NavLink class="px-14 lg:px-0" href="/">{nav.home}</NavLink>
                     <NavLink class="px-14 lg:px-0" href="/förföretag">{nav.forCompanies}</NavLink>
                     {/*<NavLink class="px-14 lg:px-0" href="/förstudenter">{nav.forStudents}</NavLink>*/}
-                    <Logo class="hidden lg:block mx-auto" />
                     {/*<NavLink class="px-14 lg:px-0" href="/mässan">{nav.about}</NavLink>*/}
-                    <div className="flex flex-row justify-center items-center py-4 gap-8 lg:px-0 bg-blue lg:bg-transparent ">
+                    <div className="
+                        flex flex-row justify-center items-center
+                        py-4 gap-8
+                        lg:px-0 bg-blue lg:bg-transparent lg:ml-auto
+                    ">
                         <Link
-                            className="bg-cerise p-2.5 rounded-full text-center"
+                            className="bg-cerise py-2.5 px-4 rounded-full text-center hover:scale-105 transition-transform"
                             href="/företagsanmälan"
                         >{nav.companyForm}</Link>
-                        <button data-dont-close onClick={swapLocale} title={nav.changeLanguage} className={`
+                        <button data-dont-close onClick={swapLocale} className={`
                             w-8 h-8
                             rounded-full border-none
                             bg-no-repeat bg-center bg-[length:180%]
+                            transition-transform hover:scale-110
                             ` + (locale == "sv"
                                 ? "bg-[url(/img/uk-flag.svg)]"
                                 : "bg-[url(/img/se-flag.svg)]"
                             )}
-                        ></button>
+                        ><img className="sr-only" alt={nav.changeLanguage} /></button>
                     </div>
                 </div>
             </nav>
