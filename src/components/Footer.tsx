@@ -20,17 +20,20 @@ export default function Footer() {
 
   return (
     <footer className="
-      w-full flex justify-center
+    
       font-['NeueHaasDisplay']
       bg-fill bg-[#2D2D2D]
+      min-h-[300px]
+      flex flex-grow
+
     ">
       <div
-        className="relative w-full  h-[400px] md:h-[300px] bottom-[0px] md:bottom-[40px] px-[0px] pt-[20px] md:pt-[80px] md:py-[10px] flex flex-col 
+        className="relative w-full  h-[400px] md:h-[300px] pt-[20px] md:pt-[40px]  flex flex-col 
       md:flex-row r items-center md:items-stretch md:justify-between md:px-[100px]"
       >
         <div className="
           flex flex-col md:border-r-[1px] border-[#636363]
-          pl-[15%] md:pl-[0px] md:pr-[20px] order-last md:order-first w-[95%] md:w-max md:items-center
+          pl-[15%] md:pl-[0px] md:pr-[20px] order-last md:order-first w-[95%] md:w-max md:items-center h-[400px] md:h-[200px]
         ">
           <p className="font-['NeueHaasDisplay'] w-[220px] md:w-[230px] font-bold text-[#DADADA] text-xs md:pr-[20px]">
             {footer.header}
@@ -55,7 +58,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col md:border-l-[1px] border-[#636363] pb-[0px] md:pl-[40px] w-[95%] md:w-max">
+        <div className="flex flex-col md:border-l-[1px] border-[#636363] pb-[0px] md:pl-[40px] w-[95%] md:w-max h-[200px]">
           <div className="px-[15%] md:px-0 flex justify-between border-b-[0.5px] border-[#636363] md:h-[40px] mb-3 md:w-[130px]">
             <a
               target="_blank"

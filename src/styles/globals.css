@@ -36,3 +36,11 @@
     src: url('/fonts/NeueHaasDisplay/NeueHaasDisplayLightItalic.ttf') format('truetype');
     font-style: italic;
 }
+
+@layer components {
+    #__next {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+}
