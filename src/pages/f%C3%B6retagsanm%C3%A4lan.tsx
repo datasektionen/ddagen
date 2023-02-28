@@ -24,19 +24,11 @@ export default function ExhibitorRegistration() {
     const [registationDone, setRegistationDone] = useState(false);
 
     return (
-        <div className="
-            bg-gradient-to-b
-            from-[rgb(17,12,48)]
-            to-[rgb(238,42,123)]
-        ">
             <div className="
-                bg-webBackground bg-cover bg-top
+                bg-[linear-gradient(rgba(17,12,48,0),rgba(238,42,123,0.88)),url('/img/img2.png')] bg-cover bg-top
+                bg-blend-color
             ">
                 <div className="
-                    bg-blend-color
-                    bg-gradient-to-b
-                    from-[rgba(17,12,48,0)]
-                    to-[rgba(238,42,123,0.38)]
                 ">
                     {registationDone ? (
                         <RegistrationConfirmation t={t.postCompanyForm} />
@@ -45,6 +37,6 @@ export default function ExhibitorRegistration() {
                     )}
                 </div>
             </div>
-        </div>
+        
     );
 }
