@@ -32,7 +32,7 @@ export default {
         header: "Organized by Datasektionen",
         about: "Datasektionen, or the Computer Science Chapeter is a non-profit student chapter under THS which exists to give all CS students at KTH the best study time possible.",
         contactHeader: "Contact",
-        responsible: "D-dagenansvariga",
-        salesGroup: "Salesgroup",
+        responsible: "Project Managers",
+        salesGroup: "Sales Team",
     },
 };

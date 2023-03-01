@@ -32,7 +32,7 @@ export default {
         header: "Arrangeras av Konglig Datasektionen vid Kungliga Tekniska Högskolan",
         about: "Konglig Datasektionen är en ideell studentsektion under Tekniska Högskolans Studentkår som finns till för att alla studenter som läser datateknik på KTH ska få en så bra och givande studietid som möjligt",
         contactHeader: "Kontakt",
-        responsible: "D-dagenansvariga",
-        salesGroup: "Säljgrupp",
+        responsible: "D-Dagenansvariga",
+        salesGroup: "Säljgruppen",
     },
 };
