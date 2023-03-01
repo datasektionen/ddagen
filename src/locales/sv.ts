@@ -20,6 +20,18 @@ export default {
       secondPart: "3000+ deltagare",
     },
   },
+  forCompanies: {
+    title: "För Företag",
+    aboutFair: "Om mässan",
+    fairText1:
+      "D-Dagen är Datasektionens årliga arbetsmarknadsdag. Det är ett heldagsevent där företag och studenter verksamma inom data och IT får en möjlighet att knyta kontakter och lära känna varandra. Detta skapar goda möjligheter för en mer direkt och personlig kontakt mellan företagsrepresentanter och studenter.",
+    fairText2:
+      "I år hålls mässan 12e oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15-19 på KTH Campus Valhallavägen. Under dagen kommer det finnas en lounge för utställare, och på kvällen anordnas en bankett för att avsluta dagen.",
+    intrestedTitle: "Intresserad?",
+    intrestedText:
+      "Är du intresserad av att ställa ut på D-dagen och knyta kontakt med tusentals studenter inom Data och IT? Klicka här nedan för att göra en intresseanmälan!",
+    formButton: "Intresseanmälan",
+  },
   companyForm: {
     title: "Intresseanmälan",
     name: "Företagsnamn",
