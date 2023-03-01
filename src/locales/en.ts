@@ -20,6 +20,18 @@ export default {
       secondPart: "3000+ participants",
     },
   },
+  forCompanies: {
+    title: "For Companies",
+    aboutFair: "About the fair",
+    fairText1:
+      "D-Dagen is the Computer Science Chapter’s annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
+    fairText2:
+      "This year the fair is held on October 12th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15-19 on the KTH Campus Valhallavägen. During the day there will be a lounge for exhibitors, and in the evening a banquet will be organized to end the day.",
+    intrestedTitle: "Interested?",
+    intrestedText:
+      "Are you interested in exhibiting on D-Dagen and connecting with thousands of students in Computer Science and IT? Click below to sign up!",
+    formButton: "Sign up",
+  },
   companyForm: {
     title: "Sign up for D-Dagen",
     name: "Company Name",
