@@ -26,6 +26,21 @@
 }
 
 @font-face {
+    font-family: 'NeueHaasDisplayRoman';
+    src: url('/fonts/NeueHaasDisplay/NeueHaasDisplayRoman.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'NeueHaasDisplayBlack';
+    src: url('/fonts/NeueHaasDisplay/NeueHaasDisplayBlack.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'NeueHaasDisplayMedium';
+    src: url('/fonts/NeueHaasDisplay/NeueHaasDisplayMediu.ttf') format('truetype');
+}
+
+@font-face {
     font-family: 'NeueHaasDisplay';
     src: url('/fonts/NeueHaasDisplay/NeueHaasDisplayBold.ttf') format('truetype');
     font-weight: bold;
