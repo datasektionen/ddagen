@@ -23,13 +23,9 @@ export default function ExhibitorRegistration() {
 
     const [registationDone, setRegistationDone] = useState(false);
 
-    return (
-        <div className="bg-webBackground bg-cover bg-top">
-            {registationDone ? (
-                <RegistrationConfirmation t={t.postCompanyForm} />
-            ) : (
-                <CompanyForm t={t} onRegistationDone={() => setRegistationDone(true)} />
-            )}
-        </div>
-    );
+    if (registationDone) {
+        return <RegistrationConfirmation t={t.postCompanyForm} />;
+    } else {
+        return <CompanyForm t={t} onRegistationDone={() => setRegistationDone(true)} />;
+    }
 }

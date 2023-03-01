@@ -14,9 +14,6 @@ module.exports = {
         yellow: '#ffc800',
         white: '#ffffff',
       },
-      backgroundImage: {
-        'webBackground': "url('/img/website-background.svg')",
-      }
     },
     fontFamily: {
       sans: ['Lato', 'sans-serif'],
