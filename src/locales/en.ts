@@ -68,4 +68,33 @@ export default {
     responsible: "Project Managers",
     salesGroup: "Sales Team",
   },
+  email: {
+    subject: "Exhibitor Registration Confirmation",
+    body: (
+      companyName: string,
+      organizationNumber: string,
+      email: string,
+      contactPerson: string,
+      phoneNumber: string
+    ) => {
+      return `
+      <p>Hi!</p>
+      <p>We are pleased to confirm we have received your exhibitor registration. 
+      You will be contacted by a salesperson with more information about the fair.</p>
+
+      <p>Here are the details of your registration:</p>
+      <ul>
+        <li>Company Name: ${companyName}</li>
+        <li>Organization Number: ${organizationNumber}</li>
+        <li>Email Address: ${email}</li>
+        <li>Contact Person: ${contactPerson}</li>
+        <li>Phone Number: ${phoneNumber}</li>
+      </ul>
+      <p>Let us know if any of the information above is incorrect.</p>
+      <p>Thank you for your registration and we look forward to a successful event.</p>
+
+      <p>Best regards,</p>
+      <p>X</p>`;
+    },
+  },
 };

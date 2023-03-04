@@ -70,4 +70,33 @@ export default {
     responsible: "D-Dagenansvariga",
     salesGroup: "Säljgruppen",
   },
+  email: {
+    subject: "Bekräftelse på Företagsanmälan",
+    body: (
+      companyName: string,
+      organizationNumber: string,
+      email: string,
+      contactPerson: string,
+      phoneNumber: string
+    ) => {
+      return `
+      <p>Hej!</p>
+      <p>Vi kan härmed bekräfta att vi har mottagit er företagsanmälan. 
+      Ni kommer bli kontaktade av en säljare med mer information om mässan.</p>
+
+      <p>Här är detaljerna från er företagsanmälan:</p>
+      <ul>
+        <li>Företagsnamn: ${companyName}</li>
+        <li>Organisationsnummer: ${organizationNumber}</li>
+        <li>Mejladress: ${email}</li>
+        <li>Kontaktperson: ${contactPerson}</li>
+        <li>Telefonnummer: ${phoneNumber}</li>
+      </ul>
+      <p>Kontakta oss om någon av ovanstående uppgifter är felaktig.</p>
+      <p>Tack för er registrering och vi ser fram emot en lyckad mässa.</p>
+
+      <p>Best regards,</p>
+      <p>X</p>`;
+    },
+  },
 };
