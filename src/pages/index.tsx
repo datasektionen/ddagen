@@ -17,7 +17,11 @@ export default function Home() {
           <div className="relative lg:py-[150px] py-[75px]">
             <img
               className="absolute w-full h-[290px]"
-              src="/img/d-dagen-logo.svg"
+              src={
+                t.locale == "sv"
+                  ? "/img/d-dagen-logo-sv.svg"
+                  : "/img/d-dagen-logo-en.svg"
+              }
               alt="D-dagen Logo"
             />
 
