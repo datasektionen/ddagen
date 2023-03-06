@@ -28,13 +28,13 @@ export default function ForCompanies() {
                 <section className="mt-12 grid md:grid-cols-2 md:p-20 md:place-items-end">
                     <h2 className="
                         md:hidden font-bold text-5xl text-darkblue mb-2
-                    ">{t.forCompanies.intrestedTitle}</h2>
+                    ">{t.forCompanies.interestedTitle}</h2>
                     <img className="bg-gray relative bg-[#000b] md:left-8 md:-top-8" src="/img/ff2.webp" alt="People talking" />
                     <section className="bg-cerise p-6 z-10">
                         <h2 className="
                             hidden md:block font-bold text-4xl text-darkblue mb-2
-                        ">{t.forCompanies.intrestedTitle}</h2>
-                        <p className="pb-8">{t.forCompanies.intrestedText}</p>
+                        ">{t.forCompanies.interestedTitle}</h2>
+                        <p className="pb-8">{t.forCompanies.interestedText}</p>
                         <Link className="
                             bg-white py-3 px-4 rounded-full text-cerise font-bold uppercase
                             w-max block mx-auto md:mx-0 mb-6
