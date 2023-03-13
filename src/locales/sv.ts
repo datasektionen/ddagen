@@ -34,6 +34,7 @@ export default {
   },
   companyForm: {
     title: "Intresseanmälan",
+    description:"Fyll i formuläret för att registrera ert företag för D-Dagen 2023. OBS! En intresseanmälan är inte bindande.",
     fields: {
       name: "Företagsnamn",
       organizationNumber: "Organisationsnummer",
