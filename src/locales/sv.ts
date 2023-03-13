@@ -6,14 +6,14 @@ export default {
   about: "Om Oss",
   home: {
     introFirstBlock:
-      "Nu är det återigen dags för D-dagen, Nordens största arbetsmarknads-dag för datateknikstudenter.",
+      "Nu är det återigen dags för D-Dagen, Nordens största arbetsmarknads-dag för datateknikstudenter.",
     introSecondBlock:
-      "Är du en student inom data eller IT och söker efter din framtida arbetsplats,  eller representerar du ett företag som letar talangfulla medarbetare? Då är D-dagen ett perfekt tillfälle för dig att träffa personer inom branschen och knyta värdefulla kontakter! Vi strävar mot att årets mässa ska bli den största hittills, med över 100 utställare och 3000 deltagare. ",
+      "Är du en student inom data eller IT och söker efter din framtida arbetsplats,  eller representerar du ett företag som letar talangfulla medarbetare? Då är D-Dagen ett perfekt tillfälle för dig att träffa personer inom branschen och knyta värdefulla kontakter! Vi strävar mot att årets mässa ska bli den största hittills, med över 100 utställare och 3000 deltagare. ",
     introSignOff: "Hoppas vi ses!",
-    introDDA: "Axel Johansson & Johan Abdi, D-dagenansvariga",
+    introDDA: "Axel Johansson & Johan Abdi, D-Dagenansvariga",
     representative: "Företagsrepresentant?",
     representativeDescription:
-      "Vill du nå ut till tusentals civilingenjörs-studenter vid KTH? Som utställare på D-dagen har du möjlighet att göra just det! Klicka här nedanför för att läsa mer och göra en intresseanmälan.",
+      "Vill du nå ut till tusentals civilingenjörs-studenter vid KTH? Som utställare på D-Dagen har du möjlighet att göra just det! Klicka här nedanför för att läsa mer och göra en intresseanmälan.",
     representativeButton: "Intresseanmälan",
     stats: {
       firstPart: "100+ utställare",
@@ -29,7 +29,7 @@ export default {
       "I år hålls mässan 12e oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15-19 på KTH Campus Valhallavägen. Under dagen kommer det finnas en lounge för utställare, och på kvällen anordnas en bankett för att avsluta dagen.",
     interestedTitle: "Intresserad?",
     interestedText:
-      "Är du intresserad av att ställa ut på D-dagen och knyta kontakt med tusentals studenter inom Data och IT? Klicka här nedan för att göra en intresseanmälan!",
+      "Är du intresserad av att ställa ut på D-Dagen och knyta kontakt med tusentals studenter inom Data och IT? Klicka här nedan för att göra en intresseanmälan!",
     formButton: "Intresseanmälan",
   },
   companyForm: {
