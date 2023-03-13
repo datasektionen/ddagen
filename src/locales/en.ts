@@ -6,14 +6,14 @@ export default {
   about: "About Us",
   home: {
     introFirstBlock:
-      "It’s once again time for D-dagen, the largest job fair for Computer Science students in the Nordics.",
+      "It’s once again time for D-Dagen, the largest job fair for Computer Science students in the Nordics.",
     introSecondBlock:
-      "Are you studing computer science or IT and looking for your future work place, or do you represent a company and are looking for talented co-workers? In that case, D-dagen is the perfect opportunity for you to meet people from the industry and expand your network with valuable contacts! We’re striving to make this years fair the largest so far, with over 100 exhibitors and 3000 participants.",
+      "Are you studing computer science or IT and looking for your future work place, or do you represent a company and are looking for talented co-workers? In that case, D-Dagen is the perfect opportunity for you to meet people from the industry and expand your network with valuable contacts! We’re striving to make this years fair the largest so far, with over 100 exhibitors and 3000 participants.",
     introSignOff: "Looking forward to meeting you!",
     introDDA: "Axel Johansson & Johan Abdi, Project Managers",
     representative: "Company Representative?",
     representativeDescription:
-      "Do you want to reach thousands of civil engineering students at KTH? As an exhibitor at D-dagen you have thet opportunity to do so! Click down bellow to read more and register your interest.",
+      "Do you want to reach thousands of civil engineering students at KTH? As an exhibitor at D-Dagen you have thet opportunity to do so! Click down bellow to read more and register your interest.",
     representativeButton: "Interest Registration",
     stats: {
       firstPart: "100+ exhibitors",
