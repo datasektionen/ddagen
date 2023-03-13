@@ -34,6 +34,7 @@ export default {
   },
   companyForm: {
     title: "Sign up for D-Dagen",
+    description: "Fill in this form to sign up your company for D-Dagen 2023. Please note that signing up through to this form is not binding.",
     fields: {
       name: "Company Name",
       organizationNumber: "Organization Number",
