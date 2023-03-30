@@ -1,6 +1,114 @@
 import { useLocale } from "@/locales";
 import React, { useState } from "react";
 
+function Table1(){
+  return(
+  <div className="mt-[50px]">
+
+    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"> WHAT IS D-DAGEN?</button>
+    <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center ">
+    <p className="text-white">Lorem ipsum...</p>
+    </div>
+
+    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">WHEN IS THIS YEAR'S D-DAGEN FAIR?</button>
+    <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
+    <p className="text-white">Lorem ipsum...</p>
+    </div>
+
+    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">WHERE IS D-DAGEN?</button>
+    <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
+    <p className="text-white">Lorem ipsum...</p>
+    </div>
+
+    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">HOW CAN I FIND ALL THE EVENTS THAT D-DAGEN ARRANGES</button>
+    <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
+    <p className="text-white">Lorem ipsum...</p>
+    </div>
+
+</div>)
+}
+
+function Table2(){
+  return(
+  <div className="mt-[50px]">
+
+    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"> WHAT IS D-DAGEN?</button>
+    <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center ">
+    <p className="text-white">Lorem ipsum...</p>
+    </div>
+
+    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">WHEN IS THIS YEAR'S D-DAGEN FAIR?</button>
+    <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
+    <p className="text-white">Lorem ipsum...</p>
+    </div>
+
+    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">WHERE IS D-DAGEN?</button>
+    <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
+    <p className="text-white">Lorem ipsum...</p>
+    </div>
+
+    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">HOW CAN I FIND ALL THE EVENTS THAT D-DAGEN ARRANGES</button>
+    <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
+    <p className="text-white">Lorem ipsum...</p>
+    </div>
+
+</div>)
+}
+
+function Table3(){
+  return(
+  <div className="mt-[50px]">
+
+    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"> WHAT IS D-DAGEN?</button>
+    <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center ">
+    <p className="text-white">Lorem ipsum...</p>
+    </div>
+
+    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">WHEN IS THIS YEAR'S D-DAGEN FAIR?</button>
+    <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
+    <p className="text-white">Lorem ipsum...</p>
+    </div>
+
+    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">WHERE IS D-DAGEN?</button>
+    <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
+    <p className="text-white">Lorem ipsum...</p>
+    </div>
+
+    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">HOW CAN I FIND ALL THE EVENTS THAT D-DAGEN ARRANGES</button>
+    <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
+    <p className="text-white">Lorem ipsum...</p>
+    </div>
+
+</div>)
+}
+
+function Table4(){
+  return(
+  <div className="mt-[50px]">
+
+    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"> WHAT IS D-DAGEN?</button>
+    <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center ">
+    <p className="text-white">Lorem ipsum...</p>
+    </div>
+
+    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">WHEN IS THIS YEAR'S D-DAGEN FAIR?</button>
+    <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
+    <p className="text-white">Lorem ipsum...</p>
+    </div>
+
+    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">WHERE IS D-DAGEN?</button>
+    <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
+    <p className="text-white">Lorem ipsum...</p>
+    </div>
+
+    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">HOW CAN I FIND ALL THE EVENTS THAT D-DAGEN ARRANGES</button>
+    <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
+    <p className="text-white">Lorem ipsum...</p>
+    </div>
+
+</div>)
+}
+
 export default function Faq() {
   const t = useLocale();
   const slides = [
@@ -72,29 +180,7 @@ export default function Faq() {
                 <p className="text-white"> EVENTS</p>
               </div>
         </div>
-        <div className="mt-[50px]">
-
-          <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"> WHAT IS D-DAGEN?</button>
-          <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center ">
-          <p className="text-white">Lorem ipsum...</p>
-          </div>
-
-          <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">WHEN IS THIS YEAR'S D-DAGEN FAIR?</button>
-          <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
-          <p className="text-white">Lorem ipsum...</p>
-          </div>
-
-          <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">WHERE IS D-DAGEN?</button>
-          <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
-          <p className="text-white">Lorem ipsum...</p>
-          </div>
-
-          <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">HOW CAN I FIND ALL THE EVENTS THAT D-DAGEN ARRANGES</button>
-          <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
-          <p className="text-white">Lorem ipsum...</p>
-          </div>
-
-        </div>
+        <Table1/>
       </div>
       {/*Dropdown table*/}
 
