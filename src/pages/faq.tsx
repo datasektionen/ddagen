@@ -19,6 +19,7 @@ export default function Faq() {
 
   return (
     <div className="h-[1500px]  py-[200px] font-['NeueHaasDisplayRoman'] flex flex-col items-center">
+
       {/*Header*/}
       <div className="w-full ">
         <p className=" text-center text-cerise text-[50px] font-['NeueHaasDisplayRoman'] w-full">
@@ -45,8 +46,8 @@ export default function Faq() {
           {slides.map((slide, index) => (
             <button
               key={index}
-              className={`mx-2 w-5 h-5 bg-black rounded-full cursor-pointer ${
-                currentSlide === index ? "bg-blue-500" : ""
+              className={`mx-2 w-5 h-5 bg-gray rounded-full cursor-pointer ${
+                currentSlide === index ? "bg-slate-300" : ""
               }`}
               onClick={() => setCurrentSlide(index)}
             ></button>
@@ -54,6 +55,26 @@ export default function Faq() {
         </div>
       </div>
       {/*Carousel*/}
+
+      {/*Dropdown table*/}
+      <div className="h-full w-[1000px] mt-[100px]">
+        <div className="h-[50px] bg-inherit flex flex-row justify-center items-center">
+              <div className="h-full w-[220px] mr-[40px] bg-gray bg-opacity-50 border-[3px] border-cerise flex items-center justify-center cursor-pointer">
+                <p className="text-white"> ABOUT D-DAGEN</p>
+              </div>
+              <div className="h-full w-[220px] mr-[40px] bg-gray bg-opacity-50 border-[3px] border-cerise flex items-center justify-center cursor-pointer">
+                <p className="text-white"> MARKETING</p>
+              </div>
+              <div className="h-full w-[220px] mr-[40px] bg-gray bg-opacity-50 border-[3px] border-cerise flex items-center justify-center cursor-pointer">
+                <p className="text-white"> GENERAL</p>
+              </div>
+              <div className="h-full w-[220px]  bg-gray bg-opacity-50 border-[3px] border-cerise flex items-center justify-center cursor-pointer">
+                <p className="text-white"> EVENTS</p>
+              </div>
+        </div>
+      </div>
+      {/*Dropdown table*/}
+
     </div>
   );
 }
