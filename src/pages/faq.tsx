@@ -18,7 +18,7 @@ export default function Faq() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   return (
-    <div className="h-[1500px]  py-[200px] font-['NeueHaasDisplayRoman'] flex flex-col items-center">
+    <div className="py-[200px] font-['NeueHaasDisplayRoman'] flex flex-col items-center">
 
       {/*Header*/}
       <div className="w-full ">
@@ -56,21 +56,44 @@ export default function Faq() {
       </div>
       {/*Carousel*/}
 
-      {/*Dropdown table*/}
+      {/*Dropdown buttons*/}
       <div className="h-full w-[1000px] mt-[100px]">
         <div className="h-[50px] bg-inherit flex flex-row justify-center items-center">
-              <div className="h-full w-[220px] mr-[40px] bg-gray bg-opacity-50 border-[3px] border-cerise flex items-center justify-center cursor-pointer">
+              <div className="h-full w-[220px] mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer">
                 <p className="text-white"> ABOUT D-DAGEN</p>
               </div>
-              <div className="h-full w-[220px] mr-[40px] bg-gray bg-opacity-50 border-[3px] border-cerise flex items-center justify-center cursor-pointer">
+              <div className="h-full w-[220px] mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer">
                 <p className="text-white"> MARKETING</p>
               </div>
-              <div className="h-full w-[220px] mr-[40px] bg-gray bg-opacity-50 border-[3px] border-cerise flex items-center justify-center cursor-pointer">
+              <div className="h-full w-[220px] mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer">
                 <p className="text-white"> GENERAL</p>
               </div>
-              <div className="h-full w-[220px]  bg-gray bg-opacity-50 border-[3px] border-cerise flex items-center justify-center cursor-pointer">
+              <div className="h-full w-[220px]  bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer">
                 <p className="text-white"> EVENTS</p>
               </div>
+        </div>
+        <div className="mt-[50px]">
+
+          <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"> WHAT IS D-DAGEN?</button>
+          <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center ">
+          <p className="text-white">Lorem ipsum...</p>
+          </div>
+
+          <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">WHEN IS THIS YEAR'S D-DAGEN FAIR?</button>
+          <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
+          <p className="text-white">Lorem ipsum...</p>
+          </div>
+
+          <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">WHERE IS D-DAGEN?</button>
+          <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
+          <p className="text-white">Lorem ipsum...</p>
+          </div>
+
+          <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">HOW CAN I FIND ALL THE EVENTS THAT D-DAGEN ARRANGES</button>
+          <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
+          <p className="text-white">Lorem ipsum...</p>
+          </div>
+
         </div>
       </div>
       {/*Dropdown table*/}
