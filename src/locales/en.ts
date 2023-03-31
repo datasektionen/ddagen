@@ -57,6 +57,7 @@ export default {
     title: "Registration confirmed",
     subtitle: "Your registration has been received",
     text: "Confirmation of your registration has been sent by email. If you have any other questions, contact us on",
+    textContinuation: "Please check your spam folder in case you haven't received any confirmation.",
     contact: "Contact us",
   },
   nav: {

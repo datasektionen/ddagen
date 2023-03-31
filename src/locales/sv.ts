@@ -57,6 +57,7 @@ export default {
     title: "Intresseanmälan bekräftad",
     subtitle: "Din anmälan har genomförts",
     text: "Bekräftelse på din anmälan har skickats på mail. Om du har några övriga frågor, kontakta oss på",
+    textContinuation: "Glöm inte att kolla skräpposten om du inte fått bekräftelsemailet.",
     contact: "Kontakta oss",
   },
   nav: {
