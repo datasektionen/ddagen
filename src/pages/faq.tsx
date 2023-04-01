@@ -109,7 +109,7 @@ export default function Faq() {
   ];
 
   const tables = [Table1([useState(false), useState(false), useState(false)]), Table2([useState(false), useState(false)]), Table3([useState(false), useState(false), 
-    useState(false), useState(false)]), Table4([useState(false)])]
+  useState(false), useState(false)]), Table4([useState(false)])]
   const [currentTable, setCurrentTable] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -173,6 +173,10 @@ export default function Faq() {
         {tables[currentTable]}
       </div>
       {/*Dropdown table*/}
+
+      <div className="h-[60px] w-[300px] mt-[120px]  bg-cerise rounded-[40px]  border-cerise flex items-center justify-center">
+        <p className="text-white text-[22px]">{t.faq.productCatalog}</p>
+      </div>
 
     </div>
   );
