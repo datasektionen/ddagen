@@ -128,12 +128,19 @@ export default {
     table3row2: "VILKEN ÄR SISTA DATUMET FÖR ATT GÖRA EN INTRESSEANMÄLAN?",
     table3row3: "HUR BLIR VI PARTNER?",
     table3row4: "VI VILL HA MER INFORMATION, VART VÄNDER VI OSS?",
-    table3text1: "Ni  får göra en intresseanmälan på https://ddagen.se/f%C3%B6rf%C3%B6retag eller kontakta våra säljare på sales@ddagen.se.",
-    table3text2: "Eftersom vi har ett begränsat antal platser på vår mässa rekommenderar vi att ni gör en icke-bindande intresseanmälan på https://ddagen.se/f%C3%B6retagsanm%C3%A4lan så fort som möjligt. Vi stänger preliminärt intresseanmälan den 28:e april.",
-    table3text3: "Om ni är intresserade av någon typ av större partnerskap kontakta ansvarig@ddagen.se.",
-    table3text4: "Om den information du söker inte finns på vår hemsida, kontakta våra säljare på sales@ddagen.se.",
+    table3text1_1: "Ni  får göra en intresseanmälan på ",
+    table3text1_2: "eller kontakta våra säljare på sales@ddagen.se.",
+    table3text2_1: "Eftersom vi har ett begränsat antal platser på vår mässa rekommenderar vi att ni gör en icke-bindande intresseanmälan på ",
+    table3text2_2: "så fort som möjligt. Vi stänger preliminärt intresseanmälan den 28:e april.",
+    table3text3: "Om ni är intresserade av någon typ av större partnerskap kontakta ",
+    table3text4: "Om den information du söker inte finns på vår hemsida, kontakta våra säljare på",
     table4row1: "VILKEN TYP AV EVENEMANG KAN VÅRT FÖRETAG ANORDNA TILLSAMMANS MED D-DAGEN?",
-    table4text1: "Vi anordnar gärna event med er innan och efter D-Dagen. Eventen kan vara allt ifrån lunchföreläsningar till hackathons, men det är mycket upp till er vad ni vill göra. För mer info kontakta sponsoransvarig alexandre.moch@ddagen.se.",
+    table4text1: "Vi anordnar gärna event med er innan och efter D-Dagen. Eventen kan vara allt ifrån lunchföreläsningar till hackathons, men det är mycket upp till er vad ni vill göra. För mer info kontakta sponsoransvarig",
     productCatalog: "PRODUKTKATALOG"
   },
+
+  url: {
+    forCompany: "https://ddagen.se/förföretag",
+    companyForm: "https://ddagen.se/företagsanmälan"
+  }
 };

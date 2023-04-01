@@ -125,12 +125,19 @@ export default {
     table3row2: "WHEN IS THE LAST DAY TO REGISTER FOR THE FAIR?",
     table3row3: "HOW DO WE BECOME A PARTNER?",
     table3row4: "WE WOULD LIKE MORE INFORMATION, WHERE DO WE TURN?",
-    table3text1: "You can register at https://ddagen.se/en/f%C3%B6rf%C3%B6retag or contact our sales team at sales@ddagen.se",
-    table3text2: "Since we have a limited number of spots at our fair we recommend making a non-binding declaration of interest at https://ddagen.se/en/f%C3%B6retagsanm%C3%A4lan as soon as possible. We provisionally close the call for declaration of interest on April 28.",
-    table3text3: "If you are interested in any type of partnership contact ansvarig@ddagen.se.",
-    table3text4: "If the information you are looking for can't be found at our website, contact us at sales@ddagen.se.",
+    table3text1_1: "You can register at ",
+    table3text1_2: "or contact our sales team at sales@ddagen.se",
+    table3text2_1: "Since we have a limited number of spots at our fair we recommend making a non-binding declaration of interest at",
+    table3text2_2: "as soon as possible. We provisionally close the call for declaration of interest on April 28.",
+    table3text3: "If you are interested in any type of partnership contact ",
+    table3text4: "If the information you are looking for can't be found at our website, contact us at ",
     table4row1: "WHAT KIND OF EVENTS CAN OUR COMPANY HOST TOGETHER WITH D-DAGEN?",
-    table4text1: "We are happy to organize events with you before and after D-Day. The events can be anything from lunch lectures to hackathons, but it is very much up to decide what you want to do. For more information contact our sponsorship manager at alexandre.moch@ddagen.se.",
+    table4text1: "We are happy to organize events with you before and after D-Day. The events can be anything from lunch lectures to hackathons, but it is very much up to decide what you want to do. For more information contact our sponsorship manager at",
     productCatalog: "PRODUCT CATALOG"
   },
+
+  url: {
+    forCompany: "https://ddagen.se/en/förföretag",
+    companyForm: "https://ddagen.se/en/företagsanmälan"
+  }
 };
