@@ -1,84 +1,95 @@
 import { useLocale } from "@/locales";
 import React, { useState } from "react";
 
-function Table1(){
+function Table1(stateAction: Array<[boolean, React.Dispatch<React.SetStateAction<boolean>>]>){
+
   const t = useLocale()
   return(
   <div className="mt-[50px]">
 
-    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"> {t.faq.table1row1}</button>
-    <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center ">
+    <button onClick={() => stateAction[0][1](!stateAction[0][0])} className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"> {t.faq.table1row1}</button>
+    {stateAction[0][0] ? (
+    <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
     <p className="text-white">{t.faq.table1text1}</p>
-    </div>
+    </div>) : null}
 
-    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">{t.faq.table1row1}</button>
+    <button onClick={() => stateAction[1][1](!stateAction[1][0])} className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">{t.faq.table1row2}</button>
+    {stateAction[1][0] ? (
     <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
     <p className="text-white">{t.faq.table1text2}</p>
-    </div>
+    </div>) : null}
 
-    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">{t.faq.table1row1}</button>
+    <button onClick={() => stateAction[2][1](!stateAction[2][0])} className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">{t.faq.table1row3}</button>
+    {stateAction[2][0] ? (
     <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
     <p className="text-white">{t.faq.table1text3}</p>
-    </div>
+    </div>) : null}
 
 </div>)
 }
 
-function Table2(){
+function Table2(stateAction: Array<[boolean, React.Dispatch<React.SetStateAction<boolean>>]>){
   const t = useLocale()
   return(
   <div className="mt-[50px]">
 
-    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"> {t.faq.table2row1}</button>
+    <button onClick={() => stateAction[0][1](!stateAction[0][0])} id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"> {t.faq.table2row1}</button>
+    {stateAction[0][0] ? (
     <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center ">
     <p className="text-white">{t.faq.table2text1}</p>
-    </div>
+    </div>) : null}
 
-    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">{t.faq.table2row2}</button>
+    <button onClick={() => stateAction[1][1](!stateAction[1][0])} id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">{t.faq.table2row2}</button>
+    {stateAction[1][0] ? (
     <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
     <p className="text-white">{t.faq.table2text2}</p>
-    </div>
+    </div>) : null}
 
 </div>)
 }
 
-function Table3(){
+function Table3(stateAction: Array<[boolean, React.Dispatch<React.SetStateAction<boolean>>]>){
   const t = useLocale()
   return(
   <div className="mt-[50px]">
 
-    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"> {t.faq.table3row1}</button>
+    <button onClick={() => stateAction[0][1](!stateAction[0][0])} id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"> {t.faq.table3row1}</button>
+    {stateAction[0][0] ? (
     <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center ">
     <p className="text-white">{t.faq.table3text1}</p>
-    </div>
+    </div>) : null}
 
-    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">{t.faq.table3row2}</button>
+    <button onClick={() => stateAction[1][1](!stateAction[1][0])} id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">{t.faq.table3row2}</button>
+    {stateAction[1][0] ? (
     <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
     <p className="text-white">{t.faq.table3text2}</p>
-    </div>
+    </div>) : null}
 
-    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">{t.faq.table3row3}</button>
+    <button onClick={() => stateAction[2][1](!stateAction[2][0])} id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">{t.faq.table3row3}</button>
+    {stateAction[2][0] ? (
     <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
     <p className="text-white">{t.faq.table3text3}</p>
-    </div>
+    </div>) : null}
 
-    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">{t.faq.table3row4}</button>
-    <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
+    <button onClick={() => stateAction[3][1](!stateAction[3][0])} id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">{t.faq.table3row4}</button>
+    {stateAction[3][0] ? (
+    <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center ">
     <p className="text-white">{t.faq.table3text4}</p>
-    </div>
+    </div>) : null}
 
 </div>)
 }
 
-function Table4(){
+function Table4(stateAction: Array<[boolean, React.Dispatch<React.SetStateAction<boolean>>]>){
   const t = useLocale()
   return(
   <div className="mt-[50px]">
 
-    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"> {t.faq.table4row1}</button>
+    <button onClick={() => stateAction[0][1](!stateAction[0][0])} id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"> {t.faq.table4row1}</button>
+    {stateAction[0][0] ? (
     <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center ">
     <p className="text-white">{t.faq.table4text1}</p>
-    </div>
+    </div>) : null}
 
 </div>)
 }
@@ -97,9 +108,11 @@ export default function Faq() {
     },
   ];
 
-  const tables = [Table1, Table2, Table3, Table4]
+  const tables = [Table1([useState(false), useState(false), useState(false)]), Table2([useState(false), useState(false)]), Table3([useState(false), useState(false), 
+    useState(false), useState(false)]), Table4([useState(false)])]
   const [currentTable, setCurrentTable] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
+
   const Tst = tables[0]
 
   return (
@@ -141,11 +154,10 @@ export default function Faq() {
       </div>
       {/*Carousel*/}
 
-      {/*Dropdown buttons*/}
+      {/*Dropdown table*/}
       <div className="h-full w-[1000px] mt-[100px]">
         <div className="h-[50px] bg-inherit flex flex-row justify-center items-center">
               <div className="h-full w-[220px] mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer" onClick={() => setCurrentTable(0)}>
-              
                 <p className="text-white"> {t.faq.box1}</p>
               </div>
               <div className="h-full w-[220px] mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer" onClick={() => setCurrentTable(1)}>
@@ -158,7 +170,7 @@ export default function Faq() {
                 <p className="text-white"> {t.faq.box4}</p>
               </div>
         </div>
-        {tables[currentTable]()}
+        {tables[currentTable]}
       </div>
       {/*Dropdown table*/}
 
