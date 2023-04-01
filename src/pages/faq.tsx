@@ -97,7 +97,10 @@ export default function Faq() {
     },
   ];
 
+  const tables = [Table1, Table2, Table3, Table4]
+  const [currentTable, setCurrentTable] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const Tst = tables[0]
 
   return (
     <div className="py-[200px] font-['NeueHaasDisplayRoman'] flex flex-col items-center">
@@ -141,20 +144,21 @@ export default function Faq() {
       {/*Dropdown buttons*/}
       <div className="h-full w-[1000px] mt-[100px]">
         <div className="h-[50px] bg-inherit flex flex-row justify-center items-center">
-              <div className="h-full w-[220px] mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer">
+              <div className="h-full w-[220px] mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer" onClick={() => setCurrentTable(0)}>
+              
                 <p className="text-white"> {t.faq.box1}</p>
               </div>
-              <div className="h-full w-[220px] mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer">
+              <div className="h-full w-[220px] mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer" onClick={() => setCurrentTable(1)}>
                 <p className="text-white"> {t.faq.box2}</p>
               </div>
-              <div className="h-full w-[220px] mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer">
+              <div className="h-full w-[220px] mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer" onClick={() => setCurrentTable(2)}>
                 <p className="text-white"> {t.faq.box3}</p>
               </div>
-              <div className="h-full w-[220px]  bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer">
+              <div className="h-full w-[220px]  bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer" onClick={() => setCurrentTable(3)}>
                 <p className="text-white"> {t.faq.box4}</p>
               </div>
         </div>
-        <Table4/>
+        {tables[currentTable]()}
       </div>
       {/*Dropdown table*/}
 
