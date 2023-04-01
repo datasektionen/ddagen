@@ -4,6 +4,7 @@ import React, { useState } from "react";
 function Table1(stateAction: Array<[boolean, React.Dispatch<React.SetStateAction<boolean>>]>){
 
   const t = useLocale()
+
   return(
   <div className="mt-[50px]">
 
@@ -29,7 +30,9 @@ function Table1(stateAction: Array<[boolean, React.Dispatch<React.SetStateAction
 }
 
 function Table2(stateAction: Array<[boolean, React.Dispatch<React.SetStateAction<boolean>>]>){
+
   const t = useLocale()
+
   return(
   <div className="mt-[50px]">
 
@@ -49,34 +52,36 @@ function Table2(stateAction: Array<[boolean, React.Dispatch<React.SetStateAction
 }
 
 function Table3(stateAction: Array<[boolean, React.Dispatch<React.SetStateAction<boolean>>]>){
+
   const t = useLocale()
+  const txt = `<a href="google.com" target="blank">hej</a>`
+
   return(
   <div className="mt-[50px]">
 
     <button onClick={() => stateAction[0][1](!stateAction[0][0])} id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"> {t.faq.table3row1}</button>
     {stateAction[0][0] ? (
     <div className="pl-[20px] h-[140px] sm:h-[100px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center ">
-    <p className="text-white">{t.faq.table3text1}</p>
+    <p className="text-white">{t.faq.table3text1_1} <a href={t.url.forCompany} target="blank" className="text-cerise">  {t.url.forCompany} </a>{t.faq.table3text1_2}</p>
     </div>) : null}
 
     <button onClick={() => stateAction[1][1](!stateAction[1][0])} id="accordion" className="pl-[20px] text-left text-white h-[85px] sm:h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">{t.faq.table3row2}</button>
     {stateAction[1][0] ? (
     <div className="pl-[20px] h-[260px] sm:h-[150px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
-    <p className="text-white">{t.faq.table3text2}</p>
+    <p className="text-white">{t.faq.table3text2_1} <a href={t.url.companyForm} target="blank" className="text-cerise"> {t.url.companyForm}</a></p>
     </div>) : null}
 
     <button onClick={() => stateAction[2][1](!stateAction[2][0])} id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">{t.faq.table3row3}</button>
     {stateAction[2][0] ? (
     <div className="pl-[20px] h-[100px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
-    <p className="text-white">{t.faq.table3text3}</p>
+    <p className="text-white">{t.faq.table3text3} <a className="text-cerise" href="mailto:ansvarig@ddagen.se">ansvarig@ddagen.se</a></p>
     </div>) : null}
 
     <button onClick={() => stateAction[3][1](!stateAction[3][0])} id="accordion" className="pl-[20px] text-left text-white h-[85px] sm:h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">{t.faq.table3row4}</button>
     {stateAction[3][0] ? (
     <div className="pl-[20px] h-[110px] sm:h-[100px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center ">
-    <p className="text-white">{t.faq.table3text4}</p>
+    <p className="text-white">{t.faq.table3text4} <a className="text-cerise" href="mailto:sales@ddagen.se">sales@ddagen.se</a></p>
     </div>) : null}
-
 </div>)
 }
 
@@ -88,9 +93,9 @@ function Table4(stateAction: Array<[boolean, React.Dispatch<React.SetStateAction
     <button onClick={() => stateAction[0][1](!stateAction[0][0])} id="accordion" className="pl-[20px] text-left text-white h-[130px] sm:h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"> {t.faq.table4row1}</button>
     {stateAction[0][0] ? (
     <div className="pl-[20px] h-[270px] sm:h-[100px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center ">
-    <p className="text-white">{t.faq.table4text1}</p>
+    <p className="text-white">{t.faq.table4text1} <a className="text-cerise" href="mailto:alexandre.moch@ddagen.se">alexandre.moch@ddagen.se</a></p>
     </div>) : null}
-
+    
 </div>)
 }
 
@@ -135,7 +140,7 @@ export default function Faq() {
       {/*Carousel*/}
       <div className="mt-[150px]">
         <div id="carousel"
-            className="px-[30px] "
+            className="px-[20px] "
             > <img src={slides[currentSlide].url} className="min-w-[200px]"></img>
         </div>
         <div className="flex justify-center mt-[50px]">
@@ -177,6 +182,7 @@ export default function Faq() {
         <a href="/downloadables/Product_Catalog.pdf" download="Product_Catalog" className="text-white text-[22px]" >{t.faq.productCatalog}</a>
       </button>
       {/*Product Catalog button*/}
+
     </div>
   );
 }
