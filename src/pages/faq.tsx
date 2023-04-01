@@ -2,108 +2,82 @@ import { useLocale } from "@/locales";
 import React, { useState } from "react";
 
 function Table1(){
+  const t = useLocale()
   return(
   <div className="mt-[50px]">
 
-    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"> WHAT IS D-DAGEN?</button>
+    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"> {t.faq.table1row1}</button>
     <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center ">
-    <p className="text-white">Lorem ipsum...</p>
+    <p className="text-white">{t.faq.table1text1}</p>
     </div>
 
-    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">WHEN IS THIS YEAR'S D-DAGEN FAIR?</button>
+    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">{t.faq.table1row1}</button>
     <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
-    <p className="text-white">Lorem ipsum...</p>
+    <p className="text-white">{t.faq.table1text2}</p>
     </div>
 
-    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">WHERE IS D-DAGEN?</button>
+    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">{t.faq.table1row1}</button>
     <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
-    <p className="text-white">Lorem ipsum...</p>
-    </div>
-
-    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">HOW CAN I FIND ALL THE EVENTS THAT D-DAGEN ARRANGES</button>
-    <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
-    <p className="text-white">Lorem ipsum...</p>
+    <p className="text-white">{t.faq.table1text3}</p>
     </div>
 
 </div>)
 }
 
 function Table2(){
+  const t = useLocale()
   return(
   <div className="mt-[50px]">
 
-    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"> WHAT IS D-DAGEN?</button>
+    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"> {t.faq.table2row1}</button>
     <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center ">
-    <p className="text-white">Lorem ipsum...</p>
+    <p className="text-white">{t.faq.table2text1}</p>
     </div>
 
-    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">WHEN IS THIS YEAR'S D-DAGEN FAIR?</button>
+    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">{t.faq.table2row2}</button>
     <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
-    <p className="text-white">Lorem ipsum...</p>
-    </div>
-
-    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">WHERE IS D-DAGEN?</button>
-    <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
-    <p className="text-white">Lorem ipsum...</p>
-    </div>
-
-    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">HOW CAN I FIND ALL THE EVENTS THAT D-DAGEN ARRANGES</button>
-    <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
-    <p className="text-white">Lorem ipsum...</p>
+    <p className="text-white">{t.faq.table2text2}</p>
     </div>
 
 </div>)
 }
 
 function Table3(){
+  const t = useLocale()
   return(
   <div className="mt-[50px]">
 
-    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"> WHAT IS D-DAGEN?</button>
+    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"> {t.faq.table3row1}</button>
     <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center ">
-    <p className="text-white">Lorem ipsum...</p>
+    <p className="text-white">{t.faq.table3text1}</p>
     </div>
 
-    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">WHEN IS THIS YEAR'S D-DAGEN FAIR?</button>
+    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">{t.faq.table3row2}</button>
     <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
-    <p className="text-white">Lorem ipsum...</p>
+    <p className="text-white">{t.faq.table3text2}</p>
     </div>
 
-    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">WHERE IS D-DAGEN?</button>
+    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">{t.faq.table3row3}</button>
     <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
-    <p className="text-white">Lorem ipsum...</p>
+    <p className="text-white">{t.faq.table3text3}</p>
     </div>
 
-    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">HOW CAN I FIND ALL THE EVENTS THAT D-DAGEN ARRANGES</button>
+    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">{t.faq.table3row4}</button>
     <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
-    <p className="text-white">Lorem ipsum...</p>
+    <p className="text-white">{t.faq.table3text4}</p>
     </div>
 
 </div>)
 }
 
 function Table4(){
+  const t = useLocale()
   return(
   <div className="mt-[50px]">
 
-    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"> WHAT IS D-DAGEN?</button>
+    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"> {t.faq.table4row1}</button>
     <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center ">
-    <p className="text-white">Lorem ipsum...</p>
-    </div>
-
-    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">WHEN IS THIS YEAR'S D-DAGEN FAIR?</button>
-    <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
-    <p className="text-white">Lorem ipsum...</p>
-    </div>
-
-    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">WHERE IS D-DAGEN?</button>
-    <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
-    <p className="text-white">Lorem ipsum...</p>
-    </div>
-
-    <button id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">HOW CAN I FIND ALL THE EVENTS THAT D-DAGEN ARRANGES</button>
-    <div className="pl-[20px] h-[70px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
-    <p className="text-white">Lorem ipsum...</p>
+    <p className="text-white">{t.faq.table4text1}</p>
     </div>
 
 </div>)
@@ -130,11 +104,11 @@ export default function Faq() {
 
       {/*Header*/}
       <div className="w-full ">
-        <p className=" text-center text-cerise text-[50px] font-['NeueHaasDisplayRoman'] w-full">
+        <p className=" text-center text-cerise text-[100px] font-['NeueHaasDisplayRoman'] w-full">
           {" "}
           EXHIBITOR
         </p>
-        <p className=" text-center text-cerise text-[50px] font-['NeueHaasDisplayRoman'] w-full">
+        <p className=" text-center text-cerise text-[100px] font-['NeueHaasDisplayRoman'] w-full">
           {" "}
           FAQ
         </p>
@@ -142,11 +116,11 @@ export default function Faq() {
       {/*Header*/}
       
       {/*Carousel*/}
-      <div className="mt-[100px]">
+      <div className="mt-[150px]">
         <div className="h-[400px] w-[1000px]">
           <div
             id="carousel"
-            className="w-full h-full rounded-2xl bg-center bg-cover duration-500"
+            className="w-full h-full  bg-center bg-cover duration-500"
             style={{ backgroundImage: `url(${slides[currentSlide].url})` }}
           ></div>
         </div>
@@ -168,19 +142,19 @@ export default function Faq() {
       <div className="h-full w-[1000px] mt-[100px]">
         <div className="h-[50px] bg-inherit flex flex-row justify-center items-center">
               <div className="h-full w-[220px] mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer">
-                <p className="text-white"> ABOUT D-DAGEN</p>
+                <p className="text-white"> {t.faq.box1}</p>
               </div>
               <div className="h-full w-[220px] mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer">
-                <p className="text-white"> MARKETING</p>
+                <p className="text-white"> {t.faq.box2}</p>
               </div>
               <div className="h-full w-[220px] mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer">
-                <p className="text-white"> GENERAL</p>
+                <p className="text-white"> {t.faq.box3}</p>
               </div>
               <div className="h-full w-[220px]  bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer">
-                <p className="text-white"> EVENTS</p>
+                <p className="text-white"> {t.faq.box4}</p>
               </div>
         </div>
-        <Table1/>
+        <Table4/>
       </div>
       {/*Dropdown table*/}
 
