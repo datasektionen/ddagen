@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <link rel="icon" href="/img/favicon.ico" />
-        <title>D-Dagen 2023 | Konglig Datasektionens Arbetsmässodag | Lol test</title>
+        <title>D-Dagen 2023 | Konglig Datasektionens Arbetsmässodag</title>
       </Head>
       <Navbar />
       <div

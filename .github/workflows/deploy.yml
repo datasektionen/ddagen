@@ -2,7 +2,7 @@ name: Deploy Production
 
 on:
   push:
-    branches: [ production, fix-deployments ]
+    branches: [ production ]
   # Can be activated manually
   workflow_dispatch:
 
