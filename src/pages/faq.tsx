@@ -161,11 +161,11 @@ export default function Faq() {
         <div className="h-[50px] bg-inherit flex flex-col sm:flex-row  justify-center items-center mb-[80px] px-[30px] sm:px-[0px]">
           {/*Dropdown buttons*/}
           <div className="sm:w-full flex flex-row justify-center items-center">
-              <div className="sm:w-full text-center h-[50px] mr-[20px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer" onClick={() => setCurrentTable(2)}>
-                <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto"> {t.faq.box3}</p>
-              </div>
-              <div className="sm:w-full text-center h-[50px] mr-[0px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer" onClick={() => setCurrentTable(0)}>
+              <div className="sm:w-full text-center h-[50px] mr-[20px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer" onClick={() => setCurrentTable(0)}>
                 <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto"> {t.faq.box1}</p>
+              </div>
+              <div className="sm:w-full text-center h-[50px] mr-[0px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer" onClick={() => setCurrentTable(2)}>
+                <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto"> {t.faq.box3}</p>
               </div>
           </div>
 
