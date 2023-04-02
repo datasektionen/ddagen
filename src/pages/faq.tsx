@@ -39,7 +39,7 @@ function Table2(stateAction: Array<[boolean, React.Dispatch<React.SetStateAction
     <button onClick={() => stateAction[0][1](!stateAction[0][0])} id="accordion" className="pl-[20px] text-left text-white h-[85px] sm:h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"> {t.faq.table2row1}</button>
     {stateAction[0][0] ? (
     <div className="pl-[20px] h-[150px] sm:h-[100px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center ">
-    <p className="text-white">{t.faq.table2text1}</p>
+    <p className="text-white">{t.faq.table2text1_1} <a className="text-cerise" href="mailto:sales@ddagen.se">sales@ddagen.se</a> {t.faq.table2text1_2}</p>
     </div>) : null}
 
     <button onClick={() => stateAction[1][1](!stateAction[1][0])} id="accordion" className="pl-[20px] text-left text-white h-[120px] sm:h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">{t.faq.table2row2}</button>
@@ -54,7 +54,6 @@ function Table2(stateAction: Array<[boolean, React.Dispatch<React.SetStateAction
 function Table3(stateAction: Array<[boolean, React.Dispatch<React.SetStateAction<boolean>>]>){
 
   const t = useLocale()
-  const txt = `<a href="google.com" target="blank">hej</a>`
 
   return(
   <div className="mt-[50px]">
@@ -62,13 +61,13 @@ function Table3(stateAction: Array<[boolean, React.Dispatch<React.SetStateAction
     <button onClick={() => stateAction[0][1](!stateAction[0][0])} id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"> {t.faq.table3row1}</button>
     {stateAction[0][0] ? (
     <div className="pl-[20px] h-[140px] sm:h-[100px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center ">
-    <p className="text-white">{t.faq.table3text1_1} <a href={t.url.forCompany} target="blank" className="text-cerise">  {t.url.forCompany} </a>{t.faq.table3text1_2}</p>
+    <p className="text-white">{t.faq.table3text1_1} <a href={t.url.forCompany} target="blank" className="underline text-cerise">  {t.url.forCompany} </a>{t.faq.table3text1_2} <a className="text-cerise" href="mailto:sales@ddagen.se">sales@ddagen.se</a></p>
     </div>) : null}
 
     <button onClick={() => stateAction[1][1](!stateAction[1][0])} id="accordion" className="pl-[20px] text-left text-white h-[85px] sm:h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">{t.faq.table3row2}</button>
     {stateAction[1][0] ? (
     <div className="pl-[20px] h-[260px] sm:h-[150px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
-    <p className="text-white">{t.faq.table3text2_1} <a href={t.url.companyForm} target="blank" className="text-cerise"> {t.url.companyForm}</a></p>
+    <p className="text-white">{t.faq.table3text2_1} <a href={t.url.companyForm} target="blank" className="underline text-cerise"> {t.url.companyForm}</a></p>
     </div>) : null}
 
     <button onClick={() => stateAction[2][1](!stateAction[2][0])} id="accordion" className="pl-[20px] text-left text-white h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise">{t.faq.table3row3}</button>
@@ -140,7 +139,7 @@ export default function Faq() {
       {/*Carousel*/}
       <div className="mt-[150px]">
         <div id="carousel"
-            className="px-[20px] "
+            className="px-[0px] sm:px-[20px] "
             > <img src={slides[currentSlide].url} className="min-w-[200px]"></img>
         </div>
         <div className="flex justify-center mt-[50px]">
@@ -159,19 +158,26 @@ export default function Faq() {
 
       {/*Dropdown table*/}
       <div className="h-full min-w-[200px] max-w-[1200px] w-full mt-[100px] px-[30px]">
-        <div className="h-[50px] bg-inherit flex flex-row justify-center items-center">
-              <div className="h-full w-[25%]  mr-[10px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer" onClick={() => setCurrentTable(0)}>
-                <p className="text-white text-[11px] sm:text-base break-words w-[50px] sm:w-auto"> {t.faq.box1}</p>
+        <div className="h-[50px] bg-inherit flex flex-col sm:flex-row  justify-center items-center mb-[80px] px-[30px] sm:px-[0px]">
+          {/*Dropdown buttons*/}
+          <div className="sm:w-full flex flex-row justify-center items-center">
+              <div className="sm:w-full text-center h-[50px] mr-[20px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer" onClick={() => setCurrentTable(0)}>
+                <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto"> {t.faq.box1}</p>
               </div>
-              <div className="h-full w-[25%] mr-[10px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer" onClick={() => setCurrentTable(1)}>
-                <p className="text-white text-[11px] sm:text-base break-words w-[53px] sm:w-auto"> {t.faq.box2}</p>
+              <div className="sm:w-full text-center h-[50px] mr-[0px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer" onClick={() => setCurrentTable(1)}>
+                <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto"> {t.faq.box2}</p>
               </div>
-              <div className="h-full w-[25%] mr-[10px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer" onClick={() => setCurrentTable(2)}>
-                <p className="text-white text-[11px] sm:text-base break-words w-[53px] sm:w-auto"> {t.faq.box3}</p>
+          </div>
+
+          <div className="sm:w-full flex flex-row justify-center items-center mt-[20px] sm:mt-[0px]">
+              <div className="sm:w-full text-center h-[50px]  mr-[20px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer" onClick={() => setCurrentTable(2)}>
+                <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto"> {t.faq.box3}</p>
               </div>
-              <div className="h-full w-[25%]  bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer" onClick={() => setCurrentTable(3)}>
-                <p className="text-white text-[11px] sm:text-base break-words w-[50px] sm:w-auto"> {t.faq.box4}</p>
+              <div className="sm:w-full text-center h-[50px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer" onClick={() => setCurrentTable(3)}>
+                <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto"> {t.faq.box4}</p>
               </div>
+          </div>
+          {/*Dropdown buttons*/}
         </div>
         {tables[currentTable]}
       </div>
