@@ -133,7 +133,7 @@ export default {
     table3text3: "If you are interested in any type of partnership contact ",
     table3text4: "If the information you are looking for can't be found at our website, contact us at ",
     table4row1: "WHAT KIND OF EVENTS CAN OUR COMPANY HOST TOGETHER WITH D-DAGEN?",
-    table4text1: "We'd be thrilled to collaborate with you, both before and after D-Dagen! Whether you're interested in hosting a lunch lecture, hackathon, or something completely different, we're open to your ideas. For more information, please contact our sponsorship manager at alexandre.moch@ddagen.se.",
+    table4text1: "We'd be thrilled to collaborate with you, both before and after D-Dagen! Whether you're interested in hosting a lunch lecture, hackathon, or something completely different, we're open to your ideas. For more information, please contact our sponsorship manager at ",
     download: "DOWNLOAD",
     productCatalog: "PRODUCT CATALOG"
   },

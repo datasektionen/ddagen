@@ -136,7 +136,7 @@ export default {
     table3text3: "Om ni är intresserade av någon typ av större partnerskap kontakta ",
     table3text4: "Om den information du söker inte finns på vår hemsida, kontakta våra säljare på",
     table4row1: "VILKEN TYP AV EVENEMANG KAN VÅRT FÖRETAG ANORDNA TILLSAMMANS MED D-DAGEN?",
-    table4text1: "Vi samarbetar gärna med er för att organisera evenemang före och efter D-Dagen! Oavsett om ni är intresserade av lunchföreläsningar, hackathons eller något helt annat är ni välkomna att dela era idéer med oss. Kontakta vår sponsoransvarige på alexandre.moch@ddagen.se för mer information och för att planera ett lyckat evenemang tillsammans!",
+    table4text1: "Vi samarbetar gärna med er för att organisera evenemang före och efter D-Dagen! Oavsett om ni är intresserade av lunchföreläsningar, hackathons eller något helt annat är ni välkomna att dela era idéer med oss. För mer information kontakta vår sponsoransvarige på ",
     download: "LADDA NED",
     productCatalog: "PRODUKTKATALOG",
   },
