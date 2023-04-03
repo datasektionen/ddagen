@@ -46,7 +46,6 @@ export default function Navbar() {
     }
 
     const [open, setOpen] = useState(false);
-    const [forCompanyDrop, setForCompanyDrop] = useState(false);
 
     useEffect(() => {
         function close(event: MouseEvent) {
@@ -99,27 +98,8 @@ export default function Navbar() {
                         className="sr-only focus:not-sr-only"
                         href="#main-content"
                     >{nav.toContent}</a>
-                     <div className="flex flex-col lg:flex-row items-start h-[100px]">
-                        <div className="mr-[40px] mt-4">
-                            <NavLink class="px-14 lg:px-0" href="/">{nav.home}</NavLink>
-                        </div>
-                        
-                        <div className={`${forCompanyDrop ? 'lg:bg-[#666474] lg:bg-opacity-60 lg:rounded-md lg:w-[200px] w-[420px]' : null} lg:px-4 pb-2`}>
-                            <div className="flex flex-row lg:flex-col mt-4 ">
-                                <div onMouseEnter={() => setForCompanyDrop(true)} onMouseLeave={() => setForCompanyDrop(false)}>
-                                    <NavLink  class="pl-14 pr-4 lg:px-0" href="/förföretag">{nav.forCompanies}</NavLink>
-                                </div>
-                                <div className="lg:block hidden">
-                                {forCompanyDrop ? (
-                                <div onMouseEnter={() => setForCompanyDrop(true)} onMouseLeave={() => setForCompanyDrop(false)}><NavLink class="pr-14 lg:px-0" href="/faq">faq</NavLink></div>) : null }
-                                </div>
-                                {open ? (
-                                <div onMouseEnter={() => setForCompanyDrop(true)} onMouseLeave={() => setForCompanyDrop(false)}><NavLink class="pr-14 lg:px-0" href="/faq">faq</NavLink></div>) : null }
-                                
-                            </div>
-                        </div>
-                        
-                    </div>
+                    <NavLink class="px-14 lg:px-0" href="/">{nav.home}</NavLink>
+                    <NavLink class="px-14 lg:px-0" href="/förföretag">{nav.forCompanies}</NavLink>
                     {/*<NavLink class="px-14 lg:px-0" href="/förstudenter">{nav.forStudents}</NavLink>*/}
                     {/*<NavLink class="px-14 lg:px-0" href="/mässan">{nav.about}</NavLink>*/}
                     <div className="
