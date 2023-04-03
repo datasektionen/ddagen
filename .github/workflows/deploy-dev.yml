@@ -23,5 +23,6 @@ jobs:
         ssh-private-key: ${{ secrets.MEDUSA_SSH_KEY }}
         dokku-user: 'dokku'
         remote-branch: 'master'
+        git-push-flags: '--force'
         dokku-host: 'medusa.datasektionen.se'
         app-name: 'dev.ddagen'
