@@ -1,8 +1,8 @@
-name: Deploy Development
+name: Deploy Production
 
 on:
   push:
-    branches: [ main ]
+    branches: [ production ]
   # Can be activated manually
   workflow_dispatch:
 
@@ -24,4 +24,4 @@ jobs:
         dokku-user: 'dokku'
         remote-branch: 'master'
         dokku-host: 'medusa.datasektionen.se'
-        app-name: 'dev.ddagen'
+        app-name: 'ddagen'
