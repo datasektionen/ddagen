@@ -134,6 +134,7 @@ export default {
     table3text4: "If the information you are looking for can't be found at our website, contact us at ",
     table4row1: "WHAT KIND OF EVENTS CAN OUR COMPANY HOST TOGETHER WITH D-DAGEN?",
     table4text1: "We are happy to organize events with you before and after D-Day. The events can be anything from lunch lectures to hackathons, but it is very much up to decide what you want to do. For more information contact our sponsorship manager at",
+    download: "DOWNLOAD",
     productCatalog: "PRODUCT CATALOG"
   },
 

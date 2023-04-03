@@ -137,7 +137,8 @@ export default {
     table3text4: "Om den information du söker inte finns på vår hemsida, kontakta våra säljare på",
     table4row1: "VILKEN TYP AV EVENEMANG KAN VÅRT FÖRETAG ANORDNA TILLSAMMANS MED D-DAGEN?",
     table4text1: "Vi anordnar gärna event med er innan och efter D-Dagen. Eventen kan vara allt ifrån lunchföreläsningar till hackathons, men det är mycket upp till er vad ni vill göra. För mer info kontakta sponsoransvarig",
-    productCatalog: "PRODUKTKATALOG"
+    download: "LADDA NED",
+    productCatalog: "PRODUKTKATALOG",
   },
 
   url: {
