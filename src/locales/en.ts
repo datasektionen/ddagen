@@ -106,4 +106,42 @@ export default {
     <p>The D-Dagen project group</p>
     `,
   },
+  faq: {
+    box1: "ABOUT D-DAGEN",
+    box2: "MARKETING",
+    box3: "GENERAL",
+    box4: "EVENTS",
+    table1row1: "WHAT IS D-DAGEN?",
+    table1row2: "WHEN IS THE YEAR'S D-DAGEN FAIR?",
+    table1row3: "WHERE IS D-DAGEN?",
+    table1text1: "D-Dagen is the annual career fair organized by the Computer Science chapter at KTH Royal Institute of Technology. It is today the largest IT career fair in the Nordic region.",
+    table1text2: "This year's D-Dagen is taking place on October 12",
+    table1text3: "D-Dagen will be held at Nymble, the student union house, located at the KTH Royal Institute of Technlogy in Stockholm",
+    table2row1: "CAN OUR COMPANY GET MORE EXPOSURE?",
+    table2row2: "CAN OUR COMPANY MARKET JOB OFFERS ETC THROUGH D-DAGEN?",
+    table2text1_1: "Absolutely, we have several different packages to help you reach more students, contact",
+    table2text1_2: "for more information.",
+    table2text2: "Yes, the main purpose of D-Dagen is to market career opportunities such as job offers, trainee programs, summer internships and similar initiatives to our students.",
+    table3row1: "HOW DO I REGISTER FOR THE FAIR?",
+    table3row2: "WHEN IS THE LAST DAY TO REGISTER FOR THE FAIR?",
+    table3row3: "HOW DO WE BECOME A PARTNER?",
+    table3row4: "WE WOULD LIKE MORE INFORMATION, WHERE DO WE TURN?",
+    table3text1_1: "You can register at ",
+    table3text1_2: "or contact our sales team at",
+    table3text2_1: "Since we have a limited number of spots at our fair we recommend making a non-binding declaration of interest at",
+    table3text2_2: "as soon as possible. We provisionally close the call for declaration of interest on April 28.",
+    table3text3: "If you are interested in any type of partnership contact ",
+    table3text4: "If the information you are looking for can't be found at our website, contact us at ",
+    table4row1: "WHAT KIND OF EVENTS CAN OUR COMPANY HOST TOGETHER WITH D-DAGEN?",
+    table4text1: "We'd be thrilled to collaborate with you, both before and after D-Dagen! Whether you're interested in hosting a lunch lecture, hackathon, or something completely different, we're open to your ideas. For more information, please contact our sponsorship manager at ",
+    download: "DOWNLOAD",
+    productCatalog: "PRODUCT CATALOG",
+    header: "EXHIBITOR"
+
+  },
+
+  url: {
+    forCompany: "https://ddagen.se/en/förföretag",
+    companyForm: "https://ddagen.se/en/företagsanmälan"
+  }
 };
