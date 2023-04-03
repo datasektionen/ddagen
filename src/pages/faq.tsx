@@ -139,7 +139,7 @@ export default function Faq() {
       {/*Carousel*/}
       <div className="mt-[150px]">
         <div id="carousel"
-            className="px-[0px] sm:px-[20px] "
+            className="px-[20px] sm:px-[80px] "
             > <img src={slides[currentSlide].url} className="min-w-[200px]"></img>
         </div>
         <div className="flex justify-center mt-[50px]">
