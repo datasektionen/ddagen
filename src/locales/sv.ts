@@ -139,6 +139,7 @@ export default {
     table4text1: "Vi samarbetar gärna med er för att organisera evenemang före och efter D-Dagen! Oavsett om ni är intresserade av lunchföreläsningar, hackathons eller något helt annat är ni välkomna att dela era idéer med oss. För mer information kontakta vår sponsoransvarige på ",
     download: "LADDA NED",
     productCatalog: "PRODUKTKATALOG",
+    header: "FÖRETAG",
   },
 
   url: {

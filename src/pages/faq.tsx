@@ -127,7 +127,7 @@ export default function Faq() {
       <div className="w-full ">
         <p className=" text-center text-cerise text-[50px] sm:text-[100px] font-['NeueHaasDisplayRoman'] w-full">
           {" "}
-          EXHIBITOR
+          {t.faq.header}
         </p>
         <p className=" text-center text-cerise text-[50px] sm:text-[100px] font-['NeueHaasDisplayRoman'] w-full">
           {" "}
