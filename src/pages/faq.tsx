@@ -91,7 +91,7 @@ function Table4(stateAction: Array<[boolean, React.Dispatch<React.SetStateAction
 
     <button onClick={() => stateAction[0][1](!stateAction[0][0])} id="accordion" className="pl-[20px] text-left text-white h-[130px] sm:h-[55px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"> {t.faq.table4row1}</button>
     {stateAction[0][0] ? (
-    <div className="pl-[20px] h-[270px] sm:h-[100px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center ">
+    <div className="pl-[20px] h-[350px] sm:h-[100px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center ">
     <p className="text-white">{t.faq.table4text1} <a className="text-cerise" href="mailto:alexandre.moch@ddagen.se">alexandre.moch@ddagen.se</a></p>
     </div>) : null}
     

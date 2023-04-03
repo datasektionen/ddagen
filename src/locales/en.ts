@@ -114,7 +114,7 @@ export default {
     table1row1: "WHAT IS D-DAGEN?",
     table1row2: "WHEN IS THE YEAR'S D-DAGEN FAIR?",
     table1row3: "WHERE IS D-DAGEN?",
-    table1text1: "D-Dagen is the annual career fair organized by out Computer Science chapte at KTH Royal Institute of Technology. D-Dagen is now the largest IT career fair in the Nordics",
+    table1text1: "D-Dagen is the annual career fair organized by the Computer Science chapter at KTH Royal Institute of Technology. It is today the largest IT career fair in the Nordic region.",
     table1text2: "This year's D-Dagen is taking place on October 12",
     table1text3: "D-Dagen will be held at Nymble, the student union house, located at the KTH Royal Institute of Technlogy in Stockholm",
     table2row1: "CAN OUR COMPANY GET MORE EXPOSURE?",
@@ -133,7 +133,7 @@ export default {
     table3text3: "If you are interested in any type of partnership contact ",
     table3text4: "If the information you are looking for can't be found at our website, contact us at ",
     table4row1: "WHAT KIND OF EVENTS CAN OUR COMPANY HOST TOGETHER WITH D-DAGEN?",
-    table4text1: "We are happy to organize events with you before and after D-Day. The events can be anything from lunch lectures to hackathons, but it is very much up to decide what you want to do. For more information contact our sponsorship manager at",
+    table4text1: "We'd be thrilled to collaborate with you, both before and after D-Dagen! Whether you're interested in hosting a lunch lecture, hackathon, or something completely different, we're open to your ideas. For more information, please contact our sponsorship manager at alexandre.moch@ddagen.se.",
     download: "DOWNLOAD",
     productCatalog: "PRODUCT CATALOG"
   },
