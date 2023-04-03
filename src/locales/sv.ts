@@ -129,7 +129,7 @@ export default {
     table3row2: "VILKEN ÄR SISTA DATUMET FÖR ATT GÖRA EN INTRESSEANMÄLAN?",
     table3row3: "HUR BLIR VI PARTNER?",
     table3row4: "VI VILL HA MER INFORMATION, VART VÄNDER VI OSS?",
-    table3text1_1: "Ni  får göra en intresseanmälan på ",
+    table3text1_1: "Ni får göra en intresseanmälan på ",
     table3text1_2: "eller kontakta våra säljare på",
     table3text2_1: "Eftersom vi har ett begränsat antal platser på vår mässa rekommenderar vi att ni gör en icke-bindande intresseanmälan på ",
     table3text2_2: "så fort som möjligt. Vi stänger preliminärt intresseanmälan den 28:e april.",
