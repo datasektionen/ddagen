@@ -1,7 +1,29 @@
 import { useLocale } from "@/locales";
 import React, { useState } from "react";
 
+function handleAnchorStrings(text: string) {
+  const parts = text.split(/(<a[^>]*>.*?<\/a>)/g);
+  return (
+    <p >
+      {parts.map((part, i) => {
+        if (part.startsWith("<a")) {
+          const hrefMatches = part.match(/href=['"](.*?)['"]/);
+          const href = hrefMatches ? hrefMatches[1] : "";
+          return (
+            <a key={i} href={href} className="text-cerise underline">
+              {part.replace(/<a[^>]*>|<\/a>/g, "")}
+            </a>
+          );
+        } else {
+          return <span>{part}</span>;
+        }
+      })}
+    </p>
+  );
+}
+
 function Table(questions: Array<string>, answers: Array<string>, stateAction: Array<[boolean, React.Dispatch<React.SetStateAction<boolean>>]>){
+
   
   return(
     <div className="mt-[50px]">
@@ -13,7 +35,7 @@ function Table(questions: Array<string>, answers: Array<string>, stateAction: Ar
         </button>
       {stateAction[i][0] ? (
       <div className="pl-[20px] pr-[20px] max-h-[300px] min-h-[100px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
-      <p className=" py-[20px] text-white">{answers[i]}</p>
+      <p className=" py-[20px] text-white">{handleAnchorStrings(answers[i])}</p>
       </div>) : null}
       </div>
     ))}   
