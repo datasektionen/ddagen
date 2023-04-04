@@ -1,5 +1,5 @@
 export default {
-  locale: "sv",
+  locale: "sv" as const,
   titles: {
     home: "D-Dagen - Konglig Datasektionen",
   },
