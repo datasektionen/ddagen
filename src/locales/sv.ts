@@ -138,6 +138,7 @@ export default {
     download: "LADDA NED",
     productCatalog: "PRODUKTKATALOG",
     header: "FÖRETAG",
+    catalogPath: "/downloadables/Product_Catalog_sv.pdf"
   },
 
   url: {
