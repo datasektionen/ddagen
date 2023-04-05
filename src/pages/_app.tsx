@@ -14,12 +14,13 @@ export default function App({ Component, pageProps }: AppProps) {
       <Navbar />
       <div
         className="
-        bg-[linear-gradient(rgba(17,12,48,0),rgba(238,42,123,0.88)),url('/img/bg.png')]
-        bg-top
-        bg-[length:160%] md:bg-[length:100vw]
-        bg-blend-hue
-        bg-repeat
-      "
+          bg-[linear-gradient(rgba(17,12,48,0),rgba(238,42,123,0.88)),url('/img/bg.png')]
+          bg-top
+          bg-[length:160%] md:bg-[length:100vw]
+          bg-blend-hue
+          bg-repeat
+        "
+        id="main-content"
       >
         <Component {...pageProps} />
       </div>
