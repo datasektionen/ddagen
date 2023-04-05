@@ -45,6 +45,7 @@ export default {
     confirm: "Skicka",
     error: {
       db: "Något gick fel! Försök igen eller skicka istället ett mail till",
+      duplicateEmail: "Det finns redan ett registrerat företag med den här mailadressen",
       email:
         "Din anmälan har registrerats, men vi kunde inte skicka ett konfirmationsmail till dig.",
       continue: "Gå vidare ändå",

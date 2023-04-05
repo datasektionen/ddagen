@@ -45,6 +45,7 @@ export default {
     confirm: "Send",
     error: {
       db: "Something went wrong! Try again or send an email instead to",
+      duplicateEmail: "This email has already registered for D-Dagen",
       email:
         "Your registration has been received, but we could not send a confirmation email to you.",
       continue: "Continue anyway",

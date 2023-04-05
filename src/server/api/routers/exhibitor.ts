@@ -5,6 +5,7 @@ import { validateOrganizationNumber } from "@/shared/validateOrganizationNumber"
 import { getLocale } from "@/locales";
 import { env } from "@/env.mjs";
 import { TRPCError } from "@trpc/server";
+import { Prisma } from "@prisma/client";
 
 export const exhibitorRouter = createTRPCRouter({
   register: publicProcedure
@@ -35,19 +36,25 @@ export const exhibitorRouter = createTRPCRouter({
         organizationNumber = v.value;
       }
 
-      await ctx.prisma.exhibitor.create({
-        data: {
-          name: companyName,
-          organizationNumber,
-          contactPerson,
-          phoneNumber,
-          accounts: {
-            create: {
-              email,
+      try {
+        await ctx.prisma.exhibitor.create({
+          data: {
+            name: companyName,
+            organizationNumber,
+            contactPerson,
+            phoneNumber,
+            accounts: {
+              create: {
+                email,
+              },
             },
-          },
+          }
+        });
+      } catch (e) {
+        if (e instanceof Prisma.PrismaClientKnownRequestError && e.code === "P2002") {
+          return { ok: false, error: "duplicate-email" as const };
         }
-      })
+      }
 
       const res = await fetch(env.SPAM_URL, {
         method: "POST",
@@ -69,7 +76,7 @@ export const exhibitorRouter = createTRPCRouter({
       });
       if (!res.ok) {
         console.error("Error sending mail with spam", res.status, res.statusText);
-        return { ok: false, error: "email" as const };
+        return { ok: false, error: "send-email" as const };
       }
       return { ok: true };
     })
