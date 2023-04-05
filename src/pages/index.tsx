@@ -12,7 +12,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="w-full h-full font-['NeueHaasDisplayRoman']">
+      <div className="w-full h-full">
         <div className="flex flex-col mx-auto max-w-[75%]">
           <div className="relative lg:py-[150px] py-[75px]">
             <img
@@ -34,7 +34,7 @@ export default function Home() {
             <h2
               className={
                 `
-            text-white font-['NeueHaasDisplay'] text-4xl text-center
+            text-white text-4xl text-center
                 ` + (t.locale == "sv" ? "sm:ml-9" : "sm:ml-14")
               }
             >
@@ -61,7 +61,7 @@ export default function Home() {
               {/* Top Left */}
               <div className="md:col-[3/20] md:row-[3/15] z-40">
                 <div className="bg-white sm:p-8 p-6 md:w-[90%] md:text-lg xl:text-2xl text-xl drop-shadow-md overflow-hidden">
-                  <p className="first-letter:text-6xl xl:first-letter:text-7xl first-letter:text-cerise first-letter:font-['NeueHaasDisplayBlack'] first-letter:float-left first-letter:mr-1">
+                  <p className="first-letter:text-6xl xl:first-letter:text-7xl first-letter:text-cerise first-letter:font-black first-letter:float-left first-letter:mr-1">
                     {t.home.introFirstBlock}
                   </p>
                   <p>{t.home.introSecondBlock}</p>
@@ -91,14 +91,14 @@ export default function Home() {
               {/* Bottom Right */}
               <div className="md:col-[16/30] md:row-[18/26] md:text-justify text-center z-40">
                 <div className="bg-cerise lg:p-8 p-6 drop-shadow-md overflow-hidden">
-                  <h2 className="font-bold text-[#090E2F] md:text-2xl xl:text-[2rem] text-2xl pb-3 font-['NeueHaasDisplayBlack']">
+                  <h2 className="font-black text-[#090E2F] md:text-2xl xl:text-[2rem] text-2xl pb-3">
                     {t.home.representative}
                   </h2>
                   <p className="pb-8 text-[#110C30] md:text-xl xl:text-2xl text-xl">
                     {t.home.representativeDescription}
                   </p>
                   <Link
-                    className="bg-white p-2.5 rounded-full text-cerise font-['NeueHaasDisplayMedium']"
+                    className="bg-white p-2.5 rounded-full text-cerise font-medium"
                     href="/företagsanmälan"
                   >
                     {t.home.representativeButton}
