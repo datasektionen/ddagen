@@ -49,7 +49,7 @@ function Group({ links }: { links: { href: string, text: string }[] }) {
       <div
         style={{ height: 70 + links.length * 40 }}
         className={
-          "hidden lg:block absolute " + (expanded
+          "hidden lg:block absolute -z-10 " + (expanded
             ? "bg-[#666474] bg-opacity-60 rounded-md -top-[50px] -left-[20px] w-[calc(100%+40px)]"
             : "")
         }
