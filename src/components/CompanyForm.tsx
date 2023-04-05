@@ -83,7 +83,7 @@ export default function CompanyForm({
     });
   }
 
-  if (register.isSuccess) onRegistationDone();
+  if (register.isSuccess && register.data.ok) onRegistationDone();
 
   function trySetOrganizationNumber(value: string, element: HTMLInputElement) {
     value = value.replace(/[^0-9- ]/g, "");
@@ -152,7 +152,7 @@ export default function CompanyForm({
             "
           />
         </div>
-        {register.error?.message?.includes("verification email") ? (
+        {register.data?.error == "email" ? (
           <div className="flex items-center flex-col gap-3">
             <p className="text-red-500 mt-5">
               {t.companyForm.error.email}

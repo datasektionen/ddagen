@@ -1,9 +1,9 @@
 import { z } from "zod";
 
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
-import { TRPCError } from "@trpc/server";
 import { validateOrganizationNumber } from "@/shared/validateOrganizationNumber";
 import { getLocale } from "@/locales";
+import { env } from "@/env.mjs";
 
 export const exhibitorRouter = createTRPCRouter({
   register: publicProcedure
@@ -15,7 +15,17 @@ export const exhibitorRouter = createTRPCRouter({
       phoneNumber: z.string(),
       locale: z.enum(["en", "sv"]),
     }))
-    .mutation(async ({ input: { companyName, organizationNumber, email, contactPerson, phoneNumber, locale }, ctx }) => {
+    .mutation(async ({
+      input: {
+        companyName,
+        organizationNumber,
+        email,
+        contactPerson,
+        phoneNumber,
+        locale
+      },
+      ctx,
+    }) => {
       const t = getLocale(locale).email;
 
       await ctx.prisma.exhibitor.create({
@@ -32,11 +42,11 @@ export const exhibitorRouter = createTRPCRouter({
         }
       })
 
-      const res = await fetch(`${process.env.SPAM_URL}`, {
+      const res = await fetch(env.SPAM_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          key: process.env.SPAM_API_KEY,
+          key: env.SPAM_API_KEY,
           from: "no-reply@datasektionen.se",
           to: email,
           replyTo: "sales@ddagen.se",
@@ -52,8 +62,8 @@ export const exhibitorRouter = createTRPCRouter({
       });
       if (!res.ok) {
         console.error("Error sending mail with spam", res.status, res.statusText);
-        // NOTE: don't change this message, it is matched on in CompanyForm
-        throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Could not send verification email" });
+        return { ok: false, error: "email" as const };
       }
+      return { ok: true };
     })
 });
