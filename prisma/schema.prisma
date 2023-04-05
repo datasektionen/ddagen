@@ -26,8 +26,8 @@ model Account {
   id    String @id @default(uuid())
   email String @unique
 
-  exhibitorId String?
-  exhibitor   Exhibitor? @relation(fields: [exhibitorId], references: [id])
+  exhibitorId String
+  exhibitor   Exhibitor @relation(fields: [exhibitorId], references: [id])
 
   @@map("accounts")
 }
