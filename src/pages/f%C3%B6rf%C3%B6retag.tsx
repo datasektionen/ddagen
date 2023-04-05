@@ -9,7 +9,7 @@ export default function ForCompanies() {
       flex w-full flex-col items-center
       mb-10
     ">
-      <h1 className="text-cerise my-36 text-4xl font-semibold uppercase">{t.forCompanies.title}</h1>
+      <h1 className="text-cerise my-36 text-4xl font-medium uppercase">{t.forCompanies.title}</h1>
       <main className="
         mx-8 p-2 md:p-0 bg-[#d9d9d9b9] flex flex-col md:gap-5
         max-w-5xl
