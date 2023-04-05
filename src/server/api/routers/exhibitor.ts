@@ -79,5 +79,5 @@ export const exhibitorRouter = createTRPCRouter({
         return { ok: false, error: "send-email" as const };
       }
       return { ok: true };
-    })
+    }),
 });
