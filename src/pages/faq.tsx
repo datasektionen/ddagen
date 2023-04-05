@@ -91,9 +91,9 @@ export default function Faq() {
       <div className="mt-[150px]">
         
         <div id="carousel" className="px-[20px] sm:px-[80px] flex flex-row "> 
-          <button onClick={() => setCurrentSlide((currentSlide - 1 + 3) % 3)} className="mr-[20px] text-[100px] text-slate-300 rotate-[270deg]" > &#x25B2; </button>
+          <button onClick={() => setCurrentSlide((currentSlide - 1 + 3) % 3)} className="mr-[20px] text-[25px] sm:text-[30px] md:text-[50px] lg:text-[70px] xl:text-[90px] text-slate-300" > &#x25C0; </button>
           <img src={slides[currentSlide].url} className="min-w-[200px]"></img>
-          <button onClick={() => setCurrentSlide((currentSlide + 1 + 3) % 3)} className="ml-[20px] text-[100px] text-slate-300 rotate-90" > &#x25B2; </button>
+          <button onClick={() => setCurrentSlide((currentSlide +  1 + 3) % 3)} className="ml-[20px] text-[25px] sm:text-[30px] md:text-[50px] lg:text-[70px] xl:text-[90px] text-slate-300" > &#x25B6; </button>
         </div>
         <div className="flex justify-center mt-[50px]"> 
           {slides.map((slide, index) => (
