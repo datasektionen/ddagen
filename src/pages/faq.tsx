@@ -64,11 +64,11 @@ export default function Faq() {
   [
     Table([t.faq.table1row1, t.faq.table1row2, t.faq.table1row3], [t.faq.table1text1, t.faq.table1text2, t.faq.table1text3], Array.from({ length: 3 }, () => useState(false))), 
     Table([t.faq.table2row1, t.faq.table2row2], [t.faq.table2text1, t.faq.table2text2], Array.from({ length: 2 }, () => useState(false))), 
-    Table([t.faq.table3row1, t.faq.table3row2, t.faq.table3row3, t.faq.table3row4], [t.faq.table3text1, t.faq.table3text2, t.faq.table3text3, t.faq.table3text4], Array.from({ length: 4 }, () => useState(false))),
+    Table([t.faq.table3row1, t.faq.table3row2, t.faq.table3row3, t.faq.table3row4, t.faq.table3row5], [t.faq.table3text1, t.faq.table3text2, t.faq.table3text3, t.faq.table3text4, t.faq.table3text5], Array.from({ length: 5 }, () => useState(false))),
     Table([t.faq.table4row1], [t.faq.table4text1], [useState(false)])
   ]
   
-  const [currentTable, setCurrentTable] = useState(0);
+  const [currentTable, setCurrentTable] = useState(2);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   return (
@@ -115,11 +115,11 @@ export default function Faq() {
         <div className="h-[50px] bg-inherit flex flex-col sm:flex-row  justify-center items-center mb-[80px] px-[30px] sm:px-[0px] ">
           
           <div className="sm:w-full flex flex-row justify-center items-center">
-              <div className={`${!(currentTable-0) ? 'brightness-100': 'brightness-75'} sm:w-full text-center h-[50px] mr-[20px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer`} onClick={() => setCurrentTable(0)}>
-                <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto"> {t.faq.box1}</p>
-              </div>
-              <div className={`${!(currentTable-2) ? 'brightness-100': 'brightness-75'} sm:w-full text-center h-[50px] mr-[0px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer`} onClick={() => setCurrentTable(2)}>
+              <div className={`${!(currentTable-2) ? 'brightness-100': 'brightness-75'} sm:w-full text-center h-[50px] mr-[20px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer`} onClick={() => setCurrentTable(2)}>
                 <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto"> {t.faq.box3}</p>
+              </div>
+              <div className={`${!(currentTable-0) ? 'brightness-100': 'brightness-75'} sm:w-full text-center h-[50px] mr-[0px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer`} onClick={() => setCurrentTable(0)}>
+                <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto"> {t.faq.box1}</p>
               </div>
           </div>
 
