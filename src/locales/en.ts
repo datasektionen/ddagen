@@ -132,7 +132,6 @@ export default {
     table3text4: "If the information you are looking for can't be found at our website, contact us at <a className='text-cerise' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
     table4row1: "WHAT KIND OF EVENTS CAN OUR COMPANY HOST TOGETHER WITH D-DAGEN?",
     table4text1: "We'd be thrilled to collaborate with you, both before and after D-Dagen! Whether you're interested in hosting a lunch lecture, hackathon, or something completely different, we're open to your ideas. For more information, please contact our sponsorship manager at <a className='text-cerise' href='mailto:alexandre.moch@ddagen.se'>alexandre.moch@ddagen.se</a>.",
-    download: "DOWNLOAD",
     productCatalog: "PRODUCT CATALOG",
     header: "EXHIBITOR",
     catalogPath: "/downloadables/Product_Catalog_eng.pdf"

@@ -138,9 +138,8 @@ export default function Faq() {
       {/*Dropdown table*/}
       
       {/*Product Catalog button*/}
-      <a href={t.faq.catalogPath}>
-        <button className="mt-[100px] h-[100px] w-[250px] bg-cerise rounded-[40px] border-cerise flex items-center justify-center px-[30px] flex-col">
-            <p className="text-white text-[20px] text-center">{t.faq.download}</p>
+      <a href={t.faq.catalogPath} target="blank">
+        <button className="mt-[100px] h-[80px] w-[250px] bg-cerise rounded-[40px] border-cerise flex items-center justify-center px-[30px] flex-col">
             <div className="flex items-center">
               <span className="text-white text-[20px]">{t.faq.productCatalog}</span>
             </div>
