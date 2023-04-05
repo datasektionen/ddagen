@@ -51,8 +51,8 @@ function Group({ links }: { links: { href: string, text: string }[] }) {
         }
       />
       {links.map(({ href, text }, i) => i == 0
-        ? <NavLink class="z-10 pl-14 lg:pl-0 p-4" href={links[0].href}>{links[0].text}</NavLink>
-        : <NavLink
+        ? <NavLink key={i} class="z-10 pl-14 lg:pl-0 p-4" href={links[0].href}>{links[0].text}</NavLink>
+        : <NavLink key={i}
           style={{ top: 40 * i }}
           class={(hovered ? "" : "lg:hidden") + " z-10 lg:w-full lg:absolute p-4 lg:px-0"}
           href={href}
