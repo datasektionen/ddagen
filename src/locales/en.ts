@@ -48,10 +48,10 @@ export default {
       email:
         "Your registration has been received, but we could not send a confirmation email to you.",
       continue: "Continue anyway",
+      organizationNumberLength: "The organization number must be 10 digits",
+      organizationNumberChecksum:
+        "Invalid check digit, check that you have entered the number correctly",
     },
-    organizationNumberLength: "The organization number must be 10 digits",
-    organizationNumberChecksum:
-      "Invalid check digit, check that you have entered the number correctly",
   },
   postCompanyForm: {
     title: "Registration confirmed",

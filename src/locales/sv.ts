@@ -34,7 +34,7 @@ export default {
   },
   companyForm: {
     title: "Intresseanmälan",
-    description:"Fyll i formuläret för att registrera ert företag för D-Dagen 2023. OBS! En intresseanmälan är inte bindande.",
+    description: "Fyll i formuläret för att registrera ert företag för D-Dagen 2023. OBS! En intresseanmälan är inte bindande.",
     fields: {
       name: "Företagsnamn",
       organizationNumber: "Organisationsnummer",
@@ -48,10 +48,10 @@ export default {
       email:
         "Din anmälan har registrerats, men vi kunde inte skicka ett konfirmationsmail till dig.",
       continue: "Gå vidare ändå",
+      organizationNumberLength: "Organisationsnumret måste vara 10 siffror",
+      organizationNumberChecksum:
+        "Felaktig kontrollsiffra, kontrollera att du skrivit rätt",
     },
-    organizationNumberLength: "Organisationsnumret måste vara 10 siffror",
-    organizationNumberChecksum:
-      "Felaktig kontrollsiffra, kontrollera att du skrivit rätt",
   },
   postCompanyForm: {
     title: "Intresseanmälan bekräftad",
@@ -115,7 +115,7 @@ export default {
     box2: "MARKNADSFÖRING",
     box3: "ALLMÄNT",
     box4: "EVENEMANG",
-    table1row1:"VAD ÄR D-DAGEN?",
+    table1row1: "VAD ÄR D-DAGEN?",
     table1row2: "NÄR ÄR ÅRETS D-DAGEN?",
     table1row3: "VAR ÄR D-DAGEN?",
     table1text1: "D-Dagen är den årliga karriärmässan som anordnas av Datasektionen på Kungliga Tekniska Högskolan. D-Dagen är numera Nordens största karriärmässa inom IT.",

@@ -4,12 +4,13 @@ import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
 import { validateOrganizationNumber } from "@/shared/validateOrganizationNumber";
 import { getLocale } from "@/locales";
 import { env } from "@/env.mjs";
+import { TRPCError } from "@trpc/server";
 
 export const exhibitorRouter = createTRPCRouter({
   register: publicProcedure
     .input(z.object({
       companyName: z.string(),
-      organizationNumber: validateOrganizationNumber(getLocale("en")),
+      organizationNumber: z.string(),
       email: z.string().email(),
       contactPerson: z.string(),
       phoneNumber: z.string(),
@@ -27,6 +28,12 @@ export const exhibitorRouter = createTRPCRouter({
       ctx,
     }) => {
       const t = getLocale(locale).email;
+      const v = validateOrganizationNumber(organizationNumber);
+      if ("error" in v) {
+        throw new TRPCError({ message: "Invalid organization number", code: "BAD_REQUEST" });
+      } else {
+        organizationNumber = v.value;
+      }
 
       await ctx.prisma.exhibitor.create({
         data: {

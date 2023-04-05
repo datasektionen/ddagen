@@ -87,14 +87,15 @@ export default function CompanyForm({
 
   function trySetOrganizationNumber(value: string, element: HTMLInputElement) {
     value = value.replace(/[^0-9- ]/g, "");
-    setOrganizationNumber(value);
 
-    const res = validateOrganizationNumber(t).safeParse(value);
-    if (!res.success && res.error.errors.length > 0) {
-      element.setCustomValidity(res.error.errors[0].message);
+    const res = validateOrganizationNumber(value);
+    if ("error" in res) {
+      element.setCustomValidity(t.companyForm.error[res.error]);
     } else {
       element.setCustomValidity("");
     }
+
+    setOrganizationNumber(value);
   }
 
   return (
