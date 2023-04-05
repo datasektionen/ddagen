@@ -35,10 +35,6 @@ function Logo({ "class": className }: { "class"?: string }) {
 
 function Group({ links }: { links: { href: string, text: string }[] }) {
   const [hovered, setHovered] = useState(false);
-  const router = useRouter();
-
-  const selected = links.some(l => router.pathname.startsWith(encodeURI(l.href)));
-  const expanded = hovered || selected;
 
   return (
     <div
@@ -49,7 +45,7 @@ function Group({ links }: { links: { href: string, text: string }[] }) {
       <div
         style={{ height: 70 + links.length * 40 }}
         className={
-          "hidden lg:block absolute -z-10 " + (expanded
+          "hidden lg:block absolute -z-10 " + (hovered
             ? "bg-[#666474] bg-opacity-60 rounded-md -top-[50px] -left-[20px] w-[calc(100%+40px)]"
             : "")
         }
@@ -58,7 +54,7 @@ function Group({ links }: { links: { href: string, text: string }[] }) {
         ? <NavLink class="z-10 pl-14 lg:pl-0 p-4" href={links[0].href}>{links[0].text}</NavLink>
         : <NavLink
           style={{ top: 40 * i }}
-          class={(!expanded ? "lg:hidden" : "") + " z-10 lg:w-full lg:absolute p-4 lg:px-0"}
+          class={(hovered ? "" : "lg:hidden") + " z-10 lg:w-full lg:absolute p-4 lg:px-0"}
           href={href}
         >{text}</NavLink>)}
     </div>
