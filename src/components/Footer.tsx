@@ -20,25 +20,22 @@ export default function Footer() {
 
   return (
     <footer className="
-    
-      font-['NeueHaasDisplay']
       bg-fill bg-[#2D2D2D]
       min-h-[300px]
       flex flex-grow
-
     ">
-      <div
-        className="relative w-full  h-[400px] md:h-[300px] pt-[20px] md:pt-[40px]  flex flex-col 
-      md:flex-row r items-center md:items-stretch md:justify-between md:px-[100px]"
-      >
+      <div className="
+        relative w-full  h-[400px] md:h-[300px] pt-[20px] md:pt-[40px]  flex flex-col
+        md:flex-row r items-center md:items-stretch md:justify-between md:px-[100px]
+      ">
         <div className="
           flex flex-col md:border-r-[1px] border-[#636363]
           pl-[15%] md:pl-[0px] md:pr-[20px] order-last md:order-first w-[95%] md:w-max md:items-center h-[400px] md:h-[200px]
         ">
-          <p className="font-['NeueHaasDisplay'] w-[220px] md:w-[230px] font-bold text-[#DADADA] text-xs md:pr-[20px]">
+          <p className="w-[220px] md:w-[230px] font-bold text-[#DADADA] text-xs md:pr-[20px]">
             {footer.header}
           </p>
-          <p className="font-['NeueHaasDisplay'] w-[180px] mb-7 text-[#DADADA] text-xs md:w-[228px]">
+          <p className="w-[180px] mb-7 text-[#DADADA] text-xs md:w-[228px]">
             {footer.about}
           </p>
 

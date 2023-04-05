@@ -16,7 +16,7 @@ module.exports = {
       },
     },
     fontFamily: {
-      sans: ['Lato', 'sans-serif'],
+      sans: ['neue-haas', 'sans-serif'],
     },
   },
   plugins: [],

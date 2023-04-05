@@ -138,7 +138,7 @@ export default function CompanyForm({
       <h1 className="text-center text-3xl md:text-5xl text-cerise uppercase">
         {t.companyForm.title}
       </h1>
-      <p className="text-center min-w-[100px] max-w-[400px] w-full text-white mt-10 font-['NeueHaasDisplay']"> {t.companyForm.description}</p>
+      <p className="text-center min-w-[100px] max-w-[400px] w-full text-white mt-10"> {t.companyForm.description}</p>
       <form
         method="post"
         className="bg-transparent w-3/5 mt-12"
