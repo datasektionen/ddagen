@@ -22,11 +22,11 @@ function handleAnchorStrings(text: string) {
   );
 }
 
-function Table(
-  questions: Array<string>,
-  answers: Array<string>,
-  stateAction: Array<[boolean, React.Dispatch<React.SetStateAction<boolean>>]>
-) {
+function Table(questions: Array<string>, answers: Array<string>) {
+  const stateAction = Array.from({ length: questions.length }, () =>
+    useState(false)
+  );
+
   return (
     <div className="mt-[50px]">
       {questions.map((_, i) => (
@@ -38,13 +38,16 @@ function Table(
             {" "}
             {questions[i]}
           </button>
-          {stateAction[i][0] ? (
-            <div className="pl-[20px] pr-[20px] max-h-[300px] min-h-[100px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
-              <p className=" py-[20px] text-white">
-                {handleAnchorStrings(answers[i])}
-              </p>
-            </div>
-          ) : null}
+
+          <div
+            className={`${
+              stateAction[i][0]
+                ? "max-h-[800px] py-[40px]"
+                : "max-h-0 text-[0px]"
+            } duration-[150] transition-all text-white py-[0px] pl-[20px] pr-[20px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center`}
+          >
+            {handleAnchorStrings(answers[i])}
+          </div>
         </div>
       ))}
     </div>
@@ -68,13 +71,11 @@ export default function Faq() {
   const tables = [
     Table(
       [t.faq.table1row1, t.faq.table1row2, t.faq.table1row3],
-      [t.faq.table1text1, t.faq.table1text2, t.faq.table1text3],
-      Array.from({ length: 3 }, () => useState(false))
+      [t.faq.table1text1, t.faq.table1text2, t.faq.table1text3]
     ),
     Table(
       [t.faq.table2row1, t.faq.table2row2],
-      [t.faq.table2text1, t.faq.table2text2],
-      Array.from({ length: 2 }, () => useState(false))
+      [t.faq.table2text1, t.faq.table2text2]
     ),
     Table(
       [
@@ -90,10 +91,9 @@ export default function Faq() {
         t.faq.table3text3,
         t.faq.table3text4,
         t.faq.table3text5,
-      ],
-      Array.from({ length: 5 }, () => useState(false))
+      ]
     ),
-    Table([t.faq.table4row1], [t.faq.table4text1], [useState(false)]),
+    Table([t.faq.table4row1], [t.faq.table4text1]),
   ];
 
   const [currentTable, setCurrentTable] = useState(2);
