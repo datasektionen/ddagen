@@ -22,29 +22,38 @@ function handleAnchorStrings(text: string) {
   );
 }
 
-function Table(
-  questions: Array<string>,
-  answers: Array<string>,
-  stateAction: Array<[boolean, React.Dispatch<React.SetStateAction<boolean>>]>
-) {
+function Table(questions: Array<string>, answers: Array<string>) {
+  const stateAction = Array.from({ length: questions.length }, () =>
+    useState(false)
+  );
+
   return (
     <div className="mt-[50px]">
       {questions.map((_, i) => (
         <div key={i}>
           <button
             onClick={() => stateAction[i][1](!stateAction[i][0])}
-            className="pl-[20px] pr-[20px] py-[15px] text-left text-white max-h-[300px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"
+            className="items-center flex flex-row  justify-between pl-[20px] pr-[20px] py-[15px] text-left text-white max-h-[300px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"
           >
             {" "}
             {questions[i]}
+            <img
+              src="/img/caret.svg"
+              className={`${
+                stateAction[i][0] ? "rotate-180" : ""
+              } duration-200 ml-4 h-4 `}
+            ></img>
           </button>
-          {stateAction[i][0] ? (
-            <div className="pl-[20px] pr-[20px] max-h-[300px] min-h-[100px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center">
-              <p className=" py-[20px] text-white">
-                {handleAnchorStrings(answers[i])}
-              </p>
-            </div>
-          ) : null}
+
+          <div
+            className={`${
+              stateAction[i][0]
+                ? "max-h-[800px] py-[40px]"
+                : "max-h-0 text-[0px]"
+            }  duration-200 ease-out text-white py-[0px] pl-[20px] pr-[20px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center`}
+          >
+            {handleAnchorStrings(answers[i])}
+          </div>
         </div>
       ))}
     </div>
@@ -68,13 +77,11 @@ export default function Faq() {
   const tables = [
     Table(
       [t.faq.table1row1, t.faq.table1row2, t.faq.table1row3],
-      [t.faq.table1text1, t.faq.table1text2, t.faq.table1text3],
-      Array.from({ length: 3 }, () => useState(false))
+      [t.faq.table1text1, t.faq.table1text2, t.faq.table1text3]
     ),
     Table(
       [t.faq.table2row1, t.faq.table2row2],
-      [t.faq.table2text1, t.faq.table2text2],
-      Array.from({ length: 2 }, () => useState(false))
+      [t.faq.table2text1, t.faq.table2text2]
     ),
     Table(
       [
@@ -90,10 +97,9 @@ export default function Faq() {
         t.faq.table3text3,
         t.faq.table3text4,
         t.faq.table3text5,
-      ],
-      Array.from({ length: 5 }, () => useState(false))
+      ]
     ),
-    Table([t.faq.table4row1], [t.faq.table4text1], [useState(false)]),
+    Table([t.faq.table4row1], [t.faq.table4text1]),
   ];
 
   const [currentTable, setCurrentTable] = useState(2);
@@ -148,7 +154,7 @@ export default function Faq() {
       {/*Carousel*/}
 
       {/*Dropdown table*/}
-      <div className="h-full min-w-[200px] max-w-[1200px] w-full mt-[100px] px-[30px]">
+      <div className="h-full min-w-[200px] max-w-[1200px] w-full mt-[100px] px-[20px] min-[450px]:px-[60px] min-[704px]:px-[60px]">
         {/*Dropdown buttons*/}
         <div className="h-[50px] bg-inherit flex flex-col sm:flex-row  justify-center items-center mb-[80px] px-[30px] sm:px-[0px] ">
           <div className="sm:w-full flex flex-row justify-center items-center">
