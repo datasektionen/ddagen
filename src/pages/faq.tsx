@@ -15,7 +15,7 @@ function handleAnchorStrings(text: string) {
             </a>
           );
         } else {
-          return <span>{part}</span>;
+          return <span key={i}>{part}</span>;
         }
       })}
     </p>
