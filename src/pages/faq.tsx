@@ -1,5 +1,6 @@
 import { useLocale } from "@/locales";
 import React, { useState } from "react";
+import { Carousel } from  "flowbite-react"
 
 function handleAnchorStrings(text: string) {
   const parts = text.split(/(<a[^>]*>.*?<\/a>)/g);
@@ -106,7 +107,7 @@ export default function Faq() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   return (
-    <div className="py-[200px] flex flex-col items-center">
+    <div className="py-[150px] flex flex-col items-center">
       {/*Header*/}
       <div className="w-full ">
         <p className=" text-center text-cerise text-[50px] sm:text-[100px] w-full">
@@ -121,35 +122,12 @@ export default function Faq() {
       {/*Header*/}
 
       {/*Carousel*/}
-      <div className="mt-[150px]">
-        <div id="carousel" className="px-[20px] sm:px-[80px] flex flex-row ">
-          <button
-            onClick={() => setCurrentSlide((currentSlide - 1 + 3) % 3)}
-            className="mr-[20px] text-[25px] sm:text-[30px] md:text-[50px] lg:text-[70px] xl:text-[90px] text-slate-300"
-          >
-            {" "}
-            &#x25C0;{" "}
-          </button>
-          <img src={slides[currentSlide].url} className="min-w-[200px]"></img>
-          <button
-            onClick={() => setCurrentSlide((currentSlide + 1 + 3) % 3)}
-            className="ml-[20px] text-[25px] sm:text-[30px] md:text-[50px] lg:text-[70px] xl:text-[90px] text-slate-300"
-          >
-            {" "}
-            &#x25B6;{" "}
-          </button>
-        </div>
-        <div className="flex justify-center mt-[50px]">
-          {slides.map((slide, index) => (
-            <button
-              key={index}
-              className={`mx-2 w-5 h-5 bg-gray rounded-full cursor-pointer ${
-                currentSlide === index ? "bg-slate-300" : ""
-              }`}
-              onClick={() => setCurrentSlide(index)}
-            ></button>
-          ))}
-        </div>
+      <div className="h-[15vh] md:h-[35vh] lg:h-[45vh] xl:h-[60vh] w-full mt-[150px]">
+        <Carousel className="px-[20px] sm:px-[80px]">
+          <img src={slides[0].url} />
+          <img src={slides[1].url} />
+          <img src={slides[2].url} />
+        </Carousel>
       </div>
       {/*Carousel*/}
 
