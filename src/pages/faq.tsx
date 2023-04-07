@@ -33,10 +33,16 @@ function Table(questions: Array<string>, answers: Array<string>) {
         <div key={i}>
           <button
             onClick={() => stateAction[i][1](!stateAction[i][0])}
-            className="pl-[20px] pr-[20px] py-[15px] text-left text-white max-h-[300px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"
+            className="items-center flex flex-row  justify-between pl-[20px] pr-[20px] py-[15px] text-left text-white max-h-[300px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"
           >
             {" "}
             {questions[i]}
+            <img
+              src="/img/caret.svg"
+              className={`${
+                stateAction[i][0] ? "rotate-180" : ""
+              } duration-200 ml-4 h-4 `}
+            ></img>
           </button>
 
           <div
@@ -148,7 +154,7 @@ export default function Faq() {
       {/*Carousel*/}
 
       {/*Dropdown table*/}
-      <div className="h-full min-w-[200px] max-w-[1200px] w-full mt-[100px] px-[30px]">
+      <div className="h-full min-w-[200px] max-w-[1200px] w-full mt-[100px] px-[20px] min-[450px]:px-[60px] min-[704px]:px-[60px]">
         {/*Dropdown buttons*/}
         <div className="h-[50px] bg-inherit flex flex-col sm:flex-row  justify-center items-center mb-[80px] px-[30px] sm:px-[0px] ">
           <div className="sm:w-full flex flex-row justify-center items-center">
