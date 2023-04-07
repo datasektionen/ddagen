@@ -44,7 +44,7 @@ function Table(questions: Array<string>, answers: Array<string>) {
               stateAction[i][0]
                 ? "max-h-[800px] py-[40px]"
                 : "max-h-0 text-[0px]"
-            } duration-[150] transition-all text-white py-[0px] pl-[20px] pr-[20px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center`}
+            }  duration-200 ease-out text-white py-[0px] pl-[20px] pr-[20px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center`}
           >
             {handleAnchorStrings(answers[i])}
           </div>
