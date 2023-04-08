@@ -13,6 +13,8 @@
     "eslint-config-next": "^13.1.6",
     "firebase": "^9.16.0",
     "firebaseui": "^0.600.0",
+    "flowbite": "^1.6.4",
+    "flowbite-react": "^0.4.3",
     "next": "^13.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",

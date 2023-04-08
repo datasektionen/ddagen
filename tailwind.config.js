@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
+    "./node_modules/flowbite-react/**/*.js",
     './src/pages/**/*.tsx',
     './src/components/**/*.tsx'
   ],
@@ -19,5 +20,7 @@ module.exports = {
       sans: ['neue-haas', 'sans-serif'],
     },
   },
-  plugins: [],
+  plugins: [
+    require("flowbite/plugin"),
+  ],
 }
