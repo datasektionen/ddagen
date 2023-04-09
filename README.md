@@ -26,3 +26,21 @@ SPAM_API_KEY=2AkdhsQ9cTTSBKtNXdd6E07rqN8CFWvRqeY4GeAyXAn09urF # not used in deve
 SPAM_URL=https://spam.datasektionen.se/api/sendmail # not used in development
 EXPORT_TOKEN=aaaaaaaaaaaaaaaaaaaaaaaa # can be almost anything, used to verify clients in the /api/export-exhibitors endpoint
 ```
+
+Install npm dependencies:
+
+```bash
+npm i
+```
+
+This will also install the prisma engine, which is a binary that gets downloaded
+from somewhere. If this does not work on your computer, either replace prisma
+with something new and fancy (NOTE: applies only to future people) or look
+[here](https://gist.github.com/mathiasmagnusson/c229abac159dd76657b895a4c8cb6ade)
+for something that probably will work.
+
+Lastly, start the thing:
+
+```bash
+npm run dev
+```
