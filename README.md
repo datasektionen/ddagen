@@ -21,10 +21,14 @@ docker run --name ddagen-db -p 5432:5432 -d \
 Create a file called `.env` with contents like the following:
 
 ```bash
-DATABASE_URL=postgresql://ddagen:ddagen@localhost:5432/ddagen?schema=public # adjust according to your database
-SPAM_API_KEY=2AkdhsQ9cTTSBKtNXdd6E07rqN8CFWvRqeY4GeAyXAn09urF # not used in development
-SPAM_URL=https://spam.datasektionen.se/api/sendmail # not used in development
-EXPORT_TOKEN=aaaaaaaaaaaaaaaaaaaaaaaa # can be almost anything, used to verify clients in the /api/export-exhibitors endpoint
+DATABASE_URL=postgresql://ddagen:ddagen@localhost:5432/ddagen?schema=public
+
+# not used in development
+SPAM_API_KEY=2AkdhsQ9cTTSBKtNXdd6E07rqN8CFWvRqeY4GeAyXAn09urF
+SPAM_URL=https://spam.datasektionen.se/api/sendmail
+
+# can be almost anything, used to verify clients in the /api/export-exhibitors endpoint
+EXPORT_TOKEN=aaaaaaaaaaaaaaaaaaaaaaaa
 ```
 
 Install npm dependencies:
