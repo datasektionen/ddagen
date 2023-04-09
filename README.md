@@ -67,6 +67,12 @@ with something new and fancy (NOTE: applies only to future people) or look
 [here](https://gist.github.com/mathiasmagnusson/c229abac159dd76657b895a4c8cb6ade)
 for something that probably will work.
 
+Then you'll need to run the migrations on the database:
+
+```bash
+npx prisma migrate dev
+```
+
 Lastly, start the thing:
 
 ```bash
