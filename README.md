@@ -1,5 +1,28 @@
-![d-dagen](https://github.com/datasektionen/ddagen/blob/develop/static/img/assets/d-dagen-logo-ny.svg)
+![d-dagen](https://github.com/datasektionen/ddagen/blob/main/public/img/logo-white-ageless_v2.svg)
+
 Next.js project for D-Dagen's website.
 
 Take a look at the [wiki](https://github.com/datasektionen/ddagen/wiki) for more information about the different features of [ddagen.se](https://ddagen.se)!
 While you're there make sure to contribute some information and documentation about new (and old) features.
+
+## Running
+
+A postgres database must be running for the website to work. If you have docker
+installed, you can create one with:
+
+```bash
+docker run --name ddagen-db -p 5432:5432 -d \
+    -e POSTGRES_PASSWORD=ddagen \
+    -e POSTGRES_DB=ddagen \
+    -e POSTGRES_USER=ddagen \
+    postgres
+```
+
+Create a file called `.env` with contents like the following:
+
+```bash
+DATABASE_URL=postgresql://ddagen:ddagen@localhost:5432/ddagen?schema=public # adjust according to your database
+SPAM_API_KEY=2AkdhsQ9cTTSBKtNXdd6E07rqN8CFWvRqeY4GeAyXAn09urF # not used in development
+SPAM_URL=https://spam.datasektionen.se/api/sendmail # not used in development
+EXPORT_TOKEN=aaaaaaaaaaaaaaaaaaaaaaaa # can be almost anything, used to verify clients in the /api/export-exhibitors endpoint
+```
