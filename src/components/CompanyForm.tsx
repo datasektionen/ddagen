@@ -28,7 +28,7 @@ function InputField({
           w-full py-2 px-1 leading-tight
           bg-transparent appearance-none
           text-slate-400
-          border-b-2 border-red-500 valid:border-slate-400
+          border-0 border-b-2 border-red-500 valid:border-slate-400
           placeholder-shown:border-slate-400 focus:border-cerise
           focus:outline-none focus:shadow-outline
           peer
