@@ -57,6 +57,11 @@ export const exhibitorRouter = createTRPCRouter({
         throw e;
       }
 
+      if (env.NODE_ENV === "development") {
+        console.log(`Not sending email to "${contactPerson} <${email}>" in development`);
+        return { ok: true };
+      }
+
       const res = await fetch(env.SPAM_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

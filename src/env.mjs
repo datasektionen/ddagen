@@ -5,7 +5,7 @@ import { z } from "zod";
  * built with invalid env vars.
  */
 const server = z.object({
-  NODE_ENV: z.enum(["development", "test", "production"]),
+  NODE_ENV: z.enum(["development", "production"]),
   DATABASE_URL: z.string().url(),
   SPAM_API_KEY: z.string(),
   SPAM_URL: z.string().url(),
