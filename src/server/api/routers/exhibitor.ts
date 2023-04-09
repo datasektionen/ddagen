@@ -54,6 +54,7 @@ export const exhibitorRouter = createTRPCRouter({
         if (e instanceof Prisma.PrismaClientKnownRequestError && e.code === "P2002") {
           return { ok: false, error: "duplicate-email" as const };
         }
+        throw e;
       }
 
       const res = await fetch(env.SPAM_URL, {
