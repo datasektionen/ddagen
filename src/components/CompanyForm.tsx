@@ -31,7 +31,7 @@ function InputField({
           text-slate-400
           border-0 border-b-2 border-red-500 valid:border-slate-400
           placeholder-shown:border-slate-400 focus:border-cerise
-          focus:outline-none focus:shadow-outline
+          focus:outline-none
           peer
         "
         id={name}
@@ -90,7 +90,7 @@ export default function CompanyForm({
 
     const res = validateOrganizationNumber(value);
     if ("error" in res) {
-      element.setCustomValidity(t.companyForm.error[res.error]);
+      element.setCustomValidity(t.error[res.error]);
     } else {
       element.setCustomValidity("");
     }
@@ -156,24 +156,24 @@ export default function CompanyForm({
         {register.data?.error == "duplicate-email" ? (
           <div className="flex items-center flex-col gap-3">
             <p className="text-red-500 mt-5">
-              {t.companyForm.error.duplicateEmail}
+              {t.error.duplicateEmail}
             </p>
           </div>
         ) : register.data?.error == "send-email" ? (
           <div className="flex items-center flex-col gap-3">
             <p className="text-red-500 mt-5">
-              {t.companyForm.error.email}
+              {t.error.exhibitorRegistrationEmail}
             </p>
             <button onClick={onRegistationDone} className="
               text-center bg-cerise transition-transform hover:scale-110 focus:scale-110 focus:outline-none
               text-white font-bold uppercase py-2 px-4 rounded-full cursor-pointer
             ">
-              {t.companyForm.error.continue}
+              {t.companyForm.ignoreError}
             </button>
           </div>
         ) : register.error ? (
           <p className="text-red-500 text-center mt-5">
-            {t.companyForm.error.db}{" "}
+            {t.error.exhibitorRegistration}{" "}
             <a
               href={
                 "mailto:sales@ddagen.se?body=" +
