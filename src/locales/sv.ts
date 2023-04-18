@@ -32,6 +32,23 @@ export default {
       "Är du intresserad av att ställa ut på D-Dagen och knyta kontakt med tusentals studenter inom Data och IT? Klicka här nedan för att göra en intresseanmälan!",
     formButton: "Intresseanmälan",
   },
+  login: {
+    title: "Logga in",
+    email: "E-post",
+    emailText: "E-postadressen du angav när du gjorde din intresseanmälan",
+    confirm: "Logga in",
+    confirmationCode: "Bekräftelsekod",
+    confirmationCodeText: "Vi har skickat en kod till din e-postadress",
+    emailSubject: "D-Dagen - Logga in",
+    emailBody: (code: string, link: string) => `
+      <p>För att slutföra inloggningen till D-Dagen, klicka på länken nedan:</p>
+      <p><a href="${link}">${link}</a></p>
+      <p>eller ange koden <b>${code}</b> på inloggningssidan.</p>
+      <p>Om du inte försökt logga in kan du ignorera detta mail.
+      Om du får oväntat många av dessa, kontakta oss på
+      <a href="mailto:dev@ddagen.se">dev@ddagen.se</a>.</p>
+    `,
+  },
   companyForm: {
     title: "Intresseanmälan",
     description: "Fyll i formuläret för att registrera ert företag för D-Dagen 2023. OBS! En intresseanmälan är inte bindande.",
@@ -164,5 +181,9 @@ export default {
     invalidOrganizationNumberLength: "Organisationsnumret måste vara 10 siffror",
     invalidOrganizationNumberChecksum:
       "Felaktig kontrollsiffra, kontrollera att du skrivit rätt",
+    accountNotFound: "Det finns inget konto med den här mailadressen",
+    emailNotSent: "Ett fel uppstod när vi försökte skicka ett mail till dig",
+    invalidConfirmationCode: "Bekräftelsekoden är felaktig eller har gått ut, var god försök igen",
+    unknown: "Ett okänt fel uppstod",
   },
 };

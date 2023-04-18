@@ -32,6 +32,23 @@ export default {
       "Are you interested in exhibiting on D-Dagen and connecting with thousands of students in Computer Science and IT? Click below to sign up!",
     formButton: "Sign up",
   },
+  login: {
+    title: "Log in",
+    email: "Email",
+    emailText: "The email address you used to register your company",
+    confirm: "Log in",
+    confirmationCode: "Confirmation code",
+    confirmationCodeText: "We sent you a confirmation code to your email address",
+    emailSubject: "D-Dagen Login",
+    emailBody: (code: string, link: string) => `
+      <p>To complete the login to D-Dagen, click the link below:</p>
+      <p><a href="${link}">${link}</a></p>
+      <p>or enter the code <b>${code}</b> on the login page.</p>
+      <p>If you did not request this login, please ignore this email.</p>
+      If you get a lot of these, please contact us at
+      <a href="mailto:dev@ddagen.se">dev@ddagen.se</a>.</p>
+    `,
+  },
   companyForm: {
     title: "Sign up for D-Dagen",
     description: "Fill in this form to sign up your company for D-Dagen 2023. Please note that signing up through to this form is not binding.",
@@ -161,5 +178,9 @@ export default {
     invalidOrganizationNumberLength: "The organization number must be 10 digits",
     invalidOrganizationNumberChecksum:
       "Invalid check digit, check that you have entered the number correctly",
+    accountNotFound: "No account with this email has been registered",
+    emailNotSent: "Something went wrong when sending an email to you, please try again later",
+    invalidConfirmationCode: "Invalid or expired confirmation code, please try again",
+    unknown: "Something unexpectedly went wrong",
   },
 };
