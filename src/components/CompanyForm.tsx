@@ -2,59 +2,7 @@ import { type FormEvent, useState } from "react";
 import type Locale from "@/locales";
 import { api } from "@/utils/api";
 import { validateOrganizationNumber } from "@/shared/validateOrganizationNumber";
-
-function InputField({
-  name,
-  type = "text",
-  pattern,
-  value,
-  setValue,
-  t,
-}: {
-  name: keyof Locale["companyForm"]["fields"];
-  type?: React.HTMLInputTypeAttribute;
-  pattern?: string;
-  value: string;
-  setValue: (value: string, element: HTMLInputElement) => void;
-  t: Locale;
-}) {
-  return (
-    <div className="my-16 relative">
-      <input
-        required
-        placeholder=" "
-        type={type}
-        pattern={pattern}
-        className="
-          w-full py-2 px-1 leading-tight
-          bg-transparent appearance-none
-          text-slate-400
-          border-0 border-b-2 border-red-500 valid:border-slate-400
-          placeholder-shown:border-slate-400 focus:border-cerise
-          focus:outline-none
-          peer
-        "
-        id={name}
-        name={name}
-        value={value}
-        onChange={(e) => setValue(e.target.value, e.target)}
-      />
-      <label
-        htmlFor={name}
-        className="
-          transform transition-all absolute top-0 left-0 -translate-y-full
-          text-slate-400 peer-focus:text-cerise font-medium
-          peer-focus:-translate-y-full peer-placeholder-shown:translate-y-0
-          cursor-text autofill:bg-transparent uppercase
-          md:peer-placeholder-shown:text-lg md:text-sm md:peer-focus:text-sm
-          peer-placeholder-shown:text-xs text-[9px] peer-focus:text-[9px]
-        "
-      >
-        {t.companyForm.fields[name]}:
-      </label>
-    </div>
-  );
-}
+import { InputField } from "./InputField";
 
 export default function CompanyForm({
   t,
@@ -105,40 +53,40 @@ export default function CompanyForm({
       </h1>
       <p className="text-center min-w-[100px] max-w-[400px] w-full text-white mt-10"> {t.companyForm.description}</p>
       <form
-        className="bg-transparent w-3/5 mt-12"
+        className="bg-transparent w-3/5 mt-16 flex flex-col gap-16"
         onSubmit={addCompanyDocument}
       >
         <InputField
           name="name"
           value={companyName}
           setValue={setCompanyName}
-          t={t}
+          fields={t.companyForm.fields}
         />
         <InputField
           name="organizationNumber"
           value={organizationNumber}
           setValue={trySetOrganizationNumber}
-          t={t}
+          fields={t.companyForm.fields}
         />
         <InputField
           name="email"
           type="email"
           value={email}
           setValue={setEmail}
-          t={t}
+          fields={t.companyForm.fields}
         />
         <InputField
           name="contactPerson"
           value={contactPerson}
           setValue={setContactPerson}
-          t={t}
+          fields={t.companyForm.fields}
         />
         <InputField
           name="phoneNumber"
           type="tel"
           value={phoneNumber}
           setValue={setPhoneNumber}
-          t={t}
+          fields={t.companyForm.fields}
         />
 
         <div className="flex flex-col items-center justify-between">
