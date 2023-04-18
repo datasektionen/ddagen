@@ -20,7 +20,4 @@ module.exports = {
       sans: ['neue-haas', 'sans-serif'],
     },
   },
-  plugins: [
-    require("flowbite/plugin"),
-  ],
 }
