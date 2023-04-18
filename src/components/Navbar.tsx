@@ -2,13 +2,12 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useLocale } from "@/locales";
-import { FaChevronDown } from "react-icons/fa";
 
-function NavLink({ href, children, "class": className, style, onClick}: { 
+function NavLink({ href, children, "class": className, style, onClick}: {
   href: string,
-  children: React.ReactNode, 
-  "class"?: string, 
-  style?: React.CSSProperties, 
+  children: React.ReactNode,
+  "class"?: string,
+  style?: React.CSSProperties,
   onClick?: React.MouseEventHandler<HTMLAnchorElement> }) {
 
   const router = useRouter();
@@ -43,17 +42,14 @@ function Logo({ "class": className }: { "class"?: string }) {
 
 function Group({ links }: { links: { href: string, text: string }[] }) {
   const [hovered, setHovered] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(false);
   const [dropped, setDrop] = useState(false);
-  const toggleDropdown = () => {
-    setShowDropdown(!showDropdown);
-  };
   return (
     <div>
       <div
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className="lg:ml-10 lg:flex flex-row relative hidden lg:block"
+        onFocus={() => setHovered(true)}
+        className="lg:ml-10 lg:flex flex-row relative hidden"
       >
         <div
           style={{ height: 70 + links.length * 40 }}
@@ -79,14 +75,12 @@ function Group({ links }: { links: { href: string, text: string }[] }) {
               } duration-200 ml-4 h-4 text-cerise cursor-pointer`}></img>
         </div>
         <div className={`${(dropped ? "block" : "hidden")} flex flex-col px-8 justify-between mb-4`}>
-        {links.slice(1).map(({ href, text }, i) => (<NavLink key={href} href={href}>{text}</NavLink>
+        {links.slice(1).map(({ href, text }) => (<NavLink key={href} href={href}>{text}</NavLink>
         ))}
         </div>
-        
+
       </div>
     </div>
-    
-
   );
 }
 
@@ -114,6 +108,8 @@ export default function Navbar() {
       ) return;
       setOpen(false);
     };
+    window.addEventListener("click", close);
+    return () => window.removeEventListener("click", close);
   });
 
   return (
@@ -159,16 +155,17 @@ export default function Navbar() {
           <Group links={[
             { href: "/förföretag", text: t.forCompanies },
             { href: "/faq", text: "faq" },
+            { href: "/logga-in", text: t.login },
           ]} />
           <NavLink class="mb-4 lg:hidden px-0 lg:px-4" href="/kontakt">{t.contact}</NavLink>
           {/*<NavLink class="px-14 lg:px-0" href="/förstudenter">{t.forStudents}</NavLink>*/}
           {/*<NavLink class="px-14 lg:px-0" href="/mässan">{t.about}</NavLink>*/}
           </div>
           <div className="
-            flex flex-row  lg:justify-center items-center lg:pl-0 justify-center lg:pr-0  
+            flex flex-row  lg:justify-center items-center lg:pl-0 justify-center lg:pr-0
             py-4 gap-8
             lg:px-0 bg-black lg:bg-transparent lg:ml-auto
-          ">  
+          ">
             <NavLink class="hidden lg:block px-14 lg:px-4 p-4" href="/kontakt">{t.contact}</NavLink>
             <Link
               className="bg-cerise py-2.5 px-4 rounded-full text-center hover:scale-105 transition-transform"
@@ -186,7 +183,6 @@ export default function Navbar() {
             ><img className="sr-only" alt={t.changeLanguage} /></button>
           </div>
         </div>
-        
       </nav>
     </>
   );
