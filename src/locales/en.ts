@@ -145,7 +145,7 @@ export default {
     header: "Contact",
     subheader1: "Contact us",
     subheader2: "Project responsible",
-    p1: "Om ni har några egna förslag på evenemang eller aktiviteter ni vill anordna för studenterna på Konglig Datasektionen, eller om ni har några andra frågor eller funderingar om företagspaket är det bara att höra av er till oss."
+    p1: "If you have any suggestions for events or activities that you would like to organize for the students at the Computer Science Chapter, or if you have any other questions or concerns about corporate packages, please do not hesitate to contact us."
   },
   url: {
     forCompany: "https://ddagen.se/en/förföretag",
