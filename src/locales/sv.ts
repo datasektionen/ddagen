@@ -142,7 +142,12 @@ export default {
     header: "FÖRETAG",
     catalogPath: "/downloadables/Product_Catalog_sv.pdf"
   },
-
+  contact: {
+    header: "Kontakt",
+    subheader1: "Kontakta oss",
+    subheader2: "Projekt ansvariga",
+    p1:"Om ni har några egna förslag på evenemang eller aktiviteter ni vill anordna för studenterna på Konglig Datasektionen, eller om ni har några andra frågor eller funderingar om företagspaket är det bara att höra av er till oss.",
+  },
   url: {
     forCompany: "https://ddagen.se/förföretag",
     companyForm: "https://ddagen.se/företagsanmälan"
