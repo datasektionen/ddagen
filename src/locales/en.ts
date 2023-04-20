@@ -68,6 +68,7 @@ export default {
     about: "About D-Dagen",
     companyForm: "Exhibitor Registration",
     changeLanguage: "Change language to Swedish",
+    contact: "Contact",
   },
   footer: {
     header: "Organized by Datasektionen",

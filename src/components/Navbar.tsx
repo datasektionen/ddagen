@@ -139,6 +139,9 @@ export default function Navbar() {
             py-4 gap-8
             lg:px-0 bg-blue lg:bg-transparent lg:ml-auto
           ">
+            <Group links={[
+            { href: "/kontakt", text: t.contact },
+          ]} />
             <Link
               className="bg-cerise py-2.5 px-4 rounded-full text-center hover:scale-105 transition-transform"
               href="/företagsanmälan"

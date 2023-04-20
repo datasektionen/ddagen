@@ -68,6 +68,7 @@ export default {
     about: "Om D-Dagen",
     companyForm: "Företagsanmälan",
     changeLanguage: "Ändra språk till engelska",
+    contact: "Kontakt",
   },
   footer: {
     header:
