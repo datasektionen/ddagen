@@ -41,11 +41,22 @@ function Logo({ "class": className }: { "class"?: string }) {
   );
 }
 
-function Group({ links }: { links: { href: string, text: string }[] }) {
+function Group({
+  links,
+  class: className
+}: {
+  links: { href: string, text: string }[];
+  class?: string;
+}) {
   const [hovered, setHovered] = useState(false);
   const [dropped, setDrop] = useState(false);
   return (
-    <div>
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onFocus={() => setHovered(true)}
+      className={`lg:ml-10 flex flex-row relative ${className ?? ""}`}
+    >
       <div
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}

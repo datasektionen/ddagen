@@ -32,6 +32,16 @@ export default {
       "Är du intresserad av att ställa ut på D-Dagen och knyta kontakt med tusentals studenter inom Data och IT? Klicka här nedan för att göra en intresseanmälan!",
     formButton: "Intresseanmälan",
   },
+  exhibitorSettings: {
+    fields: {
+      invoiceEmail: "Fakturerings-E-post",
+      description: "Företagsbeskrivning",
+      extraChairs: "Extra stolar",
+      extraTables: "Extra bord",
+      extraDrinkCoupons: "Extra barbongar",
+      extraRepresentativeSpots: "Extra representantplatser",
+    },
+  },
   login: {
     title: "Logga in",
     email: "E-post",

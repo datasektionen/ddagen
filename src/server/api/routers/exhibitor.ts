@@ -2,7 +2,6 @@ import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
 import { validateOrganizationNumber } from "@/shared/validateOrganizationNumber";
 import { getLocale } from "@/locales";
-import { env } from "@/env.mjs";
 import { TRPCError } from "@trpc/server";
 import { Prisma } from "@prisma/client";
 import sendEmail from "@/utils/send-email";
@@ -71,4 +70,43 @@ export const exhibitorRouter = createTRPCRouter({
       }
       return { ok: true };
     }),
+  get: protectedProcedure.query(async ({ ctx }) => {
+    const exhibitor = await ctx.prisma.exhibitor.findUniqueOrThrow({
+      where: { id: ctx.session.account.exhibitorId },
+      include: { package: true },
+    });
+    return {
+      ...exhibitor,
+      logo: exhibitor.logo?.toString("base64"),
+    };
+  }),
+  update: protectedProcedure.input(z.object({
+    invoiceEmail: z.string().email(),
+    description: z.string(),
+    extraChairs: z.number(),
+    extraTables: z.number(),
+    extraDrinkCoupons: z.number(),
+    extraRepresentativeSpots: z.number(),
+  })).mutation(async ({ ctx, input }) => {
+    return await ctx.prisma.exhibitor.update({
+      where: { id: ctx.session.account.exhibitorId },
+      data: {
+        invoiceEmail: input.invoiceEmail,
+        description: input.description,
+        extraChairs: input.extraChairs,
+        extraTables: input.extraTables,
+        extraDrinkCoupons: input.extraDrinkCoupons,
+        extraRepresentativeSpots: input.extraRepresentativeSpots,
+      },
+    });
+  }),
+  setLogo: protectedProcedure.input(z.string()).mutation(async ({ ctx, input }) => {
+    const logo = Buffer.from(input, "base64");
+    return await ctx.prisma.exhibitor.update({
+      where: { id: ctx.session.account.exhibitorId },
+      data: {
+        logo: logo,
+      },
+    });
+  }),
 });

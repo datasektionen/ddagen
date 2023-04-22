@@ -32,6 +32,16 @@ export default {
       "Are you interested in exhibiting on D-Dagen and connecting with thousands of students in Computer Science and IT? Click below to sign up!",
     formButton: "Sign up",
   },
+  exhibitorSettings: {
+    fields: {
+      invoiceEmail: "Invoce email",
+      description: "Company description",
+      extraChairs: "Extra chairs",
+      extraTables: "Extra tables",
+      extraDrinkCoupons: "Extra drink coupons",
+      extraRepresentativeSpots: "Extra representative spots",
+    },
+  },
   login: {
     title: "Log in",
     email: "Email",
