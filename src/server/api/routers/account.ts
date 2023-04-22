@@ -2,7 +2,7 @@ import { getLocale } from "@/locales";
 import sendEmail from "@/utils/send-email";
 import { randomBytes } from "crypto";
 import { z } from "zod";
-import { createTRPCRouter, publicProcedure } from "../trpc";
+import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 
 export const accountRouter = createTRPCRouter({
   startLogin: publicProcedure
@@ -66,10 +66,8 @@ export const accountRouter = createTRPCRouter({
   isLoggedIn: publicProcedure.query(async ({ ctx }) => {
     return ctx.session !== null;
   }),
-  logout: publicProcedure.mutation(async ({ ctx }) => {
-    if (ctx.session) {
-      await ctx.prisma.session.delete({ where: { id: ctx.session.id } });
-      ctx.res.setHeader("Set-Cookie", `session=; Path=/; HttpOnly; SameSite=Lax; Secure`);
-    }
+  logout: protectedProcedure.mutation(async ({ ctx }) => {
+    await ctx.prisma.session.delete({ where: { id: ctx.session.id } });
+    ctx.res.setHeader("Set-Cookie", `session=; Path=/; HttpOnly; SameSite=Lax; Secure`);
   }),
 });
