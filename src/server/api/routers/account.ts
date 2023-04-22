@@ -1,5 +1,5 @@
-import { env } from "@/env.mjs";
 import { getLocale } from "@/locales";
+import sendEmail from "@/utils/send-email";
 import { randomBytes } from "crypto";
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "../trpc";
@@ -23,29 +23,19 @@ export const accountRouter = createTRPCRouter({
       }
 
       const loginCode = randomBytes(24).toString("base64url");
-      const magicLink = "https://ddagen.se/login?code=" + loginCode;
+      const magicLink = "https://ddagen.se/logga-in?code=" + loginCode;
       await ctx.prisma.loginCode.create({
         data: { id: loginCode, accountId: account.id },
       });
 
-      if (env.NODE_ENV === "development") {
-        console.log("Login code:", loginCode);
-        console.log("Magic link:", magicLink);
-      } else {
-        const res = await fetch(env.SPAM_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            key: env.SPAM_API_KEY,
-            from: "no-reply@datasektionen.se",
-            to: input.email,
-            subject: t.login.emailSubject,
-            html: t.login.emailBody(loginCode, magicLink),
-          }),
-        });
-        if (!res.ok) {
-          return { error: "emailNotSent" as const };
-        }
+      try {
+        sendEmail(
+          input.email,
+          t.login.emailSubject,
+          t.login.emailBody(loginCode, magicLink),
+        );
+      } catch (e) {
+        return { error: "emailNotSent" as const };
       }
       return { ok: true };
     }),
@@ -62,6 +52,9 @@ export const accountRouter = createTRPCRouter({
       return { error: "invalidConfirmationCode" as const };
     }
 
+    await ctx.prisma.session.deleteMany({
+      where: { accountId: loginCode.accountId },
+    });
     const session = await ctx.prisma.session.create({
       data: { accountId: loginCode.accountId },
     });

@@ -5,6 +5,7 @@ import { getLocale } from "@/locales";
 import { env } from "@/env.mjs";
 import { TRPCError } from "@trpc/server";
 import { Prisma } from "@prisma/client";
+import sendEmail from "@/utils/send-email";
 
 export const exhibitorRouter = createTRPCRouter({
   register: publicProcedure
@@ -52,31 +53,20 @@ export const exhibitorRouter = createTRPCRouter({
         throw e;
       }
 
-      if (env.NODE_ENV === "development") {
-        console.log(`Not sending email to "${contactPerson} <${email}>" in development`);
-        return { ok: true };
-      }
-
-      const res = await fetch(env.SPAM_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          key: env.SPAM_API_KEY,
-          from: "no-reply@datasektionen.se",
-          to: email,
-          replyTo: "sales@ddagen.se",
-          subject: t.subject,
-          html: t.body(
+      try {
+        sendEmail(
+          email,
+          t.subject,
+          t.body(
             companyName,
             organizationNumber,
             email,
             contactPerson,
             phoneNumber,
           ),
-        }),
-      });
-      if (!res.ok) {
-        console.error("Error sending mail with spam", res.status, res.statusText);
+          "sales@ddagen.se",
+        )
+      } catch (e) {
         return { ok: false, error: "send-email" as const };
       }
       return { ok: true };
