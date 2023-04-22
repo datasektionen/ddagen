@@ -5,7 +5,7 @@ import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
 export const accountRouter = createTRPCRouter({
-  login: publicProcedure
+  startLogin: publicProcedure
     .input(z.object({
       email: z.string(),
       locale: z.enum(["en", "sv"]),
@@ -39,7 +39,7 @@ export const accountRouter = createTRPCRouter({
       }
       return { ok: true };
     }),
-  confirmationCode: publicProcedure.input(z.string()).mutation(async ({ input, ctx }) => {
+  finishLogin: publicProcedure.input(z.string()).mutation(async ({ input, ctx }) => {
     const loginCode = await ctx.prisma.loginCode.findUnique({
       where: { id: input },
       include: { account: true },

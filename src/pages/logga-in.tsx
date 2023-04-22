@@ -12,28 +12,28 @@ export default function Login() {
   const [state, setState] = useState<"email" | "code">("email");
 
   const [email, setEmail] = useState("");
-  const login = api.account.login.useMutation();
+  const startLogin = api.account.startLogin.useMutation();
 
   const [code, setCode] = useState("");
-  const confirmationCode = api.account.confirmationCode.useMutation();
+  const finishLogin = api.account.finishLogin.useMutation();
 
   useEffect(() => {
-    if (login.data?.ok) {
+    if (startLogin.data?.ok) {
       setState("code");
     }
-  }, [login]);
+  }, [startLogin]);
 
   useEffect(() => {
-    if (confirmationCode.data?.ok) {
+    if (finishLogin.data?.ok) {
       router.replace("/"); // TODO: go to account page
     }
-  }, [confirmationCode]);
+  }, [finishLogin]);
 
   useEffect(() => {
     if (typeof router.query.code === "string") {
       setState("code");
       setCode(router.query.code);
-      confirmationCode.mutate(router.query.code);
+      finishLogin.mutate(router.query.code);
     }
   }, [router.query.code]);
 
@@ -41,7 +41,7 @@ export default function Login() {
     <div className="mx-auto flex flex-col items-center text-center py-40">
       <h1 className="md:max-w-2xl md:text-5xl mx-10 text-3xl text-cerise uppercase mb-14">{t.login.title}</h1>
       {state === "email" ? <>
-        <form className="flex flex-col gap-6" onSubmit={(e) => { e.preventDefault(); login.mutate({ email, locale }); }}>
+        <form className="flex flex-col gap-6" onSubmit={(e) => { e.preventDefault(); startLogin.mutate({ email, locale }); }}>
           <InputField
             name="email"
             value={email}
@@ -52,7 +52,7 @@ export default function Login() {
           <p className="text-white max-w-xs">{t.login.emailText}</p>
           <input
             type="submit"
-            disabled={login.isLoading}
+            disabled={startLogin.isLoading}
             value={t.login.confirm}
             className="
               bg-cerise transition-transform hover:scale-110 focus:scale-110 focus:outline-none
@@ -61,14 +61,14 @@ export default function Login() {
             "
           />
         </form>
-        {login.data?.error && (
-          <p className="text-red-500 font-bold mt-6">{t.error[login.data.error]}</p>
+        {startLogin.data?.error && (
+          <p className="text-red-500 font-bold mt-6">{t.error[startLogin.data.error]}</p>
         )}
-        {login.error && (
+        {startLogin.error && (
           <p className="text-red-500 font-bold mt-6">{t.error.unknown}</p>
         )}
       </> : <>
-        <form className="flex flex-col gap-6" onSubmit={(e) => { e.preventDefault(); confirmationCode.mutate(code); }}>
+        <form className="flex flex-col gap-6" onSubmit={(e) => { e.preventDefault(); finishLogin.mutate(code); }}>
           <InputField
             name="code"
             value={code}
@@ -80,7 +80,7 @@ export default function Login() {
           <p className="text-white max-w-xs">{t.login.confirmationCodeText}</p>
           <input
             type="submit"
-            disabled={confirmationCode.isLoading}
+            disabled={finishLogin.isLoading}
             value={t.login.confirm}
             className="
               bg-cerise transition-transform hover:scale-110 focus:scale-110 focus:outline-none
@@ -89,10 +89,10 @@ export default function Login() {
             "
           />
         </form>
-        {confirmationCode.data?.error && (
-          <p className="text-red-500 font-bold mt-6">{t.error[confirmationCode.data.error]}</p>
+        {finishLogin.data?.error && (
+          <p className="text-red-500 font-bold mt-6">{t.error[finishLogin.data.error]}</p>
         )}
-        {confirmationCode.error && (
+        {finishLogin.error && (
           <p className="text-red-500 font-bold mt-6">{t.error.unknown}</p>
         )}
       </>}
