@@ -1,102 +1,11 @@
 import { InputField } from "@/components/InputField";
 import { useLocale, type Locale } from "@/locales";
 import { api } from "@/utils/api";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import type { ContactPerson } from "@prisma/client";
 
-function ContactPerson({
-  contact,
-  t,
-  remove,
-  onSave,
-  showRemove,
-}: {
-  contact?: ContactPerson;
-  t: Locale;
-  remove: () => void;
-  onSave?: () => void;
-  showRemove: boolean;
-}) {
-  const [name, setName] = useState(contact?.name ?? "");
-  const [email, setEmail] = useState(contact?.email ?? "");
-  const [phoneNumber, setPhoneNumber] = useState(contact?.phoneNumber ?? "");
-  const [role, setRole] = useState(contact?.role ?? "");
-
-  const [pendingChanges, setPendingChanges] = useState(contact?.id === undefined);
-  const upsert = api.exhibitor.upsertContact.useMutation();
-
-  return (
-    <form
-      className="flex flex-col gap-10 md:w-80"
-      onSubmit={async (e) => {
-        e.preventDefault();
-        setPendingChanges(false);
-        await upsert.mutateAsync({ name, email, phoneNumber, role });
-        if (onSave) onSave();
-      }}
-    >
-      <InputField
-        type="text"
-        value={name}
-        setValue={v => { setName(v); setPendingChanges(true); }}
-        name="contactName"
-        fields={t.exhibitorSettings.fields}
-        prefix={contact?.id}
-      />
-      <InputField
-        type="email"
-        value={email}
-        setValue={v => { setEmail(v); setPendingChanges(true); }}
-        name="contactEmail"
-        fields={t.exhibitorSettings.fields}
-        prefix={contact?.id}
-      />
-      <InputField
-        type="text"
-        value={phoneNumber}
-        setValue={v => { setPhoneNumber(v); setPendingChanges(true); }}
-        name="contactPhone"
-        fields={t.exhibitorSettings.fields}
-        prefix={contact?.id}
-      />
-      <InputField
-        type="text"
-        value={role}
-        setValue={v => { setRole(v); setPendingChanges(true); }}
-        name="contactRole"
-        fields={t.exhibitorSettings.fields}
-        prefix={contact?.id}
-        required={false}
-      />
-      <div className="flex justify-around">
-        {pendingChanges ?
-          <input
-            type="submit"
-            className="
-              bg-cerise transition-transform hover:scale-110 focus:scale-110 focus:outline-none
-              text-white font-bold uppercase
-              py-2 px-4 rounded-full cursor-pointer disabled:cursor-wait disabled:grayscale
-            "
-            value={t.exhibitorSettings.fields.saveContact}
-          /> :
-          <p className="text-white">Saved ✅</p>}
-        {showRemove &&
-          <button
-            type="button"
-            onClick={remove}
-            className="
-              bg-cerise transition-transform hover:scale-110 focus:scale-110 focus:outline-none
-              text-white font-bold uppercase
-              py-2 px-4 rounded-full cursor-pointer disabled:cursor-wait disabled:grayscale
-            "
-          >{t.exhibitorSettings.fields.removeContact}</button>}
-      </div>
-    </form>
-  );
-}
-
 export default function Exhibitor() {
-  const t = useLocale();
+  const t = useLocale().exhibitorSettings;
   const trpc = api.useContext();
 
   const exhibitor = api.exhibitor.get.useQuery();
@@ -165,14 +74,14 @@ export default function Exhibitor() {
           value={invoiceEmail}
           setValue={v => { setInvoiceEmail(v); setPendingChanges(true); }}
           name="invoiceEmail"
-          fields={t.exhibitorSettings.fields}
+          fields={t.fields}
         />
         <InputField
           type="text"
           value={description}
           setValue={v => { setDescription(v); setPendingChanges(true); }}
           name="description"
-          fields={t.exhibitorSettings.fields}
+          fields={t.fields}
           required={false}
         />
         <InputField
@@ -180,7 +89,7 @@ export default function Exhibitor() {
           value={extraChairs.toString()}
           setValue={setExtraChairsStr}
           name="extraChairs"
-          fields={t.exhibitorSettings.fields}
+          fields={t.fields}
         />
         {exhibitor.data?.package?.chairs
           ? <p className="text-white relative -top-4">Total chair count: {totalChairs} ({exhibitor.data?.package?.chairs} from package)</p>
@@ -190,17 +99,18 @@ export default function Exhibitor() {
           value={extraTables.toString()}
           setValue={setExtraTablesStr}
           name="extraTables"
-          fields={t.exhibitorSettings.fields}
+          fields={t.fields}
         />
         {exhibitor.data?.package?.tables
           ? <p className="text-white relative -top-4">Total table count: {totalTables} ({exhibitor.data?.package?.tables} from package)</p>
           : null}
         <InputField
           type="number"
+          step={10}
           value={extraDrinkCoupons.toString()}
           setValue={setExtraDrinkCouponsStr}
           name="extraDrinkCoupons"
-          fields={t.exhibitorSettings.fields}
+          fields={t.fields}
         />
         {exhibitor.data?.package?.drinkCoupons
           ? <p className="text-white relative -top-4">Total drink coupon count: {totalDrinkCoupons} ({exhibitor.data?.package?.drinkCoupons} from package)</p>
@@ -210,7 +120,7 @@ export default function Exhibitor() {
           value={extraRepresentativeSpots.toString()}
           setValue={setExtraRepresentativeSpotsStr}
           name="extraRepresentativeSpots"
-          fields={t.exhibitorSettings.fields}
+          fields={t.fields}
         />
         {exhibitor.data?.package?.representativeSpots
           ? <p className="text-white relative -top-4">Total representative count: {totalRepresentativeSpots} ({exhibitor.data?.package?.representativeSpots} from package)</p>
@@ -233,7 +143,7 @@ export default function Exhibitor() {
         }
       </form>
       <section>
-        <h2 className="text-cerise font-bold text-4xl mb-10">Contacts</h2>
+        <h2 className="text-cerise font-bold text-4xl mb-10">{t.contacts}</h2>
         {contacts.data?.map(contact => <div key={contact.id}>
           <ContactPerson
             contact={contact}
@@ -257,6 +167,201 @@ export default function Exhibitor() {
           >Add contact</button>
         }
       </section>
+      <Allergies type="representative" maxCount={totalRepresentativeSpots} />
+      <Allergies type="banquet" maxCount={0} />
     </div>
   </>;
+}
+
+function Allergies({
+  type,
+  maxCount,
+}: {
+  type: "representative" | "banquet";
+  maxCount: number;
+}) {
+  const t = useLocale().exhibitorSettings;
+  const trpc = api.useContext();
+
+  const allergies = api.exhibitor.getAllergies.useQuery(type);
+  const createAllergy = api.exhibitor.createAllergy.useMutation();
+  const removeAllergy = api.exhibitor.deleteAllergy.useMutation();
+
+  const [newAllergyValue, setNewAllergyValue] = useState("");
+  const [newAllergyComment, setNewAllergyComment] = useState("");
+
+  const allergyCount = allergies.data?.length ?? 0;
+
+  return (
+    <section>
+      <h2 className="text-cerise font-bold text-3xl my-10">{
+        type === "representative"
+          ? t.representativesAllergies
+          : t.banquetAllergies
+      }</h2>
+      <div className="
+        grid text-white gap-3 text-lg place-items-start
+        grid-cols-[1fr_1fr_auto_auto] mb-3
+      ">
+        <p className="font-bold">{t.fields.allergyValue}</p>
+        <p className="font-bold">{t.fields.allergyComment}</p>
+        <div></div>
+        <div></div>
+        {allergies.data?.map(allergy => <Fragment key={allergy.id}>
+          <p>{allergy.value}</p>
+          <p>{allergy.comment}</p>
+          <button
+            className="
+              bg-cerise
+              text-white font-bold uppercase text-sm
+              py-2 px-4 rounded-full cursor-pointer disabled:cursor-wait disabled:grayscale
+            "
+            disabled={newAllergyValue !== "" || newAllergyComment !== "" || allergyCount > maxCount}
+            onClick={() => removeAllergy.mutateAsync(allergy.id)
+              .then(() => trpc.exhibitor.getAllergies.invalidate())
+              .then(() => setNewAllergyValue(allergy.value))
+              .then(() => setNewAllergyComment(allergy.comment))}
+          >{t.editAllergy}</button>
+          <button
+            className="
+              bg-cerise
+              text-white font-bold uppercase text-sm
+              py-2 px-4 rounded-full cursor-pointer disabled:cursor-wait disabled:grayscale
+            "
+            onClick={() => removeAllergy.mutateAsync(allergy.id)
+              .then(() => trpc.exhibitor.getAllergies.invalidate())}
+          >{t.removeAllergy}</button>
+        </Fragment>)}
+      </div>
+      {allergyCount >= maxCount ? null :
+        <form className="flex gap-3 justify-center mt-6">
+          <InputField
+            type="text"
+            value={newAllergyValue}
+            setValue={setNewAllergyValue}
+            name="allergyValue"
+            fields={t.fields}
+            prefix={type}
+          />
+          <InputField
+            type="text"
+            value={newAllergyComment}
+            setValue={setNewAllergyComment}
+            name="allergyComment"
+            fields={t.fields}
+            prefix={type}
+          />
+          <input
+            type="submit"
+            disabled={newAllergyValue === ""}
+            value="Add"
+            className="
+              bg-cerise transition-transform hover:scale-110 focus:scale-110 focus:outline-none
+              text-white font-bold uppercase
+              py-2 px-4 rounded-full cursor-pointer disabled:cursor-wait disabled:grayscale
+            "
+            onClick={(e) => {
+              e.preventDefault();
+              createAllergy.mutateAsync({ value: newAllergyValue, comment: newAllergyComment, type }).then(() => {
+                setNewAllergyValue("");
+                setNewAllergyComment("");
+                trpc.exhibitor.getAllergies.invalidate(type);
+              });
+            }}
+          />
+        </form>}
+      {allergyCount > maxCount && <p className="text-orange-500 font-bold text-center mt-3">{t.tooManyAllergies}</p>}
+    </section>
+  );
+}
+
+function ContactPerson({
+  contact,
+  t,
+  remove,
+  onSave,
+  showRemove,
+}: {
+  contact?: ContactPerson;
+  t: Locale["exhibitorSettings"];
+  remove: () => void;
+  onSave?: () => void;
+  showRemove: boolean;
+}) {
+  const [name, setName] = useState(contact?.name ?? "");
+  const [email, setEmail] = useState(contact?.email ?? "");
+  const [phoneNumber, setPhoneNumber] = useState(contact?.phoneNumber ?? "");
+  const [role, setRole] = useState(contact?.role ?? "");
+
+  const [pendingChanges, setPendingChanges] = useState(contact?.id === undefined);
+  const upsert = api.exhibitor.upsertContact.useMutation();
+
+  return (
+    <form
+      className="flex flex-col gap-10 md:w-80"
+      onSubmit={async (e) => {
+        e.preventDefault();
+        setPendingChanges(false);
+        await upsert.mutateAsync({ name, email, phoneNumber, role });
+        if (onSave) onSave();
+      }}
+    >
+      <InputField
+        type="text"
+        value={name}
+        setValue={v => { setName(v); setPendingChanges(true); }}
+        name="contactName"
+        fields={t.fields}
+        prefix={contact?.id}
+      />
+      <InputField
+        type="email"
+        value={email}
+        setValue={v => { setEmail(v); setPendingChanges(true); }}
+        name="contactEmail"
+        fields={t.fields}
+        prefix={contact?.id}
+      />
+      <InputField
+        type="text"
+        value={phoneNumber}
+        setValue={v => { setPhoneNumber(v); setPendingChanges(true); }}
+        name="contactPhone"
+        fields={t.fields}
+        prefix={contact?.id}
+      />
+      <InputField
+        type="text"
+        value={role}
+        setValue={v => { setRole(v); setPendingChanges(true); }}
+        name="contactRole"
+        fields={t.fields}
+        prefix={contact?.id}
+        required={false}
+      />
+      <div className="flex justify-around">
+        {pendingChanges ?
+          <input
+            type="submit"
+            className="
+              bg-cerise transition-transform hover:scale-110 focus:scale-110 focus:outline-none
+              text-white font-bold uppercase
+              py-2 px-4 rounded-full cursor-pointer disabled:cursor-wait disabled:grayscale
+            "
+            value={t.fields.saveContact}
+          /> :
+          <p className="text-white">Saved ✅</p>}
+        {showRemove &&
+          <button
+            type="button"
+            onClick={remove}
+            className="
+              bg-cerise transition-transform hover:scale-110 focus:scale-110 focus:outline-none
+              text-white font-bold uppercase
+              py-2 px-4 rounded-full cursor-pointer disabled:cursor-wait disabled:grayscale
+            "
+          >{t.fields.removeContact}</button>}
+      </div>
+    </form>
+  );
 }

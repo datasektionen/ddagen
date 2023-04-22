@@ -148,4 +148,36 @@ export const exhibitorRouter = createTRPCRouter({
       where: { id: input },
     });
   }),
+  getAllergies: protectedProcedure.input(z.enum(["representative", "banquet"])).query(async ({ input, ctx }) => {
+    return await ctx.prisma.allergenInformation.findMany({
+      where: {
+        exhibitorId: ctx.session.account.exhibitorId, type: ({
+          "representative": "REPRESENTATIVE_SPOT",
+          "banquet": "BANQUET",
+        } as const)[input]
+      },
+    });
+  }),
+  deleteAllergy: protectedProcedure.input(z.string()).mutation(async ({ ctx, input }) => {
+    await ctx.prisma.allergenInformation.deleteMany({
+      where: { id: input, exhibitorId: ctx.session.account.exhibitorId },
+    });
+  }),
+  createAllergy: protectedProcedure.input(z.object({
+    type: z.enum(["representative", "banquet"]),
+    value: z.string(),
+    comment: z.string(),
+  })).mutation(async ({ ctx, input }) => {
+    await ctx.prisma.allergenInformation.create({
+      data: {
+        exhibitorId: ctx.session.account.exhibitorId,
+        type: ({
+          "representative": "REPRESENTATIVE_SPOT",
+          "banquet": "BANQUET",
+        } as const)[input.type],
+        value: input.value,
+        comment: input.comment,
+      },
+    });
+  })
 });

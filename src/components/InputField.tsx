@@ -8,6 +8,7 @@ export function InputField<F extends Record<string, string>>({
   class: className = "",
   prefix = "",
   required = true,
+  step,
 }: {
   fields: F;
   name: string & keyof F;
@@ -18,6 +19,7 @@ export function InputField<F extends Record<string, string>>({
   class?: string;
   prefix?: string;
   required?: boolean;
+  step?: number;
 }) {
   return (
     <div className={"relative " + className}>
@@ -38,6 +40,7 @@ export function InputField<F extends Record<string, string>>({
         id={prefix + name}
         name={name}
         value={value}
+        step={step}
         onChange={(e) => setValue(e.target.value, e.target)}
       />
       <label
