@@ -71,13 +71,23 @@ export const exhibitorRouter = createTRPCRouter({
       return { ok: true };
     }),
   get: protectedProcedure.query(async ({ ctx }) => {
-    const exhibitor = await ctx.prisma.exhibitor.findUniqueOrThrow({
+    return await ctx.prisma.exhibitor.findUniqueOrThrow({
       where: { id: ctx.session.account.exhibitorId },
+      select: {
+        id: true,
+        name: true,
+        organizationNumber: true,
+
+        invoiceEmail: true,
+        description: true,
+        package: true,
+        extraTables: true,
+        extraChairs: true,
+        extraDrinkCoupons: true,
+        extraRepresentativeSpots: true,
+        extraBanquetTickets: true,
+      },
     });
-    return {
-      ...exhibitor,
-      logo: exhibitor.logo?.toString("base64"),
-    };
   }),
   update: protectedProcedure.input(z.object({
     invoiceEmail: z.string().email(),
@@ -101,12 +111,19 @@ export const exhibitorRouter = createTRPCRouter({
   }),
   setLogo: protectedProcedure.input(z.string()).mutation(async ({ ctx, input }) => {
     const logo = Buffer.from(input, "base64");
-    return await ctx.prisma.exhibitor.update({
+    await ctx.prisma.exhibitor.update({
       where: { id: ctx.session.account.exhibitorId },
       data: {
         logo: logo,
       },
     });
+  }),
+  logo: protectedProcedure.query(async ({ ctx }) => {
+    const exhibitor = await ctx.prisma.exhibitor.findUniqueOrThrow({
+      where: { id: ctx.session.account.exhibitorId },
+      select: { logo: true },
+    });
+    return exhibitor.logo?.toString("base64");
   }),
   upsertContact: protectedProcedure.input(z.object({
     id: z.string().optional(),

@@ -13,8 +13,11 @@ export default function Exhibitor() {
   const updateExhibitor = api.exhibitor.update.useMutation();
   const contacts = api.exhibitor.getContacts.useQuery();
   const removeContact = api.exhibitor.deleteContact.useMutation();
+  const setLogo = api.exhibitor.setLogo.useMutation();
+  const logo = api.exhibitor.logo.useQuery();
 
   const [pendingChanges, setPendingChanges] = useState(false);
+  const [logoLoading, setLogoLoading] = useState(false);
 
   const [invoiceEmail, setInvoiceEmail] = useState("");
   const [description, setDescription] = useState("");
@@ -98,6 +101,31 @@ export default function Exhibitor() {
           fields={t.exhibitorSettings.fields}
           required={false}
         />
+        <div className="text-center">
+          <input
+            type="file"
+            name="logo"
+            accept="image/svg+xml"
+            className="text-white mb-3"
+            onChange={(e) => {
+              if (!e.target.files) return;
+              setLogoLoading(true);
+              const reader = new FileReader();
+              reader.readAsDataURL(e.target.files[0]);
+              reader.onloadend = () => {
+                if (typeof reader.result === "string") {
+                  console.log(reader.result.split(",")[0]);
+                  const logo = reader.result.split(",")[1];
+                  setLogo.mutateAsync(logo)
+                    .then(() => setLogoLoading(false))
+                    .then(() => trpc.exhibitor.logo.invalidate());
+                }
+              };
+            }}
+          />
+          {logoLoading && <p>...</p>}
+        </div>
+        {logo.isSuccess && logo.data && <img src={"data:image/svg+xml;base64," + logo.data} className="w-72 place-self-center" />}
         <InputField
           type="number"
           value={extraChairs.toString()}
