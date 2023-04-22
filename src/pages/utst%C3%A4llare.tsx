@@ -21,6 +21,7 @@ export default function Exhibitor() {
   const [extraTables, setExtraTables] = useState(0);
   const [extraDrinkCoupons, setExtraDrinkCoupons] = useState(0);
   const [extraRepresentativeSpots, setExtraRepresentativeSpots] = useState(0);
+  const [extraBanquetTickets, setExtraBanquetTickets] = useState(0);
 
   const [addingContact, setAddingContact] = useState(false);
 
@@ -28,6 +29,7 @@ export default function Exhibitor() {
   const totalTables = extraTables + (exhibitor.data?.package?.tables ?? 0);
   const totalDrinkCoupons = extraDrinkCoupons + (exhibitor.data?.package?.drinkCoupons ?? 0);
   const totalRepresentativeSpots = extraRepresentativeSpots + (exhibitor.data?.package?.representativeSpots ?? 0);
+  const totalBanquetTickets = extraBanquetTickets + (exhibitor.data?.package?.banquetTickets ?? 0);
 
   const setNumber = (setter: (value: number) => void) => (value: string) => {
     const parsed = value === "" ? 0 : parseInt(value.replace(/[^0-9]/g, ""), 10);
@@ -38,6 +40,7 @@ export default function Exhibitor() {
   const setExtraTablesStr = setNumber(setExtraTables);
   const setExtraDrinkCouponsStr = setNumber(setExtraDrinkCoupons);
   const setExtraRepresentativeSpotsStr = setNumber(setExtraRepresentativeSpots);
+  const setExtraBanquetTicketsStr = setNumber(setExtraBanquetTickets);
 
   useEffect(() => {
     if (!exhibitor.isSuccess) return;
@@ -48,6 +51,7 @@ export default function Exhibitor() {
     setExtraTables(exhibitor.data.extraTables);
     setExtraDrinkCoupons(exhibitor.data.extraDrinkCoupons);
     setExtraRepresentativeSpots(exhibitor.data.extraRepresentativeSpots);
+    setExtraBanquetTickets(exhibitor.data.extraBanquetTickets);
   }, [exhibitor.isSuccess]);
 
   function update() {
@@ -64,7 +68,7 @@ export default function Exhibitor() {
 
   return <>
     <div className="mx-auto flex flex-col items-center text-center py-40">
-      <h1 className="md:text-5xl mx-10 text-3xl text-cerise uppercase mb-14">Exhibitor Settings</h1>
+      <h1 className="md:text-5xl mx-10 text-3xl text-cerise uppercase mb-14">{exhibitor.data?.name}</h1>
       {exhibitor.isLoading && <p className="text-cerise font-bold">Loading...</p>}
       {exhibitor.isError && <p className="text-red-500 font-bold">Failed to load exhibitor data</p>}
       <h2 className="text-white font-bold text-3xl mb-10">{exhibitor.data?.package?.name}</h2>
@@ -125,6 +129,16 @@ export default function Exhibitor() {
         {exhibitor.data?.package?.representativeSpots
           ? <p className="text-white relative -top-4">Total representative count: {totalRepresentativeSpots} ({exhibitor.data?.package?.representativeSpots} from package)</p>
           : null}
+        <InputField
+          type="number"
+          value={extraBanquetTickets.toString()}
+          setValue={setExtraBanquetTicketsStr}
+          name="extraBanquetTickets"
+          fields={t.fields}
+        />
+        {exhibitor.data?.package?.banquetTickets
+          ? <p className="text-white relative -top-4">Total banquet ticket count: {totalBanquetTickets} ({exhibitor.data?.package?.banquetTickets} from package)</p>
+          : null}
         {pendingChanges ?
           <input
             type="submit"
@@ -168,7 +182,7 @@ export default function Exhibitor() {
         }
       </section>
       <Allergies type="representative" maxCount={totalRepresentativeSpots} />
-      <Allergies type="banquet" maxCount={0} />
+      <Allergies type="banquet" maxCount={totalBanquetTickets} />
     </div>
   </>;
 }

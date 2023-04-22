@@ -40,6 +40,7 @@ export default {
       extraTables: "Extra bord",
       extraDrinkCoupons: "Extra barbongar",
       extraRepresentativeSpots: "Extra representantplatser",
+      extraBanquetTickets: "Extra sittningsbiljetter",
       contactName: "Namn",
       contactEmail: "E-postadress",
       contactPhone: "Telefonnummer",

@@ -40,6 +40,7 @@ export default {
       extraTables: "Extra tables",
       extraDrinkCoupons: "Extra drink coupons",
       extraRepresentativeSpots: "Extra representative spots",
+      extraBanquetTickets: "Extra banquet tickets",
       contactName: "Name",
       contactEmail: "Email",
       contactPhone: "Phone number",
