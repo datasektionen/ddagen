@@ -3,6 +3,8 @@ import { z } from "zod";
 /**
  * Specify your server-side environment variables schema here. This way you can ensure the app isn't
  * built with invalid env vars.
+ *
+ * These must be added as config options in dokku with `dokku config:set <app> VAR=...`
  */
 const server = z.object({
   NODE_ENV: z.enum(["development", "production"]),
@@ -15,6 +17,9 @@ const server = z.object({
 /**
  * Specify your client-side environment variables schema here. This way you can ensure the app isn't
  * built with invalid env vars. To expose them to the client, prefix them with `NEXT_PUBLIC_`.
+ *
+ * These must be specified as build args in the Dockerfile and added with `dokku docker-options:add
+ * <app> build "--build-arg NEXT_PUBLIC_CLIENTVAR=..."`
  */
 const client = z.object({
   // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
