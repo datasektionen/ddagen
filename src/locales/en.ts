@@ -78,7 +78,8 @@ export default {
     companyForm: "Exhibitor Registration",
     changeLanguage: "Change language to Swedish",
     contact: "Contact",
-    login: "Login",
+    login: "Log in",
+    logout: "Log out",
   },
   footer: {
     header: "Organized by Datasektionen",

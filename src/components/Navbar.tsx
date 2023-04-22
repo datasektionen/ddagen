@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useLocale } from "@/locales";
+import { api } from "@/utils/api";
 
 function NavLink({ href, children, "class": className, style, onClick}: {
   href: string,
@@ -86,11 +87,15 @@ function Group({ links }: { links: { href: string, text: string }[] }) {
 
 export default function Navbar() {
   const router = useRouter();
+  const trpc = api.useContext();
   const l = useLocale();
   const t = l.nav;
   const locale = l.locale;
 
   const [open, setOpen] = useState(false);
+
+  const isLoggedIn = api.account.isLoggedIn.useQuery();
+  const logout = api.account.logout.useMutation();
 
   function swapLocale() {
     router.push(router.pathname, router.pathname, {
@@ -111,6 +116,12 @@ export default function Navbar() {
     window.addEventListener("click", close);
     return () => window.removeEventListener("click", close);
   });
+
+  useEffect(() => {
+    if (logout.isSuccess) {
+      trpc.account.invalidate();
+    }
+  }, [logout.isSuccess]);
 
   return (
     <>
@@ -167,10 +178,16 @@ export default function Navbar() {
             lg:px-0 bg-black lg:bg-transparent lg:ml-auto
           ">
             <NavLink class="hidden lg:block px-14 lg:px-4 p-4" href="/kontakt">{t.contact}</NavLink>
-            <Link
-              className="bg-cerise py-2.5 px-4 rounded-full text-center hover:scale-105 transition-transform"
-              href="/företagsanmälan"
-            >{t.companyForm}</Link>
+            {isLoggedIn.data === true ?
+              <button
+                onClick={() => logout.mutate()}
+                className="bg-cerise py-2.5 px-4 rounded-full text-center hover:scale-105 transition-transform"
+              >{t.logout}</button> :
+              <Link
+                className="bg-cerise py-2.5 px-4 rounded-full text-center hover:scale-105 transition-transform"
+                href="/företagsanmälan"
+              >{t.companyForm}</Link>
+            }
             <button data-dont-close onClick={swapLocale} className={`
               w-8 h-8
               rounded-full border-none

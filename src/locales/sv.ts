@@ -79,6 +79,7 @@ export default {
     changeLanguage: "Ändra språk till engelska",
     contact: "Kontakt",
     login: "Logga in",
+    logout: "Logga ut",
   },
   footer: {
     header:

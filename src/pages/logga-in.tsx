@@ -8,6 +8,7 @@ export default function Login() {
   const t = useLocale();
   const router = useRouter();
   const locale = t.locale;
+  const trpc = api.useContext();
 
   const [state, setState] = useState<"email" | "code">("email");
 
@@ -26,6 +27,7 @@ export default function Login() {
   useEffect(() => {
     if (finishLogin.data?.ok) {
       router.replace("/"); // TODO: go to account page
+      trpc.account.invalidate();
     }
   }, [finishLogin]);
 

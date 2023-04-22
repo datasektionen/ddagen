@@ -24,10 +24,23 @@ import { prisma } from "@/server/db";
  *
  * @see https://trpc.io/docs/context
  */
-export const createTRPCContext = (opts: CreateNextContextOptions) => {
+export const createTRPCContext = async (opts: CreateNextContextOptions) => {
+  const cookie = opts.req.cookies.session;
+  let session = null;
+  if (cookie) {
+    session = await prisma.session.findUnique({
+      where: { id: cookie },
+      include: { account: true },
+    });
+    if (session && session.lastUsed < new Date(Date.now() - 1000 * 60 * 60 * 24)) {
+      await prisma.session.delete({ where: { id: cookie } });
+      session = null;
+    }
+  }
   return {
     prisma,
     res: opts.res,
+    session,
   };
 };
 
