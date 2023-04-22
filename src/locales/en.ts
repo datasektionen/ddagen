@@ -40,6 +40,12 @@ export default {
       extraTables: "Extra tables",
       extraDrinkCoupons: "Extra drink coupons",
       extraRepresentativeSpots: "Extra representative spots",
+      contactName: "Name",
+      contactEmail: "Email",
+      contactPhone: "Phone number",
+      contactRole: "Role",
+      saveContact: "Save",
+      removeContact: "Remove",
     },
   },
   login: {

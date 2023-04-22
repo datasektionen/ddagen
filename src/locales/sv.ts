@@ -40,6 +40,12 @@ export default {
       extraTables: "Extra bord",
       extraDrinkCoupons: "Extra barbongar",
       extraRepresentativeSpots: "Extra representantplatser",
+      contactName: "Namn",
+      contactEmail: "E-postadress",
+      contactPhone: "Telefonnummer",
+      contactRole: "Roll",
+      saveContact: "Spara",
+      removeContact: "Ta bort",
     },
   },
   login: {

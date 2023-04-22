@@ -5,7 +5,9 @@ export function InputField<F extends Record<string, string>>({
   pattern,
   value,
   setValue,
-  class: className,
+  class: className = "",
+  prefix = "",
+  required = true,
 }: {
   fields: F;
   name: string & keyof F;
@@ -14,11 +16,13 @@ export function InputField<F extends Record<string, string>>({
   value: string;
   setValue: (value: string, element: HTMLInputElement) => void;
   class?: string;
+  prefix?: string;
+  required?: boolean;
 }) {
   return (
-    <div className={"relative " + (className ?? "")}>
+    <div className={"relative " + className}>
       <input
-        required
+        required={required}
         placeholder=" "
         type={type}
         pattern={pattern}
@@ -31,13 +35,13 @@ export function InputField<F extends Record<string, string>>({
           focus:outline-none
           peer
         "
-        id={name}
+        id={prefix + name}
         name={name}
         value={value}
         onChange={(e) => setValue(e.target.value, e.target)}
       />
       <label
-        htmlFor={name}
+        htmlFor={prefix + name}
         className="
           transform transition-all absolute top-0 left-0 -translate-y-full
           text-slate-400 peer-focus:text-cerise font-medium

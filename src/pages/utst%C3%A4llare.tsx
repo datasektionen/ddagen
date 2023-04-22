@@ -1,13 +1,108 @@
 import { InputField } from "@/components/InputField";
-import { useLocale } from "@/locales";
+import { useLocale, type Locale } from "@/locales";
 import { api } from "@/utils/api";
 import { useEffect, useState } from "react";
+import type { ContactPerson } from "@prisma/client";
+
+function ContactPerson({
+  contact,
+  t,
+  remove,
+  onSave,
+  showRemove,
+}: {
+  contact?: ContactPerson;
+  t: Locale;
+  remove: () => void;
+  onSave?: () => void;
+  showRemove: boolean;
+}) {
+  const [name, setName] = useState(contact?.name ?? "");
+  const [email, setEmail] = useState(contact?.email ?? "");
+  const [phoneNumber, setPhoneNumber] = useState(contact?.phoneNumber ?? "");
+  const [role, setRole] = useState(contact?.role ?? "");
+
+  const [pendingChanges, setPendingChanges] = useState(contact?.id === undefined);
+  const upsert = api.exhibitor.upsertContact.useMutation();
+
+  return (
+    <form
+      className="flex flex-col gap-10 md:w-80"
+      onSubmit={async (e) => {
+        e.preventDefault();
+        setPendingChanges(false);
+        await upsert.mutateAsync({ name, email, phoneNumber, role });
+        if (onSave) onSave();
+      }}
+    >
+      <InputField
+        type="text"
+        value={name}
+        setValue={v => { setName(v); setPendingChanges(true); }}
+        name="contactName"
+        fields={t.exhibitorSettings.fields}
+        prefix={contact?.id}
+      />
+      <InputField
+        type="email"
+        value={email}
+        setValue={v => { setEmail(v); setPendingChanges(true); }}
+        name="contactEmail"
+        fields={t.exhibitorSettings.fields}
+        prefix={contact?.id}
+      />
+      <InputField
+        type="text"
+        value={phoneNumber}
+        setValue={v => { setPhoneNumber(v); setPendingChanges(true); }}
+        name="contactPhone"
+        fields={t.exhibitorSettings.fields}
+        prefix={contact?.id}
+      />
+      <InputField
+        type="text"
+        value={role}
+        setValue={v => { setRole(v); setPendingChanges(true); }}
+        name="contactRole"
+        fields={t.exhibitorSettings.fields}
+        prefix={contact?.id}
+        required={false}
+      />
+      <div className="flex justify-around">
+        {pendingChanges ?
+          <input
+            type="submit"
+            className="
+              bg-cerise transition-transform hover:scale-110 focus:scale-110 focus:outline-none
+              text-white font-bold uppercase
+              py-2 px-4 rounded-full cursor-pointer disabled:cursor-wait disabled:grayscale
+            "
+            value={t.exhibitorSettings.fields.saveContact}
+          /> :
+          <p className="text-white">Saved ✅</p>}
+        {showRemove &&
+          <button
+            type="button"
+            onClick={remove}
+            className="
+              bg-cerise transition-transform hover:scale-110 focus:scale-110 focus:outline-none
+              text-white font-bold uppercase
+              py-2 px-4 rounded-full cursor-pointer disabled:cursor-wait disabled:grayscale
+            "
+          >{t.exhibitorSettings.fields.removeContact}</button>}
+      </div>
+    </form>
+  );
+}
 
 export default function Exhibitor() {
   const t = useLocale();
+  const trpc = api.useContext();
 
   const exhibitor = api.exhibitor.get.useQuery();
   const updateExhibitor = api.exhibitor.update.useMutation();
+  const contacts = api.exhibitor.getContacts.useQuery();
+  const removeContact = api.exhibitor.deleteContact.useMutation();
 
   const [pendingChanges, setPendingChanges] = useState(false);
 
@@ -17,6 +112,8 @@ export default function Exhibitor() {
   const [extraTables, setExtraTables] = useState(0);
   const [extraDrinkCoupons, setExtraDrinkCoupons] = useState(0);
   const [extraRepresentativeSpots, setExtraRepresentativeSpots] = useState(0);
+
+  const [addingContact, setAddingContact] = useState(false);
 
   const totalChairs = extraChairs + (exhibitor.data?.package?.chairs ?? 0);
   const totalTables = extraTables + (exhibitor.data?.package?.tables ?? 0);
@@ -62,7 +159,7 @@ export default function Exhibitor() {
       {exhibitor.isLoading && <p className="text-cerise font-bold">Loading...</p>}
       {exhibitor.isError && <p className="text-red-500 font-bold">Failed to load exhibitor data</p>}
       <h2 className="text-white font-bold text-3xl mb-10">{exhibitor.data?.package?.name}</h2>
-      <form className="flex flex-col gap-6 md:w-80" onSubmit={(e) => { e.preventDefault(); update(); }}>
+      <form className="flex flex-col gap-6 md:w-96" onSubmit={(e) => { e.preventDefault(); update(); }}>
         <InputField
           type="email"
           value={invoiceEmail}
@@ -76,6 +173,7 @@ export default function Exhibitor() {
           setValue={v => { setDescription(v); setPendingChanges(true); }}
           name="description"
           fields={t.exhibitorSettings.fields}
+          required={false}
         />
         <InputField
           type="number"
@@ -134,6 +232,31 @@ export default function Exhibitor() {
               : null
         }
       </form>
+      <section>
+        <h2 className="text-cerise font-bold text-4xl mb-10">Contacts</h2>
+        {contacts.data?.map(contact => <div key={contact.id}>
+          <ContactPerson
+            contact={contact}
+            t={t}
+            remove={() => removeContact.mutateAsync(contact.id).then(() => trpc.exhibitor.getContacts.invalidate())}
+            showRemove={contacts.data?.length > 1}
+          />
+          <div className="h-10" />
+        </div>)}
+        {addingContact ? (
+          <ContactPerson
+            t={t}
+            remove={() => setAddingContact(false)}
+            onSave={() => { setAddingContact(false); trpc.exhibitor.getContacts.invalidate(); }}
+            showRemove={true}
+          />
+        ) :
+          <button
+            onClick={() => setAddingContact(true)}
+            className="text-white text-lg mt-4"
+          >Add contact</button>
+        }
+      </section>
     </div>
   </>;
 }
