@@ -29,6 +29,14 @@ export default function Login() {
     }
   }, [confirmationCode]);
 
+  useEffect(() => {
+    if (typeof router.query.code === "string") {
+      setState("code");
+      setCode(router.query.code);
+      confirmationCode.mutate(router.query.code);
+    }
+  }, [router.query.code]);
+
   return (
     <div className="mx-auto flex flex-col items-center text-center py-40">
       <h1 className="md:max-w-2xl md:text-5xl mx-10 text-3xl text-cerise uppercase mb-14">{t.login.title}</h1>
