@@ -4,13 +4,13 @@ import { useEffect, useState } from "react";
 import { useLocale } from "@/locales";
 import { api } from "@/utils/api";
 
-function NavLink({ href, children, "class": className, style, onClick}: {
+function NavLink({ href, children, "class": className, style, onClick }: {
   href: string,
   children: React.ReactNode,
   "class"?: string,
   style?: React.CSSProperties,
-  onClick?: React.MouseEventHandler<HTMLAnchorElement> }) {
-
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+}) {
   const router = useRouter();
 
   return <Link
@@ -75,10 +75,10 @@ function Group({ links }: { links: { href: string, text: string }[] }) {
                 dropped ? "rotate-180" : ""
               } duration-200 ml-4 h-4 text-cerise cursor-pointer`}></img>
         </div>
-        <div className={`${(dropped ? "block" : "hidden")} flex flex-col px-8 justify-between mb-4`}>
-        {links.slice(1).map(({ href, text }) => (<NavLink key={href} href={href}>{text}</NavLink>
-        ))}
-        </div>
+        <div className={`${(dropped ? "block" : "hidden")} flex flex-col px-8 justify-between mb-4`}>{
+          links.slice(1).map(({ href, text }) =>
+            (<NavLink key={href} href={href}>{text}</NavLink>))
+        }</div>
 
       </div>
     </div>
@@ -157,23 +157,24 @@ export default function Navbar() {
           lg:left-0 lg:flex-row lg:items-center lg:px-8 lg:pt-0
         ` + (open ? "left-0" : "-left-full")
         }>
-        <div className="px-14 pb-0 lg:px-0 lg:pb-0 flex flex-col lg:flex-row ">
-          <a
-            className="sr-only focus:not-sr-only"
-            href="#main-content"
-          >{t.toContent}</a>
-          <NavLink class="px-0 lg:px-4 p-4" href="/">{t.home}</NavLink>
-          <Group links={[
-            { href: "/förföretag", text: t.forCompanies },
-            { href: "/faq", text: "faq" },
-            { href: "/logga-in", text: t.login },
-          ]} />
-          <NavLink class="mb-4 lg:hidden px-0 lg:px-4" href="/kontakt">{t.contact}</NavLink>
-          {/*<NavLink class="px-14 lg:px-0" href="/förstudenter">{t.forStudents}</NavLink>*/}
-          {/*<NavLink class="px-14 lg:px-0" href="/mässan">{t.about}</NavLink>*/}
+          <div className="px-14 pb-0 lg:px-0 lg:pb-0 flex flex-col lg:flex-row ">
+            <a
+              className="sr-only focus:not-sr-only"
+              href="#main-content"
+            >{t.toContent}</a>
+            <NavLink class="px-0 lg:px-4 p-4" href="/">{t.home}</NavLink>
+            <Group links={[
+              { href: "/förföretag", text: t.forCompanies },
+              { href: "/faq", text: "faq" },
+              { href: "/logga-in", text: t.login },
+            ]} />
+            <NavLink class="mb-4 lg:hidden px-0 lg:px-4" href="/kontakt">{t.contact}</NavLink>
+            {/*<NavLink class="px-14 lg:px-0" href="/förstudenter">{t.forStudents}</NavLink>*/}
+            <NavLink class="px-14 lg:px-4 p-4 lg:ml-auto" href="/utställare">{t.exhibitorSettings}</NavLink>
+            {/*<NavLink class="px-14 lg:px-0" href="/mässan">{t.about}</NavLink>*/}
           </div>
           <div className="
-            flex flex-row  lg:justify-center items-center lg:pl-0 justify-center lg:pr-0
+            flex flex-row lg:justify-center items-center lg:pl-0 justify-center lg:pr-0
             py-4 gap-8
             lg:px-0 bg-black lg:bg-transparent lg:ml-auto
           ">

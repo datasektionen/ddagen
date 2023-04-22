@@ -26,7 +26,7 @@ export default function Login() {
 
   useEffect(() => {
     if (finishLogin.data?.ok) {
-      router.replace("/"); // TODO: go to account page
+      router.replace("/utställare");
       trpc.account.invalidate();
     }
   }, [finishLogin]);
@@ -70,7 +70,7 @@ export default function Login() {
           <p className="text-red-500 font-bold mt-6">{t.error.unknown}</p>
         )}
       </> : <>
-        <form className="flex flex-col gap-6" onSubmit={(e) => { e.preventDefault(); finishLogin.mutate(code); }}>
+        <form className="flex flex-col gap-6 items-center" onSubmit={(e) => { e.preventDefault(); finishLogin.mutate(code); }}>
           <InputField
             name="code"
             value={code}

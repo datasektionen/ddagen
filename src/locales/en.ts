@@ -38,7 +38,7 @@ export default {
     emailText: "The email address you used to register your company",
     confirm: "Log in",
     confirmationCode: "Confirmation code",
-    confirmationCodeText: "We sent you a confirmation code to your email address",
+    confirmationCodeText: "We sent you a confirmation code to your email address. If you can't find the email, make sure to check your spam folder!",
     emailSubject: "D-Dagen Login",
     emailBody: (code: string, link: string) => `
       <p>To complete the login to D-Dagen, click the link below:</p>
@@ -78,6 +78,7 @@ export default {
     companyForm: "Exhibitor Registration",
     changeLanguage: "Change language to Swedish",
     contact: "Contact",
+    exhibitorSettings: "Exhibitor Settings",
     login: "Log in",
     logout: "Log out",
   },

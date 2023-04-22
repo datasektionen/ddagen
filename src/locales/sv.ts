@@ -38,7 +38,7 @@ export default {
     emailText: "E-postadressen du angav när du gjorde din intresseanmälan",
     confirm: "Logga in",
     confirmationCode: "Bekräftelsekod",
-    confirmationCodeText: "Vi har skickat en kod till din e-postadress",
+    confirmationCodeText: "Vi har skickat en kod till din e-postadress. Om du inte hittar mailet, se till att kolla i skräpposten!",
     emailSubject: "D-Dagen - Logga in",
     emailBody: (code: string, link: string) => `
       <p>För att slutföra inloggningen till D-Dagen, klicka på länken nedan:</p>
@@ -78,6 +78,7 @@ export default {
     companyForm: "Företagsanmälan",
     changeLanguage: "Ändra språk till engelska",
     contact: "Kontakt",
+    exhibitorSettings: "Utställarinställningar",
     login: "Logga in",
     logout: "Logga ut",
   },
