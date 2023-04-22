@@ -3,9 +3,10 @@ import { useLocale, type Locale } from "@/locales";
 import { api } from "@/utils/api";
 import { Fragment, useEffect, useState } from "react";
 import type { ContactPerson } from "@prisma/client";
+import { getPackage } from "@/utils/packages";
 
 export default function Exhibitor() {
-  const t = useLocale().exhibitorSettings;
+  const t = useLocale();
   const trpc = api.useContext();
 
   const exhibitor = api.exhibitor.get.useQuery();
@@ -25,11 +26,13 @@ export default function Exhibitor() {
 
   const [addingContact, setAddingContact] = useState(false);
 
-  const totalChairs = extraChairs + (exhibitor.data?.package?.chairs ?? 0);
-  const totalTables = extraTables + (exhibitor.data?.package?.tables ?? 0);
-  const totalDrinkCoupons = extraDrinkCoupons + (exhibitor.data?.package?.drinkCoupons ?? 0);
-  const totalRepresentativeSpots = extraRepresentativeSpots + (exhibitor.data?.package?.representativeSpots ?? 0);
-  const totalBanquetTickets = extraBanquetTickets + (exhibitor.data?.package?.banquetTickets ?? 0);
+  const pkg = exhibitor.data?.package ? getPackage(t, exhibitor.data.package) : null;
+
+  const totalChairs = extraChairs + (pkg?.chairs ?? 0);
+  const totalTables = extraTables + (pkg?.tables ?? 0);
+  const totalDrinkCoupons = extraDrinkCoupons + (pkg?.drinkCoupons ?? 0);
+  const totalRepresentativeSpots = extraRepresentativeSpots + (pkg?.representativeSpots ?? 0);
+  const totalBanquetTickets = extraBanquetTickets + (pkg?.banquetTickets ?? 0);
 
   const setNumber = (setter: (value: number) => void) => (value: string) => {
     const parsed = value === "" ? 0 : parseInt(value.replace(/[^0-9]/g, ""), 10);
@@ -68,24 +71,31 @@ export default function Exhibitor() {
 
   return <>
     <div className="mx-auto flex flex-col items-center text-center py-40">
-      <h1 className="md:text-5xl mx-10 text-3xl text-cerise uppercase mb-14">{exhibitor.data?.name}</h1>
+      <h1 className="md:text-5xl mx-10 text-3xl text-cerise mb-14">{exhibitor.data?.name}</h1>
       {exhibitor.isLoading && <p className="text-cerise font-bold">Loading...</p>}
       {exhibitor.isError && <p className="text-red-500 font-bold">Failed to load exhibitor data</p>}
-      <h2 className="text-white font-bold text-3xl mb-10">{exhibitor.data?.package?.name}</h2>
+      {pkg && <>
+        <h2 className="text-white font-bold text-3xl">{pkg.name}</h2>
+        <ul className="text-white mb-14 text-start list-disc">
+          {pkg.extra.map(extra =>
+            <li>{extra}</li>
+          )}
+        </ul>
+      </>}
       <form className="flex flex-col gap-6 md:w-96" onSubmit={(e) => { e.preventDefault(); update(); }}>
         <InputField
           type="email"
           value={invoiceEmail}
           setValue={v => { setInvoiceEmail(v); setPendingChanges(true); }}
           name="invoiceEmail"
-          fields={t.fields}
+          fields={t.exhibitorSettings.fields}
         />
         <InputField
           type="text"
           value={description}
           setValue={v => { setDescription(v); setPendingChanges(true); }}
           name="description"
-          fields={t.fields}
+          fields={t.exhibitorSettings.fields}
           required={false}
         />
         <InputField
@@ -93,20 +103,20 @@ export default function Exhibitor() {
           value={extraChairs.toString()}
           setValue={setExtraChairsStr}
           name="extraChairs"
-          fields={t.fields}
+          fields={t.exhibitorSettings.fields}
         />
-        {exhibitor.data?.package?.chairs
-          ? <p className="text-white relative -top-4">Total chair count: {totalChairs} ({exhibitor.data?.package?.chairs} from package)</p>
+        {pkg?.chairs
+          ? <p className="text-white relative -top-4">Total chair count: {totalChairs} ({pkg.chairs} from package)</p>
           : null}
         <InputField
           type="number"
           value={extraTables.toString()}
           setValue={setExtraTablesStr}
           name="extraTables"
-          fields={t.fields}
+          fields={t.exhibitorSettings.fields}
         />
-        {exhibitor.data?.package?.tables
-          ? <p className="text-white relative -top-4">Total table count: {totalTables} ({exhibitor.data?.package?.tables} from package)</p>
+        {pkg?.tables
+          ? <p className="text-white relative -top-4">Total table count: {totalTables} ({pkg.tables} from package)</p>
           : null}
         <InputField
           type="number"
@@ -114,30 +124,30 @@ export default function Exhibitor() {
           value={extraDrinkCoupons.toString()}
           setValue={setExtraDrinkCouponsStr}
           name="extraDrinkCoupons"
-          fields={t.fields}
+          fields={t.exhibitorSettings.fields}
         />
-        {exhibitor.data?.package?.drinkCoupons
-          ? <p className="text-white relative -top-4">Total drink coupon count: {totalDrinkCoupons} ({exhibitor.data?.package?.drinkCoupons} from package)</p>
+        {pkg?.drinkCoupons
+          ? <p className="text-white relative -top-4">Total drink coupon count: {totalDrinkCoupons} ({pkg.drinkCoupons} from package)</p>
           : null}
         <InputField
           type="number"
           value={extraRepresentativeSpots.toString()}
           setValue={setExtraRepresentativeSpotsStr}
           name="extraRepresentativeSpots"
-          fields={t.fields}
+          fields={t.exhibitorSettings.fields}
         />
-        {exhibitor.data?.package?.representativeSpots
-          ? <p className="text-white relative -top-4">Total representative count: {totalRepresentativeSpots} ({exhibitor.data?.package?.representativeSpots} from package)</p>
+        {pkg?.representativeSpots
+          ? <p className="text-white relative -top-4">Total representative count: {totalRepresentativeSpots} ({pkg.representativeSpots} from package)</p>
           : null}
         <InputField
           type="number"
           value={extraBanquetTickets.toString()}
           setValue={setExtraBanquetTicketsStr}
           name="extraBanquetTickets"
-          fields={t.fields}
+          fields={t.exhibitorSettings.fields}
         />
-        {exhibitor.data?.package?.banquetTickets
-          ? <p className="text-white relative -top-4">Total banquet ticket count: {totalBanquetTickets} ({exhibitor.data?.package?.banquetTickets} from package)</p>
+        {pkg?.banquetTickets
+          ? <p className="text-white relative -top-4">Total banquet ticket count: {totalBanquetTickets} ({pkg.banquetTickets} from package)</p>
           : null}
         {pendingChanges ?
           <input
@@ -157,11 +167,11 @@ export default function Exhibitor() {
         }
       </form>
       <section>
-        <h2 className="text-cerise font-bold text-4xl mb-10">{t.contacts}</h2>
+        <h2 className="text-cerise font-bold text-4xl mb-10">{t.exhibitorSettings.contacts}</h2>
         {contacts.data?.map(contact => <div key={contact.id}>
           <ContactPerson
             contact={contact}
-            t={t}
+            t={t.exhibitorSettings}
             remove={() => removeContact.mutateAsync(contact.id).then(() => trpc.exhibitor.getContacts.invalidate())}
             showRemove={contacts.data?.length > 1}
           />
@@ -169,7 +179,7 @@ export default function Exhibitor() {
         </div>)}
         {addingContact ? (
           <ContactPerson
-            t={t}
+            t={t.exhibitorSettings}
             remove={() => setAddingContact(false)}
             onSave={() => { setAddingContact(false); trpc.exhibitor.getContacts.invalidate(); }}
             showRemove={true}

@@ -200,6 +200,15 @@ export default {
     forCompany: "https://ddagen.se/förföretag",
     companyForm: "https://ddagen.se/företagsanmälan"
   },
+  packages: {
+    name: {
+      base: "Baspaketet",
+      sponsor: "Sponsorpaketet",
+      headhunter: "Headhunterpaketet",
+      premium: "Premiumpaketet",
+    },
+    boothSpace: "monteryta",
+  },
   error: {
     exhibitorRegistration: "Något gick fel! Försök igen eller skicka istället ett mail till",
     exhibitorRegistrationEmail:

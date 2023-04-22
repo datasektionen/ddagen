@@ -73,7 +73,6 @@ export const exhibitorRouter = createTRPCRouter({
   get: protectedProcedure.query(async ({ ctx }) => {
     const exhibitor = await ctx.prisma.exhibitor.findUniqueOrThrow({
       where: { id: ctx.session.account.exhibitorId },
-      include: { package: true },
     });
     return {
       ...exhibitor,

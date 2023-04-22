@@ -197,6 +197,15 @@ export default {
     forCompany: "https://ddagen.se/en/förföretag",
     companyForm: "https://ddagen.se/en/företagsanmälan"
   },
+  packages: {
+    name: {
+      base: "Base Package",
+      sponsor: "Sponsor Package",
+      headhunter: "Headhunter Package",
+      premium: "Premium Package",
+    },
+    boothSpace: "booth space",
+  },
   error: {
     exhibitorRegistration: "Something went wrong! Try again or send an email instead to",
     exhibitorRegistrationEmail:
