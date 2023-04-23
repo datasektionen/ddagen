@@ -97,7 +97,7 @@ export const exhibitorRouter = createTRPCRouter({
     extraDrinkCoupons: z.number(),
     extraRepresentativeSpots: z.number(),
   })).mutation(async ({ ctx, input }) => {
-    return await ctx.prisma.exhibitor.update({
+    await ctx.prisma.exhibitor.update({
       where: { id: ctx.session.account.exhibitorId },
       data: {
         invoiceEmail: input.invoiceEmail,
