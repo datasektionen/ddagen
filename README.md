@@ -54,27 +54,3 @@ Lastly, start the thing:
 ```bash
 npm run dev
 ```
-
-Install npm dependencies:
-
-```bash
-npm i
-```
-
-This will also install the prisma engine, which is a binary that gets downloaded
-from somewhere. If this does not work on your computer, either replace prisma
-with something new and fancy (NOTE: applies only to future people) or look
-[here](https://gist.github.com/mathiasmagnusson/c229abac159dd76657b895a4c8cb6ade)
-for something that probably will work.
-
-Then you'll need to run the migrations on the database:
-
-```bash
-npx prisma migrate dev
-```
-
-Lastly, start the thing:
-
-```bash
-npm run dev
-```
