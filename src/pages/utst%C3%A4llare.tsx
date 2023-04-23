@@ -81,7 +81,7 @@ export default function Exhibitor() {
         <h2 className="text-white font-bold text-3xl">{pkg.name}</h2>
         <ul className="text-white mb-14 text-start list-disc">
           {pkg.extra.map(extra =>
-            <li>{extra}</li>
+            <li key={extra}>{extra}</li>
           )}
         </ul>
       </>}
