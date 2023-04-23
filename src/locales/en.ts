@@ -1,5 +1,5 @@
 export default {
-  locale: "en",
+  locale: "en" as const,
   titles: {
     home: "D-Dagen - Konglig Datasektionen",
   },
@@ -43,15 +43,7 @@ export default {
       phoneNumber: "Phone Number",
     },
     confirm: "Send",
-    error: {
-      db: "Something went wrong! Try again or send an email instead to",
-      email:
-        "Your registration has been received, but we could not send a confirmation email to you.",
-      continue: "Continue anyway",
-    },
-    organizationNumberLength: "The organization number must be 10 digits",
-    organizationNumberChecksum:
-      "Invalid check digit, check that you have entered the number correctly",
+    ignoreError: "Continue anyway",
   },
   postCompanyForm: {
     title: "Registration confirmed",
@@ -68,6 +60,7 @@ export default {
     about: "About D-Dagen",
     companyForm: "Exhibitor Registration",
     changeLanguage: "Change language to Swedish",
+    login: "Login",
   },
   footer: {
     header: "Organized by Datasektionen",
@@ -87,7 +80,7 @@ export default {
       phoneNumber: string
     ) => `
     <p>Hi!</p>
-    <p>We are pleased to confirm we have received your exhibitor registration. 
+    <p>We are pleased to confirm we have received your exhibitor registration.
     We will contact you during the spring about whether you got a spot at D-Dagen.
     You can expect to hear from us by June 8th at the latest.</p>
 
@@ -99,7 +92,7 @@ export default {
       <li>Contact Person: ${contactPerson}</li>
       <li>Phone Number: ${phoneNumber}</li>
     </ul>
-    <p>If any of the information above is incorrect or if you have any other questions, 
+    <p>If any of the information above is incorrect or if you have any other questions,
     do not hesitate to contact our sales team at sales@ddagen.se.</p>
     <p>Thank you for your registration and we look forward to a successful event.</p>
 
@@ -136,13 +129,19 @@ export default {
     table4text1: "We'd be thrilled to collaborate with you, both before and after D-Dagen! Whether you're interested in hosting a lunch lecture, hackathon, or something completely different, we're open to your ideas. For more information, please contact our sponsorship manager at <a className='text-cerise' href='mailto:alexandre.moch@ddagen.se'>alexandre.moch@ddagen.se</a>.",
     productCatalog: "PRODUCT CATALOG",
     header: "EXHIBITOR",
-    catalogPath: "/downloadables/Product_Catalog_eng.pdf"
-
-
+    catalogPath: "/downloadables/Product_Catalog_eng.pdf",
   },
-
   url: {
     forCompany: "https://ddagen.se/en/förföretag",
     companyForm: "https://ddagen.se/en/företagsanmälan"
-  }
+  },
+  error: {
+    exhibitorRegistration: "Something went wrong! Try again or send an email instead to",
+    exhibitorRegistrationEmail:
+      "Your registration has been received, but we could not send a confirmation email to you.",
+    duplicateEmail: "This email has already registered for D-Dagen",
+    invalidOrganizationNumberLength: "The organization number must be 10 digits",
+    invalidOrganizationNumberChecksum:
+      "Invalid check digit, check that you have entered the number correctly",
+  },
 };
