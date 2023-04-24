@@ -9,14 +9,7 @@ export default function Contact() {
     "Vilmer Jonsson",
     "Melissa Arslan",
   ];
-  const roles = [
-    "D-DAGEN ANSVARIG",
-    "D-DAGEN ANSVARIG",
-    "PR-ANSVARIG",
-    "MÄSSANSVARIG",
-    "SÄLJANSVARIG",
-    "EKONOMIANSVARIG",
-  ];
+  const roles = t.contact.roles;
   const phones = [
     "076-038 56 51",
     "070-052 72 26",

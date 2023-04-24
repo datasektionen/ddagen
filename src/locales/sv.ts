@@ -140,7 +140,8 @@ export default {
     table4text1: "Vi samarbetar gärna med er för att organisera evenemang före och efter D-Dagen! Oavsett om ni är intresserade av lunchföreläsningar, hackathons eller något helt annat är ni välkomna att dela era idéer med oss. För mer information kontakta vår sponsoransvarige på <a className='text-cerise' href='mailto:alexandre.moch@ddagen.se'>alexandre.moch@ddagen.se</a>.",
     productCatalog: "PRODUKTKATALOG",
     header: "FÖRETAG",
-    catalogPath: "/downloadables/Product_Catalog_sv.pdf"
+    catalogPath: "/downloadables/Product_Catalog_sv.pdf",
+    
   },
   contact: {
     header: "Kontakt",
@@ -150,7 +151,14 @@ export default {
     p2:"För mer information och övriga frågor till ansvariga för D-dagen kontakta oss på...",
     salesHeader: "Säljgruppen",
     bossesHeader: "Ansvariga",
-
+    roles: [
+      "D-DAGEN ANSVARIG",
+      "D-DAGEN ANSVARIG",
+      "PR-ANSVARIG",
+      "MÄSSANSVARIG",
+      "SÄLJANSVARIG",
+      "EKONOMIANSVARIG",
+    ],
   },
   url: {
     forCompany: "https://ddagen.se/förföretag",
