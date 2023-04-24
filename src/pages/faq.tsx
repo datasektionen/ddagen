@@ -110,13 +110,9 @@ export default function Faq() {
     <div className="py-[150px] flex flex-col items-center">
       {/*Header*/}
       <div className="w-full ">
-        <p className=" text-center text-cerise text-[50px] sm:text-[100px] w-full">
+        <p className=" text-center text-cerise text-5xl font-medium w-full">
           {" "}
           {t.faq.header}
-        </p>
-        <p className=" text-center text-cerise text-[50px] sm:text-[100px] w-full">
-          {" "}
-          FAQ
         </p>
       </div>
       {/*Header*/}
