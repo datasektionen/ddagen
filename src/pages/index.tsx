@@ -89,7 +89,7 @@ export default function Home() {
               </div>
 
               {/* Bottom Right */}
-              <div className="md:col-[16/30] md:row-[18/26] md:text-justify text-center z-40">
+              <div className="md:col-[16/30] md:row-[18/26] text-center md:text-left z-40">
                 <div className="bg-cerise lg:p-8 p-6 drop-shadow-md overflow-hidden">
                   <h2 className="font-black text-[#090E2F] md:text-2xl xl:text-[2rem] text-2xl pb-3">
                     {t.home.representative}
