@@ -146,7 +146,11 @@ export default {
     header: "Kontakt",
     subheader1: "Kontakta oss",
     subheader2: "Projekt ansvariga",
-    p1:"Om ni har några egna förslag på evenemang eller aktiviteter ni vill anordna för studenterna på Konglig Datasektionen, eller om ni har några andra frågor eller funderingar om företagspaket är det bara att höra av er till oss.",
+    p1:"Om ni har några egna förslag på evenemang eller aktiviteter ni vill anordna för studenterna på Konglig Datasektionen, eller om ni har några andra frågor eller funderingar om företagspaket är det bara att höra av er till oss på...",
+    p2:"För mer information och övriga frågor till ansvariga för D-dagen kontakta oss på...",
+    salesHeader: "Säljgruppen",
+    bossHeader: "Ansvariga",
+
   },
   url: {
     forCompany: "https://ddagen.se/förföretag",

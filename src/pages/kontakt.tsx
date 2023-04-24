@@ -61,13 +61,26 @@ export default function Contact() {
         {t.contact.header}
       </h1>
 
+      
       <h1 className="mt-[200px] text-cerise  text-3xl font-normal uppercase">
         {t.contact.subheader1}
       </h1>
-      <p className="px-[30px] sm:px-[0px] w-[280px] sm:w-[500px] mt-5 text-white">{t.contact.p1}</p>
-      <h1 className="mt-[200px] text-cerise  text-3xl font-normal uppercase text-center">
-        {t.contact.subheader2}
-      </h1>
+      <div className="flex flex-row mt-[100px] w-full px-[50px] justify-center gap-[100px] items-center">
+        <div className="w-[300px]">
+          <h1 className="text-cerise text-3xl font-thin"> {t.contact.salesHeader}</h1>
+          <p className="text-white mt-[10px]">{t.contact.p1}</p>
+        </div>
+        <img className="h-[290px]" src="/img/SaleGroupPic.png"></img>
+      </div>
+
+      <div className="flex flex-row mt-[100px] w-full px-[50px] justify-center gap-[100px] items-center">
+        <img className="h-[290px]" src="/img/BOSSES.png"></img>
+        <div className="w-[300px]">
+          <h1 className="text-cerise text-3xl font-thin"> {t.contact.salesHeader}</h1>
+          <p className="text-white mt-[10px]">{t.contact.p2}</p>
+        </div>
+      </div>
+
       {/*
             Project Leaders Section - 3 different layouts:
             2 Rows (> lg)
@@ -75,6 +88,9 @@ export default function Contact() {
             6 Rows (< sm)
             Lazy implementation
         */}
+      <h1 className="mt-[200px] text-cerise  text-3xl font-normal uppercase text-center">
+        {t.contact.subheader2}
+      </h1>
       <div className="mt-[50px] flex flex-col ">
         {rows1.map((i, _) => (
           <div className="hidden lg:flex flex-row justify-between gap-10 px-[100px] mb-[50px]">
