@@ -71,7 +71,7 @@ export default function Contact() {
           <br/>
           <p className="text-white  text-1xl">{t.contact.p1}</p>
           <br/>
-          <span className="block text-cerise mt-[15px]">sales@ddagen.se</span>
+          <a className="block text-cerise" href="mailto:sales@ddagen.se">sales@ddagen.se</a>
         </div>
         <img className="sm:h-[350px] md:h-[250px] lg:h-[300px] xl:h-[400px]" src="/img/SaleGroupPic.png"></img>
       </div>
@@ -83,7 +83,7 @@ export default function Contact() {
           <br/>
           <p className="text-white mt-[0px] text-1xl">{t.contact.p2}</p>
           <br/>
-          <span className="block text-cerise mt-[15px] ">ansvarig@ddagen.se</span>
+          <a className="block text-cerise" href="mailto:ansvarig@ddagen.se">ansvarig@ddagen.se</a>
         </div>
       </div>
 
@@ -93,7 +93,7 @@ export default function Contact() {
             3 Rows (sm< & <lg)
             6 Rows (< sm)
             Lazy implementation
-        */}
+      */}
       <h1 className="mt-[150px] text-cerise  text-3xl font-normal uppercase text-center">
         {t.contact.subheader2}
       </h1>
@@ -107,9 +107,10 @@ export default function Contact() {
                   {names[i]}
                 </p>
                 <div className="py-[20px] px-[10px] rounded-[20px] mt-2 bg-slate-50 bg-opacity-20 border-cerise text-white">
+                  
                   <span className="block">{roles[i]}</span>
-                  <span className="block">{mails[i]}</span>
-                  <span className="block">{phones[i]}</span>
+                  <a    className="block" href={"mailto:" + mails[i]} >{mails[i]}</a>
+                  <a    className="block" href={"tel:" + phones[i]} >{phones[i]}</a>
                 </div>
               </div>
             ))}
@@ -126,8 +127,8 @@ export default function Contact() {
                 </p>
                 <div className="py-[20px] px-[10px]  rounded-[20px] mt-2 bg-slate-50 bg-opacity-20 border-cerise text-white text-sm">
                   <span className="block">{roles[i]}</span>
-                  <span className="block">{mails[i]}</span>
-                  <span className="block">{phones[i]}</span>
+                  <a    className="block" href={"mailto:" + mails[i]} >{mails[i]}</a>
+                  <a    className="block" href={"tel:" + phones[i]} >{phones[i]}</a>
                 </div>
               </div>
             ))}
@@ -144,8 +145,8 @@ export default function Contact() {
                 </p>
                 <div className="py-[20px] px-[10px]  rounded-[20px] mt-2 bg-slate-50 bg-opacity-20 border-cerise text-white text-sm">
                   <span className="block">{roles[i]}</span>
-                  <span className="block">{mails[i]}</span>
-                  <span className="block">{phones[i]}</span>
+                  <a    className="block" href={"mailto:" + mails[i]} >{mails[i]}</a>
+                  <a    className="block" href={"tel:" + phones[i]} >{phones[i]}</a>
                 </div>
               </div>
             ))}
