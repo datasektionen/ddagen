@@ -65,19 +65,21 @@ export default function Contact() {
       <h1 className="mt-[200px] text-cerise  text-3xl font-normal uppercase">
         {t.contact.subheader1}
       </h1>
-      <div className="flex flex-row mt-[100px] w-full px-[50px] justify-center gap-[100px] items-center">
+      <div className="flex flex-row mt-[100px] w-full px-[50px] justify-center gap-[120px] items-center">
         <div className="w-[300px]">
-          <h1 className="text-cerise text-3xl font-thin"> {t.contact.salesHeader}</h1>
-          <p className="text-white mt-[10px]">{t.contact.p1}</p>
+          <h1 className="text-cerise text-3xl font-normal uppercase"> {t.contact.salesHeader}</h1>
+          <p className="text-white mt-[10px] text-1xl">{t.contact.p1}</p>
+          <span className="block text-cerise mt-[15px]">sales@ddagen.se</span>
         </div>
-        <img className="h-[290px]" src="/img/SaleGroupPic.png"></img>
+        <img className="h-[340px]" src="/img/SaleGroupPic.png"></img>
       </div>
 
-      <div className="flex flex-row mt-[100px] w-full px-[50px] justify-center gap-[100px] items-center">
-        <img className="h-[290px]" src="/img/BOSSES.png"></img>
+      <div className="flex flex-row mt-[100px] w-full px-[50px] justify-center gap-[120px] items-center">
+        <img className="h-[340px]" src="/img/BOSSES.png"></img>
         <div className="w-[300px]">
-          <h1 className="text-cerise text-3xl font-thin"> {t.contact.salesHeader}</h1>
-          <p className="text-white mt-[10px]">{t.contact.p2}</p>
+          <h1 className="text-cerise text-3xl font-normal uppercase"> {t.contact.bossesHeader}</h1>
+          <p className="text-white mt-[10px] text-1xl">{t.contact.p2}</p>
+          <span className="block text-cerise mt-[15px]">ansvarig@ddagen.se</span>
         </div>
       </div>
 
