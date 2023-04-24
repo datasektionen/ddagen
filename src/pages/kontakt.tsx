@@ -62,21 +62,21 @@ export default function Contact() {
       </h1>
 
       
-      <h1 className="mt-[200px] text-cerise  text-3xl font-normal uppercase">
+      <h1 className="mt-[200px] text-cerise text-4xl font-normal uppercase">
         {t.contact.subheader1}
       </h1>
-      <div className="flex flex-row mt-[100px] w-full px-[50px] justify-center gap-[120px] items-center">
-        <div className="w-[300px]">
+      <div className="flex flex-col-reverse lg:flex-row mt-[100px] justify-center px-[30px] lg:px-[0px] lg:pl-[130px] xl:pl-[200px] gap-[50px] lg:items-center ">
+        <div className="sm:w-[500px] md:w-[700px] lg:w-[300px] text-left">
           <h1 className="text-cerise text-3xl font-normal uppercase"> {t.contact.salesHeader}</h1>
           <p className="text-white mt-[10px] text-1xl">{t.contact.p1}</p>
           <span className="block text-cerise mt-[15px]">sales@ddagen.se</span>
         </div>
-        <img className="h-[340px]" src="/img/SaleGroupPic.png"></img>
+        <img className="sm:h-[350px] md:h-[450px] lg:h-[300px] xl:h-[400px]" src="/img/SaleGroupPic.png"></img>
       </div>
 
-      <div className="flex flex-row mt-[100px] w-full px-[50px] justify-center gap-[120px] items-center">
-        <img className="h-[340px]" src="/img/BOSSES.png"></img>
-        <div className="w-[300px]">
+      <div className="flex flex-col lg:flex-row mt-[100px] justify-center px-[30px] lg:pl-[130px] xl:pl-[200px] gap-[50px] lg:items-center ">
+        <img className="sm:h-[350px] md:h-[450px] lg:h-[300px] xl:h-[400px]" src="/img/BOSSES.png"></img>
+        <div className="sm:w-[500px] md:w-[700px] lg:w-[300px] text-left">
           <h1 className="text-cerise text-3xl font-normal uppercase"> {t.contact.bossesHeader}</h1>
           <p className="text-white mt-[10px] text-1xl">{t.contact.p2}</p>
           <span className="block text-cerise mt-[15px]">ansvarig@ddagen.se</span>
@@ -90,7 +90,7 @@ export default function Contact() {
             6 Rows (< sm)
             Lazy implementation
         */}
-      <h1 className="mt-[200px] text-cerise  text-3xl font-normal uppercase text-center">
+      <h1 className="mt-[150px] text-cerise  text-3xl font-normal uppercase text-center">
         {t.contact.subheader2}
       </h1>
       <div className="mt-[50px] flex flex-col ">
