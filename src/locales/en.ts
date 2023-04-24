@@ -149,7 +149,7 @@ export default {
     p1: "If you have any suggestions for events or activities you want to organize for the students at the Computer Science Chapter, or if you have any other questions or concerns about company packages and the fair,  feel free to contact us at contact us at...",
     p2: "For more information and other questions to those responsible for D-dagen, contact us at...",
     salesHeader: "Sales team",
-    bossesHeader: "D-DAGEN Managers",
+    bossesHeader: "Managers",
     roles: [
       "HEAD OF D-DAGEN",
       "HEAD OF D-DAGEN",
