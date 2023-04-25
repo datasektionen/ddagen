@@ -16,7 +16,7 @@ export default function ForCompanies() {
       ">
         <div className="grid md:grid-cols-2 md:pb-20">
           <section className="bg-white flex flex-col relative md:top-20 md:left-20">
-            <h2 className="uppercase text-cerise font-bold text-2xl mt-8 mb-4 px-5">{t.forCompanies.aboutFair}</h2>
+            <h2 className="uppercase text-cerise font-semibold text-4xl mt-8 mb-4 px-5">{t.forCompanies.aboutFair}</h2>
             <p className="px-5 mb-6">{t.forCompanies.fairText1}</p>
             <img className="md:hidden my-5 bg-[#000b]" src="/img/ff1.webp" alt="People talking" />
             <p className="mb-8 px-5">{t.forCompanies.fairText2}</p>

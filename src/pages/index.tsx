@@ -61,7 +61,7 @@ export default function Home() {
               {/* Top Left */}
               <div className="md:col-[3/20] md:row-[3/15] z-40">
                 <div className="bg-white sm:p-8 p-6 md:w-[90%] md:text-lg xl:text-2xl text-xl drop-shadow-md overflow-hidden">
-                  <p className="first-letter:text-6xl xl:first-letter:text-7xl first-letter:text-cerise first-letter:font-black first-letter:float-left first-letter:mr-1">
+                  <p className="first-letter:text-8xl xl:first-letter:text-8xl first-letter:text-cerise first-letter:font-black first-letter:float-left first-letter:mr-1">
                     {t.home.introFirstBlock}
                   </p>
                   <p>{t.home.introSecondBlock}</p>
