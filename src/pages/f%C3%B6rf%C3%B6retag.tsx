@@ -20,9 +20,21 @@ export default function ForCompanies() {
             <p className="px-5 mb-6">{t.forCompanies.fairText1}</p>
             <img className="md:hidden my-5 bg-[#000b]" src="/img/ff1.webp" alt="People talking" />
             <p className="mb-8 px-5">{t.forCompanies.fairText2}</p>
+            <div className="px-5 pb-[50px] flex justify-center md:justify-start">
+            <a href={t.faq.catalogPath} target="blank" className= "">
+              <button className="mt-[0px] h-[50px] w-[220px] bg-cerise rounded-[40px] border-cerise flex items-center justify-center px-[30px] flex-col hover:scale-105 transition-transform">
+                <div className="flex items-center">
+                  <span className="text-white font-medium">
+                    {t.faq.productCatalog}
+                  </span>
+                </div>
+              </button>
+            </a>
+            </div>
           </section>
 
           <img className="hidden md:block bg-[#000b]" src="/img/ff1.webp" alt="People talking" />
+          
         </div>
 
         <section className="mt-12 grid md:grid-cols-2 md:p-20 md:place-items-end">
