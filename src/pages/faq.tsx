@@ -135,7 +135,7 @@ export default function Faq() {
             <div
               className={`${
                 !(currentTable - 2) ? "brightness-100" : "brightness-75"
-              } sm:w-full text-center h-[50px] mr-[20px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer`}
+              } sm:w-full text-center h-[50px] mr-[20px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer hover:brightness-100 hover:scale-105 transition-transform`}
               onClick={() => setCurrentTable(2)}
             >
               <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto">
@@ -146,7 +146,7 @@ export default function Faq() {
             <div
               className={`${
                 !(currentTable - 0) ? "brightness-100" : "brightness-75"
-              } sm:w-full text-center h-[50px] mr-[0px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer`}
+              } sm:w-full text-center h-[50px] mr-[0px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer hover:brightness-100 hover:scale-105 transition-transform`}
               onClick={() => setCurrentTable(0)}
             >
               <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto">
@@ -160,7 +160,7 @@ export default function Faq() {
             <div
               className={`${
                 !(currentTable - 1) ? "brightness-100" : "brightness-75"
-              } sm:w-full text-center h-[50px]  mr-[20px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer`}
+              } sm:w-full text-center h-[50px]  mr-[20px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer hover:brightness-100 hover:scale-105 transition-transform`}
               onClick={() => setCurrentTable(1)}
             >
               <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto">
@@ -171,7 +171,7 @@ export default function Faq() {
             <div
               className={`${
                 !(currentTable - 3) ? "brightness-100" : "brightness-75"
-              } sm:w-full text-center h-[50px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer`}
+              } sm:w-full text-center h-[50px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer hover:brightness-100 hover:scale-105 transition-transform`}
               onClick={() => setCurrentTable(3)}
             >
               <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto">
