@@ -139,6 +139,7 @@ export default function Navbar() {
             py-4 gap-8
             lg:px-0 bg-blue lg:bg-transparent lg:ml-auto
           ">
+           <NavLink class="px-14 lg:px-4 p-4" href="/kontakt">{t.contact}</NavLink>
             <Link
               className="bg-cerise py-2.5 px-4 rounded-full text-center hover:scale-105 transition-transform"
               href="/företagsanmälan"
