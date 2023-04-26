@@ -68,6 +68,7 @@ export default {
     about: "Om D-Dagen",
     companyForm: "Företagsanmälan",
     changeLanguage: "Ändra språk till engelska",
+    contact: "Kontakt",
   },
   footer: {
     header:
@@ -139,9 +140,26 @@ export default {
     table4text1: "Vi samarbetar gärna med er för att organisera evenemang före och efter D-Dagen! Oavsett om ni är intresserade av lunchföreläsningar, hackathons eller något helt annat är ni välkomna att dela era idéer med oss. För mer information kontakta vår sponsoransvarige på <a className='text-cerise' href='mailto:alexandre.moch@ddagen.se'>alexandre.moch@ddagen.se</a>.",
     productCatalog: "PRODUKTKATALOG",
     header: "FÖRETAG",
-    catalogPath: "/downloadables/Product_Catalog_sv.pdf"
+    catalogPath: "/downloadables/Product_Catalog_sv.pdf",
+    
   },
-
+  contact: {
+    header: "Kontakt",
+    subheader1: "Kontakta oss",
+    subheader2: "Projekt ansvariga",
+    p1:"Om ni har några egna förslag på evenemang eller aktiviteter ni vill anordna för studenterna på Konglig Datasektionen, eller om ni har några andra frågor eller funderingar om företagspaket är det bara att höra av er till oss på...",
+    p2:"För mer information och övriga frågor till ansvariga för D-dagen kontakta oss på...",
+    salesHeader: "Säljgruppen",
+    bossesHeader: "Ansvariga",
+    roles: [
+      "D-DAGEN ANSVARIG",
+      "D-DAGEN ANSVARIG",
+      "PR-ANSVARIG",
+      "MÄSSANSVARIG",
+      "SÄLJANSVARIG",
+      "EKONOMIANSVARIG",
+    ],
+  },
   url: {
     forCompany: "https://ddagen.se/förföretag",
     companyForm: "https://ddagen.se/företagsanmälan"

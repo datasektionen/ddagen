@@ -68,6 +68,7 @@ export default {
     about: "About D-Dagen",
     companyForm: "Exhibitor Registration",
     changeLanguage: "Change language to Swedish",
+    contact: "Contact",
   },
   footer: {
     header: "Organized by Datasektionen",
@@ -136,11 +137,28 @@ export default {
     table4text1: "We'd be thrilled to collaborate with you, both before and after D-Dagen! Whether you're interested in hosting a lunch lecture, hackathon, or something completely different, we're open to your ideas. For more information, please contact our sponsorship manager at <a className='text-cerise' href='mailto:alexandre.moch@ddagen.se'>alexandre.moch@ddagen.se</a>.",
     productCatalog: "PRODUCT CATALOG",
     header: "EXHIBITOR",
-    catalogPath: "/downloadables/Product_Catalog_eng.pdf"
+    catalogPath: "/downloadables/Product_Catalog_eng.pdf",
+    
 
 
   },
-
+  contact: {
+    header: "Contact",
+    subheader1: "Contact us",
+    subheader2: "Project Managers",
+    p1: "If you have any suggestions for events or activities you want to organize for the students at the Computer Science Chapter, or if you have any other questions or concerns about company packages and the fair,  feel free to contact us at contact us at...",
+    p2: "For more information and other questions to those responsible for D-dagen, contact us at...",
+    salesHeader: "Sales team",
+    bossesHeader: "Managers",
+    roles: [
+      "HEAD OF D-DAGEN",
+      "HEAD OF D-DAGEN",
+      "HEAD OF PR",
+      "HEAD OF THE FAIR",
+      "HEAD OF SALES",
+      "HEAD OF FINANCES",
+    ],
+  },
   url: {
     forCompany: "https://ddagen.se/en/förföretag",
     companyForm: "https://ddagen.se/en/företagsanmälan"
