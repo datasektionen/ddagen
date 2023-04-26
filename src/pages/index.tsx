@@ -43,8 +43,10 @@ export default function Home() {
             <h2
               className={
                 `
-            text-white text-4xl text-center
-                ` + (t.locale == "sv" ? "sm:ml-9" : "sm:ml-14")
+            text-white text-4xl text-center transition-all duration-[6000ms] ease-in-out ${
+              showLogo ? "opacity-100" : "opacity-0"
+            }
+                ` + (t.locale == "sv" ? "sm:ml-9" : "sm:ml-14") 
               }
             >
               {t.home.stats.firstPart} | {t.home.stats.secondPart}
