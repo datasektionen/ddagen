@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRef } from "react";
 import { useLocale } from "@/locales";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const t = useLocale();
@@ -10,13 +11,21 @@ export default function Home() {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }
 
+  const [showLogo, setShowLogo] = useState(false);
+
+  useEffect(() => {
+    setShowLogo(true);
+  }, []);
+
   return (
     <>
       <div className="w-full h-full">
         <div className="flex flex-col mx-auto max-w-[75%]">
           <div className="relative lg:py-[150px] py-[75px]">
             <img
-              className="absolute w-full h-[290px]"
+              className={`absolute w-full h-[290px] transition-all duration-[2000ms] ease-in-out ${
+                showLogo ? "opacity-100" : "opacity-0"
+              }`}
               src={
                 t.locale == "sv"
                   ? "/img/d-dagen-logo-sv.svg"
@@ -26,8 +35,8 @@ export default function Home() {
             />
 
             {/* <h1 className="absolute text-white drop-shadow-[0_0_10px_rgba(0,0,0,0.25)] text-5xl">
-              11 OKTOBER 2023
-            </h1> */}
+            11 OKTOBER 2023
+          </h1> */}
           </div>
 
           <div className="pt-[200px] pb-[50px] hover:cursor-default">
