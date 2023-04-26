@@ -48,7 +48,7 @@ export default function ForCompanies() {
             ">{t.forCompanies.interestedTitle}</h2>
             <p className="pb-8">{t.forCompanies.interestedText}</p>
             <Link className="
-              bg-white py-3 px-4 rounded-full text-cerise font-medium uppercase
+              hover:scale-105 transition-transform bg-white py-3 px-4 rounded-full text-cerise font-medium uppercase
               w-max block mx-auto md:mx-0 mb-6
             " href="/företagsanmälan">{t.forCompanies.formButton}</Link>
           </section>
