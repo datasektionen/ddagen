@@ -213,13 +213,14 @@ export default {
     exhibitorRegistration: "Något gick fel! Försök igen eller skicka istället ett mail till",
     exhibitorRegistrationEmail:
       "Din anmälan har registrerats, men vi kunde inte skicka ett konfirmationsmail till dig.",
-    duplicateEmail: "Det finns redan ett registrerat företag med den här mailadressen",
+    duplicateEmail: "Den här mailadressen är redan kopplad till en registrering",
     invalidOrganizationNumberLength: "Organisationsnumret måste vara 10 siffror",
     invalidOrganizationNumberChecksum:
       "Felaktig kontrollsiffra, kontrollera att du skrivit rätt",
-    accountNotFound: "Det finns inget konto med den här mailadressen",
+    userNotFound: "Det finns inget konto med den här mailadressen",
     emailNotSent: "Ett fel uppstod när vi försökte skicka ett mail till dig",
     invalidConfirmationCode: "Bekräftelsekoden är felaktig eller har gått ut, var god försök igen",
+    cannotDeleteSelf: "Du kan inte ta bort ditt eget konto",
     unknown: "Ett okänt fel uppstod",
   },
 };

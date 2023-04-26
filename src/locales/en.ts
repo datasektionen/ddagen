@@ -214,9 +214,10 @@ export default {
     invalidOrganizationNumberLength: "The organization number must be 10 digits",
     invalidOrganizationNumberChecksum:
       "Invalid check digit, check that you have entered the number correctly",
-    accountNotFound: "No account with this email has been registered",
+    userNotFound: "No account with this email has been registered",
     emailNotSent: "Something went wrong when sending an email to you, please try again later",
     invalidConfirmationCode: "Invalid or expired confirmation code, please try again",
+    cannotDeleteSelf: "You cannot delete your own account",
     unknown: "Something unexpectedly went wrong",
   },
 };

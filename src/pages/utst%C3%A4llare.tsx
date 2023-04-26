@@ -1,8 +1,8 @@
 import { InputField } from "@/components/InputField";
 import { useLocale, type Locale } from "@/locales";
 import { api } from "@/utils/api";
-import { Fragment, useEffect, useState } from "react";
-import type { ContactPerson } from "@prisma/client";
+import React, { Fragment, useEffect, useState } from "react";
+import type { User } from "@prisma/client";
 import { getPackage } from "@/utils/packages";
 
 export default function Exhibitor() {
@@ -196,15 +196,15 @@ export default function Exhibitor() {
       </form>
       <section>
         <h2 className="text-cerise font-bold text-4xl mb-10">{t.exhibitorSettings.contacts}</h2>
-        {contacts.data?.map(contact => <div key={contact.id}>
+        {contacts.data?.map(user => <React.Fragment key={user.id}>
           <ContactPerson
-            contact={contact}
+            user={user}
             t={t.exhibitorSettings}
-            remove={() => removeContact.mutateAsync(contact.id).then(() => trpc.exhibitor.getContacts.invalidate())}
+            remove={() => removeContact.mutateAsync(user.id).then(() => trpc.exhibitor.getContacts.invalidate())}
             showRemove={contacts.data?.length > 1}
           />
           <div className="h-10" />
-        </div>)}
+        </React.Fragment>)}
         {addingContact ? (
           <ContactPerson
             t={t.exhibitorSettings}
@@ -236,7 +236,7 @@ function Allergies({
   const trpc = api.useContext();
 
   const allergies = api.exhibitor.getAllergies.useQuery(type);
-  const createAllergy = api.exhibitor.createAllergy.useMutation();
+  const upsertAllergy = api.exhibitor.upsertAllergy.useMutation();
   const removeAllergy = api.exhibitor.deleteAllergy.useMutation();
 
   const [newAllergyValue, setNewAllergyValue] = useState("");
@@ -314,7 +314,7 @@ function Allergies({
             "
             onClick={(e) => {
               e.preventDefault();
-              createAllergy.mutateAsync({ value: newAllergyValue, comment: newAllergyComment, type }).then(() => {
+              upsertAllergy.mutateAsync({ value: newAllergyValue, comment: newAllergyComment, type }).then(() => {
                 setNewAllergyValue("");
                 setNewAllergyComment("");
                 trpc.exhibitor.getAllergies.invalidate(type);
@@ -328,24 +328,24 @@ function Allergies({
 }
 
 function ContactPerson({
-  contact,
+  user,
   t,
   remove,
   onSave,
   showRemove,
 }: {
-  contact?: ContactPerson;
+  user?: User;
   t: Locale["exhibitorSettings"];
   remove: () => void;
   onSave?: () => void;
   showRemove: boolean;
 }) {
-  const [name, setName] = useState(contact?.name ?? "");
-  const [email, setEmail] = useState(contact?.email ?? "");
-  const [phoneNumber, setPhoneNumber] = useState(contact?.phoneNumber ?? "");
-  const [role, setRole] = useState(contact?.role ?? "");
+  const [name, setName] = useState(user?.name ?? "");
+  const [email, setEmail] = useState(user?.email ?? "");
+  const [phoneNumber, setPhoneNumber] = useState(user?.phoneNumber ?? "");
+  const [role, setRole] = useState(user?.role ?? "");
 
-  const [pendingChanges, setPendingChanges] = useState(contact?.id === undefined);
+  const [pendingChanges, setPendingChanges] = useState(user?.id === undefined);
   const upsert = api.exhibitor.upsertContact.useMutation();
 
   return (
@@ -364,7 +364,7 @@ function ContactPerson({
         setValue={v => { setName(v); setPendingChanges(true); }}
         name="contactName"
         fields={t.fields}
-        prefix={contact?.id}
+        prefix={user?.id}
       />
       <InputField
         type="email"
@@ -372,7 +372,7 @@ function ContactPerson({
         setValue={v => { setEmail(v); setPendingChanges(true); }}
         name="contactEmail"
         fields={t.fields}
-        prefix={contact?.id}
+        prefix={user?.id}
       />
       <InputField
         type="text"
@@ -380,7 +380,7 @@ function ContactPerson({
         setValue={v => { setPhoneNumber(v); setPendingChanges(true); }}
         name="contactPhone"
         fields={t.fields}
-        prefix={contact?.id}
+        prefix={user?.id}
       />
       <InputField
         type="text"
@@ -388,7 +388,7 @@ function ContactPerson({
         setValue={v => { setRole(v); setPendingChanges(true); }}
         name="contactRole"
         fields={t.fields}
-        prefix={contact?.id}
+        prefix={user?.id}
         required={false}
       />
       <div className="flex justify-around">

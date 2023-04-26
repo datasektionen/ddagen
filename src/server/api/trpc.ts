@@ -30,7 +30,7 @@ export const createTRPCContext = async (opts: CreateNextContextOptions) => {
   if (cookie) {
     session = await prisma.session.findUnique({
       where: { id: cookie },
-      include: { account: true },
+      include: { user: true },
     });
     if (session && session.lastUsed < new Date(Date.now() - 1000 * 60 * 60 * 24)) {
       await prisma.session.delete({ where: { id: cookie } });

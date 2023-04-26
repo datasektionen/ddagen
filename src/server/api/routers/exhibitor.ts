@@ -6,6 +6,14 @@ import { TRPCError } from "@trpc/server";
 import { Prisma } from "@prisma/client";
 import sendEmail from "@/utils/send-email";
 
+const allergyType = z.enum(["representative", "banquet"]);
+function allergyTypeToDB(type: "representative" | "banquet") {
+  return ({
+    "representative": "REPRESENTATIVE_SPOT",
+    "banquet": "BANQUET",
+  } as const)[type];
+}
+
 export const exhibitorRouter = createTRPCRouter({
   register: publicProcedure
     .input(z.object({
@@ -70,9 +78,10 @@ export const exhibitorRouter = createTRPCRouter({
       }
       return { ok: true };
     }),
+
   get: protectedProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.exhibitor.findUniqueOrThrow({
-      where: { id: ctx.session.account.exhibitorId },
+      where: { id: ctx.session.user.exhibitorId },
       select: {
         id: true,
         name: true,
@@ -98,7 +107,7 @@ export const exhibitorRouter = createTRPCRouter({
     extraRepresentativeSpots: z.number(),
   })).mutation(async ({ ctx, input }) => {
     await ctx.prisma.exhibitor.update({
-      where: { id: ctx.session.account.exhibitorId },
+      where: { id: ctx.session.user.exhibitorId },
       data: {
         invoiceEmail: input.invoiceEmail,
         description: input.description,
@@ -109,10 +118,11 @@ export const exhibitorRouter = createTRPCRouter({
       },
     });
   }),
+
   setLogo: protectedProcedure.input(z.string()).mutation(async ({ ctx, input }) => {
     const logo = Buffer.from(input, "base64");
     await ctx.prisma.exhibitor.update({
-      where: { id: ctx.session.account.exhibitorId },
+      where: { id: ctx.session.user.exhibitorId },
       data: {
         logo: logo,
       },
@@ -120,10 +130,17 @@ export const exhibitorRouter = createTRPCRouter({
   }),
   logo: protectedProcedure.query(async ({ ctx }) => {
     const exhibitor = await ctx.prisma.exhibitor.findUniqueOrThrow({
-      where: { id: ctx.session.account.exhibitorId },
+      where: { id: ctx.session.user.exhibitorId },
       select: { logo: true },
     });
-    return exhibitor.logo?.toString("base64");
+    if (!exhibitor.logo) return null;
+    return exhibitor.logo.toString("base64");
+  }),
+
+  getContacts: protectedProcedure.query(async ({ ctx }) => {
+    return await ctx.prisma.user.findMany({
+      where: { exhibitorId: ctx.session.user.exhibitorId },
+    });
   }),
   upsertContact: protectedProcedure.input(z.object({
     id: z.string().optional(),
@@ -132,68 +149,88 @@ export const exhibitorRouter = createTRPCRouter({
     phoneNumber: z.string(),
     role: z.string(),
   })).mutation(async ({ ctx, input }) => {
+    try {
+      if (input.id) {
+        await ctx.prisma.user.updateMany({
+          where: { id: input.id, exhibitorId: ctx.session.user.exhibitorId },
+          data: {
+            name: input.name,
+            email: input.email,
+            phoneNumber: input.phoneNumber,
+            role: input.role,
+          },
+        });
+      } else {
+        await ctx.prisma.user.create({
+          data: {
+            exhibitorId: ctx.session.user.exhibitorId,
+            name: input.name,
+            email: input.email,
+            phoneNumber: input.phoneNumber,
+            role: input.role,
+          },
+        });
+      }
+    } catch (e) {
+      if (
+        e instanceof Prisma.PrismaClientKnownRequestError &&
+        e.code === "P2002"
+      ) {
+        return { ok: false, error: "duplicateEmail" as const };
+      }
+      throw e;
+    }
+  }),
+  deleteContact: protectedProcedure.input(z.string()).mutation(async ({ ctx, input }) => {
+    if (input === ctx.session.user.id) {
+      return { ok: false, error: "cannotDeleteSelf" as const };
+    }
+    await ctx.prisma.user.delete({
+      where: { id: input },
+    });
+    return { ok: true };
+  }),
+
+  getAllergies: protectedProcedure.input(allergyType).query(async ({ input, ctx }) => {
+    return await ctx.prisma.allergenInformation.findMany({
+      where: {
+        exhibitorId: ctx.session.user.exhibitorId,
+        type: allergyTypeToDB(input),
+      },
+    });
+  }),
+  upsertAllergy: protectedProcedure.input(z.object({
+    id: z.string().optional(),
+    type: allergyType,
+    value: z.string(),
+    comment: z.string(),
+  })).mutation(async ({ ctx, input }) => {
     if (input.id) {
-      await ctx.prisma.contactPerson.updateMany({
-        where: { id: input.id, exhibitorId: ctx.session.account.exhibitorId },
+      await ctx.prisma.allergenInformation.updateMany({
+        where: {
+          id: input.id,
+          exhibitorId: ctx.session.user.exhibitorId,
+          type: allergyTypeToDB(input.type),
+        },
         data: {
-          name: input.name,
-          email: input.email,
-          phoneNumber: input.phoneNumber,
-          role: input.role,
+          value: input.value,
+          comment: input.comment,
         },
       });
     } else {
-      await ctx.prisma.contactPerson.create({
+      await ctx.prisma.allergenInformation.create({
         data: {
-          exhibitorId: ctx.session.account.exhibitorId,
-          name: input.name,
-          email: input.email,
-          phoneNumber: input.phoneNumber,
-          role: input.role,
+          exhibitorId: ctx.session.user.exhibitorId,
+          type: allergyTypeToDB(input.type),
+          value: input.value,
+          comment: input.comment,
         },
       });
     }
   }),
-  getContacts: protectedProcedure.query(async ({ ctx }) => {
-    return await ctx.prisma.contactPerson.findMany({
-      where: { exhibitorId: ctx.session.account.exhibitorId },
-    });
-  }),
-  deleteContact: protectedProcedure.input(z.string()).mutation(async ({ ctx, input }) => {
-    await ctx.prisma.contactPerson.delete({
-      where: { id: input },
-    });
-  }),
-  getAllergies: protectedProcedure.input(z.enum(["representative", "banquet"])).query(async ({ input, ctx }) => {
-    return await ctx.prisma.allergenInformation.findMany({
-      where: {
-        exhibitorId: ctx.session.account.exhibitorId, type: ({
-          "representative": "REPRESENTATIVE_SPOT",
-          "banquet": "BANQUET",
-        } as const)[input]
-      },
-    });
-  }),
   deleteAllergy: protectedProcedure.input(z.string()).mutation(async ({ ctx, input }) => {
     await ctx.prisma.allergenInformation.deleteMany({
-      where: { id: input, exhibitorId: ctx.session.account.exhibitorId },
+      where: { id: input, exhibitorId: ctx.session.user.exhibitorId },
     });
   }),
-  createAllergy: protectedProcedure.input(z.object({
-    type: z.enum(["representative", "banquet"]),
-    value: z.string(),
-    comment: z.string(),
-  })).mutation(async ({ ctx, input }) => {
-    await ctx.prisma.allergenInformation.create({
-      data: {
-        exhibitorId: ctx.session.account.exhibitorId,
-        type: ({
-          "representative": "REPRESENTATIVE_SPOT",
-          "banquet": "BANQUET",
-        } as const)[input.type],
-        value: input.value,
-        comment: input.comment,
-      },
-    });
-  })
 });
