@@ -53,11 +53,6 @@ export default function Contact() {
       <h1 className="text-cerise text-5xl font-medium uppercase">
         {t.contact.header}
       </h1>
-
-      
-      <h1 className="mt-[200px] text-cerise text-4xl font-normal uppercase">
-        {t.contact.subheader1}
-      </h1>
       <div className="flex flex-col-reverse md:flex-row mt-[100px] justify-center px-[30px] sm:px-[0px] gap-[50px] xl:pl-[0px] xl:gap-[120px] md:items-center ">
         <div className="sm:w-[500px] md:w-[250px] lg:w-[300px] text-left">
           <h1 className="text-cerise text-3xl font-normal uppercase"> {t.contact.salesHeader}</h1>
