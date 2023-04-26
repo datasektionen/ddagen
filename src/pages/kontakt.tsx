@@ -57,7 +57,7 @@ export default function Contact() {
         <div className="sm:w-[500px] md:w-[250px] lg:w-[300px] text-left">
           <h1 className="text-cerise text-4xl font-normal uppercase"> {t.contact.salesHeader}</h1>
           <br/>
-          <p className="text-white  text-1xl">{t.contact.p1}</p>
+          <p className="text-white text-lg">{t.contact.p1}</p>
           <br/>
           <a className="block text-cerise" href="mailto:sales@ddagen.se">sales@ddagen.se</a>
         </div>
@@ -70,7 +70,7 @@ export default function Contact() {
           <h1 className="text-cerise text-4xl font-normal uppercase"> D-DAGEN</h1>
           <h1 className="text-cerise text-4xl font-normal uppercase"> {t.contact.bossesHeader}</h1>
           <br/>
-          <p className="text-white mt-[0px] text-1xl">{t.contact.p2}</p>
+          <p className="text-white mt-[0px] text-lg">{t.contact.p2}</p>
           <br/>
           <a className="block text-cerise" href="mailto:ansvarig@ddagen.se">ansvarig@ddagen.se</a>
         </div>
