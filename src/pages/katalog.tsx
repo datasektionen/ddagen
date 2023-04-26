@@ -2,8 +2,8 @@ import { useLocale } from "@/locales";
 
 export default function Catalog() {
     const t = useLocale();
-    const packets = [t.catalog.premiumPacket, t.catalog.headhHunterPacket, t.catalog.sponsorPacket, t.catalog.basePacket]
-    const prices = ["70 000:-", "55 000:-", "45 000:-", "35 000:-"]
+    const packets = [t.catalog.basePacket, t.catalog.sponsorPacket, t.catalog.headhHunterPacket, t.catalog.premiumPacket]
+    const prices = ["35 000:-", "45 000:-", "55 000:-" , "70 000:-"]
     return (
         <div className="py-[200px]">
             <h1 className="uppercase text-cerise text-5xl font-medium text-center">{t.catalog.header}</h1>
