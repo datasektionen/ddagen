@@ -1,5 +1,5 @@
 export default {
-  locale: "sv",
+  locale: "sv" as const,
   titles: {
     home: "D-Dagen - Konglig Datasektionen",
   },
@@ -34,7 +34,7 @@ export default {
   },
   companyForm: {
     title: "Intresseanmälan",
-    description:"Fyll i formuläret för att registrera ert företag för D-Dagen 2023. OBS! En intresseanmälan är inte bindande.",
+    description: "Fyll i formuläret för att registrera ert företag för D-Dagen 2023. OBS! En intresseanmälan är inte bindande.",
     fields: {
       name: "Företagsnamn",
       organizationNumber: "Organisationsnummer",
@@ -43,15 +43,7 @@ export default {
       phoneNumber: "Telefonnummer",
     },
     confirm: "Skicka",
-    error: {
-      db: "Något gick fel! Försök igen eller skicka istället ett mail till",
-      email:
-        "Din anmälan har registrerats, men vi kunde inte skicka ett konfirmationsmail till dig.",
-      continue: "Gå vidare ändå",
-    },
-    organizationNumberLength: "Organisationsnumret måste vara 10 siffror",
-    organizationNumberChecksum:
-      "Felaktig kontrollsiffra, kontrollera att du skrivit rätt",
+    ignoreError: "Gå vidare ändå",
   },
   postCompanyForm: {
     title: "Intresseanmälan bekräftad",
@@ -69,6 +61,7 @@ export default {
     companyForm: "Företagsanmälan",
     changeLanguage: "Ändra språk till engelska",
     contact: "Kontakt",
+    login: "Logga in",
   },
   footer: {
     header:
@@ -89,9 +82,9 @@ export default {
       phoneNumber: string
     ) => `
       <p>Hej!</p>
-      <p>Vi har nu tagit emot er intresseanmälan om att vara utställare på 
-      D-Dagen 2023! Vi kommer kontakta er under våren och meddela om ni har 
-      fått plats eller inte. Ni kan förvänta er att höra från oss senast den 
+      <p>Vi har nu tagit emot er intresseanmälan om att vara utställare på
+      D-Dagen 2023! Vi kommer kontakta er under våren och meddela om ni har
+      fått plats eller inte. Ni kan förvänta er att höra från oss senast den
       8:e juni.</p>
 
       <p>Här är detaljerna från er företagsanmälan:</p>
@@ -102,9 +95,9 @@ export default {
         <li>Kontaktperson: ${contactPerson}</li>
         <li>Telefonnummer: ${phoneNumber}</li>
       </ul>
-      <p>Om någon av informationen ovan inte stämmer eller om ni har andra 
+      <p>Om någon av informationen ovan inte stämmer eller om ni har andra
       frågor, tveka inte att kontakta vårt säljteam på sales@ddagen.se.</p>
-      <p>Tack för er intresseanmälan, hoppas ni är lika taggade som oss på 
+      <p>Tack för er intresseanmälan, hoppas ni är lika taggade som oss på
       D-Dagen 2023!</p>
 
       <p>Med vänliga hälsningar,</p>
@@ -116,7 +109,7 @@ export default {
     box2: "MARKNADSFÖRING",
     box3: "ALLMÄNT",
     box4: "EVENEMANG",
-    table1row1:"VAD ÄR D-DAGEN?",
+    table1row1: "VAD ÄR D-DAGEN?",
     table1row2: "NÄR ÄR ÅRETS D-DAGEN?",
     table1row3: "VAR ÄR D-DAGEN?",
     table1text1: "D-Dagen är den årliga karriärmässan som anordnas av Datasektionen på Kungliga Tekniska Högskolan. D-Dagen är numera Nordens största karriärmässa inom IT.",
@@ -141,7 +134,6 @@ export default {
     productCatalog: "PRODUKTKATALOG",
     header: "FÖRETAG",
     catalogPath: "/downloadables/Product_Catalog_sv.pdf",
-    
   },
   contact: {
     header: "Kontakt",
@@ -163,5 +155,14 @@ export default {
   url: {
     forCompany: "https://ddagen.se/förföretag",
     companyForm: "https://ddagen.se/företagsanmälan"
-  }
+  },
+  error: {
+    exhibitorRegistration: "Något gick fel! Försök igen eller skicka istället ett mail till",
+    exhibitorRegistrationEmail:
+      "Din anmälan har registrerats, men vi kunde inte skicka ett konfirmationsmail till dig.",
+    duplicateEmail: "Det finns redan ett registrerat företag med den här mailadressen",
+    invalidOrganizationNumberLength: "Organisationsnumret måste vara 10 siffror",
+    invalidOrganizationNumberChecksum:
+      "Felaktig kontrollsiffra, kontrollera att du skrivit rätt",
+  },
 };
