@@ -51,7 +51,7 @@ function Group({ links }: { links: { href: string, text: string }[] }) {
         }
       />
       {links.map(({ href, text }, i) => i == 0
-        ? <NavLink key={href} class="z-10 pl-14 lg:pl-0 p-4" href={href}>{links[0].text}</NavLink>
+        ? <NavLink key={href} class="z-10 pl-14 lg:pl-0 p-4" href={href}>{text}</NavLink>
         : <NavLink key={href}
           style={{ top: 40 * i }}
           class={(hovered ? "" : "lg:hidden") + " z-10 lg:w-full lg:absolute p-4 lg:px-0"}
@@ -139,6 +139,7 @@ export default function Navbar() {
             py-4 gap-8
             lg:px-0 bg-blue lg:bg-transparent lg:ml-auto
           ">
+           <NavLink class="px-14 lg:px-4 p-4" href="/kontakt">{t.contact}</NavLink>
             <Link
               className="bg-cerise py-2.5 px-4 rounded-full text-center hover:scale-105 transition-transform"
               href="/företagsanmälan"
