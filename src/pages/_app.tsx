@@ -2,10 +2,9 @@ import Head from "next/head";
 import "@/styles/globals.css";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import type { AppType } from "next/app";
-import { api } from "@/utils/api";
+import type { AppProps } from "next/app";
 
-const App: AppType = ({ Component, pageProps }) => {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
@@ -29,5 +28,3 @@ const App: AppType = ({ Component, pageProps }) => {
     </>
   );
 }
-
-export default api.withTRPC(App);

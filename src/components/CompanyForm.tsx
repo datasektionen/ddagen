@@ -1,7 +1,6 @@
 import { type FormEvent, useState } from "react";
+import firebase from "../../firebase/clientApp";
 import type Locale from "@/locales";
-import { api } from "@/utils/api";
-import { validateOrganizationNumber } from "@/shared/validateOrganizationNumber";
 
 function InputField({
   name,
@@ -31,7 +30,7 @@ function InputField({
           text-slate-400
           border-0 border-b-2 border-red-500 valid:border-slate-400
           placeholder-shown:border-slate-400 focus:border-cerise
-          focus:outline-none
+          focus:outline-none focus:shadow-outline
           peer
         "
         id={name}
@@ -63,7 +62,7 @@ export default function CompanyForm({
   t: Locale;
   onRegistationDone: () => void;
 }) {
-  const register = api.exhibitor.register.useMutation();
+  const db = firebase.firestore();
 
   const [companyName, setCompanyName] = useState("");
   const [organizationNumber, setOrganizationNumber] = useState("");
@@ -71,31 +70,67 @@ export default function CompanyForm({
   const [contactPerson, setContactPerson] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
 
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<"db" | "email" | null>(null);
+
   async function addCompanyDocument(e: FormEvent) {
     e.preventDefault();
-    register.mutate({
-      companyName,
-      organizationNumber,
-      email,
-      contactPerson,
-      phoneNumber,
-      locale: t.locale,
-    });
+    let addedToDb = false;
+    try {
+      setLoading(true);
+      await db.collection("exhibitor").add({
+        companyName,
+        organizationNumber,
+        email,
+        contactPerson,
+        phoneNumber,
+      });
+      addedToDb = true;
+      const res = await fetch("/api/sendEmail", {
+        method: "POST",
+        body: JSON.stringify({
+          companyName,
+          organizationNumber,
+          email,
+          contactPerson,
+          phoneNumber,
+          locale: t.locale,
+        }),
+      });
+      if (!res.ok) throw new Error(res.statusText);
+    } catch (err) {
+      console.error(err);
+      return setError(addedToDb ? "email" : "db");
+    } finally {
+      setLoading(false);
+    }
+    onRegistationDone();
   }
-
-  if (register.isSuccess && register.data.ok) onRegistationDone();
 
   function trySetOrganizationNumber(value: string, element: HTMLInputElement) {
     value = value.replace(/[^0-9- ]/g, "");
+    setOrganizationNumber(value);
 
-    const res = validateOrganizationNumber(value);
-    if ("error" in res) {
-      element.setCustomValidity(t.error[res.error]);
-    } else {
-      element.setCustomValidity("");
+    let numbers = value
+      .split("")
+      .filter((c) => !"- ".includes(c))
+      .map((c) => parseInt(c));
+    if (numbers.length !== 10) {
+      element.setCustomValidity(t.companyForm.organizationNumberLength);
+      return;
     }
 
-    setOrganizationNumber(value);
+    // https://sv.wikipedia.org/wiki/Luhn-algoritmen
+    let checksum =
+      numbers
+        .map((x, i) => (i % 2 > 0 ? x : x < 5 ? x * 2 : x * 2 - 9))
+        .reduce((a, b) => a + b, 0) % 10;
+    if (checksum !== 0) {
+      element.setCustomValidity(t.companyForm.organizationNumberChecksum);
+      return;
+    }
+
+    element.setCustomValidity("");
   }
 
   return (
@@ -105,6 +140,7 @@ export default function CompanyForm({
       </h1>
       <p className="text-center min-w-[100px] max-w-[400px] w-full text-white mt-10"> {t.companyForm.description}</p>
       <form
+        method="post"
         className="bg-transparent w-3/5 mt-12"
         onSubmit={addCompanyDocument}
       >
@@ -144,7 +180,7 @@ export default function CompanyForm({
         <div className="flex flex-col items-center justify-between">
           <input
             type="submit"
-            disabled={register.isLoading}
+            disabled={loading}
             value={t.companyForm.confirm}
             className="
               bg-cerise transition-transform hover:scale-110 focus:scale-110 focus:outline-none
@@ -153,36 +189,18 @@ export default function CompanyForm({
             "
           />
         </div>
-        {register.data?.error == "duplicate-email" ? (
-          <div className="flex items-center flex-col gap-3">
-            <p className="text-red-500 mt-5">
-              {t.error.duplicateEmail}
-            </p>
-          </div>
-        ) : register.data?.error == "send-email" ? (
-          <div className="flex items-center flex-col gap-3">
-            <p className="text-red-500 mt-5">
-              {t.error.exhibitorRegistrationEmail}
-            </p>
-            <button onClick={onRegistationDone} className="
-              text-center bg-cerise transition-transform hover:scale-110 focus:scale-110 focus:outline-none
-              text-white font-bold uppercase py-2 px-4 rounded-full cursor-pointer
-            ">
-              {t.companyForm.ignoreError}
-            </button>
-          </div>
-        ) : register.error ? (
+        {error == "db" ? (
           <p className="text-red-500 text-center mt-5">
-            {t.error.exhibitorRegistration}{" "}
+            {t.companyForm.error.db}{" "}
             <a
               href={
                 "mailto:sales@ddagen.se?body=" +
                 encodeURIComponent(
                   `Namn: ${companyName}.\n` +
-                  `Organisationsnummer: ${organizationNumber}.\n` +
-                  `E-post: ${email}.\n` +
-                  `Kontaktperson: ${contactPerson}.\n` +
-                  `Telefonnummer: ${phoneNumber}.\n`
+                    `Organisationsnummer: ${organizationNumber}.\n` +
+                    `E-post: ${email}.\n` +
+                    `Kontaktperson: ${contactPerson}.\n` +
+                    `Telefonnummer: ${phoneNumber}.\n`
                 )
               }
               className="text-cerise hover:underline"
@@ -190,6 +208,18 @@ export default function CompanyForm({
               sales@ddagen.se
             </a>
           </p>
+        ) : error == "email" ? (
+          <div className="flex items-center flex-col gap-3">
+            <p className="text-red-500 mt-5">
+              {t.companyForm.error.email}
+            </p>
+            <button onClick={onRegistationDone} className="
+              text-center bg-cerise transition-transform hover:scale-110 focus:scale-110 focus:outline-none
+              text-white font-bold uppercase py-2 px-4 rounded-full cursor-pointer
+            ">
+              {t.companyForm.error.continue}
+            </button>
+          </div>
         ) : null}
       </form>
     </div>
