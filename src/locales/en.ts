@@ -144,4 +144,75 @@ export default {
     invalidOrganizationNumberChecksum:
       "Invalid check digit, check that you have entered the number correctly",
   },
+  catalog:{
+    header:"PRODUCT CATALOG",
+    premiumPacket: [
+      "One whole room instead of a booth",
+      "Exposure on the website and in the D-day catalog 2023",
+      "1 table",
+      "2 representative seats (including breakfast and lunch)",
+      "2 evening banquet tickets",
+      "10 drink tickets (worth about 50 SEK each)",
+      "Electricity and WiFi",
+      "Access to lounge",
+      "Access to company host",
+      "Storage and delivery reception",
+      "Exposure on goodie bag",
+      "Sponsored post on social media",
+      "8 meters of space",
+      "Central location at the fair",
+      "A full day of contact calls",
+      "20 extra barbongas",
+      "Marketing of contact calls",
+      "Two additional banquet tickets"
+      ],
+      headhHunterPacket: [
+      "5 m2 instead of a booth",
+      "Exposure on the website and in the D-day catalog 2023",
+      "1 table",
+      "2 representative seats (including breakfast and lunch)",
+      "2 evening banquet tickets",
+      "10 drink tickets (worth about 50 SEK each)",
+      "Electricity and WiFi",
+      "Access to lounge",
+      "Access to company host",
+      "Storage and delivery reception",
+      "Exposure on goodie bag",
+      "Sponsored post on social media",
+      "8 meters of space",
+      "Central location at the fair",
+      "A full day of contact calls",
+      "10 extra barbongas",
+      "Marketing of contact calls"
+      ],
+      sponsorPacket: [
+      "5 m2 instead of a booth",
+      "Exposure on the website and in the D-day catalog 2023",
+      "1 table",
+      "2 representative seats (including breakfast and lunch)",
+      "2 evening banquet tickets",
+      "10 drink tickets (worth about 50 SEK each)",
+      "Electricity and WiFi",
+      "Access to lounge",
+      "Access to company host",
+      "Storage and delivery reception",
+      "Exposure on goodie bag",
+      "Sponsored post on social media"
+      ],
+      basePacket: [
+      "5 m2 instead of a booth",
+      "Exposure on the website and in the D-day catalog 2023",
+      "1 table",
+      "2 representative seats (including breakfast and lunch)",
+      "2 evening banquet tickets",
+      "10 drink tickets (worth about 50 SEK each)",
+      "Electricity and WiFi",
+      "Access to lounge",
+      "Access to company host",
+      "Storage and delivery reception"
+      ],
+      packetType:["PREMIUM PACKET", "HEAD-HUNTER PACKET", "SPONSOR PACKET", "BASE PACKET"],
+      info: "LIMITED AMOUNT"
+    
+  }
 };

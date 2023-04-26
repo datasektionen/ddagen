@@ -147,4 +147,29 @@ export default {
     invalidOrganizationNumberChecksum:
       "Felaktig kontrollsiffra, kontrollera att du skrivit rätt",
   },
+  catalog:{
+    header:"PRODUKTKATALOG",
+    premiumPacket: [
+      "Ett helt rum istället för monter", "Exponering på hemsidan och i D-dagen katalogen 2023", "1 st bord", 
+      "2 st representantplatser (frukost & lunch ingår)", "2 st kvällssittningsbiljetter", "10st dryckesbiljetter (värde ca 50 kr styck)",
+      "El & Wifi", "Loungetillgång", "Tillgång företagsvärd", "Förvaring & mottagning av leverans", "Exponering på goodie bag", "Sponsrat inlägg på sociala medier",
+      "8 m utrymme", "Central placering på mässan", "En heldag med kontaktsamtal", "20 extra barbongar", "Marknadsföring av kontaktsamtal", 
+      "Två extra sittningsbiljetter"],
+    headhHunterPacket: [
+      "5 m2 istället för monter", "Exponering på hemsidan och i D-dagen katalogen 2023", "1 st bord", 
+      "2 st representantplatser (frukost & lunch ingår)", "2 st kvällssittningsbiljetter", "10st dryckesbiljetter (värde ca 50 kr styck)",
+      "El & Wifi", "Loungetillgång", "Tillgång företagsvärd", "Förvaring & mottagning av leverans", "Exponering på goodie bag", "Sponsrat inlägg på sociala medier",
+      "8 m utrymme", "Central placering på mässan", "En heldag med kontaktsamtal", "10 extra barbongar", "Marknadsföring av kontaktsamtal",],
+    sponsorPacket: [
+      "5 m2 istället för monter", "Exponering på hemsidan och i D-dagen katalogen 2023", "1 st bord", 
+      "2 st representantplatser (frukost & lunch ingår)", "2 st kvällssittningsbiljetter", "10st dryckesbiljetter (värde ca 50 kr styck)",
+      "El & Wifi", "Loungetillgång", "Tillgång företagsvärd", "Förvaring & mottagning av leverans", "Exponering på goodie bag", "Sponsrat inlägg på sociala medier",],
+    basePacket: [
+      "5 m2 istället för monter", "Exponering på hemsidan och i D-dagen katalogen 2023", "1 st bord", 
+      "2 st representantplatser (frukost & lunch ingår)", "2 st kvällssittningsbiljetter", "10st dryckesbiljetter (värde ca 50 kr styck)",
+      "El & Wifi", "Loungetillgång", "Tillgång företagsvärd", "Förvaring & mottagning av leverans",],
+    packetType:["PREMIUMPAKET", "HEAD-HUNTER PAKET", "SPONSORPAKET", "BASPAKET"],
+    info: "BEGRÄNSAT ANTAL"
+    
+  }
 };
