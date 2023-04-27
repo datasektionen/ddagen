@@ -143,9 +143,9 @@ export default function Navbar() {
 
         <div className={`
           flex justify-between flex-col items-stretch
-          bg-black lg:bg-transparent
+          bg-gradient-to-b from-black lg:from-transparent via-black lg:via-transparent to-transparent shadow lg:bg-transparent
           absolute w-full transition-all duration-300
-          top-0 pt-20 
+          top-0 pt-20 pb-[25  0px] lg:pb-0
 
           lg:left-0 lg:flex-row lg:items-center lg:px-8 lg:pt-0
         ` + (open ? "left-0" : "-left-full")
@@ -165,7 +165,7 @@ export default function Navbar() {
           {/*<NavLink class="px-14 lg:px-0" href="/mässan">{t.about}</NavLink>*/}
           </div>
           <div className="
-            flex flex-row justify-between lg:justify-center items-center lg:pl-0 pl-14 lg:pr-0 pr-20 
+            flex flex-row  lg:justify-center items-center lg:pl-0 justify-center lg:pr-0  
             py-4 gap-8
             lg:px-0 bg-black lg:bg-transparent lg:ml-auto
           ">  
