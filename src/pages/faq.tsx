@@ -113,7 +113,7 @@ export default function Faq() {
         <p className=" text-center text-cerise text-5xl font-medium w-full">
           {" "}
           {t.faq.header}
-        </p>
+        </p>  
       </div>
       {/*Header*/}
 
