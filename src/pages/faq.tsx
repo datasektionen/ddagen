@@ -34,7 +34,7 @@ function Table(questions: Array<string>, answers: Array<string>) {
         <div key={i}>
           <button
             onClick={() => stateAction[i][1](!stateAction[i][0])}
-            className="items-center flex flex-row  justify-between pl-[20px] pr-[20px] py-[15px] text-left text-white max-h-[300px] w-full bg-slate-50 bg-opacity-20 border-[3px] border-cerise"
+            className="items-center flex flex-row  justify-between pl-[20px] pr-[20px] py-[15px] text-left text-white max-h-[300px] w-full bg-slate-50 bg-opacity-20 border-[2px] border-cerise"
           >
             {" "}
             {questions[i]}
@@ -51,7 +51,7 @@ function Table(questions: Array<string>, answers: Array<string>) {
               stateAction[i][0]
                 ? "max-h-[800px] py-[40px]"
                 : "max-h-0 text-[0px]"
-            }  duration-200 ease-out text-white py-[0px] pl-[20px] pr-[20px] bg-gray bg-opacity-50 border-[1px] border-cerise flex items-center`}
+            }  duration-200 ease-out text-white py-[0px] pl-[20px] pr-[20px] bg-gray bg-opacity-50 border-[2px] border-cerise flex items-center`}
           >
             {handleAnchorStrings(answers[i])}
           </div>
@@ -107,22 +107,18 @@ export default function Faq() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   return (
-    <div className="py-[150px] flex flex-col items-center">
+    <div className="pt-[200px] pb-[300px] flex flex-col items-center">
       {/*Header*/}
       <div className="w-full ">
-        <p className=" text-center text-cerise text-[50px] sm:text-[100px] w-full">
+        <p className=" text-center text-cerise text-5xl font-medium w-full">
           {" "}
           {t.faq.header}
-        </p>
-        <p className=" text-center text-cerise text-[50px] sm:text-[100px] w-full">
-          {" "}
-          FAQ
         </p>
       </div>
       {/*Header*/}
 
       {/*Carousel*/}
-      <div className="h-[35vh] sm:h-[45vh] md:h-[55vh] lg:h-[65vh] xl:h-[80vh] w-full mt-[150px] xl:px-12">
+      <div className="h-[35vh] sm:h-[45vh] md:h-[55vh] lg:h-[65vh] xl:h-[80vh] w-full 2xl:w-[1500px] mt-[120px] xl:px-12">
         <Carousel className="px-16 sm:px-24 pb-20">
           <img src={slides[0].url} className="object-cover h-full w-full" />
           <img src={slides[1].url} className="object-cover h-full w-full" />
@@ -139,7 +135,7 @@ export default function Faq() {
             <div
               className={`${
                 !(currentTable - 2) ? "brightness-100" : "brightness-75"
-              } sm:w-full text-center h-[50px] mr-[20px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer`}
+              } sm:w-full text-center h-[50px] mr-[20px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer hover:brightness-100 hover:scale-105 transition-transform`}
               onClick={() => setCurrentTable(2)}
             >
               <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto">
@@ -150,7 +146,7 @@ export default function Faq() {
             <div
               className={`${
                 !(currentTable - 0) ? "brightness-100" : "brightness-75"
-              } sm:w-full text-center h-[50px] mr-[0px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer`}
+              } sm:w-full text-center h-[50px] mr-[0px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer hover:brightness-100 hover:scale-105 transition-transform`}
               onClick={() => setCurrentTable(0)}
             >
               <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto">
@@ -164,7 +160,7 @@ export default function Faq() {
             <div
               className={`${
                 !(currentTable - 1) ? "brightness-100" : "brightness-75"
-              } sm:w-full text-center h-[50px]  mr-[20px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer`}
+              } sm:w-full text-center h-[50px]  mr-[20px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer hover:brightness-100 hover:scale-105 transition-transform`}
               onClick={() => setCurrentTable(1)}
             >
               <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto">
@@ -175,7 +171,7 @@ export default function Faq() {
             <div
               className={`${
                 !(currentTable - 3) ? "brightness-100" : "brightness-75"
-              } sm:w-full text-center h-[50px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer`}
+              } sm:w-full text-center h-[50px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer hover:brightness-100 hover:scale-105 transition-transform`}
               onClick={() => setCurrentTable(3)}
             >
               <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto">
