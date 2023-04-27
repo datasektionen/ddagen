@@ -107,7 +107,7 @@ export default function Faq() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   return (
-    <div className="py-[150px] flex flex-col items-center">
+    <div className="pt-[200px] pb-[300px] flex flex-col items-center">
       {/*Header*/}
       <div className="w-full ">
         <p className=" text-center text-cerise text-5xl font-medium w-full">
@@ -118,7 +118,7 @@ export default function Faq() {
       {/*Header*/}
 
       {/*Carousel*/}
-      <div className="h-[35vh] sm:h-[45vh] md:h-[55vh] lg:h-[65vh] xl:h-[80vh] w-full 2xl:w-[1500px] mt-[150px] xl:px-12">
+      <div className="h-[35vh] sm:h-[45vh] md:h-[55vh] lg:h-[65vh] xl:h-[80vh] w-full 2xl:w-[1500px] mt-[120px] xl:px-12">
         <Carousel className="px-16 sm:px-24 pb-20">
           <img src={slides[0].url} className="object-cover h-full w-full" />
           <img src={slides[1].url} className="object-cover h-full w-full" />
