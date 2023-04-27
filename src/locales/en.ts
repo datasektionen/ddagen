@@ -14,7 +14,7 @@ export default {
     representative: "Company Representative?",
     representativeDescription:
       "Do you want to reach thousands of civil engineering students at KTH? As an exhibitor at D-Dagen you have thet opportunity to do so! Click down bellow to read more and register your interest.",
-    representativeButton: "Interest Registration",
+    representativeButton: "Registration of Interest",
     stats: {
       firstPart: "100+ exhibitors",
       secondPart: "3000+ participants",
@@ -121,8 +121,8 @@ export default {
     table3row3: "HOW DO WE BECOME A PARTNER?",
     table3row4: "WE WOULD LIKE MORE INFORMATION, WHERE DO WE TURN?",
     table3row5: "ARE YOU A STARTUP?",
-    table3text1: "You can register at <a href='https://ddagen.se/en/förföretag' target='blank' className='underline text-cerise'>  https://ddagen.se/en/förföretag </a> or contact our sales team at <a className='text-cerise' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
-    table3text2: "Since we have a limited number of spots at our fair we recommend making a non-binding declaration of interest at <a href='https://ddagen.se/en/företagsanmälan' target='blank' className='underline text-cerise'>  https://ddagen.se/en/förföretagsanmälan </a>.",
+    table3text1: "You can make a <a href='https://ddagen.se/företagsanmälan' target='blank' className='underline text-cerise'>  registration of interest </a> or contact our sales team at <a className='text-cerise' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
+    table3text2: "Since we have a limited number of spots available at our fair, we recommend that you make a non-binding registration of interest. To do this, please click here: <a href='https://ddagen.se/en/företagsanmälan' target='blank' className='underline text-cerise'> Registration</a>.",
     table3text3: "If you are interested in any type of partnership contact <a className='text-cerise' href='mailto:ansvarig@ddagen.se'>ansvarig@ddagen.se</a>.",
     table3text4: "If the information you are looking for can't be found at our website, contact us at <a className='text-cerise' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
     table3text5: "Contact us at <a className='text-cerise' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
@@ -136,7 +136,7 @@ export default {
     header: "Contact",
     subheader1: "Contact us",
     subheader2: "Project Managers",
-    p1: "If you have any suggestions for events or activities you want to organize for the students at the Computer Science Chapter, or if you have any other questions or concerns about company packages and the fair,  feel free to contact us at contact us at...",
+    p1: "If you have any suggestions for events or activities you want to organize for the students at the Computer Science Chapter, or if you have any other questions or concerns about company packages and the fair,  feel free to contact us at...",
     p2: "For more information and other questions to those responsible for D-dagen, contact us at...",
     salesHeader: "Sales team",
     bossesHeader: "Managers",
