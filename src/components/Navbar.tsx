@@ -145,7 +145,7 @@ export default function Navbar() {
           flex justify-between flex-col items-stretch
           bg-gradient-to-b from-black lg:from-transparent via-black lg:via-transparent to-transparent shadow lg:bg-transparent
           absolute w-full transition-all duration-300
-          top-0 pt-20 pb-[25  0px] lg:pb-0
+          top-0 pt-20 pb-[300px] lg:pb-0
 
           lg:left-0 lg:flex-row lg:items-center lg:px-8 lg:pt-0
         ` + (open ? "left-0" : "-left-full")
