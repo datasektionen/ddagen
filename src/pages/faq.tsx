@@ -118,7 +118,7 @@ export default function Faq() {
       {/*Header*/}
 
       {/*Carousel*/}
-      <div className="h-[35vh] sm:h-[45vh] md:h-[55vh] lg:h-[65vh] xl:h-[80vh] w-full 2xl:w-[1500px] mt-[120px] xl:px-12">
+      <div className="h-[35vh] sm:h-[45vh] md:h-[55vh] lg:h-[55vh] xl:h-[60vh] w-full sm:w-[700px] md:w-[800px] lg:w-[900px] xl:w-[1200px] 2xl:w-[1300px] mt-[120px] xl:px-12">
         <Carousel className="px-16 sm:px-24 pb-20">
           <img src={slides[0].url} className="object-cover h-full w-full" />
           <img src={slides[1].url} className="object-cover h-full w-full" />
