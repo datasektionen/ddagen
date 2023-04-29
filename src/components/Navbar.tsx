@@ -143,7 +143,7 @@ export default function Navbar() {
 
         <div className={`
           flex justify-between flex-col items-stretch
-          bg-gradient-to-b from-black lg:from-transparent via-black lg:via-transparent to-transparent shadow lg:bg-transparent
+          bg-gradient-to-b from-black lg:from-transparent via-black lg:via-transparent to-transparent lg:bg-transparent
           absolute w-full transition-all duration-300
           top-0 pt-20 pb-[300px] lg:pb-0
 
