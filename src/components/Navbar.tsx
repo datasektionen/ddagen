@@ -75,10 +75,10 @@ function Group({ links }: { links: { href: string, text: string }[] }) {
         <div className="flex flex-row justify-between mb-4">
         <NavLink key={links[0].href} class="" href={links[0].href}>{links[0].text}</NavLink>
         <img onClick={() => setDrop(!dropped)} src="/img/smCaret.svg/" className={`${
-                dropped ? "" : "rotate-180"
+                dropped ? "rotate-180" : ""
               } duration-200 ml-4 h-4 text-cerise cursor-pointer`}></img>
         </div>
-        <div className={`${(dropped ? "hidden" : "block")} flex flex-col px-8 justify-between mb-4`}>
+        <div className={`${(dropped ? "block" : "hidden")} flex flex-col px-8 justify-between mb-4`}>
         {links.slice(1).map(({ href, text }, i) => (<NavLink key={href} href={href}>{text}</NavLink>
         ))}
         </div>
