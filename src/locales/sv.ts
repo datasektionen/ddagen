@@ -132,7 +132,7 @@ export default {
     table4row1: "VILKEN TYP AV EVENEMANG KAN VÅRT FÖRETAG ANORDNA TILLSAMMANS MED D-DAGEN?",
     table4text1: "Vi samarbetar gärna med er för att organisera evenemang före och efter D-Dagen! Oavsett om ni är intresserade av lunchföreläsningar, hackathons eller något helt annat är ni välkomna att dela era idéer med oss. För mer information kontakta vår sponsoransvarige på <a className='text-cerise' href='mailto:alexandre.moch@ddagen.se'>alexandre.moch@ddagen.se</a>.",
     productCatalog: "PRODUKTKATALOG",
-    header: "FÖRETAG",
+    header: "FÖRETAG FAQ",
     catalogPath: "/downloadables/Product_Catalog_sv.pdf",
   },
   contact: {
