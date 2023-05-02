@@ -2,14 +2,22 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useLocale } from "@/locales";
+import { FaChevronDown } from "react-icons/fa";
 
-function NavLink({ href, children, "class": className, style }: { href: string, children: React.ReactNode, "class"?: string, style?: React.CSSProperties }) {
+function NavLink({ href, children, "class": className, style, onClick}: { 
+  href: string,
+  children: React.ReactNode, 
+  "class"?: string, 
+  style?: React.CSSProperties, 
+  onClick?: React.MouseEventHandler<HTMLAnchorElement> }) {
+
   const router = useRouter();
 
   return <Link
     className={(className ?? "") + " hover:text-cerise" + (router.pathname == encodeURI(href) ? " text-cerise" : "")}
     href={href}
     style={style}
+    onClick={onClick}
   >{children}</Link>;
 }
 
@@ -35,29 +43,50 @@ function Logo({ "class": className }: { "class"?: string }) {
 
 function Group({ links }: { links: { href: string, text: string }[] }) {
   const [hovered, setHovered] = useState(false);
-
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [dropped, setDrop] = useState(false);
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
   return (
-    <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className="lg:ml-10 flex flex-row relative"
-    >
+    <div>
       <div
-        style={{ height: 70 + links.length * 40 }}
-        className={
-          "hidden lg:block absolute -z-10 " + (hovered
-            ? "bg-[#666474] bg-opacity-60 rounded-md -top-[50px] -left-[20px] w-[calc(100%+40px)]"
-            : "")
-        }
-      />
-      {links.map(({ href, text }, i) => i == 0
-        ? <NavLink key={href} class="z-10 pl-14 lg:pl-0 p-4" href={href}>{text}</NavLink>
-        : <NavLink key={href}
-          style={{ top: 40 * i }}
-          class={(hovered ? "" : "lg:hidden") + " z-10 lg:w-full lg:absolute p-4 lg:px-0"}
-          href={href}
-        >{text}</NavLink>)}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        className="lg:ml-10 lg:flex flex-row relative hidden lg:block"
+      >
+        <div
+          style={{ height: 70 + links.length * 40 }}
+          className={
+            "hidden lg:block absolute -z-10 " + (hovered
+              ? "bg-[#666474] bg-opacity-60 rounded-md -top-[50px] -left-[20px] w-[calc(100%+40px)]"
+              : "")
+          }
+        />
+        {links.map(({ href, text }, i) => i == 0
+          ? <NavLink key={href} class="z-10 pl-14 lg:pl-0 p-4" href={href}>{text}</NavLink>
+          : <NavLink key={href}
+            style={{ top: 40 * i }}
+            class={(hovered ? "" : "lg:hidden") + " z-10 lg:w-full lg:absolute p-4 lg:px-0"}
+            href={href}
+          >{text}</NavLink>)}
+      </div>
+      <div className="flex flex-col lg:hidden">
+        <div className="flex flex-row justify-between mb-4">
+        <NavLink key={links[0].href} class="" href={links[0].href}>{links[0].text}</NavLink>
+        <img onClick={() => setDrop(!dropped)} src="/img/smCaret.svg/" className={`${
+                dropped ? "rotate-180" : ""
+              } duration-200 ml-4 h-4 text-cerise cursor-pointer`}></img>
+        </div>
+        <div className={`${(dropped ? "block" : "hidden")} flex flex-col px-8 justify-between mb-4`}>
+        {links.slice(1).map(({ href, text }, i) => (<NavLink key={href} href={href}>{text}</NavLink>
+        ))}
+        </div>
+        
+      </div>
     </div>
+    
+
   );
 }
 
@@ -85,9 +114,6 @@ export default function Navbar() {
       ) return;
       setOpen(false);
     };
-
-    window.addEventListener("click", close);
-    return () => window.removeEventListener("click", close);
   });
 
   return (
@@ -96,6 +122,7 @@ export default function Navbar() {
         w-full fixed
         uppercase text-white
         z-50
+        flex flex-col
       ">
         <div className="
           h-20 px-7 flex justify-between items-center
@@ -116,30 +143,33 @@ export default function Navbar() {
 
         <div className={`
           flex justify-between flex-col items-stretch
-          bg-darkblue lg:bg-transparent
+          bg-gradient-to-b from-black lg:from-transparent via-black lg:via-transparent to-transparent lg:bg-transparent
           absolute w-full transition-all duration-300
-          top-0 pt-20
+          top-0 pt-20 pb-[300px] lg:pb-0
 
           lg:left-0 lg:flex-row lg:items-center lg:px-8 lg:pt-0
         ` + (open ? "left-0" : "-left-full")
         }>
+        <div className="px-14 pb-0 lg:px-0 lg:pb-0 flex flex-col lg:flex-row ">
           <a
             className="sr-only focus:not-sr-only"
             href="#main-content"
           >{t.toContent}</a>
-          <NavLink class="px-14 lg:px-4 p-4" href="/">{t.home}</NavLink>
+          <NavLink class="px-0 lg:px-4 p-4" href="/">{t.home}</NavLink>
           <Group links={[
             { href: "/förföretag", text: t.forCompanies },
             { href: "/faq", text: "faq" },
           ]} />
+          <NavLink class="mb-4 lg:hidden px-0 lg:px-4" href="/kontakt">{t.contact}</NavLink>
           {/*<NavLink class="px-14 lg:px-0" href="/förstudenter">{t.forStudents}</NavLink>*/}
           {/*<NavLink class="px-14 lg:px-0" href="/mässan">{t.about}</NavLink>*/}
+          </div>
           <div className="
-            flex flex-row justify-center items-center
+            flex flex-row  lg:justify-center items-center lg:pl-0 justify-center lg:pr-0  
             py-4 gap-8
-            lg:px-0 bg-blue lg:bg-transparent lg:ml-auto
-          ">
-           <NavLink class="px-14 lg:px-4 p-4" href="/kontakt">{t.contact}</NavLink>
+            lg:px-0 bg-black lg:bg-transparent lg:ml-auto
+          ">  
+            <NavLink class="hidden lg:block px-14 lg:px-4 p-4" href="/kontakt">{t.contact}</NavLink>
             <Link
               className="bg-cerise py-2.5 px-4 rounded-full text-center hover:scale-105 transition-transform"
               href="/företagsanmälan"
@@ -156,6 +186,7 @@ export default function Navbar() {
             ><img className="sr-only" alt={t.changeLanguage} /></button>
           </div>
         </div>
+        
       </nav>
     </>
   );
