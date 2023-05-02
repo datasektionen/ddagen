@@ -33,12 +33,7 @@ export default function Home() {
               }
               alt="D-dagen Logo"
             />
-
-            {/* <h1 className="absolute text-white drop-shadow-[0_0_10px_rgba(0,0,0,0.25)] text-5xl">
-            11 OKTOBER 2023
-          </h1> */}
           </div>
-
           <div className="pt-[200px] pb-[50px] hover:cursor-default">
             <h2
               className={
