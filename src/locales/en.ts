@@ -211,7 +211,7 @@ export default {
       "Access to company host",
       "Storage and delivery reception"
       ],
-      packetType:["PREMIUM PACKET", "HEAD-HUNTER PACKET", "SPONSOR PACKET", "BASE PACKET"],
+      packetType:["BASE PACKET", "SPONSOR PACKET", "HEAD-HUNTER PACKET", "PREMIUM PACKET"],
       info: "LIMITED AMOUNT"
     
   }

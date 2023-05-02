@@ -165,10 +165,10 @@ export default {
       "2 st representantplatser (frukost & lunch ingår)", "2 st kvällssittningsbiljetter", "10st dryckesbiljetter (värde ca 50 kr styck)",
       "El & Wifi", "Loungetillgång", "Tillgång företagsvärd", "Förvaring & mottagning av leverans", "Exponering på goodie bag", "Sponsrat inlägg på sociala medier",],
     basePacket: [
-      "5 m2 istället för monter", "Exponering på hemsidan och i D-dagen katalogen 2023", "1 st bord", 
-      "2 st representantplatser (frukost & lunch ingår)", "2 st kvällssittningsbiljetter", "10st dryckesbiljetter (värde ca 50 kr styck)",
-      "El & Wifi", "Loungetillgång", "Tillgång företagsvärd", "Förvaring & mottagning av leverans",],
-    packetType:["PREMIUMPAKET", "HEAD-HUNTER PAKET", "SPONSORPAKET", "BASPAKET"],
+      "5 m2 monteryta och central placering på mässan", "Exponering på hemsidan", "1 st ståbord", 
+      "2 st representantplatser (frukost & lunch ingår)", "2 st sittningsbiljetter", "10st dryckesbiljetter (värde ca 50 kr styck)",
+      "El & Wifi", "Loungetillgång", "Tillgång till företagsvärd", "Förvaring & mottagning av leverans",],
+    packetType:["BASPAKET", "SPONSORPAKET", "HEAD-HUNTERPAKET", "PREMIUMPAKET"],
     info: "BEGRÄNSAT ANTAL"
     
   }
