@@ -20,7 +20,7 @@ export default function Catalog() {
                         <h1 className="text-yellow text-center text-1xl">{t.catalog.info}</h1>
                         <h1 className="text-white text-center text-7xl py-10">{prices[0]}</h1>
                         <button onClick={() => setDrop(!dropped)} className="absolute h-[40px] w-[100px] bg-[#E2B7C9] rounded-[40px] border-cerise bottom-0 translate-y-1/2">
-                            <i className="fas fa-chevron-up text-white"></i>
+                            <i className={`${dropped ? "" : "rotate-180"} duration-200 fas fa-chevron-up text-white`}></i>
                         </button>
                     </div>
                     <div className={`
