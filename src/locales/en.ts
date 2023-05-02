@@ -14,7 +14,7 @@ export default {
     representative: "Company Representative?",
     representativeDescription:
       "Do you want to reach thousands of civil engineering students at KTH? As an exhibitor at D-Dagen you have thet opportunity to do so! Click down bellow to read more and register your interest.",
-    representativeButton: "Registration of Interest",
+    representativeButton: "Interest Registration",
     stats: {
       firstPart: "100+ exhibitors",
       secondPart: "3000+ participants",

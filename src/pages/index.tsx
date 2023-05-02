@@ -1,10 +1,11 @@
-import Link from "next/link";
 import { useRef } from "react";
 import { useLocale } from "@/locales";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const t = useLocale();
+  const router = useRouter();
   const scrollRef = useRef<HTMLInputElement | null>(null);
 
   function scrollDown() {
@@ -63,7 +64,7 @@ export default function Home() {
             ref={scrollRef}
             className="flex flex-col items-center py-12 mb-16"
           >
-            <div className="md:grid md:grid-rows-[repeat(26,minmax(auto,1fr))] md:grid-cols-[repeat(32,minmax(auto,1fr))] max-md:p-2 bg-white/80 w-full max-w-5xl">
+            <div className="md:grid md:grid-rows-[repeat(26,minmax(auto,1fr))] md:grid-cols-[repeat(32,minmax(auto,1fr))] max-md:p-2 bg-white/80 w-full max-w-5xl font-light">
               {/* Top Left */}
               <div className="md:col-[3/20] md:row-[3/15] z-40">
                 <div className="bg-white sm:p-8 p-6 md:w-[90%] md:text-lg xl:text-2xl text-xl drop-shadow-md overflow-hidden">
@@ -97,18 +98,18 @@ export default function Home() {
               {/* Bottom Right */}
               <div className="md:col-[16/30] md:row-[18/26] text-center md:text-left z-40">
                 <div className="bg-cerise lg:p-8 p-6 drop-shadow-md overflow-hidden">
-                  <h2 className="font-black text-[#090E2F] md:text-2xl xl:text-[2rem] text-2xl pb-3">
+                  <h2 className="font-black text-[#090E2F] md:text-2xl xl:text-[1.9rem] text-2xl pb-3">
                     {t.home.representative}
                   </h2>
-                  <p className="pb-8 text-[#110C30] md:text-xl xl:text-2xl text-xl">
+                  <p className="pb-8 text-[#110C30] md:text-lg xl:text-2xl text-xl font-light">
                     {t.home.representativeDescription}
                   </p>
-                  <Link
-                    className="bg-white p-2.5 rounded-full text-cerise font-medium"
-                    href="/företagsanmälan"
+                  <button 
+                    className="bg-white px-6 py-2 text-cerise font-medium rounded-full hover:scale-105 transition-transform" 
+                    onClick={() => router.push("/företagsanmälan")}
                   >
                     {t.home.representativeButton}
-                  </Link>
+                  </button>
                 </div>
               </div>
             </div>
