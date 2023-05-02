@@ -49,7 +49,7 @@ export default function Contact() {
   const layout3 = [[0], [1], [2], [3], [4], [5]];
 
   return (
-    <div className="py-[150px] flex flex-col items-center">
+    <div className="pt-[200px] pb-[150px] flex flex-col items-center">
       <h1 className="text-cerise text-5xl font-medium uppercase">
         {t.contact.header}
       </h1>
