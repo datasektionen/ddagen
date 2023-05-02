@@ -49,20 +49,15 @@ export default function Contact() {
   const layout3 = [[0], [1], [2], [3], [4], [5]];
 
   return (
-    <div className="py-[150px] flex flex-col items-center">
+    <div className="pt-[200px] pb-[150px] flex flex-col items-center">
       <h1 className="text-cerise text-5xl font-medium uppercase">
         {t.contact.header}
       </h1>
-
-      
-      <h1 className="mt-[200px] text-cerise text-4xl font-normal uppercase">
-        {t.contact.subheader1}
-      </h1>
       <div className="flex flex-col-reverse md:flex-row mt-[100px] justify-center px-[30px] sm:px-[0px] gap-[50px] xl:pl-[0px] xl:gap-[120px] md:items-center ">
-        <div className="sm:w-[500px] md:w-[250px] lg:w-[300px] text-left">
-          <h1 className="text-cerise text-3xl font-normal uppercase"> {t.contact.salesHeader}</h1>
+        <div className="px-[15px] md:px-0 sm:w-[500px] md:w-[250px] lg:w-[300px] text-left">
+          <h1 className="text-cerise text-4xl font-normal uppercase"> {t.contact.salesHeader}</h1>
           <br/>
-          <p className="text-white  text-1xl">{t.contact.p1}</p>
+          <p className="text-white text-lg">{t.contact.p1}</p>
           <br/>
           <a className="block text-cerise" href="mailto:sales@ddagen.se">sales@ddagen.se</a>
         </div>
@@ -71,11 +66,11 @@ export default function Contact() {
 
       <div className="flex flex-col md:flex-row mt-[100px] justify-center px-[30px] sm:px-[0px] gap-[50px] xl:pr-[0px] xl:gap-[120px] md:items-center ">
         <img className="sm:h-[350px] md:h-[250px] lg:h-[300px] xl:h-[400px]" src="/img/BOSSES.png"></img>
-        <div className="sm:w-[500px] md:w-[250px] lg:w-[300px] text-left">
-          <h1 className="text-cerise text-3xl font-normal uppercase"> D-DAGEN</h1>
-          <h1 className="text-cerise text-3xl font-normal uppercase"> {t.contact.bossesHeader}</h1>
+        <div className="px-[15px] md:px-0 sm:w-[500px] md:w-[250px] lg:w-[300px] text-left">
+          <h1 className="text-cerise text-4xl font-normal uppercase"> D-DAGEN</h1>
+          <h1 className="text-cerise text-4xl font-normal uppercase"> {t.contact.bossesHeader}</h1>
           <br/>
-          <p className="text-white mt-[0px] text-1xl">{t.contact.p2}</p>
+          <p className="text-white mt-[0px] text-lg">{t.contact.p2}</p>
           <br/>
           <a className="block text-cerise" href="mailto:ansvarig@ddagen.se">ansvarig@ddagen.se</a>
         </div>
@@ -88,7 +83,7 @@ export default function Contact() {
             6 Rows (< sm)
             Lazy implementation
       */}
-      <h1 className="mt-[150px] text-cerise  text-3xl font-normal uppercase text-center">
+      <h1 className="mt-[150px] text-cerise  text-4xl font-normal uppercase text-center">
         {t.contact.subheader2}
       </h1>
       <div className="mt-[50px] flex flex-col ">

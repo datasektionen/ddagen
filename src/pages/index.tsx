@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRef } from "react";
 import { useLocale } from "@/locales";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const t = useLocale();
@@ -10,13 +11,21 @@ export default function Home() {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }
 
+  const [showLogo, setShowLogo] = useState(false);
+
+  useEffect(() => {
+    setShowLogo(true);
+  }, []);
+
   return (
     <>
       <div className="w-full h-full">
         <div className="flex flex-col mx-auto max-w-[75%]">
           <div className="relative lg:py-[150px] py-[75px]">
             <img
-              className="absolute w-full h-[290px]"
+              className={`absolute w-full h-[290px] transition-all duration-[1500ms] ease-in-out ${
+                showLogo ? "opacity-100" : "opacity-0"
+              }`}
               src={
                 t.locale == "sv"
                   ? "/img/d-dagen-logo-sv.svg"
@@ -24,18 +33,15 @@ export default function Home() {
               }
               alt="D-dagen Logo"
             />
-
-            {/* <h1 className="absolute text-white drop-shadow-[0_0_10px_rgba(0,0,0,0.25)] text-5xl">
-              11 OKTOBER 2023
-            </h1> */}
           </div>
-
           <div className="pt-[200px] pb-[50px] hover:cursor-default">
             <h2
               className={
                 `
-            text-white text-4xl text-center
-                ` + (t.locale == "sv" ? "sm:ml-9" : "sm:ml-14")
+            text-white text-4xl text-center transition-all duration-[4000ms] ease-in-out ${
+              showLogo ? "opacity-100" : "opacity-0"
+            }
+                ` + (t.locale == "sv" ? "sm:ml-9" : "sm:ml-14") 
               }
             >
               {t.home.stats.firstPart} | {t.home.stats.secondPart}
@@ -61,7 +67,7 @@ export default function Home() {
               {/* Top Left */}
               <div className="md:col-[3/20] md:row-[3/15] z-40">
                 <div className="bg-white sm:p-8 p-6 md:w-[90%] md:text-lg xl:text-2xl text-xl drop-shadow-md overflow-hidden">
-                  <p className="first-letter:text-6xl xl:first-letter:text-7xl first-letter:text-cerise first-letter:font-black first-letter:float-left first-letter:mr-1">
+                  <p className="first-letter:text-8xl xl:first-letter:text-8xl first-letter:text-cerise first-letter:font-black first-letter:float-left first-letter:mr-1">
                     {t.home.introFirstBlock}
                   </p>
                   <p>{t.home.introSecondBlock}</p>
@@ -89,7 +95,7 @@ export default function Home() {
               </div>
 
               {/* Bottom Right */}
-              <div className="md:col-[16/30] md:row-[18/26] md:text-justify text-center z-40">
+              <div className="md:col-[16/30] md:row-[18/26] text-center md:text-left z-40">
                 <div className="bg-cerise lg:p-8 p-6 drop-shadow-md overflow-hidden">
                   <h2 className="font-black text-[#090E2F] md:text-2xl xl:text-[2rem] text-2xl pb-3">
                     {t.home.representative}
