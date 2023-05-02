@@ -23,7 +23,7 @@ export default function Home() {
         <div className="flex flex-col mx-auto max-w-[75%]">
           <div className="relative lg:py-[150px] py-[75px]">
             <img
-              className={`absolute w-full h-[290px] transition-all duration-[2000ms] ease-in-out ${
+              className={`absolute w-full h-[290px] transition-all duration-[1500ms] ease-in-out ${
                 showLogo ? "opacity-100" : "opacity-0"
               }`}
               src={
@@ -43,7 +43,7 @@ export default function Home() {
             <h2
               className={
                 `
-            text-white text-4xl text-center transition-all duration-[6000ms] ease-in-out ${
+            text-white text-4xl text-center transition-all duration-[4000ms] ease-in-out ${
               showLogo ? "opacity-100" : "opacity-0"
             }
                 ` + (t.locale == "sv" ? "sm:ml-9" : "sm:ml-14") 
