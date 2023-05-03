@@ -153,17 +153,17 @@ export default {
       "Ett helt rum istället för monter", "Exponering på hemsidan och i D-dagen katalogen 2023", "1 st bord", 
       "2 st representantplatser (frukost & lunch ingår)", "2 st kvällssittningsbiljetter", "10st dryckesbiljetter (värde ca 50 kr styck)",
       "El & Wifi", "Loungetillgång", "Tillgång företagsvärd", "Förvaring & mottagning av leverans", "Exponering på goodie bag", "Sponsrat inlägg på sociala medier",
-      "8 m utrymme", "Central placering på mässan", "En heldag med kontaktsamtal", "20 extra barbongar", "Marknadsföring av kontaktsamtal", 
+       "En heldag med kontaktsamtal", "Marknadsföring av kontaktsamtal", 
       "Två extra sittningsbiljetter"],
     headhHunterPacket: [
-      "5 m2 istället för monter", "Exponering på hemsidan och i D-dagen katalogen 2023", "1 st bord", 
+      "Ett helt rum istället för monter", "Exponering på hemsidan och i D-dagen katalogen 2023", "1 st bord", 
       "2 st representantplatser (frukost & lunch ingår)", "2 st kvällssittningsbiljetter", "10st dryckesbiljetter (värde ca 50 kr styck)",
       "El & Wifi", "Loungetillgång", "Tillgång företagsvärd", "Förvaring & mottagning av leverans", "Exponering på goodie bag", "Sponsrat inlägg på sociala medier",
-      "8 m utrymme", "Central placering på mässan", "En heldag med kontaktsamtal", "10 extra barbongar", "Marknadsföring av kontaktsamtal",],
+       "En heldag med kontaktsamtal", "Marknadsföring av kontaktsamtal",],
     sponsorPacket: [
-      "5 m2 istället för monter", "Exponering på hemsidan och i D-dagen katalogen 2023", "1 st bord", 
-      "2 st representantplatser (frukost & lunch ingår)", "2 st kvällssittningsbiljetter", "10st dryckesbiljetter (värde ca 50 kr styck)",
-      "El & Wifi", "Loungetillgång", "Tillgång företagsvärd", "Förvaring & mottagning av leverans", "Exponering på goodie bag", "Sponsrat inlägg på sociala medier",],
+      "5 m2 monteryta och central placering på mässan", "Exponering på hemsidan", "1 st ståbord", 
+      "2 st representantplatser (frukost & lunch ingår)", "2 st sittningsbiljetter", "10st dryckesbiljetter (värde ca 50 kr styck)",
+      "El & Wifi", "Loungetillgång", "Tillgång till företagsvärd", "Förvaring & mottagning av leverans", "Exponering i broschyr", "Exponering på goodie bag ", "Sponsrat inlägg på sociala medier",],
     basePacket: [
       "5 m2 monteryta och central placering på mässan", "Exponering på hemsidan", "1 st ståbord", 
       "2 st representantplatser (frukost & lunch ingår)", "2 st sittningsbiljetter", "10st dryckesbiljetter (värde ca 50 kr styck)",
