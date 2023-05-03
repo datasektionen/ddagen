@@ -19,7 +19,7 @@ export default function Login() {
   const finishLogin = api.account.finishLogin.useMutation();
 
   useEffect(() => {
-    if (startLogin.data?.ok) {
+    if (startLogin.isSuccess) {
       setState("code");
     }
   }, [startLogin]);
@@ -63,9 +63,6 @@ export default function Login() {
             "
           />
         </form>
-        {startLogin.data?.error && (
-          <p className="text-red-500 font-bold mt-6">{t.error[startLogin.data.error]}</p>
-        )}
         {startLogin.error && (
           <p className="text-red-500 font-bold mt-6">{t.error.unknown}</p>
         )}

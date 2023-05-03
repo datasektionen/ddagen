@@ -1,9 +1,33 @@
 import { getLocale } from "@/locales";
 import sendEmail from "@/utils/send-email";
-import { Prisma } from "@prisma/client";
+import { Prisma, type PrismaClient } from "@prisma/client";
 import { randomBytes } from "crypto";
 import { z } from "zod";
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
+
+async function createCode(prisma: PrismaClient, userId: string, email: string, locale: "en" | "sv") {
+  const t = getLocale(locale);
+
+  const loginCode = randomBytes(24).toString("base64url");
+  // TODO: make url configurable
+  const magicLink = "https://ddagen.se/logga-in?code=" + loginCode;
+  await prisma.$transaction([
+    prisma.loginCode.deleteMany({
+      where: { userId: userId },
+    }),
+    prisma.loginCode.create({
+      data: { id: loginCode, userId: userId },
+    })
+  ]);
+
+  try {
+    sendEmail(
+      email,
+      t.login.emailSubject,
+      t.login.emailBody(loginCode, magicLink),
+    );
+  } catch (e) { }
+}
 
 export const accountRouter = createTRPCRouter({
   startLogin: publicProcedure
@@ -12,37 +36,14 @@ export const accountRouter = createTRPCRouter({
       locale: z.enum(["en", "sv"]),
     }))
     .mutation(async ({ input, ctx }) => {
-      const t = getLocale(input.locale);
-
       const user = await ctx.prisma.user.findUnique({
         where: { email: input.email },
       });
-      if (!user) {
-        return { error: "userNotFound" as const };
+      if (user) {
+        // Note that we're not awaiting this, so that we don't leak whether or not the user
+        // exists through timing.
+        createCode(ctx.prisma, user.id, input.email, input.locale);
       }
-
-      const loginCode = randomBytes(24).toString("base64url");
-      // TODO: make url configurable
-      const magicLink = "https://ddagen.se/logga-in?code=" + loginCode;
-      await ctx.prisma.$transaction([
-        ctx.prisma.loginCode.deleteMany({
-          where: { userId: user.id },
-        }),
-        ctx.prisma.loginCode.create({
-          data: { id: loginCode, userId: user.id },
-        })
-      ]);
-
-      try {
-        sendEmail(
-          input.email,
-          t.login.emailSubject,
-          t.login.emailBody(loginCode, magicLink),
-        );
-      } catch (e) {
-        return { error: "emailNotSent" as const };
-      }
-      return { ok: true };
     }),
   finishLogin: publicProcedure.input(z.string()).mutation(async ({ input, ctx }) => {
     let loginCode;
