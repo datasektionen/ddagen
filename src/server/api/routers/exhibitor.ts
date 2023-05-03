@@ -1,5 +1,4 @@
 import { z } from "zod";
-
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
 import { validateOrganizationNumber } from "@/shared/validateOrganizationNumber";
 import { getLocale } from "@/locales";
@@ -37,17 +36,13 @@ export const exhibitorRouter = createTRPCRouter({
       }
 
       try {
-        await ctx.prisma.exhibitor.create({
+        await ctx.prisma.exhibitorInterestRegistration.create({
           data: {
             name: companyName,
             organizationNumber,
             contactPerson,
             phoneNumber,
-            accounts: {
-              create: {
-                email,
-              },
-            },
+            email,
           }
         });
       } catch (e) {

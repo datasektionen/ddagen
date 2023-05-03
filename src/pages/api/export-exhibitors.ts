@@ -10,9 +10,7 @@ export default async function handler(
     return res.status(402).end();
   }
 
-  const exhibitors = await prisma.exhibitor.findMany({
-    include: { accounts: true },
-  });
+  const exhibitors = await prisma.exhibitorInterestRegistration.findMany();
 
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(exhibitors.map(e => ({
@@ -20,6 +18,6 @@ export default async function handler(
     organizationNumber: e.organizationNumber,
     contactPerson: e.contactPerson,
     phoneNumber: e.phoneNumber,
-    email: e.accounts.map(a => a.email).join(","),
+    email: e.email,
   }))));
 }

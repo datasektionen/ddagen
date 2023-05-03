@@ -10,24 +10,13 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Exhibitor {
+model ExhibitorInterestRegistration {
   id                 String  @id @default(uuid())
   name               String
-  organizationNumber String?
+  organizationNumber String
   contactPerson      String
   phoneNumber        String
+  email              String
 
-  accounts Account[]
-
-  @@map("exhibitors")
-}
-
-model Account {
-  id    String @id @default(uuid())
-  email String @unique
-
-  exhibitorId String
-  exhibitor   Exhibitor @relation(fields: [exhibitorId], references: [id])
-
-  @@map("accounts")
+  @@map("exhibitor_interest_registrations")
 }
