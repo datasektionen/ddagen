@@ -14,7 +14,7 @@ export default function Catalog() {
     const iconsPremium = ["fa-expand", "fa-laptop", "fa-circle", "fa-users", "fa-ticket-alt", "fa-cocktail", "fa-wifi", "fa-couch", "fa-user-tie", "fa-box-open",
     "fa-book-open", "fa-shopping-bag", "fa-camera", "fa-phone-alt", "fa-ad"]
 
-    const icons = [iconsBase, iconsSponsor, iconsPremium, iconsPremium]
+    const icons = [iconsBase, iconsSponsor, iconsSponsor, iconsPremium]
 
     const packetColor1 = ["border-[#E2B7C9]", "border-pink-300", "border-cerise", "border-yellow"]
     const packetColor2 = ["bg-[#E2B7C9]", "bg-pink-300", "bg-cerise", "bg-yellow"]
@@ -26,8 +26,8 @@ export default function Catalog() {
             <h1 className="uppercase text-cerise text-5xl font-medium text-center">{t.catalog.header}</h1>
 
             <div className="flex flex-row justify-between w-full px-[100px] mt-[200px]">
-                {packets.map((packet, i) => <div className="flex flex-col">
-                    <div className={`relative z-40 flex flex-col py-[30px] px-10 ${packetColor1[i]} border-[3px] rounded-xl bg-slate-50 bg-opacity-10 items-center`}>
+                {packets.map((packet, i) => <div className="flex flex-col px-[20px]">
+                    <div className={`relative z-40 flex flex-col py-[30px] px-[0] ${packetColor1[i]} border-[3px] rounded-xl bg-slate-50 bg-opacity-10 items-center`}>
                         <h1 className="text-white text-center text-3xl">{t.catalog.packetType[0]}</h1>
                         <h1 className="text-yellow text-center text-1xl">{t.catalog.info}</h1>
                         <h1 className="text-white text-center text-7xl py-10">{prices[i]}</h1>
