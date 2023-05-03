@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
+import { createTRPCRouter, protectedProcedure, publicProcedure } from "@/server/api/trpc";
 import { validateOrganizationNumber } from "@/shared/validateOrganizationNumber";
 import { getLocale } from "@/locales";
 import { TRPCError } from "@trpc/server";
@@ -7,12 +7,6 @@ import { Prisma } from "@prisma/client";
 import sendEmail from "@/utils/send-email";
 
 const allergyType = z.enum(["representative", "banquet"]);
-function allergyTypeToDB(type: "representative" | "banquet") {
-  return ({
-    "representative": "REPRESENTATIVE_SPOT",
-    "banquet": "BANQUET",
-  } as const)[type];
-}
 
 export const exhibitorRouter = createTRPCRouter({
   register: publicProcedure
@@ -94,7 +88,7 @@ export const exhibitorRouter = createTRPCRouter({
         extraChairs: true,
         extraDrinkCoupons: true,
         extraRepresentativeSpots: true,
-        extraBanquetTickets: true,
+        totalBanquetTicketsWanted: true,
       },
     });
   }),
@@ -119,22 +113,24 @@ export const exhibitorRouter = createTRPCRouter({
     });
   }),
 
-  setLogo: protectedProcedure.input(z.string()).mutation(async ({ ctx, input }) => {
-    const logo = Buffer.from(input, "base64");
+  setLogo: protectedProcedure.input(z.object({
+    b64data: z.string(),
+    kind: z.enum(["white", "color"]),
+  })).mutation(async ({ ctx, input }) => {
+    const logo = Buffer.from(input.b64data, "base64");
     await ctx.prisma.exhibitor.update({
       where: { id: ctx.session.user.exhibitorId },
-      data: {
-        logo: logo,
-      },
+      data: input.kind === "white" ? { logoWhite: logo } : { logoColor: logo },
     });
   }),
-  logo: protectedProcedure.query(async ({ ctx }) => {
+  logo: protectedProcedure.input(z.enum(["white", "color"])).query(async ({ ctx, input }) => {
     const exhibitor = await ctx.prisma.exhibitor.findUniqueOrThrow({
       where: { id: ctx.session.user.exhibitorId },
-      select: { logo: true },
+      select: { logoWhite: input === "white", logoColor: input === "color" },
     });
-    if (!exhibitor.logo) return null;
-    return exhibitor.logo.toString("base64");
+    if (exhibitor.logoWhite) return exhibitor.logoWhite.toString("base64");
+    if (exhibitor.logoColor) return exhibitor.logoColor.toString("base64");
+    return null;
   }),
 
   getContacts: protectedProcedure.query(async ({ ctx }) => {
@@ -146,7 +142,7 @@ export const exhibitorRouter = createTRPCRouter({
     id: z.string().optional(),
     name: z.string(),
     email: z.string().email(),
-    phoneNumber: z.string(),
+    phone: z.string(),
     role: z.string(),
   })).mutation(async ({ ctx, input }) => {
     try {
@@ -156,7 +152,7 @@ export const exhibitorRouter = createTRPCRouter({
           data: {
             name: input.name,
             email: input.email,
-            phoneNumber: input.phoneNumber,
+            phone: input.phone,
             role: input.role,
           },
         });
@@ -166,7 +162,7 @@ export const exhibitorRouter = createTRPCRouter({
             exhibitorId: ctx.session.user.exhibitorId,
             name: input.name,
             email: input.email,
-            phoneNumber: input.phoneNumber,
+            phone: input.phone,
             role: input.role,
           },
         });
@@ -191,26 +187,26 @@ export const exhibitorRouter = createTRPCRouter({
     return { ok: true };
   }),
 
-  getAllergies: protectedProcedure.input(allergyType).query(async ({ input, ctx }) => {
-    return await ctx.prisma.allergenInformation.findMany({
+  getFoodSpecifications: protectedProcedure.input(allergyType).query(async ({ input, ctx }) => {
+    return await ctx.prisma.foodSpecification.findMany({
       where: {
         exhibitorId: ctx.session.user.exhibitorId,
-        type: allergyTypeToDB(input),
+        type: input,
       },
     });
   }),
-  upsertAllergy: protectedProcedure.input(z.object({
+  upsertFoodSpecification: protectedProcedure.input(z.object({
     id: z.string().optional(),
     type: allergyType,
     value: z.string(),
     comment: z.string(),
   })).mutation(async ({ ctx, input }) => {
     if (input.id) {
-      await ctx.prisma.allergenInformation.updateMany({
+      await ctx.prisma.foodSpecification.updateMany({
         where: {
           id: input.id,
           exhibitorId: ctx.session.user.exhibitorId,
-          type: allergyTypeToDB(input.type),
+          type: input.type,
         },
         data: {
           value: input.value,
@@ -218,18 +214,18 @@ export const exhibitorRouter = createTRPCRouter({
         },
       });
     } else {
-      await ctx.prisma.allergenInformation.create({
+      await ctx.prisma.foodSpecification.create({
         data: {
           exhibitorId: ctx.session.user.exhibitorId,
-          type: allergyTypeToDB(input.type),
+          type: input.type,
           value: input.value,
           comment: input.comment,
         },
       });
     }
   }),
-  deleteAllergy: protectedProcedure.input(z.string()).mutation(async ({ ctx, input }) => {
-    await ctx.prisma.allergenInformation.deleteMany({
+  deleteFoocSpecification: protectedProcedure.input(z.string()).mutation(async ({ ctx, input }) => {
+    await ctx.prisma.foodSpecification.deleteMany({
       where: { id: input, exhibitorId: ctx.session.user.exhibitorId },
     });
   }),

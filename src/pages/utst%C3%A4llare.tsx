@@ -14,7 +14,7 @@ export default function Exhibitor() {
   const contacts = api.exhibitor.getContacts.useQuery();
   const removeContact = api.exhibitor.deleteContact.useMutation();
   const setLogo = api.exhibitor.setLogo.useMutation();
-  const logo = api.exhibitor.logo.useQuery();
+  const logoWhite = api.exhibitor.logo.useQuery("white");
 
   const [pendingChanges, setPendingChanges] = useState(false);
   const [logoLoading, setLogoLoading] = useState(false);
@@ -25,7 +25,7 @@ export default function Exhibitor() {
   const [extraTables, setExtraTables] = useState(0);
   const [extraDrinkCoupons, setExtraDrinkCoupons] = useState(0);
   const [extraRepresentativeSpots, setExtraRepresentativeSpots] = useState(0);
-  const [extraBanquetTickets, setExtraBanquetTickets] = useState(0);
+  const [totalBanquetTicketsWanted, setTotalBanquetTicketsWanted] = useState(0);
 
   const [addingContact, setAddingContact] = useState(false);
 
@@ -35,7 +35,6 @@ export default function Exhibitor() {
   const totalTables = extraTables + (pkg?.tables ?? 0);
   const totalDrinkCoupons = extraDrinkCoupons + (pkg?.drinkCoupons ?? 0);
   const totalRepresentativeSpots = extraRepresentativeSpots + (pkg?.representativeSpots ?? 0);
-  const totalBanquetTickets = extraBanquetTickets + (pkg?.banquetTickets ?? 0);
 
   const setNumber = (setter: (value: number) => void) => (value: string) => {
     const parsed = value === "" ? 0 : parseInt(value.replace(/[^0-9]/g, ""), 10);
@@ -46,7 +45,7 @@ export default function Exhibitor() {
   const setExtraTablesStr = setNumber(setExtraTables);
   const setExtraDrinkCouponsStr = setNumber(setExtraDrinkCoupons);
   const setExtraRepresentativeSpotsStr = setNumber(setExtraRepresentativeSpots);
-  const setExtraBanquetTicketsStr = setNumber(setExtraBanquetTickets);
+  const setExtraBanquetTicketsStr = setNumber(setTotalBanquetTicketsWanted);
 
   useEffect(() => {
     if (!exhibitor.isSuccess) return;
@@ -57,7 +56,7 @@ export default function Exhibitor() {
     setExtraTables(exhibitor.data.extraTables);
     setExtraDrinkCoupons(exhibitor.data.extraDrinkCoupons);
     setExtraRepresentativeSpots(exhibitor.data.extraRepresentativeSpots);
-    setExtraBanquetTickets(exhibitor.data.extraBanquetTickets);
+    setTotalBanquetTicketsWanted(exhibitor.data.totalBanquetTicketsWanted);
   }, [exhibitor.isSuccess]);
 
   function update() {
@@ -116,7 +115,7 @@ export default function Exhibitor() {
                 if (typeof reader.result === "string") {
                   console.log(reader.result.split(",")[0]);
                   const logo = reader.result.split(",")[1];
-                  setLogo.mutateAsync(logo)
+                  setLogo.mutateAsync({ b64data: logo, kind: "white" })
                     .then(() => setLogoLoading(false))
                     .then(() => trpc.exhibitor.logo.invalidate());
                 }
@@ -125,7 +124,7 @@ export default function Exhibitor() {
           />
           {logoLoading && <p>...</p>}
         </div>
-        {logo.isSuccess && logo.data && <img src={"data:image/svg+xml;base64," + logo.data} className="w-72 place-self-center" />}
+        {logoWhite.isSuccess && logoWhite.data && <img src={"data:image/svg+xml;base64," + logoWhite.data} className="w-72 place-self-center" />}
         <InputField
           type="number"
           value={extraChairs.toString()}
@@ -169,13 +168,13 @@ export default function Exhibitor() {
           : null}
         <InputField
           type="number"
-          value={extraBanquetTickets.toString()}
+          value={totalBanquetTicketsWanted.toString()}
           setValue={setExtraBanquetTicketsStr}
-          name="extraBanquetTickets"
+          name="totalBanquetTicketsWanted"
           fields={t.exhibitorSettings.fields}
         />
         {pkg?.banquetTickets
-          ? <p className="text-white relative -top-4">Total banquet ticket count: {totalBanquetTickets} ({pkg.banquetTickets} from package)</p>
+          ? <p className="text-white relative -top-4">Guaranteed spots: {pkg.banquetTickets}</p>
           : null}
         {pendingChanges ?
           <input
@@ -220,7 +219,7 @@ export default function Exhibitor() {
         }
       </section>
       <Allergies type="representative" maxCount={totalRepresentativeSpots} />
-      <Allergies type="banquet" maxCount={totalBanquetTickets} />
+      <Allergies type="banquet" maxCount={totalBanquetTicketsWanted} />
     </div>
   </>;
 }
@@ -235,14 +234,14 @@ function Allergies({
   const t = useLocale().exhibitorSettings;
   const trpc = api.useContext();
 
-  const allergies = api.exhibitor.getAllergies.useQuery(type);
-  const upsertAllergy = api.exhibitor.upsertAllergy.useMutation();
-  const removeAllergy = api.exhibitor.deleteAllergy.useMutation();
+  const foodSpecs = api.exhibitor.getFoodSpecifications.useQuery(type);
+  const upsertSpec = api.exhibitor.upsertFoodSpecification.useMutation();
+  const removeSpec = api.exhibitor.deleteFoocSpecification.useMutation();
 
   const [newAllergyValue, setNewAllergyValue] = useState("");
   const [newAllergyComment, setNewAllergyComment] = useState("");
 
-  const allergyCount = allergies.data?.length ?? 0;
+  const allergyCount = foodSpecs.data?.length ?? 0;
 
   return (
     <section>
@@ -259,7 +258,7 @@ function Allergies({
         <p className="font-bold">{t.fields.allergyComment}</p>
         <div></div>
         <div></div>
-        {allergies.data?.map(allergy => <Fragment key={allergy.id}>
+        {foodSpecs.data?.map(allergy => <Fragment key={allergy.id}>
           <p>{allergy.value}</p>
           <p>{allergy.comment}</p>
           <button
@@ -269,8 +268,8 @@ function Allergies({
               py-2 px-4 rounded-full cursor-pointer disabled:cursor-wait disabled:grayscale
             "
             disabled={newAllergyValue !== "" || newAllergyComment !== "" || allergyCount > maxCount}
-            onClick={() => removeAllergy.mutateAsync(allergy.id)
-              .then(() => trpc.exhibitor.getAllergies.invalidate())
+            onClick={() => removeSpec.mutateAsync(allergy.id)
+              .then(() => trpc.exhibitor.getFoodSpecifications.invalidate())
               .then(() => setNewAllergyValue(allergy.value))
               .then(() => setNewAllergyComment(allergy.comment))}
           >{t.editAllergy}</button>
@@ -280,8 +279,8 @@ function Allergies({
               text-white font-bold uppercase text-sm
               py-2 px-4 rounded-full cursor-pointer disabled:cursor-wait disabled:grayscale
             "
-            onClick={() => removeAllergy.mutateAsync(allergy.id)
-              .then(() => trpc.exhibitor.getAllergies.invalidate())}
+            onClick={() => removeSpec.mutateAsync(allergy.id)
+              .then(() => trpc.exhibitor.getFoodSpecifications.invalidate())}
           >{t.removeAllergy}</button>
         </Fragment>)}
       </div>
@@ -314,10 +313,10 @@ function Allergies({
             "
             onClick={(e) => {
               e.preventDefault();
-              upsertAllergy.mutateAsync({ value: newAllergyValue, comment: newAllergyComment, type }).then(() => {
+              upsertSpec.mutateAsync({ value: newAllergyValue, comment: newAllergyComment, type }).then(() => {
                 setNewAllergyValue("");
                 setNewAllergyComment("");
-                trpc.exhibitor.getAllergies.invalidate(type);
+                trpc.exhibitor.getFoodSpecifications.invalidate(type);
               });
             }}
           />
@@ -342,7 +341,7 @@ function ContactPerson({
 }) {
   const [name, setName] = useState(user?.name ?? "");
   const [email, setEmail] = useState(user?.email ?? "");
-  const [phoneNumber, setPhoneNumber] = useState(user?.phoneNumber ?? "");
+  const [phone, setPhone] = useState(user?.phone ?? "");
   const [role, setRole] = useState(user?.role ?? "");
 
   const [pendingChanges, setPendingChanges] = useState(user?.id === undefined);
@@ -354,7 +353,7 @@ function ContactPerson({
       onSubmit={async (e) => {
         e.preventDefault();
         setPendingChanges(false);
-        await upsert.mutateAsync({ name, email, phoneNumber, role });
+        await upsert.mutateAsync({ name, email, phone, role });
         if (onSave) onSave();
       }}
     >
@@ -376,8 +375,8 @@ function ContactPerson({
       />
       <InputField
         type="text"
-        value={phoneNumber}
-        setValue={v => { setPhoneNumber(v); setPendingChanges(true); }}
+        value={phone}
+        setValue={v => { setPhone(v); setPendingChanges(true); }}
         name="contactPhone"
         fields={t.fields}
         prefix={user?.id}

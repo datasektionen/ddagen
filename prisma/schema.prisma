@@ -28,7 +28,7 @@ model Exhibitor {
   organizationNumber String
 
   invoiceEmail              String
-  logoBlack                 Bytes?
+  logoWhite                 Bytes?
   logoColor                 Bytes?
   description               String
   package                   Package
@@ -46,7 +46,7 @@ model Exhibitor {
 
 model User {
   id    String @id @default(uuid())
-  email String
+  email String @unique
   name  String
   phone String
   role  String

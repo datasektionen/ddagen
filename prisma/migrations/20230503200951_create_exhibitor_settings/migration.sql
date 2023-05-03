@@ -13,7 +13,7 @@ CREATE TABLE "exhibitors" (
     "name" TEXT NOT NULL,
     "organizationNumber" TEXT NOT NULL,
     "invoiceEmail" TEXT NOT NULL,
-    "logoBlack" BYTEA,
+    "logoWhite" BYTEA,
     "logoColor" BYTEA,
     "description" TEXT NOT NULL,
     "package" "Package" NOT NULL,
@@ -67,6 +67,9 @@ CREATE TABLE "food_specifications" (
 
     CONSTRAINT "food_specifications_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "login_codes_userId_key" ON "login_codes"("userId");

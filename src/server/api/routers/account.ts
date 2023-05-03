@@ -15,9 +15,7 @@ export const accountRouter = createTRPCRouter({
       const t = getLocale(input.locale);
 
       const user = await ctx.prisma.user.findUnique({
-        where: {
-          email: input.email,
-        },
+        where: { email: input.email },
       });
       if (!user) {
         return { error: "userNotFound" as const };
@@ -26,9 +24,14 @@ export const accountRouter = createTRPCRouter({
       const loginCode = randomBytes(24).toString("base64url");
       // TODO: make url configurable
       const magicLink = "https://ddagen.se/logga-in?code=" + loginCode;
-      await ctx.prisma.loginCode.create({
-        data: { id: loginCode, userId: user.id },
-      });
+      await ctx.prisma.$transaction([
+        ctx.prisma.loginCode.deleteMany({
+          where: { userId: user.id },
+        }),
+        ctx.prisma.loginCode.create({
+          data: { id: loginCode, userId: user.id },
+        })
+      ]);
 
       try {
         sendEmail(

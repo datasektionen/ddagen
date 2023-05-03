@@ -11,7 +11,7 @@ export type Package = {
   extra: string[],
 };
 
-export type PackageType = "base" | "sponsor" | "headhunter" | "premium";
+export type PackageType = "base" | "sponsor" | "headhunter" | "premium" | "main";
 
 export function getPackage(locale: Locale, type: PackageType): Package {
   return {
@@ -54,6 +54,16 @@ export function getPackage(locale: Locale, type: PackageType): Package {
       banquetTickets: 4,
       drinkCoupons: 30,
       tables: 1,
+      chairs: 0,
+      extra: [],
+    },
+    main: {
+      name: locale.packages.name.main,
+      priceSek: 0,
+      representativeSpots: 0,
+      banquetTickets: 0,
+      drinkCoupons: 0,
+      tables: 0,
       chairs: 0,
       extra: [],
     },
