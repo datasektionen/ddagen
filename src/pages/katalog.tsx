@@ -14,7 +14,7 @@ export default function Catalog() {
     const iconsPremium = ["fa-expand", "fa-laptop", "fa-circle", "fa-users", "fa-ticket-alt", "fa-cocktail", "fa-wifi", "fa-couch", "fa-user-tie", "fa-box-open",
     "fa-book-open", "fa-shopping-bag", "fa-camera", "fa-phone-alt", "fa-ad"]
 
-    const icons = [iconsBase, iconsSponsor, iconsSponsor, iconsPremium]
+    const icons = [iconsBase, iconsSponsor, iconsHunter, iconsPremium]
 
     const packetColor1 = ["border-[#E2B7C9]", "border-pink-300", "border-cerise", "border-yellow"]
     const packetColor2 = ["bg-[#E2B7C9]", "bg-pink-300", "bg-cerise", "bg-yellow"]
