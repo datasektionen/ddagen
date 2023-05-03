@@ -64,7 +64,7 @@ export default function Home() {
               ref={scrollRef}
               className="flex flex-col items-center py-12 mb-16 max-w-5xl"
             >
-              <div className="lg:grid lg:grid-rows-[repeat(28,minmax(auto,1fr))] lg:grid-cols-[repeat(32,minmax(auto,1fr))] max-lg:p-2 font-light lg:pb-12 max-lg:bg-white/80">
+              <div className="lg:grid lg:grid-rows-[repeat(28,minmax(auto,1fr))] lg:grid-cols-[repeat(32,minmax(auto,1fr))] font-light lg:pb-12 max-lg:p-3 max-lg:bg-white/80">
                
                 {/* Left */}
                 <div className="lg:col-[1/17] lg:row-[1/3] bg-white/80"/>
@@ -99,6 +99,7 @@ export default function Home() {
                       <img 
                         src="\img\dda-bild.png" 
                         alt="Picture of DDA"
+                        className="w-full"
                       />
                     </div>
                   </div>
@@ -111,6 +112,7 @@ export default function Home() {
                       <img
                         src="\img\foretagsrepresentant-bild.png"
                         alt="Picture of people talking"
+                        className="w-full"
                       />
                     </div>
                   </div>
