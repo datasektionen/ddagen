@@ -88,9 +88,9 @@ export default function Contact() {
       </h1>
       <div className="mt-[50px] flex flex-col ">
         {rows1.map((i, _) => (
-          <div className="hidden lg:flex flex-row justify-between gap-10 px-[100px] mb-[50px]">
+          <div className="hidden lg:flex flex-row justify-between gap-10 px-[100px] mb-[50px]" key={i}>
             {layout1[i].map((i, _) => (
-              <div className="flex flex-col">
+              <div className="flex flex-col" key={i}>
                 <img src={images[i]}></img>
                 <p className="px-[10px] text-cerise text-xl font-normal mt-5">
                   {names[i]}
@@ -107,9 +107,9 @@ export default function Contact() {
         ))}
 
         {rows2.map((i, _) => (
-          <div className=" hidden lg:hidden sm:flex justify-center flex-row px-[50px] mb-[50px] gap-10">
+          <div className=" hidden lg:hidden sm:flex justify-center flex-row px-[50px] mb-[50px] gap-10" key={i}>
             {layout2[i].map((i, _) => (
-              <div className="flex flex-col">
+              <div className="flex flex-col" key={i}>
                 <img className="" src={images[i]}></img>
                 <p className="w-[10px] px-[10px] text-cerise text-2xl font-normal mt-5">
                   {names[i]}
@@ -125,9 +125,9 @@ export default function Contact() {
         ))}
 
         {rows3.map((i, _) => (
-          <div className=" sm:hidden justify-center flex flex-row px-[30px] mb-[50px] gap-10">
+          <div className=" sm:hidden justify-center flex flex-row px-[30px] mb-[50px] gap-10" key={i}>
             {layout3[i].map((i, _) => (
-              <div className="flex flex-col">
+              <div className="flex flex-col" key={i}>
                 <img className="" src={images[i]}></img>
                 <p className="w-[10px] px-[10px] text-cerise text-2xl font-normal mt-5">
                   {names[i]}
