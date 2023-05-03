@@ -74,9 +74,9 @@ export default function Home() {
                 <div className="lg:col-[3/16] lg:row-[25/28] bg-white/80"/>
 
                 {/* Right */}
-                <div className="lg:col-[18/33] lg:row-[10/18] bg-white/80"/>
-                <div className="lg:col-[17/18] lg:row-[16/18] bg-white/80"/>
-                <div className="lg:col-[30/33] lg:row-[18/28] bg-white/80"/>
+                <div className="lg:col-[18/33] lg:row-[10/19] bg-white/80"/>
+                <div className="lg:col-[17/18] lg:row-[16/19] bg-white/80"/>
+                <div className="lg:col-[30/33] lg:row-[19/28] bg-white/80"/>
                 <div className="lg:col-[16/30] lg:row-[25/28] bg-white/80"/>
 
                 {/* Top Left */}
@@ -119,7 +119,7 @@ export default function Home() {
                 </div>
 
                 {/* Bottom Right */}
-                <div className="lg:col-[16/30] lg:row-[18/26] text-center lg:text-left z-40">
+                <div className="lg:col-[16/30] lg:row-[19/26] text-center lg:text-left z-40">
                   <div className="bg-cerise lg:p-8 p-6 drop-shadow-md overflow-hidden">
                     <h2 className="font-black text-[#090E2F] lg:text-2xl xl:text-[1.9rem] text-2xl pb-3">
                       {t.home.representative}
