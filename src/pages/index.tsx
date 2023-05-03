@@ -62,7 +62,7 @@ export default function Home() {
           {/* Grid Collage */}
             <div
               ref={scrollRef}
-              className="flex flex-col items-center py-12 mb-16 max-w-5xl"
+              className="flex flex-col items-center py-12 mx-auto mb-16 max-w-5xl"
             >
               <div className="lg:grid lg:grid-rows-[repeat(28,minmax(auto,1fr))] lg:grid-cols-[repeat(32,minmax(auto,1fr))] font-light lg:pb-12 max-lg:p-3 max-lg:bg-white/80">
                
@@ -93,7 +93,7 @@ export default function Home() {
                 </div>
 
                 {/* Top Right */}
-                <div className="lg:col-[17/33] lg:row-[1/10] lg:bg-[#D9D9D9]/50 bg-gray max-lg:mb-24 max-lg:pt-12">
+                <div className="lg:col-[17/33] lg:row-[1/10] lg:bg-gray/70 bg-gray max-lg:mb-24 max-lg:pt-12">
                   <div className="lg:relative h-full">
                     <div className="lg:absolute lg:bottom-0">
                       <img 
@@ -106,7 +106,7 @@ export default function Home() {
                 </div>
 
                 {/* Bottom Left */}
-                <div className="lg:col-[3/17] lg:row-[16/25] lg:bg-[#D9D9D9]/50 bg-gray max-lg:pt-12">
+                <div className="lg:col-[3/17] lg:row-[16/25] lg:bg-gray/70 bg-gray max-lg:pt-12">
                   <div className="lg:relative h-full">
                     <div className="lg:absolute lg:bottom-0">      
                       <img
