@@ -200,10 +200,10 @@ export default {
       "Sponsored post on social media"
       ],
       basePacket: [
-      "5 m2 instead of a booth",
-      "Exposure on the website and in the D-day catalog 2023",
-      "1 table",
-      "2 representative seats (including breakfast and lunch)",
+      "5 m booth space",
+      "Advertisement on D-Dagen's website",
+      "1 table for your booth",
+      "2 spots of company representatives (including breakfast and lunch)",
       "2 evening banquet tickets",
       "10 drink tickets (worth about 50 SEK each)",
       "Electricity and WiFi",
