@@ -1,11 +1,10 @@
+import Link from "next/link";
 import { useRef } from "react";
 import { useLocale } from "@/locales";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 
 export default function Home() {
   const t = useLocale();
-  const router = useRouter();
   const scrollRef = useRef<HTMLInputElement | null>(null);
 
   function scrollDown() {
@@ -64,7 +63,8 @@ export default function Home() {
               ref={scrollRef}
               className="flex flex-col items-center py-12 mx-auto mb-16 max-w-5xl"
             >
-              <div className="lg:grid lg:grid-rows-[repeat(28,minmax(auto,1fr))] lg:grid-cols-[repeat(32,minmax(auto,1fr))] font-light lg:pb-12 max-lg:p-3 max-lg:bg-white/80">
+              <div className="lg:grid lg:grid-rows-[repeat(28,minmax(auto,1fr))] lg:grid-cols-[repeat(32,minmax(auto,1fr))] font-light lg:pb-12 
+                              max-lg:border-white/80 max-lg:border-[12px] max-lg:border-solid">
                
                 {/* Left */}
                 <div className="lg:col-[1/17] lg:row-[1/3] bg-white/80"/>
@@ -93,28 +93,28 @@ export default function Home() {
                 </div>
 
                 {/* Top Right */}
-                <div className="lg:col-[17/33] lg:row-[1/10] lg:bg-gray/70 bg-gray max-lg:mb-24 max-lg:pt-12">
-                  <div className="lg:relative h-full">
-                    <div className="lg:absolute lg:bottom-0">
-                      <img 
-                        src="\img\dda-bild.png" 
-                        alt="Picture of DDA"
-                        className="w-full"
-                      />
-                    </div>
+                <div className="lg:col-[17/33] lg:row-[1/10] max-lg:h-[650px] max-md:h-[500px] max-sm:h-[400px] bg-white/40">
+                  <div className="mix-blend-color bg-[#060606] h-full" />
+                  <div className="relative">
+                    <img 
+                      src="\img\dda-bild.png" 
+                      alt="Picture of DDA"
+                      className="absolute bottom-0 w-full"
+                    />
                   </div>
                 </div>
 
+                <div className="lg:hidden bg-white/80 h-[160px]" />
+
                 {/* Bottom Left */}
-                <div className="lg:col-[3/17] lg:row-[16/25] lg:bg-gray/70 bg-gray max-lg:pt-12">
-                  <div className="lg:relative h-full">
-                    <div className="lg:absolute lg:bottom-0">      
-                      <img
-                        src="\img\foretagsrepresentant-bild.png"
-                        alt="Picture of people talking"
-                        className="w-full"
-                      />
-                    </div>
+                <div className="lg:col-[3/17] lg:row-[16/25] max-lg:h-[650px] max-md:h-[500px] max-sm:h-[400px] bg-white/40">
+                  <div className="mix-blend-color bg-[#060606] h-full" />
+                  <div className="relative">
+                    <img 
+                      src="\img\foretagsrepresentant-bild.png"
+                      alt="Picture of DDA"
+                      className="absolute bottom-0 w-full object-cover"
+                    />
                   </div>
                 </div>
 
@@ -127,12 +127,12 @@ export default function Home() {
                     <p className="pb-8 text-[#110C30] md:text-lg xl:text-2xl text-xl font-light">
                       {t.home.representativeDescription}
                     </p>
-                    <button 
-                      className="bg-white px-6 py-2 text-cerise font-medium rounded-full hover:scale-105 transition-transform" 
-                      onClick={() => router.push("/företagsanmälan")}
+                    <Link
+                      className="block hover:scale-105 transition-transform bg-white rounded-full text-cerise font-medium px-6 py-2 max-lg:mx-auto w-max"
+                      href="/företagsanmälan"
                     >
                       {t.home.representativeButton}
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
