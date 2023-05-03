@@ -177,11 +177,12 @@ export default function Navbar() {
             <Group links={[
               { href: "/förföretag", text: t.forCompanies },
               { href: "/faq", text: "faq" },
-              { href: "/logga-in", text: t.login },
+              isLoggedIn.data == true ?
+                { href: "/utställare", text: t.exhibitorSettings } :
+                { href: "/logga-in", text: t.login },
             ]} />
             <NavLink class="mb-4 lg:hidden px-0 lg:px-4" href="/kontakt">{t.contact}</NavLink>
             {/*<NavLink class="px-14 lg:px-0" href="/förstudenter">{t.forStudents}</NavLink>*/}
-            <NavLink class="px-14 lg:px-4 p-4 lg:ml-auto" href="/utställare">{t.exhibitorSettings}</NavLink>
             {/*<NavLink class="px-14 lg:px-0" href="/mässan">{t.about}</NavLink>*/}
           </div>
           <div className="
@@ -190,16 +191,10 @@ export default function Navbar() {
             lg:px-0 bg-black lg:bg-transparent lg:ml-auto
           ">
             <NavLink class="hidden lg:block px-14 lg:px-4 p-4" href="/kontakt">{t.contact}</NavLink>
-            {isLoggedIn.data === true ?
-              <button
-                onClick={() => logout.mutate()}
-                className="bg-cerise py-2.5 px-4 rounded-full text-center hover:scale-105 transition-transform"
-              >{t.logout}</button> :
-              <Link
-                className="bg-cerise py-2.5 px-4 rounded-full text-center hover:scale-105 transition-transform"
-                href="/företagsanmälan"
-              >{t.companyForm}</Link>
-            }
+            <Link
+              className="bg-cerise py-2.5 px-4 rounded-full text-center hover:scale-105 transition-transform"
+              href="/företagsanmälan"
+            >{t.companyForm}</Link>
             <button data-dont-close onClick={swapLocale} className={`
               w-8 h-8
               rounded-full border-none

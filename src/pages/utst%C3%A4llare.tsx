@@ -4,10 +4,14 @@ import { api } from "@/utils/api";
 import React, { Fragment, useEffect, useState } from "react";
 import type { User } from "@prisma/client";
 import { getPackage } from "@/utils/packages";
+import { useRouter } from "next/router";
 
 export default function Exhibitor() {
+  const router = useRouter();
   const t = useLocale();
   const trpc = api.useContext();
+
+  const logout = api.account.logout.useMutation();
 
   const exhibitor = api.exhibitor.get.useQuery();
   const updateExhibitor = api.exhibitor.update.useMutation();
@@ -46,6 +50,13 @@ export default function Exhibitor() {
   const setExtraDrinkCouponsStr = setNumber(setExtraDrinkCoupons);
   const setExtraRepresentativeSpotsStr = setNumber(setExtraRepresentativeSpots);
   const setExtraBanquetTicketsStr = setNumber(setTotalBanquetTicketsWanted);
+
+  useEffect(() => {
+    if (logout.isSuccess) {
+      trpc.account.invalidate();
+      router.push("/");
+    }
+  }, [logout.isSuccess]);
 
   useEffect(() => {
     if (!exhibitor.isSuccess) return;
@@ -220,6 +231,9 @@ export default function Exhibitor() {
       </section>
       <Allergies type="representative" maxCount={totalRepresentativeSpots} />
       <Allergies type="banquet" maxCount={totalBanquetTicketsWanted} />
+      <button onClick={() => logout.mutate()}>
+        Logga ut
+      </button>
     </div>
   </>;
 }
