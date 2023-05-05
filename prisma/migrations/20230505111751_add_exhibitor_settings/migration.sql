@@ -4,9 +4,6 @@ CREATE TYPE "Package" AS ENUM ('base', 'sponsor', 'headhunter', 'premium', 'main
 -- CreateEnum
 CREATE TYPE "FoodSpecificationType" AS ENUM ('banquet', 'representative');
 
--- AlterTable
-ALTER TABLE "exhibitor_interest_registrations" ADD COLUMN     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP;
-
 -- CreateTable
 CREATE TABLE "exhibitors" (
     "id" TEXT NOT NULL,
