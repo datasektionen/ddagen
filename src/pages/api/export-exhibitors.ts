@@ -1,18 +1,23 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "@/server/db";
 import { env } from "@/env.mjs";
+import { timingSafeEqual } from "crypto";
+
+const exportToken = Buffer.from(env.EXPORT_TOKEN);
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.headers["authorization"] !== env.EXPORT_TOKEN) {
+  const authHeader = req.headers["authorization"];
+  if (!authHeader || authHeader.length != exportToken.length) {
+    return res.status(402).end();
+  }
+  if (!timingSafeEqual(Buffer.from(authHeader), exportToken)) {
     return res.status(402).end();
   }
 
-  const exhibitors = await prisma.exhibitor.findMany({
-    include: { accounts: true },
-  });
+  const exhibitors = await prisma.exhibitorInterestRegistration.findMany();
 
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(exhibitors.map(e => ({
@@ -20,6 +25,6 @@ export default async function handler(
     organizationNumber: e.organizationNumber,
     contactPerson: e.contactPerson,
     phoneNumber: e.phoneNumber,
-    email: e.accounts.map(a => a.email).join(","),
+    email: e.email,
   }))));
 }

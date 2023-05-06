@@ -1,11 +1,12 @@
 import { z } from "zod";
-
-import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
+import { createTRPCRouter, protectedProcedure, publicProcedure } from "@/server/api/trpc";
 import { validateOrganizationNumber } from "@/shared/validateOrganizationNumber";
 import { getLocale } from "@/locales";
-import { env } from "@/env.mjs";
 import { TRPCError } from "@trpc/server";
 import { Prisma } from "@prisma/client";
+import sendEmail from "@/utils/send-email";
+
+const allergyType = z.enum(["representative", "banquet"]);
 
 export const exhibitorRouter = createTRPCRouter({
   register: publicProcedure
@@ -36,54 +37,189 @@ export const exhibitorRouter = createTRPCRouter({
         organizationNumber = v.value;
       }
 
-      try {
-        await ctx.prisma.exhibitor.create({
-          data: {
-            name: companyName,
-            organizationNumber,
-            contactPerson,
-            phoneNumber,
-            accounts: {
-              create: {
-                email,
-              },
-            },
-          }
-        });
-      } catch (e) {
-        if (e instanceof Prisma.PrismaClientKnownRequestError && e.code === "P2002") {
-          return { ok: false, error: "duplicate-email" as const };
+      await ctx.prisma.exhibitorInterestRegistration.create({
+        data: {
+          name: companyName,
+          organizationNumber,
+          contactPerson,
+          phoneNumber,
+          email,
         }
-        throw e;
-      }
+      });
 
-      if (env.NODE_ENV === "development") {
-        console.log(`Not sending email to "${contactPerson} <${email}>" in development`);
-        return { ok: true };
-      }
-
-      const res = await fetch(env.SPAM_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          key: env.SPAM_API_KEY,
-          from: "no-reply@datasektionen.se",
-          to: email,
-          replyTo: "sales@ddagen.se",
-          subject: t.subject,
-          html: t.body(
+      try {
+        sendEmail(
+          email,
+          t.subject,
+          t.body(
             companyName,
             organizationNumber,
             email,
             contactPerson,
             phoneNumber,
           ),
-        }),
-      });
-      if (!res.ok) {
-        console.error("Error sending mail with spam", res.status, res.statusText);
+          "sales@ddagen.se",
+        )
+      } catch (e) {
         return { ok: false, error: "send-email" as const };
       }
       return { ok: true };
     }),
+
+  get: protectedProcedure.query(async ({ ctx }) => {
+    return await ctx.prisma.exhibitor.findUniqueOrThrow({
+      where: { id: ctx.session.user.exhibitorId },
+      select: {
+        id: true,
+        name: true,
+        organizationNumber: true,
+
+        invoiceEmail: true,
+        description: true,
+        package: true,
+        extraTables: true,
+        extraChairs: true,
+        extraDrinkCoupons: true,
+        extraRepresentativeSpots: true,
+        totalBanquetTicketsWanted: true,
+      },
+    });
+  }),
+  update: protectedProcedure.input(z.object({
+    invoiceEmail: z.string().email(),
+    description: z.string(),
+    extraChairs: z.number(),
+    extraTables: z.number(),
+    extraDrinkCoupons: z.number(),
+    extraRepresentativeSpots: z.number(),
+  })).mutation(async ({ ctx, input }) => {
+    await ctx.prisma.exhibitor.update({
+      where: { id: ctx.session.user.exhibitorId },
+      data: {
+        invoiceEmail: input.invoiceEmail,
+        description: input.description,
+        extraChairs: input.extraChairs,
+        extraTables: input.extraTables,
+        extraDrinkCoupons: input.extraDrinkCoupons,
+        extraRepresentativeSpots: input.extraRepresentativeSpots,
+      },
+    });
+  }),
+
+  setLogo: protectedProcedure.input(z.object({
+    b64data: z.string(),
+    kind: z.enum(["white", "color"]),
+  })).mutation(async ({ ctx, input }) => {
+    const logo = Buffer.from(input.b64data, "base64");
+    await ctx.prisma.exhibitor.update({
+      where: { id: ctx.session.user.exhibitorId },
+      data: input.kind === "white" ? { logoWhite: logo } : { logoColor: logo },
+    });
+  }),
+  logo: protectedProcedure.input(z.enum(["white", "color"])).query(async ({ ctx, input }) => {
+    const exhibitor = await ctx.prisma.exhibitor.findUniqueOrThrow({
+      where: { id: ctx.session.user.exhibitorId },
+      select: { logoWhite: input === "white", logoColor: input === "color" },
+    });
+    if (exhibitor.logoWhite) return exhibitor.logoWhite.toString("base64");
+    if (exhibitor.logoColor) return exhibitor.logoColor.toString("base64");
+    return null;
+  }),
+
+  getContacts: protectedProcedure.query(async ({ ctx }) => {
+    return await ctx.prisma.user.findMany({
+      where: { exhibitorId: ctx.session.user.exhibitorId },
+    });
+  }),
+  upsertContact: protectedProcedure.input(z.object({
+    id: z.string().optional(),
+    name: z.string(),
+    email: z.string().email(),
+    phone: z.string(),
+    role: z.string(),
+  })).mutation(async ({ ctx, input }) => {
+    try {
+      if (input.id) {
+        await ctx.prisma.user.updateMany({
+          where: { id: input.id, exhibitorId: ctx.session.user.exhibitorId },
+          data: {
+            name: input.name,
+            email: input.email,
+            phone: input.phone,
+            role: input.role,
+          },
+        });
+      } else {
+        await ctx.prisma.user.create({
+          data: {
+            exhibitorId: ctx.session.user.exhibitorId,
+            name: input.name,
+            email: input.email,
+            phone: input.phone,
+            role: input.role,
+          },
+        });
+      }
+    } catch (e) {
+      if (
+        e instanceof Prisma.PrismaClientKnownRequestError &&
+        e.code === "P2002"
+      ) {
+        return { ok: false, error: "duplicateEmail" as const };
+      }
+      throw e;
+    }
+  }),
+  deleteContact: protectedProcedure.input(z.string()).mutation(async ({ ctx, input }) => {
+    if (input === ctx.session.user.id) {
+      return { ok: false, error: "cannotDeleteSelf" as const };
+    }
+    await ctx.prisma.user.delete({
+      where: { id: input },
+    });
+    return { ok: true };
+  }),
+
+  getFoodSpecifications: protectedProcedure.input(allergyType).query(async ({ input, ctx }) => {
+    return await ctx.prisma.foodSpecification.findMany({
+      where: {
+        exhibitorId: ctx.session.user.exhibitorId,
+        type: input,
+      },
+    });
+  }),
+  upsertFoodSpecification: protectedProcedure.input(z.object({
+    id: z.string().optional(),
+    type: allergyType,
+    value: z.string(),
+    comment: z.string(),
+  })).mutation(async ({ ctx, input }) => {
+    if (input.id) {
+      await ctx.prisma.foodSpecification.updateMany({
+        where: {
+          id: input.id,
+          exhibitorId: ctx.session.user.exhibitorId,
+          type: input.type,
+        },
+        data: {
+          value: input.value,
+          comment: input.comment,
+        },
+      });
+    } else {
+      await ctx.prisma.foodSpecification.create({
+        data: {
+          exhibitorId: ctx.session.user.exhibitorId,
+          type: input.type,
+          value: input.value,
+          comment: input.comment,
+        },
+      });
+    }
+  }),
+  deleteFoocSpecification: protectedProcedure.input(z.string()).mutation(async ({ ctx, input }) => {
+    await ctx.prisma.foodSpecification.deleteMany({
+      where: { id: input, exhibitorId: ctx.session.user.exhibitorId },
+    });
+  }),
 });

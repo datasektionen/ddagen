@@ -32,6 +32,48 @@ export default {
       "Are you interested in exhibiting on D-Dagen and connecting with thousands of students in Computer Science and IT? Click below to sign up!",
     formButton: "Sign up",
   },
+  exhibitorSettings: {
+    fields: {
+      invoiceEmail: "Invoce email",
+      description: "Company description",
+      extraChairs: "Extra chairs",
+      extraTables: "Extra tables",
+      extraDrinkCoupons: "Extra drink coupons",
+      extraRepresentativeSpots: "Extra representative spots",
+      totalBanquetTicketsWanted: "Total banquet tickets wanted",
+      contactName: "Name",
+      contactEmail: "Email",
+      contactPhone: "Phone number",
+      contactRole: "Role",
+      saveContact: "Save",
+      removeContact: "Remove",
+      allergyValue: "Specification",
+      allergyComment: "Comment",
+    },
+    contacts: "Contacts",
+    representativesAllergies: "Food specifications representatives",
+    banquetAllergies: "Food specifications banquet",
+    editAllergy: "Edit",
+    removeAllergy: "Remove",
+    tooManyAllergies: "You have specified more food specifications than tickets!",
+  },
+  login: {
+    title: "Log in",
+    email: "Email",
+    emailText: "The email address you used to register your company",
+    confirm: "Log in",
+    confirmationCode: "Confirmation code",
+    confirmationCodeText: "We sent you a confirmation code to your email address. If you can't find the email, make sure to check your spam folder!",
+    emailSubject: "D-Dagen Login",
+    emailBody: (code: string, link: string) => `
+      <p>To complete the login to D-Dagen, click the link below:</p>
+      <p><a href="${link}">${link}</a></p>
+      <p>or enter the code <b>${code}</b> on the login page.</p>
+      <p>If you did not request this login, please ignore this email.</p>
+      If you get a lot of these, please contact us at
+      <a href="mailto:dev@ddagen.se">dev@ddagen.se</a>.</p>
+    `,
+  },
   companyForm: {
     title: "Sign up for D-Dagen",
     description: "Fill in this form to sign up your company for D-Dagen 2023. Please note that signing up through to this form is not binding.",
@@ -61,7 +103,9 @@ export default {
     companyForm: "Exhibitor Registration",
     changeLanguage: "Change language to Swedish",
     contact: "Contact",
-    login: "Login",
+    exhibitorSettings: "Exhibitor Settings",
+    login: "Log in",
+    logout: "Log out",
   },
   footer: {
     header: "Organized by Datasektionen",
@@ -153,6 +197,16 @@ export default {
     forCompany: "https://ddagen.se/en/förföretag",
     companyForm: "https://ddagen.se/en/företagsanmälan"
   },
+  packages: {
+    name: {
+      base: "Base Package",
+      sponsor: "Sponsor Package",
+      headhunter: "Headhunter Package",
+      premium: "Premium Package",
+      main: "Main sponsor",
+    },
+    boothSpace: "booth space",
+  },
   error: {
     exhibitorRegistration: "Something went wrong! Try again or send an email instead to",
     exhibitorRegistrationEmail:
@@ -161,5 +215,10 @@ export default {
     invalidOrganizationNumberLength: "The organization number must be 10 digits",
     invalidOrganizationNumberChecksum:
       "Invalid check digit, check that you have entered the number correctly",
+    userNotFound: "No account with this email has been registered",
+    emailNotSent: "Something went wrong when sending an email to you, please try again later",
+    invalidConfirmationCode: "Invalid or expired confirmation code, please try again",
+    cannotDeleteSelf: "You cannot delete your own account",
+    unknown: "Something unexpectedly went wrong",
   },
 };

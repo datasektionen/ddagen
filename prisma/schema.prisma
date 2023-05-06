@@ -10,24 +10,98 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Exhibitor {
-  id                 String  @id @default(uuid())
+model ExhibitorInterestRegistration {
+  id                 String   @id @default(uuid())
+  createdAt          DateTime @default(now())
   name               String
-  organizationNumber String?
+  organizationNumber String
   contactPerson      String
   phoneNumber        String
+  email              String
 
-  accounts Account[]
+  @@map("exhibitor_interest_registrations")
+}
+
+model Exhibitor {
+  id                 String @id @default(uuid())
+  name               String
+  organizationNumber String
+
+  invoiceEmail              String
+  logoWhite                 Bytes?
+  logoColor                 Bytes?
+  description               String
+  package                   Package
+  extraTables               Int
+  extraChairs               Int
+  extraDrinkCoupons         Int
+  extraRepresentativeSpots  Int
+  totalBanquetTicketsWanted Int
+
+  foodSpecifications FoodSpecification[]
+  users              User[]
 
   @@map("exhibitors")
 }
 
-model Account {
+model User {
   id    String @id @default(uuid())
   email String @unique
+  name  String
+  phone String
+  role  String
 
   exhibitorId String
-  exhibitor   Exhibitor @relation(fields: [exhibitorId], references: [id])
+  exhibitor   Exhibitor @relation(fields: [exhibitorId], references: [id], onDelete: Cascade)
 
-  @@map("accounts")
+  loginCode LoginCode?
+  session   Session?
+
+  @@map("users")
+}
+
+model LoginCode {
+  id        String   @id @db.Char(32)
+  createdAt DateTime @default(now())
+
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("login_codes")
+}
+
+model Session {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  lastUsed  DateTime @default(now())
+
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+enum Package {
+  base
+  sponsor
+  headhunter
+  premium
+  main
+}
+
+model FoodSpecification {
+  id      String                @id @default(uuid())
+  value   String
+  comment String
+  type    FoodSpecificationType
+
+  exhibitor   Exhibitor @relation(fields: [exhibitorId], references: [id], onDelete: Cascade)
+  exhibitorId String
+
+  @@map("food_specifications")
+}
+
+enum FoodSpecificationType {
+  banquet
+  representative
 }

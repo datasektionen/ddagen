@@ -2,15 +2,15 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useLocale } from "@/locales";
-import { FaChevronDown } from "react-icons/fa";
+import { api } from "@/utils/api";
 
-function NavLink({ href, children, "class": className, style, onClick}: { 
+function NavLink({ href, children, "class": className, style, onClick }: {
   href: string,
-  children: React.ReactNode, 
-  "class"?: string, 
-  style?: React.CSSProperties, 
-  onClick?: React.MouseEventHandler<HTMLAnchorElement> }) {
-
+  children: React.ReactNode,
+  "class"?: string,
+  style?: React.CSSProperties,
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+}) {
   const router = useRouter();
 
   return <Link
@@ -41,62 +41,74 @@ function Logo({ "class": className }: { "class"?: string }) {
   );
 }
 
-function Group({ links }: { links: { href: string, text: string }[] }) {
+function Group({
+  links,
+  class: className
+}: {
+  links: { href: string, text: string }[];
+  class?: string;
+}) {
   const [hovered, setHovered] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(false);
   const [dropped, setDrop] = useState(false);
-  const toggleDropdown = () => {
-    setShowDropdown(!showDropdown);
-  };
   return (
-    <div>
-      <div
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        className="lg:ml-10 lg:flex flex-row relative hidden lg:block"
-      >
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onFocus={() => setHovered(true)}
+      className={`lg:ml-10 ${className ?? ""}`}
+    >
+      <div className="lg:flex relative flex-row hidden">
         <div
           style={{ height: 70 + links.length * 40 }}
           className={
-            "hidden lg:block absolute -z-10 " + (hovered
+            "block absolute -z-10 " + (hovered
               ? "bg-[#666474] bg-opacity-60 rounded-md -top-[50px] -left-[20px] w-[calc(100%+40px)]"
               : "")
           }
         />
         {links.map(({ href, text }, i) => i == 0
-          ? <NavLink key={href} class="z-10 pl-14 lg:pl-0 p-4" href={href}>{text}</NavLink>
+          ? <NavLink key={href} class="z-10 pl-0 p-4" href={href}>{text}</NavLink>
           : <NavLink key={href}
             style={{ top: 40 * i }}
-            class={(hovered ? "" : "lg:hidden") + " z-10 lg:w-full lg:absolute p-4 lg:px-0"}
+            class={(hovered ? "" : "hidden") + " z-10 w-full absolute p-4 px-0"}
             href={href}
           >{text}</NavLink>)}
       </div>
       <div className="flex flex-col lg:hidden">
-        <div className="flex flex-row justify-between mb-4">
-        <NavLink key={links[0].href} class="" href={links[0].href}>{links[0].text}</NavLink>
-        <img onClick={() => setDrop(!dropped)} src="/img/smCaret.svg/" className={`${
-                dropped ? "rotate-180" : ""
-              } duration-200 ml-4 h-4 text-cerise cursor-pointer`}></img>
+        <div className="flex flex-row justify-start gap-4 mb-4">
+          <NavLink key={links[0].href} class="" href={links[0].href}>{links[0].text}</NavLink>
+          <img
+            data-dont-close
+            onClick={() => setDrop(d => !d)}
+            src="/img/smCaret.svg/"
+            className={`${
+              dropped ? "rotate-180" : ""
+            } ml-4 h-4 text-cerise cursor-pointer`}
+          ></img>
         </div>
-        <div className={`${(dropped ? "block" : "hidden")} flex flex-col px-8 justify-between mb-4`}>
-        {links.slice(1).map(({ href, text }, i) => (<NavLink key={href} href={href}>{text}</NavLink>
-        ))}
-        </div>
-        
+        <div className={`
+          ${(dropped ? "grid-rows-[1fr]" : "grid-rows-[0fr]")}
+          grid transition-all
+        `}><div className={(dropped ? "mb-4" : "mb-0") + " flex flex-col pl-8 gap-2 overflow-hidden transition-[margin]"}>
+          {links.slice(1).map(({ href, text }) =>
+            (<NavLink key={href} href={href}>{text}</NavLink>))}
+        </div></div>
       </div>
     </div>
-    
-
   );
 }
 
 export default function Navbar() {
   const router = useRouter();
+  const trpc = api.useContext();
   const l = useLocale();
   const t = l.nav;
   const locale = l.locale;
 
   const [open, setOpen] = useState(false);
+
+  const isLoggedIn = api.account.isLoggedIn.useQuery();
+  const logout = api.account.logout.useMutation();
 
   function swapLocale() {
     router.push(router.pathname, router.pathname, {
@@ -114,7 +126,15 @@ export default function Navbar() {
       ) return;
       setOpen(false);
     };
+    window.addEventListener("click", close);
+    return () => window.removeEventListener("click", close);
   });
+
+  useEffect(() => {
+    if (logout.isSuccess) {
+      trpc.account.invalidate();
+    }
+  }, [logout.isSuccess]);
 
   return (
     <>
@@ -150,25 +170,28 @@ export default function Navbar() {
           lg:left-0 lg:flex-row lg:items-center lg:px-8 lg:pt-0
         ` + (open ? "left-0" : "-left-full")
         }>
-        <div className="px-14 pb-0 lg:px-0 lg:pb-0 flex flex-col lg:flex-row ">
-          <a
-            className="sr-only focus:not-sr-only"
-            href="#main-content"
-          >{t.toContent}</a>
-          <NavLink class="px-0 lg:px-4 p-4" href="/">{t.home}</NavLink>
-          <Group links={[
-            { href: "/förföretag", text: t.forCompanies },
-            { href: "/faq", text: "faq" },
-          ]} />
-          <NavLink class="mb-4 lg:hidden px-0 lg:px-4" href="/kontakt">{t.contact}</NavLink>
-          {/*<NavLink class="px-14 lg:px-0" href="/förstudenter">{t.forStudents}</NavLink>*/}
-          {/*<NavLink class="px-14 lg:px-0" href="/mässan">{t.about}</NavLink>*/}
+          <div className="px-14 pb-0 lg:px-0 lg:pb-0 flex flex-col lg:flex-row ">
+            <a
+              className="sr-only focus:not-sr-only"
+              href="#main-content"
+            >{t.toContent}</a>
+            <NavLink class="px-0 lg:px-4 p-4" href="/">{t.home}</NavLink>
+            <Group links={[
+              { href: "/förföretag", text: t.forCompanies },
+              { href: "/faq", text: "faq" },
+              // isLoggedIn.data == true ?
+              //   { href: "/utställare", text: t.exhibitorSettings } :
+              //   { href: "/logga-in", text: t.login },
+            ]} />
+            <NavLink class="mb-4 lg:hidden px-0 lg:px-4" href="/kontakt">{t.contact}</NavLink>
+            {/*<NavLink class="px-14 lg:px-0" href="/förstudenter">{t.forStudents}</NavLink>*/}
+            {/*<NavLink class="px-14 lg:px-0" href="/mässan">{t.about}</NavLink>*/}
           </div>
           <div className="
-            flex flex-row  lg:justify-center items-center lg:pl-0 justify-center lg:pr-0  
+            flex flex-row lg:justify-center items-center lg:pl-0 justify-center lg:pr-0
             py-4 gap-8
             lg:px-0 bg-black lg:bg-transparent lg:ml-auto
-          ">  
+          ">
             <NavLink class="hidden lg:block px-14 lg:px-4 p-4" href="/kontakt">{t.contact}</NavLink>
             <Link
               className="bg-cerise py-2.5 px-4 rounded-full text-center hover:scale-105 transition-transform"
@@ -186,7 +209,6 @@ export default function Navbar() {
             ><img className="sr-only" alt={t.changeLanguage} /></button>
           </div>
         </div>
-        
       </nav>
     </>
   );

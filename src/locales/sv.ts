@@ -32,6 +32,48 @@ export default {
       "Är du intresserad av att ställa ut på D-Dagen och knyta kontakt med tusentals studenter inom Data och IT? Klicka här nedan för att göra en intresseanmälan!",
     formButton: "Intresseanmälan",
   },
+  exhibitorSettings: {
+    fields: {
+      invoiceEmail: "Fakturerings-E-post",
+      description: "Företagsbeskrivning",
+      extraChairs: "Extra stolar",
+      extraTables: "Extra bord",
+      extraDrinkCoupons: "Extra barbongar",
+      extraRepresentativeSpots: "Extra representantplatser",
+      totalBanquetTicketsWanted: "Sittningsbiljetter önskade",
+      contactName: "Namn",
+      contactEmail: "E-postadress",
+      contactPhone: "Telefonnummer",
+      contactRole: "Roll",
+      saveContact: "Spara",
+      removeContact: "Ta bort",
+      allergyValue: "Specifikation",
+      allergyComment: "Kommentar",
+    },
+    contacts: "Kontakter",
+    representativesAllergies: "Matspecifikationer företagsrepresentanter",
+    banquetAllergies: "Matspecifikationer sittning",
+    editAllergy: "Redigera",
+    removeAllergy: "Ta bort",
+    tooManyAllergies: "Du har lagt till fler matspecifikationer än antalet platser!",
+  },
+  login: {
+    title: "Logga in",
+    email: "E-post",
+    emailText: "E-postadressen du angav när du gjorde din intresseanmälan",
+    confirm: "Logga in",
+    confirmationCode: "Bekräftelsekod",
+    confirmationCodeText: "Vi har skickat en kod till din e-postadress. Om du inte hittar mailet, se till att kolla i skräpposten!",
+    emailSubject: "D-Dagen - Logga in",
+    emailBody: (code: string, link: string) => `
+      <p>För att slutföra inloggningen till D-Dagen, klicka på länken nedan:</p>
+      <p><a href="${link}">${link}</a></p>
+      <p>eller ange koden <b>${code}</b> på inloggningssidan.</p>
+      <p>Om du inte försökt logga in kan du ignorera detta mail.
+      Om du får oväntat många av dessa, kontakta oss på
+      <a href="mailto:dev@ddagen.se">dev@ddagen.se</a>.</p>
+    `,
+  },
   companyForm: {
     title: "Intresseanmälan",
     description: "Fyll i formuläret för att registrera ert företag för D-Dagen 2023. OBS! En intresseanmälan är inte bindande.",
@@ -61,7 +103,9 @@ export default {
     companyForm: "Företagsanmälan",
     changeLanguage: "Ändra språk till engelska",
     contact: "Kontakt",
+    exhibitorSettings: "Utställarinställningar",
     login: "Logga in",
+    logout: "Logga ut",
   },
   footer: {
     header:
@@ -156,13 +200,28 @@ export default {
     forCompany: "https://ddagen.se/förföretag",
     companyForm: "https://ddagen.se/företagsanmälan"
   },
+  packages: {
+    name: {
+      base: "Baspaketet",
+      sponsor: "Sponsorpaketet",
+      headhunter: "Headhunterpaketet",
+      premium: "Premiumpaketet",
+      main: "Huvudsponsor",
+    },
+    boothSpace: "monteryta",
+  },
   error: {
     exhibitorRegistration: "Något gick fel! Försök igen eller skicka istället ett mail till",
     exhibitorRegistrationEmail:
       "Din anmälan har registrerats, men vi kunde inte skicka ett konfirmationsmail till dig.",
-    duplicateEmail: "Det finns redan ett registrerat företag med den här mailadressen",
+    duplicateEmail: "Den här mailadressen är redan kopplad till en registrering",
     invalidOrganizationNumberLength: "Organisationsnumret måste vara 10 siffror",
     invalidOrganizationNumberChecksum:
       "Felaktig kontrollsiffra, kontrollera att du skrivit rätt",
+    userNotFound: "Det finns inget konto med den här mailadressen",
+    emailNotSent: "Ett fel uppstod när vi försökte skicka ett mail till dig",
+    invalidConfirmationCode: "Bekräftelsekoden är felaktig eller har gått ut, var god försök igen",
+    cannotDeleteSelf: "Du kan inte ta bort ditt eget konto",
+    unknown: "Ett okänt fel uppstod",
   },
 };
