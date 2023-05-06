@@ -82,7 +82,7 @@ function Group({
       <div className="flex flex-col lg:hidden">
         <div className="flex flex-row justify-between mb-4">
         <NavLink key={links[0].href} class="" href={links[0].href}>{links[0].text}</NavLink>
-        <img onClick={() => setDrop(!dropped)} src="/img/smCaret.svg/" className={`${
+        <img data-dont-close onClick={() => setDrop(!dropped)} src="/img/smCaret.svg/" className={`${
                 dropped ? "rotate-180" : ""
               } duration-200 ml-4 h-4 text-cerise cursor-pointer`}></img>
         </div>
