@@ -179,9 +179,9 @@ export default function Navbar() {
             <Group links={[
               { href: "/förföretag", text: t.forCompanies },
               { href: "/faq", text: "faq" },
-              isLoggedIn.data == true ?
-                { href: "/utställare", text: t.exhibitorSettings } :
-                { href: "/logga-in", text: t.login },
+              // isLoggedIn.data == true ?
+              //   { href: "/utställare", text: t.exhibitorSettings } :
+              //   { href: "/logga-in", text: t.login },
             ]} />
             <NavLink class="mb-4 lg:hidden px-0 lg:px-4" href="/kontakt">{t.contact}</NavLink>
             {/*<NavLink class="px-14 lg:px-0" href="/förstudenter">{t.forStudents}</NavLink>*/}
