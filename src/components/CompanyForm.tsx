@@ -101,13 +101,7 @@ export default function CompanyForm({
             "
           />
         </div>
-        {register.data?.error == "duplicate-email" ? (
-          <div className="flex items-center flex-col gap-3">
-            <p className="text-red-500 mt-5">
-              {t.error.duplicateEmail}
-            </p>
-          </div>
-        ) : register.data?.error == "send-email" ? (
+        {register.data?.error == "send-email" ? (
           <div className="flex items-center flex-col gap-3">
             <p className="text-red-500 mt-5">
               {t.error.exhibitorRegistrationEmail}
