@@ -10,10 +10,10 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const authHeader = req.headers["authorization"];
-  if (!authHeader || authHeader.length != exportToken.length) {
-    return res.status(402).end();
-  }
-  if (!timingSafeEqual(Buffer.from(authHeader), exportToken)) {
+  if (!authHeader ||
+    authHeader.length != exportToken.length ||
+    !timingSafeEqual(Buffer.from(authHeader), exportToken)
+  ) {
     return res.status(402).end();
   }
 
@@ -31,3 +31,36 @@ export default async function handler(
     createdAt: e.createdAt,
   }))));
 }
+
+/**
+ * This function is meant to export the exhibitor registrations so that sales can see them.
+ * In 2023, we made a google sheet for this, which had the following in a Google Apps Script:
+ *
+ * ```js
+ * function importExhibitors() {
+ *   var activeSheet = SpreadsheetApp.getActiveSpreadsheet();
+ *   var sheet = activeSheet.getSheetByName("Utställare");
+ *
+ *   const res = UrlFetchApp.fetch("https://ddagen.se/api/export-exhibitors", {
+ *     method: "GET",
+ *     headers: {
+ *       'Authorization': <whatever env.EXPORT_TOKEN is>,
+ *     },
+ *   });
+ *
+ *   const data = JSON.parse(res.getContentText());
+ *
+ *   sheet.getRange(1, 1, 1, 7).setValues([[
+ *     "Företagsnamn", "Organisationsnummer", "Kontaktperson", "Telefonnummer",
+ *     "E-postadress", "Datum", "Anteckningar (kommer ej röras av skript). Senast uppdaterad " + new Date().toLocaleString("se"),
+ *   ]]).setFontWeight("bold");
+ *
+ *   sheet.getRange(2, 1, data.length, 6).setValues(data.map(row => [
+ *     row.name, "'" + row.organizationNumber, row.contactPerson, "'" + row.phoneNumber, row.email, row.createdAt,
+ *   ]));
+ *
+ *   sheet.autoResizeColumns(1, 7);
+ * }
+ * ```
+ * Which we put on a trigger to run every so often.
+ */
