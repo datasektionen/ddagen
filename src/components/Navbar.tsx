@@ -55,42 +55,44 @@ function Group({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onFocus={() => setHovered(true)}
-      className={`lg:ml-10 flex flex-row relative ${className ?? ""}`}
+      className={`lg:ml-10 ${className ?? ""}`}
     >
-      <div
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        onFocus={() => setHovered(true)}
-        className="lg:ml-10 lg:flex flex-row relative hidden"
-      >
+      <div className="lg:flex relative flex-row hidden">
         <div
           style={{ height: 70 + links.length * 40 }}
           className={
-            "hidden lg:block absolute -z-10 " + (hovered
+            "block absolute -z-10 " + (hovered
               ? "bg-[#666474] bg-opacity-60 rounded-md -top-[50px] -left-[20px] w-[calc(100%+40px)]"
               : "")
           }
         />
         {links.map(({ href, text }, i) => i == 0
-          ? <NavLink key={href} class="z-10 pl-14 lg:pl-0 p-4" href={href}>{text}</NavLink>
+          ? <NavLink key={href} class="z-10 pl-0 p-4" href={href}>{text}</NavLink>
           : <NavLink key={href}
             style={{ top: 40 * i }}
-            class={(hovered ? "" : "lg:hidden") + " z-10 lg:w-full lg:absolute p-4 lg:px-0"}
+            class={(hovered ? "" : "hidden") + " z-10 w-full absolute p-4 px-0"}
             href={href}
           >{text}</NavLink>)}
       </div>
       <div className="flex flex-col lg:hidden">
-        <div className="flex flex-row justify-between mb-4">
-        <NavLink key={links[0].href} class="" href={links[0].href}>{links[0].text}</NavLink>
-        <img data-dont-close onClick={() => setDrop(!dropped)} src="/img/smCaret.svg/" className={`${
-                dropped ? "rotate-180" : ""
-              } duration-200 ml-4 h-4 text-cerise cursor-pointer`}></img>
+        <div className="flex flex-row justify-start gap-4 mb-4">
+          <NavLink key={links[0].href} class="" href={links[0].href}>{links[0].text}</NavLink>
+          <img
+            data-dont-close
+            onClick={() => setDrop(d => !d)}
+            src="/img/smCaret.svg/"
+            className={`${
+              dropped ? "rotate-180" : ""
+            } ml-4 h-4 text-cerise cursor-pointer`}
+          ></img>
         </div>
-        <div className={`${(dropped ? "block" : "hidden")} flex flex-col px-8 justify-between mb-4`}>{
-          links.slice(1).map(({ href, text }) =>
-            (<NavLink key={href} href={href}>{text}</NavLink>))
-        }</div>
-
+        <div className={`
+          ${(dropped ? "grid-rows-[1fr]" : "grid-rows-[0fr]")}
+          grid transition-all
+        `}><div className={(dropped ? "mb-4" : "mb-0") + " flex flex-col pl-8 gap-2 overflow-hidden transition-[margin]"}>
+          {links.slice(1).map(({ href, text }) =>
+            (<NavLink key={href} href={href}>{text}</NavLink>))}
+        </div></div>
       </div>
     </div>
   );
@@ -177,9 +179,9 @@ export default function Navbar() {
             <Group links={[
               { href: "/förföretag", text: t.forCompanies },
               { href: "/faq", text: "faq" },
-              // isLoggedIn.data == true ?
-              //   { href: "/utställare", text: t.exhibitorSettings } :
-              //   { href: "/logga-in", text: t.login },
+              isLoggedIn.data == true ?
+                { href: "/utställare", text: t.exhibitorSettings } :
+                { href: "/logga-in", text: t.login },
             ]} />
             <NavLink class="mb-4 lg:hidden px-0 lg:px-4" href="/kontakt">{t.contact}</NavLink>
             {/*<NavLink class="px-14 lg:px-0" href="/förstudenter">{t.forStudents}</NavLink>*/}
