@@ -41,7 +41,7 @@ export default function Login() {
 
   return (
     <div className="mx-auto flex flex-col items-center text-center mb-40">
-      <h1 className="text-cerise pt-[200px] mb-36 text-5xl font-medium uppercase">{t.login.title}</h1>
+      <h1 className="text-cerise pt-[200px] mb-16 text-5xl font-medium uppercase">{t.login.title}</h1>
       {state === "email" ? <>
         <form className="flex flex-col gap-6" onSubmit={(e) => { e.preventDefault(); startLogin.mutate({ email, locale }); }}>
           <InputField
