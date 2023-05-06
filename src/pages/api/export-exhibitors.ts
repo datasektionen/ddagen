@@ -17,7 +17,9 @@ export default async function handler(
     return res.status(402).end();
   }
 
-  const exhibitors = await prisma.exhibitorInterestRegistration.findMany();
+  const exhibitors = await prisma.exhibitorInterestRegistration.findMany({
+    orderBy: { createdAt: "asc" },
+  });
 
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(exhibitors.map(e => ({
@@ -26,5 +28,6 @@ export default async function handler(
     contactPerson: e.contactPerson,
     phoneNumber: e.phoneNumber,
     email: e.email,
+    createdAt: e.createdAt,
   }))));
 }
