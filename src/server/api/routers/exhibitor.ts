@@ -37,22 +37,15 @@ export const exhibitorRouter = createTRPCRouter({
         organizationNumber = v.value;
       }
 
-      try {
-        await ctx.prisma.exhibitorInterestRegistration.create({
-          data: {
-            name: companyName,
-            organizationNumber,
-            contactPerson,
-            phoneNumber,
-            email,
-          }
-        });
-      } catch (e) {
-        if (e instanceof Prisma.PrismaClientKnownRequestError && e.code === "P2002") {
-          return { ok: false, error: "duplicate-email" as const };
+      await ctx.prisma.exhibitorInterestRegistration.create({
+        data: {
+          name: companyName,
+          organizationNumber,
+          contactPerson,
+          phoneNumber,
+          email,
         }
-        throw e;
-      }
+      });
 
       try {
         sendEmail(
