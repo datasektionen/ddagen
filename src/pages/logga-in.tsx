@@ -40,8 +40,8 @@ export default function Login() {
   }, [router.query.code]);
 
   return (
-    <div className="mx-auto flex flex-col items-center text-center py-40">
-      <h1 className="md:max-w-2xl md:text-5xl mx-10 text-3xl text-cerise uppercase mb-14">{t.login.title}</h1>
+    <div className="mx-auto flex flex-col items-center text-center mb-40">
+      <h1 className="text-cerise pt-[200px] mb-36 text-5xl font-medium uppercase">{t.login.title}</h1>
       {state === "email" ? <>
         <form className="flex flex-col gap-6" onSubmit={(e) => { e.preventDefault(); startLogin.mutate({ email, locale }); }}>
           <InputField
