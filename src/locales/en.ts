@@ -207,7 +207,7 @@ export default {
       "Access to company host",
       "Storage and handling of delivieries"
       ],
-      packetType:["BASE PACKET", "SPONSOR PACKET", "HEAD-HUNTER PACKET", "PREMIUM PACKET"],
+      packetType:["BASE PACKAGE", "SPONSOR PACKAGE", "HEAD-HUNTER PACKAGE", "PREMIUM PACKAGE"],
       info: "LIMITED AMOUNT"
     
   }
