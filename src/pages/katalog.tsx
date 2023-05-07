@@ -25,14 +25,18 @@ export default function Catalog() {
         <div className="pt-[200px] pb-[300px]">
             <h1 className="uppercase text-cerise text-5xl font-medium text-center">{t.catalog.header}</h1>
 
-            <div className="flex flex-row justify-between w-full px-[100px] mt-[200px]">
-                {packets.map((packet, i) => <div className="flex flex-col px-[20px]">
-                    <div className={`justify-between relative z-40 flex flex-col py-[30px] px-[0px] h-[300px] w-[300px] ${packetColor1[i]} border-[3px] rounded-xl bg-slate-50 bg-opacity-10 items-center`}>
-                        <h1 className="text-white text-center text-3xl px-4">{t.catalog.packetType[i]}</h1>
+            <div className="flex flex-row justify-between px-[80px] mt-[200px]">
+                {packets.map((packet, i) => <div className="flex flex-col px-[10px]">
+                    <div className={`
+                    justify-between relative z-40 flex flex-col py-[30px] px-[px] h-[200px] lg:h-[225px] 2xl:h-[250px] md:w-[150px] lg:w-[200px] xl:w-[250px] 2xl:w-[300px] 
+                    ${packetColor1[i]} border-[3px] rounded-xl bg-slate-50 bg-opacity-10 items-center
+                    `}>
+                        <h2 className="text-white text-center text-sm lg:text-xl xl:text-2xl 2xl:text-3xl">{t.catalog.packetType[i]}</h2>
                         <div>
-                        <h1 className="text-yellow text-center text-1xl ">{t.catalog.info[i]}</h1>
-                        <h1 className="text-white text-center text-5xl pb-10 px-[50px]">{prices[i]}</h1>
+                        <h2 className="text-yellow text-center text-sm lg:text-xl ">{t.catalog.info[i]}</h2>
+                        <h2 className="text-white text-center text-3xl lg:text-4xl pb-1 px-[10px]">{prices[i]}</h2>
                         </div>
+                        
                         <button onClick={() => stateAction[i][1](!stateAction[i][0])} className={`absolute h-[40px] w-[100px] ${packetColor2[i]} rounded-[40px] border-cerise bottom-0 translate-y-1/2`}>
                             <i className={`${stateAction[i][0] ? "" : "rotate-180"} duration-200 fas fa-chevron-up text-white`}></i>
                         </button>
@@ -40,11 +44,12 @@ export default function Catalog() {
                     <div className={`
                     ${stateAction[i][0] ? " max-h-full py-[40px]"
                               : "max-h-0 text-[0px] border-b-0"}
+                    md:w-[150px] lg:w-[200px] xl:w-[250px] 2xl:w-[300px] 
                     px-[0px] duration-200 z-0 flex flex-col ${packetColor1[i]} border-[3px] border-t-0 rounded-b-xl ${packetColor2[i]} bg-opacity-10 text-center`}>
                     {packet.map((row, j) => (
-                            <div className={`flex flex-col py-2 items-center px-[50px] mt-4`}>
-                                <i className={`${stateAction[i][0] ? "text-4xl" : "text-[0px]"} fas ${icons[i][j]} duration-200 text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]`}></i>
-                                <p className="text-white w-[190px]">{row}</p>
+                            <div className={`flex flex-col py-2 items-center px-[50px] mt-10`}>
+                                <i className={`${stateAction[i][0] ? "text-2xl" : "text-[0px]"} fas ${icons[i][j]} duration-200 text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]`}></i>
+                                <p className="text-white w-[140px] mt-2">{row}</p>
                             </div>
                         ))}
                     </div>
