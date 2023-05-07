@@ -22,7 +22,7 @@ export default function Catalog() {
     const stateAction = Array.from({ length: packets.length}, () => useState(false));
 
     return (
-        <div className="pt-[200px] pb-[600px]">
+        <div className="pt-[200px] pb-[300px]">
             <h1 className="uppercase text-cerise text-5xl font-medium text-center">{t.catalog.header}</h1>
 
             <div className="flex flex-row justify-between w-full px-[100px] mt-[200px]">
@@ -51,6 +51,16 @@ export default function Catalog() {
             </div>
             <div className="flex flex-row text-white px-[100px] pt-[100px]">
                 
+            </div>
+
+            <div className="flex flex-col sm:flex-row justify-center gap-[20px] sm:gap-[100px] px-[50px] mt-[100px]">
+                <div className="pt-[20px] px-[0px] sm:w-[400px]">
+                    <h1 className="text-4xl font-normal text-cerise"> {t.catalog.subheader}</h1>
+                    <p className="text-white text-lg mt-4">{t.catalog.paragraph}</p>
+                </div>
+                <div className="">
+                <img src="/img/catalogImg.png" className="sm:w-[600px]"></img>
+                </div>
             </div>
         </div>
     )

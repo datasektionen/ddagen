@@ -208,7 +208,9 @@ export default {
       "Storage and handling of delivieries"
       ],
       packetType:["BASE PACKAGE", "SPONSOR PACKAGE", "HEAD-HUNTER PACKAGE", "PREMIUM PACKAGE"],
-      info: "LIMITED AMOUNT"
+      info: "LIMITED AMOUNT",
+      subheader:"QUESTIONS, THOUGHTS, & IDEAS?",
+      paragraph: "Don't hesitate to get in touch if you have any questions about our products or have any other questions."
     
   }
 };
