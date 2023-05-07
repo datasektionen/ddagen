@@ -23,20 +23,19 @@ export default function Catalog() {
 
     return (
         <div className="pt-[200px] pb-[300px]">
-            <h1 className="uppercase text-cerise text-5xl font-medium text-center">{t.catalog.header}</h1>
+            <h1 className="uppercase text-cerise text-3xl md:text-5xl font-medium text-center px-[10px]">{t.catalog.header}</h1>
 
-            <div className="flex flex-row justify-between px-[80px] mt-[200px]">
-                {packets.map((packet, i) => <div className="flex flex-col px-[10px]">
+            <div className="flex flex-row justify-between px-[10px] md:px-[80px] mt-[200px] overflow-x-auto overflow-y-hidden pb-6">
+                {packets.map((packet, i) => <div className="flex flex-col px-[20px] md:px-[10px]">
                     <div className={`
                     justify-between relative z-40 flex flex-col py-[30px] px-[px] h-[200px] lg:h-[225px] 2xl:h-[250px] md:w-[150px] lg:w-[200px] xl:w-[250px] 2xl:w-[300px] 
                     ${packetColor1[i]} border-[3px] rounded-xl bg-slate-50 bg-opacity-10 items-center
                     `}>
-                        <h2 className="text-white text-center text-sm lg:text-xl xl:text-2xl 2xl:text-3xl">{t.catalog.packetType[i]}</h2>
+                        <h2 className="text-white text-center text-3xl md:text-sm lg:text-xl xl:text-2xl 2xl:text-3xl">{t.catalog.packetType[i]}</h2>
                         <div>
                         <h2 className="text-yellow text-center text-sm lg:text-xl ">{t.catalog.info[i]}</h2>
                         <h2 className="text-white text-center text-3xl lg:text-4xl pb-1 px-[10px]">{prices[i]}</h2>
                         </div>
-                        
                         <button onClick={() => stateAction[i][1](!stateAction[i][0])} className={`absolute h-[40px] w-[100px] ${packetColor2[i]} rounded-[40px] border-cerise bottom-0 translate-y-1/2`}>
                             <i className={`${stateAction[i][0] ? "" : "rotate-180"} duration-200 fas fa-chevron-up text-white`}></i>
                         </button>
@@ -56,11 +55,7 @@ export default function Catalog() {
                 </div>)}
                 
             </div>
-            <div className="flex flex-row text-white px-[100px] pt-[100px]">
-                
-            </div>
-
-            <div className="flex flex-col sm:flex-row justify-center gap-[20px] sm:gap-[100px] px-[50px] mt-[100px]">
+            <div className="flex flex-col sm:flex-row justify-center gap-[20px] sm:gap-[100px] px-[50px] mt-[200px]">
                 <div className="pt-[20px] px-[0px] sm:w-[400px]">
                     <h1 className="text-4xl font-normal text-cerise"> {t.catalog.subheader}</h1>
                     <p className="text-white text-lg mt-4">{t.catalog.paragraph}</p>
