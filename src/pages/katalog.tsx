@@ -23,7 +23,7 @@ export default function Catalog() {
 
     return (
         <div className="pt-[200px] pb-[300px]">
-            <h1 className="uppercase text-cerise text-3xl md:text-5xl font-medium text-center px-[10px]">{t.catalog.header}</h1>
+            <h1 className="uppercase text-cerise text-5xl font-medium text-center px-[10px] break-words">{t.catalog.header}</h1>
 
             <div className="flex flex-row justify-between px-[10px] md:px-[80px] mt-[150px] overflow-x-auto overflow-y-hidden pb-6">
                 {packets.map((packet, i) => <div className="flex flex-col px-[20px] md:px-[10px]">
