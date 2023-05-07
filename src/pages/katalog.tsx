@@ -25,7 +25,7 @@ export default function Catalog() {
         <div className="pt-[200px] pb-[300px]">
             <h1 className="uppercase text-cerise text-3xl md:text-5xl font-medium text-center px-[10px]">{t.catalog.header}</h1>
 
-            <div className="flex flex-row justify-between px-[10px] md:px-[80px] mt-[200px] overflow-x-auto overflow-y-hidden pb-6">
+            <div className="flex flex-row justify-between px-[10px] md:px-[80px] mt-[150px] overflow-x-auto overflow-y-hidden pb-6">
                 {packets.map((packet, i) => <div className="flex flex-col px-[20px] md:px-[10px]">
                     <div className={`
                     justify-between relative z-40 flex flex-col py-[30px] px-[px] h-[200px] lg:h-[225px] 2xl:h-[250px] md:w-[150px] lg:w-[200px] xl:w-[250px] 2xl:w-[300px] 
@@ -59,9 +59,11 @@ export default function Catalog() {
                 <div className="pt-[20px] px-[0px] sm:w-[400px]">
                     <h1 className="text-4xl font-normal text-cerise"> {t.catalog.subheader}</h1>
                     <p className="text-white text-lg mt-4">{t.catalog.paragraph}</p>
+                    <a className="block text-cerise mt-6" href="mailto:sales@ddagen.se">sales@ddagen.se</a>
                 </div>
                 <div className="">
                 <img src="/img/catalogImg.png" className="sm:w-[600px]"></img>
+                
                 </div>
             </div>
         </div>
