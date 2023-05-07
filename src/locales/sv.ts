@@ -171,7 +171,7 @@ export default {
       "2 st representantplatser (frukost & lunch ingår)", "2 st sittningsbiljetter", "10st dryckesbiljetter (värde ca 50 kr styck)",
       "El & Wifi", "Loungetillgång", "Tillgång till företagsvärd", "Förvaring & mottagning av leverans",],
     packetType:["BASPAKETET", "SPONSORPAKETET", "HEAD-HUNTERPAKETET", "PREMIUMPAKETET"],
-    info: "BEGRÄNSAT ANTAL",
+    info: ["", "BEGRÄNSAT ANTAL", "BEGRÄNSAT ANTAL", "BEGRÄNSAT ANTAL"],
     subheader:"FRÅGOR, TANKAR, & IDEER?",
     paragraph: "Tveka inte att höra av dig om du har några frågor angående våra produkter eller har några funderingar."
     
