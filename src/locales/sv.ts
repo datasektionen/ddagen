@@ -182,8 +182,8 @@ export default {
     emailText: "E-postadressen du angav när du gjorde din intresseanmälan",
     confirm: "Logga in",
     confirmationCode: "Bekräftelsekod",
-    confirmationCodeText:
-      "Vi har skickat en kod till din e-postadress. Om du inte hittar mailet, se till att kolla i skräpposten!",
+    confirmationCodeText1: "Vi har skickat en kod till din e-postadress <",
+    confirmationCodeText2: "> om den är registrerad i vårt system. Om du inte hittar mailet, se dubbelkolla att e-postadressen är korrekt samt se till att kolla i skräpposten!",
     emailSubject: "D-Dagen - Logga in",
     emailBody: (code: string, link: string) => `
       <p>För att slutföra inloggningen till D-Dagen, klicka på länken nedan:</p>
