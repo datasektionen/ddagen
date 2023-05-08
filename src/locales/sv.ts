@@ -106,6 +106,7 @@ export default {
     exhibitorSettings: "Utställarinställningar",
     login: "Logga in",
     logout: "Logga ut",
+    catalog: "Katalog",
   },
   footer: {
     header:

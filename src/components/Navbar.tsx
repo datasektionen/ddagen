@@ -178,6 +178,7 @@ export default function Navbar() {
             <NavLink class="px-0 lg:px-4 p-4" href="/">{t.home}</NavLink>
             <Group links={[
               { href: "/förföretag", text: t.forCompanies },
+              { href: "/katalog", text:t.catalog  },
               { href: "/faq", text: "faq" },
               // isLoggedIn.data == true ?
               //   { href: "/utställare", text: t.exhibitorSettings } :
