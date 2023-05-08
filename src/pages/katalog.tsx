@@ -28,7 +28,7 @@ export default function Catalog() {
             <div className="flex flex-row justify-between px-[10px] md:px-[80px] mt-[150px] overflow-x-auto overflow-y-hidden pb-6">
                 {packets.map((packet, i) => <div className="flex flex-col px-[20px] md:px-[10px]">
                     <div className={`
-                    justify-between relative z-40 flex flex-col py-[30px] px-[px] h-[200px] lg:h-[225px] 2xl:h-[250px] md:w-[150px] lg:w-[200px] xl:w-[250px] 2xl:w-[300px] 
+                    justify-between relative z-40 flex flex-col py-[30px] px-[px] h-[230px] w-[300px] lg:h-[225px] 2xl:h-[250px] md:w-[150px] lg:w-[200px] xl:w-[250px] 2xl:w-[300px] 
                     ${packetColor1[i]} border-[3px] rounded-xl bg-slate-50 bg-opacity-10 items-center
                     `}>
                         <h2 className="text-white text-center text-3xl md:text-sm lg:text-xl xl:text-2xl 2xl:text-3xl">{t.catalog.packetType[i]}</h2>
@@ -44,12 +44,14 @@ export default function Catalog() {
                     ${stateAction[i][0] ? " max-h-full py-[40px]"
                               : "max-h-0 text-[0px] border-b-0"}
                     md:w-[150px] lg:w-[200px] xl:w-[250px] 2xl:w-[300px] 
-                    px-[0px] duration-200 z-0 flex flex-col ${packetColor1[i]} border-[3px] border-t-0 rounded-b-xl ${packetColor2[i]} bg-opacity-10 text-center`}>
+                    px-[0px] duration-200 z-0 flex flex-col ${packetColor1[i]} border-[3px] border-t-0 rounded-b-xl bg-opacity-10 text-center bg-slate-50 `}>
                     {packet.map((row, j) => (
                             <div className={`flex flex-col py-2 items-center px-[50px] mt-10`}>
-                                <i className={`${stateAction[i][0] ? "text-2xl" : "text-[0px]"} fas ${icons[i][j]} duration-200 text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]`}></i>
-                                <p className="text-white w-[140px] mt-2">{row}</p>
-                            </div>
+                            <i className={`${stateAction[i][0] ? "text-2xl" : "text-[0px]"} fas ${icons[i][j]} duration-200 text-white`} style={{ textShadow: '1px 1px 4px black, 1px -1px 4px black, -1px 1px 4px black, -1px -1px 4px black' }}></i>
+                            
+                            <p className="text-white w-[140px] mt-2" style={{ textShadow: '1px 1px 4px black, 1px -1px 4px black, -1px 1px 4px black, -1px -1px 4px black' }}>{row}</p>
+                          
+                          </div>
                         ))}
                     </div>
                 </div>)}
