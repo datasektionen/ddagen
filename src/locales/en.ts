@@ -221,4 +221,73 @@ export default {
     cannotDeleteSelf: "You cannot delete your own account",
     unknown: "Something unexpectedly went wrong",
   },
+  catalog:{
+    header:"PRODUCT CATALOG",
+    premiumPacket: [
+      "A whole room",
+      "Advertisement on D-Dagen's website",
+      "1 table for your booth",
+      "2 spots for company representatives (including breakfast and lunch)",
+      "4 tickets to the dinner and after-party",
+      "30 drink coupons (worth about 50 SEK each)",
+      "Electricity & WiFi", 
+      "Access to the company lounge",
+      "Access to company host",
+      "Storage and handling of delivieries",
+      "Exposure in brouchure",
+      "Exposure on goodie bag",
+      "One marketed post on our social media",
+      "A full day of private student meetings",
+      "Marketing of private student meetings"
+      ],
+      headhHunterPacket: [
+      "8 m² booth space",
+      "Advertisement on D-Dagen's website",
+      "1 table for your booth",
+      "2 spots for company representatives (including breakfast and lunch)",
+      "2 tickets to the dinner and after-party",
+      "20 drink coupons (worth about 50 SEK each)",
+      "Electricity & WiFi", 
+      "Access to the company lounge",
+      "Access to company host",
+      "Storage and handling of delivieries",
+      "Exposure in brouchure",
+      "Exposure on goodie bag",
+      "One marketed post on our social media",
+      "A half day of private student meetings",
+      "Marketing of private student meetings"
+      ],
+      sponsorPacket: [
+      "5 m² booth space",
+      "Advertisement on D-Dagen's website",
+      "1 table for your booth",
+      "2 spots for company representatives (including breakfast and lunch)",
+      "2 tickets to the dinner and after-party",
+      "10 drink coupons (worth about 50 SEK each)",
+      "Electricity & WiFi", 
+      "Access to the company lounge",
+      "Access to company host",
+      "Storage and handling of delivieries",
+      "Exposure in brouchure",
+      "Exposure on goodie bag",
+      "One marketed post on our social media"
+      ],
+      basePacket: [
+      "5 m² booth space",
+      "Advertisement on D-Dagen's website",
+      "1 table for your booth",
+      "2 spots for company representatives (including breakfast and lunch)",
+      "2 tickets to the dinner and after-party",
+      "10 drink coupons (worth about 50 SEK each)",
+      "Electricity & WiFi", 
+      "Access to the company lounge",
+      "Access to company host",
+      "Storage and handling of delivieries"
+      ],
+      packetType:["BASE PACKAGE", "SPONSOR PACKAGE", "HEAD-HUNTER PACKAGE", "PREMIUM PACKAGE"],
+      info: ["", "LIMITED AMOUNT", "LIMITED AMOUNT", "LIMITED AMOUNT"],
+      subheader:"QUESTIONS, THOUGHTS, & IDEAS?",
+      paragraph: "Don't hesitate to get in touch if you have any questions about our products or have any other questions."
+    
+  }
 };
