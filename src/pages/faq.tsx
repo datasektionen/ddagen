@@ -34,7 +34,7 @@ function Table(questions: Array<string>, answers: Array<string>) {
         <div key={i}>
           <button
             onClick={() => stateAction[i][1](!stateAction[i][0])}
-            className={`${i == questions.length-1 ? "border-b-2" : ""} items-center flex flex-row  justify-between pl-[20px] pr-[20px] py-[15px] text-left text-white max-h-[300px] w-full bg-slate-50 bg-opacity-20 border-cerise border-b-0 border-t-2 border-x-2`}
+            className={`${i == questions.length-1 ? "border-b-2" : ""} ${i == 0 ? "" : ""} items-center flex flex-row  justify-between pl-[20px] pr-[20px] py-[15px] text-left text-white max-h-[300px] w-full bg-slate-50 bg-opacity-20 border-cerise border-t-2 border-x-2`}
           >
             {" "}
             {questions[i]}
@@ -49,9 +49,9 @@ function Table(questions: Array<string>, answers: Array<string>) {
           <div
             className={`${
               stateAction[i][0]
-                ? "max-h-[800px] py-[40px] border-t-2 border-x-2"
-                : "max-h-0 text-[0px] border-[0px]"
-            }  ${i == questions.length-1 ? "border-b-2" : ""} duration-200 ease-out text-white py-[0px] pl-[20px] pr-[20px] bg-gray bg-opacity-50 flex items-center border-cerise`}
+                ? "py-[40px] border-t-2"
+                : "text-[0px] border-[0px]"
+            }  ${i == questions.length-1 && stateAction[i][0] ? "border-b-2 border-t-0" : ""} transition-[padding-top,padding-bottom] text-white py-[0px] pl-[20px] pr-[20px] bg-gray bg-opacity-50 flex items-center border-cerise border-x-2`}
           >
             {handleAnchorStrings(answers[i])}
           </div>
