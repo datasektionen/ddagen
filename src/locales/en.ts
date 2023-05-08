@@ -164,7 +164,7 @@ export default {
       "Marketing of private student meetings"
       ],
       headhHunterPacket: [
-      "8 m2 booth space",
+      "8 m² booth space",
       "Advertisement on D-Dagen's website",
       "1 table for your booth",
       "2 spots for company representatives (including breakfast and lunch)",
@@ -181,7 +181,7 @@ export default {
       "Marketing of private student meetings"
       ],
       sponsorPacket: [
-      "5 m2 booth space",
+      "5 m² booth space",
       "Advertisement on D-Dagen's website",
       "1 table for your booth",
       "2 spots for company representatives (including breakfast and lunch)",
@@ -196,7 +196,7 @@ export default {
       "One marketed post on our social media"
       ],
       basePacket: [
-      "5 m2 booth space",
+      "5 m² booth space",
       "Advertisement on D-Dagen's website",
       "1 table for your booth",
       "2 spots for company representatives (including breakfast and lunch)",

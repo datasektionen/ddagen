@@ -156,18 +156,18 @@ export default {
       "Exponering på goodie bag ", "Sponsrat inlägg på sociala medier",
        "En heldag med kontaktsamtal", "Marknadsföring av kontaktsamtal",],
     headhHunterPacket: [
-      "8 m2 monteryta och centralt på mässan", "Exponering på hemsidan", "1 st ståbord", 
+      "8 m² monteryta och centralt på mässan", "Exponering på hemsidan", "1 st ståbord", 
       "2 st representantplatser (frukost & lunch ingår)", "2 st sittningsbiljetter", "20st dryckesbiljetter (värde ca 50 kr styck)",
       "El & Wifi", "Loungetillgång", "Tillgång till företagsvärd", "Förvaring & mottagning av leverans", "Exponering i broschyr", 
       "Exponering på goodie bag ", "Sponsrat inlägg på sociala medier",
        "En halvdag med kontaktsamtal", "Marknadsföring av kontaktsamtal",],
     sponsorPacket: [
-      "5 m2 monteryta och centralt på mässan", "Exponering på hemsidan", "1 st ståbord", 
+      "5 m² monteryta och centralt på mässan", "Exponering på hemsidan", "1 st ståbord", 
       "2 st representantplatser (frukost & lunch ingår)", "2 st sittningsbiljetter", "10st dryckesbiljetter (värde ca 50 kr styck)",
       "El & Wifi", "Loungetillgång", "Tillgång till företagsvärd", "Förvaring & mottagning av leverans", "Exponering i broschyr", 
       "Exponering på goodie bag ", "Sponsrat inlägg på sociala medier",],
     basePacket: [
-      "5 m2 monteryta och centralt på mässan", "Exponering på hemsidan", "1 st ståbord", 
+      "5 m² monteryta och centralt på mässan", "Exponering på hemsidan", "1 st ståbord", 
       "2 st representantplatser (frukost & lunch ingår)", "2 st sittningsbiljetter", "10st dryckesbiljetter (värde ca 50 kr styck)",
       "El & Wifi", "Loungetillgång", "Tillgång till företagsvärd", "Förvaring & mottagning av leverans",],
     packetType:["BASPAKETET", "SPONSORPAKETET", "HEAD-HUNTERPAKETET", "PREMIUMPAKETET"],

@@ -2,26 +2,6 @@ import { useLocale } from "@/locales";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { useState } from "react";
 
-// To correctly render m2, with 2 as supscript
-function handleSquare(text: string) {
-    const parts = text.split(/(m2)/g);
-    return (
-      <p className="text-white w-[140px] mt-2" style={{ textShadow: '1px 1px 4px black, 1px -1px 4px black, -1px 1px 4px black, -1px -1px 4px black' }}>
-        {parts.map((part, i) => {
-          if (part === "m2") {
-            return (
-              <span key={i}>
-                m<sup>2</sup>
-              </span>
-            );
-          } else {
-            return <span key={i}>{part}</span>;
-          }
-        })}
-      </p>
-    );
-  }
-
 
 export default function Catalog() {
     const t = useLocale();
@@ -71,7 +51,7 @@ export default function Catalog() {
                             <div className={`flex flex-col py-2 items-center px-[50px] mt-10`}>
                             <i className={`${stateAction[i][0] ? "text-2xl" : "text-[0px]"} fas ${icons[i][j]} duration-200 text-white`} 
                                             style={{ textShadow: '1px 1px 4px black, 1px -1px 4px black, -1px 1px 4px black, -1px -1px 4px black' }}></i>
-                            {handleSquare(row)}
+                            <p className="text-white w-[140px] mt-2" style={{ textShadow: '1px 1px 4px black, 1px -1px 4px black, -1px 1px 4px black, -1px -1px 4px black' }}>{row}</p>
                           </div>
                         ))}
                     </div>
