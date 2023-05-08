@@ -106,6 +106,7 @@ export default {
     exhibitorSettings: "Exhibitor Settings",
     login: "Log in",
     logout: "Log out",
+    catalog: "Catalog",
   },
   footer: {
     header: "Organized by Datasektionen",
