@@ -11,11 +11,11 @@ const allergyType = z.enum(["representative", "banquet"]);
 export const exhibitorRouter = createTRPCRouter({
   register: publicProcedure
     .input(z.object({
-      companyName: z.string(),
-      organizationNumber: z.string(),
-      email: z.string().email(),
-      contactPerson: z.string(),
-      phoneNumber: z.string(),
+      companyName: z.string().trim(),
+      organizationNumber: z.string().trim(),
+      email: z.string().email().trim(),
+      contactPerson: z.string().trim(),
+      phoneNumber: z.string().trim(),
       locale: z.enum(["en", "sv"]),
     }))
     .mutation(async ({
@@ -86,8 +86,8 @@ export const exhibitorRouter = createTRPCRouter({
     });
   }),
   update: protectedProcedure.input(z.object({
-    invoiceEmail: z.string().email(),
-    description: z.string(),
+    invoiceEmail: z.string().email().trim(),
+    description: z.string().trim(),
     extraChairs: z.number(),
     extraTables: z.number(),
     extraDrinkCoupons: z.number(),
@@ -133,10 +133,10 @@ export const exhibitorRouter = createTRPCRouter({
   }),
   upsertContact: protectedProcedure.input(z.object({
     id: z.string().optional(),
-    name: z.string(),
-    email: z.string().email(),
-    phone: z.string(),
-    role: z.string(),
+    name: z.string().trim(),
+    email: z.string().email().trim(),
+    phone: z.string().trim(),
+    role: z.string().trim(),
   })).mutation(async ({ ctx, input }) => {
     try {
       if (input.id) {
@@ -191,8 +191,8 @@ export const exhibitorRouter = createTRPCRouter({
   upsertFoodSpecification: protectedProcedure.input(z.object({
     id: z.string().optional(),
     type: allergyType,
-    value: z.string(),
-    comment: z.string(),
+    value: z.string().trim(),
+    comment: z.string().trim(),
   })).mutation(async ({ ctx, input }) => {
     if (input.id) {
       await ctx.prisma.foodSpecification.updateMany({
