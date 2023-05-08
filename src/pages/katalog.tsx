@@ -59,8 +59,6 @@ export default function Catalog() {
     const packetColor1 = ["border-[#E2B7C9]", "border-[#D5759C]", "border-cerise", "border-yellow"]
     const packetColor2 = ["bg-[#E2B7C9]", "bg-[#D5759C]", "bg-cerise", "bg-yellow"]
 
-    const stateAction = Array.from({ length: packets.length}, () => useState(false));
-
     return (
         <div className="pt-[200px] pb-[300px]">
             <h1 className="uppercase text-cerise text-5xl font-medium text-center px-[10px] break-words">{t.catalog.header}</h1>
