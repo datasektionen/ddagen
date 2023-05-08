@@ -16,9 +16,9 @@ function Packet({
   icons: string[];
   packetColor1: string;
   packetColor2: string;
-  packetType: String;
-  info: String;
-  packetDescription: Array<String>;
+  packetType: string;
+  info: string;
+  packetDescription: string[];
 }) {
   const [packetHidden, hidePackage] = useState(false);
   return (<div className="flex flex-col px-[20px] md:px-[10px]">
