@@ -2,6 +2,7 @@ import { useLocale } from "@/locales";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { useState } from "react";
 
+// To correctly render m2, with 2 as supscript
 function handleSquare(text: string) {
     const parts = text.split(/(m2)/g);
     return (
