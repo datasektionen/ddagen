@@ -2,6 +2,26 @@ import { useLocale } from "@/locales";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { useState } from "react";
 
+function handleSquare(text: string) {
+    const parts = text.split(/(m2)/g);
+    return (
+      <p>
+        {parts.map((part, i) => {
+          if (part === "m2") {
+            return (
+              <span key={i}>
+                m<sup>2</sup>
+              </span>
+            );
+          } else {
+            return <span key={i}>{part}</span>;
+          }
+        })}
+      </p>
+    );
+  }
+
+
 export default function Catalog() {
     const t = useLocale();
     const packets = [t.catalog.basePacket, t.catalog.sponsorPacket, t.catalog.headhHunterPacket, t.catalog.premiumPacket]
@@ -48,10 +68,9 @@ export default function Catalog() {
                     px-[0px] duration-200 z-0 flex flex-col ${packetColor1[i]} border-[3px] border-t-0 rounded-b-xl bg-opacity-10 text-center bg-slate-50 `}>
                     {packet.map((row, j) => (
                             <div className={`flex flex-col py-2 items-center px-[50px] mt-10`}>
-                            <i className={`${stateAction[i][0] ? "text-2xl" : "text-[0px]"} fas ${icons[i][j]} duration-200 text-white`} style={{ textShadow: '1px 1px 4px black, 1px -1px 4px black, -1px 1px 4px black, -1px -1px 4px black' }}></i>
-                            
-                            <p className="text-white w-[140px] mt-2" style={{ textShadow: '1px 1px 4px black, 1px -1px 4px black, -1px 1px 4px black, -1px -1px 4px black' }}>{row}</p>
-                          
+                            <i className={`${stateAction[i][0] ? "text-2xl" : "text-[0px]"} fas ${icons[i][j]} duration-200 text-white`} 
+                                            style={{ textShadow: '1px 1px 4px black, 1px -1px 4px black, -1px 1px 4px black, -1px -1px 4px black' }}></i>
+                            <p className="text-white w-[140px] mt-2" style={{ textShadow: '1px 1px 4px black, 1px -1px 4px black, -1px 1px 4px black, -1px -1px 4px black' }}>{handleSquare(row)}</p>
                           </div>
                         ))}
                     </div>
