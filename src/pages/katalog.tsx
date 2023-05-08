@@ -36,7 +36,8 @@ export default function Catalog() {
                         <h2 className="text-yellow text-center text-sm lg:text-xl ">{t.catalog.info[i]}</h2>
                         <h2 className="text-white text-center text-3xl lg:text-4xl pb-1 px-[10px]">{prices[i]}</h2>
                         </div>
-                        <button onClick={() => stateAction[i][1](!stateAction[i][0])} className={` hover:scale-105 transition-transform hover:brightness-110 absolute h-[40px] w-[100px] ${packetColor2[i]} rounded-[40px] border-cerise bottom-0 translate-y-1/2`}>
+                        <button onClick={() => stateAction[i][1](!stateAction[i][0])} className={` hover:scale-105 transition-transform hover:brightness-110 absolute h-[40px] w-[100px] ${packetColor2[i]} rounded-[40px] border-cerise bottom-0 translate-y-1/2`} 
+                        style={{ textShadow: '1px 1px 1px black, 1px -1px 1px black, -1px 1px 1px black, -1px -1px 1px black' }}>
                             <i className={`${stateAction[i][0] ? "" : "rotate-180"} duration-200 fas fa-chevron-up text-white`}></i>
                         </button>
                     </div>
