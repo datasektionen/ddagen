@@ -6,7 +6,7 @@ import { useState } from "react";
 function handleSquare(text: string) {
     const parts = text.split(/(m2)/g);
     return (
-      <p>
+      <p className="text-white w-[140px] mt-2" style={{ textShadow: '1px 1px 4px black, 1px -1px 4px black, -1px 1px 4px black, -1px -1px 4px black' }}>
         {parts.map((part, i) => {
           if (part === "m2") {
             return (
@@ -71,7 +71,7 @@ export default function Catalog() {
                             <div className={`flex flex-col py-2 items-center px-[50px] mt-10`}>
                             <i className={`${stateAction[i][0] ? "text-2xl" : "text-[0px]"} fas ${icons[i][j]} duration-200 text-white`} 
                                             style={{ textShadow: '1px 1px 4px black, 1px -1px 4px black, -1px 1px 4px black, -1px -1px 4px black' }}></i>
-                            <p className="text-white w-[140px] mt-2" style={{ textShadow: '1px 1px 4px black, 1px -1px 4px black, -1px 1px 4px black, -1px -1px 4px black' }}>{handleSquare(row)}</p>
+                            {handleSquare(row)}
                           </div>
                         ))}
                     </div>
