@@ -46,10 +46,10 @@ export default function Catalog() {
                     ${stateAction[i][0] ? " max-h-full py-[40px]"
                               : "max-h-0 text-[0px] border-b-0"}
                     md:w-[150px] lg:w-[200px] xl:w-[250px] 2xl:w-[300px] 
-                    px-[0px] duration-200 z-0 flex flex-col ${packetColor1[i]} border-[3px] border-t-0 rounded-b-xl bg-opacity-10 text-center bg-slate-50 `}>
+                    px-[0px] transition-[max-height] duration-200 overflow-y-hidden z-0 flex flex-col ${packetColor1[i]} border-[3px] border-t-0 rounded-b-xl bg-opacity-10 text-center bg-slate-50 `}>
                     {packet.map((row, j) => (
                             <div className={`flex flex-col py-2 items-center px-[50px] mt-10`}>
-                            <i className={`${stateAction[i][0] ? "text-2xl" : "text-[0px]"} fas ${icons[i][j]} duration-200 text-white`} 
+                            <i className={`${stateAction[i][0] ? "text-2xl" : "text-[0px]"} fas ${icons[i][j]} text-white`} 
                                             style={{ textShadow: '1px 1px 4px black, 1px -1px 4px black, -1px 1px 4px black, -1px -1px 4px black' }}></i>
                             <p className="text-white w-[140px] mt-2" style={{ textShadow: '1px 1px 4px black, 1px -1px 4px black, -1px 1px 4px black, -1px -1px 4px black' }}>{row}</p>
                           </div>
