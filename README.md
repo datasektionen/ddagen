@@ -54,3 +54,90 @@ Lastly, start the thing:
 ```bash
 npm run dev
 ```
+
+## Database
+
+This is the current database diagram, written in mermaid which can be rendered
+in github, or the mermaid vs code plugin. The schema is defined with prisma in
+`prisma/schema.prisma`, which generates all the migrations in
+`prisma/migrations/`.
+
+```mermaid
+classDiagram
+    class ExhibitorInterestRegistration {
+      id                 String   @id @default(uuid())
+      createdAt          DateTime @default(now())
+      name               String
+      organizationNumber String
+      contactPerson      String
+      phoneNumber        String
+      email              String
+    }
+
+    class Exhibitor {
+      id                 String @id @default(uuid())
+      name               String
+      organizationNumber String
+
+      invoiceEmail              String
+      logoWhite                 Bytes?
+      logoColor                 Bytes?
+      description               String
+      package                   Package
+      extraTables               Int
+      extraChairs               Int
+      extraDrinkCoupons         Int
+      extraRepresentativeSpots  Int
+      totalBanquetTicketsWanted Int
+
+      foodSpecifications FoodSpecification[]
+      users              User[]
+    }
+
+    Exhibitor --> User
+    Exhibitor --> FoodSpecification
+
+    class User {
+      id    String @id @default(uuid())
+      email String @unique
+      name  String
+      phone String
+      role  String
+
+      exhibitorId String
+      exhibitor   Exhibitor
+
+      loginCode LoginCode?
+      session   Session?
+    }
+
+    User --> LoginCode
+    User --> Session
+
+    class LoginCode {
+      id        String   @id @db.Char(32)
+      createdAt DateTime @default(now())
+
+      userId String @unique
+      user   User
+    }
+
+    class Session {
+      id        String   @id @default(uuid())
+      createdAt DateTime @default(now())
+      lastUsed  DateTime @default(now())
+
+      userId String @unique
+      user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+    }
+
+    class FoodSpecification {
+      id      String                @id @default(uuid())
+      value   String
+      comment String
+      type    FoodSpecificationType
+
+      exhibitor   Exhibitor
+      exhibitorId String
+    }
+```
