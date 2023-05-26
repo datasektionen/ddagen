@@ -56,9 +56,9 @@ export default function GridCollage({
               <h2 className="uppercase text-cerise font-semibold text-4xl mt-8 mb-4 px-2">
                 {t.forCompanies.aboutFair}
               </h2>
-              <p className="px-2 mb-6 font-thin">{t.forCompanies.fairText1}</p>
-              <p className="px-2 mb-8 font-thin">{t.forCompanies.fairText2}</p>
-              <button>
+              <p className="px-2 mb-6 font-light">{t.forCompanies.fairText1}</p>
+              <p className="max-lg:hidden px-2 mb-8 font-light">{t.forCompanies.fairText2}</p>
+              <button className="max-lg:hidden">
                 <a
                   className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-medium px-6 py-2 max-lg:mx-auto w-max"
                   href={t.faq.catalogPath}
