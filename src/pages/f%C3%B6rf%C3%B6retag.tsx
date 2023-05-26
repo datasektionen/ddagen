@@ -1,7 +1,6 @@
-import { useLocale } from "@/locales";
-import Link from "next/link";
-import GridCollage from "@/components/GridCollage";
 import { useRef } from "react";
+import { useLocale } from "@/locales";
+import GridCollage from "@/components/GridCollage";
 
 export default function ForCompanies() {
   const t = useLocale()
