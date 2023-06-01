@@ -33,6 +33,7 @@ export default {
     formButton: "Intresseanmälan",
   },
   exhibitorSettings: {
+    header: "Profilinställningar",
     fields: {
       invoiceEmail: "Fakturerings-E-post",
       description: "Företagsbeskrivning",

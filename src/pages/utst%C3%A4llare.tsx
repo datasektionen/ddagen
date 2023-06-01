@@ -84,7 +84,7 @@ export default function Exhibitor() {
 
   return <>
     <div className="mx-auto flex flex-col items-center text-center py-40">
-      <h1 className="md:text-5xl mx-10 text-3xl text-cerise mb-14">{exhibitor.data?.name}</h1>
+    <h1 className="uppercase text-cerise text-5xl font-medium text-center px-[10px] break-words">{t.exhibitorSettings.header}</h1>
       {exhibitor.isLoading && <p className="text-cerise font-bold">Loading...</p>}
       {exhibitor.isError && <p className="text-red-500 font-bold">Failed to load exhibitor data</p>}
       {pkg && <>

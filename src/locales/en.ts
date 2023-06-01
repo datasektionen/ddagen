@@ -33,6 +33,7 @@ export default {
     formButton: "Sign up",
   },
   exhibitorSettings: {
+    header: "Profile Settings",
     fields: {
       invoiceEmail: "Invoce email",
       description: "Company description",
