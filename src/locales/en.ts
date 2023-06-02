@@ -58,9 +58,14 @@ export default {
     removeAllergy: "Remove",
     tooManyAllergies: "You have specified more food specifications than tickets!",
     table: {
-      row1: "ABOUT COMPANY",
-      row2: "YOUR PACKAGE AND EXTRA ORDERS",
-      row3: "FOOD PREFERENCES",
+      row1: {
+        title: "About Company",
+        header1: "General Information",
+        header2: "Job Offers",
+        header3: "Contacts",
+      },
+      row2: "Your Package And Extra Orders",
+      row3: "Food Preferences",
     },
   },
   login: {

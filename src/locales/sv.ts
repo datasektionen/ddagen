@@ -58,9 +58,14 @@ export default {
     removeAllergy: "Ta bort",
     tooManyAllergies: "Du har lagt till fler matspecifikationer än antalet platser!",
     table: {
-      row1: "OM FÖRETAGET",
-      row2: "ERT PAKET OCH EXTRA BESTÄLLNINGAR",
-      row3: "MATPREFERENSER",
+      row1: {
+        title: "Om Företaget",
+        header1: "Allmän Info",
+        header2: "Jobberbjudanden",
+        header3: "Kontaktpersoner",
+      },
+      row2: "Ert Paket Och Extra Beställningar",
+      row3: "Matpreferenser",
     },
   },
   login: {

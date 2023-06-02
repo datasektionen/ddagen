@@ -6,6 +6,7 @@ import type { User } from "@prisma/client";
 import { getPackage } from "@/utils/packages";
 import { useRouter } from "next/router";
 import { Table } from "@/components/Table";
+import UploadButton from "@/components/UploadButton";
 
 export default function Exhibitor() {
   const router = useRouter();
@@ -87,8 +88,24 @@ export default function Exhibitor() {
     setPendingChanges(false);
   }
 
-  const s = (
-    <div className="flex flex-col w-full">
+  const about = (
+    <div className="flex flex-col w-full items-center">
+      <h1 className="uppercase text-cerise text-4xl font-normal px-[10px] break-words">
+        {t.exhibitorSettings.table.row1.header1}
+      </h1>
+
+      <div className="flex flex-row gap-5 mt-8 mb-20">
+        {UploadButton("Vit Logga", "Logga", "image/png")}
+        {UploadButton("Logga m. färg", "Logga", "image/png")}
+      </div>
+
+      <h1 className="uppercase text-cerise text-4xl font-normal px-[10px] break-words">
+        {t.exhibitorSettings.table.row1.header2}
+      </h1>
+
+      <h1 className="uppercase text-cerise text-4xl font-normal px-[10px] break-words">
+        {t.exhibitorSettings.table.row1.header3}
+      </h1>
     </div>
   );
 
@@ -105,12 +122,12 @@ export default function Exhibitor() {
         <div className="h-full min-w-[200px] max-w-[1200px] w-full mt-[15px] px-[20px] min-[450px]:px-[60px] min-[704px]:px-[60px]">
           {Table(
             [
-              t.exhibitorSettings.table.row1,
+              t.exhibitorSettings.table.row1.title,
               t.exhibitorSettings.table.row2,
               t.exhibitorSettings.table.row3,
             ],
             [],
-            [s, s, s]
+            [about, about, about]
           )}
         </div>
         {/*Dropdown table*/}

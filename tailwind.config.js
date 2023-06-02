@@ -1,9 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./node_modules/flowbite-react/**/*.js",
+    './node_modules/flowbite-react/**/*.js',
     './src/pages/**/*.tsx',
-    './src/components/**/*.tsx'
+    './src/components/**/*.tsx',
   ],
   theme: {
     extend: {
@@ -15,6 +15,9 @@ module.exports = {
         yellow: '#ffc800',
         white: '#ffffff',
       },
+      backgroundImage: {
+        'editIcon': 'url("/img/edit-icon.png")',
+      }
     },
     fontFamily: {
       sans: ['neue-haas', 'sans-serif'],

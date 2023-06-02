@@ -19,7 +19,7 @@ export function Table(
             className={`
             ${i == 0 ? "border-t-2" : ""}
             ${settings == undefined ? "" : "font-medium"}
-            items-center flex flex-row  justify-between pl-[20px] pr-[20px] py-[15px] text-left max-h-[300px] w-full bg-slate-50 bg-opacity-20 border-cerise`}
+            uppercase items-center flex flex-row justify-between pl-[20px] pr-[20px] py-[15px] text-left max-h-[300px] w-full bg-slate-50 bg-opacity-20 border-cerise`}
           >
             {questions[i]}
             <img
