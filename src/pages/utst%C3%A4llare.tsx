@@ -5,6 +5,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import type { User } from "@prisma/client";
 import { getPackage } from "@/utils/packages";
 import { useRouter } from "next/router";
+import { Table } from "@/components/Table";
 
 export default function Exhibitor() {
   const router = useRouter();
@@ -20,6 +21,7 @@ export default function Exhibitor() {
   const setLogo = api.exhibitor.setLogo.useMutation();
   const logoWhite = api.exhibitor.logo.useQuery("white");
 
+  const [currentTable, setCurrentTable] = useState(2);
   const [pendingChanges, setPendingChanges] = useState(false);
   const [logoLoading, setLogoLoading] = useState(false);
 
@@ -33,15 +35,19 @@ export default function Exhibitor() {
 
   const [addingContact, setAddingContact] = useState(false);
 
-  const pkg = exhibitor.data?.package ? getPackage(t, exhibitor.data.package) : null;
+  const pkg = exhibitor.data?.package
+    ? getPackage(t, exhibitor.data.package)
+    : null;
 
   const totalChairs = extraChairs + (pkg?.chairs ?? 0);
   const totalTables = extraTables + (pkg?.tables ?? 0);
   const totalDrinkCoupons = extraDrinkCoupons + (pkg?.drinkCoupons ?? 0);
-  const totalRepresentativeSpots = extraRepresentativeSpots + (pkg?.representativeSpots ?? 0);
+  const totalRepresentativeSpots =
+    extraRepresentativeSpots + (pkg?.representativeSpots ?? 0);
 
   const setNumber = (setter: (value: number) => void) => (value: string) => {
-    const parsed = value === "" ? 0 : parseInt(value.replace(/[^0-9]/g, ""), 10);
+    const parsed =
+      value === "" ? 0 : parseInt(value.replace(/[^0-9]/g, ""), 10);
     setter(parsed);
     setPendingChanges(true);
   };
@@ -60,7 +66,6 @@ export default function Exhibitor() {
 
   useEffect(() => {
     if (!exhibitor.isSuccess) return;
-
     setInvoiceEmail(exhibitor.data.invoiceEmail ?? "");
     setDescription(exhibitor.data.description ?? "");
     setExtraChairs(exhibitor.data.extraChairs);
@@ -82,10 +87,35 @@ export default function Exhibitor() {
     setPendingChanges(false);
   }
 
-  return <>
-    <div className="mx-auto flex flex-col items-center text-center py-40">
-    <h1 className="uppercase text-cerise text-5xl font-medium text-center px-[10px] break-words">{t.exhibitorSettings.header}</h1>
-      {exhibitor.isLoading && <p className="text-cerise font-bold">Loading...</p>}
+  const s = (
+    <div className="flex flex-col w-full">
+    </div>
+  );
+
+  return (
+    <>
+      <div className="mx-auto flex flex-col items-center py-40">
+        {/*Header*/}
+        <h1 className="uppercase text-cerise text-5xl font-medium text-center px-[10px] break-words">
+          {t.exhibitorSettings.header}
+        </h1>
+        {/*Header*/}
+
+        {/*Dropdown table*/}
+        <div className="h-full min-w-[200px] max-w-[1200px] w-full mt-[15px] px-[20px] min-[450px]:px-[60px] min-[704px]:px-[60px]">
+          {Table(
+            [
+              t.exhibitorSettings.table.row1,
+              t.exhibitorSettings.table.row2,
+              t.exhibitorSettings.table.row3,
+            ],
+            [],
+            [s, s, s]
+          )}
+        </div>
+        {/*Dropdown table*/}
+
+        {/* {exhibitor.isLoading && <p className="text-cerise font-bold">Loading...</p>}
       {exhibitor.isError && <p className="text-red-500 font-bold">Failed to load exhibitor data</p>}
       {pkg && <>
         <h2 className="text-white font-bold text-3xl">{pkg.name}</h2>
@@ -233,9 +263,10 @@ export default function Exhibitor() {
       <Allergies type="banquet" maxCount={totalBanquetTicketsWanted} />
       <button onClick={() => logout.mutate()}>
         Logga ut
-      </button>
-    </div>
-  </>;
+      </button> */}
+      </div>
+    </>
+  );
 }
 
 function Allergies({
@@ -259,46 +290,64 @@ function Allergies({
 
   return (
     <section>
-      <h2 className="text-cerise font-bold text-3xl my-10">{
-        type === "representative"
+      <h2 className="text-cerise font-bold text-3xl my-10">
+        {type === "representative"
           ? t.representativesAllergies
-          : t.banquetAllergies
-      }</h2>
-      <div className="
+          : t.banquetAllergies}
+      </h2>
+      <div
+        className="
         grid text-white gap-3 text-lg place-items-start
         grid-cols-[1fr_1fr_auto_auto] mb-3
-      ">
+      "
+      >
         <p className="font-bold">{t.fields.allergyValue}</p>
         <p className="font-bold">{t.fields.allergyComment}</p>
         <div></div>
         <div></div>
-        {foodSpecs.data?.map(allergy => <Fragment key={allergy.id}>
-          <p>{allergy.value}</p>
-          <p>{allergy.comment}</p>
-          <button
-            className="
+        {foodSpecs.data?.map((allergy) => (
+          <Fragment key={allergy.id}>
+            <p>{allergy.value}</p>
+            <p>{allergy.comment}</p>
+            <button
+              className="
               bg-cerise
               text-white font-bold uppercase text-sm
               py-2 px-4 rounded-full cursor-pointer disabled:cursor-wait disabled:grayscale
             "
-            disabled={newAllergyValue !== "" || newAllergyComment !== "" || allergyCount > maxCount}
-            onClick={() => removeSpec.mutateAsync(allergy.id)
-              .then(() => trpc.exhibitor.getFoodSpecifications.invalidate())
-              .then(() => setNewAllergyValue(allergy.value))
-              .then(() => setNewAllergyComment(allergy.comment))}
-          >{t.editAllergy}</button>
-          <button
-            className="
+              disabled={
+                newAllergyValue !== "" ||
+                newAllergyComment !== "" ||
+                allergyCount > maxCount
+              }
+              onClick={() =>
+                removeSpec
+                  .mutateAsync(allergy.id)
+                  .then(() => trpc.exhibitor.getFoodSpecifications.invalidate())
+                  .then(() => setNewAllergyValue(allergy.value))
+                  .then(() => setNewAllergyComment(allergy.comment))
+              }
+            >
+              {t.editAllergy}
+            </button>
+            <button
+              className="
               bg-cerise
               text-white font-bold uppercase text-sm
               py-2 px-4 rounded-full cursor-pointer disabled:cursor-wait disabled:grayscale
             "
-            onClick={() => removeSpec.mutateAsync(allergy.id)
-              .then(() => trpc.exhibitor.getFoodSpecifications.invalidate())}
-          >{t.removeAllergy}</button>
-        </Fragment>)}
+              onClick={() =>
+                removeSpec
+                  .mutateAsync(allergy.id)
+                  .then(() => trpc.exhibitor.getFoodSpecifications.invalidate())
+              }
+            >
+              {t.removeAllergy}
+            </button>
+          </Fragment>
+        ))}
       </div>
-      {allergyCount >= maxCount ? null :
+      {allergyCount >= maxCount ? null : (
         <form className="flex gap-3 justify-center mt-6">
           <InputField
             type="text"
@@ -327,15 +376,26 @@ function Allergies({
             "
             onClick={(e) => {
               e.preventDefault();
-              upsertSpec.mutateAsync({ value: newAllergyValue, comment: newAllergyComment, type }).then(() => {
-                setNewAllergyValue("");
-                setNewAllergyComment("");
-                trpc.exhibitor.getFoodSpecifications.invalidate(type);
-              });
+              upsertSpec
+                .mutateAsync({
+                  value: newAllergyValue,
+                  comment: newAllergyComment,
+                  type,
+                })
+                .then(() => {
+                  setNewAllergyValue("");
+                  setNewAllergyComment("");
+                  trpc.exhibitor.getFoodSpecifications.invalidate(type);
+                });
             }}
           />
-        </form>}
-      {allergyCount > maxCount && <p className="text-orange-500 font-bold text-center mt-3">{t.tooManyAllergies}</p>}
+        </form>
+      )}
+      {allergyCount > maxCount && (
+        <p className="text-orange-500 font-bold text-center mt-3">
+          {t.tooManyAllergies}
+        </p>
+      )}
     </section>
   );
 }
@@ -374,7 +434,10 @@ function ContactPerson({
       <InputField
         type="text"
         value={name}
-        setValue={v => { setName(v); setPendingChanges(true); }}
+        setValue={(v) => {
+          setName(v);
+          setPendingChanges(true);
+        }}
         name="contactName"
         fields={t.fields}
         prefix={user?.id}
@@ -382,7 +445,10 @@ function ContactPerson({
       <InputField
         type="email"
         value={email}
-        setValue={v => { setEmail(v); setPendingChanges(true); }}
+        setValue={(v) => {
+          setEmail(v);
+          setPendingChanges(true);
+        }}
         name="contactEmail"
         fields={t.fields}
         prefix={user?.id}
@@ -390,7 +456,10 @@ function ContactPerson({
       <InputField
         type="text"
         value={phone}
-        setValue={v => { setPhone(v); setPendingChanges(true); }}
+        setValue={(v) => {
+          setPhone(v);
+          setPendingChanges(true);
+        }}
         name="contactPhone"
         fields={t.fields}
         prefix={user?.id}
@@ -398,14 +467,17 @@ function ContactPerson({
       <InputField
         type="text"
         value={role}
-        setValue={v => { setRole(v); setPendingChanges(true); }}
+        setValue={(v) => {
+          setRole(v);
+          setPendingChanges(true);
+        }}
         name="contactRole"
         fields={t.fields}
         prefix={user?.id}
         required={false}
       />
       <div className="flex justify-around">
-        {pendingChanges ?
+        {pendingChanges ? (
           <input
             type="submit"
             className="
@@ -414,9 +486,11 @@ function ContactPerson({
               py-2 px-4 rounded-full cursor-pointer disabled:cursor-wait disabled:grayscale
             "
             value={t.fields.saveContact}
-          /> :
-          <p className="text-white">Saved ✅</p>}
-        {showRemove &&
+          />
+        ) : (
+          <p className="text-white">Saved ✅</p>
+        )}
+        {showRemove && (
           <button
             type="button"
             onClick={remove}
@@ -425,7 +499,10 @@ function ContactPerson({
               text-white font-bold uppercase
               py-2 px-4 rounded-full cursor-pointer disabled:cursor-wait disabled:grayscale
             "
-          >{t.fields.removeContact}</button>}
+          >
+            {t.fields.removeContact}
+          </button>
+        )}
       </div>
     </form>
   );
