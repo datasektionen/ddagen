@@ -253,5 +253,8 @@ export default {
     subheader:"FRÅGOR, TANKAR, & IDEER?",
     paragraph: "Tveka inte att höra av dig om du har några frågor angående våra produkter eller har några funderingar."
     
+  },
+  event:{
+    paragraph1: "Lunchföreläsningar är redan ett populärt koncept bland studenterna och brukar anordnas på campus. Föreläsningarna ger er en möjlighet att exempelvis prata om ert företag, en viss produkt eller idé, eller vilken annan visdom som helst som ni vill dela med er av. I priset ingår lokal, mat till studenter samt PR för eventet. I år kommer lunchföreläsningarna runt D-Dagen hållas i samband med Datasektionens 40-årsjubileum, vilket betyder att ni dessutom kommer vara med på deras sociala medier och hemsida."
   }
 };

@@ -288,7 +288,9 @@ export default {
       packetType:["BASE PACKAGE", "SPONSOR PACKAGE", "HEAD-HUNTER PACKAGE", "PREMIUM PACKAGE"],
       info: ["", "LIMITED AMOUNT", "LIMITED AMOUNT", "LIMITED AMOUNT"],
       subheader:"QUESTIONS, THOUGHTS, & IDEAS?",
-      paragraph: "Don't hesitate to get in touch if you have any questions about our products or have any other questions."
-    
+      paragraph: "Don't hesitate to get in touch if you have any questions about our products or have any other questions." 
+  },
+  event:{
+    paragraph1: "Lunchföreläsningar är redan ett populärt koncept bland studenterna och brukar anordnas på campus. Föreläsningarna ger er en möjlighet att exempelvis prata om ert företag, en viss produkt eller idé, eller vilken annan visdom som helst som ni vill dela med er av. I priset ingår lokal, mat till studenter samt PR för eventet. I år kommer lunchföreläsningarna runt D-Dagen hållas i samband med Datasektionens 40-årsjubileum, vilket betyder att ni dessutom kommer vara med på deras sociala medier och hemsida.",
   }
 };
