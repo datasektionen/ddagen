@@ -60,12 +60,24 @@ export default {
     table: {
       row1: {
         title: "About Company",
-        header1: "General Information",
-        header2: "Job Offers",
-        header3: "Contacts",
+        section1: {
+          header: "General Information",
+          description: "Description",
+          placeholderText: "About Us",
+        },
+        section2: {
+          header: "Job Offers",
+        },
+        section3: {
+          header: "Contacts",
+        },
       },
-      row2: "Your Package And Extra Orders",
-      row3: "Food Preferences",
+      row2: {
+        title: "Your Package And Extra Orders",
+      },
+      row3: {
+        title: "Food Preferences",
+      }
     },
   },
   login: {

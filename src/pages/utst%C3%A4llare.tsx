@@ -7,6 +7,7 @@ import { getPackage } from "@/utils/packages";
 import { useRouter } from "next/router";
 import { Table } from "@/components/Table";
 import UploadButton from "@/components/UploadButton";
+import TextInput from "@/components/TextInput";
 
 export default function Exhibitor() {
   const router = useRouter();
@@ -89,23 +90,33 @@ export default function Exhibitor() {
   }
 
   const about = (
-    <div className="flex flex-col w-full items-center">
+    <div className="flex flex-col w-full items-center overflow-auto">
       <h1 className="uppercase text-cerise text-4xl font-normal px-[10px] break-words">
-        {t.exhibitorSettings.table.row1.header1}
+        {t.exhibitorSettings.table.row1.section1.header}
       </h1>
 
-      <div className="flex flex-row gap-5 mt-8 mb-20">
+      {/* Section 1 */}
+      <div className="flex flex-row gap-8 mt-8 mb-20">
         {UploadButton("Vit Logga", "Logga", "image/png")}
         {UploadButton("Logga m. färg", "Logga", "image/png")}
+        {TextInput(
+          t.exhibitorSettings.table.row1.section1.description,
+          t.exhibitorSettings.table.row1.section1.placeholderText
+        )}
       </div>
+      {/* Section 1 */}
 
+      {/* Section 2 */}
       <h1 className="uppercase text-cerise text-4xl font-normal px-[10px] break-words">
-        {t.exhibitorSettings.table.row1.header2}
+        {t.exhibitorSettings.table.row1.section2.header}
       </h1>
+      {/* Section 2 */}
 
+      {/* Section 3 */}
       <h1 className="uppercase text-cerise text-4xl font-normal px-[10px] break-words">
-        {t.exhibitorSettings.table.row1.header3}
+        {t.exhibitorSettings.table.row1.section3.header}
       </h1>
+      {/* Section 3 */}
     </div>
   );
 
@@ -123,8 +134,8 @@ export default function Exhibitor() {
           {Table(
             [
               t.exhibitorSettings.table.row1.title,
-              t.exhibitorSettings.table.row2,
-              t.exhibitorSettings.table.row3,
+              t.exhibitorSettings.table.row2.title,
+              t.exhibitorSettings.table.row3.title,
             ],
             [],
             [about, about, about]

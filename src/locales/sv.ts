@@ -60,12 +60,24 @@ export default {
     table: {
       row1: {
         title: "Om Företaget",
-        header1: "Allmän Info",
-        header2: "Jobberbjudanden",
-        header3: "Kontaktpersoner",
+        section1: {
+          header: "Allmän Info",
+          description: "Beskrivning",
+          placeholderText: "Om oss",
+        },
+        section2: {
+          header: "Jobberbjudanden",
+        },
+        section3: {
+          header: "Kontaktpersoner",
+        },
       },
-      row2: "Ert Paket Och Extra Beställningar",
-      row3: "Matpreferenser",
+      row2: {
+        title: "Ert Paket Och Extra Beställningar",
+      },
+      row3: {
+        title: "Matpreferenser",
+      },
     },
   },
   login: {

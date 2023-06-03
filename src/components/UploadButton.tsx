@@ -8,10 +8,8 @@ export default function UploadButton(
   const [selectedImage, setSelectedImage] = useState();
 
   const onImageChange = (e: any) => {
-    if (e.target.files && e.target.files.length == 1) {
+    if (e.target.files && e.target.files.length == 1)
       setSelectedImage(e.target.files[0]);
-      console.log("image added");
-    }
   };
 
   return (
