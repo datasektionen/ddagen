@@ -291,6 +291,15 @@ export default {
       paragraph: "Don't hesitate to get in touch if you have any questions about our products or have any other questions." 
   },
   event:{
-    paragraph1: "Lunchföreläsningar är redan ett populärt koncept bland studenterna och brukar anordnas på campus. Föreläsningarna ger er en möjlighet att exempelvis prata om ert företag, en viss produkt eller idé, eller vilken annan visdom som helst som ni vill dela med er av. I priset ingår lokal, mat till studenter samt PR för eventet. I år kommer lunchföreläsningarna runt D-Dagen hållas i samband med Datasektionens 40-årsjubileum, vilket betyder att ni dessutom kommer vara med på deras sociala medier och hemsida.",
+    paragraph1: "Lunch seminars are already a popular concept among the students at KTH and are usually held on campus during lunch hours. The seminars give you an opportunity to reach a wide audience while ...",
+    paragraph2: "An after-work or office visit with us allows your colleagues to show your premises to the students while socializing with them. This gives the student a feel for your workplace culture and to have a ...",
+    paragraph3: "A sponsored pub gives your company a more up close and personal experience. It allows you to socialize with the Computer Science students in META, our roomy chapter house on KTH ...",
+    paragraph4: "This event is similar to the after-work/office visit events. A case event gives you an opportunity to test the students’ skills while providing them with a fun challenge. Depending on the type of case ...",
+    header1: "Lunch Seminar",
+    header2: "Afterwork/Office Visit",
+    header3: "Sponsored Pub",
+    header4: "Case Event",
+    subheader: "Price: ",
+    extra: "Read more",
   }
 };

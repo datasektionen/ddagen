@@ -1,15 +1,77 @@
 import { useLocale } from "@/locales";
 
-export default function Students() {
-    const t = useLocale();
+function SingleEvent({
+  bgColor,
+  borderColor,
+  toReverse,
+  textColor,
+  image,
+  eventInfo,
+}: {
+  bgColor: string;
+  borderColor: string;
+  toReverse: boolean;
+  textColor: string;
+  image: string;
+  eventInfo: string[];
+}) {
+  const t = useLocale();
+  return (
+    <div className={`${toReverse ? "flex-row-reverse" : "flex-row"} flex flex-row gap-[100px] px-[0px] mt-[100px] justify-center`}>
+      <div className="py-[0px]">
+        <img src={image} className="h-[300px]"></img>
+      </div>
+      <div className={`${bgColor} ${borderColor} border-[3px] rounded-lg py-[40px] px-[20px] bg-opacity-10 w-[400px] h-[300px]`}>
+        <h2 className="text-center text-3xl text-white">{eventInfo[0]}</h2>
+        <h3 className="text-center text-yellow text-xl mt-2">
+          {" "}
+          {t.event.subheader + "50 000:-"}
+        </h3>
+        <p className="text-white text-start mt-5">{eventInfo[1]}</p>
+        <p className={`${textColor} text-start mt-5`}>
+          <u>{t.event.extra}</u>
+        </p>
+      </div>
+    </div>
+  );
+}
 
-    return (
-        <div className="pt-[200px] pb-[300px]">
-            <div className="flex flex-row justify-center gap-5">
-                <div className="py-[100px]"><img src="/img/lunchPic.png"></img></div>
-                <div className="border-[3px] rounded-lg w-[300px]"></div>
-            </div>
-            <p className=" text-9xl text-cerise">HEEEEEEEEEEEEEEEEEEEEEEEJ</p>
-        </div>
-    )
+export default function Students() {
+  const t = useLocale();
+
+  return (
+    <div className="pt-[200px] pb-[300px]">
+      <h1 className="text-5xl text-cerise font-medium text-center"> EVENT</h1>
+      <SingleEvent
+      bgColor="bg-[#E2B7C9]"
+      borderColor="border-[#E2B7C9]"
+      textColor="text-[#E2B7C9]"
+      image="/img/lunchPic.png"
+      eventInfo = {[t.event.header1, t.event.paragraph1]}
+      />
+      <SingleEvent
+      bgColor="bg-[#E2B7C9]"
+      borderColor="border-[#E2B7C9]"
+      toReverse = {true}
+      textColor="text-[#E2B7C9]"
+      image="/img/officePic.png"
+      eventInfo = {[t.event.header2, t.event.paragraph2]}
+      />
+      <SingleEvent
+      bgColor="bg-[#E2B7C9]"
+      borderColor="border-[#E2B7C9]"
+      textColor="text-[#E2B7C9]"
+      image="/img/barPic.png"
+      eventInfo = {[t.event.header3, t.event.paragraph3]}
+      />
+      <SingleEvent
+      bgColor="bg-[#E2B7C9]"
+      borderColor="border-[#E2B7C9]"
+      toReverse = {true}
+      textColor="text-[#E2B7C9]"
+      image="/img/afterworkPic.png"
+      eventInfo = {[t.event.header4, t.event.paragraph4]}
+      />
+    </div>
+  );
 }

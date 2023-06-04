@@ -255,6 +255,15 @@ export default {
     
   },
   event:{
-    paragraph1: "Lunchföreläsningar är redan ett populärt koncept bland studenterna och brukar anordnas på campus. Föreläsningarna ger er en möjlighet att exempelvis prata om ert företag, en viss produkt eller idé, eller vilken annan visdom som helst som ni vill dela med er av. I priset ingår lokal, mat till studenter samt PR för eventet. I år kommer lunchföreläsningarna runt D-Dagen hållas i samband med Datasektionens 40-årsjubileum, vilket betyder att ni dessutom kommer vara med på deras sociala medier och hemsida."
+    paragraph1: "Lunchföreläsningar är redan ett populärt koncept bland studenterna och brukar anordnas på campus. Föreläsningarna ger er en möjlighet att exempelvis prata om ert företag, en viss produkt...",
+    paragraph2: "Ett annat förslag är att anordna en slags After-work där studenterna får möjlighet att besöka er arbetsplats samt umgås och mingla med era medarbetare. Detta ger studenterna en god ...",
+    paragraph3: "Här får ni en möjlighet att besöka vårt campus och mingla med oss studenter i vår fina sektionslokal META. Under själva puben kan en rad olika aktiviteter genomföras, exempelvis quiz ...",
+    paragraph4: "Detta liknar After-work-konceptet lite grann och kan även kombineras med det. En case kväll ger er en god möjlighet att testa studenterna och faktiskt se vad vi går för, samt ger studenterna en rolig ...",
+    header1: "Lunchföreläsning",
+    header2: "Afterwork/Kontorbesök",
+    header3: "Sponsrad Pub",
+    header4: "Case Kväll",
+    subheader: "Pris: ",
+    extra: "Läs mer",
   }
 };
