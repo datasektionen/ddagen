@@ -53,27 +53,27 @@ export default function Students() {
       price = "50 000"
       />
       <SingleEvent
-      bgColor="bg-[#E2B7C9]"
-      borderColor="border-[#E2B7C9]"
+      bgColor="bg-[#D5759C]"
+      borderColor="border-[#D5759C]"
       toReverse = {true}
-      textColor="text-[#E2B7C9]"
+      textColor="text-[#D5759C]"
       image="/img/officePic.png"
       eventInfo = {[t.event.header2, t.event.paragraph2]}
       price = "15 000"
       />
       <SingleEvent
-      bgColor="bg-[#E2B7C9]"
-      borderColor="border-[#E2B7C9]"
-      textColor="text-[#E2B7C9]"
+      bgColor="bg-cerise"
+      borderColor="border-cerise"
+      textColor="text-cerise"
       image="/img/barPic.png"
       eventInfo = {[t.event.header3, t.event.paragraph3]}
       price = "60 000"
       />
       <SingleEvent
-      bgColor="bg-[#E2B7C9]"
-      borderColor="border-[#E2B7C9]"
+      bgColor="bg-yellow"
+      borderColor="border-yellow"
       toReverse = {true}
-      textColor="text-[#E2B7C9]"
+      textColor="text-yellow"
       image="/img/afterworkPic.png"
       eventInfo = {[t.event.header4, t.event.paragraph4]}
       price = "17 000 kr + 150 kr / student"
