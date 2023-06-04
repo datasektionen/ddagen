@@ -16,6 +16,7 @@ export default async function sendEmail(
     );
     return;
   }
+
   try {
     const res = await fetch(env.SPAM_URL, {
       method: "POST",

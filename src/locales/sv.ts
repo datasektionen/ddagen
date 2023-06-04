@@ -183,15 +183,15 @@ export default {
     confirm: "Logga in",
     confirmationCode: "Bekräftelsekod",
     confirmationCodeText1: "Vi har skickat en kod till din e-postadress <",
-    confirmationCodeText2: "> om den är registrerad i vårt system. Om du inte hittar mailet, se dubbelkolla att e-postadressen är korrekt samt se till att kolla i skräpposten!",
+    confirmationCodeText2: "> om den är registrerad i vårt system. Om du inte hittar mailet, dubbelkolla att e-postadressen är korrekt samt se till att kolla i skräpposten!",
     emailSubject: "D-Dagen - Logga in",
     emailBody: (code: string, link: string) => `
-      <p>För att slutföra inloggningen till D-Dagen, klicka på länken nedan:</p>
-      <p><a href="${link}">${link}</a></p>
-      <p>eller ange koden <b>${code}</b> på inloggningssidan.</p>
-      <p>Om du inte försökt logga in kan du ignorera detta mail.
-      Om du får oväntat många av dessa, kontakta oss på
-      <a href="mailto:dev@ddagen.se">dev@ddagen.se</a>.</p>
+      <p>För att slutföra inloggningen till D-Dagen, gå till följande länk:</p>
+      <p> </p>
+      <p>${link}</p>
+      <p> </p>
+      <p>eller ange koden ${code} på inloggningssidan.</p>
+      <p>Om du inte försökt logga in kan du ignorera detta mail.</p>
     `,
   },
   companyForm: {

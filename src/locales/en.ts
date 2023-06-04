@@ -185,12 +185,12 @@ export default {
     confirmationCodeText2: "> if it is registered in our system. If you can't find the email, double check that the email address is correct and make sure to check your spam folder!",
     emailSubject: "D-Dagen Login",
     emailBody: (code: string, link: string) => `
-      <p>To complete the login to D-Dagen, click the link below:</p>
-      <p><a href="${link}">${link}</a></p>
-      <p>or enter the code <b>${code}</b> on the login page.</p>
+      <p>To complete the login to D-Dagen, go to the link below:</p>
+      <p> </p>
+      <p>${link}</p>
+      <p> </p>
+      <p>or enter the code ${code} on the login page.</p>
       <p>If you did not request this login, please ignore this email.</p>
-      If you get a lot of these, please contact us at
-      <a href="mailto:dev@ddagen.se">dev@ddagen.se</a>.</p>
     `,
   },
   companyForm: {
