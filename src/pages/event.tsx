@@ -7,6 +7,7 @@ function SingleEvent({
   textColor,
   image,
   eventInfo,
+  price,
 }: {
   bgColor: string;
   borderColor: string;
@@ -14,6 +15,7 @@ function SingleEvent({
   textColor: string;
   image: string;
   eventInfo: string[];
+  price: string
 }) {
   const t = useLocale();
   return (
@@ -25,7 +27,7 @@ function SingleEvent({
         <h2 className="text-center text-3xl text-white">{eventInfo[0]}</h2>
         <h3 className="text-center text-yellow text-xl mt-2">
           {" "}
-          {t.event.subheader + "50 000:-"}
+          {t.event.subheader + price + " :-"}
         </h3>
         <p className="text-white text-start mt-5">{eventInfo[1]}</p>
         <p className={`${textColor} text-start mt-5`}>
@@ -48,6 +50,7 @@ export default function Students() {
       textColor="text-[#E2B7C9]"
       image="/img/lunchPic.png"
       eventInfo = {[t.event.header1, t.event.paragraph1]}
+      price = "50 000"
       />
       <SingleEvent
       bgColor="bg-[#E2B7C9]"
@@ -56,6 +59,7 @@ export default function Students() {
       textColor="text-[#E2B7C9]"
       image="/img/officePic.png"
       eventInfo = {[t.event.header2, t.event.paragraph2]}
+      price = "15 000"
       />
       <SingleEvent
       bgColor="bg-[#E2B7C9]"
@@ -63,6 +67,7 @@ export default function Students() {
       textColor="text-[#E2B7C9]"
       image="/img/barPic.png"
       eventInfo = {[t.event.header3, t.event.paragraph3]}
+      price = "60 000"
       />
       <SingleEvent
       bgColor="bg-[#E2B7C9]"
@@ -71,6 +76,7 @@ export default function Students() {
       textColor="text-[#E2B7C9]"
       image="/img/afterworkPic.png"
       eventInfo = {[t.event.header4, t.event.paragraph4]}
+      price = "17 000 kr + 150 kr / student"
       />
     </div>
   );
