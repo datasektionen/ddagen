@@ -5,6 +5,9 @@ module.exports = {
     './src/pages/**/*.tsx',
     './src/components/**/*.tsx',
   ],
+  plugins: [
+    require('daisyui'),
+  ],
   theme: {
     extend: {
       colors: {
@@ -21,6 +24,11 @@ module.exports = {
     },
     fontFamily: {
       sans: ['neue-haas', 'sans-serif'],
+    },
+    daisyui: {
+      themes: false,
+      styled: false,
+      prefix: "",
     },
   },
 }

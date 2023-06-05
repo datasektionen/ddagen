@@ -67,6 +67,24 @@ export default {
         },
         section2: {
           header: "Jobberbjudanden",
+          year: {
+            one: "År 1",
+            two: "År 2",
+            three: "År 3",
+            four: "År 4",
+            five: "År 5",
+          },
+          jobs: {
+            summer: "Sommarjobb",
+            internship: "Internship",
+            partTime: "Deltidsjobb",
+          },
+          other: {
+            thesis: "Examensarbete",
+            fullTime: "Heltidsjobb",
+            trainee: "Traineeprogram",
+          },
+          save: "Spara",
         },
         section3: {
           header: "Kontaktpersoner",

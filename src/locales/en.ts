@@ -67,6 +67,24 @@ export default {
         },
         section2: {
           header: "Job Offers",
+          year: {
+            one: "Year 1",
+            two: "Year 2",
+            three: "Year 3",
+            four: "Year 4",
+            five: "Year 5",
+          },
+          jobs: {
+            summer: "Summer Job",
+            internship: "Internship",
+            partTime: "Part-time Job",
+          },
+          other: {
+            thesis: "Master Thesis",
+            fullTime: "Full-time Job",
+            trainee: "Trainee Program",
+          },
+          save: "Save",
         },
         section3: {
           header: "Contacts",
