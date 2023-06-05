@@ -19,7 +19,7 @@ function SingleEvent({
 }) {
   const t = useLocale();
   const [modalState, setModal] = useState(false);
-  const modalRef = useRef();
+  const modalRef = useRef<HTMLDivElement>(null);
 
   const openModal = () => {
     setModal(true);
@@ -29,7 +29,7 @@ function SingleEvent({
     setModal(false);
   };
 
-  const handleOverlayClick = (event) => {
+  const handleOverlayClick = (event: React.MouseEvent) => {
     if (modalRef.current === event.target) {
       closeModal();
     }
