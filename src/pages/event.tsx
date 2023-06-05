@@ -106,6 +106,7 @@ export default function Students() {
       <SingleEvent
         bgColor="bg-[#E2B7C9]"
         borderColor="border-[#E2B7C9]"
+        toReverse={false}
         textColor="text-[#E2B7C9]"
         image="/img/lunchPic.png"
         eventInfo={[
@@ -131,6 +132,7 @@ export default function Students() {
       <SingleEvent
         bgColor="bg-cerise"
         borderColor="border-cerise"
+        toReverse={false}
         textColor="text-cerise"
         image="/img/barPic.png"
         eventInfo={[
