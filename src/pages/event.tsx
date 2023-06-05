@@ -69,14 +69,15 @@ function SingleEvent({
             <div
               className={` bg-white bg-opacity-70 w-[500px] pb-5 flex flex-col  rounded-3xl`}
             >
-              <div className="py-[0px] justify-center flex flex-row relative">
+              <div className="relative py-[0px] justify-center flex flex-row">
                 <img src={image} />
+
                 <button
-                  className="absolute top-5 right-10"
+                  className="absolute top-5 right-3 w-[50px] h-[50px] flex items-center justify-center"
                   onClick={closeModal}
                 >
-                  <div className=" absolute h-[50px] w-[5px] bg-white rounded-md rotate-45"></div>
-                  <div className=" absolute h-[50px] w-[5px] bg-white rounded-md -rotate-45"></div>
+                  <div className="absolute h-[50px] w-[5px] bg-white rounded-md rotate-45"></div>
+                  <div className="absolute h-[50px] w-[5px] bg-white rounded-md -rotate-45"></div>
                 </button>
               </div>
               <div className="px-5 mt-5">
