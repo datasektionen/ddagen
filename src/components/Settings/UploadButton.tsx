@@ -1,15 +1,20 @@
 import { useState } from "react";
 
-export default function UploadButton(
-  textAbove: string,
-  textInside: string,
-  accept: string
-) {
+export function UploadButton({
+  textAbove,
+  textInside,
+  accept,
+}: {
+  textAbove: string;
+  textInside: string;
+  accept: string;
+}) {
   const [selectedImage, setSelectedImage] = useState();
 
   const onImageChange = (e: any) => {
     if (e.target.files && e.target.files.length == 1)
       setSelectedImage(e.target.files[0]);
+    else setSelectedImage(undefined);
   };
 
   return (

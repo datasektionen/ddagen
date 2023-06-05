@@ -51,6 +51,12 @@ export default {
       allergyValue: "Specifikation",
       allergyComment: "Kommentar",
     },
+    fieldsAddContact: {
+      name: "Namn",
+      phoneNumber: "Telefonnummer",
+      email: "Meljadress",
+      role: "Arbetsroll",
+    },
     contacts: "Kontakter",
     representativesAllergies: "Matspecifikationer företagsrepresentanter",
     banquetAllergies: "Matspecifikationer sittning",
@@ -88,6 +94,8 @@ export default {
         },
         section3: {
           header: "Kontaktpersoner",
+          save: "Spara",
+          remove: "Ta Bort",
         },
       },
       row2: {

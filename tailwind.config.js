@@ -20,6 +20,7 @@ module.exports = {
       },
       backgroundImage: {
         'editIcon': 'url("/img/edit-icon.png")',
+        'checkIcon': 'url("/img/check-icon.png")',
       }
     },
     fontFamily: {

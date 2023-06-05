@@ -1,6 +1,12 @@
 import { useState } from "react";
 
-export default function TextInput(textAbove: string, placeHolderText: string) {
+export function TextInput({
+  textAbove,
+  placeHolderText,
+}: {
+  textAbove: string;
+  placeHolderText: string;
+}) {
   const [description, setDescription] = useState();
 
   const onTextChange = (e: any) => {
@@ -15,14 +21,14 @@ export default function TextInput(textAbove: string, placeHolderText: string) {
       >
         {textAbove}
       </label>
-        <textarea
-          className="relative w-[450px] h-[150px] bg-white/30 border-solid border-white/70 border-2 rounded-xl p-2
+      <textarea
+        className="relative w-[450px] h-[150px] bg-white/30 border-solid border-white/70 border-2 rounded-xl p-2
                 placeholder:text-[#D9D9D9] placeholder:font-light placeholder:text-2xl break-words
                   focus:placeholder:text-transparent focus:outline-none focus:border-white/70 resize-none"
-          placeholder={placeHolderText}
-          maxLength={250}
-          onChange={onTextChange}
-        />
+        placeholder={placeHolderText}
+        maxLength={250}
+        onChange={onTextChange}
+      />
     </div>
   );
 }

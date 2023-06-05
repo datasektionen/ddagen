@@ -51,6 +51,12 @@ export default {
       allergyValue: "Specification",
       allergyComment: "Comment",
     },
+    fieldsAddContact: {
+      name: "Name",
+      phoneNumber: "Phone Number",
+      email: "Email Address",
+      role: "Role",
+    },
     contacts: "Contacts",
     representativesAllergies: "Food specifications representatives",
     banquetAllergies: "Food specifications banquet",
@@ -88,6 +94,8 @@ export default {
         },
         section3: {
           header: "Contacts",
+          save: "Save",
+          remove: "Remove",
         },
       },
       row2: {

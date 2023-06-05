@@ -6,9 +6,7 @@ import type { User } from "@prisma/client";
 import { getPackage } from "@/utils/packages";
 import { useRouter } from "next/router";
 import { Table } from "@/components/Table";
-import UploadButton from "@/components/UploadButton";
-import TextInput from "@/components/TextInput";
-import CheckMark from "@/components/CheckMark";
+import RowOne from "@/components/Settings/RowOne";
 
 export default function Exhibitor() {
   const router = useRouter();
@@ -90,100 +88,6 @@ export default function Exhibitor() {
     setPendingChanges(false);
   }
 
-  const about = (
-    <div className="flex flex-col w-full items-center overflow-auto">
-      <h1 className="uppercase text-cerise text-4xl font-normal px-[10px] break-words">
-        {t.exhibitorSettings.table.row1.section1.header}
-      </h1>
-
-      {/* Section 1 */}
-      <div className="flex flex-row gap-8 mt-8 mb-20">
-        {UploadButton("Vit Logga", "Logga", "image/png")}
-        {UploadButton("Logga m. färg", "Logga", "image/png")}
-        {TextInput(
-          t.exhibitorSettings.table.row1.section1.description,
-          t.exhibitorSettings.table.row1.section1.placeholderText
-        )}
-      </div>
-      {/* Section 1 */}
-
-      {/* Section 2 */}
-      <h1 className="uppercase text-cerise text-4xl font-normal px-[10px] break-words">
-        {t.exhibitorSettings.table.row1.section2.header}
-      </h1>
-
-      <div className="grid grid-cols-6 grid-rows-4 mx-auto gap-y-2 justify-end mt-8 mb-8">
-        <div></div>
-        <div>{t.exhibitorSettings.table.row1.section2.year.one}</div>
-        <div>{t.exhibitorSettings.table.row1.section2.year.two}</div>
-        <div>{t.exhibitorSettings.table.row1.section2.year.three}</div>
-        <div>{t.exhibitorSettings.table.row1.section2.year.four}</div>
-        <div>{t.exhibitorSettings.table.row1.section2.year.five}</div>
-        <div className="pr-8 text-right">
-          {t.exhibitorSettings.table.row1.section2.jobs.summer}
-        </div>
-        <div>{CheckMark("summerYearOne")}</div>
-        <div>{CheckMark("summerYearTwo")}</div>
-        <div>{CheckMark("summerYearThree")}</div>
-        <div>{CheckMark("summerYearFour")}</div>
-        <div>{CheckMark("summerYearFive")}</div>
-        <div className="pr-8 text-right">
-          {t.exhibitorSettings.table.row1.section2.jobs.internship}
-        </div>
-        <div>{CheckMark("internshipYearOne")}</div>
-        <div>{CheckMark("internshipYearTwo")}</div>
-        <div>{CheckMark("internshipYearThree")}</div>
-        <div>{CheckMark("internshipYearFour")}</div>
-        <div>{CheckMark("internshipYearFive")}</div>
-        <div className="pr-8 text-right">
-          {t.exhibitorSettings.table.row1.section2.jobs.partTime}
-        </div>
-        <div>{CheckMark("partTimeYearOne")}</div>
-        <div>{CheckMark("partTimeYearTwo")}</div>
-        <div>{CheckMark("partTimeYearThree")}</div>
-        <div>{CheckMark("partTimeYearFour")}</div>
-        <div>{CheckMark("partTimeYearFive")}</div>
-      </div>
-
-      <div className="flex flex-row mb-12 gap-x-16">
-        <div className="flex flex-row">
-          <span className="mr-4 items-center">
-            {t.exhibitorSettings.table.row1.section2.other.thesis}
-          </span>
-          {CheckMark("thesis")}
-        </div>
-        <div className="flex flex-row">
-          <span className="mr-4 items-center">
-            {t.exhibitorSettings.table.row1.section2.other.fullTime}
-          </span>
-          {CheckMark("fullTime")}
-        </div>
-        <div className="flex flex-row">
-          <span className="mr-4 items-center">
-            {t.exhibitorSettings.table.row1.section2.other.trainee}
-          </span>
-          {CheckMark("trainee")}
-        </div>
-      </div>
-
-      <button className="mb-12">
-        <a
-          className="block uppercase hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-normal px-12 py-2 max-lg:mx-auto w-max"
-          href="#"
-        >
-          {t.exhibitorSettings.table.row1.section2.save}
-        </a>
-      </button>
-      {/* Section 2 */}
-
-      {/* Section 3 */}
-      <h1 className="uppercase text-cerise text-4xl font-normal px-[10px] break-words">
-        {t.exhibitorSettings.table.row1.section3.header}
-      </h1>
-      {/* Section 3 */}
-    </div>
-  );
-
   return (
     <>
       <div className="mx-auto flex flex-col items-center py-40">
@@ -202,7 +106,7 @@ export default function Exhibitor() {
               t.exhibitorSettings.table.row3.title,
             ],
             [],
-            [about, about, about]
+            [<RowOne t={t} />, <RowOne t={t} />, <RowOne t={t} />]
           )}
         </div>
         {/*Dropdown table*/}

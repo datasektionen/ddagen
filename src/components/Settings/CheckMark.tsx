@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function CheckMark(name: string) {
+export function CheckMark({ name }: { name: string }) {
   const [checked, setChecked] = useState("false");
 
   const updateCheck = () => {
