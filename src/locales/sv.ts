@@ -266,7 +266,7 @@ export default {
     header1: "Lunchföreläsning",
     header2: "Afterwork/Kontorbesök",
     header3: "Sponsrad Pub",
-    header4: "Case Kväll",
+    header4: "Casekväll",
     subheader: "Pris: ",
     extra: "Läs mer",
   }
