@@ -7,6 +7,8 @@ import { getPackage } from "@/utils/packages";
 import { useRouter } from "next/router";
 import { Table } from "@/components/Table";
 import RowOne from "@/components/Settings/RowOne";
+import RowTwo from "@/components/Settings/RowTwo";
+import RowThree from "@/components/Settings/RowThree";
 
 export default function Exhibitor() {
   const router = useRouter();
@@ -106,7 +108,11 @@ export default function Exhibitor() {
               t.exhibitorSettings.table.row3.title,
             ],
             [],
-            [<RowOne t={t} />, <RowOne t={t} />, <RowOne t={t} />]
+            [
+              <RowOne t={t} />,
+              <RowTwo t={t} exhibitorPackage="Baspaket" />,
+              <RowThree t={t} />,
+            ]
           )}
         </div>
         {/*Dropdown table*/}

@@ -1,7 +1,7 @@
 import Locale from "@/locales";
 import { useState } from "react";
 
-export function UpdateContact({ t }: { t: Locale }) {
+export function EditContact({ t }: { t: Locale }) {
   const [editState, setEditState] = useState(false);
   // Should be removed and fed into the function
   const [name, setName] = useState("Anders Andersson");
@@ -90,9 +90,8 @@ export function UpdateContact({ t }: { t: Locale }) {
         <button
           className={`${
             editState ? "bg-editIcon" : "bg-editIcon"
-          } + bg-white bg-[length:30px_30px] w-[33px] 
-                h-[33px] bg-no-repeat bg-origin-content 
-                pl-1 pb-1 rounded-md`}
+          } + bg-white bg-[length:30px_30px] w-[33px] h-[33px] bg-no-repeat bg-origin-content 
+                pl-1 pb-1 rounded-md hover:scale-105 transition-transform`}
           onClick={() => {
             setEditState(!editState);
           }}

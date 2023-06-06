@@ -3,11 +3,11 @@ import { TextInput } from "./TextInput";
 import { CheckMark } from "./CheckMark";
 import { AddContact } from "./AddContact";
 import { UploadButton } from "./UploadButton";
-import { UpdateContact } from "./UpdateContact";
+import { EditContact } from "./EditContact";
 
 export default function RowOne({ t }: { t: Locale }) {
   return (
-    <div className="flex flex-col w-full items-center overflow-auto">
+    <div className="flex flex-col w-full items-center overflow-auto mt-6">
       <h1 className="uppercase text-cerise text-4xl font-normal px-[10px] break-words">
         {t.exhibitorSettings.table.row1.section1.header}
       </h1>
@@ -133,10 +133,10 @@ export default function RowOne({ t }: { t: Locale }) {
       {/* Section 2 */}
 
       {/* Section 3 */}
-      <h1 className="uppercase text-cerise text-4xl font-normal px-[10px] break-words">
+      <h1 className="uppercase text-cerise text-4xl font-normal px-[10px] break-words mt-6">
         {t.exhibitorSettings.table.row1.section3.header}
       </h1>
-      <UpdateContact t={t} />
+      <EditContact t={t} />
       <AddContact t={t} />
       {/* Section 3 */}
     </div>

@@ -100,6 +100,26 @@ export default {
       },
       row2: {
         title: "Ert Paket Och Extra Beställningar",
+        section1: {
+          header: "Paket",
+          info: "För mer info kring de olika paketen",
+          catalogue: "Katalog",
+        },
+        section2: {
+          header: "Extrabeställningar",
+          titles: {
+            first: "I ert paket ingår",
+            second: "Tillval",
+            third: "Totalt",
+          },
+          drinkCoupons: "Barbongar",
+          tables: "Bord",
+          chairs: "Stolar",
+          representatives: "Representanter",
+          sitting: "Sittningsbiljetter",
+          warning: "Sista datum för beställning 2023-08-20",
+          save: "Spara",
+        },
       },
       row3: {
         title: "Matpreferenser",

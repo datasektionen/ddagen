@@ -38,7 +38,7 @@ export function UploadButton({
           className="invisible after:visible after:absolute after:top-2 after:right-2 after:cursor-pointer 
                       after:content-[''] after:bg-editIcon after:bg-white after:bg-[length:30px_30px] 
                       after:w-[33px] after:h-[33px] after:bg-no-repeat after:bg-origin-content after:pl-1
-                      after:pb-1 after:rounded-md"
+                      after:pb-1 after:rounded-md after:hover:scale-105 after:transition-transform"
           accept={accept}
           onChange={onImageChange}
         />

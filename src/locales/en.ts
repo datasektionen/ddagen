@@ -100,6 +100,26 @@ export default {
       },
       row2: {
         title: "Your Package And Extra Orders",
+        section1: {
+          header: "Package",
+          info: "For more information about the different packages",
+          catalogue: "Catalogue",
+        },
+        section2: {
+          header: "Extra orders",
+          titles: {
+            first: "Included in your package",
+            second: "Options",
+            third: "Total",
+          },
+          drinkCoupons: "Drink Coupons",
+          tables: "Tables",
+          chairs: "Chairs",
+          representatives: "Representatives",
+          sitting: "Dinnerparty",
+          warning: "Last date for ordering 2023-08-20",
+          save: "Save",
+        },
       },
       row3: {
         title: "Food Preferences",
