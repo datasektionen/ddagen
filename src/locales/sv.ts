@@ -57,6 +57,11 @@ export default {
       email: "Meljadress",
       role: "Arbetsroll",
     },
+    fiedlsAddPreferences: {
+      name: "Namn",
+      preferences: "Preferenser",
+      other: "Övrigt"
+    },
     contacts: "Kontakter",
     representativesAllergies: "Matspecifikationer företagsrepresentanter",
     banquetAllergies: "Matspecifikationer sittning",
@@ -123,6 +128,23 @@ export default {
       },
       row3: {
         title: "Matpreferenser",
+        section1: {
+          header: "Under Mässan",
+          paragraphOne: "Dessa matpreferenser används för frukosten och lunchen under mässan.",
+          paragraphTwo: "Ni ändrar antalet i extra beställningar",
+        },
+        section2: {
+          header: "Sittning",
+          paragraphOne: "Dessa matpreferenser används för sittningen efter mässan.",
+          paragraphTwo: "Ni ändrar antalet i extra beställningar",
+        },
+        preferencesHeader: "Preferenser (vegetariskt är standard)",
+        options: {
+          vegetarian: "Vegansk",
+          lactoseFree: "Laktosfri",
+          glutenFree: "Glutenfri",
+          meat: "Kött",
+        },
       },
     },
   },

@@ -90,6 +90,9 @@ export default function Exhibitor() {
     setPendingChanges(false);
   }
 
+  const [editState, setEditState] = useState(false);
+
+
   return (
     <>
       <div className="mx-auto flex flex-col items-center py-40">

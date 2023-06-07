@@ -1,17 +1,17 @@
 import Locale from "@/locales";
-import { Dispatch } from "react";
-import { User } from "./Classes";
+import { Preferences } from "./Classes";
+import { Dispatch, useState } from "react";
 
-export function EditContact({
+export function EditPreferences({
   t,
-  user,
-  setUser,
+  preferences,
+  setPreferences,
   editState,
   setEditState,
 }: {
   t: Locale;
-  user: User;
-  setUser: Dispatch<User>;
+  preferences: Preferences;
+  setPreferences: Dispatch<Preferences>;
   editState: boolean;
   setEditState: Dispatch<boolean>;
 }) {
@@ -26,59 +26,44 @@ export function EditContact({
           <tr>
             <td>
               <label htmlFor="name">
-                {t.exhibitorSettings.fieldsAddContact.name}:
+                {t.exhibitorSettings.fiedlsAddPreferences.name}:
               </label>
             </td>
             <td>
               <input
                 type="text"
                 name="name"
-                value={user.name}
+                value={preferences.name}
                 disabled={true}
               />
             </td>
           </tr>
           <tr>
             <td>
-              <label htmlFor="phoneNumber">
-                {t.exhibitorSettings.fieldsAddContact.phoneNumber}:
+              <label htmlFor="preferences">
+                {t.exhibitorSettings.fiedlsAddPreferences.preferences}:
               </label>
             </td>
             <td>
               <input
                 type="text"
-                name="phoneNumber"
-                value={user.phoneNumber}
+                name="preferences"
+                value={preferences.preferences.join(',  ')}
                 disabled={true}
               />
             </td>
           </tr>
           <tr>
             <td>
-              <label htmlFor="email">
-                {t.exhibitorSettings.fieldsAddContact.email}:
+              <label htmlFor="other">
+                {t.exhibitorSettings.fiedlsAddPreferences.other}:
               </label>
             </td>
             <td>
               <input
                 type="text"
-                name="email"
-                value={user.email}
-                disabled={true}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label htmlFor="role">
-                {t.exhibitorSettings.fieldsAddContact.role}:
-              </label>
-            </td>
-            <td>
-              <input
-                type="text"
-                name="role"
-                value={user.role}
+                name="other"
+                value={preferences.other}
                 disabled={true}
               />
             </td>
@@ -89,12 +74,12 @@ export function EditContact({
       <div className="absolute right-2 top-2">
         <button
           className={`${
-            editState ? "hidden" : "bg-editIcon bg-white"
+            editState ? "hiddden" : "bg-editIcon bg-white"
           } bg-[length:30px_30px] w-[33px] h-[33px] bg-no-repeat bg-origin-content 
-              pl-1 pb-1 rounded-md hover:scale-105 transition-transform`}
+             pl-1 pb-1 rounded-md hover:scale-105 transition-transform`}
           onClick={() => {
             setEditState(true);
-            setUser(user);
+            setPreferences(preferences);
           }}
         />
       </div>

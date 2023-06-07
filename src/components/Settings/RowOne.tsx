@@ -1,11 +1,24 @@
 import Locale from "@/locales";
+import { use, useState } from "react";
 import { TextInput } from "./TextInput";
 import { CheckMark } from "./CheckMark";
 import { AddContact } from "./AddContact";
 import { UploadButton } from "./UploadButton";
 import { EditContact } from "./EditContact";
+import { User } from "./Classes";
 
 export default function RowOne({ t }: { t: Locale }) {
+  const [user, setUser] = useState(
+    new User(
+      "Anders Andersson",
+      "07012345567",
+      "anders.anderssson@företag.se",
+      "Art director"
+    )
+  );
+  const [editState, setEditState] = useState(false);
+
+
   return (
     <div className="flex flex-col w-full items-center overflow-auto mt-6">
       <h1 className="uppercase text-cerise text-4xl font-normal px-[10px] break-words">
@@ -136,8 +149,20 @@ export default function RowOne({ t }: { t: Locale }) {
       <h1 className="uppercase text-cerise text-4xl font-normal px-[10px] break-words mt-6">
         {t.exhibitorSettings.table.row1.section3.header}
       </h1>
-      <EditContact t={t} />
-      <AddContact t={t} />
+      <EditContact
+        t={t}
+        user={user}
+        setUser={setUser}
+        editState={editState}
+        setEditState={setEditState}
+      />
+      <AddContact
+        t={t}
+        user={user}
+        setUser={setUser}
+        editState={editState}
+        setEditState={setEditState}
+      />
       {/* Section 3 */}
     </div>
   );

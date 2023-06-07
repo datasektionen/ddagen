@@ -57,6 +57,11 @@ export default {
       email: "Email Address",
       role: "Role",
     },
+    fiedlsAddPreferences: {
+      name: "Name",
+      preferences: "Preferences",
+      other: "Other"
+    },
     contacts: "Contacts",
     representativesAllergies: "Food specifications representatives",
     banquetAllergies: "Food specifications banquet",
@@ -123,6 +128,23 @@ export default {
       },
       row3: {
         title: "Food Preferences",
+        section1: {
+          header: "During the Fair",
+          paragraphOne: "These food preferences are used for breakfast and lunch during the fair.",
+          paragraphTwo: "You change the number in extra orders",
+        },
+        section2: {
+          header: "Dinner Party",
+          paragraphOne: "These food preferences are used for the seating after the fair.",
+          paragraphTwo: "You change the number in extra orders",
+        },
+        preferencesHeader: "Preferences (vegetarian is default)",
+        options: {
+          vegetarian: "Vegan",
+          lactoseFree: "Lactose-free",
+          glutenFree: "Gluten-free",
+          meat: "Meat",
+        },
       }
     },
   },
