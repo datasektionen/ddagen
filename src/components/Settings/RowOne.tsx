@@ -1,5 +1,5 @@
 import Locale from "@/locales";
-import { use, useState } from "react";
+import { useState } from "react";
 import { TextInput } from "./TextInput";
 import { CheckMark } from "./CheckMark";
 import { AddContact } from "./AddContact";

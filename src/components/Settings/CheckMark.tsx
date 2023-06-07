@@ -12,9 +12,10 @@ export function CheckMark({
   return (
     <input
       type="checkbox"
-      className="checkbox checkbox-secondary cursor-pointer bg-[#A7A7A7] checked:bg-cerise border-[#A7A7A7] hover:border-cerise"
+      className="form-checkbox w-6 h-6 hover:cursor-pointer hover:border-cerise
+                bg-[#A7A7A7] checked:text-cerise rounded-lg focus:ring-0"
       name={name}
-      checked={checked}
+      defaultChecked={checked}
       onClick={() => {
         if (setValue) setValue();
       }}
