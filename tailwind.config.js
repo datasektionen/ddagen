@@ -24,10 +24,5 @@ module.exports = {
     fontFamily: {
       sans: ["neue-haas", "sans-serif"],
     },
-    daisyui: {
-      themes: false,
-      styled: false,
-      prefix: "",
-    },
   },
 };
