@@ -9,7 +9,7 @@ export default function ExtraOrders({ t }: { t: Locale }) {
   const [sitting, setSitting] = useState(20);
   const [editState, setEditState] = useState(false);
 
-  function plusMinus(num: number, set: Dispatch<number>) {
+  function plusMinus(num: number, set: Dispatch<number>, step: number) {
     return (
       <div className="flex flex-row items-center justify-center">
         <div
@@ -23,7 +23,7 @@ export default function ExtraOrders({ t }: { t: Locale }) {
             className="flex hover:cursor-pointer bg-white rounded-lg w-full h-[21.5px] text-black font-normal select-none
                         justify-center items-center px-2 border-1 border-black mb-[2px] hover:scale-105 transition-transform"
             onClick={() => {
-              set(num + 1);
+              set(num + step);
             }}
           >
             +
@@ -32,7 +32,7 @@ export default function ExtraOrders({ t }: { t: Locale }) {
             className="flex hover:cursor-pointer bg-white rounded-lg w-full h-[21.5px] text-black font-normal select-none 
                         justify-center items-center px-2 border-1 border-black hover:scale-105 transition-transform "
             onClick={() => {
-              if (drinkCoupons > 0) set(num - 1);
+              if (num >= 0 && (num - step) >= 0) set(num - step);
             }}
           >
             -
@@ -75,7 +75,7 @@ export default function ExtraOrders({ t }: { t: Locale }) {
         </div>
         <div className="font-normal text-2xl">10</div>
         <div className="font-normal text-2xl">
-          {editState ? plusMinus(drinkCoupons, setDrinkCoupons) : drinkCoupons}
+          {editState ? plusMinus(drinkCoupons, setDrinkCoupons, 10) : drinkCoupons}
         </div>
         <div className="font-normal text-2xl">{10 + drinkCoupons}</div>
         <div className="text-right text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
@@ -89,7 +89,7 @@ export default function ExtraOrders({ t }: { t: Locale }) {
         </div>
         <div className="font-normal text-2xl">10</div>
         <div className="font-normal text-2xl">
-          {editState ? plusMinus(tables, setTables) : tables}
+          {editState ? plusMinus(tables, setTables, 1) : tables}
         </div>
         <div className="font-normal text-2xl">{10 + tables}</div>
         <div className="text-right text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
@@ -103,7 +103,7 @@ export default function ExtraOrders({ t }: { t: Locale }) {
         </div>
         <div className="font-normal text-2xl">10</div>
         <div className={"font-normal text-2xl"}>
-          {editState ? plusMinus(chairs, setChairs) : chairs}
+          {editState ? plusMinus(chairs, setChairs, 1) : chairs}
         </div>
         <div className="font-normal text-2xl">{10 + chairs}</div>
         <div className="text-right text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
@@ -118,7 +118,7 @@ export default function ExtraOrders({ t }: { t: Locale }) {
         <div className="font-normal text-2xl">10</div>
         <div className={"font-normal text-2xl"}>
           {editState
-            ? plusMinus(representatives, setRepresentatives)
+            ? plusMinus(representatives, setRepresentatives, 1)
             : representatives}
         </div>
         <div className="font-normal text-2xl">{10 + representatives}</div>
@@ -133,7 +133,7 @@ export default function ExtraOrders({ t }: { t: Locale }) {
         </div>
         <div className="font-normal text-2xl !border-transparent">10</div>
         <div className={"font-normal text-2xl !border-transparent"}>
-          {editState ? plusMinus(sitting, setSitting) : sitting}
+          {editState ? plusMinus(sitting, setSitting, 1) : sitting}
         </div>
         <div className="font-normal text-2xl !border-transparent">
           {10 + sitting}
