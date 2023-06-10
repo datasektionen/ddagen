@@ -33,6 +33,7 @@ export default {
     formButton: "Intresseanmälan",
   },
   exhibitorSettings: {
+    header: "Profilinställningar",
     fields: {
       invoiceEmail: "Fakturerings-E-post",
       description: "Företagsbeskrivning",
@@ -50,12 +51,102 @@ export default {
       allergyValue: "Specifikation",
       allergyComment: "Kommentar",
     },
+    fieldsAddContact: {
+      name: "Namn",
+      phoneNumber: "Telefonnummer",
+      email: "Meljadress",
+      role: "Arbetsroll",
+    },
+    fiedlsAddPreferences: {
+      name: "Namn",
+      preferences: "Preferenser",
+      other: "Övrigt"
+    },
     contacts: "Kontakter",
     representativesAllergies: "Matspecifikationer företagsrepresentanter",
     banquetAllergies: "Matspecifikationer sittning",
     editAllergy: "Redigera",
     removeAllergy: "Ta bort",
     tooManyAllergies: "Du har lagt till fler matspecifikationer än antalet platser!",
+    table: {
+      row1: {
+        title: "Om Företaget",
+        section1: {
+          header: "Allmän Info",
+          description: "Beskrivning",
+          placeholderText: "Om oss",
+        },
+        section2: {
+          header: "Jobberbjudanden",
+          year: {
+            one: "År 1",
+            two: "År 2",
+            three: "År 3",
+            four: "År 4",
+            five: "År 5",
+          },
+          jobs: {
+            summer: "Sommarjobb",
+            internship: "Internship",
+            partTime: "Deltidsjobb",
+          },
+          other: {
+            thesis: "Examensarbete",
+            fullTime: "Heltidsjobb",
+            trainee: "Traineeprogram",
+          },
+          save: "Spara",
+        },
+        section3: {
+          header: "Kontaktpersoner",
+          save: "Spara",
+          remove: "Ta Bort",
+        },
+      },
+      row2: {
+        title: "Ert Paket Och Extra Beställningar",
+        section1: {
+          header: "Paket",
+          info: "För mer info kring de olika paketen",
+          catalogue: "Katalog",
+        },
+        section2: {
+          header: "Extrabeställningar",
+          titles: {
+            first: "I ert paket ingår",
+            second: "Tillval",
+            third: "Totalt",
+          },
+          drinkCoupons: "Barbongar",
+          tables: "Bord",
+          chairs: "Stolar",
+          representatives: "Representanter",
+          sitting: "Sittningsbiljetter",
+          warning: "Sista datum för beställning 2023-08-20",
+          save: "Spara",
+        },
+      },
+      row3: {
+        title: "Matpreferenser",
+        section1: {
+          header: "Under Mässan",
+          paragraphOne: "Dessa matpreferenser används för frukosten och lunchen under mässan.",
+          paragraphTwo: "Ni ändrar antalet i extra beställningar",
+        },
+        section2: {
+          header: "Sittning",
+          paragraphOne: "Dessa matpreferenser används för sittningen efter mässan.",
+          paragraphTwo: "Ni ändrar antalet i extra beställningar",
+        },
+        preferencesHeader: "Preferenser (vegetariskt är standard)",
+        options: {
+          vegetarian: "Vegansk",
+          lactoseFree: "Laktosfri",
+          glutenFree: "Glutenfri",
+          meat: "Kött",
+        },
+      },
+    },
   },
   login: {
     title: "Logga in",

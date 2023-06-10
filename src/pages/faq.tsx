@@ -1,71 +1,7 @@
 import { useLocale } from "@/locales";
 import React, { useState } from "react";
-import { Carousel } from  "flowbite-react"
-
-function handleAnchorStrings(text: string) {
-  const parts = text.split(/(<a[^>]*>.*?<\/a>)/g);
-  return (
-    <p>
-      {parts.map((part, i) => {
-        if (part.startsWith("<a")) {
-          const hrefMatches = part.match(/href=['"](.*?)['"]/);
-          const href = hrefMatches ? hrefMatches[1] : "";
-          return (
-            <a key={i} href={href} className="text-cerise underline">
-              {part.replace(/<a[^>]*>|<\/a>/g, "")}
-            </a>
-          );
-        } else {
-          return <span key={i}>{part}</span>;
-        }
-      })}
-    </p>
-  );
-}
-
-function Table(questions: Array<string>, answers: Array<string>) {
-  const stateAction = Array.from({ length: questions.length }, () =>
-    useState(false)
-  );
-
-  return (
-    <div className="mt-[50px]">
-      {questions.map((_, i) => (
-        <div key={i} className="text-white border-x-2 border-cerise pb-[2px]">
-          <button
-            onClick={() => stateAction[i][1](!stateAction[i][0])}
-            className={`${i == 0 ? "border-t-2" : ""} items-center flex flex-row  justify-between pl-[20px] pr-[20px] py-[15px] text-left max-h-[300px] w-full bg-slate-50 bg-opacity-20 border-cerise`}
-          >
-            {questions[i]}
-            <img
-              src="/img/caret.svg"
-              className={`${
-                stateAction[i][0] ? "rotate-180" : ""
-              } duration-200 ml-4 h-4 `}
-            ></img>
-          </button>
-
-          <div className={`${
-            stateAction[i][0]
-              ? "py-10 grid-rows-[1fr]"
-              : "grid-rows-[0fr]"
-            } grid transition-[padding,grid-template-rows] px-5
-            bg-gray bg-opacity-50 border-cerise
-            relative
-            before:bg-cerise after:bg-cerise
-            before:h-[2px] after:h-[2px]
-            before:right-0 after:right-0
-            before:left-0 after:left-0
-            before:top-0 after:bottom-[-2px]
-            before:absolute after:absolute
-          `}>
-            <div className="overflow-hidden">{handleAnchorStrings(answers[i])}</div>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
+import { Carousel } from "flowbite-react";
+import { Table } from "@/components/Table";
 
 export default function Faq() {
   const t = useLocale();
@@ -84,11 +20,13 @@ export default function Faq() {
   const tables = [
     Table(
       [t.faq.table1row1, t.faq.table1row2, t.faq.table1row3],
-      [t.faq.table1text1, t.faq.table1text2, t.faq.table1text3]
+      [t.faq.table1text1, t.faq.table1text2, t.faq.table1text3],
+      []
     ),
     Table(
       [t.faq.table2row1, t.faq.table2row2],
-      [t.faq.table2text1, t.faq.table2text2]
+      [t.faq.table2text1, t.faq.table2text2],
+      []
     ),
     Table(
       [
@@ -104,13 +42,13 @@ export default function Faq() {
         t.faq.table3text3,
         t.faq.table3text4,
         t.faq.table3text5,
-      ]
+      ],
+      []
     ),
-    Table([t.faq.table4row1], [t.faq.table4text1]),
+    Table([t.faq.table4row1], [t.faq.table4text1], []),
   ];
 
   const [currentTable, setCurrentTable] = useState(2);
-  const [currentSlide, setCurrentSlide] = useState(0);
 
   return (
     <div className="pt-[200px] pb-[300px] flex flex-col items-center">

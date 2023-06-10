@@ -33,6 +33,7 @@ export default {
     formButton: "Sign up",
   },
   exhibitorSettings: {
+    header: "Profile Settings",
     fields: {
       invoiceEmail: "Invoce email",
       description: "Company description",
@@ -50,12 +51,102 @@ export default {
       allergyValue: "Specification",
       allergyComment: "Comment",
     },
+    fieldsAddContact: {
+      name: "Name",
+      phoneNumber: "Phone Number",
+      email: "Email Address",
+      role: "Role",
+    },
+    fiedlsAddPreferences: {
+      name: "Name",
+      preferences: "Preferences",
+      other: "Other"
+    },
     contacts: "Contacts",
     representativesAllergies: "Food specifications representatives",
     banquetAllergies: "Food specifications banquet",
     editAllergy: "Edit",
     removeAllergy: "Remove",
     tooManyAllergies: "You have specified more food specifications than tickets!",
+    table: {
+      row1: {
+        title: "About Company",
+        section1: {
+          header: "General Information",
+          description: "Description",
+          placeholderText: "About Us",
+        },
+        section2: {
+          header: "Job Offers",
+          year: {
+            one: "Year 1",
+            two: "Year 2",
+            three: "Year 3",
+            four: "Year 4",
+            five: "Year 5",
+          },
+          jobs: {
+            summer: "Summer Job",
+            internship: "Internship",
+            partTime: "Part-time Job",
+          },
+          other: {
+            thesis: "Master Thesis",
+            fullTime: "Full-time Job",
+            trainee: "Trainee Program",
+          },
+          save: "Save",
+        },
+        section3: {
+          header: "Contacts",
+          save: "Save",
+          remove: "Remove",
+        },
+      },
+      row2: {
+        title: "Your Package And Extra Orders",
+        section1: {
+          header: "Package",
+          info: "For more information about the different packages",
+          catalogue: "Catalogue",
+        },
+        section2: {
+          header: "Extra orders",
+          titles: {
+            first: "Included in your package",
+            second: "Options",
+            third: "Total",
+          },
+          drinkCoupons: "Drink Coupons",
+          tables: "Tables",
+          chairs: "Chairs",
+          representatives: "Representatives",
+          sitting: "Dinnerparty",
+          warning: "Last date for ordering 2023-08-20",
+          save: "Save",
+        },
+      },
+      row3: {
+        title: "Food Preferences",
+        section1: {
+          header: "During the Fair",
+          paragraphOne: "These food preferences are used for breakfast and lunch during the fair.",
+          paragraphTwo: "You change the number in extra orders",
+        },
+        section2: {
+          header: "Dinner Party",
+          paragraphOne: "These food preferences are used for the seating after the fair.",
+          paragraphTwo: "You change the number in extra orders",
+        },
+        preferencesHeader: "Preferences (vegetarian is default)",
+        options: {
+          vegetarian: "Vegan",
+          lactoseFree: "Lactose-free",
+          glutenFree: "Gluten-free",
+          meat: "Meat",
+        },
+      }
+    },
   },
   login: {
     title: "Log in",
