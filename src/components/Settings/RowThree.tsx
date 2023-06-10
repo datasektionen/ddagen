@@ -1,6 +1,6 @@
 import Locale from "@/locales";
 import { useState } from "react";
-import { Preferences } from "./Classes";
+import { Preferences } from "../../shared/Classes";
 import { AddPreferences } from "./AddPreferences";
 import { EditPreferences } from "./EditPreferences";
 

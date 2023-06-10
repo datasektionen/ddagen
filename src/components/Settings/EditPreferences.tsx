@@ -1,5 +1,5 @@
 import Locale from "@/locales";
-import { Preferences } from "./Classes";
+import { Preferences } from "../../shared/Classes";
 import { Dispatch, useState } from "react";
 
 export function EditPreferences({

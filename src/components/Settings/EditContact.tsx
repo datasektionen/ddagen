@@ -1,6 +1,6 @@
 import Locale from "@/locales";
 import { Dispatch } from "react";
-import { User } from "./Classes";
+import { User } from "../../shared/Classes";
 
 export function EditContact({
   t,

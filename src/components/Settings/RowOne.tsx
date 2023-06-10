@@ -5,7 +5,7 @@ import { CheckMark } from "./CheckMark";
 import { AddContact } from "./AddContact";
 import { UploadButton } from "./UploadButton";
 import { EditContact } from "./EditContact";
-import { User } from "./Classes";
+import { User } from "../../shared/Classes";
 
 export default function RowOne({ t }: { t: Locale }) {
   const [user, setUser] = useState(

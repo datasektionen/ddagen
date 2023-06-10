@@ -2,7 +2,7 @@ import Locale from "@/locales";
 import { InputField } from "./InputField";
 import { CheckMark } from "./CheckMark";
 import { useState, Dispatch } from "react";
-import { Preferences } from "./Classes";
+import { Preferences } from "../../shared/Classes";
 
 export function AddPreferences({
   t,

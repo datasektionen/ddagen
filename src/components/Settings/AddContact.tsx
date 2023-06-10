@@ -1,7 +1,7 @@
 import Locale from "@/locales";
 import { Dispatch } from "react";
 import { InputField } from "./InputField";
-import { User } from "./Classes";
+import { User } from "../../shared/Classes";
 
 export function AddContact({
   t,
