@@ -27,8 +27,10 @@ export default function Exhibitor() {
   // const removeContact = api.exhibitor.deleteContact.useMutation();
   // const setLogo = api.exhibitor.setLogo.useMutation();
   // const logoWhite = api.exhibitor.logo.useQuery("white");
+  // const jobOffers = api.exhibitor.getJobOffers.useQuery();
+  // const updateJobOffers = api.exhibitor.updateJobOffers.useMutation();
 
-  // TODO: Fix stutter
+  // // TODO: Fix stutter
   // useEffect(() => {
   //   if (!isLoggedIn) {
   //     router.push("/logga-in");

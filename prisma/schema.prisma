@@ -112,12 +112,12 @@ enum FoodSpecificationType {
 model JobOffers {
   id             String     @id @default(uuid())
   summerJob      Int[]
-  internhip      Int[]
+  internship     Int[]
   partTimeJob    Int[]
   masterThesis   Boolean
   fullTimeJob    Boolean
   traineeProgram Boolean
-  Exhibitor      Exhibitor?
+  exhibitor      Exhibitor?
 
   @@map("job_offers")
 }
