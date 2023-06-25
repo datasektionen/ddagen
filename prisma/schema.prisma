@@ -41,6 +41,9 @@ model Exhibitor {
   foodSpecifications FoodSpecification[]
   users              User[]
 
+  jobOfferId String    @unique
+  jobOffers  JobOffers @relation(fields: [jobOfferId], references: [id], onDelete: Cascade)
+
   @@map("exhibitors")
 }
 
@@ -104,4 +107,17 @@ model FoodSpecification {
 enum FoodSpecificationType {
   banquet
   representative
+}
+
+model JobOffers {
+  id             String     @id @default(uuid())
+  summerJob      Int[]
+  internhip      Int[]
+  partTimeJob    Int[]
+  masterThesis   Boolean
+  fullTimeJob    Boolean
+  traineeProgram Boolean
+  Exhibitor      Exhibitor?
+
+  @@map("job_offers")
 }
