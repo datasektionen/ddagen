@@ -7,25 +7,26 @@ import { AddContact } from "./AddContact";
 import { UploadButton } from "./UploadButton";
 import { EditContact } from "./EditContact";
 import { User } from "../../shared/Classes";
+import { useRouter } from "next/router";
 
 export default function RowOne({ t }: { t: Locale }) {
+  const router = useRouter();
+
   // Retrieve data from database
   const getLogos = api.exhibitor.getLogo.useQuery();
   const getDescription = api.exhibitor.getDescription.useQuery();
+  const getJobOffers = api.exhibitor.getJobOffers.useQuery();
 
   // Initialise mutation that are used to update database
   const logoMutation = api.exhibitor.setLogo.useMutation();
   const descriptionMutation = api.exhibitor.setDescription.useMutation();
+  const jobOffersMutation = api.exhibitor.setJobOffers.useMutation();
 
+  // Variables
   const [whiteLogo, setWhiteLogo] = useState("");
   const [colorLogo, setColorLogo] = useState("");
   const [description, setDescription] = useState("");
-  // const [jobOffers, setJobOffers] = useState(
-  //   api.exhibitor.getJobOffers.useQuery().data
-  // );
-  // const [contacts, setContacts] = useState(
-  //   api.exhibitor.getContacts.useQuery().data
-  // );
+  const [checkmarks, setCheckMarks] = useState(new Array(18).fill(false));
 
   const [user, setUser] = useState(
     new User(
@@ -55,6 +56,25 @@ export default function RowOne({ t }: { t: Locale }) {
     }
   }
 
+  function getCheckmarksPos(offer: string) {
+    var array = [];
+    switch (offer) {
+      case "summer":
+        array = checkmarks.slice(0, 5);
+        break;
+      case "intern":
+        array = checkmarks.slice(5, 10);
+        break;
+      case "partTime":
+        array = checkmarks.slice(10, 15);
+        break;
+    }
+    return array.reduce(
+      (out, bool, index) => (bool ? out.concat(index) : out),
+      []
+    );
+  }
+
   async function handleClick() {
     logoMutation.mutate({
       b64data: removeImageDetails(whiteLogo),
@@ -65,6 +85,15 @@ export default function RowOne({ t }: { t: Locale }) {
       kind: "color",
     });
     descriptionMutation.mutate(description);
+    jobOffersMutation.mutate({
+      summerJob: getCheckmarksPos("summer"),
+      internship: getCheckmarksPos("intern"),
+      partTimeJob: getCheckmarksPos("partTime"),
+      masterThesis: checkmarks[15],
+      fullTimeJob: checkmarks[16],
+      traineeProgram: checkmarks[17],
+    });
+    router.reload();
   }
 
   useEffect(() => {
@@ -77,6 +106,23 @@ export default function RowOne({ t }: { t: Locale }) {
     if (!getDescription.isSuccess) return;
     setDescription(getDescription.data.description);
   }, [getDescription.isSuccess]);
+
+  useEffect(() => {
+    if (!getJobOffers.isSuccess || !getJobOffers.data) return;
+    const jobOffers = getJobOffers.data;
+    jobOffers.summerJob.map((num: number) => {
+      checkmarks[num] = true;
+    });
+    jobOffers.internship.map((num: number) => {
+      checkmarks[5 + num] = true;
+    });
+    jobOffers.partTimeJob.map((num: number) => {
+      checkmarks[10 + num] = true;
+    });
+    checkmarks[15] = jobOffers.masterThesis;
+    checkmarks[16] = jobOffers.fullTimeJob;
+    checkmarks[17] = jobOffers.traineeProgram;
+  }, [getJobOffers.isSuccess]);
 
   return (
     <div className="flex flex-col w-full items-center overflow-auto mt-6">
@@ -118,94 +164,91 @@ export default function RowOne({ t }: { t: Locale }) {
         {t.exhibitorSettings.table.row1.section2.header}
       </h1>
 
-      <div className="grid grid-cols-6 grid-rows-4 mx-auto gap-y-2 justify-end mt-8 mb-8">
-        <div></div>
-        <div>{t.exhibitorSettings.table.row1.section2.year.one}</div>
-        <div>{t.exhibitorSettings.table.row1.section2.year.two}</div>
-        <div>{t.exhibitorSettings.table.row1.section2.year.three}</div>
-        <div>{t.exhibitorSettings.table.row1.section2.year.four}</div>
-        <div>{t.exhibitorSettings.table.row1.section2.year.five}</div>
-        <div className="pr-8 text-right">
-          {t.exhibitorSettings.table.row1.section2.jobs.summer}
+      <div className="w-[75%]">
+        <div className="grid grid-cols-6 grid-rows-4 mx-auto gap-y-2 mt-8 mb-8">
+          <div></div>
+          <div>{t.exhibitorSettings.table.row1.section2.year.one}</div>
+          <div>{t.exhibitorSettings.table.row1.section2.year.two}</div>
+          <div>{t.exhibitorSettings.table.row1.section2.year.three}</div>
+          <div>{t.exhibitorSettings.table.row1.section2.year.four}</div>
+          <div>{t.exhibitorSettings.table.row1.section2.year.five}</div>
+          <div className="pr-8 text-right">
+            {t.exhibitorSettings.table.row1.section2.jobs.summer}
+          </div>
+          {[0, 1, 2, 3, 4].map((pos) => (
+            <>
+              <CheckMark
+                name={`${pos}`}
+                defaultChecked={checkmarks[pos]}
+                onClick={() => {
+                  checkmarks[pos] = !checkmarks[pos];
+                }}
+              />
+            </>
+          ))}
+          <div className="pr-8 text-right">
+            {t.exhibitorSettings.table.row1.section2.jobs.internship}
+          </div>
+          {[5, 6, 7, 8, 9].map((pos) => (
+            <>
+              <CheckMark
+                name={`${pos}`}
+                defaultChecked={checkmarks[pos]}
+                onClick={() => {
+                  checkmarks[pos] = !checkmarks[pos];
+                }}
+              />
+            </>
+          ))}
+          <div className="pr-8 text-right">
+            {t.exhibitorSettings.table.row1.section2.jobs.partTime}
+          </div>
+          {[10, 11, 12, 13, 14].map((pos) => (
+            <>
+              <CheckMark
+                name={`${pos}`}
+                defaultChecked={checkmarks[pos]}
+                onClick={() => {
+                  checkmarks[pos] = !checkmarks[pos];
+                }}
+              />
+            </>
+          ))}
         </div>
-        <div>
-          <CheckMark name={"summerYearOne"} />
-        </div>
-        <div>
-          <CheckMark name={"summerYearTwo"} />
-        </div>
-        <div>
-          <CheckMark name={"summerYearThree"} />
-        </div>
-        <div>
-          <CheckMark name={"summerYearFour"} />
-        </div>
-        <div>
-          <CheckMark name={"summerYearFive"} />
-        </div>
-        <div className="pr-8 text-right">
-          {t.exhibitorSettings.table.row1.section2.jobs.internship}
-        </div>
-        <div>
-          <CheckMark name={"internshipYearOne"} />
-        </div>
-        <div>
-          <CheckMark name={"internshipYearTwo"} />
-        </div>
-        <div>
-          <CheckMark name={"internshipYearThree"} />
-        </div>
-        <div>
-          <CheckMark name={"internshipYearFour"} />
-        </div>
-        <div>
-          <CheckMark name={"internshipYearFive"} />
-        </div>
-        <div className="pr-8 text-right">
-          {t.exhibitorSettings.table.row1.section2.jobs.partTime}
-        </div>
-        <div>
-          <CheckMark name={"partTimeYearOne"} />
-        </div>
-        <div>
-          <CheckMark name={"partTimeYearTwo"} />
-        </div>
-        <div>
-          <CheckMark name={"partTimeYearThree"} />
-        </div>
-        <div>
-          <CheckMark name={"partTimeYearFour"} />
-        </div>
-        <div>
-          <CheckMark name={"partTimeYearFive"} />
-        </div>
-      </div>
-
-      <div className="flex flex-row mb-12 gap-x-16">
-        <div className="flex flex-row">
-          <span className="mr-4 items-center">
-            {t.exhibitorSettings.table.row1.section2.other.thesis}
-          </span>
-          <CheckMark name={"thesis"} />
-        </div>
-        <div className="flex flex-row">
-          <span className="mr-4 items-center">
-            {t.exhibitorSettings.table.row1.section2.other.fullTime}
-          </span>
-          <CheckMark name={"fullTime"} />
-        </div>
-        <div className="flex flex-row">
-          <span className="mr-4 items-center">
-            {t.exhibitorSettings.table.row1.section2.other.trainee}
-          </span>
-          <CheckMark name={"trainee"} />
+        <div className="flex flex-row mb-12 gap-x-16 justify-center">
+          {[
+            {
+              name: t.exhibitorSettings.table.row1.section2.other.thesis,
+              num: 15,
+            },
+            {
+              name: t.exhibitorSettings.table.row1.section2.other.fullTime,
+              num: 16,
+            },
+            {
+              name: t.exhibitorSettings.table.row1.section2.other.trainee,
+              num: 17,
+            },
+          ].map((pos) => (
+            <div className="flex flex-row">
+              <span className="mr-4 items-center">{pos.name}</span>
+              <CheckMark
+                name={"thesis"}
+                defaultChecked={checkmarks[pos.num]}
+                onClick={() => {
+                  checkmarks[pos.num] = !checkmarks[pos.num];
+                }}
+              />
+            </div>
+          ))}
         </div>
       </div>
 
       <button className="mb-12" onClick={handleClick}>
         <a
-          className="block uppercase hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-normal px-16 py-2 max-lg:mx-auto w-max"
-          href="#"
+          className="block uppercase hover:scale-105 transition-transform 
+                    bg-cerise rounded-full text-white text-base font-normal 
+                      px-16 py-2 max-lg:mx-auto w-max"
         >
           {t.exhibitorSettings.table.row1.section2.save}
         </a>

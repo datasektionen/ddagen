@@ -279,7 +279,7 @@ export const exhibitorRouter = createTRPCRouter({
       },
     });
   }),
-  updateJobOffers: protectedProcedure
+  setJobOffers: protectedProcedure
     .input(
       z.object({
         summerJob: z.number().array(),

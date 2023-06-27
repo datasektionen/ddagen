@@ -64,14 +64,14 @@ export function AddPreferences({
                   <div>
                     <CheckMark
                       name="vegetarian"
-                      checked={
+                      defaultChecked={
                         editState
                           ? preferences.preferences.includes(
                               t.exhibitorSettings.table.row3.options.vegetarian
                             )
                           : false
                       }
-                      setValue={() => {
+                      onClick={() => {
                         setPreferencesValue(
                           preferences.preferences,
                           t.exhibitorSettings.table.row3.options.vegetarian
@@ -88,14 +88,14 @@ export function AddPreferences({
                   <div>
                     <CheckMark
                       name="lactoseFree"
-                      checked={
+                      defaultChecked={
                         editState
                           ? preferences.preferences.includes(
                               t.exhibitorSettings.table.row3.options.lactoseFree
                             )
                           : false
                       }
-                      setValue={() => {
+                      onClick={() => {
                         setPreferencesValue(
                           preferences.preferences,
                           t.exhibitorSettings.table.row3.options.lactoseFree
@@ -110,14 +110,14 @@ export function AddPreferences({
                   <div>
                     <CheckMark
                       name="glutenFree"
-                      checked={
+                      defaultChecked={
                         editState
                           ? preferences.preferences.includes(
                               t.exhibitorSettings.table.row3.options.glutenFree
                             )
                           : false
                       }
-                      setValue={() => {
+                      onClick={() => {
                         setPreferencesValue(
                           preferences.preferences,
                           t.exhibitorSettings.table.row3.options.glutenFree
@@ -133,14 +133,14 @@ export function AddPreferences({
                 <div>
                   <CheckMark
                     name="meat"
-                    checked={
+                    defaultChecked={
                       editState
                         ? preferences.preferences.includes(
                             t.exhibitorSettings.table.row3.options.meat
                           )
                         : false
                     }
-                    setValue={() => {
+                    onClick={() => {
                       setPreferencesValue(
                         preferences.preferences,
                         t.exhibitorSettings.table.row3.options.meat
@@ -153,14 +153,14 @@ export function AddPreferences({
                 <div>
                   <CheckMark
                     name="lactoseFree"
-                    checked={
+                    defaultChecked={
                       editState
                         ? preferences.preferences.includes(
                             t.exhibitorSettings.table.row3.options.lactoseFree
                           )
                         : false
                     }
-                    setValue={() => {
+                    onClick={() => {
                       setPreferencesValue(
                         preferences.preferences,
                         t.exhibitorSettings.table.row3.options.lactoseFree
@@ -173,14 +173,14 @@ export function AddPreferences({
                 <div>
                   <CheckMark
                     name="vegetarian"
-                    checked={
+                    defaultChecked={
                       editState
                         ? preferences.preferences.includes(
                             t.exhibitorSettings.table.row3.options.vegetarian
                           )
                         : false
                     }
-                    setValue={() => {
+                    onClick={() => {
                       setPreferencesValue(
                         preferences.preferences,
                         t.exhibitorSettings.table.row3.options.vegetarian
@@ -192,14 +192,14 @@ export function AddPreferences({
                 <div>
                   <CheckMark
                     name="glutenFree"
-                    checked={
+                    defaultChecked={
                       editState
                         ? preferences.preferences.includes(
                             t.exhibitorSettings.table.row3.options.glutenFree
                           )
                         : false
                     }
-                    setValue={() => {
+                    onClick={() => {
                       setPreferencesValue(
                         preferences.preferences,
                         t.exhibitorSettings.table.row3.options.glutenFree
