@@ -118,7 +118,30 @@ export const exhibitorRouter = createTRPCRouter({
         },
       });
     }),
-
+  getDescription: protectedProcedure.query(async ({ ctx }) => {
+    return await ctx.prisma.exhibitor.findUniqueOrThrow({
+      where: { id: ctx.session.user.exhibitorId },
+      select: { description: true },
+    });
+  }),
+  setDescription: protectedProcedure
+    .input(z.string())
+    .mutation(async ({ ctx, input }) => {
+      await ctx.prisma.exhibitor.update({
+        where: { id: ctx.session.user.exhibitorId },
+        data: { description: input },
+      });
+    }),
+  getLogo: protectedProcedure.query(async ({ ctx }) => {
+    const exhibitor = await ctx.prisma.exhibitor.findUniqueOrThrow({
+      where: { id: ctx.session.user.exhibitorId },
+      select: { logoWhite: true, logoColor: true },
+    });
+    return {
+      white: exhibitor.logoWhite?.toString("base64"),
+      color: exhibitor.logoColor?.toString("base64"),
+    };
+  }),
   setLogo: protectedProcedure
     .input(
       z.object({
@@ -134,17 +157,6 @@ export const exhibitorRouter = createTRPCRouter({
           input.kind === "white" ? { logoWhite: logo } : { logoColor: logo },
       });
     }),
-  getLogo: protectedProcedure.query(async ({ ctx }) => {
-    const exhibitor = await ctx.prisma.exhibitor.findUniqueOrThrow({
-      where: { id: ctx.session.user.exhibitorId },
-      select: { logoWhite: true, logoColor: true },
-    });
-    return {
-      white: exhibitor.logoWhite?.toString("base64"),
-      color: exhibitor.logoColor?.toString("base64"),
-    };
-  }),
-
   getContacts: protectedProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.user.findMany({
       where: { exhibitorId: ctx.session.user.exhibitorId },
@@ -247,7 +259,7 @@ export const exhibitorRouter = createTRPCRouter({
         });
       }
     }),
-  deleteFoocSpecification: protectedProcedure
+  deleteFoodSpecification: protectedProcedure
     .input(z.string())
     .mutation(async ({ ctx, input }) => {
       await ctx.prisma.foodSpecification.deleteMany({

@@ -9,11 +9,17 @@ import { EditContact } from "./EditContact";
 import { User } from "../../shared/Classes";
 
 export default function RowOne({ t }: { t: Locale }) {
-  const logos = api.exhibitor.getLogo.useQuery();
+  // Retrieve data from database
+  const getLogos = api.exhibitor.getLogo.useQuery();
+  const getDescription = api.exhibitor.getDescription.useQuery();
+
+  // Initialise mutation that are used to update database
   const logoMutation = api.exhibitor.setLogo.useMutation();
+  const descriptionMutation = api.exhibitor.setDescription.useMutation();
 
   const [whiteLogo, setWhiteLogo] = useState("");
   const [colorLogo, setColorLogo] = useState("");
+  const [description, setDescription] = useState("");
   // const [jobOffers, setJobOffers] = useState(
   //   api.exhibitor.getJobOffers.useQuery().data
   // );
@@ -58,13 +64,19 @@ export default function RowOne({ t }: { t: Locale }) {
       b64data: removeImageDetails(colorLogo),
       kind: "color",
     });
+    descriptionMutation.mutate(description);
   }
 
   useEffect(() => {
-    if (!logos.isSuccess) return;
-    setWhiteLogo(addImageDetails(logos.data.white));
-    setColorLogo(addImageDetails(logos.data.color));
-  }, [logos.isSuccess]);
+    if (!getLogos.isSuccess) return;
+    setWhiteLogo(addImageDetails(getLogos.data.white));
+    setColorLogo(addImageDetails(getLogos.data.color));
+  }, [getLogos.isSuccess]);
+
+  useEffect(() => {
+    if (!getDescription.isSuccess) return;
+    setDescription(getDescription.data.description);
+  }, [getDescription.isSuccess]);
 
   return (
     <div className="flex flex-col w-full items-center overflow-auto mt-6">
@@ -91,6 +103,8 @@ export default function RowOne({ t }: { t: Locale }) {
           accept={"image/png,image/jpeg"}
         />
         <TextInput
+          description={description}
+          setDescription={setDescription}
           textAbove={t.exhibitorSettings.table.row1.section1.description}
           placeHolderText={
             t.exhibitorSettings.table.row1.section1.placeholderText
