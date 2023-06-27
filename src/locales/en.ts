@@ -102,6 +102,10 @@ export default {
           save: "Save",
           remove: "Remove",
         },
+        maxImageWarning: (
+          imageSize: string, 
+          maxImageSize: string
+        ) => `Error uploading file: File is too big (${imageSize}MB). Max filesize: ${maxImageSize}MB.`
       },
       row2: {
         title: "Your Package And Extra Orders",

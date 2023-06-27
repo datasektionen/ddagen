@@ -134,17 +134,16 @@ export const exhibitorRouter = createTRPCRouter({
           input.kind === "white" ? { logoWhite: logo } : { logoColor: logo },
       });
     }),
-  logo: protectedProcedure
-    .input(z.enum(["white", "color"]))
-    .query(async ({ ctx, input }) => {
-      const exhibitor = await ctx.prisma.exhibitor.findUniqueOrThrow({
-        where: { id: ctx.session.user.exhibitorId },
-        select: { logoWhite: input === "white", logoColor: input === "color" },
-      });
-      if (exhibitor.logoWhite) return exhibitor.logoWhite.toString("base64");
-      if (exhibitor.logoColor) return exhibitor.logoColor.toString("base64");
-      return null;
-    }),
+  getLogo: protectedProcedure.query(async ({ ctx }) => {
+    const exhibitor = await ctx.prisma.exhibitor.findUniqueOrThrow({
+      where: { id: ctx.session.user.exhibitorId },
+      select: { logoWhite: true, logoColor: true },
+    });
+    return {
+      white: exhibitor.logoWhite?.toString("base64"),
+      color: exhibitor.logoColor?.toString("base64"),
+    };
+  }),
 
   getContacts: protectedProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.user.findMany({

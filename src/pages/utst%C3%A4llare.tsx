@@ -1,6 +1,6 @@
+import { api } from "@/utils/api";
 import { InputField } from "@/components/InputField";
 import { useLocale, type Locale } from "@/locales";
-import { api } from "@/utils/api";
 import React, { Fragment, useEffect, useState } from "react";
 import type { User } from "@prisma/client";
 import { getPackage } from "@/utils/packages";
@@ -16,26 +16,24 @@ export default function Exhibitor() {
   const trpc = api.useContext();
 
   const logout = api.account.logout.useMutation();
-  const isLoggedIn = api.account.isLoggedIn.useQuery().data;
+  const isLoggedIn = api.account.isLoggedIn.useQuery();
 
-  // const exhibitor = api.exhibitor.get.useQuery();
-  // const whiteLogo = api.exhibitor.logo.useQuery("white");
-  // const colorLogo = api.exhibitor.logo.useQuery("color");
-  // const description = api.exhibitor.
+  // Get variables from DB
+  const exhibitor = api.exhibitor.get.useQuery();
+
   // const updateExhibitor = api.exhibitor.update.useMutation();
   // const contacts = api.exhibitor.getContacts.useQuery();
   // const removeContact = api.exhibitor.deleteContact.useMutation();
   // const setLogo = api.exhibitor.setLogo.useMutation();
   // const logoWhite = api.exhibitor.logo.useQuery("white");
-  // const jobOffers = api.exhibitor.getJobOffers.useQuery();
   // const updateJobOffers = api.exhibitor.updateJobOffers.useMutation();
 
-  // // TODO: Fix stutter
+  // TODO: Fix stutter
   // useEffect(() => {
-  //   if (!isLoggedIn) {
+  //   if (!isLoggedIn.data) {
   //     router.push("/logga-in");
   //   }
-  // }, [isLoggedIn]);
+  // }, [isLoggedIn.data]);
 
   useEffect(() => {
     if (logout.isSuccess) {

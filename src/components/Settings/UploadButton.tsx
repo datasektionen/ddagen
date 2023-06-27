@@ -1,21 +1,55 @@
-import { useState } from "react";
+import Locale from "@/locales";
+import { Dispatch } from "react";
 
 export function UploadButton({
+  t,
+  selectedImage,
+  setSelectedImage,
   textAbove,
   textInside,
   accept,
 }: {
+  t: Locale;
+  selectedImage: string;
+  setSelectedImage: Dispatch<string>;
   textAbove: string;
   textInside: string;
   accept: string;
 }) {
-  const [selectedImage, setSelectedImage] = useState();
+  function toBase64(file: Blob) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = reject;
+    });
+  }
 
-  const onImageChange = (e: any) => {
-    if (e.target.files && e.target.files.length == 1)
-      setSelectedImage(e.target.files[0]);
-    else setSelectedImage(undefined);
-  };
+  async function onImageChange(e: any) {
+    if (e.target.files && e.target.files.length == 1) {
+      const MAX_FILE_SIZE = 5e6;
+      const FILE_SIZE = e.target.files[0].size as number;
+
+      if (FILE_SIZE <= MAX_FILE_SIZE) {
+        await toBase64(e.target.files[0])
+          .then((data) => {
+            setSelectedImage(data as string);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        alert(
+          t.exhibitorSettings.table.row1.maxImageWarning(
+            (FILE_SIZE / 1e6).toFixed(2),
+            (MAX_FILE_SIZE / 1e6).toFixed(0)
+          )
+        );
+      }
+
+      e.target.files = null;
+    } else setSelectedImage("");
+  }
 
   return (
     <div className="flex flex-col items-center">
@@ -27,10 +61,10 @@ export function UploadButton({
       </label>
       <div className="relative flex flex-col bg-black/50 w-[150px] h-[150px] rounded-3xl border-solid border-cerise border-2 mx-auto overflow-hidden">
         <h1 className="relative top-[50%] -translate-y-2/4 text-center text-xl">
-          {!selectedImage ? (
+          {selectedImage == "" ? (
             textInside
           ) : (
-            <img className="mx-auto" src={URL.createObjectURL(selectedImage)} />
+            <img className="mx-auto" src={selectedImage} />
           )}
         </h1>
         <input

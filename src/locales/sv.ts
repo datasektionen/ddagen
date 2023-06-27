@@ -102,6 +102,10 @@ export default {
           save: "Spara",
           remove: "Ta Bort",
         },
+        maxImageWarning: (
+          imageSize: string, 
+          maxImageSize: string
+        ) => `Det gick inte att ladda upp filen: Filen är för stor (${imageSize}MB). Max filstorlek: ${maxImageSize}MB.`
       },
       row2: {
         title: "Ert Paket Och Extra Beställningar",

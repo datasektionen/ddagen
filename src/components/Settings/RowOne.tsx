@@ -1,5 +1,6 @@
 import Locale from "@/locales";
-import { useState } from "react";
+import { api } from "@/utils/api";
+import { useEffect, useState } from "react";
 import { TextInput } from "./TextInput";
 import { CheckMark } from "./CheckMark";
 import { AddContact } from "./AddContact";
@@ -8,6 +9,18 @@ import { EditContact } from "./EditContact";
 import { User } from "../../shared/Classes";
 
 export default function RowOne({ t }: { t: Locale }) {
+  const logos = api.exhibitor.getLogo.useQuery();
+  const logoMutation = api.exhibitor.setLogo.useMutation();
+
+  const [whiteLogo, setWhiteLogo] = useState("");
+  const [colorLogo, setColorLogo] = useState("");
+  // const [jobOffers, setJobOffers] = useState(
+  //   api.exhibitor.getJobOffers.useQuery().data
+  // );
+  // const [contacts, setContacts] = useState(
+  //   api.exhibitor.getContacts.useQuery().data
+  // );
+
   const [user, setUser] = useState(
     new User(
       "Anders Andersson",
@@ -18,6 +31,40 @@ export default function RowOne({ t }: { t: Locale }) {
   );
   const [editState, setEditState] = useState(false);
 
+  function removeImageDetails(img: string) {
+    return img.replace(/^data:image\/[a-z]+\+?[a-z]+;base64,/, "");
+  }
+
+  function addImageDetails(img: string | undefined) {
+    if (!img) return "";
+    switch (img.charAt(0)) {
+      case "/":
+        return "data:image/jpg;base64," + img;
+      case "i":
+        return "data:image/png;base64," + img;
+      case "P":
+        return "data:image/svg+xml;base64," + img;
+      default:
+        return img;
+    }
+  }
+
+  async function handleClick() {
+    logoMutation.mutate({
+      b64data: removeImageDetails(whiteLogo),
+      kind: "white",
+    });
+    logoMutation.mutate({
+      b64data: removeImageDetails(colorLogo),
+      kind: "color",
+    });
+  }
+
+  useEffect(() => {
+    if (!logos.isSuccess) return;
+    setWhiteLogo(addImageDetails(logos.data.white));
+    setColorLogo(addImageDetails(logos.data.color));
+  }, [logos.isSuccess]);
 
   return (
     <div className="flex flex-col w-full items-center overflow-auto mt-6">
@@ -28,14 +75,20 @@ export default function RowOne({ t }: { t: Locale }) {
       {/* Section 1 */}
       <div className="flex flex-row gap-8 mt-8 mb-20">
         <UploadButton
+          t={t}
+          selectedImage={whiteLogo}
+          setSelectedImage={setWhiteLogo}
           textAbove={"Vit Logga"}
           textInside={"Logga"}
-          accept={"image/png"}
+          accept={"image/svg+xml"}
         />
         <UploadButton
+          t={t}
+          selectedImage={colorLogo}
+          setSelectedImage={setColorLogo}
           textAbove={"Logga m. färg"}
           textInside={"Logga"}
-          accept={"image/png"}
+          accept={"image/png,image/jpeg"}
         />
         <TextInput
           textAbove={t.exhibitorSettings.table.row1.section1.description}
@@ -135,7 +188,7 @@ export default function RowOne({ t }: { t: Locale }) {
         </div>
       </div>
 
-      <button className="mb-12">
+      <button className="mb-12" onClick={handleClick}>
         <a
           className="block uppercase hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-normal px-16 py-2 max-lg:mx-auto w-max"
           href="#"
