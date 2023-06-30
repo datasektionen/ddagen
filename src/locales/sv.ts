@@ -52,8 +52,9 @@ export default {
       allergyComment: "Kommentar",
     },
     fieldsAddContact: {
+      id: "ID",
       name: "Namn",
-      phoneNumber: "Telefonnummer",
+      phone: "Telefonnummer",
       email: "Meljadress",
       role: "Arbetsroll",
     },
@@ -100,7 +101,10 @@ export default {
         section3: {
           header: "Kontaktpersoner",
           save: "Spara",
-          remove: "Ta Bort",
+          add: "Lägg Till",
+          addUserMessage: "Mejladressen finns redan.",
+          delete: "Radera",
+          deleteMessage: "Du kan inte radera dig själv."
         },
         maxImageWarning: (
           imageSize: string, 

@@ -52,8 +52,9 @@ export default {
       allergyComment: "Comment",
     },
     fieldsAddContact: {
+      id: "ID",
       name: "Name",
-      phoneNumber: "Phone Number",
+      phone: "Phone Number",
       email: "Email Address",
       role: "Role",
     },
@@ -100,7 +101,10 @@ export default {
         section3: {
           header: "Contacts",
           save: "Save",
-          remove: "Remove",
+          add: "Add",
+          addUserMessage: "Email adress already exists.",
+          delete: "Delete",
+          deleteMessage: "You can not delete yourself."
         },
         maxImageWarning: (
           imageSize: string, 

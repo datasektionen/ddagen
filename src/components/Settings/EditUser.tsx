@@ -1,8 +1,8 @@
 import Locale from "@/locales";
 import { Dispatch } from "react";
-import { User } from "../../shared/Classes";
+import { User } from "@/shared/Classes";
 
-export function EditContact({
+export function EditUser({
   t,
   user,
   setUser,
@@ -10,13 +10,13 @@ export function EditContact({
   setEditState,
 }: {
   t: Locale;
-  user: User;
+  user: User
   setUser: Dispatch<User>;
   editState: boolean;
   setEditState: Dispatch<boolean>;
 }) {
   return (
-    <div className="relative w-[80%] py-5 px-3 mt-6 mb-12 bg-white/40 border-2 border-white/70 rounded-xl">
+    <div className="relative w-[80%] py-5 px-3 mb-12 bg-white/40 border-2 border-white/70 rounded-xl">
       <table>
         <tbody
           className="text-lg [&>tr>td]:text-right [&>tr>td>label]:font-normal [&>tr>td>label]:text-[#555555] 
@@ -41,14 +41,14 @@ export function EditContact({
           <tr>
             <td>
               <label htmlFor="phoneNumber">
-                {t.exhibitorSettings.fieldsAddContact.phoneNumber}:
+                {t.exhibitorSettings.fieldsAddContact.phone}:
               </label>
             </td>
             <td>
               <input
                 type="text"
                 name="phoneNumber"
-                value={user.phoneNumber}
+                value={user.phone}
                 disabled={true}
               />
             </td>

@@ -1,13 +1,11 @@
 import Locale from "@/locales";
 import { api } from "@/utils/api";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { TextInput } from "./TextInput";
 import { CheckMark } from "./CheckMark";
-import { AddContact } from "./AddContact";
 import { UploadButton } from "./UploadButton";
-import { EditContact } from "./EditContact";
-import { User } from "../../shared/Classes";
-import { useRouter } from "next/router";
+import { UserDetails } from "./UserDetails";
 
 export default function RowOne({ t }: { t: Locale }) {
   const router = useRouter();
@@ -27,16 +25,6 @@ export default function RowOne({ t }: { t: Locale }) {
   const [colorLogo, setColorLogo] = useState("");
   const [description, setDescription] = useState("");
   const [checkmarks, setCheckMarks] = useState(new Array(18).fill(false));
-
-  const [user, setUser] = useState(
-    new User(
-      "Anders Andersson",
-      "07012345567",
-      "anders.anderssson@företag.se",
-      "Art director"
-    )
-  );
-  const [editState, setEditState] = useState(false);
 
   function removeImageDetails(img: string) {
     return img.replace(/^data:image\/[a-z]+\+?[a-z]+;base64,/, "");
@@ -93,6 +81,7 @@ export default function RowOne({ t }: { t: Locale }) {
       fullTimeJob: checkmarks[16],
       traineeProgram: checkmarks[17],
     });
+    window.scrollTo(0, 0);
     router.reload();
   }
 
@@ -256,23 +245,7 @@ export default function RowOne({ t }: { t: Locale }) {
       {/* Section 2 */}
 
       {/* Section 3 */}
-      <h1 className="uppercase text-cerise text-4xl font-normal px-[10px] break-words mt-6">
-        {t.exhibitorSettings.table.row1.section3.header}
-      </h1>
-      <EditContact
-        t={t}
-        user={user}
-        setUser={setUser}
-        editState={editState}
-        setEditState={setEditState}
-      />
-      <AddContact
-        t={t}
-        user={user}
-        setUser={setUser}
-        editState={editState}
-        setEditState={setEditState}
-      />
+      <UserDetails t={t} router={router} />
       {/* Section 3 */}
     </div>
   );

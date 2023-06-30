@@ -1,13 +1,22 @@
 export class User {
-  name: string;
-  phoneNumber: string;
+  id?: string;
   email: string;
+  name: string;
+  phone: string;
   role: string;
 
-  constructor(name: string, phoneNumber: string, email: string, role: string) {
+  constructor(
+    id: string | undefined,
+    email: string,
+    name: string,
+    phone: string,
+    role: string
+  ) {
+    this.id = id;
     this.name = name;
-    this.phoneNumber = phoneNumber;
     this.email = email;
+    this.name = name;
+    this.phone = phone;
     this.role = role;
   }
 }
@@ -17,11 +26,7 @@ export class Preferences {
   preferences: string[];
   other: string;
 
-  constructor(
-    name: string,
-    preferences: string[],
-    other: string
-  ) {
+  constructor(name: string, preferences: string[], other: string) {
     this.name = name;
     this.preferences = preferences;
     this.other = other;

@@ -157,12 +157,12 @@ export const exhibitorRouter = createTRPCRouter({
           input.kind === "white" ? { logoWhite: logo } : { logoColor: logo },
       });
     }),
-  getContacts: protectedProcedure.query(async ({ ctx }) => {
+  getUsers: protectedProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.user.findMany({
       where: { exhibitorId: ctx.session.user.exhibitorId },
     });
   }),
-  upsertContact: protectedProcedure
+  setUsers: protectedProcedure
     .input(
       z.object({
         id: z.string().optional(),
@@ -205,7 +205,7 @@ export const exhibitorRouter = createTRPCRouter({
         throw e;
       }
     }),
-  deleteContact: protectedProcedure
+  deleteUser: protectedProcedure
     .input(z.string())
     .mutation(async ({ ctx, input }) => {
       if (input === ctx.session.user.id) {
