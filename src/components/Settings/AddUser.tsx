@@ -20,6 +20,7 @@ export function AddUser({
   setEditState: Dispatch<undefined | string>;
 }) {
   const [user, setUser] = useState(users[pos]);
+  const defaultUser = new User(undefined, "", "", "", "");
 
   const setUserMutation = api.exhibitor.setUsers.useMutation();
   const deleteUserMutation = api.exhibitor.deleteUser.useMutation();
@@ -48,26 +49,26 @@ export function AddUser({
 
   useEffect(() => {
     if (setUserMutation.data) {
-      if (!setUserMutation.data.ok) alert(setUserMutation.data.error);
-      else if (setUserMutation.data.ok && setUserMutation.data.update)
+      if (!setUserMutation.data.ok) {
+        setUsers([defaultUser, ...users.slice(1)]);
+        alert(setUserMutation.data.error);
+      } else if (setUserMutation.data.ok && setUserMutation.data.update)
         setUsers(
-          users.map((u, i) =>
-            i == 0 ? new User(undefined, "", "", "", "") : i == pos ? user : u
-          )
+          users.map((u, i) => (i == 0 ? defaultUser : i == pos ? user : u))
         );
       else
         setUsers([
-          ...users.map((u, i) =>
-            i == 0 ? new User(undefined, "", "", "", "") : u
-          ),
+          ...users.map((u, i) => (i == 0 ? defaultUser : u)),
           { ...user, id: setUserMutation.data.id },
         ]);
       setUserMutation.reset();
     }
 
     if (deleteUserMutation.data) {
-      if (!deleteUserMutation.data.ok) alert(deleteUserMutation.data.error);
-      else setUsers(users.filter((u) => u.id != user.id));
+      if (!deleteUserMutation.data.ok) {
+        setUsers([defaultUser, ...users.slice(1)]);
+        alert(deleteUserMutation.data.error);
+      } else setUsers(users.filter((u) => u.id != user.id));
       deleteUserMutation.reset();
     }
   }, [setUserMutation.isSuccess, deleteUserMutation.isSuccess]);

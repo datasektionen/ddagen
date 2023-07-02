@@ -9,7 +9,7 @@ export function UserDetails({ t }: { t: Locale }) {
   const defaultUser = new User(undefined, "", "", "", "");
   const getUsers = api.exhibitor.getUsers.useQuery();
 
-  const [pos, setPos] = useState<number>(0);
+  const [pos, setPos] = useState(0);
   const [users, setUsers] = useState([defaultUser]);
   const [editState, setEditState] = useState<undefined | string>(undefined);
 

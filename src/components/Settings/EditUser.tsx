@@ -91,12 +91,12 @@ export function EditUser({
       <div className="absolute right-2 top-2">
         <button
           className={`${
-            editState == users[pos].email ? "hidden" : "bg-editIcon bg-white"
+            editState == users[pos].id ? "hidden" : "bg-editIcon bg-white"
           } bg-[length:30px_30px] w-[33px] h-[33px] bg-no-repeat bg-origin-content 
               pl-1 pb-1 rounded-md hover:scale-105 transition-transform`}
           onClick={() => {
             setPos(pos);
-            setEditState(users[pos].email);
+            setEditState(users[pos].id);
           }}
         />
       </div>

@@ -11,7 +11,13 @@ import { Prisma } from "@prisma/client";
 import sendEmail from "@/utils/send-email";
 import { randomUUID } from "crypto";
 
-const allergyType = z.enum(["representative", "banquet"]);
+const foodPreferencesType = z.enum(["Representative", "Banquet"]);
+const foodPreferencesValue = z.enum([
+  "Meat",
+  "Vegan",
+  "LactoseFree",
+  "GlutenFree",
+]);
 
 export const exhibitorRouter = createTRPCRouter({
   register: publicProcedure
@@ -280,28 +286,29 @@ export const exhibitorRouter = createTRPCRouter({
       });
       return { ok: true };
     }),
-  getFoodSpecifications: protectedProcedure
-    .input(allergyType)
+  getFoodPreferencess: protectedProcedure
+    .input(foodPreferencesType)
     .query(async ({ input, ctx }) => {
-      return await ctx.prisma.foodSpecification.findMany({
+      return await ctx.prisma.foodPreferences.findMany({
         where: {
           exhibitorId: ctx.session.user.exhibitorId,
           type: input,
         },
       });
     }),
-  upsertFoodSpecification: protectedProcedure
+  setFoodPreferences: protectedProcedure
     .input(
       z.object({
         id: z.string().optional(),
-        type: allergyType,
-        value: z.string().trim(),
+        name: z.string().trim(),
+        value: foodPreferencesValue,
         comment: z.string().trim(),
+        type: foodPreferencesType,
       })
     )
     .mutation(async ({ ctx, input }) => {
       if (input.id) {
-        await ctx.prisma.foodSpecification.updateMany({
+        await ctx.prisma.foodPreferences.updateMany({
           where: {
             id: input.id,
             exhibitorId: ctx.session.user.exhibitorId,
@@ -312,21 +319,26 @@ export const exhibitorRouter = createTRPCRouter({
             comment: input.comment,
           },
         });
+        return { ok: true, update: true, id: undefined };
       } else {
-        await ctx.prisma.foodSpecification.create({
+        const id = randomUUID();
+        await ctx.prisma.foodPreferences.create({
           data: {
+            id: id,
             exhibitorId: ctx.session.user.exhibitorId,
-            type: input.type,
+            name: input.name,
             value: input.value,
             comment: input.comment,
+            type: input.type,
           },
         });
+        return { ok: true, update: false, id: id };
       }
     }),
-  deleteFoodSpecification: protectedProcedure
+  deleteFoodPreferences: protectedProcedure
     .input(z.string())
     .mutation(async ({ ctx, input }) => {
-      await ctx.prisma.foodSpecification.deleteMany({
+      await ctx.prisma.foodPreferences.deleteMany({
         where: { id: input, exhibitorId: ctx.session.user.exhibitorId },
       });
     }),

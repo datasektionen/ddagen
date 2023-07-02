@@ -20,15 +20,24 @@ export class User {
     this.role = role;
   }
 }
-
 export class Preferences {
+  id?: string;
   name: string;
-  preferences: string[];
-  other: string;
+  value: string;
+  comment: string;
+  type: [string];
 
-  constructor(name: string, preferences: string[], other: string) {
+  constructor(
+    id: string | undefined,
+    name: string,
+    value: string,
+    comment: string,
+    type: [string]
+  ) {
+    this.id = id;
     this.name = name;
-    this.preferences = preferences;
-    this.other = other;
+    this.value = value;
+    this.comment = comment;
+    this.type = type;
   }
 }
