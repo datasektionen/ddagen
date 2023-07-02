@@ -89,7 +89,6 @@ enum Package {
   sponsor
   headhunter
   premium
-  main
 }
 
 model FoodSpecification {

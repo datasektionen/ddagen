@@ -115,6 +115,12 @@ export default {
       },
       row2: {
         title: "Your Package And Extra Orders",
+        packages: {
+          base: "Base",
+          sponsor: "Sponsor",
+          headhunter: "Head Hunter",
+          premium: "Premium",
+        },
         section1: {
           header: "Package",
           info: "For more information about the different packages",

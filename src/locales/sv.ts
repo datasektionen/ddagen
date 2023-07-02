@@ -115,6 +115,12 @@ export default {
       },
       row2: {
         title: "Ert Paket Och Extra Beställningar",
+        packages: {
+          base: "Bas",
+          sponsor: "Sponsor",
+          headhunter: "Head Hunter",
+          premium: "Premium",
+        },
         section1: {
           header: "Paket",
           info: "För mer info kring de olika paketen",

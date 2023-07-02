@@ -1,13 +1,32 @@
 import Locale from "@/locales";
+import { api } from "@/utils/api";
+import { useState, useEffect } from "react";
 import ExtraOrders from "./ExtraOrders";
 
-export default function RowTwo({
-  t,
-  exhibitorPackage,
-}: {
-  t: Locale;
-  exhibitorPackage: string;
-}) {
+export default function RowTwo({ t }: { t: Locale }) {
+  const getExhibitor = api.exhibitor.get.useQuery();
+  const [exhibitorPackage, setExhibitorPackage] = useState("");
+
+  function getPackage(exhibitorPackage: string) {
+    switch (exhibitorPackage) {
+      case "base":
+        return t.exhibitorSettings.table.row2.packages.base;
+      case "sponsor":
+        return t.exhibitorSettings.table.row2.packages.sponsor;
+      case "headhunter":
+        return t.exhibitorSettings.table.row2.packages.headhunter;
+      case "premium":
+        return t.exhibitorSettings.table.row2.packages.premium;
+      default:
+        return "";
+    }
+  }
+
+  useEffect(() => {
+    if (!getExhibitor.isSuccess) return;
+    setExhibitorPackage(getPackage(getExhibitor.data.package));
+  }, [getExhibitor.isSuccess]);
+
   return (
     <div className="flex flex-col w-full items-center overflow-auto mt-6">
       {/* Section 1 */}
