@@ -61,14 +61,15 @@ export default {
     fiedlsAddPreferences: {
       name: "Namn",
       preferences: "Preferenser",
-      other: "Övrigt"
+      other: "Övrigt",
     },
     contacts: "Kontakter",
     representativesAllergies: "Matspecifikationer företagsrepresentanter",
     banquetAllergies: "Matspecifikationer sittning",
     editAllergy: "Redigera",
     removeAllergy: "Ta bort",
-    tooManyAllergies: "Du har lagt till fler matspecifikationer än antalet platser!",
+    tooManyAllergies:
+      "Du har lagt till fler matspecifikationer än antalet platser!",
     table: {
       row1: {
         title: "Om Företaget",
@@ -102,14 +103,15 @@ export default {
           header: "Kontaktpersoner",
           save: "Spara",
           add: "Lägg Till",
-          addUserMessage: "Mejladressen finns redan.",
           delete: "Radera",
-          deleteMessage: "Du kan inte radera dig själv."
+          alerts: {
+            errorDeleteUserWithoutID: "Kan inte identifiera användaren som ska raderas.",
+            errorDeleteSelf: "Du kan inte radera dig själv.",
+            errorDuplicateEmail: "Mejladressen finns redan.",
+          },
         },
-        maxImageWarning: (
-          imageSize: string, 
-          maxImageSize: string
-        ) => `Det gick inte att ladda upp filen: Filen är för stor (${imageSize}MB). Max filstorlek: ${maxImageSize}MB.`
+        maxImageWarning: (imageSize: string, maxImageSize: string) =>
+          `Det gick inte att ladda upp filen: Filen är för stor (${imageSize}MB). Max filstorlek: ${maxImageSize}MB.`,
       },
       row2: {
         title: "Ert Paket Och Extra Beställningar",
@@ -138,12 +140,14 @@ export default {
         title: "Matpreferenser",
         section1: {
           header: "Under Mässan",
-          paragraphOne: "Dessa matpreferenser används för frukosten och lunchen under mässan.",
+          paragraphOne:
+            "Dessa matpreferenser används för frukosten och lunchen under mässan.",
           paragraphTwo: "Ni ändrar antalet i extra beställningar",
         },
         section2: {
           header: "Sittning",
-          paragraphOne: "Dessa matpreferenser används för sittningen efter mässan.",
+          paragraphOne:
+            "Dessa matpreferenser används för sittningen efter mässan.",
           paragraphTwo: "Ni ändrar antalet i extra beställningar",
         },
         preferencesHeader: "Preferenser (vegetariskt är standard)",
@@ -162,7 +166,8 @@ export default {
     emailText: "E-postadressen du angav när du gjorde din intresseanmälan",
     confirm: "Logga in",
     confirmationCode: "Bekräftelsekod",
-    confirmationCodeText: "Vi har skickat en kod till din e-postadress. Om du inte hittar mailet, se till att kolla i skräpposten!",
+    confirmationCodeText:
+      "Vi har skickat en kod till din e-postadress. Om du inte hittar mailet, se till att kolla i skräpposten!",
     emailSubject: "D-Dagen - Logga in",
     emailBody: (code: string, link: string) => `
       <p>För att slutföra inloggningen till D-Dagen, klicka på länken nedan:</p>
@@ -175,7 +180,8 @@ export default {
   },
   companyForm: {
     title: "Intresseanmälan",
-    description: "Fyll i formuläret för att registrera ert företag för D-Dagen 2023. OBS! En intresseanmälan är inte bindande.",
+    description:
+      "Fyll i formuläret för att registrera ert företag för D-Dagen 2023. OBS! En intresseanmälan är inte bindande.",
     fields: {
       name: "Företagsnamn",
       organizationNumber: "Organisationsnummer",
@@ -190,7 +196,8 @@ export default {
     title: "Intresseanmälan bekräftad",
     subtitle: "Din anmälan har genomförts",
     text: "Bekräftelse på din anmälan har skickats på mail. Om du har några övriga frågor, kontakta oss på",
-    textContinuation: "Glöm inte att kolla skräpposten om du inte fått bekräftelsemailet.",
+    textContinuation:
+      "Glöm inte att kolla skräpposten om du inte fått bekräftelsemailet.",
     contact: "Kontakta oss",
   },
   nav: {
@@ -256,25 +263,36 @@ export default {
     table1row1: "VAD ÄR D-DAGEN?",
     table1row2: "NÄR ÄR ÅRETS D-DAGEN?",
     table1row3: "VAR ÄR D-DAGEN?",
-    table1text1: "D-Dagen är den årliga karriärmässan som anordnas av Datasektionen på Kungliga Tekniska Högskolan. D-Dagen är numera Nordens största karriärmässa inom IT.",
+    table1text1:
+      "D-Dagen är den årliga karriärmässan som anordnas av Datasektionen på Kungliga Tekniska Högskolan. D-Dagen är numera Nordens största karriärmässa inom IT.",
     table1text2: "Årets D-Dagen äger rum torsdag den 12:e oktober.",
     table1text3: "D-Dagen hålls i vårt kårhus Nymble, som ligger på KTH.",
     table2row1: "KAN VÅRT FÖRETAG FÅ MER EXPONERING MOT STUDENTER?",
-    table2row2: "KAN VÅRT FÖRETAG MARKNADSFÖRA JOBBERBJUDANDEN OCH LIKNANDE VIA D-DAGEN?",
-    table2text1: "Absolut, vi har flera olika paket för att ni ska kunna nå ut till fler studenter, kontakta <a className='text-cerise' href='mailto:sales@ddagen.se'>sales@ddagen.se</a> för mer info.",
-    table2text2: "Ja, det primära syftet med D-Dagen är att marknadsföra karriärmöjligheter som jobberbjudanden, traineeprogram, sommarpraktikplatser och liknande till våra studenter.",
+    table2row2:
+      "KAN VÅRT FÖRETAG MARKNADSFÖRA JOBBERBJUDANDEN OCH LIKNANDE VIA D-DAGEN?",
+    table2text1:
+      "Absolut, vi har flera olika paket för att ni ska kunna nå ut till fler studenter, kontakta <a className='text-cerise' href='mailto:sales@ddagen.se'>sales@ddagen.se</a> för mer info.",
+    table2text2:
+      "Ja, det primära syftet med D-Dagen är att marknadsföra karriärmöjligheter som jobberbjudanden, traineeprogram, sommarpraktikplatser och liknande till våra studenter.",
     table3row1: "HUR ANMÄLER VI OSS TILL MÄSSAN?",
     table3row2: "VAD ÄR SISTA DATUMET FÖR ATT GÖRA EN INTRESSEANMÄLAN?",
     table3row3: "HUR BLIR VI PARTNER?",
     table3row4: "VI VILL HA MER INFORMATION, VART VÄNDER VI OSS?",
     table3row5: "ÄR NI ETT STARTUP?",
-    table3text1: "Ni får göra en <a href='https://ddagen.se/företagsanmälan' target='blank' className='underline text-cerise'>  intresseanmälan</a> eller kontakta våra säljare på <a className='text-cerise' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
-    table3text2: "Eftersom vi har ett begränsat antal platser på vår mässa rekommenderar vi att ni gör en icke-bindande intresseanmälan. För att göra detta, vänligen klicka här: <a href='https://ddagen.se/en/företagsanmälan' target='blank' className='underline text-cerise'> Anmälan </a>.",
-    table3text3: "Om ni är intresserade av någon typ av större partnerskap kontakta <a className='text-cerise' href='mailto:ansvarig@ddagen.se'>ansvarig@ddagen.se</a>.",
-    table3text4: "Om den information du söker inte finns på vår hemsida, kontakta våra säljare på <a className='text-cerise' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
-    table3text5: "Kontakta oss på <a className='text-cerise' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
-    table4row1: "VILKEN TYP AV EVENEMANG KAN VÅRT FÖRETAG ANORDNA TILLSAMMANS MED D-DAGEN?",
-    table4text1: "Vi samarbetar gärna med er för att organisera evenemang före och efter D-Dagen! Oavsett om ni är intresserade av lunchföreläsningar, hackathons eller något helt annat är ni välkomna att dela era idéer med oss. För mer information kontakta vår sponsoransvarige på <a className='text-cerise' href='mailto:alexandre.moch@ddagen.se'>alexandre.moch@ddagen.se</a>.",
+    table3text1:
+      "Ni får göra en <a href='https://ddagen.se/företagsanmälan' target='blank' className='underline text-cerise'>  intresseanmälan</a> eller kontakta våra säljare på <a className='text-cerise' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
+    table3text2:
+      "Eftersom vi har ett begränsat antal platser på vår mässa rekommenderar vi att ni gör en icke-bindande intresseanmälan. För att göra detta, vänligen klicka här: <a href='https://ddagen.se/en/företagsanmälan' target='blank' className='underline text-cerise'> Anmälan </a>.",
+    table3text3:
+      "Om ni är intresserade av någon typ av större partnerskap kontakta <a className='text-cerise' href='mailto:ansvarig@ddagen.se'>ansvarig@ddagen.se</a>.",
+    table3text4:
+      "Om den information du söker inte finns på vår hemsida, kontakta våra säljare på <a className='text-cerise' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
+    table3text5:
+      "Kontakta oss på <a className='text-cerise' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
+    table4row1:
+      "VILKEN TYP AV EVENEMANG KAN VÅRT FÖRETAG ANORDNA TILLSAMMANS MED D-DAGEN?",
+    table4text1:
+      "Vi samarbetar gärna med er för att organisera evenemang före och efter D-Dagen! Oavsett om ni är intresserade av lunchföreläsningar, hackathons eller något helt annat är ni välkomna att dela era idéer med oss. För mer information kontakta vår sponsoransvarige på <a className='text-cerise' href='mailto:alexandre.moch@ddagen.se'>alexandre.moch@ddagen.se</a>.",
     productCatalog: "PRODUKTKATALOG",
     header: "FÖRETAG FAQ",
     catalogPath: "/downloadables/Product_Catalog_sv.pdf",
@@ -283,8 +301,8 @@ export default {
     header: "Kontakt",
     subheader1: "Kontakta oss",
     subheader2: "Projektansvariga",
-    p1:"Om ni har några egna förslag på evenemang eller aktiviteter ni vill anordna för studenterna på Konglig Datasektionen, eller om ni har några andra frågor eller funderingar om företagspaket är det bara att höra av er till oss på...",
-    p2:"För mer information och övriga frågor till ansvariga för D-Dagen kontakta oss på...",
+    p1: "Om ni har några egna förslag på evenemang eller aktiviteter ni vill anordna för studenterna på Konglig Datasektionen, eller om ni har några andra frågor eller funderingar om företagspaket är det bara att höra av er till oss på...",
+    p2: "För mer information och övriga frågor till ansvariga för D-Dagen kontakta oss på...",
     salesHeader: "Säljgruppen",
     bossesHeader: "Ansvariga",
     roles: [
@@ -298,7 +316,7 @@ export default {
   },
   url: {
     forCompany: "https://ddagen.se/förföretag",
-    companyForm: "https://ddagen.se/företagsanmälan"
+    companyForm: "https://ddagen.se/företagsanmälan",
   },
   packages: {
     name: {
@@ -311,62 +329,119 @@ export default {
     boothSpace: "monteryta",
   },
   error: {
-    exhibitorRegistration: "Något gick fel! Försök igen eller skicka istället ett mail till",
+    exhibitorRegistration:
+      "Något gick fel! Försök igen eller skicka istället ett mail till",
     exhibitorRegistrationEmail:
       "Din anmälan har registrerats, men vi kunde inte skicka ett konfirmationsmail till dig.",
-    duplicateEmail: "Den här mailadressen är redan kopplad till en registrering",
-    invalidOrganizationNumberLength: "Organisationsnumret måste vara 10 siffror",
+    duplicateEmail:
+      "Den här mailadressen är redan kopplad till en registrering",
+    invalidOrganizationNumberLength:
+      "Organisationsnumret måste vara 10 siffror",
     invalidOrganizationNumberChecksum:
       "Felaktig kontrollsiffra, kontrollera att du skrivit rätt",
     userNotFound: "Det finns inget konto med den här mailadressen",
     emailNotSent: "Ett fel uppstod när vi försökte skicka ett mail till dig",
-    invalidConfirmationCode: "Bekräftelsekoden är felaktig eller har gått ut, var god försök igen",
+    invalidConfirmationCode:
+      "Bekräftelsekoden är felaktig eller har gått ut, var god försök igen",
     cannotDeleteSelf: "Du kan inte ta bort ditt eget konto",
     unknown: "Ett okänt fel uppstod",
   },
-  catalog:{
-    header:"PRODUKTKATALOG",
+  catalog: {
+    header: "PRODUKTKATALOG",
     premiumPacket: [
-      "Ett helt rum istället för monter", "Exponering på hemsidan", "1 st ståbord", 
-      "2 st representantplatser (frukost & lunch ingår)", "4 st sittningsbiljetter", "30st dryckesbiljetter (värde ca 50 kr styck)",
-      "El & Wifi", "Loungetillgång", "Tillgång till företagsvärd", "Förvaring & mottagning av leverans", "Exponering i broschyr", 
-      "Exponering på goodie bag ", "Sponsrat inlägg på sociala medier",
-       "En heldag med kontaktsamtal", "Marknadsföring av kontaktsamtal",],
+      "Ett helt rum istället för monter",
+      "Exponering på hemsidan",
+      "1 st ståbord",
+      "2 st representantplatser (frukost & lunch ingår)",
+      "4 st sittningsbiljetter",
+      "30st dryckesbiljetter (värde ca 50 kr styck)",
+      "El & Wifi",
+      "Loungetillgång",
+      "Tillgång till företagsvärd",
+      "Förvaring & mottagning av leverans",
+      "Exponering i broschyr",
+      "Exponering på goodie bag ",
+      "Sponsrat inlägg på sociala medier",
+      "En heldag med kontaktsamtal",
+      "Marknadsföring av kontaktsamtal",
+    ],
     headhHunterPacket: [
-      "8 m² monteryta och centralt på mässan", "Exponering på hemsidan", "1 st ståbord", 
-      "2 st representantplatser (frukost & lunch ingår)", "2 st sittningsbiljetter", "20st dryckesbiljetter (värde ca 50 kr styck)",
-      "El & Wifi", "Loungetillgång", "Tillgång till företagsvärd", "Förvaring & mottagning av leverans", "Exponering i broschyr", 
-      "Exponering på goodie bag ", "Sponsrat inlägg på sociala medier",
-       "En halvdag med kontaktsamtal", "Marknadsföring av kontaktsamtal",],
+      "8 m² monteryta och centralt på mässan",
+      "Exponering på hemsidan",
+      "1 st ståbord",
+      "2 st representantplatser (frukost & lunch ingår)",
+      "2 st sittningsbiljetter",
+      "20st dryckesbiljetter (värde ca 50 kr styck)",
+      "El & Wifi",
+      "Loungetillgång",
+      "Tillgång till företagsvärd",
+      "Förvaring & mottagning av leverans",
+      "Exponering i broschyr",
+      "Exponering på goodie bag ",
+      "Sponsrat inlägg på sociala medier",
+      "En halvdag med kontaktsamtal",
+      "Marknadsföring av kontaktsamtal",
+    ],
     sponsorPacket: [
-      "5 m² monteryta och centralt på mässan", "Exponering på hemsidan", "1 st ståbord", 
-      "2 st representantplatser (frukost & lunch ingår)", "2 st sittningsbiljetter", "10st dryckesbiljetter (värde ca 50 kr styck)",
-      "El & Wifi", "Loungetillgång", "Tillgång till företagsvärd", "Förvaring & mottagning av leverans", "Exponering i broschyr", 
-      "Exponering på goodie bag ", "Sponsrat inlägg på sociala medier",],
+      "5 m² monteryta och centralt på mässan",
+      "Exponering på hemsidan",
+      "1 st ståbord",
+      "2 st representantplatser (frukost & lunch ingår)",
+      "2 st sittningsbiljetter",
+      "10st dryckesbiljetter (värde ca 50 kr styck)",
+      "El & Wifi",
+      "Loungetillgång",
+      "Tillgång till företagsvärd",
+      "Förvaring & mottagning av leverans",
+      "Exponering i broschyr",
+      "Exponering på goodie bag ",
+      "Sponsrat inlägg på sociala medier",
+    ],
     basePacket: [
-      "5 m² monteryta och centralt på mässan", "Exponering på hemsidan", "1 st ståbord", 
-      "2 st representantplatser (frukost & lunch ingår)", "2 st sittningsbiljetter", "10st dryckesbiljetter (värde ca 50 kr styck)",
-      "El & Wifi", "Loungetillgång", "Tillgång till företagsvärd", "Förvaring & mottagning av leverans",],
-    packetType:["BASPAKETET", "SPONSORPAKETET", "HEAD-HUNTERPAKETET", "PREMIUMPAKETET"],
+      "5 m² monteryta och centralt på mässan",
+      "Exponering på hemsidan",
+      "1 st ståbord",
+      "2 st representantplatser (frukost & lunch ingår)",
+      "2 st sittningsbiljetter",
+      "10st dryckesbiljetter (värde ca 50 kr styck)",
+      "El & Wifi",
+      "Loungetillgång",
+      "Tillgång till företagsvärd",
+      "Förvaring & mottagning av leverans",
+    ],
+    packetType: [
+      "BASPAKETET",
+      "SPONSORPAKETET",
+      "HEAD-HUNTERPAKETET",
+      "PREMIUMPAKETET",
+    ],
     info: ["", "BEGRÄNSAT ANTAL", "BEGRÄNSAT ANTAL", "BEGRÄNSAT ANTAL"],
-    subheader:"FRÅGOR, TANKAR, & IDEER?",
-    paragraph: "Tveka inte att höra av dig om du har några frågor angående våra produkter eller har några funderingar."
-    
+    subheader: "FRÅGOR, TANKAR, & IDEER?",
+    paragraph:
+      "Tveka inte att höra av dig om du har några frågor angående våra produkter eller har några funderingar.",
   },
-  event:{
-    paragraph1: "Lunchföreläsningar är redan ett populärt koncept bland studenterna och brukar anordnas på campus. Föreläsningarna ger er en möjlighet att exempelvis prata om ert företag, en viss produkt...",
-    paragraph2: "Ett annat förslag är att anordna en slags After-work där studenterna får möjlighet att besöka er arbetsplats samt umgås och mingla med era medarbetare. Detta ger studenterna en god ...",
-    paragraph3: "Här får ni en möjlighet att besöka vårt campus och mingla med oss studenter i vår fina sektionslokal META. Under själva puben kan en rad olika aktiviteter genomföras, exempelvis quiz ...",
-    paragraph4: "Detta liknar After-work-konceptet lite grann och kan även kombineras med det. En case kväll ger er en god möjlighet att testa studenterna och faktiskt se vad vi går för, samt ger studenterna en rolig ...",
-    fullParagraph1: "Lunchföreläsningar är redan ett populärt koncept bland studenterna och brukar anordnas på campus. Föreläsningarna ger er en möjlighet att exempelvis prata om ert företag, en viss produkt eller idé, eller vilken annan visdom som helst som ni vill dela med er av. I priset ingår lokal, mat till studenter samt PR för eventet. I år kommer lunchföreläsningarna runt D-Dagen hållas i samband med Datasektionens 40-årsjubileum, vilket betyder att ni dessutom kommer vara med på deras sociala medier och hemsida.",
-    fullParagraph2: "Ett annat förslag är att anordna en slags After-work där studenterna får möjlighet att besöka er arbetsplats samt umgås och mingla med era medarbetare. Detta ger studenterna en god möjlighet att få en känsla av kulturen på arbetsplatsen samt prata med anställda om hur det är att jobba hos er. Denna typ av event brukar vara väldigt uppskattade av studenterna.",
-    fullParagraph3: "Här får ni en möjlighet att besöka vårt campus och mingla med oss studenter i vår fina sektionslokal META. Under själva puben kan en rad olika aktiviteter genomföras, exempelvis quiz, brädspel eller något annat (låt fantasin flöda). I priset ingår mat och barbongar, det vill säga dryckesbiljetter ni kan dela ut till studenter. Även denna pub kommer genomföras i ett samarbete med Datasektionens 40-årsjubileum.",
-    fullParagraph4: "Detta liknar After-work-konceptet lite grann och kan även kombineras med det. En case kväll ger er en god möjlighet att testa studenterna och faktiskt se vad vi går för, samt ger studenterna en rolig utmaning, och beroende på uppgiften kan det också ge oss en viss känsla för hur det är att jobba med programmering.  Case kvällen kommer äga rum veckan efter D-dagen med PR för att nå ut till intresserade datateknikstudenter. Vi ansvarar för lokalen som kan anpassas efter hur många studenter som ni vill ska delta på eventet.",
+  event: {
+    paragraph1:
+      "Lunchföreläsningar är redan ett populärt koncept bland studenterna och brukar anordnas på campus. Föreläsningarna ger er en möjlighet att exempelvis prata om ert företag, en viss produkt...",
+    paragraph2:
+      "Ett annat förslag är att anordna en slags After-work där studenterna får möjlighet att besöka er arbetsplats samt umgås och mingla med era medarbetare. Detta ger studenterna en god ...",
+    paragraph3:
+      "Här får ni en möjlighet att besöka vårt campus och mingla med oss studenter i vår fina sektionslokal META. Under själva puben kan en rad olika aktiviteter genomföras, exempelvis quiz ...",
+    paragraph4:
+      "Detta liknar After-work-konceptet lite grann och kan även kombineras med det. En case kväll ger er en god möjlighet att testa studenterna och faktiskt se vad vi går för, samt ger studenterna en rolig ...",
+    fullParagraph1:
+      "Lunchföreläsningar är redan ett populärt koncept bland studenterna och brukar anordnas på campus. Föreläsningarna ger er en möjlighet att exempelvis prata om ert företag, en viss produkt eller idé, eller vilken annan visdom som helst som ni vill dela med er av. I priset ingår lokal, mat till studenter samt PR för eventet. I år kommer lunchföreläsningarna runt D-Dagen hållas i samband med Datasektionens 40-årsjubileum, vilket betyder att ni dessutom kommer vara med på deras sociala medier och hemsida.",
+    fullParagraph2:
+      "Ett annat förslag är att anordna en slags After-work där studenterna får möjlighet att besöka er arbetsplats samt umgås och mingla med era medarbetare. Detta ger studenterna en god möjlighet att få en känsla av kulturen på arbetsplatsen samt prata med anställda om hur det är att jobba hos er. Denna typ av event brukar vara väldigt uppskattade av studenterna.",
+    fullParagraph3:
+      "Här får ni en möjlighet att besöka vårt campus och mingla med oss studenter i vår fina sektionslokal META. Under själva puben kan en rad olika aktiviteter genomföras, exempelvis quiz, brädspel eller något annat (låt fantasin flöda). I priset ingår mat och barbongar, det vill säga dryckesbiljetter ni kan dela ut till studenter. Även denna pub kommer genomföras i ett samarbete med Datasektionens 40-årsjubileum.",
+    fullParagraph4:
+      "Detta liknar After-work-konceptet lite grann och kan även kombineras med det. En case kväll ger er en god möjlighet att testa studenterna och faktiskt se vad vi går för, samt ger studenterna en rolig utmaning, och beroende på uppgiften kan det också ge oss en viss känsla för hur det är att jobba med programmering.  Case kvällen kommer äga rum veckan efter D-dagen med PR för att nå ut till intresserade datateknikstudenter. Vi ansvarar för lokalen som kan anpassas efter hur många studenter som ni vill ska delta på eventet.",
     header1: "Lunchföreläsning",
     header2: "Afterwork/Kontorbesök",
     header3: "Sponsrad Pub",
     header4: "Casekväll",
     subheader: "Pris: ",
     extra: "Läs mer",
-  }
+  },
 };

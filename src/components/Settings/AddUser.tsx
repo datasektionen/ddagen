@@ -1,33 +1,77 @@
 import Locale from "@/locales";
-import { Dispatch } from "react";
+import { Dispatch, useState, useEffect } from "react";
 import { InputField } from "./InputField";
 import { User } from "@/shared/Classes";
+import { api } from "@/utils/api";
 
 export function AddUser({
   t,
-  user,
-  setUser,
-  defaultUser,
+  pos,
+  users,
+  setUsers,
   editState,
   setEditState,
-  setUserInDatabase,
-  deleteUserInDatabase,
 }: {
   t: Locale;
-  user: User;
-  setUser: Dispatch<User>;
-  defaultUser: User;
-  editState: boolean;
-  setEditState: Dispatch<boolean>;
-  setUserInDatabase: () => void;
-  deleteUserInDatabase: () => void;
+  pos: number;
+  users: User[];
+  setUsers: Dispatch<User[]>;
+  editState: undefined | string;
+  setEditState: Dispatch<undefined | string>;
 }) {
+  const [user, setUser] = useState(users[pos]);
+
+  const setUserMutation = api.exhibitor.setUsers.useMutation();
+  const deleteUserMutation = api.exhibitor.deleteUser.useMutation();
+
   function handle_submission(e: any) {
     e.preventDefault();
-    setEditState(false);
-    setUserInDatabase();
-    setUser(defaultUser);
+    setUserMutation.mutate({
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      phone: user.phone,
+      role: user.role,
+      locale: t.locale,
+    });
+    setEditState(undefined);
   }
+
+  function deleteUserInDatabase() {
+    deleteUserMutation.mutate({ id: users[pos].id, locale: t.locale });
+    setEditState(undefined);
+  }
+
+  useEffect(() => {
+    if (pos < users.length) setUser(users[pos]);
+  }, [users, pos]);
+
+  useEffect(() => {
+    if (setUserMutation.data) {
+      if (!setUserMutation.data.ok) alert(setUserMutation.data.error);
+      else if (setUserMutation.data.ok && setUserMutation.data.update)
+        setUsers(
+          users.map((u, i) =>
+            i == 0 ? new User(undefined, "", "", "", "") : i == pos ? user : u
+          )
+        );
+      else
+        setUsers([
+          ...users.map((u, i) =>
+            i == 0 ? new User(undefined, "", "", "", "") : u
+          ),
+          { ...user, id: setUserMutation.data.id },
+        ]);
+      setUserMutation.reset();
+    }
+
+    if (deleteUserMutation.data) {
+      if (!deleteUserMutation.data.ok) alert(deleteUserMutation.data.error);
+      else setUsers(users.filter((u) => u.id != user.id));
+      deleteUserMutation.reset();
+    }
+  }, [setUserMutation.isSuccess, deleteUserMutation.isSuccess]);
+
   return (
     <div className="flex flex-col items-center w-[80%] bg-white/40 border-2 border-white/70 rounded-xl pb-8 mb-16">
       <form
@@ -39,7 +83,7 @@ export function AddUser({
           name="name"
           value={user.name}
           setValue={(name) => {
-            setUser(new User(user.id, user.email, name, user.phone, user.role));
+            setUser({ ...user, name: name });
           }}
           fields={t.exhibitorSettings.fieldsAddContact}
         />
@@ -48,7 +92,7 @@ export function AddUser({
           name="phone"
           value={user.phone}
           setValue={(phone) => {
-            setUser(new User(user.id, user.email, user.name, phone, user.role));
+            setUser({ ...user, phone: phone });
           }}
           fields={t.exhibitorSettings.fieldsAddContact}
         />
@@ -57,7 +101,7 @@ export function AddUser({
           name="email"
           value={user.email}
           setValue={(email) => {
-            setUser(new User(user.id, email, user.name, user.phone, user.role));
+            setUser({ ...user, email: email });
           }}
           fields={t.exhibitorSettings.fieldsAddContact}
         />
@@ -66,13 +110,13 @@ export function AddUser({
           name="role"
           value={user.role}
           setValue={(role) => {
-            setUser(new User(user.id, user.email, user.name, user.phone, role));
+            setUser({ ...user, role: role });
           }}
           fields={t.exhibitorSettings.fieldsAddContact}
         />
 
         <div className="flex flex-row gap-x-8 mt-4 justify-center">
-          <button onClick={deleteUserInDatabase}>
+          <button type="button" onClick={deleteUserInDatabase}>
             <a className="block uppercase hover:scale-105 transition-transform bg-[#A7A7A7] rounded-full text-white text-base font-normal px-8 py-2 max-lg:mx-auto w-max">
               {t.exhibitorSettings.table.row1.section3.delete}
             </a>

@@ -9,6 +9,7 @@ import { getLocale } from "@/locales";
 import { TRPCError } from "@trpc/server";
 import { Prisma } from "@prisma/client";
 import sendEmail from "@/utils/send-email";
+import { randomUUID } from "crypto";
 
 const allergyType = z.enum(["representative", "banquet"]);
 
@@ -36,7 +37,7 @@ export const exhibitorRouter = createTRPCRouter({
         },
         ctx,
       }) => {
-        const t = getLocale(locale).email;
+        const t = getLocale(locale);
         const v = validateOrganizationNumber(organizationNumber);
         if ("error" in v) {
           throw new TRPCError({
@@ -60,8 +61,8 @@ export const exhibitorRouter = createTRPCRouter({
         try {
           sendEmail(
             email,
-            t.subject,
-            t.body(
+            t.email.subject,
+            t.email.body(
               companyName,
               organizationNumber,
               email,
@@ -170,6 +171,7 @@ export const exhibitorRouter = createTRPCRouter({
         email: z.string().email().trim(),
         phone: z.string().trim(),
         role: z.string().trim(),
+        locale: z.enum(["en", "sv"]),
       })
     )
     .mutation(async ({ ctx, input }) => {
@@ -184,9 +186,12 @@ export const exhibitorRouter = createTRPCRouter({
               role: input.role,
             },
           });
+          return { ok: true, update: true, id: undefined };
         } else {
+          const id = randomUUID();
           await ctx.prisma.user.create({
             data: {
+              id: id,
               exhibitorId: ctx.session.user.exhibitorId,
               name: input.name,
               email: input.email,
@@ -194,25 +199,48 @@ export const exhibitorRouter = createTRPCRouter({
               role: input.role,
             },
           });
+          return { ok: true, update: false, id: id };
         }
       } catch (e) {
         if (
           e instanceof Prisma.PrismaClientKnownRequestError &&
           e.code === "P2002"
         ) {
-          return { ok: false, error: "duplicateEmail" as const };
+          const t = getLocale(input.locale);
+          return {
+            ok: false,
+            error:
+              t.exhibitorSettings.table.row1.section3.alerts
+                .errorDuplicateEmail,
+          };
         }
         throw e;
       }
     }),
   deleteUser: protectedProcedure
-    .input(z.string())
+    .input(
+      z.object({
+        id: z.string().optional(),
+        locale: z.enum(["en", "sv"]),
+      })
+    )
     .mutation(async ({ ctx, input }) => {
-      if (input === ctx.session.user.id) {
-        return { ok: false, error: "cannotDeleteSelf" as const };
+      const t = getLocale(input.locale);
+      if (input.id == undefined) {
+        return {
+          ok: false,
+          error:
+            t.exhibitorSettings.table.row1.section3.alerts
+              .errorDeleteUserWithoutID,
+        };
+      } else if (input.id === ctx.session.user.id) {
+        return {
+          ok: false,
+          error: t.exhibitorSettings.table.row1.section3.alerts.errorDeleteSelf,
+        };
       }
       await ctx.prisma.user.delete({
-        where: { id: input },
+        where: { id: input.id },
       });
       return { ok: true };
     }),

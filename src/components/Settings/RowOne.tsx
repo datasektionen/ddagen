@@ -24,7 +24,7 @@ export default function RowOne({ t }: { t: Locale }) {
   const [whiteLogo, setWhiteLogo] = useState("");
   const [colorLogo, setColorLogo] = useState("");
   const [description, setDescription] = useState("");
-  const [checkmarks, setCheckMarks] = useState(new Array(18).fill(false));
+  const [checkmarks, setCheckMarks] = useState<boolean[]>([]);
 
   function removeImageDetails(img: string) {
     return img.replace(/^data:image\/[a-z]+\+?[a-z]+;base64,/, "");
@@ -45,7 +45,7 @@ export default function RowOne({ t }: { t: Locale }) {
   }
 
   function getCheckmarksPos(offer: string) {
-    var array = [];
+    let array: boolean[] = [];
     switch (offer) {
       case "summer":
         array = checkmarks.slice(0, 5);
@@ -58,7 +58,7 @@ export default function RowOne({ t }: { t: Locale }) {
         break;
     }
     return array.reduce(
-      (out, bool, index) => (bool ? out.concat(index) : out),
+      (out: number[], bool, index) => (bool ? out.concat(index) : out),
       []
     );
   }
@@ -97,20 +97,22 @@ export default function RowOne({ t }: { t: Locale }) {
   }, [getDescription.isSuccess]);
 
   useEffect(() => {
+    let initCheckMarks = new Array<boolean>(18).fill(false);
     if (!getJobOffers.isSuccess || !getJobOffers.data) return;
     const jobOffers = getJobOffers.data;
     jobOffers.summerJob.map((num: number) => {
-      checkmarks[num] = true;
+      initCheckMarks[num] = true;
     });
     jobOffers.internship.map((num: number) => {
-      checkmarks[5 + num] = true;
+      initCheckMarks[5 + num] = true;
     });
     jobOffers.partTimeJob.map((num: number) => {
-      checkmarks[10 + num] = true;
+      initCheckMarks[10 + num] = true;
     });
-    checkmarks[15] = jobOffers.masterThesis;
-    checkmarks[16] = jobOffers.fullTimeJob;
-    checkmarks[17] = jobOffers.traineeProgram;
+    initCheckMarks[15] = jobOffers.masterThesis;
+    initCheckMarks[16] = jobOffers.fullTimeJob;
+    initCheckMarks[17] = jobOffers.traineeProgram;
+    setCheckMarks(initCheckMarks);
   }, [getJobOffers.isSuccess]);
 
   return (
@@ -165,7 +167,7 @@ export default function RowOne({ t }: { t: Locale }) {
             {t.exhibitorSettings.table.row1.section2.jobs.summer}
           </div>
           {[0, 1, 2, 3, 4].map((pos) => (
-            <>
+            <div key={pos}>
               <CheckMark
                 name={`${pos}`}
                 defaultChecked={checkmarks[pos]}
@@ -173,13 +175,13 @@ export default function RowOne({ t }: { t: Locale }) {
                   checkmarks[pos] = !checkmarks[pos];
                 }}
               />
-            </>
+            </div>
           ))}
           <div className="pr-8 text-right">
             {t.exhibitorSettings.table.row1.section2.jobs.internship}
           </div>
           {[5, 6, 7, 8, 9].map((pos) => (
-            <>
+            <div key={pos}>
               <CheckMark
                 name={`${pos}`}
                 defaultChecked={checkmarks[pos]}
@@ -187,13 +189,13 @@ export default function RowOne({ t }: { t: Locale }) {
                   checkmarks[pos] = !checkmarks[pos];
                 }}
               />
-            </>
+            </div>
           ))}
           <div className="pr-8 text-right">
             {t.exhibitorSettings.table.row1.section2.jobs.partTime}
           </div>
           {[10, 11, 12, 13, 14].map((pos) => (
-            <>
+            <div key={pos}>
               <CheckMark
                 name={`${pos}`}
                 defaultChecked={checkmarks[pos]}
@@ -201,7 +203,7 @@ export default function RowOne({ t }: { t: Locale }) {
                   checkmarks[pos] = !checkmarks[pos];
                 }}
               />
-            </>
+            </div>
           ))}
         </div>
         <div className="flex flex-row mb-12 gap-x-16 justify-center">
@@ -219,7 +221,7 @@ export default function RowOne({ t }: { t: Locale }) {
               num: 17,
             },
           ].map((pos) => (
-            <div className="flex flex-row">
+            <div className="flex flex-row" key={pos.num}>
               <span className="mr-4 items-center">{pos.name}</span>
               <CheckMark
                 name={"thesis"}
@@ -245,7 +247,7 @@ export default function RowOne({ t }: { t: Locale }) {
       {/* Section 2 */}
 
       {/* Section 3 */}
-      <UserDetails t={t} router={router} />
+      <UserDetails t={t} />
       {/* Section 3 */}
     </div>
   );
