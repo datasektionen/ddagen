@@ -24,7 +24,7 @@ export function AddUser({
   const setUserMutation = api.exhibitor.setUsers.useMutation();
   const deleteUserMutation = api.exhibitor.deleteUser.useMutation();
 
-  function handle_submission(e: any) {
+  function handleSubmission(e: any) {
     e.preventDefault();
     setUserMutation.mutate({
       id: user.id,
@@ -76,7 +76,7 @@ export function AddUser({
     <div className="flex flex-col items-center w-[80%] bg-white/40 border-2 border-white/70 rounded-xl pb-8 mb-16">
       <form
         className="flex flex-col w-[90%] bg-transparent outline-none gap-7 mt-10"
-        onSubmit={handle_submission}
+        onSubmit={handleSubmission}
       >
         <InputField
           type="text"

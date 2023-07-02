@@ -1,13 +1,37 @@
 import Locale from "@/locales";
-import { useState, Dispatch } from "react";
+import { api } from "@/utils/api";
+import { useState, useEffect, Dispatch } from "react";
 
 export default function ExtraOrders({ t }: { t: Locale }) {
-  const [drinkCoupons, setDrinkCoupons] = useState(20);
-  const [tables, setTables] = useState(20);
-  const [chairs, setChairs] = useState(20);
-  const [representatives, setRepresentatives] = useState(20);
-  const [sitting, setSitting] = useState(20);
+  const getExtras = api.exhibitor.getExtras.useQuery();
+  const extrasMutation = api.exhibitor.setExtras.useMutation();
+
   const [editState, setEditState] = useState(false);
+  const [tables, setTables] = useState(0);
+  const [chairs, setChairs] = useState(0);
+  const [drinkCoupons, setDrinkCoupons] = useState(0);
+  const [representatives, setRepresentatives] = useState(0);
+  const [banquetTickets, setBanquetTickets] = useState(0);
+
+  useEffect(() => {
+    if (!getExtras.isSuccess) return;
+    setTables(getExtras.data.extraTables);
+    setChairs(getExtras.data.extraChairs);
+    setDrinkCoupons(getExtras.data.extraDrinkCoupons);
+    setRepresentatives(getExtras.data.extraRepresentativeSpots);
+    setBanquetTickets(getExtras.data.totalBanquetTicketsWanted);
+  }, [getExtras.isSuccess]);
+
+  function handleClick() {
+    setEditState(!editState);
+    extrasMutation.mutate({
+      extraTables: tables,
+      extraChairs: chairs,
+      extraDrinkCoupons: drinkCoupons,
+      extraRepresentativeSpots: representatives,
+      totalBanquetTicketsWanted: banquetTickets,
+    });
+  }
 
   function plusMinus(num: number, set: Dispatch<number>, step: number) {
     return (
@@ -32,7 +56,7 @@ export default function ExtraOrders({ t }: { t: Locale }) {
             className="flex hover:cursor-pointer bg-white rounded-lg w-full h-[21.5px] text-black font-normal select-none 
                         justify-center items-center px-2 border-1 border-black hover:scale-105 transition-transform "
             onClick={() => {
-              if (num >= 0 && (num - step) >= 0) set(num - step);
+              if (num >= 0 && num - step >= 0) set(num - step);
             }}
           >
             -
@@ -75,7 +99,9 @@ export default function ExtraOrders({ t }: { t: Locale }) {
         </div>
         <div className="font-normal text-2xl">10</div>
         <div className="font-normal text-2xl">
-          {editState ? plusMinus(drinkCoupons, setDrinkCoupons, 10) : drinkCoupons}
+          {editState
+            ? plusMinus(drinkCoupons, setDrinkCoupons, 10)
+            : drinkCoupons}
         </div>
         <div className="font-normal text-2xl">{10 + drinkCoupons}</div>
         <div className="text-right text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
@@ -133,10 +159,12 @@ export default function ExtraOrders({ t }: { t: Locale }) {
         </div>
         <div className="font-normal text-2xl !border-transparent">10</div>
         <div className={"font-normal text-2xl !border-transparent"}>
-          {editState ? plusMinus(sitting, setSitting, 1) : sitting}
+          {editState
+            ? plusMinus(banquetTickets, setBanquetTickets, 1)
+            : banquetTickets}
         </div>
         <div className="font-normal text-2xl !border-transparent">
-          {10 + sitting}
+          {10 + banquetTickets}
         </div>
         <div className="text-right text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 !border-transparent text-base">
           {t.exhibitorSettings.table.row2.section2.warning}
@@ -145,15 +173,12 @@ export default function ExtraOrders({ t }: { t: Locale }) {
       </div>
 
       <a
-        className={`${
+        className={`hover:cursor-pointer ${
           editState
             ? "block uppercase hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-normal mt-4 px-8 py-2 max-lg:mx-auto w-max"
             : "hover:scale-105 transition-transform bg-editIcon bg-white bg-[length:30px_30px] w-[33px] h-[33px] bg-no-repeat bg-origin-content mt-4 pl-1 pb-1 rounded-md"
         }`}
-        href="#"
-        onClick={() => {
-          setEditState(!editState);
-        }}
+        onClick={handleClick}
       >
         {editState ? t.exhibitorSettings.table.row2.section2.save : ""}
       </a>

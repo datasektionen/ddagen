@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import ExtraOrders from "./ExtraOrders";
 
 export default function RowTwo({ t }: { t: Locale }) {
-  const getExhibitor = api.exhibitor.get.useQuery();
+  const getExhibitor = api.exhibitor.getPackage.useQuery();
   const [exhibitorPackage, setExhibitorPackage] = useState("");
 
   function getPackage(exhibitorPackage: string) {
@@ -36,7 +36,7 @@ export default function RowTwo({ t }: { t: Locale }) {
       <h2 className="mt-4 underline underline-offset-8 text-4xl font-normal">
         {exhibitorPackage}
       </h2>
-      <p className="mt-8 text-2xl font-normal">
+      <p className="mt-8 text-2xl text-center font-normal">
         {t.exhibitorSettings.table.row2.section1.info}:
       </p>
       <button className="mt-4 mb-2">

@@ -107,11 +107,7 @@ export default function Exhibitor() {
               t.exhibitorSettings.table.row3.title,
             ],
             [],
-            [
-              <RowOne t={t} />,
-              <RowTwo t={t} exhibitorPackage="Baspaket" />,
-              <RowThree t={t} />,
-            ]
+            [<RowOne t={t} />, <RowTwo t={t} />, <RowThree t={t} />]
           )}
         </div>
       </div>

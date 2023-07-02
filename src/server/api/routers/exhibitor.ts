@@ -86,12 +86,6 @@ export const exhibitorRouter = createTRPCRouter({
         organizationNumber: true,
         invoiceEmail: true,
         description: true,
-        package: true,
-        extraTables: true,
-        extraChairs: true,
-        extraDrinkCoupons: true,
-        extraRepresentativeSpots: true,
-        totalBanquetTicketsWanted: true,
       },
     });
   }),
@@ -116,6 +110,48 @@ export const exhibitorRouter = createTRPCRouter({
           extraTables: input.extraTables,
           extraDrinkCoupons: input.extraDrinkCoupons,
           extraRepresentativeSpots: input.extraRepresentativeSpots,
+        },
+      });
+    }),
+  getPackage: protectedProcedure.query(async ({ ctx }) => {
+    return await ctx.prisma.exhibitor.findUniqueOrThrow({
+      where: { id: ctx.session.user.exhibitorId },
+      select: {
+        package: true,
+      },
+    });
+  }),
+  getExtras: protectedProcedure.query(async ({ ctx }) => {
+    return await ctx.prisma.exhibitor.findUniqueOrThrow({
+      where: { id: ctx.session.user.exhibitorId },
+      select: {
+        extraTables: true,
+        extraChairs: true,
+        extraDrinkCoupons: true,
+        extraRepresentativeSpots: true,
+        totalBanquetTicketsWanted: true,
+      },
+    });
+  }),
+  setExtras: protectedProcedure
+    .input(
+      z.object({
+        extraChairs: z.number(),
+        extraTables: z.number(),
+        extraDrinkCoupons: z.number(),
+        extraRepresentativeSpots: z.number(),
+        totalBanquetTicketsWanted: z.number(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      await ctx.prisma.exhibitor.update({
+        where: { id: ctx.session.user.exhibitorId },
+        data: {
+          extraChairs: input.extraChairs,
+          extraTables: input.extraTables,
+          extraDrinkCoupons: input.extraDrinkCoupons,
+          extraRepresentativeSpots: input.extraRepresentativeSpots,
+          totalBanquetTicketsWanted: input.totalBanquetTicketsWanted,
         },
       });
     }),
