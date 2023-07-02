@@ -4,21 +4,57 @@ import { useState, useEffect } from "react";
 import ExtraOrders from "./ExtraOrders";
 
 export default function RowTwo({ t }: { t: Locale }) {
+  const defaultPackage = {
+    name: "",
+    tables: 0,
+    chairs: 0,
+    drinkCoupons: 0,
+    representatives: 0,
+    banquetTickets: 0,
+  };
   const getExhibitor = api.exhibitor.getPackage.useQuery();
-  const [exhibitorPackage, setExhibitorPackage] = useState("");
+  const [exhibitorPackage, setExhibitorPackage] = useState(defaultPackage);
 
   function getPackage(exhibitorPackage: string) {
     switch (exhibitorPackage) {
       case "base":
-        return t.exhibitorSettings.table.row2.packages.base;
+        return {
+          name: t.exhibitorSettings.table.row2.packages.base,
+          tables: 1,
+          chairs: 1,
+          drinkCoupons: 10,
+          representatives: 2,
+          banquetTickets: 2,
+        };
       case "sponsor":
-        return t.exhibitorSettings.table.row2.packages.sponsor;
+        return {
+          name: t.exhibitorSettings.table.row2.packages.sponsor,
+          tables: 1,
+          chairs: 1,
+          drinkCoupons: 10,
+          representatives: 2,
+          banquetTickets: 2,
+        };
       case "headhunter":
-        return t.exhibitorSettings.table.row2.packages.headhunter;
+        return {
+          name: t.exhibitorSettings.table.row2.packages.headhunter,
+          tables: 1,
+          chairs: 1,
+          drinkCoupons: 20,
+          representatives: 4,
+          banquetTickets: 2,
+        };
       case "premium":
-        return t.exhibitorSettings.table.row2.packages.premium;
+        return {
+          name: t.exhibitorSettings.table.row2.packages.premium,
+          tables: 1,
+          chairs: 1,
+          drinkCoupons: 30,
+          representatives: 4,
+          banquetTickets: 4,
+        };
       default:
-        return "";
+        return defaultPackage;
     }
   }
 
@@ -34,7 +70,7 @@ export default function RowTwo({ t }: { t: Locale }) {
         {t.exhibitorSettings.table.row2.section1.header}
       </h1>
       <h2 className="mt-4 underline underline-offset-8 text-4xl font-normal">
-        {exhibitorPackage}
+        {exhibitorPackage.name}
       </h2>
       <p className="mt-8 text-2xl text-center font-normal">
         {t.exhibitorSettings.table.row2.section1.info}:
@@ -54,7 +90,7 @@ export default function RowTwo({ t }: { t: Locale }) {
         <h1 className="mt-12 uppercase text-cerise text-4xl font-normal px-[10px] break-words">
           {t.exhibitorSettings.table.row2.section2.header}
         </h1>
-        <ExtraOrders t={t} />
+        <ExtraOrders t={t} exhibitorPackage={exhibitorPackage} />
       </div>
       {/* Section 2 */}
     </div>

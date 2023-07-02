@@ -2,7 +2,22 @@ import Locale from "@/locales";
 import { api } from "@/utils/api";
 import { useState, useEffect, Dispatch } from "react";
 
-export default function ExtraOrders({ t }: { t: Locale }) {
+type Package = {
+  name: string;
+  tables: number;
+  chairs: number;
+  drinkCoupons: number;
+  representatives: number;
+  banquetTickets: number;
+};
+
+export default function ExtraOrders({
+  t,
+  exhibitorPackage,
+}: {
+  t: Locale;
+  exhibitorPackage: Package;
+}) {
   const getExtras = api.exhibitor.getExtras.useQuery();
   const extrasMutation = api.exhibitor.setExtras.useMutation();
 
@@ -97,13 +112,17 @@ export default function ExtraOrders({ t }: { t: Locale }) {
         <div className="text-left">
           {t.exhibitorSettings.table.row2.section2.drinkCoupons}:
         </div>
-        <div className="font-normal text-2xl">10</div>
+        <div className="font-normal text-2xl">
+          {exhibitorPackage.drinkCoupons}
+        </div>
         <div className="font-normal text-2xl">
           {editState
             ? plusMinus(drinkCoupons, setDrinkCoupons, 10)
             : drinkCoupons}
         </div>
-        <div className="font-normal text-2xl">{10 + drinkCoupons}</div>
+        <div className="font-normal text-2xl">
+          {exhibitorPackage.drinkCoupons + drinkCoupons}
+        </div>
         <div className="text-right text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
           {t.exhibitorSettings.table.row2.section2.warning}
         </div>
@@ -113,11 +132,13 @@ export default function ExtraOrders({ t }: { t: Locale }) {
         <div className="text-left">
           {t.exhibitorSettings.table.row2.section2.tables}:
         </div>
-        <div className="font-normal text-2xl">10</div>
+        <div className="font-normal text-2xl">{exhibitorPackage.tables}</div>
         <div className="font-normal text-2xl">
           {editState ? plusMinus(tables, setTables, 1) : tables}
         </div>
-        <div className="font-normal text-2xl">{10 + tables}</div>
+        <div className="font-normal text-2xl">
+          {exhibitorPackage.tables + tables}
+        </div>
         <div className="text-right text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
           {t.exhibitorSettings.table.row2.section2.warning}
         </div>
@@ -127,11 +148,13 @@ export default function ExtraOrders({ t }: { t: Locale }) {
         <div className="text-left">
           {t.exhibitorSettings.table.row2.section2.chairs}:
         </div>
-        <div className="font-normal text-2xl">10</div>
+        <div className="font-normal text-2xl">{exhibitorPackage.chairs}</div>
         <div className={"font-normal text-2xl"}>
           {editState ? plusMinus(chairs, setChairs, 1) : chairs}
         </div>
-        <div className="font-normal text-2xl">{10 + chairs}</div>
+        <div className="font-normal text-2xl">
+          {exhibitorPackage.chairs + chairs}
+        </div>
         <div className="text-right text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
           {t.exhibitorSettings.table.row2.section2.warning}
         </div>
@@ -141,13 +164,17 @@ export default function ExtraOrders({ t }: { t: Locale }) {
         <div className="text-left">
           {t.exhibitorSettings.table.row2.section2.representatives}:
         </div>
-        <div className="font-normal text-2xl">10</div>
+        <div className="font-normal text-2xl">
+          {exhibitorPackage.representatives}
+        </div>
         <div className={"font-normal text-2xl"}>
           {editState
             ? plusMinus(representatives, setRepresentatives, 1)
             : representatives}
         </div>
-        <div className="font-normal text-2xl">{10 + representatives}</div>
+        <div className="font-normal text-2xl">
+          {exhibitorPackage.representatives + representatives}
+        </div>
         <div className="text-right text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
           {t.exhibitorSettings.table.row2.section2.warning}
         </div>
@@ -157,14 +184,16 @@ export default function ExtraOrders({ t }: { t: Locale }) {
         <div className="text-left !border-transparent">
           {t.exhibitorSettings.table.row2.section2.sitting}:
         </div>
-        <div className="font-normal text-2xl !border-transparent">10</div>
+        <div className="font-normal text-2xl !border-transparent">
+          {exhibitorPackage.banquetTickets}
+        </div>
         <div className={"font-normal text-2xl !border-transparent"}>
           {editState
             ? plusMinus(banquetTickets, setBanquetTickets, 1)
             : banquetTickets}
         </div>
         <div className="font-normal text-2xl !border-transparent">
-          {10 + banquetTickets}
+          {exhibitorPackage.banquetTickets + banquetTickets}
         </div>
         <div className="text-right text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 !border-transparent text-base">
           {t.exhibitorSettings.table.row2.section2.warning}
