@@ -97,8 +97,8 @@ export default function RowOne({ t }: { t: Locale }) {
   }, [getDescription.isSuccess]);
 
   useEffect(() => {
-    let initCheckMarks = new Array<boolean>(18).fill(false);
     if (!getJobOffers.isSuccess || !getJobOffers.data) return;
+    let initCheckMarks = new Array<boolean>(18).fill(false);
     const jobOffers = getJobOffers.data;
     jobOffers.summerJob.map((num: number) => {
       initCheckMarks[num] = true;
@@ -224,7 +224,7 @@ export default function RowOne({ t }: { t: Locale }) {
             <div className="flex flex-row" key={pos.num}>
               <span className="mr-4 items-center">{pos.name}</span>
               <CheckMark
-                name={"thesis"}
+                name={pos.name}
                 defaultChecked={checkmarks[pos.num]}
                 onClick={() => {
                   checkmarks[pos.num] = !checkmarks[pos.num];

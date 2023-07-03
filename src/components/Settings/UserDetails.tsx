@@ -7,6 +7,7 @@ import { User } from "@/shared/Classes";
 
 export function UserDetails({ t }: { t: Locale }) {
   const defaultUser = new User(undefined, "", "", "", "");
+  
   const getUsers = api.exhibitor.getUsers.useQuery();
 
   const [pos, setPos] = useState(0);

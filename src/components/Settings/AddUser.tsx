@@ -19,8 +19,9 @@ export function AddUser({
   editState: undefined | string;
   setEditState: Dispatch<undefined | string>;
 }) {
-  const [user, setUser] = useState(users[pos]);
   const defaultUser = new User(undefined, "", "", "", "");
+  
+  const [user, setUser] = useState(users[pos]);
 
   const setUserMutation = api.exhibitor.setUsers.useMutation();
   const deleteUserMutation = api.exhibitor.deleteUser.useMutation();

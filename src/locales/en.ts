@@ -58,10 +58,10 @@ export default {
       email: "Email Address",
       role: "Role",
     },
-    fiedlsAddPreferences: {
+    fieldsAddPreferences: {
       name: "Name",
       preferences: "Preferences",
-      other: "Other",
+      comment: "Other",
     },
     contacts: "Contacts",
     representativesAllergies: "Food specifications representatives",
@@ -159,9 +159,12 @@ export default {
         preferencesHeader: "Preferences (vegetarian is default)",
         options: {
           vegetarian: "Vegan",
-          lactoseFree: "Lactose-free",
-          glutenFree: "Gluten-free",
+          lactoseFree: "Lactose-Free",
+          glutenFree: "Gluten-Free",
           meat: "Meat",
+        },
+        alerts: {
+          errorDeleteUserWithoutID: "Can not identify food preference to delete.",
         },
       },
     },

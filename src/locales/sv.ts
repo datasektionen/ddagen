@@ -58,10 +58,10 @@ export default {
       email: "Meljadress",
       role: "Arbetsroll",
     },
-    fiedlsAddPreferences: {
+    fieldsAddPreferences: {
       name: "Namn",
       preferences: "Preferenser",
-      other: "Övrigt",
+      comment: "Övrigt",
     },
     contacts: "Kontakter",
     representativesAllergies: "Matspecifikationer företagsrepresentanter",
@@ -162,6 +162,9 @@ export default {
           lactoseFree: "Laktosfri",
           glutenFree: "Glutenfri",
           meat: "Kött",
+        },
+        alerts: {
+          errorDeleteUserWithoutID: "Kan inte identifiera matpreferensen som ska raderas.",
         },
       },
     },

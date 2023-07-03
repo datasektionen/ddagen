@@ -301,7 +301,7 @@ export const exhibitorRouter = createTRPCRouter({
       z.object({
         id: z.string().optional(),
         name: z.string().trim(),
-        value: foodPreferencesValue,
+        value: z.array(foodPreferencesValue),
         comment: z.string().trim(),
         type: foodPreferencesType,
       })
@@ -336,12 +336,26 @@ export const exhibitorRouter = createTRPCRouter({
       }
     }),
   deleteFoodPreferences: protectedProcedure
-    .input(z.string())
+    .input(
+      z.object({
+        id: z.string().optional(),
+        locale: z.enum(["en", "sv"]),
+      })
+    )
     .mutation(async ({ ctx, input }) => {
+      const t = getLocale(input.locale);
+      if (input.id == undefined) {
+        return {
+          ok: false,
+          error: t.exhibitorSettings.table.row3.alerts.errorDeleteUserWithoutID,
+        };
+      }
       await ctx.prisma.foodPreferences.deleteMany({
-        where: { id: input, exhibitorId: ctx.session.user.exhibitorId },
+        where: { id: input.id, exhibitorId: ctx.session.user.exhibitorId },
       });
+      return { ok: true };
     }),
+
   getJobOffers: protectedProcedure.query(async ({ input, ctx }) => {
     const exhibitor = await ctx.prisma.exhibitor.findUnique({
       where: {

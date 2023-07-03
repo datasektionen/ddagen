@@ -20,19 +20,20 @@ export class User {
     this.role = role;
   }
 }
+
 export class Preferences {
   id?: string;
   name: string;
-  value: string;
+  value: ("Meat" | "Vegan" | "LactoseFree" | "GlutenFree")[];
   comment: string;
-  type: [string];
+  type: "Representative" | "Banquet";
 
   constructor(
     id: string | undefined,
     name: string,
-    value: string,
+    value: ("Meat" | "Vegan" | "LactoseFree" | "GlutenFree")[],
     comment: string,
-    type: [string]
+    type: "Representative" | "Banquet"
   ) {
     this.id = id;
     this.name = name;

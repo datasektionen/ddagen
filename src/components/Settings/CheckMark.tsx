@@ -22,6 +22,7 @@ export function CheckMark({
       onClick={() => {
         if (onClick) onClick();
       }}
+      onChange={(e) => {}}
     />
   );
 }
