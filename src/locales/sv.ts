@@ -105,7 +105,8 @@ export default {
           add: "Lägg Till",
           delete: "Radera",
           alerts: {
-            errorDeleteUserWithoutID: "Kan inte identifiera användaren som ska raderas.",
+            errorDeleteUserWithoutID:
+              "Kan inte identifiera användaren som ska raderas.",
             errorDeleteSelf: "Du kan inte radera dig själv.",
             errorDuplicateEmail: "Mejladressen finns redan.",
           },
@@ -164,7 +165,8 @@ export default {
           meat: "Kött",
         },
         alerts: {
-          errorDeleteUserWithoutID: "Kan inte identifiera matpreferensen som ska raderas.",
+          errorDeleteUserWithoutID:
+            "Kan inte identifiera matpreferensen som ska raderas.",
         },
       },
     },
