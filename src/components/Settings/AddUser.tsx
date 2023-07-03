@@ -20,8 +20,9 @@ export function AddUser({
   setEditState: Dispatch<undefined | string>;
 }) {
   const defaultUser = new User(undefined, "", "", "", "");
-  
+
   const [user, setUser] = useState(users[pos]);
+  const [errorMessage, setErrorMessage] = useState<string | undefined>();
 
   const setUserMutation = api.exhibitor.setUsers.useMutation();
   const deleteUserMutation = api.exhibitor.deleteUser.useMutation();
@@ -52,7 +53,7 @@ export function AddUser({
     if (setUserMutation.data) {
       if (!setUserMutation.data.ok) {
         setUsers([defaultUser, ...users.slice(1)]);
-        alert(setUserMutation.data.error);
+        setErrorMessage(setUserMutation.data.error);
       } else if (setUserMutation.data.ok && setUserMutation.data.update)
         setUsers(
           users.map((u, i) => (i == 0 ? defaultUser : i == pos ? user : u))
@@ -68,7 +69,7 @@ export function AddUser({
     if (deleteUserMutation.data) {
       if (!deleteUserMutation.data.ok) {
         setUsers([defaultUser, ...users.slice(1)]);
-        alert(deleteUserMutation.data.error);
+        setErrorMessage(deleteUserMutation.data.error);
       } else setUsers(users.filter((u) => u.id != user.id));
       deleteUserMutation.reset();
     }
@@ -131,6 +132,12 @@ export function AddUser({
             </a>
           </button>
         </div>
+        {errorMessage &&
+          setTimeout(() => {
+            setErrorMessage(undefined);
+          }, 3000) && (
+            <p className="text-red-500 font-bold text-border-black text-center">{errorMessage}</p>
+          )}
       </form>
     </div>
   );

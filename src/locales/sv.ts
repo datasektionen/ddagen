@@ -106,9 +106,9 @@ export default {
           delete: "Radera",
           alerts: {
             errorDeleteUserWithoutID:
-              "Kan inte identifiera användaren som ska raderas.",
-            errorDeleteSelf: "Du kan inte radera dig själv.",
-            errorDuplicateEmail: "Mejladressen finns redan.",
+              "Kan inte identifiera användaren som ska raderas",
+            errorDeleteSelf: "Du kan inte radera dig själv",
+            errorDuplicateEmail: "Mejladressen finns redan",
           },
         },
         maxImageWarning: (imageSize: string, maxImageSize: string) =>
@@ -166,7 +166,8 @@ export default {
         },
         alerts: {
           errorDeleteUserWithoutID:
-            "Kan inte identifiera matpreferensen som ska raderas.",
+            "Kan inte identifiera matpreferensen som ska raderas",
+          errorEmptyValueArray: "You have to select an option",
         },
       },
     },
@@ -356,6 +357,9 @@ export default {
       "Bekräftelsekoden är felaktig eller har gått ut, var god försök igen",
     cannotDeleteSelf: "Du kan inte ta bort ditt eget konto",
     unknown: "Ett okänt fel uppstod",
+  },
+  success: {
+    save: "The changes you made have been saved",
   },
   catalog: {
     header: "PRODUKTKATALOG",

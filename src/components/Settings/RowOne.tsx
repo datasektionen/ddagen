@@ -1,6 +1,5 @@
 import Locale from "@/locales";
 import { api } from "@/utils/api";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { TextInput } from "./TextInput";
 import { CheckMark } from "./CheckMark";
@@ -8,8 +7,6 @@ import { UploadButton } from "./UploadButton";
 import { UserDetails } from "./UserDetails";
 
 export default function RowOne({ t }: { t: Locale }) {
-  const router = useRouter();
-
   // Retrieve data from database
   const getLogos = api.exhibitor.getLogo.useQuery();
   const getDescription = api.exhibitor.getDescription.useQuery();
@@ -25,6 +22,7 @@ export default function RowOne({ t }: { t: Locale }) {
   const [colorLogo, setColorLogo] = useState("");
   const [description, setDescription] = useState("");
   const [checkmarks, setCheckMarks] = useState<boolean[]>([]);
+  const [saveChanges, setSaveChanges] = useState<boolean | undefined>();
 
   function removeImageDetails(img: string) {
     return img.replace(/^data:image\/[a-z]+\+?[a-z]+;base64,/, "");
@@ -64,25 +62,30 @@ export default function RowOne({ t }: { t: Locale }) {
   }
 
   async function handleClick() {
-    logoMutation.mutate({
-      b64data: removeImageDetails(whiteLogo),
-      kind: "white",
-    });
-    logoMutation.mutate({
-      b64data: removeImageDetails(colorLogo),
-      kind: "color",
-    });
-    descriptionMutation.mutate(description);
-    jobOffersMutation.mutate({
-      summerJob: getCheckmarksPos("summer"),
-      internship: getCheckmarksPos("intern"),
-      partTimeJob: getCheckmarksPos("partTime"),
-      masterThesis: checkmarks[15],
-      fullTimeJob: checkmarks[16],
-      traineeProgram: checkmarks[17],
-    });
-    window.scrollTo(0, 0);
-    router.reload();
+    await Promise.all([
+      logoMutation.mutate({
+        b64data: removeImageDetails(whiteLogo),
+        kind: "white",
+      }),
+      logoMutation.mutateAsync({
+        b64data: removeImageDetails(colorLogo),
+        kind: "color",
+      }),
+      descriptionMutation.mutateAsync(description),
+      jobOffersMutation.mutateAsync({
+        summerJob: getCheckmarksPos("summer"),
+        internship: getCheckmarksPos("intern"),
+        partTimeJob: getCheckmarksPos("partTime"),
+        masterThesis: checkmarks[15],
+        fullTimeJob: checkmarks[16],
+        traineeProgram: checkmarks[17],
+      }),
+    ])
+      .then(() => setSaveChanges(true))
+      .catch((error) => {
+        console.log(error);
+        setSaveChanges(false);
+      });
   }
 
   useEffect(() => {
@@ -122,6 +125,7 @@ export default function RowOne({ t }: { t: Locale }) {
       </h1>
 
       {/* Section 1 */}
+
       <div className="flex flex-row gap-8 mt-8 mb-20">
         <UploadButton
           t={t}
@@ -235,15 +239,26 @@ export default function RowOne({ t }: { t: Locale }) {
         </div>
       </div>
 
-      <button className="mb-12" onClick={handleClick}>
-        <a
-          className="block uppercase hover:scale-105 transition-transform 
-                    bg-cerise rounded-full text-white text-base font-normal 
-                      px-16 py-2 max-lg:mx-auto w-max"
-        >
-          {t.exhibitorSettings.table.row1.section2.save}
-        </a>
+      <button
+        className="block uppercase hover:scale-105 transition-transform 
+                bg-cerise rounded-full text-white text-base font-normal 
+                  px-16 py-2 max-lg:mx-auto w-max"
+        onClick={handleClick}
+      >
+        {t.exhibitorSettings.table.row1.section2.save}
       </button>
+      {saveChanges == true &&
+        setTimeout(() => {
+          setSaveChanges(undefined);
+        }, 3000) && (
+          <p className="text-green-500 font-bold mt-6">{t.success.save}</p>
+        )}
+      {saveChanges == false &&
+        setTimeout(() => {
+          setSaveChanges(undefined);
+        }, 3000) && (
+          <p className="text-red-500 font-bold mt-6">{t.error.unknown}</p>
+        )}
       {/* Section 2 */}
 
       {/* Section 3 */}

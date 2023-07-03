@@ -105,9 +105,9 @@ export default {
           add: "Add",
           delete: "Delete",
           alerts: {
-            errorDeleteUserWithoutID: "Can not identify user to delete.",
-            errorDeleteSelf: "You can not delete yourself.",
-            errorDuplicateEmail: "Email adress already exists.",
+            errorDeleteUserWithoutID: "Can not identify user to delete",
+            errorDeleteSelf: "You can not delete yourself",
+            errorDuplicateEmail: "Email adress already exists",
           },
         },
         maxImageWarning: (imageSize: string, maxImageSize: string) =>
@@ -164,7 +164,9 @@ export default {
           meat: "Meat",
         },
         alerts: {
-          errorDeleteUserWithoutID: "Can not identify food preference to delete.",
+          errorDeleteUserWithoutID:
+            "Can not identify food preference to delete.",
+          errorEmptyValueArray: "Du måste välja ett alternativ",
         },
       },
     },
@@ -351,6 +353,9 @@ export default {
       "Invalid or expired confirmation code, please try again",
     cannotDeleteSelf: "You cannot delete your own account",
     unknown: "Something unexpectedly went wrong",
+  },
+  success: {
+    save: "Ändringarna du gjorde har sparats",
   },
   catalog: {
     header: "PRODUCT CATALOG",

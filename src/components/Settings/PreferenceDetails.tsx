@@ -49,7 +49,6 @@ export function PreferenceDetails({
         type={type}
         preferences={preferences}
         setPreferences={setPreferences}
-        editState={editState}
         setEditState={setEditState}
       />
     </div>

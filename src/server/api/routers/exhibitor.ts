@@ -304,9 +304,17 @@ export const exhibitorRouter = createTRPCRouter({
         value: z.array(foodPreferencesValue),
         comment: z.string().trim(),
         type: foodPreferencesType,
+        locale: z.enum(["en", "sv"]),
       })
     )
     .mutation(async ({ ctx, input }) => {
+      const t = getLocale(input.locale);
+      if (input.value.length == 0) {
+        return {
+          ok: false,
+          error: t.exhibitorSettings.table.row3.alerts.errorEmptyValueArray,
+        };
+      }
       if (input.id) {
         await ctx.prisma.foodPreferences.updateMany({
           where: {

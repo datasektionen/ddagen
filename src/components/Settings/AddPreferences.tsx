@@ -13,7 +13,6 @@ export function AddPreferences({
   type,
   preferences,
   setPreferences,
-  editState,
   setEditState,
 }: {
   t: Locale;
@@ -21,7 +20,6 @@ export function AddPreferences({
   type: "Representative" | "Banquet";
   preferences: Preferences[];
   setPreferences: Dispatch<Preferences[]>;
-  editState: undefined | string;
   setEditState: Dispatch<undefined | string>;
 }) {
   const isRepresentative = type == "Representative";
@@ -34,6 +32,7 @@ export function AddPreferences({
     false,
   ]);
   const [preference, setPreference] = useState(preferences[pos]);
+  const [errorMessage, setErrorMessage] = useState<string | undefined>();
 
   const setPreferenceMutation = api.exhibitor.setFoodPreferences.useMutation();
   const deletePreferenceMutation =
@@ -52,6 +51,7 @@ export function AddPreferences({
       value: preference.value,
       comment: preference.comment,
       type: preference.type,
+      locale: t.locale,
     });
     setEditState(undefined);
   }
@@ -65,37 +65,44 @@ export function AddPreferences({
   }
 
   useEffect(() => {
-    const pref = preferences[pos < preferences.length ? pos : 0];
-    setPreference(pref);
-    setCheckMarks([
-      pref.value.includes("Meat"),
-      pref.value.includes("Vegan"),
-      pref.value.includes("LactoseFree"),
-      pref.value.includes("GlutenFree"),
-    ]);
+    if (pos < preferences.length) {
+      const pref = preferences[pos];
+      setPreference(pref);
+      setCheckMarks([
+        pref.value.includes("Meat"),
+        pref.value.includes("Vegan"),
+        pref.value.includes("LactoseFree"),
+        pref.value.includes("GlutenFree"),
+      ]);
+    }
   }, [preferences, pos]);
 
   useEffect(() => {
-    if (setPreferenceMutation.data && setPreferenceMutation.data.ok) {
-      if (setPreferenceMutation.data.update)
-        setPreferences(
-          preferences.map((p, i) =>
-            i == 0 ? defaultPreference : i == pos ? preference : p
-          )
-        );
-      else
-        setPreferences([
-          ...preferences.map((p, i) => (i == 0 ? defaultPreference : p)),
-          { ...preference, id: setPreferenceMutation.data.id },
-        ]);
+    if (setPreferenceMutation.data) {
+      if (!setPreferenceMutation.data.ok) {
+        setPreferences([defaultPreference, ...preferences.slice(1)]);
+        setErrorMessage(setPreferenceMutation.data.error);
+      } else {
+        if (setPreferenceMutation.data.update)
+          setPreferences(
+            preferences.map((p, i) =>
+              i == 0 ? defaultPreference : i == pos ? preference : p
+            )
+          );
+        else
+          setPreferences([
+            ...preferences.map((p, i) => (i == 0 ? defaultPreference : p)),
+            { ...preference, id: setPreferenceMutation.data.id },
+          ]);
+      }
       setPreferenceMutation.reset();
     }
 
     if (deletePreferenceMutation.data) {
       if (!deletePreferenceMutation.data.ok) {
         setPreferences([defaultPreference, ...preferences.slice(1)]);
-        alert(deletePreferenceMutation.data.error);
-      } else setPreferences(preferences.filter((p) => p.id != p.id));
+        setErrorMessage(deletePreferenceMutation.data.error);
+      } else setPreferences(preferences.filter((p) => p.id != preference.id));
       deletePreferenceMutation.reset();
     }
   }, [setPreferenceMutation.isSuccess, deletePreferenceMutation.isSuccess]);
@@ -187,6 +194,14 @@ export function AddPreferences({
             </a>
           </button>
         </div>
+        {errorMessage &&
+          setTimeout(() => {
+            setErrorMessage(undefined);
+          }, 3000) && (
+            <p className="text-red-500 font-bold text-border-black text-center">
+              {errorMessage}
+            </p>
+          )}
       </form>
     </div>
   );

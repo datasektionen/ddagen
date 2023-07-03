@@ -67,15 +67,22 @@ export function UploadButton({
             <img className="mx-auto" src={selectedImage} />
           )}
         </h1>
-        <input
-          type="file"
-          className="invisible after:visible after:absolute after:top-2 after:right-2 after:cursor-pointer 
-                      after:content-[''] after:bg-editIcon after:bg-white after:bg-[length:30px_30px] 
-                      after:w-[33px] after:h-[33px] after:bg-no-repeat after:bg-origin-content after:pl-1
-                      after:pb-1 after:rounded-md after:hover:scale-105 after:transition-transform"
-          accept={accept}
-          onChange={onImageChange}
-        />
+        <div>
+          <label
+            htmlFor={textAbove}
+            className="absolute top-2 right-2 cursor-pointer bg-editIcon bg-white 
+                      bg-[length:30px_30px] w-[33px] h-[33px] bg-no-repeat bg-origin-content 
+                      pl-1 pb-1 rounded-md hover:scale-105 transition-transform"
+          >
+            <input
+              id={textAbove}
+              type="file"
+              accept={accept}
+              onChange={onImageChange}
+              className="invisible"
+            />
+          </label>
+        </div>
       </div>
     </div>
   );

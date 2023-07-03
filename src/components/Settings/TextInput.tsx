@@ -13,6 +13,7 @@ export function TextInput({
 }) {
   const onTextChange = (e: any) => {
     if (e.target.value) setDescription(e.target.value);
+    else setDescription("");
   };
 
   return (
