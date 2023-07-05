@@ -18,7 +18,7 @@ function Submit({
       value={value}
       className="
         bg-cerise transition-transform hover:scale-110 focus:scale-110
-        focus:outline-none text-white uppercase w-fit mx-auto py-2 px-5
+        focus:outline-none text-white uppercase w-fit mx-auto py-2 px-10
         rounded-full cursor-pointer disabled:cursor-wait disabled:grayscale
       "
     />
