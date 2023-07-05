@@ -111,6 +111,8 @@ export default {
             errorDuplicateEmail: "Mejladressen finns redan",
           },
         },
+        imageTypeNotSupported:
+          "Det gick inte att ladda upp filen: Bildformatet stöds inte.",
         maxImageWarning: (imageSize: string, maxImageSize: string) =>
           `Det gick inte att ladda upp filen: Filen är för stor (${imageSize}MB). Max filstorlek: ${maxImageSize}MB.`,
       },

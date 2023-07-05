@@ -110,6 +110,8 @@ export default {
             errorDuplicateEmail: "Email adress already exists",
           },
         },
+        imageTypeNotSupported:
+          "Error uploading file: The image format type is not supported.",
         maxImageWarning: (imageSize: string, maxImageSize: string) =>
           `Error uploading file: File is too big (${imageSize}MB). Max filesize: ${maxImageSize}MB.`,
       },

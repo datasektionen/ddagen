@@ -30,21 +30,25 @@ export function UploadButton({
       const MAX_FILE_SIZE = 5e6;
       const FILE_SIZE = e.target.files[0].size as number;
 
-      if (FILE_SIZE <= MAX_FILE_SIZE) {
-        await toBase64(e.target.files[0])
-          .then((data) => {
-            setSelectedImage(data as string);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+      if (accept.includes(e.target.files[0].type)) {
+        if (FILE_SIZE <= MAX_FILE_SIZE) {
+          await toBase64(e.target.files[0])
+            .then((data) => {
+              setSelectedImage(data as string);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        } else {
+          alert(
+            t.exhibitorSettings.table.row1.maxImageWarning(
+              (FILE_SIZE / 1e6).toFixed(2),
+              (MAX_FILE_SIZE / 1e6).toFixed(0)
+            )
+          );
+        }
       } else {
-        alert(
-          t.exhibitorSettings.table.row1.maxImageWarning(
-            (FILE_SIZE / 1e6).toFixed(2),
-            (MAX_FILE_SIZE / 1e6).toFixed(0)
-          )
-        );
+        alert(t.exhibitorSettings.table.row1.imageTypeNotSupported);
       }
 
       e.target.files = null;

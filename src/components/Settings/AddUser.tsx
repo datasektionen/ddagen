@@ -88,6 +88,14 @@ export function AddUser({
     deleteUserMutation.isError,
   ]);
 
+  useEffect(() => {
+    if (typeof errorMessage === "string") {
+      setTimeout(() => {
+        setErrorMessage(undefined);
+      }, 3000);
+    }
+  }, [errorMessage]);
+
   return (
     <div className="flex flex-col items-center w-[80%] bg-white/40 border-2 border-white/70 rounded-xl pb-8 mb-16">
       <form
@@ -128,6 +136,7 @@ export function AddUser({
           setValue={(role) => {
             setUser({ ...user, role: role });
           }}
+          required={false}
           fields={t.exhibitorSettings.fieldsAddContact}
         />
 
@@ -145,14 +154,11 @@ export function AddUser({
             </a>
           </button>
         </div>
-        {errorMessage &&
-          setTimeout(() => {
-            setErrorMessage(undefined);
-          }, 3000) && (
-            <p className="text-red-500 font-bold text-border-black text-center">
-              {errorMessage}
-            </p>
-          )}
+        {errorMessage && (
+          <p className="text-red-500 font-bold text-border-black text-center">
+            {errorMessage}
+          </p>
+        )}
       </form>
     </div>
   );

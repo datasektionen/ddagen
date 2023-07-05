@@ -118,6 +118,14 @@ export default function RowOne({ t }: { t: Locale }) {
     setCheckMarks(initCheckMarks);
   }, [getJobOffers.isSuccess]);
 
+  useEffect(() => {
+    if (typeof saveChanges === "boolean") {
+      setTimeout(() => {
+        setSaveChanges(undefined);
+      }, 3000);
+    }
+  }, [saveChanges]);
+
   return (
     <div className="flex flex-col w-full items-center overflow-auto mt-6">
       <h1 className="uppercase text-cerise text-4xl font-normal px-[10px] break-words">
@@ -247,18 +255,12 @@ export default function RowOne({ t }: { t: Locale }) {
       >
         {t.exhibitorSettings.table.row1.section2.save}
       </button>
-      {saveChanges == true &&
-        setTimeout(() => {
-          setSaveChanges(undefined);
-        }, 3000) && (
-          <p className="text-green-500 font-bold mt-6">{t.success.save}</p>
-        )}
-      {saveChanges == false &&
-        setTimeout(() => {
-          setSaveChanges(undefined);
-        }, 3000) && (
-          <p className="text-red-500 font-bold mt-6">{t.error.unknown}</p>
-        )}
+      {saveChanges == true && (
+        <p className="text-green-500 font-bold mt-6">{t.success.save}</p>
+      )}
+      {saveChanges == false && (
+        <p className="text-red-500 font-bold mt-6">{t.error.unknown}</p>
+      )}
       {/* Section 2 */}
 
       {/* Section 3 */}
