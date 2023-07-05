@@ -47,7 +47,7 @@ export default function Login() {
 
   useEffect(() => {
     if (finishLogin.data?.ok) {
-      router.replace("/utställare");
+      router.push("/utställare");
       trpc.account.invalidate();
     }
   }, [finishLogin]);
