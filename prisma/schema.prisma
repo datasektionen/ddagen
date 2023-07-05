@@ -38,8 +38,11 @@ model Exhibitor {
   extraRepresentativeSpots  Int
   totalBanquetTicketsWanted Int
 
-  foodSpecifications FoodSpecification[]
-  users              User[]
+  foodPreferencess FoodPreferences[]
+  users            User[]
+
+  jobOfferId String    @unique
+  jobOffers  JobOffers @relation(fields: [jobOfferId], references: [id], onDelete: Cascade)
 
   @@map("exhibitors")
 }
@@ -86,14 +89,14 @@ enum Package {
   sponsor
   headhunter
   premium
-  main
 }
 
-model FoodSpecification {
-  id      String                @id @default(uuid())
-  value   String
+model FoodPreferences {
+  id      String                 @id @default(uuid())
+  name    String
+  value   FoodPreferencesValue[]
   comment String
-  type    FoodSpecificationType
+  type    FoodPreferencesType
 
   exhibitor   Exhibitor @relation(fields: [exhibitorId], references: [id], onDelete: Cascade)
   exhibitorId String
@@ -101,7 +104,27 @@ model FoodSpecification {
   @@map("food_specifications")
 }
 
-enum FoodSpecificationType {
-  banquet
-  representative
+enum FoodPreferencesValue {
+  Meat
+  Vegan
+  LactoseFree
+  GlutenFree
+}
+
+enum FoodPreferencesType {
+  Banquet
+  Representative
+}
+
+model JobOffers {
+  id             String     @id @default(uuid())
+  summerJob      Int[]
+  internship     Int[]
+  partTimeJob    Int[]
+  masterThesis   Boolean
+  fullTimeJob    Boolean
+  traineeProgram Boolean
+  exhibitor      Exhibitor?
+
+  @@map("job_offers")
 }

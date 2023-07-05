@@ -52,22 +52,24 @@ export default {
       allergyComment: "Comment",
     },
     fieldsAddContact: {
+      id: "ID",
       name: "Name",
-      phoneNumber: "Phone Number",
+      phone: "Phone Number",
       email: "Email Address",
       role: "Role",
     },
-    fiedlsAddPreferences: {
+    fieldsAddPreferences: {
       name: "Name",
       preferences: "Preferences",
-      other: "Other"
+      comment: "Other",
     },
     contacts: "Contacts",
     representativesAllergies: "Food specifications representatives",
     banquetAllergies: "Food specifications banquet",
     editAllergy: "Edit",
     removeAllergy: "Remove",
-    tooManyAllergies: "You have specified more food specifications than tickets!",
+    tooManyAllergies:
+      "You have specified more food specifications than tickets!",
     table: {
       row1: {
         title: "About Company",
@@ -100,11 +102,27 @@ export default {
         section3: {
           header: "Contacts",
           save: "Save",
-          remove: "Remove",
+          add: "Add",
+          delete: "Delete",
+          alerts: {
+            errorDeleteUserWithoutID: "Can not identify user to delete",
+            errorDeleteSelf: "You can not delete yourself",
+            errorDuplicateEmail: "Email adress already exists",
+          },
         },
+        imageTypeNotSupported:
+          "Error uploading file: The image format type is not supported.",
+        maxImageWarning: (imageSize: string, maxImageSize: string) =>
+          `Error uploading file: File is too big (${imageSize}MB). Max filesize: ${maxImageSize}MB.`,
       },
       row2: {
         title: "Your Package And Extra Orders",
+        packages: {
+          base: "Base",
+          sponsor: "Sponsor",
+          headhunter: "Head Hunter",
+          premium: "Premium",
+        },
         section1: {
           header: "Package",
           info: "For more information about the different packages",
@@ -130,22 +148,31 @@ export default {
         title: "Food Preferences",
         section1: {
           header: "During the Fair",
-          paragraphOne: "These food preferences are used for breakfast and lunch during the fair.",
+          paragraphOne:
+            "These food preferences are used for breakfast and lunch during the fair.",
           paragraphTwo: "You change the number in extra orders",
         },
         section2: {
           header: "Dinner Party",
-          paragraphOne: "These food preferences are used for the seating after the fair.",
+          paragraphOne:
+            "These food preferences are used for the seating after the fair.",
           paragraphTwo: "You change the number in extra orders",
         },
         preferencesHeader: "Preferences (vegetarian is default)",
         options: {
           vegetarian: "Vegan",
-          lactoseFree: "Lactose-free",
-          glutenFree: "Gluten-free",
+          lactoseFree: "Lactose-Free",
+          glutenFree: "Gluten-Free",
           meat: "Meat",
         },
-      }
+        alerts: {
+          errorDeletePreferenceWithoutID:
+            "Can not identify food preference to delete.",
+          errorEmptyValueArray: "You have to select an option",
+          errorAddingMorePreferencesThanAllowed: (max: number) =>
+            `You've reached the maximum amount (${max}) of preferences allotted to you`,
+        },
+      },
     },
   },
   login: {
@@ -154,7 +181,8 @@ export default {
     emailText: "The email address you used to register your company",
     confirm: "Log in",
     confirmationCode: "Confirmation code",
-    confirmationCodeText: "We sent you a confirmation code to your email address. If you can't find the email, make sure to check your spam folder!",
+    confirmationCodeText:
+      "We sent you a confirmation code to your email address. If you can't find the email, make sure to check your spam folder!",
     emailSubject: "D-Dagen Login",
     emailBody: (code: string, link: string) => `
       <p>To complete the login to D-Dagen, click the link below:</p>
@@ -167,7 +195,8 @@ export default {
   },
   companyForm: {
     title: "Sign up for D-Dagen",
-    description: "Fill in this form to sign up your company for D-Dagen 2023. Please note that signing up through to this form is not binding.",
+    description:
+      "Fill in this form to sign up your company for D-Dagen 2023. Please note that signing up through to this form is not binding.",
     fields: {
       name: "Company Name",
       organizationNumber: "Organization Number",
@@ -182,7 +211,8 @@ export default {
     title: "Registration confirmed",
     subtitle: "Your registration has been received",
     text: "Confirmation of your registration has been sent by email. If you have any other questions, contact us on",
-    textContinuation: "Please check your spam folder in case you haven't received any confirmation.",
+    textContinuation:
+      "Please check your spam folder in case you haven't received any confirmation.",
     contact: "Contact us",
   },
   nav: {
@@ -245,25 +275,36 @@ export default {
     table1row1: "WHAT IS D-DAGEN?",
     table1row2: "WHEN IS THE YEAR'S D-DAGEN FAIR?",
     table1row3: "WHERE IS D-DAGEN?",
-    table1text1: "D-Dagen is the annual career fair organized by the Computer Science chapter at KTH Royal Institute of Technology. It is today the largest IT career fair in the Nordic region.",
+    table1text1:
+      "D-Dagen is the annual career fair organized by the Computer Science chapter at KTH Royal Institute of Technology. It is today the largest IT career fair in the Nordic region.",
     table1text2: "This year's D-Dagen is taking place on October 12.",
-    table1text3: "D-Dagen will be held at Nymble, the student union house, located at the KTH Royal Institute of Technlogy in Stockholm.",
+    table1text3:
+      "D-Dagen will be held at Nymble, the student union house, located at the KTH Royal Institute of Technlogy in Stockholm.",
     table2row1: "CAN OUR COMPANY GET MORE EXPOSURE?",
     table2row2: "CAN OUR COMPANY MARKET JOB OFFERS ETC THROUGH D-DAGEN?",
-    table2text1: "Absolutely, we have several different packages to help you reach more students, contact <a className='text-cerise' href='mailto:sales@ddagen.se'>sales@ddagen.se</a> for more information.",
-    table2text2: "Yes, the main purpose of D-Dagen is to market career opportunities such as job offers, trainee programs, summer internships and similar initiatives to our students.",
+    table2text1:
+      "Absolutely, we have several different packages to help you reach more students, contact <a className='text-cerise' href='mailto:sales@ddagen.se'>sales@ddagen.se</a> for more information.",
+    table2text2:
+      "Yes, the main purpose of D-Dagen is to market career opportunities such as job offers, trainee programs, summer internships and similar initiatives to our students.",
     table3row1: "HOW DO I REGISTER FOR THE FAIR?",
     table3row2: "WHEN IS THE LAST DAY TO REGISTER FOR THE FAIR?",
     table3row3: "HOW DO WE BECOME A PARTNER?",
     table3row4: "WE WOULD LIKE MORE INFORMATION, WHERE DO WE TURN?",
     table3row5: "ARE YOU A STARTUP?",
-    table3text1: "You can make a <a href='https://ddagen.se/företagsanmälan' target='blank' className='underline text-cerise'>  registration of interest </a> or contact our sales team at <a className='text-cerise' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
-    table3text2: "Since we have a limited number of spots available at our fair, we recommend that you make a non-binding registration of interest. To do this, please click here: <a href='https://ddagen.se/en/företagsanmälan' target='blank' className='underline text-cerise'> Registration</a>.",
-    table3text3: "If you are interested in any type of partnership contact <a className='text-cerise' href='mailto:ansvarig@ddagen.se'>ansvarig@ddagen.se</a>.",
-    table3text4: "If the information you are looking for can't be found at our website, contact us at <a className='text-cerise' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
-    table3text5: "Contact us at <a className='text-cerise' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
-    table4row1: "WHAT KIND OF EVENTS CAN OUR COMPANY HOST TOGETHER WITH D-DAGEN?",
-    table4text1: "We'd be thrilled to collaborate with you, both before and after D-Dagen! Whether you're interested in hosting a lunch lecture, hackathon, or something completely different, we're open to your ideas. For more information, please contact our sponsorship manager at <a className='text-cerise' href='mailto:alexandre.moch@ddagen.se'>alexandre.moch@ddagen.se</a>.",
+    table3text1:
+      "You can make a <a href='https://ddagen.se/företagsanmälan' target='blank' className='underline text-cerise'>  registration of interest </a> or contact our sales team at <a className='text-cerise' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
+    table3text2:
+      "Since we have a limited number of spots available at our fair, we recommend that you make a non-binding registration of interest. To do this, please click here: <a href='https://ddagen.se/en/företagsanmälan' target='blank' className='underline text-cerise'> Registration</a>.",
+    table3text3:
+      "If you are interested in any type of partnership contact <a className='text-cerise' href='mailto:ansvarig@ddagen.se'>ansvarig@ddagen.se</a>.",
+    table3text4:
+      "If the information you are looking for can't be found at our website, contact us at <a className='text-cerise' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
+    table3text5:
+      "Contact us at <a className='text-cerise' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
+    table4row1:
+      "WHAT KIND OF EVENTS CAN OUR COMPANY HOST TOGETHER WITH D-DAGEN?",
+    table4text1:
+      "We'd be thrilled to collaborate with you, both before and after D-Dagen! Whether you're interested in hosting a lunch lecture, hackathon, or something completely different, we're open to your ideas. For more information, please contact our sponsorship manager at <a className='text-cerise' href='mailto:alexandre.moch@ddagen.se'>alexandre.moch@ddagen.se</a>.",
     productCatalog: "PRODUCT CATALOG",
     header: "COMPANY FAQ",
     catalogPath: "/downloadables/Product_Catalog_eng.pdf",
@@ -287,7 +328,7 @@ export default {
   },
   url: {
     forCompany: "https://ddagen.se/en/förföretag",
-    companyForm: "https://ddagen.se/en/företagsanmälan"
+    companyForm: "https://ddagen.se/en/företagsanmälan",
   },
   packages: {
     name: {
@@ -300,21 +341,28 @@ export default {
     boothSpace: "booth space",
   },
   error: {
-    exhibitorRegistration: "Something went wrong! Try again or send an email instead to",
+    exhibitorRegistration:
+      "Something went wrong! Try again or send an email instead to",
     exhibitorRegistrationEmail:
       "Your registration has been received, but we could not send a confirmation email to you.",
     duplicateEmail: "This email has already registered for D-Dagen",
-    invalidOrganizationNumberLength: "The organization number must be 10 digits",
+    invalidOrganizationNumberLength:
+      "The organization number must be 10 digits",
     invalidOrganizationNumberChecksum:
       "Invalid check digit, check that you have entered the number correctly",
     userNotFound: "No account with this email has been registered",
-    emailNotSent: "Something went wrong when sending an email to you, please try again later",
-    invalidConfirmationCode: "Invalid or expired confirmation code, please try again",
+    emailNotSent:
+      "Something went wrong when sending an email to you, please try again later",
+    invalidConfirmationCode:
+      "Invalid or expired confirmation code, please try again",
     cannotDeleteSelf: "You cannot delete your own account",
     unknown: "Something unexpectedly went wrong",
   },
-  catalog:{
-    header:"PRODUCT CATALOG",
+  success: {
+    save: "The changes you made have been saved",
+  },
+  catalog: {
+    header: "PRODUCT CATALOG",
     premiumPacket: [
       "A whole room",
       "Advertisement on D-Dagen's website",
@@ -322,7 +370,7 @@ export default {
       "4 spots for company representatives (including breakfast and lunch)",
       "4 tickets to the dinner and after-party",
       "30 drink coupons (worth about 50 SEK each)",
-      "Electricity & WiFi", 
+      "Electricity & WiFi",
       "Access to the company lounge",
       "Access to company host",
       "Storage and handling of delivieries",
@@ -330,16 +378,16 @@ export default {
       "Exposure on goodie bag",
       "One marketed post on our social media",
       "A full day of private student meetings",
-      "Marketing of private student meetings"
-      ],
-      headhHunterPacket: [
+      "Marketing of private student meetings",
+    ],
+    headhHunterPacket: [
       "8 m² booth space",
       "Advertisement on D-Dagen's website",
       "1 table for your booth",
       "4 spots for company representatives (including breakfast and lunch)",
       "2 tickets to the dinner and after-party",
       "20 drink coupons (worth about 50 SEK each)",
-      "Electricity & WiFi", 
+      "Electricity & WiFi",
       "Access to the company lounge",
       "Access to company host",
       "Storage and handling of delivieries",
@@ -347,54 +395,68 @@ export default {
       "Exposure on goodie bag",
       "One marketed post on our social media",
       "A half day of private student meetings",
-      "Marketing of private student meetings"
-      ],
-      sponsorPacket: [
+      "Marketing of private student meetings",
+    ],
+    sponsorPacket: [
       "5 m² booth space",
       "Advertisement on D-Dagen's website",
       "1 table for your booth",
       "2 spots for company representatives (including breakfast and lunch)",
       "2 tickets to the dinner and after-party",
       "10 drink coupons (worth about 50 SEK each)",
-      "Electricity & WiFi", 
+      "Electricity & WiFi",
       "Access to the company lounge",
       "Access to company host",
       "Storage and handling of delivieries",
       "Exposure in brouchure",
       "Exposure on goodie bag",
-      "One marketed post on our social media"
-      ],
-      basePacket: [
+      "One marketed post on our social media",
+    ],
+    basePacket: [
       "5 m² booth space",
       "Advertisement on D-Dagen's website",
       "1 table for your booth",
       "2 spots for company representatives (including breakfast and lunch)",
       "2 tickets to the dinner and after-party",
       "10 drink coupons (worth about 50 SEK each)",
-      "Electricity & WiFi", 
+      "Electricity & WiFi",
       "Access to the company lounge",
       "Access to company host",
-      "Storage and handling of delivieries"
-      ],
-      packetType:["BASE PACKAGE", "SPONSOR PACKAGE", "HEAD-HUNTER PACKAGE", "PREMIUM PACKAGE"],
-      info: ["", "LIMITED AMOUNT", "LIMITED AMOUNT", "LIMITED AMOUNT"],
-      subheader:"QUESTIONS, THOUGHTS, & IDEAS?",
-      paragraph: "Don't hesitate to get in touch if you have any questions about our products or have any other questions." 
+      "Storage and handling of delivieries",
+    ],
+    packetType: [
+      "BASE PACKAGE",
+      "SPONSOR PACKAGE",
+      "HEAD-HUNTER PACKAGE",
+      "PREMIUM PACKAGE",
+    ],
+    info: ["", "LIMITED AMOUNT", "LIMITED AMOUNT", "LIMITED AMOUNT"],
+    subheader: "QUESTIONS, THOUGHTS, & IDEAS?",
+    paragraph:
+      "Don't hesitate to get in touch if you have any questions about our products or have any other questions.",
   },
-  event:{
-    paragraph1: "Lunch seminars are already a popular concept among the students at KTH and are usually held on campus during lunch hours. The seminars give you an opportunity to reach a wide audience while ...",
-    paragraph2: "An after-work or office visit with us allows your colleagues to show your premises to the students while socializing with them. This gives the student a feel for your workplace culture and to have a ...",
-    paragraph3: "A sponsored pub gives your company a more up close and personal experience. It allows you to socialize with the Computer Science students in META, our roomy chapter house on KTH ...",
-    paragraph4: "This event is similar to the after-work/office visit events. A case event gives you an opportunity to test the students’ skills while providing them with a fun challenge. Depending on the type of case ...",
-    fullParagraph1: "Lunch seminars are already a popular concept among the students at KTH and are usually held on campus during lunch hours. The seminars give you an opportunity to reach a wide audience while talking about any topic of your choice. The price includes premises, food for students and marketing of the event.  This year, the lunch seminars will be held in collaboration with our student chapter’s 40 year anniversary. This means you will get more marketing than usual, and your company will be featured on the anniversary’s social media and website.",
-    fullParagraph2: "An after-work or office visit with us allows your colleagues to show your premises to the students while socializing with them. This gives the student a feel for your workplace culture and to have a more personal experience with your employees. The students greatly appreciate these types of events. We handle the marketing of the event, while you make sure the students are offered food and refreshments during the event itself.",
-    fullParagraph3: "A sponsored pub gives your company a more up close and personal experience. It allows you to socialize with the Computer Science students in META, our roomy chapter house on KTH Campus. The pub can feature several activities such as board games, quizzes, or anything your imagination might produce. We will handle the booking of the premises and help you with planning the event. The price tag includes food for all attending students and drink coupons for you to hand out to students who mingle with you. This event will also be held in collaboration with our 40th anniversary, which includes more marketing for your company.",
-    fullParagraph4: "This event is similar to the after-work/office visit events. A case event gives you an opportunity to test the students’ skills while providing them with a fun challenge. Depending on the type of case provided it can also be a good way for the students to get a feel for what it is like to work at your company. We handle marketing of the event, booking of premises and ordering food and drinks for everyone attending. We can also assist in planning the case event if desired.",
+  event: {
+    paragraph1:
+      "Lunch seminars are already a popular concept among the students at KTH and are usually held on campus during lunch hours. The seminars give you an opportunity to reach a wide audience while ...",
+    paragraph2:
+      "An after-work or office visit with us allows your colleagues to show your premises to the students while socializing with them. This gives the student a feel for your workplace culture and to have a ...",
+    paragraph3:
+      "A sponsored pub gives your company a more up close and personal experience. It allows you to socialize with the Computer Science students in META, our roomy chapter house on KTH ...",
+    paragraph4:
+      "This event is similar to the after-work/office visit events. A case event gives you an opportunity to test the students’ skills while providing them with a fun challenge. Depending on the type of case ...",
+    fullParagraph1:
+      "Lunch seminars are already a popular concept among the students at KTH and are usually held on campus during lunch hours. The seminars give you an opportunity to reach a wide audience while talking about any topic of your choice. The price includes premises, food for students and marketing of the event.  This year, the lunch seminars will be held in collaboration with our student chapter’s 40 year anniversary. This means you will get more marketing than usual, and your company will be featured on the anniversary’s social media and website.",
+    fullParagraph2:
+      "An after-work or office visit with us allows your colleagues to show your premises to the students while socializing with them. This gives the student a feel for your workplace culture and to have a more personal experience with your employees. The students greatly appreciate these types of events. We handle the marketing of the event, while you make sure the students are offered food and refreshments during the event itself.",
+    fullParagraph3:
+      "A sponsored pub gives your company a more up close and personal experience. It allows you to socialize with the Computer Science students in META, our roomy chapter house on KTH Campus. The pub can feature several activities such as board games, quizzes, or anything your imagination might produce. We will handle the booking of the premises and help you with planning the event. The price tag includes food for all attending students and drink coupons for you to hand out to students who mingle with you. This event will also be held in collaboration with our 40th anniversary, which includes more marketing for your company.",
+    fullParagraph4:
+      "This event is similar to the after-work/office visit events. A case event gives you an opportunity to test the students’ skills while providing them with a fun challenge. Depending on the type of case provided it can also be a good way for the students to get a feel for what it is like to work at your company. We handle marketing of the event, booking of premises and ordering food and drinks for everyone attending. We can also assist in planning the case event if desired.",
     header1: "Lunch Seminar",
     header2: "Afterwork/Office Visit",
     header3: "Sponsored Pub",
     header4: "Case Event",
     subheader: "Price: ",
     extra: "Read more",
-  }
+  },
 };

@@ -1,37 +1,16 @@
 import Locale from "@/locales";
-import { useState } from "react";
-import { Preferences } from "../../shared/Classes";
-import { AddPreferences } from "./AddPreferences";
-import { EditPreferences } from "./EditPreferences";
+import { Package } from "@/shared/Classes";
+import { PreferenceDetails } from "./PreferenceDetails";
 
-export default function RowThree({ t }: { t: Locale }) {
-  const [prefOne, setPrefOne] = useState(
-    new Preferences(
-      "Anders Andersson",
-      [
-        t.exhibitorSettings.table.row3.options.vegetarian,
-        t.exhibitorSettings.table.row3.options.lactoseFree,
-      ],
-      "Nötter och koriander"
-    )
-  );
-
-  const [prefTwo, setPrefTwo] = useState(
-    new Preferences(
-      "Anders Andersson",
-      [
-        t.exhibitorSettings.table.row3.options.vegetarian,
-        t.exhibitorSettings.table.row3.options.lactoseFree,
-      ],
-      "Nötter och koriander"
-    )
-  );
-
-  const [editStateSectionOne, setEditStateSectionOne] = useState(false);
-  const [editStateSectionTwo, setEditStateSectionTwo] = useState(false);
-
+export default function RowThree({
+  t,
+  exhibitorPackage,
+}: {
+  t: Locale;
+  exhibitorPackage: Package;
+}) {
   return (
-    <div className="flex flex-col w-full items-center overflow-auto mt-6">
+    <div className="flex flex-col w-full items-center text-center overflow-auto mt-6">
       {/* Section 1 */}
       <h1 className="uppercase text-cerise text-4xl font-normal px-[10px] break-words">
         {t.exhibitorSettings.table.row3.section1.header}
@@ -42,20 +21,10 @@ export default function RowThree({ t }: { t: Locale }) {
       <p className="text-xl font-normal">
         {t.exhibitorSettings.table.row3.section1.paragraphTwo}
       </p>
-      <EditPreferences
+      <PreferenceDetails
         t={t}
-        preferences={prefOne}
-        setPreferences={setPrefOne}
-        editState={editStateSectionOne}
-        setEditState={setEditStateSectionOne}
-      />
-      <AddPreferences
-        t={t}
-        preferences={prefOne}
-        setPreferences={setPrefOne}
-        editState={editStateSectionOne}
-        setEditState={setEditStateSectionOne}
-        sectionOne={true}
+        type={"Representative"}
+        exhibitorPackage={exhibitorPackage}
       />
       {/* Section 1 */}
 
@@ -69,20 +38,10 @@ export default function RowThree({ t }: { t: Locale }) {
       <p className="text-xl font-normal">
         {t.exhibitorSettings.table.row3.section2.paragraphTwo}
       </p>
-      <EditPreferences
+      <PreferenceDetails
         t={t}
-        preferences={prefTwo}
-        setPreferences={setPrefTwo}
-        editState={editStateSectionTwo}
-        setEditState={setEditStateSectionTwo}
-      />
-      <AddPreferences
-        t={t}
-        preferences={prefTwo}
-        setPreferences={setPrefTwo}
-        editState={editStateSectionTwo}
-        setEditState={setEditStateSectionTwo}
-        sectionOne={false}
+        type={"Banquet"}
+        exhibitorPackage={exhibitorPackage}
       />
       {/* Section 2 */}
     </div>

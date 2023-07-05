@@ -1,16 +1,19 @@
-import { useState } from "react";
+import { Dispatch } from "react";
 
 export function TextInput({
+  description,
+  setDescription,
   textAbove,
   placeHolderText,
 }: {
+  description: string;
+  setDescription: Dispatch<string>;
   textAbove: string;
   placeHolderText: string;
 }) {
-  const [description, setDescription] = useState();
-
   const onTextChange = (e: any) => {
     if (e.target.value) setDescription(e.target.value);
+    else setDescription("");
   };
 
   return (
@@ -28,6 +31,7 @@ export function TextInput({
         placeholder={placeHolderText}
         maxLength={250}
         onChange={onTextChange}
+        value={description}
       />
     </div>
   );
