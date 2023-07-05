@@ -165,9 +165,11 @@ export default {
           meat: "Kött",
         },
         alerts: {
-          errorDeleteUserWithoutID:
+          errorDeletePreferenceWithoutID:
             "Kan inte identifiera matpreferensen som ska raderas",
-          errorEmptyValueArray: "You have to select an option",
+          errorEmptyValueArray: "Du måste välja ett alternativ",
+          errorAddingMorePreferencesThanAllowed: (max: number) =>
+            `Du har nått det maximala antalet (${max}) preferenser som du har tilldelats`,
         },
       },
     },
@@ -359,7 +361,7 @@ export default {
     unknown: "Ett okänt fel uppstod",
   },
   success: {
-    save: "The changes you made have been saved",
+    save: "Ändringarna du gjorde har sparats",
   },
   catalog: {
     header: "PRODUKTKATALOG",

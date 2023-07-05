@@ -1,11 +1,11 @@
 import { api } from "@/utils/api";
 import { InputField } from "@/components/InputField";
 import { useLocale, type Locale } from "@/locales";
-import React, { Fragment, useEffect, useState } from "react";
-import type { User } from "@prisma/client";
+import React, { useEffect, useState } from "react";
 import { getPackage } from "@/utils/packages";
 import { useRouter } from "next/router";
 import { Table } from "@/components/Table";
+import { Package } from "@/shared/Classes";
 import RowOne from "@/components/Settings/RowOne";
 import RowTwo from "@/components/Settings/RowTwo";
 import RowThree from "@/components/Settings/RowThree";
@@ -15,18 +15,15 @@ export default function Exhibitor() {
   const router = useRouter();
   const trpc = api.useContext();
 
-  const logout = api.account.logout.useMutation();
-  const isLoggedIn = api.account.isLoggedIn.useQuery();
+  const [exhibitorPackage, setExhibitorPackage] = useState(new Package(t, ""));
 
   // Get variables from DB
   const exhibitor = api.exhibitor.get.useQuery();
+  const isLoggedIn = api.account.isLoggedIn.useQuery();
+  const getExhibitor = api.exhibitor.getPackage.useQuery();
 
-  // const updateExhibitor = api.exhibitor.update.useMutation();
-  // const contacts = api.exhibitor.getContacts.useQuery();
-  // const removeContact = api.exhibitor.deleteContact.useMutation();
-  // const setLogo = api.exhibitor.setLogo.useMutation();
-  // const logoWhite = api.exhibitor.logo.useQuery("white");
-  // const updateJobOffers = api.exhibitor.updateJobOffers.useMutation();
+  // Get Mutations
+  const logout = api.account.logout.useMutation();
 
   // TODO: Fix stutter
   // useEffect(() => {
@@ -42,52 +39,10 @@ export default function Exhibitor() {
     }
   }, [logout.isSuccess]);
 
-  // const [currentTable, setCurrentTable] = useState(2);
-  // const [pendingChanges, setPendingChanges] = useState(false);
-  // const [logoLoading, setLogoLoading] = useState(false);
-
-  // const [invoiceEmail, setInvoiceEmail] = useState("");
-  // const [description, setDescription] = useState("");
-  // const [extraChairs, setExtraChairs] = useState(0);
-  // const [extraTables, setExtraTables] = useState(0);
-  // const [extraDrinkCoupons, setExtraDrinkCoupons] = useState(0);
-  // const [extraRepresentativeSpots, setExtraRepresentativeSpots] = useState(0);
-  // const [totalBanquetTicketsWanted, setTotalBanquetTicketsWanted] = useState(0);
-
-  // const [addingContact, setAddingContact] = useState(false);
-
-  // const pkg = exhibitor.data?.package
-  //   ? getPackage(t, exhibitor.data.package)
-  //   : null;
-
-  // const totalChairs = extraChairs + (pkg?.chairs ?? 0);
-  // const totalTables = extraTables + (pkg?.tables ?? 0);
-  // const totalDrinkCoupons = extraDrinkCoupons + (pkg?.drinkCoupons ?? 0);
-  // const totalRepresentativeSpots =
-  //   extraRepresentativeSpots + (pkg?.representativeSpots ?? 0);
-
-  // const setNumber = (setter: (value: number) => void) => (value: string) => {
-  //   const parsed =
-  //     value === "" ? 0 : parseInt(value.replace(/[^0-9]/g, ""), 10);
-  //   setter(parsed);
-  //   setPendingChanges(true);
-  // };
-  // const setExtraChairsStr = setNumber(setExtraChairs);
-  // const setExtraTablesStr = setNumber(setExtraTables);
-  // const setExtraDrinkCouponsStr = setNumber(setExtraDrinkCoupons);
-  // const setExtraRepresentativeSpotsStr = setNumber(setExtraRepresentativeSpots);
-  // const setExtraBanquetTicketsStr = setNumber(setTotalBanquetTicketsWanted);
-
-  // useEffect(() => {
-  //   if (!exhibitor.isSuccess) return;
-  //   setInvoiceEmail(exhibitor.data.invoiceEmail ?? "");
-  //   setDescription(exhibitor.data.description ?? "");
-  //   setExtraChairs(exhibitor.data.extraChairs);
-  //   setExtraTables(exhibitor.data.extraTables);
-  //   setExtraDrinkCoupons(exhibitor.data.extraDrinkCoupons);
-  //   setExtraRepresentativeSpots(exhibitor.data.extraRepresentativeSpots);
-  //   setTotalBanquetTicketsWanted(exhibitor.data.totalBanquetTicketsWanted);
-  // }, [exhibitor.isSuccess]);
+  useEffect(() => {
+    if (!getExhibitor.isSuccess) return;
+    setExhibitorPackage(new Package(t, getExhibitor.data.package));
+  }, [getExhibitor.isSuccess]);
 
   return (
     <>
@@ -107,7 +62,11 @@ export default function Exhibitor() {
               t.exhibitorSettings.table.row3.title,
             ],
             [],
-            [<RowOne t={t} />, <RowTwo t={t} />, <RowThree t={t} />]
+            [
+              <RowOne t={t} />,
+              <RowTwo t={t} exhibitorPackage={exhibitorPackage} />,
+              <RowThree t={t} exhibitorPackage={exhibitorPackage} />,
+            ]
           )}
         </div>
       </div>

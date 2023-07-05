@@ -1,15 +1,7 @@
 import Locale from "@/locales";
 import { api } from "@/utils/api";
+import { Package } from "@/shared/Classes";
 import { useState, useEffect, Dispatch } from "react";
-
-type Package = {
-  name: string;
-  tables: number;
-  chairs: number;
-  drinkCoupons: number;
-  representatives: number;
-  banquetTickets: number;
-};
 
 export default function ExtraOrders({
   t,

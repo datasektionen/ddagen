@@ -1,68 +1,14 @@
 import Locale from "@/locales";
-import { api } from "@/utils/api";
-import { useState, useEffect } from "react";
 import ExtraOrders from "./ExtraOrders";
+import { Package } from "@/shared/Classes";
 
-export default function RowTwo({ t }: { t: Locale }) {
-  const defaultPackage = {
-    name: "",
-    tables: 0,
-    chairs: 0,
-    drinkCoupons: 0,
-    representatives: 0,
-    banquetTickets: 0,
-  };
-  const getExhibitor = api.exhibitor.getPackage.useQuery();
-  const [exhibitorPackage, setExhibitorPackage] = useState(defaultPackage);
-
-  function getPackage(exhibitorPackage: string) {
-    switch (exhibitorPackage) {
-      case "base":
-        return {
-          name: t.exhibitorSettings.table.row2.packages.base,
-          tables: 1,
-          chairs: 1,
-          drinkCoupons: 10,
-          representatives: 2,
-          banquetTickets: 2,
-        };
-      case "sponsor":
-        return {
-          name: t.exhibitorSettings.table.row2.packages.sponsor,
-          tables: 1,
-          chairs: 1,
-          drinkCoupons: 10,
-          representatives: 2,
-          banquetTickets: 2,
-        };
-      case "headhunter":
-        return {
-          name: t.exhibitorSettings.table.row2.packages.headhunter,
-          tables: 1,
-          chairs: 1,
-          drinkCoupons: 20,
-          representatives: 4,
-          banquetTickets: 2,
-        };
-      case "premium":
-        return {
-          name: t.exhibitorSettings.table.row2.packages.premium,
-          tables: 1,
-          chairs: 1,
-          drinkCoupons: 30,
-          representatives: 4,
-          banquetTickets: 4,
-        };
-      default:
-        return defaultPackage;
-    }
-  }
-
-  useEffect(() => {
-    if (!getExhibitor.isSuccess) return;
-    setExhibitorPackage(getPackage(getExhibitor.data.package));
-  }, [getExhibitor.isSuccess]);
-
+export default function RowTwo({
+  t,
+  exhibitorPackage,
+}: {
+  t: Locale;
+  exhibitorPackage: Package;
+}) {
   return (
     <div className="flex flex-col w-full items-center overflow-auto mt-6">
       {/* Section 1 */}

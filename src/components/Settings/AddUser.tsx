@@ -37,12 +37,10 @@ export function AddUser({
       role: user.role,
       locale: t.locale,
     });
-    setEditState(undefined);
   }
 
   function deleteUserInDatabase() {
     deleteUserMutation.mutate({ id: users[pos].id, locale: t.locale });
-    setEditState(undefined);
   }
 
   useEffect(() => {
@@ -51,29 +49,44 @@ export function AddUser({
 
   useEffect(() => {
     if (setUserMutation.data) {
-      if (!setUserMutation.data.ok) {
-        setUsers([defaultUser, ...users.slice(1)]);
-        setErrorMessage(setUserMutation.data.error);
-      } else if (setUserMutation.data.ok && setUserMutation.data.update)
-        setUsers(
-          users.map((u, i) => (i == 0 ? defaultUser : i == pos ? user : u))
-        );
-      else
-        setUsers([
-          ...users.map((u, i) => (i == 0 ? defaultUser : u)),
-          { ...user, id: setUserMutation.data.id },
-        ]);
+      if (setUserMutation.data.ok) {
+        if (setUserMutation.data.update)
+          setUsers(
+            users.map((u, i) => (i == 0 ? defaultUser : i == pos ? user : u))
+          );
+        else
+          setUsers([
+            ...users.map((u, i) => (i == 0 ? defaultUser : u)),
+            { ...user, id: setUserMutation.data.id },
+          ]);
+        setEditState(undefined);
+      } else {
+        if (errorMessage == undefined)
+          setErrorMessage(setUserMutation.data.error);
+      }
       setUserMutation.reset();
+    } else if (setUserMutation.isError) {
+      setErrorMessage(t.error.unknown);
     }
 
     if (deleteUserMutation.data) {
-      if (!deleteUserMutation.data.ok) {
-        setUsers([defaultUser, ...users.slice(1)]);
-        setErrorMessage(deleteUserMutation.data.error);
-      } else setUsers(users.filter((u) => u.id != user.id));
+      if (deleteUserMutation.data.ok) {
+        setUsers(users.filter((u) => u.id != user.id));
+        setEditState(undefined);
+      } else {
+        if (errorMessage == undefined)
+          setErrorMessage(deleteUserMutation.data.error);
+      }
       deleteUserMutation.reset();
+    } else if (deleteUserMutation.isError) {
+      setErrorMessage(t.error.unknown);
     }
-  }, [setUserMutation.isSuccess, deleteUserMutation.isSuccess]);
+  }, [
+    setUserMutation.isSuccess,
+    setUserMutation.isError,
+    deleteUserMutation.isSuccess,
+    deleteUserMutation.isError,
+  ]);
 
   return (
     <div className="flex flex-col items-center w-[80%] bg-white/40 border-2 border-white/70 rounded-xl pb-8 mb-16">
@@ -136,7 +149,9 @@ export function AddUser({
           setTimeout(() => {
             setErrorMessage(undefined);
           }, 3000) && (
-            <p className="text-red-500 font-bold text-border-black text-center">{errorMessage}</p>
+            <p className="text-red-500 font-bold text-border-black text-center">
+              {errorMessage}
+            </p>
           )}
       </form>
     </div>

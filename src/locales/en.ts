@@ -164,9 +164,11 @@ export default {
           meat: "Meat",
         },
         alerts: {
-          errorDeleteUserWithoutID:
+          errorDeletePreferenceWithoutID:
             "Can not identify food preference to delete.",
-          errorEmptyValueArray: "Du måste välja ett alternativ",
+          errorEmptyValueArray: "You have to select an option",
+          errorAddingMorePreferencesThanAllowed: (max: number) =>
+            `You've reached the maximum amount (${max}) of preferences allotted to you`,
         },
       },
     },
@@ -355,7 +357,7 @@ export default {
     unknown: "Something unexpectedly went wrong",
   },
   success: {
-    save: "Ändringarna du gjorde har sparats",
+    save: "The changes you made have been saved",
   },
   catalog: {
     header: "PRODUCT CATALOG",

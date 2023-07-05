@@ -217,6 +217,7 @@ export const exhibitorRouter = createTRPCRouter({
       })
     )
     .mutation(async ({ ctx, input }) => {
+      const t = getLocale(input.locale);
       try {
         if (input.id) {
           await ctx.prisma.user.updateMany({
@@ -248,7 +249,6 @@ export const exhibitorRouter = createTRPCRouter({
           e instanceof Prisma.PrismaClientKnownRequestError &&
           e.code === "P2002"
         ) {
-          const t = getLocale(input.locale);
           return {
             ok: false,
             error:
@@ -256,7 +256,10 @@ export const exhibitorRouter = createTRPCRouter({
                 .errorDuplicateEmail,
           };
         }
-        throw e;
+        return {
+          ok: false,
+          error: t.error.unknown,
+        };
       }
     }),
   deleteUser: protectedProcedure
@@ -268,23 +271,31 @@ export const exhibitorRouter = createTRPCRouter({
     )
     .mutation(async ({ ctx, input }) => {
       const t = getLocale(input.locale);
-      if (input.id == undefined) {
+      try {
+        if (input.id == undefined) {
+          return {
+            ok: false,
+            error:
+              t.exhibitorSettings.table.row1.section3.alerts
+                .errorDeleteUserWithoutID,
+          };
+        } else if (input.id === ctx.session.user.id) {
+          return {
+            ok: false,
+            error:
+              t.exhibitorSettings.table.row1.section3.alerts.errorDeleteSelf,
+          };
+        }
+        await ctx.prisma.user.delete({
+          where: { id: input.id },
+        });
+        return { ok: true };
+      } catch (e) {
         return {
           ok: false,
-          error:
-            t.exhibitorSettings.table.row1.section3.alerts
-              .errorDeleteUserWithoutID,
-        };
-      } else if (input.id === ctx.session.user.id) {
-        return {
-          ok: false,
-          error: t.exhibitorSettings.table.row1.section3.alerts.errorDeleteSelf,
+          error: t.error.unknown,
         };
       }
-      await ctx.prisma.user.delete({
-        where: { id: input.id },
-      });
-      return { ok: true };
     }),
   getFoodPreferencess: protectedProcedure
     .input(foodPreferencesType)
@@ -309,38 +320,46 @@ export const exhibitorRouter = createTRPCRouter({
     )
     .mutation(async ({ ctx, input }) => {
       const t = getLocale(input.locale);
-      if (input.value.length == 0) {
+      try {
+        if (input.value.length == 0) {
+          return {
+            ok: false,
+            error: t.exhibitorSettings.table.row3.alerts.errorEmptyValueArray,
+          };
+        }
+        if (input.id) {
+          await ctx.prisma.foodPreferences.updateMany({
+            where: {
+              id: input.id,
+              exhibitorId: ctx.session.user.exhibitorId,
+              type: input.type,
+            },
+            data: {
+              value: input.value,
+              comment: input.comment,
+            },
+          });
+          return { ok: true, update: true, id: undefined };
+        } else {
+          const id = randomUUID();
+          await ctx.prisma.foodPreferences.create({
+            data: {
+              id: id,
+              exhibitorId: ctx.session.user.exhibitorId,
+              name: input.name,
+              value: input.value,
+              comment: input.comment,
+              type: input.type,
+            },
+          });
+          return { ok: true, update: false, id: id };
+        }
+      } catch (e) {
+        console.log(e);
         return {
           ok: false,
-          error: t.exhibitorSettings.table.row3.alerts.errorEmptyValueArray,
+          error: t.error.unknown,
         };
-      }
-      if (input.id) {
-        await ctx.prisma.foodPreferences.updateMany({
-          where: {
-            id: input.id,
-            exhibitorId: ctx.session.user.exhibitorId,
-            type: input.type,
-          },
-          data: {
-            value: input.value,
-            comment: input.comment,
-          },
-        });
-        return { ok: true, update: true, id: undefined };
-      } else {
-        const id = randomUUID();
-        await ctx.prisma.foodPreferences.create({
-          data: {
-            id: id,
-            exhibitorId: ctx.session.user.exhibitorId,
-            name: input.name,
-            value: input.value,
-            comment: input.comment,
-            type: input.type,
-          },
-        });
-        return { ok: true, update: false, id: id };
       }
     }),
   deleteFoodPreferences: protectedProcedure
@@ -352,16 +371,26 @@ export const exhibitorRouter = createTRPCRouter({
     )
     .mutation(async ({ ctx, input }) => {
       const t = getLocale(input.locale);
-      if (input.id == undefined) {
+      try {
+        if (input.id == undefined) {
+          return {
+            ok: false,
+            error:
+              t.exhibitorSettings.table.row3.alerts
+                .errorDeletePreferenceWithoutID,
+          };
+        }
+        await ctx.prisma.foodPreferences.deleteMany({
+          where: { id: input.id, exhibitorId: ctx.session.user.exhibitorId },
+        });
+        return { ok: true };
+      } catch (e) {
+        console.log(e);
         return {
           ok: false,
-          error: t.exhibitorSettings.table.row3.alerts.errorDeleteUserWithoutID,
+          error: t.error.unknown,
         };
       }
-      await ctx.prisma.foodPreferences.deleteMany({
-        where: { id: input.id, exhibitorId: ctx.session.user.exhibitorId },
-      });
-      return { ok: true };
     }),
 
   getJobOffers: protectedProcedure.query(async ({ input, ctx }) => {

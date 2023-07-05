@@ -2,8 +2,8 @@ import Locale from "@/locales";
 import { api } from "@/utils/api";
 import { CheckMark } from "./CheckMark";
 import { InputField } from "./InputField";
-import { Preferences } from "@/shared/Classes";
 import { Dispatch, useState, useEffect } from "react";
+import { Package, Preferences } from "@/shared/Classes";
 
 type Options = "Vegan" | "Meat" | "LactoseFree" | "GlutenFree";
 
@@ -14,6 +14,7 @@ export function AddPreferences({
   preferences,
   setPreferences,
   setEditState,
+  exhibitorPackage,
 }: {
   t: Locale;
   pos: number;
@@ -21,6 +22,7 @@ export function AddPreferences({
   preferences: Preferences[];
   setPreferences: Dispatch<Preferences[]>;
   setEditState: Dispatch<undefined | string>;
+  exhibitorPackage: Package;
 }) {
   const isRepresentative = type == "Representative";
   const defaultPreference = new Preferences(undefined, "", [], "", type);
@@ -45,14 +47,26 @@ export function AddPreferences({
 
   function handleSubmission(e: any) {
     e.preventDefault();
-    setPreferenceMutation.mutate({
-      id: preference.id,
-      name: preference.name,
-      value: preference.value,
-      comment: preference.comment,
-      type: preference.type,
-      locale: t.locale,
-    });
+    const maxPreferences = isRepresentative
+      ? exhibitorPackage.representatives
+      : exhibitorPackage.banquetTickets;
+    if (preferences.length <= maxPreferences)
+      setPreferenceMutation.mutate({
+        id: preference.id,
+        name: preference.name,
+        value: preference.value,
+        comment: preference.comment,
+        type: preference.type,
+        locale: t.locale,
+      });
+    else {
+      if (errorMessage == undefined)
+        setErrorMessage(
+          t.exhibitorSettings.table.row3.alerts.errorAddingMorePreferencesThanAllowed(
+            maxPreferences
+          )
+        );
+    }
     setEditState(undefined);
   }
 
@@ -79,10 +93,7 @@ export function AddPreferences({
 
   useEffect(() => {
     if (setPreferenceMutation.data) {
-      if (!setPreferenceMutation.data.ok) {
-        setPreferences([defaultPreference, ...preferences.slice(1)]);
-        setErrorMessage(setPreferenceMutation.data.error);
-      } else {
+      if (setPreferenceMutation.data.ok) {
         if (setPreferenceMutation.data.update)
           setPreferences(
             preferences.map((p, i) =>
@@ -94,18 +105,32 @@ export function AddPreferences({
             ...preferences.map((p, i) => (i == 0 ? defaultPreference : p)),
             { ...preference, id: setPreferenceMutation.data.id },
           ]);
+      } else {
+        if (errorMessage == undefined)
+          setErrorMessage(setPreferenceMutation.data.error);
       }
       setPreferenceMutation.reset();
+    } else if (setPreferenceMutation.isError) {
+      setErrorMessage(t.error.unknown);
     }
 
     if (deletePreferenceMutation.data) {
-      if (!deletePreferenceMutation.data.ok) {
-        setPreferences([defaultPreference, ...preferences.slice(1)]);
-        setErrorMessage(deletePreferenceMutation.data.error);
-      } else setPreferences(preferences.filter((p) => p.id != preference.id));
+      if (deletePreferenceMutation.data.ok) {
+        setPreferences(preferences.filter((p) => p.id != preference.id));
+      } else {
+        if (errorMessage == undefined)
+          setErrorMessage(deletePreferenceMutation.data.error);
+      }
       deletePreferenceMutation.reset();
+    } else if (deletePreferenceMutation.isError) {
+      setErrorMessage(t.error.unknown);
     }
-  }, [setPreferenceMutation.isSuccess, deletePreferenceMutation.isSuccess]);
+  }, [
+    setPreferenceMutation.isSuccess,
+    setPreferenceMutation.isError,
+    deletePreferenceMutation.isSuccess,
+    deletePreferenceMutation.isError,
+  ]);
 
   return (
     <div className="flex flex-col items-center w-[80%] bg-white/40 border-2 border-white/70 rounded-xl pb-8 mt-8 mb-16">

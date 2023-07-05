@@ -1,7 +1,14 @@
 import Locale from "@/locales";
+import { Package } from "@/shared/Classes";
 import { PreferenceDetails } from "./PreferenceDetails";
 
-export default function RowThree({ t }: { t: Locale }) {
+export default function RowThree({
+  t,
+  exhibitorPackage,
+}: {
+  t: Locale;
+  exhibitorPackage: Package;
+}) {
   return (
     <div className="flex flex-col w-full items-center text-center overflow-auto mt-6">
       {/* Section 1 */}
@@ -14,7 +21,11 @@ export default function RowThree({ t }: { t: Locale }) {
       <p className="text-xl font-normal">
         {t.exhibitorSettings.table.row3.section1.paragraphTwo}
       </p>
-      <PreferenceDetails t={t} type="Representative" />
+      <PreferenceDetails
+        t={t}
+        type={"Representative"}
+        exhibitorPackage={exhibitorPackage}
+      />
       {/* Section 1 */}
 
       {/* Section 2 */}
@@ -27,7 +38,11 @@ export default function RowThree({ t }: { t: Locale }) {
       <p className="text-xl font-normal">
         {t.exhibitorSettings.table.row3.section2.paragraphTwo}
       </p>
-      <PreferenceDetails t={t} type="Banquet" />
+      <PreferenceDetails
+        t={t}
+        type={"Banquet"}
+        exhibitorPackage={exhibitorPackage}
+      />
       {/* Section 2 */}
     </div>
   );
