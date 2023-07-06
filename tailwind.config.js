@@ -20,6 +20,11 @@ module.exports = {
         editIcon: 'url("/img/edit-icon.png")',
         checkIcon: 'url("/img/check-icon.png")',
       },
+      screens: {
+        xs: "500px",
+        xxs: "400px",
+        xxxs: "300px",
+      },
     },
     fontFamily: {
       sans: ["neue-haas", "sans-serif"],
