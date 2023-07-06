@@ -127,38 +127,42 @@ export default function RowOne({ t }: { t: Locale }) {
   }, [saveChanges]);
 
   return (
-    <div className="flex flex-col w-full items-center overflow-auto mt-6">
+    <div className="flex flex-col w-full items-center overflow-auto mt-6 text-center">
       <h1 className="uppercase text-cerise text-4xl font-normal px-[10px] break-words">
         {t.exhibitorSettings.table.row1.section1.header}
       </h1>
 
       {/* Section 1 */}
 
-      <div className="flex flex-row gap-8 mt-8 mb-20">
-        <UploadButton
-          t={t}
-          selectedImage={whiteLogo}
-          setSelectedImage={setWhiteLogo}
-          textAbove={"Vit Logga"}
-          textInside={"Logga"}
-          accept={"image/svg+xml"}
-        />
-        <UploadButton
-          t={t}
-          selectedImage={colorLogo}
-          setSelectedImage={setColorLogo}
-          textAbove={"Logga m. färg"}
-          textInside={"Logga"}
-          accept={"image/png,image/jpeg"}
-        />
-        <TextInput
-          description={description}
-          setDescription={setDescription}
-          textAbove={t.exhibitorSettings.table.row1.section1.description}
-          placeHolderText={
-            t.exhibitorSettings.table.row1.section1.placeholderText
-          }
-        />
+      <div className="w-full flex flex-col lg:flex-row gap-8 mt-8 mb-20 lg:px-24 items-center">
+        <div className="flex flex-col max-sm:gap-y-8 sm:flex-row sm:gap-x-8">
+          <UploadButton
+            t={t}
+            selectedImage={whiteLogo}
+            setSelectedImage={setWhiteLogo}
+            textAbove={"Vit Logga"}
+            textInside={"Logga"}
+            accept={"image/svg+xml"}
+          />
+          <UploadButton
+            t={t}
+            selectedImage={colorLogo}
+            setSelectedImage={setColorLogo}
+            textAbove={"Logga m. färg"}
+            textInside={"Logga"}
+            accept={"image/png,image/jpeg"}
+          />
+        </div>
+        <div className="w-[90%] md:w-[80%] lg:w-full">
+          <TextInput
+            description={description}
+            setDescription={setDescription}
+            textAbove={t.exhibitorSettings.table.row1.section1.description}
+            placeHolderText={
+              t.exhibitorSettings.table.row1.section1.placeholderText
+            }
+          />
+        </div>
       </div>
       {/* Section 1 */}
 
