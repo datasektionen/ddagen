@@ -60,7 +60,7 @@ export default function Exhibitor() {
     <>
       <div className="mx-auto flex flex-col items-center py-40">
         {/*Header*/}
-        <h1 className="uppercase text-cerise text-5xl font-medium text-center px-[10px] break-words">
+        <h1 className="uppercase text-cerise text-3xl md:text-5xl font-medium text-center px-[10px] break-words">
           {t.exhibitorSettings.header}
         </h1>
         {/*Header*/}

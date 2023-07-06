@@ -13,6 +13,7 @@ export function AddPreferences({
   type,
   preferences,
   setPreferences,
+  editState,
   setEditState,
   exhibitorPackage,
 }: {
@@ -21,6 +22,7 @@ export function AddPreferences({
   type: "Representative" | "Banquet";
   preferences: Preferences[];
   setPreferences: Dispatch<Preferences[]>;
+  editState: undefined | string;
   setEditState: Dispatch<undefined | string>;
   exhibitorPackage: Package;
 }) {
@@ -50,7 +52,7 @@ export function AddPreferences({
     const maxPreferences = isRepresentative
       ? exhibitorPackage.representatives
       : exhibitorPackage.banquetTickets;
-    if (preferences.length <= maxPreferences)
+    if (preference.id || preferences.length <= maxPreferences)
       setPreferenceMutation.mutate({
         id: preference.id,
         name: preference.name,
@@ -67,7 +69,6 @@ export function AddPreferences({
           )
         );
     }
-    setEditState(undefined);
   }
 
   function deletePreferenceInDatabase() {
@@ -75,7 +76,6 @@ export function AddPreferences({
       id: preferences[pos].id,
       locale: t.locale,
     });
-    setEditState(undefined);
   }
 
   useEffect(() => {
@@ -105,6 +105,7 @@ export function AddPreferences({
             ...preferences.map((p, i) => (i == 0 ? defaultPreference : p)),
             { ...preference, id: setPreferenceMutation.data.id },
           ]);
+        setEditState(undefined);
       } else {
         if (errorMessage == undefined)
           setErrorMessage(setPreferenceMutation.data.error);
@@ -117,6 +118,7 @@ export function AddPreferences({
     if (deletePreferenceMutation.data) {
       if (deletePreferenceMutation.data.ok) {
         setPreferences(preferences.filter((p) => p.id != preference.id));
+        setEditState(undefined);
       } else {
         if (errorMessage == undefined)
           setErrorMessage(deletePreferenceMutation.data.error);
@@ -223,7 +225,9 @@ export function AddPreferences({
           </button>
           <button type="submit">
             <a className="block uppercase hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-normal px-8 py-2 max-lg:mx-auto w-max">
-              {t.exhibitorSettings.table.row1.section3.save}
+              {editState
+                ? t.exhibitorSettings.table.row1.section3.save
+                : t.exhibitorSettings.table.row1.section3.add}
             </a>
           </button>
         </div>

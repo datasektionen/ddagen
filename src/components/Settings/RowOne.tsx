@@ -182,7 +182,7 @@ export default function RowOne({ t }: { t: Locale }) {
 
   return (
     <div className="flex flex-col w-full items-center overflow-auto mt-6 text-center">
-      <h1 className="uppercase text-cerise text-4xl font-normal px-[10px] break-words">
+      <h1 className="uppercase text-cerise text-2xl md:text-4xl font-normal px-[10px] break-words">
         {t.exhibitorSettings.table.row1.section1.header}
       </h1>
 
@@ -221,7 +221,7 @@ export default function RowOne({ t }: { t: Locale }) {
       {/* Section 1 */}
 
       {/* Section 2 */}
-      <h1 className="uppercase text-cerise text-4xl font-normal px-[10px] break-words mb-8">
+      <h1 className="uppercase text-cerise text-2xl md:text-4xl font-normal px-[10px] break-words mb-8">
         {t.exhibitorSettings.table.row1.section2.header}
       </h1>
 
