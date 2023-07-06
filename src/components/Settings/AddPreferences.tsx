@@ -141,7 +141,7 @@ export function AddPreferences({
   }, [errorMessage]);
 
   return (
-    <div className="flex flex-col items-center w-[80%] bg-white/40 border-2 border-white/70 rounded-xl pb-8 mt-8 mb-16">
+    <div className="flex flex-col items-center w-[80%] bg-white/40 border-2 border-white/70 rounded-xl pb-8 mt-8 mb-16 overflow-hidden">
       <form
         className="flex flex-col w-[90%] bg-transparent outline-none gap-7 mt-10"
         onSubmit={handleSubmission}
@@ -161,12 +161,12 @@ export function AddPreferences({
               {t.exhibitorSettings.table.row3.preferencesHeader}
             </p>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col items-center justify-center">
             <div
               className={
                 isRepresentative
-                  ? "flex flex-row justify-between pt-6 px-20"
-                  : "grid grid-rows-2 grid-cols-2 text-left pt-6 px-36"
+                  ? "flex flex-col lg:flex-row pt-6 px-20"
+                  : "flex flex-col lg:grid lg:grid-rows-2 lg:grid-cols-2 pt-6 px-36"
               }
             >
               {[
@@ -183,7 +183,7 @@ export function AddPreferences({
                   }
                   key={option}
                 >
-                  <div className="grid grid-cols-2 gap-x-10 mt-4">
+                  <div className="grid grid-cols-2 gap-x-16 md:gap-x-10 mt-4">
                     <div>{option}</div>
                     <CheckMark
                       name={option}
@@ -215,7 +215,7 @@ export function AddPreferences({
           required={false}
           fields={t.exhibitorSettings.fieldsAddPreferences}
         />
-        <div className="flex flex-row gap-x-8 mt-4 justify-center">
+        <div className="flex flex-col max-sm:gap-y-4 sm:flex-row gap-x-8 mt-4 justify-center">
           <button type="button" onClick={deletePreferenceInDatabase}>
             <a className="block uppercase hover:scale-105 transition-transform bg-[#A7A7A7] rounded-full text-white text-base font-normal px-8 py-2 max-lg:mx-auto w-max">
               {t.exhibitorSettings.table.row1.section3.delete}

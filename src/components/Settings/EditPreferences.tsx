@@ -42,7 +42,7 @@ export function EditPreferences({
   }
 
   return (
-    <div className="relative w-[80%] py-5 px-3 mt-6 mb-6 bg-white/40 border-2 border-white/70 rounded-xl">
+    <div className="relative w-[80%] py-5 px-3 mt-6 mb-6 bg-white/40 border-2 border-white/70 rounded-xl overflow-hidden">
       <table>
         <tbody
           className="text-lg [&>tr>td]:text-right [&>tr>td>label]:font-normal [&>tr>td>label]:text-[#555555] 

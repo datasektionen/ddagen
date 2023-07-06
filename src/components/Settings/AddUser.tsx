@@ -97,7 +97,7 @@ export function AddUser({
   }, [errorMessage]);
 
   return (
-    <div className="flex flex-col items-center w-[80%] bg-white/40 border-2 border-white/70 rounded-xl pb-8 mb-16">
+    <div className="flex flex-col items-center w-[80%] bg-white/40 border-2 border-white/70 rounded-xl pb-8 mb-16 overflow-hidden">
       <form
         className="flex flex-col w-[90%] bg-transparent outline-none gap-7 mt-10"
         onSubmit={handleSubmission}
@@ -140,7 +140,7 @@ export function AddUser({
           fields={t.exhibitorSettings.fieldsAddContact}
         />
 
-        <div className="flex flex-row gap-x-8 mt-4 justify-center">
+        <div className="flex flex-col max-sm:gap-y-4 sm:flex-row gap-x-8 mt-4 justify-center">
           <button type="button" onClick={deleteUserInDatabase}>
             <a className="block uppercase hover:scale-105 transition-transform bg-[#A7A7A7] rounded-full text-white text-base font-normal px-8 py-2 max-lg:mx-auto w-max">
               {t.exhibitorSettings.table.row1.section3.delete}

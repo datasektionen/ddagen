@@ -10,7 +10,7 @@ export default function RowTwo({
   exhibitorPackage: Package;
 }) {
   return (
-    <div className="flex flex-col w-full items-center overflow-auto mt-6">
+    <div className="w-full flex flex-col items-center mt-6">
       {/* Section 1 */}
       <h1 className="uppercase text-cerise text-4xl font-normal px-[10px] break-words">
         {t.exhibitorSettings.table.row2.section1.header}
