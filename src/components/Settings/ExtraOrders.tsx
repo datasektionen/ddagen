@@ -73,14 +73,50 @@ export default function ExtraOrders({
     );
   }
 
+  const rows = [
+    {
+      name: t.exhibitorSettings.table.row2.section2.drinkCoupons,
+      included: exhibitorPackage.drinkCoupons,
+      get: drinkCoupons,
+      set: setDrinkCoupons,
+      increment: 10,
+    },
+    {
+      name: t.exhibitorSettings.table.row2.section2.tables,
+      included: exhibitorPackage.tables,
+      get: tables,
+      set: setTables,
+      increment: 1,
+    },
+    {
+      name: t.exhibitorSettings.table.row2.section2.chairs,
+      included: exhibitorPackage.chairs,
+      get: chairs,
+      set: setChairs,
+      increment: 1,
+    },
+    {
+      name: t.exhibitorSettings.table.row2.section2.representatives,
+      included: exhibitorPackage.representatives,
+      get: representatives,
+      set: setRepresentatives,
+      increment: 1,
+    },
+    {
+      name: t.exhibitorSettings.table.row2.section2.sitting,
+      included: exhibitorPackage.banquetTickets,
+      get: banquetTickets,
+      set: setBanquetTickets,
+      increment: 1,
+    },
+  ];
   return (
     <div
       className="flex flex-col items-center w-[80%] bg-white/40 border-2
                 border-white/70 rounded-xl pb-8 mt-6 mb-16 px-8 pt-8"
     >
-      {/*  */}
       <div
-        className={`grid grid-cols-6 grid-rows-6 font-medium text-lg text-center [&>div]:pt-6
+        className={`max-md:hidden grid grid-cols-6 grid-rows-6 font-medium text-lg text-center [&>div]:pt-6
                     [&>div]:border-b-2 [&>div]:border-white [&>div]:border-solid ${
                       t.locale == "sv" ? "[&>div]:pb-4" : ""
                     } `}
@@ -190,8 +226,35 @@ export default function ExtraOrders({
         <div className="text-right text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 !border-transparent text-base">
           {t.exhibitorSettings.table.row2.section2.warning}
         </div>
-        {/* Section 5 */}
       </div>
+
+      <div className="md:hidden w-full flex flex-col font-normal text-lg text-center overflow-scroll">
+        {rows.map((row, i) => (
+          <div
+            className={`flex flex-col py-4 ${
+              i != 4 ? "border-b-2 border-white border-solid" : ""
+            }`}
+          >
+            <div className="font-medium text-2xl">{row.name}</div>
+            <div>
+              {t.exhibitorSettings.table.row2.section2.titles.first}:{" "}
+              {row.included}
+            </div>
+            <div>
+              {t.exhibitorSettings.table.row2.section2.titles.second}:{" "}
+              {editState ? plusMinus(row.get, row.set, row.increment) : row.get}
+            </div>
+            <div>
+              {t.exhibitorSettings.table.row2.section2.titles.third}:{" "}
+              {row.get + row.included}
+            </div>
+            <div className="text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-normal">
+              {t.exhibitorSettings.table.row2.section2.warning}
+            </div>
+          </div>
+        ))}
+      </div>
+      {/* Section 5 */}
 
       <a
         className={`hover:cursor-pointer ${

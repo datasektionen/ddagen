@@ -24,6 +24,48 @@ export default function RowOne({ t }: { t: Locale }) {
   const [checkmarks, setCheckMarks] = useState<boolean[]>([]);
   const [saveChanges, setSaveChanges] = useState<boolean | undefined>();
 
+  // Other
+  const years = [
+    t.exhibitorSettings.table.row1.section2.year.one,
+    t.exhibitorSettings.table.row1.section2.year.two,
+    t.exhibitorSettings.table.row1.section2.year.three,
+    t.exhibitorSettings.table.row1.section2.year.four,
+    t.exhibitorSettings.table.row1.section2.year.five,
+  ];
+
+  const rows = [
+    {
+      jobOffer: t.exhibitorSettings.table.row1.section2.jobs.summer,
+      checkmarks: [0, 1, 2, 3, 4].map((pos) => (
+        <div key={pos}>{getCheckMark(pos)}</div>
+      )),
+    },
+    {
+      jobOffer: t.exhibitorSettings.table.row1.section2.jobs.internship,
+      checkmarks: [5, 6, 7, 8, 9].map((pos) => (
+        <div key={pos}>{getCheckMark(pos)}</div>
+      )),
+    },
+    {
+      jobOffer: t.exhibitorSettings.table.row1.section2.jobs.partTime,
+      checkmarks: [10, 11, 12, 13, 14].map((pos) => (
+        <div key={pos}>{getCheckMark(pos)}</div>
+      )),
+    },
+    {
+      jobOffer: t.exhibitorSettings.table.row1.section2.other.thesis,
+      checkmarks: getCheckMark(15),
+    },
+    {
+      jobOffer: t.exhibitorSettings.table.row1.section2.other.fullTime,
+      checkmarks: getCheckMark(16),
+    },
+    {
+      jobOffer: t.exhibitorSettings.table.row1.section2.other.trainee,
+      checkmarks: getCheckMark(17),
+    },
+  ];
+
   function removeImageDetails(img: string) {
     return img.replace(/^data:image\/[a-z]+\+?[a-z]+;base64,/, "");
   }
@@ -58,6 +100,18 @@ export default function RowOne({ t }: { t: Locale }) {
     return array.reduce(
       (out: number[], bool, index) => (bool ? out.concat(index) : out),
       []
+    );
+  }
+
+  function getCheckMark(pos: number) {
+    return (
+      <CheckMark
+        name={`${pos}`}
+        defaultChecked={checkmarks[pos]}
+        onClick={() => {
+          checkmarks[pos] = !checkmarks[pos];
+        }}
+      />
     );
   }
 
@@ -127,121 +181,84 @@ export default function RowOne({ t }: { t: Locale }) {
   }, [saveChanges]);
 
   return (
-    <div className="flex flex-col w-full items-center overflow-auto mt-6">
-      <h1 className="uppercase text-cerise text-4xl font-normal px-[10px] break-words">
+    <div className="flex flex-col w-full items-center overflow-auto mt-6 text-center">
+      <h1 className="uppercase text-cerise text-2xl md:text-4xl font-normal px-[10px] break-words">
         {t.exhibitorSettings.table.row1.section1.header}
       </h1>
 
       {/* Section 1 */}
 
-      <div className="flex flex-row gap-8 mt-8 mb-20">
-        <UploadButton
-          t={t}
-          selectedImage={whiteLogo}
-          setSelectedImage={setWhiteLogo}
-          textAbove={"Vit Logga"}
-          textInside={"Logga"}
-          accept={"image/svg+xml"}
-        />
-        <UploadButton
-          t={t}
-          selectedImage={colorLogo}
-          setSelectedImage={setColorLogo}
-          textAbove={"Logga m. färg"}
-          textInside={"Logga"}
-          accept={"image/png,image/jpeg"}
-        />
-        <TextInput
-          description={description}
-          setDescription={setDescription}
-          textAbove={t.exhibitorSettings.table.row1.section1.description}
-          placeHolderText={
-            t.exhibitorSettings.table.row1.section1.placeholderText
-          }
-        />
+      <div className="w-full flex flex-col lg:flex-row gap-8 mt-8 mb-20 lg:px-24 items-center">
+        <div className="flex flex-col max-sm:gap-y-8 sm:flex-row sm:gap-x-8">
+          <UploadButton
+            t={t}
+            selectedImage={whiteLogo}
+            setSelectedImage={setWhiteLogo}
+            textAbove={"Vit Logga"}
+            textInside={"Logga"}
+            accept={"image/svg+xml"}
+          />
+          <UploadButton
+            t={t}
+            selectedImage={colorLogo}
+            setSelectedImage={setColorLogo}
+            textAbove={"Logga m. färg"}
+            textInside={"Logga"}
+            accept={"image/png,image/jpeg"}
+          />
+        </div>
+        <div className="w-[90%] md:w-[80%] lg:w-full">
+          <TextInput
+            description={description}
+            setDescription={setDescription}
+            textAbove={t.exhibitorSettings.table.row1.section1.description}
+            placeHolderText={
+              t.exhibitorSettings.table.row1.section1.placeholderText
+            }
+          />
+        </div>
       </div>
       {/* Section 1 */}
 
       {/* Section 2 */}
-      <h1 className="uppercase text-cerise text-4xl font-normal px-[10px] break-words">
+      <h1 className="uppercase text-cerise text-2xl md:text-4xl font-normal px-[10px] break-words mb-8">
         {t.exhibitorSettings.table.row1.section2.header}
       </h1>
 
-      <div className="w-[75%]">
-        <div className="grid grid-cols-6 grid-rows-4 mx-auto gap-y-2 mt-8 mb-8">
+      <div className="max-lg:hidden w-[75%]">
+        <div className="grid grid-cols-6 grid-rows-4 mx-auto gap-y-2 mb-8">
           <div></div>
-          <div>{t.exhibitorSettings.table.row1.section2.year.one}</div>
-          <div>{t.exhibitorSettings.table.row1.section2.year.two}</div>
-          <div>{t.exhibitorSettings.table.row1.section2.year.three}</div>
-          <div>{t.exhibitorSettings.table.row1.section2.year.four}</div>
-          <div>{t.exhibitorSettings.table.row1.section2.year.five}</div>
-          <div className="pr-8 text-right">
-            {t.exhibitorSettings.table.row1.section2.jobs.summer}
-          </div>
-          {[0, 1, 2, 3, 4].map((pos) => (
-            <div key={pos}>
-              <CheckMark
-                name={`${pos}`}
-                defaultChecked={checkmarks[pos]}
-                onClick={() => {
-                  checkmarks[pos] = !checkmarks[pos];
-                }}
-              />
-            </div>
+          {years.map((year) => (
+            <div>{year}</div>
           ))}
-          <div className="pr-8 text-right">
-            {t.exhibitorSettings.table.row1.section2.jobs.internship}
-          </div>
-          {[5, 6, 7, 8, 9].map((pos) => (
-            <div key={pos}>
-              <CheckMark
-                name={`${pos}`}
-                defaultChecked={checkmarks[pos]}
-                onClick={() => {
-                  checkmarks[pos] = !checkmarks[pos];
-                }}
-              />
-            </div>
-          ))}
-          <div className="pr-8 text-right">
-            {t.exhibitorSettings.table.row1.section2.jobs.partTime}
-          </div>
-          {[10, 11, 12, 13, 14].map((pos) => (
-            <div key={pos}>
-              <CheckMark
-                name={`${pos}`}
-                defaultChecked={checkmarks[pos]}
-                onClick={() => {
-                  checkmarks[pos] = !checkmarks[pos];
-                }}
-              />
+          <div className="pr-8 text-left">{rows[0].jobOffer}</div>
+          {rows[0].checkmarks}
+          <div className="pr-8 text-left">{rows[1].jobOffer}</div>
+          {rows[1].checkmarks}
+          <div className="pr-8 text-left">{rows[2].jobOffer}</div>
+          {rows[2].checkmarks}
+        </div>
+        <div className="flex flex-row mb-12 gap-x-16 justify-center">
+          {[3, 4, 5].map((pos) => (
+            <div className="flex flex-row" key={pos}>
+              <span className="mr-4 items-center">{rows[pos].jobOffer}</span>
+              {rows[pos].checkmarks}
             </div>
           ))}
         </div>
-        <div className="flex flex-row mb-12 gap-x-16 justify-center">
-          {[
-            {
-              name: t.exhibitorSettings.table.row1.section2.other.thesis,
-              num: 15,
-            },
-            {
-              name: t.exhibitorSettings.table.row1.section2.other.fullTime,
-              num: 16,
-            },
-            {
-              name: t.exhibitorSettings.table.row1.section2.other.trainee,
-              num: 17,
-            },
-          ].map((pos) => (
-            <div className="flex flex-row" key={pos.num}>
-              <span className="mr-4 items-center">{pos.name}</span>
-              <CheckMark
-                name={pos.name}
-                defaultChecked={checkmarks[pos.num]}
-                onClick={() => {
-                  checkmarks[pos.num] = !checkmarks[pos.num];
-                }}
-              />
+      </div>
+
+      <div className="lg:hidden w-full mb-10">
+        <div className="flex flex-col gap-y-6 text-lg items-center">
+          {rows.map((row) => (
+            <div className="flex flex-col gap-y-6">
+              {row.jobOffer}
+              <div
+                className="flex flex-row gap-x-0 xxxs:gap-x-2 xxs:gap-x-4 
+                              xs:gap-x-8 sm:gap-x-14 md:gap-x-20 justify-center"
+              >
+                {row.checkmarks}
+              </div>
             </div>
           ))}
         </div>

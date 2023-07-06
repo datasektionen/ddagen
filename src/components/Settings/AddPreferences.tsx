@@ -13,6 +13,7 @@ export function AddPreferences({
   type,
   preferences,
   setPreferences,
+  editState,
   setEditState,
   exhibitorPackage,
 }: {
@@ -21,6 +22,7 @@ export function AddPreferences({
   type: "Representative" | "Banquet";
   preferences: Preferences[];
   setPreferences: Dispatch<Preferences[]>;
+  editState: undefined | string;
   setEditState: Dispatch<undefined | string>;
   exhibitorPackage: Package;
 }) {
@@ -50,7 +52,7 @@ export function AddPreferences({
     const maxPreferences = isRepresentative
       ? exhibitorPackage.representatives
       : exhibitorPackage.banquetTickets;
-    if (preferences.length <= maxPreferences)
+    if (preference.id || preferences.length <= maxPreferences)
       setPreferenceMutation.mutate({
         id: preference.id,
         name: preference.name,
@@ -67,7 +69,6 @@ export function AddPreferences({
           )
         );
     }
-    setEditState(undefined);
   }
 
   function deletePreferenceInDatabase() {
@@ -75,7 +76,6 @@ export function AddPreferences({
       id: preferences[pos].id,
       locale: t.locale,
     });
-    setEditState(undefined);
   }
 
   useEffect(() => {
@@ -105,6 +105,7 @@ export function AddPreferences({
             ...preferences.map((p, i) => (i == 0 ? defaultPreference : p)),
             { ...preference, id: setPreferenceMutation.data.id },
           ]);
+        setEditState(undefined);
       } else {
         if (errorMessage == undefined)
           setErrorMessage(setPreferenceMutation.data.error);
@@ -117,6 +118,7 @@ export function AddPreferences({
     if (deletePreferenceMutation.data) {
       if (deletePreferenceMutation.data.ok) {
         setPreferences(preferences.filter((p) => p.id != preference.id));
+        setEditState(undefined);
       } else {
         if (errorMessage == undefined)
           setErrorMessage(deletePreferenceMutation.data.error);
@@ -141,7 +143,7 @@ export function AddPreferences({
   }, [errorMessage]);
 
   return (
-    <div className="flex flex-col items-center w-[80%] bg-white/40 border-2 border-white/70 rounded-xl pb-8 mt-8 mb-16">
+    <div className="flex flex-col items-center w-[80%] bg-white/40 border-2 border-white/70 rounded-xl pb-8 mt-8 mb-16 overflow-hidden">
       <form
         className="flex flex-col w-[90%] bg-transparent outline-none gap-7 mt-10"
         onSubmit={handleSubmission}
@@ -161,12 +163,12 @@ export function AddPreferences({
               {t.exhibitorSettings.table.row3.preferencesHeader}
             </p>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col items-center justify-center">
             <div
               className={
                 isRepresentative
-                  ? "flex flex-row justify-between pt-6 px-20"
-                  : "grid grid-rows-2 grid-cols-2 text-left pt-6 px-36"
+                  ? "flex flex-col lg:flex-row pt-6 px-20"
+                  : "flex flex-col lg:grid lg:grid-rows-2 lg:grid-cols-2 pt-6 px-36"
               }
             >
               {[
@@ -183,7 +185,7 @@ export function AddPreferences({
                   }
                   key={option}
                 >
-                  <div className="grid grid-cols-2 gap-x-10 mt-4">
+                  <div className="grid grid-cols-2 gap-x-16 md:gap-x-10 mt-4">
                     <div>{option}</div>
                     <CheckMark
                       name={option}
@@ -215,7 +217,7 @@ export function AddPreferences({
           required={false}
           fields={t.exhibitorSettings.fieldsAddPreferences}
         />
-        <div className="flex flex-row gap-x-8 mt-4 justify-center">
+        <div className="flex flex-col max-sm:gap-y-4 sm:flex-row gap-x-8 mt-4 justify-center">
           <button type="button" onClick={deletePreferenceInDatabase}>
             <a className="block uppercase hover:scale-105 transition-transform bg-[#A7A7A7] rounded-full text-white text-base font-normal px-8 py-2 max-lg:mx-auto w-max">
               {t.exhibitorSettings.table.row1.section3.delete}
@@ -223,7 +225,9 @@ export function AddPreferences({
           </button>
           <button type="submit">
             <a className="block uppercase hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-normal px-8 py-2 max-lg:mx-auto w-max">
-              {t.exhibitorSettings.table.row1.section3.save}
+              {editState
+                ? t.exhibitorSettings.table.row1.section3.save
+                : t.exhibitorSettings.table.row1.section3.add}
             </a>
           </button>
         </div>

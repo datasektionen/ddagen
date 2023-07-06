@@ -25,7 +25,7 @@ export function TextInput({
         {textAbove}
       </label>
       <textarea
-        className="relative w-[450px] h-[150px] bg-white/30 border-solid border-white/70 border-2 rounded-xl p-2
+        className="relative w-full h-[150px] bg-white/30 border-solid border-white/70 border-2 rounded-xl p-2
                 placeholder:text-[#D9D9D9] placeholder:font-light placeholder:text-2xl break-words
                   focus:placeholder:text-transparent focus:outline-none focus:border-white/70 resize-none"
         placeholder={placeHolderText}
