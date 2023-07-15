@@ -10,7 +10,8 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const authHeader = req.headers["authorization"];
-  if (
+  if (req.method !== "GET") return res.status(405).end();
+  else if (
     !authHeader ||
     authHeader.length != exportToken.length ||
     !timingSafeEqual(Buffer.from(authHeader), exportToken)
