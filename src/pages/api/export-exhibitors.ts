@@ -10,7 +10,8 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const authHeader = req.headers["authorization"];
-  if (!authHeader ||
+  if (
+    !authHeader ||
     authHeader.length != exportToken.length ||
     !timingSafeEqual(Buffer.from(authHeader), exportToken)
   ) {
@@ -22,14 +23,18 @@ export default async function handler(
   });
 
   res.setHeader("Content-Type", "application/json");
-  res.end(JSON.stringify(exhibitors.map(e => ({
-    name: e.name,
-    organizationNumber: e.organizationNumber,
-    contactPerson: e.contactPerson,
-    phoneNumber: e.phoneNumber,
-    email: e.email,
-    createdAt: e.createdAt,
-  }))));
+  res.end(
+    JSON.stringify(
+      exhibitors.map((e) => ({
+        name: e.name,
+        organizationNumber: e.organizationNumber,
+        contactPerson: e.contactPerson,
+        phoneNumber: e.phoneNumber,
+        email: e.email,
+        createdAt: e.createdAt,
+      }))
+    )
+  );
 }
 
 /**
