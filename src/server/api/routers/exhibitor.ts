@@ -85,7 +85,7 @@ export const exhibitorRouter = createTRPCRouter({
     ),
   get: protectedProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.exhibitor.findUniqueOrThrow({
-      where: { id: ctx.session.user.exhibitorId },
+      where: { organizationNumber: ctx.session.user.organizationNumber },
       select: {
         id: true,
         name: true,
@@ -108,7 +108,7 @@ export const exhibitorRouter = createTRPCRouter({
     )
     .mutation(async ({ ctx, input }) => {
       await ctx.prisma.exhibitor.update({
-        where: { id: ctx.session.user.exhibitorId },
+        where: { organizationNumber: ctx.session.user.organizationNumber },
         data: {
           invoiceEmail: input.invoiceEmail,
           description: input.description,
@@ -121,7 +121,7 @@ export const exhibitorRouter = createTRPCRouter({
     }),
   getPackage: protectedProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.exhibitor.findUniqueOrThrow({
-      where: { id: ctx.session.user.exhibitorId },
+      where: { organizationNumber: ctx.session.user.organizationNumber },
       select: {
         package: true,
       },
@@ -129,7 +129,7 @@ export const exhibitorRouter = createTRPCRouter({
   }),
   getExtras: protectedProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.exhibitor.findUniqueOrThrow({
-      where: { id: ctx.session.user.exhibitorId },
+      where: { organizationNumber: ctx.session.user.organizationNumber },
       select: {
         extraTables: true,
         extraChairs: true,
@@ -151,7 +151,7 @@ export const exhibitorRouter = createTRPCRouter({
     )
     .mutation(async ({ ctx, input }) => {
       await ctx.prisma.exhibitor.update({
-        where: { id: ctx.session.user.exhibitorId },
+        where: { organizationNumber: ctx.session.user.organizationNumber },
         data: {
           extraChairs: input.extraChairs,
           extraTables: input.extraTables,
@@ -163,7 +163,7 @@ export const exhibitorRouter = createTRPCRouter({
     }),
   getDescription: protectedProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.exhibitor.findUniqueOrThrow({
-      where: { id: ctx.session.user.exhibitorId },
+      where: { organizationNumber: ctx.session.user.organizationNumber },
       select: { description: true },
     });
   }),
@@ -171,13 +171,13 @@ export const exhibitorRouter = createTRPCRouter({
     .input(z.string())
     .mutation(async ({ ctx, input }) => {
       await ctx.prisma.exhibitor.update({
-        where: { id: ctx.session.user.exhibitorId },
+        where: { organizationNumber: ctx.session.user.organizationNumber },
         data: { description: input },
       });
     }),
   getLogo: protectedProcedure.query(async ({ ctx }) => {
     const exhibitor = await ctx.prisma.exhibitor.findUniqueOrThrow({
-      where: { id: ctx.session.user.exhibitorId },
+      where: { organizationNumber: ctx.session.user.organizationNumber },
       select: { logoWhite: true, logoColor: true },
     });
     return {
@@ -195,14 +195,14 @@ export const exhibitorRouter = createTRPCRouter({
     .mutation(async ({ ctx, input }) => {
       const logo = Buffer.from(input.b64data, "base64");
       await ctx.prisma.exhibitor.update({
-        where: { id: ctx.session.user.exhibitorId },
+        where: { organizationNumber: ctx.session.user.organizationNumber },
         data:
           input.kind === "white" ? { logoWhite: logo } : { logoColor: logo },
       });
     }),
   getUsers: protectedProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.user.findMany({
-      where: { exhibitorId: ctx.session.user.exhibitorId },
+      where: { organizationNumber: ctx.session.user.organizationNumber },
     });
   }),
   setUsers: protectedProcedure
@@ -221,7 +221,10 @@ export const exhibitorRouter = createTRPCRouter({
       try {
         if (input.id) {
           await ctx.prisma.user.updateMany({
-            where: { id: input.id, exhibitorId: ctx.session.user.exhibitorId },
+            where: {
+              id: input.id,
+              organizationNumber: ctx.session.user.organizationNumber,
+            },
             data: {
               name: input.name,
               email: input.email,
@@ -235,11 +238,11 @@ export const exhibitorRouter = createTRPCRouter({
           await ctx.prisma.user.create({
             data: {
               id: id,
-              exhibitorId: ctx.session.user.exhibitorId,
               name: input.name,
               email: input.email,
               phone: input.phone,
               role: input.role,
+              organizationNumber: ctx.session.user.organizationNumber,
             },
           });
           return { ok: true, update: false, id: id };
@@ -302,8 +305,8 @@ export const exhibitorRouter = createTRPCRouter({
     .query(async ({ input, ctx }) => {
       return await ctx.prisma.foodPreferences.findMany({
         where: {
-          exhibitorId: ctx.session.user.exhibitorId,
           type: input,
+          organizationNumber: ctx.session.user.organizationNumber,
         },
       });
     }),
@@ -331,8 +334,8 @@ export const exhibitorRouter = createTRPCRouter({
           await ctx.prisma.foodPreferences.updateMany({
             where: {
               id: input.id,
-              exhibitorId: ctx.session.user.exhibitorId,
               type: input.type,
+              organizationNumber: ctx.session.user.organizationNumber,
             },
             data: {
               value: input.value,
@@ -345,11 +348,11 @@ export const exhibitorRouter = createTRPCRouter({
           await ctx.prisma.foodPreferences.create({
             data: {
               id: id,
-              exhibitorId: ctx.session.user.exhibitorId,
               name: input.name,
               value: input.value,
               comment: input.comment,
               type: input.type,
+              organizationNumber: ctx.session.user.organizationNumber,
             },
           });
           return { ok: true, update: false, id: id };
@@ -381,7 +384,10 @@ export const exhibitorRouter = createTRPCRouter({
           };
         }
         await ctx.prisma.foodPreferences.deleteMany({
-          where: { id: input.id, exhibitorId: ctx.session.user.exhibitorId },
+          where: {
+            id: input.id,
+            organizationNumber: ctx.session.user.organizationNumber,
+          },
         });
         return { ok: true };
       } catch (e) {
@@ -396,7 +402,7 @@ export const exhibitorRouter = createTRPCRouter({
   getJobOffers: protectedProcedure.query(async ({ input, ctx }) => {
     const exhibitor = await ctx.prisma.exhibitor.findUnique({
       where: {
-        id: ctx.session.user.exhibitorId,
+        organizationNumber: ctx.session.user.organizationNumber,
       },
     });
 
@@ -420,7 +426,7 @@ export const exhibitorRouter = createTRPCRouter({
     .mutation(async ({ ctx, input }) => {
       const exhibitor = await ctx.prisma.exhibitor.findUnique({
         where: {
-          id: ctx.session.user.exhibitorId,
+          organizationNumber: ctx.session.user.organizationNumber,
         },
       });
 

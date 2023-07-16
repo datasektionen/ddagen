@@ -12,7 +12,7 @@ export default async function handler(
   const authHeader = req.headers["authorization"];
   if (req.method !== "GET") return res.status(405).end();
   else if (
-    !authHeader ||
+    authHeader == undefined ||
     authHeader.length != exportToken.length ||
     !timingSafeEqual(Buffer.from(authHeader), exportToken)
   ) {
