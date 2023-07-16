@@ -1,7 +1,8 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-import { prisma } from "@/server/db";
+import { z } from "zod";
 import { env } from "@/env.mjs";
+import { prisma } from "@/server/db";
 import { timingSafeEqual, randomUUID } from "crypto";
+import type { NextApiRequest, NextApiResponse } from "next";
 import { validateOrganizationNumber } from "@/shared/validateOrganizationNumber";
 
 const importToken = Buffer.from(env.IMPORT_TOKEN);
@@ -20,6 +21,28 @@ export default async function handler(
     return res.status(402).end();
   }
 
+  const bodySchema = z.object({
+    contactPerson: z.string(),
+    telephoneNumber: z.string(),
+    companyName: z.string(),
+    organizationNumber: z.string().transform((s, ctx) => {
+      const orgNum = validateOrganizationNumber(s);
+      if ("error" in orgNum) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: orgNum.error,
+        });
+        return z.NEVER;
+      }
+      return orgNum.value;
+    }),
+    email: z.string(),
+    exhibitorPackage: z.enum(["base", "sponsor", "headhunter", "premium"]),
+  });
+
+  const body = bodySchema.safeParse(req.body);
+  if (!body.success) return res.status(422).end(body.error);
+
   const {
     contactPerson,
     telephoneNumber,
@@ -27,43 +50,30 @@ export default async function handler(
     organizationNumber,
     email,
     exhibitorPackage,
-  } = req.body;
+  } = body.data;
 
-  const v = validateOrganizationNumber(
-    typeof organizationNumber === "string" ? organizationNumber : ""
-  );
+  const exhibitor = await prisma.exhibitor.findUnique({
+    where: {
+      organizationNumber: organizationNumber,
+    },
+  });
 
-  if (
-    "error" in v ||
-    typeof contactPerson !== "string" ||
-    typeof telephoneNumber !== "string" ||
-    typeof companyName !== "string" ||
-    typeof email !== "string" ||
-    typeof exhibitorPackage !== "string" ||
-    ["base", "sponsor", "headhunter", "premium"].includes(exhibitorPackage) ==
-      false
-  ) {
-    return res.status(422).end();
-  }
+  const exhibitorID = exhibitor ? exhibitor.id : randomUUID();
 
   await prisma.exhibitor
     .upsert({
       where: {
-        organizationNumber: v.value,
+        organizationNumber: organizationNumber,
       },
       create: {
-        id: randomUUID(),
+        id: exhibitorID,
         name: companyName,
-        organizationNumber: v.value,
+        organizationNumber: organizationNumber,
         invoiceEmail: email,
         logoWhite: null,
         logoColor: null,
         description: "",
-        package: exhibitorPackage as
-          | "base"
-          | "sponsor"
-          | "headhunter"
-          | "premium",
+        package: exhibitorPackage,
         extraTables: 0,
         extraChairs: 0,
         extraDrinkCoupons: 0,
@@ -72,7 +82,6 @@ export default async function handler(
         foodPreferencess: undefined,
         jobOffers: {
           create: {
-            id: randomUUID(),
             summerJob: undefined,
             internship: undefined,
             partTimeJob: undefined,
@@ -84,27 +93,21 @@ export default async function handler(
       },
       update: {
         name: companyName,
-        organizationNumber: v.value,
+        organizationNumber: organizationNumber,
         invoiceEmail: email,
-        package: exhibitorPackage as
-          | "base"
-          | "sponsor"
-          | "headhunter"
-          | "premium",
+        package: exhibitorPackage,
       },
     })
-    .then((response) => {
-      console.log(response);
+    .then(() => {
       prisma.user
         .upsert({
           where: { email: email },
           create: {
-            id: randomUUID(),
             email: email,
             name: contactPerson,
             phone: telephoneNumber.replace(/[^\d+]/g, ""),
             role: "",
-            exhibitor: { connect: { organizationNumber: v.value } },
+            exhibitor: { connect: { id: exhibitorID } },
           },
           update: {
             email: email,
@@ -112,10 +115,7 @@ export default async function handler(
             phone: telephoneNumber.replace(/[^\d+]/g, ""),
           },
         })
-        .then((response) => {
-          console.log(response);
-          res.status(200).end();
-        })
+        .then(() => res.status(200).end())
         .catch((error) => {
           console.log(error);
           res.status(422).end();

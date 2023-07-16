@@ -54,8 +54,8 @@ model User {
   phone String
   role  String
 
-  organizationNumber String
-  exhibitor   Exhibitor @relation(fields: [organizationNumber], references: [organizationNumber], onDelete: Cascade)
+  exhibitorId String
+  exhibitor   Exhibitor @relation(fields: [exhibitorId], references: [id], onDelete: Cascade)
 
   loginCode LoginCode?
   session   Session?
@@ -98,8 +98,8 @@ model FoodPreferences {
   comment String
   type    FoodPreferencesType
 
-  organizationNumber String
-  exhibitor   Exhibitor @relation(fields: [organizationNumber], references: [organizationNumber], onDelete: Cascade)
+  exhibitor   Exhibitor @relation(fields: [exhibitorId], references: [id], onDelete: Cascade)
+  exhibitorId String
 
   @@map("food_specifications")
 }
