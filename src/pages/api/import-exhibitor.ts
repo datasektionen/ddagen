@@ -41,7 +41,7 @@ export default async function handler(
   });
 
   const body = bodySchema.safeParse(req.body);
-  if (!body.success) return res.status(422).end(body.error);
+  if (!body.success) return res.status(422).json(body.error);
 
   const {
     contactPerson,
@@ -52,77 +52,58 @@ export default async function handler(
     exhibitorPackage,
   } = body.data;
 
-  const exhibitor = await prisma.exhibitor.findUnique({
+  const exhibitor = await prisma.exhibitor.upsert({
     where: {
       organizationNumber: organizationNumber,
     },
-  });
-
-  const exhibitorID = exhibitor ? exhibitor.id : randomUUID();
-
-  await prisma.exhibitor
-    .upsert({
-      where: {
-        organizationNumber: organizationNumber,
-      },
-      create: {
-        id: exhibitorID,
-        name: companyName,
-        organizationNumber: organizationNumber,
-        invoiceEmail: email,
-        logoWhite: null,
-        logoColor: null,
-        description: "",
-        package: exhibitorPackage,
-        extraTables: 0,
-        extraChairs: 0,
-        extraDrinkCoupons: 0,
-        extraRepresentativeSpots: 0,
-        totalBanquetTicketsWanted: 0,
-        foodPreferencess: undefined,
-        jobOffers: {
-          create: {
-            summerJob: undefined,
-            internship: undefined,
-            partTimeJob: undefined,
-            masterThesis: false,
-            fullTimeJob: false,
-            traineeProgram: false,
-          },
+    create: {
+      name: companyName,
+      organizationNumber: organizationNumber,
+      invoiceEmail: email,
+      logoWhite: null,
+      logoColor: null,
+      description: "",
+      package: exhibitorPackage,
+      extraTables: 0,
+      extraChairs: 0,
+      extraDrinkCoupons: 0,
+      extraRepresentativeSpots: 0,
+      totalBanquetTicketsWanted: 0,
+      foodPreferencess: undefined,
+      jobOffers: {
+        create: {
+          summerJob: undefined,
+          internship: undefined,
+          partTimeJob: undefined,
+          masterThesis: false,
+          fullTimeJob: false,
+          traineeProgram: false,
         },
       },
-      update: {
-        name: companyName,
-        organizationNumber: organizationNumber,
-        invoiceEmail: email,
-        package: exhibitorPackage,
-      },
-    })
-    .then(() => {
-      prisma.user
-        .upsert({
-          where: { email: email },
-          create: {
-            email: email,
-            name: contactPerson,
-            phone: telephoneNumber.replace(/[^\d+]/g, ""),
-            role: "",
-            exhibitor: { connect: { id: exhibitorID } },
-          },
-          update: {
-            email: email,
-            name: contactPerson,
-            phone: telephoneNumber.replace(/[^\d+]/g, ""),
-          },
-        })
-        .then(() => res.status(200).end())
-        .catch((error) => {
-          console.log(error);
-          res.status(422).end();
-        });
-    })
-    .catch((error) => {
-      console.log(error);
-      res.status(422).end();
-    });
+    },
+    update: {
+      name: companyName,
+      organizationNumber: organizationNumber,
+      invoiceEmail: email,
+      package: exhibitorPackage,
+    },
+  });
+
+  await prisma.user.upsert({
+    where: { email: email },
+    create: {
+      email: email,
+      name: contactPerson,
+      phone: telephoneNumber.replace(/[^\d+]/g, ""),
+      role: "",
+      exhibitor: { connect: { id: exhibitor.id } },
+    },
+    update: {
+      email: email,
+      name: contactPerson,
+      phone: telephoneNumber.replace(/[^\d+]/g, ""),
+    },
+  });
+
+  res.status(200).end();
 }
