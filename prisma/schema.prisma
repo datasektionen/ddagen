@@ -25,7 +25,7 @@ model ExhibitorInterestRegistration {
 model Exhibitor {
   id                 String @id @default(uuid())
   name               String
-  organizationNumber String
+  organizationNumber String @unique
 
   invoiceEmail              String
   logoWhite                 Bytes?

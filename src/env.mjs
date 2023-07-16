@@ -12,6 +12,7 @@ const server = z.object({
   SPAM_API_KEY: z.string(),
   SPAM_URL: z.string().url(),
   EXPORT_TOKEN: z.string().min(24),
+  IMPORT_TOKEN: z.string().min(24),
 });
 
 /**
@@ -37,6 +38,7 @@ const processEnv = {
   SPAM_API_KEY: process.env.SPAM_API_KEY,
   SPAM_URL: process.env.SPAM_URL,
   EXPORT_TOKEN: process.env.EXPORT_TOKEN,
+  IMPORT_TOKEN: process.env.IMPORT_TOKEN,
   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
 };
 
