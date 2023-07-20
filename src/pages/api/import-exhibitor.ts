@@ -1,7 +1,6 @@
 import { z } from "zod";
 import { env } from "@/env.mjs";
 import { prisma } from "@/server/db";
-import { getLocale } from "@/locales";
 import { timingSafeEqual } from "crypto";
 import sendEmail from "@/utils/send-email";
 import type { NextApiRequest, NextApiResponse } from "next";
