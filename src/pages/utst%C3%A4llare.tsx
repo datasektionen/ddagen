@@ -72,6 +72,10 @@ export default function Exhibitor() {
       </div>
     </>
   ) : (
-    <></>
+    <>
+      <div className="mx-auto flex flex-col items-center py-40">
+        <img src={"/img/loading.gif"} className="my-24 w-32 h-32" />
+      </div>
+    </>
   );
 }

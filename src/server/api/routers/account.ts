@@ -43,13 +43,13 @@ export const accountRouter = createTRPCRouter({
       })
     )
     .mutation(async ({ input, ctx }) => {
-      const user = await ctx.prisma.user.findUnique({
-        where: { email: input.email },
+      const user = await ctx.prisma.user.findMany({
+        where: { email: { equals: input.email, mode: "insensitive" } },
       });
-      if (user) {
+      if (user && user.length == 1) {
         // Note that we're not awaiting this, so that we don't leak whether or not the user
         // exists through timing.
-        createCode(ctx.prisma, user.id, input.email, input.locale);
+        createCode(ctx.prisma, user[0].id, input.email, input.locale);
       }
     }),
   finishLogin: publicProcedure

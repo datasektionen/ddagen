@@ -1,7 +1,8 @@
 import { z } from "zod";
 import { env } from "@/env.mjs";
 import { prisma } from "@/server/db";
-import { timingSafeEqual, randomUUID } from "crypto";
+import { timingSafeEqual } from "crypto";
+import sendEmail from "@/utils/send-email";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { validateOrganizationNumber } from "@/shared/validateOrganizationNumber";
 
@@ -104,6 +105,20 @@ export default async function handler(
       phone: telephoneNumber.replace(/[^\d+]/g, ""),
     },
   });
+
+  try {
+    sendEmail(
+      email,
+      "D-Dagen Account Created",
+      `
+      <p>Hi!</p>
+      <p>We are pleased to confirm your exhibitor account has been created.</p>
+      <p>Visit ddagen.se/utställare and use ${email} to log into your account.</p>
+      <p>Best regards,</p>
+      <p>The D-Dagen Team</p>
+      `
+    );
+  } catch (e) {}
 
   res.status(200).end();
 }
