@@ -29,6 +29,7 @@ SPAM_URL=https://spam.datasektionen.se/api/sendmail
 
 # can be almost anything, used to verify clients in the /api/export-exhibitors endpoint
 EXPORT_TOKEN=aaaaaaaaaaaaaaaaaaaaaaaa
+IMPORT_TOKEN=aaaaaaaaaaaaaaaaaaaaaaaa
 ```
 
 Install npm dependencies:
