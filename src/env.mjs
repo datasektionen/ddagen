@@ -13,6 +13,7 @@ const server = z.object({
   SPAM_URL: z.string().url(),
   EXPORT_TOKEN: z.string().min(24),
   IMPORT_TOKEN: z.string().min(24),
+  DELETE_TOKEN: z.string().min(24),
 });
 
 /**
@@ -39,6 +40,7 @@ const processEnv = {
   SPAM_URL: process.env.SPAM_URL,
   EXPORT_TOKEN: process.env.EXPORT_TOKEN,
   IMPORT_TOKEN: process.env.IMPORT_TOKEN,
+  DELETE_TOKEN: process.env.DELETE_TOKEN,
   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
 };
 
