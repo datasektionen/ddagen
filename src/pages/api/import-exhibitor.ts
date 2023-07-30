@@ -113,7 +113,7 @@ export default async function handler(
       `
       <p>Hi!</p>
       <p>We are pleased to confirm your exhibitor account has been created.</p>
-      <p>Visit ddagen.se/utställare and use ${email} to log into your account.</p>
+      <p>Visit ${"ddagen.se/utställare"} and use ${email} to log into your account.</p>
       <p>Best regards,</p>
       <p>The D-Dagen Team</p>
       `
