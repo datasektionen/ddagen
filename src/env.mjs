@@ -11,10 +11,7 @@ const server = z.object({
   DATABASE_URL: z.string().url(),
   SPAM_API_KEY: z.string(),
   SPAM_URL: z.string().url(),
-  EXPORT_TOKEN: z.string().min(24),
-  IMPORT_TOKEN: z.string().min(24),
-  DELETE_TOKEN: z.string().min(24),
-  SALES_PASSWORD: z.string().min(24),
+  PLS_URL: z.string().url(),
 });
 
 /**
@@ -39,10 +36,7 @@ const processEnv = {
   DATABASE_URL: process.env.DATABASE_URL,
   SPAM_API_KEY: process.env.SPAM_API_KEY,
   SPAM_URL: process.env.SPAM_URL,
-  EXPORT_TOKEN: process.env.EXPORT_TOKEN,
-  IMPORT_TOKEN: process.env.IMPORT_TOKEN,
-  DELETE_TOKEN: process.env.DELETE_TOKEN,
-  SALES_PASSWORD: process.env.SALES_PASSWORD,
+  PLS_URL: process.env.PLS_URL,
   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
 };
 

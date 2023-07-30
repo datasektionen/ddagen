@@ -1,24 +1,17 @@
 import { z } from "zod";
-import { env } from "@/env.mjs";
 import { prisma } from "@/server/db";
-import { timingSafeEqual } from "crypto";
-import sendEmail from "@/utils/send-email";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { validateOrganizationNumber } from "@/shared/validateOrganizationNumber";
-
-const deleteToken = Buffer.from(env.DELETE_TOKEN);
+import * as pls from "@/utils/pls";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const authHeader = req.headers["authorization"];
   if (req.method !== "DELETE") return res.status(405).end();
-  else if (
-    authHeader == undefined ||
-    authHeader.length != deleteToken.length ||
-    !timingSafeEqual(Buffer.from(authHeader), deleteToken)
-  ) {
+
+  const apiKey = req.headers["authorization"]?.split(" ")[1];
+  if (apiKey == undefined) return res.status(402).end();
+  if (!await pls.checkApiKey("write-exhibitors", apiKey)) {
     return res.status(402).end();
   }
 
