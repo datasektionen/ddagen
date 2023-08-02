@@ -43,9 +43,9 @@ function Logo({ "class": className }: { "class"?: string }) {
 
 function Group({
   links,
-  class: className
+  class: className,
 }: {
-  links: { href: string, text: string }[];
+  links: { href: string, text: string, onClick?: () => void }[];
   class?: string;
 }) {
   const [hovered, setHovered] = useState(false);
@@ -66,17 +66,18 @@ function Group({
               : "")
           }
         />
-        {links.map(({ href, text }, i) => i == 0
-          ? <NavLink key={href} class="z-10 pl-0 p-4" href={href}>{text}</NavLink>
-          : <NavLink key={href}
+        {links.map(({ href, text, onClick }, i) => i == 0
+          ? <NavLink key={text} class="z-10 pl-0 p-4" href={href} onClick={onClick}>{text}</NavLink>
+          : <NavLink key={text}
             style={{ top: 40 * i }}
             class={(hovered ? "" : "hidden") + " z-10 w-full absolute p-4 px-0"}
             href={href}
+            onClick={onClick}
           >{text}</NavLink>)}
       </div>
       <div className="flex flex-col lg:hidden">
         <div className="flex flex-row justify-start gap-4 mb-4">
-          <NavLink key={links[0].href} class="" href={links[0].href}>{links[0].text}</NavLink>
+          <NavLink href={links[0].href} onClick={links[0].onClick}>{links[0].text}</NavLink>
           <img
             data-dont-close
             onClick={() => setDrop(d => !d)}
@@ -90,8 +91,8 @@ function Group({
           ${(dropped ? "grid-rows-[1fr]" : "grid-rows-[0fr]")}
           grid transition-all
         `}><div className={(dropped ? "mb-4" : "mb-0") + " flex flex-col pl-8 gap-2 overflow-hidden transition-[margin]"}>
-          {links.slice(1).map(({ href, text }) =>
-            (<NavLink key={href} href={href}>{text}</NavLink>))}
+          {links.slice(1).map(({ href, text, onClick }) =>
+            <NavLink key={href} href={href} onClick={onClick}>{text}</NavLink>)}
         </div></div>
       </div>
     </div>
@@ -100,6 +101,7 @@ function Group({
 
 export default function Navbar() {
   const router = useRouter();
+  const trpc = api.useContext();
   const l = useLocale();
   const t = l.nav;
   const locale = l.locale;
@@ -107,6 +109,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   const isLoggedIn = api.account.isLoggedIn.useQuery();
+  const logout = api.account.logout.useMutation();
 
   function swapLocale() {
     router.push(router.pathname, router.pathname, {
@@ -114,6 +117,13 @@ export default function Navbar() {
       scroll: false,
     });
   }
+
+  useEffect(() => {
+    console.log("hej");
+    if (logout.isSuccess) {
+      trpc.account.invalidate();
+    }
+  }, [logout.isSuccess]);
 
   useEffect(() => {
     function close(event: MouseEvent) {
@@ -173,7 +183,7 @@ export default function Navbar() {
               { href: "/katalog", text:t.catalog  },
               { href: "/event", text: "event" },
               { href: "/faq", text: "faq" },
-              isLoggedIn.data == false ? { href: "/logga-in", text: t.login } : { href: "/logga-ut", text: t.logout }
+              isLoggedIn.data == false ? { href: "/logga-in", text: t.login } : { href: "", text: t.logout, onClick: () => logout.mutate() }
             ]} />
             {isLoggedIn.data == true && <NavLink class="px-0 lg:px-4 p-4" href="/utställare">{t.exhibitorSettings}</NavLink>}
             <NavLink class="mb-4 lg:hidden px-0 lg:px-4" href="/kontakt">{t.contact}</NavLink>
