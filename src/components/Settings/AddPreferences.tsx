@@ -2,7 +2,7 @@ import Locale from "@/locales";
 import { api } from "@/utils/api";
 import { CheckMark } from "./CheckMark";
 import { InputField } from "./InputField";
-import { Dispatch, useState, useEffect } from "react";
+import { type Dispatch, useState, useEffect, type FormEvent } from "react";
 import { Package, Preferences } from "@/shared/Classes";
 
 type Options = "Vegan" | "Meat" | "LactoseFree" | "GlutenFree";
@@ -47,7 +47,7 @@ export function AddPreferences({
     return checkmarks.map((_, i) => options[i]).filter((_, i) => checkmarks[i]);
   }
 
-  function handleSubmission(e: any) {
+  function handleSubmission(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const maxPreferences = isRepresentative
       ? exhibitorPackage.representatives

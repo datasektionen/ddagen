@@ -1,5 +1,5 @@
 import Locale from "@/locales";
-import { Dispatch, useState, useEffect } from "react";
+import { type Dispatch, useState, useEffect, type FormEvent } from "react";
 import { InputField } from "./InputField";
 import { User } from "@/shared/Classes";
 import { api } from "@/utils/api";
@@ -27,7 +27,7 @@ export function AddUser({
   const setUserMutation = api.exhibitor.setUsers.useMutation();
   const deleteUserMutation = api.exhibitor.deleteUser.useMutation();
 
-  function handleSubmission(e: any) {
+  function handleSubmission(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setUserMutation.mutate({
       id: user.id,

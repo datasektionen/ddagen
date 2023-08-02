@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 export function CheckMark({
   name,
   checked,
@@ -9,7 +7,7 @@ export function CheckMark({
   name: string;
   checked?: boolean;
   defaultChecked?: boolean;
-  onClick?: any;
+  onClick?: () => void;
 }) {
   return (
     <input
@@ -22,7 +20,6 @@ export function CheckMark({
       onClick={() => {
         if (onClick) onClick();
       }}
-      onChange={(e) => {}}
     />
   );
 }

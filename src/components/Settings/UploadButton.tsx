@@ -1,5 +1,5 @@
 import Locale from "@/locales";
-import { Dispatch } from "react";
+import type { ChangeEvent, Dispatch } from "react";
 
 export function UploadButton({
   t,
@@ -25,7 +25,7 @@ export function UploadButton({
     });
   }
 
-  async function onImageChange(e: any) {
+  async function onImageChange(e: ChangeEvent<HTMLInputElement>) {
     if (e.target.files && e.target.files.length == 1) {
       const MAX_FILE_SIZE = 5e6;
       const FILE_SIZE = e.target.files[0].size as number;
