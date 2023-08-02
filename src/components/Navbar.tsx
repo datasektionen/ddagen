@@ -5,7 +5,7 @@ import { useLocale } from "@/locales";
 import { api } from "@/utils/api";
 
 function NavLink({ href, children, class: className, style, onClick }: {
-  href: string,
+  href?: string,
   children: React.ReactNode,
   class?: string,
   style?: React.CSSProperties,
@@ -14,8 +14,8 @@ function NavLink({ href, children, class: className, style, onClick }: {
   const router = useRouter();
 
   return <Link
-    className={(className ?? "") + " hover:text-cerise" + (router.pathname == encodeURI(href) ? " text-cerise" : "")}
-    href={href}
+    className={(className ?? "") + " hover:text-cerise" + (router.pathname == encodeURI(href ?? "") ? " text-cerise" : "")}
+    href={href ?? ""}
     style={style}
     onClick={onClick}
   >{children}</Link>;
@@ -179,13 +179,16 @@ export default function Navbar() {
             >{t.toContent}</a>
             <NavLink class="px-0 lg:px-4 p-4" href="/">{t.home}</NavLink>
             <Group links={[
+              ...(isLoggedIn.data == true ? [{ href: "/utställare", text: t.exhibitorSettings}] : []),
               { href: "/förföretag", text: t.forCompanies },
               { href: "/katalog", text:t.catalog  },
               { href: "/event", text: "event" },
               { href: "/faq", text: "faq" },
-              isLoggedIn.data == false ? { href: "/logga-in", text: t.login } : { href: "", text: t.logout, onClick: () => logout.mutate() }
             ]} />
-            {isLoggedIn.data == true && <NavLink class="px-0 lg:px-4 p-4" href="/utställare">{t.exhibitorSettings}</NavLink>}
+            {isLoggedIn.data == true
+              ? <NavLink class="px-0 lg:px-8 p-4" onClick={() => logout.mutate()}>{t.logout}</NavLink>
+              : <NavLink class="px-0 lg:px-8 p-4" href="/logga-in">{t.login}</NavLink>
+            }
             <NavLink class="mb-4 lg:hidden px-0 lg:px-4" href="/kontakt">{t.contact}</NavLink>
             {/*<NavLink class="px-14 lg:px-0" href="/förstudenter">{t.forStudents}</NavLink>*/}
             {/*<NavLink class="px-14 lg:px-0" href="/mässan">{t.about}</NavLink>*/}
