@@ -55,3 +55,12 @@ Lastly, start the thing:
 ```bash
 npm run dev
 ```
+
+## Other systems
+
+This website depends on spam (not spam2!) for sending emails in production (including at http://dev.ddagen.se).
+
+It also depends on pls for checking api keys, though this can be overriden by
+setting the `PLS_OVERRIDE` to either `true` or `false`. API keys still have to
+be provided in a header when the route requires it, but the value it is given
+can be anything.
