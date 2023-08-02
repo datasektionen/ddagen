@@ -77,6 +77,8 @@ export default {
           header: "Allmän Info",
           description: "Beskrivning",
           placeholderText: "Om oss",
+          only: "Endast",
+          or: "eller",
         },
         section2: {
           header: "Jobberbjudanden",

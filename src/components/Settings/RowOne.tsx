@@ -190,22 +190,28 @@ export default function RowOne({ t }: { t: Locale }) {
 
       <div className="w-full flex flex-col lg:flex-row gap-8 mt-8 mb-20 lg:px-24 items-center">
         <div className="flex flex-col max-sm:gap-y-8 sm:flex-row sm:gap-x-8">
-          <UploadButton
-            t={t}
-            selectedImage={whiteLogo}
-            setSelectedImage={setWhiteLogo}
-            textAbove={"Vit Logga"}
-            textInside={"Logga"}
-            accept={"image/svg+xml"}
-          />
-          <UploadButton
-            t={t}
-            selectedImage={colorLogo}
-            setSelectedImage={setColorLogo}
-            textAbove={"Logga m. färg"}
-            textInside={"Logga"}
-            accept={"image/png,image/jpeg"}
-          />
+          <div>
+            <UploadButton
+              t={t}
+              selectedImage={whiteLogo}
+              setSelectedImage={setWhiteLogo}
+              textAbove={"Vit Logga"}
+              textInside={"Logga"}
+              accept={["image/svg+xml"]}
+            />
+            <p className="text-neutral-300">{t.exhibitorSettings.table.row1.section1.only} svg</p>
+          </div>
+          <div>
+            <UploadButton
+              t={t}
+              selectedImage={colorLogo}
+              setSelectedImage={setColorLogo}
+              textAbove={"Logga m. färg"}
+              textInside={"Logga"}
+              accept={["image/png", "image/svg+xml"]}
+            />
+            <p className="text-neutral-300">{t.exhibitorSettings.table.row1.section1.only} svg {t.exhibitorSettings.table.row1.section1.or} png</p>
+          </div>
         </div>
         <div className="w-[90%] md:w-[80%] lg:w-full">
           <TextInput
@@ -254,7 +260,7 @@ export default function RowOne({ t }: { t: Locale }) {
             <div className="flex flex-col gap-y-6">
               {row.jobOffer}
               <div
-                className="flex flex-row gap-x-0 xxxs:gap-x-2 xxs:gap-x-4 
+                className="flex flex-row gap-x-0 xxxs:gap-x-2 xxs:gap-x-4
                               xs:gap-x-8 sm:gap-x-14 md:gap-x-20 justify-center"
               >
                 {row.checkmarks}
@@ -265,8 +271,8 @@ export default function RowOne({ t }: { t: Locale }) {
       </div>
 
       <button
-        className="block uppercase hover:scale-105 transition-transform 
-                bg-cerise rounded-full text-white text-base font-normal 
+        className="block uppercase hover:scale-105 transition-transform
+                bg-cerise rounded-full text-white text-base font-normal
                   px-16 py-2 max-lg:mx-auto w-max"
         onClick={handleClick}
       >

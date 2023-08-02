@@ -14,7 +14,7 @@ export function UploadButton({
   setSelectedImage: Dispatch<string>;
   textAbove: string;
   textInside: string;
-  accept: string;
+  accept: string[];
 }) {
   function toBase64(file: Blob) {
     return new Promise((resolve, reject) => {
@@ -74,14 +74,14 @@ export function UploadButton({
         <div>
           <label
             htmlFor={textAbove}
-            className="absolute top-2 right-2 cursor-pointer bg-editIcon bg-white 
-                      bg-[length:30px_30px] w-[33px] h-[33px] bg-no-repeat bg-origin-content 
+            className="absolute top-2 right-2 cursor-pointer bg-editIcon bg-white
+                      bg-[length:30px_30px] w-[33px] h-[33px] bg-no-repeat bg-origin-content
                       pl-1 pb-1 rounded-md hover:scale-105 transition-transform"
           >
             <input
               id={textAbove}
               type="file"
-              accept={accept}
+              accept={accept.join(",")}
               onChange={onImageChange}
               className="invisible"
             />
