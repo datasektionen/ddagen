@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import { useLocale } from "@/locales";
 import { api } from "@/utils/api";
 
-function NavLink({ href, children, "class": className, style, onClick }: {
+function NavLink({ href, children, class: className, style, onClick }: {
   href: string,
   children: React.ReactNode,
-  "class"?: string,
+  class?: string,
   style?: React.CSSProperties,
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 }) {
@@ -100,7 +100,6 @@ function Group({
 
 export default function Navbar() {
   const router = useRouter();
-  const trpc = api.useContext();
   const l = useLocale();
   const t = l.nav;
   const locale = l.locale;
@@ -108,7 +107,6 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   const isLoggedIn = api.account.isLoggedIn.useQuery();
-  const logout = api.account.logout.useMutation();
 
   function swapLocale() {
     router.push(router.pathname, router.pathname, {
@@ -129,12 +127,6 @@ export default function Navbar() {
     window.addEventListener("click", close);
     return () => window.removeEventListener("click", close);
   });
-
-  useEffect(() => {
-    if (logout.isSuccess) {
-      trpc.account.invalidate();
-    }
-  }, [logout.isSuccess]);
 
   return (
     <>
@@ -181,10 +173,9 @@ export default function Navbar() {
               { href: "/katalog", text:t.catalog  },
               { href: "/event", text: "event" },
               { href: "/faq", text: "faq" },
-              // isLoggedIn.data == true ?
-              //   { href: "/utställare", text: t.exhibitorSettings } :
-              //   { href: "/logga-in", text: t.login },
+              isLoggedIn.data == false ? { href: "/logga-in", text: t.login } : { href: "/logga-ut", text: t.logout }
             ]} />
+            {isLoggedIn.data == true && <NavLink class="px-0 lg:px-4 p-4" href="/utställare">{t.exhibitorSettings}</NavLink>}
             <NavLink class="mb-4 lg:hidden px-0 lg:px-4" href="/kontakt">{t.contact}</NavLink>
             {/*<NavLink class="px-14 lg:px-0" href="/förstudenter">{t.forStudents}</NavLink>*/}
             {/*<NavLink class="px-14 lg:px-0" href="/mässan">{t.about}</NavLink>*/}
