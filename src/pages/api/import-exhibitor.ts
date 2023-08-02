@@ -12,7 +12,7 @@ export default async function handler(
   if (req.method !== "PUT") return res.status(405).end();
 
   const apiKey = req.headers["authorization"]?.split(" ")[1];
-  if (apiKey == undefined) return res.status(402).end();
+  if (apiKey == undefined) return res.status(400).end();
   if (!await pls.checkApiKey("write-exhibitors", apiKey)) {
     return res.status(402).end();
   }

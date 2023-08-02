@@ -23,16 +23,13 @@ Create a file called `.env` with contents like the following:
 ```bash
 DATABASE_URL=postgresql://ddagen:ddagen@localhost:5432/ddagen?schema=public
 
-# not used in development
+# These two are unused when NODE_ENV == "development", which it is when running `npm run dev`, but still must be set :)
 SPAM_API_KEY=2AkdhsQ9cTTSBKtNXdd6E07rqN8CFWvRqeY4GeAyXAn09urF
 SPAM_URL=https://spam.datasektionen.se/api/sendmail
 
-# can be almost anything, used to verify different endpoints
-EXPORT_TOKEN=aaaaaaaaaaaaaaaaaaaaaaaa
-IMPORT_TOKEN=aaaaaaaaaaaaaaaaaaaaaaaa
-DELETE_TOKEN=aaaaaaaaaaaaaaaaaaaaaaaa
-SALES_ADMIN_USERNAME=aaaaaaaa
-SALES_ADMIN_PASSWORD=aaaaaaaaaaaaaaaaaaaaaaaa
+# In production: PLS_URL=https://pls.datasektionen.se
+# If this is set to "true" or "false", that value will be used instead of querying pls
+PLS_OVERRIDE=true
 ```
 
 Install npm dependencies:
