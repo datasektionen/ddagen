@@ -10,12 +10,18 @@ function NavLink({
   class: className,
   style,
   onClick,
+  onMouseEnter,
+  onMouseLeave,
+  onFocus,
 }: {
   href?: string;
   children: React.ReactNode;
   class?: string;
   style?: React.CSSProperties;
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+  onMouseEnter?: React.MouseEventHandler<HTMLAnchorElement>;
+  onMouseLeave?: React.MouseEventHandler<HTMLAnchorElement>;
+  onFocus?: React.FocusEventHandler<HTMLAnchorElement>;
 }) {
   const router = useRouter();
 
@@ -29,6 +35,9 @@ function NavLink({
       href={href ?? ""}
       style={style}
       onClick={onClick}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      onFocus={onFocus}
     >
       {children}
     </Link>
@@ -76,9 +85,7 @@ function Group({
   const [dropped, setDrop] = useState(false);
   return (
     <div
-      onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      onFocus={() => setHovered(true)}
       className={`lg:ml-10 ${className ?? ""}`}
     >
       <div className="lg:flex relative flex-row hidden">
@@ -98,6 +105,8 @@ function Group({
               class="z-10 pl-0 p-4"
               href={href}
               onClick={onClick}
+              onMouseEnter={() => setHovered(true)}
+              onFocus={() => setHovered(true)}
             >
               {text}
             </NavLink>
