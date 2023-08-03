@@ -6,14 +6,16 @@ export function UploadButton({
   selectedImage,
   setSelectedImage,
   textAbove,
-  textInside,
+  textInsideMiddle,
+  textInsideBottom,
   accept,
 }: {
   t: Locale;
   selectedImage: string;
   setSelectedImage: Dispatch<string>;
   textAbove: string;
-  textInside: string;
+  textInsideMiddle: string;
+  textInsideBottom: string;
   accept: string[];
 }) {
   function toBase64(file: Blob) {
@@ -64,12 +66,17 @@ export function UploadButton({
         {textAbove}
       </label>
       <div className="relative flex flex-col bg-black/50 w-[150px] h-[150px] rounded-3xl border-solid border-cerise border-2 mx-auto overflow-hidden">
-        <h1 className="relative top-[50%] -translate-y-2/4 text-center text-xl">
+        <h1 className="relative top-[50%] -translate-y-2/4 text-center text-2xl">
           {selectedImage == "" ? (
-            textInside
+            textInsideMiddle
           ) : (
             <img className="mx-auto" src={selectedImage} />
           )}
+        </h1>
+        <h1 className="relative top-[70%] -translate-y-2/4 text-center text-[10px] text-slate-400">
+          {selectedImage == "" ? (
+            textInsideBottom
+          ) : ""}
         </h1>
         <div>
           <label

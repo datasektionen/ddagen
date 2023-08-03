@@ -10,12 +10,18 @@ function NavLink({
   class: className,
   style,
   onClick,
+  onMouseEnter,
+  onMouseLeave,
+  onFocus,
 }: {
   href?: string;
   children: React.ReactNode;
   class?: string;
   style?: React.CSSProperties;
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+  onMouseEnter?: React.MouseEventHandler<HTMLAnchorElement>;
+  onMouseLeave?: React.MouseEventHandler<HTMLAnchorElement>;
+  onFocus?: React.FocusEventHandler<HTMLAnchorElement>;
 }) {
   const router = useRouter();
 
@@ -29,6 +35,9 @@ function NavLink({
       href={href ?? ""}
       style={style}
       onClick={onClick}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      onFocus={onFocus}
     >
       {children}
     </Link>
@@ -68,18 +77,20 @@ function Group({
   links: { href: string; text: string; onClick?: () => void }[];
   class?: string;
 }) {
+  const longestWord = links.reduce(
+    (a, b) => (a < b.text.length ? b.text.length : a),
+    0
+  );
   const [hovered, setHovered] = useState(false);
   const [dropped, setDrop] = useState(false);
   return (
     <div
-      onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      onFocus={() => setHovered(true)}
       className={`lg:ml-10 ${className ?? ""}`}
     >
       <div className="lg:flex relative flex-row hidden">
         <div
-          style={{ height: 70 + links.length * 40 }}
+          style={{ height: 70 + links.length * 40, width: longestWord * 13 }}
           className={
             "block absolute -z-10 " +
             (hovered
@@ -94,13 +105,15 @@ function Group({
               class="z-10 pl-0 p-4"
               href={href}
               onClick={onClick}
+              onMouseEnter={() => setHovered(true)}
+              onFocus={() => setHovered(true)}
             >
               {text}
             </NavLink>
           ) : (
             <NavLink
               key={text}
-              style={{ top: 40 * i }}
+              style={{ top: 40 * i, width: longestWord * 13 }}
               class={
                 (hovered ? "" : "hidden") + " z-10 w-full absolute p-4 px-0"
               }
@@ -259,13 +272,13 @@ export default function Navbar() {
             </NavLink>
             <Group
               links={[
-                ...(isLoggedIn.data == true
-                  ? [{ href: "/utställare", text: t.exhibitorSettings }]
-                  : []),
                 { href: "/förföretag", text: t.forCompanies },
                 { href: "/katalog", text: t.catalog },
                 { href: "/event", text: "event" },
                 { href: "/faq", text: "faq" },
+                ...(isLoggedIn.data == true
+                  ? [{ href: "/utställare", text: t.exhibitorSettings }]
+                  : []),
                 ...(isLoggedIn.data == true
                   ? [
                       {

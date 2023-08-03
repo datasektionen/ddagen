@@ -77,7 +77,6 @@ export default {
           header: "Allmän Info",
           description: "Beskrivning",
           placeholderText: "Om oss",
-          only: "Endast",
           or: "eller",
         },
         section2: {
@@ -227,7 +226,7 @@ export default {
     companyForm: "Företagsanmälan",
     changeLanguage: "Ändra språk till engelska",
     contact: "Kontakt",
-    exhibitorSettings: "Utställarinställningar",
+    exhibitorSettings: "Inställningar",
     login: "Logga in",
     logout: "Logga ut",
     catalog: "Katalog",
