@@ -1,4 +1,4 @@
-import { Dispatch } from "react";
+import type { ChangeEvent, Dispatch } from "react";
 
 export function TextInput({
   description,
@@ -11,7 +11,7 @@ export function TextInput({
   textAbove: string;
   placeHolderText: string;
 }) {
-  const onTextChange = (e: any) => {
+  const onTextChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     if (e.target.value) setDescription(e.target.value);
     else setDescription("");
   };
