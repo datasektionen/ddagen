@@ -227,7 +227,7 @@ export default {
     companyForm: "Företagsanmälan",
     changeLanguage: "Ändra språk till engelska",
     contact: "Kontakt",
-    exhibitorSettings: "Utställarinställningar",
+    exhibitorSettings: "Inställningar",
     login: "Logga in",
     logout: "Logga ut",
     catalog: "Katalog",

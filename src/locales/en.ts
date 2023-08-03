@@ -226,7 +226,7 @@ export default {
     companyForm: "Exhibitor Registration",
     changeLanguage: "Change language to Swedish",
     contact: "Contact",
-    exhibitorSettings: "Exhibitor Settings",
+    exhibitorSettings: "Settings",
     login: "Log in",
     logout: "Log out",
     catalog: "Catalog",
