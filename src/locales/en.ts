@@ -77,7 +77,6 @@ export default {
           header: "General Information",
           description: "Description",
           placeholderText: "About Us",
-          only: "Only",
           or: "or",
         },
         section2: {

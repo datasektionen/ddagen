@@ -196,10 +196,10 @@ export default function RowOne({ t }: { t: Locale }) {
               selectedImage={whiteLogo}
               setSelectedImage={setWhiteLogo}
               textAbove={"Vit Logga"}
-              textInside={"Logga"}
+              textInsideMiddle={"Logga"}
+              textInsideBottom={"SVG"}
               accept={["image/svg+xml"]}
             />
-            <p className="text-neutral-300">{t.exhibitorSettings.table.row1.section1.only} svg</p>
           </div>
           <div>
             <UploadButton
@@ -207,10 +207,10 @@ export default function RowOne({ t }: { t: Locale }) {
               selectedImage={colorLogo}
               setSelectedImage={setColorLogo}
               textAbove={"Logga m. färg"}
-              textInside={"Logga"}
+              textInsideMiddle={"Logga"}
+              textInsideBottom={`SVG ${t.exhibitorSettings.table.row1.section1.or} PNG`}
               accept={["image/png", "image/svg+xml"]}
             />
-            <p className="text-neutral-300">{t.exhibitorSettings.table.row1.section1.only} svg {t.exhibitorSettings.table.row1.section1.or} png</p>
           </div>
         </div>
         <div className="w-[90%] md:w-[80%] lg:w-full">
