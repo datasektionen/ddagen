@@ -54,7 +54,7 @@ export default function Footer() {
             </a>
           </div>
         </div>
-        <div className="flex flex-col  hidden md:block md:px-[25px] lg:px-[80px]">
+        <div className="flex flex-col items-center hidden md:block md:px-[25px] lg:px-[80px]">
           <p className="text-center text-white md:text-xs lg:text-base font-thin mb-5">{footer.sponsorText}</p>
           <img className="w-[250px]" src="/img/omegapoint_logo.svg"></img>
         </div>
