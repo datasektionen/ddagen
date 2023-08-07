@@ -239,6 +239,7 @@ export default {
     contactHeader: "Kontakt",
     responsible: "D-Dagenansvariga",
     salesGroup: "Säljgruppen",
+    sponsorText: "Huvudsponsor för D-Dagen 2023",
   },
   email: {
     subject: "Bekräftelse på Företagsanmälan",

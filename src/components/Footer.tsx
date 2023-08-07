@@ -21,16 +21,16 @@ export default function Footer() {
   return (
     <footer className="
       bg-fill bg-[#2D2D2D]
-      min-h-[300px]
+      min-h-[600px] md:min-h-[300px]
       flex flex-grow
     ">
       <div className="
-        relative w-full  h-[400px] md:h-[300px] pt-[20px] md:pt-[40px]  flex flex-col
-        md:flex-row r items-center md:items-stretch md:justify-between md:px-[100px]
+        relative flex flex-col w-full h-[400px] md:h-[300px] pt-[20px] md:pt-[40px]
+        md:flex-row items-center md:items-stretch md:justify-between md:px-[100px]
       ">
         <div className="
-          flex flex-col md:border-r-[1px] border-[#636363]
-          pl-[15%] md:pl-[0px] md:pr-[20px] order-last md:order-first w-[95%] md:w-max md:items-center h-[400px] md:h-[200px]
+          flex flex-col border-[#636363] pl-[15%] md:pl-[0px] max-md:pt-4 md:border-r-[1px] 
+          md:pr-[20px] md:order-first w-[95%] md:w-max md:items-center h-[400px] md:h-[200px] order-last
         ">
           <p className="w-[220px] md:w-[230px] font-bold text-[#DADADA] text-xs md:pr-[20px]">
             {footer.header}
@@ -54,7 +54,10 @@ export default function Footer() {
             </a>
           </div>
         </div>
-
+        <div className="hidden md:flex md:flex-col items-center md:px-[25px] md:pt-6 lg:px-[80px]">
+          <p className="text-center text-white md:text-md lg:text-lg font-thin mb-5">{footer.sponsorText}</p>
+          <img className="md:min-w-[120px] w-[250px]" src="/img/omegapoint_logo.svg"></img>
+        </div>
         <div className="flex flex-col md:border-l-[1px] border-[#636363] pb-[0px] md:pl-[40px] w-[95%] md:w-max h-[200px]">
           <div className="px-[15%] md:px-0 flex justify-between border-b-[0.5px] border-[#636363] md:h-[40px] mb-3 md:w-[130px]">
             <a
@@ -86,7 +89,7 @@ export default function Footer() {
             </a>
           </div>
           <div className="
-            border-b-[0.5px] md:border-b-[0px] border-[#636363] pb-4 mb-2
+            border-b-[0.5px] md:border-b-[0px] border-[#636363] pb-4 mb-2 
             grid auto-cols-max gap-x-1 text-xs text-[#dadada] px-[15%] md:px-0
           ">
             <p className="font-bold text-xs text-white col-span-2">
@@ -97,6 +100,10 @@ export default function Footer() {
             <span>{footer.salesGroup}:</span>
             <a className="text-cerise" href="mailto:sales@ddagen.se">sales@ddagen.se</a>
           </div>
+        </div>
+        <div className="flex flex-col border-b-[0.5px] md:border-b-[0px] border-[#636363] w-[95%] py-4 md:hidden mb-3 px-[15%]">
+          <p className="text-center text-white text-md font-thin mb-4">{footer.sponsorText}</p>
+          <img className="h-[125px]" src="/img/omegapoint_logo.svg"></img>
         </div>
       </div>
     </footer>

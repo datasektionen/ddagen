@@ -237,6 +237,7 @@ export default {
     contactHeader: "Contact",
     responsible: "Project Managers",
     salesGroup: "Sales Team",
+    sponsorText: "Main sponsor for D-Dagen 2023",
   },
   email: {
     subject: "Exhibitor Registration Confirmation",
