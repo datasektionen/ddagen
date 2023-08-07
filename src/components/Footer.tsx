@@ -21,7 +21,7 @@ export default function Footer() {
   return (
     <footer className="
       bg-fill bg-[#2D2D2D]
-      min-h-[300px]
+      min-h-[600px] md:min-h-[300px]
       flex flex-grow
     ">
       <div className="
@@ -54,7 +54,10 @@ export default function Footer() {
             </a>
           </div>
         </div>
-
+        <div className="flex flex-col  hidden md:block md:px-[25px] lg:px-[80px]">
+          <p className="text-center text-white md:text-xs lg:text-base font-light mb-5">{footer.sponsorText}</p>
+          <img className="" src="/img/omegapoint_logo.svg"></img>
+        </div>
         <div className="flex flex-col md:border-l-[1px] border-[#636363] pb-[0px] md:pl-[40px] w-[95%] md:w-max h-[200px]">
           <div className="px-[15%] md:px-0 flex justify-between border-b-[0.5px] border-[#636363] md:h-[40px] mb-3 md:w-[130px]">
             <a
@@ -97,6 +100,10 @@ export default function Footer() {
             <span>{footer.salesGroup}:</span>
             <a className="text-cerise" href="mailto:sales@ddagen.se">sales@ddagen.se</a>
           </div>
+        </div>
+        <div className="flex flex-col border-b-[0.5px] md:border-b-[0px] border-[#636363] w-[95%] py-4 md:hidden mb-3 px-[15%]">
+          <p className="text-center text-white text-xs font-bold mb-4">{footer.sponsorText}</p>
+          <img className="h-[125px]" src="/img/omegapoint_logo.svg"></img>
         </div>
       </div>
     </footer>
