@@ -293,6 +293,7 @@ export default function ExtraOrders({
       <div className="md:hidden w-full flex flex-col font-normal text-lg text-center overflow-scroll">
         {rows.map((row, i) => (
           <div
+            key={i}
             className={`flex flex-col py-4 ${
               i != 4 ? "border-b-2 border-white border-solid" : ""
             }`}

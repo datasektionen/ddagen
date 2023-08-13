@@ -22,7 +22,7 @@ export function PreferenceDetails({
 }) {
   const defaultPreference = new Preferences(undefined, "", [], "", type);
 
-  const getPreferences = api.exhibitor.getFoodPreferencess.useQuery(type);
+  const getPreferences = api.exhibitor.getFoodPreferences.useQuery(type);
 
   const [pos, setPos] = useState(0);
   const [preferences, setPreferences] = useState([defaultPreference]);

@@ -257,7 +257,7 @@ export default function RowOne({ t }: { t: Locale }) {
       <div className="lg:hidden w-full mb-10">
         <div className="flex flex-col gap-y-6 text-lg items-center">
           {rows.map((row) => (
-            <div className="flex flex-col gap-y-6">
+            <div className="flex flex-col gap-y-6" key={row.jobOffer}>
               {row.jobOffer}
               <div
                 className="flex flex-row gap-x-0 xxxs:gap-x-2 xxs:gap-x-4

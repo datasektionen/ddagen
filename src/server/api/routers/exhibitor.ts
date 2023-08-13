@@ -313,7 +313,7 @@ export const exhibitorRouter = createTRPCRouter({
       reprcount: Number(counts[0].reprcount),
     };
   }),
-  getFoodPreferencess: protectedProcedure
+  getFoodPreferences: protectedProcedure
     .input(foodPreferencesType)
     .query(async ({ input, ctx }) => {
       return await ctx.prisma.foodPreferences.findMany({
