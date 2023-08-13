@@ -146,6 +146,12 @@ export default {
           representatives: "Representanter",
           sitting: "Sittningsbiljetter",
           warning: "Sista datum för beställning 2023-08-20",
+          disabledButtonMessages: {
+            representatives:
+              "Ta bort matpreferenser för representanter för att minska antalet",
+            banquet:
+              "Ta bort matpreferenser för sittningen för att minska antalet",
+          },
           save: "Spara",
         },
       },
@@ -187,7 +193,8 @@ export default {
     confirm: "Logga in",
     confirmationCode: "Bekräftelsekod",
     confirmationCodeText1: "Vi har skickat en kod till din e-postadress <",
-    confirmationCodeText2: "> om den är registrerad i vårt system. Om du inte hittar mailet, dubbelkolla att e-postadressen är korrekt samt se till att kolla i skräpposten!",
+    confirmationCodeText2:
+      "> om den är registrerad i vårt system. Om du inte hittar mailet, dubbelkolla att e-postadressen är korrekt samt se till att kolla i skräpposten!",
     emailSubject: "D-Dagen - Logga in",
     emailBody: (code: string, link: string) => `
       <p>För att slutföra inloggningen till D-Dagen, gå till följande länk:</p>

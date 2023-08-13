@@ -97,6 +97,26 @@ export class Package {
         break;
     }
   }
+}
 
-  getPackage(t: Locale, exhibitorPackage: string) {}
+export class Extras {
+  extraChairs: number;
+  extraTables: number;
+  extraDrinkCoupons: number;
+  extraRepresentativeSpots: number;
+  totalBanquetTicketsWanted: number
+
+  constructor(
+    extraChairs: number,
+    extraTables: number,
+    extraDrinkCoupons: number,
+    extraRepresentativeSpots: number,
+    totalBanquetTicketsWanted: number,
+  ) {
+    this.extraChairs = extraChairs;
+    this.extraTables = extraTables;
+    this.extraDrinkCoupons = extraDrinkCoupons;
+    this.extraRepresentativeSpots = extraRepresentativeSpots;
+    this.totalBanquetTicketsWanted = totalBanquetTicketsWanted;
+  }
 }

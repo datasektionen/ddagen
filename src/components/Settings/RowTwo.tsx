@@ -1,12 +1,19 @@
 import Locale from "@/locales";
+import { Dispatch } from "react";
 import ExtraOrders from "./ExtraOrders";
-import { Package } from "@/shared/Classes";
+import { Extras, Package } from "@/shared/Classes";
 
 export default function RowTwo({
   t,
+  extras,
+  setExtras,
+  preferenceCount,
   exhibitorPackage,
 }: {
   t: Locale;
+  extras: Extras;
+  setExtras: Dispatch<Extras>;
+  preferenceCount: { banqcount: number; reprcount: number };
   exhibitorPackage: Package;
 }) {
   return (
@@ -36,7 +43,13 @@ export default function RowTwo({
         <h1 className="mt-12 uppercase text-cerise text-2xl md:text-4xl font-normal px-[10px] break-words">
           {t.exhibitorSettings.table.row2.section2.header}
         </h1>
-        <ExtraOrders t={t} exhibitorPackage={exhibitorPackage} />
+        <ExtraOrders
+          t={t}
+          extras={extras}
+          setExtras={setExtras}
+          preferenceCount={preferenceCount}
+          exhibitorPackage={exhibitorPackage}
+        />
       </div>
       {/* Section 2 */}
     </div>

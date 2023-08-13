@@ -1,17 +1,23 @@
 import Locale from "@/locales";
 import { api } from "@/utils/api";
-import { useState, useEffect } from "react";
-import { Package, Preferences } from "../../shared/Classes";
+import { Dispatch, useState, useEffect } from "react";
+import { Extras, Package, Preferences } from "../../shared/Classes";
 import { AddPreferences } from "./AddPreferences";
 import { EditPreferences } from "./EditPreferences";
 
 export function PreferenceDetails({
   t,
   type,
+  extras,
+  preferenceCount,
+  setPreferenceCount,
   exhibitorPackage,
 }: {
   t: Locale;
   type: "Banquet" | "Representative";
+  extras: Extras;
+  preferenceCount: { banqcount: number; reprcount: number };
+  setPreferenceCount: Dispatch<{ banqcount: number; reprcount: number }>;
   exhibitorPackage: Package;
 }) {
   const defaultPreference = new Preferences(undefined, "", [], "", type);
@@ -49,8 +55,11 @@ export function PreferenceDetails({
         t={t}
         pos={pos}
         type={type}
+        extras={extras}
         preferences={preferences}
         setPreferences={setPreferences}
+        preferenceCount={preferenceCount}
+        setPreferenceCount={setPreferenceCount}
         editState={editState}
         setEditState={setEditState}
         exhibitorPackage={exhibitorPackage}

@@ -297,6 +297,22 @@ export const exhibitorRouter = createTRPCRouter({
         };
       }
     }),
+  getPreferenceCount: protectedProcedure.query(async ({ ctx }) => {
+    const counts: [{ banqcount: bigint; reprcount: bigint }] =
+      await ctx.prisma.$queryRaw(
+        Prisma.sql`
+        SELECT
+          sum(case when type = 'Banquet' then 1 else 0 end) AS BanqCount,
+          sum(case when type = 'Representative' then 1 else 0 end) AS ReprCount
+        FROM food_specifications
+      `
+      );
+
+    return {
+      banqcount: Number(counts[0].banqcount),
+      reprcount: Number(counts[0].reprcount),
+    };
+  }),
   getFoodPreferencess: protectedProcedure
     .input(foodPreferencesType)
     .query(async ({ input, ctx }) => {

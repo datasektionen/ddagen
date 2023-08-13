@@ -1,12 +1,19 @@
 import Locale from "@/locales";
-import { Package } from "@/shared/Classes";
+import { Extras, Package } from "@/shared/Classes";
 import { PreferenceDetails } from "./PreferenceDetails";
+import { Dispatch } from "react";
 
 export default function RowThree({
   t,
+  extras,
+  preferenceCount,
+  setPreferenceCount,
   exhibitorPackage,
 }: {
   t: Locale;
+  extras: Extras;
+  preferenceCount: { banqcount: number; reprcount: number };
+  setPreferenceCount: Dispatch<{ banqcount: number; reprcount: number }>;
   exhibitorPackage: Package;
 }) {
   return (
@@ -24,6 +31,9 @@ export default function RowThree({
       <PreferenceDetails
         t={t}
         type={"Representative"}
+        extras={extras}
+        preferenceCount={preferenceCount}
+        setPreferenceCount={setPreferenceCount}
         exhibitorPackage={exhibitorPackage}
       />
       {/* Section 1 */}
@@ -41,6 +51,9 @@ export default function RowThree({
       <PreferenceDetails
         t={t}
         type={"Banquet"}
+        extras={extras}
+        preferenceCount={preferenceCount}
+        setPreferenceCount={setPreferenceCount}
         exhibitorPackage={exhibitorPackage}
       />
       {/* Section 2 */}
