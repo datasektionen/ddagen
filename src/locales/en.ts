@@ -144,7 +144,7 @@ export default {
           chairs: "Chairs",
           representatives: "Representatives",
           sitting: "Dinnerparty",
-          warning: "Last date for ordering 2023-08-20",
+          warning: "Last date for ordering ",
           disabledButtonMessages: {
             representatives:
               "Delete food preferences for representative to decrease amount",

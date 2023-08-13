@@ -15,6 +15,14 @@ export default function ExtraOrders({
   preferenceCount: { banqcount: number; reprcount: number };
   exhibitorPackage: Package;
 }) {
+  const deadline = {
+    drinkCoupons: "2023-09-14",
+    tables: "2023-09-14",
+    chairs: "2023-09-14",
+    representatives: "2023-09-14",
+    banquet: "2023-09-07",
+  };
+
   const [editState, setEditState] = useState(false);
   const [tables, setTables] = useState(0);
   const [chairs, setChairs] = useState(0);
@@ -96,6 +104,7 @@ export default function ExtraOrders({
       disableCondition: false,
       disableConditionMessage: "",
       increment: 10,
+      deadline: deadline.drinkCoupons,
     },
     {
       name: t.exhibitorSettings.table.row2.section2.tables,
@@ -105,6 +114,7 @@ export default function ExtraOrders({
       disableCondition: false,
       disableConditionMessage: "",
       increment: 1,
+      deadline: deadline.tables,
     },
     {
       name: t.exhibitorSettings.table.row2.section2.chairs,
@@ -114,6 +124,7 @@ export default function ExtraOrders({
       disableCondition: false,
       disableConditionMessage: "",
       increment: 1,
+      deadline: deadline.chairs,
     },
     {
       name: t.exhibitorSettings.table.row2.section2.representatives,
@@ -127,6 +138,7 @@ export default function ExtraOrders({
         t.exhibitorSettings.table.row2.section2.disabledButtonMessages
           .representatives,
       increment: 1,
+      deadline: deadline.representatives,
     },
     {
       name: t.exhibitorSettings.table.row2.section2.sitting,
@@ -139,6 +151,7 @@ export default function ExtraOrders({
       disableConditionMessage:
         t.exhibitorSettings.table.row2.section2.disabledButtonMessages.banquet,
       increment: 1,
+      deadline: deadline.banquet,
     },
   ];
   return (
@@ -183,7 +196,8 @@ export default function ExtraOrders({
           {exhibitorPackage.drinkCoupons + drinkCoupons}
         </div>
         <div className="text-right text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
-          {t.exhibitorSettings.table.row2.section2.warning}
+          {t.exhibitorSettings.table.row2.section2.warning +
+            deadline.drinkCoupons}
         </div>
         {/* Section 1 */}
 
@@ -199,7 +213,7 @@ export default function ExtraOrders({
           {exhibitorPackage.tables + tables}
         </div>
         <div className="text-right text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
-          {t.exhibitorSettings.table.row2.section2.warning}
+          {t.exhibitorSettings.table.row2.section2.warning + deadline.tables}
         </div>
         {/* Section 2 */}
 
@@ -215,7 +229,7 @@ export default function ExtraOrders({
           {exhibitorPackage.chairs + chairs}
         </div>
         <div className="text-right text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
-          {t.exhibitorSettings.table.row2.section2.warning}
+          {t.exhibitorSettings.table.row2.section2.warning + deadline.chairs}
         </div>
         {/* Section 3 */}
 
@@ -243,7 +257,8 @@ export default function ExtraOrders({
           {exhibitorPackage.representatives + representatives}
         </div>
         <div className="text-right text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
-          {t.exhibitorSettings.table.row2.section2.warning}
+          {t.exhibitorSettings.table.row2.section2.warning +
+            deadline.representatives}
         </div>
         {/* Section 4 */}
 
@@ -271,7 +286,7 @@ export default function ExtraOrders({
           {exhibitorPackage.banquetTickets + banquetTickets}
         </div>
         <div className="text-right text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 !border-transparent text-base">
-          {t.exhibitorSettings.table.row2.section2.warning}
+          {t.exhibitorSettings.table.row2.section2.warning + deadline.banquet}
         </div>
       </div>
 
@@ -303,7 +318,7 @@ export default function ExtraOrders({
               {row.get + row.included}
             </div>
             <div className="text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-normal">
-              {t.exhibitorSettings.table.row2.section2.warning}
+              {t.exhibitorSettings.table.row2.section2.warning + row.deadline}
             </div>
           </div>
         ))}

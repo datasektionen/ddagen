@@ -145,7 +145,7 @@ export default {
           chairs: "Stolar",
           representatives: "Representanter",
           sitting: "Sittningsbiljetter",
-          warning: "Sista datum för beställning 2023-08-20",
+          warning: "Sista datum för beställning ",
           disabledButtonMessages: {
             representatives:
               "Ta bort matpreferenser för representanter för att minska antalet",
