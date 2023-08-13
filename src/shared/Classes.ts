@@ -104,7 +104,7 @@ export class Extras {
   extraTables: number;
   extraDrinkCoupons: number;
   extraRepresentativeSpots: number;
-  totalBanquetTicketsWanted: number
+  totalBanquetTicketsWanted: number;
 
   constructor(
     extraChairs: number,

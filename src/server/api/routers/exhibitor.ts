@@ -305,6 +305,7 @@ export const exhibitorRouter = createTRPCRouter({
           sum(case when type = 'Banquet' then 1 else 0 end) AS BanqCount,
           sum(case when type = 'Representative' then 1 else 0 end) AS ReprCount
         FROM food_specifications
+        WHERE "exhibitorId" = ${ctx.session.user.exhibitorId}
       `
       );
 
