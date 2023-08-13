@@ -77,6 +77,9 @@ export default {
           header: "General Information",
           description: "Description",
           placeholderText: "About Us",
+          logo: "Logo",
+          logoWhite: "White Logo",
+          logoColour: "Logo w/ colour",
           or: "or",
         },
         section2: {

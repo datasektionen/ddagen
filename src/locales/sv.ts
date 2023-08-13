@@ -77,6 +77,9 @@ export default {
           header: "Allmän Info",
           description: "Beskrivning",
           placeholderText: "Om oss",
+          logo: "Logga",
+          logoWhite: "Vit Logga",
+          logoColour: "Logga m. färg",
           or: "eller",
         },
         section2: {

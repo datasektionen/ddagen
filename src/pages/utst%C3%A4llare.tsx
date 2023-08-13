@@ -58,7 +58,7 @@ export default function Exhibitor() {
 
   return isLoggedIn ? (
     <>
-      <div className="mx-auto flex flex-col items-center py-40">
+      <div className="mx-auto flex flex-col items-center py-40 cursor-default">
         {/*Header*/}
         <h1 className="uppercase text-cerise text-3xl md:text-5xl font-medium text-center px-[10px] break-words">
           {t.exhibitorSettings.header}
