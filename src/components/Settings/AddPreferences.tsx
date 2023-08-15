@@ -3,7 +3,7 @@ import { api } from "@/utils/api";
 import { CheckMark } from "./CheckMark";
 import { InputField } from "./InputField";
 import { type Dispatch, useState, useEffect, type FormEvent } from "react";
-import { Package, Preferences } from "@/shared/Classes";
+import { Extras, Package, Preferences } from "@/shared/Classes";
 
 type Options = "Vegan" | "Meat" | "LactoseFree" | "GlutenFree";
 
@@ -11,8 +11,11 @@ export function AddPreferences({
   t,
   pos,
   type,
+  extras,
   preferences,
   setPreferences,
+  preferenceCount,
+  setPreferenceCount,
   editState,
   setEditState,
   exhibitorPackage,
@@ -20,8 +23,11 @@ export function AddPreferences({
   t: Locale;
   pos: number;
   type: "Representative" | "Banquet";
+  extras: Extras;
   preferences: Preferences[];
   setPreferences: Dispatch<Preferences[]>;
+  preferenceCount: { banqcount: number; reprcount: number };
+  setPreferenceCount: Dispatch<{ banqcount: number; reprcount: number }>;
   editState: undefined | string;
   setEditState: Dispatch<undefined | string>;
   exhibitorPackage: Package;
@@ -47,12 +53,31 @@ export function AddPreferences({
     return checkmarks.map((_, i) => options[i]).filter((_, i) => checkmarks[i]);
   }
 
+  function setCount(
+    preferenceType: "Representative" | "Banquet",
+    amount: number
+  ) {
+    if (type == "Banquet") {
+      if (preferenceType == type) return preferenceCount.banqcount + amount;
+      else return preferenceCount.reprcount + amount;
+    } else {
+      if (preferenceType == type) return preferenceCount.reprcount + amount;
+      else return preferenceCount.banqcount + amount;
+    }
+  }
+
   function handleSubmission(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const maxPreferences = isRepresentative
       ? exhibitorPackage.representatives
       : exhibitorPackage.banquetTickets;
-    if (preference.id || preferences.length <= maxPreferences)
+    const extraPreferences = isRepresentative
+      ? extras.extraRepresentativeSpots
+      : extras.totalBanquetTicketsWanted;
+    if (
+      preference.id ||
+      preferences.length <= maxPreferences + extraPreferences
+    ) {
       setPreferenceMutation.mutate({
         id: preference.id,
         name: preference.name,
@@ -61,17 +86,25 @@ export function AddPreferences({
         type: preference.type,
         locale: t.locale,
       });
-    else {
+      setPreferenceCount({
+        banqcount: setCount("Banquet", 1),
+        reprcount: setCount("Representative", 1),
+      });
+    } else {
       if (errorMessage == undefined)
         setErrorMessage(
           t.exhibitorSettings.table.row3.alerts.errorAddingMorePreferencesThanAllowed(
-            maxPreferences
+            maxPreferences + extraPreferences
           )
         );
     }
   }
 
   function deletePreferenceInDatabase() {
+    setPreferenceCount({
+      banqcount: setCount("Banquet", -1),
+      reprcount: setCount("Representative", -1),
+    });
     deletePreferenceMutation.mutate({
       id: preferences[pos].id,
       locale: t.locale,

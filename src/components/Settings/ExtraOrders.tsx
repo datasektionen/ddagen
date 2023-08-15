@@ -1,17 +1,27 @@
 import Locale from "@/locales";
-import { api } from "@/utils/api";
-import { Package } from "@/shared/Classes";
+import { Extras, Package } from "@/shared/Classes";
 import { useState, useEffect, Dispatch } from "react";
 
 export default function ExtraOrders({
   t,
+  extras,
+  setExtras,
+  preferenceCount,
   exhibitorPackage,
 }: {
   t: Locale;
+  extras: Extras;
+  setExtras: Dispatch<Extras>;
+  preferenceCount: { banqcount: number; reprcount: number };
   exhibitorPackage: Package;
 }) {
-  const getExtras = api.exhibitor.getExtras.useQuery();
-  const extrasMutation = api.exhibitor.setExtras.useMutation();
+  const deadline = {
+    drinkCoupons: "2023-09-14",
+    tables: "2023-09-14",
+    chairs: "2023-09-14",
+    representatives: "2023-09-14",
+    banquet: "2023-09-07",
+  };
 
   const [editState, setEditState] = useState(false);
   const [tables, setTables] = useState(0);
@@ -21,26 +31,33 @@ export default function ExtraOrders({
   const [banquetTickets, setBanquetTickets] = useState(0);
 
   useEffect(() => {
-    if (!getExtras.isSuccess) return;
-    setTables(getExtras.data.extraTables);
-    setChairs(getExtras.data.extraChairs);
-    setDrinkCoupons(getExtras.data.extraDrinkCoupons);
-    setRepresentatives(getExtras.data.extraRepresentativeSpots);
-    setBanquetTickets(getExtras.data.totalBanquetTicketsWanted);
-  }, [getExtras.isSuccess]);
+    setTables(extras.extraTables);
+    setChairs(extras.extraChairs);
+    setDrinkCoupons(extras.extraDrinkCoupons);
+    setRepresentatives(extras.extraRepresentativeSpots);
+    setBanquetTickets(extras.totalBanquetTicketsWanted);
+  }, [extras]);
 
   function handleClick() {
+    if (editState == true) {
+      setExtras({
+        extraTables: tables,
+        extraChairs: chairs,
+        extraDrinkCoupons: drinkCoupons,
+        extraRepresentativeSpots: representatives,
+        totalBanquetTicketsWanted: banquetTickets,
+      });
+    }
     setEditState(!editState);
-    extrasMutation.mutate({
-      extraTables: tables,
-      extraChairs: chairs,
-      extraDrinkCoupons: drinkCoupons,
-      extraRepresentativeSpots: representatives,
-      totalBanquetTicketsWanted: banquetTickets,
-    });
   }
 
-  function plusMinus(num: number, set: Dispatch<number>, step: number) {
+  function plusMinus(
+    num: number,
+    set: Dispatch<number>,
+    step: number,
+    disabledCondition?: boolean,
+    disabledConditionMessage?: string
+  ) {
     return (
       <div className="flex flex-row items-center justify-center">
         <div
@@ -50,24 +67,29 @@ export default function ExtraOrders({
           {num}
         </div>
         <div className="flex flex-col">
-          <div
+          <button
             className="flex hover:cursor-pointer bg-white rounded-lg w-full h-[21.5px] text-black font-normal select-none
-                        justify-center items-center px-2 border-1 border-black mb-[2px] hover:scale-105 transition-transform"
+                        justify-center items-center px-2 border border-[#999999] hover:scale-105 transition-transform mb-[2px]"
             onClick={() => {
               set(num + step);
             }}
           >
             +
-          </div>
-          <div
+          </button>
+          <button
             className="flex hover:cursor-pointer bg-white rounded-lg w-full h-[21.5px] text-black font-normal select-none 
-                        justify-center items-center px-2 border-1 border-black hover:scale-105 transition-transform "
+                        justify-center items-center px-2 border border-[#999999] hover:scale-105 transition-transform
+                        disabled:bg-[#cccccc] disabled:border disabled:border-solid"
             onClick={() => {
               if (num >= 0 && num - step >= 0) set(num - step);
             }}
+            disabled={disabledCondition || num == 0}
+            title={
+              disabledCondition && num != 0 ? disabledConditionMessage : ""
+            }
           >
             -
-          </div>
+          </button>
         </div>
       </div>
     );
@@ -79,35 +101,57 @@ export default function ExtraOrders({
       included: exhibitorPackage.drinkCoupons,
       get: drinkCoupons,
       set: setDrinkCoupons,
+      disableCondition: false,
+      disableConditionMessage: "",
       increment: 10,
+      deadline: deadline.drinkCoupons,
     },
     {
       name: t.exhibitorSettings.table.row2.section2.tables,
       included: exhibitorPackage.tables,
       get: tables,
       set: setTables,
+      disableCondition: false,
+      disableConditionMessage: "",
       increment: 1,
+      deadline: deadline.tables,
     },
     {
       name: t.exhibitorSettings.table.row2.section2.chairs,
       included: exhibitorPackage.chairs,
       get: chairs,
       set: setChairs,
+      disableCondition: false,
+      disableConditionMessage: "",
       increment: 1,
+      deadline: deadline.chairs,
     },
     {
       name: t.exhibitorSettings.table.row2.section2.representatives,
       included: exhibitorPackage.representatives,
       get: representatives,
       set: setRepresentatives,
+      disableCondition:
+        exhibitorPackage.representatives + representatives <=
+        preferenceCount.reprcount,
+      disableConditionMessage:
+        t.exhibitorSettings.table.row2.section2.disabledButtonMessages
+          .representatives,
       increment: 1,
+      deadline: deadline.representatives,
     },
     {
       name: t.exhibitorSettings.table.row2.section2.sitting,
       included: exhibitorPackage.banquetTickets,
       get: banquetTickets,
       set: setBanquetTickets,
+      disableCondition:
+        exhibitorPackage.banquetTickets + banquetTickets <=
+        preferenceCount.banqcount,
+      disableConditionMessage:
+        t.exhibitorSettings.table.row2.section2.disabledButtonMessages.banquet,
       increment: 1,
+      deadline: deadline.banquet,
     },
   ];
   return (
@@ -152,7 +196,8 @@ export default function ExtraOrders({
           {exhibitorPackage.drinkCoupons + drinkCoupons}
         </div>
         <div className="text-right text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
-          {t.exhibitorSettings.table.row2.section2.warning}
+          {t.exhibitorSettings.table.row2.section2.warning +
+            deadline.drinkCoupons}
         </div>
         {/* Section 1 */}
 
@@ -168,7 +213,7 @@ export default function ExtraOrders({
           {exhibitorPackage.tables + tables}
         </div>
         <div className="text-right text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
-          {t.exhibitorSettings.table.row2.section2.warning}
+          {t.exhibitorSettings.table.row2.section2.warning + deadline.tables}
         </div>
         {/* Section 2 */}
 
@@ -184,7 +229,7 @@ export default function ExtraOrders({
           {exhibitorPackage.chairs + chairs}
         </div>
         <div className="text-right text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
-          {t.exhibitorSettings.table.row2.section2.warning}
+          {t.exhibitorSettings.table.row2.section2.warning + deadline.chairs}
         </div>
         {/* Section 3 */}
 
@@ -197,14 +242,23 @@ export default function ExtraOrders({
         </div>
         <div className={"font-normal text-2xl"}>
           {editState
-            ? plusMinus(representatives, setRepresentatives, 1)
+            ? plusMinus(
+                representatives,
+                setRepresentatives,
+                1,
+                exhibitorPackage.representatives + representatives <=
+                  preferenceCount.reprcount,
+                t.exhibitorSettings.table.row2.section2.disabledButtonMessages
+                  .representatives
+              )
             : representatives}
         </div>
         <div className="font-normal text-2xl">
           {exhibitorPackage.representatives + representatives}
         </div>
         <div className="text-right text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
-          {t.exhibitorSettings.table.row2.section2.warning}
+          {t.exhibitorSettings.table.row2.section2.warning +
+            deadline.representatives}
         </div>
         {/* Section 4 */}
 
@@ -217,20 +271,29 @@ export default function ExtraOrders({
         </div>
         <div className={"font-normal text-2xl !border-transparent"}>
           {editState
-            ? plusMinus(banquetTickets, setBanquetTickets, 1)
+            ? plusMinus(
+                banquetTickets,
+                setBanquetTickets,
+                1,
+                exhibitorPackage.banquetTickets + banquetTickets <=
+                  preferenceCount.banqcount,
+                t.exhibitorSettings.table.row2.section2.disabledButtonMessages
+                  .banquet
+              )
             : banquetTickets}
         </div>
         <div className="font-normal text-2xl !border-transparent">
           {exhibitorPackage.banquetTickets + banquetTickets}
         </div>
         <div className="text-right text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 !border-transparent text-base">
-          {t.exhibitorSettings.table.row2.section2.warning}
+          {t.exhibitorSettings.table.row2.section2.warning + deadline.banquet}
         </div>
       </div>
 
       <div className="md:hidden w-full flex flex-col font-normal text-lg text-center overflow-scroll">
         {rows.map((row, i) => (
           <div
+            key={i}
             className={`flex flex-col py-4 ${
               i != 4 ? "border-b-2 border-white border-solid" : ""
             }`}
@@ -242,14 +305,21 @@ export default function ExtraOrders({
             </div>
             <div>
               {t.exhibitorSettings.table.row2.section2.titles.second}:{" "}
-              {editState ? plusMinus(row.get, row.set, row.increment) : row.get}
+              {editState
+                ? plusMinus(
+                    row.get,
+                    row.set,
+                    row.increment,
+                    row.disableCondition
+                  )
+                : row.get}
             </div>
             <div>
               {t.exhibitorSettings.table.row2.section2.titles.third}:{" "}
               {row.get + row.included}
             </div>
             <div className="text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-normal">
-              {t.exhibitorSettings.table.row2.section2.warning}
+              {t.exhibitorSettings.table.row2.section2.warning + row.deadline}
             </div>
           </div>
         ))}

@@ -195,8 +195,8 @@ export default function RowOne({ t }: { t: Locale }) {
               t={t}
               selectedImage={whiteLogo}
               setSelectedImage={setWhiteLogo}
-              textAbove={"Vit Logga"}
-              textInsideMiddle={"Logga"}
+              textAbove={t.exhibitorSettings.table.row1.section1.logoWhite}
+              textInsideMiddle={t.exhibitorSettings.table.row1.section1.logo}
               textInsideBottom={"SVG"}
               accept={["image/svg+xml"]}
             />
@@ -206,8 +206,8 @@ export default function RowOne({ t }: { t: Locale }) {
               t={t}
               selectedImage={colorLogo}
               setSelectedImage={setColorLogo}
-              textAbove={"Logga m. färg"}
-              textInsideMiddle={"Logga"}
+              textAbove={t.exhibitorSettings.table.row1.section1.logoColour}
+              textInsideMiddle={t.exhibitorSettings.table.row1.section1.logo}
               textInsideBottom={`SVG ${t.exhibitorSettings.table.row1.section1.or} PNG`}
               accept={["image/png", "image/svg+xml"]}
             />
@@ -257,7 +257,7 @@ export default function RowOne({ t }: { t: Locale }) {
       <div className="lg:hidden w-full mb-10">
         <div className="flex flex-col gap-y-6 text-lg items-center">
           {rows.map((row) => (
-            <div className="flex flex-col gap-y-6">
+            <div className="flex flex-col gap-y-6" key={row.jobOffer}>
               {row.jobOffer}
               <div
                 className="flex flex-row gap-x-0 xxxs:gap-x-2 xxs:gap-x-4
