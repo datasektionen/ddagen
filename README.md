@@ -31,6 +31,8 @@ SPAM_URL=https://spam.datasektionen.se/api/sendmail
 EXPORT_TOKEN=aaaaaaaaaaaaaaaaaaaaaaaa
 IMPORT_TOKEN=aaaaaaaaaaaaaaaaaaaaaaaa
 DELETE_TOKEN=aaaaaaaaaaaaaaaaaaaaaaaa
+SALES_ADMIN_USERNAME=aaaaaaaa
+SALES_ADMIN_PASSWORD=aaaaaaaaaaaaaaaaaaaaaaaa
 ```
 
 Install npm dependencies:
