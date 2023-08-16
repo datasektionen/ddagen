@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useLocale } from "@/locales";
-import { AdminLogin } from "./components/AdminLogin";
-import { ExhibitorPanel } from "./components/ExhibitorPanel";
+import { AdminLogin } from "../../components/Admin/AdminLogin";
+import { ExhibitorPanel } from "../../components/Admin/ExhibitorPanel";
 
 export default function Sales() {
   const t = useLocale();
