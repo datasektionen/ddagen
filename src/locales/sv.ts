@@ -467,6 +467,11 @@ export default {
     extra: "Läs mer",
   },
   admin: {
+    login: {
+      title: "Logga In",
+      username: "Användarnamn",
+      password: "Lösenord",
+    },
     sales: {
       header: {
         title: "Utställare",

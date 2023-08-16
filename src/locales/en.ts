@@ -464,6 +464,11 @@ export default {
     extra: "Read more",
   },
   admin: {
+    login: {
+      title: "Log In",
+      username: "Username",
+      password: "Password",
+    },
     sales: {
       header: {
         title: "Exhibitors",
