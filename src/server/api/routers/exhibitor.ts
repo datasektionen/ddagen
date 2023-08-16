@@ -10,6 +10,7 @@ import { TRPCError } from "@trpc/server";
 import { Prisma } from "@prisma/client";
 import sendEmail from "@/utils/send-email";
 import { randomUUID } from "crypto";
+import { Exhibitor } from "@/shared/Classes";
 
 const foodPreferencesType = z.enum(["Representative", "Banquet"]);
 const foodPreferencesValue = z.enum([
@@ -392,8 +393,7 @@ export const exhibitorRouter = createTRPCRouter({
         };
       }
     }),
-
-  getJobOffers: protectedProcedure.query(async ({ input, ctx }) => {
+  getJobOffers: protectedProcedure.query(async ({ ctx }) => {
     const exhibitor = await ctx.prisma.exhibitor.findUnique({
       where: {
         id: ctx.session.user.exhibitorId,
@@ -438,4 +438,26 @@ export const exhibitorRouter = createTRPCRouter({
         },
       });
     }),
+  getExhibitors: publicProcedure.query(async ({ ctx }) => {
+    const exhibitors = await ctx.prisma.exhibitor.findMany();
+    return exhibitors.map(
+      (exhibitor) =>
+        new Exhibitor(
+          exhibitor.id,
+          exhibitor.name,
+          exhibitor.organizationNumber,
+          exhibitor.invoiceEmail,
+          exhibitor.logoWhite?.toString("base64"),
+          exhibitor.logoColor?.toString("base64"),
+          exhibitor.description,
+          exhibitor.package,
+          exhibitor.extraTables,
+          exhibitor.extraChairs,
+          exhibitor.extraDrinkCoupons,
+          exhibitor.extraRepresentativeSpots,
+          exhibitor.totalBanquetTicketsWanted,
+          exhibitor.jobOfferId
+        )
+    );
+  }),
 });

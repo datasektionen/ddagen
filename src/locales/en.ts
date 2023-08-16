@@ -182,8 +182,10 @@ export default {
     emailText: "The email address you used to register your company",
     confirm: "Log in",
     confirmationCode: "Confirmation code",
-    confirmationCodeText1: "We sent you a confirmation code to your email address <",
-    confirmationCodeText2: "> if it is registered in our system. If you can't find the email, double check that the email address is correct and make sure to check your spam folder!",
+    confirmationCodeText1:
+      "We sent you a confirmation code to your email address <",
+    confirmationCodeText2:
+      "> if it is registered in our system. If you can't find the email, double check that the email address is correct and make sure to check your spam folder!",
     emailSubject: "D-Dagen Login",
     emailBody: (code: string, link: string) => `
       <p>To complete the login to D-Dagen, go to the link below:</p>
@@ -460,5 +462,25 @@ export default {
     header4: "Case Event",
     subheader: "Price: ",
     extra: "Read more",
+  },
+  admin: {
+    sales: {
+      header: {
+        title: "Exhibitors",
+        name: "Name",
+        logoWhite: "White Logo",
+        logoColour: "Coloured Logo",
+        description: "Description",
+        package: "Package",
+        extras: {
+          name: "Extras",
+          chairs: "Chairs",
+          tables: "Tables",
+          drinkCoupons: "Drink Coupons",
+          representativeSpots: "Representative Spots",
+          banquetTickets: "Banquet Tickets",
+        },
+      },
+    },
   },
 };

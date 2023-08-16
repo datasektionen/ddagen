@@ -184,7 +184,8 @@ export default {
     confirm: "Logga in",
     confirmationCode: "Bekräftelsekod",
     confirmationCodeText1: "Vi har skickat en kod till din e-postadress <",
-    confirmationCodeText2: "> om den är registrerad i vårt system. Om du inte hittar mailet, dubbelkolla att e-postadressen är korrekt samt se till att kolla i skräpposten!",
+    confirmationCodeText2:
+      "> om den är registrerad i vårt system. Om du inte hittar mailet, dubbelkolla att e-postadressen är korrekt samt se till att kolla i skräpposten!",
     emailSubject: "D-Dagen - Logga in",
     emailBody: (code: string, link: string) => `
       <p>För att slutföra inloggningen till D-Dagen, gå till följande länk:</p>
@@ -464,5 +465,25 @@ export default {
     header4: "Casekväll",
     subheader: "Pris: ",
     extra: "Läs mer",
+  },
+  admin: {
+    sales: {
+      header: {
+        title: "Utställare",
+        name: "Namn",
+        logoWhite: "Vit Logga",
+        logoColour: "Logga m. färg",
+        description: "Beskrivning",
+        package: "Paket",
+        extras: {
+          name: "Tillägg",
+          chairs: "Stolar",
+          tables: "Bord",
+          drinkCoupons: "Barbongar",
+          representativeSpots: "Representantplatser",
+          banquetTickets: "Sittningsbiljette",
+        },
+      },
+    },
   },
 };

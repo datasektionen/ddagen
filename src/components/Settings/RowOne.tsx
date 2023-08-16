@@ -5,6 +5,7 @@ import { TextInput } from "./TextInput";
 import { CheckMark } from "./CheckMark";
 import { UploadButton } from "./UploadButton";
 import { UserDetails } from "./UserDetails";
+import { addImageDetails } from "@/shared/addImageDetails";
 
 export default function RowOne({ t }: { t: Locale }) {
   // Retrieve data from database
@@ -68,20 +69,6 @@ export default function RowOne({ t }: { t: Locale }) {
 
   function removeImageDetails(img: string) {
     return img.replace(/^data:image\/[a-z]+\+?[a-z]+;base64,/, "");
-  }
-
-  function addImageDetails(img: string | undefined) {
-    if (!img) return "";
-    switch (img.charAt(0)) {
-      case "/":
-        return "data:image/jpg;base64," + img;
-      case "i":
-        return "data:image/png;base64," + img;
-      case "P":
-        return "data:image/svg+xml;base64," + img;
-      default:
-        return img;
-    }
   }
 
   function getCheckmarksPos(offer: string) {
