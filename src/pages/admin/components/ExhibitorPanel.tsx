@@ -4,32 +4,37 @@ import { useState, useEffect } from "react";
 import { Exhibitor } from "@/shared/Classes";
 import { addImageDetails } from "@/shared/addImageDetails";
 
-export function ExhibitorPanel({ t }: { t: Locale }) {
-  const [exhibitors, setExhibitors] = useState([
-    new Exhibitor(
-      "",
-      "",
-      "",
-      "",
-      undefined,
-      undefined,
-      "",
-      "",
-      0,
-      0,
-      0,
-      0,
-      0,
-      ""
-    ),
-  ]);
+export function ExhibitorPanel({
+  t,
+  password,
+}: {
+  t: Locale;
+  password: string;
+}) {
+  const defaultExhibitor = new Exhibitor(
+    "",
+    "",
+    "",
+    "",
+    undefined,
+    undefined,
+    "",
+    "",
+    0,
+    0,
+    0,
+    0,
+    0,
+    ""
+  );
+  const [exhibitors, setExhibitors] = useState([defaultExhibitor]);
 
   // Queries
-  const getExhibitors = api.exhibitor.getExhibitors.useQuery();
+  const getExhibitors = api.exhibitor.getExhibitors.useQuery(password);
 
   useEffect(() => {
     if (!getExhibitors.isSuccess) return;
-    setExhibitors(getExhibitors.data);
+    setExhibitors([defaultExhibitor].concat(getExhibitors.data));
   }, [getExhibitors.isSuccess]);
 
   return (
@@ -56,7 +61,7 @@ export function ExhibitorPanel({ t }: { t: Locale }) {
             className="[&>tr>td]:border-r-2 [&>tr>td]:border-t-2 [&>tr>td]:border-solid 
                       [&>tr>td]:border-white [&>tr>td]:p-4"
           >
-            {exhibitors.map((exhibitor, i) => (
+            {exhibitors.slice(1).map((exhibitor, i) => (
               <tr key={i}>
                 <td className="text-center break-words">{exhibitor.name}</td>
                 <td>

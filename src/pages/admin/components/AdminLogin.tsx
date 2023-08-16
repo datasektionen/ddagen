@@ -5,16 +5,19 @@ import { InputField } from "@/components/InputField";
 
 export function AdminLogin({
   t,
+  password,
+  setPassword,
   setIsLoggedIn,
 }: {
   t: Locale;
+  password: string;
+  setPassword: Dispatch<string>;
   setIsLoggedIn: Dispatch<boolean>;
 }) {
   const confirmSalesAdmin = api.account.confirmSalesAdmin.useMutation();
 
   const [error, setError] = useState(false);
   const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
 
   useEffect(() => {
     if (confirmSalesAdmin.data == true) setIsLoggedIn(true);

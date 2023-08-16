@@ -5,14 +5,20 @@ import { ExhibitorPanel } from "./components/ExhibitorPanel";
 
 export default function Sales() {
   const t = useLocale();
+  const [password, setPassword] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <div>
       {!isLoggedIn ? (
-        <AdminLogin t={t} setIsLoggedIn={setIsLoggedIn} />
+        <AdminLogin
+          t={t}
+          password={password}
+          setPassword={setPassword}
+          setIsLoggedIn={setIsLoggedIn}
+        />
       ) : (
-        <ExhibitorPanel t={t} />
+        <ExhibitorPanel t={t} password={password} />
       )}
     </div>
   );
