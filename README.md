@@ -27,7 +27,7 @@ DATABASE_URL=postgresql://ddagen:ddagen@localhost:5432/ddagen?schema=public
 SPAM_API_KEY=2AkdhsQ9cTTSBKtNXdd6E07rqN8CFWvRqeY4GeAyXAn09urF
 SPAM_URL=https://spam.datasektionen.se/api/sendmail
 
-# can be almost anything, used to verify clients in the /api/export-exhibitors endpoint
+# can be almost anything, used to verify different endpoints
 EXPORT_TOKEN=aaaaaaaaaaaaaaaaaaaaaaaa
 IMPORT_TOKEN=aaaaaaaaaaaaaaaaaaaaaaaa
 DELETE_TOKEN=aaaaaaaaaaaaaaaaaaaaaaaa
