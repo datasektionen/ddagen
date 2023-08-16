@@ -472,4 +472,29 @@ export default {
     subheader: "Price: ",
     extra: "Read more",
   },
+  admin: {
+    login: {
+      title: "Log In",
+      username: "Username",
+      password: "Password",
+    },
+    sales: {
+      header: {
+        title: "Exhibitors",
+        name: "Name",
+        logoWhite: "White Logo",
+        logoColour: "Coloured Logo",
+        description: "Description",
+        package: "Package",
+        extras: {
+          name: "Extras",
+          chairs: "Chairs",
+          tables: "Tables",
+          drinkCoupons: "Drink Coupons",
+          representativeSpots: "Representative Spots",
+          banquetTickets: "Banquet Tickets",
+        },
+      },
+    },
+  },
 };

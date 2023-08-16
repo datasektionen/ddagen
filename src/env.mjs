@@ -14,6 +14,8 @@ const server = z.object({
   EXPORT_TOKEN: z.string().min(24),
   IMPORT_TOKEN: z.string().min(24),
   DELETE_TOKEN: z.string().min(24),
+  SALES_USERNAME: z.string().min(8),
+  SALES_PASSWORD: z.string().min(24),
 });
 
 /**
@@ -41,6 +43,8 @@ const processEnv = {
   EXPORT_TOKEN: process.env.EXPORT_TOKEN,
   IMPORT_TOKEN: process.env.IMPORT_TOKEN,
   DELETE_TOKEN: process.env.DELETE_TOKEN,
+  SALES_USERNAME: process.env.SALES_ADMIN_USERNAME,
+  SALES_PASSWORD: process.env.SALES_ADMIN_PASSWORD,
   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
 };
 
@@ -67,7 +71,7 @@ if (!!process.env.SKIP_ENV_VALIDATION == false) {
   if (parsed.success === false) {
     console.error(
       "❌ Invalid environment variables:",
-      parsed.error.flatten().fieldErrors,
+      parsed.error.flatten().fieldErrors
     );
     throw new Error("Invalid environment variables");
   }
@@ -81,7 +85,7 @@ if (!!process.env.SKIP_ENV_VALIDATION == false) {
         throw new Error(
           process.env.NODE_ENV === "production"
             ? "❌ Attempted to access a server-side environment variable on the client"
-            : `❌ Attempted to access server-side environment variable '${prop}' on the client`,
+            : `❌ Attempted to access server-side environment variable '${prop}' on the client`
         );
       return target[/** @type {keyof typeof target} */ (prop)];
     },

@@ -120,3 +120,52 @@ export class Extras {
     this.totalBanquetTicketsWanted = totalBanquetTicketsWanted;
   }
 }
+
+export class Exhibitor {
+  id: string;
+  name: string;
+  organizationNumber: string;
+  invoiceEmail: string;
+  logoWhite: string | undefined;
+  logoColor: string | undefined;
+  description: string;
+  package: string;
+  extraTables: number;
+  extraChairs: number;
+  extraDrinkCoupons: number;
+  extraRepresentativeSpots: number;
+  totalBanquetTicketsWanted: number;
+  jobOfferId: string;
+
+  constructor(
+    id: string,
+    exhibitorName: string,
+    organizationNumber: string,
+    invoiceEmail: string,
+    logoWhite: string | undefined,
+    logoColor: string | undefined,
+    description: string,
+    exhibitorPackage: string,
+    extraTables: number,
+    extraChairs: number,
+    extraDrinkCoupons: number,
+    extraRepresentativeSpots: number,
+    totalBanquetTicketsWanted: number,
+    jobOfferId: string
+  ) {
+    this.id = id;
+    this.name = exhibitorName;
+    this.organizationNumber = organizationNumber;
+    this.invoiceEmail = invoiceEmail;
+    this.logoWhite = logoWhite;
+    this.logoColor = logoColor;
+    this.description = description;
+    this.package = exhibitorPackage;
+    this.extraTables = extraTables;
+    this.extraChairs = extraChairs;
+    this.extraDrinkCoupons = extraDrinkCoupons;
+    this.extraRepresentativeSpots = extraRepresentativeSpots;
+    this.totalBanquetTicketsWanted = totalBanquetTicketsWanted;
+    this.jobOfferId = jobOfferId;
+  }
+}

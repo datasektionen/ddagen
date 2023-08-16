@@ -475,4 +475,29 @@ export default {
     subheader: "Pris: ",
     extra: "Läs mer",
   },
+  admin: {
+    login: {
+      title: "Logga In",
+      username: "Användarnamn",
+      password: "Lösenord",
+    },
+    sales: {
+      header: {
+        title: "Utställare",
+        name: "Namn",
+        logoWhite: "Vit Logga",
+        logoColour: "Logga m. färg",
+        description: "Beskrivning",
+        package: "Paket",
+        extras: {
+          name: "Tillägg",
+          chairs: "Stolar",
+          tables: "Bord",
+          drinkCoupons: "Barbongar",
+          representativeSpots: "Representantplatser",
+          banquetTickets: "Sittningsbiljette",
+        },
+      },
+    },
+  },
 };
