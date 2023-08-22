@@ -16,12 +16,13 @@ async function createCode(
   const loginCode = randomBytes(24).toString("base64url");
   // TODO: make url configurable
   const magicLink = "https://ddagen.se/logga-in?code=" + loginCode;
+  const validUntil = new Date(Date.now() + 1000 * 60 * 10); // 10 minutes
   await prisma.$transaction([
     prisma.loginCode.deleteMany({
       where: { userId: userId },
     }),
     prisma.loginCode.create({
-      data: { id: loginCode, userId: userId },
+      data: { id: loginCode, userId, validUntil },
     }),
   ]);
 
@@ -67,7 +68,7 @@ export const accountRouter = createTRPCRouter({
       } else {
         return { error: "invalidConfirmationCode" as const };
       }
-      if (loginCode.createdAt < new Date(Date.now() - 1000 * 60 * 10)) {
+      if (loginCode.validUntil < new Date()) {
         return { error: "invalidConfirmationCode" as const };
       }
 
