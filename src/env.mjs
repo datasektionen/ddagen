@@ -42,7 +42,7 @@ const processEnv = {
   EXPORT_TOKEN: process.env.EXPORT_TOKEN,
   IMPORT_TOKEN: process.env.IMPORT_TOKEN,
   DELETE_TOKEN: process.env.DELETE_TOKEN,
-  SALES_PASSWORD: process.env.SALES_ADMIN_PASSWORD,
+  SALES_PASSWORD: process.env.SALES_PASSWORD,
   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
 };
 
