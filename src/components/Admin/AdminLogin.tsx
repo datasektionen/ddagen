@@ -1,28 +1,16 @@
 import Locale from "@/locales";
-import { api } from "@/utils/api";
-import { useState, useEffect, Dispatch } from "react";
+import { useState } from "react";
 import { InputField } from "@/components/InputField";
 
 export function AdminLogin({
   t,
-  password,
-  setPassword,
-  setIsLoggedIn,
+  login,
 }: {
   t: Locale;
-  password: string;
-  setPassword: Dispatch<string>;
-  setIsLoggedIn: Dispatch<boolean>;
+  login: (password: string) => Promise<boolean>;
 }) {
-  const confirmSalesAdmin = api.account.confirmSalesAdmin.useMutation();
-
   const [error, setError] = useState(false);
-  const [username, setUsername] = useState("");
-
-  useEffect(() => {
-    if (confirmSalesAdmin.data == true) setIsLoggedIn(true);
-    else if (confirmSalesAdmin.data == false) setError(true);
-  }, [confirmSalesAdmin]);
+  const [password, setPassword] = useState("");
 
   function Submit({ value }: { value: string }) {
     return (
@@ -30,10 +18,10 @@ export function AdminLogin({
         type="submit"
         value={value}
         className="
-              bg-cerise transition-transform hover:scale-110 focus:scale-110
-              focus:outline-none text-white uppercase w-fit mx-auto py-2 px-10
-              rounded-full cursor-pointer disabled:cursor-wait disabled:grayscale
-            "
+          bg-cerise transition-transform hover:scale-110 focus:scale-110
+          focus:outline-none text-white uppercase w-fit mx-auto py-2 px-10
+          rounded-full cursor-pointer disabled:cursor-wait disabled:grayscale
+        "
       />
     );
   }
@@ -46,18 +34,11 @@ export function AdminLogin({
 
       <form
         className="flex flex-col gap-12 min-w-[325px]"
-        onSubmit={(e) => {
+        onSubmit={async (e) => {
           e.preventDefault();
-          confirmSalesAdmin.mutate({ username: username, password: password });
+          if (!await login(password)) setError(true);
         }}
       >
-        <InputField
-          name="username"
-          value={username}
-          type="text"
-          setValue={setUsername}
-          fields={{ username: t.admin.login.username }}
-        />
         <InputField
           name="password"
           value={password}

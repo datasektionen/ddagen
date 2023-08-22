@@ -64,8 +64,8 @@ model User {
 }
 
 model LoginCode {
-  id        String   @id @db.Char(32)
-  createdAt DateTime @default(now())
+  id         String   @id @db.Char(32)
+  validUntil DateTime
 
   userId String @unique
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)

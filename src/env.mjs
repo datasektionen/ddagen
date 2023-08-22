@@ -14,7 +14,6 @@ const server = z.object({
   EXPORT_TOKEN: z.string().min(24),
   IMPORT_TOKEN: z.string().min(24),
   DELETE_TOKEN: z.string().min(24),
-  SALES_USERNAME: z.string().min(8),
   SALES_PASSWORD: z.string().min(24),
 });
 
@@ -43,8 +42,7 @@ const processEnv = {
   EXPORT_TOKEN: process.env.EXPORT_TOKEN,
   IMPORT_TOKEN: process.env.IMPORT_TOKEN,
   DELETE_TOKEN: process.env.DELETE_TOKEN,
-  SALES_USERNAME: process.env.SALES_ADMIN_USERNAME,
-  SALES_PASSWORD: process.env.SALES_ADMIN_PASSWORD,
+  SALES_PASSWORD: process.env.SALES_PASSWORD,
   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
 };
 
