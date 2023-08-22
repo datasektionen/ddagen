@@ -1,8 +1,8 @@
 import { z } from "zod";
 import { getLocale } from "@/locales";
 import sendEmail from "@/utils/send-email";
-import { Prisma, type PrismaClient } from "@prisma/client";
-import { timingSafeEqual, randomBytes } from "crypto";
+import type { LoginCode, PrismaClient } from "@prisma/client";
+import { randomBytes } from "crypto";
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 
 async function createCode(
@@ -47,28 +47,25 @@ export const accountRouter = createTRPCRouter({
         where: { email: { equals: input.email, mode: "insensitive" } },
       });
       if (user && user.length == 1) {
-        // Note that we're not awaiting this, so that we don't leak whether or not the user
-        // exists through timing.
+        // NOTE: we're not awaiting this, so that we don't leak whether or not the user
+        // exists through timing. Also note that there will be some difference in timing whether
+        // we take this branch or not, but I can't be bothered to make it that good.
         createCode(ctx.prisma, user[0].id, input.email, input.locale);
       }
     }),
   finishLogin: publicProcedure
     .input(z.string())
     .mutation(async ({ input, ctx }) => {
+      const loginCodes = await ctx.prisma.$queryRaw<LoginCode[]>`
+        DELETE FROM login_codes
+        WHERE id = ${input}
+        RETURNING *
+      `;
       let loginCode;
-      try {
-        loginCode = await ctx.prisma.loginCode.delete({
-          where: { id: input },
-          include: { user: true },
-        });
-      } catch (e) {
-        if (
-          e instanceof Prisma.PrismaClientKnownRequestError &&
-          e.code === "P2025"
-        ) {
-          return { error: "invalidConfirmationCode" as const };
-        }
-        throw e;
+      if (loginCodes.length > 0) {
+        loginCode = loginCodes[0];
+      } else {
+        return { error: "invalidConfirmationCode" as const };
       }
       if (loginCode.createdAt < new Date(Date.now() - 1000 * 60 * 10)) {
         return { error: "invalidConfirmationCode" as const };
