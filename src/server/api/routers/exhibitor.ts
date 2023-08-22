@@ -458,7 +458,7 @@ export const exhibitorRouter = createTRPCRouter({
     }),
   getExhibitors: publicProcedure
     .input(z.string())
-    .query(async ({ input, ctx }) => {
+    .mutation(async ({ input, ctx }) => {
       const password = Buffer.from(env.SALES_PASSWORD);
       if (
         input.length == password.length &&

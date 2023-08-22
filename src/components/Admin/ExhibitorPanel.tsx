@@ -1,42 +1,14 @@
 import Locale from "@/locales";
-import { api } from "@/utils/api";
-import { useState, useEffect } from "react";
 import { Exhibitor } from "@/shared/Classes";
 import { addImageDetails } from "@/shared/addImageDetails";
 
 export function ExhibitorPanel({
   t,
-  password,
+  exhibitors,
 }: {
   t: Locale;
-  password: string;
+  exhibitors: Exhibitor[];
 }) {
-  const defaultExhibitor = new Exhibitor(
-    "",
-    "",
-    "",
-    "",
-    undefined,
-    undefined,
-    "",
-    "",
-    0,
-    0,
-    0,
-    0,
-    0,
-    ""
-  );
-  const [exhibitors, setExhibitors] = useState([defaultExhibitor]);
-
-  // Queries
-  const getExhibitors = api.exhibitor.getExhibitors.useQuery(password);
-
-  useEffect(() => {
-    if (!getExhibitors.isSuccess) return;
-    setExhibitors([defaultExhibitor].concat(getExhibitors.data));
-  }, [getExhibitors.isSuccess]);
-
   return (
     <div className="w-full h-full my-48 text-white">
       {/*Header*/}
@@ -61,7 +33,7 @@ export function ExhibitorPanel({
             className="[&>tr>td]:border-r-2 [&>tr>td]:border-t-2 [&>tr>td]:border-solid 
                       [&>tr>td]:border-white [&>tr>td]:p-4"
           >
-            {exhibitors.slice(1).map((exhibitor, i) => (
+            {exhibitors.map((exhibitor, i) => (
               <tr key={i}>
                 <td className="text-center break-words">{exhibitor.name}</td>
                 <td>
