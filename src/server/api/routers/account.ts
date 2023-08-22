@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { env } from "@/env.mjs";
 import { getLocale } from "@/locales";
 import sendEmail from "@/utils/send-email";
 import { Prisma, type PrismaClient } from "@prisma/client";
@@ -101,23 +100,6 @@ export const accountRouter = createTRPCRouter({
       `session=; Path=/; HttpOnly; SameSite=Lax; Secure`
     );
   }),
-  confirmSalesAdmin: publicProcedure
-    .input(
-      z.object({
-        username: z.string(),
-        password: z.string(),
-      })
-    )
-    .mutation(({ input }) => {
-      const username = Buffer.from(env.SALES_USERNAME);
-      const password = Buffer.from(env.SALES_PASSWORD);
-      return (
-        input.username.length == username.length &&
-        timingSafeEqual(Buffer.from(input.username), username) &&
-        input.password.length == password.length &&
-        timingSafeEqual(Buffer.from(input.password), password)
-      );
-    }),
 });
 
 // TODO: Unused login codes that expire are never cleaned up. This shouldn't be a huge problem,
