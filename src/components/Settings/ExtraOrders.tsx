@@ -195,7 +195,7 @@ export default function ExtraOrders({
         <div className="font-normal text-2xl">
           {exhibitorPackage.drinkCoupons + drinkCoupons}
         </div>
-        <div className="text-right text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
+        <div className="text-right text-white/90 [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
           {t.exhibitorSettings.table.row2.section2.warning +
             deadline.drinkCoupons}
         </div>
@@ -212,7 +212,7 @@ export default function ExtraOrders({
         <div className="font-normal text-2xl">
           {exhibitorPackage.tables + tables}
         </div>
-        <div className="text-right text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
+        <div className="text-right text-white/90 [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
           {t.exhibitorSettings.table.row2.section2.warning + deadline.tables}
         </div>
         {/* Section 2 */}
@@ -228,7 +228,7 @@ export default function ExtraOrders({
         <div className="font-normal text-2xl">
           {exhibitorPackage.chairs + chairs}
         </div>
-        <div className="text-right text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
+        <div className="text-right text-white/90 [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
           {t.exhibitorSettings.table.row2.section2.warning + deadline.chairs}
         </div>
         {/* Section 3 */}
@@ -256,7 +256,7 @@ export default function ExtraOrders({
         <div className="font-normal text-2xl">
           {exhibitorPackage.representatives + representatives}
         </div>
-        <div className="text-right text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
+        <div className="text-right text-white/90 [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
           {t.exhibitorSettings.table.row2.section2.warning +
             deadline.representatives}
         </div>
@@ -285,7 +285,7 @@ export default function ExtraOrders({
         <div className="font-normal text-2xl !border-transparent">
           {exhibitorPackage.banquetTickets + banquetTickets}
         </div>
-        <div className="text-right text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 !border-transparent text-base">
+        <div className="text-right text-white/90 [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 !border-transparent text-base">
           {t.exhibitorSettings.table.row2.section2.warning + deadline.banquet}
         </div>
       </div>
@@ -318,7 +318,7 @@ export default function ExtraOrders({
               {t.exhibitorSettings.table.row2.section2.titles.third}:{" "}
               {row.get + row.included}
             </div>
-            <div className="text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-normal">
+            <div className="text-white/90 [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-normal">
               {t.exhibitorSettings.table.row2.section2.warning + row.deadline}
             </div>
           </div>
