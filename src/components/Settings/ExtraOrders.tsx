@@ -192,7 +192,7 @@ export default function ExtraOrders({
             ? plusMinus(drinkCoupons, setDrinkCoupons, 10)
             : drinkCoupons}
         </div>
-        <div className="font-normal text-2xl">
+        <div className="font-normal text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] text-2xl">
           {exhibitorPackage.drinkCoupons + drinkCoupons}
         </div>
         <div className="text-right text-white/90 [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
@@ -209,7 +209,7 @@ export default function ExtraOrders({
         <div className="font-normal text-2xl">
           {editState ? plusMinus(tables, setTables, 1) : tables}
         </div>
-        <div className="font-normal text-2xl">
+        <div className="font-normal text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] text-2xl">
           {exhibitorPackage.tables + tables}
         </div>
         <div className="text-right text-white/90 [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
@@ -225,7 +225,7 @@ export default function ExtraOrders({
         <div className={"font-normal text-2xl"}>
           {editState ? plusMinus(chairs, setChairs, 1) : chairs}
         </div>
-        <div className="font-normal text-2xl">
+        <div className="font-normal text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] text-2xl">
           {exhibitorPackage.chairs + chairs}
         </div>
         <div className="text-right text-white/90 [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
@@ -253,7 +253,7 @@ export default function ExtraOrders({
               )
             : representatives}
         </div>
-        <div className="font-normal text-2xl">
+        <div className="font-normal text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] text-2xl">
           {exhibitorPackage.representatives + representatives}
         </div>
         <div className="text-right text-white/90 [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
@@ -282,7 +282,7 @@ export default function ExtraOrders({
               )
             : banquetTickets}
         </div>
-        <div className="font-normal text-2xl !border-transparent">
+        <div className="font-normal text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] text-2xl !border-transparent">
           {exhibitorPackage.banquetTickets + banquetTickets}
         </div>
         <div className="text-right text-white/90 [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 !border-transparent text-base">
@@ -315,8 +315,12 @@ export default function ExtraOrders({
                 : row.get}
             </div>
             <div>
-              {t.exhibitorSettings.table.row2.section2.titles.third}:{" "}
-              {row.get + row.included}
+              <p>
+                {t.exhibitorSettings.table.row2.section2.titles.third}:{" "}
+                <span className="text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)]">
+                  {row.get + row.included}
+                </span>
+              </p>
             </div>
             <div className="text-white/90 [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-normal">
               {t.exhibitorSettings.table.row2.section2.warning + row.deadline}
