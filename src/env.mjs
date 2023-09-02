@@ -11,8 +11,7 @@ const server = z.object({
   DATABASE_URL: z.string().url(),
   SPAM_API_KEY: z.string(),
   SPAM_URL: z.string().url(),
-  PLS_URL: z.string().url(),
-  PLS_OVERRIDE: z.enum(["true", "false"]).optional(),
+  PLS_URL: z.union([z.enum(["true", "false"]), z.string().url()]),
 });
 
 /**
@@ -38,7 +37,6 @@ const processEnv = {
   SPAM_API_KEY: process.env.SPAM_API_KEY,
   SPAM_URL: process.env.SPAM_URL,
   PLS_URL: process.env.PLS_URL,
-  PLS_OVERRIDE: process.env.PLS_OVERRIDE,
   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
 };
 

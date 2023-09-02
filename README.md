@@ -27,9 +27,9 @@ DATABASE_URL=postgresql://ddagen:ddagen@localhost:5432/ddagen?schema=public
 SPAM_API_KEY=2AkdhsQ9cTTSBKtNXdd6E07rqN8CFWvRqeY4GeAyXAn09urF
 SPAM_URL=https://spam.datasektionen.se/api/sendmail
 
-# In production: PLS_URL=https://pls.datasektionen.se
-# If this is set to "true" or "false", that value will be used instead of querying pls
-PLS_OVERRIDE=true
+# If this is set to "true" or "false", that value will be used instead of querying pls at the URL given.
+PLS_URL=true
+# Use `PLS_URL=https://pls.datasektionen.se` to use the real pls
 ```
 
 Install npm dependencies:

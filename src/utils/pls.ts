@@ -1,10 +1,13 @@
 import { env } from "@/env.mjs";
 
-type Permission = "write-exhibitors" | "read-registrations";
+type Permission = "read-exhibitors" | "write-exhibitors" | "read-registrations";
 
 export async function checkApiKey(permission: Permission, apiKey: string): Promise<boolean> {
-  if (typeof env.PLS_OVERRIDE == "string") {
-    return env.PLS_OVERRIDE == "true";
+  if (env.PLS_URL === "true") {
+    return true;
+  }
+  if (env.PLS_URL === "false") {
+    return false;
   }
 
   let allowed = false;
