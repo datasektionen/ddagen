@@ -23,16 +23,13 @@ Create a file called `.env` with contents like the following:
 ```bash
 DATABASE_URL=postgresql://ddagen:ddagen@localhost:5432/ddagen?schema=public
 
-# not used in development
+# These two are unused when NODE_ENV == "development", which it is when running `npm run dev`, but still must be set :)
 SPAM_API_KEY=2AkdhsQ9cTTSBKtNXdd6E07rqN8CFWvRqeY4GeAyXAn09urF
 SPAM_URL=https://spam.datasektionen.se/api/sendmail
 
-# can be almost anything, used to verify different endpoints
-EXPORT_TOKEN=aaaaaaaaaaaaaaaaaaaaaaaa
-IMPORT_TOKEN=aaaaaaaaaaaaaaaaaaaaaaaa
-DELETE_TOKEN=aaaaaaaaaaaaaaaaaaaaaaaa
-SALES_ADMIN_USERNAME=aaaaaaaa
-SALES_ADMIN_PASSWORD=aaaaaaaaaaaaaaaaaaaaaaaa
+# If this is set to "true" or "false", that value will be used instead of querying pls at the URL given.
+PLS_URL=true
+# Use `PLS_URL=https://pls.datasektionen.se` to use the real pls
 ```
 
 Install npm dependencies:
@@ -58,3 +55,12 @@ Lastly, start the thing:
 ```bash
 npm run dev
 ```
+
+## Other systems
+
+This website depends on spam (not spam2!) for sending emails in production (including at http://dev.ddagen.se).
+
+It also depends on pls for checking api keys, though this can be overriden by
+setting the `PLS_URL` to either `true` or `false`. API keys still have to be
+provided (usually in a header) when the route requires it, but the value it is
+given can be anything.

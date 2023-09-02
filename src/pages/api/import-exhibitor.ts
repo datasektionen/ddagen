@@ -1,24 +1,19 @@
 import { z } from "zod";
-import { env } from "@/env.mjs";
 import { prisma } from "@/server/db";
-import { timingSafeEqual } from "crypto";
 import sendEmail from "@/utils/send-email";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { validateOrganizationNumber } from "@/shared/validateOrganizationNumber";
-
-const importToken = Buffer.from(env.IMPORT_TOKEN);
+import * as pls from "@/utils/pls";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const authHeader = req.headers["authorization"];
   if (req.method !== "PUT") return res.status(405).end();
-  else if (
-    authHeader == undefined ||
-    authHeader.length != importToken.length ||
-    !timingSafeEqual(Buffer.from(authHeader), importToken)
-  ) {
+
+  const apiKey = req.headers["authorization"]?.split(" ")[1];
+  if (apiKey == undefined) return res.status(400).end();
+  if (!await pls.checkApiKey("write-exhibitors", apiKey)) {
     return res.status(402).end();
   }
 
@@ -118,7 +113,7 @@ export default async function handler(
       <p>The D-Dagen Team</p>
       `
     );
-  } catch (e) {}
+  } catch (e) { }
 
   res.status(200).end();
 }

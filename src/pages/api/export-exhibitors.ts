@@ -1,21 +1,16 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "@/server/db";
-import { env } from "@/env.mjs";
-import { timingSafeEqual } from "crypto";
-
-const exportToken = Buffer.from(env.EXPORT_TOKEN);
+import * as pls from "@/utils/pls";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const authHeader = req.headers["authorization"];
   if (req.method !== "GET") return res.status(405).end();
-  else if (
-    authHeader == undefined ||
-    authHeader.length != exportToken.length ||
-    !timingSafeEqual(Buffer.from(authHeader), exportToken)
-  ) {
+
+  const apiKey = req.headers["authorization"]?.split(" ")[1];
+  if (apiKey == undefined) return res.status(400).end();
+  if (!await pls.checkApiKey("read-registrations", apiKey)) {
     return res.status(402).end();
   }
 
@@ -50,7 +45,7 @@ function importExhibitors() {
   const res = UrlFetchApp.fetch("https://ddagen.se/api/export-exhibitors", {
     method: "GET",
     headers: {
-      'Authorization': <whatever env.EXPORT_TOKEN is>,
+      "Authorization": "Bearer TOKEN", // Needs to have `read-registrations` on ddagen in pls
     },
   });
 
@@ -63,8 +58,8 @@ function importExhibitors() {
 
   sheet.getRange(2, 1, data.length, 6).setValues(data.map(row => [
     row.name, "'" + row.organizationNumber, row.contactPerson, "'" + row.phoneNumber, row.email, row.createdAt,
-  ])).setBackground('#eee');
-  sheet.getRange(2 + data.length, 1, 1, 6).setBackground('orange');
+  ])).setBackground("#eee");
+  sheet.getRange(2 + data.length, 1, 1, 6).setBackground("orange");
 
   sheet.autoResizeColumns(1, 7);
 }
