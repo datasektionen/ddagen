@@ -4,14 +4,14 @@ import {
   protectedProcedure,
   publicProcedure,
 } from "@/server/api/trpc";
-import { env } from "@/env.mjs";
 import { validateOrganizationNumber } from "@/shared/validateOrganizationNumber";
 import { getLocale } from "@/locales";
 import { TRPCError } from "@trpc/server";
 import { Prisma } from "@prisma/client";
 import sendEmail from "@/utils/send-email";
 import { Exhibitor } from "@/shared/Classes";
-import { timingSafeEqual, randomUUID } from "crypto";
+import { randomUUID } from "crypto";
+import * as pls from "@/utils/pls";
 
 const foodPreferencesType = z.enum(["Representative", "Banquet"]);
 const foodPreferencesValue = z.enum([
@@ -459,32 +459,27 @@ export const exhibitorRouter = createTRPCRouter({
   getExhibitors: publicProcedure
     .input(z.string())
     .mutation(async ({ input, ctx }) => {
-      const password = Buffer.from(env.SALES_PASSWORD);
-      if (
-        input.length == password.length &&
-        timingSafeEqual(Buffer.from(input), password)
-      ) {
-        const exhibitors = await ctx.prisma.exhibitor.findMany();
-        return exhibitors.map(
-          (exhibitor) =>
-            new Exhibitor(
-              exhibitor.id,
-              exhibitor.name,
-              exhibitor.organizationNumber,
-              exhibitor.invoiceEmail,
-              exhibitor.logoWhite?.toString("base64"),
-              exhibitor.logoColor?.toString("base64"),
-              exhibitor.description,
-              exhibitor.package,
-              exhibitor.extraTables,
-              exhibitor.extraChairs,
-              exhibitor.extraDrinkCoupons,
-              exhibitor.extraRepresentativeSpots,
-              exhibitor.totalBanquetTicketsWanted,
-              exhibitor.jobOfferId
-            )
-        );
-      }
-      return [];
+      if (!await pls.checkApiKey("read-exhibitors", input)) return "invalid-password";
+
+      const exhibitors = await ctx.prisma.exhibitor.findMany();
+      return exhibitors.map(
+        (exhibitor) =>
+          new Exhibitor(
+            exhibitor.id,
+            exhibitor.name,
+            exhibitor.organizationNumber,
+            exhibitor.invoiceEmail,
+            exhibitor.logoWhite?.toString("base64"),
+            exhibitor.logoColor?.toString("base64"),
+            exhibitor.description,
+            exhibitor.package,
+            exhibitor.extraTables,
+            exhibitor.extraChairs,
+            exhibitor.extraDrinkCoupons,
+            exhibitor.extraRepresentativeSpots,
+            exhibitor.totalBanquetTicketsWanted,
+            exhibitor.jobOfferId
+          )
+      );
     }),
 });

@@ -7,9 +7,9 @@ export function AdminLogin({
   login,
 }: {
   t: Locale;
-  login: (password: string) => Promise<boolean>;
+  login: (password: string) => Promise<string | undefined>;
 }) {
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
   const [password, setPassword] = useState("");
 
   function Submit({ value }: { value: string }) {
@@ -36,7 +36,8 @@ export function AdminLogin({
         className="flex flex-col gap-12 min-w-[325px]"
         onSubmit={async (e) => {
           e.preventDefault();
-          if (!await login(password)) setError(true);
+          setError("");
+          setError(await login(password) ?? "");
         }}
       >
         <InputField
@@ -49,7 +50,7 @@ export function AdminLogin({
         <Submit value={t.login.confirm} />
       </form>
       {error && (
-        <p className="text-red-500 font-bold mt-6">{t.error.unknown}</p>
+        <p className="text-red-500 font-bold mt-6">{error}</p>
       )}
     </div>
   );

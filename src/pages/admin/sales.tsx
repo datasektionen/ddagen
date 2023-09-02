@@ -11,9 +11,15 @@ export default function Sales() {
   const [exhibitors, setExhibitors] = useState<Exhibitor[]>([]);
 
   async function login(password: string) {
-    const exhibitors = await getExhibitors.mutateAsync(password);
-    setExhibitors(exhibitors);
-    return exhibitors.length > 0;
+    try {
+      const exhibitors = await getExhibitors.mutateAsync(password);
+      if (exhibitors === "invalid-password") {
+        return "invalid-password";
+      }
+      setExhibitors(exhibitors);
+    } catch (err) {
+      return "unknown-error " + err;
+    }
   }
 
   return (
