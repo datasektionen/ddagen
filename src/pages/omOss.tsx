@@ -91,23 +91,23 @@ function Team({
     <div
       className={`${
         reverse ? "flex-row-reverse" : "flex-row"
-      } flex px-[100px] mt-[100px] w-full`}
+      } flex mt-[100px] px-[20px] lg:px-[100px] flex-col lg:flex-row justify-center`}
     >
-      <div className="flex flex-col h-[900px]">
+      <div className="flex flex-col">
         <img src={teamPic} className=""></img>
-        <div className="bg-white  flex items-center justify-center h-full">
+        <div className="bg-white/80 lg:bg-white  flex items-center justify-center h-full">
           <p className="text-4xl text-cerise font-bold">{teamName}</p>
         </div>
       </div>
 
-      <div className="w-[1200px] bg-white/80 flex flex-col py-5 px-5 h-[900px] overflow-x-auto overflow-y-visible">
+      <div className=" lg:w-[1200px] bg-white/80 flex flex-col overflow-x-auto overflow-y-visible lg:h-[900px] lg:px-1 lg:py-10">
         {team.map((row, i) => (
-          <div className="flex flex-row justify-center gap-5">
+          <div className="flex flex-row justify-center gap-2">
             {row.map((image, j) => (
               <div className="flex flex-col items-center justify-center">
-                <img src={image} className="w-[150px] rounded-[20px]"></img>
-                <p className="text-center text-xl"> {names[i][j]}</p>
-                <p className="text-center text-lgs">{teamRoles[i][j]}</p>
+                <img src={image} className="h-[150px] lg:h-auto lg:w-[150px] rounded-[20px]"></img>
+                <p className="text-center text-xs lg:text-sm"> {names[i][j]}</p>
+                <p className="text-center text-xs lg:text-sm text-darkblue">{teamRoles[i][j]}</p>
                 <img
                   src="/img/linkedinIcon.svg"
                   className="justify-center h-[35px]"
