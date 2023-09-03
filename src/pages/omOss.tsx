@@ -105,12 +105,8 @@ function Team({
             {row.map((image, j) => (
               <div className="flex flex-col items-center justify-center">
                 <img src={image} className="h-[150px] lg:h-auto lg:w-[150px] rounded-[20px]"></img>
-                <p className="text-center text-xs lg:text-sm"> {names[i][j]}</p>
-                <p className="text-center text-xs lg:text-sm text-darkblue">{teamRoles[i][j]}</p>
-                <img
-                  src="/img/linkedinIcon.svg"
-                  className="justify-center h-[35px]"
-                ></img>
+                <p className="text-center text-xs lg:text-sm font-normal"> {names[i][j]}</p>
+                <p className="text-center text-xs lg:text-sm font-normal text-darkblue">{teamRoles[i][j]}</p>
               </div>
             ))}
           </div>
