@@ -95,7 +95,7 @@ function Team({
       <div className="flex flex-col">
         <img src={teamPic} className=""></img>
         <div className="bg-white/80 lg:bg-white  flex items-center justify-center h-full">
-          <p className="text-4xl text-cerise font-bold">{teamName}</p>
+          <p className="text-4xl text-cerise font-bold lg:px-[100px]">{teamName}</p>
         </div>
       </div>
 
