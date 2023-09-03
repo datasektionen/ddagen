@@ -13,25 +13,21 @@ const prTeam = [
     imagesPath + "adamPic.jpg",
     imagesPath + "annaPic.jpg",
   ],
-  [
-    imagesPath + "rikazPic.jpg",
-    imagesPath + "maryPic.jpg"],
+  [imagesPath + "rikazPic.jpg", imagesPath + "maryPic.jpg"],
 ];
 const saleTeam = [
-    [
-      imagesPath + "williamPic.jpg",
-      imagesPath + "linusPic.jpg",
-      imagesPath + "vilmerPic.jpg",
-    ],
-    [
-      imagesPath + "alexPic.jpg",
-      imagesPath + "rogerPic.jpg",
-      imagesPath + "elinPic.jpg",
-    ],
-    [
-      imagesPath + "toshidePic.jpg"
-    ],
-  ];
+  [
+    imagesPath + "williamPic.jpg",
+    imagesPath + "linusPic.jpg",
+    imagesPath + "vilmerPic.jpg",
+  ],
+  [
+    imagesPath + "alexPic.jpg",
+    imagesPath + "rogerPic.jpg",
+    imagesPath + "elinPic.jpg",
+  ],
+  [imagesPath + "toshidePic.jpg"],
+];
 
 const massTeam = [
   [
@@ -40,26 +36,17 @@ const massTeam = [
     imagesPath + "mortadaPic.jpg",
   ],
   [
-    imagesPath + "lydiaPic.jpg", 
+    imagesPath + "lydiaPic.jpg",
     imagesPath + "mimmiPic.jpg",
-    imagesPath + "dilanPic.jpg"
-
+    imagesPath + "dilanPic.jpg",
   ],
 ];
 
 const ecoNames = [["Christofer Gärtner", "Melissa Arslan"]];
 
-const managers = [
-    [
-        imagesPath + "axelPic.jpg",
-        imagesPath + "johanPic.jpg"
-    ]
-];
+const managers = [[imagesPath + "axelPic.jpg", imagesPath + "johanPic.jpg"]];
 const econonmyTeam = [
-    [
-        imagesPath + "christoferPic.jpg",
-        imagesPath + "melissaPic.jpg",
-    ]
+  [imagesPath + "christoferPic.jpg", imagesPath + "melissaPic.jpg"],
 ];
 
 const managersName = [["Axel Johansson", "Johan Abdi"]];
@@ -112,22 +99,24 @@ function Team({
           <p className="text-4xl text-cerise font-bold">{teamName}</p>
         </div>
       </div>
-      
-        <div className="w-[1200px] bg-white/80 flex flex-col py-5 px-5 h-[900px] overflow-x-auto overflow-y-visible">
-          {team.map((row, i) => (
-            <div className="flex flex-row justify-center gap-5">
-              {row.map((image, j) => (
-                <div className="flex flex-col items-center justify-center">
-                  <img src={image} className="w-[150px] rounded-[20px]"></img>
-                  <p className="text-center text-xl"> {names[i][j]}</p>
-                  <p className="text-center text-lgs">{teamRoles[i][j]}</p>
-                  <img src="/img/linkedinIcon.svg" className="justify-center h-[35px]"></img>
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-      
+
+      <div className="w-[1200px] bg-white/80 flex flex-col py-5 px-5 h-[900px] overflow-x-auto overflow-y-visible">
+        {team.map((row, i) => (
+          <div className="flex flex-row justify-center gap-5">
+            {row.map((image, j) => (
+              <div className="flex flex-col items-center justify-center">
+                <img src={image} className="w-[150px] rounded-[20px]"></img>
+                <p className="text-center text-xl"> {names[i][j]}</p>
+                <p className="text-center text-lgs">{teamRoles[i][j]}</p>
+                <img
+                  src="/img/linkedinIcon.svg"
+                  className="justify-center h-[35px]"
+                ></img>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -220,7 +209,6 @@ export default function AboutUs() {
         teamRoles={t.aboutUs.ddaRoles}
         teamName={t.aboutUs.teamNames[4]}
       />
-      
     </div>
   );
 }
