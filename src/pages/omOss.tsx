@@ -13,7 +13,7 @@ const prTeam = [
     imagesPath + "adamPic.jpg",
     imagesPath + "annaPic.jpg",
   ],
-  [imagesPath + "rikazPic.jpg", imagesPath + "maryPic.jpg"],
+  [imagesPath + "rikazPic.jpg", imagesPath + "maryPic.jpg", ""],
 ];
 const saleTeam = [
   [
@@ -53,7 +53,7 @@ const managersName = [["Axel Johansson", "Johan Abdi"]];
 const prNames = [
   ["Mathias Magnusson", "Olof", "Maria Tcyshkova"],
   ["Jakob Petterson", "Adam Egnell", "Anna Yang"],
-  ["Rikaz Nismi", "Mary Abeysekera"],
+  ["Rikaz Nismi", "Mary Abeysekera", "Ernest Umeh"],
 ];
 
 const salesNames = [

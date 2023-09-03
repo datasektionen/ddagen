@@ -509,7 +509,7 @@ export default {
     prTeamRoles: [
       ["Software Developer", "Social Media Manager", "PR Manager"],
       ["Art Director", "Web Developer", "Print Manager"],
-      ["Software Developer", "Art Director"]
+      ["Software Developer", "Art Director", "Lead Developer"]
     ],
     salesTeamRoles: [
       ["Salesperson", "Salesperson", "Sales Manager"],
