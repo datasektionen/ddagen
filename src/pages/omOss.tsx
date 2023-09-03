@@ -129,7 +129,10 @@ export default function AboutUs() {
         {" "}
         {t.aboutUs.header}
       </h1>
-      <div className="flex flex-row items-center justify-center px-[200px]">
+      {/*
+        Desktop version
+      */}
+      <div className="flex flex-row items-center justify-center px-[200px] hidden lg:block">
         <div className="px-[100px] mt-36 bg-[url('/img/grayKth.jpg')] bg-cover bg-no-repeat bg-center h-[600px] w-full flex items-center justify-center gap-5">
           <div className="flex flex-col">
             <div className="flex flex-row items-center justify-center mb-10">
@@ -160,11 +163,52 @@ export default function AboutUs() {
         </div>
       </div>
 
-      <div className="flex flex-row items-center justify-center px-[400px]">
+      {/*
+        Phone version version
+      */}
+      <div className="flex flex-row items-center justify-center lg:hidden">
+        <div className="px-[100px] mt-36 bg-[url('/img/grayKth.jpg')] bg-cover bg-no-repeat bg-center h-[150px]">
+          
+        </div>
+      </div>
+      <div className="flex flex-col px-[50px] mt-[100px] mb-[100px] lg:hidden">
+            <div className="flex flex-row items-center justify-center mb-10">
+              <div className="">
+                <h2 className="text-cerise text-xs font-medium">
+                  {" "}
+                  {t.aboutUs.info1}
+                </h2>
+                <p className="text-white text-xs">{t.aboutUs.paragraph1} </p>
+              </div>
+            </div>
+            <div className="flex flex-row">
+              <div className="">
+                <h2 className="text-cerise text-xs font-medium">
+                  {t.aboutUs.info2}
+                </h2>
+                <p className="text-white text-xs">{t.aboutUs.paragraph2}</p>
+              </div>
+
+              <div className="">
+                <h2 className="text-cerise text-xs  font-medium">
+                  {t.aboutUs.info3}
+                </h2>
+                <p className="text-white text-xs">{t.aboutUs.paragraph3}</p>
+              </div>
+            </div>
+          </div>
+
+      <div className="flex flex-row items-center justify-center px-[400px] hidden lg:block">
         <div className="px-[100px] mt-[100px] bg-[url('/img/groupPictures/projectGroup.jpg')] bg-cover bg-no-repeat bg-center h-[400px] w-full flex flex-row items-center justify-center">
           <p className="text-cerise text-8xl">{t.aboutUs.subHeader}</p>
         </div>
       </div>
+      <div className="flex flex-row items-center justify-center px-[10px] lg:hidden">
+        <div className="bg-[url('/img/groupPictures/projectGroup.jpg')] bg-cover bg-no-repeat bg-center items-center justify-center h-[200px] ">
+          <p className="text-cerise text-7xl text-center">{t.aboutUs.subHeader}</p>
+        </div>
+        </div>
+      
       <Team
         team={prTeam}
         reverse={false}
