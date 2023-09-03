@@ -36,7 +36,6 @@ const massTeam = [
     imagesPath + "mortadaPic.jpg",
   ],
   [
-    imagesPath + "lydiaPic.jpg",
     imagesPath + "mimmiPic.jpg",
     imagesPath + "dilanPic.jpg",
   ],
@@ -65,7 +64,7 @@ const salesNames = [
 
 const massNames = [
   ["Aziz Ali", "Oscar Witt", "Mortada Nasser"],
-  ["Lydia Brorsson", "Mimmi Weng", "Dilan Ismail"],
+  ["Mimmi Weng", "Dilan Ismail"],
 ];
 
 function Team({
@@ -230,7 +229,7 @@ export default function AboutUs() {
       <Team
         team={massTeam}
         reverse={false}
-        teamPic="/img/groupPictures/massTeam.jpg"
+        teamPic=""
         names={massNames}
         teamRoles={t.aboutUs.massTeamRoles}
         teamName={t.aboutUs.teamNames[2]}
