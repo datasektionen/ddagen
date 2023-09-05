@@ -29,7 +29,7 @@ export default function Contact() {
   const mails = [
     "ansvarig@ddagen.se",
     "ansvarig@ddagen.se",
-    "maria.tsychova@ddagen.se",
+    "maria.tsychkova@ddagen.se",
     "aziz.ali@ddagen.se",
     "vilmer.jonsson@ddagen.se",
     "melissa.arslan@ddagen.se",
