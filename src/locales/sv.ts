@@ -482,6 +482,7 @@ export default {
       password: "Lösenord",
     },
     sales: {
+      amountOfExhibitors: "Antalet Utställare",
       header: {
         title: "Utställare",
         name: "Namn",
