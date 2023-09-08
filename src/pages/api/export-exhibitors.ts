@@ -8,9 +8,9 @@ export default async function handler(
 ) {
   if (req.method !== "GET") return res.status(405).end();
 
-  const apiKey = req.headers["authorization"]?.split(" ")[1];
+  const apiKey = req.headers["authorization"];
   if (apiKey == undefined) return res.status(400).end();
-  if (!await pls.checkApiKey("read-registrations", apiKey)) {
+  if (!(await pls.checkApiKey("read-registrations", apiKey))) {
     return res.status(402).end();
   }
 

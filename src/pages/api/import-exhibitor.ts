@@ -11,9 +11,9 @@ export default async function handler(
 ) {
   if (req.method !== "PUT") return res.status(405).end();
 
-  const apiKey = req.headers["authorization"]?.split(" ")[1];
+  const apiKey = req.headers["authorization"];
   if (apiKey == undefined) return res.status(400).end();
-  if (!await pls.checkApiKey("write-exhibitors", apiKey)) {
+  if (!(await pls.checkApiKey("write-exhibitors", apiKey))) {
     return res.status(402).end();
   }
 
@@ -34,6 +34,7 @@ export default async function handler(
     }),
     email: z.string(),
     exhibitorPackage: z.enum(["base", "sponsor", "headhunter", "premium"]),
+    sendEmailToExhibitor: z.boolean(),
   });
 
   const body = bodySchema.safeParse(req.body);
@@ -46,6 +47,7 @@ export default async function handler(
     organizationNumber,
     email,
     exhibitorPackage,
+    sendEmailToExhibitor,
   } = body.data;
 
   const exhibitor = await prisma.exhibitor.upsert({
@@ -102,18 +104,20 @@ export default async function handler(
   });
 
   try {
-    sendEmail(
-      email,
-      "D-Dagen Account Created",
-      `
-      <p>Hi!</p>
-      <p>We are pleased to confirm your exhibitor account has been created.</p>
-      <p>Visit ${"ddagen.se/utställare"} and use ${email} to log into your account.</p>
-      <p>Best regards,</p>
-      <p>The D-Dagen Team</p>
-      `
-    );
-  } catch (e) { }
+    if (sendEmailToExhibitor) {
+      sendEmail(
+        email,
+        "D-Dagen Account Created",
+        `
+        <p>Hi!</p>
+        <p>We are pleased to confirm your exhibitor account has been created.</p>
+        <p>Visit ${"ddagen.se/utställare"} and use ${email} to log into your account.</p>
+        <p>Best regards,</p>
+        <p>The D-Dagen Team</p>
+        `
+      );
+    }
+  } catch (e) {}
 
   res.status(200).end();
 }
