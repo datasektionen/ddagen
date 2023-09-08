@@ -127,6 +127,8 @@ export default {
           sponsor: "Sponsor",
           headhunter: "Head Hunter",
           premium: "Premium",
+          startup: "Startup",
+          main: "Huvudsponsor",
         },
         section1: {
           header: "Paket",
