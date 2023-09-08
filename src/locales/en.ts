@@ -499,5 +499,19 @@ export default {
         },
       },
     },
+    extraOrders: {
+      header: {
+        title: "Extra Orders",
+        extras: "Extras",
+        amount: "Amount",
+      },
+      row: {
+        tables: "Tables",
+        chairs: "Chairs",
+        drinkCoupons: "Drink Coupons",
+        representatives: "Representatives",
+        banquetTickets: "Banquet Tickets",
+      },
+    },
   },
 };

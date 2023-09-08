@@ -115,6 +115,14 @@ export class Package {
   }
 }
 
+export type ExhibitorExtras = {
+  tables: number,
+  chairs: number,
+  drinkCoupons: number,
+  representativeSpots: number,
+  banquetTicket: number,
+}
+
 export class Extras {
   extraChairs: number;
   extraTables: number;
@@ -185,3 +193,5 @@ export class Exhibitor {
     this.jobOfferId = jobOfferId;
   }
 }
+
+
