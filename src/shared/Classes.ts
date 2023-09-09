@@ -174,7 +174,7 @@ export function sortExhibitors(exhibitors: Exhibitor[]) {
   const sortList = [
     "main",
     "headhunter",
-    "sposor",
+    "sponsor",
     "premium",
     "base",
     "startup",
