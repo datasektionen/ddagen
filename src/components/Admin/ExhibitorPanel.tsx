@@ -1,6 +1,6 @@
 import Locale from "@/locales";
-import { Exhibitor } from "@/shared/Classes";
 import { addImageDetails } from "@/shared/addImageDetails";
+import { Exhibitor, sortExhibitors } from "@/shared/Classes";
 
 export function ExhibitorPanel({
   t,
@@ -40,7 +40,7 @@ export function ExhibitorPanel({
               className="[&>tr>td]:border-r-2 [&>tr>td]:border-t-2 [&>tr>td]:border-solid 
                       [&>tr>td]:border-white [&>tr>td]:p-4"
             >
-              {exhibitors.map((exhibitor, i) => (
+              {sortExhibitors(exhibitors).map((exhibitor, i) => (
                 <tr key={i}>
                   <td className="text-center break-words">{exhibitor.name}</td>
                   <td>
