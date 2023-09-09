@@ -27,16 +27,23 @@ model Exhibitor {
   name               String
   organizationNumber String @unique
 
-  invoiceEmail              String
-  logoWhite                 Bytes?
-  logoColor                 Bytes?
-  description               String
-  package                   Package
+  invoiceEmail String
+  logoWhite    Bytes?
+  logoColor    Bytes?
+  description  String
+  package      Package
+
   extraTables               Int
   extraChairs               Int
   extraDrinkCoupons         Int
   extraRepresentativeSpots  Int
   totalBanquetTicketsWanted Int
+
+  customTables               Int
+  customChairs               Int
+  customDrinkCoupons         Int
+  customRepresentativeSpots  Int
+  customBanquetTicketsWanted Int
 
   foodPreferencess FoodPreferences[]
   users            User[]

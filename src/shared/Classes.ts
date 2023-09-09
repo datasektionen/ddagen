@@ -97,6 +97,20 @@ export class Package {
         break;
     }
   }
+
+  addCustomOrders(
+    tables: number,
+    chairs: number,
+    drinkCoupons: number,
+    representatives: number,
+    banquetTickets: number
+  ) {
+    this.tables += tables;
+    this.chairs += chairs;
+    this.drinkCoupons += drinkCoupons;
+    this.representatives += representatives;
+    this.banquetTickets += banquetTickets;
+  }
 }
 
 export class Extras {
@@ -111,7 +125,7 @@ export class Extras {
     extraTables: number,
     extraDrinkCoupons: number,
     extraRepresentativeSpots: number,
-    totalBanquetTicketsWanted: number,
+    totalBanquetTicketsWanted: number
   ) {
     this.extraChairs = extraChairs;
     this.extraTables = extraTables;

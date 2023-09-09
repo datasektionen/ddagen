@@ -65,6 +65,11 @@ export default async function handler(
       extraDrinkCoupons: 0,
       extraRepresentativeSpots: 0,
       totalBanquetTicketsWanted: 0,
+      customTables: 0,
+      customChairs: 0,
+      customDrinkCoupons: 0,
+      customRepresentativeSpots: 0,
+      customBanquetTicketsWanted: 0,
       foodPreferencess: undefined,
       jobOffers: {
         create: {
