@@ -111,7 +111,7 @@ export class Extras {
     extraTables: number,
     extraDrinkCoupons: number,
     extraRepresentativeSpots: number,
-    totalBanquetTicketsWanted: number,
+    totalBanquetTicketsWanted: number
   ) {
     this.extraChairs = extraChairs;
     this.extraTables = extraTables;
@@ -168,4 +168,18 @@ export class Exhibitor {
     this.totalBanquetTicketsWanted = totalBanquetTicketsWanted;
     this.jobOfferId = jobOfferId;
   }
+}
+
+export function sortExhibitors(exhibitors: Exhibitor[]) {
+  const sortList = [
+    "main",
+    "headhunter",
+    "sposor",
+    "premium",
+    "base",
+    "startup",
+  ];
+  return exhibitors.sort((a, b) => {
+    return sortList.indexOf(a.package) - sortList.indexOf(b.package);
+  });
 }
