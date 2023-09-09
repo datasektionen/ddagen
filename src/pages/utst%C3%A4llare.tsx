@@ -67,7 +67,16 @@ export default function Exhibitor() {
 
   useEffect(() => {
     if (!getExhibitor.isSuccess) return;
-    setExhibitorPackage(new Package(t, getExhibitor.data.package));
+    const exhibitor = getExhibitor.data;
+    const exhibitorPackage = new Package(t, exhibitor.package);
+    exhibitorPackage.addCustomOrders(
+      exhibitor.customTables,
+      exhibitor.customChairs,
+      exhibitor.customDrinkCoupons,
+      exhibitor.customRepresentativeSpots,
+      exhibitor.customBanquetTicketsWanted
+    );
+    setExhibitorPackage(exhibitorPackage);
   }, [getExhibitor.isSuccess]);
 
   useEffect(() => {
