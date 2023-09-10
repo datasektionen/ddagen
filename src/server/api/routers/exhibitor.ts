@@ -126,6 +126,11 @@ export const exhibitorRouter = createTRPCRouter({
       where: { id: ctx.session.user.exhibitorId },
       select: {
         package: true,
+        customTables: true,
+        customChairs: true,
+        customDrinkCoupons: true,
+        customRepresentativeSpots: true,
+        customBanquetTicketsWanted: true,
       },
     });
   }),

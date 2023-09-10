@@ -97,16 +97,6 @@ export default function ExtraOrders({
 
   const rows = [
     {
-      name: t.exhibitorSettings.table.row2.section2.drinkCoupons,
-      included: exhibitorPackage.drinkCoupons,
-      get: drinkCoupons,
-      set: setDrinkCoupons,
-      disableCondition: false,
-      disableConditionMessage: "",
-      increment: 10,
-      deadline: deadline.drinkCoupons,
-    },
-    {
       name: t.exhibitorSettings.table.row2.section2.tables,
       included: exhibitorPackage.tables,
       get: tables,
@@ -125,6 +115,16 @@ export default function ExtraOrders({
       disableConditionMessage: "",
       increment: 1,
       deadline: deadline.chairs,
+    },
+    {
+      name: t.exhibitorSettings.table.row2.section2.drinkCoupons,
+      included: exhibitorPackage.drinkCoupons,
+      get: drinkCoupons,
+      set: setDrinkCoupons,
+      disableCondition: false,
+      disableConditionMessage: "",
+      increment: 10,
+      deadline: deadline.drinkCoupons,
     },
     {
       name: t.exhibitorSettings.table.row2.section2.representatives,
@@ -182,6 +182,38 @@ export default function ExtraOrders({
 
         {/* Section 1 */}
         <div className="text-left">
+          {t.exhibitorSettings.table.row2.section2.tables}:
+        </div>
+        <div className="font-normal text-2xl">{exhibitorPackage.tables}</div>
+        <div className="font-normal text-2xl">
+          {editState ? plusMinus(tables, setTables, 1) : tables}
+        </div>
+        <div className="font-normal text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] text-2xl">
+          {exhibitorPackage.tables + tables}
+        </div>
+        <div className="text-right text-white/90 [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
+          {t.exhibitorSettings.table.row2.section2.warning + deadline.tables}
+        </div>
+        {/* Section 1 */}
+
+        {/* Section 2 */}
+        <div className="text-left">
+          {t.exhibitorSettings.table.row2.section2.chairs}:
+        </div>
+        <div className="font-normal text-2xl">{exhibitorPackage.chairs}</div>
+        <div className={"font-normal text-2xl"}>
+          {editState ? plusMinus(chairs, setChairs, 1) : chairs}
+        </div>
+        <div className="font-normal text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] text-2xl">
+          {exhibitorPackage.chairs + chairs}
+        </div>
+        <div className="text-right text-white/90 [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
+          {t.exhibitorSettings.table.row2.section2.warning + deadline.chairs}
+        </div>
+        {/* Section 2 */}
+
+        {/* Section 3 */}
+        <div className="text-left">
           {t.exhibitorSettings.table.row2.section2.drinkCoupons}:
         </div>
         <div className="font-normal text-2xl">
@@ -198,38 +230,6 @@ export default function ExtraOrders({
         <div className="text-right text-white/90 [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
           {t.exhibitorSettings.table.row2.section2.warning +
             deadline.drinkCoupons}
-        </div>
-        {/* Section 1 */}
-
-        {/* Section 2 */}
-        <div className="text-left">
-          {t.exhibitorSettings.table.row2.section2.tables}:
-        </div>
-        <div className="font-normal text-2xl">{exhibitorPackage.tables}</div>
-        <div className="font-normal text-2xl">
-          {editState ? plusMinus(tables, setTables, 1) : tables}
-        </div>
-        <div className="font-normal text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] text-2xl">
-          {exhibitorPackage.tables + tables}
-        </div>
-        <div className="text-right text-white/90 [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
-          {t.exhibitorSettings.table.row2.section2.warning + deadline.tables}
-        </div>
-        {/* Section 2 */}
-
-        {/* Section 3 */}
-        <div className="text-left">
-          {t.exhibitorSettings.table.row2.section2.chairs}:
-        </div>
-        <div className="font-normal text-2xl">{exhibitorPackage.chairs}</div>
-        <div className={"font-normal text-2xl"}>
-          {editState ? plusMinus(chairs, setChairs, 1) : chairs}
-        </div>
-        <div className="font-normal text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] text-2xl">
-          {exhibitorPackage.chairs + chairs}
-        </div>
-        <div className="text-right text-white/90 [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
-          {t.exhibitorSettings.table.row2.section2.warning + deadline.chairs}
         </div>
         {/* Section 3 */}
 
