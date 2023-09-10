@@ -53,7 +53,7 @@ const managersName = [["Axel Johansson", "Johan Abdi"]];
 const prNames = [
   ["Mathias Magnusson", "Olof", "Maria Tcyshkova"],
   ["Jakob Petterson", "Adam Egnell", "Anna Yang"],
-  ["Rikaz Nismi", "Mary Abeysekera", "Ernest Umeh"],
+  ["Rikaz Nismi", "Mary Abeysekera"],
 ];
 
 const salesNames = [
