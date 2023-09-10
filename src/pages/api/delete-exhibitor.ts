@@ -9,9 +9,9 @@ export default async function handler(
 ) {
   if (req.method !== "DELETE") return res.status(405).end();
 
-  const apiKey = req.headers["authorization"]?.split(" ")[1];
+  const apiKey = req.headers["authorization"];
   if (apiKey == undefined) return res.status(400).end();
-  if (!await pls.checkApiKey("write-exhibitors", apiKey)) {
+  if (!(await pls.checkApiKey("write-exhibitors", apiKey))) {
     return res.status(402).end();
   }
 
@@ -26,14 +26,14 @@ export default async function handler(
 
   await prisma.jobOffers.deleteMany({
     where: {
-        exhibitor: { organizationNumber: organizationNumber },
-    }
+      exhibitor: { organizationNumber: organizationNumber },
+    },
   });
 
   await prisma.exhibitor.deleteMany({
     where: {
       organizationNumber: organizationNumber,
-    }
+    },
   });
 
   res.status(200).end();
