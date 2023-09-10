@@ -59,17 +59,17 @@ export class Package {
         this.name = t.exhibitorSettings.table.row2.packages.main;
         this.tables = 1;
         this.chairs = 1;
-        this.drinkCoupons = 30;
-        this.representatives = 4;
-        this.banquetTickets = 4;
+        this.drinkCoupons = 20;
+        this.representatives = 6;
+        this.banquetTickets = 0;
         break;
       case "base":
         this.name = t.exhibitorSettings.table.row2.packages.base;
         this.tables = 1;
         this.chairs = 1;
-        this.drinkCoupons = 20;
-        this.representatives = 6;
-        this.banquetTickets = 0;
+        this.drinkCoupons = 10;
+        this.representatives = 2;
+        this.banquetTickets = 2;
         break;
       case "sponsor":
         this.name = t.exhibitorSettings.table.row2.packages.sponsor;

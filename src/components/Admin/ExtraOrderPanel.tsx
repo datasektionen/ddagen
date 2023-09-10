@@ -32,13 +32,7 @@ export function ExtraOrderPanel({
   }, [exhibitors]);
 
   return (
-    <div className="w-full h-full mt-48 mb-36 text-white">
-      {/*Header*/}
-      <h1 className="uppercase text-cerise text-3xl md:text-5xl font-medium text-center px-[10px] break-words">
-        {t.admin.extraOrders.header.title}
-      </h1>
-      {/*Header*/}
-
+    <div className="w-full h-full text-white">
       <div className="flex flex-col items-center justify-center mt-16">
         <div>
           <table className="block bg-slate-50 bg-opacity-20 border-collapse border-2 border-solid border-white">
