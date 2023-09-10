@@ -126,6 +126,8 @@ export default {
           sponsor: "Sponsor",
           headhunter: "Head Hunter",
           premium: "Premium",
+          startup: "Startup",
+          main: "Main Sponsor",
         },
         section1: {
           header: "Package",
@@ -495,6 +497,20 @@ export default {
           representativeSpots: "Representative Spots",
           banquetTickets: "Banquet Tickets",
         },
+      },
+    },
+    extraOrders: {
+      header: {
+        title: "Extra Orders",
+        extras: "Extras",
+        amount: "Amount",
+      },
+      row: {
+        tables: "Tables",
+        chairs: "Chairs",
+        drinkCoupons: "Drink Coupons",
+        representatives: "Representatives",
+        banquetTickets: "Banquet Tickets",
       },
     },
   },

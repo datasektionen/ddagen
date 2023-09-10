@@ -92,10 +92,12 @@ model Session {
 }
 
 enum Package {
+  main
   base
   sponsor
-  headhunter
   premium
+  startup
+  headhunter
 }
 
 model FoodPreferences {

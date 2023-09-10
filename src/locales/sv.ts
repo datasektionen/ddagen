@@ -127,6 +127,8 @@ export default {
           sponsor: "Sponsor",
           headhunter: "Head Hunter",
           premium: "Premium",
+          startup: "Startup",
+          main: "Huvudsponsor",
         },
         section1: {
           header: "Paket",
@@ -134,7 +136,7 @@ export default {
           catalogue: "Katalog",
         },
         section2: {
-          header: "Extrabeställningar",
+          header: "Extra Beställningar",
           titles: {
             first: "I ert paket ingår",
             second: "Tillval",
@@ -498,6 +500,20 @@ export default {
           representativeSpots: "Representantplatser",
           banquetTickets: "Sittningsbiljette",
         },
+      },
+    },
+    extraOrders: {
+      header: {
+        title: "Extra Beställningar",
+        extras: "Tillägg",
+        amount: "Antal",
+      },
+      row: {
+        tables: "Bord",
+        chairs: "Stolar",
+        drinkCoupons: "Barbongar",
+        representatives: "Representanter",
+        banquetTickets: "Sittningsbiljetter",
       },
     },
   },

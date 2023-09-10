@@ -10,20 +10,8 @@ export function ExhibitorPanel({
   exhibitors: Exhibitor[];
 }) {
   return (
-    <div className="w-full h-full my-48 text-white">
-      {/*Header*/}
-      <h1 className="uppercase text-cerise text-3xl md:text-5xl font-medium text-center px-[10px] break-words">
-        {t.admin.sales.header.title}
-      </h1>
-      {/*Header*/}
-
+    <div className="w-full h-full text-white">
       <div className="flex flex-col items-center justify-center mt-16">
-        <div className="text-xl mb-10 font-medium">
-          <p>
-            {t.admin.sales.amountOfExhibitors}:&nbsp;
-            <span className="text-cerise">{exhibitors.length}</span>
-          </p>
-        </div>
         <div>
           <table className="block bg-slate-50 bg-opacity-20 border-collapse border-2 border-solid border-white">
             <thead className="[&>tr>th]:border-r-2 [&>tr>th]:border-solid [&>tr>th]:border-white [&>tr>th]:py-2 [&>tr>th]:px-8 ">

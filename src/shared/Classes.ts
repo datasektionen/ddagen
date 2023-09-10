@@ -55,6 +55,14 @@ export class Package {
 
   constructor(t: Locale, exhibitorPackage: string) {
     switch (exhibitorPackage) {
+      case "main":
+        this.name = t.exhibitorSettings.table.row2.packages.main;
+        this.tables = 1;
+        this.chairs = 1;
+        this.drinkCoupons = 20;
+        this.representatives = 6;
+        this.banquetTickets = 0;
+        break;
       case "base":
         this.name = t.exhibitorSettings.table.row2.packages.base;
         this.tables = 1;
@@ -87,6 +95,14 @@ export class Package {
         this.representatives = 4;
         this.banquetTickets = 4;
         break;
+      case "startup":
+        this.name = t.exhibitorSettings.table.row2.packages.startup;
+        this.tables = 1;
+        this.chairs = 1;
+        this.drinkCoupons = 0;
+        this.representatives = 2;
+        this.banquetTickets = 0;
+        break;
       default:
         this.name = "";
         this.tables = 0;
@@ -111,6 +127,14 @@ export class Package {
     this.representatives += representatives;
     this.banquetTickets += banquetTickets;
   }
+}
+
+export type ExhibitorExtras = {
+  tables: number,
+  chairs: number,
+  drinkCoupons: number,
+  representativeSpots: number,
+  banquetTicket: number,
 }
 
 export class Extras {
