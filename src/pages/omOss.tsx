@@ -129,7 +129,11 @@ export default function AboutUs() {
       */}
       <div className="flex flex-row items-center justify-center px-[200px] hidden lg:block">
         <div className="px-[100px] mt-36 bg-[url('/img/grayKth.jpg')] bg-cover bg-no-repeat bg-center h-[600px] w-full flex items-center justify-center gap-5">
-          <div className="flex flex-col">
+          
+        </div>
+      </div>
+      <div className="px-[200px] mt-[50px] hidden lg:block">
+      <div className="flex flex-col">
             <div className="flex flex-row items-center justify-center mb-10">
               <div className="">
                 <h2 className="text-cerise text-xl font-medium">
@@ -155,8 +159,7 @@ export default function AboutUs() {
               </div>
             </div>
           </div>
-        </div>
-      </div>
+          </div>
 
       {/*
         Phone version version
