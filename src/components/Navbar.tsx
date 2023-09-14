@@ -94,7 +94,7 @@ function Group({
           className={
             "block absolute -z-10 " +
             (hovered
-              ? "bg-[#666474] bg-opacity-60 rounded-md -top-[50px] -left-[20px] wr-24 w-[calc(100%+40px)]"
+              ? "bg-[#666474] bg-opacity-60 rounded-md -top-[50px] -left-[20px] w-full max-w-[120%]"
               : "")
           }
         />
