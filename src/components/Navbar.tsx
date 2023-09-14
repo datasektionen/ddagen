@@ -90,11 +90,11 @@ function Group({
     >
       <div className="lg:flex relative flex-row hidden">
         <div
-          style={{ height: 70 + links.length * 40, width: longestWord * 13 }}
+          style={{ height: 70 + links.length * 40, width: `${longestWord}em` }}
           className={
             "block absolute -z-10 " +
             (hovered
-              ? "bg-[#666474] bg-opacity-60 rounded-md -top-[50px] -left-[20px] w-[calc(100%+40px)]"
+              ? "bg-[#666474] bg-opacity-60 rounded-md -top-[50px] -left-[20px] wr-24 w-[calc(100%+40px)]"
               : "")
           }
         />
@@ -303,9 +303,12 @@ export default function Navbar() {
             lg:px-0 bg-black lg:bg-transparent lg:ml-auto
           "
           >
-            <NavLink class="hidden lg:block px-14 lg:px-4 p-4" href="/kontakt">
-              {t.contact}
-            </NavLink>
+            <Group
+              links={[
+                { href: "/kontakt", text: t.contact },
+                { href: "/om-oss", text: t.about },
+              ]}
+            />
             <Link
               className="bg-cerise py-2.5 px-4 rounded-full text-center hover:scale-105 transition-transform"
               href="/företagsanmälan"

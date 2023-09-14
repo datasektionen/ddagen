@@ -232,7 +232,7 @@ export default {
     home: "Hem",
     forCompanies: "För företag",
     forStudents: "För studenter",
-    about: "Om D-Dagen",
+    about: "Om Oss",
     companyForm: "Företagsanmälan",
     changeLanguage: "Ändra språk till engelska",
     contact: "Kontakt",

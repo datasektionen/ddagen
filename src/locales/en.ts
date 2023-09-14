@@ -232,7 +232,7 @@ export default {
     home: "Home",
     forCompanies: "For companies",
     forStudents: "For students",
-    about: "About D-Dagen",
+    about: "About",
     companyForm: "Exhibitor Registration",
     changeLanguage: "Change language to Swedish",
     contact: "Contact",
