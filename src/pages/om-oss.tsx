@@ -152,7 +152,7 @@ export default function AboutUs() {
               <p className="text-white text-lg">{t.aboutUs.paragraph1} </p>
             </div>
           </div>
-          <div className="flex flex-row">
+          <div className="flex flex-row gap-10">
             <div>
               <h2 className="text-cerise text-xl font-medium">
                 {t.aboutUs.info2}
@@ -183,7 +183,7 @@ export default function AboutUs() {
             <p className="text-white text-xs">{t.aboutUs.paragraph1} </p>
           </div>
         </div>
-        <div className="flex flex-row">
+        <div className="flex flex-row gap-5">
           <div>
             <h2 className="text-cerise text-xs font-medium">
               {t.aboutUs.info2}
