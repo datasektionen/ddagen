@@ -32,7 +32,7 @@ export default async function handler(
       }
       return orgNum.value;
     }),
-    email: z.string(),
+    email: z.string().trim(),
     exhibitorPackage: z.enum([
       "main",
       "base",
