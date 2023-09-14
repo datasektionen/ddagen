@@ -87,7 +87,7 @@ function Team({
     <div
       className={`${
         reverse ? "flex-row-reverse" : "flex-row"
-      } flex mt-[100px] px-[20px] lg:px-[100px] flex-col lg:flex-row justify-center`}
+      } flex mt-[100px] px-[20px] lg:px-[100px] flex-col lg:flex-row justify-center lg:h-[700px]`}
     >
       <div className="flex flex-col">
         <img src={teamPic} className=""></img>
@@ -98,9 +98,9 @@ function Team({
         </div>
       </div>
 
-      <div className=" pt-5 lg:w-[1300px] bg-white/80 flex flex-col overflow-x-auto overflow-y-visible lg:h-[900px] lg:py-10 gap-10">
+      <div className=" pt-5 lg:w-[1300px] bg-white/80 flex flex-col overflow-x-auto overflow-y-visible lg:py-10 gap-10">
         {team.map((row, i) => (
-          <div className="flex flex-row gap-2 justify-center ">
+          <div className="flex flex-row gap-2 justify-center  pb-10">
             {row.map((image, j) => (
               <div className="flex flex-col">
                 <div className=" w-[90px] sm:w-[100px] lg:w-[100px]  xl:w-[120px] 2xl:w-[150px]">
@@ -215,7 +215,7 @@ export default function AboutUs() {
 
       <Team
         team={saleTeam}
-        reverse={true}
+        reverse={false}
         teamPic="/img/groupPictures/salesTeam.jpg"
         names={salesNames}
         teamRoles={t.aboutUs.salesTeamRoles}
