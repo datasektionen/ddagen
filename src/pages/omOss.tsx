@@ -51,15 +51,15 @@ const econonmyTeam = [
 const managersName = [["Axel Johansson", "Johan Abdi"]];
 
 const prNames = [
-  ["Mathias Magnusson", "Olof", "Maria Tcyshkova"],
+  ["Mathias Magnusson", "Olof Bargholtz Melcherson", "Maria Tcyshkova"],
   ["Jakob Petterson", "Adam Egnell", "Anna Yang"],
   ["Rikaz Nismi", "Mary Abeysekera"],
 ];
 
 const salesNames = [
-  ["William Nordwall", "Linus Markström", "Vilmer"],
-  ["Alex", "Roger", "Elin"],
-  ["Toshide"],
+  ["William Nordwall", "Linus Markström", "Vilmer Jonsson"],
+  ["Alexandre Moch", "Roger Chen", "Elin Gudmunsson"],
+  ["Toshihide Sakao"],
 ];
 
 const massNames = [
