@@ -35,10 +35,7 @@ const massTeam = [
     imagesPath + "oscarPic.jpg",
     imagesPath + "mortadaPic.jpg",
   ],
-  [
-    imagesPath + "mimmiPic.jpg",
-    imagesPath + "dilanPic.jpg",
-  ],
+  [imagesPath + "mimmiPic.jpg", imagesPath + "dilanPic.jpg"],
 ];
 
 const ecoNames = [["Christofer Gärtner", "Melissa Arslan"]];
@@ -95,7 +92,9 @@ function Team({
       <div className="flex flex-col">
         <img src={teamPic} className=""></img>
         <div className="bg-white/80 lg:bg-white  flex items-center justify-center h-full">
-          <p className="text-4xl text-cerise font-bold lg:px-[100px]">{teamName}</p>
+          <p className="text-4xl text-cerise font-bold lg:px-[100px]">
+            {teamName}
+          </p>
         </div>
       </div>
 
@@ -105,11 +104,16 @@ function Team({
             {row.map((image, j) => (
               <div className="flex flex-col">
                 <div className=" w-[90px] sm:w-[100px] lg:w-[100px]  xl:w-[120px] 2xl:w-[150px]">
-                <img src={image} className=" rounded-[20px]"></img>
-                <div className="mt-2">
-                <p className="text-center text-xs lg:text-sm font-medium"> {names[i][j]}</p>
-                <p className="text-center text-xs lg:text-sm font-medium text-cerise">{teamRoles[i][j]}</p>
-                </div>
+                  <img src={image} className=" rounded-[20px]"></img>
+                  <div className="mt-2">
+                    <p className="text-center text-xs lg:text-sm font-medium">
+                      {" "}
+                      {names[i][j]}
+                    </p>
+                    <p className="text-center text-xs lg:text-sm font-medium text-cerise">
+                      {teamRoles[i][j]}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
@@ -132,70 +136,74 @@ export default function AboutUs() {
         Desktop version
       */}
       <div className="flex justify-center mt-[100px] px-10">
-      <img className="xl:w-[800px] lg:w-[700px] md:w-[600px] w-[500px] rounded-3xl" src="/img/groupPictures/projectGroup.jpg"></img>
+        <img
+          className="xl:w-[800px] lg:w-[700px] md:w-[600px] w-[500px] rounded-3xl"
+          src="/img/groupPictures/projectGroup.jpg"
+        ></img>
       </div>
       <div className="px-[200px] mt-[50px] hidden lg:block">
-      <div className="flex flex-col">
-            <div className="flex flex-row items-center justify-center mb-10">
-              <div className="">
-                <h2 className="text-cerise text-xl font-medium">
-                  {" "}
-                  {t.aboutUs.info1}
-                </h2>
-                <p className="text-white text-lg">{t.aboutUs.paragraph1} </p>
-              </div>
+        <div className="flex flex-col">
+          <div className="flex flex-row items-center justify-center mb-10">
+            <div className="">
+              <h2 className="text-cerise text-xl font-medium">
+                {" "}
+                {t.aboutUs.info1}
+              </h2>
+              <p className="text-white text-lg">{t.aboutUs.paragraph1} </p>
             </div>
-            <div className="flex flex-row">
-              <div className="">
-                <h2 className="text-cerise text-xl font-medium">
-                  {t.aboutUs.info2}
-                </h2>
-                <p className="text-white text-lg">{t.aboutUs.paragraph2}</p>
-              </div>
+          </div>
+          <div className="flex flex-row">
+            <div className="">
+              <h2 className="text-cerise text-xl font-medium">
+                {t.aboutUs.info2}
+              </h2>
+              <p className="text-white text-lg">{t.aboutUs.paragraph2}</p>
+            </div>
 
-              <div className="">
-                <h2 className="text-cerise text-xl  font-medium">
-                  {t.aboutUs.info3}
-                </h2>
-                <p className="text-white text-lg">{t.aboutUs.paragraph3}</p>
-              </div>
+            <div className="">
+              <h2 className="text-cerise text-xl  font-medium">
+                {t.aboutUs.info3}
+              </h2>
+              <p className="text-white text-lg">{t.aboutUs.paragraph3}</p>
             </div>
           </div>
-          </div>
+        </div>
+      </div>
 
       {/*
         Phone version version
-      */}      
+      */}
       <div className="flex flex-col px-[50px] mt-[100px] mb-[100px] lg:hidden">
-            <div className="flex flex-row items-center justify-center mb-10">
-              <div className="">
-                <h2 className="text-cerise text-xs font-medium">
-                  {" "}
-                  {t.aboutUs.info1}
-                </h2>
-                <p className="text-white text-xs">{t.aboutUs.paragraph1} </p>
-              </div>
-            </div>
-            <div className="flex flex-row">
-              <div className="">
-                <h2 className="text-cerise text-xs font-medium">
-                  {t.aboutUs.info2}
-                </h2>
-                <p className="text-white text-xs">{t.aboutUs.paragraph2}</p>
-              </div>
-
-              <div className="">
-                <h2 className="text-cerise text-xs  font-medium">
-                  {t.aboutUs.info3}
-                </h2>
-                <p className="text-white text-xs">{t.aboutUs.paragraph3}</p>
-              </div>
-            </div>
+        <div className="flex flex-row items-center justify-center mb-10">
+          <div className="">
+            <h2 className="text-cerise text-xs font-medium">
+              {" "}
+              {t.aboutUs.info1}
+            </h2>
+            <p className="text-white text-xs">{t.aboutUs.paragraph1} </p>
+          </div>
+        </div>
+        <div className="flex flex-row">
+          <div className="">
+            <h2 className="text-cerise text-xs font-medium">
+              {t.aboutUs.info2}
+            </h2>
+            <p className="text-white text-xs">{t.aboutUs.paragraph2}</p>
           </div>
 
-      
-      <p className="text-cerise text-4xl font-normal uppercase text-center mt-[200px]">{t.aboutUs.subHeader}</p>
-      
+          <div className="">
+            <h2 className="text-cerise text-xs  font-medium">
+              {t.aboutUs.info3}
+            </h2>
+            <p className="text-white text-xs">{t.aboutUs.paragraph3}</p>
+          </div>
+        </div>
+      </div>
+
+      <p className="text-cerise text-4xl font-normal uppercase text-center mt-[200px]">
+        {t.aboutUs.subHeader}
+      </p>
+
       <Team
         team={prTeam}
         reverse={false}
