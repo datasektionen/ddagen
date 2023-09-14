@@ -99,7 +99,7 @@ function Team({
         </div>
       </div>
 
-      <div className="lg:w-[1300px] bg-white/80 flex flex-col overflow-x-auto overflow-y-visible lg:h-[900px] lg:py-10 gap-10">
+      <div className=" pt-5 lg:w-[1300px] bg-white/80 flex flex-col overflow-x-auto overflow-y-visible lg:h-[900px] lg:py-10 gap-10">
         {team.map((row, i) => (
           <div className="flex flex-row gap-2 justify-center ">
             {row.map((image, j) => (

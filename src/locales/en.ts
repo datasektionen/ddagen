@@ -526,6 +526,6 @@ export default {
     ddaRoles: [
       ["DDA", "DDA"] // Assuming DDA remains the same without context.
     ],
-    teamNames: ["PR Team", "Sales Team", "Exhibition Team", "Finance Team", "D-Day Managers"],
+    teamNames: ["PR Team", "Sales Team", "Exhibition Team", "Finance Team", "D-Dagen Managers"],
   },
 };
