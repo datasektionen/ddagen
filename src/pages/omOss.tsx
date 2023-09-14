@@ -127,10 +127,8 @@ export default function AboutUs() {
       {/*
         Desktop version
       */}
-      <div className="flex flex-row items-center justify-center px-[200px] hidden lg:block">
-        <div className="px-[100px] mt-36 bg-[url('/img/grayKth.jpg')] bg-cover bg-no-repeat bg-center h-[600px] w-full flex items-center justify-center gap-5">
-          
-        </div>
+      <div className="flex justify-center mt-10 px-10">
+      <img className="xl:w-[800px] lg:w-[700px] md:w-[600px] w-[500px] rounded-3xl" src="/img/groupPictures/projectGroup.jpg"></img>
       </div>
       <div className="px-[200px] mt-[50px] hidden lg:block">
       <div className="flex flex-col">
@@ -163,12 +161,7 @@ export default function AboutUs() {
 
       {/*
         Phone version version
-      */}
-      <div className="flex flex-row items-center justify-center lg:hidden">
-        <div className="px-[100px] mt-36 bg-[url('/img/grayKth.jpg')] bg-cover bg-no-repeat bg-center h-[150px]">
-          
-        </div>
-      </div>
+      */}      
       <div className="flex flex-col px-[50px] mt-[100px] mb-[100px] lg:hidden">
             <div className="flex flex-row items-center justify-center mb-10">
               <div className="">
@@ -196,16 +189,8 @@ export default function AboutUs() {
             </div>
           </div>
 
-      <div className="flex flex-row items-center justify-center px-[400px] hidden lg:block">
-        <div className="px-[100px] mt-[100px] bg-[url('/img/groupPictures/projectGroup.jpg')] bg-cover bg-no-repeat bg-center h-[400px] w-full flex flex-row items-center justify-center">
-          <p className="text-cerise text-8xl">{t.aboutUs.subHeader}</p>
-        </div>
-      </div>
-      <div className="flex flex-row items-center justify-center px-[10px] lg:hidden">
-        <div className="bg-[url('/img/groupPictures/projectGroup.jpg')] bg-cover bg-no-repeat bg-center items-center justify-center h-[200px] ">
-          <p className="text-cerise text-7xl text-center">{t.aboutUs.subHeader}</p>
-        </div>
-        </div>
+      
+      <p className="text-cerise text-8xl text-center mt-[200px]">{t.aboutUs.subHeader}</p>
       
       <Team
         team={prTeam}
