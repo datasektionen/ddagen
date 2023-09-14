@@ -144,7 +144,7 @@ export default function AboutUs() {
       <div className="px-[200px] mt-[50px] hidden lg:block">
         <div className="flex flex-col">
           <div className="flex flex-row items-center justify-center mb-10">
-            <div className="">
+            <div>
               <h2 className="text-cerise text-xl font-medium">
                 {" "}
                 {t.aboutUs.info1}
@@ -153,14 +153,14 @@ export default function AboutUs() {
             </div>
           </div>
           <div className="flex flex-row">
-            <div className="">
+            <div>
               <h2 className="text-cerise text-xl font-medium">
                 {t.aboutUs.info2}
               </h2>
               <p className="text-white text-lg">{t.aboutUs.paragraph2}</p>
             </div>
 
-            <div className="">
+            <div>
               <h2 className="text-cerise text-xl  font-medium">
                 {t.aboutUs.info3}
               </h2>
@@ -175,7 +175,7 @@ export default function AboutUs() {
       */}
       <div className="flex flex-col px-[50px] mt-[100px] mb-[100px] lg:hidden">
         <div className="flex flex-row items-center justify-center mb-10">
-          <div className="">
+          <div>
             <h2 className="text-cerise text-xs font-medium">
               {" "}
               {t.aboutUs.info1}
@@ -184,14 +184,14 @@ export default function AboutUs() {
           </div>
         </div>
         <div className="flex flex-row">
-          <div className="">
+          <div>
             <h2 className="text-cerise text-xs font-medium">
               {t.aboutUs.info2}
             </h2>
             <p className="text-white text-xs">{t.aboutUs.paragraph2}</p>
           </div>
 
-          <div className="">
+          <div>
             <h2 className="text-cerise text-xs  font-medium">
               {t.aboutUs.info3}
             </h2>
