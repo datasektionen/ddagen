@@ -127,7 +127,7 @@ export default function AboutUs() {
       {/*
         Desktop version
       */}
-      <div className="flex justify-center mt-10 px-10">
+      <div className="flex justify-center mt-[100px] px-10">
       <img className="xl:w-[800px] lg:w-[700px] md:w-[600px] w-[500px] rounded-3xl" src="/img/groupPictures/projectGroup.jpg"></img>
       </div>
       <div className="px-[200px] mt-[50px] hidden lg:block">
@@ -190,7 +190,7 @@ export default function AboutUs() {
           </div>
 
       
-      <p className="text-cerise text-8xl text-center mt-[200px]">{t.aboutUs.subHeader}</p>
+      <p className="text-cerise text-4xl font-normal uppercase text-center mt-[200px]">{t.aboutUs.subHeader}</p>
       
       <Team
         team={prTeam}
