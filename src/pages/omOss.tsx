@@ -99,14 +99,18 @@ function Team({
         </div>
       </div>
 
-      <div className=" lg:w-[1200px] bg-white/80 flex flex-col overflow-x-auto overflow-y-visible lg:h-[900px] lg:px-1 lg:py-10">
+      <div className="lg:w-[1300px] bg-white/80 flex flex-col overflow-x-auto overflow-y-visible lg:h-[900px] lg:py-10 gap-10">
         {team.map((row, i) => (
-          <div className="flex flex-row justify-center gap-2">
+          <div className="flex flex-row gap-2 justify-center ">
             {row.map((image, j) => (
-              <div className="flex flex-col items-center justify-center">
-                <img src={image} className="h-[150px] lg:h-auto lg:w-[150px] rounded-[20px]"></img>
+              <div className="flex flex-col">
+                <div className=" w-[90px] sm:w-[100px] lg:w-[100px]  xl:w-[120px] 2xl:w-[150px]">
+                <img src={image} className=" rounded-[20px]"></img>
+                <div className="mt-2">
                 <p className="text-center text-xs lg:text-sm font-normal"> {names[i][j]}</p>
                 <p className="text-center text-xs lg:text-sm font-normal text-darkblue">{teamRoles[i][j]}</p>
+                </div>
+                </div>
               </div>
             ))}
           </div>
