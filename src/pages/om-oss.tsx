@@ -100,9 +100,9 @@ function Team({
 
       <div className=" pt-5 lg:w-[1300px] bg-white/80 flex flex-col overflow-x-auto overflow-y-visible lg:py-10 gap-10">
         {team.map((row, i) => (
-          <div className="flex flex-row gap-2 justify-center  pb-3">
+          <div className="flex flex-row gap-2 justify-center  pb-3" key={row.toString()}>
             {row.map((image, j) => (
-              <div className="flex flex-col">
+              <div className="flex flex-col" key={image}>
                 <div className=" w-[90px] sm:w-[100px] lg:w-[100px]  xl:w-[120px] 2xl:w-[150px]">
                   <img src={image} className=" rounded-[20px]"></img>
                   <div className="mt-2">
