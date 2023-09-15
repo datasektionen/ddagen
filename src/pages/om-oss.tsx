@@ -135,12 +135,13 @@ export default function AboutUs() {
       {/*
         Desktop version
       */}
-      <div className="flex justify-center mt-[100px] px-10">
+      // TODO: Uncomment project group image
+      {/* <div className="flex justify-center mt-[100px] px-10">
         <img
           className="xl:w-[800px] lg:w-[700px] md:w-[600px] w-[500px] rounded-3xl"
           src="/img/groupPictures/projectGroup.jpg"
         ></img>
-      </div>
+      </div> */}
       <div className="px-[200px] mt-[50px] hidden lg:block">
         <div className="flex flex-col">
           <div className="flex flex-row items-center justify-center mb-10">
