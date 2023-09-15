@@ -516,6 +516,16 @@ export default {
         banquetTickets: "Sittningsbiljetter",
       },
     },
+    preferences: {
+      header: {
+        title: "Preferenser",
+        exhibitor: "Utställare",
+        name: "Namn",
+        choices: "Val",
+        comment: "Kommentar",
+        type: "Typ",
+      },
+    },
   },
   aboutUs:{
     header: "Om Oss",

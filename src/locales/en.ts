@@ -513,6 +513,16 @@ export default {
         banquetTickets: "Banquet Tickets",
       },
     },
+    preferences: {
+      header: {
+        title: "Preferences",
+        exhibitor: "Exhibitor",
+        name: "Name",
+        choices: "Choices",
+        comment: "Comment",
+        type: "Type",
+      },
+    },
   },
   aboutUs:{
     header: "About us",

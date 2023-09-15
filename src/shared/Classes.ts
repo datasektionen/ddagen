@@ -29,19 +29,22 @@ export class Preferences {
   value: ("Meat" | "Vegan" | "LactoseFree" | "GlutenFree")[];
   comment: string;
   type: "Representative" | "Banquet";
+  exhibitorId?: string;
 
   constructor(
     id: string | undefined,
     name: string,
     value: ("Meat" | "Vegan" | "LactoseFree" | "GlutenFree")[],
     comment: string,
-    type: "Representative" | "Banquet"
+    type: "Representative" | "Banquet",
+    exhibitorId?: string
   ) {
     this.id = id;
     this.name = name;
     this.value = value;
     this.comment = comment;
     this.type = type;
+    this.exhibitorId = exhibitorId;
   }
 }
 
@@ -130,12 +133,12 @@ export class Package {
 }
 
 export type ExhibitorExtras = {
-  tables: number,
-  chairs: number,
-  drinkCoupons: number,
-  representativeSpots: number,
-  banquetTicket: number,
-}
+  tables: number;
+  chairs: number;
+  drinkCoupons: number;
+  representativeSpots: number;
+  banquetTicket: number;
+};
 
 export class Extras {
   extraChairs: number;
@@ -219,5 +222,12 @@ export function sortExhibitors(exhibitors: Exhibitor[]) {
   ];
   return exhibitors.sort((a, b) => {
     return sortList.indexOf(a.package) - sortList.indexOf(b.package);
+  });
+}
+
+export function sortPreferences(preferences: Preferences[]) {
+  const sortList = ["Representative", "Banquet"];
+  return preferences.sort((a, b) => {
+    return sortList.indexOf(a.type) - sortList.indexOf(b.type);
   });
 }
