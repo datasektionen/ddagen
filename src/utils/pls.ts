@@ -1,6 +1,6 @@
 import { env } from "@/env.mjs";
 
-type Permission = "read-exhibitors" | "write-exhibitors" | "read-registrations";
+export type Permission = "read-exhibitors" | "write-exhibitors" | "read-registrations";
 
 export async function checkApiKey(permission: Permission, apiKey: string): Promise<boolean> {
   if (env.PLS_URL === "true") {

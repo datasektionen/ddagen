@@ -50,6 +50,7 @@ model Exhibitor {
 
   jobOfferId String    @unique
   jobOffers  JobOffers @relation(fields: [jobOfferId], references: [id], onDelete: Cascade)
+  sessions   Session[]
 
   @@map("exhibitors")
 }
@@ -85,8 +86,11 @@ model Session {
   createdAt DateTime @default(now())
   lastUsed  DateTime @default(now())
 
-  userId String @unique
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String? @unique
+  user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  exhibitorId String
+  exhibitor   Exhibitor @relation(fields: [exhibitorId], references: [id])
 
   @@map("sessions")
 }

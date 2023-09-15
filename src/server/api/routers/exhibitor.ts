@@ -9,9 +9,7 @@ import { getLocale } from "@/locales";
 import { TRPCError } from "@trpc/server";
 import { Prisma } from "@prisma/client";
 import sendEmail from "@/utils/send-email";
-import { Exhibitor, Preferences } from "@/shared/Classes";
 import { randomUUID } from "crypto";
-import * as pls from "@/utils/pls";
 
 const foodPreferencesType = z.enum(["Representative", "Banquet"]);
 const foodPreferencesValue = z.enum([
@@ -87,7 +85,7 @@ export const exhibitorRouter = createTRPCRouter({
     ),
   get: protectedProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.exhibitor.findUniqueOrThrow({
-      where: { id: ctx.session.user.exhibitorId },
+      where: { id: ctx.session.exhibitorId },
       select: {
         id: true,
         name: true,
@@ -110,7 +108,7 @@ export const exhibitorRouter = createTRPCRouter({
     )
     .mutation(async ({ ctx, input }) => {
       await ctx.prisma.exhibitor.update({
-        where: { id: ctx.session.user.exhibitorId },
+        where: { id: ctx.session.exhibitorId },
         data: {
           invoiceEmail: input.invoiceEmail,
           description: input.description,
@@ -123,7 +121,7 @@ export const exhibitorRouter = createTRPCRouter({
     }),
   getPackage: protectedProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.exhibitor.findUniqueOrThrow({
-      where: { id: ctx.session.user.exhibitorId },
+      where: { id: ctx.session.exhibitorId },
       select: {
         package: true,
         customTables: true,
@@ -136,7 +134,7 @@ export const exhibitorRouter = createTRPCRouter({
   }),
   getExtras: protectedProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.exhibitor.findUniqueOrThrow({
-      where: { id: ctx.session.user.exhibitorId },
+      where: { id: ctx.session.exhibitorId },
       select: {
         extraTables: true,
         extraChairs: true,
@@ -158,7 +156,7 @@ export const exhibitorRouter = createTRPCRouter({
     )
     .mutation(async ({ ctx, input }) => {
       await ctx.prisma.exhibitor.update({
-        where: { id: ctx.session.user.exhibitorId },
+        where: { id: ctx.session.exhibitorId },
         data: {
           extraChairs: input.extraChairs,
           extraTables: input.extraTables,
@@ -170,7 +168,7 @@ export const exhibitorRouter = createTRPCRouter({
     }),
   getDescription: protectedProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.exhibitor.findUniqueOrThrow({
-      where: { id: ctx.session.user.exhibitorId },
+      where: { id: ctx.session.exhibitorId },
       select: { description: true },
     });
   }),
@@ -178,13 +176,13 @@ export const exhibitorRouter = createTRPCRouter({
     .input(z.string())
     .mutation(async ({ ctx, input }) => {
       await ctx.prisma.exhibitor.update({
-        where: { id: ctx.session.user.exhibitorId },
+        where: { id: ctx.session.exhibitorId },
         data: { description: input },
       });
     }),
   getLogo: protectedProcedure.query(async ({ ctx }) => {
     const exhibitor = await ctx.prisma.exhibitor.findUniqueOrThrow({
-      where: { id: ctx.session.user.exhibitorId },
+      where: { id: ctx.session.exhibitorId },
       select: { logoWhite: true, logoColor: true },
     });
     return {
@@ -202,14 +200,14 @@ export const exhibitorRouter = createTRPCRouter({
     .mutation(async ({ ctx, input }) => {
       const logo = Buffer.from(input.b64data, "base64");
       await ctx.prisma.exhibitor.update({
-        where: { id: ctx.session.user.exhibitorId },
+        where: { id: ctx.session.exhibitorId },
         data:
           input.kind === "white" ? { logoWhite: logo } : { logoColor: logo },
       });
     }),
   getUsers: protectedProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.user.findMany({
-      where: { exhibitorId: ctx.session.user.exhibitorId },
+      where: { exhibitorId: ctx.session.exhibitorId },
     });
   }),
   setUsers: protectedProcedure
@@ -228,7 +226,7 @@ export const exhibitorRouter = createTRPCRouter({
       try {
         if (input.id) {
           await ctx.prisma.user.updateMany({
-            where: { id: input.id, exhibitorId: ctx.session.user.exhibitorId },
+            where: { id: input.id, exhibitorId: ctx.session.exhibitorId },
             data: {
               name: input.name,
               email: input.email,
@@ -242,7 +240,7 @@ export const exhibitorRouter = createTRPCRouter({
           await ctx.prisma.user.create({
             data: {
               id: id,
-              exhibitorId: ctx.session.user.exhibitorId,
+              exhibitorId: ctx.session.exhibitorId,
               name: input.name,
               email: input.email,
               phone: input.phone,
@@ -272,21 +270,14 @@ export const exhibitorRouter = createTRPCRouter({
   deleteUser: protectedProcedure
     .input(
       z.object({
-        id: z.string().optional(),
+        id: z.string(),
         locale: z.enum(["en", "sv"]),
       })
     )
     .mutation(async ({ ctx, input }) => {
       const t = getLocale(input.locale);
       try {
-        if (input.id == undefined) {
-          return {
-            ok: false,
-            error:
-              t.exhibitorSettings.table.row1.section3.alerts
-                .errorDeleteUserWithoutID,
-          };
-        } else if (input.id === ctx.session.user.id) {
+        if (ctx.session.userId && ctx.session.userId === input.id) {
           return {
             ok: false,
             error:
@@ -305,47 +296,25 @@ export const exhibitorRouter = createTRPCRouter({
       }
     }),
   getPreferenceCount: protectedProcedure.query(async ({ ctx }) => {
-    const counts: [{ banqcount: bigint; reprcount: bigint }] =
-      await ctx.prisma.$queryRaw(
-        Prisma.sql`
-        SELECT
-          sum(case when type = 'Banquet' then 1 else 0 end) AS BanqCount,
-          sum(case when type = 'Representative' then 1 else 0 end) AS ReprCount
-        FROM food_specifications
-        WHERE "exhibitorId" = ${ctx.session.user.exhibitorId}
-      `
-      );
+    const counts: [{ banqcount: bigint; reprcount: bigint }] = await ctx.prisma.$queryRaw`
+      SELECT
+        sum(case when type = 'Banquet' then 1 else 0 end) AS BanqCount,
+        sum(case when type = 'Representative' then 1 else 0 end) AS ReprCount
+      FROM food_specifications
+      WHERE "exhibitorId" = ${ctx.session.exhibitorId}
+    `;
 
     return {
       banqcount: Number(counts[0].banqcount),
       reprcount: Number(counts[0].reprcount),
     };
   }),
-  getAllFoodPreferences: publicProcedure
-    .input(z.string())
-    .mutation(async ({ input, ctx }) => {
-      if (!(await pls.checkApiKey("read-exhibitors", input)))
-        return "invalid-password";
-
-      const foodPreferences = await ctx.prisma.foodPreferences.findMany();
-      return foodPreferences.map(
-        (preference) =>
-          new Preferences(
-            preference.id,
-            preference.name,
-            preference.value,
-            preference.comment,
-            preference.type,
-            preference.exhibitorId
-          )
-      );
-    }),
   getFoodPreferences: protectedProcedure
     .input(foodPreferencesType)
     .query(async ({ input, ctx }) => {
       return await ctx.prisma.foodPreferences.findMany({
         where: {
-          exhibitorId: ctx.session.user.exhibitorId,
+          exhibitorId: ctx.session.exhibitorId,
           type: input,
         },
       });
@@ -374,7 +343,7 @@ export const exhibitorRouter = createTRPCRouter({
           await ctx.prisma.foodPreferences.updateMany({
             where: {
               id: input.id,
-              exhibitorId: ctx.session.user.exhibitorId,
+              exhibitorId: ctx.session.exhibitorId,
               type: input.type,
             },
             data: {
@@ -388,7 +357,7 @@ export const exhibitorRouter = createTRPCRouter({
           await ctx.prisma.foodPreferences.create({
             data: {
               id: id,
-              exhibitorId: ctx.session.user.exhibitorId,
+              exhibitorId: ctx.session.exhibitorId,
               name: input.name,
               value: input.value,
               comment: input.comment,
@@ -424,7 +393,7 @@ export const exhibitorRouter = createTRPCRouter({
           };
         }
         await ctx.prisma.foodPreferences.deleteMany({
-          where: { id: input.id, exhibitorId: ctx.session.user.exhibitorId },
+          where: { id: input.id, exhibitorId: ctx.session.exhibitorId },
         });
         return { ok: true };
       } catch (e) {
@@ -438,7 +407,7 @@ export const exhibitorRouter = createTRPCRouter({
   getJobOffers: protectedProcedure.query(async ({ ctx }) => {
     const exhibitor = await ctx.prisma.exhibitor.findUnique({
       where: {
-        id: ctx.session.user.exhibitorId,
+        id: ctx.session.exhibitorId,
       },
     });
 
@@ -462,7 +431,7 @@ export const exhibitorRouter = createTRPCRouter({
     .mutation(async ({ ctx, input }) => {
       const exhibitor = await ctx.prisma.exhibitor.findUnique({
         where: {
-          id: ctx.session.user.exhibitorId,
+          id: ctx.session.exhibitorId,
         },
       });
 
@@ -479,32 +448,5 @@ export const exhibitorRouter = createTRPCRouter({
           traineeProgram: input.traineeProgram,
         },
       });
-    }),
-  getExhibitors: publicProcedure
-    .input(z.string())
-    .mutation(async ({ input, ctx }) => {
-      if (!(await pls.checkApiKey("read-exhibitors", input)))
-        return "invalid-password";
-
-      const exhibitors = await ctx.prisma.exhibitor.findMany();
-      return exhibitors.map(
-        (exhibitor) =>
-          new Exhibitor(
-            exhibitor.id,
-            exhibitor.name,
-            exhibitor.organizationNumber,
-            exhibitor.invoiceEmail,
-            exhibitor.logoWhite?.toString("base64"),
-            exhibitor.logoColor?.toString("base64"),
-            exhibitor.description,
-            exhibitor.package,
-            exhibitor.extraTables,
-            exhibitor.extraChairs,
-            exhibitor.extraDrinkCoupons,
-            exhibitor.extraRepresentativeSpots,
-            exhibitor.totalBanquetTicketsWanted,
-            exhibitor.jobOfferId
-          )
-      );
     }),
 });

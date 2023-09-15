@@ -1,14 +1,28 @@
 import Locale from "@/locales";
 import { addImageDetails } from "@/shared/addImageDetails";
 import { Exhibitor, sortExhibitors } from "@/shared/Classes";
+import { api } from "@/utils/api";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export function ExhibitorPanel({
   t,
   exhibitors,
+  password,
 }: {
   t: Locale;
   exhibitors: Exhibitor[];
+  password: string;
 }) {
+  const router = useRouter();
+  const login = api.admin.login.useMutation();
+
+  useEffect(() => {
+    if (login.isSuccess) {
+      router.push("/utställare");
+    }
+  }, [login.isSuccess]);
+
   return (
     <div className="w-full h-full text-white">
       <div className="flex flex-col items-center justify-center">
@@ -31,12 +45,18 @@ export function ExhibitorPanel({
               </tr>
             </thead>
             <tbody
-              className="[&>tr>td]:border-2 [&>tr>td]:border-t-2 [&>tr>td]:border-solid 
+              className="[&>tr>td]:border-2 [&>tr>td]:border-t-2 [&>tr>td]:border-solid
                       [&>tr>td]:border-cerise [&>tr>td]:p-4"
             >
               {sortExhibitors(exhibitors).map((exhibitor, i) => (
                 <tr key={i}>
-                  <td className="text-center break-words">{exhibitor.name}</td>
+                  <td className="text-center break-words">
+                    <p>{exhibitor.name}</p>
+                    <button
+                      className="mt-2 bg-cerise bg-blue-500 py-1 px-2 rounded-md"
+                      onClick={() => login.mutate({ exhibitorId: exhibitor.id, password })}
+                    >Logga in</button>
+                  </td>
                   <td>
                     {exhibitor.logoWhite ? (
                       <img
