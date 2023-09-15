@@ -1,23 +1,34 @@
 import { useState } from "react";
 import { useLocale } from "@/locales";
-import { AdminLogin } from "../../components/Admin/AdminLogin";
-import { ExhibitorPanel } from "../../components/Admin/ExhibitorPanel";
-import { ExtraOrderPanel } from "../../components/Admin/ExtraOrderPanel";
+import ButtonGroup from "@/components/ButtonGroup";
+import { AdminLogin } from "@/components/Admin/AdminLogin";
+import { ExhibitorPanel } from "@/components/Admin/ExhibitorPanel";
+import { ExtraOrderPanel } from "@/components/Admin/ExtraOrderPanel";
+import { PreferencesPanel } from "@/components/Admin/PreferencesPanel";
+import { Exhibitor, Preferences } from "@/shared/Classes";
 import { api } from "@/utils/api";
-import type { Exhibitor } from "@/shared/Classes";
 
 export default function Sales() {
   const t = useLocale();
   const getExhibitors = api.exhibitor.getExhibitors.useMutation();
+  const getFoodPreferences = api.exhibitor.getAllFoodPreferences.useMutation();
+
   const [exhibitors, setExhibitors] = useState<Exhibitor[]>([]);
+  const [preferences, setPreferences] = useState<Preferences[]>([]);
+  const [buttonSelected, setButtonSelected] = useState<1 | 2 | 3>(1);
 
   async function login(password: string) {
     try {
       const exhibitors = await getExhibitors.mutateAsync(password);
-      if (exhibitors === "invalid-password") {
+      const foodPreferences = await getFoodPreferences.mutateAsync(password);
+      if (
+        exhibitors === "invalid-password" ||
+        foodPreferences === "invalid-password"
+      ) {
         return "invalid-password";
       }
       setExhibitors(exhibitors);
+      setPreferences(foodPreferences);
     } catch (err) {
       return "unknown-error " + err;
     }
@@ -33,15 +44,26 @@ export default function Sales() {
             {t.admin.sales.header.title}
           </h1>
 
-          <div className="text-center text-xl mt-10 font-medium">
-            <p>
-              {t.admin.sales.amountOfExhibitors}:&nbsp;
-              <span className="text-cerise">{exhibitors.length}</span>
-            </p>
-          </div>
+          <ButtonGroup
+            t={t}
+            buttonOneText="Exhibitors"
+            buttonTwoText="Extras"
+            buttonThreeText="Preferences"
+            buttonSelected={buttonSelected}
+            setButtonSelected={setButtonSelected}
+          />
 
-          <ExtraOrderPanel t={t} exhibitors={exhibitors} />
-          <ExhibitorPanel t={t} exhibitors={exhibitors} />
+          {buttonSelected == 1 ? (
+            <ExhibitorPanel t={t} exhibitors={exhibitors} />
+          ) : buttonSelected == 2 ? (
+            <ExtraOrderPanel t={t} exhibitors={exhibitors} />
+          ) : (
+            <PreferencesPanel
+              t={t}
+              exhibitors={exhibitors}
+              preferences={preferences}
+            />
+          )}
         </div>
       )}
     </div>

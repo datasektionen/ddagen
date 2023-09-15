@@ -9,7 +9,7 @@ import { getLocale } from "@/locales";
 import { TRPCError } from "@trpc/server";
 import { Prisma } from "@prisma/client";
 import sendEmail from "@/utils/send-email";
-import { Exhibitor } from "@/shared/Classes";
+import { Exhibitor, Preferences } from "@/shared/Classes";
 import { randomUUID } from "crypto";
 import * as pls from "@/utils/pls";
 
@@ -321,6 +321,25 @@ export const exhibitorRouter = createTRPCRouter({
       reprcount: Number(counts[0].reprcount),
     };
   }),
+  getAllFoodPreferences: publicProcedure
+    .input(z.string())
+    .mutation(async ({ input, ctx }) => {
+      if (!(await pls.checkApiKey("read-exhibitors", input)))
+        return "invalid-password";
+
+      const foodPreferences = await ctx.prisma.foodPreferences.findMany();
+      return foodPreferences.map(
+        (preference) =>
+          new Preferences(
+            preference.id,
+            preference.name,
+            preference.value,
+            preference.comment,
+            preference.type,
+            preference.exhibitorId
+          )
+      );
+    }),
   getFoodPreferences: protectedProcedure
     .input(foodPreferencesType)
     .query(async ({ input, ctx }) => {
@@ -464,7 +483,8 @@ export const exhibitorRouter = createTRPCRouter({
   getExhibitors: publicProcedure
     .input(z.string())
     .mutation(async ({ input, ctx }) => {
-      if (!await pls.checkApiKey("read-exhibitors", input)) return "invalid-password";
+      if (!(await pls.checkApiKey("read-exhibitors", input)))
+        return "invalid-password";
 
       const exhibitors = await ctx.prisma.exhibitor.findMany();
       return exhibitors.map(
