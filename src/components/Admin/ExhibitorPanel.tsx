@@ -11,10 +11,16 @@ export function ExhibitorPanel({
 }) {
   return (
     <div className="w-full h-full text-white">
-      <div className="flex flex-col items-center justify-center mt-16">
+      <div className="flex flex-col items-center justify-center">
+        <div className="text-center text-xl my-10 font-medium">
+          <p>
+            {t.admin.sales.amountOfExhibitors}:&nbsp;
+            <span className="text-cerise">{exhibitors.length}</span>
+          </p>
+        </div>
         <div>
-          <table className="block bg-slate-50 bg-opacity-20 border-collapse border-2 border-solid border-white">
-            <thead className="[&>tr>th]:border-r-2 [&>tr>th]:border-solid [&>tr>th]:border-white [&>tr>th]:py-2 [&>tr>th]:px-8 ">
+          <table className="block bg-slate-50 bg-opacity-20 border-collapse border-solid">
+            <thead className="[&>tr>th]:border-2 [&>tr>th]:border-solid [&>tr>th]:border-cerise [&>tr>th]:py-2 [&>tr>th]:px-8 ">
               <tr>
                 <th>{t.admin.sales.header.name}</th>
                 <th>{t.admin.sales.header.logoWhite}</th>
@@ -25,8 +31,8 @@ export function ExhibitorPanel({
               </tr>
             </thead>
             <tbody
-              className="[&>tr>td]:border-r-2 [&>tr>td]:border-t-2 [&>tr>td]:border-solid 
-                      [&>tr>td]:border-white [&>tr>td]:p-4"
+              className="[&>tr>td]:border-2 [&>tr>td]:border-t-2 [&>tr>td]:border-solid 
+                      [&>tr>td]:border-cerise [&>tr>td]:p-4"
             >
               {sortExhibitors(exhibitors).map((exhibitor, i) => (
                 <tr key={i}>
