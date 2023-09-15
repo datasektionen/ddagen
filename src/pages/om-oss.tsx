@@ -135,7 +135,6 @@ export default function AboutUs() {
       {/*
         Desktop version
       */}
-      // TODO: Uncomment project group image
       {/* <div className="flex justify-center mt-[100px] px-10">
         <img
           className="xl:w-[800px] lg:w-[700px] md:w-[600px] w-[500px] rounded-3xl"
