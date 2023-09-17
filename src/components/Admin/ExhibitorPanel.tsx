@@ -55,7 +55,7 @@ export function ExhibitorPanel({
                     <button
                       className="mt-2 bg-cerise bg-blue-500 py-1 px-2 rounded-md"
                       onClick={() => login.mutate({ exhibitorId: exhibitor.id, password })}
-                    >Logga in</button>
+                    >{t.admin.sales.login}</button>
                   </td>
                   <td>
                     {exhibitor.logoWhite ? (

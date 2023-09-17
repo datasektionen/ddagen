@@ -479,11 +479,12 @@ export default {
   },
   admin: {
     login: {
-      title: "Logga In",
+      title: "Logga in",
       username: "Användarnamn",
       password: "Lösenord",
     },
     sales: {
+      login: "Logga in",
       amountOfExhibitors: "Antalet Utställare",
       header: {
         title: "Utställare",
