@@ -10,12 +10,13 @@ import { api } from "@/utils/api";
 
 export default function Sales() {
   const t = useLocale();
-  const getExhibitors = api.exhibitor.getExhibitors.useMutation();
-  const getFoodPreferences = api.exhibitor.getAllFoodPreferences.useMutation();
-
+  const getExhibitors = api.admin.getExhibitors.useMutation();
   const [exhibitors, setExhibitors] = useState<Exhibitor[]>([]);
+  const getFoodPreferences = api.admin.getAllFoodPreferences.useMutation();
+
   const [preferences, setPreferences] = useState<Preferences[]>([]);
   const [buttonSelected, setButtonSelected] = useState<1 | 2 | 3>(1);
+  const [password, setPassword] = useState<string>("");
 
   async function login(password: string) {
     try {
@@ -29,6 +30,7 @@ export default function Sales() {
       }
       setExhibitors(exhibitors);
       setPreferences(foodPreferences);
+      setPassword(password);
     } catch (err) {
       return "unknown-error " + err;
     }
@@ -54,7 +56,7 @@ export default function Sales() {
           />
 
           {buttonSelected == 1 ? (
-            <ExhibitorPanel t={t} exhibitors={exhibitors} />
+            <ExhibitorPanel t={t} exhibitors={exhibitors} password={password} />
           ) : buttonSelected == 2 ? (
             <ExtraOrderPanel t={t} exhibitors={exhibitors} />
           ) : (

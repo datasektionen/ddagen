@@ -481,6 +481,7 @@ export default {
       password: "Password",
     },
     sales: {
+      login: "Log in",
       amountOfExhibitors: "Amount of Exhibitors",
       header: {
         title: "Exhibitors",

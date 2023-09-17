@@ -40,7 +40,12 @@ export function AddUser({
   }
 
   function deleteUserInDatabase() {
-    deleteUserMutation.mutate({ id: users[pos].id, locale: t.locale });
+    const id = users[pos].id;
+    if (!id) {
+      setErrorMessage(t.exhibitorSettings.table.row1.section3.alerts.errorDeleteUserWithoutID);
+      return;
+    }
+    deleteUserMutation.mutate({ id, locale: t.locale });
   }
 
   useEffect(() => {

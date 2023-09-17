@@ -72,12 +72,20 @@ export const accountRouter = createTRPCRouter({
         return { error: "invalidConfirmationCode" as const };
       }
 
+      const user = await ctx.prisma.user.findUnique({
+        where: { id: loginCode.userId },
+        select: { exhibitorId: true },
+      });
+      if (!user) {
+        return { error: "invalidConfirmationCode" as const };
+      }
+
       const [_, session] = await ctx.prisma.$transaction([
         ctx.prisma.session.deleteMany({
           where: { userId: loginCode.userId },
         }),
         ctx.prisma.session.create({
-          data: { userId: loginCode.userId },
+          data: { userId: loginCode.userId, exhibitorId: user.exhibitorId },
         }),
       ]);
 
