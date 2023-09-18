@@ -502,7 +502,7 @@ export default {
     },
     extraOrders: {
       header: {
-        title: "Extra Orders",
+        order: "Order",
         extras: "Extras",
         package: "Package",
         amount: "Amount",
@@ -524,6 +524,10 @@ export default {
         choices: "Choices",
         comment: "Comment",
         type: "Type",
+      },
+      types: {
+        representatives: "Representatives",
+        banquet: "Banquet",
       },
     },
   },

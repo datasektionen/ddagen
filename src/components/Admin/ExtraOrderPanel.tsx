@@ -54,11 +54,11 @@ export function ExtraOrderPanel({
       <div className="flex flex-col items-center justify-center mt-16">
         <div>
           <table className="block bg-slate-50 bg-opacity-20 border-collapse border-solid">
-            <thead className="[&>tr>th]:border-2 [&>tr>th]:border-solid [&>tr>th]:border-cerise [&>tr>th]:py-2 [&>tr>th]:px-8 ">
+            <thead className="[&>tr>th]:border-2 [&>tr>th]:border-solid [&>tr>th]:border-cerise [&>tr>th]:py-2 [&>tr>th]:px-8">
               <tr>
-                <th>{t.admin.extraOrders.header.extras}</th>
+                <th>{t.admin.extraOrders.header.order}</th>
                 <th>{t.admin.extraOrders.header.package}</th>
-                <th>{t.admin.extraOrders.header.amount}</th>
+                <th>{t.admin.extraOrders.header.extras}</th>
                 <th>{t.admin.extraOrders.header.total}</th>
               </tr>
             </thead>
