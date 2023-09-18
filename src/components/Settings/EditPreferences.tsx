@@ -2,7 +2,7 @@ import Locale from "@/locales";
 import { Dispatch } from "react";
 import { Preferences } from "../../shared/Classes";
 
-type Options = "Vegan" | "Meat" | "LactoseFree" | "GlutenFree";
+type Options = "Vegan" | "Meat" | "LactoseFree" | "GlutenFree" | "None";
 
 export function EditPreferences({
   t,
@@ -35,6 +35,8 @@ export function EditPreferences({
           break;
         case "GlutenFree":
           str += t.exhibitorSettings.table.row3.options.glutenFree + ", ";
+          break;          
+        case "None":
           break;
       }
     });

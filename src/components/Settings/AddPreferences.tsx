@@ -5,7 +5,7 @@ import { InputField } from "./InputField";
 import { type Dispatch, useState, useEffect, type FormEvent } from "react";
 import { Extras, Package, Preferences } from "@/shared/Classes";
 
-type Options = "Vegan" | "Meat" | "LactoseFree" | "GlutenFree";
+type Options = "Vegan" | "Meat" | "LactoseFree" | "GlutenFree" | "None";
 
 export function AddPreferences({
   t,
