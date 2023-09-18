@@ -205,6 +205,15 @@ export default function AboutUs() {
       </p>
 
       <Team
+        team={managers}
+        reverse={false}
+        teamPic="/img/groupPictures/bossTeam.jpg"
+        names={managersName}
+        teamRoles={t.aboutUs.ddaRoles}
+        teamName={t.aboutUs.teamNames[4]}
+      />
+
+      <Team
         team={prTeam}
         reverse={false}
         teamPic="/img/groupPictures/prTeam.jpg"
@@ -240,14 +249,7 @@ export default function AboutUs() {
         teamName={t.aboutUs.teamNames[3]}
       />
 
-      <Team
-        team={managers}
-        reverse={false}
-        teamPic="/img/groupPictures/bossTeam.jpg"
-        names={managersName}
-        teamRoles={t.aboutUs.ddaRoles}
-        teamName={t.aboutUs.teamNames[4]}
-      />
+      
     </div>
   );
 }
