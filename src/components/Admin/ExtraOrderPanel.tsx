@@ -52,8 +52,8 @@ export function ExtraOrderPanel({
   return (
     <div className="w-full h-full text-white">
       <div className="flex flex-col items-center justify-center mt-16">
-        <div>
-          <table className="block bg-slate-50 bg-opacity-20 border-collapse border-solid">
+        <div className="w-[60%]">
+          <table className="w-full bg-slate-50 bg-opacity-20 border-collapse border-solid">
             <thead className="[&>tr>th]:border-2 [&>tr>th]:border-solid [&>tr>th]:border-cerise [&>tr>th]:py-2 [&>tr>th]:px-8">
               <tr>
                 <th>{t.admin.extraOrders.header.order}</th>
