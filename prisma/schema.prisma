@@ -122,7 +122,6 @@ enum FoodPreferencesValue {
   Vegan
   LactoseFree
   GlutenFree
-  None
 }
 
 enum FoodPreferencesType {
