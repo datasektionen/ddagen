@@ -526,6 +526,7 @@ export default {
         comment: "Kommentar",
         type: "Typ",
       },
+      none: "Vegetariskt",
     },
   },
   aboutUs:{
