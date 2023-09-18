@@ -127,7 +127,7 @@ function Team({
 export default function AboutUs() {
   const t = useLocale();
   return (
-    <div className="pt-[200px] pb-[300px]">
+    <div className="pt-[200px] pb-[150px]">
       <h1 className="uppercase text-cerise text-5xl font-medium text-center">
         {" "}
         {t.aboutUs.header}
@@ -173,7 +173,7 @@ export default function AboutUs() {
       {/*
         Phone version version
       */}
-      <div className="flex flex-col px-[50px] mt-[100px] mb-[100px] lg:hidden">
+      <div className="flex flex-col px-[50px] mt-[50px] mb-[50px] lg:hidden">
         <div className="flex flex-row items-center justify-center mb-10">
           <div>
             <h2 className="text-cerise text-xs font-medium">
@@ -200,7 +200,7 @@ export default function AboutUs() {
         </div>
       </div>
 
-      <p className="text-cerise text-4xl font-normal uppercase text-center mt-[200px]">
+      <p className="text-cerise text-4xl font-normal uppercase text-center mt-[150px]">
         {t.aboutUs.subHeader}
       </p>
 
