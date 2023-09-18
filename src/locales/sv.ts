@@ -507,7 +507,9 @@ export default {
       header: {
         title: "Extra Beställningar",
         extras: "Tillägg",
+        package: "Package",
         amount: "Antal",
+        total: "Total"
       },
       row: {
         tables: "Bord",

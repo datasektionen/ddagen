@@ -177,6 +177,11 @@ export class Exhibitor {
   extraRepresentativeSpots: number;
   totalBanquetTicketsWanted: number;
   jobOfferId: string;
+  customTables: number;
+  customChairs: number;
+  customDrinkCoupons: number;
+  customRepresentativeSpots: number;
+  customBanquetTicketsWanted: number;
 
   constructor(
     id: string,
@@ -192,7 +197,12 @@ export class Exhibitor {
     extraDrinkCoupons: number,
     extraRepresentativeSpots: number,
     totalBanquetTicketsWanted: number,
-    jobOfferId: string
+    jobOfferId: string,
+    customTables: number,
+    customChairs: number,
+    customDrinkCoupons: number,
+    customRepresentativeSpots: number,
+    customBanquetTicketsWanted: number
   ) {
     this.id = id;
     this.name = exhibitorName;
@@ -208,6 +218,11 @@ export class Exhibitor {
     this.extraRepresentativeSpots = extraRepresentativeSpots;
     this.totalBanquetTicketsWanted = totalBanquetTicketsWanted;
     this.jobOfferId = jobOfferId;
+    this.customTables = customTables;
+    this.customChairs = customChairs;
+    this.customDrinkCoupons = customDrinkCoupons;
+    this.customRepresentativeSpots = customRepresentativeSpots;
+    this.customBanquetTicketsWanted = customBanquetTicketsWanted;
   }
 }
 

@@ -504,7 +504,9 @@ export default {
       header: {
         title: "Extra Orders",
         extras: "Extras",
+        package: "Package",
         amount: "Amount",
+        total: "Total",
       },
       row: {
         tables: "Tables",
@@ -525,35 +527,42 @@ export default {
       },
     },
   },
-  aboutUs:{
+  aboutUs: {
     header: "About us",
     subHeader: "Meet Project Group 2023",
-    paragraph1: "D-Dagen is an annual trade fair organized by the Computer Science Student Association at KTH (Royal Institute of Technology). At D-Dagen, companies have the opportunity to meet and interact with potential future employees from KTH. At the same time, we offer our students a chance to learn more about career opportunities, network, and participate in lectures and other company events.",
-    paragraph2: "D-Dagen started in 2015 with 35 participating companies. The following year, the fair moved to the Nymble student union building, which has been the venue for subsequent editions of D-Dagen. The fair has grown every year, except for the pandemic year of 2020. This year, we are aiming to have over 100 companies in attendance. We also expect around 3000 students to visit the fair.",
-    paragraph3: "Over time, D-Dagen has evolved into much more than just a one-day fair. In the weeks leading up to the fair, we give companies the opportunity to hold lunch lectures and other events together with our students. In the evening after the fair, we organize a larger dinner where students and company representatives can engage in more relaxed conversations.",
+    paragraph1:
+      "D-Dagen is an annual trade fair organized by the Computer Science Student Association at KTH (Royal Institute of Technology). At D-Dagen, companies have the opportunity to meet and interact with potential future employees from KTH. At the same time, we offer our students a chance to learn more about career opportunities, network, and participate in lectures and other company events.",
+    paragraph2:
+      "D-Dagen started in 2015 with 35 participating companies. The following year, the fair moved to the Nymble student union building, which has been the venue for subsequent editions of D-Dagen. The fair has grown every year, except for the pandemic year of 2020. This year, we are aiming to have over 100 companies in attendance. We also expect around 3000 students to visit the fair.",
+    paragraph3:
+      "Over time, D-Dagen has evolved into much more than just a one-day fair. In the weeks leading up to the fair, we give companies the opportunity to hold lunch lectures and other events together with our students. In the evening after the fair, we organize a larger dinner where students and company representatives can engage in more relaxed conversations.",
     info1: "What is D-Dagen",
     info2: "D-Dagen before",
     info3: "D-Dagen today",
     prTeamRoles: [
       ["Software Developer", "Social Media Manager", "PR Manager"],
       ["Art Director", "Web Developer", "Print Manager"],
-      ["Software Developer", "Art Director"]
+      ["Software Developer", "Art Director"],
     ],
     salesTeamRoles: [
       ["Salesperson", "Salesperson", "Sales Manager"],
       ["Sponsorship Manager", "Salesperson", "Salesperson"],
-      ["Salesperson"]
+      ["Salesperson"],
     ],
     massTeamRoles: [
       ["Fair Manager", "Logistics Manager", "Venue Manager"],
-      ["Event Manager", "Lounge Manager", "HR Manager"]
+      ["Event Manager", "Lounge Manager", "HR Manager"],
     ],
-    ecoTeamRoles: [
-      ["Deputy Financial Manager", "Financial Manager"]
-    ],
+    ecoTeamRoles: [["Deputy Financial Manager", "Financial Manager"]],
     ddaRoles: [
-      ["DDA", "DDA"] // Assuming DDA remains the same without context.
+      ["DDA", "DDA"], // Assuming DDA remains the same without context.
     ],
-    teamNames: ["PR Team", "Sales Team", "Exhibition Team", "Finance Team", "D-Dagen Managers"],
+    teamNames: [
+      "PR Team",
+      "Sales Team",
+      "Exhibition Team",
+      "Finance Team",
+      "D-Dagen Managers",
+    ],
   },
 };
