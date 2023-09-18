@@ -16,12 +16,20 @@ export function ExhibitorPanel({
 }) {
   const router = useRouter();
   const login = api.admin.login.useMutation();
+  const trpc = api.useContext();
 
   useEffect(() => {
     if (login.isSuccess) {
       router.push("/utställare");
     }
   }, [login.isSuccess]);
+
+  function getLoginFunction(exhibitorId: string) {
+    return async () => {
+      await trpc.invalidate();
+      login.mutate({ exhibitorId: exhibitorId, password });
+    };
+  }
 
   return (
     <div className="w-full h-full text-white">
@@ -54,7 +62,7 @@ export function ExhibitorPanel({
                     <p>{exhibitor.name}</p>
                     <button
                       className="mt-2 bg-cerise bg-blue-500 py-1 px-2 rounded-md"
-                      onClick={() => login.mutate({ exhibitorId: exhibitor.id, password })}
+                      onClick={getLoginFunction(exhibitor.id)}
                     >{t.admin.sales.login}</button>
                   </td>
                   <td>

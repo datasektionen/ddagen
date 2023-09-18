@@ -22,7 +22,6 @@ export default function Exhibitor() {
   const [exhibitorPackage, setExhibitorPackage] = useState(new Package(t, ""));
 
   // Mutations
-  const logout = api.account.logout.useMutation();
   const setExtrasMutation = api.exhibitor.setExtras.useMutation();
 
   // Queries
@@ -41,13 +40,6 @@ export default function Exhibitor() {
   }, [isLoggedIn]);
 
   useEffect(() => {
-    if (logout.isSuccess) {
-      router.push("/");
-      trpc.account.invalidate();
-    }
-  }, [logout.isSuccess]);
-
-  useEffect(() => {
     if (!getExtras.isSuccess) return;
     setExtras(
       new Extras(
@@ -58,12 +50,12 @@ export default function Exhibitor() {
         getExtras.data.totalBanquetTicketsWanted
       )
     );
-  }, [getExtras.isSuccess]);
+  }, [getExtras.data]);
 
   useEffect(() => {
     if (!getPreferenceCounts.isSuccess) return;
     setPreferenceCount(getPreferenceCounts.data);
-  }, [getExtras.isSuccess]);
+  }, [getExtras.data]);
 
   useEffect(() => {
     if (!getExhibitor.isSuccess) return;
@@ -77,7 +69,7 @@ export default function Exhibitor() {
       exhibitor.customBanquetTicketsWanted
     );
     setExhibitorPackage(exhibitorPackage);
-  }, [getExhibitor.isSuccess]);
+  }, [getExhibitor.data]);
 
   useEffect(() => {
     if (!getExtras.isSuccess) return;
