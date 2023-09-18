@@ -35,7 +35,7 @@ const massTeam = [
     imagesPath + "oscarPic.jpg",
     imagesPath + "mortadaPic.jpg",
   ],
-  [imagesPath + "mimmiPic.jpg", imagesPath + "dilanPic.jpg"],
+  [imagesPath + "lydiaPic.jpg",imagesPath + "mimmiPic.jpg", imagesPath + "dilanPic.jpg"],
 ];
 
 const ecoNames = [["Christofer Gärtner", "Melissa Arslan"]];
@@ -61,7 +61,7 @@ const salesNames = [
 
 const massNames = [
   ["Aziz Ali", "Oscar Witt", "Mortada Nasser"],
-  ["Mimmi Weng", "Dilan Ismail"],
+  ["Lydia Brorsson", "Mimmi Weng", "Dilan Ismail"],
 ];
 
 function Team({
@@ -135,12 +135,12 @@ export default function AboutUs() {
       {/*
         Desktop version
       */}
-      {/* <div className="flex justify-center mt-[100px] px-10">
+      <div className="flex justify-center mt-[100px] px-10">
         <img
           className="xl:w-[800px] lg:w-[700px] md:w-[600px] w-[500px] rounded-3xl"
-          src=""
+          src="/img/groupPictures/projectGroup.jpg"
         ></img>
-      </div> */}
+      </div>
       <div className="px-[200px] mt-[50px] hidden lg:block">
         <div className="flex flex-col">
           <div className="flex flex-row items-center justify-center mb-10">
@@ -225,7 +225,7 @@ export default function AboutUs() {
       <Team
         team={massTeam}
         reverse={false}
-        teamPic=""
+        teamPic="/img/groupPictures/massTeam.jpg"
         names={massNames}
         teamRoles={t.aboutUs.massTeamRoles}
         teamName={t.aboutUs.teamNames[2]}
