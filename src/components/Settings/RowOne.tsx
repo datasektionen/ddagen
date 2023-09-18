@@ -133,12 +133,12 @@ export default function RowOne({ t }: { t: Locale }) {
     if (!getLogos.isSuccess) return;
     setWhiteLogo(addImageDetails(getLogos.data.white));
     setColorLogo(addImageDetails(getLogos.data.color));
-  }, [getLogos.isSuccess]);
+  }, [getLogos.data]);
 
   useEffect(() => {
     if (!getDescription.isSuccess) return;
     setDescription(getDescription.data.description);
-  }, [getDescription.isSuccess]);
+  }, [getDescription.data]);
 
   useEffect(() => {
     if (!getJobOffers.isSuccess || !getJobOffers.data) return;
@@ -157,7 +157,7 @@ export default function RowOne({ t }: { t: Locale }) {
     initCheckMarks[16] = jobOffers.fullTimeJob;
     initCheckMarks[17] = jobOffers.traineeProgram;
     setCheckMarks(initCheckMarks);
-  }, [getJobOffers.isSuccess]);
+  }, [getJobOffers.data]);
 
   useEffect(() => {
     if (typeof saveChanges === "boolean") {
