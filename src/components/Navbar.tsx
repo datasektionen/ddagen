@@ -126,7 +126,7 @@ function Group({
         )}
       </div>
       <div className="flex flex-col lg:hidden">
-        <div className="flex flex-row justify-start gap-4 mb-4">
+        <div className="flex flex-row justify-between gap-4 mb-4 w-[200px]">
           <NavLink href={links[0].href} onClick={links[0].onClick}>
             {links[0].text}
           </NavLink>
@@ -290,11 +290,16 @@ export default function Navbar() {
                   : [{ href: "/logga-in", text: t.login }]),
               ]}
             />
-            <NavLink class="mb-4 lg:hidden px-0 lg:px-4" href="/kontakt">
-              {t.contact}
-            </NavLink>
             {/*<NavLink class="px-14 lg:px-0" href="/förstudenter">{t.forStudents}</NavLink>*/}
             {/*<NavLink class="px-14 lg:px-0" href="/mässan">{t.about}</NavLink>*/}
+            <div className="lg:hidden">
+            <Group
+              links={[
+                { href: "/kontakt", text: t.contact },
+                { href: "/om-oss", text: t.about },
+              ]}
+            />
+            </div>
           </div>
           <div
             className="
@@ -303,12 +308,14 @@ export default function Navbar() {
             lg:px-0 bg-black lg:bg-transparent lg:ml-auto
           "
           >
+            <div className="hidden lg:block">
             <Group
               links={[
                 { href: "/kontakt", text: t.contact },
                 { href: "/om-oss", text: t.about },
               ]}
             />
+            </div>
             <Link
               className="bg-cerise py-2.5 px-4 rounded-full text-center hover:scale-105 transition-transform"
               href="/företagsanmälan"
