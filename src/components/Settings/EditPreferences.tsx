@@ -35,7 +35,7 @@ export function EditPreferences({
           break;
         case "GlutenFree":
           str += t.exhibitorSettings.table.row3.options.glutenFree + ", ";
-          break;
+          break;          
       }
     });
     return str.substring(0, str.length - 2);
