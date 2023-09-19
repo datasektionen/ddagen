@@ -184,8 +184,8 @@ export default function RowOne({ t }: { t: Locale }) {
               setSelectedImage={setWhiteLogo}
               textAbove={t.exhibitorSettings.table.row1.section1.logoWhite}
               textInsideMiddle={t.exhibitorSettings.table.row1.section1.logo}
-              textInsideBottom={"SVG"}
-              accept={["image/svg+xml"]}
+              textInsideBottom={`SVG ${t.exhibitorSettings.table.row1.section1.or} EPS`}
+              accept={["image/svg+xml", "image/x-eps"]}
             />
           </div>
           <div>
