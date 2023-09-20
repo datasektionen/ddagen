@@ -15,7 +15,7 @@ export function PreferenceDetails({
 }: {
   t: Locale;
   type: "Banquet" | "Representative";
-  extras: Extras;
+  extras: Extras | undefined;
   preferenceCount: { banqcount: number; reprcount: number };
   setPreferenceCount: Dispatch<{ banqcount: number; reprcount: number }>;
   exhibitorPackage: Package;

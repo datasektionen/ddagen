@@ -13,7 +13,7 @@ export default function Exhibitor() {
   const router = useRouter();
   const trpc = api.useContext();
 
-  const [extras, setExtras] = useState(new Extras(0, 0, 0, 0, 0));
+  const [extras, setExtras] = useState<Extras>();
   const [isLoggedIn, setIsLoggedIn] = useState<boolean | undefined>(undefined);
   const [preferenceCount, setPreferenceCount] = useState({
     banqcount: 0,
@@ -72,7 +72,7 @@ export default function Exhibitor() {
   }, [getExhibitor.data]);
 
   useEffect(() => {
-    if (!getExtras.isSuccess) return;
+    if (extras == undefined) return;
     setExtrasMutation.mutate({
       extraTables: extras.extraTables,
       extraChairs: extras.extraChairs,

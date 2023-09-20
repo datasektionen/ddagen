@@ -11,7 +11,7 @@ export default function RowThree({
   exhibitorPackage,
 }: {
   t: Locale;
-  extras: Extras;
+  extras: Extras | undefined;
   preferenceCount: { banqcount: number; reprcount: number };
   setPreferenceCount: Dispatch<{ banqcount: number; reprcount: number }>;
   exhibitorPackage: Package;
