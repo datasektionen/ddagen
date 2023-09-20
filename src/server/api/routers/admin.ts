@@ -75,4 +75,14 @@ export const adminRouter = createTRPCRouter({
         `session=${session.id}; Path=/; HttpOnly; SameSite=Lax; Secure`
       );
     }),
+  logout: publicProcedure.mutation(async ({ ctx }) => {
+    if (ctx.session) {
+      await ctx.prisma.session.delete({ where: { id: ctx.session.id } });
+      ctx.res.setHeader(
+        "Set-Cookie",
+        `session=; Path=/; HttpOnly; SameSite=Lax; Secure`
+      );
+    }
+    return { status: ctx.session ? true : false };
+  }),
 });
