@@ -1,8 +1,5 @@
 import { z } from "zod";
-import {
-  createTRPCRouter,
-  publicProcedure,
-} from "@/server/api/trpc";
+import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
 import { Exhibitor, Preferences } from "@/shared/Classes";
 import * as pls from "@/utils/pls";
 
@@ -10,7 +7,8 @@ export const adminRouter = createTRPCRouter({
   getExhibitors: publicProcedure
     .input(z.string())
     .mutation(async ({ input, ctx }) => {
-      if (!await pls.checkApiKey("read-exhibitors", input)) return "invalid-password";
+      if (!(await pls.checkApiKey("read-exhibitors", input)))
+        return "invalid-password";
 
       const exhibitors = await ctx.prisma.exhibitor.findMany();
       return exhibitors.map(
@@ -29,14 +27,20 @@ export const adminRouter = createTRPCRouter({
             exhibitor.extraDrinkCoupons,
             exhibitor.extraRepresentativeSpots,
             exhibitor.totalBanquetTicketsWanted,
-            exhibitor.jobOfferId
+            exhibitor.jobOfferId,
+            exhibitor.customTables,
+            exhibitor.customChairs,
+            exhibitor.customDrinkCoupons,
+            exhibitor.customRepresentativeSpots,
+            exhibitor.customBanquetTicketsWanted
           )
       );
     }),
   getAllFoodPreferences: publicProcedure
     .input(z.string())
     .mutation(async ({ input, ctx }) => {
-      if (!await pls.checkApiKey("read-exhibitors", input)) return "invalid-password";
+      if (!(await pls.checkApiKey("read-exhibitors", input)))
+        return "invalid-password";
 
       const foodPreferences = await ctx.prisma.foodPreferences.findMany();
       return foodPreferences.map(
@@ -52,12 +56,15 @@ export const adminRouter = createTRPCRouter({
       );
     }),
   login: publicProcedure
-    .input(z.object({
-      password: z.string(),
-      exhibitorId: z.string(),
-    }))
+    .input(
+      z.object({
+        password: z.string(),
+        exhibitorId: z.string(),
+      })
+    )
     .mutation(async ({ input, ctx }) => {
-      if (!await pls.checkApiKey("write-exhibitors", input.password)) return "invalid-password";
+      if (!(await pls.checkApiKey("write-exhibitors", input.password)))
+        return "invalid-password";
 
       const session = await ctx.prisma.session.create({
         data: { exhibitorId: input.exhibitorId },

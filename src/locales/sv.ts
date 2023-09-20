@@ -505,9 +505,11 @@ export default {
     },
     extraOrders: {
       header: {
-        title: "Extra Beställningar",
+        order: "Beställning",
         extras: "Tillägg",
+        package: "Paket",
         amount: "Antal",
+        total: "Total"
       },
       row: {
         tables: "Bord",
@@ -525,6 +527,10 @@ export default {
         choices: "Val",
         comment: "Kommentar",
         type: "Typ",
+      },
+      types: {
+        representatives: "Representanter",
+        banquet: "Banquet",
       },
       none: "Vegetariskt",
     },
