@@ -29,15 +29,15 @@ export function ExtraOrderPanel({
 
     exhibitors.map((exhibitor) => {
       const p = new Package(t, exhibitor.package);
-
-      exhibitorPackage.tables = p.tables + exhibitor.customTables;
-      exhibitorPackage.chairs = p.chairs + exhibitor.customChairs;
-      exhibitorPackage.drinkCoupons =
-        p.drinkCoupons + exhibitor.customDrinkCoupons;
-      exhibitorPackage.representativeSpots =
-        p.representatives + exhibitor.customRepresentativeSpots;
-      exhibitorPackage.banquetTicket =
-        p.banquetTickets + exhibitor.customRepresentativeSpots;
+      
+      exhibitorPackage.tables += p.tables + exhibitor.customTables;
+      exhibitorPackage.chairs += p.chairs + exhibitor.customChairs;
+      exhibitorPackage.drinkCoupons = p.drinkCoupons +=
+        exhibitor.customDrinkCoupons;
+      exhibitorPackage.representativeSpots = p.representatives +=
+        exhibitor.customRepresentativeSpots;
+      exhibitorPackage.banquetTicket = p.banquetTickets +=
+        exhibitor.customRepresentativeSpots;
 
       extras.tables += exhibitor.extraTables;
       extras.chairs += exhibitor.extraChairs;
