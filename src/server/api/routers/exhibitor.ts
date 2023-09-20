@@ -296,7 +296,8 @@ export const exhibitorRouter = createTRPCRouter({
       }
     }),
   getPreferenceCount: protectedProcedure.query(async ({ ctx }) => {
-    const counts: [{ banqcount: bigint; reprcount: bigint }] = await ctx.prisma.$queryRaw`
+    const counts: [{ banqcount: bigint; reprcount: bigint }] = await ctx.prisma
+      .$queryRaw`
       SELECT
         sum(case when type = 'Banquet' then 1 else 0 end) AS BanqCount,
         sum(case when type = 'Representative' then 1 else 0 end) AS ReprCount
@@ -333,12 +334,6 @@ export const exhibitorRouter = createTRPCRouter({
     .mutation(async ({ ctx, input }) => {
       const t = getLocale(input.locale);
       try {
-        if (input.value.length == 0) {
-          return {
-            ok: false,
-            error: t.exhibitorSettings.table.row3.alerts.errorEmptyValueArray,
-          };
-        }
         if (input.id) {
           await ctx.prisma.foodPreferences.updateMany({
             where: {
@@ -347,7 +342,7 @@ export const exhibitorRouter = createTRPCRouter({
               type: input.type,
             },
             data: {
-              value: input.value,
+              value: input.value.length == 0 ? [] : input.value,
               comment: input.comment,
             },
           });

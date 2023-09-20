@@ -532,6 +532,7 @@ export default {
         representatives: "Representanter",
         banquet: "Banquet",
       },
+      none: "Vegetariskt",
     },
   },
   aboutUs:{

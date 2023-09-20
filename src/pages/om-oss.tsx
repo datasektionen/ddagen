@@ -35,7 +35,7 @@ const massTeam = [
     imagesPath + "oscarPic.jpg",
     imagesPath + "mortadaPic.jpg",
   ],
-  [imagesPath + "mimmiPic.jpg", imagesPath + "dilanPic.jpg"],
+  [imagesPath + "lydiaPic.jpg",imagesPath + "mimmiPic.jpg", imagesPath + "dilanPic.jpg"],
 ];
 
 const ecoNames = [["Christofer Gärtner", "Melissa Arslan"]];
@@ -48,7 +48,7 @@ const econonmyTeam = [
 const managersName = [["Axel Johansson", "Johan Abdi"]];
 
 const prNames = [
-  ["Mathias Magnusson", "Olof Bargholtz Melcherson", "Maria Tcyshkova"],
+  ["Mathias Magnusson", "Olof Bargholtz Melcherson", "Maria Tsychkova"],
   ["Jakob Petterson", "Adam Egnell", "Anna Yang"],
   ["Rikaz Nismi", "Mary Abeysekera"],
 ];
@@ -61,7 +61,7 @@ const salesNames = [
 
 const massNames = [
   ["Aziz Ali", "Oscar Witt", "Mortada Nasser"],
-  ["Mimmi Weng", "Dilan Ismail"],
+  ["Lydia Brorsson", "Mimmi Weng", "Dilan Ismail"],
 ];
 
 function Team({
@@ -127,7 +127,7 @@ function Team({
 export default function AboutUs() {
   const t = useLocale();
   return (
-    <div className="pt-[200px] pb-[300px]">
+    <div className="pt-[200px] pb-[150px]">
       <h1 className="uppercase text-cerise text-5xl font-medium text-center">
         {" "}
         {t.aboutUs.header}
@@ -135,12 +135,12 @@ export default function AboutUs() {
       {/*
         Desktop version
       */}
-      {/* <div className="flex justify-center mt-[100px] px-10">
+      <div className="flex justify-center mt-[100px] px-10">
         <img
           className="xl:w-[800px] lg:w-[700px] md:w-[600px] w-[500px] rounded-3xl"
-          src=""
+          src="/img/groupPictures/projectGroup.jpg"
         ></img>
-      </div> */}
+      </div>
       <div className="px-[200px] mt-[50px] hidden lg:block">
         <div className="flex flex-col">
           <div className="flex flex-row items-center justify-center mb-10">
@@ -173,7 +173,7 @@ export default function AboutUs() {
       {/*
         Phone version version
       */}
-      <div className="flex flex-col px-[50px] mt-[100px] mb-[100px] lg:hidden">
+      <div className="flex flex-col px-[50px] mt-[50px] mb-[50px] lg:hidden">
         <div className="flex flex-row items-center justify-center mb-10">
           <div>
             <h2 className="text-cerise text-xs font-medium">
@@ -200,9 +200,18 @@ export default function AboutUs() {
         </div>
       </div>
 
-      <p className="text-cerise text-4xl font-normal uppercase text-center mt-[200px]">
+      <p className="text-cerise text-4xl font-normal uppercase text-center mt-[150px]">
         {t.aboutUs.subHeader}
       </p>
+
+      <Team
+        team={managers}
+        reverse={false}
+        teamPic="/img/groupPictures/bossTeam.jpg"
+        names={managersName}
+        teamRoles={t.aboutUs.ddaRoles}
+        teamName={t.aboutUs.teamNames[4]}
+      />
 
       <Team
         team={prTeam}
@@ -225,7 +234,7 @@ export default function AboutUs() {
       <Team
         team={massTeam}
         reverse={false}
-        teamPic=""
+        teamPic="/img/groupPictures/massTeam.jpg"
         names={massNames}
         teamRoles={t.aboutUs.massTeamRoles}
         teamName={t.aboutUs.teamNames[2]}
@@ -240,14 +249,7 @@ export default function AboutUs() {
         teamName={t.aboutUs.teamNames[3]}
       />
 
-      <Team
-        team={managers}
-        reverse={false}
-        teamPic="/img/groupPictures/bossTeam.jpg"
-        names={managersName}
-        teamRoles={t.aboutUs.ddaRoles}
-        teamName={t.aboutUs.teamNames[4]}
-      />
+      
     </div>
   );
 }

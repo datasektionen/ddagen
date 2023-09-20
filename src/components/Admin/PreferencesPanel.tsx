@@ -89,7 +89,11 @@ export function PreferencesPanel({
                     <tr key={i}>
                       <td className="break-words">{exhibitor.name}</td>
                       <td>{preference.name}</td>
-                      <td>{preference.value.join(", ")}</td>
+                      <td>
+                        {preference.value.length == 0
+                          ? t.admin.preferences.none
+                          : preference.value.join(", ")}
+                      </td>
                       <td>{preference.type}</td>
                       <td>{preference.comment}</td>
                     </tr>

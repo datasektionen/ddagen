@@ -529,6 +529,7 @@ export default {
         representatives: "Representatives",
         banquet: "Banquet",
       },
+      none: "Vegatarian",
     },
   },
   aboutUs: {
