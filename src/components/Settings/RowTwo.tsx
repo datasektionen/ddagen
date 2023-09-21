@@ -11,8 +11,8 @@ export default function RowTwo({
   exhibitorPackage,
 }: {
   t: Locale;
-  extras: Extras;
-  setExtras: Dispatch<Extras>;
+  extras: Extras | undefined;
+  setExtras: Dispatch<Extras | undefined>;
   preferenceCount: { banqcount: number; reprcount: number };
   exhibitorPackage: Package;
 }) {

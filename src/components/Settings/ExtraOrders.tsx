@@ -10,8 +10,8 @@ export default function ExtraOrders({
   exhibitorPackage,
 }: {
   t: Locale;
-  extras: Extras;
-  setExtras: Dispatch<Extras>;
+  extras: Extras | undefined;
+  setExtras: Dispatch<Extras | undefined>;
   preferenceCount: { banqcount: number; reprcount: number };
   exhibitorPackage: Package;
 }) {
@@ -31,6 +31,7 @@ export default function ExtraOrders({
   const [banquetTickets, setBanquetTickets] = useState(0);
 
   useEffect(() => {
+    if (extras == undefined) return;
     setTables(extras.extraTables);
     setChairs(extras.extraChairs);
     setDrinkCoupons(extras.extraDrinkCoupons);
