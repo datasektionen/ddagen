@@ -74,7 +74,7 @@ export function ExtraOrderPanel({
               </tr>
               <tr className="text-center">
                 <td>{t.admin.extraOrders.row.chairs}</td>
-                <td>{extras?.[0].tables}</td>
+                <td>{extras?.[0].chairs}</td>
                 <td>{extras?.[1].chairs}</td>
                 <td>{extras ? extras?.[0].chairs + extras?.[1].chairs : 0}</td>
               </tr>
