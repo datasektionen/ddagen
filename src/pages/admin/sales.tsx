@@ -72,7 +72,12 @@ export default function Sales() {
           />
 
           {buttonSelected == 1 ? (
-            <ExhibitorPanel t={t} exhibitors={exhibitors} password={password} />
+            <ExhibitorPanel
+              t={t}
+              exhibitors={exhibitors}
+              preferences={preferences}
+              password={password}
+            />
           ) : buttonSelected == 2 ? (
             <ExtraOrderPanel t={t} exhibitors={exhibitors} />
           ) : (

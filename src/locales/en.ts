@@ -498,6 +498,11 @@ export default {
           representativeSpots: "Representative Spots",
           banquetTickets: "Banquet Tickets",
         },
+        verification: {
+          name: "Verification",
+          banquet: "Banquet",
+          representatives: "Representatives",
+        },
       },
     },
     extraOrders: {

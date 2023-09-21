@@ -501,6 +501,11 @@ export default {
           representativeSpots: "Representantplatser",
           banquetTickets: "Sittningsbiljette",
         },
+        verification: {
+          name: "Verification",
+          banquet: "Banquet",
+          representatives: "Representater",
+        },
       },
     },
     extraOrders: {

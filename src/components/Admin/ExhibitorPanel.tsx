@@ -1,22 +1,32 @@
 import Locale from "@/locales";
-import { addImageDetails } from "@/shared/addImageDetails";
-import { Exhibitor, sortExhibitors } from "@/shared/Classes";
 import { api } from "@/utils/api";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { addImageDetails } from "@/shared/addImageDetails";
+import {
+  Exhibitor,
+  Preferences,
+  Package,
+  sortExhibitors,
+} from "@/shared/Classes";
 
 export function ExhibitorPanel({
   t,
   exhibitors,
+  preferences,
   password,
 }: {
   t: Locale;
   exhibitors: Exhibitor[];
+  preferences: Preferences[];
   password: string;
 }) {
+  const [preferenceCount, setPreferenceCount] =
+    useState<Map<string, { banquet: number; representative: number }>>();
+
   const router = useRouter();
-  const login = api.admin.login.useMutation();
   const trpc = api.useContext();
+  const login = api.admin.login.useMutation();
 
   useEffect(() => {
     if (login.isSuccess) {
@@ -24,11 +34,79 @@ export function ExhibitorPanel({
     }
   }, [login.isSuccess]);
 
+  useEffect(() => {
+    const count = new Map<
+      string,
+      { banquet: number; representative: number }
+    >();
+    exhibitors.map((exhibitor) => {
+      count.set(exhibitor.id, { banquet: 0, representative: 0 });
+    });
+    preferences.map((preference) => {
+      if (preference.exhibitorId && count.has(preference.exhibitorId)) {
+        const prefCount = count.get(preference.exhibitorId);
+        if (prefCount) {
+          switch (preference.type) {
+            case "Banquet":
+              prefCount.banquet += 1;
+              break;
+            case "Representative":
+              prefCount.representative += 1;
+              break;
+          }
+          count.set(preference.exhibitorId, prefCount);
+        }
+      }
+    });
+    setPreferenceCount(count);
+  }, [preferences]);
+
   function getLoginFunction(exhibitorId: string) {
     return async () => {
       await trpc.invalidate();
       login.mutate({ exhibitorId: exhibitorId, password });
     };
+  }
+
+  function evaluataPreferences(
+    exhibitor: Exhibitor,
+    type: "Representative" | "Banquet"
+  ) {
+    if (preferenceCount && preferenceCount.has(exhibitor.id)) {
+      const prefCount = preferenceCount.get(exhibitor.id);
+      if (prefCount) {
+        const exhibitorPackage = new Package(t, exhibitor.package);
+        const exhibitorRepresentativeCount =
+          exhibitorPackage.representatives +
+          exhibitor.extraRepresentativeSpots +
+          exhibitor.customRepresentativeSpots;
+        const exhibitorBanquetCount =
+          exhibitorPackage.banquetTickets +
+          exhibitor.totalBanquetTicketsWanted +
+          exhibitor.customBanquetTicketsWanted;
+
+        const goalReached =
+          (type == "Representative" &&
+            exhibitorRepresentativeCount == prefCount.representative) ||
+          (type == "Banquet" && exhibitorBanquetCount == prefCount.banquet);
+        const goalNotReached =
+          (type == "Representative" &&
+            exhibitorRepresentativeCount > prefCount.representative) ||
+          (type == "Banquet" && exhibitorBanquetCount > prefCount.banquet);
+        const preferencesGreaterThanGoal =
+          (type == "Representative" &&
+            exhibitorRepresentativeCount < prefCount.representative) ||
+          (type == "Banquet" && exhibitorBanquetCount < prefCount.banquet);
+
+        if (goalReached)
+          return <span className="font-medium text-green-500	">Complete</span>;
+        if (goalNotReached)
+          return <span className="font-medium text-red-500	">Fail</span>;
+        if (preferencesGreaterThanGoal)
+          return <span className="font-medium text-orange-500	">Invalid</span>;
+      }
+    }
+    <span className="font-medium text-red-500	">Fail</span>;
   }
 
   return (
@@ -50,6 +128,7 @@ export function ExhibitorPanel({
                 <th>{t.admin.sales.header.description}</th>
                 <th>{t.admin.sales.header.package}</th>
                 <th>{t.admin.sales.header.extras.name}</th>
+                <th>{t.admin.sales.header.verification.name}</th>
               </tr>
             </thead>
             <tbody
@@ -63,7 +142,9 @@ export function ExhibitorPanel({
                     <button
                       className="mt-2 bg-cerise bg-blue-500 py-1 px-2 rounded-md"
                       onClick={getLoginFunction(exhibitor.id)}
-                    >{t.admin.sales.login}</button>
+                    >
+                      {t.admin.sales.login}
+                    </button>
                   </td>
                   <td>
                     {exhibitor.logoWhite ? (
@@ -110,6 +191,18 @@ export function ExhibitorPanel({
                       <div>
                         {t.admin.sales.header.extras.banquetTickets}:{" "}
                         {exhibitor.totalBanquetTicketsWanted}
+                      </div>
+                    </div>
+                  </td>
+                  <td className="text-center">
+                    <div className="flex flex-col">
+                      <div>
+                        {t.admin.sales.header.verification.banquet}:{" "}
+                        {evaluataPreferences(exhibitor, "Banquet")}
+                      </div>
+                      <div>
+                        {t.admin.sales.header.verification.representatives}:{" "}
+                        {evaluataPreferences(exhibitor, "Representative")}
                       </div>
                     </div>
                   </td>
