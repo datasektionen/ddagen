@@ -118,8 +118,8 @@ export function ExhibitorPanel({
             <span className="text-cerise">{exhibitors.length}</span>
           </p>
         </div>
-        <div>
-          <table className="block bg-slate-50 bg-opacity-20 border-collapse border-solid">
+        <div className="w-[80%]">
+          <table className="w-full bg-slate-50 bg-opacity-20 border-collapse border-solid">
             <thead className="[&>tr>th]:border-2 [&>tr>th]:border-solid [&>tr>th]:border-cerise [&>tr>th]:py-2 [&>tr>th]:px-8 ">
               <tr>
                 <th>{t.admin.sales.header.name}</th>
