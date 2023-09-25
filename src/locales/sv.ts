@@ -560,4 +560,7 @@ export default {
     ],
     teamNames: ["PR-Gruppen", "Säljgruppen", "Mässgruppen", "Ekonomiansvariga", "D-Dagenansvariga"],
   },
+  logos:{
+    header:"Möt företagen"
+  }
 };

@@ -564,4 +564,7 @@ export default {
       "D-Dagen Managers",
     ],
   },
+  logos:{
+    header:"Meet the companies",
+  },
 };
