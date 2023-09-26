@@ -290,15 +290,18 @@ export default function Navbar() {
                   : [{ href: "/logga-in", text: t.login }]),
               ]}
             />
-            {/*<NavLink class="px-14 lg:px-0" href="/förstudenter">{t.forStudents}</NavLink>*/}
+            <NavLink class="px-0 lg:px-4 p-4" href="/förstudenter">
+              {t.forStudents}
+            </NavLink>
+            {/* <Group links={[{ href: "/förstudenter", text: t.forCompanies }]} /> */}
             {/*<NavLink class="px-14 lg:px-0" href="/mässan">{t.about}</NavLink>*/}
             <div className="lg:hidden">
-            <Group
-              links={[
-                { href: "/kontakt", text: t.contact },
-                { href: "/om-oss", text: t.about },
-              ]}
-            />
+              <Group
+                links={[
+                  { href: "/kontakt", text: t.contact },
+                  { href: "/om-oss", text: t.about },
+                ]}
+              />
             </div>
           </div>
           <div
@@ -309,12 +312,12 @@ export default function Navbar() {
           "
           >
             <div className="hidden lg:block">
-            <Group
-              links={[
-                { href: "/kontakt", text: t.contact },
-                { href: "/om-oss", text: t.about },
-              ]}
-            />
+              <Group
+                links={[
+                  { href: "/kontakt", text: t.contact },
+                  { href: "/om-oss", text: t.about },
+                ]}
+              />
             </div>
             <Link
               className="bg-cerise py-2.5 px-4 rounded-full text-center hover:scale-105 transition-transform"
