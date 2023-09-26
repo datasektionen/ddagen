@@ -68,7 +68,7 @@ export default function ForStudents() {
                 </p>
                 <Link
                   className="block uppercase text-sm hover:scale-105 transition-transform bg-white rounded-full text-cerise font-medium px-10 py-2 max-lg:mx-auto w-max"
-                  href="/företagsanmälan"
+                  href="https://dsekt.se/ddagen"
                 >
                   {t.forStudents.eventStaffButton}
                 </Link>
