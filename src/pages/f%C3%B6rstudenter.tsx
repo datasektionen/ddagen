@@ -48,7 +48,7 @@ export default function ForStudents() {
             {/* Bottom Left */}
             <div className="lg:col-[3/17] lg:row-[14/25]">
               <div className="mix-blend-color bg-[#060606]" />
-              <div className="relative w-full">
+              <div className="relative">
                 <img
                   src="/img/for-students-image-2.png"
                   alt="Students working"
