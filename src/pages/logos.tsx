@@ -52,15 +52,6 @@ function Logo({
           >
             <div className="relative py-[0px] justify-center flex flex-row">
               <img src={addImageDetails(pic)} alt={companyName} />
-              {/* 
-              <button
-                className="absolute top-5 right-3 w-[50px] h-[50px] flex items-center justify-center"
-                onClick={closeModal}
-              >
-                <div className="absolute h-[50px] w-[5px] bg-black rounded-md rotate-45"></div>
-                <div className="absolute h-[50px] w-[5px] bg-black rounded-md -rotate-45"></div>
-              </button>
-              */}
             </div>
             <div className="px-5 mt-5">
               <h2 className="text-center text-3xl text-cerise">
