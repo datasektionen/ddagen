@@ -11,10 +11,9 @@ import RowThree from "@/components/Settings/RowThree";
 export default function Exhibitor() {
   const t = useLocale();
   const router = useRouter();
-  const trpc = api.useContext();
 
-  const [extras, setExtras] = useState(new Extras(0, 0, 0, 0, 0));
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean | undefined>(undefined);
+  const [extras, setExtras] = useState<Extras>();
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>();
   const [preferenceCount, setPreferenceCount] = useState({
     banqcount: 0,
     reprcount: 0,
@@ -72,7 +71,7 @@ export default function Exhibitor() {
   }, [getExhibitor.data]);
 
   useEffect(() => {
-    if (!getExtras.isSuccess) return;
+    if (extras == undefined) return;
     setExtrasMutation.mutate({
       extraTables: extras.extraTables,
       extraChairs: extras.extraChairs,

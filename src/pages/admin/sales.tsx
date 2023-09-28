@@ -1,5 +1,6 @@
-import { useState } from "react";
 import { useLocale } from "@/locales";
+import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 import ButtonGroup from "@/components/ButtonGroup";
 import { AdminLogin } from "@/components/Admin/AdminLogin";
 import { ExhibitorPanel } from "@/components/Admin/ExhibitorPanel";
@@ -10,13 +11,17 @@ import { api } from "@/utils/api";
 
 export default function Sales() {
   const t = useLocale();
-  const getExhibitors = api.admin.getExhibitors.useMutation();
-  const [exhibitors, setExhibitors] = useState<Exhibitor[]>([]);
-  const getFoodPreferences = api.admin.getAllFoodPreferences.useMutation();
+  const router = useRouter();
+  const trpc = api.useContext();
 
+  const [exhibitors, setExhibitors] = useState<Exhibitor[]>([]);
   const [preferences, setPreferences] = useState<Preferences[]>([]);
   const [buttonSelected, setButtonSelected] = useState<1 | 2 | 3>(1);
   const [password, setPassword] = useState<string>("");
+
+  const logout = api.admin.logout.useMutation();
+  const getExhibitors = api.admin.getExhibitors.useMutation();
+  const getFoodPreferences = api.admin.getAllFoodPreferences.useMutation();
 
   async function login(password: string) {
     try {
@@ -35,6 +40,17 @@ export default function Sales() {
       return "unknown-error " + err;
     }
   }
+
+  useEffect(() => {
+    logout.mutate();
+  }, []);
+
+  useEffect(() => {
+    if (logout.isSuccess && logout.data.status) {
+      trpc.account.invalidate();
+      router.reload();
+    }
+  }, [logout.isSuccess]);
 
   return (
     <div>
@@ -56,7 +72,12 @@ export default function Sales() {
           />
 
           {buttonSelected == 1 ? (
-            <ExhibitorPanel t={t} exhibitors={exhibitors} password={password} />
+            <ExhibitorPanel
+              t={t}
+              exhibitors={exhibitors}
+              preferences={preferences}
+              password={password}
+            />
           ) : buttonSelected == 2 ? (
             <ExtraOrderPanel t={t} exhibitors={exhibitors} />
           ) : (

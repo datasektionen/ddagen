@@ -32,6 +32,18 @@ export default {
       "Är du intresserad av att ställa ut på D-Dagen och knyta kontakt med tusentals studenter inom Data och IT? Klicka här nedan för att göra en intresseanmälan!",
     formButton: "Intresseanmälan",
   },
+  forStudents: {
+    title: "För Studenter",
+    aboutFair: "Om mässan",
+    fairText1:
+      "D-Dagen är Datasektionens årliga arbetsmarknadsdag. Det är ett heldagsevent där företag och studenter verksamma inom data och IT får en möjlighet att knyta kontakter och lära känna varandra. Detta skapar goda möjligheter för en mer direkt och personlig kontakt mellan företagsrepresentanter och studenter.",
+    fairText2:
+      "I år hålls mässan 12 oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15 på KTH Campus Valhallavägen. Utöver själva mässan håller D-Dagen även i en rekryteringspub innan mässan där vi rekryterar dagpersonal och lunchföreläsningar med FRA (28/9) och SAAB (9/10) tillsammans med dJubileet. Dessutom kommer studenter kunna gå på kontaktsamtal med företag för att få en närmare kontakt.",
+    personalMeetings: "Kontaktsamtal",
+    personalMeetingsText:
+      "I år är första året någonsin som vi kommer erbjuda kontaktsamtal för studenter, vilket innebär att ni får möjlighet att i enrum med företagsrepresentanter diskutera framtida jobbmöjligheter med mera. Anmäl er på länken nedan:",
+    personalMeetingsButton: "Kontaktsamtal",
+  },
   exhibitorSettings: {
     header: "Profilinställningar",
     fields: {
@@ -501,13 +513,20 @@ export default {
           representativeSpots: "Representantplatser",
           banquetTickets: "Sittningsbiljette",
         },
+        verification: {
+          name: "Verification",
+          banquet: "Banquet",
+          representatives: "Representater",
+        },
       },
     },
     extraOrders: {
       header: {
-        title: "Extra Beställningar",
+        order: "Beställning",
         extras: "Tillägg",
+        package: "Paket",
         amount: "Antal",
+        total: "Total",
       },
       row: {
         tables: "Bord",
@@ -526,39 +545,48 @@ export default {
         comment: "Kommentar",
         type: "Typ",
       },
+      types: {
+        representatives: "Representanter",
+        banquet: "Banquet",
+      },
       none: "Vegetariskt",
     },
   },
-  aboutUs:{
+  aboutUs: {
     header: "Om Oss",
     subHeader: "Möt Projektgruppen 2023",
-    paragraph1: "D-Dagen är en årlig företagsmässa som anordnas av Datasektionen på KTH. På D-Dagen har företag möjlighet att möta och interagera med potentiella framtida anställda från KTH. Samtidigt erbjuder vi våra studenter en chans att lära sig mer om karriärmöjligheter, nätverka och delta i föreläsningar och andra företagsevent.",
-    paragraph2: "D-Dagen startade 2015, då med 35 närvarande företag. Året efter flyttade mässan in i kårhuset Nymble, vilket har varit lokalen för efterföljande upplagor av D-Dagen. Mässan har också vuxit varje år, bortsett från pandemi-året 2020.",
-    paragraph3: "I år satsar vi på att ha över 100 företag närvarande. Vi räknar också med att 3000 studenter besöker mässan. Med tiden har D-Dagen växt till mycket mer än bara en mässdag. Veckorna inför mässan ger vi företag chansen att hålla lunchföreläsningar och andra event tillsammans med våra studenter. På kvällen efter mässan anordnar vi en större sittning där studenter och företagsrepresentanter kan prata på ett mer avslappnat vis.",
+    paragraph1:
+      "D-Dagen är en årlig företagsmässa som anordnas av Datasektionen på KTH. På D-Dagen har företag möjlighet att möta och interagera med potentiella framtida anställda från KTH. Samtidigt erbjuder vi våra studenter en chans att lära sig mer om karriärmöjligheter, nätverka och delta i föreläsningar och andra företagsevent.",
+    paragraph2:
+      "D-Dagen startade 2015, då med 35 närvarande företag. Året efter flyttade mässan in i kårhuset Nymble, vilket har varit lokalen för efterföljande upplagor av D-Dagen. Mässan har också vuxit varje år, bortsett från pandemi-året 2020.",
+    paragraph3:
+      "I år satsar vi på att ha över 100 företag närvarande. Vi räknar också med att 3000 studenter besöker mässan. Med tiden har D-Dagen växt till mycket mer än bara en mässdag. Veckorna inför mässan ger vi företag chansen att hålla lunchföreläsningar och andra event tillsammans med våra studenter. På kvällen efter mässan anordnar vi en större sittning där studenter och företagsrepresentanter kan prata på ett mer avslappnat vis.",
     info1: "Vad är D-Dagen",
     info2: "D-Dagen förr",
     info3: "D-Dagen idag",
     prTeamRoles: [
       ["Systemutvecklare", "Social Medier-Ansvarig", "PR-Ansvarig"],
       ["Art Director", "Webbutvecklare", "Tryckansvarig"],
-      ["Systemutvecklare", "Art Director"]
+      ["Systemutvecklare", "Art Director"],
     ],
     salesTeamRoles: [
       ["Säljare", "Säljare", "Säljansvarig"],
       ["Sponsansvarig", "Säljare", "Säljare"],
-      ["Säljare"]
+      ["Säljare"],
     ],
     massTeamRoles: [
       ["Mäss-Ansvarig", "Logistik-Ansvarig", "Lokal-Ansvarig"],
-      ["Fest-Ansvarig", "Lounge-Ansvarig", "Personal-Ansvarig"]
+      ["Fest-Ansvarig", "Lounge-Ansvarig", "Personal-Ansvarig"],
     ],
-    ecoTeamRoles: [
-      ["Vice Ekonomiansvarig", "Ekonomiansvarig"]
+    ecoTeamRoles: [["Vice Ekonomiansvarig", "Ekonomiansvarig"]],
+    ddaRoles: [["DDA", "DDA"]],
+    teamNames: [
+      "PR-Gruppen",
+      "Säljgruppen",
+      "Mässgruppen",
+      "Ekonomiansvariga",
+      "D-Dagenansvariga",
     ],
-    ddaRoles: [
-      ["DDA", "DDA"]
-    ],
-    teamNames: ["PR-Gruppen", "Säljgruppen", "Mässgruppen", "Ekonomiansvariga", "D-Dagenansvariga"],
   },
   logos:{
     header:"Möt företagen"

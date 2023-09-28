@@ -61,7 +61,7 @@ export class Package {
       case "main":
         this.name = t.exhibitorSettings.table.row2.packages.main;
         this.tables = 1;
-        this.chairs = 1;
+        this.chairs = 0;
         this.drinkCoupons = 20;
         this.representatives = 6;
         this.banquetTickets = 0;
@@ -69,7 +69,7 @@ export class Package {
       case "base":
         this.name = t.exhibitorSettings.table.row2.packages.base;
         this.tables = 1;
-        this.chairs = 1;
+        this.chairs = 0;
         this.drinkCoupons = 10;
         this.representatives = 2;
         this.banquetTickets = 2;
@@ -77,7 +77,7 @@ export class Package {
       case "sponsor":
         this.name = t.exhibitorSettings.table.row2.packages.sponsor;
         this.tables = 1;
-        this.chairs = 1;
+        this.chairs = 0;
         this.drinkCoupons = 10;
         this.representatives = 2;
         this.banquetTickets = 2;
@@ -85,7 +85,7 @@ export class Package {
       case "headhunter":
         this.name = t.exhibitorSettings.table.row2.packages.headhunter;
         this.tables = 1;
-        this.chairs = 1;
+        this.chairs = 0;
         this.drinkCoupons = 20;
         this.representatives = 4;
         this.banquetTickets = 2;
@@ -93,7 +93,7 @@ export class Package {
       case "premium":
         this.name = t.exhibitorSettings.table.row2.packages.premium;
         this.tables = 1;
-        this.chairs = 1;
+        this.chairs = 0;
         this.drinkCoupons = 30;
         this.representatives = 4;
         this.banquetTickets = 4;
@@ -101,7 +101,7 @@ export class Package {
       case "startup":
         this.name = t.exhibitorSettings.table.row2.packages.startup;
         this.tables = 1;
-        this.chairs = 1;
+        this.chairs = 0;
         this.drinkCoupons = 0;
         this.representatives = 2;
         this.banquetTickets = 0;
@@ -177,6 +177,11 @@ export class Exhibitor {
   extraRepresentativeSpots: number;
   totalBanquetTicketsWanted: number;
   jobOfferId: string;
+  customTables: number;
+  customChairs: number;
+  customDrinkCoupons: number;
+  customRepresentativeSpots: number;
+  customBanquetTicketsWanted: number;
 
   constructor(
     id: string,
@@ -192,7 +197,12 @@ export class Exhibitor {
     extraDrinkCoupons: number,
     extraRepresentativeSpots: number,
     totalBanquetTicketsWanted: number,
-    jobOfferId: string
+    jobOfferId: string,
+    customTables: number,
+    customChairs: number,
+    customDrinkCoupons: number,
+    customRepresentativeSpots: number,
+    customBanquetTicketsWanted: number
   ) {
     this.id = id;
     this.name = exhibitorName;
@@ -208,6 +218,11 @@ export class Exhibitor {
     this.extraRepresentativeSpots = extraRepresentativeSpots;
     this.totalBanquetTicketsWanted = totalBanquetTicketsWanted;
     this.jobOfferId = jobOfferId;
+    this.customTables = customTables;
+    this.customChairs = customChairs;
+    this.customDrinkCoupons = customDrinkCoupons;
+    this.customRepresentativeSpots = customRepresentativeSpots;
+    this.customBanquetTicketsWanted = customBanquetTicketsWanted;
   }
 }
 

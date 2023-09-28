@@ -23,7 +23,7 @@ export function AddPreferences({
   t: Locale;
   pos: number;
   type: "Representative" | "Banquet";
-  extras: Extras;
+  extras: Extras | undefined;
   preferences: Preferences[];
   setPreferences: Dispatch<Preferences[]>;
   preferenceCount: { banqcount: number; reprcount: number };
@@ -41,6 +41,7 @@ export function AddPreferences({
     false,
     false,
   ]);
+  const [extraPreferences, setExtraPreferences] = useState(0);
   const [preference, setPreference] = useState(preferences[pos]);
   const [errorMessage, setErrorMessage] = useState<string | undefined>();
 
@@ -71,9 +72,6 @@ export function AddPreferences({
     const maxPreferences = isRepresentative
       ? exhibitorPackage.representatives
       : exhibitorPackage.banquetTickets;
-    const extraPreferences = isRepresentative
-      ? extras.extraRepresentativeSpots
-      : extras.totalBanquetTicketsWanted;
     if (
       preference.id ||
       preferences.length <= maxPreferences + extraPreferences
@@ -174,6 +172,15 @@ export function AddPreferences({
       }, 3000);
     }
   }, [errorMessage]);
+
+  useEffect(() => {
+    if (extras == undefined) return;
+    setExtraPreferences(
+      isRepresentative
+        ? extras.extraRepresentativeSpots
+        : extras.totalBanquetTicketsWanted
+    );
+  }, [extras]);
 
   return (
     <div className="flex flex-col items-center w-[80%] bg-white/40 border-2 border-white/70 rounded-xl pb-8 mt-8 mb-16 overflow-hidden">

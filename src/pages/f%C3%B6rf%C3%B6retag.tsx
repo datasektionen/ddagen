@@ -9,7 +9,7 @@ export default function ForCompanies() {
   return (
     <div className="w-full h-full">
       <div className="flex flex-col mx-auto items-center max-w-[80%]">
-        <h1 className="text-cerise pt-[200px] mb-36 text-5xl font-medium uppercase">
+        <h1 className="uppercase text-center text-cerise pt-[200px] mb-36 text-5xl font-medium">
           {t.forCompanies.title}
         </h1>
 

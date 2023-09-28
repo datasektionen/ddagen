@@ -32,6 +32,18 @@ export default {
       "Are you interested in exhibiting on D-Dagen and connecting with thousands of students in Computer Science and IT? Click below to sign up!",
     formButton: "Sign up",
   },
+  forStudents: {
+    title: "For Students",
+    aboutFair: "About the fair",
+    fairText1:
+      "D-Dagen is the Computer Science Chapter’s annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
+    fairText2:
+      "This year, the fair is held on October 12th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15 and in KTH Entré which is located at Drottning Kristinas väg 4. Other than the fair, D-Dagen is also having a recruitment pub before the fair where we recruit event staff and lunch lectures with FRA (28/9) and SAAB (9/10) together with dJubileet. Additionally, students will be able to have more personal meetings with companies through personal meetings in order to get more of a connection with that company.",
+    personalMeetings: "Personal Meetings",
+    personalMeetingsText:
+      "This year is also the first year where we will offer personal meetings for students, which means that you will be able to discuss future job opportunities in a private room with company representatives from selected companies. Sign up on the link below:",
+    personalMeetingsButton: "Personal Meetings",
+  },
   exhibitorSettings: {
     header: "Profile Settings",
     fields: {
@@ -498,13 +510,20 @@ export default {
           representativeSpots: "Representative Spots",
           banquetTickets: "Banquet Tickets",
         },
+        verification: {
+          name: "Verification",
+          banquet: "Banquet",
+          representatives: "Representatives",
+        },
       },
     },
     extraOrders: {
       header: {
-        title: "Extra Orders",
+        order: "Order",
         extras: "Extras",
+        package: "Package",
         amount: "Amount",
+        total: "Total",
       },
       row: {
         tables: "Tables",
@@ -522,6 +541,10 @@ export default {
         choices: "Choices",
         comment: "Comment",
         type: "Type",
+      },
+      types: {
+        representatives: "Representatives",
+        banquet: "Banquet",
       },
       none: "Vegatarian",
     },
