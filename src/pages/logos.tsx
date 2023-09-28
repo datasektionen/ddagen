@@ -120,9 +120,7 @@ type LogosProps = {
 };
 export default function Logos({ exhibitorData }: LogosProps) {
   const t = useLocale();
-  const headSponsor = exhibitorData.filter(
-    (e) => e.name.toLowerCase() === "omegappoint"
-  );
+  const headsponsorPackages = exhibitorData.filter((e) => e.package === "main");
   const premiumPackages = exhibitorData.filter((e) => e.package === "premium");
   const headhunterPackages = exhibitorData.filter(
     (e) => e.package === "headhunter"
@@ -138,7 +136,7 @@ export default function Logos({ exhibitorData }: LogosProps) {
         {t.logos.header}
       </h1>
       <div className="block sm:hidden">
-        {RenderLogos(headSponsor, 1, "w-[250px]")}
+        {RenderLogos(headsponsorPackages, 1, "w-[250px]")}
         {RenderLogos(premiumPackages, 2, "w-[125px]")}
         {RenderLogos(headhunterPackages, 2, "w-[125px]")}
         {RenderLogos(sponsorPackages, 3, "w-[80px]")}
@@ -147,7 +145,7 @@ export default function Logos({ exhibitorData }: LogosProps) {
       </div>
 
       <div className="hidden sm:block">
-        {RenderLogos(headSponsor, 1, "w-[600px]")}
+        {RenderLogos(headsponsorPackages, 1, "w-[600px]")}
         {RenderLogos(premiumPackages, 2, "w-[400px]")}
         {RenderLogos(headhunterPackages, 2, "w-[400px]")}
         {RenderLogos(sponsorPackages, 4, "w-[300px]")}
