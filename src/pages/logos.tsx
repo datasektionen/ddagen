@@ -2,6 +2,7 @@ import { useLocale } from "@/locales";
 import { useState, useEffect, useRef } from "react";
 import { addImageDetails } from "@/shared/addImageDetails";
 import { prisma } from "@/server/db";
+import { Package } from "@prisma/client";
 
 function Logo({
   pic,
@@ -113,7 +114,7 @@ type LogosProps = {
     logoWhite?: string | null;
     logoColor?: string | null;
     description?: string;
-    package?: string;
+    package?: Package;
     jobOfferId?: string;
   }[];
 };
