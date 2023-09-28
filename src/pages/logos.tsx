@@ -1,5 +1,5 @@
 import { useLocale } from "@/locales";
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { addImageDetails } from "@/shared/addImageDetails";
 import { prisma } from "@/server/db";
 import { Package } from "@prisma/client";
@@ -86,7 +86,7 @@ function RenderLogos(packageList: any[], rowSize: number, logoSize: string) {
           {chunk.map((exhibitor, idx) => (
             <div key={idx}>
               <Logo
-                pic={exhibitor.logoColor} // exhibitor.logoColor
+                pic={exhibitor.logoColor}
                 companyName={exhibitor.name}
                 description={exhibitor.description}
                 size={logoSize}
