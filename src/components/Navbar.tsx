@@ -290,10 +290,12 @@ export default function Navbar() {
                   : [{ href: "/logga-in", text: t.login }]),
               ]}
             />
-            <NavLink class="px-0 lg:px-4 p-4" href="/förstudenter">
-              {t.forStudents}
-            </NavLink>
-            {/* <Group links={[{ href: "/förstudenter", text: t.forCompanies }]} /> */}
+            <Group
+              links={[
+                { href: "/förstudenter", text: t.forStudents },
+                { href: "/logos", text: t.logos },
+              ]}
+            />
             {/*<NavLink class="px-14 lg:px-0" href="/mässan">{t.about}</NavLink>*/}
             <div className="lg:hidden">
               <Group

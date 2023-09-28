@@ -254,6 +254,7 @@ export default {
     login: "Logga in",
     logout: "Logga ut",
     catalog: "Katalog",
+    logos: "Katalog",
   },
   footer: {
     header:

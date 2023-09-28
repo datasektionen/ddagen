@@ -254,6 +254,7 @@ export default {
     login: "Log in",
     logout: "Log out",
     catalog: "Catalog",
+    logos: "Catalog"
   },
   footer: {
     header: "Organized by Datasektionen",
