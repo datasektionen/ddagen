@@ -1,6 +1,7 @@
 import { useLocale } from "@/locales";
 import { useState, useEffect, useRef } from "react";
 import { api } from "@/utils/api";
+import { addImageDetails } from "@/shared/addImageDetails";
 
 function Logo({
   pic,
@@ -33,7 +34,7 @@ function Logo({
   return (
     <div>
       <img
-        src={pic}
+        src={addImageDetails(pic)}
         alt={companyName}
         onClick={openModal}
         className={`${size} cursor-pointer`}
@@ -49,7 +50,7 @@ function Logo({
             className={`bg-black bg-opacity-0 w-[300px] sm:w-[500px] pt-10 pb-5 flex flex-col rounded-3xl`}
           >
             <div className="relative py-[0px] justify-center flex flex-row">
-              <img src={pic} alt={companyName} />
+              <img src={addImageDetails(pic)} alt={companyName} />
               {/* 
               <button
                 className="absolute top-5 right-3 w-[50px] h-[50px] flex items-center justify-center"
@@ -97,7 +98,7 @@ function RenderLogos(packageList: any[], rowSize: number, logoSize: string) {
           {chunk.map((exhibitor, idx) => (
             <div key={idx}>
               <Logo
-                pic={"/img/omegapoint_logo.svg"} // exhibitor.logoColor
+                pic={exhibitor.logoColor} // exhibitor.logoColor
                 companyName={exhibitor.name}
                 description={exhibitor.description}
                 size={logoSize}
@@ -138,13 +139,33 @@ export default function Logos() {
 
 
 
-  const list = ["a", "b", "c", "d", "e", "f"];
+//const list = ["a", "b", "c", "d", "e", "f"];
   return (
     <div className="pt-[200px] pb-[300px]">
       <h1 className="uppercase text-cerise text-5xl font-medium text-center">
         {" "}
         {t.logos.header}
       </h1>
+      <div className="block sm:hidden">
+      {RenderLogos(headSponsor, 1, "w-[250px]")}
+      {RenderLogos(premiumPackages, 2, "w-[125px]")}
+      {RenderLogos(headhunterPackages, 2, "w-[125px]")}
+      {RenderLogos(sponsorPackages, 3, "w-[80px]")}
+      {RenderLogos(basePackages, 3, "w-[80px]")}
+      {RenderLogos(startupPackages, 3, "w-[80px]")}
+      </div>
+
+      <div className="hidden sm:block">
+      {RenderLogos(headSponsor, 1, "w-[600px]")}
+      {RenderLogos(premiumPackages, 2, "w-[400px]")}
+      {RenderLogos(headhunterPackages, 2, "w-[400px]")}
+      {RenderLogos(sponsorPackages, 4, "w-[300px]")}
+      {RenderLogos(basePackages, 4, "w-[300px]")}
+      {RenderLogos(startupPackages, 4, "w-[300px]")}
+      </div>
+
+
+      {/*
       <div className="block sm:hidden">
       {RenderLogos(premiumPackages, 1, "w-[250px]")}
       {RenderLogos(basePackages, 2, "w-[125px]")}
@@ -158,12 +179,12 @@ export default function Logos() {
       {RenderLogos(premiumPackages, 1, "w-[600px]")}
       {RenderLogos(basePackages, 2, "w-[400px]")}
       {RenderLogos(basePackages, 2, "w-[400px]")}
-      {RenderLogos(basePackages, 3, "w-[300px]")}
-      {RenderLogos(basePackages, 3, "w-[300px]")}
-      {RenderLogos(basePackages, 3, "w-[300px]")}
+      {RenderLogos(basePackages, 4, "w-[300px]")}
+      {RenderLogos(basePackages, 4, "w-[300px]")}
+      {RenderLogos(basePackages, 4, "w-[300px]")}
       </div>
 
-      {/*
+      
       {RenderLogos(list, 1, "w-[500px]")}
       {RenderLogos(list, 2, "w-[400px]")}
       {RenderLogos(list, 3, "w-[300px]")}
