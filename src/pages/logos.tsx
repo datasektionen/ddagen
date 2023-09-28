@@ -116,7 +116,7 @@ export default function Logos() {
   const error = exhibitorsQuery.error;
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <p>Loading...</p>; // Maybe a spinner
   }
 
   if (error) {
@@ -134,7 +134,6 @@ export default function Logos() {
   const basePackages = exhibitorData.filter((e) => e.package === "base");
   const startupPackages = exhibitorData.filter((e) => e.package === "startup");
 
-  //const list = ["a", "b", "c", "d", "e", "f"];
   return (
     <div className="pt-[200px] pb-[300px]">
       <h1 className="uppercase text-cerise text-5xl font-medium text-center">
@@ -158,38 +157,6 @@ export default function Logos() {
         {RenderLogos(basePackages, 4, "w-[300px]")}
         {RenderLogos(startupPackages, 4, "w-[300px]")}
       </div>
-
-      {/*
-      <div className="block sm:hidden">
-      {RenderLogos(premiumPackages, 1, "w-[250px]")}
-      {RenderLogos(basePackages, 2, "w-[125px]")}
-      {RenderLogos(basePackages, 2, "w-[125px]")}
-      {RenderLogos(basePackages, 3, "w-[80px]")}
-      {RenderLogos(basePackages, 3, "w-[80px]")}
-      {RenderLogos(basePackages, 3, "w-[80px]")}
-      </div>
-
-      <div className="hidden sm:block">
-      {RenderLogos(premiumPackages, 1, "w-[600px]")}
-      {RenderLogos(basePackages, 2, "w-[400px]")}
-      {RenderLogos(basePackages, 2, "w-[400px]")}
-      {RenderLogos(basePackages, 4, "w-[300px]")}
-      {RenderLogos(basePackages, 4, "w-[300px]")}
-      {RenderLogos(basePackages, 4, "w-[300px]")}
-      </div>
-
-      
-      {RenderLogos(list, 1, "w-[500px]")}
-      {RenderLogos(list, 2, "w-[400px]")}
-      {RenderLogos(list, 3, "w-[300px]")}
-      {RenderLogos(list, 4, "w-[200px]")}
-      {RenderLogos(headSponsor, 1, "w-[500px]")}
-      {RenderLogos(premiumPackages, 2, "w-[400px]")}
-      {RenderLogos(headhunterPackages, 2, "w-[400px]")}
-      {RenderLogos(base, 3)}
-      {RenderLogos(headhunterPackages, 3)}
-      {RenderLogos(premiumPackages, 2)}
-      */}
     </div>
   );
 }
