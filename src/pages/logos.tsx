@@ -46,10 +46,12 @@ function Logo({
           ref={modalRef}
           onClick={handleOverlayClick}
         >
-          <div className={`bg-black bg-opacity-0 w-[500px] pt-10 pb-5 flex flex-col rounded-3xl`}>
+          <div
+            className={`bg-black bg-opacity-0 w-[500px] pt-10 pb-5 flex flex-col rounded-3xl`}
+          >
             <div className="relative py-[0px] justify-center flex flex-row">
               <img src={pic} alt={companyName} />
-                {/* 
+              {/* 
               <button
                 className="absolute top-5 right-3 w-[50px] h-[50px] flex items-center justify-center"
                 onClick={closeModal}
@@ -60,8 +62,14 @@ function Logo({
               */}
             </div>
             <div className="px-5 mt-5">
-              <h2 className="text-center text-3xl text-cerise">{"Omega point"}</h2>
-              <p className="text-white text-center mt-5">{"is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also "}</p>
+              <h2 className="text-center text-3xl text-cerise">
+                {"Omega point"}
+              </h2>
+              <p className="text-white text-center mt-5">
+                {
+                  "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also "
+                }
+              </p>
             </div>
           </div>
         </div>
@@ -90,7 +98,7 @@ function RenderLogos(packageList: any[], rowSize: number, logoSize: string) {
           {chunk.map((exhibitor, idx) => (
             <div key={idx}>
               <Logo
-                pic={"/img/omegapoint_logo.svg"}// exhibitor.logoColor
+                pic={"/img/omegapoint_logo.svg"} // exhibitor.logoColor
                 companyName={exhibitor.companyName || exhibitor}
                 description={exhibitor.description || exhibitor}
                 size={logoSize}
@@ -105,13 +113,13 @@ function RenderLogos(packageList: any[], rowSize: number, logoSize: string) {
 
 export default function Logos() {
   const t = useLocale();
-  
+
   const exhibitorsQuery = api.public.getExhibitors.useQuery();
   const exhibitorData = exhibitorsQuery.data || [];
   const loading = exhibitorsQuery.isLoading;
   const error = exhibitorsQuery.error;
 
-   if (loading) {
+  if (loading) {
     return <p>Loading...</p>;
   }
 
@@ -135,8 +143,8 @@ export default function Logos() {
         {t.logos.header}
       </h1>
       {RenderLogos(list, 1, "w-[500px]")}
-      {RenderLogos(list, 2, "w-[100px]")}
-      {RenderLogos(list, 2, "w-[100px]")}
+      {RenderLogos(list, 2, "w-[400px]")}
+      {RenderLogos(list, 3, "w-[300px]")}
       {/*
       {RenderLogos(mainPackages, 3)}
       {RenderLogos(startupPackages, 3)}
