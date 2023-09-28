@@ -5,7 +5,7 @@ import {
   import { Exhibitor } from "@/shared/Classes";
   
   export const publicRouter = createTRPCRouter({
-    getExhibitors: publicProcedure.mutation(async ({ ctx }) => {
+    getExhibitors: publicProcedure.query(async ({ ctx }) => {
   
         const exhibitors = await ctx.prisma.exhibitor.findMany();
         return exhibitors.map(

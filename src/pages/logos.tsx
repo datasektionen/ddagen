@@ -102,30 +102,19 @@ function RenderLogos(packageList: any[], rowSize: number) {
 
 export default function Logos() {
   const t = useLocale();
-  const getExhibitors = api.public.getExhibitors.useMutation();
-  const [exhibitorData, setExhibitorData] = useState<Exhibitor[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<null | string>(null);
+  
+  const exhibitorsQuery = api.public.getExhibitors.useQuery();
+  const exhibitorData = exhibitorsQuery.data || [];
+  const loading = exhibitorsQuery.isLoading;
+  const error = exhibitorsQuery.error;
 
-  // Fetch data
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await getExhibitors.mutateAsync();
-        setExhibitorData(response);
-      } catch (err) {
-        console.error("Error fetching exhibitors:", err);
-        setError("Failed to fetch exhibitors.");
-      } finally {
-        setLoading(false);
-      }
-    }
+   if (loading) {
+    return <p>Loading...</p>;
+  }
 
-    fetchData();
-  }, [getExhibitors]);
-  // Check if  fetch suceeded
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (error) {
+    return <p>Error fetching exhibitors. Please try again later.</p>;
+  }
 
   const startupPackages = exhibitorData.filter((e) => e.package === "startup");
   const mainPackages = exhibitorData.filter((e) => e.package === "main");
