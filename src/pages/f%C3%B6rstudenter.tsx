@@ -60,17 +60,17 @@ export default function ForStudents() {
             {/* Bottom Right */}
             <div className="lg:col-[16/30] lg:row-[13/26] text-center lg:text-left z-40">
               <div className="bg-cerise lg:p-8 p-6 drop-shadow-md overflow-hidden">
-                <h2 className="font-black text-[rgb(9,14,47)] lg:text-2xl xl:text-[1.9rem] text-2xl pb-3">
-                  {t.forStudents.eventStaff}
+                <h2 className="font-black text-[rgb(9,14,47)] lg:text-xl xl:text-[1.9rem] text-2xl pb-3 drop-shadow-md">
+                  {t.forStudents.personalMeetings}
                 </h2>
-                <p className="pb-8 text-[#110C30] md:text-lg xl:text-2xl text-xl font-light">
-                  {t.forStudents.eventStaffText}
+                <p className="pb-8 text-[#110C30] md:text-md text-xl font-light">
+                  {t.forStudents.personalMeetingsText}
                 </p>
                 <Link
                   className="block uppercase text-sm hover:scale-105 transition-transform bg-white rounded-full text-cerise font-medium px-10 py-2 max-lg:mx-auto w-max"
-                  href="https://dsekt.se/ddagen"
+                  href="https://kontaktsamtal.ddagen.se/"
                 >
-                  {t.forStudents.eventStaffButton}
+                  {t.forStudents.personalMeetingsButton}
                 </Link>
               </div>
             </div>
