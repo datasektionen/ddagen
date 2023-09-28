@@ -65,11 +65,7 @@ function Logo({
               <h2 className="text-center text-3xl text-cerise">
                 {companyName}
               </h2>
-              <p className="text-white text-center mt-5">
-                {
-                description
-                }
-              </p>
+              <p className="text-white text-center mt-5">{description}</p>
             </div>
           </div>
         </div>
@@ -127,7 +123,9 @@ export default function Logos() {
     return <p>Error fetching exhibitors. Please try again later.</p>;
   }
 
-  const headSponsor = exhibitorData.filter((e) => e.name.toLowerCase() === "omegapoint");
+  const headSponsor = exhibitorData.filter(
+    (e) => e.name.toLowerCase() === "omegapoint"
+  );
   const premiumPackages = exhibitorData.filter((e) => e.package === "premium");
   const headhunterPackages = exhibitorData.filter(
     (e) => e.package === "headhunter"
@@ -136,10 +134,7 @@ export default function Logos() {
   const basePackages = exhibitorData.filter((e) => e.package === "base");
   const startupPackages = exhibitorData.filter((e) => e.package === "startup");
 
-
-
-
-//const list = ["a", "b", "c", "d", "e", "f"];
+  //const list = ["a", "b", "c", "d", "e", "f"];
   return (
     <div className="pt-[200px] pb-[300px]">
       <h1 className="uppercase text-cerise text-5xl font-medium text-center">
@@ -147,23 +142,22 @@ export default function Logos() {
         {t.logos.header}
       </h1>
       <div className="block sm:hidden">
-      {RenderLogos(headSponsor, 1, "w-[250px]")}
-      {RenderLogos(premiumPackages, 2, "w-[125px]")}
-      {RenderLogos(headhunterPackages, 2, "w-[125px]")}
-      {RenderLogos(sponsorPackages, 3, "w-[80px]")}
-      {RenderLogos(basePackages, 3, "w-[80px]")}
-      {RenderLogos(startupPackages, 3, "w-[80px]")}
+        {RenderLogos(headSponsor, 1, "w-[250px]")}
+        {RenderLogos(premiumPackages, 2, "w-[125px]")}
+        {RenderLogos(headhunterPackages, 2, "w-[125px]")}
+        {RenderLogos(sponsorPackages, 3, "w-[80px]")}
+        {RenderLogos(basePackages, 3, "w-[80px]")}
+        {RenderLogos(startupPackages, 3, "w-[80px]")}
       </div>
 
       <div className="hidden sm:block">
-      {RenderLogos(headSponsor, 1, "w-[600px]")}
-      {RenderLogos(premiumPackages, 2, "w-[400px]")}
-      {RenderLogos(headhunterPackages, 2, "w-[400px]")}
-      {RenderLogos(sponsorPackages, 4, "w-[300px]")}
-      {RenderLogos(basePackages, 4, "w-[300px]")}
-      {RenderLogos(startupPackages, 4, "w-[300px]")}
+        {RenderLogos(headSponsor, 1, "w-[600px]")}
+        {RenderLogos(premiumPackages, 2, "w-[400px]")}
+        {RenderLogos(headhunterPackages, 2, "w-[400px]")}
+        {RenderLogos(sponsorPackages, 4, "w-[300px]")}
+        {RenderLogos(basePackages, 4, "w-[300px]")}
+        {RenderLogos(startupPackages, 4, "w-[300px]")}
       </div>
-
 
       {/*
       <div className="block sm:hidden">
