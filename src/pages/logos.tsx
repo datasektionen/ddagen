@@ -7,10 +7,12 @@ function Logo({
   pic,
   companyName,
   description,
+  size,
 }: {
   pic: string;
   companyName: string;
   description: string;
+  size: string;
 }) {
   const [modalState, setModal] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
@@ -35,7 +37,7 @@ function Logo({
         src={pic}
         alt={companyName}
         onClick={openModal}
-        className="w-[300px]"
+        className={`${size}`}
       />
 
       {modalState && (
@@ -44,7 +46,7 @@ function Logo({
           ref={modalRef}
           onClick={handleOverlayClick}
         >
-          <div className="bg-black bg-opacity-0 w-[500px] pt-10 pb-5 flex flex-col rounded-3xl">
+          <div className={`bg-black bg-opacity-0 w-[500px] pt-10 pb-5 flex flex-col rounded-3xl`}>
             <div className="relative py-[0px] justify-center flex flex-row">
               <img src={pic} alt={companyName} />
                 {/* 
@@ -77,7 +79,7 @@ function chunkArray<T>(array: T[], size: number): T[][] {
   }
   return chunkedArr;
 }
-function RenderLogos(packageList: any[], rowSize: number) {
+function RenderLogos(packageList: any[], rowSize: number, logoSize: string) {
   return (
     <>
       {chunkArray(packageList, rowSize).map((chunk, rowIndex) => (
@@ -91,6 +93,7 @@ function RenderLogos(packageList: any[], rowSize: number) {
                 pic={"/img/omegapoint_logo.svg"}// exhibitor.logoColor
                 companyName={exhibitor.companyName || exhibitor}
                 description={exhibitor.description || exhibitor}
+                size={logoSize}
               />
             </div>
           ))}
@@ -131,9 +134,9 @@ export default function Logos() {
         {" "}
         {t.logos.header}
       </h1>
-      {RenderLogos(list, 2)}
-      {RenderLogos(list, 3)}
-      {RenderLogos(list, 4)}
+      {RenderLogos(list, 1, "w-[500px]")}
+      {RenderLogos(list, 2, "w-[100px]")}
+      {RenderLogos(list, 2, "w-[100px]")}
       {/*
       {RenderLogos(mainPackages, 3)}
       {RenderLogos(startupPackages, 3)}
