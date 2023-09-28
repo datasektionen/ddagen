@@ -37,7 +37,7 @@ function Logo({
         src={pic}
         alt={companyName}
         onClick={openModal}
-        className={`${size}`}
+        className={`${size} cursor-pointer`}
       />
 
       {modalState && (
@@ -145,6 +145,7 @@ export default function Logos() {
       {RenderLogos(list, 1, "w-[500px]")}
       {RenderLogos(list, 2, "w-[400px]")}
       {RenderLogos(list, 3, "w-[300px]")}
+      {RenderLogos(list, 4, "w-[200px]")}
       {/*
       {RenderLogos(mainPackages, 3)}
       {RenderLogos(startupPackages, 3)}
