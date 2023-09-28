@@ -1,6 +1,5 @@
 import { useLocale } from "@/locales";
 import { useState, useEffect, useRef } from "react";
-import { Exhibitor } from "@/shared/Classes";
 import { api } from "@/utils/api";
 
 function Logo({
@@ -47,7 +46,7 @@ function Logo({
           onClick={handleOverlayClick}
         >
           <div
-            className={`bg-black bg-opacity-0 w-[500px] pt-10 pb-5 flex flex-col rounded-3xl`}
+            className={`bg-black bg-opacity-0 w-[300px] sm:w-[500px] pt-10 pb-5 flex flex-col rounded-3xl`}
           >
             <div className="relative py-[0px] justify-center flex flex-row">
               <img src={pic} alt={companyName} />
@@ -63,11 +62,11 @@ function Logo({
             </div>
             <div className="px-5 mt-5">
               <h2 className="text-center text-3xl text-cerise">
-                {"Omega point"}
+                {companyName}
               </h2>
               <p className="text-white text-center mt-5">
                 {
-                  "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also "
+                description
                 }
               </p>
             </div>
@@ -99,8 +98,8 @@ function RenderLogos(packageList: any[], rowSize: number, logoSize: string) {
             <div key={idx}>
               <Logo
                 pic={"/img/omegapoint_logo.svg"} // exhibitor.logoColor
-                companyName={exhibitor.companyName || exhibitor}
-                description={exhibitor.description || exhibitor}
+                companyName={exhibitor.name}
+                description={exhibitor.description}
                 size={logoSize}
               />
             </div>
@@ -127,13 +126,17 @@ export default function Logos() {
     return <p>Error fetching exhibitors. Please try again later.</p>;
   }
 
-  const startupPackages = exhibitorData.filter((e) => e.package === "startup");
-  const mainPackages = exhibitorData.filter((e) => e.package === "main");
-  const basePackages = exhibitorData.filter((e) => e.package === "base");
+  const headSponsor = exhibitorData.filter((e) => e.name.toLowerCase() === "omegapoint");
+  const premiumPackages = exhibitorData.filter((e) => e.package === "premium");
   const headhunterPackages = exhibitorData.filter(
     (e) => e.package === "headhunter"
   );
-  const premiumPackages = exhibitorData.filter((e) => e.package === "premium");
+  const sponsorPackages = exhibitorData.filter((e) => e.package === "sponsor");
+  const basePackages = exhibitorData.filter((e) => e.package === "base");
+  const startupPackages = exhibitorData.filter((e) => e.package === "startup");
+
+
+
 
   const list = ["a", "b", "c", "d", "e", "f"];
   return (
@@ -142,14 +145,33 @@ export default function Logos() {
         {" "}
         {t.logos.header}
       </h1>
+      <div className="block sm:hidden">
+      {RenderLogos(premiumPackages, 1, "w-[250px]")}
+      {RenderLogos(basePackages, 2, "w-[125px]")}
+      {RenderLogos(basePackages, 2, "w-[125px]")}
+      {RenderLogos(basePackages, 3, "w-[80px]")}
+      {RenderLogos(basePackages, 3, "w-[80px]")}
+      {RenderLogos(basePackages, 3, "w-[80px]")}
+      </div>
+
+      <div className="hidden sm:block">
+      {RenderLogos(premiumPackages, 1, "w-[600px]")}
+      {RenderLogos(basePackages, 2, "w-[400px]")}
+      {RenderLogos(basePackages, 2, "w-[400px]")}
+      {RenderLogos(basePackages, 3, "w-[300px]")}
+      {RenderLogos(basePackages, 3, "w-[300px]")}
+      {RenderLogos(basePackages, 3, "w-[300px]")}
+      </div>
+
+      {/*
       {RenderLogos(list, 1, "w-[500px]")}
       {RenderLogos(list, 2, "w-[400px]")}
       {RenderLogos(list, 3, "w-[300px]")}
       {RenderLogos(list, 4, "w-[200px]")}
-      {/*
-      {RenderLogos(mainPackages, 3)}
-      {RenderLogos(startupPackages, 3)}
-      {RenderLogos(basePackages, 3)}
+      {RenderLogos(headSponsor, 1, "w-[500px]")}
+      {RenderLogos(premiumPackages, 2, "w-[400px]")}
+      {RenderLogos(headhunterPackages, 2, "w-[400px]")}
+      {RenderLogos(base, 3)}
       {RenderLogos(headhunterPackages, 3)}
       {RenderLogos(premiumPackages, 2)}
       */}
