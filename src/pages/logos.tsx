@@ -1,7 +1,7 @@
 import { useLocale } from "@/locales";
 import { useState, useEffect, useRef } from "react";
-import { api } from "@/utils/api";
 import { addImageDetails } from "@/shared/addImageDetails";
+import { prisma } from "@/server/db";
 
 function Logo({
   pic,
@@ -106,23 +106,19 @@ function RenderLogos(packageList: any[], rowSize: number, logoSize: string) {
     </>
   );
 }
-
-export default function Logos() {
+type LogosProps = {
+  exhibitorData: {
+    id?: string;
+    name: string;
+    logoWhite?: string | null;
+    logoColor?: string | null;
+    description?: string;
+    package?: string;
+    jobOfferId?: string;
+  }[];
+};
+export default function Logos({ exhibitorData }: LogosProps) {
   const t = useLocale();
-
-  const exhibitorsQuery = api.public.getExhibitors.useQuery();
-  const exhibitorData = exhibitorsQuery.data || [];
-  const loading = exhibitorsQuery.isLoading;
-  const error = exhibitorsQuery.error;
-
-  if (loading) {
-    return <p>Loading...</p>; // Maybe a spinner
-  }
-
-  if (error) {
-    return <p>Error fetching exhibitors. Please try again later.</p>;
-  }
-
   const headSponsor = exhibitorData.filter(
     (e) => e.name.toLowerCase() === "omegapoint"
   );
@@ -159,4 +155,23 @@ export default function Logos() {
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  const exhibitors = await prisma.exhibitor.findMany();
+
+  const exhibitorData = exhibitors.map((exhibitor) => ({
+    name: exhibitor.name || null,
+    logoWhite: exhibitor.logoWhite?.toString("base64") || null,
+    logoColor: exhibitor.logoColor?.toString("base64") || null,
+    description: exhibitor.description || null,
+    package: exhibitor.package || null,
+    jobOfferId: exhibitor.jobOfferId || null,
+  }));
+
+  return {
+    props: {
+      exhibitorData,
+    },
+  };
 }
