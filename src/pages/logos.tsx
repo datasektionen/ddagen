@@ -120,7 +120,7 @@ type LogosProps = {
 export default function Logos({ exhibitorData }: LogosProps) {
   const t = useLocale();
   const headSponsor = exhibitorData.filter(
-    (e) => e.name.toLowerCase() === "omegapoint"
+    (e) => e.name.toLowerCase() === "omegappoint"
   );
   const premiumPackages = exhibitorData.filter((e) => e.package === "premium");
   const headhunterPackages = exhibitorData.filter(
