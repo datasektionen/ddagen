@@ -81,7 +81,7 @@ function RenderLogos(packageList: any[], rowSize: number, logoSize: string) {
       {chunkArray(packageList, rowSize).map((chunk, rowIndex) => (
         <div
           key={rowIndex}
-          className="flex flex-row justify-center items-center mb-4 gap-5 mt-[100px]"
+          className="flex flex-row justify-center items-center mb-4 gap-10 mt-[100px]"
         >
           {chunk.map((exhibitor, idx) => (
             <div key={idx}>
@@ -112,7 +112,6 @@ type LogosProps = {
 export default function Logos({ exhibitorData }: LogosProps) {
   const t = useLocale();
   const headsponsorPackages = exhibitorData.filter((e) => e.package === "main");
-  const premiumPackages = exhibitorData.filter((e) => e.package === "premium");
   const headhunterPackages = exhibitorData.filter(
     (e) => e.package === "headhunter"
   );
@@ -121,25 +120,23 @@ export default function Logos({ exhibitorData }: LogosProps) {
   const startupPackages = exhibitorData.filter((e) => e.package === "startup");
 
   return (
-    <div className="pt-[200px] pb-[300px]">
+    <div className="pt-[200px] pb-[300px] sm:px-[100px]">
       <h1 className="uppercase text-cerise text-5xl font-medium text-center">
         {" "}
         {t.logos.header}
       </h1>
       <div className="block sm:hidden">
         {RenderLogos(headsponsorPackages, 1, "w-[250px]")}
-        {RenderLogos(premiumPackages, 2, "w-[125px]")}
         {RenderLogos(headhunterPackages, 2, "w-[125px]")}
-        {RenderLogos(sponsorPackages, 3, "w-[80px]")}
+        {RenderLogos(sponsorPackages, 3, "w-[125px]")}
         {RenderLogos(basePackages, 3, "w-[80px]")}
         {RenderLogos(startupPackages, 3, "w-[80px]")}
       </div>
 
       <div className="hidden sm:block">
-        {RenderLogos(headsponsorPackages, 1, "w-[600px]")}
-        {RenderLogos(premiumPackages, 2, "w-[400px]")}
+        {RenderLogos(headsponsorPackages, 1, "w-[500px]")}
         {RenderLogos(headhunterPackages, 2, "w-[400px]")}
-        {RenderLogos(sponsorPackages, 4, "w-[300px]")}
+        {RenderLogos(sponsorPackages, 4, "w-[400px]")}
         {RenderLogos(basePackages, 4, "w-[300px]")}
         {RenderLogos(startupPackages, 4, "w-[300px]")}
       </div>
