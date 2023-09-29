@@ -254,7 +254,7 @@ export default {
     login: "Logga in",
     logout: "Logga ut",
     catalog: "Katalog",
-    logos: "Katalog",
+    logos: "Våra Utställare",
   },
   footer: {
     header:
@@ -590,6 +590,6 @@ export default {
     ],
   },
   logos:{
-    header:"Möt företagen"
+    header:"Våra utställare"
   }
 };

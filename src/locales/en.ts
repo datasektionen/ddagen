@@ -254,7 +254,7 @@ export default {
     login: "Log in",
     logout: "Log out",
     catalog: "Catalog",
-    logos: "Catalog"
+    logos: "Our Exhibitors"
   },
   footer: {
     header: "Organized by Datasektionen",
@@ -589,6 +589,6 @@ export default {
     ],
   },
   logos:{
-    header:"Meet the companies",
+    header:"Our exhibitors",
   },
 };
