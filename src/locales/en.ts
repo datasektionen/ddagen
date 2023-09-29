@@ -386,6 +386,8 @@ export default {
       "Invalid or expired confirmation code, please try again",
     cannotDeleteSelf: "You cannot delete your own account",
     unknown: "Something unexpectedly went wrong",
+    changePreferencesAfterDeadline:
+      "Can not change preferences after last date for ordering.",
   },
   success: {
     save: "The changes you made have been saved",

@@ -15,6 +15,7 @@ export default function ExtraOrders({
   preferenceCount: { banqcount: number; reprcount: number };
   exhibitorPackage: Package;
 }) {
+  const disablePreferences = true;
   const deadline = {
     drinkCoupons: "2023-09-14",
     tables: "2023-09-14",
@@ -56,6 +57,7 @@ export default function ExtraOrders({
     num: number,
     set: Dispatch<number>,
     step: number,
+    disableAll?: boolean,
     disabledCondition?: boolean,
     disabledConditionMessage?: string
   ) {
@@ -70,7 +72,9 @@ export default function ExtraOrders({
         <div className="flex flex-col">
           <button
             className="flex hover:cursor-pointer bg-white rounded-lg w-full h-[21.5px] text-black font-normal select-none
-                        justify-center items-center px-2 border border-[#999999] hover:scale-105 transition-transform mb-[2px]"
+                        justify-center items-center px-2 border border-[#999999] hover:scale-105 transition-transform mb-[2px]
+                        disabled:bg-[#cccccc] disabled:border disabled:border-solid"
+            disabled={disableAll}
             onClick={() => {
               set(num + step);
             }}
@@ -84,9 +88,13 @@ export default function ExtraOrders({
             onClick={() => {
               if (num >= 0 && num - step >= 0) set(num - step);
             }}
-            disabled={disabledCondition || num == 0}
+            disabled={disableAll || disabledCondition || num == 0}
             title={
-              disabledCondition && num != 0 ? disabledConditionMessage : ""
+              disableAll
+                ? ""
+                : disabledCondition && num != 0
+                ? disabledConditionMessage
+                : ""
             }
           >
             -
@@ -102,6 +110,7 @@ export default function ExtraOrders({
       included: exhibitorPackage.tables,
       get: tables,
       set: setTables,
+      disableAll: false,
       disableCondition: false,
       disableConditionMessage: "",
       increment: 1,
@@ -112,6 +121,7 @@ export default function ExtraOrders({
       included: exhibitorPackage.chairs,
       get: chairs,
       set: setChairs,
+      disableAll: false,
       disableCondition: false,
       disableConditionMessage: "",
       increment: 1,
@@ -122,6 +132,7 @@ export default function ExtraOrders({
       included: exhibitorPackage.drinkCoupons,
       get: drinkCoupons,
       set: setDrinkCoupons,
+      disableAll: false,
       disableCondition: false,
       disableConditionMessage: "",
       increment: 10,
@@ -132,6 +143,7 @@ export default function ExtraOrders({
       included: exhibitorPackage.representatives,
       get: representatives,
       set: setRepresentatives,
+      disableAll: disablePreferences,
       disableCondition:
         exhibitorPackage.representatives + representatives <=
         preferenceCount.reprcount,
@@ -146,6 +158,7 @@ export default function ExtraOrders({
       included: exhibitorPackage.banquetTickets,
       get: banquetTickets,
       set: setBanquetTickets,
+      disableAll: disablePreferences,
       disableCondition:
         exhibitorPackage.banquetTickets + banquetTickets <=
         preferenceCount.banqcount,
@@ -247,6 +260,7 @@ export default function ExtraOrders({
                 representatives,
                 setRepresentatives,
                 1,
+                disablePreferences,
                 exhibitorPackage.representatives + representatives <=
                   preferenceCount.reprcount,
                 t.exhibitorSettings.table.row2.section2.disabledButtonMessages
@@ -276,6 +290,7 @@ export default function ExtraOrders({
                 banquetTickets,
                 setBanquetTickets,
                 1,
+                disablePreferences,
                 exhibitorPackage.banquetTickets + banquetTickets <=
                   preferenceCount.banqcount,
                 t.exhibitorSettings.table.row2.section2.disabledButtonMessages
@@ -311,7 +326,9 @@ export default function ExtraOrders({
                     row.get,
                     row.set,
                     row.increment,
-                    row.disableCondition
+                    row.disableAll,
+                    row.disableCondition,
+                    row.disableConditionMessage
                   )
                 : row.get}
             </div>

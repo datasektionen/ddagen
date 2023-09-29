@@ -32,6 +32,7 @@ export function AddPreferences({
   setEditState: Dispatch<undefined | string>;
   exhibitorPackage: Package;
 }) {
+  const allowPreferenceChange = false;
   const isRepresentative = type == "Representative";
   const defaultPreference = new Preferences(undefined, "", [], "", type);
 
@@ -83,6 +84,7 @@ export function AddPreferences({
         comment: preference.comment,
         type: preference.type,
         locale: t.locale,
+        allowPreferenceChange: allowPreferenceChange,
       });
       setPreferenceCount({
         banqcount: setCount("Banquet", 1),
@@ -106,6 +108,7 @@ export function AddPreferences({
     deletePreferenceMutation.mutate({
       id: preferences[pos].id,
       locale: t.locale,
+      allowPreferenceChange: allowPreferenceChange,
     });
   }
 

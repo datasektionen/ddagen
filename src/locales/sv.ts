@@ -389,6 +389,8 @@ export default {
       "Bekräftelsekoden är felaktig eller har gått ut, var god försök igen",
     cannotDeleteSelf: "Du kan inte ta bort ditt eget konto",
     unknown: "Ett okänt fel uppstod",
+    changePreferencesAfterDeadline:
+      "Kan inte ändra preferenser efter sista datum för beställning.",
   },
   success: {
     save: "Ändringarna du gjorde har sparats",
