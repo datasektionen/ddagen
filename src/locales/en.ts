@@ -254,7 +254,7 @@ export default {
     login: "Log in",
     logout: "Log out",
     catalog: "Catalog",
-    logos: "Our Exhibitors"
+    logos: "Our Exhibitors",
   },
   footer: {
     header: "Organized by Datasektionen",
@@ -385,6 +385,8 @@ export default {
       "Invalid or expired confirmation code, please try again",
     cannotDeleteSelf: "You cannot delete your own account",
     unknown: "Something unexpectedly went wrong",
+    changePreferencesAfterDeadline:
+      "Can not change preferences after last date for ordering.",
   },
   success: {
     save: "The changes you made have been saved",
@@ -588,7 +590,7 @@ export default {
       "D-Dagen Managers",
     ],
   },
-  logos:{
-    header:"Our exhibitors",
+  logos: {
+    header: "Our exhibitors",
   },
 };

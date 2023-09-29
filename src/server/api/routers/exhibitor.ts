@@ -329,43 +329,51 @@ export const exhibitorRouter = createTRPCRouter({
         comment: z.string().trim(),
         type: foodPreferencesType,
         locale: z.enum(["en", "sv"]),
+        allowPreferenceChange: z.boolean(),
       })
     )
     .mutation(async ({ ctx, input }) => {
       const t = getLocale(input.locale);
-      try {
-        if (input.id) {
-          await ctx.prisma.foodPreferences.updateMany({
-            where: {
-              id: input.id,
-              exhibitorId: ctx.session.exhibitorId,
-              type: input.type,
-            },
-            data: {
-              value: input.value.length == 0 ? [] : input.value,
-              comment: input.comment,
-            },
-          });
-          return { ok: true, update: true, id: undefined };
-        } else {
-          const id = randomUUID();
-          await ctx.prisma.foodPreferences.create({
-            data: {
-              id: id,
-              exhibitorId: ctx.session.exhibitorId,
-              name: input.name,
-              value: input.value,
-              comment: input.comment,
-              type: input.type,
-            },
-          });
-          return { ok: true, update: false, id: id };
+      if (input.allowPreferenceChange) {
+        try {
+          if (input.id) {
+            await ctx.prisma.foodPreferences.updateMany({
+              where: {
+                id: input.id,
+                exhibitorId: ctx.session.exhibitorId,
+                type: input.type,
+              },
+              data: {
+                value: input.value.length == 0 ? [] : input.value,
+                comment: input.comment,
+              },
+            });
+            return { ok: true, update: true, id: undefined };
+          } else {
+            const id = randomUUID();
+            await ctx.prisma.foodPreferences.create({
+              data: {
+                id: id,
+                exhibitorId: ctx.session.exhibitorId,
+                name: input.name,
+                value: input.value,
+                comment: input.comment,
+                type: input.type,
+              },
+            });
+            return { ok: true, update: false, id: id };
+          }
+        } catch (e) {
+          console.log(e);
+          return {
+            ok: false,
+            error: t.error.unknown,
+          };
         }
-      } catch (e) {
-        console.log(e);
+      } else {
         return {
           ok: false,
-          error: t.error.unknown,
+          error: t.error.changePreferencesAfterDeadline,
         };
       }
     }),
@@ -374,28 +382,36 @@ export const exhibitorRouter = createTRPCRouter({
       z.object({
         id: z.string().optional(),
         locale: z.enum(["en", "sv"]),
+        allowPreferenceChange: z.boolean(),
       })
     )
     .mutation(async ({ ctx, input }) => {
       const t = getLocale(input.locale);
-      try {
-        if (input.id == undefined) {
+      if (input.allowPreferenceChange) {
+        try {
+          if (input.id == undefined) {
+            return {
+              ok: false,
+              error:
+                t.exhibitorSettings.table.row3.alerts
+                  .errorDeletePreferenceWithoutID,
+            };
+          }
+          await ctx.prisma.foodPreferences.deleteMany({
+            where: { id: input.id, exhibitorId: ctx.session.exhibitorId },
+          });
+          return { ok: true };
+        } catch (e) {
+          console.log(e);
           return {
             ok: false,
-            error:
-              t.exhibitorSettings.table.row3.alerts
-                .errorDeletePreferenceWithoutID,
+            error: t.error.unknown,
           };
         }
-        await ctx.prisma.foodPreferences.deleteMany({
-          where: { id: input.id, exhibitorId: ctx.session.exhibitorId },
-        });
-        return { ok: true };
-      } catch (e) {
-        console.log(e);
+      } else {
         return {
           ok: false,
-          error: t.error.unknown,
+          error: t.error.changePreferencesAfterDeadline,
         };
       }
     }),
