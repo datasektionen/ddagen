@@ -48,7 +48,7 @@ function Logo({
           onClick={handleOverlayClick}
         >
           <div
-            className={`bg-black bg-opacity-0 w-[300px] sm:w-[500px] pt-10 pb-5 flex flex-col rounded-3xl`}
+            className={`bg-black bg-opacity-0 cursor-pointer w-[300px] sm:w-[500px] pt-10 pb-5 flex flex-col rounded-3xl`}
           >
             <div className="relative py-[0px] justify-center flex flex-row">
               <img src={addImageDetails(pic)} alt={companyName} />
