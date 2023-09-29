@@ -232,6 +232,7 @@ export default {
     },
     confirm: "Send",
     ignoreError: "Continue anyway",
+    noMoreRegistrations: "Registrations for D-Dagen 2023 have closed. Keep an eye on our social media for next year's fair!",
   },
   postCompanyForm: {
     title: "Registration confirmed",
@@ -254,7 +255,7 @@ export default {
     login: "Log in",
     logout: "Log out",
     catalog: "Catalog",
-    logos: "Our Exhibitors"
+    logos: "Our Exhibitors",
   },
   footer: {
     header: "Organized by Datasektionen",
@@ -588,7 +589,7 @@ export default {
       "D-Dagen Managers",
     ],
   },
-  logos:{
-    header:"Our exhibitors",
+  logos: {
+    header: "Our exhibitors",
   },
 };

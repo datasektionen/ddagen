@@ -232,6 +232,7 @@ export default {
     },
     confirm: "Skicka",
     ignoreError: "Gå vidare ändå",
+    noMoreRegistrations: "Anmälningar för D-Dagen 2023 har stängt. Håll utkik på våra sociala medier för nästa års mässa!",
   },
   postCompanyForm: {
     title: "Intresseanmälan bekräftad",
@@ -589,7 +590,7 @@ export default {
       "D-Dagenansvariga",
     ],
   },
-  logos:{
-    header:"Våra utställare"
-  }
+  logos: {
+    header: "Våra utställare",
+  },
 };
