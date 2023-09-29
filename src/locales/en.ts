@@ -254,6 +254,7 @@ export default {
     login: "Log in",
     logout: "Log out",
     catalog: "Catalog",
+    logos: "Our Exhibitors"
   },
   footer: {
     header: "Organized by Datasektionen",
@@ -586,5 +587,8 @@ export default {
       "Finance Team",
       "D-Dagen Managers",
     ],
+  },
+  logos:{
+    header:"Our exhibitors",
   },
 };

@@ -254,6 +254,7 @@ export default {
     login: "Logga in",
     logout: "Logga ut",
     catalog: "Katalog",
+    logos: "Våra Utställare",
   },
   footer: {
     header:
@@ -588,4 +589,7 @@ export default {
       "D-Dagenansvariga",
     ],
   },
+  logos:{
+    header:"Våra utställare"
+  }
 };
