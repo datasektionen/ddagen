@@ -128,7 +128,7 @@ export default function Logos({ exhibitorData }: LogosProps) {
       <div className="block sm:hidden">
         {RenderLogos(headsponsorPackages, 1, "w-[250px]")}
         {RenderLogos(headhunterPackages, 2, "w-[125px]")}
-        {RenderLogos(sponsorPackages, 3, "w-[125px]")}
+        {RenderLogos(sponsorPackages, 2, "w-[125px]")}
         {RenderLogos(basePackages, 3, "w-[80px]")}
         {RenderLogos(startupPackages, 3, "w-[80px]")}
       </div>
@@ -136,7 +136,7 @@ export default function Logos({ exhibitorData }: LogosProps) {
       <div className="hidden sm:block">
         {RenderLogos(headsponsorPackages, 1, "w-[500px]")}
         {RenderLogos(headhunterPackages, 2, "w-[400px]")}
-        {RenderLogos(sponsorPackages, 4, "w-[400px]")}
+        {RenderLogos(sponsorPackages, 2, "w-[400px]")}
         {RenderLogos(basePackages, 4, "w-[300px]")}
         {RenderLogos(startupPackages, 4, "w-[300px]")}
       </div>
