@@ -111,13 +111,21 @@ type LogosProps = {
 };
 export default function Logos({ exhibitorData }: LogosProps) {
   const t = useLocale();
-  const headsponsorPackages = exhibitorData.filter((e) => e.package === "main");
-  const headhunterPackages = exhibitorData.filter(
-    (e) => e.package === "headhunter"
+  const headsponsorPackages = exhibitorData.filter(
+    (e) => e.package === "main" && e.logoColor
   );
-  const sponsorPackages = exhibitorData.filter((e) => e.package === "sponsor");
-  const basePackages = exhibitorData.filter((e) => e.package === "base");
-  const startupPackages = exhibitorData.filter((e) => e.package === "startup");
+  const headhunterPackages = exhibitorData.filter(
+    (e) => e.package === "headhunter" && e.logoColor
+  );
+  const sponsorPackages = exhibitorData.filter(
+    (e) => e.package === "sponsor" && e.logoColor
+  );
+  const basePackages = exhibitorData.filter(
+    (e) => e.package === "base" && e.logoColor
+  );
+  const startupPackages = exhibitorData.filter(
+    (e) => e.package === "startup" && e.logoColor
+  );
 
   return (
     <div className="pt-[200px] pb-[300px] sm:px-[100px]">
