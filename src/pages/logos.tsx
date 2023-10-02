@@ -88,7 +88,7 @@ function Logo({
           onClick={handleOverlayClick}
         >
           <div
-            className={`max-h-[80vh] overflow-y-auto cursor-default bg-black bg-opacity-0 w-[300px] sm:w-[500px] pt-10 pb-5 flex flex-col rounded-3xl`}
+            className={`px-10 py-5 max-h-[80vh] overflow-y-auto cursor-default bg-slate-600 bg-opacity-50 w-[300px] sm:w-[500px] pt-10 pb-5 flex flex-col rounded-3xl`}
           >
             <div className="relative py-[0px] justify-center flex flex-row">
               <img src={addImageDetails(pic)} alt={companyName} />
@@ -124,7 +124,7 @@ function RenderLogos(packageList: any[], rowSize: number, logoSize: string) {
       {chunkArray(packageList, rowSize).map((chunk, rowIndex) => (
         <div
           key={rowIndex}
-          className="flex flex-row justify-center items-center mb-4 gap-10 mt-[100px]"
+          className="flex flex-row justify-center items-center mb-4 gap-20 mt-[100px]"
         >
           {chunk.map((exhibitor, idx) => (
             <div key={idx}>
@@ -175,11 +175,12 @@ export default function Logos({ exhibitorData }: LogosProps) {
   );
 
   return (
-    <div className="pt-[200px] pb-[300px] sm:px-[100px]">
+    <div className="pt-[200px] pb-[300px] sm:px-[300px]">
       <h1 className="uppercase text-cerise text-5xl font-medium text-center">
         {" "}
         {t.logos.header}
       </h1>
+      <div className="bg-slate-600 py-5 pb-[100px] mt-[100px] rounded-lg bg-opacity-40">
       <div className="block sm:hidden">
         {RenderLogos(headsponsorPackages, 1, "w-[250px]")}
         {RenderLogos(headhunterAndPremiumPackages, 2, "w-[125px]")}
@@ -194,6 +195,7 @@ export default function Logos({ exhibitorData }: LogosProps) {
         {RenderLogos(sponsorPackages, 2, "w-[400px]")}
         {RenderLogos(basePackages, 4, "w-[300px]")}
         {RenderLogos(startupPackages, 4, "w-[300px]")}
+      </div>
       </div>
     </div>
   );
