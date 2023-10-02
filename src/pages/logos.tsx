@@ -57,7 +57,9 @@ function Logo({
               <h2 className="text-center text-3xl text-cerise">
                 {companyName}
               </h2>
-              <p className="text-white text-center mt-5">{description}</p>
+              <p className="text-white text-center mt-5 break-words">
+                {description}
+              </p>
             </div>
           </div>
         </div>
@@ -114,8 +116,9 @@ export default function Logos({ exhibitorData }: LogosProps) {
   const headsponsorPackages = exhibitorData.filter(
     (e) => e.package === "main" && e.logoColor
   );
-  const headhunterPackages = exhibitorData.filter(
-    (e) => e.package === "headhunter" && e.logoColor
+  const headhunterAndPremiumPackages = exhibitorData.filter(
+    (e) =>
+      (e.package === "headhunter" || e.package === "premium") && e.logoColor
   );
   const sponsorPackages = exhibitorData.filter(
     (e) => e.package === "sponsor" && e.logoColor
@@ -135,7 +138,7 @@ export default function Logos({ exhibitorData }: LogosProps) {
       </h1>
       <div className="block sm:hidden">
         {RenderLogos(headsponsorPackages, 1, "w-[250px]")}
-        {RenderLogos(headhunterPackages, 2, "w-[125px]")}
+        {RenderLogos(headhunterAndPremiumPackages, 2, "w-[125px]")}
         {RenderLogos(sponsorPackages, 2, "w-[125px]")}
         {RenderLogos(basePackages, 3, "w-[80px]")}
         {RenderLogos(startupPackages, 3, "w-[80px]")}
@@ -143,7 +146,7 @@ export default function Logos({ exhibitorData }: LogosProps) {
 
       <div className="hidden sm:block">
         {RenderLogos(headsponsorPackages, 1, "w-[500px]")}
-        {RenderLogos(headhunterPackages, 2, "w-[400px]")}
+        {RenderLogos(headhunterAndPremiumPackages, 2, "w-[400px]")}
         {RenderLogos(sponsorPackages, 2, "w-[400px]")}
         {RenderLogos(basePackages, 4, "w-[300px]")}
         {RenderLogos(startupPackages, 4, "w-[300px]")}
