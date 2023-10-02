@@ -39,10 +39,10 @@ export default {
       "D-Dagen är Datasektionens årliga arbetsmarknadsdag. Det är ett heldagsevent där företag och studenter verksamma inom data och IT får en möjlighet att knyta kontakter och lära känna varandra. Detta skapar goda möjligheter för en mer direkt och personlig kontakt mellan företagsrepresentanter och studenter.",
     fairText2:
       "I år hålls mässan 12 oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15 på KTH Campus Valhallavägen. Utöver själva mässan håller D-Dagen även i en rekryteringspub innan mässan där vi rekryterar dagpersonal och lunchföreläsningar med FRA (28/9) och SAAB (9/10) tillsammans med dJubileet. Dessutom kommer studenter kunna gå på kontaktsamtal med företag för att få en närmare kontakt.",
-    personalMeetings: "Kontaktsamtal",
-    personalMeetingsText:
+    companyMeetings: "Kontaktsamtal",
+    companyMeetingsText:
       "I år är första året någonsin som vi kommer erbjuda kontaktsamtal för studenter, vilket innebär att ni får möjlighet att i enrum med företagsrepresentanter diskutera framtida jobbmöjligheter med mera. Anmäl er på länken nedan:",
-    personalMeetingsButton: "Kontaktsamtal",
+    companyMeetingsButton: "Kontaktsamtal",
   },
   exhibitorSettings: {
     header: "Profilinställningar",
@@ -232,7 +232,8 @@ export default {
     },
     confirm: "Skicka",
     ignoreError: "Gå vidare ändå",
-    noMoreRegistrations: "Anmälningar för D-Dagen 2023 har stängt. Håll utkik på våra sociala medier för nästa års mässa!",
+    noMoreRegistrations:
+      "Anmälningar för D-Dagen 2023 har stängt. Håll utkik på våra sociala medier för nästa års mässa!",
   },
   postCompanyForm: {
     title: "Intresseanmälan bekräftad",
@@ -250,12 +251,13 @@ export default {
     about: "Om Oss",
     companyForm: "Företagsanmälan",
     changeLanguage: "Ändra språk till engelska",
-    contact: "Kontakt",
+    contact: "Kontakt  ",
     exhibitorSettings: "Inställningar",
     login: "Logga in",
     logout: "Logga ut",
     catalog: "Katalog",
     logos: "Våra Utställare",
+    meetings: "Kontaktsamtal",
   },
   footer: {
     header:

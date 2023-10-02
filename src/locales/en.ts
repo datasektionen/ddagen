@@ -38,11 +38,11 @@ export default {
     fairText1:
       "D-Dagen is the Computer Science Chapter’s annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
     fairText2:
-      "This year, the fair is held on October 12th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15 and in KTH Entré which is located at Drottning Kristinas väg 4. Other than the fair, D-Dagen is also having a recruitment pub before the fair where we recruit event staff and lunch lectures with FRA (28/9) and SAAB (9/10) together with dJubileet. Additionally, students will be able to have more personal meetings with companies through personal meetings in order to get more of a connection with that company.",
-    personalMeetings: "Personal Meetings",
-    personalMeetingsText:
-      "This year is also the first year where we will offer personal meetings for students, which means that you will be able to discuss future job opportunities in a private room with company representatives from selected companies. Sign up on the link below:",
-    personalMeetingsButton: "Personal Meetings",
+      "This year, the fair is held on October 12th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15 and in KTH Entré which is located at Drottning Kristinas väg 4. Other than the fair, D-Dagen is also having a recruitment pub before the fair where we recruit event staff and lunch lectures with FRA (28/9) and SAAB (9/10) together with dJubileet. Additionally, students will be able to have more meetings with exhibitors through company meetings in order to get more of a connection with that company.",
+    companyMeetings: "Company Meetings",
+    companyMeetingsText:
+      "This year is also the first year where we will offer company meetings for students, which means that you will be able to discuss future job opportunities in a private room with representatives from selected companies. Sign up on the link below:",
+    companyMeetingsButton: "Company Meetings",
   },
   exhibitorSettings: {
     header: "Profile Settings",
@@ -250,12 +250,13 @@ export default {
     about: "About",
     companyForm: "Exhibitor Registration",
     changeLanguage: "Change language to Swedish",
-    contact: "Contact",
+    contact: "Contact  ",
     exhibitorSettings: "Settings",
     login: "Log in",
     logout: "Log out",
     catalog: "Catalog",
     logos: "Our Exhibitors",
+    meetings: "Company Meetings",
   },
   footer: {
     header: "Organized by Datasektionen",

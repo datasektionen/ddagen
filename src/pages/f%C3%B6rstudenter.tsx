@@ -61,16 +61,17 @@ export default function ForStudents() {
             <div className="lg:col-[16/30] lg:row-[13/26] text-center lg:text-left z-40">
               <div className="bg-cerise lg:p-8 p-6 drop-shadow-md overflow-hidden">
                 <h2 className="font-black text-[rgb(9,14,47)] lg:text-xl xl:text-[1.9rem] text-2xl pb-3 drop-shadow-md">
-                  {t.forStudents.personalMeetings}
+                  {t.forStudents.companyMeetings}
                 </h2>
                 <p className="pb-8 text-[#110C30] md:text-md text-xl font-light">
-                  {t.forStudents.personalMeetingsText}
+                  {t.forStudents.companyMeetingsText}
                 </p>
                 <Link
                   className="block uppercase text-sm hover:scale-105 transition-transform bg-white rounded-full text-cerise font-medium px-10 py-2 max-lg:mx-auto w-max"
                   href="https://kontaktsamtal.ddagen.se/"
+                  target="_blank"
                 >
-                  {t.forStudents.personalMeetingsButton}
+                  {t.forStudents.companyMeetingsButton}
                 </Link>
               </div>
             </div>

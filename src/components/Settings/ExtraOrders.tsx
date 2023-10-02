@@ -135,7 +135,7 @@ export default function ExtraOrders({
       disableAll: false,
       disableCondition: false,
       disableConditionMessage: "",
-      increment: 10,
+      increment: 5,
       deadline: deadline.drinkCoupons,
     },
     {
@@ -235,7 +235,7 @@ export default function ExtraOrders({
         </div>
         <div className="font-normal text-2xl">
           {editState
-            ? plusMinus(drinkCoupons, setDrinkCoupons, 10)
+            ? plusMinus(drinkCoupons, setDrinkCoupons, 5)
             : drinkCoupons}
         </div>
         <div className="font-normal text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] text-2xl">
