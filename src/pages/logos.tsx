@@ -58,10 +58,12 @@ function Logo({
 
   const openModal = () => {
     setModal(true);
+    document.body.style.overflow = 'hidden';
   };
 
   const closeModal = () => {
     setModal(false);
+    document.body.style.overflow = 'auto';
   };
 
   const handleOverlayClick = (event: React.MouseEvent) => {
@@ -86,7 +88,7 @@ function Logo({
           onClick={handleOverlayClick}
         >
           <div
-            className={`cursor-default bg-black bg-opacity-0 w-[300px] sm:w-[500px] pt-10 pb-5 flex flex-col rounded-3xl`}
+            className={`max-h-[80vh] overflow-y-auto cursor-default bg-black bg-opacity-0 w-[300px] sm:w-[500px] pt-10 pb-5 flex flex-col rounded-3xl`}
           >
             <div className="relative py-[0px] justify-center flex flex-row">
               <img src={addImageDetails(pic)} alt={companyName} />
