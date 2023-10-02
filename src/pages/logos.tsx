@@ -4,7 +4,7 @@ import { addImageDetails } from "@/shared/addImageDetails";
 import { prisma } from "@/server/db";
 import { Package } from "@prisma/client";
 
-function OffersList({ offers }: { offers: (number[] | boolean | null)[] }) {
+function OffersList({ offers }: { offers: (number[] | boolean)[] }) {
 
   const jobTypeNames = [
     "Summer Job",
@@ -19,7 +19,7 @@ function OffersList({ offers }: { offers: (number[] | boolean | null)[] }) {
       <p className="text-cerise uppercase">Erbjuder</p>
       <ul className="list-disc pl-5 mt-5 ">
         {offers.map((offer, index) => {
-          if (index < 3 && offer !== null) {
+          if (index < 3 && Array.isArray(offer) && offer[0] >= 0) {
             return (
               <li key={index} className="mb-2 text-white">
                 {jobTypeNames[index]}
@@ -51,7 +51,7 @@ function Logo({
   companyName: string;
   description: string;
   size: string;
-  offers: (number[] | boolean | null)[];
+  offers: (number[] | boolean)[];
 }) {
   const [modalState, setModal] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
@@ -151,7 +151,7 @@ type LogosProps = {
     description?: string;
     package?: Package;
     jobOfferId?: string;
-    offers: (number[] | boolean | null)[];
+    offers: (number[] | boolean)[];
   }[];
 };
 
@@ -214,9 +214,9 @@ export async function getServerSideProps() {
     package: exhibitor.package || null,
     jobOfferId: exhibitor.jobOfferId || null,
     offers: [
-      exhibitor.jobOffers?.summerJob || null,
-      exhibitor.jobOffers?.internship || null,
-      exhibitor.jobOffers?.partTimeJob || null,
+      exhibitor.jobOffers?.summerJob,
+      exhibitor.jobOffers?.internship,
+      exhibitor.jobOffers?.partTimeJob,
       exhibitor.jobOffers?.masterThesis || null,
       exhibitor.jobOffers?.fullTimeJob || null,
       exhibitor.jobOffers?.traineeProgram || null,
