@@ -232,7 +232,8 @@ export default {
     },
     confirm: "Skicka",
     ignoreError: "Gå vidare ändå",
-    noMoreRegistrations: "Anmälningar för D-Dagen 2023 har stängt. Håll utkik på våra sociala medier för nästa års mässa!",
+    noMoreRegistrations:
+      "Anmälningar för D-Dagen 2023 har stängt. Håll utkik på våra sociala medier för nästa års mässa!",
   },
   postCompanyForm: {
     title: "Intresseanmälan bekräftad",
@@ -250,12 +251,13 @@ export default {
     about: "Om Oss",
     companyForm: "Företagsanmälan",
     changeLanguage: "Ändra språk till engelska",
-    contact: "Kontakt",
+    contact: "Kontakt  ",
     exhibitorSettings: "Inställningar",
     login: "Logga in",
     logout: "Logga ut",
     catalog: "Katalog",
     logos: "Våra Utställare",
+    meetings: "Kontaktsamtal",
   },
   footer: {
     header:

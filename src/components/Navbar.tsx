@@ -90,11 +90,11 @@ function Group({
     >
       <div className="lg:flex relative flex-row hidden">
         <div
-          style={{ height: 70 + links.length * 40, width: `${longestWord}em` }}
+          style={{ height: 70 + links.length * 40, width: `${longestWord * 12 }px` }}
           className={
             "block absolute -z-10 " +
             (hovered
-              ? "bg-[#666474] bg-opacity-60 rounded-md -top-[50px] -left-[20px] w-full max-w-[120%]"
+              ? "bg-[#666474] bg-opacity-60 rounded-md -top-[50px] -left-[20px] w-full"
               : "")
           }
         />
@@ -294,6 +294,7 @@ export default function Navbar() {
               links={[
                 { href: "/förstudenter", text: t.forStudents },
                 { href: "/logos", text: t.logos },
+                { href: "https://kontaktsamtal.ddagen.se/", text: t.meetings },
               ]}
             />
             {/*<NavLink class="px-14 lg:px-0" href="/mässan">{t.about}</NavLink>*/}
