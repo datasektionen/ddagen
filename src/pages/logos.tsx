@@ -4,16 +4,54 @@ import { addImageDetails } from "@/shared/addImageDetails";
 import { prisma } from "@/server/db";
 import { Package } from "@prisma/client";
 
+function OffersList({ offers }: { offers: (number[] | boolean | null)[] }) {
+
+  const jobTypeNames = [
+    "Summer Job",
+    "Internship",
+    "Part-time Job",
+    "Master Thesis",
+    "Full-time Job",
+    "Trainee Program",
+  ];
+  return (
+    <div className="flex flex-col items-center mt-5">
+      <p className="text-cerise uppercase">Erbjuder</p>
+      <ul className="list-disc pl-5 mt-5 ">
+        {offers.map((offer, index) => {
+          if (index < 3 && offer !== null) {
+            return (
+              <li key={index} className="mb-2 text-white">
+                {jobTypeNames[index]}
+              </li>
+            );
+          }
+          if (index >= 3 && offer) {
+            return (
+              <li key={index} className="mb-2 text-white">
+                {jobTypeNames[index]}
+              </li>
+            );
+          }
+          return null;
+        })}
+      </ul>
+    </div>
+  );
+}
+
 function Logo({
   pic,
   companyName,
   description,
   size,
+  offers,
 }: {
   pic: string;
   companyName: string;
   description: string;
   size: string;
+  offers: (number[] | boolean | null)[];
 }) {
   const [modalState, setModal] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
@@ -60,6 +98,7 @@ function Logo({
               <p className="text-white text-center mt-5 break-words">
                 {description}
               </p>
+              <OffersList offers={offers} />
             </div>
           </div>
         </div>
@@ -92,6 +131,7 @@ function RenderLogos(packageList: any[], rowSize: number, logoSize: string) {
                 companyName={exhibitor.name}
                 description={exhibitor.description}
                 size={logoSize}
+                offers={exhibitor.offers}
               />
             </div>
           ))}
@@ -109,8 +149,10 @@ type LogosProps = {
     description?: string;
     package?: Package;
     jobOfferId?: string;
+    offers: (number[] | boolean | null)[];
   }[];
 };
+
 export default function Logos({ exhibitorData }: LogosProps) {
   const t = useLocale();
   const headsponsorPackages = exhibitorData.filter(
@@ -156,7 +198,11 @@ export default function Logos({ exhibitorData }: LogosProps) {
 }
 
 export async function getServerSideProps() {
-  const exhibitors = await prisma.exhibitor.findMany();
+  const exhibitors = await prisma.exhibitor.findMany({
+    include: {
+      jobOffers: true,
+    },
+  });
 
   const exhibitorData = exhibitors.map((exhibitor) => ({
     name: exhibitor.name || null,
@@ -165,6 +211,14 @@ export async function getServerSideProps() {
     description: exhibitor.description || null,
     package: exhibitor.package || null,
     jobOfferId: exhibitor.jobOfferId || null,
+    offers: [
+      exhibitor.jobOffers?.summerJob || null,
+      exhibitor.jobOffers?.internship || null,
+      exhibitor.jobOffers?.partTimeJob || null,
+      exhibitor.jobOffers?.masterThesis || null,
+      exhibitor.jobOffers?.fullTimeJob || null,
+      exhibitor.jobOffers?.traineeProgram || null,
+    ],
   }));
 
   return {
