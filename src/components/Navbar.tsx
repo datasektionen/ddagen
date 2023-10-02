@@ -95,7 +95,7 @@ function Group({
             "block absolute -z-10 " +
             (hovered
               ? "bg-[#666474] bg-opacity-60 rounded-md -top-[50px] -left-[20px] w-full"
-              : "")
+              : "pointer-events-none")
           }
         />
         {links.map(({ href, text, onClick }, i) =>

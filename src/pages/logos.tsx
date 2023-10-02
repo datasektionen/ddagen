@@ -43,12 +43,12 @@ function Logo({
 
       {modalState && (
         <div
-          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60"
+          className="cursor-pointer fixed inset-0 flex items-center justify-center bg-black bg-opacity-60"
           ref={modalRef}
           onClick={handleOverlayClick}
         >
           <div
-            className={`bg-black bg-opacity-0 cursor-pointer w-[300px] sm:w-[500px] pt-10 pb-5 flex flex-col rounded-3xl`}
+            className={`cursor-default bg-black bg-opacity-0 w-[300px] sm:w-[500px] pt-10 pb-5 flex flex-col rounded-3xl`}
           >
             <div className="relative py-[0px] justify-center flex flex-row">
               <img src={addImageDetails(pic)} alt={companyName} />
