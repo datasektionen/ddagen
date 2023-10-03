@@ -594,5 +594,6 @@ export default {
   },
   logos: {
     header: "Our exhibitors",
+    offers: "Offers",
   },
 };

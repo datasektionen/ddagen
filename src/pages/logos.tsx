@@ -5,13 +5,14 @@ import { prisma } from "@/server/db";
 import { Package } from "@prisma/client";
 
 function OffersList({ offers }: { offers: (number[] | boolean)[] }) {
+  const t = useLocale();
   const jobTypeNames = [
-    "Summer Job",
-    "Internship",
-    "Part-time Job",
-    "Master Thesis",
-    "Full-time Job",
-    "Trainee Program",
+    t.exhibitorSettings.table.row1.section2.jobs.summer,
+    t.exhibitorSettings.table.row1.section2.jobs.internship,
+    t.exhibitorSettings.table.row1.section2.jobs.partTime,
+    t.exhibitorSettings.table.row1.section2.other.thesis,
+    t.exhibitorSettings.table.row1.section2.other.fullTime,
+    t.exhibitorSettings.table.row1.section2.other.trainee,
   ];
 
   const hasValidOffer = offers.some((offer, index) => {
@@ -27,7 +28,7 @@ function OffersList({ offers }: { offers: (number[] | boolean)[] }) {
   if (!hasValidOffer) return null;
   return (
     <div className="flex flex-col items-center mt-5">
-      <p className="text-cerise uppercase">Erbjuder</p>
+      <p className="text-cerise uppercase">{t.logos.offers}</p>
       <ul className="list-disc pl-5 mt-5 ">
         {offers.map((offer, index) => {
           if (index < 3 && Array.isArray(offer) && offer[0] >= 0) {
