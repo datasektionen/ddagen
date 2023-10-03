@@ -5,7 +5,6 @@ import { prisma } from "@/server/db";
 import { Package } from "@prisma/client";
 
 function OffersList({ offers }: { offers: (number[] | boolean)[] }) {
-
   const jobTypeNames = [
     "Summer Job",
     "Internship",
@@ -25,7 +24,7 @@ function OffersList({ offers }: { offers: (number[] | boolean)[] }) {
     return false;
   });
 
-  if (!hasValidOffer) return null; 
+  if (!hasValidOffer) return null;
   return (
     <div className="flex flex-col items-center mt-5">
       <p className="text-cerise uppercase">Erbjuder</p>
@@ -70,12 +69,12 @@ function Logo({
 
   const openModal = () => {
     setModal(true);
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
   };
 
   const closeModal = () => {
     setModal(false);
-    document.body.style.overflow = 'auto';
+    document.body.style.overflow = "auto";
   };
 
   const handleOverlayClick = (event: React.MouseEvent) => {
@@ -186,7 +185,10 @@ export default function Logos({ exhibitorData }: LogosProps) {
     (e) => e.package === "startup" && e.logoColor
   );
   const baseAndStartUpPackages = [...basePackages, ...startupPackages];
-  const sponsorAndHeadhunterAndPremiumPackages = [...headhunterAndPremiumPackages, ...sponsorPackages];
+  const sponsorAndHeadhunterAndPremiumPackages = [
+    ...headhunterAndPremiumPackages,
+    ...sponsorPackages,
+  ];
   return (
     <div className="pt-[200px] pb-[300px] px-[10px] sm:px-[100px] lg:px-[200px]">
       <h1 className="uppercase text-cerise text-5xl font-medium text-center">
@@ -194,26 +196,23 @@ export default function Logos({ exhibitorData }: LogosProps) {
         {t.logos.header}
       </h1>
       <div className="bg-slate-600 py-[50px] mt-[100px] rounded-lg bg-opacity-40 px-[50px]">
-      <div className="block sm:hidden">
-        {RenderLogos(headsponsorPackages, 1, "w-[250px]")}
-        {RenderLogos(sponsorAndHeadhunterAndPremiumPackages, 2, "w-[125px]")}
-        {RenderLogos(baseAndStartUpPackages, 3, "w-[80px]")}
+        <div className="block sm:hidden">
+          {RenderLogos(headsponsorPackages, 1, "w-[250px]")}
+          {RenderLogos(sponsorAndHeadhunterAndPremiumPackages, 2, "w-[125px]")}
+          {RenderLogos(baseAndStartUpPackages, 3, "w-[80px]")}
+        </div>
 
-      </div>
+        <div className="hidden xl:block">
+          {RenderLogos(headsponsorPackages, 1, "w-[350px]")}
+          {RenderLogos(sponsorAndHeadhunterAndPremiumPackages, 3, "w-[250px]")}
+          {RenderLogos(baseAndStartUpPackages, 6, "w-[125px]")}
+        </div>
 
-      <div className="hidden xl:block">
-        {RenderLogos(headsponsorPackages, 1, "w-[350px]")}
-        {RenderLogos(sponsorAndHeadhunterAndPremiumPackages, 3, "w-[250px]")}
-        {RenderLogos(baseAndStartUpPackages, 6, "w-[125px]")}
-      </div>
-
-      <div className="hidden sm:block xl:hidden">
-        {RenderLogos(headsponsorPackages, 1, "w-[350px]")}
-        {RenderLogos(sponsorAndHeadhunterAndPremiumPackages, 3, "w-[250px]")}
-        {RenderLogos(baseAndStartUpPackages, 4, "w-[125px]")}
-
-      </div>
-
+        <div className="hidden sm:block xl:hidden">
+          {RenderLogos(headsponsorPackages, 1, "w-[350px]")}
+          {RenderLogos(sponsorAndHeadhunterAndPremiumPackages, 3, "w-[250px]")}
+          {RenderLogos(baseAndStartUpPackages, 4, "w-[125px]")}
+        </div>
       </div>
     </div>
   );
