@@ -124,7 +124,7 @@ function RenderLogos(packageList: any[], rowSize: number, logoSize: string) {
       {chunkArray(packageList, rowSize).map((chunk, rowIndex) => (
         <div
           key={rowIndex}
-          className="flex flex-row justify-center items-center mb-4 gap-20 mt-[100px]"
+          className="flex flex-row justify-center items-center gap-14 mt-[75px]"
         >
           {chunk.map((exhibitor, idx) => (
             <div key={idx}>
@@ -175,12 +175,12 @@ export default function Logos({ exhibitorData }: LogosProps) {
   );
 
   return (
-    <div className="pt-[200px] pb-[300px] sm:px-[300px]">
+    <div className="pt-[200px] pb-[300px] px-[10px] sm:px-[100px] lg:px-[200px]">
       <h1 className="uppercase text-cerise text-5xl font-medium text-center">
         {" "}
         {t.logos.header}
       </h1>
-      <div className="bg-slate-600 py-5 pb-[100px] mt-[100px] rounded-lg bg-opacity-40">
+      <div className="bg-slate-600 py-[50px] mt-[100px] rounded-lg bg-opacity-40 px-[50px]">
       <div className="block sm:hidden">
         {RenderLogos(headsponsorPackages, 1, "w-[250px]")}
         {RenderLogos(headhunterAndPremiumPackages, 2, "w-[125px]")}
@@ -189,13 +189,22 @@ export default function Logos({ exhibitorData }: LogosProps) {
         {RenderLogos(startupPackages, 3, "w-[80px]")}
       </div>
 
-      <div className="hidden sm:block">
-        {RenderLogos(headsponsorPackages, 1, "w-[500px]")}
-        {RenderLogos(headhunterAndPremiumPackages, 2, "w-[400px]")}
-        {RenderLogos(sponsorPackages, 2, "w-[400px]")}
-        {RenderLogos(basePackages, 4, "w-[300px]")}
-        {RenderLogos(startupPackages, 4, "w-[300px]")}
+      <div className="hidden xl:block">
+        {RenderLogos(headsponsorPackages, 1, "w-[350px]")}
+        {RenderLogos(headhunterAndPremiumPackages, 3, "w-[250px]")}
+        {RenderLogos(sponsorPackages, 3, "w-[250px]")}
+        {RenderLogos(basePackages, 6, "w-[125px]")}
+        {RenderLogos(startupPackages, 6, "w-[125px]")}
       </div>
+
+      <div className="hidden sm:block xl:hidden">
+        {RenderLogos(headsponsorPackages, 1, "w-[350px]")}
+        {RenderLogos(headhunterAndPremiumPackages, 3, "w-[250px]")}
+        {RenderLogos(sponsorPackages, 3, "w-[250px]")}
+        {RenderLogos(basePackages, 4, "w-[125px]")}
+        {RenderLogos(startupPackages, 4, "w-[125px]")}
+      </div>
+
       </div>
     </div>
   );
