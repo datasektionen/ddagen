@@ -14,6 +14,18 @@ function OffersList({ offers }: { offers: (number[] | boolean)[] }) {
     "Full-time Job",
     "Trainee Program",
   ];
+
+  const hasValidOffer = offers.some((offer, index) => {
+    if (index < 3 && Array.isArray(offer) && offer[0] >= 0) {
+      return true;
+    }
+    if (index >= 3 && offer) {
+      return true;
+    }
+    return false;
+  });
+
+  if (!hasValidOffer) return null; 
   return (
     <div className="flex flex-col items-center mt-5">
       <p className="text-cerise uppercase">Erbjuder</p>
