@@ -4,26 +4,78 @@ import { addImageDetails } from "@/shared/addImageDetails";
 import { prisma } from "@/server/db";
 import { Package } from "@prisma/client";
 
+function OffersList({ offers }: { offers: (number[] | boolean)[] }) {
+  const t = useLocale();
+  const jobTypeNames = [
+    t.exhibitorSettings.table.row1.section2.jobs.summer,
+    t.exhibitorSettings.table.row1.section2.jobs.internship,
+    t.exhibitorSettings.table.row1.section2.jobs.partTime,
+    t.exhibitorSettings.table.row1.section2.other.thesis,
+    t.exhibitorSettings.table.row1.section2.other.fullTime,
+    t.exhibitorSettings.table.row1.section2.other.trainee,
+  ];
+
+  const hasValidOffer = offers.some((offer, index) => {
+    if (index < 3 && Array.isArray(offer) && offer[0] >= 0) {
+      return true;
+    }
+    if (index >= 3 && offer) {
+      return true;
+    }
+    return false;
+  });
+
+  if (!hasValidOffer) return null;
+  return (
+    <div className="flex flex-col items-center mt-5">
+      <p className="text-cerise uppercase">{t.logos.offers}</p>
+      <ul className="list-disc pl-5 mt-5 ">
+        {offers.map((offer, index) => {
+          if (index < 3 && Array.isArray(offer) && offer[0] >= 0) {
+            return (
+              <li key={index} className="mb-2 text-white">
+                {jobTypeNames[index]}
+              </li>
+            );
+          }
+          if (index >= 3 && offer) {
+            return (
+              <li key={index} className="mb-2 text-white">
+                {jobTypeNames[index]}
+              </li>
+            );
+          }
+          return null;
+        })}
+      </ul>
+    </div>
+  );
+}
+
 function Logo({
   pic,
   companyName,
   description,
   size,
+  offers,
 }: {
   pic: string;
   companyName: string;
   description: string;
   size: string;
+  offers: (number[] | boolean)[];
 }) {
   const [modalState, setModal] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
 
   const openModal = () => {
     setModal(true);
+    document.body.style.overflow = "hidden";
   };
 
   const closeModal = () => {
     setModal(false);
+    document.body.style.overflow = "auto";
   };
 
   const handleOverlayClick = (event: React.MouseEvent) => {
@@ -48,7 +100,7 @@ function Logo({
           onClick={handleOverlayClick}
         >
           <div
-            className={`cursor-default bg-black bg-opacity-0 w-[300px] sm:w-[500px] pt-10 pb-5 flex flex-col rounded-3xl`}
+            className={`px-10 py-5 max-h-[80vh] overflow-y-auto cursor-default bg-slate-600 bg-opacity-50 w-[300px] sm:w-[500px] pt-10 pb-5 flex flex-col rounded-3xl`}
           >
             <div className="relative py-[0px] justify-center flex flex-row">
               <img src={addImageDetails(pic)} alt={companyName} />
@@ -60,6 +112,7 @@ function Logo({
               <p className="text-white text-center mt-5 break-words">
                 {description}
               </p>
+              <OffersList offers={offers} />
             </div>
           </div>
         </div>
@@ -83,7 +136,7 @@ function RenderLogos(packageList: any[], rowSize: number, logoSize: string) {
       {chunkArray(packageList, rowSize).map((chunk, rowIndex) => (
         <div
           key={rowIndex}
-          className="flex flex-row justify-center items-center mb-4 gap-10 mt-[100px]"
+          className="flex flex-row justify-center items-center gap-14 mt-[75px]"
         >
           {chunk.map((exhibitor, idx) => (
             <div key={idx}>
@@ -92,6 +145,7 @@ function RenderLogos(packageList: any[], rowSize: number, logoSize: string) {
                 companyName={exhibitor.name}
                 description={exhibitor.description}
                 size={logoSize}
+                offers={exhibitor.offers}
               />
             </div>
           ))}
@@ -109,8 +163,10 @@ type LogosProps = {
     description?: string;
     package?: Package;
     jobOfferId?: string;
+    offers: (number[] | boolean)[];
   }[];
 };
+
 export default function Logos({ exhibitorData }: LogosProps) {
   const t = useLocale();
   const headsponsorPackages = exhibitorData.filter(
@@ -129,34 +185,46 @@ export default function Logos({ exhibitorData }: LogosProps) {
   const startupPackages = exhibitorData.filter(
     (e) => e.package === "startup" && e.logoColor
   );
-
+  const baseAndStartUpPackages = [...basePackages, ...startupPackages];
+  const sponsorAndHeadhunterAndPremiumPackages = [
+    ...headhunterAndPremiumPackages,
+    ...sponsorPackages,
+  ];
   return (
-    <div className="pt-[200px] pb-[300px] sm:px-[100px]">
+    <div className="pt-[200px] pb-[300px] px-[10px] sm:px-[100px] lg:px-[200px]">
       <h1 className="uppercase text-cerise text-5xl font-medium text-center">
         {" "}
         {t.logos.header}
       </h1>
-      <div className="block sm:hidden">
-        {RenderLogos(headsponsorPackages, 1, "w-[250px]")}
-        {RenderLogos(headhunterAndPremiumPackages, 2, "w-[125px]")}
-        {RenderLogos(sponsorPackages, 2, "w-[125px]")}
-        {RenderLogos(basePackages, 3, "w-[80px]")}
-        {RenderLogos(startupPackages, 3, "w-[80px]")}
-      </div>
+      <div className="bg-slate-600 py-[50px] mt-[100px] rounded-lg bg-opacity-40 px-[50px]">
+        <div className="block sm:hidden">
+          {RenderLogos(headsponsorPackages, 1, "w-[250px]")}
+          {RenderLogos(sponsorAndHeadhunterAndPremiumPackages, 2, "w-[125px]")}
+          {RenderLogos(baseAndStartUpPackages, 3, "w-[80px]")}
+        </div>
 
-      <div className="hidden sm:block">
-        {RenderLogos(headsponsorPackages, 1, "w-[500px]")}
-        {RenderLogos(headhunterAndPremiumPackages, 2, "w-[400px]")}
-        {RenderLogos(sponsorPackages, 2, "w-[400px]")}
-        {RenderLogos(basePackages, 4, "w-[300px]")}
-        {RenderLogos(startupPackages, 4, "w-[300px]")}
+        <div className="hidden xl:block">
+          {RenderLogos(headsponsorPackages, 1, "w-[350px]")}
+          {RenderLogos(sponsorAndHeadhunterAndPremiumPackages, 3, "w-[250px]")}
+          {RenderLogos(baseAndStartUpPackages, 6, "w-[125px]")}
+        </div>
+
+        <div className="hidden sm:block xl:hidden">
+          {RenderLogos(headsponsorPackages, 1, "w-[350px]")}
+          {RenderLogos(sponsorAndHeadhunterAndPremiumPackages, 3, "w-[250px]")}
+          {RenderLogos(baseAndStartUpPackages, 4, "w-[125px]")}
+        </div>
       </div>
     </div>
   );
 }
 
 export async function getServerSideProps() {
-  const exhibitors = await prisma.exhibitor.findMany();
+  const exhibitors = await prisma.exhibitor.findMany({
+    include: {
+      jobOffers: true,
+    },
+  });
 
   const exhibitorData = exhibitors.map((exhibitor) => ({
     name: exhibitor.name || null,
@@ -165,6 +233,14 @@ export async function getServerSideProps() {
     description: exhibitor.description || null,
     package: exhibitor.package || null,
     jobOfferId: exhibitor.jobOfferId || null,
+    offers: [
+      exhibitor.jobOffers?.summerJob,
+      exhibitor.jobOffers?.internship,
+      exhibitor.jobOffers?.partTimeJob,
+      exhibitor.jobOffers?.masterThesis || null,
+      exhibitor.jobOffers?.fullTimeJob || null,
+      exhibitor.jobOffers?.traineeProgram || null,
+    ],
   }));
 
   return {
