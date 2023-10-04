@@ -1,30 +1,7 @@
 import type Locale from "@/locales";
+import { useState } from "react";
+import { Button } from "./Button";
 import { CheckMark } from "../CheckMark";
-import { useState, MouseEventHandler } from "react";
-
-function Button({
-  value,
-  loading,
-  onClick,
-}: {
-  value: string;
-  loading: boolean;
-  onClick?: MouseEventHandler<HTMLButtonElement>;
-}) {
-  return (
-    <button
-      disabled={loading}
-      className="
-        bg-cerise transition-transform hover:scale-110 text-white 
-        uppercase w-fit ml-3 py-2 px-5 rounded-full cursor-pointer 
-        disabled:cursor-wait disabled:grayscale
-      "
-      onClick={onClick}
-    >
-      {value}
-    </button>
-  );
-}
 
 export default function Search({ t }: { t: Locale }) {
   const years = [1, 2, 3, 4, 5];
@@ -61,11 +38,11 @@ export default function Search({ t }: { t: Locale }) {
       <div className="flex justify-center w-full">
         {showFilter && (
           <div
-            className="w-[400px] h-[200px] flex border-2 border-cerise bg-[#eaeaea] bg-opacity-10
+            className="w-[400px] h-[175px] flex border-2 border-cerise bg-[#eaeaea] bg-opacity-10
                           rounded-lg p-2 text-white justify-center text-xl"
           >
             <div className="flex flex-col items-center">
-              <div className="flex flex-row mt-2">
+              <div className="flex flex-row mt-1">
                 {t.map.search.filterYear}:
                 {years.map((year) => {
                   return (

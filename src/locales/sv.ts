@@ -607,5 +607,10 @@ export default {
       buttonTwo: "Filter",
       filterYear: "År",
     },
+    floors: {
+      one: "Plan 1",
+      two: "Plan 2",
+      entrance: "KTH Entré",
+    },
   },
 };

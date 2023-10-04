@@ -12,7 +12,7 @@ export default function Karta() {
         {t.map.header}
       </h1>
       <Search t={t} />
-      <div className="flex flex-row items-center justify-center space-x-10">
+      <div className="flex flex-row items-start justify-center space-x-10">
         <ExhibitorExplorer t={t} />
         <Map t={t} />
       </div>

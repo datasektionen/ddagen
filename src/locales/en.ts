@@ -606,5 +606,10 @@ export default {
       buttonTwo: "Filters",
       filterYear: "Year",
     },
+    floors: {
+      one: "Floor 1",
+      two: "Floor 2",
+      entrance: "KTH Entrance",
+    },
   },
 };
