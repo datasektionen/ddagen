@@ -258,6 +258,7 @@ export default {
     catalog: "Katalog",
     logos: "Våra Utställare",
     meetings: "Kontaktsamtal",
+    map: "Karta",
   },
   footer: {
     header:
@@ -600,5 +601,11 @@ export default {
   },
   map: {
     header: "Karta",
-  }
+    search: {
+      placeHolder: "Sök företag",
+      buttonOne: "Sök",
+      buttonTwo: "Filter",
+      filterYear: "År",
+    },
+  },
 };

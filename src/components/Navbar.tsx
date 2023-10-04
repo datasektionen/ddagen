@@ -90,7 +90,10 @@ function Group({
     >
       <div className="lg:flex relative flex-row hidden">
         <div
-          style={{ height: 70 + links.length * 40, width: `${longestWord * 12 }px` }}
+          style={{
+            height: 70 + links.length * 40,
+            width: `${longestWord * 12}px`,
+          }}
           className={
             "block absolute -z-10 " +
             (hovered
@@ -293,6 +296,7 @@ export default function Navbar() {
             <Group
               links={[
                 { href: "/förstudenter", text: t.forStudents },
+                { href: "/karta", text: t.map },
                 { href: "/logos", text: t.logos },
                 { href: "https://kontaktsamtal.ddagen.se/", text: t.meetings },
               ]}
