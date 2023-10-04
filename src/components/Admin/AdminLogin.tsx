@@ -36,7 +36,7 @@ export function AdminLogin({
         className="flex flex-col gap-12 min-w-[325px]"
         onSubmit={async (e) => {
           e.preventDefault();
-          setError(1);
+          setError("");
           setError(await login(password) ?? "");
         }}
       >
