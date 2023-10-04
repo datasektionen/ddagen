@@ -596,4 +596,7 @@ export default {
     header: "Our exhibitors",
     offers: "Offers",
   },
+  map: {
+    header: "Map",
+  }
 };

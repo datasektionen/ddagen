@@ -598,4 +598,7 @@ export default {
     header: "Våra utställare",
     offers: "Erbjuder",
   },
+  map: {
+    header: "Karta",
+  }
 };
