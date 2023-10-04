@@ -2,18 +2,19 @@ name: Build
 
 on:
   pull_request:
-    types: [opened, synchronize]
+    branches: main
   workflow_dispatch:
-
-  strategy:
-    matrix:
-      node-version: [18, latest]
 
 jobs:
   build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18, latest]
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
-      with: node-version: ${{ matrix.node-version }}
+      with:
+        node-version: ${{ matrix.node-version }}
     - run: npm install
     - run: npm run build
