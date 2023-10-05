@@ -42,6 +42,7 @@ export default async function handler(
       "headhunter",
     ]),
     sendEmailToExhibitor: z.boolean(),
+    mapPosition: z.number(),
   });
 
   const body = bodySchema.safeParse(req.body);
@@ -55,6 +56,7 @@ export default async function handler(
     email,
     exhibitorPackage,
     sendEmailToExhibitor,
+    mapPosition,
   } = body.data;
 
   const exhibitor = await prisma.exhibitor.upsert({
@@ -79,6 +81,7 @@ export default async function handler(
       customDrinkCoupons: 0,
       customRepresentativeSpots: 0,
       customBanquetTicketsWanted: 0,
+      mapPosition: mapPosition,
       foodPreferencess: undefined,
       jobOffers: {
         create: {
@@ -96,6 +99,7 @@ export default async function handler(
       organizationNumber: organizationNumber,
       invoiceEmail: email,
       package: exhibitorPackage,
+      mapPosition: mapPosition,
     },
   });
 
