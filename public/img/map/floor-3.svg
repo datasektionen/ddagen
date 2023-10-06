@@ -3,10 +3,6 @@
   viewBox="0 0 1000 1000">
   <defs>
     <style>
-      tspan {
-      cursor: pointer;
-      }
-
       .cls-1 {
       letter-spacing: 0em;
       }
@@ -44,6 +40,7 @@
       font-family: NHaasGroteskDSPro-65Md, 'Neue Haas Grotesk Display Pro';
       font-size: 19px;
       font-weight: 500;
+      cursor: pointer;
       }
 
       .cls-4 {

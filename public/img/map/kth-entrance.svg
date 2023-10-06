@@ -3,10 +3,6 @@
   viewBox="0 0 1000 1000">
   <defs>
     <style>
-      tspan {
-      cursor: pointer;
-      }
-
       .cls-1 {
       fill: url(#linear-gradient);
       }
@@ -32,6 +28,7 @@
       font-family: NHaasGroteskDSPro-65Md, 'Neue Haas Grotesk Display Pro';
       font-size: 19px;
       font-weight: 500;
+      cursor: pointer;
       }
 
       .cls-2 {
