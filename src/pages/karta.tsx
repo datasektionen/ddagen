@@ -5,6 +5,7 @@ import { Dispatch, useRef, useState } from "react";
 import Map from "@/components/Map/Map";
 import Search from "@/components/Map/Search";
 import Button from "@/components/Map/Button";
+import Exhibitor from "./utst%C3%A4llare";
 
 type MapProp = {
   name: string;
@@ -23,11 +24,15 @@ function range(start: number, end: number) {
 
 function Explorer({
   t,
+  map,
+  setMapInView,
   exhibitor,
   selectedExhibitor,
   setSelectedExhibitor,
 }: {
   t: Locale;
+  map: 1 | 2 | 3;
+  setMapInView: Dispatch<1 | 2 | 3>;
   exhibitor: MapProp | undefined;
   selectedExhibitor: number;
   setSelectedExhibitor: Dispatch<number>;
@@ -47,7 +52,10 @@ function Explorer({
         <div
           key={exhibitor.position}
           className="flex flex-row min-h-[10%] cursor-pointer items-center justify-center mt-4 mx-4 border-2 border-white bg-white bg-opacity-40 rounded-lg text-white"
-          onClick={() => setSelectedExhibitor(exhibitor.position)}
+          onClick={() => {
+            setMapInView(map);
+            setSelectedExhibitor(exhibitor.position);
+          }}
         >
           <div>{exhibitor.name}</div>
         </div>
@@ -60,9 +68,10 @@ function Explorer({
 export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
   const t = useLocale();
   const ref = useRef<HTMLDivElement>(null);
-  const exhibitors = exhibitorData.sort((a, b) => {
-    return a.position - b.position;
-  });
+  const exhibitors = Object.fromEntries(
+    exhibitorData.map((exhibitor) => [exhibitor.position, exhibitor])
+  );
+  console.log(exhibitors);
 
   const floorTwoPositions = range(1, 79);
   const floorThreePositions = range(80, 101);
@@ -97,11 +106,9 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
             {floorTwoPositions.map((position) => (
               <Explorer
                 t={t}
-                exhibitor={
-                  position <= exhibitors.length
-                    ? exhibitors[position - 1]
-                    : undefined
-                }
+                map={1}
+                setMapInView={setMapInView}
+                exhibitor={exhibitors[position]}
                 selectedExhibitor={selectedExhibitor}
                 setSelectedExhibitor={setSelectedExhibitor}
               />
@@ -109,11 +116,9 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
             {floorThreePositions.map((position) => (
               <Explorer
                 t={t}
-                exhibitor={
-                  position <= exhibitors.length
-                    ? exhibitors[position - 1]
-                    : undefined
-                }
+                map={2}
+                setMapInView={setMapInView}
+                exhibitor={exhibitors[position]}
                 selectedExhibitor={selectedExhibitor}
                 setSelectedExhibitor={setSelectedExhibitor}
               />
@@ -121,11 +126,9 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
             {kthEntrancePositions.map((position) => (
               <Explorer
                 t={t}
-                exhibitor={
-                  position <= exhibitors.length
-                    ? exhibitors[position - 1]
-                    : undefined
-                }
+                map={3}
+                setMapInView={setMapInView}
+                exhibitor={exhibitors[position]}
                 selectedExhibitor={selectedExhibitor}
                 setSelectedExhibitor={setSelectedExhibitor}
               />
