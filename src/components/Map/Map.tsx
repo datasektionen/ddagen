@@ -56,9 +56,9 @@ export default function Map({
   return (
     <div className="flex flex-col items-center justify-center mt-16">
       <div>
-        <div className="w-[600px] h-[450px] flex justify-center bg-[#fafafa] text-5xl text-white mt-14 mb-6">
+        <div className="max-xs:w-[350px] xs:w-[450px] sm:w-[500px] md:w-[650px] h-[475px] flex justify-center bg-[#fafafa] text-5xl text-white mt-14 mb-6 p-4">
           {mapInView == 1 ? (
-            <SvgLoader className="ml-16" path="/img/map/floor-2.svg">
+            <SvgLoader path="/img/map/floor-2.svg">
               {floorTwoPositions.map((position) => {
                 return circleSvgProxy(position, selectedExhibitor);
               })}
