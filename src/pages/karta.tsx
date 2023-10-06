@@ -1,7 +1,14 @@
 import type Locale from "@/locales";
 import { prisma } from "@/server/db";
 import { useLocale } from "@/locales";
-import { Dispatch, useRef, useState } from "react";
+import {
+  Dispatch,
+  useRef,
+  createRef,
+  RefObject,
+  useEffect,
+  useState,
+} from "react";
 import Map from "@/components/Map/Map";
 import Search from "@/components/Map/Search";
 import Button from "@/components/Map/Button";
@@ -29,6 +36,7 @@ function Explorer({
   exhibitor,
   selectedExhibitor,
   setSelectedExhibitor,
+  explorerRef,
 }: {
   t: Locale;
   map: 1 | 2 | 3;
@@ -36,11 +44,13 @@ function Explorer({
   exhibitor: MapProp | undefined;
   selectedExhibitor: number;
   setSelectedExhibitor: Dispatch<number>;
+  explorerRef: RefObject<HTMLDivElement>;
 }) {
   if (exhibitor) {
     {
       return exhibitor.position == selectedExhibitor ? (
         <div
+          ref={explorerRef}
           key={exhibitor.position}
           className="flex flex-col min-h-[20%] break-all cursor-pointer items-center space-y-2 mt-4 mx-4 p-4 border-2 border-white bg-white bg-opacity-40 rounded-lg text-white"
           onClick={() => setSelectedExhibitor(0)}
@@ -50,6 +60,7 @@ function Explorer({
         </div>
       ) : (
         <div
+          ref={explorerRef}
           key={exhibitor.position}
           className="flex flex-row min-h-[10%] cursor-pointer items-center justify-center mt-4 mx-4 border-2 border-white bg-white bg-opacity-40 rounded-lg text-white"
           onClick={() => {
@@ -71,7 +82,6 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
   const exhibitors = Object.fromEntries(
     exhibitorData.map((exhibitor) => [exhibitor.position, exhibitor])
   );
-  console.log(exhibitors);
 
   const floorTwoPositions = range(1, 79);
   const floorThreePositions = range(80, 101);
@@ -79,6 +89,19 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
 
   const [mapInView, setMapInView] = useState<1 | 2 | 3>(1);
   const [selectedExhibitor, setSelectedExhibitor] = useState<number>(0);
+  const exhibitorRefs = useRef<{ [key: number]: RefObject<HTMLDivElement> }>(
+    {}
+  );
+
+  useEffect(() => {
+    const currentRef = exhibitorRefs.current[selectedExhibitor];
+    if (selectedExhibitor !== 0 && currentRef && currentRef.current) {
+      currentRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      });
+    }
+  }, [selectedExhibitor]);
 
   return (
     <div className="flex flex-col h-full w-full pt-52 pb-40">
@@ -103,36 +126,51 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
             className="block w-[300px] h-[550px] border-2 border-cerise
                     bg-[#eaeaea] bg-opacity-10 rounded-xl pb-4 overflow-scroll scrollbar-hide"
           >
-            {floorTwoPositions.map((position) => (
-              <Explorer
-                t={t}
-                map={1}
-                setMapInView={setMapInView}
-                exhibitor={exhibitors[position]}
-                selectedExhibitor={selectedExhibitor}
-                setSelectedExhibitor={setSelectedExhibitor}
-              />
-            ))}
-            {floorThreePositions.map((position) => (
-              <Explorer
-                t={t}
-                map={2}
-                setMapInView={setMapInView}
-                exhibitor={exhibitors[position]}
-                selectedExhibitor={selectedExhibitor}
-                setSelectedExhibitor={setSelectedExhibitor}
-              />
-            ))}
-            {kthEntrancePositions.map((position) => (
-              <Explorer
-                t={t}
-                map={3}
-                setMapInView={setMapInView}
-                exhibitor={exhibitors[position]}
-                selectedExhibitor={selectedExhibitor}
-                setSelectedExhibitor={setSelectedExhibitor}
-              />
-            ))}
+            {floorTwoPositions.map((position) => {
+              if (!exhibitorRefs.current[position])
+                exhibitorRefs.current[position] = createRef();
+              return (
+                <Explorer
+                  t={t}
+                  map={1}
+                  setMapInView={setMapInView}
+                  exhibitor={exhibitors[position]}
+                  selectedExhibitor={selectedExhibitor}
+                  setSelectedExhibitor={setSelectedExhibitor}
+                  explorerRef={exhibitorRefs.current[position]}
+                />
+              );
+            })}
+            {floorThreePositions.map((position) => {
+              if (!exhibitorRefs.current[position])
+                exhibitorRefs.current[position] = createRef();
+              return (
+                <Explorer
+                  t={t}
+                  map={2}
+                  setMapInView={setMapInView}
+                  exhibitor={exhibitors[position]}
+                  selectedExhibitor={selectedExhibitor}
+                  setSelectedExhibitor={setSelectedExhibitor}
+                  explorerRef={exhibitorRefs.current[position]}
+                />
+              );
+            })}
+            {kthEntrancePositions.map((position) => {
+              if (!exhibitorRefs.current[position])
+                exhibitorRefs.current[position] = createRef();
+              return (
+                <Explorer
+                  t={t}
+                  map={3}
+                  setMapInView={setMapInView}
+                  exhibitor={exhibitors[position]}
+                  selectedExhibitor={selectedExhibitor}
+                  setSelectedExhibitor={setSelectedExhibitor}
+                  explorerRef={exhibitorRefs.current[position]}
+                />
+              );
+            })}
           </div>
           <Button
             value={"/img/arrow-down.png/"}

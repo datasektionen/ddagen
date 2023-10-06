@@ -116,7 +116,7 @@
   </g>
   <g id="Layer_2" data-name="Layer 2">
     <g id="g91">
-      <circle class="cls-4" cx="492.07" cy="409.4" r="18.63" />
+      <circle id="p91" class="cls-4" cx="492.07" cy="409.4" r="18.63" />
       <text class="cls-11" transform="translate(482.67 415.84)">
         <tspan x="0" y="0">91</tspan>
       </text>
