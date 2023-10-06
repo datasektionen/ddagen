@@ -3,6 +3,10 @@
   viewBox="0 0 1000 1000">
   <defs>
     <style>
+      tspan {
+      cursor: pointer;
+      }
+
       .cls-1 {
       letter-spacing: 0em;
       }

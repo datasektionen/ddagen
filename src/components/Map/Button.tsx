@@ -1,6 +1,6 @@
 import { MouseEventHandler } from "react";
 
-export function Button({
+export default function Button({
   value,
   loading,
   isImage,

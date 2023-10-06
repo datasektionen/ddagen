@@ -607,8 +607,8 @@ export default {
       filterYear: "Year",
     },
     floors: {
-      one: "Floor 1",
-      two: "Floor 2",
+      one: "Floor 2",
+      two: "Floor 3",
       entrance: "KTH Entrance",
     },
   },

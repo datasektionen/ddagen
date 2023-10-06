@@ -608,8 +608,8 @@ export default {
       filterYear: "År",
     },
     floors: {
-      one: "Plan 1",
-      two: "Plan 2",
+      one: "Plan 2",
+      two: "Plan 3",
       entrance: "KTH Entré",
     },
   },

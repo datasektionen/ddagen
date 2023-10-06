@@ -3,6 +3,10 @@
   viewBox="0 0 1000 1000">
   <defs>
     <style>
+      tspan {
+      cursor: pointer;
+      }
+
       .cls-1 {
       fill: url(#linear-gradient);
       }
@@ -135,7 +139,7 @@
       </text>
     </g>
     <g id="g107">
-      <circle id="p105" class="cls-2" cx="781.72" cy="520.52" r="18.63" />
+      <circle id="p107" class="cls-2" cx="781.72" cy="520.52" r="18.63" />
       <text class="cls-7" transform="translate(767.2 526.96)">
         <tspan x="0" y="0">1</tspan>
         <tspan class="cls-9" x="7.45" y="0">0</tspan>
