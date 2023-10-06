@@ -1,7 +1,7 @@
 import type Locale from "@/locales";
 import { prisma } from "@/server/db";
 import { useLocale } from "@/locales";
-import { Dispatch, RefObject, useRef, useState } from "react";
+import { Dispatch, useRef, useState } from "react";
 import Map from "@/components/Map/Map";
 import Search from "@/components/Map/Search";
 import Button from "@/components/Map/Button";

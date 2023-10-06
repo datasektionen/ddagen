@@ -1,7 +1,7 @@
 import type Locale from "@/locales";
 import { useState } from "react";
-import { Button } from "./Button";
 import { CheckMark } from "../CheckMark";
+import Button from "./Button";
 
 export default function Search({ t }: { t: Locale }) {
   const years = [1, 2, 3, 4, 5];
