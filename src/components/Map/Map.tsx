@@ -14,14 +14,17 @@ function circleSvgProxy(position: number, selectedExhibitor: number) {
       selector={`#p${position}`}
       class={
         selectedExhibitor === position
-          ? "selectedStyle"
+          ? "cursor-pointer z-50 animate-[blinkingText_2s_infinite] drop-shadow-[0_0_7px_#ee2a7b]"
           : "cursor-pointer transition-all fill-cerise ease-in-out duration-700"
       }
     />
   );
 }
 
-function groupSvgProxy(position: number, setSelectedExhibitor: Dispatch<number>) {
+function groupSvgProxy(
+  position: number,
+  setSelectedExhibitor: Dispatch<number>
+) {
   return (
     <SvgProxy
       key={position}
