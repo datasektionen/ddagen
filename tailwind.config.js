@@ -29,5 +29,27 @@ module.exports = {
     fontFamily: {
       sans: ["neue-haas", "sans-serif"],
     },
+    keyframes: {
+      blinkingText: {
+        "0%": {
+          fill: "#ee2a7b",
+          r: "23.57px",
+        },
+        "25%": {
+          fill: "#ee2a7b",
+        },
+        "50%": {
+          fill: "#ee2a7b",
+          r: "26.57px",
+        },
+        "75%": {
+          fill: "#ee2a7b",
+        },
+        "100%": {
+          fill: "#ee2a7b",
+          r: "23.57px",
+        },
+      },
+    },
   },
 };

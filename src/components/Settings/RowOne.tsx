@@ -2,7 +2,7 @@ import Locale from "@/locales";
 import { api } from "@/utils/api";
 import { useEffect, useState } from "react";
 import { TextInput } from "./TextInput";
-import { CheckMark } from "./CheckMark";
+import { CheckMark } from "../CheckMark";
 import { UploadButton } from "./UploadButton";
 import { UserDetails } from "./UserDetails";
 import { addImageDetails } from "@/shared/addImageDetails";

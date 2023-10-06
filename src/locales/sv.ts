@@ -258,6 +258,7 @@ export default {
     catalog: "Katalog",
     logos: "Våra Utställare",
     meetings: "Kontaktsamtal",
+    map: "Karta",
   },
   footer: {
     header:
@@ -597,5 +598,19 @@ export default {
   logos: {
     header: "Våra utställare",
     offers: "Erbjuder",
+  },
+  map: {
+    header: "Karta",
+    search: {
+      placeHolder: "Sök företag",
+      buttonOne: "Sök",
+      buttonTwo: "Filter",
+      filterYear: "År",
+    },
+    floors: {
+      one: "Plan 2",
+      two: "Plan 3",
+      entrance: "KTH Entré",
+    },
   },
 };
