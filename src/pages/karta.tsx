@@ -7,11 +7,10 @@ import Search from "@/components/Map/Search";
 import Button from "@/components/Map/Button";
 
 type MapProp = {
-  id?: string;
   name: string;
   logoWhite?: string | null;
   logoColor?: string | null;
-  description?: string;
+  description: string;
   package?: "main" | "headhunter" | "sponsor" | "premium" | "base" | "startup";
   jobOfferId?: string;
   offers: (number[] | boolean)[];
@@ -38,18 +37,19 @@ function Explorer({
       return exhibitor.position == selectedExhibitor ? (
         <div
           key={exhibitor.position}
-          className="h-52 flex cursor-pointer items-center justify-center mt-4 mx-4 border-2 border-white bg-white bg-opacity-40 rounded-lg"
+          className="flex flex-col min-h-[20%] break-all cursor-pointer items-center space-y-2 mt-4 mx-4 p-4 border-2 border-white bg-white bg-opacity-40 rounded-lg text-white"
           onClick={() => setSelectedExhibitor(0)}
         >
-          {exhibitor.position}
+          <div>{exhibitor.name}</div>
+          <div>{exhibitor.description}</div>
         </div>
       ) : (
         <div
           key={exhibitor.position}
-          className="h-14 flex cursor-pointer items-center justify-center mt-4 mx-4 border-2 border-white bg-white bg-opacity-40 rounded-lg"
+          className="flex flex-row min-h-[10%] cursor-pointer items-center justify-center mt-4 mx-4 border-2 border-white bg-white bg-opacity-40 rounded-lg text-white"
           onClick={() => setSelectedExhibitor(exhibitor.position)}
         >
-          {exhibitor.position}
+          <div>{exhibitor.name}</div>
         </div>
       );
     }
@@ -77,7 +77,8 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
         {t.map.header}
       </h1>
       {/* <Search t={t} /> */}
-      <div className="flex flex-row items-start justify-center space-x-10">
+      {/* ExhibitorExplorer */}
+      <div className="flex max-lg:flex-col-reverse max-lg:items-center lg:flex-row lg:items-start justify-center space-x-10">
         <div className="flex flex-col gap-y-4 items-center justify-center mt-12">
           <Button
             value={"/img/arrow-up.png/"}
@@ -140,6 +141,7 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
             }}
           />
         </div>
+        {/* ExhibitorExplorer */}
         <Map
           t={t}
           mapInView={mapInView}
@@ -160,10 +162,10 @@ export async function getServerSideProps() {
   });
 
   const exhibitorData = exhibitors.map((exhibitor) => ({
-    name: exhibitor.name || null,
+    name: exhibitor.name,
     logoWhite: exhibitor.logoWhite?.toString("base64") || null,
     logoColor: exhibitor.logoColor?.toString("base64") || null,
-    description: exhibitor.description || null,
+    description: exhibitor.description,
     package: exhibitor.package || null,
     jobOfferId: exhibitor.jobOfferId || null,
     offers: [
