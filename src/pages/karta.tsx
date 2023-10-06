@@ -110,7 +110,7 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
       </h1>
       {/* <Search t={t} /> */}
       {/* ExhibitorExplorer */}
-      <div className="flex max-lg:flex-col-reverse max-lg:items-center lg:flex-row lg:items-start justify-center space-x-10">
+      <div className="flex max-lg:flex-col-reverse max-lg:items-center lg:flex-row lg:items-start lg:space-x-10 justify-center">
         <div className="flex flex-col gap-y-4 items-center justify-center mt-12">
           <Button
             value={"/img/arrow-up.png/"}

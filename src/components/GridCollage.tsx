@@ -18,7 +18,7 @@ export default function GridCollage({
   return (
     <div
       ref={scrollRef}
-      className="flex flex-col items-center justify-center py-12 mx-auto mb-16 max-w-5xl"
+      className="flex flex-col items-center justify-center py-12 xs:mx-auto mb-16 max-w-5xl"
     >
       <div
         className="lg:grid lg:grid-rows-[repeat(28,minmax(auto,1fr))] lg:grid-cols-[repeat(32,minmax(auto,1fr))] font-light lg:pb-12 

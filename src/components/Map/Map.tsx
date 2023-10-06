@@ -55,37 +55,35 @@ export default function Map({
 
   return (
     <div className="flex flex-col items-center justify-center mt-16">
-      <div>
-        <div className="max-xs:w-[350px] xs:w-[450px] sm:w-[500px] md:w-[650px] h-[475px] flex justify-center bg-[#fafafa] text-5xl text-white mt-14 mb-6 p-4">
-          {mapInView == 1 ? (
-            <SvgLoader path="/img/map/floor-2.svg">
-              {floorTwoPositions.map((position) => {
-                return circleSvgProxy(position, selectedExhibitor);
-              })}
-              {floorTwoPositions.map((position) => {
-                return groupSvgProxy(position, setSelectedExhibitor);
-              })}
-            </SvgLoader>
-          ) : mapInView == 2 ? (
-            <SvgLoader path="/img/map/floor-3.svg">
-              {floorThreePositions.map((position) => {
-                return circleSvgProxy(position, selectedExhibitor);
-              })}
-              {floorThreePositions.map((position) => {
-                return groupSvgProxy(position, setSelectedExhibitor);
-              })}
-            </SvgLoader>
-          ) : (
-            <SvgLoader path="/img/map/kth-entrance.svg">
-              {kthEntrancePositions.map((position) => {
-                return circleSvgProxy(position, selectedExhibitor);
-              })}
-              {kthEntrancePositions.map((position) => {
-                return groupSvgProxy(position, setSelectedExhibitor);
-              })}
-            </SvgLoader>
-          )}
-        </div>
+      <div className="max-xs:w-[350px] xs:w-[450px] sm:w-[500px] md:w-[650px] max-sm:h-[350px] h-[475px] flex justify-center bg-[#fafafa] text-5xl text-white mt-14 mb-6 xs:p-4">
+        {mapInView == 1 ? (
+          <SvgLoader path="/img/map/floor-2.svg">
+            {floorTwoPositions.map((position) => {
+              return circleSvgProxy(position, selectedExhibitor);
+            })}
+            {floorTwoPositions.map((position) => {
+              return groupSvgProxy(position, setSelectedExhibitor);
+            })}
+          </SvgLoader>
+        ) : mapInView == 2 ? (
+          <SvgLoader path="/img/map/floor-3.svg">
+            {floorThreePositions.map((position) => {
+              return circleSvgProxy(position, selectedExhibitor);
+            })}
+            {floorThreePositions.map((position) => {
+              return groupSvgProxy(position, setSelectedExhibitor);
+            })}
+          </SvgLoader>
+        ) : (
+          <SvgLoader path="/img/map/kth-entrance.svg">
+            {kthEntrancePositions.map((position) => {
+              return circleSvgProxy(position, selectedExhibitor);
+            })}
+            {kthEntrancePositions.map((position) => {
+              return groupSvgProxy(position, setSelectedExhibitor);
+            })}
+          </SvgLoader>
+        )}
       </div>
       <div className="flex flex-row items-center">
         <Button
