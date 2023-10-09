@@ -108,7 +108,7 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
       <h1 className="text-cerise text-6xl font-medium uppercase text-center">
         {t.map.header}
       </h1>
-      {/* <Search t={t} /> */}
+      <Search t={t} />
       {/* ExhibitorExplorer */}
       <div className="flex max-lg:flex-col-reverse max-lg:items-center lg:flex-row lg:items-start lg:space-x-10 justify-center">
         <div className="flex flex-col gap-y-4 items-center justify-center mt-12">
