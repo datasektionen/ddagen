@@ -94,6 +94,7 @@ export default function Search({
                       <div>
                         <CheckMark
                           name={`${pos}`}
+                          defaultChecked={checkmarks[pos]}
                           onClick={() => {
                             checkmarks[pos] = !checkmarks[pos];
                           }}
@@ -114,6 +115,7 @@ export default function Search({
                       <div>
                         <CheckMark
                           name={`${pos + 5}`}
+                          defaultChecked={checkmarks[pos + 5]}
                           onClick={() => {
                             checkmarks[pos + 5] = !checkmarks[pos + 5];
                           }}
