@@ -55,6 +55,7 @@ function Explorer({
             />
           )}
           <div className="text-3xl font-medium mb-4">{exhibitor.name}</div>
+          <div className="mb-4">{exhibitor.description}</div>
           {hasValidOffer(exhibitor) && (
             <div className="w-full break-all">
               <p className="font-medium mb-2 text-xl">
