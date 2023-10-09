@@ -612,5 +612,14 @@ export default {
       two: "Plan 3",
       entrance: "KTH Entré",
     },
+    description: {
+      offers: "Erbjuder",
+      summer: "Sommarjobb",
+      internship: "Internship",
+      partTime: "Deltidsjobb",
+      thesis: "Examensarbete",
+      fullTime: "Heltidsjobb",
+      trainee: "Traineeprogram",
+    },
   },
 };
