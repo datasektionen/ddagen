@@ -5,6 +5,17 @@ import Button from "@/components/Map/Button";
 import { addImageDetails } from "@/shared/addImageDetails";
 import { Dispatch, useEffect, useRef, RefObject, createRef } from "react";
 
+function hasValidOffer(exhibitor: MapProp) {
+  return (
+    exhibitor.offers.summerJob.length > 0 ||
+    exhibitor.offers.internship.length > 0 ||
+    exhibitor.offers.partTimeJob.length > 0 ||
+    exhibitor.offers.masterThesis ||
+    exhibitor.offers.fullTimeJob ||
+    exhibitor.offers.traineeProgram
+  );
+}
+
 function Explorer({
   t,
   map,
@@ -44,29 +55,33 @@ function Explorer({
             />
           )}
           <div className="text-3xl font-medium mb-4">{exhibitor.name}</div>
-          <div className="w-full break-all">
-            <p className="font-medium mb-2 text-xl">{t.map.description.offers}</p>
-            <ol className="list-disc inline-block text-left">
-              {exhibitor.offers.summerJob.length > 0 && (
-                <li>{t.map.description.summer}</li>
-              )}
-              {exhibitor.offers.internship.length > 0 && (
-                <li>{t.map.description.internship}</li>
-              )}
-              {exhibitor.offers.partTimeJob.length > 0 && (
-                <li>{t.map.description.partTime}</li>
-              )}
-              {exhibitor.offers.masterThesis && (
-                <li>{t.map.description.thesis}</li>
-              )}
-              {exhibitor.offers.fullTimeJob && (
-                <li>{t.map.description.fullTime}</li>
-              )}
-              {exhibitor.offers.traineeProgram && (
-                <li>{t.map.description.trainee}</li>
-              )}
-            </ol>
-          </div>
+          {hasValidOffer(exhibitor) && (
+            <div className="w-full break-all">
+              <p className="font-medium mb-2 text-xl">
+                {t.map.description.offers}
+              </p>
+              <ol className="list-disc inline-block text-left">
+                {exhibitor.offers.summerJob.length > 0 && (
+                  <li>{t.map.description.summer}</li>
+                )}
+                {exhibitor.offers.internship.length > 0 && (
+                  <li>{t.map.description.internship}</li>
+                )}
+                {exhibitor.offers.partTimeJob.length > 0 && (
+                  <li>{t.map.description.partTime}</li>
+                )}
+                {exhibitor.offers.masterThesis && (
+                  <li>{t.map.description.thesis}</li>
+                )}
+                {exhibitor.offers.fullTimeJob && (
+                  <li>{t.map.description.fullTime}</li>
+                )}
+                {exhibitor.offers.traineeProgram && (
+                  <li>{t.map.description.trainee}</li>
+                )}
+              </ol>
+            </div>
+          )}
         </div>
       ) : (
         <div

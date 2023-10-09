@@ -52,7 +52,7 @@ export default function Search({
             loading={false}
             onClick={() => {
               setQuery({
-                searchQuery: searchQuery,
+                searchQuery: searchQuery.toLowerCase(),
                 years: checkmarks
                   .slice(0, 5)
                   .map((value, index) => (value ? index + 1 : -1))

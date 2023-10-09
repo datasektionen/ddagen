@@ -45,7 +45,8 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
     setExhibitors(
       Object.fromEntries(
         exhibitorData.map((exhibitor) => {
-          if (!exhibitor.name.includes(query.searchQuery)) return [];
+          if (!RegExp(query.searchQuery).test(exhibitor.name.toLowerCase()))
+            return [];
           if (query.years.length != 0) {
             if (
               !query.years.some((year) =>
