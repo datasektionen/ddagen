@@ -610,7 +610,6 @@ export default {
     floors: {
       one: "Plan 2",
       two: "Plan 3",
-      entrance: "KTH Entré",
     },
     description: {
       offers: "Erbjuder",

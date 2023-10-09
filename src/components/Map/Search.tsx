@@ -3,6 +3,39 @@ import { Dispatch, useEffect, useState } from "react";
 import { CheckMark } from "../CheckMark";
 import Button from "./Button";
 
+function applySearch(
+  searchQuery: string,
+  checkmarks: boolean[],
+  setQuery: Dispatch<{
+    searchQuery: string;
+    years: (0 | 1 | 2 | 3 | 4)[];
+    offers: {
+      summer: boolean;
+      internship: boolean;
+      partTime: boolean;
+      thesis: boolean;
+      fullTime: boolean;
+      trainee: boolean;
+    };
+  }>
+) {
+  setQuery({
+    searchQuery: searchQuery.toLowerCase(),
+    years: checkmarks
+      .slice(0, 5)
+      .map((value, index) => (value ? index : -1))
+      .filter((index) => index !== -1) as (0 | 1 | 2 | 3 | 4)[],
+    offers: {
+      summer: checkmarks[5],
+      internship: checkmarks[6],
+      partTime: checkmarks[7],
+      thesis: checkmarks[8],
+      fullTime: checkmarks[9],
+      trainee: checkmarks[10],
+    },
+  });
+}
+
 export default function Search({
   t,
   setQuery,
@@ -45,28 +78,16 @@ export default function Search({
           placeholder={t.map.search.placeHolder}
           value={searchQuery}
           onChange={(q) => setSearchQuery(q.target.value)}
+          onKeyUp={(e) => {
+            if (e.key === "Enter")
+              applySearch(searchQuery, checkmarks, setQuery);
+          }}
         />
         <div className="flex flex-row">
           <Button
             value={t.map.search.buttonOne}
             loading={false}
-            onClick={() => {
-              setQuery({
-                searchQuery: searchQuery.toLowerCase(),
-                years: checkmarks
-                  .slice(0, 5)
-                  .map((value, index) => (value ? index : -1))
-                  .filter((index) => index !== -1) as (0 | 1 | 2 | 3 | 4)[],
-                offers: {
-                  summer: checkmarks[5],
-                  internship: checkmarks[6],
-                  partTime: checkmarks[7],
-                  thesis: checkmarks[8],
-                  fullTime: checkmarks[9],
-                  trainee: checkmarks[10],
-                },
-              });
-            }}
+            onClick={() => applySearch(searchQuery, checkmarks, setQuery)}
           />
           <Button
             value={t.map.search.buttonTwo}
@@ -94,6 +115,7 @@ export default function Search({
                       <div>
                         <CheckMark
                           name={`${pos}`}
+                          defaultChecked={checkmarks[pos]}
                           onClick={() => {
                             checkmarks[pos] = !checkmarks[pos];
                           }}
@@ -114,6 +136,7 @@ export default function Search({
                       <div>
                         <CheckMark
                           name={`${pos + 5}`}
+                          defaultChecked={checkmarks[pos + 5]}
                           onClick={() => {
                             checkmarks[pos + 5] = !checkmarks[pos + 5];
                           }}

@@ -609,7 +609,6 @@ export default {
     floors: {
       one: "Floor 2",
       two: "Floor 3",
-      entrance: "KTH Entrance",
     },
     description: {
       offers: "Offers",
