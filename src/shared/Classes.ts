@@ -226,6 +226,17 @@ export class Exhibitor {
   }
 }
 
+export type MapProp = {
+  name: string;
+  logoWhite?: string | null;
+  logoColor?: string | null;
+  description: string;
+  package?: "main" | "headhunter" | "sponsor" | "premium" | "base" | "startup";
+  jobOfferId?: string;
+  offers: (number[] | boolean)[];
+  position: number;
+};
+
 export function sortExhibitors(exhibitors: Exhibitor[]) {
   const sortList = [
     "main",

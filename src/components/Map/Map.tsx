@@ -1,11 +1,9 @@
 import type Locale from "@/locales";
-import Button from "./Button";
+import { Dispatch } from "react";
+import { range } from "@/shared/range";
+import Button from "@/components/Map/Button";
 import { SvgLoader, SvgProxy } from "react-svgmt";
-import { Dispatch, useEffect, useState } from "react";
-
-function range(start: number, end: number) {
-  return [...Array(1 + end - start).keys()].map((v) => start + v);
-}
+import { MapProp } from "@/shared/Classes";
 
 function circleSvgProxy(position: number, selectedExhibitor: number) {
   return (
@@ -23,6 +21,7 @@ function circleSvgProxy(position: number, selectedExhibitor: number) {
 
 function groupSvgProxy(
   position: number,
+  exhibitor: MapProp | undefined,
   setSelectedExhibitor: Dispatch<number>
 ) {
   return (
@@ -32,18 +31,23 @@ function groupSvgProxy(
         setSelectedExhibitor(position);
       }}
       selector={`#g${position}`}
+      class={exhibitor == undefined && "hidden"}
     />
   );
 }
 
 export default function Map({
   t,
+  exhibitors,
   mapInView,
   setMapInView,
   selectedExhibitor,
   setSelectedExhibitor,
 }: {
   t: Locale;
+  exhibitors: {
+    [k: string]: MapProp;
+  };
   mapInView: 1 | 2 | 3;
   setMapInView: Dispatch<1 | 2 | 3>;
   selectedExhibitor: number;
@@ -54,7 +58,7 @@ export default function Map({
   const kthEntrancePositions = range(102, 107);
 
   return (
-    <div className="flex flex-col items-center justify-center mt-16">
+    <div className="flex flex-col items-center justify-center lg:mt-16">
       <div className="max-xs:w-[350px] xs:w-[450px] sm:w-[500px] md:w-[650px] max-sm:h-[350px] h-[475px] flex justify-center bg-[#fafafa] text-5xl text-white mt-14 mb-6 xs:p-4">
         {mapInView == 1 ? (
           <SvgLoader path="/img/map/floor-2.svg">
@@ -62,7 +66,11 @@ export default function Map({
               return circleSvgProxy(position, selectedExhibitor);
             })}
             {floorTwoPositions.map((position) => {
-              return groupSvgProxy(position, setSelectedExhibitor);
+              return groupSvgProxy(
+                position,
+                exhibitors[position],
+                setSelectedExhibitor
+              );
             })}
           </SvgLoader>
         ) : mapInView == 2 ? (
@@ -71,7 +79,11 @@ export default function Map({
               return circleSvgProxy(position, selectedExhibitor);
             })}
             {floorThreePositions.map((position) => {
-              return groupSvgProxy(position, setSelectedExhibitor);
+              return groupSvgProxy(
+                position,
+                exhibitors[position],
+                setSelectedExhibitor
+              );
             })}
           </SvgLoader>
         ) : (
@@ -80,7 +92,11 @@ export default function Map({
               return circleSvgProxy(position, selectedExhibitor);
             })}
             {kthEntrancePositions.map((position) => {
-              return groupSvgProxy(position, setSelectedExhibitor);
+              return groupSvgProxy(
+                position,
+                exhibitors[position],
+                setSelectedExhibitor
+              );
             })}
           </SvgLoader>
         )}
