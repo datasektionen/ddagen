@@ -115,7 +115,7 @@ export default function Map({
           onClick={() => setMapInView(2)}
         />
         <Button
-          value={t.map.floors.entrance}
+          value="KTH Entré"
           loading={false}
           uppercase={false}
           onClick={() => setMapInView(3)}
