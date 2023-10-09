@@ -226,6 +226,24 @@ export class Exhibitor {
   }
 }
 
+export type MapProp = {
+  name: string;
+  logoWhite?: string | null;
+  logoColor?: string | null;
+  description: string;
+  package: "main" | "headhunter" | "sponsor" | "premium" | "base" | "startup";
+  jobOfferId: string;
+  offers: {
+    summerJob: number[];
+    internship: number[];
+    partTimeJob: number[];
+    masterThesis: boolean;
+    fullTimeJob: boolean;
+    traineeProgram: boolean;
+  };
+  position: number;
+};
+
 export function sortExhibitors(exhibitors: Exhibitor[]) {
   const sortList = [
     "main",

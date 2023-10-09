@@ -611,5 +611,14 @@ export default {
       two: "Floor 3",
       entrance: "KTH Entrance",
     },
+    description: {
+      offers: "Offers",
+      summer: "Summer Job",
+      internship: "Internship",
+      partTime: "Part-time Job",
+      thesis: "Master Thesis",
+      fullTime: "Full-time Job",
+      trainee: "Trainee Program",
+    },
   },
 };
