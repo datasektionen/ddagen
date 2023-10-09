@@ -10,7 +10,7 @@ export default function Search({
   t: Locale;
   setQuery: Dispatch<{
     searchQuery: string;
-    years: (1 | 2 | 3 | 4 | 5)[];
+    years: (0 | 1 | 2 | 3 | 4)[];
     offers: {
       summer: boolean;
       internship: boolean;
@@ -21,7 +21,7 @@ export default function Search({
     };
   }>;
 }) {
-  const years = [1, 2, 3, 4, 5];
+  const years = [0, 1, 2, 3, 4];
   const offers = [
     t.exhibitorSettings.table.row1.section2.jobs.summer,
     t.exhibitorSettings.table.row1.section2.jobs.internship,
@@ -55,8 +55,8 @@ export default function Search({
                 searchQuery: searchQuery.toLowerCase(),
                 years: checkmarks
                   .slice(0, 5)
-                  .map((value, index) => (value ? index + 1 : -1))
-                  .filter(index => index !== -1) as ( 1 | 2 | 3 | 4 | 5)[],
+                  .map((value, index) => (value ? index : -1))
+                  .filter((index) => index !== -1) as (0 | 1 | 2 | 3 | 4)[],
                 offers: {
                   summer: checkmarks[5],
                   internship: checkmarks[6],
@@ -90,7 +90,7 @@ export default function Search({
                       key={`${pos}`}
                       className="flex flex-row space-x-1 ml-2"
                     >
-                      <div>{year}</div>
+                      <div>{year + 1}</div>
                       <div>
                         <CheckMark
                           name={`${pos}`}

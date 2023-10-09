@@ -16,7 +16,7 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
   );
   const [query, setQuery] = useState<{
     searchQuery: string;
-    years: (1 | 2 | 3 | 4 | 5)[];
+    years: (0 | 1 | 2 | 3 | 4)[];
     offers: {
       summer: boolean;
       internship: boolean;
@@ -58,8 +58,10 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
               !query.years.some((year) =>
                 exhibitor.offers.partTimeJob.includes(year)
               )
-            )
+            ) {
               return [];
+
+            }
           }
           if (
             (query.offers.summer && exhibitor.offers.summerJob.length == 0) ||
