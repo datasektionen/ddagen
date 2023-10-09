@@ -31,7 +31,7 @@ function groupSvgProxy(
         setSelectedExhibitor(position);
       }}
       selector={`#g${position}`}
-      class={exhibitor == undefined && "hidden"}
+      class={exhibitor == undefined ? "hidden" : ""}
     />
   );
 }

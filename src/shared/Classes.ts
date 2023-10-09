@@ -231,9 +231,16 @@ export type MapProp = {
   logoWhite?: string | null;
   logoColor?: string | null;
   description: string;
-  package?: "main" | "headhunter" | "sponsor" | "premium" | "base" | "startup";
-  jobOfferId?: string;
-  offers: (number[] | boolean)[];
+  package: "main" | "headhunter" | "sponsor" | "premium" | "base" | "startup";
+  jobOfferId: string;
+  offers: {
+    summerJob: number[];
+    internship: number[];
+    partTimeJob: number[];
+    masterThesis: boolean;
+    fullTimeJob: boolean;
+    traineeProgram: boolean;
+  };
   position: number;
 };
 
