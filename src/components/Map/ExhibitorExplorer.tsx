@@ -169,7 +169,8 @@ export default function ExhibitorExplorer({
       <div
         ref={buttonScrollRef}
         className="block w-[300px] h-[550px] border-2 border-cerise
-              bg-[#eaeaea] bg-opacity-10 rounded-xl pb-4 overflow-scroll scrollbar-hide"
+                bg-[#eaeaea] bg-opacity-10 rounded-xl pb-4 overflow-scroll 
+                  scrollbar-hide overflow-x-hidden"
       >
         {floorTwoPositions.map((position) => {
           if (!exhibitorRefs.current[position])
