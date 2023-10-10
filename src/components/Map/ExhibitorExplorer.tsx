@@ -39,7 +39,7 @@ function Explorer({
         <div
           ref={explorerRef}
           key={exhibitor.position}
-          className="flex flex-col min-h-[20%] break-all cursor-pointer items-center justify-center space-y-2 mt-4 mx-4 p-4 border-2 border-white bg-white bg-opacity-40 rounded-lg text-white text-center"
+          className="flex flex-col min-h-[20%] cursor-pointer items-center justify-center space-y-2 mt-4 mx-4 p-4 border-2 border-white bg-white bg-opacity-40 rounded-lg text-white text-center"
           onClick={() => setSelectedExhibitor(0)}
         >
           {exhibitor.logoColor && (
