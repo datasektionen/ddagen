@@ -7,7 +7,7 @@
       }
 
       tspan {
-        font-family:neue-haas-normal
+        font-family:neue-haas-normal;
       }
 
       .cls-1 {
@@ -87,7 +87,6 @@
       }
 
       .cls-26 {
-      font-family: NHaasGroteskDSPro-65Md, 'Neue Haas Grotesk Display Pro';
       font-size: 19px;
       font-weight: 500;
       cursor: pointer;
