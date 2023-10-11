@@ -94,7 +94,9 @@ function SingleTeam({
                         <p
                           key={i}
                           className={
-                            i === 0 ? "ml-0 text-center text-xl mb-2 text-cerise" : "ml-0 mb-2"
+                            i === 0
+                              ? "ml-0 text-center text-xl mb-2 text-cerise"
+                              : "ml-0 mb-2"
                           }
                         >
                           {line}
@@ -126,13 +128,13 @@ export default function SignupPage() {
           {t.sok.description}
         </p>
       </div>
-      <a href="https://forms.gle/VyigeGiQuEXgE9eS8" target="_blank">
       <div className="flex flex-row items-center justify-center">
-        <button className="w-[200px] bg-cerise rounded-full h-[60px] mt-[50px]">
-          <p className="text-white text-center"> {t.sok.search}</p>
-        </button>
+        <a href="https://forms.gle/VyigeGiQuEXgE9eS8" target="_blank">
+          <button className="w-[175px] bg-cerise rounded-full h-[60px] mt-[50px]">
+            <p className="text-white text-center">{t.sok.search}</p>
+          </button>
+        </a>
       </div>
-      </a>
       <h1 className="text-4xl text-cerise font-normal text-center uppercase mt-[100px]">
         {" "}
         {t.sok.info}
@@ -194,13 +196,13 @@ export default function SignupPage() {
         {" "}
         {t.sok.moreInfo}
       </h1>
-      <a href="https://forms.gle/VyigeGiQuEXgE9eS8" target="_blank">
       <div className="flex flex-row items-center justify-center">
-        <button className="w-[200px] bg-cerise rounded-full h-[60px] mt-[50px]">
-          <p className="text-white text-center"> {t.sok.search}</p>
-        </button>
+        <a href="https://forms.gle/VyigeGiQuEXgE9eS8" target="_blank">
+          <button className="w-[175px] bg-cerise rounded-full h-[60px] mt-[50px]">
+            <p className="text-white text-center">{t.sok.search}</p>
+          </button>
+        </a>
       </div>
-      </a>
     </div>
   );
 }
