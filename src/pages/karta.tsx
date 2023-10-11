@@ -88,7 +88,8 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
       </h1>
       <Search t={t} setQuery={setQuery} />
 
-      <div className="flex max-lg:flex-col-reverse max-lg:items-center lg:flex-row lg:items-start lg:space-x-10 justify-center">
+      <div className="flex max-lg:flex-col-reverse max-lg:items-center 
+                      lg:flex-row lg:items-start lg:space-x-10 justify-center">
         <ExhibitorExplorer
           t={t}
           exhibitors={exhibitors}

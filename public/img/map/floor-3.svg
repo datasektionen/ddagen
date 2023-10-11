@@ -1,6 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="123.1 332.73 760.59 383.44">
   <defs>
     <style>
+      @font-face {
+        font-family: "neue-haas-normal";
+        src: url("/fonts/NeueHaasDisplay/NeueHaasDisplayRoman.ttf") format("truetype");
+      }
+
+      tspan {
+        font-family:neue-haas-normal;
+      }
+      
       .cls-1 {
       letter-spacing: 0em;
       }
@@ -35,7 +44,6 @@
 
       .cls-11 {
       fill: #fff;
-      font-family: NHaasGroteskDSPro-65Md, 'Neue Haas Grotesk Display Pro';
       font-size: 19px;
       font-weight: 500;
       cursor: pointer;
