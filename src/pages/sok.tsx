@@ -116,7 +116,7 @@ export default function SignupPage() {
   const t = useLocale();
 
   return (
-    <div className="pt-[200px] pb-[300px]">
+    <div className="pt-[200px] pb-[200px]">
       <h1 className="text-5xl text-cerise font-medium text-center uppercase">
         {" "}
         {t.sok.header}
