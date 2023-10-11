@@ -622,6 +622,7 @@ export default {
   },
   sok:{
     header: "Signup for DDAGEN",
+    description: "The goal for this year's D-Dagen is to make it the biggest and best career fair in Datasektionen's history! This is the vision we have as organizers this year. However, it's impossible for us to organize such a large event entirely on our own. We need an ambitious project group to help us, one that has the drive to create something extraordinary. We aim to improve internal communication from previous years, and, therefore, we will focus extensively on team building to create a close-knit group. We also expect that everyone in the project group is sociable, has good teamwork skills, and is self-driven in their tasks.",
     extra:"Läs mer om rollerna",
     prGroup:{
       header: "PR Team",
