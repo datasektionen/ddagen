@@ -68,7 +68,7 @@ function SingleTeam({
             onClick={handleOverlayClick}
           >
             <div
-              className={`bg-white bg-opacity-70 w-[500px] max-h-[80vh] overflow-y-auto pb-5 flex flex-col rounded-3xl`}
+              className={`bg-white bg-opacity-70 w-[325px] sm:w-[500px] max-h-[80vh] overflow-y-auto pb-5 flex flex-col rounded-3xl`}
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               <div className="relative py-[0px] justify-center flex flex-row">
