@@ -624,7 +624,10 @@ export default {
   sok:{
     header: "Sök DDAGEN",
     description: "Årets D-Dagen ska bli Datasektionens största och bästa arbetsmarknadsmässa någonsin! Detta är i alla fall visionen vi har som ansvariga i år. Dock är det omöjligt för oss att arrangera ett så här stort evenemang helt själva. Till vår hjälp behöver vi en ambitiös projektgrupp som har drivet att skapa någonting extraordinärt. Vi vill förbättra den interna kommunikation från tidigare år och kommer därför satsa extra mycket på teambuilding för att få en tajt grupp. Vi förväntar oss också att alla i projektgruppen är sociala med god samarbetsförmåga och självgående i sina uppgifter.",
+    search:"SÖK",
+    info:"Information om rollerna",
     extra:"Läs mer om rollerna",
+    moreInfo:"Intresserad?",
     prGroup:{
       header: "PR-GRUPPEN",
       text: "PR-gruppen är en mångsidig och kreativ enhet inom D-Dagen. Dess medlemmar är ansvariga för att skapa och underhålla D-Dagens offentliga image och varumärke. De har olika ansvarsområden som spänner från ledarskap och organisation till grafisk design och tryckhantering.",

@@ -93,7 +93,9 @@ function SingleEvent({
                       {role.split("\n").map((line, i) => (
                         <p
                           key={i}
-                          className={i === 0 ? "ml-0 text-left text-cerise" : "ml-0"}
+                          className={
+                            i === 0 ? "ml-0 text-left text-cerise" : "ml-0"
+                          }
                         >
                           {line}
                         </p>
@@ -127,6 +129,18 @@ export default function Students() {
           {t.sok.description}
         </p>
       </div>
+      <a href="https://forms.gle/VyigeGiQuEXgE9eS8" target="_blank">
+      <div className="flex flex-row items-center justify-center">
+        <button className="w-[200px] bg-cerise rounded-full h-[60px] mt-[50px]">
+          <p className="text-white text-center"> {t.sok.search}</p>
+        </button>
+      </div>
+      </a>
+      <h1 className="text-4xl text-cerise font-normal text-center uppercase mt-[100px]">
+        {" "}
+        {t.sok.info}
+      </h1>
+
       <SingleEvent
         bgColor="bg-[#E2B7C9]"
         borderColor="border-[#E2B7C9]"
@@ -183,6 +197,17 @@ export default function Students() {
         price="17 000 kr + 150 kr / student"
         roles={t.sok.ecoGroup.roles}
       />
+      <h1 className="text-4xl text-cerise font-normal text-center uppercase mt-[100px]">
+        {" "}
+        {t.sok.moreInfo}
+      </h1>
+      <a href="https://forms.gle/VyigeGiQuEXgE9eS8" target="_blank">
+      <div className="flex flex-row items-center justify-center">
+        <button className="w-[200px] bg-cerise rounded-full h-[60px] mt-[50px]">
+          <p className="text-white text-center"> {t.sok.search}</p>
+        </button>
+      </div>
+      </a>
     </div>
   );
 }

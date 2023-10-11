@@ -623,7 +623,10 @@ export default {
   sok:{
     header: "Signup for DDAGEN",
     description: "The goal for this year's D-Dagen is to make it the biggest and best career fair in Datasektionen's history! This is the vision we have as organizers this year. However, it's impossible for us to organize such a large event entirely on our own. We need an ambitious project group to help us, one that has the drive to create something extraordinary. We aim to improve internal communication from previous years, and, therefore, we will focus extensively on team building to create a close-knit group. We also expect that everyone in the project group is sociable, has good teamwork skills, and is self-driven in their tasks.",
+    search:"SIGNUP",
+    info:"Information about the roles",
     extra:"Read more about the roles",
+    moreInfo:"Interested?",
     prGroup:{
       header: "PR Team",
       text: "As the PR manager, you are the leader of the PR team. You drive and organize the group, ensuring that everyone knows what they need to do and has the necessary resources. Since you work closely with the PR team, you will become very close-knit. As the PR manager, you will also communicate extensively with the DDA's.",
