@@ -1,13 +1,12 @@
 import { useLocale } from "@/locales";
 import { useState, useRef } from "react";
-function SingleEvent({
+function SingleTeam({
   bgColor,
   borderColor,
   toReverse,
   textColor,
   image,
-  eventInfo,
-  price,
+  teamInfo,
   roles,
 }: {
   bgColor: string;
@@ -15,8 +14,7 @@ function SingleEvent({
   toReverse: boolean;
   textColor: string;
   image: string;
-  eventInfo: string[];
-  price: string;
+  teamInfo: string[];
   roles: string[];
 }) {
   const t = useLocale();
@@ -25,10 +23,12 @@ function SingleEvent({
 
   const openModal = () => {
     setModal(true);
+    document.body.style.overflow = "hidden";
   };
 
   const closeModal = () => {
     setModal(false);
+    document.body.style.overflow = "auto";
   };
 
   const handleOverlayClick = (event: React.MouseEvent) => {
@@ -52,10 +52,10 @@ function SingleEvent({
         className={`${bgColor} ${borderColor} border-[3px] rounded-lg py-[25px] md:py-[25px] lg:py-[50px] px-[20px] bg-opacity-10 md:w-[300px] md:h-[300px] lg:w-[400px] lg:h-[300px]`}
       >
         <h2 className="text-center lg:text-3xl md: text-xl text-white">
-          {eventInfo[0]}
+          {teamInfo[0]}
         </h2>
         <h3 className="text-center text-cerise  lg:text-xl md:mt-1 lg:mt-2"></h3>
-        <p className="text-white text-start mt-5 text-sm">{eventInfo[1]}</p>
+        <p className="text-white text-start mt-5 text-sm">{teamInfo[1]}</p>
         <button className={`${textColor} text-start mt-3`} onClick={openModal}>
           <u>{t.sok.extra}</u>
         </button>
@@ -84,7 +84,7 @@ function SingleEvent({
               </div>
               <div className="px-5 mt-5">
                 <h2 className="text-center text-3xl text-black">
-                  {eventInfo[0]}
+                  {teamInfo[0]}
                 </h2>
                 <h3 className="text-center text-cerise text-2xl mt-2"></h3>
                 <ul className="list-none mt-2 text-center">
@@ -94,7 +94,7 @@ function SingleEvent({
                         <p
                           key={i}
                           className={
-                            i === 0 ? "ml-0 text-left text-cerise" : "ml-0"
+                            i === 0 ? "ml-0 text-center text-xl mb-2 text-cerise" : "ml-0 mb-2"
                           }
                         >
                           {line}
@@ -103,9 +103,6 @@ function SingleEvent({
                     </li>
                   ))}
                 </ul>
-                <p className="text-black text-start mt-5">
-                  {/* Content here */}
-                </p>
               </div>
             </div>
           </div>
@@ -115,7 +112,7 @@ function SingleEvent({
   );
 }
 
-export default function Students() {
+export default function SignupPage() {
   const t = useLocale();
 
   return (
@@ -141,60 +138,56 @@ export default function Students() {
         {t.sok.info}
       </h1>
 
-      <SingleEvent
+      <SingleTeam
         bgColor="bg-[#E2B7C9]"
         borderColor="border-[#E2B7C9]"
         toReverse={false}
         textColor="text-[#E2B7C9]"
         image="/img/groupPictures/prTeam.jpg"
-        eventInfo={[
+        teamInfo={[
           t.sok.prGroup.header,
           t.sok.prGroup.text,
           t.event.fullParagraph1,
         ]}
-        price="50 000"
         roles={t.sok.prGroup.roles}
       />
-      <SingleEvent
+      <SingleTeam
         bgColor="bg-[#D5759C]"
         borderColor="border-[#D5759C]"
         toReverse={true}
         textColor="text-[#D5759C]"
         image="/img/groupPictures/salesTeam.jpg"
-        eventInfo={[
+        teamInfo={[
           t.sok.saleGroup.header,
           t.sok.saleGroup.text,
           t.event.fullParagraph2,
         ]}
-        price="15 000"
         roles={t.sok.saleGroup.roles}
       />
-      <SingleEvent
+      <SingleTeam
         bgColor="bg-cerise"
         borderColor="border-cerise"
         toReverse={false}
         textColor="text-cerise"
         image="/img/groupPictures/massTeam.jpg"
-        eventInfo={[
+        teamInfo={[
           t.sok.massGroup.header,
           t.sok.massGroup.text,
           t.event.fullParagraph3,
         ]}
-        price="60 000"
         roles={t.sok.massGroup.roles}
       />
-      <SingleEvent
+      <SingleTeam
         bgColor="bg-yellow"
         borderColor="border-yellow"
         toReverse={true}
         textColor="text-yellow"
         image="/img/groupPictures/ecoTeam.jpg"
-        eventInfo={[
+        teamInfo={[
           t.sok.ecoGroup.header,
           t.sok.ecoGroup.text,
           t.event.fullParagraph4,
         ]}
-        price="17 000 kr + 150 kr / student"
         roles={t.sok.ecoGroup.roles}
       />
       <h1 className="text-4xl text-cerise font-normal text-center uppercase mt-[100px]">
