@@ -39,25 +39,31 @@ function Explorer({
         <div
           ref={explorerRef}
           key={exhibitor.position}
-          className="flex flex-col min-h-[20%] cursor-pointer items-center justify-center space-y-2 mt-4 mx-4 p-4 border-2 border-white bg-white bg-opacity-40 rounded-lg text-white text-center"
+          className="flex flex-col min-h-[20%] cursor-pointer items-center justify-center 
+                    space-y-2 mt-4 mx-4 px-4 py-6 border-2 border-white bg-white bg-opacity-40 
+                    rounded-lg text-white text-center overflow-hidden"
           onClick={() => setSelectedExhibitor(0)}
         >
           {exhibitor.logoColor && (
             <img
-              className="w-[150px]"
+              className="w-[150px] mb-2"
               src={addImageDetails(exhibitor.logoColor)}
             />
           )}
           {!exhibitor.logoColor && exhibitor.logoWhite && (
             <img
-              className="w-[100px]"
+              className="w-[150px] mb-2"
               src={addImageDetails(exhibitor.logoWhite)}
             />
           )}
-          <div className="text-3xl font-medium mb-4">{exhibitor.name}</div>
-          <div className="mb-4">{exhibitor.description}</div>
+          <div className="text-3xl font-medium mb-4 max-w-full break-words">
+            {exhibitor.name}
+          </div>
+          <div className="mb-4 max-w-full break-words">
+            {exhibitor.description}
+          </div>
           {hasValidOffer(exhibitor) && (
-            <div className="w-full break-all">
+            <div>
               <p className="font-medium mb-2 text-xl">
                 {t.map.description.offers}
               </p>
@@ -88,26 +94,30 @@ function Explorer({
         <div
           ref={explorerRef}
           key={exhibitor.position}
-          className="flex flex-row min-h-[10%] cursor-pointer items-center justify-center mt-4 mx-4 border-2 p-4 border-white bg-white bg-opacity-40 rounded-lg text-white text-center"
+          className="flex flex-row min-h-[10%] cursor-pointer items-center justify-center 
+                      mt-4 mx-4 border-2 p-4 border-white bg-white bg-opacity-40 rounded-lg 
+                    text-white text-center overflow-hidden"
           onClick={() => {
             setMapInView(map);
             setSelectedExhibitor(exhibitor.position);
           }}
         >
-          <div className="w-full flex flex-row gap-x-2 justify-between text-left">
-            <div className="font-medium">{exhibitor.name}</div>
-            {exhibitor.logoColor && (
-              <img
-                className="w-[100px]"
-                src={addImageDetails(exhibitor.logoColor)}
-              />
-            )}
-            {!exhibitor.logoColor && exhibitor.logoWhite && (
-              <img
-                className="w-[100px]"
-                src={addImageDetails(exhibitor.logoWhite)}
-              />
-            )}
+          <div className="w-full grid grid-cols-2 gap-x-2 text-left">
+            <div className="font-medium break-words">{exhibitor.name}</div>
+            <div className="flex justify-end">
+              {exhibitor.logoColor && (
+                <img
+                  className="w-auto max-h-[50px]"
+                  src={addImageDetails(exhibitor.logoColor)}
+                />
+              )}
+              {!exhibitor.logoColor && exhibitor.logoWhite && (
+                <img
+                  className="w-auto max-h-[50px]"
+                  src={addImageDetails(exhibitor.logoWhite)}
+                />
+              )}
+            </div>
           </div>
         </div>
       );
