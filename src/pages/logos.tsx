@@ -95,7 +95,7 @@ function Logo({
 
       {modalState && (
         <div
-          className="cursor-pointer fixed inset-0 flex items-center justify-center bg-black bg-opacity-60"
+          className="cursor-pointer fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-lg"
           ref={modalRef}
           onClick={handleOverlayClick}
         >
