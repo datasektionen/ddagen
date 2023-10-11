@@ -59,7 +59,10 @@ export default function Map({
 
   return (
     <div className="flex flex-col items-center justify-center lg:mt-16">
-      <div className="max-xs:w-[350px] xs:w-[450px] sm:w-[500px] md:w-[650px] max-sm:h-[350px] h-[475px] flex justify-center bg-[#fafafa] text-5xl text-white mt-14 mb-6 xs:p-4">
+      <div className="max-xs:w-[350px] xs:w-[450px] sm:w-[500px] md:w-[650px] 
+                      max-sm:h-[350px] h-[475px] flex justify-center bg-[#f0f0f0] 
+                      text-5xl text-white mt-14 mb-6 xs:p-4 rounded-xl border-4
+                      border-cerise">
         {mapInView == 1 ? (
           <SvgLoader path="/img/map/floor-2.svg">
             {floorTwoPositions.map((position) => {
