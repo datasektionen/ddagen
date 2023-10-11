@@ -621,4 +621,48 @@ export default {
       trainee: "Traineeprogram",
     },
   },
+  sok:{
+    header: "Sök DDAGEN",
+    extra:"Läs mer om rollerna",
+    prGroup:{
+      header: "PR-GRUPPEN",
+      text: "PR-gruppen är en mångsidig och kreativ enhet inom D-Dagen. Dess medlemmar är ansvariga för att skapa och underhålla D-Dagens offentliga image och varumärke. De har olika ansvarsområden som spänner från ledarskap och organisation till grafisk design och tryckhantering.",
+      roles:[
+        "PR-Ansvarig - Som PR-ansvarig är du ledare för PR-gruppen. Det är du som driver och organiserar gruppen och ser till att alla vet vad de ska göra och har det de behöver. Eftersom du jobbar så tätt ihop inom PR-gruppen kommer ni bli väldigt tajta tillsammans. Som PR-ansvarig kommer du också kommunicera extra mycket med DDA:s.",
+        "Art Director - Som Art Director är det du som ser till att D-Dagen ser proffsigt ut. Du kommer ha möjligheten att uttrycka din kreativitet och designa all grafik som behövs för D-Dagen. Här ingår bland annat broschyrer, affischer, profilkläder och annat. Ibland kommer du även få ta lite bilder. Inga förkunskaper behövs; man får istället möjligheten att lära sig med tiden och det viktigaste är att du är driven och motiverad. Självklart kommer du få tillgång till alla program du behöver!",
+        "System-Ansvarig och utvecklare - Systemansvarig är en roll som är någonting helt nytt för i år! Du kommer jobba mycket tillsammans med webbansvarig med ambitiösa projekt som vi hoppas introducera till D-Dagen. Vi vill ha någon med ett stort driv att skapa möjligheter, och förkunskaper i app-tillverkning är ett stort plus (vi har några idéer på gång).",
+        "Tryckansvarig - Tryckansvarig ingår i PR-gruppen och är den som ser till att allt tryckt material blir beställt och levererat i tid. Här ingår saker som klistermärken, tygmärken, profilkläder, banderoll, broschyr och en del annat. Du kommer ha ett nära samarbete med Art Director och hjälpa till med designarbetet.",
+        "Socialmedier-Ansvarig - är den som ser till att D-Dagen syns ute på Instagram, Facebook och alla andra sociala medier. Här får du mycket frihet i vilka sociala medier du vill använda och hur du väljer att uttrycka dig (inom rimliga ramar förstås). I rollen som social media-ansvarig jobbar du nära Art Director för att få till snygga inlägg.",
+    ] 
+    },
+    saleGroup:{
+      header: "Sälj-Gruppen",
+      text: "Säljgruppen i D-Dagen är en central del av organisationen och spelar en avgörande roll för att säkerställa företagens deltagande och evenemangets tillväxt. Gruppen består av tre nyckelroller, var och en med sina specifika uppgifter:",
+      roles: [
+        "Säljansvarig - Som säljansvarig är du en operativ chef för säljarna. Du kommer vara den som utbildar säljarna i hur de ska arbeta, ser till att säljarna har allt de behöver och att arbetet flyter på enligt schemat.",
+        "Säljare - Säljarna är de som främst har direkt kontakt med företagen. Ni kommer jobba som ett team för att sälja in D-Dagen till företagen och se till att D-Dagen fortsätter växa. Som säljare kommer du också vara företagens primära informationskälla och rådgivare med bland annat tips och tricks de bör veta inför mässan. Inga tidigare säljerfarenheter behövs men är givetvis ett plus.",
+        "Sponsansvarig - Som sponsansvarig kommer du kontakta företag som inte kommer stå på mässan men ändå vill synas på andra sätt. Du kommer också hjälpa till med att arrangera lunchföreläsningar och andra företagsevents. Dina arbetsuppgifter innebär att du kommer jobba mycket tillsammans med PR-gruppen och resterande projektgruppen.",
+      ]
+    },
+    massGroup:{
+      header: "Mäss-Gruppen",
+      text: "Mässgruppen är hjärtat och hjärnan bakom D-Dagens mässa och evenemang. Gruppen består av ett engagerat team med olika ansvarsområden, och deras samarbete är avgörande för att säkerställa att allt går smidigt och att besökarna får en minnesvärd upplevelse.",
+      roles: [
+        "Mässansarig - Som Mässansvarig är du ledare för Mäss-gruppen. Det är du som driver och organiserar gruppen och ser till att alla har det de behöver. Eftersom du jobbar så tätt ihop inom Mäss-gruppen kommer ni bli väldigt tajta tillsammans. Som Mäss-ansvarig kommer du också kommunicera extra mycket med DDA:s.",
+        "Logistikansvarig - Logistik är ryggraden i alla stora organisationer, det är du som ser till att allting flyter på som ett välsmort maskineri. Du kommer ta emot och skicka iväg leveranser från företagen och se till så att allt vi behöver under dagen finns där det behövs när det behövs.",
+        "Personalansvarig - När D-Dagen väl drar igång i Nymble behöver vi mycket mer personal än bara projektgruppen. Det är här ditt huvudansvar ligger. Du kommer rekrytera personal, hålla deras teambuildings och planera ut deras scheman över själva dagen. Det kommer också vara du som ser till att D-Dagen når upp till standard inom JML-aspekter.",
+        "Loungeansvarig - Loungen är dit företagens representanter och personalen kan komma över dagen för att ta en paus och koppla av. Ditt jobb är att se till så de kan förvänta sig god mat och så bra service som bara möjligt!",
+        "Festansvarig - Festansvarig är den som fixar alla stora fester som företagsbanquetten och tacksittningen. Du kommer även att planera och genomföra majoriteten av projektgruppens interna event och teambuildings. Detta är en perfekt roll för dig som är kreativ och gillar att ha det kul tillsammans med andra.",
+        "Lokalansvarig - Utan någonstans att vara blir det mycket svårare att ha lyckade events. Du kommer bli experten på lokalerna i Nymble och se till att vi följer deras instruktioner och krav. Du kommer även få hjälpa till att boka lokaler för D-Dagens övriga evenemang.",
+      ]
+    },
+    ecoGroup:{
+      header: "Ekonomi-Gruppen",
+      text: "Ekonomigruppen är en nyckelkomponent inom D-Dagen som ansvarar för att upprätthålla en stark och stabil ekonomi. Genom sitt noggranna arbete säkerställer gruppen att D-Dagen kan fortsätta att växa och leverera kvalitativa evenemang utan ekonomiska hinder.",
+      roles : [
+        "Ekonomiansvarig - Du har koll på ekonomin. Du är en expert på att bokföra (eller har åtminstone lite koll, det finns instruktioner). Du kommer tillsammans med Vice Kassören att skicka ut och bokföra alla fakturor när D-Dagen väl har nått sitt slut, men kommer även vara en rådgivare när det kommer till resten av projektgruppen att budgetera och bokföra.",
+        "Vice Ekonomiansvarig - är en av de friare rollerna i projektgruppen. Officiellt har du relativt lite ansvar då din huvuduppgift är att lära dig att bokföra och hjälpa Kassören. Just därför hoppas vi att du är en driven person som ställer upp och driver igenom mer än dina ordinarie uppgifter och hjälper till där resten av projektgruppen kan behöva en extra hand."
+      ]
+    },
+  }
 };

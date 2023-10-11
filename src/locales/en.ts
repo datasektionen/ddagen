@@ -620,4 +620,49 @@ export default {
       trainee: "Trainee Program",
     },
   },
+  sok:{
+    header: "Signup for DDAGEN",
+    extra:"Läs mer om rollerna",
+    prGroup:{
+      header: "PR Team",
+      text: "As the PR manager, you are the leader of the PR team. You drive and organize the group, ensuring that everyone knows what they need to do and has the necessary resources. Since you work closely with the PR team, you will become very close-knit. As the PR manager, you will also communicate extensively with the DDA's.",
+      roles:[
+        "PR-Ansvarig - As the PR manager, you are the leader of the PR team. You drive and organize the group, ensuring that everyone knows what they need to do and has the necessary resources. Since you work closely with the PR team, you will become very close-knit. As the PR manager, you will also communicate extensively with the DDA's.",
+        "Art Director - Som Art Director är det du som ser till att D-Dagen ser proffsigt ut. Du kommer ha möjligheten att uttrycka din kreativitet och designa all grafik som behövs för D-Dagen. Här ingår bland annat broschyrer, affischer, profilkläder och annat. Ibland kommer du även få ta lite bilder. Inga förkunskaper behövs; man får istället möjligheten att lära sig med tiden och det viktigaste är att du är driven och motiverad. Självklart kommer du få tillgång till alla program du behöver!",
+        "Dev lead - is a role that is completely new for this year! You will work closely with the web manager on ambitious projects that we hope to introduce to D-Day. We are looking for someone with a strong drive to create opportunities, and prior knowledge of app development is a big plus (we have some ideas in progress)",
+        "Tryckansvarig - is part of the PR team and is responsible for ensuring that all printed materials are ordered and delivered on time. This includes items such as stickers, fabric patches, promotional clothing, banners, brochures, and more. You will work closely with the Art Director and assist with design work.",
+        "Socialmedier-Ansvarig - is responsible for ensuring that D-Dagen is visible on Instagram, Facebook, and all other social media platforms. In this role, you have a lot of freedom in choosing which social media channels to use and how you choose to express yourself (within reasonable boundaries, of course). In the role of Social Media Ansvarig, you work closely with the Art Director to create attractive posts.",
+    ] 
+    },
+    saleGroup:{
+      header: "Sales Team",
+      text: "The Sales Team in D-Day is a central part of the organization and plays a crucial role in ensuring the participation of companies and the growth of the event. The group consists of three key roles, each with its specific tasks:",
+      roles: [
+        "Sales responsible - As the Sales Manager, you are an operational leader for the sales team. You will be the one who trains the salespeople on how to work, ensures that they have everything they need, and keeps the work progressing according to the schedule.",
+        "Salespeople - The salespeople are the ones who primarily have direct contact with the companies. You will work as a team to sell D-Day to the companies and ensure that D-Day continues to grow. As a salesperson, you will also be the companies' primary source of information and advisor, providing them with tips and tricks they should know before the trade show. No prior sales experience is required, but it is, of course, a plus.",
+        "Sponsorresponsible - As the Sponsorship Manager, you will contact companies that won't have a booth at the trade show but still want to gain visibility in other ways. You will also assist in organizing lunch lectures and other corporate events. Your responsibilities will involve working closely with the PR team and the rest of the project group."
+      ]
+    },
+    massGroup:{
+      header: "Exhibition Team",
+      text: "The Trade Fair Group is the heart and brain behind D-Day's trade fair and events. The group consists of a dedicated team with various responsibilities, and their collaboration is crucial to ensure that everything runs smoothly and that visitors have a memorable experience.",
+      roles: [
+        "Fair Manager - As the Fair Manager, you are the leader of the Fair Team. You drive and organize the group and ensure that everyone has what they need. Since you work closely within the Fair Team, you will become very cohesive. As the Fair Manager, you will also communicate extensively with DDA's.",
+        "Logistics Manager - Logistics is the backbone of all major organizations, and it's you who ensures that everything runs smoothly like a well-oiled machine. You will receive and send deliveries from the companies and ensure that everything we need during the day is where it's needed when it's needed.",
+        "HR Manager - When D-Day gets underway in Nymble, we need much more personnel than just the project group. This is where your primary responsibility lies. You will recruit staff, conduct their team-building activities, and plan their schedules for the day. You will also ensure that D-Day meets the JML standards.",
+        "Lounge Manager - The lounge is where the company representatives and staff can come during the day to take a break and relax. Your job is to ensure they can expect good food and the best service possible!",
+        "Party Manager - The Party Manager is the one who organizes all the major events like the company banquet and the thanksgiving dinner. You will also plan and execute most of the project group's internal events and team-building activities. This is a perfect role for someone who is creative and enjoys having fun with others.",
+        "Venue Manager - Without a place to be, it becomes much more challenging to have successful events. You will become an expert on the venues in Nymble and ensure that we follow their instructions and requirements. You will also assist in booking venues for D-Day's other events.",
+    ]
+    },
+    ecoGroup:{
+      header: "Finance Team",
+      text: "The Finance Team is a key component within D-Day, responsible for maintaining a strong and stable economy. Through their meticulous work, the team ensures that D-Day can continue to grow and deliver high-quality events without financial obstacles.",
+      roles: [
+        "Finance Manager - You have a handle on finances. You are an expert in bookkeeping (or at least have some knowledge, with instructions available). Together with the Vice Treasurer, you will send out and record all invoices when D-Day has come to an end. You will also be an advisor when it comes to budgeting and bookkeeping for the rest of the project group.",
+        "Vice Finance Manager - This is one of the more flexible roles in the project group. Officially, you have relatively little responsibility as your main task is to learn how to bookkeep and assist the Treasurer. For this reason, we hope that you are a proactive person who steps up and goes beyond your regular duties, helping out wherever the rest of the project group may need an extra hand."
+    ]
+    },
+    
+  }
 };
