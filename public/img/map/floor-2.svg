@@ -38,7 +38,7 @@
       }
 
       .cls-5 {
-      stroke: #fff;
+      stroke: #f0f0f0;
       stroke-width: 7px;
       }
 
@@ -94,7 +94,7 @@
       }
 
       .cls-26, .cls-16 {
-      fill: #fff;
+      fill: #f0f0f0;
       }
 
       .cls-17, .cls-27 {
@@ -144,7 +144,6 @@
 
       .cls-33 {
       fill: #231f20;
-      font-family: NHaasGroteskDSPro-55Rg, 'Neue Haas Grotesk Display Pro';
       font-size: 25px;
       cursor: default;
       }
