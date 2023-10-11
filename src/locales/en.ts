@@ -620,4 +620,54 @@ export default {
       trainee: "Trainee Program",
     },
   },
+  sok:{
+    header: "Signup for DDAGEN",
+    description: "The goal for this year's D-Dagen is to make it the biggest and best career fair in Datasektionen's history! This is the vision we have as organizers this year. However, it's impossible for us to organize such a large event entirely on our own. We need an ambitious project group to help us, one that has the drive to create something extraordinary. We aim to improve internal communication from previous years, and, therefore, we will focus extensively on team building to create a close-knit group. We also expect that everyone in the project group is sociable, has good teamwork skills, and is self-driven in their tasks.",
+    search:"SIGNUP",
+    info:"Information about the roles",
+    extra:"Read more about the roles",
+    moreInfo:"Interested?",
+    prGroup:{
+      header: "PR Team",
+      text: "As the PR manager, you are the leader of the PR team. You drive and organize the group, ensuring that everyone knows what they need to do and has the necessary resources. Since you work closely with the PR team, you will become very close-knit. As the PR manager, you will also communicate extensively with the DDA's.",
+      roles : [
+        "PR Manager\n- Good communicator\n- Well-organized\n- Leader\nAs a PR Manager, you lead the PR team, ensuring they are organized and equipped to communicate effectively. Working closely within the PR team will foster a strong sense of unity. You will also engage in extensive communication with DDA.",
+        "Art Director\n- Artistic\n- Accommodating\nAs an Art Director, your role is to ensure that D-Day looks professional. You'll have the opportunity to express your creativity by designing various materials, including brochures, posters, branded clothing, and more. Sometimes you'll even get to take photos. No prior experience is required; motivation and drive are what matter most. You'll, of course, have access to all the necessary software.",
+        "Web Manager\n- Independent\n- Initiating\nAs the Web Manager, you're responsible for ensuring the website looks good and functions properly. You'll also have significant opportunities to improve the website. Previous experience and knowledge in web development are definite assets. You'll work closely with the Art Director.",
+        "System Manager\n- Independent\n- Initiating\n- 'Yes, can do' attitude\nThe System Manager will collaborate extensively with the Web Manager on ambitious projects we plan to introduce at D-Day. We're looking for someone with the drive to create opportunities, and prior experience in app development is a big plus.",
+        "Print Manager\n- Proactive\n- Artistic\nThe Print Manager is part of the PR team and is responsible for ensuring all printed materials are ordered and delivered on time. This includes items like stickers, patches, branded clothing, banners, brochures, and more. You'll work closely with the Art Director and assist with design work.",
+        "Social Media Manager\n- Good communicator\n- Initiating\n- Social (especially on social media)\n- Creative\nThe Social Media Manager is responsible for increasing D-Day's presence on platforms like Instagram, Facebook, and other social media sites. You'll have the freedom to choose which social media platforms to use and how to express the event's message (within reasonable boundaries). In this role, you'll work closely with the Art Director to create attractive posts. This is an ideal position for those who enjoy taking photos and posting stories!"
+      ]
+    },
+    saleGroup:{
+      header: "Sales Team",
+      text: "The Sales Team in D-Day is a central part of the organization and plays a crucial role in ensuring the participation of companies and the growth of the event. The group consists of three key roles, each with its specific tasks:",
+      roles : [
+        "Sales Manager\n- Good communicator\n- Well-organized\n- Leader\nAs the Sales Manager, you are the operational leader of the sales team. Your responsibilities include training the sales team, ensuring they have everything they need, and keeping the work on schedule.",
+        "Sales Person\n- Good communicator\n- Service-oriented\n- Persuasive\nSales People are the primary points of contact with companies. You will work as a team to promote and sell D-Day to businesses, ensuring D-Day's growth. You'll also serve as the main source of information and advice for companies, providing them with tips and advice for the event. No prior sales experience is required, but it's a plus.",
+        "Sponsorship Manager\n- Good communicator\n- Initiating\n- 'Pushy' sales attitude\nAs the Sponsorship Manager, you will reach out to companies that won't have a physical presence at the event but still want to be visible in other ways. You'll also assist in organizing lunchtime lectures and other corporate events. Your tasks will involve collaborating closely with the PR team and the rest of the project team."
+      ]
+    },
+    massGroup:{
+      header: "Exhibition Team",
+      text: "The Trade Fair Group is the heart and brain behind D-Day's trade fair and events. The group consists of a dedicated team with various responsibilities, and their collaboration is crucial to ensure that everything runs smoothly and that visitors have a memorable experience.",
+      roles : [
+        "Exhibition Manager\n- Good communicator\n- Well-organized\n- Leader\nAs the Exhibition Manager, you are the leader of the Exhibition team. You will drive and organize the team, ensuring everyone has what they need. Working closely within the Exhibition team, you will become a tightly-knit group. You will also have extensive communication with DDA.",
+        "Logistics Manager\n- Good communicator\n- Well-organized\n- Independent\nAs the Logistics Manager, you are the leader of the Exhibition team. You will drive and organize the team, ensuring everyone has what they need. Working closely within the Exhibition team, you will become a tightly-knit group. You will also have extensive communication with DDA.",
+        "HR Manager\n- Good communicator\n- Leader\n- Thorough scheduler\nWhen D-Day kicks off in Nymble, we need much more staff than just the project team. This is where your primary responsibility lies. You will recruit staff, conduct team-building activities, and plan their schedules for the day. You will also be responsible for planning team-building activities for the project team together with the Lounge Manager. You will also ensure that D-Day meets JML standards.",
+        "Lounge Manager\n- Service-oriented\n- Enjoys food\nThe lounge is where company representatives and staff can come during the day to take a break and relax. Your job is to ensure they can expect good food and the best possible service! You will also plan team-building activities for the project team together with the HR Manager and be responsible for ordering food for both team-building and major meetings.",
+        "Party Manager\n- Fun-loving\n- Creative\n- Initiator\nThe Party Manager is responsible for organizing all major events, such as the company banquet and the appreciation dinner. This role is perfect for someone who is creative and enjoys having fun with others.",
+        "Venue Manager\n- Responsible\n- Proactive\nWithout a place to be, it's much harder to have successful events. You will become an expert on Nymble's venues and ensure that we follow their instructions and requirements. You will also help book venues for D-Day's other events."
+      ]
+    },
+    ecoGroup:{
+      header: "Finance Team",
+      text: "The Finance Team is a key component within D-Day, responsible for maintaining a strong and stable economy. Through their meticulous work, the team ensures that D-Day can continue to grow and deliver high-quality events without financial obstacles.",
+      roles : [
+        "Finance Manager\n- Detail-oriented\n- Can invoice and bookkeep (preferably using the computer science section's system)\n- Willing to read complex texts (contracts, statutes, etc.)\nYou have a handle on finances. You are an expert at bookkeeping (or at least have some knowledge, with instructions available). Together with the Vice Finance Manager, you will send out and book invoices once D-Day has concluded, and you will also serve as an advisor when it comes to the rest of the project team's budgeting and bookkeeping.",
+        "Vice Finance Manager\n- Willing to learn a lot\n- Initiative-driven\nThe Vice Finance Manager is one of the more flexible roles within the project team. Your primary task is to learn bookkeeping and assist the Finance Manager, but you are also expected to help where needed in other areas of the project team. That's why we hope you are a motivated person who is ready to go above and beyond your regular duties and provide assistance wherever the rest of the project team may need an extra hand."
+      ]
+    },
+    
+  }
 };
