@@ -259,6 +259,7 @@ export default {
     logos: "Our Exhibitors",
     meetings: "Company Meetings",
     map: "Map",
+    sok: "Signup for D-Dagen",
   },
   footer: {
     header: "Organized by Datasektionen",
