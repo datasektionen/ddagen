@@ -259,6 +259,7 @@ export default {
     logos: "Våra Utställare",
     meetings: "Kontaktsamtal",
     map: "Karta",
+    sok: "Sök D-Dagen",
   },
   footer: {
     header:
@@ -622,14 +623,14 @@ export default {
     },
   },
   sok:{
-    header: "Sök DDAGEN",
+    header: "Sök D-DAGEN",
     description: "Årets D-Dagen ska bli Datasektionens största och bästa arbetsmarknadsmässa någonsin! Detta är i alla fall visionen vi har som ansvariga i år. Dock är det omöjligt för oss att arrangera ett så här stort evenemang helt själva. Till vår hjälp behöver vi en ambitiös projektgrupp som har drivet att skapa någonting extraordinärt. Vi vill förbättra den interna kommunikation från tidigare år och kommer därför satsa extra mycket på teambuilding för att få en tajt grupp. Vi förväntar oss också att alla i projektgruppen är sociala med god samarbetsförmåga och självgående i sina uppgifter.",
     search:"SÖK",
     info:"Information om rollerna",
     extra:"Läs mer om rollerna",
     moreInfo:"Intresserad?",
     prGroup:{
-      header: "PR-GRUPPEN",
+      header: "PR-Gruppen",
       text: "PR-gruppen är en mångsidig och kreativ enhet inom D-Dagen. Dess medlemmar är ansvariga för att skapa och underhålla D-Dagens offentliga image och varumärke. De har olika ansvarsområden som spänner från ledarskap och organisation till grafisk design och tryckhantering.",
       roles : [
         "PR-ansvarig\n- Bra kommunikatör\n- Välplanerad\n- Ledare\nSom PR-ansvarig är du ledare för PR-gruppen. Det är du som driver och organiserar gruppen och ser till att alla vet vad de ska göra och har det de behöver. Eftersom du jobbar så tätt ihop inom PR-gruppen kommer ni bli väldigt tajta tillsammans. Som PR-ansvarig kommer du också kommunicera extra mycket med DDA:s.",
@@ -641,7 +642,7 @@ export default {
       ] 
     },
     saleGroup:{
-      header: "Sälj-Gruppen",
+      header: "Säljgruppen",
       text: "Säljgruppen i D-Dagen är en central del av organisationen och spelar en avgörande roll för att säkerställa företagens deltagande och evenemangets tillväxt. Gruppen består av tre nyckelroller, var och en med sina specifika uppgifter:",
       roles: [
         "Säljansvarig\n- Bra kommunikatör\n- Välplanerad\n- Ledare\n Som säljansvarig är du en operativ chef för säljarna. Du kommer vara den som utbildar säljarna i hur de ska arbeta, ser till att säljarna har allt de behöver och att arbetet flyter på enligt schemat.",
@@ -650,7 +651,7 @@ export default {
       ]
     },
     massGroup:{
-      header: "Mäss-Gruppen",
+      header: "Mässgruppen",
       text: "Mässgruppen är hjärtat och hjärnan bakom D-Dagens mässa och evenemang. Gruppen består av ett engagerat team med olika ansvarsområden, och deras samarbete är avgörande för att säkerställa att allt går smidigt och att besökarna får en minnesvärd upplevelse.",
       roles: [
         "Mässansvarig\n- Bra kommunikatör\n- Välplanerad\n- Ledare\n Som Mässansvarig är du ledare för Mäss-gruppen. Det är du som driver och organiserar gruppen och ser till att alla har det de behöver. Eftersom du jobbar så tätt ihop inom Mäss-gruppen kommer ni bli väldigt tajta tillsammans. Som Mässansvarig kommer du också kommunicera extra mycket med DDA:s.",
@@ -662,7 +663,7 @@ export default {
       ]
     },
     ecoGroup:{
-      header: "Ekonomi-Gruppen",
+      header: "Ekonomigruppen",
       text: "Ekonomigruppen är en nyckelkomponent inom D-Dagen som ansvarar för att upprätthålla en stark och stabil ekonomi. Genom sitt noggranna arbete säkerställer gruppen att D-Dagen kan fortsätta att växa och leverera kvalitativa evenemang utan ekonomiska hinder.",
       roles : [
         "Ekonomiansvarig\n- Noggrann\n- Kan fakturera och bokföra(helst med datasektionens system)\n- Villig att läsa svårläst text(konktrakt, stadgar m.m)\n Du har koll på ekonomin. Du är en expert på att bokföra (eller har åtminstone lite koll, det finns instruktioner). Du kommer tillsammans med Vice Ekonomiansvarig att skicka ut och bokföra alla fakturor när D-Dagen väl har nått sitt slut, men kommer även vara en rådgivare när det kommer till resten av projektgruppen att budgetera och bokföra.",

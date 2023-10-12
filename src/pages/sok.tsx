@@ -123,7 +123,7 @@ export default function SignupPage() {
         {" "}
         {t.sok.header}
       </h1>
-      <div className="flex flex-row items-center justify-center mt-[50px]">
+      <div className="flex flex-row items-center justify-center mt-[50px] px-5">
         <p className="text-white w-[300px] sm:w-[600px] text-center">
           {t.sok.description}
         </p>
@@ -135,7 +135,7 @@ export default function SignupPage() {
           </button>
         </a>
       </div>
-      <h1 className="text-4xl text-cerise font-normal text-center uppercase mt-[100px]">
+      <h1 className="text-4xl text-cerise font-normal text-center uppercase mt-[100px] px-5">
         {" "}
         {t.sok.info}
       </h1>
