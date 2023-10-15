@@ -20,7 +20,7 @@ function applySearch(
   }>
 ) {
   setQuery({
-    searchQuery: searchQuery.toLowerCase(),
+    searchQuery: searchQuery.toLowerCase().trim(),
     years: checkmarks
       .slice(0, 5)
       .map((value, index) => (value ? index : -1))
