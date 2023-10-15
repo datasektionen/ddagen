@@ -269,6 +269,7 @@ export default {
     responsible: "Project Managers",
     salesGroup: "Sales Team",
     sponsorText: "Main sponsor for D-Dagen 2023",
+    sponsorLink: "https://en.omegapoint.se",
   },
   email: {
     subject: "Exhibitor Registration Confirmation",

@@ -270,6 +270,7 @@ export default {
     responsible: "D-Dagenansvariga",
     salesGroup: "Säljgruppen",
     sponsorText: "Huvudsponsor för D-Dagen 2023",
+    sponsorLink: "https://omegapoint.se/",
   },
   email: {
     subject: "Bekräftelse på Företagsanmälan",
