@@ -242,9 +242,17 @@ export default function RowOne({ t }: { t: Locale }) {
       </div>
 
       <div className="lg:hidden w-full mb-10">
-        <div className="flex flex-col gap-y-6 text-lg items-center">
+        <div className="flex flex-col gap-y-2 text-lg items-center">
+          <div
+            className="flex flex-row gap-x-0 xxxs:gap-x-1 xxs:gap-x-3
+                              xs:gap-x-7 sm:gap-x-14 md:gap-x-20 justify-center"
+          >
+            {years.map((year) => (
+              <div>{year}</div>
+            ))}
+          </div>
           {rows.map((row) => (
-            <div className="flex flex-col gap-y-6" key={row.jobOffer}>
+            <div className="flex flex-col gap-y-2" key={row.jobOffer}>
               {row.jobOffer}
               <div
                 className="flex flex-row gap-x-0 xxxs:gap-x-2 xxs:gap-x-4
