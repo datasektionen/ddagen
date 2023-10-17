@@ -118,98 +118,100 @@ export function ExhibitorPanel({
             <span className="text-cerise">{exhibitors.length}</span>
           </p>
         </div>
-        <div className="w-[80%]">
-          <table className="w-full bg-slate-50 bg-opacity-20 border-collapse border-solid">
-            <thead className="[&>tr>th]:border-2 [&>tr>th]:border-solid [&>tr>th]:border-cerise [&>tr>th]:py-2 [&>tr>th]:px-8 ">
-              <tr>
-                <th>{t.admin.sales.header.name}</th>
-                <th>{t.admin.sales.header.logoWhite}</th>
-                <th>{t.admin.sales.header.logoColour}</th>
-                <th>{t.admin.sales.header.description}</th>
-                <th>{t.admin.sales.header.package}</th>
-                <th>{t.admin.sales.header.extras.name}</th>
-                <th>{t.admin.sales.header.verification.name}</th>
-              </tr>
-            </thead>
-            <tbody
-              className="[&>tr>td]:border-2 [&>tr>td]:border-t-2 [&>tr>td]:border-solid
-                      [&>tr>td]:border-cerise [&>tr>td]:p-4"
-            >
-              {sortExhibitors(exhibitors).map((exhibitor, i) => (
-                <tr key={i}>
-                  <td className="text-center break-words">
-                    <p>{exhibitor.name}</p>
-                    <button
-                      className="mt-2 bg-cerise bg-blue-500 py-1 px-2 rounded-md"
-                      onClick={getLoginFunction(exhibitor.id)}
-                    >
-                      {t.admin.sales.login}
-                    </button>
-                  </td>
-                  <td>
-                    {exhibitor.logoWhite ? (
-                      <img
-                        className="mx-auto w-[150px]"
-                        src={addImageDetails(exhibitor.logoWhite)}
-                      />
-                    ) : (
-                      <p className="font-bold text-center">U/A</p>
-                    )}
-                  </td>
-                  <td>
-                    {exhibitor.logoColor ? (
-                      <img
-                        className="mx-auto max-w-[150px]"
-                        src={addImageDetails(exhibitor.logoColor)}
-                      />
-                    ) : (
-                      <p className="font-bold text-center">U/A</p>
-                    )}
-                  </td>
-                  <td className="align-top break-words max-w-[150px] text-xs">
-                    {exhibitor.description}
-                  </td>
-                  <td className="text-center">{exhibitor.package}</td>
-                  <td>
-                    <div className="flex flex-col text-center px-2">
-                      <div>
-                        {t.admin.sales.header.extras.chairs}:{" "}
-                        {exhibitor.extraChairs}
-                      </div>
-                      <div>
-                        {t.admin.sales.header.extras.tables}:{" "}
-                        {exhibitor.extraTables}
-                      </div>
-                      <div>
-                        {t.admin.sales.header.extras.drinkCoupons}:{" "}
-                        {exhibitor.extraDrinkCoupons}
-                      </div>
-                      <div>
-                        {t.admin.sales.header.extras.representativeSpots}:{" "}
-                        {exhibitor.extraRepresentativeSpots}
-                      </div>
-                      <div>
-                        {t.admin.sales.header.extras.banquetTickets}:{" "}
-                        {exhibitor.totalBanquetTicketsWanted}
-                      </div>
-                    </div>
-                  </td>
-                  <td className="text-center">
-                    <div className="flex flex-col">
-                      <div>
-                        {t.admin.sales.header.verification.banquet}:{" "}
-                        {evaluataPreferences(exhibitor, "Banquet")}
-                      </div>
-                      <div>
-                        {t.admin.sales.header.verification.representatives}:{" "}
-                        {evaluataPreferences(exhibitor, "Representative")}
-                      </div>
-                    </div>
-                  </td>
+        <div className="w-[80%] sm:w-[90%]">
+          <div className="overflow-x-auto">
+            <table className="w-full bg-slate-50 bg-opacity-20 border-collapse border-solid">
+              <thead className="[&>tr>th]:border-2 [&>tr>th]:border-solid [&>tr>th]:border-cerise [&>tr>th]:py-2 [&>tr>th]:px-4 ">
+                <tr>
+                  <th>{t.admin.sales.header.name}</th>
+                  <th>{t.admin.sales.header.logoWhite}</th>
+                  <th>{t.admin.sales.header.logoColour}</th>
+                  <th>{t.admin.sales.header.description}</th>
+                  <th>{t.admin.sales.header.package}</th>
+                  <th>{t.admin.sales.header.extras.name}</th>
+                  <th>{t.admin.sales.header.verification.name}</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody
+                className="[&>tr>td]:border-2 [&>tr>td]:border-t-2 [&>tr>td]:border-solid
+                      [&>tr>td]:border-cerise [&>tr>td]:p-4"
+              >
+                {sortExhibitors(exhibitors).map((exhibitor, i) => (
+                  <tr key={i}>
+                    <td className="text-center break-words">
+                      <p>{exhibitor.name}</p>
+                      <button
+                        className="mt-2 bg-cerise bg-blue-500 py-1 px-2 rounded-md"
+                        onClick={getLoginFunction(exhibitor.id)}
+                      >
+                        {t.admin.sales.login}
+                      </button>
+                    </td>
+                    <td>
+                      {exhibitor.logoWhite ? (
+                        <img
+                          className="mx-auto w-[150px]"
+                          src={addImageDetails(exhibitor.logoWhite)}
+                        />
+                      ) : (
+                        <p className="font-bold text-center">U/A</p>
+                      )}
+                    </td>
+                    <td>
+                      {exhibitor.logoColor ? (
+                        <img
+                          className="mx-auto max-w-[150px]"
+                          src={addImageDetails(exhibitor.logoColor)}
+                        />
+                      ) : (
+                        <p className="font-bold text-center">U/A</p>
+                      )}
+                    </td>
+                    <td className="align-top break-words max-w-[150px] text-xs">
+                      {exhibitor.description}
+                    </td>
+                    <td className="text-center">{exhibitor.package}</td>
+                    <td>
+                      <div className="flex flex-col text-center px-2">
+                        <div>
+                          {t.admin.sales.header.extras.chairs}:{" "}
+                          {exhibitor.extraChairs}
+                        </div>
+                        <div>
+                          {t.admin.sales.header.extras.tables}:{" "}
+                          {exhibitor.extraTables}
+                        </div>
+                        <div>
+                          {t.admin.sales.header.extras.drinkCoupons}:{" "}
+                          {exhibitor.extraDrinkCoupons}
+                        </div>
+                        <div>
+                          {t.admin.sales.header.extras.representativeSpots}:{" "}
+                          {exhibitor.extraRepresentativeSpots}
+                        </div>
+                        <div>
+                          {t.admin.sales.header.extras.banquetTickets}:{" "}
+                          {exhibitor.totalBanquetTicketsWanted}
+                        </div>
+                      </div>
+                    </td>
+                    <td className="text-center">
+                      <div className="flex flex-col">
+                        <div>
+                          {t.admin.sales.header.verification.banquet}:{" "}
+                          {evaluataPreferences(exhibitor, "Banquet")}
+                        </div>
+                        <div>
+                          {t.admin.sales.header.verification.representatives}:{" "}
+                          {evaluataPreferences(exhibitor, "Representative")}
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

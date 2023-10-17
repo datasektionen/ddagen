@@ -520,7 +520,7 @@ export default {
           tables: "Bord",
           drinkCoupons: "Barbongar",
           representativeSpots: "Representantplatser",
-          banquetTickets: "Sittningsbiljette",
+          banquetTickets: "Sittningsbiljetter",
         },
         verification: {
           name: "Verification",
