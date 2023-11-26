@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useLocale } from "@/locales";
 import { useState, useRef } from "react";
 function SingleTeam({
@@ -129,11 +130,13 @@ export default function SignupPage() {
         </p>
       </div>
       <div className="flex flex-row items-center justify-center">
-        <a href="https://forms.gle/VyigeGiQuEXgE9eS8" target="_blank">
-          <button className="w-[175px] bg-cerise rounded-full h-[60px] mt-[50px]">
-            <p className="text-white text-center">{t.sok.search}</p>
-          </button>
-        </a>
+      <Link 
+            className="flex flex-row items-center justify-center w-[175px] bg-cerise rounded-full h-[60px] mt-[50px] text-white text-center" 
+            href="https://forms.gle/VyigeGiQuEXgE9eS8"
+            target="_blank"
+          >
+            {t.sok.search}
+          </Link>
       </div>
       <h1 className="text-4xl text-cerise font-normal text-center uppercase mt-[100px] px-5">
         {" "}
