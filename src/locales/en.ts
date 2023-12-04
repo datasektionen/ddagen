@@ -269,6 +269,7 @@ export default {
     responsible: "Project Managers",
     salesGroup: "Sales Team",
     sponsorText: "Main sponsor for D-Dagen 2023",
+    sponsorLink: "https://en.omegapoint.se",
   },
   email: {
     subject: "Exhibitor Registration Confirmation",
@@ -340,7 +341,7 @@ export default {
       "We'd be thrilled to collaborate with you, both before and after D-Dagen! Whether you're interested in hosting a lunch lecture, hackathon, or something completely different, we're open to your ideas. For more information, please contact our sponsorship manager at <a className='text-cerise' href='mailto:alexandre.moch@ddagen.se'>alexandre.moch@ddagen.se</a>.",
     productCatalog: "PRODUCT CATALOG",
     header: "COMPANY FAQ",
-    catalogPath: "/downloadables/Product_Catalog_eng.pdf",
+    catalogPath: "https://ddagen.se/downloadables/Product_Catalog_eng.pdf",
   },
   contact: {
     header: "Contact",
