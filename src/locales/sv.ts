@@ -6,7 +6,7 @@ export default {
   about: "Om Oss",
   home: {
     introFirstBlock:
-      "Nu är det återigen dags för D-Dagen, Nordens största arbetsmarknads-dag för datateknikstudenter.",
+      "Nu är det återigen dags för D-Dagen, Med en ny helt fantastisk dev-grupp!",
     introSecondBlock:
       "Är du en student inom data eller IT och söker efter din framtida arbetsplats,  eller representerar du ett företag som letar talangfulla medarbetare? Då är D-Dagen ett perfekt tillfälle för dig att träffa personer inom branschen och knyta värdefulla kontakter! Vi strävar mot att årets mässa ska bli den största hittills, med över 100 utställare och 3000 deltagare. ",
     introSignOff: "Hoppas vi ses!",
