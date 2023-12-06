@@ -26,7 +26,7 @@ export default {
     fairText1:
       "D-Dagen är Datasektionens årliga arbetsmarknadsdag. Det är ett heldagsevent där företag och studenter verksamma inom data och IT får en möjlighet att knyta kontakter och lära känna varandra. Detta skapar goda möjligheter för en mer direkt och personlig kontakt mellan företagsrepresentanter och studenter.",
     fairText2:
-      "I år hålls mässan 12e oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15-19 på KTH Campus Valhallavägen. Under dagen kommer det finnas en lounge för utställare, och på kvällen anordnas en bankett för att avsluta dagen.",
+      "I år hålls mässan 10e oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15-19 på KTH Campus Valhallavägen. Under dagen kommer det finnas en lounge för utställare, och på kvällen anordnas en bankett för att avsluta dagen.",
     interestedTitle: "Intresserad?",
     interestedText:
       "Är du intresserad av att ställa ut på D-Dagen och knyta kontakt med tusentals studenter inom Data och IT? Klicka här nedan för att göra en intresseanmälan!",
@@ -38,7 +38,7 @@ export default {
     fairText1:
       "D-Dagen är Datasektionens årliga arbetsmarknadsdag. Det är ett heldagsevent där företag och studenter verksamma inom data och IT får en möjlighet att knyta kontakter och lära känna varandra. Detta skapar goda möjligheter för en mer direkt och personlig kontakt mellan företagsrepresentanter och studenter.",
     fairText2:
-      "I år hålls mässan 12 oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15 på KTH Campus Valhallavägen. Utöver själva mässan håller D-Dagen även i en rekryteringspub innan mässan där vi rekryterar dagpersonal och lunchföreläsningar med FRA (28/9) och SAAB (9/10) tillsammans med dJubileet. Dessutom kommer studenter kunna gå på kontaktsamtal med företag för att få en närmare kontakt.",
+      "I år hålls mässan 10 oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15 på KTH Campus Valhallavägen. Utöver själva mässan håller D-Dagen även i en rekryteringspub innan mässan där vi rekryterar dagpersonal och lunchföreläsningar med FRA (28/9) och SAAB (9/10) tillsammans med dJubileet. Dessutom kommer studenter kunna gå på kontaktsamtal med företag för att få en närmare kontakt.",
     companyMeetings: "Kontaktsamtal",
     companyMeetingsText:
       "I år är första året någonsin som vi kommer erbjuda kontaktsamtal för studenter, vilket innebär att ni får möjlighet att i enrum med företagsrepresentanter diskutera framtida jobbmöjligheter med mera. Anmäl er på länken nedan:",
@@ -270,7 +270,7 @@ export default {
     responsible: "D-Dagenansvariga",
     salesGroup: "Säljgruppen",
     sponsorText: "Huvudsponsor för D-Dagen kommer att synas här",
-    sponsorLink: "#",
+    sponsorLink: "",
   },
   email: {
     subject: "Bekräftelse på Företagsanmälan",

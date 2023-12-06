@@ -276,10 +276,10 @@ export default function Navbar() {
             <Group
               links={[
                 { href: "/förföretag", text: t.forCompanies },
-                { href: "/katalog", text: t.catalog },
-                { href: "/event", text: "event" },
+                //{ href: "/katalog", text: t.catalog },
+                //{ href: "/event", text: "event" },
                 { href: "/faq", text: "faq" },
-                ...(isLoggedIn.data == true
+                /*...(isLoggedIn.data == true
                   ? [{ href: "/utställare", text: t.exhibitorSettings }]
                   : []),
                 ...(isLoggedIn.data == true
@@ -290,16 +290,16 @@ export default function Navbar() {
                         onClick: () => logout.mutate(),
                       },
                     ]
-                  : [{ href: "/logga-in", text: t.login }]),
+                  : [{ href: "/logga-in", text: t.login }]),*/
               ]}
             />
             <Group
               links={[
                 { href: "/förstudenter", text: t.forStudents },
-                { href: "/karta", text: t.map },
-                { href: "/logos", text: t.logos },
-                { href: "https://kontaktsamtal.ddagen.se/", text: t.meetings },
-                {href: "/sok", text:t.sok}
+                //{ href: "/karta", text: t.map },
+                //{ href: "/logos", text: t.logos },
+                //{ href: "https://kontaktsamtal.ddagen.se/", text: t.meetings },
+                //{href: "/sok", text:t.sok}
               ]}
             />
             {/*<NavLink class="px-14 lg:px-0" href="/mässan">{t.about}</NavLink>*/}
