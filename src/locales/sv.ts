@@ -222,7 +222,7 @@ export default {
   companyForm: {
     title: "Intresseanmälan",
     description:
-      "Fyll i formuläret för att registrera ert företag för D-Dagen 2023. OBS! En intresseanmälan är inte bindande.",
+      "Fyll i formuläret för att registrera ert företag för D-Dagen 2024. OBS! En intresseanmälan är inte bindande.",
     fields: {
       name: "Företagsnamn",
       organizationNumber: "Organisationsnummer",
@@ -233,7 +233,7 @@ export default {
     confirm: "Skicka",
     ignoreError: "Gå vidare ändå",
     noMoreRegistrations:
-      "Anmälningar för D-Dagen 2023 har stängt. Håll utkik på våra sociala medier för nästa års mässa!",
+      "Anmälningar för D-Dagen 2024 har ännu inte öppnat. Håll utkik på våra sociala medier för när den öppnar!",
   },
   postCompanyForm: {
     title: "Intresseanmälan bekräftad",
@@ -269,8 +269,8 @@ export default {
     contactHeader: "Kontakt",
     responsible: "D-Dagenansvariga",
     salesGroup: "Säljgruppen",
-    sponsorText: "Huvudsponsor för D-Dagen 2023",
-    sponsorLink: "https://omegapoint.se/",
+    sponsorText: "Huvudsponsor för D-Dagen kommer att synas här",
+    sponsorLink: "#",
   },
   email: {
     subject: "Bekräftelse på Företagsanmälan",
@@ -283,7 +283,7 @@ export default {
     ) => `
       <p>Hej!</p>
       <p>Vi har nu tagit emot er intresseanmälan om att vara utställare på
-      D-Dagen 2023! Vi kommer kontakta er under våren och meddela om ni har
+      D-Dagen 2024! Vi kommer kontakta er under våren och meddela om ni har
       fått plats eller inte. Ni kan förvänta er att höra från oss senast den
       8:e juni.</p>
 
@@ -298,7 +298,7 @@ export default {
       <p>Om någon av informationen ovan inte stämmer eller om ni har andra
       frågor, tveka inte att kontakta vårt säljteam på sales@ddagen.se.</p>
       <p>Tack för er intresseanmälan, hoppas ni är lika taggade som oss på
-      D-Dagen 2023!</p>
+      D-Dagen 2024!</p>
 
       <p>Med vänliga hälsningar,</p>
       <p>D-Dagens projektgrupp</p>
@@ -563,7 +563,7 @@ export default {
   },
   aboutUs: {
     header: "Om Oss",
-    subHeader: "Möt Projektgruppen 2023",
+    subHeader: "Möt Projektgruppen 2024",
     paragraph1:
       "D-Dagen är en årlig företagsmässa som anordnas av Datasektionen på KTH. På D-Dagen har företag möjlighet att möta och interagera med potentiella framtida anställda från KTH. Samtidigt erbjuder vi våra studenter en chans att lära sig mer om karriärmöjligheter, nätverka och delta i föreläsningar och andra företagsevent.",
     paragraph2:

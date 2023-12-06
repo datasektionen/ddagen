@@ -64,7 +64,7 @@ function Logo({ class: className }: { class?: string }) {
         text-[65%] leading-none
       "
       >
-        2023
+        2024
       </p>
     </Link>
   );

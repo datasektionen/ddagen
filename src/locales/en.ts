@@ -222,7 +222,7 @@ export default {
   companyForm: {
     title: "Sign up for D-Dagen",
     description:
-      "Fill in this form to sign up your company for D-Dagen 2023. Please note that signing up through to this form is not binding.",
+      "Fill in this form to sign up your company for D-Dagen 2024. Please note that signing up through to this form is not binding.",
     fields: {
       name: "Company Name",
       organizationNumber: "Organization Number",
@@ -233,7 +233,7 @@ export default {
     confirm: "Send",
     ignoreError: "Continue anyway",
     noMoreRegistrations:
-      "Registrations for D-Dagen 2023 have closed. Keep an eye on our social media for next year's fair!",
+      "Registrations for D-Dagen 2024 have not yet opened. Keep an eye on our social media for when it opens!",
   },
   postCompanyForm: {
     title: "Registration confirmed",
@@ -268,8 +268,8 @@ export default {
     contactHeader: "Contact",
     responsible: "Project Managers",
     salesGroup: "Sales Team",
-    sponsorText: "Main sponsor for D-Dagen 2023",
-    sponsorLink: "https://en.omegapoint.se",
+    sponsorText: "Main sponsor for D-Dagen will be shown here",
+    sponsorLink: "#",
   },
   email: {
     subject: "Exhibitor Registration Confirmation",
@@ -560,7 +560,7 @@ export default {
   },
   aboutUs: {
     header: "About us",
-    subHeader: "Meet Project Group 2023",
+    subHeader: "Meet Project Group 2024",
     paragraph1:
       "D-Dagen is an annual trade fair organized by the Computer Science Student Association at KTH (Royal Institute of Technology). At D-Dagen, companies have the opportunity to meet and interact with potential future employees from KTH. At the same time, we offer our students a chance to learn more about career opportunities, network, and participate in lectures and other company events.",
     paragraph2:
