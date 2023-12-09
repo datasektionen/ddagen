@@ -640,7 +640,7 @@ export default {
         "Systemansvarig\n- Självständig\n- Initiativtagande\n- 'Yes, can do'-attityd\n Systemansvarig kommer att jobba mycket tillsammans med webbansvarig med ambitiösa projekt som vi hoppas introducera till D-Dagen. Vi vill ha någon med ett stort driv att skapa möjligheter, och förkunskaper i app-tillverkning är ett stort plus.",
         "Tryckansvarig\n- Proaktiv\n- Artistisk\n Tryckansvarig ingår i PR-gruppen och är den som ser till att allt tryckt material blir beställt och levererat i tid. Här ingår saker som klistermärken, tygmärken, profilkläder, banderoll, broschyr och en del annat. Du kommer ha ett nära samarbete med Art Director och hjälpa till med designarbetet.",
         "Social media-ansvarig\n- Bra kommunikatör\n- Initiativtagande\n- Social(särskilt på medier)\n- Kreativ\n Social media-ansvarig är den som ser till att D-Dagen syns ute på Instagram, Facebook och alla andra sociala medier. Här får du mycket frihet i vilka sociala medier du vill använda och hur du väljer att uttrycka dig (inom rimliga ramar förstås). I rollen som social media-ansvarig jobbar du nära Art Director för att få till snygga inlägg. Detta är en perfekt roll för dig som gillar att ta bilder och lägga ut stories!"
-      ] 
+      ]
     },
     saleGroup:{
       header: "Säljgruppen",
@@ -671,5 +671,16 @@ export default {
         "Vice Ekonomiansvarig\n- Villig att lära sig massor\n- Initiativtagande\n Vice Ekonomiansvarig är en av de friare rollerna inom projektgruppen. Din huvuduppgift är att lära dig att bokföra och hjälpa Ekonomiansvarig, men du förväntas även att hjälpa till där det behövs inom andra områden i projektgruppen. Just därför hoppas vi att du är en driven person som ställer upp och driver igenom mer än dina ordinarie uppgifter och hjälper till där resten av projektgruppen kan behöva en extra hand."
       ]
     },
+  },
+  countDown:{
+    days: "dagar",
+    hours: "timmar",
+    minutes: "minuter",
+    seconds: "sekunder",
+  },
+  landingpage:{
+    date: "10 OKTOBER 2024",
+    y2023: "Gå till d-dagen 2023",
+    underConstruction: "Hemsidan är under uppbyggnad inför d-dagen 2024, men besök gärna sidan från 2023:",
   }
 };
