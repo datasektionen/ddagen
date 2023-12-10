@@ -670,6 +670,17 @@ export default {
         "Vice Finance Manager\n- Willing to learn a lot\n- Initiative-driven\nThe Vice Finance Manager is one of the more flexible roles within the project team. Your primary task is to learn bookkeeping and assist the Finance Manager, but you are also expected to help where needed in other areas of the project team. That's why we hope you are a motivated person who is ready to go above and beyond your regular duties and provide assistance wherever the rest of the project team may need an extra hand."
       ]
     },
-    
+
+  },
+  countDown:{
+    days: "days",
+    hours: "hours",
+    minutes: "minutes",
+    seconds: "seconds",
+  },
+  landingpage:{
+    date: "OCTOBER 10 2024",
+    y2023: "Go to d-dagen 2023",
+    underConstruction: "The website is under construction for d-dagen 2024, but please feel free to visit the site from 2023:",
   }
 };
