@@ -199,11 +199,11 @@ export default function AboutUs() {
           </div>
         </div>
       </div>
-
+    {/*
       <p className="text-cerise text-4xl font-normal uppercase text-center mt-[150px]">
         {t.aboutUs.subHeader}
       </p>
-
+      
       <Team
         team={managers}
         reverse={false}
@@ -248,7 +248,7 @@ export default function AboutUs() {
         teamRoles={t.aboutUs.ecoTeamRoles}
         teamName={t.aboutUs.teamNames[3]}
       />
-
+      */}
       
     </div>
   );

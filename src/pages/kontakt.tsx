@@ -83,6 +83,8 @@ export default function Contact() {
             6 Rows (< sm)
             Lazy implementation
       */}
+      
+      {/* 
       <h1 className="mt-[150px] text-cerise  text-4xl font-normal uppercase text-center">
         {t.contact.subheader2}
       </h1>
@@ -144,6 +146,8 @@ export default function Contact() {
       </div>
 
       <div></div>
-    </div>
+      */}
+    </div> 
+    
   );
 }
