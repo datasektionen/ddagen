@@ -9,9 +9,9 @@ import { adminRouter } from "@/server/api/routers/admin";
  * All routers added in /api/routers should be manually added here.
  */
 export const appRouter = createTRPCRouter({
-  exhibitor: exhibitorRouter,
-  account: accountRouter,
-  admin: adminRouter,
+    exhibitor: exhibitorRouter,
+    account: accountRouter,
+    admin: adminRouter,
 });
 
 // export type definition of API
