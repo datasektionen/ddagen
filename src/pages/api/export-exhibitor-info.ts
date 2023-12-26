@@ -34,7 +34,7 @@ export default async function handler(
                 extraDrinkCoupons: e.extraDrinkCoupons,
                 extraRepresentativeSpots: e.extraRepresentativeSpots,
                 totalBanquetTicketsWanted: e.totalBanquetTicketsWanted,
-                jobOfferId: e.jobOffers,
+                jobOffers: e.jobOffers,
                 customTables: e.customTables,
                 customChairs: e.customChairs,
                 customDrinkCoupons: e.customDrinkCoupons,
