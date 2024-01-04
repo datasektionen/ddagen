@@ -21,22 +21,21 @@ export default function Home() {
   return (
     <>
       <div className="w-full h-full">
-        <div className="flex flex-col mx-auto max-w-[75%]">
-          {/* <div className="relative lg:py-[150px] py-[75px]">
+        <div className="flex flex-col mx-auto max-w-[100%]">
+          <div className="relative lg:py-[150px] py-[75px]">
             <img
               className={`absolute w-full h-[290px] transition-all duration-[1500ms] ease-in-out ${
                 showLogo ? "opacity-100" : "opacity-0"
               }`}
               src={
                 t.locale == "sv"
-                  ? "/img/d-dagen-logo-23-sv.svg"
-                  : "/img/d-dagen-logo-23-en.svg"
+                ? "/img/d-dagen-logo-24-sv.svg"
+                : "/img/d-dagen-logo-24-en.svg"
               }
               alt="D-dagen Logo"
-            />
-          </div>
-          */}
-          <div className="relative lg:py-[100px] py-[75px]">
+              />
+         </div>
+          {/* <div className="relative lg:py-[150px] py-[75px]">
             <img
               className={`absolute w-full h-[290px] transition-all duration-[1500ms] ease-in-out ${
                 showLogo ? "opacity-100" : "opacity-0"
@@ -47,8 +46,9 @@ export default function Home() {
           </div>
 
           <h1 className="text-white text-base lg:text-6xl pl-[30px] lg:pl-[100px] pt-[90px] lg:pt-[120px]">{t.landingpage.date}</h1>
+          */}
 
-          <div className="mx-auto pt-[60px] lg:pt-[30px]">
+          <div className="mx-auto pt-[160px]">
             <Countdown />
           </div>
           
@@ -81,8 +81,8 @@ export default function Home() {
             t={t}
             home={true}
             scrollRef={scrollRef}
-            rightImage={["\\img\\dda-bild.png", "Picture of DDA", "absolute bottom-0 w-full"]}
-            leftImage={["\\img\\foretagsrepresentant-bild.png", "Picture of company representative", "absolute bottom-0 w-full object-cover"]}
+            rightImage={["\\img\\dda-bild.png", "Picture of DDA", "absolute bottom-0 w-full grayscale"]}
+            leftImage={["\\img\\foretagsrepresentant-bild.png", "Picture of company representative", "absolute bottom-0 w-full object-cover grayscale"]}
           />
         </div>
       </div>
