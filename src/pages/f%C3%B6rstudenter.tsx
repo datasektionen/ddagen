@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useRef } from "react";
 import { useLocale } from "@/locales";
 
+
 export default function ForStudents() {
   const t = useLocale();
   const scrollRef = useRef<HTMLInputElement | null>(null);
@@ -40,7 +41,7 @@ export default function ForStudents() {
                 <img
                   src={"/img/for-students-image-1.png"}
                   alt={"Nymble"}
-                  className="w-full"
+                  className="w-full grayscale"
                 />
               </div>
             </div>
@@ -52,7 +53,7 @@ export default function ForStudents() {
                 <img
                   src="/img/for-students-image-2.png"
                   alt="Students working"
-                  className="w-full"
+                  className="w-full grayscale"
                 />
               </div>
             </div>
