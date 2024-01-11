@@ -26,7 +26,7 @@ export default {
     fairText1:
       "D-Dagen is the Computer Science Chapter’s annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
     fairText2:
-      "This year the fair is held on October 12th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15-19 on the KTH Campus Valhallavägen. During the day there will be a lounge for exhibitors, and in the evening a banquet will be organized to end the day.",
+      "This year the fair is held on October 10th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15-19 on the KTH Campus Valhallavägen. During the day there will be a lounge for exhibitors, and in the evening a banquet will be organized to end the day.",
     interestedTitle: "Interested?",
     interestedText:
       "Are you interested in exhibiting on D-Dagen and connecting with thousands of students in Computer Science and IT? Click below to sign up!",
@@ -38,7 +38,7 @@ export default {
     fairText1:
       "D-Dagen is the Computer Science Chapter’s annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
     fairText2:
-      "This year, the fair is held on October 12th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15 and in KTH Entré which is located at Drottning Kristinas väg 4. Other than the fair, D-Dagen is also having a recruitment pub before the fair where we recruit event staff and lunch lectures with FRA (28/9) and SAAB (9/10) together with dJubileet. Additionally, students will be able to have more meetings with exhibitors through company meetings in order to get more of a connection with that company.",
+      "This year, the fair is held on October 10th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15 and in KTH Entré which is located at Drottning Kristinas väg 4. Other than the fair, D-Dagen is also having a recruitment pub before the fair where we recruit event staff and lunch lectures with FRA (28/9) and SAAB (9/10) together with dJubileet. Additionally, students will be able to have more meetings with exhibitors through company meetings in order to get more of a connection with that company.",
     companyMeetings: "Company Meetings",
     companyMeetingsText:
       "This year is also the first year where we will offer company meetings for students, which means that you will be able to discuss future job opportunities in a private room with representatives from selected companies. Sign up on the link below:",
@@ -222,7 +222,7 @@ export default {
   companyForm: {
     title: "Sign up for D-Dagen",
     description:
-      "Fill in this form to sign up your company for D-Dagen 2023. Please note that signing up through to this form is not binding.",
+      "Fill in this form to sign up your company for D-Dagen 2024. Please note that signing up through to this form is not binding.",
     fields: {
       name: "Company Name",
       organizationNumber: "Organization Number",
@@ -233,7 +233,7 @@ export default {
     confirm: "Send",
     ignoreError: "Continue anyway",
     noMoreRegistrations:
-      "Registrations for D-Dagen 2023 have closed. Keep an eye on our social media for next year's fair!",
+      "Registrations for D-Dagen 2024 have not yet opened. Keep an eye on our social media for when it opens!",
   },
   postCompanyForm: {
     title: "Registration confirmed",
@@ -268,8 +268,8 @@ export default {
     contactHeader: "Contact",
     responsible: "Project Managers",
     salesGroup: "Sales Team",
-    sponsorText: "Main sponsor for D-Dagen 2023",
-    sponsorLink: "https://en.omegapoint.se",
+    sponsorText: "Main sponsor for D-Dagen will be shown here",
+    sponsorLink: "",
   },
   email: {
     subject: "Exhibitor Registration Confirmation",
@@ -560,7 +560,7 @@ export default {
   },
   aboutUs: {
     header: "About us",
-    subHeader: "Meet Project Group 2023",
+    subHeader: "Meet Project Group 2024",
     paragraph1:
       "D-Dagen is an annual trade fair organized by the Computer Science Student Association at KTH (Royal Institute of Technology). At D-Dagen, companies have the opportunity to meet and interact with potential future employees from KTH. At the same time, we offer our students a chance to learn more about career opportunities, network, and participate in lectures and other company events.",
     paragraph2:
@@ -670,6 +670,17 @@ export default {
         "Vice Finance Manager\n- Willing to learn a lot\n- Initiative-driven\nThe Vice Finance Manager is one of the more flexible roles within the project team. Your primary task is to learn bookkeeping and assist the Finance Manager, but you are also expected to help where needed in other areas of the project team. That's why we hope you are a motivated person who is ready to go above and beyond your regular duties and provide assistance wherever the rest of the project team may need an extra hand."
       ]
     },
-    
+
+  },
+  countDown:{
+    days: "days",
+    hours: "hours",
+    minutes: "minutes",
+    seconds: "seconds",
+  },
+  landingpage:{
+    date: "OCTOBER 10 2024",
+    y2023: "Go to d-dagen 2023",
+    underConstruction: "The website is under construction for d-dagen 2024, but please feel free to visit the site from 2023:",
   }
 };

@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { useLocale } from "@/locales";
 import { useEffect, useState } from "react";
 import GridCollage from "@/components/GridCollage";
+import { Countdown } from "@/components/Countdown";
 
 export default function Home() {
   const t = useLocale();
@@ -20,7 +21,7 @@ export default function Home() {
   return (
     <>
       <div className="w-full h-full">
-        <div className="flex flex-col mx-auto max-w-[75%]">
+        <div className="flex flex-col mx-auto max-w-[100%]">
           <div className="relative lg:py-[150px] py-[75px]">
             <img
               className={`absolute w-full h-[290px] transition-all duration-[1500ms] ease-in-out ${
@@ -28,26 +29,43 @@ export default function Home() {
               }`}
               src={
                 t.locale == "sv"
-                  ? "/img/d-dagen-logo-sv.svg"
-                  : "/img/d-dagen-logo-en.svg"
+                ? "/img/d-dagen-logo-24-sv.svg"
+                : "/img/d-dagen-logo-24-en.svg"
               }
+              alt="D-dagen Logo"
+              />
+         </div>
+          {/* <div className="relative lg:py-[150px] py-[75px]">
+            <img
+              className={`absolute w-full h-[290px] transition-all duration-[1500ms] ease-in-out ${
+                showLogo ? "opacity-100" : "opacity-0"
+              }`}
+              src="/img/d-dagen-logo.svg"
               alt="D-dagen Logo"
             />
           </div>
-          <div className="pt-[200px] pb-[50px] hover:cursor-default">
+
+          <h1 className="text-white text-base lg:text-6xl pl-[30px] lg:pl-[100px] pt-[90px] lg:pt-[120px]">{t.landingpage.date}</h1>
+          */}
+
+          <div className="mx-auto pt-[160px]">
+            <Countdown />
+          </div>
+          
+          <div className="pt-[80px] pb-[50px] hover:cursor-default">
             <h2
               className={
                 `
             text-white text-4xl text-center transition-all duration-[4000ms] ease-in-out ${
               showLogo ? "opacity-100" : "opacity-0"
             }
-                ` + (t.locale == "sv" ? "sm:ml-9" : "sm:ml-14") 
+                ` + (t.locale == "sv" ? "sm:ml-9" : "sm:ml-14")
               }
             >
               {t.home.stats.firstPart} | {t.home.stats.secondPart}
             </h2>
           </div>
-
+            
           {/* Scroll Indicator */}
           <div className="flex flex-col items-center pb-[100px]">
             <div
@@ -59,12 +77,12 @@ export default function Home() {
           </div>
 
           {/* Grid Collage */}
-          <GridCollage 
-            t={t} 
+          <GridCollage
+            t={t}
             home={true}
-            scrollRef={scrollRef} 
-            rightImage={["\\img\\dda-bild.png", "Picture of DDA", "absolute bottom-0 w-full"]}
-            leftImage={["\\img\\foretagsrepresentant-bild.png", "Picture of company representative", "absolute bottom-0 w-full object-cover"]}
+            scrollRef={scrollRef}
+            rightImage={["\\img\\dda-bild.png", "Picture of DDA", "absolute bottom-0 w-full grayscale"]}
+            leftImage={["\\img\\foretagsrepresentant-bild.png", "Picture of company representative", "absolute bottom-0 w-full object-cover grayscale"]}
           />
         </div>
       </div>

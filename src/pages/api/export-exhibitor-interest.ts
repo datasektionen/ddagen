@@ -3,34 +3,34 @@ import { prisma } from "@/server/db";
 import * as pls from "@/utils/pls";
 
 export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
+    req: NextApiRequest,
+    res: NextApiResponse
 ) {
-  if (req.method !== "GET") return res.status(405).end();
+    if (req.method !== "GET") return res.status(405).end();
 
-  const apiKey = req.headers["authorization"];
-  if (apiKey == undefined) return res.status(400).end();
-  if (!(await pls.checkApiKey("read-registrations", apiKey))) {
-    return res.status(402).end();
-  }
+    const apiKey = req.headers["authorization"];
+    if (apiKey == undefined) return res.status(400).end();
+    if (!(await pls.checkApiKey("read-registrations", apiKey))) {
+        return res.status(402).end();
+    }
 
-  const exhibitors = await prisma.exhibitorInterestRegistration.findMany({
-    orderBy: { createdAt: "asc" },
-  });
+    const exhibitors = await prisma.exhibitorInterestRegistration.findMany({
+        orderBy: { createdAt: "asc" },
+    });
 
-  res.setHeader("Content-Type", "application/json");
-  res.end(
-    JSON.stringify(
-      exhibitors.map((e) => ({
-        name: e.name,
-        organizationNumber: e.organizationNumber,
-        contactPerson: e.contactPerson,
-        phoneNumber: e.phoneNumber,
-        email: e.email,
-        createdAt: e.createdAt,
-      }))
-    )
-  );
+    res.setHeader("Content-Type", "application/json");
+    res.end(
+        JSON.stringify(
+            exhibitors.map((e) => ({
+                name: e.name,
+                organizationNumber: e.organizationNumber,
+                contactPerson: e.contactPerson,
+                phoneNumber: e.phoneNumber,
+                email: e.email,
+                createdAt: e.createdAt,
+            }))
+        )
+    );
 }
 
 /**
@@ -42,7 +42,7 @@ function importExhibitors() {
   var activeSheet = SpreadsheetApp.getActiveSpreadsheet();
   var sheet = activeSheet.getSheetByName("Utställare");
 
-  const res = UrlFetchApp.fetch("https://ddagen.se/api/export-exhibitors", {
+  const res = UrlFetchApp.fetch("https://ddagen.se/api/export-exhibitor-interest", {
     method: "GET",
     headers: {
       "Authorization": "Bearer TOKEN", // Needs to have `read-registrations` on ddagen in pls
