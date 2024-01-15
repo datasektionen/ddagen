@@ -226,7 +226,7 @@ export default {
     fields: {
       name: "Företagsnamn",
       organizationNumber: "Organisationsnummer",
-      email: "Meljadress",
+      email: "Mejladress",
       contactPerson: "Kontaktperson",
       phoneNumber: "Telefonnummer",
     },
@@ -314,7 +314,7 @@ export default {
     table1row3: "VAR ÄR D-DAGEN?",
     table1text1:
       "D-Dagen är den årliga karriärmässan som anordnas av Datasektionen på Kungliga Tekniska Högskolan. D-Dagen är numera Nordens största karriärmässa inom IT.",
-    table1text2: "Årets D-Dagen äger rum torsdag den 12:e oktober.",
+    table1text2: "Årets D-Dagen äger rum torsdag den 10:e oktober.",
     table1text3: "D-Dagen hålls i vårt kårhus Nymble, som ligger på KTH.",
     table2row1: "KAN VÅRT FÖRETAG FÅ MER EXPONERING MOT STUDENTER?",
     table2row2:
@@ -341,7 +341,7 @@ export default {
     table4row1:
       "VILKEN TYP AV EVENEMANG KAN VÅRT FÖRETAG ANORDNA TILLSAMMANS MED D-DAGEN?",
     table4text1:
-      "Vi samarbetar gärna med er för att organisera evenemang före och efter D-Dagen! Oavsett om ni är intresserade av lunchföreläsningar, hackathons eller något helt annat är ni välkomna att dela era idéer med oss. För mer information kontakta vår sponsoransvarige på <a className='text-cerise' href='mailto:alexandre.moch@ddagen.se'>alexandre.moch@ddagen.se</a>.",
+      "Vi samarbetar gärna med er för att organisera evenemang före och efter D-Dagen! Oavsett om ni är intresserade av lunchföreläsningar, hackathons eller något helt annat är ni välkomna att dela era idéer med oss. För mer information kontakta vår sponsoransvarige på <a className='text-cerise' href='mailto:farhan.syed@ddagen.se'>farhan.syed@ddagen.se</a>.",
     productCatalog: "PRODUKTKATALOG",
     header: "FÖRETAG FAQ",
     catalogPath: "/downloadables/Product_Catalog_sv.pdf",
