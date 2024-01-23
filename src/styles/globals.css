@@ -73,13 +73,3 @@
   -ms-filter: grayscale(100%);
   -o-filter: grayscale(100%);
 }
-
-.crop-image {
- 
-  display: inline-block;
-  
-  vertical-align: top;
-  width: 100%;
-  margin-top: 0px;
- 
-}
