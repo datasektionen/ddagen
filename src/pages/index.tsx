@@ -69,8 +69,8 @@ export default function Home() {
             t={t}
             home={true}
             scrollRef={scrollRef}
-            rightImage={["\\img\\dda-bild.jpg", "Picture of DDA", "absolute bottom-0 w-full grayscale crop-image"]}
-            leftImage={["\\img\\foretagsrepresentant-bild.png", "Picture of company representative", "absolute bottom-0 w-full object-cover grayscale"]}
+            rightImage={["\\img\\dda-bild.jpg", "Picture of DDA", "absolute bottom-0 w-full grayscale overflow-hidden"]}
+            leftImage={["\\img\\foretagsrepresentant-bild.png", "Picture of company representative", "absolute bottom-0 w-full grayscale"]}
           />
         </div>
       </div>
