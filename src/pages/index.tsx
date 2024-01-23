@@ -35,19 +35,7 @@ export default function Home() {
               alt="D-dagen Logo"
               />
          </div>
-          {/* <div className="relative lg:py-[150px] py-[75px]">
-            <img
-              className={`absolute w-full h-[290px] transition-all duration-[1500ms] ease-in-out ${
-                showLogo ? "opacity-100" : "opacity-0"
-              }`}
-              src="/img/d-dagen-logo.svg"
-              alt="D-dagen Logo"
-            />
-          </div>
-
-          <h1 className="text-white text-base lg:text-6xl pl-[30px] lg:pl-[100px] pt-[90px] lg:pt-[120px]">{t.landingpage.date}</h1>
-          */}
-
+          
           <div className="mx-auto pt-[160px]">
             <Countdown />
           </div>
@@ -81,7 +69,7 @@ export default function Home() {
             t={t}
             home={true}
             scrollRef={scrollRef}
-            rightImage={["\\img\\dda-bild.png", "Picture of DDA", "absolute bottom-0 w-full grayscale"]}
+            rightImage={["\\img\\dda-bild.jpg", "Picture of DDA", "absolute bottom-0 w-full grayscale crop-image"]}
             leftImage={["\\img\\foretagsrepresentant-bild.png", "Picture of company representative", "absolute bottom-0 w-full object-cover grayscale"]}
           />
         </div>

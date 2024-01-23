@@ -8,9 +8,9 @@ export default {
     introFirstBlock:
       "Nu är det återigen dags för D-Dagen, Nordens största arbetsmarknads-dag för datateknikstudenter.",
     introSecondBlock:
-      "Är du en student inom data eller IT och söker efter din framtida arbetsplats,  eller representerar du ett företag som letar talangfulla medarbetare? Då är D-Dagen ett perfekt tillfälle för dig att träffa personer inom branschen och knyta värdefulla kontakter! Vi strävar mot att årets mässa ska bli den största hittills, med över 100 utställare och 3000 deltagare. ",
+      "Är du en student inom data eller IT och söker efter din framtida arbetsplats,  eller representerar du ett företag som letar talangfulla medarbetare? Då är D-Dagen ett perfekt tillfälle för dig att träffa personer inom branschen och knyta värdefulla kontakter! Vi strävar mot att årets mässa ska bli den största hittills, med över 100+ utställare och 3000+ deltagare. ",
     introSignOff: "Hoppas vi ses!",
-    introDDA: "Axel Johansson & Johan Abdi, D-Dagenansvariga",
+    introDDA: "Toshihide Sakao & William Nordwall, D-Dagenansvariga",
     representative: "Företagsrepresentant?",
     representativeDescription:
       "Vill du nå ut till tusentals civilingenjörs-studenter vid KTH? Som utställare på D-Dagen har du möjlighet att göra just det! Klicka här nedanför för att läsa mer och göra en intresseanmälan.",
@@ -18,6 +18,12 @@ export default {
     stats: {
       firstPart: "100+ utställare",
       secondPart: "3000+ deltagare",
+    },
+    countDown:{
+      days: "dagar",
+      hours: "timmar",
+      minutes: "minuter",
+      seconds: "sekunder",
     },
   },
   forCompanies: {
@@ -672,15 +678,4 @@ export default {
       ]
     },
   },
-  countDown:{
-    days: "dagar",
-    hours: "timmar",
-    minutes: "minuter",
-    seconds: "sekunder",
-  },
-  landingpage:{
-    date: "10 OKTOBER 2024",
-    y2023: "Gå till d-dagen 2023",
-    underConstruction: "Hemsidan är under uppbyggnad inför d-dagen 2024, men besök gärna sidan från 2023:",
-  }
 };

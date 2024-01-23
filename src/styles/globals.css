@@ -73,3 +73,11 @@
   -ms-filter: grayscale(100%);
   -o-filter: grayscale(100%);
 }
+
+.crop-image {
+ 
+  object-fit: cover;
+  object-position: center;
+
+
+}

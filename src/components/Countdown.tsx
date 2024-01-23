@@ -52,10 +52,10 @@ export function Countdown() {
 
   return (
     <div className="pb-[100px] hover:cursor-default gap-5 columns-4 items-stretch flex items-center justify-center">
-      <TimeUnit time={days} timeString={t.countDown.days}/>
-      <TimeUnit time={hours} timeString={t.countDown.hours}/>
-      <TimeUnit time={minutes} timeString={t.countDown.minutes}/>
-      <TimeUnit time={seconds} timeString={t.countDown.seconds}/>
+      <TimeUnit time={days} timeString={t.home.countDown.days}/>
+      <TimeUnit time={hours} timeString={t.home.countDown.hours}/>
+      <TimeUnit time={minutes} timeString={t.home.countDown.minutes}/>
+      <TimeUnit time={seconds} timeString={t.home.countDown.seconds}/>
     </div>
   );
 }
