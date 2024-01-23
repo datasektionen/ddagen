@@ -65,7 +65,7 @@ export default function Contact() {
       </div>
 
       <div className="flex flex-col md:flex-row mt-[100px] justify-center px-[30px] sm:px-[0px] gap-[50px] xl:pr-[0px] xl:gap-[120px] md:items-center ">
-        <img className="sm:h-[350px] md:h-[250px] lg:h-[300px] xl:h-[400px]" src="/img/BOSSES.png"></img>
+        <img className="sm:h-[350px] md:h-[250px] lg:h-[300px] xl:h-[400px] grayscale" src="/img/BOSSES.jpg"></img>
         <div className="px-[15px] md:px-0 sm:w-[500px] md:w-[250px] lg:w-[300px] text-left">
           <h1 className="text-cerise text-4xl font-normal uppercase"> D-DAGEN</h1>
           <h1 className="text-cerise text-4xl font-normal uppercase"> {t.contact.bossesHeader}</h1>
