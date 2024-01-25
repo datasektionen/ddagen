@@ -24,8 +24,8 @@ export default function Contact() {
     "/img/groupPictures/p_toshi.jpg",
     "/img/groupPictures/p_william.jpg",
     "/img/groupPictures/p_felicia.jpg", 
-    "/img/groupPictures/p_AzizPic.png", // inte uppdaterad
-    "/img/groupPictures/p_VilmerPic.png", // inte uppdaterad
+    "/img/groupPictures/p_viktor.jpg", // inte uppdaterad
+    "/img/groupPictures/p_mortada.jpg", // inte uppdaterad
     "/img/groupPictures/p_linus.jpg", // inte uppdaterad
     "/img/groupPictures/p_oscar.jpg"
   ];
