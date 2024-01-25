@@ -364,6 +364,7 @@ export default {
       "D-DAGENANSVARIG",
       "D-DAGENANSVARIG",
       "PR-ANSVARIG",
+      "WEBB-ANSVARIG",
       "MÄSSANSVARIG",
       "SÄLJANSVARIG",
       "EKONOMIANSVARIG",

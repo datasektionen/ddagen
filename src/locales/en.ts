@@ -361,6 +361,7 @@ export default {
       "HEAD OF D-DAGEN",
       "HEAD OF D-DAGEN",
       "HEAD OF PR",
+      "LEAD DEVELOPER",
       "HEAD OF THE FAIR",
       "HEAD OF SALES",
       "HEAD OF FINANCES",

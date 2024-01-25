@@ -1,6 +1,6 @@
 import { useLocale } from "@/locales";
 import { useState } from "react";
-const imagesPath = "/img/groupPictures/";
+const imagesPath = "/img/groupPictures/p_";
 
 const prTeam = [
   [
@@ -127,20 +127,20 @@ function Team({
 export default function AboutUs() {
   const t = useLocale();
   return (
-    <div className="pt-[200px] pb-[150px]">
+    <div className="pt-[200px] pb-[150px] flex flex-col items-center">
       <h1 className="uppercase text-cerise text-5xl font-medium text-center">
         {" "}
         {t.aboutUs.header}
       </h1>
-      {/*
-        Desktop version
-      */}
       <div className="flex justify-center mt-[100px] px-10">
         <img
           className="xl:w-[800px] lg:w-[700px] md:w-[600px] w-[500px] rounded-3xl"
-          src="/img/groupPictures/projectGroup.jpg"
+          src="/img/groupPictures/g_projectGroup.jpg"
         ></img>
       </div>
+      {/*
+        Desktop version
+      */}
       <div className="px-[200px] mt-[50px] hidden lg:block">
         <div className="flex flex-col">
           <div className="flex flex-row items-center justify-center mb-10">
@@ -199,7 +199,9 @@ export default function AboutUs() {
           </div>
         </div>
       </div>
-    {/*
+      
+      {/* 
+
       <p className="text-cerise text-4xl font-normal uppercase text-center mt-[150px]">
         {t.aboutUs.subHeader}
       </p>
