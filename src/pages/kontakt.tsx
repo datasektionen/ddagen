@@ -2,51 +2,57 @@ import { useLocale } from "@/locales";
 export default function Contact() {
   const t = useLocale();
   const names = [
-    "Axel Johansson",
-    "Johan Abdi",
-    "Maria Tsychkova",
-    "Aziz Ali",
-    "Vilmer Jonsson",
-    "Melissa Arslan",
+    "Toshihide Sakao",
+    "William Nordwall",
+    "Felicia Murkes", 
+    "Viktor Rönnbacka Nybäck",
+    "Mortada Nasser", 
+    "Linus Markström", 
+    "Oscar Witt", 
   ];
   const roles = t.contact.roles;
   const phones = [
-    "076-038 56 51",
-    "070-052 72 26",
-    "070-524 18 82",
-    "072-975 79 53",
-    "072-588 77 74",
-    "076-076 20 81",
+    "072-889 52 83",
+    "070-338 35 92",
+    "076-715 50 85",
+    "070-100 70 59", 
+    "072-044 01 44", 
+    "070-517 72 78", 
+    "070-351 90 99",
   ];
   const images = [
-    "/img/AxelPic.png",
-    "/img/JohanPic.png",
-    "/img/MariaPic.png",
-    "/img/AzizPic.png",
-    "/img/VilmerPic.png",
-    "/img/MelissaPic.png",
+    "/img/groupPictures/p_toshi.jpg",
+    "/img/groupPictures/p_william.jpg",
+    "/img/groupPictures/p_felicia.jpg", // inte uppdaterad
+    "/img/groupPictures/p_AzizPic.png", // inte uppdaterad
+    "/img/groupPictures/p_VilmerPic.png", // inte uppdaterad
+    "/img/groupPictures/p_MelissaPic.png", // inte uppdaterad
+    "/img/groupPictures/p_oscar.jpg"
   ];
   const mails = [
     "ansvarig@ddagen.se",
     "ansvarig@ddagen.se",
-    "maria.tsychkova@ddagen.se",
-    "aziz.ali@ddagen.se",
-    "vilmer.jonsson@ddagen.se",
-    "melissa.arslan@ddagen.se",
+    "felicia.murkes@ddagen.se", 
+    "viktor.ronnbacka@ddagen.se", 
+    "mortada.nasser@ddagen.se", 
+    "linus.markstrom@ddagen.se", 
+    "oscar.witt@ddagen.se"
   ];
-  const rows1 = [0, 1];
+  const rows1 = [0, 1, 2];
   const layout1 = [
     [0, 1, 2],
     [3, 4, 5],
+    [6]
   ];
-  const rows2 = [0, 1, 2];
+  const rows2 = [0, 1, 2, 3];
   const layout2 = [
     [0, 1],
     [2, 3],
     [4, 5],
+    [6]
   ];
-  const rows3 = [0, 1, 2, 3, 4, 5];
-  const layout3 = [[0], [1], [2], [3], [4], [5]];
+  const rows3 = [0, 1, 2, 3, 4, 5, 6];
+  const layout3 = [[0], [1], [2], [3], [4], [5], [6]];
 
   return (
     <div className="pt-[200px] pb-[150px] flex flex-col items-center">
@@ -61,7 +67,7 @@ export default function Contact() {
           <br/>
           <a className="block text-cerise" href="mailto:sales@ddagen.se">sales@ddagen.se</a>
         </div>
-        <img className="sm:h-[350px] md:h-[250px] lg:h-[300px] xl:h-[400px]" src="/img/SaleGroupPic.png"></img>
+        <img className="sm:h-[350px] md:h-[250px] lg:h-[300px] xl:h-[400px] grayscale" src="/img/groupPictures/g_sales.jpg"></img>
       </div>
 
       <div className="flex flex-col md:flex-row mt-[100px] justify-center px-[30px] sm:px-[0px] gap-[50px] xl:pr-[0px] xl:gap-[120px] md:items-center ">
@@ -84,7 +90,7 @@ export default function Contact() {
             Lazy implementation
       */}
       
-      {/* 
+       
       <h1 className="mt-[150px] text-cerise  text-4xl font-normal uppercase text-center">
         {t.contact.subheader2}
       </h1>
@@ -93,7 +99,7 @@ export default function Contact() {
           <div className="hidden lg:flex flex-row justify-between gap-10 px-[100px] mb-[50px]" key={i}>
             {layout1[i].map((i, _) => (
               <div className="flex flex-col" key={i}>
-                <img src={images[i]}></img>
+                <img className="grayscale" src={images[i]}></img>
                 <p className="px-[10px] text-cerise text-xl font-normal mt-5">
                   {names[i]}
                 </p>
@@ -112,7 +118,7 @@ export default function Contact() {
           <div className=" hidden lg:hidden sm:flex justify-center flex-row px-[50px] mb-[50px] gap-10" key={i}>
             {layout2[i].map((i, _) => (
               <div className="flex flex-col" key={i}>
-                <img className="" src={images[i]}></img>
+                <img className="grayscale" src={images[i]}></img>
                 <p className="w-[10px] px-[10px] text-cerise text-2xl font-normal mt-5">
                   {names[i]}
                 </p>
@@ -130,7 +136,7 @@ export default function Contact() {
           <div className=" sm:hidden justify-center flex flex-row px-[30px] mb-[50px] gap-10" key={i}>
             {layout3[i].map((i, _) => (
               <div className="flex flex-col" key={i}>
-                <img className="" src={images[i]}></img>
+                <img className="grayscale" src={images[i]}></img>
                 <p className="w-[10px] px-[10px] text-cerise text-2xl font-normal mt-5">
                   {names[i]}
                 </p>
@@ -146,7 +152,7 @@ export default function Contact() {
       </div>
 
       <div></div>
-      */}
+      
     </div> 
     
   );
