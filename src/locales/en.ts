@@ -578,7 +578,7 @@ export default {
     info2: "D-Dagen before",
     info3: "D-Dagen today",
     prTeamRoles: [
-      ["PR Manager", "Print Manager", , "Art Director"],
+      ["PR Manager", "Print Manager", "Art Director"],
       ["Art Director", "Social Media Manager"],
     ],
     devTeamRoles: [
