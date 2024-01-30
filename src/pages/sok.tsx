@@ -148,7 +148,7 @@ export default function SignupPage() {
         borderColor="border-[#E2B7C9]"
         toReverse={false}
         textColor="text-[#E2B7C9]"
-        image="/img/groupPictures/prTeam.jpg"
+        image="/img/projectGroup/prTeam.jpg"
         teamInfo={[
           t.sok.prGroup.header,
           t.sok.prGroup.text,
@@ -161,7 +161,7 @@ export default function SignupPage() {
         borderColor="border-[#D5759C]"
         toReverse={true}
         textColor="text-[#D5759C]"
-        image="/img/groupPictures/salesTeam.jpg"
+        image="/img/projectGroup/salesTeam.jpg"
         teamInfo={[
           t.sok.saleGroup.header,
           t.sok.saleGroup.text,
@@ -174,7 +174,7 @@ export default function SignupPage() {
         borderColor="border-cerise"
         toReverse={false}
         textColor="text-cerise"
-        image="/img/groupPictures/massTeam.jpg"
+        image="/img/projectGroup/massTeam.jpg"
         teamInfo={[
           t.sok.massGroup.header,
           t.sok.massGroup.text,
@@ -187,7 +187,7 @@ export default function SignupPage() {
         borderColor="border-yellow"
         toReverse={true}
         textColor="text-yellow"
-        image="/img/groupPictures/ecoTeam.jpg"
+        image="/img/projectGroup/ecoTeam.jpg"
         teamInfo={[
           t.sok.ecoGroup.header,
           t.sok.ecoGroup.text,

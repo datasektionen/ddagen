@@ -578,29 +578,33 @@ export default {
     info2: "D-Dagen before",
     info3: "D-Dagen today",
     prTeamRoles: [
-      ["Software Developer", "Social Media Manager", "PR Manager"],
-      ["Art Director", "Web Developer", "Print Manager"],
-      ["Software Developer", "Art Director"],
+      ["PR Manager", "Print Manager", "Art Director"],
+      ["Art Director", "Social Media Manager"],
+    ],
+    devTeamRoles: [
+      ["Lead Developer", "System Developer", "Web Developer"],
+      ["Web Developer"],
     ],
     salesTeamRoles: [
-      ["Salesperson", "Salesperson", "Sales Manager"],
-      ["Sponsorship Manager", "Salesperson", "Salesperson"],
-      ["Salesperson"],
+      ["Sales Manager", "Salesperson", "Salesperson", ],
+      ["Salesperson", "Salesperson", "Salesperson"],
+      ["Salesperson", "Sponsorship Manager"],
     ],
     massTeamRoles: [
-      ["Fair Manager", "Logistics Manager", "Venue Manager"],
-      ["Event Manager", "Lounge Manager", "HR Manager"],
+      ["Fair Manager", "Event Manager", "Logistics Manager", ],
+      ["Venue Manager", "Lounge Manager", "HR Manager"],
     ],
-    ecoTeamRoles: [["Deputy Financial Manager", "Financial Manager"]],
+    ecoTeamRoles: [["Financial Manager", "Deputy Financial Manager"]],
     ddaRoles: [
       ["DDA", "DDA"], // Assuming DDA remains the same without context.
     ],
     teamNames: [
+      "D-Dagen Managers",
       "PR Team",
+      "Dev Team",
       "Sales Team",
       "Exhibition Team",
       "Finance Team",
-      "D-Dagen Managers",
     ],
   },
   logos: {
