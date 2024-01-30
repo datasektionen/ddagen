@@ -1,68 +1,43 @@
 import { useLocale } from "@/locales";
 import { useState } from "react";
-const imagesPath = "/img/groupPictures/";
+import { create2DArrayWithValues } from "@/shared/array";
 
-const prTeam = [
-  [
-    imagesPath + "mathiasPic.jpg",
-    imagesPath + "olofPic.jpg",
-    imagesPath + "mariaPic.jpg",
-  ],
-  [
-    imagesPath + "jakobPic.jpg",
-    imagesPath + "adamPic.jpg",
-    imagesPath + "annaPic.jpg",
-  ],
-  [imagesPath + "rikazPic.jpg", imagesPath + "maryPic.jpg", ""],
-];
-const saleTeam = [
-  [
-    imagesPath + "williamPic.jpg",
-    imagesPath + "linusPic.jpg",
-    imagesPath + "vilmerPic.jpg",
-  ],
-  [
-    imagesPath + "alexPic.jpg",
-    imagesPath + "rogerPic.jpg",
-    imagesPath + "elinPic.jpg",
-  ],
-  [imagesPath + "toshidePic.jpg"],
-];
+const imagesPath = "/img/projectGroup/p_";
 
-const massTeam = [
-  [
-    imagesPath + "azizPic.jpg",
-    imagesPath + "oscarPic.jpg",
-    imagesPath + "mortadaPic.jpg",
-  ],
-  [imagesPath + "lydiaPic.jpg",imagesPath + "mimmiPic.jpg", imagesPath + "dilanPic.jpg"],
-];
+function formatImagePath(name: string) {
+  return imagesPath + name + ".jpg";
+}
 
-const ecoNames = [["Christofer Gärtner", "Melissa Arslan"]];
+function stripLastName(name: string) {
+  return name.split(" ")[0];
+}
 
-const managers = [[imagesPath + "axelPic.jpg", imagesPath + "johanPic.jpg"]];
-const econonmyTeam = [
-  [imagesPath + "christoferPic.jpg", imagesPath + "melissaPic.jpg"],
-];
+const managersList = ["Toshihide Sakao", "William Nordwall"]
+const prList = ["Felicia Murkes","Cissy Yang","Emilie Cao","Julia Potrus","Robert Rosenquist"]
+const devList = ["Viktor Rönnbacka Nybäck", "Nils Malmberg", "Sofia Edvardsson", "Ivar Boqvist"]
+const salesList = ["Linus Markström", "Leo Modahed", "Johanna Plant", "Ella Hedberg", "Mimmi Weng", "Samuel Flodin", "Oskar Furuhed", "Farhan Syed"]
+const massList = ["Mortada Nasser", "Abhinav Sasikumar","Arman Montazeri","Max Berglund", "Adam Njegovanovic","Abdelrahman Aldaker"]
+const ecoList = ["Oscar Witt","Roger Chen"]
 
-const managersName = [["Axel Johansson", "Johan Abdi"]];
+const managersName = create2DArrayWithValues(3, 1, managersList);
+const managers = create2DArrayWithValues(3, 1, managersList.map(stripLastName).map(formatImagePath))
 
-const prNames = [
-  ["Mathias Magnusson", "Olof Bargholtz Melcherson", "Maria Tsychkova"],
-  ["Jakob Petterson", "Adam Egnell", "Anna Yang"],
-  ["Rikaz Nismi", "Mary Abeysekera"],
-];
+const prName = create2DArrayWithValues(3, 2, prList);
+const prTeam = create2DArrayWithValues(3, 2, prList.map(stripLastName).map(formatImagePath))
 
-const salesNames = [
-  ["William Nordwall", "Linus Markström", "Vilmer Jonsson"],
-  ["Alexandre Moch", "Roger Chen", "Elin Gudmunsson"],
-  ["Toshihide Sakao"],
-];
+const devName = create2DArrayWithValues(3, 2, devList);
+const devTeam = create2DArrayWithValues(3, 2, devList.map(stripLastName).map(formatImagePath))
 
-const massNames = [
-  ["Aziz Ali", "Oscar Witt", "Mortada Nasser"],
-  ["Lydia Brorsson", "Mimmi Weng", "Dilan Ismail"],
-];
+const salesNames = create2DArrayWithValues(3, 3, salesList);
+const saleTeam = create2DArrayWithValues(3, 3, salesList.map(stripLastName).map(formatImagePath))
+
+const massNames = create2DArrayWithValues(3, 2, massList);
+const massTeam = create2DArrayWithValues(3, 2, massList.map(stripLastName).map(formatImagePath))
+
+const ecoNames = create2DArrayWithValues(2, 1, ecoList);
+const econonmyTeam = create2DArrayWithValues(2, 1, ecoList.map(stripLastName).map(formatImagePath))
+
+
 
 function Team({
   team,
@@ -90,7 +65,7 @@ function Team({
       } flex mt-[100px] px-[20px] lg:px-[100px] flex-col lg:flex-row justify-center lg:h-[700px]`}
     >
       <div className="flex flex-col">
-        <img src={teamPic} className=""></img>
+        <img src={teamPic} className="h-auto max-w-lg"></img>
         <div className="bg-white/80 lg:bg-white  flex items-center justify-center h-full">
           <p className="text-4xl text-cerise font-bold lg:px-[100px]">
             {teamName}
@@ -98,12 +73,12 @@ function Team({
         </div>
       </div>
 
-      <div className=" pt-5 lg:w-[1300px] bg-white/80 flex flex-col overflow-x-auto overflow-y-visible lg:py-10 gap-10">
+      <div className=" pt-5 lx:w-[1300px] lg:w-[600px] m:w-[500px] bg-white/80 flex flex-col overflow-x-auto overflow-y-visible lg:py-10 gap-10">
         {team.map((row, i) => (
           <div className="flex flex-row gap-2 justify-center  pb-3" key={row.toString()}>
             {row.map((image, j) => (
               <div className="flex flex-col" key={image}>
-                <div className=" w-[90px] sm:w-[100px] lg:w-[100px]  xl:w-[120px] 2xl:w-[150px]">
+                <div className=" w-[90px] sm:w-[100px] lg:w-[120px]  xl:w-[120px] 2xl:w-[150px]">
                   <img src={image} className=" rounded-[20px]"></img>
                   <div className="mt-2">
                     <p className="text-center text-xs lg:text-sm font-medium">
@@ -127,20 +102,20 @@ function Team({
 export default function AboutUs() {
   const t = useLocale();
   return (
-    <div className="pt-[200px] pb-[150px]">
+    <div className="pt-[200px] pb-[150px] flex flex-col items-center">
       <h1 className="uppercase text-cerise text-5xl font-medium text-center">
         {" "}
         {t.aboutUs.header}
       </h1>
-      {/*
-        Desktop version
-      */}
       <div className="flex justify-center mt-[100px] px-10">
         <img
           className="xl:w-[800px] lg:w-[700px] md:w-[600px] w-[500px] rounded-3xl"
-          src="/img/groupPictures/projectGroup.jpg"
+          src="/img/projectGroup/g_projectGroup.jpg"
         ></img>
       </div>
+      {/*
+        Desktop version
+      */}
       <div className="px-[200px] mt-[50px] hidden lg:block">
         <div className="flex flex-col">
           <div className="flex flex-row items-center justify-center mb-10">
@@ -199,7 +174,9 @@ export default function AboutUs() {
           </div>
         </div>
       </div>
-    {/*
+      
+      
+
       <p className="text-cerise text-4xl font-normal uppercase text-center mt-[150px]">
         {t.aboutUs.subHeader}
       </p>
@@ -207,48 +184,56 @@ export default function AboutUs() {
       <Team
         team={managers}
         reverse={false}
-        teamPic="/img/groupPictures/bossTeam.jpg"
+        teamPic="/img/BOSSES.jpg"
         names={managersName}
         teamRoles={t.aboutUs.ddaRoles}
-        teamName={t.aboutUs.teamNames[4]}
+        teamName={t.aboutUs.teamNames[0]}
       />
-
       <Team
         team={prTeam}
         reverse={false}
-        teamPic="/img/groupPictures/prTeam.jpg"
-        names={prNames}
+        teamPic="/img/projectGroup/g_pr.jpg"
+        names={prName}
         teamRoles={t.aboutUs.prTeamRoles}
-        teamName={t.aboutUs.teamNames[0]}
-      />
+        teamName={t.aboutUs.teamNames[1]}
+        />
+
+      <Team
+        team={devTeam}
+        reverse={false}
+        teamPic="/img/projectGroup/g_dev.jpg"
+        names={devName}
+        teamRoles={t.aboutUs.devTeamRoles}
+        teamName={t.aboutUs.teamNames[2]}
+        />
 
       <Team
         team={saleTeam}
         reverse={false}
-        teamPic="/img/groupPictures/salesTeam.jpg"
+        teamPic="/img/projectGroup/g_sales.jpg"
         names={salesNames}
         teamRoles={t.aboutUs.salesTeamRoles}
-        teamName={t.aboutUs.teamNames[1]}
+        teamName={t.aboutUs.teamNames[3]}
       />
 
       <Team
         team={massTeam}
         reverse={false}
-        teamPic="/img/groupPictures/massTeam.jpg"
+        teamPic="/img/projectGroup/g_mass.jpg"
         names={massNames}
         teamRoles={t.aboutUs.massTeamRoles}
-        teamName={t.aboutUs.teamNames[2]}
+        teamName={t.aboutUs.teamNames[4]}
       />
 
       <Team
         team={econonmyTeam}
         reverse={true}
-        teamPic="/img/groupPictures/ecoTeam.jpg"
+        teamPic="/img/projectGroup/g_money.jpg"
         names={ecoNames}
         teamRoles={t.aboutUs.ecoTeamRoles}
-        teamName={t.aboutUs.teamNames[3]}
+        teamName={t.aboutUs.teamNames[5]}
       />
-      */}
+    
       
     </div>
   );

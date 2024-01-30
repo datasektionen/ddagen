@@ -71,8 +71,8 @@ export default function GridCollage({
         )}
 
         {/* Top Right */}
-        <div className="lg:col-[17/33] lg:row-[1/10] max-lg:h-[650px] max-md:h-[500px] max-sm:h-[400px] bg-white/40">
-          <div className="mix-blend-color bg-[#060606] h-full" />
+        <div className="lg:col-[17/33] lg:row-[1/10] max-lg:h-[650px] max-md:h-[500px] max-sm:h-[400px] bg-white/80 overflow-hidden">
+          <div className="mix-blend-color bg-[#060606] h-full " />
           <div className="relative">
             <img
               src={rightImage[0]}
@@ -85,9 +85,9 @@ export default function GridCollage({
         <div className="lg:hidden bg-white/80 h-[160px]" />
 
         {/* Bottom Left */}
-        <div className="lg:col-[3/17] lg:row-[16/25] max-lg:h-[650px] max-md:h-[500px] max-sm:h-[400px] bg-white/40">
+        <div className="lg:col-[3/17] lg:row-[16/25] max-lg:h-[650px] max-md:h-[500px] max-sm:h-[400px] bg-white/40 overflow-hidden">
           <div className="mix-blend-color bg-[#060606] h-full" />
-          <div className="relative">
+          <div className="relative ">
             <img
               src={leftImage[0]}
               alt={leftImage[1]}

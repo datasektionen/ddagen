@@ -30,7 +30,7 @@ export function Countdown() {
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
   useEffect(()=>{
-    const target = new Date("10/10/2024 00:00:00+01:00") // vilket datum är d-dagen?
+    const target = new Date("10/10/2024 10:00:00+01:00") // vilket datum är d-dagen?
     const interval = setInterval(() =>{
       const now = new Date();
       const difference = target.getTime() - now.getTime();
@@ -52,10 +52,10 @@ export function Countdown() {
 
   return (
     <div className="pb-[100px] hover:cursor-default gap-5 columns-4 items-stretch flex items-center justify-center">
-      <TimeUnit time={days} timeString={t.countDown.days}/>
-      <TimeUnit time={hours} timeString={t.countDown.hours}/>
-      <TimeUnit time={minutes} timeString={t.countDown.minutes}/>
-      <TimeUnit time={seconds} timeString={t.countDown.seconds}/>
+      <TimeUnit time={days} timeString={t.home.countDown.days}/>
+      <TimeUnit time={hours} timeString={t.home.countDown.hours}/>
+      <TimeUnit time={minutes} timeString={t.home.countDown.minutes}/>
+      <TimeUnit time={seconds} timeString={t.home.countDown.seconds}/>
     </div>
   );
 }

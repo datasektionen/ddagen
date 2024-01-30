@@ -20,6 +20,7 @@ const App: AppType = ({ Component, pageProps }) => {
           bg-[length:160%] md:bg-[length:100vw]
           bg-blend-hue
           bg-repeat
+          overflow-x-hidden
         "
         id="main-content"
       >

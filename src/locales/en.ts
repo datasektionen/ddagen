@@ -8,9 +8,9 @@ export default {
     introFirstBlock:
       "It’s once again time for D-Dagen, the largest job fair for Computer Science students in the Nordics.",
     introSecondBlock:
-      "Are you studying Computer Science or IT and looking for your future work place, or do you represent a company and are looking for talented co-workers? In that case, D-Dagen is the perfect opportunity for you to meet people from the industry and expand your network with valuable contacts! We’re striving to make this year's fair the largest so far, with over 100 exhibitors and 3000 participants.",
+      "Are you studying Computer Science or IT and looking for your future work place, or do you represent a company and are looking for talented co-workers? In that case, D-Dagen is the perfect opportunity for you to meet people from the industry and expand your network with valuable contacts! We’re striving to make this year's fair the largest so far, with over 100+ exhibitors and 3000+ participants.",
     introSignOff: "Looking forward to meeting you!",
-    introDDA: "Axel Johansson & Johan Abdi, Project Managers",
+    introDDA: "Toshihide Sakao & William Nordwall, Project Managers",
     representative: "Company Representative?",
     representativeDescription:
       "Do you want to reach thousands of Computer Science Engineering students at KTH? As an exhibitor at D-Dagen you have the opportunity to do so! Click the button below to read more and make an application of interest .",
@@ -18,6 +18,12 @@ export default {
     stats: {
       firstPart: "100+ exhibitors",
       secondPart: "3000+ participants",
+    },
+    countDown:{
+      days: "days",
+      hours: "hours",
+      minutes: "minutes",
+      seconds: "seconds",
     },
   },
   forCompanies: {
@@ -341,7 +347,7 @@ export default {
       "We'd be thrilled to collaborate with you, both before and after D-Dagen! Whether you're interested in hosting a lunch lecture, hackathon, or something completely different, we're open to your ideas. For more information, please contact our sponsorship manager at <a className='text-cerise' href='mailto:farhan.syed@ddagen.se'>farhan.syed@ddagen.se</a>.",
     productCatalog: "PRODUCT CATALOG",
     header: "COMPANY FAQ",
-    catalogPath: "https://ddagen.se/downloadables/Product_Catalog_eng.pdf",
+    catalogPath: "https://ddagen.se/downloadables/Product_Catalog_sv.pdf",
   },
   contact: {
     header: "Contact",
@@ -355,6 +361,7 @@ export default {
       "HEAD OF D-DAGEN",
       "HEAD OF D-DAGEN",
       "HEAD OF PR",
+      "LEAD DEVELOPER",
       "HEAD OF THE FAIR",
       "HEAD OF SALES",
       "HEAD OF FINANCES",
@@ -571,29 +578,33 @@ export default {
     info2: "D-Dagen before",
     info3: "D-Dagen today",
     prTeamRoles: [
-      ["Software Developer", "Social Media Manager", "PR Manager"],
-      ["Art Director", "Web Developer", "Print Manager"],
-      ["Software Developer", "Art Director"],
+      ["PR Manager", "Print Manager", "Art Director"],
+      ["Art Director", "Social Media Manager"],
+    ],
+    devTeamRoles: [
+      ["Lead Developer", "System Developer", "Web Developer"],
+      ["Web Developer"],
     ],
     salesTeamRoles: [
-      ["Salesperson", "Salesperson", "Sales Manager"],
-      ["Sponsorship Manager", "Salesperson", "Salesperson"],
-      ["Salesperson"],
+      ["Sales Manager", "Salesperson", "Salesperson", ],
+      ["Salesperson", "Salesperson", "Salesperson"],
+      ["Salesperson", "Sponsorship Manager"],
     ],
     massTeamRoles: [
-      ["Fair Manager", "Logistics Manager", "Venue Manager"],
-      ["Event Manager", "Lounge Manager", "HR Manager"],
+      ["Fair Manager", "Event Manager", "Logistics Manager", ],
+      ["Venue Manager", "Lounge Manager", "HR Manager"],
     ],
-    ecoTeamRoles: [["Deputy Financial Manager", "Financial Manager"]],
+    ecoTeamRoles: [["Financial Manager", "Deputy Financial Manager"]],
     ddaRoles: [
       ["DDA", "DDA"], // Assuming DDA remains the same without context.
     ],
     teamNames: [
+      "D-Dagen Managers",
       "PR Team",
+      "Dev Team",
       "Sales Team",
       "Exhibition Team",
       "Finance Team",
-      "D-Dagen Managers",
     ],
   },
   logos: {
@@ -672,15 +683,5 @@ export default {
     },
 
   },
-  countDown:{
-    days: "days",
-    hours: "hours",
-    minutes: "minutes",
-    seconds: "seconds",
-  },
-  landingpage:{
-    date: "OCTOBER 10 2024",
-    y2023: "Go to d-dagen 2023",
-    underConstruction: "The website is under construction for d-dagen 2024, but please feel free to visit the site from 2023:",
-  }
+
 };
