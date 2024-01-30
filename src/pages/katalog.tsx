@@ -2,65 +2,47 @@ import { useLocale } from "@/locales";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { useState } from "react";
 
-
 function Packet({
-  price,
-  icons,
-  packetColor1,
-  packetColor2,
-  packetType,
-  info,
-  packetDescription,
-}: {
+                  price,
+                  icons,
+                  packetColor1,
+                  packetColor2,
+                  packetType,
+                  packetDescription,
+                }: {
   price: string;
   icons: string[];
   packetColor1: string;
   packetColor2: string;
   packetType: string;
-  info: string;
   packetDescription: string[];
 }) {
-  const [packetHidden, hidePackage] = useState(false);
-  return (<div className="flex flex-col px-[20px] md:px-[10px]">
-    <div className={`
-      justify-between relative z-40 flex flex-col py-[30px] px-[px] h-[230px] w-[300px]
-      lg:h-[225px] 2xl:h-[250px] md:w-[150px] lg:w-[200px] xl:w-[250px] 2xl:w-[300px]
-      ${packetColor1} border-[3px] rounded-xl bg-slate-50 bg-opacity-10 items-center
-    `}>
-      <h2 className="text-white text-center text-3xl md:text-sm lg:text-xl xl:text-2xl 2xl:text-3xl">{packetType}</h2>
-      <div>
-        <h2 className="text-yellow text-center text-sm lg:text-xl ">{info}</h2>
-        <h2 className="text-white text-center text-3xl lg:text-4xl pb-1 px-[10px]">{price}</h2>
-      </div>
-      <button
-        onClick={() => hidePackage(!packetHidden)}
-        className={`hover:scale-105 transition-transform hover:brightness-110 absolute h-[40px] w-[100px] ${packetColor2} rounded-[40px] border-cerise bottom-0 translate-y-1/2`}
-        style={{ textShadow: '1px 1px 1px black, 1px -1px 1px black, -1px 1px 1px black, -1px -1px 1px black' }}>
-        <i className={`${packetHidden ? "" : "rotate-180"} duration-200 fas fa-chevron-up text-white`}></i>
-      </button>
+  return (
+    <div className="justify-center flex-col text-center">
+      <div className="h-7 text-cerise justify-center">{packetType}</div>
+      <div className="h-7 text-white justify-center">{price}</div>
+      {packetDescription.map((packet, i) =>
+        <div className="h-7 text-white justify-center">{packet}</div>)
+      }
     </div>
-    <div className={`
-      ${packetHidden
-        ? "max-h-full py-[40px]"
-        : "max-h-0 border-b-0 py-0"}
-      md:w-[150px] lg:w-[200px] xl:w-[250px] 2xl:w-[300px]
-      px-[0px] transition-[max-height,padding] duration-200 overflow-y-hidden z-0
-      flex flex-col ${packetColor1} border-[3px] border-t-0 rounded-b-xl bg-opacity-10 text-center bg-slate-50
-    `}>
-      {packetDescription.map((row, j) => (
-        <div key={j} className={`flex flex-col py-2 items-center px-[50px] mt-10`}>
-          <i className={`text-2xl fas ${icons[j]} text-white`}
-            style={{ textShadow: '1px 1px 4px black, 1px -1px 4px black, -1px 1px 4px black, -1px -1px 4px black' }}></i>
-          <p
-            className="text-white w-[140px] mt-2"
-            style={{ textShadow: '1px 1px 4px black, 1px -1px 4px black, -1px 1px 4px black, -1px -1px 4px black' }}
-          >{row}</p>
-        </div>
-      ))}
-    </div>
-  </div>
+
   );
-}
+};
+
+function Menu({
+                description,
+              }:{
+  description: string[]
+}){
+  return (
+    <div className="justify-center flex-col">
+      {description.map((packet, i) =>
+        <div className="h-7 text-cerise justify-center pl-5 font-semibold">{packet}</div>)
+      }
+    </div>
+
+  );
+};
 
 
 export default function Catalog() {
@@ -78,9 +60,11 @@ export default function Catalog() {
   const packetColor2 = ["bg-[#E2B7C9]", "bg-[#D5759C]", "bg-cerise", "bg-yellow"];
 
   return (
-    <div className="pt-[200px] pb-[300px]">
+    <div className="pt-[100px] pb-[300px]">
       <h1 className="uppercase text-cerise text-5xl font-medium text-center px-[10px] break-words">{t.catalog.header}</h1>
-      <div className="flex flex-row justify-between px-[10px] md:px-[80px] mt-[150px] overflow-x-auto overflow-y-hidden pb-6">
+
+      <div className="pt-10 grid grid-rows-1 grid-flow-col gap-4">
+        <Menu description={t.catalog.packetInfo}/>
         {packets.map((packet, i) =>
           <Packet
             key={i}
@@ -89,7 +73,6 @@ export default function Catalog() {
             packetColor1={packetColor1[i]}
             packetColor2={packetColor2[i]}
             packetType={t.catalog.packetType[i]}
-            info={t.catalog.info[i]}
             packetDescription={packet}
           />)}
       </div>
