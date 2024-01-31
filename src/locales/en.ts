@@ -347,7 +347,7 @@ export default {
       "We'd be thrilled to collaborate with you, both before and after D-Dagen! Whether you're interested in hosting a lunch lecture, hackathon, or something completely different, we're open to your ideas. For more information, please contact our sponsorship manager at <a className='text-cerise' href='mailto:farhan.syed@ddagen.se'>farhan.syed@ddagen.se</a>.",
     productCatalog: "PRODUCT CATALOG",
     header: "COMPANY FAQ",
-    catalogPath: "https://ddagen.se/downloadables/Product_Catalog_sv.pdf",
+    catalogPath: "https://ddagen.se/downloadables/Product_Catalog_en.pdf",
   },
   contact: {
     header: "Contact",
