@@ -67,14 +67,14 @@ function Team({
     >
       <div className="flex flex-col">
         <img src={teamPic} className="h-auto max-w-lg"></img>
-        <div className="bg-white/80 lg:bg-white  flex items-center justify-center h-full">
+        <div className="bg-white/80 lg:bg-white flex items-center justify-center h-full">
           <p className="text-4xl text-cerise font-bold lg:px-[100px]">
             {teamName}
           </p>
         </div>
       </div>
 
-      <div className=" pt-5 lx:w-[1300px] lg:w-[600px] m:w-[500px] bg-white/80 flex flex-col overflow-x-auto overflow-y-visible lg:py-10 gap-10">
+      <div className=" pt-5 lx:w-[1200px] lg:w-[500px]  bg-white/80 flex flex-col overflow-x-auto overflow-y-visible lg:py-10 gap-10">
         {team.map((row, i) => (
           <div className="flex flex-row gap-2 justify-center pb-3" key={row.toString()}>
             {row.map((image, j) => (
@@ -110,7 +110,7 @@ export default function AboutUs() {
       </h1>
       <div className="flex justify-center mt-[100px] px-10">
         <img
-          className="xl:w-[800px] lg:w-[700px] md:w-[600px] w-[500px] rounded-3xl"
+          className="xl:w-[1500px] lg:w[900px]  rounded-3xl"
           src="/img/projectGroup/g_projectGroup.jpg"
         ></img>
       </div>
