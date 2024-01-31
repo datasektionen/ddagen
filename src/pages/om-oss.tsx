@@ -9,7 +9,9 @@ function formatImagePath(name: string) {
 }
 
 function stripLastName(name: string) {
-  return name.split(" ")[0];
+  let str = name.split(" ")[0].toLocaleLowerCase();
+  console.log(str)
+  return str;
 }
 
 const managersList = ["Toshihide Sakao", "William Nordwall"]
