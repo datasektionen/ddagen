@@ -9,7 +9,8 @@ function formatImagePath(name: string) {
 }
 
 function stripLastName(name: string) {
-  return name.split(" ")[0];
+
+  return name.split(" ")[0].toLocaleLowerCase();
 }
 
 const managersList = ["Toshihide Sakao", "William Nordwall"]
@@ -19,8 +20,8 @@ const salesList = ["Linus Markström", "Leo Modahed", "Johanna Plant", "Ella Hed
 const massList = ["Mortada Nasser", "Abhinav Sasikumar","Arman Montazeri","Max Berglund", "Adam Njegovanovic","Abdelrahman Aldaker"]
 const ecoList = ["Oscar Witt","Roger Chen"]
 
-const managersName = create2DArrayWithValues(3, 1, managersList);
-const managers = create2DArrayWithValues(3, 1, managersList.map(stripLastName).map(formatImagePath))
+const managersName = create2DArrayWithValues(2, 1, managersList);
+const managers = create2DArrayWithValues(2, 1, managersList.map(stripLastName).map(formatImagePath))
 
 const prName = create2DArrayWithValues(3, 2, prList);
 const prTeam = create2DArrayWithValues(3, 2, prList.map(stripLastName).map(formatImagePath))
@@ -75,9 +76,9 @@ function Team({
 
       <div className=" pt-5 lx:w-[1300px] lg:w-[600px] m:w-[500px] bg-white/80 flex flex-col overflow-x-auto overflow-y-visible lg:py-10 gap-10">
         {team.map((row, i) => (
-          <div className="flex flex-row gap-2 justify-center  pb-3" key={row.toString()}>
+          <div className="flex flex-row gap-2 justify-center pb-3" key={row.toString()}>
             {row.map((image, j) => (
-              <div className="flex flex-col" key={image}>
+              <div className="flex flex-col" key={image != null ? image : "about_img"+(i*3+j).toString() }>
                 <div className=" w-[90px] sm:w-[100px] lg:w-[120px]  xl:w-[120px] 2xl:w-[150px]">
                   <img src={image} className=" rounded-[20px]"></img>
                   <div className="mt-2">

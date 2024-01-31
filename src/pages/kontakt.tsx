@@ -27,7 +27,10 @@ export default function Contact() {
     "/img/projectGroup/p_viktor.jpg", 
     "/img/projectGroup/p_mortada.jpg", 
     "/img/projectGroup/p_linus.jpg", 
-    "/img/projectGroup/p_oscar.jpg"
+    "/img/projectGroup/p_oscar.jpg",
+    "/img/projectGroup/p_oscar.jpg",
+    "/img/projectGroup/p_oscar.jpg",
+    "/img/projectGroup/p_oscar.jpg",
   ];
   const mails = [
     "ansvarig@ddagen.se",
@@ -42,17 +45,18 @@ export default function Contact() {
   const layout1 = [
     [0, 1, 2],
     [3, 4, 5],
-    [6]
+    [6, 7, 8]
   ];
   const rows2 = [0, 1, 2, 3];
   const layout2 = [
     [0, 1],
     [2, 3],
     [4, 5],
-    [6]
+    [6, 7]
   ];
   const rows3 = [0, 1, 2, 3, 4, 5, 6];
   const layout3 = [[0], [1], [2], [3], [4], [5], [6]];
+
 
   return (
     <div className="pt-[200px] pb-[150px] flex flex-col items-center">
@@ -98,8 +102,8 @@ export default function Contact() {
         {rows1.map((i, _) => (
           <div className="hidden lg:flex flex-row justify-between gap-10 px-[100px] mb-[50px]" key={i}>
             {layout1[i].map((i, _) => (
-              <div className="flex flex-col" key={i}>
-                <img className="grayscale" src={images[i]}></img>
+              <div className="flex flex-col" key={i} style={{ visibility: i > 6 ? 'hidden' : 'visible' }}> {/** Cheat to ensure even design*/}
+                <img className="grayscale w-full" src={images[i]} ></img>
                 <p className="px-[10px] text-cerise text-xl font-normal mt-5">
                   {names[i]}
                 </p>
@@ -117,7 +121,7 @@ export default function Contact() {
         {rows2.map((i, _) => (
           <div className=" hidden lg:hidden sm:flex justify-center flex-row px-[50px] mb-[50px] gap-10" key={i}>
             {layout2[i].map((i, _) => (
-              <div className="flex flex-col" key={i}>
+              <div className="flex flex-col" key={i} style={{ visibility: i > 6 ? 'hidden' : 'visible' }}> {/** Cheat to ensure even design*/}
                 <img className="grayscale" src={images[i]}></img>
                 <p className="w-[10px] px-[10px] text-cerise text-2xl font-normal mt-5">
                   {names[i]}
