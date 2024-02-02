@@ -66,7 +66,7 @@ function Team({
       } flex mt-[100px] px-[20px] lg:px-[100px] flex-col lg:flex-row justify-center lg:h-[700px]`}
     >
       <div className="flex flex-col">
-        <img src={teamPic} className="h-auto max-w-lg"></img>
+        <img src={teamPic} className="h-auto  lg:max-w-lg"></img>
         <div className="bg-white/80 lg:bg-white flex items-center justify-center h-full">
           <p className="text-4xl text-cerise font-bold lg:px-[100px]">
             {teamName}
@@ -74,12 +74,12 @@ function Team({
         </div>
       </div>
 
-      <div className=" pt-5 lx:w-[1200px] lg:w-[500px]  bg-white/80 flex flex-col overflow-x-auto overflow-y-visible lg:py-10 gap-10">
+      <div className=" pt-5 w-auto lg:w-[480px] xl:w-[700px]  bg-white/80 flex flex-col overflow-x-auto overflow-y-visible lg:py-10 gap-10">
         {team.map((row, i) => (
           <div className="flex flex-row gap-2 justify-center pb-3" key={row.toString()}>
             {row.map((image, j) => (
               <div className="flex flex-col" key={image != null ? image : "about_img"+(i*3+j).toString() }>
-                <div className=" w-[90px] sm:w-[100px] lg:w-[120px]  xl:w-[120px] 2xl:w-[150px]">
+                <div className=" w-[90px] sm:w-[150px] md:w-[180px] lg:w-[140px] xl:w-[200px] ">
                   <img src={image} className=" rounded-[20px]"></img>
                   <div className="mt-2">
                     <p className="text-center text-xs lg:text-sm font-medium">
