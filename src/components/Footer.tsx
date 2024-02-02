@@ -21,16 +21,18 @@ export default function Footer() {
   return (
     <footer className="
       bg-fill bg-[#2D2D2D]
-      min-h-[600px] md:min-h-[300px]
+      min-h-[600px] md:min-h-[300px] 
       flex flex-grow
+      overflow-hidden
+    
     ">
       <div className="
-        relative flex flex-col w-full h-[400px] md:h-[300px] pt-[20px] md:pt-[40px]
-        md:flex-row items-center md:items-stretch md:justify-between md:px-[100px]
+        relative flex flex-col w-full h-auto md:h-[300px] pt-[20px] md:pt-[40px]
+        md:flex-row items-center md:items-stretch md:justify-between lg:px-[100px] md:px-[20px]
       ">
         <div className="
-          flex flex-col border-[#636363] pl-[15%] md:pl-[0px] max-md:pt-4 md:border-r-[1px] 
-          md:pr-[20px] md:order-first w-[95%] md:w-max md:items-center h-[400px] md:h-[200px] order-last
+          flex flex-col border-[#636363]  pl-[15%] md:pl-[0px] max-md:pt-4 md:border-r-[1px] 
+          md:pr-[20px] md:order-first w-[95%] md:w-max md:items-center h-[300px] md:h-[200px] order-last 
         ">
           <p className="w-[220px] md:w-[230px] font-bold text-[#DADADA] text-xs md:pr-[20px]">
             {footer.header}
@@ -92,9 +94,9 @@ export default function Footer() {
           </div>
           <div className="
             border-b-[0.5px] md:border-b-[0px] border-[#636363] pb-4 mb-2 
-            grid auto-cols-max gap-x-1 text-xs text-[#dadada] px-[15%] md:px-0
+            grid md:auto-cols-max gap-x-1 text-xs text-[#dadada] px-[15%] md:px-0
           ">
-            <p className="font-bold text-xs text-white col-span-2">
+            <p className="font-bold text-xs text-white lg:col-span-2 md:col-span-1 sm:col-span-2">
               {footer.contactHeader}
             </p>
             <span>{footer.responsible}:</span>
