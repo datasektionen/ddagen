@@ -2,48 +2,101 @@ import { useLocale } from "@/locales";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { useState } from "react";
 
-function Packet({
-                  price,
-                  icons,
-                  packetColor1,
-                  packetColor2,
-                  packetType,
-                  packetDescription,
-                }: {
-  price: string;
-  icons: string[];
-  packetColor1: string;
-  packetColor2: string;
-  packetType: string;
-  packetDescription: string[];
-}) {
-  return (
-    <div className="justify-center flex-col text-center">
-      <div className="h-7 text-cerise justify-center">{packetType}</div>
-      <div className="h-7 text-white justify-center">{price}</div>
-      {packetDescription.map((packet, i) =>
-        <div className="h-7 text-white justify-center">{packet}</div>)
-      }
-    </div>
+const companyHost = [true,true,true];
+const lounge = [true,true,true];
+const wifi = [true,true,true];
+const sponsoredPost = [false,false,true];
+const studentMeeting = [false,false,true];
+const price = ["35 000:-","47 000:-","59 000:-"];
+const area = ["4 m²","6 m²","8 m²"];
 
+function Check({value,}: { value: boolean;}){
+  if (value){
+    return(
+      <div className="flex justify-center items-center">
+        <img src={"/img/check.png"} className="h-6"></img>
+      </div>
+    );
+  }
+  return(
+    <div></div>
   );
 };
 
-function Menu({
-                description,
-              }:{
-  description: string[]
+function Table(){
+  const t = useLocale();
+  return(
+    <div className="pt-6 pl-10 pr-10 grid grid-rows-2 grid-flow-row">
+      <Header packages={t.catalog.names}/>
+      <RowText title={t.catalog.titles.price} packages={price}/>
+      <RowText title={t.catalog.titles.area} packages={area}/>
+      <RowText title={t.catalog.titles.placement} packages={t.catalog.placement}/>
+      <RowText title={t.catalog.titles.exposure} packages={t.catalog.exposure}/>
+      <RowText title={t.catalog.titles.representatives} packages={t.catalog.representatives}/>
+      <RowText title={t.catalog.titles.sittningTickets} packages={t.catalog.sittningTickets}/>
+      <RowText title={t.catalog.titles.drinkCoupons} packages={t.catalog.drinkCoupons}/>
+      <RowBoolean title={t.catalog.titles.companyHost} packages={companyHost}/>
+      <RowBoolean title={t.catalog.titles.lounge} packages={lounge}/>
+      <RowText title={t.catalog.titles.tables} packages={t.catalog.tables}/>
+      <RowBoolean title={t.catalog.titles.wifi} packages={wifi}/>
+      <RowBoolean title={t.catalog.titles.sponsoredPost} packages={sponsoredPost}/>
+      <RowBoolean title={t.catalog.titles.kontaktSamtal} packages={studentMeeting}/>
+    </div>
+  );
+};
+
+function Header({
+  packages
+                }:{
+  packages: string[]
 }){
-  return (
-    <div className="justify-center flex-col">
-      {description.map((packet, i) =>
-        <div className="h-7 text-cerise justify-center pl-5 font-semibold">{packet}</div>)
+  return(
+    <div className="border-b border-white grid grid-cols-4 gap-4 h-9 items-center">
+      <div></div>
+      {
+        packages.map(text => <div className="text-xl text-cerise flex justify-center">
+          <div>{text}</div>
+        </div>)
       }
     </div>
-
   );
 };
 
+function RowBoolean({
+              title,
+              packages,
+             }:{
+  title: string;
+  packages: boolean[];
+}){
+  return(
+    <div className="border-b border-white grid grid-cols-4 gap-4 h-9 items-center">
+      <div className="pl-5 text-cerise font-medium">{title}</div>
+      {
+        packages.map(val => <Check value={val}/>)
+      }
+    </div>
+  );
+};
+
+function RowText({
+                      title,
+                      packages,
+                    }:{
+  title: string;
+  packages: string[];
+}){
+  return(
+    <div className="border-b border-white grid grid-cols-4 gap-4 h-9 items-center">
+      <div className="pl-5 text-cerise font-medium">{title}</div>
+      {
+        packages.map(text => <div className="text-yellow flex justify-center">
+                                <div>{text}</div>
+                            </div>)
+      }
+    </div>
+  );
+};
 
 export default function Catalog() {
   const t = useLocale();
@@ -63,19 +116,7 @@ export default function Catalog() {
     <div className="pt-[100px] pb-[300px]">
       <h1 className="uppercase text-cerise text-5xl font-medium text-center px-[10px] break-words">{t.catalog.header}</h1>
 
-      <div className="pt-10 grid grid-rows-1 grid-flow-col gap-4">
-        <Menu description={t.catalog.packetInfo}/>
-        {packets.map((packet, i) =>
-          <Packet
-            key={i}
-            price={prices[i]}
-            icons={icons[i]}
-            packetColor1={packetColor1[i]}
-            packetColor2={packetColor2[i]}
-            packetType={t.catalog.packetType[i]}
-            packetDescription={packet}
-          />)}
-      </div>
+      <Table/>
 
       <div className="flex flex-col sm:flex-row justify-center gap-[20px] sm:gap-[100px] px-[50px] mt-[200px]">
         <div className="pt-[20px] px-[0px] sm:w-[400px]">
