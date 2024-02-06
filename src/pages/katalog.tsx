@@ -10,97 +10,118 @@ const studentMeeting = [false,false,true];
 const price = ["35 000:-","47 000:-","59 000:-"];
 const area = ["4 m²","6 m²","8 m²"];
 
-function Check({value,}: { value: boolean;}){
-  if (value){
-    return(
-      <div className="flex justify-center items-center">
-        <img src={"/img/check.png"} className="h-6"></img>
-      </div>
-    );
-  }
-  return(
-    <div></div>
-  );
-};
-
 function Table(){
   const t = useLocale();
-  return(
-    <div className="pt-6 pl-10 pr-10 grid grid-rows-2 grid-flow-row">
-      <Header packages={t.catalog.names}/>
-      <RowText title={t.catalog.titles.price} packages={price}/>
-      <RowText title={t.catalog.titles.area} packages={area}/>
-      <RowText title={t.catalog.titles.placement} packages={t.catalog.placement}/>
-      <RowText title={t.catalog.titles.exposure} packages={t.catalog.exposure}/>
-      <RowText title={t.catalog.titles.representatives} packages={t.catalog.representatives}/>
-      <RowText title={t.catalog.titles.sittningTickets} packages={t.catalog.sittningTickets}/>
-      <RowText title={t.catalog.titles.drinkCoupons} packages={t.catalog.drinkCoupons}/>
-      <RowBoolean title={t.catalog.titles.companyHost} packages={companyHost}/>
-      <RowBoolean title={t.catalog.titles.lounge} packages={lounge}/>
-      <RowText title={t.catalog.titles.tables} packages={t.catalog.tables}/>
-      <RowBoolean title={t.catalog.titles.wifi} packages={wifi}/>
-      <RowBoolean title={t.catalog.titles.sponsoredPost} packages={sponsoredPost}/>
-      <RowBoolean title={t.catalog.titles.kontaktSamtal} packages={studentMeeting}/>
-    </div>
-  );
-};
+  const titles = t.catalog.titles;
+  const titlesList = [titles.price, titles.area, titles.placement, titles.exposure, titles.representatives,
+                      titles.sittningTickets, titles.drinkCoupons, titles.companyHost, titles.lounge,
+                      titles.tables, titles.wifi, titles.sponsoredPost, titles.kontaktSamtal];
 
-function Header({
-  packages
-                }:{
-  packages: string[]
-}){
-  return(
-    <div className="border-b border-white grid grid-cols-4 gap-4 h-9 items-center">
+  const smallPackage = [price[0], area[0], t.catalog.placement[0],t.catalog.exposure[0],
+    t.catalog.representatives[0],t.catalog.sittningTickets[0],
+    t.catalog.drinkCoupons[0], companyHost[0], lounge[0],
+    t.catalog.tables[0], wifi[0], sponsoredPost[0], studentMeeting[0]];
+
+  const mediumPackage = [price[1], area[1], t.catalog.placement[1],t.catalog.exposure[1],
+    t.catalog.representatives[1],t.catalog.sittningTickets[1],
+    t.catalog.drinkCoupons[1], companyHost[1], lounge[1],
+    t.catalog.tables[1], wifi[1], sponsoredPost[1], studentMeeting[1]];
+
+  const largePackage = [price[2], area[2], t.catalog.placement[2],t.catalog.exposure[2],
+    t.catalog.representatives[2],t.catalog.sittningTickets[2],
+    t.catalog.drinkCoupons[2], companyHost[2], lounge[2],
+    t.catalog.tables[2], wifi[2], sponsoredPost[2], studentMeeting[2]];
+
+  const packages = [smallPackage, mediumPackage, largePackage];
+
+  const [packageIdx, setPackageIdx] = useState<number>(0);
+
+  function Display({value,}: { value: string | boolean;}){
+    if (typeof value === 'string'){
+      return (<div className="text-center p-2 text-yellow sm-text-xs lg-text-lg">
+                {value}
+              </div>);
+    }
+    if (value){
+      return (<div className="flex justify-center items-center">
+                <img src={"/img/check.png"} className="h-6"></img>
+              </div>);
+    }
+    return(
       <div></div>
-      {
-        packages.map(text => <div className="text-xl text-cerise flex justify-center">
-          <div>{text}</div>
-        </div>)
-      }
-    </div>
-  );
-};
+    );
+  };
 
-function RowBoolean({
-              title,
-              packages,
-             }:{
-  title: string;
-  packages: boolean[];
-}){
-  return(
-    <div className="border-b border-white grid grid-cols-4 gap-4 h-9 items-center">
-      <div className="pl-5 text-cerise font-medium">{title}</div>
-      {
-        packages.map(val => <Check value={val}/>)
-      }
-    </div>
-  );
-};
+  const increasePackageIdx = () => {
+    setPackageIdx((packageIdx + 1) % packages.length);
+  };
 
-function RowText({
-                      title,
-                      packages,
-                    }:{
-  title: string;
-  packages: string[];
-}){
+  const decreasePackageIdx = () => {
+    setPackageIdx((packageIdx - 1 + packages.length) % packages.length);
+  };
+
   return(
-    <div className="border-b border-white grid grid-cols-4 gap-4 h-9 items-center">
-      <div className="pl-5 text-cerise font-medium">{title}</div>
-      {
-        packages.map(text => <div className="text-yellow flex justify-center">
-                                <div>{text}</div>
-                            </div>)
-      }
+    <div>
+      {/*Desktop version*/}
+      <div className="pt-4 pl-10 pr-10 hidden md:block">
+        <table className="w-full">
+          <thead>
+            <tr className="border-b border-white">
+              <th></th>
+              {t.catalog.names.map(name => (
+                <th className="text-xl text-cerise">{name}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+          {titlesList.map((title, idx) =>(
+              <tr key={idx} className="border-b border-white h-10">
+                <td className="pl-5 text-cerise font-medium">{title}</td>
+                <td><Display value={smallPackage[idx]}/></td>
+                <td><Display value={mediumPackage[idx]}/></td>
+                <td><Display value={largePackage[idx]}/></td>
+              </tr>
+            )
+          )}
+          </tbody>
+        </table>
+      </div>
+
+      {/*Phone version*/}
+      <div className="block md:hidden pr-10 pl-10 pt-4">
+        <div className="rounded-2xl bg-white/20 pt-4 pb-4">
+          <div className="flex justify-center items-center">
+            <button onClick={decreasePackageIdx} className="pl-4">
+              <img src={"/img/leftArrow.png"} className="h-6"></img>
+            </button>
+            <h2 className="text-white text-center w-64">{t.catalog.names[packageIdx]}</h2>
+            <button onClick={increasePackageIdx} className="pr-4">
+              <img src={"/img/rightArrow.png"} className="h-6"></img>
+            </button>
+          </div>
+          <table className="border-collapse">
+            {titlesList.map((title, idx) =>(
+                <tr key={idx} className="h-10">
+                  <td className="text-center object-center w-1/2 border-r border-white p-2 text-cerise font-medium text-xs">
+                    {title}
+                  </td>
+                  <td className="w-1/2">
+                    <Display value={packages[packageIdx][idx]}/>
+                  </td>
+                </tr>
+              )
+            )}
+          </table>
+        </div>
+
+
+      </div>
     </div>
   );
 };
 
 export default function Catalog() {
   const t = useLocale();
-  const packets = [t.catalog.basePacket, t.catalog.sponsorPacket, t.catalog.headhHunterPacket, t.catalog.premiumPacket];
   const prices = ["35 000:-", "45 000:-", "55 000:-", "70 000:-"];
   const iconsBase = ["fa-expand", "fa-laptop", "fa-circle", "fa-users", "fa-ticket-alt", "fa-cocktail", "fa-wifi", "fa-couch", "fa-user-tie", "fa-box-open",];
   const iconsSponsor = ["fa-expand", "fa-laptop", "fa-circle", "fa-users", "fa-ticket-alt", "fa-cocktail", "fa-wifi", "fa-couch", "fa-user-tie", "fa-box-open", "fa-book-open", "fa-shopping-bag", "fa-camera"];
@@ -113,8 +134,8 @@ export default function Catalog() {
   const packetColor2 = ["bg-[#E2B7C9]", "bg-[#D5759C]", "bg-cerise", "bg-yellow"];
 
   return (
-    <div className="pt-[100px] pb-[300px]">
-      <h1 className="uppercase text-cerise text-5xl font-medium text-center px-[10px] break-words">{t.catalog.header}</h1>
+    <div className="pt-[80px] pb-[300px]">
+      <h1 className="uppercase text-cerise text-4xl md:text-5xl font-medium text-center px-[10px] break-words">{t.catalog.header}</h1>
 
       <Table/>
 
