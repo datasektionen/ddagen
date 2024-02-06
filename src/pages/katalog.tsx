@@ -2,16 +2,17 @@ import { useLocale } from "@/locales";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { useState } from "react";
 
-const companyHost = [true,true,true];
-const lounge = [true,true,true];
-const wifi = [true,true,true];
-const sponsoredPost = [false,false,true];
-const studentMeeting = [false,false,true];
-const price = ["35 000:-","47 000:-","59 000:-"];
-const area = ["4 m²","6 m²","8 m²"];
+
 
 function Table(){
   const t = useLocale();
+  const companyHost = [true,true,true];
+  const lounge = [true,true,true];
+  const wifi = [true,true,true];
+  const sponsoredPost = [false,false,true];
+  const studentMeeting = [false,false,true];
+  const price = ["35 000:-","47 000:-","59 000:-"];
+  const area = ["4 m²","6 m²","8 m²"];
   const titles = t.catalog.titles;
   const titlesList = [titles.price, titles.area, titles.placement, titles.exposure, titles.representatives,
                       titles.sittningTickets, titles.drinkCoupons, titles.companyHost, titles.lounge,
@@ -68,8 +69,8 @@ function Table(){
           <thead>
             <tr className="border-b border-white">
               <th></th>
-              {t.catalog.names.map(name => (
-                <th className="text-xl text-cerise">{name}</th>
+              {t.catalog.names.map((name,i) => (
+                <th key={i} className="text-xl text-cerise">{name}</th>
               ))}
             </tr>
           </thead>
@@ -100,17 +101,19 @@ function Table(){
             </button>
           </div>
           <table className="border-collapse">
-            {titlesList.map((title, idx) =>(
-                <tr key={idx} className="h-10">
-                  <td className="text-center object-center w-1/2 border-r border-white p-2 text-cerise font-medium text-xs">
-                    {title}
-                  </td>
-                  <td className="w-1/2">
-                    <Display value={packages[packageIdx][idx]}/>
-                  </td>
-                </tr>
-              )
-            )}
+            <tbody>
+              {titlesList.map((title, idx) =>(
+                  <tr key={idx} className="h-10">
+                    <td className="text-center object-center w-1/2 border-r border-white p-2 text-cerise font-medium text-xs">
+                      {title}
+                    </td>
+                    <td className="w-1/2">
+                      <Display value={packages[packageIdx][idx]}/>
+                    </td>
+                  </tr>
+                )
+              )}
+            </tbody>
           </table>
         </div>
 
