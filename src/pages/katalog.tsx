@@ -13,10 +13,6 @@ function Table(){
   const studentMeeting = [false,false,true];
   const price = ["35 000:-","47 000:-","59 000:-"];
   const area = ["4 m²","6 m²","8 m²"];
-  const titles = t.catalog.titles;
-  const titlesList = [titles.price, titles.area, titles.placement, titles.exposure, titles.representatives,
-                      titles.sittningTickets, titles.drinkCoupons, titles.companyHost, titles.lounge,
-                      titles.tables, titles.wifi, titles.sponsoredPost, titles.kontaktSamtal];
 
   const smallPackage = [price[0], area[0], t.catalog.placement[0],t.catalog.exposure[0],
     t.catalog.representatives[0],t.catalog.sittningTickets[0],
@@ -75,7 +71,7 @@ function Table(){
             </tr>
           </thead>
           <tbody>
-          {titlesList.map((title, idx) =>(
+          {t.catalog.titles.map((title, idx) =>(
               <tr key={idx} className="border-b border-white h-10">
                 <td className="pl-5 text-cerise font-medium">{title}</td>
                 <td><Display value={smallPackage[idx]}/></td>
@@ -102,7 +98,7 @@ function Table(){
           </div>
           <table className="border-collapse">
             <tbody>
-              {titlesList.map((title, idx) =>(
+              {t.catalog.titles.map((title, idx) =>(
                   <tr key={idx} className="h-10">
                     <td className="text-center object-center w-1/2 border-r border-white p-2 text-cerise font-medium text-xs">
                       {title}
