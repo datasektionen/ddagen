@@ -35,12 +35,12 @@ function Table(){
 
   function Display({value,}: { value: string | boolean;}){
     if (typeof value === 'string'){
-      return (<div className="text-center p-2 text-yellow sm-text-xs lg-text-lg">
+      return (<div className="text-center p-2 text-yellow sm-text-xs lg-text-lg drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
                 {value}
               </div>);
     }
     if (value){
-      return (<div className="flex justify-center items-center">
+      return (<div className="flex justify-center items-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
                 <img src={"/img/check.png"} className="h-6"></img>
               </div>);
     }
@@ -63,7 +63,7 @@ function Table(){
       <div className="pt-4 pl-10 pr-10 hidden md:block">
         <table className="w-full">
           <thead>
-            <tr className="border-b border-white">
+            <tr className="border-b border-white ">
               <th></th>
               {t.catalog.names.map((name,i) => (
                 <th key={i} className="text-xl text-cerise">{name}</th>
@@ -85,7 +85,7 @@ function Table(){
       </div>
 
       {/*Phone version*/}
-      <div className="block md:hidden pr-10 pl-10 pt-4">
+      <div className="block md:hidden px-2 pt-4">
         <div className="rounded-2xl bg-white/20 pt-4 pb-4">
           <div className="flex justify-center items-center">
             <button onClick={decreasePackageIdx} className="pl-4">
@@ -96,11 +96,11 @@ function Table(){
               <img src={"/img/rightArrow.png"} className="h-6"></img>
             </button>
           </div>
-          <table className="border-collapse">
+          <table className="border-collapse w-full">
             <tbody>
               {t.catalog.titles.map((title, idx) =>(
                   <tr key={idx} className="h-10">
-                    <td className="text-center object-center w-1/2 border-r border-white p-2 text-cerise font-medium text-xs">
+                    <td className="text-right object-center w-1/2 border-r border-white p-2 text-cerise font-bold text-xs drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
                       {title}
                     </td>
                     <td className="w-1/2">
