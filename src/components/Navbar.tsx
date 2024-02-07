@@ -276,7 +276,7 @@ export default function Navbar() {
             <Group
               links={[
                 { href: "/förföretag", text: t.forCompanies },
-                //{ href: "/katalog", text: t.catalog },
+                { href: "/katalog", text: t.catalog },
                 //{ href: "/event", text: "event" },
                 { href: "/faq", text: "faq" },
                 /*...(isLoggedIn.data == true
