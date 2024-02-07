@@ -270,7 +270,7 @@ export default {
   footer: {
     header: "Organized by Datasektionen",
     about:
-      "Datasektionen, or the Computer Science Chapeter is a non-profit student chapter under THS which exists to give all CS students at KTH the best study time possible.",
+      "Datasektionen, or the Computer Science Chapter is a non-profit student chapter under THS which exists to give all CS students at KTH the best study time possible.",
     contactHeader: "Contact",
     responsible: "Project Managers",
     salesGroup: "Sales Team",
@@ -533,8 +533,16 @@ export default {
     info1: "What is D-Dagen",
     info2: "D-Dagen before",
     info3: "D-Dagen today",
+    dummy: [
+      "HEAD OF D-DAGEN",
+    "HEAD OF D-DAGEN",
+    "HEAD OF PR",
+    "LEAD DEVELOPER",
+    "HEAD OF THE FAIR",
+    "HEAD OF SALES",
+    "HEAD OF FINANCES"],
     prTeamRoles: [
-      ["PR Manager", "Print Manager", "Art Director"],
+      ["Head of PR", "Print Manager", "Art Director"],
       ["Art Director", "Social Media Manager"],
     ],
     devTeamRoles: [
@@ -542,15 +550,15 @@ export default {
       ["Web Developer"],
     ],
     salesTeamRoles: [
-      ["Sales Manager", "Salesperson", "Salesperson", ],
+      ["Head of Sales", "Salesperson", "Salesperson", ],
       ["Salesperson", "Salesperson", "Salesperson"],
       ["Salesperson", "Sponsorship Manager"],
     ],
     massTeamRoles: [
-      ["Fair Manager", "Event Manager", "Logistics Manager", ],
+      ["Head of the Fair", "Event Manager", "Logistics Manager", ],
       ["Venue Manager", "Lounge Manager", "HR Manager"],
     ],
-    ecoTeamRoles: [["Financial Manager", "Deputy Financial Manager"]],
+    ecoTeamRoles: [["Head of Finances", "Deputy Financial Manager"]],
     ddaRoles: [
       ["DDA", "DDA"], // Assuming DDA remains the same without context.
     ],

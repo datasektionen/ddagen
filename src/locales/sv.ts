@@ -546,7 +546,7 @@ export default {
       ["Säljare","Sponsansvarig"],
     ],
     devTeamRoles: [
-      ["Lead Developer", "Systemutvecklare", "Webbutvecklare"],
+      ["Webb-Ansvarig", "Systemutvecklare", "Webbutvecklare"],
       ["Webbutvecklare"],
     ],
     massTeamRoles: [
