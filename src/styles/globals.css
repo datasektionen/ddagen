@@ -73,3 +73,34 @@
   -ms-filter: grayscale(100%);
   -o-filter: grayscale(100%);
 }
+
+
+/* Custom scrollbar*/
+/* No Firefox support */
+
+/* width */
+::-webkit-scrollbar {
+  width: 1rem;
+ 
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-blend-mode: darken;
+  background: rgb(17,12,48);
+  background: linear-gradient(0deg, rgba(17,12,48,1) 0vh, rgba(238,42,123,1) 200vh);
+  
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #e83d8489;
+  border-radius: 20px;
+  transition: all 1s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e83d84; 
+}
+
+

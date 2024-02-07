@@ -58,10 +58,10 @@ function Table(){
   };
 
   return(
-    <div>
+    <div className="flex flex-row items-center justify-center w-full ">
       {/*Desktop version*/}
-      <div className="pt-4 pl-10 pr-10 hidden md:block">
-        <table className="w-full">
+      <div className="pt-8 pl-10 pr-10 hidden md:block w-full">
+        <table className="lg:w-[1000px]">
           <thead>
             <tr className="border-b border-white ">
               <th></th>
@@ -85,7 +85,7 @@ function Table(){
       </div>
 
       {/*Phone version*/}
-      <div className="block md:hidden px-2 pt-4">
+      <div className="md:hidden px-2 pt-4">
         <div className="rounded-2xl bg-white/20 pt-4 pb-4">
           <div className="flex justify-center items-center">
             <button onClick={decreasePackageIdx} className="pl-4">
@@ -96,7 +96,7 @@ function Table(){
               <img src={"/img/rightArrow.png"} className="h-6"></img>
             </button>
           </div>
-          <table className="border-collapse w-full">
+          <table className="border-collapse">
             <tbody>
               {t.catalog.titles.map((title, idx) =>(
                   <tr key={idx} className="h-10">
@@ -133,12 +133,12 @@ export default function Catalog() {
   const packetColor2 = ["bg-[#E2B7C9]", "bg-[#D5759C]", "bg-cerise", "bg-yellow"];
 
   return (
-    <div className="pt-[80px] pb-[300px]">
-      <h1 className="uppercase text-cerise text-4xl md:text-5xl font-medium text-center px-[10px] break-words">{t.catalog.header}</h1>
+    <div className="w-full h-full">
+      <h1 className="uppercase text-cerise text-4xl md:text-5xl font-medium text-center px-[10px] pt-[200px] mb-36 break-words">{t.catalog.header}</h1>
 
       <Table/>
 
-      <div className="flex flex-col sm:flex-row justify-center gap-[20px] sm:gap-[100px] px-[50px] mt-[200px]">
+      <div className="flex flex-col sm:flex-row justify-center gap-[20px] sm:gap-[100px] px-[50px] mt-[200px] mb-36">
         <div className="pt-[20px] px-[0px] sm:w-[400px]">
           <h1 className="text-4xl font-normal text-cerise"> {t.catalog.subheader}</h1>
           <p className="text-white text-lg mt-4">{t.catalog.paragraph}</p>

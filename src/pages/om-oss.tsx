@@ -63,17 +63,18 @@ function Team({
     <div
       className={`${
         reverse ? "flex-row-reverse" : "flex-row"
-      } flex mt-[100px] px-[20px] lg:px-[100px] flex-col lg:flex-row justify-center lg:h-[700px]`}
+      } flex mt-[100px] px-[20px] lg:px-[100px] flex-col lg:flex-row justify-center`}
     >
       <div className="flex flex-col">
         <img src={teamPic} className="h-auto  lg:max-w-lg"></img>
         <div className="bg-white/80 lg:bg-white flex items-center justify-center h-full">
-          <p className="text-4xl text-cerise font-bold lg:px-[100px]">
+          <p className="text-4xl text-cerise font-bold lg:px-[100px] py-4">
             {teamName}
           </p>
         </div>
       </div>
-
+      {/* 
+      
       <div className=" pt-5 w-auto lg:w-[480px] xl:w-[700px]  bg-white/80 flex flex-col overflow-x-auto overflow-y-visible lg:py-10 gap-10">
         {team.map((row, i) => (
           <div className="flex flex-row gap-2 justify-center pb-3" key={row.toString()}>
@@ -96,6 +97,7 @@ function Team({
           </div>
         ))}
       </div>
+      */}
     </div>
   );
 }
@@ -190,50 +192,57 @@ export default function AboutUs() {
         teamRoles={t.aboutUs.ddaRoles}
         teamName={t.aboutUs.teamNames[0]}
       />
-      <Team
-        team={prTeam}
-        reverse={false}
-        teamPic="/img/projectGroup/g_pr.jpg"
-        names={prName}
-        teamRoles={t.aboutUs.prTeamRoles}
-        teamName={t.aboutUs.teamNames[1]}
+
+      <div className="flex flex-row object-center">
+        <Team
+          team={prTeam}
+          reverse={false}
+          teamPic="/img/projectGroup/g_pr.jpg"
+          names={prName}
+          teamRoles={t.aboutUs.prTeamRoles}
+          teamName={t.aboutUs.teamNames[1]}
+          />
+
+        <Team
+          team={devTeam}
+          reverse={false}
+          teamPic="/img/projectGroup/g_dev.jpg"
+          names={devName}
+          teamRoles={t.aboutUs.devTeamRoles}
+          teamName={t.aboutUs.teamNames[2]}
+          />
+      </div>
+      <div className="flex flex-row">
+        <Team
+          team={saleTeam}
+          reverse={false}
+          teamPic="/img/projectGroup/g_sales.jpg"
+          names={salesNames}
+          teamRoles={t.aboutUs.salesTeamRoles}
+          teamName={t.aboutUs.teamNames[3]}
         />
 
-      <Team
-        team={devTeam}
-        reverse={false}
-        teamPic="/img/projectGroup/g_dev.jpg"
-        names={devName}
-        teamRoles={t.aboutUs.devTeamRoles}
-        teamName={t.aboutUs.teamNames[2]}
+        <Team
+          team={massTeam}
+          reverse={false}
+          teamPic="/img/projectGroup/g_mass.jpg"
+          names={massNames}
+          teamRoles={t.aboutUs.massTeamRoles}
+          teamName={t.aboutUs.teamNames[4]}
         />
+      </div>
 
-      <Team
-        team={saleTeam}
-        reverse={false}
-        teamPic="/img/projectGroup/g_sales.jpg"
-        names={salesNames}
-        teamRoles={t.aboutUs.salesTeamRoles}
-        teamName={t.aboutUs.teamNames[3]}
-      />
-
-      <Team
-        team={massTeam}
-        reverse={false}
-        teamPic="/img/projectGroup/g_mass.jpg"
-        names={massNames}
-        teamRoles={t.aboutUs.massTeamRoles}
-        teamName={t.aboutUs.teamNames[4]}
-      />
-
-      <Team
-        team={econonmyTeam}
-        reverse={true}
-        teamPic="/img/projectGroup/g_money.jpg"
-        names={ecoNames}
-        teamRoles={t.aboutUs.ecoTeamRoles}
-        teamName={t.aboutUs.teamNames[5]}
-      />
+      <div className="flex flex-row">
+        <Team
+          team={econonmyTeam}
+          reverse={true}
+          teamPic="/img/projectGroup/g_money.jpg"
+          names={ecoNames}
+          teamRoles={t.aboutUs.ecoTeamRoles}
+          teamName={t.aboutUs.teamNames[5]}
+        />
+      </div>
+      
     
       
     </div>
