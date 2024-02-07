@@ -39,7 +39,7 @@ export default function Contact() {
     "viktor.ronnbacka@ddagen.se", 
     "mortada.nasser@ddagen.se", 
     "linus.markstrom@ddagen.se", 
-    "oscar.witt@ddagen.se"
+    "oscar.witt@ddagen.se",
   ];
   const rows1 = [0, 1, 2];
   const layout1 = [
@@ -101,17 +101,18 @@ export default function Contact() {
       <div className="mt-[50px] flex flex-col ">
         {rows1.map((i, _) => (
           <div className="hidden lg:flex flex-row justify-between gap-10 px-[100px] mb-[50px]" key={i}>
+            {/** Where we use some funky indexing to ensure the seventh person is centerd but without the design breaking and the data still being correct*/}
             {layout1[i].map((i, _) => (
-              <div className="flex flex-col" key={i} style={{ visibility: i > 6 ? 'hidden' : 'visible' }}> {/** Cheat to ensure even design*/}
+              <div className="flex flex-col" key={i} style={{ visibility: (i > 7 || i == 6) ? 'hidden' : 'visible' }}> 
                 <img className="grayscale w-full" src={images[i]} ></img>
                 <p className="px-[10px] text-cerise text-xl font-normal mt-5">
-                  {names[i]}
+                  {names[(i < 7 ? i : i-1 )]}
                 </p>
                 <div className="py-[20px] px-[10px] rounded-[20px] mt-2 bg-slate-50 bg-opacity-20 border-cerise text-white">
                   
-                  <span className="block">{roles[i]}</span>
-                  <a    className="block" href={"mailto:" + mails[i]} >{mails[i]}</a>
-                  <a    className="block" href={"tel:" + phones[i]} >{phones[i]}</a>
+                  <span className="block">{roles[(i < 7 ? i : i-1 )]}</span>
+                  <a    className="block" href={"mailto:" + mails[ (i < 7 ? i : i-1 ) ]} >{mails[(i < 7 ? i : i-1 )]}</a> {/** Funky indexing*/}
+                  <a    className="block" href={"tel:" + phones[(i < 7 ? i : i-1 )]} >{phones[(i < 7 ? i : i-1 )]}</a>  {/** -||- */}
                 </div>
               </div>
             ))}
