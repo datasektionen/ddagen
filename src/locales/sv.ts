@@ -582,7 +582,7 @@ export default {
     info3: "D-Dagen idag",
     prTeamRoles: [
       ["PR-Ansvarig", "Tryckansvarig", "Art Director",],
-      ["Art Director", "PR-Ansvarig" ],
+      ["Art Director", "Sociala medier-ansvarig" ],
     ],
     salesTeamRoles: [
       ["Säljansvarig", "Säljare", "Säljare", ],
