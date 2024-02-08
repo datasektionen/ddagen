@@ -430,6 +430,7 @@ export default {
       "SPONSORED POST",
       "HALF DAY PRIVATE STUDENT MEETINGS",
     ],
+    downloadProductCatalog: "Download Catalog",
     subheader: "QUESTIONS, THOUGHTS, & IDEAS?",
     paragraph:
       "Don't hesitate to get in touch if you have any questions about our products or have any other questions.",

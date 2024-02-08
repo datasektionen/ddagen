@@ -60,7 +60,7 @@ function Table(){
   return(
     <div className="flex flex-row items-center justify-center w-full ">
       {/*Desktop version*/}
-      <div className="pt-8 pl-10 pr-10 hidden md:block w-full">
+      <div className="pt-8 pl-10 pr-10 hidden md:block">
         <table className="lg:w-[1000px]">
           <thead>
             <tr className="border-b border-white ">
@@ -138,6 +138,16 @@ export default function Catalog() {
 
       <Table/>
 
+      <div className="flex flex-row items-center justify-center w-full pt-6 max-lg:hidden">
+        <button className="">
+          <a
+            className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-medium px-6 py-2 max-lg:mx-auto w-max"
+            href={t.faq.catalogPath}
+          >
+            {t.catalog.downloadProductCatalog}
+          </a>
+        </button>
+      </div>
       <div className="flex flex-col sm:flex-row justify-center gap-[20px] sm:gap-[100px] px-[50px] mt-[200px] mb-36">
         <div className="pt-[20px] px-[0px] sm:w-[400px]">
           <h1 className="text-4xl font-normal text-cerise"> {t.catalog.subheader}</h1>

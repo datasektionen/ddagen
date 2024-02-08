@@ -433,6 +433,7 @@ export default {
       "SPONSRAT INLÄGG",
       "HALVDAG AV KONTAKTSAMTAL",
     ],
+    downloadProductCatalog: "Ladda ner Katalogen",
     subheader: "QUESTIONS, THOUGHTS, & IDEAS?",
     paragraph:
       "Don't hesitate to get in touch if you have any questions about our products or have any other questions.",
