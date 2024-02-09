@@ -54,12 +54,19 @@ function Team({
   teamRoles: string[][];
 }) {
   const numMembers = team.length - 1;
-  const numRows = numMembers / 3;
+  const numRows = Math.ceil(numMembers / 3);
+  const numCols = team.length < 3 ? team.length : 3;
   const arr = Array.from({ length: numRows }, (_, index) => index);
+  
+  const [isOpen, setIsOpen] = useState(false);
+
+  function toggleOpen() {
+    setIsOpen((isOpen) => !isOpen);
+  }
 
   return (
-    <div className= "flex flex-col mt-[20px] cursor-pointer">
-      <div className=" bg-white/80 rounded-3xl flex flex-col items-center">
+    <div className= "flex flex-col mt-[20px] cursor-pointer group/card"  onClick={toggleOpen}>
+      <div className=" bg-white/80 rounded-3xl flex flex-col items-center ">
         <img src={teamPic} className="h-auto rounded-t-3xl"></img>
         <div className=" flex items-center justify-center ">
           <p className="text-3xl text-cerise font-bold lg:px-[100px] py-4">
@@ -68,31 +75,38 @@ function Team({
         </div>
       </div>
       
-      <button className="opacity-0 my-4 w-full flex flex-col items-center">
-        <img src="\img\arrow-down.png" className="w-6 h-auto "></img>
+      <button className="
+        duration-300 transition-opacity transition-transform
+        opacity-0 transform translate-y-[-10px] 
+        group-hover/card:opacity-100 group-hover/card:translate-y-0 
+        group-focus/card:opacity-100 group-focus/card:translate-y-0
+        select-none
+        my-4 w-full flex flex-col items-center">
+        <img src="\img\arrow-down.png" className="w-6 h-auto text-drop-shadow rotation-x-90+"></img>
       </button>
       
-      <div className="hidden mt-5 pt-5 bg-white/20 backdrop-blur-md flex flex-col overflow-x-auto overflow-y-visible  rounded-3xl">
-        {team.map((row, i) => (
-          <div className="flex flex-row gap-2 justify-center pb-3" key={row.toString()}>
-            {row.map((image, j) => (
-              <div className="flex flex-col" key={image != null ? image : "about_img"+(i*3+j).toString() }>
-                <div className=" w-[90px] sm:w-[150px] md:w-[180px] lg:w-[140px] xl:w-[200px] ">
-                  <img src={image} className=" rounded-[20px]"></img>
-                  <div className="mt-2">
-                    <p className="text-center text-yellow text-xs lg:text-sm font-medium text-drop-shadow">
-                      {" "}
-                      {names[i][j]}
-                    </p>
-                    <p className="text-center text-xs lg:text-sm font-medium text-cerise drop-shadow">
-                      {teamRoles[i][j]}
-                    </p>
+      <div className={`${isOpen ? 'visble':'hidden'} duration-300 transition mt-5 pt-5 bg-white/20 backdrop-blur-md flex flex-col overflow-x-auto overflow-y-hidden  rounded-3xl`}>
+        <div className={`grid grid-cols-2 justify-center justify-items-center gap-4 p-4`}>
+          {team.map((row, i) => (
+              row.map((image, j) => (
+                <div className="flex flex-col" key={image != null ? image : "about_img"+(i*3+j).toString() }>
+                  <div className=" w-auto">
+                    <img src={image} className=" rounded-[20px]"></img>
+                    <div className="mt-2">
+                      <p className="text-center text-yellow  text-xs lg:text-sm font-medium text-drop-shadow">
+                        {" "}
+                        {names[i][j]}
+                      </p>
+                      <p className="text-center text-xs lg:text-sm font-medium text-cerise drop-shadow">
+                        {teamRoles[i][j]}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        ))}
+              ))
+            // </div>
+          ))}
+        </div>
       </div>
       
     </div>
