@@ -35,12 +35,12 @@ function Table(){
 
   function Display({value,}: { value: string | boolean;}){
     if (typeof value === 'string'){
-      return (<div className="text-center p-2 text-yellow sm-text-xs lg-text-lg drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+      return (<div className="text-center p-2 text-yellow sm-text-xs lg-text-lg text-drop-shadow">
                 {value}
               </div>);
     }
     if (value){
-      return (<div className="flex justify-center items-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+      return (<div className="flex justify-center items-center text-drop-shadow">
                 <img src={"/img/check.png"} className="h-6"></img>
               </div>);
     }
@@ -60,8 +60,8 @@ function Table(){
   return(
     <div className="flex flex-row items-center justify-center w-full ">
       {/*Desktop version*/}
-      <div className="pt-8 pl-10 pr-10 hidden md:block">
-        <table className="lg:w-[1000px]">
+      <div className="pl-10 pr-10 hidden md:block">
+        <table className="">
           <thead>
             <tr className="border-b border-white ">
               <th></th>
@@ -86,7 +86,7 @@ function Table(){
 
       {/*Phone version*/}
       <div className="md:hidden px-2 pt-4">
-        <div className="rounded-2xl bg-white/20 pt-4 pb-4">
+        <div className="rounded-2xl bg-white/20 backdrop-blur-md pt-4 pb-4">
           <div className="flex justify-center items-center">
             <button onClick={decreasePackageIdx} className="pl-4">
               <img src={"/img/leftArrow.png"} className="h-6"></img>
@@ -96,11 +96,11 @@ function Table(){
               <img src={"/img/rightArrow.png"} className="h-6"></img>
             </button>
           </div>
-          <table className="border-collapse">
+          <table className="border-collapse mt-4">
             <tbody>
               {t.catalog.titles.map((title, idx) =>(
                   <tr key={idx} className="h-10">
-                    <td className="text-right object-center w-1/2 border-r border-white p-2 text-cerise font-bold text-xs drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                    <td className="text-right object-center w-1/2 border-r border-white p-2 text-cerise font-bold text-xs text-drop-shadow">
                       {title}
                     </td>
                     <td className="w-1/2">
@@ -133,31 +133,37 @@ export default function Catalog() {
   const packetColor2 = ["bg-[#E2B7C9]", "bg-[#D5759C]", "bg-cerise", "bg-yellow"];
 
   return (
-    <div className="w-full h-full">
-      <h1 className="uppercase text-cerise text-4xl md:text-5xl font-medium text-center px-[10px] pt-[200px] mb-36 break-words">{t.catalog.header}</h1>
+    <div className="w-full flex flex-col items-center">
+      <div className="xl:w-[1200px] lg:w-[1000px] w-full">
+        <h1 className="uppercase text-center text-cerise pt-[200px] mb-36 md:text-5xl text-4xl font-medium">
+          {t.catalog.header}
+        </h1>
 
-      <Table/>
+        <Table/>
 
-      <div className="flex flex-row items-center justify-center w-full pt-6 max-lg:hidden">
-        <button className="">
-          <a
-            className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-medium px-6 py-2 max-lg:mx-auto w-max"
-            href={t.faq.catalogPath}
-          >
-            {t.catalog.downloadProductCatalog}
-          </a>
-        </button>
-      </div>
-      <div className="flex flex-col sm:flex-row justify-center gap-[20px] sm:gap-[100px] px-[50px] mt-[200px] mb-36">
-        <div className="pt-[20px] px-[0px] sm:w-[400px]">
-          <h1 className="text-4xl font-normal text-cerise"> {t.catalog.subheader}</h1>
-          <p className="text-white text-lg mt-4">{t.catalog.paragraph}</p>
-          <a className="block text-cerise mt-6" href="mailto:sales@ddagen.se">sales@ddagen.se</a>
+        <div className="flex flex-row items-center justify-center w-full pt-6 max-lg:hidden">
+          <button className="">
+            <a
+              className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-medium px-6 py-2 max-lg:mx-auto w-max"
+              href={t.faq.catalogPath}
+            >
+              {t.catalog.downloadProductCatalog}
+            </a>
+          </button>
         </div>
-        <div className="">
-          <img src="/img/catalogImg.png" className="sm:w-[600px]"></img>
+        <div className="flex flex-col sm:flex-row justify-center gap-[20px] sm:gap-[100px] px-[50px] mt-[200px] mb-36">
+          <div className="pt-[20px] px-[0px] sm:w-[400px]">
+            <h1 className="text-4xl font-normal text-cerise"> {t.catalog.subheader}</h1>
+            <p className="text-white text-lg mt-4">{t.catalog.paragraph}</p>
+            <a className="block text-cerise mt-6" href="mailto:sales@ddagen.se">sales@ddagen.se</a>
+          </div>
+          <div className="">
+            <img src="/img/catalogImg.png" className="sm:w-[600px]"></img>
+          </div>
         </div>
       </div>
+      
+      
     </div>
   );
 }
