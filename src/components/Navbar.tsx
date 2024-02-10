@@ -53,17 +53,21 @@ function Logo({ class: className }: { class?: string }) {
       }
     >
       {/**/}
-      <img src="/img/fluga_cerise.svg" className="absolute w-3/4" />
-      <div className="animate-in-fluga mx-[-13px] my-[-46px] absolute"></div>
+      <img src="/img/fluga_cerise.svg" className="animate-in-opacity absolute w-3/4" />
+      <div className="animate-in-fluga mx-[-13px] my-[-43px] absolute"></div>
+      <div className="absolute w-full top-[16%] left-[1%] ">
       <img
         src="/img/logo-white-ageless_v2.svg"
         alt="D-Dagen logga"
-        className="absolute w-full top-[16%] left-[1%]"
+        className="animate-in-logo-text-roll-in"
       />
+      </div>
+      
       <p
         className="
         absolute bottom-0 right-0
         text-[65%] leading-none
+        animate-in-logo-date-drop-down
       "
       >
         2024
