@@ -1,5 +1,5 @@
 import { useLocale } from "@/locales";
-import { useState } from "react";
+import { useState, useEffect, useRef, use, useReducer } from "react";
 import { create2DArrayWithValues } from "@/shared/array";
 
 const imagesPath = "/img/projectGroup/p_";
@@ -40,6 +40,7 @@ const econonmyTeam = create2DArrayWithValues(2, 1, ecoList.map(stripLastName).ma
 
 
 
+
 function Team({
   team,
   teamPic,
@@ -54,20 +55,24 @@ function Team({
   teamRoles: string[][];
 }) {
   const numMembers = team.length - 1;
-  const numRows = Math.ceil(numMembers / 3);
-  const numCols = team.length < 3 ? team.length : 3;
+  const numRows = 1+Math.ceil(numMembers / 2);
   const arr = Array.from({ length: numRows }, (_, index) => index);
-  
+
+  const collapseDiv = useRef<HTMLDivElement>(null);
+  const scrollAnchor = useRef<HTMLDivElement>(null);
+
+  const [height, setHeight] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
 
-  function toggleOpen() {
-    setIsOpen((isOpen) => !isOpen);
-  }
+  const toggleOpen = () => {
+    setIsOpen(!isOpen);
+  };
+
 
   return (
-    <div className= "flex flex-col mt-[20px] cursor-pointer group/card"  onClick={toggleOpen}>
-      <div className=" bg-white/80 rounded-3xl flex flex-col items-center ">
-        <img src={teamPic} className="h-auto rounded-t-3xl"></img>
+    <div className= "flex flex-col cursor-pointer group/card" onClick={toggleOpen}>
+      <div ref={scrollAnchor} className=" bg-white/80 rounded-3xl lg:rounded-l-3xl flex flex-col items-center ">
+        <img src={teamPic} className="h-auto rounded-t-3xl w-full"></img>
         <div className=" flex items-center justify-center ">
           <p className="text-3xl text-cerise font-bold lg:px-[100px] py-4">
             {teamName}
@@ -75,29 +80,34 @@ function Team({
         </div>
       </div>
       
-      <button className="
-        duration-300 transition-opacity transition-transform
-        opacity-0 transform translate-y-[-10px] 
+      <button className={` 
+        duration-300 transition-all 
+        opacity-0 translate-y-[-10px] 
         group-hover/card:opacity-100 group-hover/card:translate-y-0 
-        group-focus/card:opacity-100 group-focus/card:translate-y-0
-        select-none
-        my-4 w-full flex flex-col items-center">
-        <img src="\img\arrow-down.png" className="w-6 h-auto text-drop-shadow rotation-x-90+"></img>
+        my-4 w-full flex flex-col items-center select-none
+        ${isOpen ? 'opacity-100 translate-y-0' : ''}`}>
+        <img src="\img\arrow-down.png" 
+            className={`w-6 h-auto text-drop-shadow 
+            transition-all duration-500
+            ${isOpen ? 'rotate-180' : "rotate-0 "} `}></img>
       </button>
       
-      <div className={`${isOpen ? 'visble':'hidden'} duration-300 transition mt-5 pt-5 bg-white/20 backdrop-blur-md flex flex-col overflow-x-auto overflow-y-hidden  rounded-3xl`}>
-        <div className={`grid grid-cols-2 justify-center justify-items-center gap-4 p-4`}>
+      <div ref={collapseDiv} className={` 
+            transition-all duration-500 
+            ${isOpen ? 'animate-auto-show p-4' : 'animate-auto-hidden'} 
+            grid mt-5 bg-white/20 backdrop-blur-md  rounded-3xl overflow-hidden`}>
+        <div className={`grid grid-cols-2 justify-center justify-items-center gap-4 overflow-y-hidden`}>
           {team.map((row, i) => (
               row.map((image, j) => (
                 <div className="flex flex-col" key={image != null ? image : "about_img"+(i*3+j).toString() }>
                   <div className=" w-auto">
                     <img src={image} className=" rounded-[20px]"></img>
                     <div className="mt-2">
-                      <p className="text-center text-yellow  text-xs lg:text-sm font-medium text-drop-shadow">
+                      <p className="text-center text-yellow  text-sm md:text-lg font-medium text-drop-shadow">
                         {" "}
                         {names[i][j]}
                       </p>
-                      <p className="text-center text-xs lg:text-sm font-medium text-cerise drop-shadow">
+                      <p className="text-center text-xs sm:text-sm md:text-base font-medium text-cerise text-drop-shadow">
                         {teamRoles[i][j]}
                       </p>
                     </div>
@@ -156,7 +166,7 @@ export default function AboutUs() {
           {t.aboutUs.subHeader}
         </p>
         
-        <div className=" grid grid-cols-1 lg:grid-cols-2 gap-4 lg:mt-12 w-full">
+        <div className=" grid grid-cols-1 lg:grid-cols-2 md:gap-8 gap-0 mt-0 lg:mt-12 w-full">
           <Team
             team={managers}
             teamPic="/img/projectGroup/g_dda.jpg"
