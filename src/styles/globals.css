@@ -111,10 +111,19 @@
 
 /* Custom 0 to auto dynamic animation class*/
 .animate-auto-hidden{
-  
   grid-template-rows: 0fr;
 }
 
 .animate-auto-show{
   grid-template-rows: 1fr;
 }
+
+/* Custom fluga animation class*/
+.animate-in-fluga{
+  background: url("../../public/img/fluga-in-SP.png") 0 0 no-repeat;
+  background-size: 1600%;
+  width: 106px;
+  height: 116px;
+  animation: anim-ss steps(14) 1.3s;
+}
+@keyframes anim-ss { 0% {background-position: 0%;} 100% {background-position: 100%;}}

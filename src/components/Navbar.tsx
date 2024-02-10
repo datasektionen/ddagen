@@ -49,10 +49,12 @@ function Logo({ class: className }: { class?: string }) {
     <Link
       href="/"
       className={
-        "relative w-[102px] h-[35px] flex-shrink-0 " + (className ?? "")
+        "relative w-[102px] h-[35px] flex-shrink-0 overflow-y" + (className ?? "")
       }
     >
+      {/**/}
       <img src="/img/fluga_cerise.svg" className="absolute w-3/4" />
+      <div className="animate-in-fluga mx-[-13px] my-[-46px] absolute"></div>
       <img
         src="/img/logo-white-ageless_v2.svg"
         alt="D-Dagen logga"

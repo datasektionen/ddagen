@@ -61,6 +61,7 @@ export default function Home() {
               onClick={scrollDown}
             >
               <img src="/img/skrollaner-indikator.svg" alt="Scroll Indicator" />
+              <div className="slowme w-20 h-20"></div>
             </div>
           </div>
 
