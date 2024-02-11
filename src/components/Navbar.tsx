@@ -45,6 +45,19 @@ function NavLink({
 }
 
 function Logo({ class: className }: { class?: string }) {
+  const [hasLoadedBefore, setHasLoaded] = useState(false);
+
+  useEffect(() => {
+    const loadedBefore = sessionStorage.getItem('indexPageLoaded');
+
+    if(loadedBefore) {
+      setHasLoaded(true);
+    } else {
+      setTimeout(() => {sessionStorage.setItem('indexPageLoaded', 'true');}, 1000);
+      
+    }
+  }, []);
+
   return (
     <Link
       href="/"
@@ -53,22 +66,30 @@ function Logo({ class: className }: { class?: string }) {
       }
     >
       {/**/}
-      <img src="/img/fluga_cerise.svg" className="animate-in-opacity absolute w-3/4" />
-      <div className="animate-in-fluga mx-[-13px] my-[-43px] absolute"></div>
+      <img src="/img/fluga_cerise.svg" className={`absolute w-3/4
+        ${hasLoadedBefore ? '' : 'animate-in-opacity '}
+      `} />
+      <div className={` mx-[-13px] my-[-43px] absolute
+        ${hasLoadedBefore ? '' : 'animate-in-fluga '}
+      `}></div>
       <div className="absolute w-full top-[16%] left-[1%] ">
       <img
         src="/img/logo-white-ageless_v2.svg"
         alt="D-Dagen logga"
-        className="animate-in-logo-text-roll-in"
+        className={`
+        ${hasLoadedBefore ? '' : ' animate-in-logo-text-roll-in '}
+       
+        `}
       />
       </div>
       
       <p
-        className="
-        absolute bottom-0 right-0
-        text-[65%] leading-none
-        animate-in-logo-date-drop-down
-      "
+        className={`
+          absolute bottom-0 right-0
+          text-[65%] leading-none
+          ${hasLoadedBefore ? '' : ' animate-in-logo-date-drop-down '}
+         
+        `}
       >
         2024
       </p>
