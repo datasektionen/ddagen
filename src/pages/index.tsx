@@ -49,7 +49,7 @@ export default function Home() {
               />
          </div>
           
-          <div className={`mx-auto pt-[160px] 
+          <div className={`mx-auto pt-[160px] md:mt-8
             transition-all ${ hasLoadedBefore ? 'duration-0': 'delay-[2500ms] duration-[1500ms]'}  ease-in-out
             ${
               showPage ? "opacity-100" : "opacity-0"

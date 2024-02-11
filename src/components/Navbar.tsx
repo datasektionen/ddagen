@@ -115,7 +115,7 @@ function Group({
       onMouseLeave={() => setHovered(false)}
       className={`lg:ml-10 ${className ?? ""}`}
     >
-      <div className="lg:flex relative flex-row hidden">
+      <div className="lg:flex relative flex-row hidden ">
         <div
           style={{
             height: 70 + links.length * 40,
@@ -124,7 +124,7 @@ function Group({
           className={
             "block absolute -z-10 " +
             (hovered
-              ? "bg-[#666474] bg-opacity-60 rounded-md -top-[50px] -left-[20px] w-full"
+              ? "bg-[#666474] bg-opacity-60 rounded-md -top-[50px] -left-[20px] w-full "
               : "pointer-events-none")
           }
         />
@@ -155,19 +155,25 @@ function Group({
           )
         )}
       </div>
-      <div className="flex flex-col lg:hidden">
-        <div className="flex flex-row justify-between gap-4 mb-4 w-[230px]">
+      <div className="flex flex-col lg:hidden content-justify ">
+        <div className="flex flex-row justify-between gap-4 mb-4 w-[300px]">
           <NavLink href={links[0].href} onClick={links[0].onClick}>
             {links[0].text}
           </NavLink>
-          <img
+          <div className="w-8 h-8 mt-[-8px] hover:bg-cerise transition-all duration-500 
+                          rounded-full flex flex-col items-center cursor-pointer"
+          data-dont-close
+          onClick={() => setDrop((d) => !d)}> 
+            <img
             data-dont-close
-            onClick={() => setDrop((d) => !d)}
+           
             src="/img/smCaret.svg/"
             className={`${
               dropped ? "rotate-180" : ""
-            } ml-4 h-4 text-cerise cursor-pointer`}
-          ></img>
+            }  h-4 mt-2 text-cerise  transition-transform duration-300 group`}
+            ></img>
+          </div>
+          
         </div>
         <div
           className={`
@@ -293,11 +299,11 @@ export default function Navbar() {
         ` + (open ? "left-0" : "-left-full")
           }
         >
-          <div className="px-14 pb-0 lg:px-0 lg:pb-0 flex flex-col lg:flex-row ">
+          <div className="px-14 pb-0 lg:px-0 lg:pb-0 flex flex-col lg:flex-row items-center mb-4">
             <a className="sr-only focus:not-sr-only" href="#main-content">
               {t.toContent}
             </a>
-            <NavLink class="px-0 lg:px-4 p-4" href="/">
+            <NavLink class="px-0 lg:px-4 p-4 w-[300px] lg:w-auto" href="/">
               {t.home}
             </NavLink>
             <Group
