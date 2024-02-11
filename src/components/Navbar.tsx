@@ -68,17 +68,19 @@ function Logo({ class: className }: { class?: string }) {
       {/**/}
       <img src="/img/fluga_cerise.svg" className={`absolute w-3/4
         ${hasLoadedBefore ? '' : 'animate-in-opacity '}
-      `} />
-      <div className={` mx-[-13px] my-[-43px] absolute
+        `}> 
+      </img>
+      <div className={` 
+        mx-[-13px] my-[-43px] absolute
         ${hasLoadedBefore ? '' : 'animate-in-fluga '}
-      `}></div>
+        `}> 
+      </div>
       <div className="absolute w-full top-[16%] left-[1%] ">
       <img
         src="/img/logo-white-ageless_v2.svg"
         alt="D-Dagen logga"
         className={`
-        ${hasLoadedBefore ? '' : ' animate-in-logo-text-roll-in '}
-       
+          ${hasLoadedBefore ? '' : ' animate-in-logo-text-roll-in '}
         `}
       />
       </div>
@@ -288,18 +290,15 @@ export default function Navbar() {
         </div>
 
         <div
-          className={
-            `
-          flex justify-between flex-col items-stretch
-          bg-gradient-to-b from-black lg:from-transparent via-black lg:via-transparent to-transparent lg:bg-transparent
-          absolute w-full transition-all duration-300
-          top-0 pt-20 pb-[300px] lg:pb-0
-
-          lg:left-0 lg:flex-row lg:items-center lg:px-8 lg:pt-0
-        ` + (open ? "left-0" : "-left-full")
+          className={`
+            w-full flex justify-between flex-col items-stretch absolute 
+            top-0 pt-20 pb-[300px] lg:pb-0 lg:left-0 lg:flex-row lg:items-center lg:px-8 lg:pt-0
+            bg-gradient-to-b from-black lg:from-transparent via-black lg:via-transparent to-transparent lg:bg-transparent
+            transition-all duration-300
+          ` + (open ? "left-0" : "-left-full")
           }
         >
-          <div className="px-14 pb-0 lg:px-0 lg:pb-0 flex flex-col lg:flex-row items-center mb-4">
+          <div className="flex flex-col lg:flex-row items-center px-14 pb-0 lg:px-0 lg:pb-0  mb-4">
             <a className="sr-only focus:not-sr-only" href="#main-content">
               {t.toContent}
             </a>
