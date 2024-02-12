@@ -99,7 +99,7 @@ export default function Contact() {
         <h1 className="mt-[150px] text-cerise text-2xl lg:text-4xl font-bold uppercase text-center">
           {t.contact.subheader2}
         </h1>
-        <div className="mt-12 flex flex-col ">
+        <div className="mt-12 flex flex-col">
           {rows1.map((i, _) => (
             <div className="hidden lg:flex flex-row justify-between gap-10 px-[100px] mb-12" key={i}>
               {/** Where we use some funky indexing to ensure the seventh person is centerd but without the design breaking and the data still being correct*/}
@@ -109,7 +109,7 @@ export default function Contact() {
                   <p className="px-[10px] text-cerise text-xl font-normal mt-5">
                     {names[(i < 7 ? i : i-1 )]}
                   </p>
-                  <div className="py-[20px] px-[10px] rounded-[20px] mt-2 bg-slate-50 bg-opacity-20 border-cerise text-white">
+                  <div className="py-[20px] px-[10px] rounded-[20px] mt-2 bg-slate-50 bg-opacity-20 border-cerise text-white ">
                     
                     <span className="block">{roles[(i < 7 ? i : i-1 )]}</span>
                     <a    className="block" href={"mailto:" + mails[ (i < 7 ? i : i-1 ) ]} >{mails[(i < 7 ? i : i-1 )]}</a> {/** Funky indexing*/}
@@ -121,7 +121,7 @@ export default function Contact() {
           ))}
 
           {rows2.map((i, _) => (
-            <div className=" hidden lg:hidden sm:flex justify-center flex-row px-12 mb-12 gap-10" key={i}>
+            <div className=" hidden lg:hidden sm:flex justify-center flex-row px-12 mb-12 gap-10 mb-8" key={i}>
               {layout2[i].map((i, _) => (
                 <div className="flex flex-col" key={i} style={{ visibility: i > 6 ? 'hidden' : 'visible' }}> {/** Cheat to ensure even design*/}
                   <img className="grayscale" src={images[i]}></img>
@@ -139,7 +139,7 @@ export default function Contact() {
           ))}
 
           {rows3.map((i, _) => (
-            <div className=" sm:hidden justify-center flex flex-row px-6 px-12 gap-10" key={i}>
+            <div className=" sm:hidden justify-center flex flex-row px-6 gap-10 mb-8" key={i}>
               {layout3[i].map((i, _) => (
                 <div className="flex flex-col" key={i}>
                   <img className="grayscale" src={images[i]}></img>

@@ -162,8 +162,12 @@ function Group({
           <NavLink href={links[0].href} onClick={links[0].onClick}>
             {links[0].text}
           </NavLink>
-          <div className="w-8 h-8 mt-[-8px] hover:bg-cerise transition-all duration-500 
-                          rounded-full flex flex-col items-center cursor-pointer"
+          <div className={` 
+            w-8 h-8 mt-[-8px] 
+            transition-all duration-500 
+            rounded-full flex flex-col items-center cursor-pointer
+            hover:bg-cerise
+            `}
           data-dont-close
           onClick={() => setDrop((d) => !d)}> 
             <img
@@ -171,7 +175,7 @@ function Group({
            
             src="/img/smCaret.svg/"
             className={`${
-              dropped ? "rotate-180" : ""
+              dropped ? "rotate-180 " : ""
             }  h-4 mt-2 text-cerise  transition-transform duration-300 group`}
             ></img>
           </div>
