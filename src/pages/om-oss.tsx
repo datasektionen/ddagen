@@ -50,7 +50,7 @@ function Team({
 
 
   return (
-    <div className= "flex flex-col cursor-pointer group/card" onClick={toggleOpen}>
+    <div className= "flex flex-col cursor-pointer group/card mb-8" onClick={toggleOpen}>
       <div className=" bg-white/80 rounded-3xl lg:rounded-l-3xl flex flex-col items-center ">
         <img src={teamPic} className="w-full h-auto rounded-t-3xl "></img>
         <div className=" flex items-center justify-center ">
