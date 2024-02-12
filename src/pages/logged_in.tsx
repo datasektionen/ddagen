@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { api } from "@/utils/api";
 
 
 const set_cookies = (loginToken: string) => {
@@ -7,8 +8,7 @@ const set_cookies = (loginToken: string) => {
 
 const logged_in = ()=>{
 
-    const api_key = process.env.LOGIN_API_KEY
-
+    const studentVerify = api.studentLogin.verify.useMutation();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
@@ -17,39 +17,25 @@ const logged_in = ()=>{
         let loginToken: string = params.get('login_token') || "";
 
         // If no login_token in url, check if login token in cookies
-        if (!loginToken && document.cookie.includes("login_token")) {
+        if ((!loginToken || loginToken === "null") && document.cookie.includes("login_token")) {
+            console.log("Checking cookies!")
             const match = document.cookie.toString().match(/login_token=([^;]*)/);
             if (match !== null) {
                 loginToken = match[1];
             }
         }
 
-
-        if (!loginToken || loginToken === "null" || !api_key) {
-            console.log("URL not complete");
+        if (!loginToken || loginToken === "null") {
+            console.log("URL not complete: LoginToken=", loginToken,);
             return;
         }
 
-        const url = `https://login.datasektionen.se/verify/${loginToken}?api_token=${api_key}`
-
-        // console.log("URL: ", url);
-
-        // Verify login_token and update cookies if login_token is correct
-        fetch(url, {
-            method: "GET",
-            mode: 'no-cors',
-        })
-        .then((res) => {
-            console.log(res.status);
-            if (res.status === 200) {
-                console.log("verification successful");
-                setIsLoggedIn(true);
-                set_cookies(loginToken);
-            } else {
-                console.log("verify was not successful");
-                setIsLoggedIn(false);
-            }
+        studentVerify.mutateAsync(loginToken)
+        .then((res) =>{
+            setIsLoggedIn(res)
+            set_cookies(loginToken)
         });
+   
     }, []);
 
     return (
