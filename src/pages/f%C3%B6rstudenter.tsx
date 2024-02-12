@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRef } from "react";
 import { useLocale } from "@/locales";
+import login from "@/utils/login"
 
 
 export default function ForStudents() {
@@ -74,6 +75,12 @@ export default function ForStudents() {
                 >
                   {t.forStudents.companyMeetingsButton}
                 </Link>
+                <p 
+                    className="block uppercase text-sm hover:scale-105 transition-transform bg-white rounded-full text-cerise font-medium px-10 py-2 max-lg:mx-auto w-max" 
+                    onClick={()=>window.location.href = "https://login.datasektionen.se/login?callback=http://localhost:3000/logged_in?login_token="}
+                >
+                  Logga in
+                </p>
               </div>
             </div>
           </div>
