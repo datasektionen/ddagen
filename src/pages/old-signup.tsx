@@ -1,9 +1,9 @@
 // a component that automatically sends the user to the företagsanmälan page on load
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { set } from 'zod';
 
 
+/* This page should have been replaced by a URL forwarding RULE set in CLoudflare */
 
 export default function SignUp(){
   const router = useRouter();
