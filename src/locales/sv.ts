@@ -433,6 +433,7 @@ export default {
       "SPONSRAT INLÄGG",
       "HALVDAG AV KONTAKTSAMTAL",
     ],
+    downloadProductCatalog: "Ladda ner Katalogen",
     subheader: "QUESTIONS, THOUGHTS, & IDEAS?",
     paragraph:
       "Don't hesitate to get in touch if you have any questions about our products or have any other questions.",
@@ -537,24 +538,23 @@ export default {
     info2: "D-Dagen förr",
     info3: "D-Dagen idag",
     prTeamRoles: [
-      ["PR-Ansvarig", "Tryckansvarig", "Art Director",],
-      ["Art Director", "Sociala medier-ansvarig" ],
+      "PR-Ansvarig", "Tryckansvarig", "Art Director",
+      "Art Director", "Sociala medier-ansvarig",
     ],
     salesTeamRoles: [
-      ["Säljansvarig", "Säljare", "Säljare", ],
-      ["Säljare", "Säljare", "Säljare"],
-      ["Säljare","Sponsansvarig"],
+      "Säljansvarig", "Säljare", "Säljare", "Säljare", 
+      "Säljare", "Säljare", "Säljare","Sponsansvarig",
     ],
     devTeamRoles: [
-      ["Webb-Ansvarig", "Systemutvecklare", "Webbutvecklare"],
-      ["Webbutvecklare"],
+      "Webb-Ansvarig", "Systemutvecklare", "Webbutvecklare",
+      "Webbutvecklare",
     ],
     massTeamRoles: [
-      ["Mäss-Ansvarig", "Fest-Ansvarig", "Logistik-Ansvarig"],
-      [ "Lokal-Ansvarig", "Lounge-Ansvarig", "Personal-Ansvarig"],
+      "Mäss-Ansvarig", "Fest-Ansvarig", "Logistik-Ansvarig",
+       "Lokal-Ansvarig", "Lounge-Ansvarig", "Personal-Ansvarig",
     ],
-    ecoTeamRoles: [["Ekonomiansvarig","Vice Ekonomiansvarig"]],
-    ddaRoles: [["DDA", "DDA"]],
+    ecoTeamRoles: ["Ekonomiansvarig","Vice Ekonomiansvarig"],
+    ddaRoles: ["DDA", "DDA"],
     teamNames: [
       "D-Dagenansvariga",
       "PR-Gruppen",

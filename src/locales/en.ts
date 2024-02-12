@@ -430,6 +430,7 @@ export default {
       "SPONSORED POST",
       "HALF DAY PRIVATE STUDENT MEETINGS",
     ],
+    downloadProductCatalog: "Download Catalog",
     subheader: "QUESTIONS, THOUGHTS, & IDEAS?",
     paragraph:
       "Don't hesitate to get in touch if you have any questions about our products or have any other questions.",
@@ -542,25 +543,24 @@ export default {
     "HEAD OF SALES",
     "HEAD OF FINANCES"],
     prTeamRoles: [
-      ["Head of PR", "Print Manager", "Art Director"],
-      ["Art Director", "Social Media Manager"],
+      "Head of PR", "Print Manager", "Art Director", 
+      "Art Director", "Social Media Manager",
     ],
     devTeamRoles: [
-      ["Lead Developer", "System Developer", "Web Developer"],
-      ["Web Developer"],
+      "Lead Developer", "System Developer", 
+      "Web Developer", "Web Developer",
     ],
     salesTeamRoles: [
-      ["Head of Sales", "Salesperson", "Salesperson", ],
-      ["Salesperson", "Salesperson", "Salesperson"],
-      ["Salesperson", "Sponsorship Manager"],
+      "Head of Sales", "Salesperson", "Salesperson", 
+      "Salesperson", "Salesperson", "Salesperson", "Salesperson", "Sponsorship Manager",
     ],
     massTeamRoles: [
-      ["Head of the Fair", "Event Manager", "Logistics Manager", ],
-      ["Venue Manager", "Lounge Manager", "HR Manager"],
+      "Head of the Fair", "Event Manager", "Logistics Manager", 
+      "Venue Manager", "Lounge Manager", "HR Manager",
     ],
-    ecoTeamRoles: [["Head of Finances", "Deputy Financial Manager"]],
+    ecoTeamRoles: ["Head of Finances", "Deputy Financial Manager"],
     ddaRoles: [
-      ["DDA", "DDA"], // Assuming DDA remains the same without context.
+      "DDA", "DDA", // Assuming DDA remains the same without context.
     ],
     teamNames: [
       "D-Dagen Managers",

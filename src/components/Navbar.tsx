@@ -45,24 +45,53 @@ function NavLink({
 }
 
 function Logo({ class: className }: { class?: string }) {
+  const [hasLoadedBefore, setHasLoaded] = useState(false);
+
+  useEffect(() => {
+    const loadedBefore = sessionStorage.getItem('indexPageLoaded');
+
+    if(loadedBefore) {
+      setHasLoaded(true);
+    } else {
+      setTimeout(() => {sessionStorage.setItem('indexPageLoaded', 'true');}, 1000);
+      
+    }
+  }, []);
+
   return (
     <Link
       href="/"
       className={
-        "relative w-[102px] h-[35px] flex-shrink-0 " + (className ?? "")
+        "relative w-[102px] h-[35px] flex-shrink-0 overflow-y" + (className ?? "")
       }
     >
-      <img src="/img/fluga_cerise.svg" className="absolute w-3/4" />
+      {/**/}
+      <img src="/img/fluga_cerise.svg" className={`absolute w-3/4
+        ${hasLoadedBefore ? '' : 'animate-in-opacity '}
+        `}> 
+      </img>
+      <div className={` 
+        mx-[-13px] my-[-43px] absolute
+        ${hasLoadedBefore ? '' : 'animate-in-fluga '}
+        `}> 
+      </div>
+      <div className="absolute w-full top-[16%] left-[1%] ">
       <img
         src="/img/logo-white-ageless_v2.svg"
         alt="D-Dagen logga"
-        className="absolute w-full top-[16%] left-[1%]"
+        className={`
+          ${hasLoadedBefore ? '' : ' animate-in-logo-text-roll-in '}
+        `}
       />
+      </div>
+      
       <p
-        className="
-        absolute bottom-0 right-0
-        text-[65%] leading-none
-      "
+        className={`
+          absolute bottom-0 right-0
+          text-[65%] leading-none
+          ${hasLoadedBefore ? '' : ' animate-in-logo-date-drop-down '}
+         
+        `}
       >
         2024
       </p>
@@ -88,7 +117,7 @@ function Group({
       onMouseLeave={() => setHovered(false)}
       className={`lg:ml-10 ${className ?? ""}`}
     >
-      <div className="lg:flex relative flex-row hidden">
+      <div className="lg:flex relative flex-row hidden ">
         <div
           style={{
             height: 70 + links.length * 40,
@@ -97,7 +126,7 @@ function Group({
           className={
             "block absolute -z-10 " +
             (hovered
-              ? "bg-[#666474] bg-opacity-60 rounded-md -top-[50px] -left-[20px] w-full"
+              ? "bg-[#666474] bg-opacity-60 rounded-md -top-[50px] -left-[20px] w-full "
               : "pointer-events-none")
           }
         />
@@ -128,19 +157,25 @@ function Group({
           )
         )}
       </div>
-      <div className="flex flex-col lg:hidden">
-        <div className="flex flex-row justify-between gap-4 mb-4 w-[230px]">
+      <div className="flex flex-col lg:hidden content-justify ">
+        <div className="flex flex-row justify-between gap-4 mb-4 w-[300px]">
           <NavLink href={links[0].href} onClick={links[0].onClick}>
             {links[0].text}
           </NavLink>
-          <img
+          <div className="w-8 h-8 mt-[-8px] hover:bg-cerise transition-all duration-500 
+                          rounded-full flex flex-col items-center cursor-pointer"
+          data-dont-close
+          onClick={() => setDrop((d) => !d)}> 
+            <img
             data-dont-close
-            onClick={() => setDrop((d) => !d)}
+           
             src="/img/smCaret.svg/"
             className={`${
               dropped ? "rotate-180" : ""
-            } ml-4 h-4 text-cerise cursor-pointer`}
-          ></img>
+            }  h-4 mt-2 text-cerise  transition-transform duration-300 group`}
+            ></img>
+          </div>
+          
         </div>
         <div
           className={`
@@ -255,22 +290,19 @@ export default function Navbar() {
         </div>
 
         <div
-          className={
-            `
-          flex justify-between flex-col items-stretch
-          bg-gradient-to-b from-black lg:from-transparent via-black lg:via-transparent to-transparent lg:bg-transparent
-          absolute w-full transition-all duration-300
-          top-0 pt-20 pb-[300px] lg:pb-0
-
-          lg:left-0 lg:flex-row lg:items-center lg:px-8 lg:pt-0
-        ` + (open ? "left-0" : "-left-full")
+          className={`
+            w-full flex justify-between flex-col items-stretch absolute 
+            top-0 pt-20 pb-[300px] lg:pb-0 lg:left-0 lg:flex-row lg:items-center lg:px-8 lg:pt-0
+            bg-gradient-to-b from-black lg:from-transparent via-black lg:via-transparent to-transparent lg:bg-transparent
+            transition-all duration-300
+          ` + (open ? "left-0" : "-left-full")
           }
         >
-          <div className="px-14 pb-0 lg:px-0 lg:pb-0 flex flex-col lg:flex-row ">
+          <div className="flex flex-col lg:flex-row items-center px-14 pb-0 lg:px-0 lg:pb-0  mb-4">
             <a className="sr-only focus:not-sr-only" href="#main-content">
               {t.toContent}
             </a>
-            <NavLink class="px-0 lg:px-4 p-4" href="/">
+            <NavLink class="px-0 lg:px-4 p-4 w-[300px] lg:w-auto" href="/">
               {t.home}
             </NavLink>
             <Group
