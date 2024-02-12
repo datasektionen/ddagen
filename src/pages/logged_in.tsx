@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
 
-const api_key = "ddagen-vopCc-l_6eDPR6mH5fyRyug2qXwlCA8StLNsncK2Ssg";
 
 const set_cookies = (loginToken: string) => {
     document.cookie = `login_token=${loginToken};max-age=604800;`;
 };
 
 const logged_in = ()=>{
+
+    const api_key = process.env.LOGIN_API_KEY
+
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {

@@ -1,12 +1,16 @@
 import Link from "next/link";
 import { useRef } from "react";
 import { useLocale } from "@/locales";
-import login from "@/utils/login"
+import { useEffect } from "react";
 
 
 export default function ForStudents() {
   const t = useLocale();
   const scrollRef = useRef<HTMLInputElement | null>(null);
+
+    useEffect(()=>{
+        console.log("HREF: ", )
+    },[])
 
   return (
     <div className="w-full h-full">
@@ -77,7 +81,7 @@ export default function ForStudents() {
                 </Link>
                 <p 
                     className="block uppercase text-sm hover:scale-105 transition-transform bg-white rounded-full text-cerise font-medium px-10 py-2 max-lg:mx-auto w-max" 
-                    onClick={()=>window.location.href = "https://login.datasektionen.se/login?callback=http://localhost:3000/logged_in?login_token="}
+                    onClick={()=>window.location.href = `https://login.datasektionen.se/login?callback=${window.location.href.replace(/^(https?:\/\/[^\/]+).*/, '$1')}/logged_in?login_token=`}
                 >
                   Logga in
                 </p>
