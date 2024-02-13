@@ -434,9 +434,9 @@ export default {
       "HALVDAG AV KONTAKTSAMTAL",
     ],
     downloadProductCatalog: "Ladda ner Katalogen",
-    subheader: "QUESTIONS, THOUGHTS, & IDEAS?",
+    subheader: "FRÅGOR, TANKAR, & IDEER?",
     paragraph:
-      "Don't hesitate to get in touch if you have any questions about our products or have any other questions.",
+      "Tveka inte att höra av dig om du har några frågor angående våra produkter eller har några funderingar.",
   },
   event: {
     paragraph1:
