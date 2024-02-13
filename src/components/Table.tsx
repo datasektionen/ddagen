@@ -10,16 +10,23 @@ export function Table(
     useState(false)
   );
 
+  const length = questions.length;
+
   return (
-    <div className="mt-[50px]">
+    <div className="mt-[50px] overflow-hidden rounded-xl border-2 border-cerise">
       {questions.map((_, i) => (
-        <div key={i} className="text-white border-x-2 border-cerise pb-[2px]">
+        <div key={i} className={`
+          ${i != length - 1 ? "border-b-2" : ""}
+          text-white  border-collapse border-cerise 
+          `}>
           <button
             onClick={() => stateAction[i][1](!stateAction[i][0])}
             className={`
-            ${i == 0 ? "border-t-2" : ""}
             ${settings == undefined ? "" : "font-medium"}
-            uppercase items-center flex flex-row justify-between pl-[20px] pr-[20px] py-[15px] text-left max-h-[300px] w-full bg-slate-50 bg-opacity-20 border-cerise`}
+            uppercase items-center flex flex-row justify-between stateAction[i][0]
+            pl-[20px] pr-[20px] py-[15px] text-left max-h-[300px] 
+            w-full bg-slate-50 bg-opacity-20 backdrop-blur-md border-cerise
+            `}
           >
             {questions[i]}
             <img
@@ -31,10 +38,12 @@ export function Table(
           </button>
 
           <div
-            className={`${
-              stateAction[i][0] ? "py-10 grid-rows-[1fr]" : "grid-rows-[0fr]"
-            } grid transition-[padding,grid-template-rows] px-5
-              bg-gray bg-opacity-50 border-cerise
+            className={`
+            ${stateAction[i][0] ? "py-10 grid-rows-[1fr]" : "grid-rows-[0fr]"} 
+            
+              grid transition-[padding,grid-template-rows] px-5
+              bg-gray bg-opacity-50
+              backdrop-blur-md 
               relative
               before:bg-cerise after:bg-cerise
               before:h-[2px] after:h-[2px]

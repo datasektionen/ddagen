@@ -1,6 +1,7 @@
 import { useLocale } from "@/locales";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { useState } from "react";
+import Link from "next/link";
 
 
 
@@ -60,8 +61,8 @@ function Table(){
   return(
     <div className="flex flex-row items-center justify-center w-full ">
       {/*Desktop version*/}
-      <div className="pl-10 pr-10 hidden md:block">
-        <table className="">
+      <div className="p-10 hidden md:block backdrop-blur-md bg-white/20 rounded-xl">
+        <table className=" ">
           <thead>
             <tr className="border-b border-white ">
               <th></th>
@@ -72,18 +73,19 @@ function Table(){
           </thead>
           <tbody>
           {t.catalog.titles.map((title, idx) =>(
-              <tr key={idx} className="border-b border-white h-10">
-                <td className="pl-5 text-cerise font-medium">{title}</td>
-                <td><Display value={smallPackage[idx]}/></td>
-                <td><Display value={mediumPackage[idx]}/></td>
-                <td><Display value={largePackage[idx]}/></td>
+              <tr key={idx} className="border-b border-white h-10 ">
+                <td className="pl-5 text-cerise font-medium pr-4">{title}</td>
+                <td className="px-8"><Display value={smallPackage[idx]}/></td>
+                <td className="px-8"><Display value={mediumPackage[idx]}/></td>
+                <td className="px-8"><Display value={largePackage[idx]}/></td>
               </tr>
             )
           )}
           </tbody>
         </table>
       </div>
-
+          
+      {/* https://medium.com/@antonprudkohliad/how-to-implement-a-slider-element-using-react-tailwind-css-and-intersection-observer-api-501b3f79f71c to make swipeable */}
       {/*Phone version*/}
       <div className="md:hidden px-2 pt-4">
         <div className="rounded-2xl bg-white/20 backdrop-blur-md pt-4 pb-4">
@@ -134,7 +136,7 @@ export default function Catalog() {
 
   return (
     <div className="w-full flex flex-col items-center">
-      <div className="xl:w-[1200px] lg:w-[1000px] w-full">
+      <div className="w-full">
         <h1 className="uppercase text-center text-cerise pt-[200px] mb-36 md:text-5xl text-4xl font-medium">
           {t.catalog.header}
         </h1>
@@ -142,20 +144,22 @@ export default function Catalog() {
         <Table/>
 
         <div className="flex flex-row items-center justify-center w-full pt-6 max-lg:hidden">
-          <button className="">
-            <a
-              className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-medium px-6 py-2 max-lg:mx-auto w-max"
-              href={t.faq.catalogPath}
-            >
-              {t.catalog.downloadProductCatalog}
-            </a>
-          </button>
+           {/*Product Catalog button*/}
+          <div className="w-full flex flex-col items-center">
+            <Link
+                className="mt-[100px] h-[80px] w-[250px] bg-cerise rounded-[40px] border-cerise flex items-center justify-center px-[30px] flex-col hover:scale-105 transition-transform text-white text-[20px]"
+                target="_blank"
+                href={t.faq.catalogPath}
+                >
+                  {t.faq.productCatalog}
+            </Link>
+          </div>
         </div>
         <div className="flex flex-col sm:flex-row justify-center gap-[20px] sm:gap-[100px] px-[50px] mt-[200px] mb-36">
           <div className="pt-[20px] px-[0px] sm:w-[400px]">
             <h1 className="text-4xl font-normal text-cerise"> {t.catalog.subheader}</h1>
             <p className="text-white text-lg mt-4">{t.catalog.paragraph}</p>
-            <a className="block text-cerise mt-6" href="mailto:sales@ddagen.se">sales@ddagen.se</a>
+            <a className="block text-yellow mt-6" href="mailto:sales@ddagen.se">sales@ddagen.se</a>
           </div>
           <div className="">
             <img src="/img/catalogImg.png" className="sm:w-[600px]"></img>

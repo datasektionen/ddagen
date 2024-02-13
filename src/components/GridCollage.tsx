@@ -18,23 +18,24 @@ export default function GridCollage({
   return (
     <div
       ref={scrollRef}
-      className="flex flex-col items-center justify-center py-12 xs:mx-auto mb-16 max-w-5xl"
+      className="flex flex-col items-center justify-center py-12 xs:mx-auto mb-16 max-w-5xl "
     >
       <div
         className="lg:grid lg:grid-rows-[repeat(28,minmax(auto,1fr))] lg:grid-cols-[repeat(32,minmax(auto,1fr))] font-light lg:pb-12 
-                              max-lg:border-white/80 max-lg:border-[12px] max-lg:border-solid"
-      >
+                              max-lg:border-white/80 max-lg:border-[12px] max-lg:border-solid rounded-xl overflow-hidden"
+      > {/* Top rounding managed here */}
+        
         {/* Left */}
         <div className="lg:col-[1/17] lg:row-[1/3] bg-white/80" />
         <div className="lg:col-[1/3] lg:row-[3/15] bg-white/80" />
         <div className="lg:col-[1/18] lg:row-[15/16] bg-white/80" />
-        <div className="lg:col-[1/3] lg:row-[16/28] bg-white/80" />
+        <div className="lg:col-[1/3] lg:row-[16/28] bg-white/80  rounded-bl-xl" />
         <div className="lg:col-[3/17] lg:row-[25/28] bg-white/80" />
 
         {/* Right */}
         <div className="lg:col-[18/33] lg:row-[10/19] bg-white/80" />
         <div className="lg:col-[17/18] lg:row-[16/19] bg-white/80" />
-        <div className="lg:col-[30/33] lg:row-[19/28] bg-white/80" />
+        <div className="lg:col-[30/33] lg:row-[19/28] bg-white/80  rounded-br-xl" />
         <div className="lg:col-[17/30] lg:row-[23/28] bg-white/80" />
 
         {/* Top Left */}
