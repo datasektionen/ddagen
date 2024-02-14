@@ -52,7 +52,7 @@ export default function Faq() {
   const [currentTable, setCurrentTable] = useState(2);
 
   return (
-    <div className="flex flex-col items-center w-full pb-[150px]">
+    <div className="flex flex-col items-center w-full pb-[150px] ">
       <div className="xl:w-[1200px] lg:w-[1000px] w-full">
         <h1 className="uppercase text-center text-cerise pt-[100px] md:pt-[200px] mb-36 text-5xl font-medium">
           {" "}
@@ -70,14 +70,14 @@ export default function Faq() {
     
 
         {/*Dropdown table*/}
-        <div className="h-full min-w-[200px] w-full mt-[100px] min-[450px]:px-[60px] min-[704px]:px-[60px]">
+        <div className="h-full min-w-[200px] w-full  mt-[100px] min-[450px]:px-[60px] min-[704px]:px-[60px] ">
           {/*Dropdown buttons*/}
           <div className="h-[50px] bg-inherit flex flex-col sm:flex-row  justify-center items-center mb-[80px] px-[30px] sm:px-[0px] ">
             <div className="sm:w-full flex flex-row justify-center items-center">
               <div
                 className={`${
                   !(currentTable - 2) ? "brightness-100" : "brightness-75"
-                } sm:w-full text-center h-[50px] mr-[20px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer hover:brightness-100 hover:scale-105 transition-transform`}
+                } sm:w-full text-center rounded-md backdrop-blur-md h-[50px] mr-[20px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer hover:brightness-100 hover:scale-105 transition-transform`}
                 onClick={() => setCurrentTable(2)}
               >
                 <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto">
@@ -88,7 +88,7 @@ export default function Faq() {
               <div
                 className={`${
                   !(currentTable - 0) ? "brightness-100" : "brightness-75"
-                } sm:w-full text-center h-[50px] mr-[0px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer hover:brightness-100 hover:scale-105 transition-transform`}
+                } sm:w-full text-center rounded-md backdrop-blur-md h-[50px] mr-[0px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer hover:brightness-100 hover:scale-105 transition-transform`}
                 onClick={() => setCurrentTable(0)}
               >
                 <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto">
@@ -102,7 +102,7 @@ export default function Faq() {
               <div
                 className={`${
                   !(currentTable - 1) ? "brightness-100" : "brightness-75"
-                } sm:w-full text-center h-[50px]  mr-[20px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer hover:brightness-100 hover:scale-105 transition-transform`}
+                } sm:w-full text-center rounded-md backdrop-blur-md h-[50px]  mr-[20px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer hover:brightness-100 hover:scale-105 transition-transform`}
                 onClick={() => setCurrentTable(1)}
               >
                 <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto">
@@ -113,10 +113,10 @@ export default function Faq() {
               <div
                 className={`${
                   !(currentTable - 3) ? "brightness-100" : "brightness-75"
-                } sm:w-full text-center h-[50px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer hover:brightness-100 hover:scale-105 transition-transform`}
+                } sm:w-full text-center rounded-md backdrop-blur-md h-[50px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer hover:brightness-100 hover:scale-105 transition-transform`}
                 onClick={() => setCurrentTable(3)}
               >
-                <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto">
+                <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto ">
                   {" "}
                   {t.faq.box4}
                 </p>

@@ -70,7 +70,7 @@ export default function Contact() {
             <br/>
             <p className="text-white text-lg">{t.contact.p1}</p>
             <br/>
-            <a className="block text-cerise" href="mailto:sales@ddagen.se">sales@ddagen.se</a>
+            <a className="block text-yellow" href="mailto:sales@ddagen.se">sales@ddagen.se</a>
           </div>
           <img className="sm:h-[350px] md:h-[250px] lg:h-[300px] xl:h-[400px] grayscale" src="/img/projectGroup/g_sales.jpg"></img>
         </div>
@@ -83,7 +83,7 @@ export default function Contact() {
             <br/>
             <p className="text-white mt-[0px] text-lg">{t.contact.p2}</p>
             <br/>
-            <a className="block text-cerise" href="mailto:ansvarig@ddagen.se">ansvarig@ddagen.se</a>
+            <a className="block text-yellow" href="mailto:ansvarig@ddagen.se">ansvarig@ddagen.se</a>
           </div>
         </div>
 
