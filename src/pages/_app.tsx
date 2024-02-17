@@ -11,6 +11,7 @@ const App: AppType = ({ Component, pageProps }) => {
       <Head>
         <link rel="icon" href="/img/favicon.ico" />
         <title>D-Dagen 2024 | Konglig Datasektionens Arbetsmässodag</title>
+        
       </Head>
       <Navbar />
       <div
