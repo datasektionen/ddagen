@@ -25,8 +25,7 @@ export default function Home() {
     if(loadedBefore) {
       setHasLoaded(true);
     } else {
-      setTimeout(() => {sessionStorage.setItem('indexPageLoaded', 'true');}, 1000);
-      
+      setTimeout(() => {sessionStorage.setItem('indexPageLoaded', 'true');}, 1000); 
     }
   }, []);
 

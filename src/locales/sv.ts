@@ -44,7 +44,7 @@ export default {
     fairText1:
       "D-Dagen är Datasektionens årliga arbetsmarknadsdag. Det är ett heldagsevent där företag och studenter verksamma inom data och IT får en möjlighet att knyta kontakter och lära känna varandra. Detta skapar goda möjligheter för en mer direkt och personlig kontakt mellan företagsrepresentanter och studenter.",
     fairText2:
-      "I år hålls mässan 10 oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15 på KTH Campus Valhallavägen. Studenter kommer erbjudas möjligheten att gå på kontaktsamtal med företag för att knyta närmare kontakt med specifika företag (platsbegränsad per företag).",
+      "I år hålls mässan 10 oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15 på KTH Campus Valhallavägen. Studenter kommer erbjudas möjligheten att gå på kontaktsamtal med företag för att knyta närmare kontakt med specifika företag (begränsade platser per företag).",
     companyMeetings: "Kontaktsamtal",
     companyMeetingsText:
       "I år är första året någonsin som vi kommer erbjuda kontaktsamtal för studenter, vilket innebär att ni får möjlighet att i enrum med företagsrepresentanter diskutera framtida jobbmöjligheter med mera. Anmäl er på länken nedan:",
