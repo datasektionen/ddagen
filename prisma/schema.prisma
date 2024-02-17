@@ -143,3 +143,22 @@ model JobOffers {
 
   @@map("job_offers")
 }
+
+model Students {
+    id             String     @id @default(uuid())
+    ugkthid        String     @unique
+    user           String
+    first_name     String
+    last_name      String
+    emails         String
+    study_year     Int
+    summerJob      Boolean
+    partTimeJob    Boolean
+    internship     Boolean
+    masterThesis   Boolean
+    fullTimeJob    Boolean
+    traineeProgram Boolean
+
+    @@map("students")
+}
+
