@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useLocale } from "@/locales";
 import { api } from "@/utils/api";
+import { hasLoadedBeforeContext } from "@/utils/context";
 
 function NavLink({
   href,
@@ -45,18 +46,9 @@ function NavLink({
 }
 
 function Logo({ class: className }: { class?: string }) {
-  const [hasLoadedBefore, setHasLoaded] = useState(false);
-
-  useEffect(() => {
-    const loadedBefore = sessionStorage.getItem('indexPageLoaded');
-
-    if(loadedBefore) {
-      setHasLoaded(true);
-    } else {
-      setTimeout(() => {sessionStorage.setItem('indexPageLoaded', 'true');}, 1000);
-      
-    }
-  }, []);
+  
+  const hasLoadedBefore = useContext(hasLoadedBeforeContext);
+  
 
   return (
     <Link
@@ -213,6 +205,7 @@ export default function Navbar() {
   const locale = l.locale;
 
   const [open, setOpen] = useState(false);
+  
 
   const isLoggedIn = api.account.isLoggedIn.useQuery();
   const logout = api.account.logout.useMutation();

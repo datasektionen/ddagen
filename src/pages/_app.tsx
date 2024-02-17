@@ -2,8 +2,11 @@ import Head from "next/head";
 import "@/styles/globals.css";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import { useState, useEffect } from "react";
 import type { AppType } from "next/app";
 import { api } from "@/utils/api";
+import { hasLoadedBeforeContext } from "@/utils/context";
+
 
 const App: AppType = ({ Component, pageProps }) => {
   function addMetaJsonLd(){
@@ -16,6 +19,16 @@ const App: AppType = ({ Component, pageProps }) => {
       }`
     }
   }
+
+  const [hasLoadedBefore, setHasLoadedBefore] = useState(false); // used to determine if the index page has been loaded before
+  useEffect(() => {
+    setTimeout(() => {
+      console.log("hasLoadedBefore: ", hasLoadedBefore);
+      setHasLoadedBefore(true);
+    }, 4000);
+  }, []);
+  
+
 
   return (
     <>
@@ -32,20 +45,22 @@ const App: AppType = ({ Component, pageProps }) => {
           key="jsonld"
         />
       </Head>
-      <Navbar />
-      <div
-        className="
-          bg-[linear-gradient(rgba(17,12,48,0),rgba(238,42,123,0.88)),url('/img/bg.png')]
-          bg-top
-          bg-[length:160%] md:bg-[length:100vw]
-          bg-blend-hue
-          bg-repeat
-          overflow-x-hidden
-        "
-        id="main-content"
-      >
-        <Component {...pageProps} />
-      </div>
+      <hasLoadedBeforeContext.Provider value={hasLoadedBefore}>
+        <Navbar/>
+        <div
+          className="
+            bg-[linear-gradient(rgba(17,12,48,0),rgba(238,42,123,0.88)),url('/img/bg.png')]
+            bg-top
+            bg-[length:160%] md:bg-[length:100vw]
+            bg-blend-hue
+            bg-repeat
+            overflow-x-hidden
+          "
+          id="main-content"
+        >
+          <Component  {...pageProps} />
+        </div>
+      </hasLoadedBeforeContext.Provider>
       <Footer />
     </>
   );
