@@ -146,11 +146,11 @@ model JobOffers {
 
 model Students {
     id             String     @id @default(uuid())
-    ugkthid        String     @unique
+    ugkthid        String     @unique // prioritize data students
     user           String
     first_name     String
     last_name      String
-    emails         String
+    emails         String // change to one email
     study_year     Int
     summerJob      Boolean
     partTimeJob    Boolean
@@ -158,6 +158,13 @@ model Students {
     masterThesis   Boolean
     fullTimeJob    Boolean
     traineeProgram Boolean
+
+    cv String // set max size in backend, forced
+
+    linkedin_url String //optional
+    github_url String //optional
+    other_link String //optional
+    personal_story String //optional, max x characters
 
     @@map("students")
 }
