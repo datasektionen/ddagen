@@ -13,7 +13,7 @@ export default function Exhibitor() {
   const router = useRouter();
 
   const [extras, setExtras] = useState<Extras>();
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>();
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
   const [preferenceCount, setPreferenceCount] = useState({
     banqcount: 0,
     reprcount: 0,
@@ -34,8 +34,8 @@ export default function Exhibitor() {
   });
 
   useEffect(() => {
-    if (!getIsLoggedIn.isSuccess) return;
-    if (isLoggedIn == false) router.push("/logga-in");
+    //if (!getIsLoggedIn.isSuccess) return;
+    //if (isLoggedIn == false) router.push("/logga-in");
   }, [isLoggedIn]);
 
   useEffect(() => {
@@ -107,7 +107,7 @@ export default function Exhibitor() {
     ]
   );
 
-  return isLoggedIn ? (
+  return true ? (
     <>
       <div className="mx-auto flex flex-col items-center py-40 cursor-default">
         {/*Header*/}

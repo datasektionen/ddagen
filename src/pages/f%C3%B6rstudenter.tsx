@@ -19,7 +19,7 @@ export default function ForStudents() {
         >
           <div
             className="lg:grid lg:grid-rows-[repeat(19,minmax(auto,1fr))] lg:grid-cols-[repeat(32,minmax(auto,1fr))] font-light lg:pb-12 
-                      max-lg:border-white/80 max-lg:border-[12px] max-lg:border-solid lg:bg-white/80"
+                      max-lg:border-white/80 max-lg:border-[12px] max-lg:border-solid lg:bg-white/80 rounded-xl"
           >
             <div className="lg:col-[3/20] lg:row-[3/12] bg-white z-40">
               <div className="sm:p-8 p-6 text-xl drop-shadow-md overflow-hidden">
