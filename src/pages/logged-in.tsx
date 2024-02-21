@@ -6,7 +6,7 @@ const set_cookies = (loginToken: string) => {
     document.cookie = `login_token=${loginToken};max-age=604800;`;
 };
 
-const logged_in = ()=>{
+export default function LoggedInPage() {
 
     const studentVerify = api.studentLogin.verify.useMutation();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -53,5 +53,3 @@ const logged_in = ()=>{
         </>
     )
 }
-
-export default logged_in
