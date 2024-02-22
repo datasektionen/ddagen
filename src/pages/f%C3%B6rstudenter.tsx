@@ -2,7 +2,6 @@ import Link from "next/link";
 import { useRef } from "react";
 import { useLocale } from "@/locales";
 
-
 export default function ForStudents() {
   const t = useLocale();
   const scrollRef = useRef<HTMLInputElement | null>(null);
@@ -27,8 +26,7 @@ export default function ForStudents() {
                   {t.forStudents.aboutFair}
                 </h2>
                 <p className="px-2 mb-6 font-light">
-                  {t.forStudents.fairText1}
-                </p>
+                  {t.forStudents.fairText1} </p>
                 <p className="px-2 mb-8 font-light">
                   {t.forStudents.fairText2}
                 </p>

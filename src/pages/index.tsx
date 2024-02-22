@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <>
       <div className="w-full h-full">
-        <div className="flex flex-col mx-auto max-w-[100%]">
+        <div className="flex flex-col mx-auto max-w-[80%] ">
           <div className="relative lg:py-[150px] py-[75px]">
             <img
               className={`
