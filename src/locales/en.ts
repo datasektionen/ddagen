@@ -44,7 +44,7 @@ export default {
     fairText1:
       "D-Dagen is the Computer Science Chapter’s annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
     fairText2:
-      "This year, the fair is held on October 10th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15 and in KTH Entré which is located at Drottning Kristinas väg 4. Other than the fair, D-Dagen is also having a recruitment pub before the fair where we recruit event staff and lunch lectures with FRA (28/9) and SAAB (9/10) together with dJubileet. Additionally, students will be able to have more meetings with exhibitors through company meetings in order to get more of a connection with that company.",
+      "This year, the fair is held on October 10th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15 and in KTH Entré which is located at Drottning Kristinas väg 4. Students will be able to have meetings with exhibitors through company meetings in order to get more of a connection with that company (limited slots per company).",
     companyMeetings: "Company Meetings",
     companyMeetingsText:
       "This year is also the first year where we will offer company meetings for students, which means that you will be able to discuss future job opportunities in a private room with representatives from selected companies. Sign up on the link below:",
@@ -323,7 +323,7 @@ export default {
     table2row1: "CAN OUR COMPANY GET MORE EXPOSURE?",
     table2row2: "CAN OUR COMPANY MARKET JOB OFFERS ETC THROUGH D-DAGEN?",
     table2text1:
-      "Absolutely, we have several different packages to help you reach more students, contact <a className='text-cerise' href='mailto:sales@ddagen.se'>sales@ddagen.se</a> for more information.",
+      "Absolutely, we have several different packages to help you reach more students, contact <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a> for more information.",
     table2text2:
       "Yes, the main purpose of D-Dagen is to market career opportunities such as job offers, trainee programs, summer internships and similar initiatives to our students.",
     table3row1: "HOW DO I REGISTER FOR THE FAIR?",
@@ -332,19 +332,19 @@ export default {
     table3row4: "WE WOULD LIKE MORE INFORMATION, WHERE DO WE TURN?",
     table3row5: "ARE YOU A STARTUP?",
     table3text1:
-      "You can make a <a href='https://ddagen.se/företagsanmälan' target='blank' className='underline text-cerise'>  registration of interest </a> or contact our sales team at <a className='text-cerise' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
+      "You can make a <a href='https://ddagen.se/företagsanmälan' target='blank' className='underline text-yellow'>  registration of interest </a> or contact our sales team at <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
     table3text2:
-      "Since we have a limited number of spots available at our fair, we recommend that you make a non-binding registration of interest. To do this, please click here: <a href='https://ddagen.se/en/företagsanmälan' target='blank' className='underline text-cerise'> Registration</a>.",
+      "Since we have a limited number of spots available at our fair, we recommend that you make a non-binding registration of interest. To do this, please click here: <a href='https://ddagen.se/en/företagsanmälan' target='blank' className='underline text-yellow'> Registration</a>.",
     table3text3:
-      "If you are interested in any type of partnership contact <a className='text-cerise' href='mailto:ansvarig@ddagen.se'>ansvarig@ddagen.se</a>.",
+      "If you are interested in any type of partnership contact <a className='text-yellow' href='mailto:ansvarig@ddagen.se'>ansvarig@ddagen.se</a>.",
     table3text4:
-      "If the information you are looking for can't be found at our website, contact us at <a className='text-cerise' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
+      "If the information you are looking for can't be found at our website, contact us at <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
     table3text5:
-      "Contact us at <a className='text-cerise' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
+      "Contact us at <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
     table4row1:
       "WHAT KIND OF EVENTS CAN OUR COMPANY HOST TOGETHER WITH D-DAGEN?",
     table4text1:
-      "We'd be thrilled to collaborate with you, both before and after D-Dagen! Whether you're interested in hosting a lunch lecture, hackathon, or something completely different, we're open to your ideas. For more information, please contact our sponsorship manager at <a className='text-cerise' href='mailto:farhan.syed@ddagen.se'>farhan.syed@ddagen.se</a>.",
+      "We'd be thrilled to collaborate with you, both before and after D-Dagen! Whether you're interested in hosting a lunch lecture, hackathon, or something completely different, we're open to your ideas. For more information, please contact our sponsorship manager at <a className='text-yellow' href='mailto:farhan.syed@ddagen.se'>farhan.syed@ddagen.se</a>.",
     productCatalog: "PRODUCT CATALOG",
     header: "COMPANY FAQ",
     catalogPath: "https://ddagen.se/downloadables/Product_Catalog_en.pdf",
@@ -430,6 +430,7 @@ export default {
       "SPONSORED POST",
       "HALF DAY PRIVATE STUDENT MEETINGS",
     ],
+    downloadProductCatalog: "Download Catalog",
     subheader: "QUESTIONS, THOUGHTS, & IDEAS?",
     paragraph:
       "Don't hesitate to get in touch if you have any questions about our products or have any other questions.",
@@ -542,25 +543,24 @@ export default {
     "HEAD OF SALES",
     "HEAD OF FINANCES"],
     prTeamRoles: [
-      ["Head of PR", "Print Manager", "Art Director"],
-      ["Art Director", "Social Media Manager"],
+      "Head of PR", "Print Manager", "Art Director", 
+      "Art Director", "Social Media Manager",
     ],
     devTeamRoles: [
-      ["Lead Developer", "System Developer", "Web Developer"],
-      ["Web Developer"],
+      "Lead Developer", "System Developer", 
+      "Web Developer", "Web Developer",
     ],
     salesTeamRoles: [
-      ["Head of Sales", "Salesperson", "Salesperson", ],
-      ["Salesperson", "Salesperson", "Salesperson"],
-      ["Salesperson", "Sponsorship Manager"],
+      "Head of Sales", "Salesperson", "Salesperson", 
+      "Salesperson", "Salesperson", "Salesperson", "Salesperson", "Sponsorship Manager",
     ],
     massTeamRoles: [
-      ["Head of the Fair", "Event Manager", "Logistics Manager", ],
-      ["Venue Manager", "Lounge Manager", "HR Manager"],
+      "Head of the Fair", "Event Manager", "Logistics Manager", 
+      "Venue Manager", "Lounge Manager", "HR Manager",
     ],
-    ecoTeamRoles: [["Head of Finances", "Deputy Financial Manager"]],
+    ecoTeamRoles: ["Head of Finances", "Deputy Financial Manager"],
     ddaRoles: [
-      ["DDA", "DDA"], // Assuming DDA remains the same without context.
+      "DDA", "DDA", // Assuming DDA remains the same without context.
     ],
     teamNames: [
       "D-Dagen Managers",

@@ -44,7 +44,7 @@ export default {
     fairText1:
       "D-Dagen är Datasektionens årliga arbetsmarknadsdag. Det är ett heldagsevent där företag och studenter verksamma inom data och IT får en möjlighet att knyta kontakter och lära känna varandra. Detta skapar goda möjligheter för en mer direkt och personlig kontakt mellan företagsrepresentanter och studenter.",
     fairText2:
-      "I år hålls mässan 10 oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15 på KTH Campus Valhallavägen. Utöver själva mässan håller D-Dagen även i en rekryteringspub innan mässan där vi rekryterar dagpersonal och lunchföreläsningar med FRA (28/9) och SAAB (9/10) tillsammans med dJubileet. Dessutom kommer studenter kunna gå på kontaktsamtal med företag för att få en närmare kontakt.",
+      "I år hålls mässan 10 oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15 på KTH Campus Valhallavägen. Studenter kommer erbjudas möjligheten att gå på kontaktsamtal med företag för att knyta närmare kontakt med specifika företag (begränsade platser per företag).",
     companyMeetings: "Kontaktsamtal",
     companyMeetingsText:
       "I år är första året någonsin som vi kommer erbjuda kontaktsamtal för studenter, vilket innebär att ni får möjlighet att i enrum med företagsrepresentanter diskutera framtida jobbmöjligheter med mera. Anmäl er på länken nedan:",
@@ -326,7 +326,7 @@ export default {
     table2row2:
       "KAN VÅRT FÖRETAG MARKNADSFÖRA JOBBERBJUDANDEN OCH LIKNANDE VIA D-DAGEN?",
     table2text1:
-      "Absolut, vi har flera olika paket för att ni ska kunna nå ut till fler studenter, kontakta <a className='text-cerise' href='mailto:sales@ddagen.se'>sales@ddagen.se</a> för mer info.",
+      "Absolut, vi har flera olika paket för att ni ska kunna nå ut till fler studenter, kontakta <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a> för mer info.",
     table2text2:
       "Ja, det primära syftet med D-Dagen är att marknadsföra karriärmöjligheter som jobberbjudanden, traineeprogram, sommarpraktikplatser och liknande till våra studenter.",
     table3row1: "HUR ANMÄLER VI OSS TILL MÄSSAN?",
@@ -335,19 +335,19 @@ export default {
     table3row4: "VI VILL HA MER INFORMATION, VART VÄNDER VI OSS?",
     table3row5: "ÄR NI ETT STARTUP?",
     table3text1:
-      "Ni får göra en <a href='https://ddagen.se/företagsanmälan' target='blank' className='underline text-cerise'>  intresseanmälan</a> eller kontakta våra säljare på <a className='text-cerise' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
+      "Ni får göra en <a href='https://ddagen.se/företagsanmälan' target='blank' className='underline text-yellow'>  intresseanmälan</a> eller kontakta våra säljare på <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
     table3text2:
-      "Eftersom vi har ett begränsat antal platser på vår mässa rekommenderar vi att ni gör en icke-bindande intresseanmälan. För att göra detta, vänligen klicka här: <a href='https://ddagen.se/en/företagsanmälan' target='blank' className='underline text-cerise'> Anmälan </a>.",
+      "Eftersom vi har ett begränsat antal platser på vår mässa rekommenderar vi att ni gör en icke-bindande intresseanmälan. För att göra detta, vänligen klicka här: <a href='https://ddagen.se/en/företagsanmälan' target='blank' className='underline text-yellow'> Anmälan </a>.",
     table3text3:
-      "Om ni är intresserade av någon typ av större partnerskap kontakta <a className='text-cerise' href='mailto:ansvarig@ddagen.se'>ansvarig@ddagen.se</a>.",
+      "Om ni är intresserade av någon typ av större partnerskap kontakta <a className='text-yellow' href='mailto:ansvarig@ddagen.se'>ansvarig@ddagen.se</a>.",
     table3text4:
-      "Om den information du söker inte finns på vår hemsida, kontakta våra säljare på <a className='text-cerise' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
+      "Om den information du söker inte finns på vår hemsida, kontakta våra säljare på <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
     table3text5:
-      "Kontakta oss på <a className='text-cerise' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
+      "Kontakta oss på <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
     table4row1:
       "VILKEN TYP AV EVENEMANG KAN VÅRT FÖRETAG ANORDNA TILLSAMMANS MED D-DAGEN?",
     table4text1:
-      "Vi samarbetar gärna med er för att organisera evenemang före och efter D-Dagen! Oavsett om ni är intresserade av lunchföreläsningar, hackathons eller något helt annat är ni välkomna att dela era idéer med oss. För mer information kontakta vår sponsoransvarige på <a className='text-cerise' href='mailto:farhan.syed@ddagen.se'>farhan.syed@ddagen.se</a>.",
+      "Vi samarbetar gärna med er för att organisera evenemang före och efter D-Dagen! Oavsett om ni är intresserade av lunchföreläsningar, hackathons eller något helt annat är ni välkomna att dela era idéer med oss. För mer information kontakta vår sponsoransvarige på <a className='text-yellow' href='mailto:farhan.syed@ddagen.se'>farhan.syed@ddagen.se</a>.",
     productCatalog: "PRODUKTKATALOG",
     header: "FÖRETAG FAQ",
     catalogPath: "/downloadables/Product_Catalog_sv.pdf",
@@ -433,9 +433,10 @@ export default {
       "SPONSRAT INLÄGG",
       "HALVDAG AV KONTAKTSAMTAL",
     ],
-    subheader: "QUESTIONS, THOUGHTS, & IDEAS?",
+    downloadProductCatalog: "Ladda ner Katalogen",
+    subheader: "FRÅGOR, TANKAR, & IDEER?",
     paragraph:
-      "Don't hesitate to get in touch if you have any questions about our products or have any other questions.",
+      "Tveka inte att höra av dig om du har några frågor angående våra produkter eller har några funderingar.",
   },
   event: {
     paragraph1:
@@ -537,24 +538,23 @@ export default {
     info2: "D-Dagen förr",
     info3: "D-Dagen idag",
     prTeamRoles: [
-      ["PR-Ansvarig", "Tryckansvarig", "Art Director",],
-      ["Art Director", "Sociala medier-ansvarig" ],
+      "PR-Ansvarig", "Tryckansvarig", "Art Director",
+      "Art Director", "Sociala medier-ansvarig",
     ],
     salesTeamRoles: [
-      ["Säljansvarig", "Säljare", "Säljare", ],
-      ["Säljare", "Säljare", "Säljare"],
-      ["Säljare","Sponsansvarig"],
+      "Säljansvarig", "Säljare", "Säljare", "Säljare", 
+      "Säljare", "Säljare", "Säljare","Sponsansvarig",
     ],
     devTeamRoles: [
-      ["Webb-Ansvarig", "Systemutvecklare", "Webbutvecklare"],
-      ["Webbutvecklare"],
+      "Webb-Ansvarig", "Systemutvecklare", "Webbutvecklare",
+      "Webbutvecklare",
     ],
     massTeamRoles: [
-      ["Mäss-Ansvarig", "Fest-Ansvarig", "Logistik-Ansvarig"],
-      [ "Lokal-Ansvarig", "Lounge-Ansvarig", "Personal-Ansvarig"],
+      "Mäss-Ansvarig", "Fest-Ansvarig", "Logistik-Ansvarig",
+       "Lokal-Ansvarig", "Lounge-Ansvarig", "Personal-Ansvarig",
     ],
-    ecoTeamRoles: [["Ekonomiansvarig","Vice Ekonomiansvarig"]],
-    ddaRoles: [["DDA", "DDA"]],
+    ecoTeamRoles: ["Ekonomiansvarig","Vice Ekonomiansvarig"],
+    ddaRoles: ["DDA", "DDA"],
     teamNames: [
       "D-Dagenansvariga",
       "PR-Gruppen",

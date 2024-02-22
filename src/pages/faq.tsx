@@ -52,96 +52,95 @@ export default function Faq() {
   const [currentTable, setCurrentTable] = useState(2);
 
   return (
-    <div className="pt-[200px] pb-[300px] flex flex-col items-center">
-      {/*Header*/}
-      <div className="w-full ">
-        <p className=" text-center text-cerise text-5xl font-medium w-full">
+    <div className="flex flex-col items-center w-full pb-[150px] ">
+      <div className="xl:w-[1200px] lg:w-[1000px] w-full">
+        <h1 className="uppercase text-center text-cerise pt-[100px] md:pt-[200px] mb-36 text-5xl font-medium">
           {" "}
           {t.faq.header}
-        </p>
-      </div>
-      {/*Header*/}
+        </h1>
 
-      {/*Carousel*/}
-      <div className="h-[35vh] sm:h-[45vh] md:h-[55vh] lg:h-[55vh] xl:h-[60vh] w-full sm:w-[700px] md:w-[800px] lg:w-[900px] xl:w-[1200px] 2xl:w-[1300px] mt-[120px] xl:px-12">
-        <Carousel className="px-16 sm:px-24 pb-20">
-          <img src={slides[0].url} className="object-cover h-full w-full grayscale" />
-          <img src={slides[1].url} className="object-cover h-full w-full grayscale" />
-          <img src={slides[2].url} className="object-cover h-full w-full grayscale" />
-        </Carousel>
-      </div>
-      {/*Carousel*/}
-
-      {/*Dropdown table*/}
-      <div className="h-full min-w-[200px] max-w-[1200px] w-full mt-[100px] px-[20px] min-[450px]:px-[60px] min-[704px]:px-[60px]">
-        {/*Dropdown buttons*/}
-        <div className="h-[50px] bg-inherit flex flex-col sm:flex-row  justify-center items-center mb-[80px] px-[30px] sm:px-[0px] ">
-          <div className="sm:w-full flex flex-row justify-center items-center">
-            <div
-              className={`${
-                !(currentTable - 2) ? "brightness-100" : "brightness-75"
-              } sm:w-full text-center h-[50px] mr-[20px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer hover:brightness-100 hover:scale-105 transition-transform`}
-              onClick={() => setCurrentTable(2)}
-            >
-              <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto">
-                {" "}
-                {t.faq.box3}
-              </p>
-            </div>
-            <div
-              className={`${
-                !(currentTable - 0) ? "brightness-100" : "brightness-75"
-              } sm:w-full text-center h-[50px] mr-[0px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer hover:brightness-100 hover:scale-105 transition-transform`}
-              onClick={() => setCurrentTable(0)}
-            >
-              <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto">
-                {" "}
-                {t.faq.box1}
-              </p>
-            </div>
-          </div>
-
-          <div className="sm:w-full flex flex-row justify-center items-center mt-[20px] sm:mt-[0px]">
-            <div
-              className={`${
-                !(currentTable - 1) ? "brightness-100" : "brightness-75"
-              } sm:w-full text-center h-[50px]  mr-[20px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer hover:brightness-100 hover:scale-105 transition-transform`}
-              onClick={() => setCurrentTable(1)}
-            >
-              <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto">
-                {" "}
-                {t.faq.box2}
-              </p>
-            </div>
-            <div
-              className={`${
-                !(currentTable - 3) ? "brightness-100" : "brightness-75"
-              } sm:w-full text-center h-[50px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer hover:brightness-100 hover:scale-105 transition-transform`}
-              onClick={() => setCurrentTable(3)}
-            >
-              <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto">
-                {" "}
-                {t.faq.box4}
-              </p>
-            </div>
-          </div>
-          {/*Dropdown buttons*/}
+ 
+        <div className="h-[35vh] sm:h-[45vh] md:h-[55vh] xl:h-[80vh] w-full ">
+          <Carousel className="px-16 sm:px-24 pb-20">
+            <img src={slides[0].url} className="object-cover h-full w-full grayscale" />
+            <img src={slides[1].url} className="object-cover h-full w-full grayscale" />
+            <img src={slides[2].url} className="object-cover h-full w-full grayscale" />
+          </Carousel>
         </div>
-        {tables[currentTable]}
-      </div>
-      {/*Dropdown table*/}
+    
 
-      {/*Product Catalog button*/}
-      <Link
+        {/*Dropdown table*/}
+        <div className="h-full min-w-[200px] w-full  mt-[100px] min-[450px]:px-[60px] min-[704px]:px-[60px] ">
+          {/*Dropdown buttons*/}
+          <div className="h-[50px] bg-inherit flex flex-col sm:flex-row  justify-center items-center mb-[80px] px-[30px] sm:px-[0px] ">
+            <div className="sm:w-full flex flex-row justify-center items-center">
+              <div
+                className={`${
+                  !(currentTable - 2) ? "brightness-100" : "brightness-75"
+                } sm:w-full text-center rounded-md backdrop-blur-md h-[50px] mr-[20px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer hover:brightness-100 hover:scale-105 transition-transform`}
+                onClick={() => setCurrentTable(2)}
+              >
+                <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto">
+                  {" "}
+                  {t.faq.box3}
+                </p>
+              </div>
+              <div
+                className={`${
+                  !(currentTable - 0) ? "brightness-100" : "brightness-75"
+                } sm:w-full text-center rounded-md backdrop-blur-md h-[50px] mr-[0px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer hover:brightness-100 hover:scale-105 transition-transform`}
+                onClick={() => setCurrentTable(0)}
+              >
+                <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto">
+                  {" "}
+                  {t.faq.box1}
+                </p>
+              </div>
+            </div>
+
+            <div className="sm:w-full flex flex-row justify-center items-center mt-[20px] sm:mt-[0px]">
+              <div
+                className={`${
+                  !(currentTable - 1) ? "brightness-100" : "brightness-75"
+                } sm:w-full text-center rounded-md backdrop-blur-md h-[50px]  mr-[20px] sm:mr-[40px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer hover:brightness-100 hover:scale-105 transition-transform`}
+                onClick={() => setCurrentTable(1)}
+              >
+                <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto">
+                  {" "}
+                  {t.faq.box2}
+                </p>
+              </div>
+              <div
+                className={`${
+                  !(currentTable - 3) ? "brightness-100" : "brightness-75"
+                } sm:w-full text-center rounded-md backdrop-blur-md h-[50px] bg-slate-50 bg-opacity-20 border-[3px] border-cerise flex items-center justify-center cursor-pointer hover:brightness-100 hover:scale-105 transition-transform`}
+                onClick={() => setCurrentTable(3)}
+              >
+                <p className="text-white text-[11px] sm:text-base break-words w-[100px] sm:w-auto ">
+                  {" "}
+                  {t.faq.box4}
+                </p>
+              </div>
+            </div>
+            {/*Dropdown buttons*/}
+          </div>
+          {tables[currentTable]}
+        </div>
+        {/*Dropdown table*/}
+
+        {/*Product Catalog button*/}
+        <div className="w-full flex flex-col items-center">
+          <Link
               className="mt-[100px] h-[80px] w-[250px] bg-cerise rounded-[40px] border-cerise flex items-center justify-center px-[30px] flex-col hover:scale-105 transition-transform text-white text-[20px]"
               target="_blank"
               href={t.faq.catalogPath}
-            >
-              {t.faq.productCatalog}
-      </Link>
+              >
+                {t.faq.productCatalog}
+          </Link>
+        </div>
+       
 
-
-      {/*Product Catalog button*/}
+      </div>
     </div>
   );
 }
