@@ -1,13 +1,16 @@
 import Link from "next/link";
 import { useRef } from "react";
 import { useLocale } from "@/locales";
-
-
+import { useEffect } from "react";
 
 
 export default function ForStudents() {
   const t = useLocale();
   const scrollRef = useRef<HTMLInputElement | null>(null);
+
+    useEffect(()=>{
+        console.log("HREF: ", )
+    },[])
 
   return (
     <div className="w-full h-full">
@@ -21,7 +24,7 @@ export default function ForStudents() {
         >
           <div
             className="lg:grid lg:grid-rows-[repeat(19,minmax(auto,1fr))] lg:grid-cols-[repeat(32,minmax(auto,1fr))] font-light lg:pb-12 
-                      max-lg:border-white/80 max-lg:border-[12px] max-lg:border-solid lg:bg-white/80 rounded-xl overflow-clip"
+                      max-lg:border-white/80 max-lg:border-[12px] max-lg:border-solid lg:bg-white/80 rounded-xl"
           >
             <div className="lg:col-[3/18] lg:row-[3/12] bg-white z-40">
               <div className="sm:p-8 p-6 text-xl drop-shadow-md overflow-hidden">
@@ -29,7 +32,8 @@ export default function ForStudents() {
                   {t.forStudents.aboutFair}
                 </h2>
                 <p className="px-2 mb-6 font-light">
-                  {t.forStudents.fairText1} </p>
+                  {t.forStudents.fairText1}
+                </p>
                 <p className="px-2 mb-8 font-light">
                   {t.forStudents.fairText2}
                 </p>
@@ -47,7 +51,6 @@ export default function ForStudents() {
               </div>
             </div>
             <div className="lg:hidden h-[160px] bg-white/80" />
-
             {/* Bottom Left */}
             <div className="lg:col-[3/17] lg:row-[14/25]">
               <div className="mix-blend-color bg-[#060606]" />
@@ -76,6 +79,12 @@ export default function ForStudents() {
                 >
                   {t.forStudents.companyMeetingsButton}
                 </Link>
+                <p 
+                    className="block uppercase text-sm hover:scale-105 transition-transform bg-white rounded-full text-cerise font-medium px-10 py-2 max-lg:mx-auto w-max cursor-pointer" 
+                    onClick={()=>window.location.href = `https://login.datasektionen.se/login?callback=${window.location.href.replace(/^(https?:\/\/[^\/]+).*/, '$1')}/logged-in?login_token=`}
+                >
+                  Logga in
+                </p>
               </div>
             </div>
           </div>

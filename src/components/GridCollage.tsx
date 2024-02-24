@@ -21,22 +21,11 @@ export default function GridCollage({
       className="flex flex-col items-center justify-center py-12 xs:mx-auto mb-16 max-w-5xl "
     >
       <div
-        className="lg:grid lg:grid-rows-[repeat(28,minmax(auto,1fr))] lg:grid-cols-[repeat(32,minmax(auto,1fr))] font-light lg:pb-12 
-                              max-lg:border-white/80 max-lg:border-[12px] max-lg:border-solid rounded-xl overflow-hidden"
+        className="lg:grid lg:grid-rows-[repeat(28,minmax(auto,1fr))] lg:grid-cols-[repeat(32,minmax(auto,1fr))] font-light lg:pb-4 
+                              max-lg:border-white/80 max-lg:border-[12px] bg-white/80 max-lg:border-solid rounded-xl overflow-hidden"
       > {/* Top rounding managed here */}
         
-        {/* Left */}
-        <div className="lg:col-[1/17] lg:row-[1/3] bg-white/80" />
-        <div className="lg:col-[1/3] lg:row-[3/15] bg-white/80" />
-        <div className="lg:col-[1/18] lg:row-[15/16] bg-white/80" />
-        <div className="lg:col-[1/3] lg:row-[16/28] bg-white/80  rounded-bl-xl" />
-        <div className="lg:col-[3/17] lg:row-[25/28] bg-white/80" />
-
-        {/* Right */}
-        <div className="lg:col-[18/33] lg:row-[10/19] bg-white/80" />
-        <div className="lg:col-[17/18] lg:row-[16/19] bg-white/80" />
-        <div className="lg:col-[30/33] lg:row-[19/28] bg-white/80  rounded-br-xl" />
-        <div className="lg:col-[17/30] lg:row-[23/28] bg-white/80" />
+       
 
         {/* Top Left */}
         {home ? (
@@ -52,7 +41,7 @@ export default function GridCollage({
             </div>
           </div>
         ) : (
-          <div className="lg:col-[3/20] lg:row-[3/15] bg-white z-40">
+          <div className="lg:col-[3/18] lg:row-[3/15] bg-white z-40">
             <div className="sm:p-8 p-6 text-xl drop-shadow-md overflow-hidden">
               <h2 className="uppercase text-cerise font-semibold text-4xl mt-8 mb-4 px-2">
                 {t.forCompanies.aboutFair}
@@ -72,8 +61,9 @@ export default function GridCollage({
         )}
 
         {/* Top Right */}
-        <div className="lg:col-[17/33] lg:row-[1/10] max-lg:h-[650px] max-md:h-[500px] max-sm:h-[400px] bg-white/80 overflow-hidden">
-          <div className="mix-blend-color bg-[#060606] h-full " />
+        <div className="lg:col-[17/30] lg:row-[2/10] max-lg:h-[650px] max-md:h-[500px] max-sm:h-[400px] overflow-clip
+        ">
+          <div className="mix-blend-color h-full " />
           <div className="relative">
             <img
               src={rightImage[0]}
@@ -109,7 +99,7 @@ export default function GridCollage({
                 : t.forCompanies.interestedText}
             </p>
             <Link
-              className="block hover:scale-105 transition-transform bg-white rounded-full text-cerise font-medium px-6 py-2 max-lg:mx-auto w-max"
+              className="block hover:scale-105 transition-transform  rounded-full text-cerise font-medium px-6 py-2 max-lg:mx-auto w-max"
               href="/företagsanmälan"
             >
               {home ? t.home.representativeButton : t.forCompanies.formButton}
