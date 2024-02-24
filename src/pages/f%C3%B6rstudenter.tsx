@@ -80,8 +80,8 @@ export default function ForStudents() {
                   {t.forStudents.companyMeetingsButton}
                 </Link>
                 <p 
-                    className="block uppercase text-sm hover:scale-105 transition-transform bg-white rounded-full text-cerise font-medium px-10 py-2 max-lg:mx-auto w-max" 
-                    onClick={()=>window.location.href = `https://login.datasektionen.se/login?callback=${window.location.href.replace(/^(https?:\/\/[^\/]+).*/, '$1')}/logged_in?login_token=`}
+                    className="block uppercase text-sm hover:scale-105 transition-transform bg-white rounded-full text-cerise font-medium px-10 py-2 max-lg:mx-auto w-max cursor-pointer" 
+                    onClick={()=>window.location.href = `https://login.datasektionen.se/login?callback=${window.location.href.replace(/^(https?:\/\/[^\/]+).*/, '$1')}/logged-in?login_token=`}
                 >
                   Logga in
                 </p>

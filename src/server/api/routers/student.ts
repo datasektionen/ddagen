@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const studentLoginRouter = createTRPCRouter({    
+export const studentRouter = createTRPCRouter({    
     verify: publicProcedure
     .input(z.string())
     .mutation(async ({ input })=>{

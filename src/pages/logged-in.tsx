@@ -8,7 +8,7 @@ const set_cookies = (loginToken: string) => {
 
 export default function LoggedInPage() {
 
-    const studentVerify = api.studentLogin.verify.useMutation();
+    const studentVerify = api.student.verify.useMutation();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
