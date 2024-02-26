@@ -1,8 +1,9 @@
 import { useRef } from "react";
 import { useLocale } from "@/locales";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import GridCollage from "@/components/GridCollage";
 import { Countdown } from "@/components/Countdown";
+import { hasLoadedBeforeContext } from "@/utils/context";
 
 export default function Home() {
   const t = useLocale();
@@ -13,27 +14,18 @@ export default function Home() {
   }
 
   const [showPage, setShowLogo] = useState(false);
-  const [hasLoadedBefore, setHasLoaded] = useState(false);
+  
+  const hasLoadedBefore = useContext(hasLoadedBeforeContext);
 
   useEffect(() => {
     setShowLogo(true);
   }, []);
 
-  useEffect(() => {
-    const loadedBefore = sessionStorage.getItem('indexPageLoaded');
-
-    if(loadedBefore) {
-      setHasLoaded(true);
-    } else {
-      setTimeout(() => {sessionStorage.setItem('indexPageLoaded', 'true');}, 1000);
-      
-    }
-  }, []);
 
   return (
     <>
       <div className="w-full h-full">
-        <div className="flex flex-col mx-auto max-w-[100%]">
+        <div className="flex flex-col mx-auto max-w-[80%] ">
           <div className="relative lg:py-[150px] py-[75px]">
             <img
               className={`

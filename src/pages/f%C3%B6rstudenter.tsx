@@ -3,7 +3,6 @@ import { useRef } from "react";
 import { useLocale } from "@/locales";
 import { useEffect } from "react";
 
-
 export default function ForStudents() {
   const t = useLocale();
   const scrollRef = useRef<HTMLInputElement | null>(null);
@@ -24,7 +23,7 @@ export default function ForStudents() {
         >
           <div
             className="lg:grid lg:grid-rows-[repeat(19,minmax(auto,1fr))] lg:grid-cols-[repeat(32,minmax(auto,1fr))] font-light lg:pb-12 
-                      max-lg:border-white/80 max-lg:border-[12px] max-lg:border-solid lg:bg-white/80"
+                      max-lg:border-white/80 max-lg:border-[12px] max-lg:border-solid lg:bg-white/80 rounded-xl"
           >
             <div className="lg:col-[3/20] lg:row-[3/12] bg-white z-40">
               <div className="sm:p-8 p-6 text-xl drop-shadow-md overflow-hidden">
@@ -32,8 +31,7 @@ export default function ForStudents() {
                   {t.forStudents.aboutFair}
                 </h2>
                 <p className="px-2 mb-6 font-light">
-                  {t.forStudents.fairText1}
-                </p>
+                  {t.forStudents.fairText1} </p>
                 <p className="px-2 mb-8 font-light">
                   {t.forStudents.fairText2}
                 </p>
