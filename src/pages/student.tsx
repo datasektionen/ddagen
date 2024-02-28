@@ -44,7 +44,7 @@ export default function LoggedInPage() {
             if (res){
                 // update prefill variables
                 const res_json = JSON.parse(res);
-                email = res_json.emails;
+                email = res_json.email;
                 first_name = res_json.first_name;
                 last_name = res_json.last_name;
                 setUgkthid(res_json.ugkthid);
@@ -64,33 +64,28 @@ export default function LoggedInPage() {
         studentGetData.mutateAsync(ugkthid)
         .then((res)=>{
             if (!res) setStudentAccoundExists(false);
-
+            
             console.log("RESPONSE: ", res);
         });
 
     }, [isLoggedIn, ugkthid]);
 
 
-    return (
-        <>
-        {
-            isLoggedIn?
-            <div className="h-screen flex flex-col justify-center items-center">
-                <p className="text-green-500">
-                    You are logged in! :)
-                </p>
-                {
-                    studentAccoundExists? 
-                    <p className="text-white" >your account exists!</p>
-                    :
-                    <p className="text-white" >Create your account</p>
-                }            
-            </div>
-            :
-            <p className="h-screen flex items-center justify-center text-red-500">
-                You are not logged in! :)
+    return isLoggedIn? (
+        <div className="h-screen flex flex-col justify-center items-center">
+            <p className="text-green-500">
+                You are logged in! :)
             </p>
-        }
-        </>
+            {
+                studentAccoundExists? 
+                <p className="text-white" >your account exists!</p>
+                :
+                <p className="text-white" >Create your account</p>
+            }            
+        </div>
+        ) : (
+        <p className="h-screen flex items-center justify-center text-red-500">
+            You are not logged in! :)
+        </p>
     )
 }

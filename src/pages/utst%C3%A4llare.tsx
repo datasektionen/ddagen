@@ -34,8 +34,8 @@ export default function Exhibitor() {
   });
 
   useEffect(() => {
-    //if (!getIsLoggedIn.isSuccess) return;
-    //if (isLoggedIn == false) router.push("/logga-in");
+    if (!getIsLoggedIn.isSuccess) return;
+    if (isLoggedIn == false) router.push("/logga-in");
   }, [isLoggedIn]);
 
   useEffect(() => {
@@ -107,7 +107,7 @@ export default function Exhibitor() {
     ]
   );
 
-  return true ? (
+  return isLoggedIn ? (
     <>
       <div className="mx-auto flex flex-col items-center py-40 cursor-default">
         {/*Header*/}
