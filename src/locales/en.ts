@@ -51,6 +51,27 @@ export default {
     companyMeetingsButton: "Company Meetings",
   },
   exhibitorSettings: {
+    start: {
+      about: "ABOUT THE COMPANY",
+      info: "We are interested in getting to know you better. Please fill in the following information in order for us at D-Dagen to help you find your future coworkers!",
+      start: "START",
+    },
+    step0: {
+      generalInfo: "GENERAL INFORMARTION",
+      logoWhite: "White Logo",
+      logoColour: "Logo w/ colour",
+      description: "Description",
+      format: "SVG or PNG",
+    },
+    step1: {
+      title: "JOB OFFERS",
+    },
+    step2: {
+      title: "CONTACTS",
+    },
+    back: "BACK",
+    next: "NEXT",
+    step: "STEP",
     header: "Profile Settings",
     fields: {
       invoiceEmail: "Invoce email",
@@ -103,21 +124,21 @@ export default {
         section2: {
           header: "Job Offers",
           year: {
-            one: "Year 1",
-            two: "Year 2",
-            three: "Year 3",
-            four: "Year 4",
-            five: "Year 5",
+            one: "YEAR 1",
+            two: "YEAR 2",
+            three: "YEAR 3",
+            four: "YEAR 4",
+            five: "YEAR 5",
           },
           jobs: {
-            summer: "Summer Job",
-            internship: "Internship",
-            partTime: "Part-time Job",
+            summer: "SUMMER JOB",
+            internship: "INTERNSHIP",
+            partTime: "PART-TIME JOB",
           },
           other: {
-            thesis: "Master Thesis",
-            fullTime: "Full-time Job",
-            trainee: "Trainee Program",
+            thesis: "MASTER THESIS",
+            fullTime: "FULL-TIME JOB",
+            trainee: "TRAINEE PROGRAM",
           },
           save: "Save",
         },
@@ -543,19 +564,19 @@ export default {
     "HEAD OF SALES",
     "HEAD OF FINANCES"],
     prTeamRoles: [
-      "Head of PR", "Print Manager", "Art Director", 
+      "Head of PR", "Print Manager", "Art Director",
       "Art Director", "Social Media Manager",
     ],
     devTeamRoles: [
-      "Lead Developer", "System Developer", 
+      "Lead Developer", "System Developer",
       "Web Developer", "Web Developer",
     ],
     salesTeamRoles: [
-      "Head of Sales", "Salesperson", "Salesperson", 
+      "Head of Sales", "Salesperson", "Salesperson",
       "Salesperson", "Salesperson", "Salesperson", "Salesperson", "Sponsorship Manager",
     ],
     massTeamRoles: [
-      "Head of the Fair", "Event Manager", "Logistics Manager", 
+      "Head of the Fair", "Event Manager", "Logistics Manager",
       "Venue Manager", "Lounge Manager", "HR Manager",
     ],
     ecoTeamRoles: ["Head of Finances", "Deputy Financial Manager"],

@@ -51,6 +51,27 @@ export default {
     companyMeetingsButton: "Kontaktsamtal",
   },
   exhibitorSettings: {
+    start: {
+      about: "OM FÖRETAGET",
+      info: "Vi är intresserade av att lära känna er  bättre. Vänligen fyll i följande information så att vi på D-Dagen kan stödja er i att hitta era framtida medarbetare!",
+      start: "STARTA",
+    },
+    step0: {
+      generalInfo: "ALLMÄN INFORMATION",
+      logoWhite: "Vit Logga",
+      logoColour: "Logga m. färg",
+      description: "Beskrivning",
+      format: "SVG eller PNG",
+    },
+    step1: {
+      title: "JOBBERBJUDANDEN",
+    },
+    step2: {
+      title: "KONTAKTPERSON",
+    },
+    back: "TILLBAKA",
+    next: "NÄSTA",
+    step: "STEG",
     header: "Profilinställningar",
     fields: {
       invoiceEmail: "Fakturerings-E-post",
@@ -103,21 +124,21 @@ export default {
         section2: {
           header: "Jobberbjudanden",
           year: {
-            one: "År 1",
-            two: "År 2",
-            three: "År 3",
-            four: "År 4",
-            five: "År 5",
+            one: "ÅK 1",
+            two: "ÅK 2",
+            three: "ÅK 3",
+            four: "ÅK 4",
+            five: "ÅK 5",
           },
           jobs: {
-            summer: "Sommarjobb",
-            internship: "Internship",
-            partTime: "Deltidsjobb",
+            summer: "SOMMARJOBB",
+            internship: "INTERNSHIP",
+            partTime: "DELTIDSJOBB",
           },
           other: {
-            thesis: "Examensarbete",
-            fullTime: "Heltidsjobb",
-            trainee: "Traineeprogram",
+            thesis: "EXAMENSARBETE",
+            fullTime: "HELTIDSJOBB",
+            trainee: "TRAINEEPROGRAM",
           },
           save: "Spara",
         },
@@ -542,7 +563,7 @@ export default {
       "Art Director", "Sociala medier-ansvarig",
     ],
     salesTeamRoles: [
-      "Säljansvarig", "Säljare", "Säljare", "Säljare", 
+      "Säljansvarig", "Säljare", "Säljare", "Säljare",
       "Säljare", "Säljare", "Säljare","Sponsansvarig",
     ],
     devTeamRoles: [

@@ -60,15 +60,15 @@ export function UploadButton({
   return (
     <div className="flex flex-col items-center">
       <label
-        className="block mb-2 text-xl font-normal text-center text-gray-900 dark:text-white tracking-wider"
+        className="block mb-2 text-xl font-normal text-center text-white dark:text-white tracking-wider"
         htmlFor="file_input"
       >
         {textAbove}
       </label>
-      <div className="relative flex flex-col bg-black/50 w-[150px] h-[150px] rounded-3xl border-solid border-cerise border-2 mx-auto overflow-hidden">
+      <div className="relative flex flex-col bg-black/25 w-[150px] h-[150px] rounded-3xl border-solid border-yellow border-2 mx-auto overflow-hidden">
         <h1 className="relative top-[50%] -translate-y-2/4 text-center text-2xl">
           {selectedImage == "" ? (
-            textInsideMiddle
+            <img className="mx-auto" src={textInsideMiddle} />
           ) : (
             <img className="mx-auto" src={selectedImage} />
           )}

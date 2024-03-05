@@ -107,7 +107,7 @@ export default function Exhibitor() {
     ]
   );
 
-  return true ? (
+  return(
     <>
       <div className="mx-auto flex flex-col items-center py-40 cursor-default">
         {/*Header*/}
@@ -120,12 +120,6 @@ export default function Exhibitor() {
         <div className="h-full min-w-[200px] max-w-[1200px] w-full mt-[15px] px-[20px] min-[450px]:px-[60px] min-[704px]:px-[60px]">
           {table}
         </div>
-      </div>
-    </>
-  ) : (
-    <>
-      <div className="mx-auto flex flex-col items-center py-40">
-        <img src={"/img/loading.gif"} className="my-24 w-32 h-32" />
       </div>
     </>
   );
