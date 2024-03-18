@@ -51,6 +51,14 @@ export default {
     companyMeetingsButton: "Kontaktsamtal",
   },
   exhibitorSettings: {
+    startHeader: "Dags att sätta upp eran profil",
+    startButton: "Starta",
+
+    previousPage:"Föregående",
+    nextPage:"Nästa",
+    lastPage:"Klar",
+    lastPageText: "Du har möjlighet att redigera informationen efteråt",
+
     start: {
       about: "OM FÖRETAGET",
       info: "Vi är intresserade av att lära känna er  bättre. Vänligen fyll i följande information så att vi på D-Dagen kan stödja er i att hitta era framtida medarbetare!",

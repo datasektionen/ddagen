@@ -17,7 +17,7 @@ export default function RowThree({
   exhibitorPackage: Package;
 }) {
   return (
-    <div className="flex flex-col w-full items-center text-center overflow-auto mt-6">
+    <div className="flex flex-col w-full items-center text-center overflow-auto mt-6 outline-yellow">
       {/* Section 1 */}
       <h1 className="uppercase text-cerise text-2xl md:text-4xl font-normal px-[10px] break-words">
         {t.exhibitorSettings.table.row3.section1.header}

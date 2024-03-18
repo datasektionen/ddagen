@@ -51,6 +51,14 @@ export default {
     companyMeetingsButton: "Company Meetings",
   },
   exhibitorSettings: {
+    startHeader: "Time to set up your profile",
+    startButton: "Start",
+
+    previousPage: "Previous",
+    nextPage: "Next",
+    lastPage: "Done",
+    lastPageText: "You will be able to edit your information later on",
+
     start: {
       about: "ABOUT THE COMPANY",
       info: "We are interested in getting to know you better. Please fill in the following information in order for us at D-Dagen to help you find your future coworkers!",
@@ -211,6 +219,7 @@ export default {
         },
         preferencesHeader: "Preferences (vegetarian is default)",
         options: {
+          noPreference: "No preference",
           vegetarian: "Vegan",
           lactoseFree: "Lactose-Free",
           glutenFree: "Gluten-Free",
