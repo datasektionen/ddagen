@@ -8,6 +8,7 @@ const set_cookies = (loginToken: string) => {
 
 export default function LoggedInPage() {
 
+    const inputData = api.student.inputData.useMutation();
     const studentVerify = api.student.verify.useMutation();
     const studentGetData = api.student.getData.useMutation();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -19,6 +20,20 @@ export default function LoggedInPage() {
     let email = "";
     let first_name = "";
     let last_name = "";
+
+    const update_user = (input: any)=>{
+        inputData.mutateAsync(JSON.stringify(input))
+        .then((res) =>{
+            console.log(res)
+        });
+    }
+
+    useEffect(()=>{
+        // log in the user if not logged in
+        if (!isLoggedIn && !document.cookie.includes("login_token")){
+            window.location.href = `https://login.datasektionen.se/login?callback=${window.location.href.replace(/^(https?:\/\/[^\/]+).*/, '$1')}/student?login_token=`
+        }
+    }, [isLoggedIn])
 
     useEffect(() => {
         const params: URLSearchParams = new URL(window.location.href).searchParams;
@@ -48,12 +63,16 @@ export default function LoggedInPage() {
                 first_name = res_json.first_name;
                 last_name = res_json.last_name;
                 setUgkthid(res_json.ugkthid);
-                console.log("IT_I", res_json.ugkthid)
+                update_user({
+                    "ugkthid": res_json.ugkthid,
+                    "email": res_json.email,
+                    "first_name": res_json.first_name,
+                    "last_name": res_json.last_name
+                })
             }
             setIsLoggedIn(res? true:false);
             set_cookies(loginToken);
         });
-   
     }, []);
 
     useEffect(()=>{
