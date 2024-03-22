@@ -24,7 +24,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-svgmt": "^2.0.2",
-    "sharp": "^0.31.3",
+    "react-swipeable": "^7.0.1",
+    "sharp": "^0.33.2",
     "superjson": "^1.12.2",
     "zod": "^3.21.4"
   },
