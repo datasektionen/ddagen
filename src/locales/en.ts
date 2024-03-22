@@ -152,9 +152,11 @@ export default {
         },
         section3: {
           header: "Contacts",
+          info: "Add members from company who should be able to edit this company profile",
           save: "Save",
           add: "Add",
           delete: "Delete",
+
           alerts: {
             errorDeleteUserWithoutID: "Can not identify user to delete",
             errorDeleteSelf: "You can not delete yourself",
@@ -218,8 +220,8 @@ export default {
           paragraphTwo: "You change the number in extra orders",
         },
         preferencesHeader: "Preferences (vegetarian is default)",
+        prefrenceSubHeader: "Leave empty if no special dietary requirements",
         options: {
-          noPreference: "No preference",
           vegetarian: "Vegan",
           lactoseFree: "Lactose-Free",
           glutenFree: "Gluten-Free",

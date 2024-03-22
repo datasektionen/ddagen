@@ -66,18 +66,18 @@ export function UploadButton({
         {textAbove}
       </label>
       <div className="relative flex flex-col bg-black/25 w-[150px] h-[150px] rounded-3xl border-solid border-yellow border-2 mx-auto overflow-hidden">
-        <h1 className="relative top-[50%] -translate-y-2/4 text-center text-2xl">
+        <h2 className="relative top-[50%] -translate-y-2/4 text-center text-2xl">
           {selectedImage == "" ? (
             <img className="mx-auto" src={textInsideMiddle} />
           ) : (
             <img className="mx-auto" src={selectedImage} />
           )}
-        </h1>
-        <h1 className="relative top-[70%] -translate-y-2/4 text-center text-[10px] text-slate-400">
+        </h2>
+        <h2 className="relative top-[70%] -translate-y-2/4 text-center text-[10px] text-slate-400">
           {selectedImage == "" ? (
             textInsideBottom
           ) : ""}
-        </h1>
+        </h2>
         <div>
           <label
             htmlFor={textAbove}

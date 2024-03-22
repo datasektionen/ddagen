@@ -6,7 +6,7 @@ export function step(title : string,step : number,content : JSX.Element, t : Loc
   return (<div className="flex justify-center mt-[100px] mb-[100px]">
             <div className="border-2 border-cerise w-[700px] backdrop-blur-md bg-white/20 rounded-xl">
               <div className="mt-4 mb-4 ml-4 mr-4">
-                <h1 className="text-white text-center text-2xl">{title}</h1>
+                <h2 className="text-white text-center text-2xl">{title}</h2>
                 <div className="flex justify-center">
                   {circles(step)}
                 </div>

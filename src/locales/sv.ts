@@ -152,6 +152,7 @@ export default {
         },
         section3: {
           header: "Kontaktpersoner",
+          info: "Lägg till vilka som ska delta på mässan ",
           save: "Spara",
           add: "Lägg Till",
           delete: "Radera",
@@ -219,6 +220,7 @@ export default {
           paragraphTwo: "Ni ändrar antalet i extra beställningar",
         },
         preferencesHeader: "Preferenser (vegetariskt är standard)",
+        prefrenceSubHeader: "Lämna tom om ingen specialkost",
         options: {
           vegetarian: "Vegansk",
           lactoseFree: "Laktosfri",

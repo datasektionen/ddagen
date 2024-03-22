@@ -169,9 +169,9 @@ export default function RowOne({ t }: { t: Locale }) {
 
   return (
     <div className="flex flex-col w-full items-center overflow-auto mt-6 text-center">
-      <h1 className="uppercase text-cerise text-2xl md:text-4xl font-normal px-[10px] break-words">
+      <h2 className="uppercase text-cerise text-2xl md:text-4xl font-normal px-[10px] break-words">
         {t.exhibitorSettings.table.row1.section1.header}
-      </h1>
+      </h2>
 
       {/* Section 1 */}
 
@@ -183,7 +183,7 @@ export default function RowOne({ t }: { t: Locale }) {
               selectedImage={whiteLogo}
               setSelectedImage={setWhiteLogo}
               textAbove={t.exhibitorSettings.table.row1.section1.logoWhite}
-              textInsideMiddle={t.exhibitorSettings.table.row1.section1.logo}
+              textInsideMiddle="/img/fluga_gra.png"
               textInsideBottom={"SVG"}
               accept={["image/svg+xml"]}
             />
@@ -194,13 +194,13 @@ export default function RowOne({ t }: { t: Locale }) {
               selectedImage={colorLogo}
               setSelectedImage={setColorLogo}
               textAbove={t.exhibitorSettings.table.row1.section1.logoColour}
-              textInsideMiddle={t.exhibitorSettings.table.row1.section1.logo}
+              textInsideMiddle="/img/fluga_gra.png"
               textInsideBottom={`SVG ${t.exhibitorSettings.table.row1.section1.or} PNG`}
               accept={["image/png", "image/svg+xml"]}
             />
           </div>
         </div>
-        <div className="w-[90%] md:w-[80%] lg:w-full">
+        <div className="">
           <TextInput
             description={description}
             setDescription={setDescription}
@@ -214,9 +214,9 @@ export default function RowOne({ t }: { t: Locale }) {
       {/* Section 1 */}
 
       {/* Section 2 */}
-      <h1 className="uppercase text-cerise text-2xl md:text-4xl font-normal px-[10px] break-words mb-8">
+      <h2 className="uppercase text-cerise text-2xl md:text-4xl font-normal px-[10px] break-words mb-8">
         {t.exhibitorSettings.table.row1.section2.header}
-      </h1>
+      </h2>
 
       <div className="max-lg:hidden w-[75%]">
         <div className="grid grid-cols-6 grid-rows-4 mx-auto gap-y-2 mb-8">
@@ -282,6 +282,7 @@ export default function RowOne({ t }: { t: Locale }) {
       {/* Section 2 */}
 
       {/* Section 3 */}
+      
       <UserDetails t={t} />
       {/* Section 3 */}
     </div>

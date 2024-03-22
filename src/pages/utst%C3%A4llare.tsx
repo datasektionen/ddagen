@@ -7,12 +7,17 @@ import { useEffect, useState } from "react";
 import { UploadButton } from "@/components/Settings/UploadButton";
 import { TextInput } from "@/components/Settings/TextInput";
 import RowOne from "@/components/Settings/RowOne";
-import RowTwo from "@/components/Settings/RowTwo";
-import RowThree from "@/components/Settings/RowThree";
+import ExtraFairOrders from "@/components/Settings/ExtraFairOrders";
+import FoodPreferences from "@/components/Settings/FoodPreferences";
 import GeneralInfo from "@/components/Settings/GeneralInfo";
 import JobOffers from "@/components/Settings/JobOffers";
 import { UserDetails } from "@/components/Settings/UserDetails";
+import { CheckMark } from "@/components/CheckMark";
 
+
+// TODO hook the next button to the save features
+//
+//
 
 export default function Exhibitor() {
   const t = useLocale();
@@ -20,18 +25,14 @@ export default function Exhibitor() {
 
   // States
   const [page, setPage] = useState<number>(0);
-  const pageAmout = 6;
-  const nextPage = () => {
-    setPage((prevIndex) => (prevIndex + 1) % pageAmout);
-  }
-
-  const prevPage = () => {
-    setPage((prevIndex) => ( prevIndex === 0 ? prevIndex : prevIndex - 1));
-  }
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
+  const [saveChanges, setSaveChanges] = useState<boolean | undefined>();
+  const [whiteLogo, setWhiteLogo] = useState("");
+  const [colorLogo, setColorLogo] = useState("");
+  const [description, setDescription] = useState("");
 
 
   const [extras, setExtras] = useState<Extras>();
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
   const [preferenceCount, setPreferenceCount] = useState({
     banqcount: 0,
     reprcount: 0,
@@ -51,11 +52,15 @@ export default function Exhibitor() {
     },
   });
 
+ 
+
+  // Manage login
   useEffect(() => {
     //if (!getIsLoggedIn.isSuccess) return;
     //if (isLoggedIn == false) router.push("/logga-in");
   }, [isLoggedIn]);
 
+  {/* Extra orders*/}
   useEffect(() => {
     if (!getExtras.isSuccess) return;
     setExtras(
@@ -99,6 +104,115 @@ export default function Exhibitor() {
     });
   }, [extras]);
 
+  const pageAmout = 6;
+  const nextPage = () => {
+    setPage((prevIndex) => (prevIndex + 1) % pageAmout);
+  }
+
+  const prevPage = () => {
+    setPage((prevIndex) => ( prevIndex === 0 ? prevIndex : prevIndex - 1));
+  }
+
+  {/* General information*/}
+  const logoMutation = api.exhibitor.setLogo.useMutation();
+  const descriptionMutation = api.exhibitor.setDescription.useMutation();
+
+
+
+
+  {/* job Offers*/}
+  const getJobOffers = api.exhibitor.getJobOffers.useQuery();
+  const jobOffersMutation = api.exhibitor.setJobOffers.useMutation();
+  const [checkmarks, setCheckMarks] = useState<boolean[]>([]);
+
+  useEffect(() => {
+    if (!getJobOffers.isSuccess || !getJobOffers.data) return;
+    let initCheckMarks = new Array<boolean>(18).fill(false);
+    const jobOffers = getJobOffers.data;
+    jobOffers.summerJob.map((num: number) => {
+      initCheckMarks[num] = true;
+    });
+    jobOffers.internship.map((num: number) => {
+      initCheckMarks[5 + num] = true;
+    });
+    jobOffers.partTimeJob.map((num: number) => {
+      initCheckMarks[10 + num] = true;
+    });
+    initCheckMarks[15] = jobOffers.masterThesis;
+    initCheckMarks[16] = jobOffers.fullTimeJob;
+    initCheckMarks[17] = jobOffers.traineeProgram;
+    setCheckMarks(initCheckMarks);
+  }, [getJobOffers.data]);
+
+  function removeImageDetails(img: string) {
+    return img.replace(/^data:image\/[a-z]+\+?[a-z]+;base64,/, "");
+  }
+
+  function getCheckmarksPos(offer: string) {
+    let array: boolean[] = [];
+    switch (offer) {
+      case "summer":
+        array = checkmarks.slice(0, 5);
+        break;
+      case "intern":
+        array = checkmarks.slice(5, 10);
+        break;
+      case "partTime":
+        array = checkmarks.slice(10, 15);
+        break;
+    }
+    return array.reduce(
+      (out: number[], bool, index) => (bool ? out.concat(index) : out),
+      []
+    );
+  }
+
+  function getCheckMark(pos: number) {
+    return (
+      <CheckMark
+        name={`${pos}`}
+        defaultChecked={checkmarks[pos]}
+        onClick={() => {
+          checkmarks[pos] = !checkmarks[pos];
+        }}
+      />
+    );
+  }
+
+
+  const rows = [
+    {
+      jobOffer: t.exhibitorSettings.table.row1.section2.jobs.summer,
+      checkmarks: [0, 1, 2, 3, 4].map((pos) => (
+        <div key={pos}>{getCheckMark(pos)}</div>
+      )),
+    },
+    {
+      jobOffer: t.exhibitorSettings.table.row1.section2.jobs.internship,
+      checkmarks: [5, 6, 7, 8, 9].map((pos) => (
+        <div key={pos}>{getCheckMark(pos)}</div>
+      )),
+    },
+    {
+      jobOffer: t.exhibitorSettings.table.row1.section2.jobs.partTime,
+      checkmarks: [10, 11, 12, 13, 14].map((pos) => (
+        <div key={pos}>{getCheckMark(pos)}</div>
+      )),
+    },
+    {
+      jobOffer: t.exhibitorSettings.table.row1.section2.other.thesis,
+      checkmarks: getCheckMark(15),
+    },
+    {
+      jobOffer: t.exhibitorSettings.table.row1.section2.other.fullTime,
+      checkmarks: getCheckMark(16),
+    },
+    {
+      jobOffer: t.exhibitorSettings.table.row1.section2.other.trainee,
+      checkmarks: getCheckMark(17),
+    },
+  ];
+
   const table = Table(
     [
       t.exhibitorSettings.table.row1.title,
@@ -108,14 +222,14 @@ export default function Exhibitor() {
     [],
     [
       <RowOne t={t} />,
-      <RowTwo
+      <ExtraFairOrders
         t={t}
         extras={extras}
         setExtras={setExtras}
         preferenceCount={preferenceCount}
         exhibitorPackage={exhibitorPackage}
       />,
-      <RowThree
+      <FoodPreferences
         t={t}
         extras={extras}
         preferenceCount={preferenceCount}
@@ -124,15 +238,6 @@ export default function Exhibitor() {
       />,
     ]
   );  
-  
-
-  
-  const [whiteLogo, setWhiteLogo] = useState("");
-  const [colorLogo, setColorLogo] = useState("");
-  const [description, setDescription] = useState("");
-  
-    
-  
 
   const pageContent = [
     <>  
@@ -160,17 +265,18 @@ export default function Exhibitor() {
     <>  
       <JobOffers
       t={t}
+      rows={rows}
       />
     </>,
     <UserDetails t={t}/>,
-    <RowTwo
+    <ExtraFairOrders
       t={t}
       extras={extras}
       setExtras={setExtras}
       preferenceCount={preferenceCount}
       exhibitorPackage={exhibitorPackage}
     />,
-    <RowThree
+    <FoodPreferences
       t={t}
       extras={extras}
       preferenceCount={preferenceCount}
@@ -179,6 +285,47 @@ export default function Exhibitor() {
     />,
     
   ]
+
+  // save managment
+
+  useEffect(() => {
+    if (typeof saveChanges === "boolean") {
+      setTimeout(() => {
+        setSaveChanges(undefined);
+      }, 3000);
+    }
+  }, [saveChanges]);
+
+
+  async function saveHandle() {
+    await Promise.all([
+      logoMutation.mutate({
+        b64data: removeImageDetails(whiteLogo),
+        kind: "white",
+      }),
+      logoMutation.mutateAsync({
+        b64data: removeImageDetails(colorLogo),
+        kind: "color",
+      }),
+      descriptionMutation.mutateAsync(description),
+      jobOffersMutation.mutateAsync({
+        summerJob: getCheckmarksPos("summer"),
+        internship: getCheckmarksPos("intern"),
+        partTimeJob: getCheckmarksPos("partTime"),
+        masterThesis: checkmarks[15],
+        fullTimeJob: checkmarks[16],
+        traineeProgram: checkmarks[17],
+      }),
+    ])
+      .then(() => setSaveChanges(true))
+      .catch((error) => {
+        console.log(error);
+        setSaveChanges(false);
+      });
+  }
+
+
+  
 
   return(
     <>
@@ -195,10 +342,10 @@ export default function Exhibitor() {
         {/*Selection Cards*/}
 
         {/*Dropdown table*/}
-        <div className="h-full min-w-[200px] max-w-[1200px] w-full mt-[15px] px-[20px] min-[450px]:px-[60px] min-[704px]:px-[60px]">
-          <div className=" w-full rounded-2xl bg-white/20 backdrop-blur-md text-white pt-8">
+        <div className="h-full min-w-[200px] max-w-[1200px] w-full mt-8 px-[20px] min-[450px]:px-[60px] min-[704px]:px-[60px] ">
+          <div className=" w-full rounded-2xl bg-white/20 backdrop-blur-md text-white pt-8 overflow-hidden border-2 border-cerise">
             {pageContent[page]}
-            <div className="w-full flex justify-center">
+            <div className="w-full flex justify-center ">
 
 
               {page > 1 ? <button className="mt-4 mb-4 mx-2" onClick={prevPage}> 
@@ -220,7 +367,7 @@ export default function Exhibitor() {
                   </button> : <> </> }
             </div>
             <div className="w-full text-center pb-4">
-              {page == pageAmout -1 ?  <p> {t.exhibitorSettings.lastPageText} </p> : <> </>}
+              {page > 0 ?  <p> {t.exhibitorSettings.lastPageText} </p> : <> </>}
             </div>
           </div>
           

@@ -25,6 +25,15 @@ export function UserDetails({ t }: { t: Locale }) {
 
   return (
     <div className="w-full flex flex-col items-center">
+      <h2 className="uppercase text-cerise text-2xl md:text-4xl font-normal px-[10px] break-words mb-8 mt-6">
+        {t.exhibitorSettings.table.row1.section3.header}
+      </h2>
+
+      <p className="text-white mb-4 font-normal text-base">
+        {t.exhibitorSettings.table.row1.section3.info}
+      </p>
+      
+
       {users.slice(1).map((user, pos) => (
         <div className="w-full flex flex-col items-center" key={user.email}>
           <EditUser

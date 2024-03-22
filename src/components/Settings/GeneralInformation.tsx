@@ -11,7 +11,7 @@ export function GeneralInformation(){
   const [colorLogo, setColorLogo] = useState("");
   const [description, setDescription] = useState("");
 
-  const content = <div className="flex">
+  const content = <div className="flex justify-center w-full">
     <div className="mr-4">
       <UploadButton
         t={useLocale()}

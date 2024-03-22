@@ -3,7 +3,7 @@ import { Extras, Package } from "@/shared/Classes";
 import { PreferenceDetails } from "./PreferenceDetails";
 import { Dispatch } from "react";
 
-export default function RowThree({
+export default function FoodPreferences({
   t,
   extras,
   preferenceCount,
