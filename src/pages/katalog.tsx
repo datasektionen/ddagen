@@ -2,8 +2,7 @@ import { useLocale } from "@/locales";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { useState } from "react";
 import Link from "next/link";
-
-
+import { useSwipeable } from 'react-swipeable';
 
 function Table(){
   const t = useLocale();
@@ -58,11 +57,17 @@ function Table(){
     setPackageIdx((packageIdx - 1 + packages.length) % packages.length);
   };
 
+  const swipeableHandlers = useSwipeable({
+    onSwipedLeft: () => increasePackageIdx(),
+    onSwipedRight: () => decreasePackageIdx(),
+  });
+
+
   return(
     <div className="flex flex-row items-center justify-center w-full ">
       {/*Desktop version*/}
-      <div className="p-10 hidden md:block backdrop-blur-md bg-white/20 rounded-xl">
-        <table className=" ">
+      <div className="lg:p-10 p-4 m-2  hidden md:block backdrop-blur-md bg-white/20 rounded-xl">
+        <table>
           <thead>
             <tr className="border-b border-white ">
               <th></th>
@@ -84,10 +89,10 @@ function Table(){
           </tbody>
         </table>
       </div>
-          
-      {/* https://medium.com/@antonprudkohliad/how-to-implement-a-slider-element-using-react-tailwind-css-and-intersection-observer-api-501b3f79f71c to make swipeable */}
+
+      
       {/*Phone version*/}
-      <div className="md:hidden px-2 pt-4">
+      <div {...swipeableHandlers} className="md:hidden px-2 pt-4">
         <div className="rounded-2xl bg-white/20 backdrop-blur-md pt-4 pb-4">
           <div className="flex justify-center items-center">
             <button onClick={decreasePackageIdx} className="pl-4">
@@ -166,8 +171,8 @@ export default function Catalog() {
           </div>
         </div>
       </div>
-      
-      
+
+
     </div>
   );
 }
