@@ -16,8 +16,8 @@ import { CheckMark } from "@/components/CheckMark";
 
 
 // TODO hook the next button to the save features
-//
-//
+// Maby break save changes into a separate steps for each page
+// Add Logic to figure out saved state
 
 export default function Exhibitor() {
   const t = useLocale();
@@ -30,8 +30,7 @@ export default function Exhibitor() {
   const [whiteLogo, setWhiteLogo] = useState("");
   const [colorLogo, setColorLogo] = useState("");
   const [description, setDescription] = useState("");
-
-
+  const [checkmarks, setCheckMarks] = useState<boolean[]>([]);
   const [extras, setExtras] = useState<Extras>();
   const [preferenceCount, setPreferenceCount] = useState({
     banqcount: 0,
@@ -41,8 +40,13 @@ export default function Exhibitor() {
 
   // Mutations
   const setExtrasMutation = api.exhibitor.setExtras.useMutation();
+  const logoMutation = api.exhibitor.setLogo.useMutation();
+  const descriptionMutation = api.exhibitor.setDescription.useMutation();
+  const jobOffersMutation = api.exhibitor.setJobOffers.useMutation();
+
 
   // Queries
+  const getJobOffers = api.exhibitor.getJobOffers.useQuery();
   const getExtras = api.exhibitor.getExtras.useQuery();
   const getExhibitor = api.exhibitor.getPackage.useQuery();
   const getPreferenceCounts = api.exhibitor.getPreferenceCount.useQuery();
@@ -52,14 +56,23 @@ export default function Exhibitor() {
     },
   });
 
- 
-
   // Manage login
   useEffect(() => {
     //if (!getIsLoggedIn.isSuccess) return;
     //if (isLoggedIn == false) router.push("/logga-in");
   }, [isLoggedIn]);
 
+  // Manage page swapping
+  const pageAmout = 6;
+  const nextPage = () => {
+    setPage((prevIndex) => (prevIndex + 1) % pageAmout);
+  }
+
+  const prevPage = () => {
+    setPage((prevIndex) => ( prevIndex === 0 ? prevIndex : prevIndex - 1));
+  }
+
+  
   {/* Extra orders*/}
   useEffect(() => {
     if (!getExtras.isSuccess) return;
@@ -104,27 +117,8 @@ export default function Exhibitor() {
     });
   }, [extras]);
 
-  const pageAmout = 6;
-  const nextPage = () => {
-    setPage((prevIndex) => (prevIndex + 1) % pageAmout);
-  }
 
-  const prevPage = () => {
-    setPage((prevIndex) => ( prevIndex === 0 ? prevIndex : prevIndex - 1));
-  }
-
-  {/* General information*/}
-  const logoMutation = api.exhibitor.setLogo.useMutation();
-  const descriptionMutation = api.exhibitor.setDescription.useMutation();
-
-
-
-
-  {/* job Offers*/}
-  const getJobOffers = api.exhibitor.getJobOffers.useQuery();
-  const jobOffersMutation = api.exhibitor.setJobOffers.useMutation();
-  const [checkmarks, setCheckMarks] = useState<boolean[]>([]);
-
+  {/* job Offers logic*/}
   useEffect(() => {
     if (!getJobOffers.isSuccess || !getJobOffers.data) return;
     let initCheckMarks = new Array<boolean>(18).fill(false);
@@ -179,7 +173,6 @@ export default function Exhibitor() {
     );
   }
 
-
   const rows = [
     {
       jobOffer: t.exhibitorSettings.table.row1.section2.jobs.summer,
@@ -213,6 +206,47 @@ export default function Exhibitor() {
     },
   ];
 
+    {/*Save changes logic*/}
+    
+    useEffect(() => {
+      if (typeof saveChanges === "boolean") {
+        setTimeout(() => {
+          setSaveChanges(undefined);
+        }, 3000);
+      }
+    }, [saveChanges]);
+  
+  
+    async function saveHandle() {
+      await Promise.all([
+        logoMutation.mutate({
+          b64data: removeImageDetails(whiteLogo),
+          kind: "white",
+        }),
+        logoMutation.mutateAsync({
+          b64data: removeImageDetails(colorLogo),
+          kind: "color",
+        }),
+        descriptionMutation.mutateAsync(description),
+        jobOffersMutation.mutateAsync({
+          summerJob: getCheckmarksPos("summer"),
+          internship: getCheckmarksPos("intern"),
+          partTimeJob: getCheckmarksPos("partTime"),
+          masterThesis: checkmarks[15],
+          fullTimeJob: checkmarks[16],
+          traineeProgram: checkmarks[17],
+        }),
+      ])
+        .then(() => setSaveChanges(true))
+        .catch((error) => {
+          console.log(error);
+          setSaveChanges(false);
+        });
+    }
+  
+  
+
+  {/*Page Content */}
   const table = Table(
     [
       t.exhibitorSettings.table.row1.title,
@@ -285,47 +319,6 @@ export default function Exhibitor() {
     />,
     
   ]
-
-  // save managment
-
-  useEffect(() => {
-    if (typeof saveChanges === "boolean") {
-      setTimeout(() => {
-        setSaveChanges(undefined);
-      }, 3000);
-    }
-  }, [saveChanges]);
-
-
-  async function saveHandle() {
-    await Promise.all([
-      logoMutation.mutate({
-        b64data: removeImageDetails(whiteLogo),
-        kind: "white",
-      }),
-      logoMutation.mutateAsync({
-        b64data: removeImageDetails(colorLogo),
-        kind: "color",
-      }),
-      descriptionMutation.mutateAsync(description),
-      jobOffersMutation.mutateAsync({
-        summerJob: getCheckmarksPos("summer"),
-        internship: getCheckmarksPos("intern"),
-        partTimeJob: getCheckmarksPos("partTime"),
-        masterThesis: checkmarks[15],
-        fullTimeJob: checkmarks[16],
-        traineeProgram: checkmarks[17],
-      }),
-    ])
-      .then(() => setSaveChanges(true))
-      .catch((error) => {
-        console.log(error);
-        setSaveChanges(false);
-      });
-  }
-
-
-  
 
   return(
     <>
