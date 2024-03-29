@@ -13,7 +13,7 @@ import GeneralInfo from "@/components/Settings/GeneralInfo";
 import JobOffers from "@/components/Settings/JobOffers";
 import { UserDetails } from "@/components/Settings/UserDetails";
 import { CheckMark } from "@/components/CheckMark";
-
+import { get } from "http";
 
 // TODO hook the next button to the save features
 // Maby break save changes into a separate steps for each page
@@ -43,6 +43,7 @@ export default function Exhibitor() {
   const logoMutation = api.exhibitor.setLogo.useMutation();
   const descriptionMutation = api.exhibitor.setDescription.useMutation();
   const jobOffersMutation = api.exhibitor.setJobOffers.useMutation();
+  const setInfoStatus = api.exhibitor.setInfoStatus.useMutation();
 
 
   // Queries
@@ -55,23 +56,65 @@ export default function Exhibitor() {
       setIsLoggedIn(data);
     },
   });
+  const getInfoStatus = api.exhibitor.getInfoStatus.useQuery();
 
   // Manage login
   useEffect(() => {
-    //if (!getIsLoggedIn.isSuccess) return;
-    //if (isLoggedIn == false) router.push("/logga-in");
+    if (!getIsLoggedIn.isSuccess) return;
+    if (isLoggedIn == false) router.push("/logga-in");
   }, [isLoggedIn]);
+
+  // Save info on when pressing next button
+  const pageSave = async (page: number)=>{
+    switch(page){
+        case 1:
+            logoMutation.mutate({
+                b64data: removeImageDetails(whiteLogo),
+                kind: "white",
+            })
+            logoMutation.mutateAsync({
+                b64data: removeImageDetails(colorLogo),
+                kind: "color",
+            })
+            descriptionMutation.mutateAsync(description)
+            break;
+        case 2:
+            jobOffersMutation.mutateAsync({
+                summerJob: getCheckmarksPos("summer"),
+                internship: getCheckmarksPos("intern"),
+                partTimeJob: getCheckmarksPos("partTime"),
+                masterThesis: checkmarks[15],
+                fullTimeJob: checkmarks[16],
+                traineeProgram: checkmarks[17],
+            })
+            break;
+        default:
+            return
+    }
+  }
 
   // Manage page swapping
   const pageAmout = 6;
+  let newPage;
   const nextPage = () => {
-    setPage((prevIndex) => (prevIndex + 1) % pageAmout);
+    pageSave(page)
+    newPage = (page + 1) % pageAmout
+    setInfoStatus.mutate(newPage)
+    setPage(newPage);
   }
 
   const prevPage = () => {
-    setPage((prevIndex) => ( prevIndex === 0 ? prevIndex : prevIndex - 1));
+    setInfoStatus.mutate(page)
+    newPage = ( page === 0 ? page : page - 1)
+    setInfoStatus.mutate(newPage)
+    setPage(newPage);
   }
 
+  useEffect(()=>{
+    if (getInfoStatus.data !== undefined){
+        setPage(getInfoStatus.data)
+    }
+  },[getInfoStatus.data])
   
   {/* Extra orders*/}
   useEffect(() => {

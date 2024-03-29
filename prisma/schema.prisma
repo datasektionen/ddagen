@@ -54,6 +54,8 @@ model Exhibitor {
   jobOffers  JobOffers @relation(fields: [jobOfferId], references: [id], onDelete: Cascade)
   sessions   Session[]
 
+  infoSubmissionStatus Int @default(0)
+
   @@map("exhibitors")
 }
 
