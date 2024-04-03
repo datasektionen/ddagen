@@ -4,16 +4,13 @@ import { useRouter } from "next/router";
 import { Table } from "@/components/Table";
 import { Extras, Package } from "@/shared/Classes";
 import { useEffect, useState } from "react";
-import { UploadButton } from "@/components/Settings/UploadButton";
-import { TextInput } from "@/components/Settings/TextInput";
-import RowOne from "@/components/Settings/RowOne";
 import ExtraFairOrders from "@/components/Settings/ExtraFairOrders";
 import FoodPreferences from "@/components/Settings/FoodPreferences";
 import GeneralInfo from "@/components/Settings/GeneralInfo";
 import JobOffers from "@/components/Settings/JobOffers";
 import { UserDetails } from "@/components/Settings/UserDetails";
 import { CheckMark } from "@/components/CheckMark";
-import { get } from "http";
+import { addImageDetails } from "@/shared/addImageDetails";
 
 // TODO hook the next button to the save features
 // Maby break save changes into a separate steps for each page
@@ -25,6 +22,7 @@ export default function Exhibitor() {
 
   // States
   const [page, setPage] = useState<number>(0);
+
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
   const [saveChanges, setSaveChanges] = useState<boolean | undefined>();
   const [whiteLogo, setWhiteLogo] = useState("");
@@ -37,6 +35,8 @@ export default function Exhibitor() {
     reprcount: 0,
   });
   const [exhibitorPackage, setExhibitorPackage] = useState(new Package(t, ""));
+  const [showSetUpPage, setShowSetUpPage] = useState<boolean>(false);
+
 
   // Mutations
   const setExtrasMutation = api.exhibitor.setExtras.useMutation();
@@ -47,6 +47,8 @@ export default function Exhibitor() {
 
 
   // Queries
+  const getLogos = api.exhibitor.getLogo.useQuery();
+  const getDescription = api.exhibitor.getDescription.useQuery();
   const getJobOffers = api.exhibitor.getJobOffers.useQuery();
   const getExtras = api.exhibitor.getExtras.useQuery();
   const getExhibitor = api.exhibitor.getPackage.useQuery();
@@ -98,7 +100,10 @@ export default function Exhibitor() {
   let newPage;
   const nextPage = () => {
     pageSave(page)
-    newPage = (page + 1) % pageAmout
+    newPage = (page + 1)
+    if (newPage == pageAmout){
+      setShowSetUpPage(false)
+    }
     setInfoStatus.mutate(newPage)
     setPage(newPage);
   }
@@ -112,10 +117,29 @@ export default function Exhibitor() {
 
   useEffect(()=>{
     if (getInfoStatus.data !== undefined){
+      if(getInfoStatus.data >= pageAmout){
+        setShowSetUpPage(false)
+      }
+      else{
+        setShowSetUpPage(true)
         setPage(getInfoStatus.data)
+      }  
+      
     }
   },[getInfoStatus.data])
   
+
+  useEffect(() => {
+    if (!getDescription.isSuccess) return;
+    setDescription(getDescription.data.description);
+  }, [getDescription.data]);
+
+  useEffect(() => {
+    if (!getLogos.isSuccess) return;
+    setWhiteLogo(addImageDetails(getLogos.data.white));
+    setColorLogo(addImageDetails(getLogos.data.color));
+  }, [getLogos.data]);
+
   {/* Extra orders*/}
   useEffect(() => {
     if (!getExtras.isSuccess) return;
@@ -216,6 +240,33 @@ export default function Exhibitor() {
     );
   }
 
+  async function handleClick() {
+    await Promise.all([
+      logoMutation.mutate({
+        b64data: removeImageDetails(whiteLogo),
+        kind: "white",
+      }),
+      logoMutation.mutateAsync({
+        b64data: removeImageDetails(colorLogo),
+        kind: "color",
+      }),
+      descriptionMutation.mutateAsync(description),
+      jobOffersMutation.mutateAsync({
+        summerJob: getCheckmarksPos("summer"),
+        internship: getCheckmarksPos("intern"),
+        partTimeJob: getCheckmarksPos("partTime"),
+        masterThesis: checkmarks[15],
+        fullTimeJob: checkmarks[16],
+        traineeProgram: checkmarks[17],
+      }),
+    ])
+      .then(() => setSaveChanges(true))
+      .catch((error) => {
+        console.log(error);
+        setSaveChanges(false);
+      });
+  }
+
   const rows = [
     {
       jobOffer: t.exhibitorSettings.table.row1.section2.jobs.summer,
@@ -257,36 +308,7 @@ export default function Exhibitor() {
           setSaveChanges(undefined);
         }, 3000);
       }
-    }, [saveChanges]);
-  
-  
-    async function saveHandle() {
-      await Promise.all([
-        logoMutation.mutate({
-          b64data: removeImageDetails(whiteLogo),
-          kind: "white",
-        }),
-        logoMutation.mutateAsync({
-          b64data: removeImageDetails(colorLogo),
-          kind: "color",
-        }),
-        descriptionMutation.mutateAsync(description),
-        jobOffersMutation.mutateAsync({
-          summerJob: getCheckmarksPos("summer"),
-          internship: getCheckmarksPos("intern"),
-          partTimeJob: getCheckmarksPos("partTime"),
-          masterThesis: checkmarks[15],
-          fullTimeJob: checkmarks[16],
-          traineeProgram: checkmarks[17],
-        }),
-      ])
-        .then(() => setSaveChanges(true))
-        .catch((error) => {
-          console.log(error);
-          setSaveChanges(false);
-        });
-    }
-  
+    }, [saveChanges]);  
   
 
   {/*Page Content */}
@@ -298,7 +320,42 @@ export default function Exhibitor() {
     ],
     [],
     [
-      <RowOne t={t} />,
+      <>
+        <GeneralInfo
+        t={t}
+        whiteLogo={whiteLogo}
+        setWhiteLogo={setWhiteLogo}
+        colorLogo={colorLogo}
+        setColorLogo={setColorLogo}
+        description={description}
+        setDescription={setDescription}/>
+
+        <JobOffers
+          t={t}
+          rows={rows}
+        />
+        <div className="flex flex-col w-full items-center mb-8 ">
+          
+   
+          <button
+            className="block uppercase hover:scale-105 transition-transform
+                    bg-cerise rounded-full text-white text-base font-normal
+                      px-16 py-2 max-lg:mx-auto w-max"
+            onClick={handleClick}
+          >
+            {t.exhibitorSettings.table.row1.section2.save}
+          </button>
+          
+          {saveChanges == true && (
+          <p className="text-green-500 font-bold mt-6 ">{t.success.save}</p>
+          )}
+          {saveChanges == false && (
+            <p className="text-red-500 font-bold mt-6 ">{t.error.unknown}</p>
+          )}
+        </div>
+       
+        <UserDetails t={t}/>
+      </>,
       <ExtraFairOrders
         t={t}
         extras={extras}
@@ -379,6 +436,9 @@ export default function Exhibitor() {
 
         {/*Dropdown table*/}
         <div className="h-full min-w-[200px] max-w-[1200px] w-full mt-8 px-[20px] min-[450px]:px-[60px] min-[704px]:px-[60px] ">
+          
+          {showSetUpPage ?  
+          
           <div className=" w-full rounded-2xl bg-white/20 backdrop-blur-md text-white pt-8 overflow-hidden border-2 border-cerise">
             {pageContent[page]}
             <div className="w-full flex justify-center ">
@@ -406,6 +466,8 @@ export default function Exhibitor() {
               {page > 0 ?  <p> {t.exhibitorSettings.lastPageText} </p> : <> </>}
             </div>
           </div>
+          :  
+          <></>}
           
           {table}
         </div>

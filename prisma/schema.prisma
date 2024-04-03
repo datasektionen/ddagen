@@ -100,12 +100,11 @@ model Session {
 }
 
 enum Package {
-  main
-  base
-  sponsor
-  premium
+  small
+  medium
+  large
+  mainsponsor
   startup
-  headhunter
 }
 
 model FoodPreferences {
@@ -138,9 +137,9 @@ model JobOffers {
   summerJob      Int[]
   internship     Int[]
   partTimeJob    Int[]
-  masterThesis   Boolean
-  fullTimeJob    Boolean
-  traineeProgram Boolean
+  masterThesis   Boolean    
+  fullTimeJob    Boolean    
+  traineeProgram Boolean   
   exhibitor      Exhibitor?
 
   @@map("job_offers")

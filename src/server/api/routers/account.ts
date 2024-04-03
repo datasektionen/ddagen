@@ -47,6 +47,7 @@ export const accountRouter = createTRPCRouter({
       const user = await ctx.prisma.user.findMany({
         where: { email: { equals: input.email, mode: "insensitive" } },
       });
+      console.log(user);
       if (user && user.length == 1) {
         // NOTE: we're not awaiting this, so that we don't leak whether or not the user
         // exists through timing. Also note that there will be some difference in timing whether
