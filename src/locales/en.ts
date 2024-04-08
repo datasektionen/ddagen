@@ -274,8 +274,8 @@ export default {
     contactHeader: "Contact",
     responsible: "Project Managers",
     salesGroup: "Sales Team",
-    sponsorText: "Main sponsor for D-Dagen will be shown here",
-    sponsorLink: "",
+    sponsorText: "Main sponsor for D-Dagen 2024",
+    sponsorLink: "https://en.omegapoint.se",
   },
   email: {
     subject: "Exhibitor Registration Confirmation",
