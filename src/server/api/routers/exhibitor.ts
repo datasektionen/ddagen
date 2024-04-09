@@ -460,4 +460,28 @@ export const exhibitorRouter = createTRPCRouter({
         },
       });
     }),
+    setInfoStatus: protectedProcedure
+    .input(z.number())
+    .mutation(async ({ ctx, input }) => {
+      const exhibitor = await ctx.prisma.exhibitor.update({
+        where: {
+          id: ctx.session.exhibitorId,
+        },
+        data: {
+            infoSubmissionStatus: input
+        }
+      });
+
+      
+    }),
+    getInfoStatus: protectedProcedure
+    .query(async ({ ctx }) => {
+        const exhibitor = await ctx.prisma.exhibitor.findUnique({
+          where: {
+            id: ctx.session.exhibitorId,
+          },
+        });
+        if (!exhibitor) return;
+        return exhibitor.infoSubmissionStatus
+    }),
 });

@@ -11,7 +11,10 @@ export default async function handler(
 ) {
   if (req.method !== "PUT") return res.status(405).end();
 
+  console.log(req.body);
+
   const apiKey = req.headers["authorization"];
+  console.log(apiKey);
   if (apiKey == undefined) return res.status(400).end();
   if (!(await pls.checkApiKey("write-exhibitors", apiKey))) {
     return res.status(402).end();
@@ -34,12 +37,11 @@ export default async function handler(
     }),
     email: z.string().trim(),
     exhibitorPackage: z.enum([
-      "main",
-      "base",
-      "sponsor",
-      "premium",
+      "small",
+      "medium",
+      "large",
       "startup",
-      "headhunter",
+      "mainsponsor"
     ]),
     sendEmailToExhibitor: z.boolean(),
     mapPosition: z.number(),

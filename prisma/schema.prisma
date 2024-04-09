@@ -54,6 +54,8 @@ model Exhibitor {
   jobOffers  JobOffers @relation(fields: [jobOfferId], references: [id], onDelete: Cascade)
   sessions   Session[]
 
+  infoSubmissionStatus Int @default(0)
+
   @@map("exhibitors")
 }
 
@@ -98,12 +100,11 @@ model Session {
 }
 
 enum Package {
-  main
-  base
-  sponsor
-  premium
+  small
+  medium
+  large
+  mainsponsor
   startup
-  headhunter
 }
 
 model FoodPreferences {
@@ -136,9 +137,9 @@ model JobOffers {
   summerJob      Int[]
   internship     Int[]
   partTimeJob    Int[]
-  masterThesis   Boolean
-  fullTimeJob    Boolean
-  traineeProgram Boolean
+  masterThesis   Boolean    
+  fullTimeJob    Boolean    
+  traineeProgram Boolean   
   exhibitor      Exhibitor?
 
   @@map("job_offers")

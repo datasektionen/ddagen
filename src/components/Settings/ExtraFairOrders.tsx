@@ -3,7 +3,7 @@ import { Dispatch } from "react";
 import ExtraOrders from "./ExtraOrders";
 import { Extras, Package } from "@/shared/Classes";
 
-export default function RowTwo({
+export default function ExtraFairOrders({
   t,
   extras,
   setExtras,
@@ -18,10 +18,11 @@ export default function RowTwo({
 }) {
   return (
     <div className="w-full flex flex-col items-center mt-6">
+     
       {/* Section 1 */}
-      <h1 className="uppercase text-cerise text-2xl md:text-4xl font-normal px-[10px] break-words">
+      <h2 className="uppercase text-cerise text-2xl md:text-4xl font-normal px-[10px] break-words">
         {t.exhibitorSettings.table.row2.section1.header}
-      </h1>
+      </h2>
       <h2 className="mt-4 underline underline-offset-8 text-2xl md:text-4xl font-normal">
         {exhibitorPackage.name}
       </h2>
@@ -40,9 +41,9 @@ export default function RowTwo({
 
       {/* Section 2 */}
       <div className="flex flex-col w-full items-center">
-        <h1 className="mt-12 uppercase text-cerise text-2xl md:text-4xl font-normal px-[10px] break-words">
+        <h2 className="mt-12 uppercase text-cerise text-2xl md:text-4xl font-normal px-[10px] break-words">
           {t.exhibitorSettings.table.row2.section2.header}
-        </h1>
+        </h2>
         <ExtraOrders
           t={t}
           extras={extras}
