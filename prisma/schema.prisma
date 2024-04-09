@@ -145,26 +145,37 @@ model JobOffers {
 }
 
 model Students {
-    id             String     @id @default(uuid())
-    ugkthid        String     @unique // prioritize data students
-    first_name     String
-    last_name      String
-    email          String             
-    study_year     Int
-    summerJob      Boolean
-    partTimeJob    Boolean
-    internship     Boolean
-    masterThesis   Boolean
-    fullTimeJob    Boolean
-    traineeProgram Boolean
+  id             String     @id @default(uuid())
+  ugkthid        String     @unique // prioritize data students
+  first_name     String
+  last_name      String
+  email          String             
+  study_year     Int
+  summerJob      Boolean
+  partTimeJob    Boolean
+  internship     Boolean
+  masterThesis   Boolean
+  fullTimeJob    Boolean
+  traineeProgram Boolean
 
-    cv             String     // set max size in backend, forced
+  cv             String     // set max size in backend, forced
 
-    linkedin_url   String     //optional
-    github_url     String     //optional
-    other_link     String     //optional
-    personal_story String     //optional, max x characters
+  linkedin_url   String     //optional
+  github_url     String     //optional
+  other_link     String     //optional
+  personal_story String     //optional, max x characters
 
-    @@map("students")
+  @@map("students")
 }
 
+
+model Meeting {
+  id                    String     @id @default(uuid())
+  ugkthid               String
+  organizationNumber    String 
+  place                 String 
+  time                  DateTime
+
+
+  @@map("meeting")
+}
