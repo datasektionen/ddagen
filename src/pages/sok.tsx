@@ -129,7 +129,7 @@ export default function SignupPage() {
   {
     return (
       <div className="mt-[200px] mb-[200px] text-center text-white">
-        {t.sok.notActive}
+        {t.sok.notActive} 
       </div>
     )
   }
