@@ -94,7 +94,7 @@ export class Package {
         this.name = t.exhibitorSettings.table.row2.packages.tier4;
         this.tables = 1;
         this.chairs = 0;
-        this.drinkCoupons = 8;
+        this.drinkCoupons = 0;
         this.representatives = 2;
         this.banquetTickets = 0;
         break;
