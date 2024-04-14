@@ -171,12 +171,13 @@ export default {
       row2: {
         title: "Your Package And Extra Orders",
         packages: {
-          base: "Base",
-          sponsor: "Sponsor",
-          headhunter: "Head Hunter",
-          premium: "Premium",
-          startup: "Startup",
-          main: "Main Sponsor",
+          tier0: "Small",
+          tier1: "Medium",
+          tier2: "Large",
+          tier3: "Main Sponsor",
+          tier4: "Startup",
+
+          
         },
         section1: {
           header: "Package",
@@ -207,6 +208,7 @@ export default {
       },
       row3: {
         title: "Food Preferences",
+        warning: "Last date for ordering ",
         section1: {
           header: "During the Fair",
           paragraphOne:
