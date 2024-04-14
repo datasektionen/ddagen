@@ -171,12 +171,13 @@ export default {
       row2: {
         title: "Ert Paket Och Extra Beställningar",
         packages: {
-          base: "Bas",
-          sponsor: "Sponsor",
-          headhunter: "Head Hunter",
-          premium: "Premium",
-          startup: "Startup",
-          main: "Huvudsponsor",
+          tier0: "Lilla",
+          tier1: "Mellan",
+          tier2: "Stora",
+          tier3: "Huvudsponsor",
+          tier4: "Startup",
+
+       
         },
         section1: {
           header: "Paket",
@@ -207,7 +208,7 @@ export default {
       },
       row3: {
         title: "Matpreferenser",
-        warning: "Sista datum för beställning ",
+        warning: "Sista datum för att lägga till matpreferenser ",
         section1: {
           header: "Under Mässan",
           paragraphOne:
@@ -307,8 +308,8 @@ export default {
     contactHeader: "Kontakt",
     responsible: "D-Dagenansvariga",
     salesGroup: "Säljgruppen",
-    sponsorText: "Huvudsponsor för D-Dagen kommer att synas här",
-    sponsorLink: "",
+    sponsorText: "Huvudsponsor för D-Dagen 2024",
+    sponsorLink: "https://omegapoint.se/",
   },
   email: {
     subject: "Bekräftelse på Företagsanmälan",
@@ -623,6 +624,7 @@ export default {
     },
   },
   sok:{
+    notActive: "Går inte att söka just nu, håll koll på sociala medier för vidare information i framtiden",
     header: "Sök D-DAGEN",
     description: "Årets D-Dagen ska bli Datasektionens största och bästa arbetsmarknadsmässa någonsin! Detta är i alla fall visionen vi har som ansvariga i år. Dock är det omöjligt för oss att arrangera ett så här stort evenemang helt själva. Till vår hjälp behöver vi en ambitiös projektgrupp som har drivet att skapa någonting extraordinärt. Vi vill förbättra den interna kommunikation från tidigare år och kommer därför satsa extra mycket på teambuilding för att få en tajt grupp. Vi förväntar oss också att alla i projektgruppen är sociala med god samarbetsförmåga och självgående i sina uppgifter.",
     search:"SÖK",

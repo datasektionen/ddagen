@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { useLocale } from "@/locales";
 import { useState, useRef } from "react";
+import { useRouter } from "next/router";
+
 function SingleTeam({
   bgColor,
   borderColor,
@@ -21,6 +23,9 @@ function SingleTeam({
   const t = useLocale();
   const [modalState, setModal] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
+  const isPageActive = false;
+
+ 
 
   const openModal = () => {
     setModal(true);
@@ -117,9 +122,22 @@ function SingleTeam({
 
 export default function SignupPage() {
   const t = useLocale();
+  const isPageActive = false;
+  const router = useRouter();
 
-  return (
-    <div className="pt-[200px] pb-[200px]">
+  if(!isPageActive) 
+  {
+    return (
+      <div className="mt-[200px] mb-[200px] text-center text-white">
+        {t.sok.notActive} 
+      </div>
+    )
+  }
+  else 
+  {
+
+    return (
+      <div className="pt-[200px] pb-[200px]">
       <h1 className="text-5xl text-cerise font-medium text-center uppercase">
         {" "}
         {t.sok.header}
@@ -134,7 +152,7 @@ export default function SignupPage() {
             className="flex flex-row items-center justify-center w-[175px] bg-cerise rounded-full h-[60px] mt-[50px] text-white text-center" 
             href="https://forms.gle/VyigeGiQuEXgE9eS8"
             target="_blank"
-          >
+            >
             {t.sok.search}
           </Link>
       </div>
@@ -155,7 +173,7 @@ export default function SignupPage() {
           t.event.fullParagraph1,
         ]}
         roles={t.sok.prGroup.roles}
-      />
+        />
       <SingleTeam
         bgColor="bg-[#D5759C]"
         borderColor="border-[#D5759C]"
@@ -168,7 +186,7 @@ export default function SignupPage() {
           t.event.fullParagraph2,
         ]}
         roles={t.sok.saleGroup.roles}
-      />
+        />
       <SingleTeam
         bgColor="bg-cerise"
         borderColor="border-cerise"
@@ -181,7 +199,7 @@ export default function SignupPage() {
           t.event.fullParagraph3,
         ]}
         roles={t.sok.massGroup.roles}
-      />
+        />
       <SingleTeam
         bgColor="bg-yellow"
         borderColor="border-yellow"
@@ -194,7 +212,7 @@ export default function SignupPage() {
           t.event.fullParagraph4,
         ]}
         roles={t.sok.ecoGroup.roles}
-      />
+        />
       <h1 className="text-4xl text-cerise font-normal text-center uppercase mt-[100px]">
         {" "}
         {t.sok.moreInfo}
@@ -207,5 +225,6 @@ export default function SignupPage() {
         </a>
       </div>
     </div>
-  );
+    );
+  }
 }

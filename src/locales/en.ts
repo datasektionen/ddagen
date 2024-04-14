@@ -171,12 +171,13 @@ export default {
       row2: {
         title: "Your Package And Extra Orders",
         packages: {
-          base: "Base",
-          sponsor: "Sponsor",
-          headhunter: "Head Hunter",
-          premium: "Premium",
-          startup: "Startup",
-          main: "Main Sponsor",
+          tier0: "Small",
+          tier1: "Medium",
+          tier2: "Large",
+          tier3: "Main Sponsor",
+          tier4: "Startup",
+
+          
         },
         section1: {
           header: "Package",
@@ -307,8 +308,8 @@ export default {
     contactHeader: "Contact",
     responsible: "Project Managers",
     salesGroup: "Sales Team",
-    sponsorText: "Main sponsor for D-Dagen will be shown here",
-    sponsorLink: "",
+    sponsorText: "Main sponsor for D-Dagen 2024",
+    sponsorLink: "https://en.omegapoint.se",
   },
   email: {
     subject: "Exhibitor Registration Confirmation",
@@ -631,6 +632,7 @@ export default {
     },
   },
   sok:{
+    notActive: "The signup is not active yet, keep an eye on social media for when it opens!",
     header: "Signup for DDAGEN",
     description: "The goal for this year's D-Dagen is to make it the biggest and best career fair in Datasektionen's history! This is the vision we have as organizers this year. However, it's impossible for us to organize such a large event entirely on our own. We need an ambitious project group to help us, one that has the drive to create something extraordinary. We aim to improve internal communication from previous years, and, therefore, we will focus extensively on team building to create a close-knit group. We also expect that everyone in the project group is sociable, has good teamwork skills, and is self-driven in their tasks.",
     search:"SIGNUP",
