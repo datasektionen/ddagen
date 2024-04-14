@@ -124,6 +124,7 @@ export const exhibitorRouter = createTRPCRouter({
       where: { id: ctx.session.exhibitorId },
       select: {
         package: true,
+        packageTier: true,
         customTables: true,
         customChairs: true,
         customDrinkCoupons: true,

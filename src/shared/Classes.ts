@@ -56,53 +56,45 @@ export class Package {
   representatives: number;
   banquetTickets: number;
 
-  constructor(t: Locale, exhibitorPackage: string) {
-    switch (exhibitorPackage) {
-      case "main":
-        this.name = t.exhibitorSettings.table.row2.packages.main;
+  constructor(t: Locale, exhibitorPackageTier: number) {
+    switch ( exhibitorPackageTier ) {
+      case 0:
+        this.name = t.exhibitorSettings.table.row2.packages.tier0;
         this.tables = 1;
         this.chairs = 0;
-        this.drinkCoupons = 20;
-        this.representatives = 6;
-        this.banquetTickets = 0;
-        break;
-      case "base":
-        this.name = t.exhibitorSettings.table.row2.packages.base;
-        this.tables = 1;
-        this.chairs = 0;
-        this.drinkCoupons = 10;
+        this.drinkCoupons = 8;
         this.representatives = 2;
         this.banquetTickets = 2;
         break;
-      case "sponsor":
-        this.name = t.exhibitorSettings.table.row2.packages.sponsor;
+      case 1:
+        this.name = t.exhibitorSettings.table.row2.packages.tier1;
         this.tables = 1;
         this.chairs = 0;
-        this.drinkCoupons = 10;
-        this.representatives = 2;
+        this.drinkCoupons = 8;
+        this.representatives = 3;
         this.banquetTickets = 2;
         break;
-      case "headhunter":
-        this.name = t.exhibitorSettings.table.row2.packages.headhunter;
+      case 2:
+        this.name = t.exhibitorSettings.table.row2.packages.tier2;
         this.tables = 1;
         this.chairs = 0;
-        this.drinkCoupons = 20;
-        this.representatives = 4;
-        this.banquetTickets = 2;
-        break;
-      case "premium":
-        this.name = t.exhibitorSettings.table.row2.packages.premium;
-        this.tables = 1;
-        this.chairs = 0;
-        this.drinkCoupons = 30;
+        this.drinkCoupons = 16;
         this.representatives = 4;
         this.banquetTickets = 4;
         break;
-      case "startup":
-        this.name = t.exhibitorSettings.table.row2.packages.startup;
+      case 3:
+        this.name = t.exhibitorSettings.table.row2.packages.tier3;
         this.tables = 1;
         this.chairs = 0;
-        this.drinkCoupons = 0;
+        this.drinkCoupons = 16; 
+        this.representatives = 10;
+        this.banquetTickets = 2;
+        break;
+      case 4:
+        this.name = t.exhibitorSettings.table.row2.packages.tier4;
+        this.tables = 1;
+        this.chairs = 0;
+        this.drinkCoupons = 8;
         this.representatives = 2;
         this.banquetTickets = 0;
         break;
@@ -171,6 +163,7 @@ export class Exhibitor {
   logoColor: string | undefined;
   description: string;
   package: string;
+  packageTier: number;
   extraTables: number;
   extraChairs: number;
   extraDrinkCoupons: number;
@@ -192,6 +185,7 @@ export class Exhibitor {
     logoColor: string | undefined,
     description: string,
     exhibitorPackage: string,
+    packageTier: number,
     extraTables: number,
     extraChairs: number,
     extraDrinkCoupons: number,
@@ -212,6 +206,7 @@ export class Exhibitor {
     this.logoColor = logoColor;
     this.description = description;
     this.package = exhibitorPackage;
+    this.packageTier = packageTier;
     this.extraTables = extraTables;
     this.extraChairs = extraChairs;
     this.extraDrinkCoupons = extraDrinkCoupons;
@@ -232,6 +227,7 @@ export type MapProp = {
   logoColor?: string | null;
   description: string;
   package: "main" | "headhunter" | "sponsor" | "premium" | "base" | "startup";
+  packageTier: number;
   jobOfferId: string;
   offers: {
     summerJob: number[];

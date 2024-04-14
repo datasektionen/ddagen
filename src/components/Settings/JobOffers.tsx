@@ -34,13 +34,13 @@ export default function JobOffers(
             <div className="grid grid-cols-6 grid-rows-4 mx-auto gap-y-2 mb-8">
             <div></div>
             {years.map((year) => (
-                <div>{year}</div>
+                <div key={'year_'+year}>{year}</div>
                 ))}
-            <div className="pr-8 text-left">{rows[0].jobOffer}</div>
+            <div className="pr-8 text-left" >{rows[0].jobOffer}</div>
             {rows[0].checkmarks}
-            <div className="pr-8 text-left">{rows[1].jobOffer}</div>
+            <div className="pr-8 text-left" >{rows[1].jobOffer}</div>
             {rows[1].checkmarks}
-            <div className="pr-8 text-left">{rows[2].jobOffer}</div>
+            <div className="pr-8 text-left" >{rows[2].jobOffer}</div>
             {rows[2].checkmarks}
             </div>
             <div className="flex flex-row mb-12 gap-x-16 justify-center">
@@ -60,7 +60,7 @@ export default function JobOffers(
                                 xs:gap-x-7 sm:gap-x-14 md:gap-x-20 justify-center"
                                 >
                 {years.map((year) => (
-                    <div>{year}</div>
+                    <div key={'year_'+year}>{year}</div>
                     ))}
             </div>
             {rows.map((row) => (

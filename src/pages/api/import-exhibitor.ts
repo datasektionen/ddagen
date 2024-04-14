@@ -37,12 +37,14 @@ export default async function handler(
     }),
     email: z.string().trim(),
     exhibitorPackage: z.enum([
-      "small",
-      "medium",
-      "large",
+      "main",
+      "base",
+      "sponsor",
+      "premium",
       "startup",
-      "mainsponsor"
+      "headhunter",
     ]),
+    packageTier: z.number(),
     sendEmailToExhibitor: z.boolean(),
     mapPosition: z.number(),
   });
@@ -57,6 +59,7 @@ export default async function handler(
     organizationNumber,
     email,
     exhibitorPackage,
+    packageTier,
     sendEmailToExhibitor,
     mapPosition,
   } = body.data;
@@ -73,6 +76,7 @@ export default async function handler(
       logoColor: null,
       description: "",
       package: exhibitorPackage,
+      packageTier: 0,
       extraTables: 0,
       extraChairs: 0,
       extraDrinkCoupons: 0,
@@ -101,6 +105,7 @@ export default async function handler(
       organizationNumber: organizationNumber,
       invoiceEmail: email,
       package: exhibitorPackage,
+      packageTier: packageTier,
       mapPosition: mapPosition,
     },
   });
