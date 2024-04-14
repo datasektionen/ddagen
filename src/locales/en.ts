@@ -207,6 +207,7 @@ export default {
       },
       row3: {
         title: "Food Preferences",
+        warning: "Last date for ordering ",
         section1: {
           header: "During the Fair",
           paragraphOne:

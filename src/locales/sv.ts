@@ -207,6 +207,7 @@ export default {
       },
       row3: {
         title: "Matpreferenser",
+        warning: "Sista datum för beställning ",
         section1: {
           header: "Under Mässan",
           paragraphOne:
