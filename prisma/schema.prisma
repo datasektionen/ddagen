@@ -149,7 +149,8 @@ model Students {
     ugkthid        String     @unique // prioritize data students
     first_name     String
     last_name      String
-    email          String             
+    email          String
+    prefered_email String      //optional
     study_year     Int
     summerJob      Boolean
     partTimeJob    Boolean
