@@ -34,6 +34,7 @@ export function PreferenceDetails({
 
   useEffect(() => {
     if (!getPreferences.isSuccess) return;
+
     setPreferences([defaultPreference].concat(getPreferences.data));
   }, [getPreferences.isSuccess]);
 

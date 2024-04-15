@@ -32,6 +32,7 @@ model Exhibitor {
   logoColor    Bytes?
   description  String
   package      Package
+  packageTier  Int
 
   extraTables               Int @default(0)
   extraChairs               Int @default(0)
@@ -100,11 +101,12 @@ model Session {
 }
 
 enum Package {
-  small
-  medium
-  large
-  mainsponsor
+  main
+  base
+  sponsor
+  premium
   startup
+  headhunter
 }
 
 model FoodPreferences {

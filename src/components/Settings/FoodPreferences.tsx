@@ -16,6 +16,8 @@ export default function FoodPreferences({
   setPreferenceCount: Dispatch<{ banqcount: number; reprcount: number }>;
   exhibitorPackage: Package;
 }) {
+  const deadline = "2024-09-12"
+
   return (
     <div className="flex flex-col w-full items-center text-center overflow-auto mt-6 outline-yellow">
       {/* Section 1 */}
@@ -28,6 +30,9 @@ export default function FoodPreferences({
       <p className="text-base md:text-xl font-normal">
         {t.exhibitorSettings.table.row3.section1.paragraphTwo}
       </p>
+      <p className="text-base md:text-lg font-normal mt-4">
+        {t.exhibitorSettings.table.row3.warning + deadline}
+      </p>
       <PreferenceDetails
         t={t}
         type={"Representative"}
@@ -35,6 +40,7 @@ export default function FoodPreferences({
         preferenceCount={preferenceCount}
         setPreferenceCount={setPreferenceCount}
         exhibitorPackage={exhibitorPackage}
+  
       />
       {/* Section 1 */}
 
@@ -47,6 +53,9 @@ export default function FoodPreferences({
       </p>
       <p className="text-base md:text-xl font-normal">
         {t.exhibitorSettings.table.row3.section2.paragraphTwo}
+      </p>
+      <p className="text-base md:text-lg font-normal mt-4">
+        {t.exhibitorSettings.table.row3.warning + deadline}
       </p>
       <PreferenceDetails
         t={t}

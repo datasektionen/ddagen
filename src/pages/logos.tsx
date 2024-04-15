@@ -162,6 +162,7 @@ type LogosProps = {
     logoColor?: string | null;
     description?: string;
     package?: Package;
+    packageTier: number;
     jobOfferId?: string;
     offers: (number[] | boolean)[];
   }[];
@@ -170,26 +171,20 @@ type LogosProps = {
 export default function Logos({ exhibitorData }: LogosProps) {
   const t = useLocale();
   const mainsponsorPackages = exhibitorData.filter(
-    (e) => e.package === "mainsponsor" && e.logoColor
+    (e) => e.packageTier === 3 && e.logoColor
   );
-  const largePackage = exhibitorData.filter(
+  const largeAndMediumPackages = exhibitorData.filter(
     (e) =>
-      (e.package === "large") && e.logoColor
-  );
-  const mediumPackages = exhibitorData.filter(
-    (e) => e.package === "medium" && e.logoColor
+      (e.packageTier === 2 || e.packageTier === 1) && e.logoColor
   );
   const smallPackages = exhibitorData.filter(
-    (e) => e.package === "small" && e.logoColor
+    (e) => e.packageTier === 0 && e.logoColor
   );
   const startupPackages = exhibitorData.filter(
-    (e) => e.package === "startup" && e.logoColor
+    (e) => e.packageTier === 4 && e.logoColor
   );
-  const baseAndStartUpPackages = [...smallPackages, ...startupPackages];
-  const largeAndMediumPackages = [
-    ...largePackage,
-    ...mediumPackages,
-  ];
+  const smallAndStartUpPackages = [...smallPackages, ...startupPackages];
+
   return (
     <div className="pt-[200px] pb-[300px] px-[10px] sm:px-[100px] lg:px-[200px]">
       <h1 className="uppercase text-cerise text-5xl font-medium text-center">
@@ -200,19 +195,19 @@ export default function Logos({ exhibitorData }: LogosProps) {
         <div className="block sm:hidden">
           {RenderLogos(mainsponsorPackages, 1, "w-[250px]")}
           {RenderLogos(largeAndMediumPackages, 2, "w-[125px]")}
-          {RenderLogos(baseAndStartUpPackages, 3, "w-[80px]")}
+          {RenderLogos(smallAndStartUpPackages, 3, "w-[80px]")}
         </div>
 
         <div className="hidden xl:block">
           {RenderLogos(mainsponsorPackages, 1, "w-[350px]")}
           {RenderLogos(largeAndMediumPackages, 3, "w-[250px]")}
-          {RenderLogos(baseAndStartUpPackages, 6, "w-[125px]")}
+          {RenderLogos(smallAndStartUpPackages, 6, "w-[125px]")}
         </div>
 
         <div className="hidden sm:block xl:hidden">
           {RenderLogos(mainsponsorPackages, 1, "w-[350px]")}
           {RenderLogos(largeAndMediumPackages, 3, "w-[250px]")}
-          {RenderLogos(baseAndStartUpPackages, 4, "w-[125px]")}
+          {RenderLogos(smallAndStartUpPackages, 4, "w-[125px]")}
         </div>
       </div>
     </div>

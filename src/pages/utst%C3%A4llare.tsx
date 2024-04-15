@@ -34,7 +34,7 @@ export default function Exhibitor() {
     banqcount: 0,
     reprcount: 0,
   });
-  const [exhibitorPackage, setExhibitorPackage] = useState(new Package(t, ""));
+  const [exhibitorPackage, setExhibitorPackage] = useState(new Package(t, -1));
   const [showSetUpPage, setShowSetUpPage] = useState<boolean>(false);
 
 
@@ -162,7 +162,7 @@ export default function Exhibitor() {
   useEffect(() => {
     if (!getExhibitor.isSuccess) return;
     const exhibitor = getExhibitor.data;
-    const exhibitorPackage = new Package(t, exhibitor.package);
+    const exhibitorPackage = new Package(t, exhibitor.packageTier);
     exhibitorPackage.addCustomOrders(
       exhibitor.customTables,
       exhibitor.customChairs,
