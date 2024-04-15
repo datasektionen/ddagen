@@ -5,4 +5,4 @@
 
 */
 -- AlterTable
-ALTER TABLE "exhibitors" ADD COLUMN     "packageTier" INTEGER NOT NULL;
+ALTER TABLE "exhibitors" ADD COLUMN     "packageTier" INTEGER NULL;

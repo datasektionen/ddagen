@@ -32,7 +32,7 @@ model Exhibitor {
   logoColor    Bytes?
   description  String
   package      Package
-  packageTier  Int
+  packageTier  Int?
 
   extraTables               Int @default(0)
   extraChairs               Int @default(0)
