@@ -124,6 +124,7 @@ export const exhibitorRouter = createTRPCRouter({
       where: { id: ctx.session.exhibitorId },
       select: {
         package: true,
+        packageTier: true,
         customTables: true,
         customChairs: true,
         customDrinkCoupons: true,
@@ -459,5 +460,29 @@ export const exhibitorRouter = createTRPCRouter({
           traineeProgram: input.traineeProgram,
         },
       });
+    }),
+    setInfoStatus: protectedProcedure
+    .input(z.number())
+    .mutation(async ({ ctx, input }) => {
+      const exhibitor = await ctx.prisma.exhibitor.update({
+        where: {
+          id: ctx.session.exhibitorId,
+        },
+        data: {
+            infoSubmissionStatus: input
+        }
+      });
+
+      
+    }),
+    getInfoStatus: protectedProcedure
+    .query(async ({ ctx }) => {
+        const exhibitor = await ctx.prisma.exhibitor.findUnique({
+          where: {
+            id: ctx.session.exhibitorId,
+          },
+        });
+        if (!exhibitor) return;
+        return exhibitor.infoSubmissionStatus
     }),
 });
