@@ -3,7 +3,7 @@ import { api } from "@/utils/api";
 
 
 const set_cookies = (loginToken: string) => {
-    document.cookie = `login_token=${loginToken};max-age=604800;`;
+    document.cookie = `login_token=${loginToken};max-age=86400;`;
 };
 
 export default function LoggedInPage() {
