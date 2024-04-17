@@ -32,6 +32,7 @@ model Exhibitor {
   logoColor    Bytes?
   description  String
   package      Package
+  packageTier               Int @default(-1)
 
   extraTables               Int @default(0)
   extraChairs               Int @default(0)
@@ -53,6 +54,8 @@ model Exhibitor {
   jobOfferId String    @unique
   jobOffers  JobOffers @relation(fields: [jobOfferId], references: [id], onDelete: Cascade)
   sessions   Session[]
+
+  infoSubmissionStatus Int @default(0)
 
   @@map("exhibitors")
 }
@@ -136,9 +139,9 @@ model JobOffers {
   summerJob      Int[]
   internship     Int[]
   partTimeJob    Int[]
-  masterThesis   Boolean
-  fullTimeJob    Boolean
-  traineeProgram Boolean
+  masterThesis   Boolean    
+  fullTimeJob    Boolean    
+  traineeProgram Boolean   
   exhibitor      Exhibitor?
 
   @@map("job_offers")

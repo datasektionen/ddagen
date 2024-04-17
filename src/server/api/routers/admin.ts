@@ -22,6 +22,7 @@ export const adminRouter = createTRPCRouter({
                         exhibitor.logoColor?.toString("base64"),
                         exhibitor.description,
                         exhibitor.package,
+                        exhibitor.packageTier,
                         exhibitor.extraTables,
                         exhibitor.extraChairs,
                         exhibitor.extraDrinkCoupons,

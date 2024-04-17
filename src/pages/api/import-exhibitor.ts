@@ -11,7 +11,10 @@ export default async function handler(
 ) {
   if (req.method !== "PUT") return res.status(405).end();
 
+  console.log(req.body);
+
   const apiKey = req.headers["authorization"];
+  console.log(apiKey);
   if (apiKey == undefined) return res.status(400).end();
   if (!(await pls.checkApiKey("write-exhibitors", apiKey))) {
     return res.status(402).end();
@@ -41,6 +44,7 @@ export default async function handler(
       "startup",
       "headhunter",
     ]),
+    packageTier: z.number(),
     sendEmailToExhibitor: z.boolean(),
     mapPosition: z.number(),
   });
@@ -55,6 +59,7 @@ export default async function handler(
     organizationNumber,
     email,
     exhibitorPackage,
+    packageTier,
     sendEmailToExhibitor,
     mapPosition,
   } = body.data;
@@ -71,6 +76,7 @@ export default async function handler(
       logoColor: null,
       description: "",
       package: exhibitorPackage,
+      packageTier: 0,
       extraTables: 0,
       extraChairs: 0,
       extraDrinkCoupons: 0,
@@ -99,6 +105,7 @@ export default async function handler(
       organizationNumber: organizationNumber,
       invoiceEmail: email,
       package: exhibitorPackage,
+      packageTier: packageTier,
       mapPosition: mapPosition,
     },
   });

@@ -28,7 +28,7 @@ export function ExtraOrderPanel({
     };
 
     exhibitors.map((exhibitor) => {
-      const p = new Package(t, exhibitor.package);
+      const p = new Package(t, exhibitor.packageTier);
 
       exhibitorPackage.tables += p.tables + exhibitor.customTables;
       exhibitorPackage.chairs += p.chairs + exhibitor.customChairs;

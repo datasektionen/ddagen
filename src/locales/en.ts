@@ -51,6 +51,35 @@ export default {
     companyMeetingsButton: "Company Meetings",
   },
   exhibitorSettings: {
+    startHeader: "Time to set up your profile",
+    startButton: "Start",
+
+    previousPage: "Previous",
+    nextPage: "Next",
+    lastPage: "Done",
+    lastPageText: "You will be able to edit your information later on",
+
+    start: {
+      about: "ABOUT THE COMPANY",
+      info: "We are interested in getting to know you better. Please fill in the following information in order for us at D-Dagen to help you find your future coworkers!",
+      start: "START",
+    },
+    step0: {
+      generalInfo: "GENERAL INFORMARTION",
+      logoWhite: "White Logo",
+      logoColour: "Logo w/ colour",
+      description: "Description",
+      format: "SVG or PNG",
+    },
+    step1: {
+      title: "JOB OFFERS",
+    },
+    step2: {
+      title: "CONTACTS",
+    },
+    back: "BACK",
+    next: "NEXT",
+    step: "STEP",
     header: "Profile Settings",
     fields: {
       invoiceEmail: "Invoce email",
@@ -103,29 +132,31 @@ export default {
         section2: {
           header: "Job Offers",
           year: {
-            one: "Year 1",
-            two: "Year 2",
-            three: "Year 3",
-            four: "Year 4",
-            five: "Year 5",
+            one: "YEAR 1",
+            two: "YEAR 2",
+            three: "YEAR 3",
+            four: "YEAR 4",
+            five: "YEAR 5",
           },
           jobs: {
-            summer: "Summer Job",
-            internship: "Internship",
-            partTime: "Part-time Job",
+            summer: "SUMMER JOB",
+            internship: "INTERNSHIP",
+            partTime: "PART-TIME JOB",
           },
           other: {
-            thesis: "Master Thesis",
-            fullTime: "Full-time Job",
-            trainee: "Trainee Program",
+            thesis: "MASTER THESIS",
+            fullTime: "FULL-TIME JOB",
+            trainee: "TRAINEE PROGRAM",
           },
           save: "Save",
         },
         section3: {
           header: "Contacts",
+          info: "Add members from company who should be able to edit this company profile",
           save: "Save",
           add: "Add",
           delete: "Delete",
+
           alerts: {
             errorDeleteUserWithoutID: "Can not identify user to delete",
             errorDeleteSelf: "You can not delete yourself",
@@ -140,12 +171,13 @@ export default {
       row2: {
         title: "Your Package And Extra Orders",
         packages: {
-          base: "Base",
-          sponsor: "Sponsor",
-          headhunter: "Head Hunter",
-          premium: "Premium",
-          startup: "Startup",
-          main: "Main Sponsor",
+          tier0: "Small",
+          tier1: "Medium",
+          tier2: "Large",
+          tier3: "Main Sponsor",
+          tier4: "Startup",
+
+          
         },
         section1: {
           header: "Package",
@@ -176,6 +208,7 @@ export default {
       },
       row3: {
         title: "Food Preferences",
+        warning: "Last date for ordering ",
         section1: {
           header: "During the Fair",
           paragraphOne:
@@ -189,6 +222,7 @@ export default {
           paragraphTwo: "You change the number in extra orders",
         },
         preferencesHeader: "Preferences (vegetarian is default)",
+        prefrenceSubHeader: "Leave empty if no special dietary requirements",
         options: {
           vegetarian: "Vegan",
           lactoseFree: "Lactose-Free",
@@ -274,8 +308,8 @@ export default {
     contactHeader: "Contact",
     responsible: "Project Managers",
     salesGroup: "Sales Team",
-    sponsorText: "Main sponsor for D-Dagen will be shown here",
-    sponsorLink: "",
+    sponsorText: "Main sponsor for D-Dagen 2024",
+    sponsorLink: "https://en.omegapoint.se",
   },
   email: {
     subject: "Exhibitor Registration Confirmation",
@@ -543,19 +577,19 @@ export default {
     "HEAD OF SALES",
     "HEAD OF FINANCES"],
     prTeamRoles: [
-      "Head of PR", "Print Manager", "Art Director", 
+      "Head of PR", "Print Manager", "Art Director",
       "Art Director", "Social Media Manager",
     ],
     devTeamRoles: [
-      "Lead Developer", "System Developer", 
+      "Lead Developer", "System Developer",
       "Web Developer", "Web Developer",
     ],
     salesTeamRoles: [
-      "Head of Sales", "Salesperson", "Salesperson", 
+      "Head of Sales", "Salesperson", "Salesperson",
       "Salesperson", "Salesperson", "Salesperson", "Salesperson", "Sponsorship Manager",
     ],
     massTeamRoles: [
-      "Head of the Fair", "Event Manager", "Logistics Manager", 
+      "Head of the Fair", "Event Manager", "Logistics Manager",
       "Venue Manager", "Lounge Manager", "HR Manager",
     ],
     ecoTeamRoles: ["Head of Finances", "Deputy Financial Manager"],
@@ -598,6 +632,7 @@ export default {
     },
   },
   sok:{
+    notActive: "The signup is not active yet, keep an eye on social media for when it opens!",
     header: "Signup for DDAGEN",
     description: "The goal for this year's D-Dagen is to make it the biggest and best career fair in Datasektionen's history! This is the vision we have as organizers this year. However, it's impossible for us to organize such a large event entirely on our own. We need an ambitious project group to help us, one that has the drive to create something extraordinary. We aim to improve internal communication from previous years, and, therefore, we will focus extensively on team building to create a close-knit group. We also expect that everyone in the project group is sociable, has good teamwork skills, and is self-driven in their tasks.",
     search:"SIGNUP",
