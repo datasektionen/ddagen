@@ -146,3 +146,29 @@ model JobOffers {
 
   @@map("job_offers")
 }
+
+model Students {
+    id             String     @id @default(uuid())
+    ugkthid        String     @unique // prioritize data students
+    first_name     String
+    last_name      String
+    email          String
+    prefered_email String      //optional
+    study_year     Int
+    summerJob      Boolean
+    partTimeJob    Boolean
+    internship     Boolean
+    masterThesis   Boolean
+    fullTimeJob    Boolean
+    traineeProgram Boolean
+
+    cv             String     // set max size in backend, forced
+
+    linkedin_url   String     //optional
+    github_url     String     //optional
+    other_link     String     //optional
+    personal_story String     //optional, max x characters
+
+    @@map("students")
+}
+
