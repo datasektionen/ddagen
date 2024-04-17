@@ -46,6 +46,8 @@ export const studentRouter = createTRPCRouter({
             }
         });
 
+        console.log("STUDENT: ", student)
+
         if (!student) {
             student_body = {
                 ugkthid: String(input_json.ugkthid),
