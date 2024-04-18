@@ -180,12 +180,13 @@ export default {
       row2: {
         title: "Ert Paket Och Extra Beställningar",
         packages: {
-          base: "Bas",
-          sponsor: "Sponsor",
-          headhunter: "Head Hunter",
-          premium: "Premium",
-          startup: "Startup",
-          main: "Huvudsponsor",
+          tier0: "Lilla",
+          tier1: "Mellan",
+          tier2: "Stora",
+          tier3: "Huvudsponsor",
+          tier4: "Startup",
+
+       
         },
         section1: {
           header: "Paket",
@@ -216,6 +217,7 @@ export default {
       },
       row3: {
         title: "Matpreferenser",
+        warning: "Sista datum för att lägga till matpreferenser ",
         section1: {
           header: "Under Mässan",
           paragraphOne:

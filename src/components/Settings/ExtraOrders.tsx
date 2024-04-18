@@ -17,11 +17,11 @@ export default function ExtraOrders({
 }) {
   const disablePreferences = true;
   const deadline = {
-    drinkCoupons: "2023-09-14",
-    tables: "2023-09-14",
-    chairs: "2023-09-14",
-    representatives: "2023-09-14",
-    banquet: "2023-09-07",
+    drinkCoupons: "2024-09-12",
+    tables: "2024-09-12",
+    chairs: "2024-09-12",
+    representatives: "2024-09-12",
+    banquet: "2024-09-12",
   };
 
   const [editState, setEditState] = useState(false);
@@ -135,7 +135,7 @@ export default function ExtraOrders({
       disableAll: false,
       disableCondition: false,
       disableConditionMessage: "",
-      increment: 5,
+      increment: 8,
       deadline: deadline.drinkCoupons,
     },
     {
@@ -235,7 +235,7 @@ export default function ExtraOrders({
         </div>
         <div className="font-normal text-2xl">
           {editState
-            ? plusMinus(drinkCoupons, setDrinkCoupons, 5)
+            ? plusMinus(drinkCoupons, setDrinkCoupons, 8)
             : drinkCoupons}
         </div>
         <div className="font-normal text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] text-2xl">

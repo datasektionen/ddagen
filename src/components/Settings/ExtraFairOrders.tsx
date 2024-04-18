@@ -16,6 +16,9 @@ export default function ExtraFairOrders({
   preferenceCount: { banqcount: number; reprcount: number };
   exhibitorPackage: Package;
 }) {
+  //const PackageNames = {
+  //  0: 
+
   return (
     <div className="w-full flex flex-col items-center mt-6">
      
