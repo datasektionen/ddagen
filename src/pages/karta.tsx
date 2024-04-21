@@ -1,10 +1,12 @@
 import { prisma } from "@/server/db";
 import { useLocale } from "@/locales";
-import Map from "@/components/Map/Map";
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"; 
 import Search from "@/components/Map/Search";
 import { MapProp } from "@/shared/Classes";
 import ExhibitorExplorer from "@/components/Map/ExhibitorExplorer";
+
+import dynamic from 'next/dynamic';
+const Map = dynamic(() => import('@/components/Map/Map3'), { ssr: false });
 
 export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
   const t = useLocale();
@@ -82,14 +84,9 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
   }, [query]);
 
   return (
-    <div className="flex flex-col h-full w-full pt-52 pb-40">
-      <h1 className="text-cerise text-6xl font-medium uppercase text-center">
-        {t.map.header}
-      </h1>
-      <Search t={t} setQuery={setQuery} />
-
-      <div className="flex max-lg:flex-col-reverse max-lg:items-center 
-                      lg:flex-row lg:items-start lg:space-x-10 justify-center">
+    <div className="h-80vh flex max-md:flex-col-reverse max-md:items-center md:flex-row md:items-start md:space-x-10 justify-center py-16 pt-32">
+      <div className="flex flex-col items-center md:max-w-{250px}">
+        <Search t={t} setQuery={setQuery} />
         <ExhibitorExplorer
           t={t}
           exhibitors={exhibitors}
@@ -98,17 +95,17 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
           selectedExhibitor={selectedExhibitor}
           setSelectedExhibitor={setSelectedExhibitor}
         />
-        <Map
-          t={t}
-          exhibitors={exhibitors}
-          mapInView={mapInView}
-          setMapInView={setMapInView}
-          selectedExhibitor={selectedExhibitor}
-          setSelectedExhibitor={setSelectedExhibitor}
-        />
       </div>
+      <Map
+        t={t}
+        exhibitors={exhibitors}
+        mapInView={mapInView}
+        setMapInView={setMapInView}
+        selectedExhibitor={selectedExhibitor}
+        setSelectedExhibitor={setSelectedExhibitor}
+      />
     </div>
-  );
+  ); 
 }
 
 export async function getServerSideProps() {

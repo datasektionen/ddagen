@@ -163,7 +163,7 @@ export default function ExhibitorExplorer({
   }, [selectedExhibitor]);
 
   return (
-    <div className="flex flex-col gap-y-4 items-center justify-center mt-12">
+    <div className="w-full flex flex-col gap-y-4 items-center justify-center mt-12 lg:mt-6">
       <Button
         value={"/img/arrow-up.png/"}
         loading={false}
@@ -178,7 +178,7 @@ export default function ExhibitorExplorer({
       />
       <div
         ref={buttonScrollRef}
-        className="block w-[300px] h-[550px] border-2 border-cerise
+        className="w-full h-[550px] border-4 border-cerise
                 bg-[#eaeaea] bg-opacity-10 rounded-xl pb-4 overflow-scroll 
                   scrollbar-hide overflow-x-hidden"
       >

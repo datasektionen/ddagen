@@ -69,10 +69,10 @@ export default function Search({
   const [checkmarks] = useState(Array<boolean>(11).fill(false));
 
   return (
-    <div className="flex flex-col items-center justify-center mt-12">
+    <div className="w-100 flex flex-col items-center justify-center">
       <div className="flex max-md:flex-col max-md:gap-y-4 md:flex-row items-center my-4">
         <input
-          className="w-[350px] xs:w-[400px] min-h-[40px] outline-none border-2 border-cerise bg-[#eaeaea] bg-opacity-10 
+          className="w-100 min-h-[40px] outline-none border-2 border-cerise bg-[#eaeaea] bg-opacity-10 
                     rounded-3xl px-3 text-white text-opacity-50 focus:placeholder:text-transparent"
           type="text"
           placeholder={t.map.search.placeHolder}
@@ -99,7 +99,7 @@ export default function Search({
       <div className="flex justify-center w-full">
         {showFilter && (
           <div
-            className="w-[350px] xs:w-[400px] min-h-[175px] block border-2 border-cerise bg-[#eaeaea] bg-opacity-10
+            className="block border-2 border-cerise bg-[#eaeaea] bg-opacity-10
                           rounded-lg text-white justify-center text-xl"
           >
             <div className="w-full h-full flex flex-col justify-center items-center max-xs:p-6">
