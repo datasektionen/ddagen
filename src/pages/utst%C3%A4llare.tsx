@@ -11,6 +11,7 @@ import JobOffers from "@/components/Settings/JobOffers";
 import { UserDetails } from "@/components/Settings/UserDetails";
 import { CheckMark } from "@/components/CheckMark";
 import { addImageDetails } from "@/shared/addImageDetails";
+import CompanyMeetingBooker from "@/components/Settings/CompanyMeetingBooker";
 
 // TODO hook the next button to the save features
 // Maby break save changes into a separate steps for each page
@@ -420,6 +421,25 @@ export default function Exhibitor() {
     
   ]
 
+  {/*Page Content */}
+  const meetings = Table(
+    [
+      t.exhibitorSettings.table.row4.section1.title,
+    ],
+    [],
+    [
+      <>
+        <ul>
+          <li> <span className="text-yellow font-bold w-4 mr-2">1: </span> {t.exhibitorSettings.table.row4.section1.info1}</li>
+          <li> <span className="text-yellow font-bold w-4 mr-2">2: </span> {t.exhibitorSettings.table.row4.section1.info2}</li>
+          <li> <span className="text-yellow font-bold w-4 mr-2">3: </span> {t.exhibitorSettings.table.row4.section1.info3}</li>
+          <li> <br></br></li>
+          <li> {t.exhibitorSettings.table.row4.section1.info4}</li>
+        </ul> 
+      </>,
+    ]
+  );
+
   return(
     <>
     <div className="xl:w-[1200px] lg:w-[1000px] w-full">
@@ -467,9 +487,21 @@ export default function Exhibitor() {
             </div>
           </div>
           :  
-          <></>}
+          <>{table}</>}
+     
+          {/* Packages that have the student meeting functionality*/}
+          { [0,1,2,3].includes(exhibitorPackage.tier)  ? 
+          <>
+            <h2 className="text-cerise text-2xl md:text-4xl font-medium text-center pt-12">{t.exhibitorSettings.table.row4.title} </h2>
+            {meetings}
+
+            <CompanyMeetingBooker/>
+
+          </> 
           
-          {table}
+          
+          : <></> }
+          
         </div>
       </div>
     </>

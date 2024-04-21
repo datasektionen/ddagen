@@ -256,6 +256,12 @@ export default {
         },
       },
     },
+    meetings: {
+      title: "Kontaktsamtal",
+      columns: ["Väntar","","Namn", "År", "CV", "Annat"],
+      
+    
+    },
   },
   login: {
     title: "Logga in",

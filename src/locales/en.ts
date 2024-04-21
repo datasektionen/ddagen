@@ -258,6 +258,12 @@ export default {
       },
 
     },
+    meetings: {
+      title: "Company Meetings",
+      columns: ["Pending","","Name", "Year", "CV", "Other"],
+
+    
+    },
   },
   login: {
     title: "Log in",
