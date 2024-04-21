@@ -69,7 +69,7 @@ export default function Search({
   const [checkmarks] = useState(Array<boolean>(11).fill(false));
 
   return (
-    <div className="w-100 flex flex-col items-center justify-center">
+    <div className="w-full flex flex-col items-center justify-center">
       <div className="flex max-md:flex-col max-md:gap-y-4 md:flex-row items-center my-4">
         <input
           className="w-100 min-h-[40px] outline-none border-2 border-cerise bg-[#eaeaea] bg-opacity-10 
@@ -83,14 +83,14 @@ export default function Search({
               applySearch(searchQuery, checkmarks, setQuery);
           }}
         />
-        <div className="flex flex-row">
+        <div className="flex flex-row text-4xl">
           <Button
-            value={t.map.search.buttonOne}
+            value="⌕"
             loading={false}
             onClick={() => applySearch(searchQuery, checkmarks, setQuery)}
           />
           <Button
-            value={t.map.search.buttonTwo}
+            value="≡"
             loading={false}
             onClick={() => setShowFilter(!showFilter)}
           />
