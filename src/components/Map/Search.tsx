@@ -70,9 +70,9 @@ export default function Search({
 
   return (
     <div className="w-full flex flex-col items-center justify-center">
-      <div className="flex max-md:flex-col max-md:gap-y-4 md:flex-row items-center my-4">
+      <div className="w-full flex items-center my-4">
         <input
-          className="w-100 min-h-[40px] outline-none border-2 border-cerise bg-[#eaeaea] bg-opacity-10 
+          className="grow w-{200px} min-h-[40px] outline-none border-2 border-cerise bg-[#eaeaea] bg-opacity-10 
                     rounded-3xl px-3 text-white text-opacity-50 focus:placeholder:text-transparent"
           type="text"
           placeholder={t.map.search.placeHolder}
