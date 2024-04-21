@@ -6,7 +6,7 @@ import { MapProp } from "@/shared/Classes";
 import ExhibitorExplorer from "@/components/Map/ExhibitorExplorer";
 
 import dynamic from 'next/dynamic';
-const Map = dynamic(() => import('@/components/Map/Map3'), { ssr: false });
+const Map = dynamic(() => import('@/components/Map/NewMap'), { ssr: false });
 
 export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
   const t = useLocale();
@@ -84,8 +84,8 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
   }, [query]);
 
   return (
-    <div className="h-80vh flex max-md:flex-col-reverse max-md:items-center md:flex-row md:items-start md:space-x-10 justify-center py-16 pt-32">
-      <div className="flex flex-col items-center md:max-w-{250px}">
+    <div className="h-80vh flex max-lg:flex-col-reverse max-lg:items-center lg:flex-row lg:items-start justify-center py-16 pt-20 overscroll-none">
+      <div className="px-8 lg:pr-4 flex flex-col items-center w-full lg:w-96">
         <Search t={t} setQuery={setQuery} />
         <ExhibitorExplorer
           t={t}
@@ -96,14 +96,16 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
           setSelectedExhibitor={setSelectedExhibitor}
         />
       </div>
-      <Map
-        t={t}
-        exhibitors={exhibitors}
-        mapInView={mapInView}
-        setMapInView={setMapInView}
-        selectedExhibitor={selectedExhibitor}
-        setSelectedExhibitor={setSelectedExhibitor}
-      />
+      <div className="w-full px-8 lg:pl-4">
+        <Map
+          t={t}
+          exhibitors={exhibitors}
+          mapInView={mapInView}
+          setMapInView={setMapInView}
+          selectedExhibitor={selectedExhibitor}
+          setSelectedExhibitor={setSelectedExhibitor}
+        />
+      </div>
     </div>
   ); 
 }
