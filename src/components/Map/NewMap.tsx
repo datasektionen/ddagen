@@ -5,10 +5,12 @@ import { ImageOverlay, MapContainer, Marker } from 'react-leaflet';
 import { DivIcon } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-const ceriseMarker = new DivIcon({
-  className: 'rounded-full bg-pink-600',
-  iconSize: [30, 30]
-});
+const ceriseMarker = (markerText: string): DivIcon =>
+  new DivIcon({
+    html: markerText,
+    className: 'rounded-full bg-pink-600 text-white text-center content-center font-medium',
+    iconSize: [30, 30]
+  });
 
 export default function Map({
     t,
@@ -37,13 +39,14 @@ export default function Map({
                 className="w-full"
             >
                 <ImageOverlay url="/img/map/floor-2.svg" bounds={[[-1, -1], [1, 1]]}/>
-                <Marker position={[-0.03, -0.05]} icon={ceriseMarker}/>
-                <Marker position={[-0.03, 0.06]} icon={ceriseMarker}/>
-                <Marker position={[-0.03, 0.17]} icon={ceriseMarker}/>
-                <Marker position={[0.1, -0.02]} icon={ceriseMarker}/>
-                <Marker position={[0.1, 0.11]} icon={ceriseMarker}/>
-                <Marker position={[0.12, -0.19]} icon={ceriseMarker}/>
-                <Marker position={[0.24, -0.16]} icon={ceriseMarker}/>
+
+                <Marker position={[-0.03, -0.05]} icon={ceriseMarker("1")}/>
+                <Marker position={[-0.03, 0.06]} icon={ceriseMarker("2")}/>
+                <Marker position={[-0.03, 0.17]} icon={ceriseMarker("3")}/>
+                <Marker position={[0.1, -0.02]} icon={ceriseMarker("4")}/>
+                <Marker position={[0.1, 0.11]} icon={ceriseMarker("5")}/>
+                <Marker position={[0.12, -0.19]} icon={ceriseMarker("6")}/>
+                <Marker position={[0.24, -0.16]} icon={ceriseMarker("7")}/>
             </MapContainer>
         </div>
     )
