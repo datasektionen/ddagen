@@ -75,7 +75,7 @@ export function ExhibitorPanel({
     if (preferenceCount && preferenceCount.has(exhibitor.id)) {
       const prefCount = preferenceCount.get(exhibitor.id);
       if (prefCount) {
-        const exhibitorPackage = new Package(t, exhibitor.package);
+        const exhibitorPackage = new Package(t, exhibitor.packageTier);
         const exhibitorRepresentativeCount =
           exhibitorPackage.representatives +
           exhibitor.extraRepresentativeSpots +

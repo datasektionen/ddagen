@@ -51,6 +51,35 @@ export default {
     companyMeetingsButton: "Kontaktsamtal",
   },
   exhibitorSettings: {
+    startHeader: "Dags att sätta upp eran profil",
+    startButton: "Starta",
+
+    previousPage:"Föregående",
+    nextPage:"Nästa",
+    lastPage:"Klar",
+    lastPageText: "Du har möjlighet att redigera informationen efteråt",
+
+    start: {
+      about: "OM FÖRETAGET",
+      info: "Vi är intresserade av att lära känna er  bättre. Vänligen fyll i följande information så att vi på D-Dagen kan stödja er i att hitta era framtida medarbetare!",
+      start: "STARTA",
+    },
+    step0: {
+      generalInfo: "ALLMÄN INFORMATION",
+      logoWhite: "Vit Logga",
+      logoColour: "Logga m. färg",
+      description: "Beskrivning",
+      format: "SVG eller PNG",
+    },
+    step1: {
+      title: "JOBBERBJUDANDEN",
+    },
+    step2: {
+      title: "KONTAKTPERSON",
+    },
+    back: "TILLBAKA",
+    next: "NÄSTA",
+    step: "STEG",
     header: "Profilinställningar",
     fields: {
       invoiceEmail: "Fakturerings-E-post",
@@ -103,26 +132,27 @@ export default {
         section2: {
           header: "Jobberbjudanden",
           year: {
-            one: "År 1",
-            two: "År 2",
-            three: "År 3",
-            four: "År 4",
-            five: "År 5",
+            one: "ÅK 1",
+            two: "ÅK 2",
+            three: "ÅK 3",
+            four: "ÅK 4",
+            five: "ÅK 5",
           },
           jobs: {
-            summer: "Sommarjobb",
-            internship: "Internship",
-            partTime: "Deltidsjobb",
+            summer: "SOMMARJOBB",
+            internship: "INTERNSHIP",
+            partTime: "DELTIDSJOBB",
           },
           other: {
-            thesis: "Examensarbete",
-            fullTime: "Heltidsjobb",
-            trainee: "Traineeprogram",
+            thesis: "EXAMENSARBETE",
+            fullTime: "HELTIDSJOBB",
+            trainee: "TRAINEEPROGRAM",
           },
           save: "Spara",
         },
         section3: {
           header: "Kontaktpersoner",
+          info: "Lägg till vilka som ska delta på mässan ",
           save: "Spara",
           add: "Lägg Till",
           delete: "Radera",
@@ -141,12 +171,13 @@ export default {
       row2: {
         title: "Ert Paket Och Extra Beställningar",
         packages: {
-          base: "Bas",
-          sponsor: "Sponsor",
-          headhunter: "Head Hunter",
-          premium: "Premium",
-          startup: "Startup",
-          main: "Huvudsponsor",
+          tier0: "Lilla",
+          tier1: "Mellan",
+          tier2: "Stora",
+          tier3: "Huvudsponsor",
+          tier4: "Startup",
+
+       
         },
         section1: {
           header: "Paket",
@@ -177,6 +208,7 @@ export default {
       },
       row3: {
         title: "Matpreferenser",
+        warning: "Sista datum för att lägga till matpreferenser ",
         section1: {
           header: "Under Mässan",
           paragraphOne:
@@ -190,6 +222,7 @@ export default {
           paragraphTwo: "Ni ändrar antalet i extra beställningar",
         },
         preferencesHeader: "Preferenser (vegetariskt är standard)",
+        prefrenceSubHeader: "Lämna tom om ingen specialkost",
         options: {
           vegetarian: "Vegansk",
           lactoseFree: "Laktosfri",
@@ -202,6 +235,24 @@ export default {
           errorEmptyValueArray: "Du måste välja ett alternativ",
           errorAddingMorePreferencesThanAllowed: (max: number) =>
             `Du har nått det maximala antalet (${max}) preferenser som du har tilldelats`,
+        },
+      },
+      row4: {
+        title: "Kontaktsamtal",
+        psa: "Denna funktion kommer bli tillgänglig den {date}",
+        save: "Spara",
+        info: "Välj vilka studenter ni önskar boka kontaktsamtal med",
+        section1: {
+          title: "Hur fungerar det?",
+          info1: "Studenter väljer vilka företag de är intresserade av att boka kontaktsamtal med.",
+          info2: "Ni väljer sedan vilka av dessa studenter ni vill boka samtal med.",
+          info3: "Studenter som ni valt ut kommer sedan få välja en mötes tid under mässan.",
+          info4: "Ni kan välja fler studenter än vad det finns tillgänliga tidsslotter, så kommer de studenter som accpeterar snabbast få tiderna.",
+        },
+        section2: {
+          selectAll: "Markera alla",
+          deselectAll: "Avmarkera alla",
+          search: "Sök",
         },
       },
     },
@@ -275,8 +326,8 @@ export default {
     contactHeader: "Kontakt",
     responsible: "D-Dagenansvariga",
     salesGroup: "Säljgruppen",
-    sponsorText: "Huvudsponsor för D-Dagen kommer att synas här",
-    sponsorLink: "",
+    sponsorText: "Huvudsponsor för D-Dagen 2024",
+    sponsorLink: "https://omegapoint.se/",
   },
   email: {
     subject: "Bekräftelse på Företagsanmälan",
@@ -542,7 +593,7 @@ export default {
       "Art Director", "Sociala medier-ansvarig",
     ],
     salesTeamRoles: [
-      "Säljansvarig", "Säljare", "Säljare", "Säljare", 
+      "Säljansvarig", "Säljare", "Säljare", "Säljare",
       "Säljare", "Säljare", "Säljare","Sponsansvarig",
     ],
     devTeamRoles: [
@@ -591,6 +642,7 @@ export default {
     },
   },
   sok:{
+    notActive: "Går inte att söka just nu, håll koll på sociala medier för vidare information i framtiden",
     header: "Sök D-DAGEN",
     description: "Årets D-Dagen ska bli Datasektionens största och bästa arbetsmarknadsmässa någonsin! Detta är i alla fall visionen vi har som ansvariga i år. Dock är det omöjligt för oss att arrangera ett så här stort evenemang helt själva. Till vår hjälp behöver vi en ambitiös projektgrupp som har drivet att skapa någonting extraordinärt. Vi vill förbättra den interna kommunikation från tidigare år och kommer därför satsa extra mycket på teambuilding för att få en tajt grupp. Vi förväntar oss också att alla i projektgruppen är sociala med god samarbetsförmåga och självgående i sina uppgifter.",
     search:"SÖK",

@@ -18,11 +18,11 @@ export function EditUser({
   setEditState: Dispatch<undefined | string>;
 }) {
   return (
-    <div className="relative w-[80%] py-5 px-3 mb-12 bg-white/40 border-2 border-white/70 rounded-xl overflow-hidden">
+    <div className="relative w-[80%] py-5 px-3 mb-12 bg-black/25 border-solid border-yellow border-2 rounded-xl overflow-hidden">
       <table>
         <tbody
-          className="text-lg [&>tr>td]:text-right [&>tr>td>label]:font-normal [&>tr>td>label]:text-[#555555] 
-                      [&>tr>td>input]:bg-transparent [&>tr>td>input]:outline-none [&>tr>td>input]:w-[250px] 
+          className="text-lg [&>tr>td]:text-right [&>tr>td>label]:font-normal [&>tr>td>label]:text-white
+                      [&>tr>td>input]:bg-transparent [&>tr>td>input]:outline-none [&>tr>td>input]:w-[250px]
                       [&>tr>td>input]:ml-2 [&>tr>td>input]:font-light"
         >
           <tr>
@@ -92,7 +92,7 @@ export function EditUser({
         <button
           className={`${
             editState == users[pos].id ? "hidden" : "bg-editIcon bg-white"
-          } bg-[length:30px_30px] w-[33px] h-[33px] bg-no-repeat bg-origin-content 
+          } bg-[length:30px_30px] w-[33px] h-[33px] bg-no-repeat bg-origin-content
               pl-1 pb-1 rounded-md hover:scale-105 transition-transform`}
           onClick={() => {
             setPos(pos);

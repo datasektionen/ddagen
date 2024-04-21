@@ -32,6 +32,7 @@ model Exhibitor {
   logoColor    Bytes?
   description  String
   package      Package
+  packageTier               Int @default(-1)
 
   extraTables               Int @default(0)
   extraChairs               Int @default(0)
@@ -53,6 +54,8 @@ model Exhibitor {
   jobOfferId String    @unique
   jobOffers  JobOffers @relation(fields: [jobOfferId], references: [id], onDelete: Cascade)
   sessions   Session[]
+
+  infoSubmissionStatus Int @default(0)
 
   @@map("exhibitors")
 }
@@ -136,10 +139,36 @@ model JobOffers {
   summerJob      Int[]
   internship     Int[]
   partTimeJob    Int[]
-  masterThesis   Boolean
-  fullTimeJob    Boolean
-  traineeProgram Boolean
+  masterThesis   Boolean    
+  fullTimeJob    Boolean    
+  traineeProgram Boolean   
   exhibitor      Exhibitor?
 
   @@map("job_offers")
 }
+
+model Students {
+    id             String     @id @default(uuid())
+    ugkthid        String     @unique // prioritize data students
+    first_name     String
+    last_name      String
+    email          String
+    prefered_email String      //optional
+    study_year     Int
+    summerJob      Boolean
+    partTimeJob    Boolean
+    internship     Boolean
+    masterThesis   Boolean
+    fullTimeJob    Boolean
+    traineeProgram Boolean
+
+    cv             String     // set max size in backend, forced
+
+    linkedin_url   String     //optional
+    github_url     String     //optional
+    other_link     String     //optional
+    personal_story String     //optional, max x characters
+
+    @@map("students")
+}
+
