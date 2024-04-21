@@ -83,7 +83,7 @@ export default function Search({
               applySearch(searchQuery, checkmarks, setQuery);
           }}
         />
-        <div className="flex flex-row text-4xl">
+        <div className="flex flex-row text-3xl">
           <Button
             value="⌕"
             loading={false}
@@ -102,7 +102,7 @@ export default function Search({
             className="block border-2 border-cerise bg-[#eaeaea] bg-opacity-10
                           rounded-lg text-white justify-center text-xl"
           >
-            <div className="w-full h-full flex flex-col justify-center items-center max-xs:p-6">
+            <div className="w-full h-full flex flex-col justify-center items-center max-xs:p-6 font-light text-base">
               <div className="flex flex-row mt-1">
                 {t.map.search.filterYear}:
                 {years.map((year, pos) => {
