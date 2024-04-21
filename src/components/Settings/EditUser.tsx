@@ -18,7 +18,7 @@ export function EditUser({
   setEditState: Dispatch<undefined | string>;
 }) {
   return (
-    <div className="relative w-[80%] py-5 px-3 mb-12 bg-black/25 border-solid border-yellow border-2 rounded-xl overflow-hidden">
+    <div className="relative w-[80%] py-5 px-3 mb-12 bg-black/25 border-solid border-yellow border-2 rounded-xl overflow-hidden ">
       <table>
         <tbody
           className="text-lg [&>tr>td]:text-right [&>tr>td>label]:font-normal [&>tr>td>label]:text-white

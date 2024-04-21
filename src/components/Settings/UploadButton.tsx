@@ -73,7 +73,7 @@ export function UploadButton({
             <img className="mx-auto" src={selectedImage} />
           )}
         </h2>
-        <h2 className="relative top-[70%] -translate-y-2/4 text-center text-[10px] text-slate-400">
+        <h2 className="relative  text-center text-[10px] text-slate-400">
           {selectedImage == "" ? (
             textInsideBottom
           ) : ""}

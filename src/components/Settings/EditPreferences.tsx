@@ -38,6 +38,7 @@ export function EditPreferences({
           break;          
       }
     });
+   
     return str.substring(0, str.length - 2);
   }
 

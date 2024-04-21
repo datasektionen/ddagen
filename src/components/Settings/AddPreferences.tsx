@@ -240,6 +240,25 @@ export function AddPreferences({
                       onClick={() => {
                         var newCheckmarks = [...checkmarks];
                         newCheckmarks[i] = !newCheckmarks[i];
+
+                        switch(i) // used to make meat and vegan mutually exclusive
+                        {
+                          case 0:
+                            if(newCheckmarks[i])
+                            {
+                              newCheckmarks[1] = false;
+                            }
+                            break;
+                          case 1:
+                            if(newCheckmarks[i])
+                            {
+                              newCheckmarks[0] = false;
+                            }
+                            break;
+                        }
+                       
+             
+
                         setPreference({
                           ...preference,
                           value: convertCheckMarks(newCheckmarks),
