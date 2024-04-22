@@ -207,7 +207,7 @@ export function AddPreferences({
               {t.exhibitorSettings.table.row3.preferencesHeader}
             </p>
             <p className="font-normal test-base">
-              {t.exhibitorSettings.table.row3.prefrenceSubHeader}
+              {/*t.exhibitorSettings.table.row3.prefrenceSubHeader*/}
             </p>
           </div>
           <div className="flex flex-col items-center justify-center">

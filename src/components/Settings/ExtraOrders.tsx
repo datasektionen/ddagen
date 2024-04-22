@@ -15,7 +15,8 @@ export default function ExtraOrders({
   preferenceCount: { banqcount: number; reprcount: number };
   exhibitorPackage: Package;
 }) {
-  const disablePreferences = true;
+  // on disable if deadline has passed
+  const disablePreferences = new Date() > new Date("2024-09-12");
   const deadline = {
     drinkCoupons: "2024-09-12",
     tables: "2024-09-12",
