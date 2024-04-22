@@ -11,6 +11,8 @@ import JobOffers from "@/components/Settings/JobOffers";
 import { UserDetails } from "@/components/Settings/UserDetails";
 import { CheckMark } from "@/components/CheckMark";
 import { addImageDetails } from "@/shared/addImageDetails";
+import { set } from "zod";
+import { get } from "http";
 
 
 // TODO hook the next button to the save features
@@ -23,9 +25,9 @@ export default function Exhibitor() {
 
   // States
   const [page, setPage] = useState<number>(0);
-  const [nextPageDisabled, setNextPageDisabled] = useState<boolean>(true);
+  const [nextPageDisabled, setNextPageDisabled] = useState<boolean>(false);
 
-  const [actionsPerPage, setActionsPerPage] = useState<number[][]>([[0],[1,1,1],[0],[0],[0],[0],[0]]) // one means untouched and 0 means touched, this allows for row summaries
+  const [actionsPerPage, setActionsPerPage] = useState<number[][]>([[0],[1,1,1]]) // one means untouched and 0 means touched, this allows for row summaries
 
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
   const [saveChanges, setSaveChanges] = useState<boolean | undefined>();
@@ -108,15 +110,26 @@ export default function Exhibitor() {
   }
 
   function onInteractedWithPage(page: number, element: number){
-    let actions = {...actionsPerPage}
-    actions[page][element] = 0
-    setActionsPerPage(actions);
-    setNextPageDisabled(!(actionsPerPage[page].reduce((a, b) => a + b, 0) == 0))
+    if(page < 2 ) {
+      let actions = {...actionsPerPage}
+      actions[page][element] = 0
+      setActionsPerPage(actions);
+      setNextPageDisabled(!(actionsPerPage[page].reduce((a, b) => a + b, 0) == 0))
+    }
   } 
 
   useEffect(()=>{
-    setNextPageDisabled(!(actionsPerPage[page].reduce((a, b) => a + b, 0) == 0))
+    if(page < 2 ) {  
+      setNextPageDisabled(!(actionsPerPage[page].reduce((a, b) => a + b, 0) == 0))
+    }
   },[page])
+
+  useEffect(()=>{
+    if(page > 2)
+    {
+      setNextPageDisabled(false)
+    }
+  },[nextPageDisabled])
 
   // Manage page swapping
   const pageAmout = 6;
@@ -147,6 +160,11 @@ export default function Exhibitor() {
       else{
         setShowSetUpPage(true)
         setPage(getInfoStatus.data)
+        console.log(getInfoStatus.data)
+        if(getInfoStatus.data > 2)
+        {
+          setNextPageDisabled(false)
+        }
       }  
     }
   },[getInfoStatus.data])
@@ -154,7 +172,6 @@ export default function Exhibitor() {
   // Manage input staging
 
   useEffect(() => {
-    console.log("changed")
     if(whiteLogoRef.current !== whiteLogo){
       onInteractedWithPage(1, 0)
     }
@@ -181,7 +198,6 @@ export default function Exhibitor() {
   useEffect(() => {
     if (!getDescription.isSuccess) return;
     setDescription(getDescription.data.description);
-    
   }, [getDescription.data]);
 
   useEffect(() => {
