@@ -162,7 +162,6 @@ export class Exhibitor {
   logoWhite: string | undefined;
   logoColor: string | undefined;
   description: string;
-  package: string;
   packageTier: number;
   extraTables: number;
   extraChairs: number;
@@ -184,7 +183,6 @@ export class Exhibitor {
     logoWhite: string | undefined,
     logoColor: string | undefined,
     description: string,
-    exhibitorPackage: string,
     packageTier: number,
     extraTables: number,
     extraChairs: number,
@@ -205,7 +203,6 @@ export class Exhibitor {
     this.logoWhite = logoWhite;
     this.logoColor = logoColor;
     this.description = description;
-    this.package = exhibitorPackage;
     this.packageTier = packageTier;
     this.extraTables = extraTables;
     this.extraChairs = extraChairs;
@@ -226,7 +223,6 @@ export type MapProp = {
   logoWhite?: string | null;
   logoColor?: string | null;
   description: string;
-  package: "main" | "headhunter" | "sponsor" | "premium" | "base" | "startup";
   packageTier: number;
   jobOfferId: string;
   offers: {
@@ -241,17 +237,8 @@ export type MapProp = {
 };
 
 export function sortExhibitors(exhibitors: Exhibitor[]) {
-  const sortList = [
-    "main",
-    "headhunter",
-    "sponsor",
-    "premium",
-    "base",
-    "startup",
-  ];
-  return exhibitors.sort((a, b) => {
-    return sortList.indexOf(a.package) - sortList.indexOf(b.package);
-  });
+  // this is old sorting function from when exhibitors where enums, perhaps removable 
+  return exhibitors;
 }
 
 export function sortPreferences(preferences: Preferences[]) {
