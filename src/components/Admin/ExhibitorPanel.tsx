@@ -6,8 +6,8 @@ import { addImageDetails } from "@/shared/addImageDetails";
 import {
   Exhibitor,
   Preferences,
-  Package,
   sortExhibitors,
+  Package,
 } from "@/shared/Classes";
 
 export function ExhibitorPanel({
@@ -170,7 +170,7 @@ export function ExhibitorPanel({
                     <td className="align-top break-words max-w-[150px] text-xs">
                       {exhibitor.description}
                     </td>
-                    <td className="text-center">{exhibitor.package}</td>
+                    <td className="text-center">FIX ME, THIS IS A PACKAGE NAME</td>
                     <td>
                       <div className="flex flex-col text-center px-2">
                         <div>
