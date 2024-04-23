@@ -58,6 +58,7 @@ export default {
     nextPage:"Nästa",
     lastPage:"Klar",
     lastPageText: "Du har möjlighet att redigera informationen efteråt",
+    lastPageWarning: "Genom att klicka Klar erkänner du att du har läst ingeom alla inputrutor och att informationen du har fyllt i är korrekt!",
 
     start: {
       about: "OM FÖRETAGET",
@@ -152,7 +153,7 @@ export default {
         },
         section3: {
           header: "Kontaktpersoner",
-          info: "Lägg till vilka som ska delta på mässan ",
+          info: "Lägg till kontaktpersoner, kontaktpersoner kan se och redigera företagsprofilen",
           save: "Spara",
           add: "Lägg Till",
           delete: "Radera",
@@ -199,7 +200,7 @@ export default {
           warning: "Sista datum för beställning ",
           disabledButtonMessages: {
             representatives:
-              "Ta bort matpreferenser för representanter för att minska antalet",
+            "Ta bort matpreferenser för representanter för att minska antalet",
             banquet:
               "Ta bort matpreferenser för sittningen för att minska antalet",
           },
@@ -209,6 +210,7 @@ export default {
       row3: {
         title: "Matpreferenser",
         warning: "Sista datum för att lägga till matpreferenser ",
+        usagenotice: "Välj bara preferenser för de som har specialkost, övriga får standardmaten",
         section1: {
           header: "Under Mässan",
           paragraphOne:
@@ -219,10 +221,10 @@ export default {
           header: "Sittning",
           paragraphOne:
             "Dessa matpreferenser används för sittningen efter mässan.",
-          paragraphTwo: "Ni ändrar antalet i extra beställningar",
+            paragraphTwo: "Ni ändrar antalet i extra beställningar",
+            paragraphThree: "Om inget specifikt anges för en medlem serveras standardmaten",
         },
         preferencesHeader: "Preferenser (vegetariskt är standard)",
-        prefrenceSubHeader: "Lämna tom om ingen specialkost",
         options: {
           vegetarian: "Vegansk",
           lactoseFree: "Laktosfri",
