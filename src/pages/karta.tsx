@@ -123,7 +123,6 @@ export async function getServerSideProps() {
     logoWhite: exhibitor.logoWhite?.toString("base64") || null,
     logoColor: exhibitor.logoColor?.toString("base64") || null,
     description: exhibitor.description,
-    package: exhibitor.package,
     jobOfferId: exhibitor.jobOfferId,
     offers: {
       summerJob: exhibitor.jobOffers.summerJob,
