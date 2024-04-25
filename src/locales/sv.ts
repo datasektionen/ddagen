@@ -60,6 +60,8 @@ export default {
     lastPageText: "Du har möjlighet att redigera informationen efteråt",
     lastPageWarning: "Genom att klicka Klar erkänner du att du har läst ingeom alla inputrutor och att informationen du har fyllt i är korrekt!",
 
+
+
     start: {
       about: "OM FÖRETAGET",
       info: "Vi är intresserade av att lära känna er  bättre. Vänligen fyll i följande information så att vi på D-Dagen kan stödja er i att hitta era framtida medarbetare!",
@@ -171,15 +173,6 @@ export default {
       },
       row2: {
         title: "Ert Paket Och Extra Beställningar",
-        packages: {
-          tier0: "Lilla",
-          tier1: "Mellan",
-          tier2: "Stora",
-          tier3: "Huvudsponsor",
-          tier4: "Startup",
-
-       
-        },
         section1: {
           header: "Paket",
           info: "För mer info kring de olika paketen",
@@ -427,14 +420,15 @@ export default {
     forCompany: "https://ddagen.se/förföretag",
     companyForm: "https://ddagen.se/företagsanmälan",
   },
+
   packages: {
-    name: {
-      base: "Baspaketet",
-      sponsor: "Sponsorpaketet",
-      headhunter: "Headhunterpaketet",
-      premium: "Premiumpaketet",
-      main: "Huvudsponsor",
-    },
+    name: [
+      "Lilla",
+      "Mellan",
+      "Stora",
+      "Huvudsponsor",
+      "Startup",
+      ],
     boothSpace: "monteryta",
   },
   error: {

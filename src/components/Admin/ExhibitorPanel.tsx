@@ -84,6 +84,17 @@ export function ExhibitorPanel({
           exhibitorPackage.banquetTickets +
           exhibitor.totalBanquetTicketsWanted +
           exhibitor.customBanquetTicketsWanted;
+        
+
+        let amount = "0/0";          
+        switch (type) {
+          case 'Representative':
+            amount = `${prefCount.representative}/${exhibitorRepresentativeCount}`;
+            break;
+          case 'Banquet':
+            amount = `${prefCount.banquet}/${exhibitorBanquetCount}`;
+            break;
+        }
 
         const goalReached =
           (type == "Representative" &&
@@ -99,11 +110,11 @@ export function ExhibitorPanel({
           (type == "Banquet" && exhibitorBanquetCount < prefCount.banquet);
 
         if (goalReached)
-          return <span className="font-medium text-green-500	">Complete</span>;
+          return <span className="font-medium text-green-500	">{amount}</span>;
         if (goalNotReached)
-          return <span className="font-medium text-red-500	">Fail</span>;
+          return <span className="font-medium text-orange-500	">{amount}</span>;
         if (preferencesGreaterThanGoal)
-          return <span className="font-medium text-orange-500	">Invalid</span>;
+          return <span className="font-medium text-red-500	">{amount}</span>;
       }
     }
     <span className="font-medium text-red-500	">Fail</span>;
@@ -170,7 +181,7 @@ export function ExhibitorPanel({
                     <td className="align-top break-words max-w-[150px] text-xs">
                       {exhibitor.description}
                     </td>
-                    <td className="text-center">FIX ME, THIS IS A PACKAGE NAME</td>
+                    <td className="text-center">{ t.packages.name[exhibitor.packageTier] }</td>
                     <td>
                       <div className="flex flex-col text-center px-2">
                         <div>

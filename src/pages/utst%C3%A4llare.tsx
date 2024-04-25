@@ -11,13 +11,7 @@ import JobOffers from "@/components/Settings/JobOffers";
 import { UserDetails } from "@/components/Settings/UserDetails";
 import { CheckMark } from "@/components/CheckMark";
 import { addImageDetails } from "@/shared/addImageDetails";
-import { set } from "zod";
-import { get } from "http";
 
-
-// TODO hook the next button to the save features
-// Maby break save changes into a separate steps for each page
-// Add Logic to figure out saved state
 
 export default function Exhibitor() {
   const t = useLocale();
@@ -143,6 +137,7 @@ export default function Exhibitor() {
     }
     setInfoStatus.mutate(newPage)
     setPage(newPage);
+    scrollTo(0,0)
   }
 
   const prevPage = () => {

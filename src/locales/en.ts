@@ -60,6 +60,8 @@ export default {
     lastPageText: "You will be able to edit your information later on",
     lastPageWarning: "By pressing Done I comfirm that I have read through all the input fields and have provided the correct information!",
 
+
+      
     start: {
       about: "ABOUT THE COMPANY",
       info: "We are interested in getting to know you better. Please fill in the following information in order for us at D-Dagen to help you find your future coworkers!",
@@ -171,15 +173,7 @@ export default {
       },
       row2: {
         title: "Your Package And Extra Orders",
-        packages: {
-          tier0: "Small",
-          tier1: "Medium",
-          tier2: "Large",
-          tier3: "Main Sponsor",
-          tier4: "Startup",
-
-          
-        },
+        
         section1: {
           header: "Package",
           info: "For more information about the different packages",
@@ -428,13 +422,13 @@ export default {
     companyForm: "https://ddagen.se/en/företagsanmälan",
   },
   packages: {
-    name: {
-      base: "Base Package",
-      sponsor: "Sponsor Package",
-      headhunter: "Headhunter Package",
-      premium: "Premium Package",
-      main: "Main sponsor",
-    },
+    name: [ 
+     "Small",
+     "Medium",
+     "Large",
+     "Main Sponsor",
+     "Startup",
+    ],
     boothSpace: "booth space",
   },
   error: {
