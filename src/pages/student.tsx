@@ -1,7 +1,9 @@
-  import { useEffect, useState } from 'react'
+  import { Key, useEffect, useState } from 'react'
 import { api } from "@/utils/api";
 import CompanyMeetingOffer from "@/components/Student/CompanyMeetingOffer";
 import { useLocale } from "@/locales";
+import Info from '@/components/Student/Info';
+import Interests from '@/components/Student/Interests';
 
 
 const set_cookies = (loginToken: string) => {
@@ -21,9 +23,9 @@ export default function LoggedInPage() {
     const [studentAccoundExists, setStudentAccoundExists] = useState(false);
 
     // variables from verify, used to prefill the form for students
-    let email = "";
-    let first_name = "";
-    let last_name = "";
+    const [first_name, setFirstName] = useState<string>("");
+    const [last_name, setLastName] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
 
     const update_user = (input: any)=>{
         inputData.mutateAsync(JSON.stringify(input))
@@ -63,9 +65,9 @@ export default function LoggedInPage() {
             if (res){
                 // update prefill variables
                 const res_json = JSON.parse(res);
-                email = res_json.email;
-                first_name = res_json.first_name;
-                last_name = res_json.last_name;
+                setEmail(res_json.emails);
+                setFirstName(res_json.first_name);
+                setLastName(res_json.last_name);
                 setUgkthid(res_json.ugkthid);
                 update_user({
                     "ugkthid": res_json.ugkthid,
@@ -93,27 +95,52 @@ export default function LoggedInPage() {
 
     }, [isLoggedIn, ugkthid]);
 
+    const [userInfo, setUserInfo] = useState<{
+        first_name: string;
+        last_name: string;
+        kth_email: string;
+        email: string;
+        cv: string;
+        year: number;
+    }>();
 
-    // Test companies
-    const companies = [
-        {name: "Omenga Point", logo: "/img/omegapoint_logo.svg", timeOptions: [{id:0, time:"09:00-09:30"}, {id:1, time:"10:00-10:30"}]},
-        {name: "Ericsson", logo: "/img/omegapoint_logo.svg", timeOptions: [{id:2, time:"11:30-12:00"}, {id:3, time:"10:00-10:30"}]},
-        {name: "Mpya", logo: "/img/omegapoint_logo.svg", timeOptions: [{id:4, time:"09:00-09:30"}, {id:5, time:"10:00-10:30"}]},
-        {name: "Cygni", logo: "/img/omegapoint_logo.svg", timeOptions: [{id:6, time:"09:00-09:30"}]}
-    ];
-
-
-    function renderOffer(company){
-        return <div className="flex justify-center mt-[15px] mb-[15px]">
-            <CompanyMeetingOffer t={t} 
-                                companyName={company.name}
-                                companyLogo={company.logo} 
-                                timeOptions={company.timeOptions}/>
-        </div>;
-    }
+    const [interests, setInterests] = useState<{
+            summer: boolean;
+            partTime: boolean;
+            internship: boolean;
+            thesis: boolean;
+            trainee: boolean;
+            fullTime: boolean;
+    }>(
+        {summer: false, partTime: false, internship: false, thesis: false, trainee: false,fullTime: false}
+    );
 
     function StudentView(){
+        // Test companies
+        const companies = [
+            {name: "Omenga Point", logo: "/img/omegapoint_logo.svg", timeOptions: [{id:0, time:"09:00-09:30"}, {id:1, time:"10:00-10:30"}]},
+            {name: "Ericsson", logo: "/img/omegapoint_logo.svg", timeOptions: [{id:2, time:"11:30-12:00"}, {id:3, time:"10:00-10:30"}]},
+            {name: "Mpya", logo: "/img/omegapoint_logo.svg", timeOptions: [{id:4, time:"09:00-09:30"}, {id:5, time:"10:00-10:30"}]},
+            {name: "Cygni", logo: "/img/omegapoint_logo.svg", timeOptions: [{id:6, time:"09:00-09:30"}]}
+        ];
+
+
+        function renderOffer(company: { name: string; logo: string; timeOptions: { id: number; time: string; }[]; }){
+            return <div key={company.name} className="flex justify-center mt-[15px] mb-[15px]">
+                <CompanyMeetingOffer t={t} 
+                                    companyName={company.name}
+                                    companyLogo={company.logo} 
+                                    timeOptions={company.timeOptions}/>
+            </div>;
+        }
+
         return <div>
+                    <div className="flex items-center justify-center">
+                        <Info t={t} fname={first_name} lname={last_name} email={email} setUserInfo={setUserInfo}/>
+                    </div>
+                    <div className="flex items-center justify-center">
+                        <Interests t={t} interests={interests} setInterests={setInterests}/>
+                    </div>
                     <h1 className="mt-[100px] text-3xl text-center text-white">{t.students.offersTitle1 + companies.length + t.students.offersTitle2}</h1>
                     <div className="grid lg:grid-cols-2 grid-cols-1">
                         {companies.map(renderOffer)}
@@ -122,18 +149,18 @@ export default function LoggedInPage() {
     }
 
 
-    return isLoggedIn? (
-        <div className="h-screen flex flex-col justify-center items-center">
+    return isLoggedIn? ( <StudentView/>
+        /**<div className="h-screen flex flex-col justify-center items-center">
             <p className="text-green-500">
                 You are logged in! :)
             </p>
-            {
+            { 
                 studentAccoundExists? 
                 <p className="text-white" >your account exists!</p>
                 :
                 <p className="text-white" >Create your account</p>
             }            
-        </div>
+        </div>*/
         ) : (
         <p className="h-screen flex items-center justify-center text-red-500">
             You are not logged in! :)

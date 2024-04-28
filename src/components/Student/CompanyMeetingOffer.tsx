@@ -17,15 +17,15 @@ export default function CompanyMeetingOffer(
         }[],
     }
 ){
-    const [time, setTime] = useState(null);
+    const [time, setTime] = useState<string | null>(null);
 
     function displayTimeOptions(option: {id:number,time:string}){
-        return <option id={option.id} key={option.id}>{option.time}</option>;
+        return <option id={option.id.toString()} key={option.id}>{option.time}</option>;
     }
 
-    function changeTime(evt){
-        var selectedIndex = evt.target.options.selectedIndex;
-        var id = evt.target.options[selectedIndex].getAttribute('id');
+    function changeTime(evt: React.ChangeEvent<HTMLSelectElement>){
+        const selectedIndex = evt.target.options.selectedIndex;
+        const id = evt.target.options[selectedIndex].getAttribute('id');
         setTime(id);
     }
 
