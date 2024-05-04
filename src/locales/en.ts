@@ -263,7 +263,7 @@ export default {
       columns: ["Pending","","Name", "Year", "CV", "Other"],
       checkAll: "Select all",
       unCheckAll: "Deselect all", 
-    
+      bookSelected: "Send booking request",
     },
   },
   login: {

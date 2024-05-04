@@ -261,6 +261,7 @@ export default {
       columns: ["","Namn", "År", "CV", "Annat"],
       checkAll: "Markera alla",
       unCheckAll: "Avmarkera alla",
+      bookSelected: "Skicka bokningsförfrågan",
     },
   },
   login: {

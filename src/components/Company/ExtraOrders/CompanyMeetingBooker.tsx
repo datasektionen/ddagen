@@ -52,9 +52,7 @@ export default function CompanyMeetingBooker(
       {/*Desktop version*/}
       <div className="lg:p-10 p-4 backdrop-blur-md bg-white/20 rounded-xl w-full border-cerise border-solid border-2 border-collapse">
 
-      <h1 className="text-cerise text-6xl font-medium uppercase text-center">
-        {t.map.header}
-      </h1>
+    
 
       <div className="flex flex-row items-center gap-4">
         <button className="mt-4 mb-4" onClick={checkAll}>
@@ -68,7 +66,11 @@ export default function CompanyMeetingBooker(
           </a>
         </button>
         <Search t={t} setQuery={()=>{}} />
-
+        <button className="mt-4 mb-4" disabled>
+          <a className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-medium px-6 py-2 max-lg:mx-auto w-max">
+            {t.exhibitorSettings.meetings.bookSelected}
+          </a>
+        </button>
       </div>
         <table>
           <thead>
