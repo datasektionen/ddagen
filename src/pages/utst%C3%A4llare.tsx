@@ -4,14 +4,14 @@ import { useRouter } from "next/router";
 import { Table } from "@/components/Table";
 import { Extras, Package } from "@/shared/Classes";
 import { useEffect, useState } from "react";
-import ExtraFairOrders from "@/components/Settings/ExtraFairOrders";
-import FoodPreferences from "@/components/Settings/FoodPreferences";
-import GeneralInfo from "@/components/Settings/GeneralInfo";
-import JobOffers from "@/components/Settings/JobOffers";
-import { UserDetails } from "@/components/Settings/UserDetails";
+import ExtraFairOrders from "@/components/Company/ExtraOrders/ExtraFairOrders";
+import FoodPreferences from "@/components/Company/Preferences/FoodPreferences";
+import GeneralInfo from "@/components/Company/General/GeneralInfo";
+import JobOffers from "@/components/Company/General/JobOffers";
+import { UserDetails } from "@/components/Company/User/UserDetails";
 import { CheckMark } from "@/components/CheckMark";
 import { addImageDetails } from "@/shared/addImageDetails";
-import CompanyMeetingBooker from "@/components/Settings/CompanyMeetingBooker";
+import CompanyMeetingBooker from "@/components/Company/ExtraOrders/CompanyMeetingBooker";
 
 // TODO hook the next button to the save features
 // Maby break save changes into a separate steps for each page

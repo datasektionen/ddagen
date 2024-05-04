@@ -261,7 +261,8 @@ export default {
     meetings: {
       title: "Company Meetings",
       columns: ["Pending","","Name", "Year", "CV", "Other"],
-
+      checkAll: "Select all",
+      unCheckAll: "Deselect all", 
     
     },
   },

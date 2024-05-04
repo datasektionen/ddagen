@@ -1,6 +1,6 @@
 import Locale from "@/locales";
 import { Dispatch } from "react";
-import { Preferences } from "../../shared/Classes";
+import { Preferences } from "../../../shared/Classes";
 
 type Options = "Vegan" | "Meat" | "LactoseFree" | "GlutenFree";
 

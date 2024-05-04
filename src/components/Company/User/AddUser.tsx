@@ -1,6 +1,6 @@
 import Locale from "@/locales";
 import { type Dispatch, useState, useEffect, type FormEvent } from "react";
-import { InputField } from "./InputField";
+import { InputField } from "../InputField";
 import { User } from "@/shared/Classes";
 import { api } from "@/utils/api";
 

@@ -258,9 +258,9 @@ export default {
     },
     meetings: {
       title: "Kontaktsamtal",
-      columns: ["Väntar","","Namn", "År", "CV", "Annat"],
-      
-    
+      columns: ["","Namn", "År", "CV", "Annat"],
+      checkAll: "Markera alla",
+      unCheckAll: "Avmarkera alla",
     },
   },
   login: {
