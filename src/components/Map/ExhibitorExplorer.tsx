@@ -163,7 +163,7 @@ export default function ExhibitorExplorer({
   }, [selectedExhibitor]);
 
   return (
-    <div className="w-full flex flex-col gap-y-4 items-center justify-center lg:mt-6">
+    <div className="w-full flex grow-0 flex-col gap-y-4 items-center justify-center lg:mt-6">
       <Button
         value={"/img/arrow-up.png/"}
         loading={false}

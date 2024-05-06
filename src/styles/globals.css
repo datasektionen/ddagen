@@ -156,3 +156,38 @@
   
 }
 @keyframes animate-in-logo-text-roll-in { 0% {clip-path: inset(0px 100% 0px 0px);} 100% {clip-path: inset(0);}}
+
+.leaflet-container {
+  background: rgba(255, 255, 255, 0.75) !important;
+}
+
+.leaflet-control-zoom {
+  padding: 5px;
+  border: none !important;
+  clip-path: inset(1px 1px 1px 1px round 9999px);
+}
+
+.leaflet-control-zoom,
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+  background: #e83d84 !important;
+  color: white !important;
+}
+
+.leaflet-control-layers-expanded {
+  background: rgba(69, 69, 69, 0) !important;
+  border: none !important;
+}
+
+.leaflet-control-layers-base label {
+  margin: 5px 3px 5px 3px;
+  padding: 10px 15px 10px 15px;
+  color: white;
+  background: #e83d84;
+  border-radius: 9999px;
+  text-align: center;
+}
+
+.leaflet-control-layers-selector {
+  display: none;
+}
