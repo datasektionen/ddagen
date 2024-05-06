@@ -50,6 +50,30 @@ export default {
       "I år är första året någonsin som vi kommer erbjuda kontaktsamtal för studenter, vilket innebär att ni får möjlighet att i enrum med företagsrepresentanter diskutera framtida jobbmöjligheter med mera. Anmäl er på länken nedan:",
     companyMeetingsButton: "Kontaktsamtal",
   },
+  students: {
+    info:{
+      header:"Fyll i information om dig!",
+      firstName:"Förnamn",
+      lastName:"Efternamn",
+      year:"Årskurs",
+      email:"Lägg till e-mail",
+      cv: "CV",
+      save: "Spara",
+      addFirstName: "Skriv in ditt förnamn",
+      addLastName: "Skriv in ditt efternamn", 
+      addYear: "Skriv in din årskurs",
+    },
+    interests:{
+      header:"Fyll i dina intressen gällande jobberbjudanden",
+    },
+    companyMeeting:{
+      offerText: " har bjudit in dig till ett kontaktsamtal",
+      acceptDeclineText: "Välj en tid och tacka ja till erbjudandet eller tacka nej till erbjudandet", 
+      chooseOption: "Välj tid:", 
+    },
+    offersTitle1: "Du har ",
+    offersTitle2: " st företagsinbjudningar",
+  },
   exhibitorSettings: {
     startHeader: "Dags att sätta upp eran profil",
     startButton: "Starta",

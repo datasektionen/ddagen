@@ -50,6 +50,30 @@ export default {
       "This year is also the first year where we will offer company meetings for students, which means that you will be able to discuss future job opportunities in a private room with representatives from selected companies. Sign up on the link below:",
     companyMeetingsButton: "Company Meetings",
   },
+  students: {
+    info:{
+      header:"Fill in information about yourself!",
+      firstName:"First name",
+      lastName:"Last name",
+      year:"Year",
+      email:"Add e-mail",
+      cv: "Resume",
+      save: "Save",
+      addFirstName: "Enter your first name",
+      addLastName: "Enter your last name", 
+      addYear: "Enter your year",
+    },
+    interests:{
+      header: "Fill in your job offer interests"
+    },
+    companyMeeting:{
+      offerText: " has invited you to a company meeting",
+      acceptDeclineText: "Choose a time to accept the offer or decline the offer",
+      chooseOption: "Choose a time:", 
+    },
+    offersTitle1: "You have ",
+    offersTitle2: " company invitations",
+  },
   exhibitorSettings: {
     startHeader: "Time to set up your profile",
     startButton: "Start",
