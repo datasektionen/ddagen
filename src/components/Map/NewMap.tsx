@@ -1,8 +1,8 @@
 import type Locale from "@/locales";
 import { MapProp } from "@/shared/Classes";
 import { Dispatch } from "react";
-import { Circle, FeatureGroup, ImageOverlay, LayerGroup, LayersControl, MapContainer, Marker, Popup, Rectangle } from 'react-leaflet';
-import { DivIcon, LatLngExpression, Layer } from "leaflet";
+import { ImageOverlay, LayerGroup, LayersControl, MapContainer, Marker } from 'react-leaflet';
+import { DivIcon } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
 const ceriseMarker = (id: string): DivIcon =>
@@ -11,6 +11,30 @@ const ceriseMarker = (id: string): DivIcon =>
     className: 'rounded-full bg-pink-600 text-white text-center content-center',
     iconSize: [30, 30]
   });
+
+const positions: { [k: string]: [number, number] } = {
+  '1': [-0.03, -0.05],
+  '2': [-0.03, 0.06],
+  '3': [-0.03, 0.17],
+  '4': [0.1, -0.02],
+  '5': [0.1, 0.11],
+  '6': [0.12, -0.19],
+  '7': [0.24, -0.16],
+  '8': [0.32, 0.01],
+  '9': [0.3, 0.17],
+  '10': [0.22, 0.25],
+  '11': [0.10, 0.25],
+  '12': [0.55, 0.1],
+  '13': [0.55, 0.25],
+  '14': [0.67, -0.05],
+  '15': [0.67, 0.06],
+  '16': [0.67, 0.17],
+  '17': [0.67, 0.28],
+  '18': [0.67, 0.39],
+  '19': [0.57, 0.40],
+  '20': [0.47, 0.40],
+  '21': [-0.06, 0],
+};
 
 export default function Map({
     t,
@@ -44,48 +68,39 @@ export default function Map({
             <LayersControl.BaseLayer checked={mapInView == 1} name="Floor 2">
               <LayerGroup>
                 <ImageOverlay url="/img/map/floor-2.svg" bounds={[[-1, -1], [1, 1]]}/>
-                <Marker position={[-0.03, -0.05]} icon={ceriseMarker("1")} 
-                eventHandlers={{
-                  click: (e) => {
-                    console.log(e, e.target);
-                  },
-                }}/>
-                <Marker position={[-0.03, 0.06]} icon={ceriseMarker("2")}/>
-                <Marker position={[-0.03, 0.17]} icon={ceriseMarker("3")}/>
-                <Marker position={[0.1, -0.02]} icon={ceriseMarker("4")}/>
-                <Marker position={[0.1, 0.11]} icon={ceriseMarker("5")}/>
-                <Marker position={[0.12, -0.19]} icon={ceriseMarker("6")}/>
-                <Marker position={[0.24, -0.16]} icon={ceriseMarker("7")}/>
-                <Marker position={[0.32, 0.01]} icon={ceriseMarker("8")}/>
-                <Marker position={[0.3, 0.17]} icon={ceriseMarker("9")}/>
-                <Marker position={[0.22, 0.25]} icon={ceriseMarker("10")}/>
-                <Marker position={[0.10, 0.25]} icon={ceriseMarker("11")}/>
-                <Marker position={[0.55, 0.1]} icon={ceriseMarker("12")}/>
-                <Marker position={[0.55, 0.25]} icon={ceriseMarker("13")}/>
-                <Marker position={[0.67, -0.05]} icon={ceriseMarker("14")}/>
-                <Marker position={[0.67, 0.06]} icon={ceriseMarker("15")}/>
-                <Marker position={[0.67, 0.17]} icon={ceriseMarker("16")}/>
-                <Marker position={[0.67, 0.28]} icon={ceriseMarker("17")}/>
-                <Marker position={[0.67, 0.39]} icon={ceriseMarker("18")}/>
-                <Marker position={[0.57, 0.40]} icon={ceriseMarker("19")}/>
-                <Marker position={[0.47, 0.40]} icon={ceriseMarker("20")}/>
+                {Object.values(Object.entries(positions).slice(0, 20)).map(([key, position]: [string, [number, number]], index: number) => (
+                  <Marker
+                    key={index}
+                    position={position}
+                    icon={ceriseMarker(String(index + 1))}
+                    eventHandlers={{
+                      click: (e) => {
+                        console.log(e, e.target);
+                      },
+                    }}/>
+                ))}
               </LayerGroup>
             </LayersControl.BaseLayer>
             <LayersControl.BaseLayer checked={mapInView == 2} name="Floor 3">
-              <ImageOverlay url="/img/map/floor-3.svg" bounds={[[-1, -1], [1, 1]]}/>
+              <LayerGroup>
+                <ImageOverlay url="/img/map/floor-3.svg" bounds={[[-1, -1], [1, 1]]}/>
+                {Object.values(Object.entries(positions).slice(20, 30)).map(([key, position]: [string, [number, number]], index: number) => (
+                    <Marker
+                      key={index}
+                      position={position}
+                      icon={ceriseMarker(String(index + 1))}
+                      eventHandlers={{
+                        click: (e) => {
+                          console.log(e, e.target);
+                        },
+                      }}/>
+                  ))}
+              </LayerGroup>
             </LayersControl.BaseLayer>
             <LayersControl.BaseLayer checked={mapInView == 3} name="KTH Entrance">
               <ImageOverlay url="/img/map/kth-entrance.svg" bounds={[[-1, -1], [1, 1]]}/>
             </LayersControl.BaseLayer>
           </LayersControl>
-
-          {/* {Object.entries(exhibitors).map(([id, exhibitor]) => (
-            <Marker
-              key={id}
-              position={positions[exhibitor.position] as LatLngExpression}
-              icon={ceriseMarker(id)}
-            />
-          ))} */}
         </MapContainer>
       </div>
     );
