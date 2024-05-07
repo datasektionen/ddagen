@@ -68,7 +68,7 @@ export default function Map({
             <LayersControl.BaseLayer checked={mapInView == 1} name="Floor 2">
               <LayerGroup>
                 <ImageOverlay url="/img/map/floor-2.svg" bounds={[[-1, -1], [1, 1]]}/>
-                {Object.values(Object.entries(positions).slice(0, 20)).map(([key, position]: [string, [number, number]], index: number) => (
+                {/* {Object.values(Object.entries(positions).slice(0, 20)).map(([key, position]: [string, [number, number]], index: number) => (
                   <Marker
                     key={index}
                     position={position}
@@ -78,7 +78,7 @@ export default function Map({
                         console.log(e, e.target);
                       },
                     }}/>
-                ))}
+                ))} */}
                 {Object.keys(exhibitors).map((key) => {
                   const exhibitor = exhibitors[key];
                   return (
