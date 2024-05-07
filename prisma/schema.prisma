@@ -169,6 +169,17 @@ model Students {
     other_link     String     //optional
     personal_story String     //optional, max x characters
 
+    // meeting logic
+    company_meeting_interests String[] //optional
+
     @@map("students")
 }
 
+model Matchning {
+    id               String     @id @default(uuid())
+    studentId        String
+    exhibitorId      String
+    timeslot         Int
+
+    @@map("matchning")
+}
