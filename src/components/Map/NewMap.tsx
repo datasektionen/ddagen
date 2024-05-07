@@ -2,7 +2,7 @@ import type Locale from "@/locales";
 import { MapProp } from "@/shared/Classes";
 import { Dispatch } from "react";
 import { ImageOverlay, LayerGroup, LayersControl, MapContainer, Marker } from 'react-leaflet';
-import { DivIcon } from "leaflet";
+import { DivIcon, LatLngExpression } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
 const ceriseMarker = (id: string): DivIcon =>
@@ -79,6 +79,15 @@ export default function Map({
                       },
                     }}/>
                 ))}
+                {Object.keys(exhibitors).map((key) => {
+                  const exhibitor = exhibitors[key];
+                  return (
+                    <Marker
+                      key={key}
+                      position={positions[exhibitor.position] as LatLngExpression}
+                    />
+                  );
+                })}
               </LayerGroup>
             </LayersControl.BaseLayer>
             <LayersControl.BaseLayer checked={mapInView == 2} name="Floor 3">
