@@ -67,6 +67,7 @@ export const studentRouter = createTRPCRouter({
                 github_url: String(input_json.github_url) || "", 
                 other_link: String(input_json.other_link) || "", 
                 personal_story: String(input_json.personal_story) || "",
+                company_meeting_interests: String(input_json.company_meeting_interests) || "",
             }
             // If no user exists, create a new user with default values
             await ctx.prisma.students.create({
@@ -96,6 +97,7 @@ export const studentRouter = createTRPCRouter({
                     github_url: input_json.github_url || student.github_url,
                     other_link: input_json.other_link || student.other_link,
                     personal_story: input_json.personal_story || student.personal_story,
+                    company_meeting_interests: String(input_json.company_meeting_interests) || String(student.company_meeting_interests),
                 },
             });
         }
