@@ -4,7 +4,7 @@
    version="1.1"
    id="svg2144"
    sodipodi:docname="kth-entrance.svg"
-   inkscape:version="1.3 (0e150ed, 2023-07-21)"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -20,18 +20,78 @@
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
      inkscape:zoom="1.699032"
-     inkscape:cx="345.49084"
-     inkscape:cy="123.30551"
-     inkscape:window-width="1472"
-     inkscape:window-height="891"
+     inkscape:cx="424.065"
+     inkscape:cy="127.71978"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
      inkscape:window-x="0"
-     inkscape:window-y="37"
+     inkscape:window-y="0"
      inkscape:window-maximized="1"
      inkscape:current-layer="Layer_2" />
   <defs
      id="defs2042">
     <style
-       id="style2030">&#10;      @font-face {&#10;        font-family: &quot;neue-haas-normal&quot;;&#10;        src: url(&quot;/fonts/NeueHaasDisplay/NeueHaasDisplayRoman.ttf&quot;) format(&quot;truetype&quot;);&#10;      }&#10;&#10;      tspan {&#10;        font-family:neue-haas-normal;&#10;      }&#10;&#10;      .cls-1 {&#10;      fill: url(#linear-gradient);&#10;      }&#10;&#10;      .cls-1, .cls-2, .cls-3 {&#10;      stroke-width: 0px;&#10;      }&#10;&#10;      .cls-4 {&#10;      stroke: #e6e7e8;&#10;      stroke-dasharray: 0 0 1 12;&#10;      stroke-linecap: round;&#10;      stroke-width: 8px;&#10;      }&#10;&#10;      .cls-4, .cls-5, .cls-6 {&#10;      fill: none;&#10;      stroke-miterlimit: 10;&#10;      }&#10;&#10;      .cls-7 {&#10;      fill: #fff;&#10;      font-size: 19px;&#10;      font-weight: 500;&#10;      cursor: pointer;&#10;      }&#10;&#10;      .cls-2 {&#10;      fill: #ee2a7b;&#10;      }&#10;&#10;      .cls-3 {&#10;      fill: url(#linear-gradient-2);&#10;      }&#10;&#10;      .cls-8 {&#10;      letter-spacing: 0em;&#10;      }&#10;&#10;      .cls-9 {&#10;      letter-spacing: -.02em;&#10;      }&#10;&#10;      .cls-5, .cls-6 {&#10;      stroke: #808285;&#10;      }&#10;&#10;      .cls-6 {&#10;      stroke-width: 2px;&#10;      }&#10;    </style>
+       id="style2030">
+      @font-face {
+        font-family: "neue-haas-normal";
+        src: url("/fonts/NeueHaasDisplay/NeueHaasDisplayRoman.ttf") format("truetype");
+      }
+
+      tspan {
+        font-family:neue-haas-normal;
+      }
+
+      .cls-1 {
+      fill: url(#linear-gradient);
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+      stroke-width: 0px;
+      }
+
+      .cls-4 {
+      stroke: #e6e7e8;
+      stroke-dasharray: 0 0 1 12;
+      stroke-linecap: round;
+      stroke-width: 8px;
+      }
+
+      .cls-4, .cls-5, .cls-6 {
+      fill: none;
+      stroke-miterlimit: 10;
+      }
+
+      .cls-7 {
+      fill: #fff;
+      font-size: 19px;
+      font-weight: 500;
+      cursor: pointer;
+      }
+
+      .cls-2 {
+      fill: #ee2a7b;
+      }
+
+      .cls-3 {
+      fill: url(#linear-gradient-2);
+      }
+
+      .cls-8 {
+      letter-spacing: 0em;
+      }
+
+      .cls-9 {
+      letter-spacing: -.02em;
+      }
+
+      .cls-5, .cls-6 {
+      stroke: #808285;
+      }
+
+      .cls-6 {
+      stroke-width: 2px;
+      }
+    </style>
     <linearGradient
        id="linear-gradient"
        x1="332.11"
@@ -252,5 +312,108 @@
   </g>
   <g
      id="Layer_2"
-     data-name="Layer 2" />
+     data-name="Layer 2">
+    <g
+       id="g102"
+       transform="translate(-85.680682,-2.6117813)">
+      <circle
+         id="p102"
+         class="cls-2"
+         cx="677.75"
+         cy="472.06"
+         r="18.629999" />
+      <text
+         class="cls-7"
+         transform="translate(662.87,478.5)"
+         id="text2110"><tspan
+           x="0"
+           y="0"
+           id="tspan2108">102</tspan></text>
+    </g>
+    <g
+       id="g103"
+       transform="translate(-85.680682,-2.6117813)">
+      <circle
+         id="p103"
+         class="cls-2"
+         cx="729.41998"
+         cy="473.32001"
+         r="18.629999" />
+      <text
+         class="cls-7"
+         transform="translate(714.31,479.76)"
+         id="text2116"><tspan
+           x="0"
+           y="0"
+           id="tspan2114">103</tspan></text>
+    </g>
+    <g
+       id="g104"
+       transform="translate(-85.680682,-2.6117813)">
+      <circle
+         id="p104"
+         class="cls-2"
+         cx="781.71997"
+         cy="472.06"
+         r="18.629999" />
+      <text
+         class="cls-7"
+         transform="translate(766.34,478.5)"
+         id="text2122"><tspan
+           x="0"
+           y="0"
+           id="tspan2120">104</tspan></text>
+    </g>
+    <g
+       id="g105"
+       transform="translate(-85.680682,-2.6117813)">
+      <circle
+         id="p105"
+         class="cls-2"
+         cx="840.88"
+         cy="472.06"
+         r="18.629999" />
+      <text
+         class="cls-7"
+         transform="translate(825.71,478.5)"
+         id="text2128"><tspan
+           x="0"
+           y="0"
+           id="tspan2126">105</tspan></text>
+    </g>
+    <g
+       id="g107"
+       transform="translate(64.758842,-19.296374)">
+      <circle
+         id="p107"
+         class="cls-2"
+         cx="781.71997"
+         cy="520.52002"
+         r="18.629999" />
+      <text
+         class="cls-7"
+         transform="translate(767.2,526.96)"
+         id="text2134"><tspan
+           x="0"
+           y="0"
+           id="tspan2132">107</tspan></text>
+    </g>
+    <g
+       id="g106"
+       transform="translate(-32.463339,-50.074469)">
+      <circle
+         id="p106"
+         class="cls-2"
+         cx="840.88"
+         cy="520.52002"
+         r="18.629999" />
+      <text
+         class="cls-7"
+         transform="translate(825.51,526.96)"
+         id="text2140"><tspan
+           x="0"
+           y="0"
+           id="tspan2138">106</tspan></text>
+    </g>
+  </g>
 </svg>
