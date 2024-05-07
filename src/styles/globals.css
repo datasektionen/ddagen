@@ -162,7 +162,7 @@
 }
 
 .leaflet-control-zoom {
-  padding: 5px;
+  padding: 5px 2px;
   border: none !important;
   clip-path: inset(1px 1px 1px 1px round 9999px);
 }
