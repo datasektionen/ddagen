@@ -85,6 +85,7 @@ export default function Map({
                     <Marker
                       key={key}
                       position={positions[exhibitor.position] as LatLngExpression}
+                      icon={ceriseMarker(exhibitor.position.toString())}
                     />
                   );
                 })}
