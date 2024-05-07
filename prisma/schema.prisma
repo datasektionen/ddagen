@@ -31,7 +31,6 @@ model Exhibitor {
   logoWhite    Bytes?
   logoColor    Bytes?
   description  String
-  package      Package
   packageTier               Int @default(-1)
 
   extraTables               Int @default(0)
@@ -98,15 +97,6 @@ model Session {
   exhibitor   Exhibitor @relation(fields: [exhibitorId], references: [id])
 
   @@map("sessions")
-}
-
-enum Package {
-  main
-  base
-  sponsor
-  premium
-  startup
-  headhunter
 }
 
 model FoodPreferences {

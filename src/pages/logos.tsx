@@ -2,7 +2,6 @@ import { useLocale } from "@/locales";
 import { useState, useRef } from "react";
 import { addImageDetails } from "@/shared/addImageDetails";
 import { prisma } from "@/server/db";
-import { Package } from "@prisma/client";
 
 function OffersList({ offers }: { offers: (number[] | boolean)[] }) {
   const t = useLocale();
@@ -161,7 +160,6 @@ type LogosProps = {
     logoWhite?: string | null;
     logoColor?: string | null;
     description?: string;
-    package?: Package;
     packageTier: number;
     jobOfferId?: string;
     offers: (number[] | boolean)[];
@@ -226,7 +224,6 @@ export async function getServerSideProps() {
     logoWhite: exhibitor.logoWhite?.toString("base64") || null,
     logoColor: exhibitor.logoColor?.toString("base64") || null,
     description: exhibitor.description || null,
-    package: exhibitor.package || null,
     jobOfferId: exhibitor.jobOfferId || null,
     offers: [
       exhibitor.jobOffers?.summerJob,

@@ -146,11 +146,14 @@ export function AddUser({
         />
 
         <div className="flex flex-col max-sm:gap-y-4 sm:flex-row gap-x-8 mt-4 justify-center">
+          {editState ? 
           <button type="button" onClick={deleteUserInDatabase}>
-            <a className="block uppercase hover:scale-105 transition-transform  rounded-full text-white text-base font-normal px-8 py-2 max-lg:mx-auto w-max">
+            
+            <a className="block uppercase hover:scale-105 transition-transform bg-black/75 rounded-full text-white text-base font-normal px-8 py-2 max-lg:mx-auto w-max">
               {t.exhibitorSettings.table.row1.section3.delete}
             </a>
           </button>
+          : <></>}
           <button type="submit">
             <a className="block uppercase hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-normal px-8 py-2 max-lg:mx-auto w-max">
               {editState

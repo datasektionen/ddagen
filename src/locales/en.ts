@@ -58,7 +58,10 @@ export default {
     nextPage: "Next",
     lastPage: "Done",
     lastPageText: "You will be able to edit your information later on",
+    lastPageWarning: "By pressing Done I comfirm that I have read through all the input fields and have provided the correct information!",
 
+
+      
     start: {
       about: "ABOUT THE COMPANY",
       info: "We are interested in getting to know you better. Please fill in the following information in order for us at D-Dagen to help you find your future coworkers!",
@@ -152,7 +155,7 @@ export default {
         },
         section3: {
           header: "Contacts",
-          info: "Add members from company who should be able to edit this company profile",
+          info: "Add company contacts, contacts are able to view and edit this page",
           save: "Save",
           add: "Add",
           delete: "Delete",
@@ -170,15 +173,7 @@ export default {
       },
       row2: {
         title: "Your Package And Extra Orders",
-        packages: {
-          tier0: "Small",
-          tier1: "Medium",
-          tier2: "Large",
-          tier3: "Main Sponsor",
-          tier4: "Startup",
-
-          
-        },
+        
         section1: {
           header: "Package",
           info: "For more information about the different packages",
@@ -209,20 +204,21 @@ export default {
       row3: {
         title: "Food Preferences",
         warning: "Last date for ordering ",
+        usagenotice: "Only specify for those who have special dietary requirements",
         section1: {
           header: "During the Fair",
           paragraphOne:
             "These food preferences are used for breakfast and lunch during the fair.",
-          paragraphTwo: "You change the number in extra orders",
+          paragraphTwo: "You change the number in extra orders.",
         },
         section2: {
           header: "Dinner Party",
           paragraphOne:
             "These food preferences are used for the seating after the fair.",
           paragraphTwo: "You change the number in extra orders",
+          paragraphThree: "If nothing specific is chosen for a member the default preference will be served",
         },
         preferencesHeader: "Preferences (vegetarian is default)",
-        prefrenceSubHeader: "Leave empty if no special dietary requirements",
         options: {
           vegetarian: "Vegan",
           lactoseFree: "Lactose-Free",
@@ -426,13 +422,13 @@ export default {
     companyForm: "https://ddagen.se/en/företagsanmälan",
   },
   packages: {
-    name: {
-      base: "Base Package",
-      sponsor: "Sponsor Package",
-      headhunter: "Headhunter Package",
-      premium: "Premium Package",
-      main: "Main sponsor",
-    },
+    name: [ 
+     "Small",
+     "Medium",
+     "Large",
+     "Main Sponsor",
+     "Startup",
+    ],
     boothSpace: "booth space",
   },
   error: {

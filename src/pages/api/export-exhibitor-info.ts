@@ -28,7 +28,6 @@ export default async function handler(
                 organizationNumber: e.organizationNumber,
                 invoiceEmail: e.invoiceEmail,
                 description: e.description,
-                package: e.package,
                 extraTables: e.extraTables,
                 extraChairs: e.extraChairs,
                 extraDrinkCoupons: e.extraDrinkCoupons,
