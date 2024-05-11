@@ -3,7 +3,6 @@ import { api } from "@/utils/api";
 import CompanyMeetingOffer from "@/components/Student/CompanyMeetingOffer";
 import { useLocale } from "@/locales";
 import Info from '@/components/Student/Info';
-import Interests from '@/components/Student/Interests';
 
 
 const set_cookies = (loginToken: string) => {

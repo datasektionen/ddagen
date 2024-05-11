@@ -46,7 +46,7 @@ export default function Info(
 ) {
   const [user, setUser] = useState({fname:fname, lname:lname, email:"", year:NaN, cv:""})
   const [saved, setSaved] = useState(false);
-  const [cv, setCv] = useState();
+  const [cv, setCv] = useState<string>("");
 
   const [summer, setSummer] = useState<boolean>(interests.summer);
   const [partTime, setPartTime] = useState<boolean>(interests.partTime);
@@ -63,8 +63,9 @@ export default function Info(
 
   function saveInfo(){
     if(user.fname && user.lname && user.year){
-      setUserInfo({first_name:user.fname, last_name:user.lname, kth_email:email, email:user.email, cv:user.email, year:user.year});
+      setUserInfo({first_name:user.fname, last_name:user.lname, kth_email:email, email:user.email, cv:cv, year:user.year});
       setInterests({summer:summer, partTime:partTime, internship:internship, thesis:thesis, trainee:trainee, fullTime:fullTime});
+      console.log(cv);
     }else{
       setSaved(true);
     }
@@ -193,7 +194,7 @@ export default function Info(
                   </label>
                 </td>
                 <td>
-                  <UploadCV/>
+                  <UploadCV setFile={setCv}/>
                 </td>
               </tr>
             </tbody>
