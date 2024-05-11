@@ -56,7 +56,7 @@ export default {
       firstName:"Förnamn",
       lastName:"Efternamn",
       year:"Årskurs",
-      email:"Lägg till e-mail",
+      email:"Lägg till email",
       cv: "CV",
       save: "Spara",
       addFirstName: "Skriv in ditt förnamn",

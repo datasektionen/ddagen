@@ -136,10 +136,8 @@ export default function LoggedInPage() {
 
         return <div>
                     <div className="flex items-center justify-center">
-                        <Info t={t} fname={first_name} lname={last_name} email={email} setUserInfo={setUserInfo}/>
-                    </div>
-                    <div className="flex items-center justify-center">
-                        <Interests t={t} interests={interests} setInterests={setInterests}/>
+                        <Info t={t} fname={first_name} lname={last_name} email={email} setUserInfo={setUserInfo}
+                                interests={interests} setInterests={setInterests}/>
                     </div>
                     <h1 className="mt-[100px] text-3xl text-center text-white">{t.students.offersTitle1 + companies.length + t.students.offersTitle2}</h1>
                     <div className="grid lg:grid-cols-2 grid-cols-1">

@@ -56,7 +56,7 @@ export default {
       firstName:"First name",
       lastName:"Last name",
       year:"Year",
-      email:"Add e-mail",
+      email:"Add email",
       cv: "Resume",
       save: "Save",
       addFirstName: "Enter your first name",
