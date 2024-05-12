@@ -485,4 +485,14 @@ export const exhibitorRouter = createTRPCRouter({
         if (!exhibitor) return;
         return exhibitor.infoSubmissionStatus
     }),
+    getCompanyWithMeeting: protectedProcedure
+    .query(async ({ ctx }) => {
+      const exhbitors = await ctx.prisma.exhibitor.findMany({
+        where: {
+          // meeting field is not null
+        },
+        });
+        if(!exhbitors) return;
+        return exhbitors
+      }),
 });

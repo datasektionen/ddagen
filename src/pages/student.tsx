@@ -17,6 +17,9 @@ export default function LoggedInPage() {
     const inputData = api.student.inputData.useMutation();
     const studentVerify = api.student.verify.useMutation();
     const studentGetData = api.student.getData.useMutation();
+
+    const companyGetData = api.exhibitor.getCompanyWithMeeting.useQuery();
+
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [ugkthid, setUgkthid] = useState("");
     
