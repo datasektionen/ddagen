@@ -164,6 +164,7 @@ export class Exhibitor {
   description: string;
   package: string;
   packageTier: number;
+  studentMeetings: number;
   extraTables: number;
   extraChairs: number;
   extraDrinkCoupons: number;
@@ -186,6 +187,7 @@ export class Exhibitor {
     description: string,
     exhibitorPackage: string,
     packageTier: number,
+    studentMeetings: number,
     extraTables: number,
     extraChairs: number,
     extraDrinkCoupons: number,
@@ -207,6 +209,7 @@ export class Exhibitor {
     this.description = description;
     this.package = exhibitorPackage;
     this.packageTier = packageTier;
+    this.studentMeetings = studentMeetings;
     this.extraTables = extraTables;
     this.extraChairs = extraChairs;
     this.extraDrinkCoupons = extraDrinkCoupons;
