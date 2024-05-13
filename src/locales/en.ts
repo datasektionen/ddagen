@@ -261,6 +261,33 @@ export default {
             `You've reached the maximum amount (${max}) of preferences allotted to you`,
         },
       },
+      row4: {
+        title: "Student Meetings",
+        psa: "This functionality will open on the {date}",
+        save: "Save",
+        info: "Choose which students you want to meet during the fair",
+        section1: {
+          title: "How it works",
+          info1: "Student choose companies they want to meet",
+          info2: "You will then be able to select which of these students you want to meet",
+          info3: "The students will then be able to choose a time slot to meet you, during the fair",
+          info4: "You will be able to select more students than the amout of avaiable timeslots and the first students to accept will then get the timeslots",
+          
+        },
+        section2: {
+          selectAll: "Select all",
+          deselectAll: "Deselect all",
+          search: "Search",
+        },
+      },
+
+    },
+    meetings: {
+      title: "Company Meetings",
+      columns: ["Pending","","Name", "Year", "CV", "Other"],
+      checkAll: "Select all",
+      unCheckAll: "Deselect all", 
+      bookSelected: "Send booking request",
     },
   },
   login: {

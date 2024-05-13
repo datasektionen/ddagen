@@ -1,7 +1,7 @@
 import Locale from "@/locales";
 import { api } from "@/utils/api";
 import { Dispatch, useState, useEffect } from "react";
-import { Extras, Package, Preferences } from "../../shared/Classes";
+import { Extras, Package, Preferences } from "../../../shared/Classes";
 import { AddPreferences } from "./AddPreferences";
 import { EditPreferences } from "./EditPreferences";
 

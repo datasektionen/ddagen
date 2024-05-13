@@ -3,13 +3,14 @@ export function CheckMark({
   checked,
   defaultChecked,
   onClick,
-  onChange
+  onChange,
 }: {
   name: string;
   checked?: boolean;
   defaultChecked?: boolean;
   onClick?: () => void;
   onChange?: () => void;
+
 }) {
   return (
     <input

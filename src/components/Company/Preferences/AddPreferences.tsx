@@ -1,7 +1,7 @@
 import Locale from "@/locales";
 import { api } from "@/utils/api";
-import { CheckMark } from "../CheckMark";
-import { InputField } from "./InputField";
+import { CheckMark } from "../../CheckMark";
+import { InputField } from "../InputField";
 import { type Dispatch, useState, useEffect, type FormEvent } from "react";
 import { Extras, Package, Preferences } from "@/shared/Classes";
 
@@ -187,7 +187,7 @@ export function AddPreferences({
   }, [extras]);
 
   return (
-    <div className="flex flex-col items-center w-[80%] bg-white/40 border-2 border-white/70 rounded-xl pb-8 mt-8 mb-16 overflow-hidden">
+    <div className="flex flex-col items-center w-[80%] bg-black/25 border-solid border-yellow border-2 rounded-xl pb-8 mt-8 mb-16 overflow-hidden">
       <form
         className="flex flex-col w-[90%] bg-transparent outline-none gap-7 mt-10"
         onSubmit={handleSubmission}

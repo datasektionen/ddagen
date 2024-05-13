@@ -1,7 +1,7 @@
 import React from "react";
 import Locale from "@/locales";
-import { UploadButton } from "@/components/Settings/UploadButton";
-import { TextInput } from "@/components/Settings/TextInput";
+import { UploadButton } from "@/components/Company/UploadButton";
+import { TextInput } from "@/components/Company/TextInput";
 
 export default function GeneralInfo(
     {

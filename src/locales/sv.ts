@@ -261,6 +261,31 @@ export default {
             `Du har nått det maximala antalet (${max}) preferenser som du har tilldelats`,
         },
       },
+      row4: {
+        title: "Kontaktsamtal",
+        psa: "Denna funktion kommer bli tillgänglig den {date}",
+        save: "Spara",
+        info: "Välj vilka studenter ni önskar boka kontaktsamtal med",
+        section1: {
+          title: "Hur fungerar det?",
+          info1: "Studenter väljer vilka företag de är intresserade av att boka kontaktsamtal med.",
+          info2: "Ni väljer sedan vilka av dessa studenter ni vill boka samtal med.",
+          info3: "Studenter som ni valt ut kommer sedan få välja en mötes tid under mässan.",
+          info4: "Ni kan välja fler studenter än vad det finns tillgänliga tidsslotter, så kommer de studenter som accpeterar snabbast få tiderna.",
+        },
+        section2: {
+          selectAll: "Markera alla",
+          deselectAll: "Avmarkera alla",
+          search: "Sök",
+        },
+      },
+    },
+    meetings: {
+      title: "Kontaktsamtal",
+      columns: ["","Namn", "År", "CV", "Annat"],
+      checkAll: "Markera alla",
+      unCheckAll: "Avmarkera alla",
+      bookSelected: "Skicka bokningsförfrågan",
     },
   },
   login: {
