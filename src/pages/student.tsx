@@ -39,7 +39,7 @@ export default function LoggedInPage() {
 
     useEffect(()=>{
         inputCompanyInterests.mutateAsync(JSON.stringify(interests))
-    })
+    }, [])
 
     useEffect(()=>{
         // log in the user if not logged in
