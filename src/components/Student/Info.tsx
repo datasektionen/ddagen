@@ -6,17 +6,20 @@ import { CheckMark } from "../CheckMark";
 export default function Info(
     {
         t,
-        fname,
-        lname,
-        email,
+        userInfo,
         setUserInfo,
         interests,
         setInterests,
     }: {
         t: Locale;
-        fname: string;
-        lname: string;
-        email: string;
+        userInfo: {
+          first_name: string;
+          last_name: string;
+          kth_email: string;
+          email: string;
+          cv: string;
+          year: number;
+      };
         setUserInfo: Dispatch<{
           first_name: string;
           last_name: string;
@@ -44,7 +47,7 @@ export default function Info(
     }
     
 ) {
-  const [user, setUser] = useState({fname:fname, lname:lname, email:"", year:NaN, cv:""})
+  const [user, setUser] = useState({fname:userInfo.first_name, lname:userInfo.last_name, email:userInfo.email, year:userInfo.year, cv:userInfo.cv})
   const [saved, setSaved] = useState(false);
   const [cv, setCv] = useState<string>("");
 
@@ -63,9 +66,8 @@ export default function Info(
 
   function saveInfo(){
     if(user.fname && user.lname && user.year){
-      setUserInfo({first_name:user.fname, last_name:user.lname, kth_email:email, email:user.email, cv:cv, year:user.year});
+      setUserInfo({first_name:user.fname, last_name:user.lname, kth_email:userInfo.kth_email, email:user.email, cv:cv, year:user.year});
       setInterests({summer:summer, partTime:partTime, internship:internship, thesis:thesis, trainee:trainee, fullTime:fullTime});
-      console.log(cv);
     }else{
       setSaved(true);
     }
@@ -164,7 +166,7 @@ export default function Info(
                     className="text-white"
                     type="text"
                     name="kthEmail"
-                    value={email}
+                    value={userInfo.kth_email}
                     required={false}
                     disabled={true}
                   />

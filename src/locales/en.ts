@@ -66,6 +66,9 @@ export default {
     interests:{
       header: "Fill in your job offer interests"
     },
+    companyInterests:{
+      header: "Select the companies you are interested in meeting",
+    },
     companyMeeting:{
       offerText: " has invited you to a company meeting",
       acceptDeclineText: "Choose a time to accept the offer or decline the offer",

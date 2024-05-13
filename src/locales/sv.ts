@@ -66,6 +66,9 @@ export default {
     interests:{
       header:"Fyll i dina intressen gällande jobberbjudanden",
     },
+    companyInterests:{
+      header: "Välj de företag du är intresserad av att träffa",
+    },
     companyMeeting:{
       offerText: " har bjudit in dig till ett kontaktsamtal",
       acceptDeclineText: "Välj en tid och tacka ja till erbjudandet eller tacka nej till erbjudandet", 
