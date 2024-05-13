@@ -12,7 +12,8 @@ const set_cookies = (loginToken: string) => {
 
 export default function LoggedInPage() {
 
-    const inputCompanyInterests = api.student.inputCompanyInterests.useMutation();
+   const inputCompanyInterests = api.student.inputCompanyInterests.useMutation();
+   const companyMeeting = api.student.getCompanyMeetings.useQuery();
 
     const t = useLocale();
 
@@ -46,7 +47,7 @@ export default function LoggedInPage() {
             window.location.href = `https://login.datasektionen.se/login?callback=${window.location.href.replace(/^(https?:\/\/[^\/]+).*/, '$1')}/student?login_token=`
         }
     }, [isLoggedIn])
-
+    
     useEffect(() => {
         const params: URLSearchParams = new URL(window.location.href).searchParams;
 

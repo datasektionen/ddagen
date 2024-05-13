@@ -1,6 +1,7 @@
 import { z } from "zod";
-import { createTRPCRouter, publicProcedure } from "../trpc";
+import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 import { Prisma } from "@prisma/client";
+import { get } from "http";
 
 
 export const studentRouter = createTRPCRouter({    
@@ -119,6 +120,21 @@ export const studentRouter = createTRPCRouter({
         return student
         
     }),
+    getCompanyMeetings: publicProcedure
+    .query(async ({ ctx })=>{
+        return await ctx.prisma.exhibitor.findMany({
+            where: {
+                studentMeetings: 1,
+            },
+            select: {
+                name: true,
+                description: true,
+                logoColor: true,
+            }
+        });
+    }),
+    
+
     inputCompanyInterests: publicProcedure
     .input(z.string())
     .mutation(async ({ ctx })=>{

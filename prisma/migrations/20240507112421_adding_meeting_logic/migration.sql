@@ -5,7 +5,8 @@
 
 */
 -- AlterTable
-ALTER TABLE "students" ADD COLUMN     "company_meeting_interests" TEXT NOT NULL;
+ALTER TABLE "students" ADD COLUMN       "company_meeting_interests" TEXT[];
+ALTER TABLE "exhibitors" ADD COLUMN     "studentMeetings" INTEGER NOT NULL DEFAULT 0;
 
 -- CreateTable
 CREATE TABLE "meetings" (

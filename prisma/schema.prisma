@@ -33,6 +33,7 @@ model Exhibitor {
   description  String
   package      Package
   packageTier               Int @default(-1)
+  studentMeetings           Int @default(0)
 
   extraTables               Int @default(0)
   extraChairs               Int @default(0)
@@ -181,5 +182,5 @@ model Meetings {
     exhibitorId      String
     timeslot         Int
 
-    @@map("matchning")
+    @@map("meetings")
 }

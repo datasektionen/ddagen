@@ -45,6 +45,7 @@ export default async function handler(
       "headhunter",
     ]),
     packageTier: z.number(),
+    studentMeetings: z.number(),
     sendEmailToExhibitor: z.boolean(),
     mapPosition: z.number(),
   });
@@ -60,6 +61,7 @@ export default async function handler(
     email,
     exhibitorPackage,
     packageTier,
+    studentMeetings,
     sendEmailToExhibitor,
     mapPosition,
   } = body.data;
@@ -77,6 +79,7 @@ export default async function handler(
       description: "",
       package: exhibitorPackage,
       packageTier: 0,
+      studentMeetings: 0,
       extraTables: 0,
       extraChairs: 0,
       extraDrinkCoupons: 0,
@@ -106,6 +109,7 @@ export default async function handler(
       invoiceEmail: email,
       package: exhibitorPackage,
       packageTier: packageTier,
+      studentMeetings: studentMeetings,
       mapPosition: mapPosition,
     },
   });
