@@ -12,6 +12,8 @@ const set_cookies = (loginToken: string) => {
 
 export default function LoggedInPage() {
 
+    const inputCompanyInterests = api.student.inputCompanyInterests.useMutation();
+
     const t = useLocale();
 
     const inputData = api.student.inputData.useMutation();
@@ -33,6 +35,10 @@ export default function LoggedInPage() {
             console.log(res)
         });
     }
+
+    useEffect(()=>{
+        inputCompanyInterests.mutateAsync(JSON.stringify(interests))
+    })
 
     useEffect(()=>{
         // log in the user if not logged in

@@ -118,8 +118,23 @@ export const studentRouter = createTRPCRouter({
         console.log("STUDENT FROM DB", student)
         return student
         
+    }),
+    inputCompanyInterests: publicProcedure
+    .input(z.string())
+    .mutation(async ({ ctx })=>{
+        // input is ugkthid 
+
+        console.log("CTX: ", ctx)
+        
+        // const student = await ctx.prisma.students.update({
+        //     where: {
+        //         ugkthid: input_json.ugkthid
+        //     },
+        //     data: {
+        //         company_meeting_interests: input_json.company_meeting_interests
+        //     }
+        // });
+
+        // return student;
     })
-
-
-
 });
