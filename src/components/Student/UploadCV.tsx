@@ -11,14 +11,19 @@ export default function UploadCV(
     const files = evt.target.files;
     if (files && files.length > 0) {
         const file = files[0]
-        // convert file to string
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(file);
+        fileReader.onload = () => {
+          const base64String = fileReader.result as string;
+          setFile(base64String);
+        };
     } else {
         setFile("");
     }
   };
 
   return (
-    <div className="ml-[8px]">
+    <div className="ml-[8px] background-cerise">
       <input
         className="text-white"
         type="file"

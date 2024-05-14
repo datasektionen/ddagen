@@ -56,7 +56,7 @@ export default {
       firstName:"Förnamn",
       lastName:"Efternamn",
       year:"Årskurs",
-      email:"Lägg till e-mail",
+      email:"Lägg till email",
       cv: "CV",
       save: "Spara",
       addFirstName: "Skriv in ditt förnamn",
@@ -65,6 +65,9 @@ export default {
     },
     interests:{
       header:"Fyll i dina intressen gällande jobberbjudanden",
+    },
+    companyInterests:{
+      header: "Välj de företag du är intresserad av att träffa",
     },
     companyMeeting:{
       offerText: " har bjudit in dig till ett kontaktsamtal",

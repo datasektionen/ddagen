@@ -56,7 +56,7 @@ export default {
       firstName:"First name",
       lastName:"Last name",
       year:"Year",
-      email:"Add e-mail",
+      email:"Add email",
       cv: "Resume",
       save: "Save",
       addFirstName: "Enter your first name",
@@ -65,6 +65,9 @@ export default {
     },
     interests:{
       header: "Fill in your job offer interests"
+    },
+    companyInterests:{
+      header: "Select the companies you are interested in meeting",
     },
     companyMeeting:{
       offerText: " has invited you to a company meeting",

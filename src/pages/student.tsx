@@ -1,9 +1,9 @@
-  import { Key, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { api } from "@/utils/api";
 import CompanyMeetingOffer from "@/components/Student/CompanyMeetingOffer";
 import { useLocale } from "@/locales";
 import Info from '@/components/Student/Info';
-import Interests from '@/components/Student/Interests';
+import CompanyInterests from '@/components/Student/CompanyInterests';
 
 
 const set_cookies = (loginToken: string) => {
@@ -13,7 +13,7 @@ const set_cookies = (loginToken: string) => {
 export default function LoggedInPage() {
 
    const inputCompanyInterests = api.student.inputCompanyInterests.useMutation();
-   const companyMeeting = api.student.getCompanyMeetings.useQuery();
+   //const companyMeeting = api.student.getCompanyMeetings.useQuery();
 
     const t = useLocale();
 
@@ -38,7 +38,7 @@ export default function LoggedInPage() {
     }
 
     useEffect(()=>{
-        inputCompanyInterests.mutateAsync(JSON.stringify(interests))
+       //inputCompanyInterests.mutateAsync(JSON.stringify(interests))
     }, [])
 
     useEffect(()=>{
@@ -101,7 +101,7 @@ export default function LoggedInPage() {
         });
 
     }, [isLoggedIn, ugkthid]);
-
+    
     const [userInfo, setUserInfo] = useState<{
         first_name: string;
         last_name: string;
@@ -109,18 +109,30 @@ export default function LoggedInPage() {
         email: string;
         cv: string;
         year: number;
-    }>();
-
+    }>({
+        first_name: first_name,
+        last_name: last_name,
+        kth_email: email,
+        email: "",
+        cv: "",
+        year: 0
+    });
+    
     const [interests, setInterests] = useState<{
-            summer: boolean;
-            partTime: boolean;
-            internship: boolean;
-            thesis: boolean;
-            trainee: boolean;
-            fullTime: boolean;
+        summer: boolean;
+        partTime: boolean;
+        internship: boolean;
+        thesis: boolean;
+        trainee: boolean;
+        fullTime: boolean;
     }>(
         {summer: false, partTime: false, internship: false, thesis: false, trainee: false,fullTime: false}
     );
+    
+    
+    useEffect(()=>{
+        console.log("Sending data to backend");
+    }, [userInfo, interests]); 
 
     function StudentView(){
         // Test companies
@@ -143,12 +155,12 @@ export default function LoggedInPage() {
 
         return <div>
                     <div className="flex items-center justify-center">
-                        <Info t={t} fname={first_name} lname={last_name} email={email} setUserInfo={setUserInfo}/>
+                        <Info t={t} userInfo={userInfo} setUserInfo={setUserInfo} interests={interests} setInterests={setInterests}/>
                     </div>
                     <div className="flex items-center justify-center">
-                        <Interests t={t} interests={interests} setInterests={setInterests}/>
+                        
                     </div>
-                    <h1 className="mt-[100px] text-3xl text-center text-white">{t.students.offersTitle1 + companies.length + t.students.offersTitle2}</h1>
+                    <h2 className="mt-[100px] text-3xl text-center text-white">{t.students.offersTitle1 + companies.length + t.students.offersTitle2}</h2>
                     <div className="grid lg:grid-cols-2 grid-cols-1">
                         {companies.map(renderOffer)}
                     </div>  
