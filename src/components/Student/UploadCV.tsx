@@ -25,7 +25,7 @@ export default function UploadCV(
   return (
     <div className="ml-[8px] background-cerise">
       <input
-        className="text-white"
+        className="text-white background-cerise"
         type="file"
         onChange={handleFileChange}
         accept=".pdf"

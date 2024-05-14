@@ -1,39 +1,41 @@
 import Locale from "@/locales";
-import { Dispatch, useState } from "react";
+import { Dispatch, useEffect, useState } from "react";
 import { CheckMark } from "../CheckMark";
+import { api } from "@/utils/api";
 
 export default function CompanyInterests(
     {
         t,
-        companies,
-        companyInterests,
-        setCompanyInterests,
     }: {
         t: Locale;
-        companies:{
-            id:string;
-            name:string;
-            description:string;
-            logo:string;
-        }[];
-        companyInterests: string[];
-        setCompanyInterests: Dispatch<string[]>;
     }
 ){
-    const [interests, setInterests] = useState<string[]>(companyInterests);
+    const inputCompanyInterests = api.student.inputCompanyInterests.useMutation();
+    const companyMeeting = api.student.getCompanyMeetings.useQuery();
+    
+    const [companies, setCompanies] = useState<{}[]>([]);
+    useEffect(()=>{
+        if(!companyMeeting.data) return;
+        console.log("COMPANY MEETING: ", companyMeeting.data);
+        const data = companyMeeting.data;
+        setCompanies(data)
+
+    },[companyMeeting]);
+
+
 
     function displayCompanyOption(company: {id:string,name:string,description:string,logo:string}){
         function changeChecked(){
-            if(interests.includes(company.id)){
+            if(companies.includes(company.id)){
                 // Remove from interests
-                setInterests([...interests].filter(function removeInterest(interestId){return interestId !== company.id }));
+                setCompanies([...companies].filter(function removeInterest(interestId){return interestId !== company.id }));
             }else{
                  // Add to interests
-                 setInterests([...interests,company.id])
+                 setCompanies([...companies,company.id])
             }
         }
         return (<div key={company.id} className="flex items-center border-t-2 border-white pt-[10px] pb-[10px]">
-                    <CheckMark name={company.name} checked={interests.includes(company.id)} onClick={changeChecked}/>
+                    <CheckMark name={company.name} checked={companies.includes(company.id)} onClick={changeChecked}/>
                     <div className="ml-[10px]">
                         {company.name}
                     </div>
@@ -45,7 +47,7 @@ export default function CompanyInterests(
     }
 
     function saveInterests(){
-        setCompanyInterests(interests);
+        //setCompanyInterests(companies); Broken
     }
 
     return(

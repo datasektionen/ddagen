@@ -116,7 +116,7 @@ export const studentRouter = createTRPCRouter({
         });
         if (student === null) return false
         
-        console.log("STUDENT FROM DB", student)
+        //console.log("STUDENT FROM DB", student)
         return student
         
     }),
@@ -127,11 +127,13 @@ export const studentRouter = createTRPCRouter({
                 studentMeetings: 1,
             },
             select: {
+                id: true,
                 name: true,
                 description: true,
                 logoColor: true,
             }
         });
+
     }),
     
 

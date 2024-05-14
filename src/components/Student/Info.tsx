@@ -4,16 +4,17 @@ import UploadCV from "./UploadCV";
 import { CheckMark } from "../CheckMark";
 import { InputField } from "../InputField";
 
-export default function Info(
+export default function StudentInfo(
     {
         t,
-        userInfo,
-        setUserInfo,
+        user,
+        setUser,
         interests,
         setInterests,
+        saveHandler,
     }: {
         t: Locale;
-        userInfo: {
+        user: {
           first_name: string;
           last_name: string;
           kth_email: string;
@@ -21,7 +22,7 @@ export default function Info(
           cv: string;
           year: number;
       };
-        setUserInfo: Dispatch<{
+        setUser: Dispatch<{
           first_name: string;
           last_name: string;
           kth_email: string;
@@ -45,34 +46,37 @@ export default function Info(
                             trainee: boolean;
                             fullTime: boolean;
                         }>;
-    }
-    
+        saveHandler: (input: any) => void;
+    },
 ) {
-  const [user, setUser] = useState({fname:userInfo.first_name, lname:userInfo.last_name, email:userInfo.email, year:userInfo.year, cv:userInfo.cv})
+  //const [user, setUser] = useState({first_name:userInfo.first_name, last_name:userInfo.last_name, email:userInfo.email, year:userInfo.year, cv:userInfo.cv})
   const [saved, setSaved] = useState(false);
-  const [cv, setCv] = useState<string>("");
+  //const [cv, setCv] = useState<string>("");
+//
 
+  //const [jobOffers, setJobOffers] = useState<boolean[]>({summer:interests.summer, partTime:interests.partTime, internship:interests.internship, thesis:interests.thesis, trainee:interests.trainee, fullTime:interests.fullTime});
+  
   const [summer, setSummer] = useState<boolean>(interests.summer);
   const [partTime, setPartTime] = useState<boolean>(interests.partTime);
   const [internship, setInternship] = useState<boolean>(interests.internship);
-
+//
   const [thesis, setThesis] = useState<boolean>(interests.thesis);
   const [trainee, setTrainee] = useState<boolean>(interests.trainee);
   const [fullTime, setFullTime] = useState<boolean>(interests.fullTime);
-
+//
   const job = t.exhibitorSettings.table.row1.section2.jobs;
   const jobs = [{str:job.summer, checked:summer, set:setSummer}, {str:job.partTime, checked:partTime, set:setPartTime}, {str:job.internship, checked:internship, set:setInternship}];
   const other = t.exhibitorSettings.table.row1.section2.other;
   const others = [{str:other.thesis, checked:thesis, set:setThesis}, {str:other.trainee, checked:trainee, set:setTrainee}, {str:other.fullTime, checked:fullTime, set:setFullTime}];
 
-  function saveInfo(){
-    if(user.fname && user.lname && user.year){
-      setUserInfo({first_name:user.fname, last_name:user.lname, kth_email:userInfo.kth_email, email:user.email, cv:cv, year:user.year});
+  /*function saveInfo(){
+    if(user.first_name && user.last_name && user.year){
+      setUser({first_name:user.first_name, last_name:user.last_name, kth_email:user.kth_email, email:user.email, cv:cv, year:user.year});
       setInterests({summer:summer, partTime:partTime, internship:internship, thesis:thesis, trainee:trainee, fullTime:fullTime});
     }else{
       setSaved(true);
     }
-  }
+  }*/
 
   function alternative(alternative:{str: string; checked: boolean; set: Dispatch<boolean>;}){
     return <div key={alternative.str} className="flex">
@@ -110,23 +114,23 @@ export default function Info(
             <h1 className="text-white text-center text-3xl mt-[10px] mb-[10px]">{t.students.info.header}</h1>
               <form 
                 className="flex flex-col w-[90%] bg-transparent justify-center outline-none gap-7 mt-10"
-                onSubmit={saveInfo}
+                //onSubmit={saveInfo}
                 >
               <InputField
                 type="text"
                 name="firstName"
-                value={user.fname}
+                value={user.first_name}
                 required={true}
-                setValue={(name) => {setUser({ ...user, fname: name })}}
+                setValue={(name) => {setUser({ ...user, first_name: name })}}
                 fields={t.students.info}
                 />
 
               <InputField
                 type="text"
                 name="lastName"
-                value={user.lname}
+                value={user.last_name}
                 required={true}
-                setValue={(name) => {setUser({ ...user, lname: name })}}
+                setValue={(name) => {setUser({ ...user, last_name: name })}}
                 fields={t.students.info}
                 />
 
@@ -144,7 +148,7 @@ export default function Info(
               <InputField
                   type="text"
                   name="email"
-                  value={userInfo.email}
+                  value={user.email}
                   required={false}
                   setValue={(name) => {setUser({ ...user, email: name })}}
                   fields={t.students.info}
@@ -158,7 +162,7 @@ export default function Info(
                   md:text-md text-lg ">
                   {t.students.info.cv}:
                 </label>
-                <UploadCV setFile={setCv}/>
+                <UploadCV setFile={(value)=>{setUser({...user, cv:value})}}/>
               </div>
 
               <div className="justify-center flex flex-col">
@@ -168,113 +172,13 @@ export default function Info(
                   </a>
                 </button>
                 <p className="text-white self-center">
-                  {saved? (!user.fname ? t.students.info.addFirstName : !user.lname ?  t. students.info.addLastName : !user.year ? t.students.info.addYear : "") : ""}
+                  {saved? (!user.first_name ? t.students.info.addFirstName : !user.last_name ?  t. students.info.addLastName : !user.year ? t.students.info.addYear : "") : ""}
                 </p>
               </div>
 
             </form>
           </div>
           
-          {/*
-          
-          <table className="mt-[10px] ml-[10px] mr-[10px] mb-[10px] gap-4">
-            <tbody
-              className="text-lg [&>tr>td]:text-right [&>tr>td>label]:font-normal [&>tr>td>label]:text-white
-                      [&>tr>td>input]:bg-transparent [&>tr>td>input]:outline-none [&>tr>td>input]:w-[250px]
-                      [&>tr>td>input]:ml-2 [&>tr>td>input]:font-light"
-            >
-              <tr>
-                <td>
-                  <label htmlFor="fname">
-                    {t.students.info.firstName}:
-                  </label>
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    className="text-white"
-                    name="fname"
-                    value={user.fname}
-                    required={true}
-                    onChange={function changeFirstName(evt){setUser({ ...user, fname: evt.target.value })}}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label htmlFor="lname">
-                    {t.students.info.lastName}:
-                  </label>
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    className="text-white"
-                    name="lname"
-                    value={user.lname}
-                    required={true}
-                    onChange={function changeFirstName(evt){setUser({ ...user, lname: evt.target.value })}}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label htmlFor="year">
-                    {t.students.info.year}:
-                  </label>
-                </td>
-                <td>
-                  <YearChecks/>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label htmlFor="kthEmail">
-                    KTH email:
-                  </label>
-                </td>
-                <td>
-                  <input
-                    className="text-white"
-                    type="text"
-                    name="kthEmail"
-                    value={userInfo.kth_email}
-                    required={false}
-                    disabled={true}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label htmlFor="email">
-                    {t.students.info.email}:
-                  </label>
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    className="text-white"
-                    name="email"
-                    value={user.email}
-                    required={false}
-                    onChange={function changeFirstName(evt){setUser({ ...user, email: evt.target.value })}}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label htmlFor="role">
-                    {t.students.info.cv}:
-                  </label>
-                </td>
-                <td>
-                  <UploadCV setFile={setCv}/>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          
-          */}
           <h2 className="text-white text-center text-3xl mt-[10px] mb-[10px]">{t.students.interests.header}</h2>
           <div className="flex justify-between mt-[10px] ml-[40px] mr-[40px]">
               {jobs.map(alternative)}
@@ -285,13 +189,13 @@ export default function Info(
             
 
           <div className="flex justify-center">
-            <button onClick={saveInfo} className="mt-4 mb-4 mx-2 flex">
+            <button onClick={()=>{}} className="mt-4 mb-4 mx-2 flex">
               <a className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-medium px-6 py-2 max-lg:mx-auto w-max">
                 {t.students.info.save}
               </a>
             </button>
             <p className="text-white self-center">
-              {saved? (!user.fname ? t.students.info.addFirstName : !user.lname ?  t. students.info.addLastName : !user.year ? t.students.info.addYear : "") : ""}
+              {saved? (!user.first_name ? t.students.info.addFirstName : !user.last_name ?  t. students.info.addLastName : !user.year ? t.students.info.addYear : "") : ""}
             </p>
           </div>
           
