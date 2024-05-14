@@ -3,7 +3,6 @@ import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 import { Prisma } from "@prisma/client";
 import { get } from "http";
 
-
 export const studentRouter = createTRPCRouter({    
     verify: publicProcedure
     .input(z.string())
@@ -68,7 +67,7 @@ export const studentRouter = createTRPCRouter({
                 github_url: String(input_json.github_url) || "", 
                 other_link: String(input_json.other_link) || "", 
                 personal_story: String(input_json.personal_story) || "",
-                company_meeting_interests: String(input_json.company_meeting_interests) || "",
+                company_meeting_interests: JSON.stringify(input_json.company_meeting_interests) || "[]",
             }
             // If no user exists, create a new user with default values
             await ctx.prisma.students.create({
@@ -98,7 +97,7 @@ export const studentRouter = createTRPCRouter({
                     github_url: input_json.github_url || student.github_url,
                     other_link: input_json.other_link || student.other_link,
                     personal_story: input_json.personal_story || student.personal_story,
-                    company_meeting_interests: String(input_json.company_meeting_interests) || String(student.company_meeting_interests),
+                    company_meeting_interests: input_json.company_meeting_interests || student.company_meeting_interests,
                 },
             });
         }
@@ -133,25 +132,79 @@ export const studentRouter = createTRPCRouter({
             }
         });
     }),
-    
 
     inputCompanyInterests: publicProcedure
     .input(z.string())
-    .mutation(async ({ ctx })=>{
-        // input is ugkthid 
+    .mutation(async ({ ctx, input })=>{
+        // input is ugkthid and company organisation number
+        const input_json = JSON.parse(input);
+        // Check for required inputs:
+        if (!input_json.ugkthid) {
+            console.log("The user id is required");
+            return;
+        }
+        if (!input_json.company) {
+            console.log("The company interests are required");
+            return;
+        }
 
-        // console.log("CTX: ", ctx)
+        const student = await ctx.prisma.students.findUnique({
+            where: {
+                ugkthid: input_json.ugkthid
+            },
+            
+        });
+        if (!student) return;
         
-        // const student = await ctx.prisma.students.update({
-        //     where: {
-        //         ugkthid: input_json.ugkthid
-        //     },
-        //     data: {
-        //         company_meeting_interests: input_json.company_meeting_interests
-        //     }
-        // });
+        const current_interests = JSON.parse(student.company_meeting_interests);
+        const new_interests = [...current_interests, input_json.company];
 
-        // return student;
+        await ctx.prisma.students.update({
+            where: {
+                ugkthid: input_json.ugkthid
+            },
+            data: {
+                company_meeting_interests: JSON.stringify(new_interests)
+            }
+        });
+
+        return;
+    }),
+    deleteCompanyInterests: publicProcedure
+    .input(z.string())
+    .mutation(async ({ ctx, input })=>{
+        // input is ugkthid and company organisation number
+        const input_json = JSON.parse(input);
+        // Check for required inputs:
+        if (!input_json.ugkthid) {
+            console.log("The user id is required");
+            return;
+        }
+        if (!input_json.company) {
+            console.log("The company interests are required");
+            return;
+        }
+
+        const student = await ctx.prisma.students.findUnique({
+            where: {
+                ugkthid: input_json.ugkthid
+            },
+            
+        });
+        if (!student) return;
+        
+        const current_interests = JSON.parse(student.company_meeting_interests);
+        const new_interests: String[] = current_interests.filter((interest: String) => interest !== input_json.company);
+
+        await ctx.prisma.students.update({
+            where: {
+                ugkthid: input_json.ugkthid
+            },
+            data: {
+                company_meeting_interests: JSON.stringify(new_interests)
+            }
+        });
+
         return;
     })
 });
