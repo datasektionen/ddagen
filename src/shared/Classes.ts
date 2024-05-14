@@ -1,5 +1,6 @@
 import Locale from "@/locales";
 
+
 export class User {
   id?: string;
   email: string;
@@ -50,6 +51,7 @@ export class Preferences {
 
 export class Package {
   name: string;
+  tier: number = -1;
   tables: number;
   chairs: number;
   drinkCoupons: number;
@@ -59,6 +61,7 @@ export class Package {
   constructor(t: Locale, exhibitorPackageTier: number) {
     switch ( exhibitorPackageTier ) {
       case 0:
+        this.tier = 0;
         this.name = t.exhibitorSettings.table.row2.packages.tier0;
         this.tables = 1;
         this.chairs = 0;
@@ -67,6 +70,7 @@ export class Package {
         this.banquetTickets = 2;
         break;
       case 1:
+        this.tier = 1;
         this.name = t.exhibitorSettings.table.row2.packages.tier1;
         this.tables = 1;
         this.chairs = 0;
@@ -75,6 +79,7 @@ export class Package {
         this.banquetTickets = 2;
         break;
       case 2:
+        this.tier = 2;
         this.name = t.exhibitorSettings.table.row2.packages.tier2;
         this.tables = 1;
         this.chairs = 0;
@@ -83,6 +88,7 @@ export class Package {
         this.banquetTickets = 4;
         break;
       case 3:
+        this.tier = 3;
         this.name = t.exhibitorSettings.table.row2.packages.tier3;
         this.tables = 1;
         this.chairs = 0;
@@ -91,6 +97,7 @@ export class Package {
         this.banquetTickets = 2;
         break;
       case 4:
+        this.tier = 4;
         this.name = t.exhibitorSettings.table.row2.packages.tier4;
         this.tables = 1;
         this.chairs = 0;
@@ -99,6 +106,7 @@ export class Package {
         this.banquetTickets = 0;
         break;
       default:
+        this.tier = -1;
         this.name = "";
         this.tables = 0;
         this.chairs = 0;
@@ -164,6 +172,7 @@ export class Exhibitor {
   description: string;
   package: string;
   packageTier: number;
+  studentMeetings: number;
   extraTables: number;
   extraChairs: number;
   extraDrinkCoupons: number;
@@ -186,6 +195,7 @@ export class Exhibitor {
     description: string,
     exhibitorPackage: string,
     packageTier: number,
+    studentMeetings: number,
     extraTables: number,
     extraChairs: number,
     extraDrinkCoupons: number,
@@ -207,6 +217,7 @@ export class Exhibitor {
     this.description = description;
     this.package = exhibitorPackage;
     this.packageTier = packageTier;
+    this.studentMeetings = studentMeetings;
     this.extraTables = extraTables;
     this.extraChairs = extraChairs;
     this.extraDrinkCoupons = extraDrinkCoupons;

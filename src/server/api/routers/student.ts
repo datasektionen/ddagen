@@ -1,6 +1,7 @@
 import { z } from "zod";
-import { createTRPCRouter, publicProcedure } from "../trpc";
+import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 import { Prisma } from "@prisma/client";
+import { get } from "http";
 
 
 export const studentRouter = createTRPCRouter({    
@@ -67,6 +68,7 @@ export const studentRouter = createTRPCRouter({
                 github_url: String(input_json.github_url) || "", 
                 other_link: String(input_json.other_link) || "", 
                 personal_story: String(input_json.personal_story) || "",
+                company_meeting_interests: String(input_json.company_meeting_interests) || "",
             }
             // If no user exists, create a new user with default values
             await ctx.prisma.students.create({
@@ -96,6 +98,7 @@ export const studentRouter = createTRPCRouter({
                     github_url: input_json.github_url || student.github_url,
                     other_link: input_json.other_link || student.other_link,
                     personal_story: input_json.personal_story || student.personal_story,
+                    company_meeting_interests: String(input_json.company_meeting_interests) || String(student.company_meeting_interests),
                 },
             });
         }
@@ -116,8 +119,38 @@ export const studentRouter = createTRPCRouter({
         console.log("STUDENT FROM DB", student)
         return student
         
+    }),
+    getCompanyMeetings: publicProcedure
+    .query(async ({ ctx })=>{
+        return await ctx.prisma.exhibitor.findMany({
+            where: {
+                studentMeetings: 1,
+            },
+            select: {
+                name: true,
+                description: true,
+                logoColor: true,
+            }
+        });
+    }),
+    
+
+    inputCompanyInterests: publicProcedure
+    .input(z.string())
+    .mutation(async ({ ctx })=>{
+        // input is ugkthid 
+
+        console.log("CTX: ", ctx)
+        
+        // const student = await ctx.prisma.students.update({
+        //     where: {
+        //         ugkthid: input_json.ugkthid
+        //     },
+        //     data: {
+        //         company_meeting_interests: input_json.company_meeting_interests
+        //     }
+        // });
+
+        // return student;
     })
-
-
-
 });

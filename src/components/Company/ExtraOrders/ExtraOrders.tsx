@@ -64,16 +64,16 @@ export default function ExtraOrders({
     return (
       <div className="flex flex-row items-center justify-center">
         <div
-          className="flex bg-white/40 border-2 border-white/70 rounded-lg w-[40px] h-[45px] 
+          className="flex bg-black/25 border-solid border-yellow border-2 rounded-lg w-[40px] h-[45px] 
                         mx-1 justify-center items-center font-normal"
         >
           {num}
         </div>
         <div className="flex flex-col">
           <button
-            className="flex hover:cursor-pointer bg-white rounded-lg w-full h-[21.5px] text-black font-normal select-none
-                        justify-center items-center px-2 border border-[#999999] hover:scale-105 transition-transform mb-[2px]
-                        disabled:bg-[#cccccc] disabled:border disabled:border-solid"
+            className="flex hover:cursor-pointer bg-cerise rounded-lg w-full h-[21.5px] text-white font-normal select-none
+                        justify-center items-center px-2 border border-white/20 hover:scale-105 transition-transform mb-[2px]
+                        disabled:bg-black/25disabled:border disabled:border-solid"
             disabled={disableAll}
             onClick={() => {
               set(num + step);
@@ -82,9 +82,9 @@ export default function ExtraOrders({
             +
           </button>
           <button
-            className="flex hover:cursor-pointer bg-white rounded-lg w-full h-[21.5px] text-black font-normal select-none 
-                        justify-center items-center px-2 border border-[#999999] hover:scale-105 transition-transform
-                        disabled:bg-[#cccccc] disabled:border disabled:border-solid"
+            className="flex hover:cursor-pointer bg-cerise rounded-lg w-full h-[21.5px] text-white font-normal select-none 
+                        justify-center items-center px-2 border border-white/20 hover:scale-105 transition-transform
+                        disabled:bg-black/25 disabled:border disabled:border-solid"
             onClick={() => {
               if (num >= 0 && num - step >= 0) set(num - step);
             }}
@@ -170,8 +170,7 @@ export default function ExtraOrders({
   ];
   return (
     <div
-      className="flex flex-col items-center w-[80%] bg-white/40 border-2
-                border-white/70 rounded-xl pb-8 mt-6 mb-16 px-8 pt-8"
+      className="flex flex-col items-center w-[80%] bg-black/25 border-solid border-yellow border-2 rounded-xl pb-8 mt-6 mb-16 px-8 pt-8"
     >
       <div
         className={`max-md:hidden grid grid-cols-6 grid-rows-6 font-medium text-lg text-center [&>div]:pt-6

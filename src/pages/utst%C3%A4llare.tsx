@@ -4,13 +4,14 @@ import { useRouter } from "next/router";
 import { Table } from "@/components/Table";
 import { Extras, Package } from "@/shared/Classes";
 import { useEffect, useState } from "react";
-import ExtraFairOrders from "@/components/Settings/ExtraFairOrders";
-import FoodPreferences from "@/components/Settings/FoodPreferences";
-import GeneralInfo from "@/components/Settings/GeneralInfo";
-import JobOffers from "@/components/Settings/JobOffers";
-import { UserDetails } from "@/components/Settings/UserDetails";
+import ExtraFairOrders from "@/components/Company/ExtraOrders/ExtraFairOrders";
+import FoodPreferences from "@/components/Company/Preferences/FoodPreferences";
+import GeneralInfo from "@/components/Company/General/GeneralInfo";
+import JobOffers from "@/components/Company/General/JobOffers";
+import { UserDetails } from "@/components/Company/User/UserDetails";
 import { CheckMark } from "@/components/CheckMark";
 import { addImageDetails } from "@/shared/addImageDetails";
+import CompanyMeetingBooker from "@/components/Company/ExtraOrders/CompanyMeetingBooker";
 
 // TODO hook the next button to the save features
 // Maby break save changes into a separate steps for each page
@@ -420,6 +421,25 @@ export default function Exhibitor() {
     
   ]
 
+  {/*Page Content */}
+  const meetings = Table(
+    [
+      t.exhibitorSettings.table.row4.section1.title,
+    ],
+    [],
+    [
+      <>
+        <ul>
+          <li> <span className="text-yellow font-bold w-4 mr-2">1: </span> {t.exhibitorSettings.table.row4.section1.info1}</li>
+          <li> <span className="text-yellow font-bold w-4 mr-2">2: </span> {t.exhibitorSettings.table.row4.section1.info2}</li>
+          <li> <span className="text-yellow font-bold w-4 mr-2">3: </span> {t.exhibitorSettings.table.row4.section1.info3}</li>
+          <li> <br></br></li>
+          <li> {t.exhibitorSettings.table.row4.section1.info4}</li>
+        </ul> 
+      </>,
+    ]
+  );
+
   return(
     <>
     <div className="xl:w-[1200px] lg:w-[1000px] w-full">
@@ -467,9 +487,21 @@ export default function Exhibitor() {
             </div>
           </div>
           :  
-          <></>}
+          <>{table}</>}
+     
+          {/* Packages that have the student meeting functionality*/}
+          { [0,1,2,3].includes(exhibitorPackage.tier)  ? 
+          <>
+            <h2 className="text-cerise text-2xl md:text-4xl font-medium text-center pt-12">{t.exhibitorSettings.table.row4.title} </h2>
+            {meetings}
+
+            <CompanyMeetingBooker/>
+
+          </> 
           
-          {table}
+          
+          : <></> }
+          
         </div>
       </div>
     </>

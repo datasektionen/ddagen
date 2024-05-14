@@ -1,7 +1,7 @@
 import type Locale from "@/locales";
 import { Dispatch, useEffect, useState } from "react";
 import { CheckMark } from "../CheckMark";
-import Button from "./Button";
+import Button from "@/components/Map/Button";
 
 function applySearch(
   searchQuery: string,
@@ -67,43 +67,24 @@ export default function Search({
   const [searchQuery, setSearchQuery] = useState("");
   const [showFilter, setShowFilter] = useState(false);
   const [checkmarks] = useState(Array<boolean>(11).fill(false));
-
+  
   return (
-    <div className="flex flex-col items-center justify-center mt-12">
-      <div className="flex max-md:flex-col max-md:gap-y-4 md:flex-row items-center my-4">
-        <input
-          className="w-[350px] xs:w-[400px] min-h-[40px] outline-none border-2 border-cerise bg-[#eaeaea] bg-opacity-10 
-                    rounded-3xl px-3 text-white text-opacity-50 focus:placeholder:text-transparent"
-          type="text"
-          placeholder={t.map.search.placeHolder}
-          value={searchQuery}
-          onChange={(q) => setSearchQuery(q.target.value)}
-          onKeyUp={(e) => {
-            if (e.key === "Enter")
-              applySearch(searchQuery, checkmarks, setQuery);
-          }}
-        />
-        <div className="flex flex-row">
-          <Button
-            value={t.map.search.buttonOne}
-            loading={false}
-            onClick={() => applySearch(searchQuery, checkmarks, setQuery)}
-          />
+    <div>
+        <div className="flex flex-row text-white text-base font-medium max-lg:mx-auto w-max">
           <Button
             value={t.map.search.buttonTwo}
             loading={false}
             onClick={() => setShowFilter(!showFilter)}
           />
-          
         </div>
-      </div>
-      <div className="flex justify-center w-full">
+      <div className="fixed w-auto py-4 z-10">
         {showFilter && (
           <div
-            className="w-[350px] xs:w-[400px] min-h-[175px] block border-2 border-cerise bg-[#eaeaea] bg-opacity-10
-                          rounded-lg text-white justify-center text-xl"
+            className="block border-2 border-cerise bg-white/20
+                          rounded-lg text-white text-base font-medium py-2 px-4 overflow-hidden
+                          "
           >
-            <div className="w-full h-full flex flex-col justify-center items-center max-xs:p-6">
+            <div className="flex flex-col items-center">
               <div className="flex flex-row mt-1">
                 {t.map.search.filterYear}:
                 {years.map((year, pos) => {

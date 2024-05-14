@@ -485,4 +485,22 @@ export const exhibitorRouter = createTRPCRouter({
         if (!exhibitor) return;
         return exhibitor.infoSubmissionStatus
     }),
+    // getStudentInterests: protectedProcedure
+    // .query(async ({ ctx }) => {
+
+    //     const students = await ctx.prisma.students.findMany({
+    //       where: {
+    //         exhibitorId: {contains: ctx.session.exhibitorId},
+    //       },
+    //     });
+
+
+    //     const exhibitor = await ctx.prisma.exhibitor.findUnique({
+    //       where: {
+    //         id: ctx.session.exhibitorId,
+    //       },
+    //     });
+    //     if (!exhibitor) return;
+    //     return exhibitor.infoSubmissionStatus
+    // }),
 });
