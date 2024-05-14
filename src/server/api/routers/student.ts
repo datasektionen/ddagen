@@ -120,7 +120,7 @@ export const studentRouter = createTRPCRouter({
         return student
         
     }),
-    getCompanyMeetings: publicProcedure
+    getCompanyMeetings: publicProcedure // get all companies that have student meetings
     .query(async ({ ctx })=>{
         return await ctx.prisma.exhibitor.findMany({
             where: {
@@ -140,7 +140,7 @@ export const studentRouter = createTRPCRouter({
     .mutation(async ({ ctx })=>{
         // input is ugkthid 
 
-        console.log("CTX: ", ctx)
+        // console.log("CTX: ", ctx)
         
         // const student = await ctx.prisma.students.update({
         //     where: {
@@ -152,5 +152,6 @@ export const studentRouter = createTRPCRouter({
         // });
 
         // return student;
+        return;
     })
 });
