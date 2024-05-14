@@ -38,7 +38,7 @@ export default function LoggedInPage() {
     }
 
     useEffect(()=>{
-       //inputCompanyInterests.mutateAsync(JSON.stringify(interests))
+       inputCompanyInterests.mutateAsync(JSON.stringify(interests))
     }, [])
 
     useEffect(()=>{

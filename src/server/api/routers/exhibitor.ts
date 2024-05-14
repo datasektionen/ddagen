@@ -502,5 +502,12 @@ export const exhibitorRouter = createTRPCRouter({
     //     });
     //     if (!exhibitor) return;
     //     return exhibitor.infoSubmissionStatus
+
+    /*
+
+     !!!Send all data to the frontend!!!
+    
+    */
+
     // }),
 });
