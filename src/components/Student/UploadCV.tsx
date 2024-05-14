@@ -23,7 +23,7 @@ export default function UploadCV(
   };
 
   return (
-    <div className="ml-[8px]">
+    <div className="ml-[8px] background-cerise">
       <input
         className="text-white"
         type="file"

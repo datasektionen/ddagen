@@ -2,7 +2,7 @@ import Locale from "@/locales";
 import { Dispatch, useState } from "react";
 import { CheckMark } from "../CheckMark";
 
-export default function CompanyMeetingOffer(
+export default function CompanyInterests(
     {
         t,
         companies,

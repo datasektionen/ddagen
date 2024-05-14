@@ -1,9 +1,9 @@
-  import { Key, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { api } from "@/utils/api";
 import CompanyMeetingOffer from "@/components/Student/CompanyMeetingOffer";
 import { useLocale } from "@/locales";
 import Info from '@/components/Student/Info';
-import CompanyInterests from "@/components/Student/CompanyInterests";
+import CompanyInterests from '@/components/Student/CompanyInterests';
 
 
 const set_cookies = (loginToken: string) => {
@@ -13,7 +13,7 @@ const set_cookies = (loginToken: string) => {
 export default function LoggedInPage() {
 
    const inputCompanyInterests = api.student.inputCompanyInterests.useMutation();
-   const companyMeeting = api.student.getCompanyMeetings.useQuery();
+   //const companyMeeting = api.student.getCompanyMeetings.useQuery();
 
     const t = useLocale();
 
@@ -25,6 +25,11 @@ export default function LoggedInPage() {
     
     const [studentAccoundExists, setStudentAccoundExists] = useState(false);
 
+    // variables from verify, used to prefill the form for students
+    const [first_name, setFirstName] = useState<string>("");
+    const [last_name, setLastName] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
+
     const update_user = (input: any)=>{
         inputData.mutateAsync(JSON.stringify(input))
         .then((res) =>{
@@ -33,7 +38,7 @@ export default function LoggedInPage() {
     }
 
     useEffect(()=>{
-        inputCompanyInterests.mutateAsync(JSON.stringify(interests))
+       //inputCompanyInterests.mutateAsync(JSON.stringify(interests))
     }, [])
 
     useEffect(()=>{
@@ -67,9 +72,9 @@ export default function LoggedInPage() {
             if (res){
                 // update prefill variables
                 const res_json = JSON.parse(res);
-                setUserInfo({...userInfo, first_name:String(res_json.first_name),
-                            last_name:String(res_json.last_name),
-                            kth_email:String(res_json.emails)});
+                setEmail(res_json.emails);
+                setFirstName(res_json.first_name);
+                setLastName(res_json.last_name);
                 setUgkthid(res_json.ugkthid);
                 update_user({
                     "ugkthid": res_json.ugkthid,
@@ -96,7 +101,7 @@ export default function LoggedInPage() {
         });
 
     }, [isLoggedIn, ugkthid]);
-
+    
     const [userInfo, setUserInfo] = useState<{
         first_name: string;
         last_name: string;
@@ -104,21 +109,30 @@ export default function LoggedInPage() {
         email: string;
         cv: string;
         year: number;
-    }>({first_name:"", last_name:"", kth_email:"", email:"", cv:"", year:NaN});
-
+    }>({
+        first_name: first_name,
+        last_name: last_name,
+        kth_email: email,
+        email: "",
+        cv: "",
+        year: 0
+    });
+    
     const [interests, setInterests] = useState<{
-            summer: boolean;
-            partTime: boolean;
-            internship: boolean;
-            thesis: boolean;
-            trainee: boolean;
-            fullTime: boolean;
+        summer: boolean;
+        partTime: boolean;
+        internship: boolean;
+        thesis: boolean;
+        trainee: boolean;
+        fullTime: boolean;
     }>(
         {summer: false, partTime: false, internship: false, thesis: false, trainee: false,fullTime: false}
     );
-
-    // Array of company ids the student is interested in 
-    const [companyInterests, setCompanyInterests] = useState<string[]>([]);
+    
+    
+    useEffect(()=>{
+        console.log("Sending data to backend");
+    }, [userInfo, interests]); 
 
     function StudentView(){
         // Test companies
@@ -128,6 +142,7 @@ export default function LoggedInPage() {
             {name: "Mpya", logo: "/img/omegapoint_logo.svg", timeOptions: [{id:4, time:"09:00-09:30"}, {id:5, time:"10:00-10:30"}]},
             {name: "Cygni", logo: "/img/omegapoint_logo.svg", timeOptions: [{id:6, time:"09:00-09:30"}]}
         ];
+
 
         function renderOffer(company: { name: string; logo: string; timeOptions: { id: number; time: string; }[]; }){
             return <div key={company.name} className="flex justify-center mt-[15px] mb-[15px]">
@@ -140,21 +155,19 @@ export default function LoggedInPage() {
 
         return <div>
                     <div className="flex items-center justify-center">
-                        <Info t={t} userInfo={userInfo} setUserInfo={setUserInfo}
-                                interests={interests} setInterests={setInterests}/>
+                        <Info t={t} userInfo={userInfo} setUserInfo={setUserInfo} interests={interests} setInterests={setInterests}/>
                     </div>
                     <div className="flex items-center justify-center">
-                       <CompanyInterests t={t} companies={[{id:"0", name:"Omega point", description:"The main sponsor", logo:"/img/omegapoint_logo.svg"},
-                                                            {id:"1", name:"Omega point", description:"The main sponsor", logo:"/img/omegapoint_logo.svg"}]}
-                                         companyInterests={companyInterests} setCompanyInterests={setCompanyInterests}/>
+                        
                     </div>
-                    <h1 className="mt-[100px] text-3xl text-center text-white">{t.students.offersTitle1 + companies.length + t.students.offersTitle2}</h1>
+                    <h2 className="mt-[100px] text-3xl text-center text-white">{t.students.offersTitle1 + companies.length + t.students.offersTitle2}</h2>
                     <div className="grid lg:grid-cols-2 grid-cols-1">
                         {companies.map(renderOffer)}
                     </div>  
                 </div>;
     }
-    
+
+
     return isLoggedIn? ( <StudentView/>
         /**<div className="h-screen flex flex-col justify-center items-center">
             <p className="text-green-500">
