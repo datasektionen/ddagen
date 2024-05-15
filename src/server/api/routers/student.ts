@@ -119,9 +119,9 @@ export const studentRouter = createTRPCRouter({
         return student
         
     }),
-    getCompanyMeetings: publicProcedure // get all companies that have student meetings
+    getCompaniesWithMeetings: publicProcedure // get all companies that have student meetings
     .query(async ({ ctx })=>{
-        return await ctx.prisma.exhibitor.findMany({
+        const data = await ctx.prisma.exhibitor.findMany({
             where: {
                 studentMeetings: 1,
             },
@@ -133,6 +133,17 @@ export const studentRouter = createTRPCRouter({
             }
         });
 
+
+        const result = data.map((company) => {
+            return {
+                id: company.id,
+                name: company.name,
+                description: company.description,
+                logoColor: company.logoColor?.toString('base64') || "", // add default image of the bowtie
+            }
+        });
+        
+        return result;
     }),
 
     inputCompanyInterests: publicProcedure
@@ -158,7 +169,8 @@ export const studentRouter = createTRPCRouter({
         });
         if (!student) return;
         
-        const current_interests = JSON.parse(student.company_meeting_interests);
+        // parse each element of array to string
+        const current_interests: string[] = student.company_meeting_interests.map((company: any) => company.toString()) || [];
         const new_interests = [...current_interests, input_json.company];
 
         await ctx.prisma.students.update({
@@ -172,6 +184,7 @@ export const studentRouter = createTRPCRouter({
 
         return;
     }),
+
     deleteCompanyInterests: publicProcedure
     .input(z.string())
     .mutation(async ({ ctx, input })=>{
@@ -195,7 +208,7 @@ export const studentRouter = createTRPCRouter({
         });
         if (!student) return;
         
-        const current_interests = JSON.parse(student.company_meeting_interests);
+        const current_interests = student.company_meeting_interests.map((company: any) => company.toString());
         const new_interests: String[] = current_interests.filter((interest: String) => interest !== input_json.company);
 
         await ctx.prisma.students.update({
