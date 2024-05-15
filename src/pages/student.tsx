@@ -60,6 +60,14 @@ export default function LoggedInPage() {
     }
 
     useEffect(()=>{
+        if (ugkthid === "") return
+        inputCompanyInterests.mutateAsync(JSON.stringify({
+                ugkthid: ugkthid,
+                company: "5567037485"
+        }))
+    }, [ugkthid])
+
+    useEffect(()=>{
         // log in the user if not logged in
         if (!isLoggedIn && !document.cookie.includes("login_token")){
             window.location.href = `https://login.datasektionen.se/login?callback=${window.location.href.replace(/^(https?:\/\/[^\/]+).*/, '$1')}/student?login_token=`
