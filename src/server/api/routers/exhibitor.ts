@@ -485,22 +485,36 @@ export const exhibitorRouter = createTRPCRouter({
         if (!exhibitor) return;
         return exhibitor.infoSubmissionStatus
     }),
-    // getStudentInterests: protectedProcedure
-    // .query(async ({ ctx }) => {
+    getStudentInterests: protectedProcedure
+    .query(async ({ ctx }) => {
 
-    //     const students = await ctx.prisma.students.findMany({
-    //       where: {
-    //         exhibitorId: {contains: ctx.session.exhibitorId},
-    //       },
-    //     });
+        // UPDATE students SET company_meeting_interests='["5567037485", "0311062624", "0304295470", "0301120713", "0205174790"]'
 
+        const exhibitor = await ctx.prisma.exhibitor.findUnique({
+          where: {
+            id: ctx.session.exhibitorId,
+          },
+        });
 
-    //     const exhibitor = await ctx.prisma.exhibitor.findUnique({
-    //       where: {
-    //         id: ctx.session.exhibitorId,
-    //       },
-    //     });
-    //     if (!exhibitor) return;
-    //     return exhibitor.infoSubmissionStatus
-    // }),
+        if (!exhibitor) return;
+
+        const students = await ctx.prisma.students.findMany({
+          where: {
+            company_meeting_interests: {contains: exhibitor.organizationNumber},
+          },
+        });
+
+        if (!students) return;
+
+        console.log("\n\n\nLOOK AT MEEE!!! ", students.length, "\n\n\n")
+
+        return students
+
+    /*
+
+     !!!Send all data to the frontend!!!
+    
+    */
+
+    }),
 });

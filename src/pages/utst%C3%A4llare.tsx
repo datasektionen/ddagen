@@ -3,7 +3,7 @@ import { useLocale } from "@/locales";
 import { useRouter } from "next/router";
 import { Table } from "@/components/Table";
 import { Extras, Package } from "@/shared/Classes";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import ExtraFairOrders from "@/components/Company/ExtraOrders/ExtraFairOrders";
 import FoodPreferences from "@/components/Company/Preferences/FoodPreferences";
 import GeneralInfo from "@/components/Company/General/GeneralInfo";
@@ -54,12 +54,14 @@ export default function Exhibitor() {
   const getExtras = api.exhibitor.getExtras.useQuery();
   const getExhibitor = api.exhibitor.getPackage.useQuery();
   const getPreferenceCounts = api.exhibitor.getPreferenceCount.useQuery();
+  const getAll = api.exhibitor.get.useQuery();
   const getIsLoggedIn = api.account.isLoggedIn.useQuery(undefined, {
     onSuccess: (data) => {
       setIsLoggedIn(data);
     },
   });
   const getInfoStatus = api.exhibitor.getInfoStatus.useQuery();
+  const getStudentInterests = api.exhibitor.getStudentInterests.useQuery();
 
   // Manage login
   useEffect(() => {
@@ -95,6 +97,14 @@ export default function Exhibitor() {
             return
     }
   }
+
+  useEffect(() => {
+    if (!getAll.isSuccess) return;
+    // console.log("LOOKATME! ", getAll.data.organizationNumber);
+
+    console.log(getStudentInterests.data);
+
+  }, [getAll.data]);
 
   // Manage page swapping
   const pageAmout = 6;

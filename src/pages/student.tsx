@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
+import { use, useEffect, useState } from 'react'
 import { api } from "@/utils/api";
 import CompanyMeetingOffer from "@/components/Student/CompanyMeetingOffer";
 import { useLocale } from "@/locales";
-import Info from '@/components/Student/Info';
+import StudentInfo from '@/components/Student/Info';
 import CompanyInterests from '@/components/Student/CompanyInterests';
 
 
@@ -11,32 +11,48 @@ const set_cookies = (loginToken: string) => {
 };
 
 export default function LoggedInPage() {
-
-   //const inputCompanyInterests = api.student.inputCompanyInterests.useMutation();
-   //const companyMeeting = api.student.getCompanyMeetings.useQuery();
-
-    const t = useLocale();
-
-    const inputData = api.student.inputData.useMutation();
-    const studentVerify = api.student.verify.useMutation();
-    const studentGetData = api.student.getData.useMutation();
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [ugkthid, setUgkthid] = useState("");
     
+    const t = useLocale();
+    
+    const studentVerify = api.student.verify.useMutation();
+    const inputData = api.student.inputData.useMutation();
+    const studentGetData = api.student.getData.useMutation();
+    
+    const [ugkthid, setUgkthid] = useState("");
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [studentAccoundExists, setStudentAccoundExists] = useState(false);
+    
+    
+    const [user, setUser] = useState<{
+        first_name: string;
+        last_name: string;
+        kth_email: string;
+        email: string;
+        cv: string;
+        year: number;
+    }>({
+        first_name: "",
+        last_name: "",
+        kth_email: "",
+        email: "",
+        cv: "",
+        year: 0
+    });
 
-    // variables from verify, used to prefill the form for students
-    const [first_name, setFirstName] = useState<string>("");
-    const [last_name, setLastName] = useState<string>("");
-    const [email, setEmail] = useState<string>("");
-
-    const update_user = (input: any)=>{
+    const update_user = (input: any)=>{ //this is the save handler
         inputData.mutateAsync(JSON.stringify(input))
         .then((res) =>{
             console.log(res)
         });
     }
 
+    /*useEffect(()=>{
+        if (ugkthid === "") return
+        inputCompanyInterests.mutateAsync(JSON.stringify({
+                ugkthid: ugkthid,
+                company: "5567037485"
+        }))
+    }, [ugkthid])*/
 
     useEffect(()=>{
         // log in the user if not logged in
@@ -69,16 +85,16 @@ export default function LoggedInPage() {
             if (res){
                 // update prefill variables
                 const res_json = JSON.parse(res);
-                setEmail(res_json.emails);
-                setFirstName(res_json.first_name);
-                setLastName(res_json.last_name);
-                setUgkthid(res_json.ugkthid);
-                update_user({
-                    "ugkthid": res_json.ugkthid,
-                    "email": res_json.email,
-                    "first_name": res_json.first_name,
-                    "last_name": res_json.last_name
-                })
+                console.log("RESPONSE: ", res_json);
+                setUser({
+                    first_name: res_json.first_name,
+                    last_name: res_json.last_name,
+                    kth_email: res_json.kth_email, // Add the missing kth_email property
+                    email: res_json.email,
+                    year: res_json.year,
+                    cv: res_json.cv
+                });
+                update_user(user);
             }
             setIsLoggedIn(res? true:false);
             set_cookies(loginToken);
@@ -94,26 +110,11 @@ export default function LoggedInPage() {
         .then((res)=>{
             if (!res) setStudentAccoundExists(false);
             
-            console.log("RESPONSE: ", res);
+            //console.log("RESPONSE: ", res);
         });
 
     }, [isLoggedIn, ugkthid]);
     
-    const [userInfo, setUserInfo] = useState<{
-        first_name: string;
-        last_name: string;
-        kth_email: string;
-        email: string;
-        cv: string;
-        year: number;
-    }>({
-        first_name: first_name,
-        last_name: last_name,
-        kth_email: email,
-        email: "",
-        cv: "",
-        year: 0
-    });
     
     const [interests, setInterests] = useState<{
         summer: boolean;
@@ -125,11 +126,6 @@ export default function LoggedInPage() {
     }>(
         {summer: false, partTime: false, internship: false, thesis: false, trainee: false,fullTime: false}
     );
-    
-    
-    useEffect(()=>{
-        console.log("Sending data to backend");
-    }, [userInfo, interests]); 
 
     function StudentView(){
         // Test companies
@@ -152,10 +148,10 @@ export default function LoggedInPage() {
 
         return <div>
                     <div className="flex items-center justify-center">
-                        <Info t={t} userInfo={userInfo} setUserInfo={setUserInfo} interests={interests} setInterests={setInterests}/>
+                        <StudentInfo t={t} user={user} setUser={setUser} interests={interests} setInterests={setInterests} saveHandler={update_user}/>
                     </div>
                     <div className="flex items-center justify-center">
-                        
+                        <CompanyInterests t={t}/>
                     </div>
                     <h2 className="mt-[100px] text-3xl text-center text-white">{t.students.offersTitle1 + companies.length + t.students.offersTitle2}</h2>
                     <div className="grid lg:grid-cols-2 grid-cols-1">
