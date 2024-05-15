@@ -1,5 +1,5 @@
 import Locale from "@/locales";
-import { Dispatch, useState } from "react";
+import { Dispatch, useEffect, useState } from "react";
 import UploadCV from "./UploadCV";
 import { CheckMark } from "../CheckMark";
 import { InputField } from "../InputField";
@@ -9,73 +9,66 @@ export default function StudentInfo(
         t,
         user,
         setUser,
-        interests,
-        setInterests,
         saveHandler,
     }: {
         t: Locale;
         user: {
+          ugkthid: string;
           first_name: string;
           last_name: string;
-          kth_email: string;
           email: string;
+          prefered_email: string;
           cv: string;
-          year: number;
+          study_year: number;
+          summerJob: boolean;
+          partTimeJob: boolean;
+          internship: boolean;
+          masterThesis: boolean;
+          traineeProgram: boolean;
+          fullTimeJob: boolean;
       };
         setUser: Dispatch<{
+          ugkthid: string;
           first_name: string;
           last_name: string;
-          kth_email: string;
           email: string;
+          prefered_email: string;
           cv: string;
-          year: number;
-        }>;
-        interests: {
-          summer: boolean;
-          partTime: boolean;
+          study_year: number;
+          summerJob: boolean;
+          partTimeJob: boolean;
           internship: boolean;
-          thesis: boolean;
-          trainee: boolean;
-          fullTime: boolean;
-      };
-        setInterests: Dispatch<{
-                            summer: boolean;
-                            partTime: boolean;
-                            internship: boolean;
-                            thesis: boolean;
-                            trainee: boolean;
-                            fullTime: boolean;
-                        }>;
+          masterThesis: boolean;
+          traineeProgram: boolean;
+          fullTimeJob: boolean;
+        }>;
         saveHandler: (input: any) => void;
     },
 ) {
-  //const [user, setUser] = useState({first_name:userInfo.first_name, last_name:userInfo.last_name, email:userInfo.email, year:userInfo.year, cv:userInfo.cv})
-  const [saved, setSaved] = useState(false);
-  //const [cv, setCv] = useState<string>("");
-//
-
-  //const [jobOffers, setJobOffers] = useState<boolean[]>({summer:interests.summer, partTime:interests.partTime, internship:interests.internship, thesis:interests.thesis, trainee:interests.trainee, fullTime:interests.fullTime});
   
-  const [summer, setSummer] = useState<boolean>(interests.summer);
-  const [partTime, setPartTime] = useState<boolean>(interests.partTime);
-  const [internship, setInternship] = useState<boolean>(interests.internship);
-//
-  const [thesis, setThesis] = useState<boolean>(interests.thesis);
-  const [trainee, setTrainee] = useState<boolean>(interests.trainee);
-  const [fullTime, setFullTime] = useState<boolean>(interests.fullTime);
-//
+  const [saved, setSaved] = useState(false);
+  
   const job = t.exhibitorSettings.table.row1.section2.jobs;
-  const jobs = [{str:job.summer, checked:summer, set:setSummer}, {str:job.partTime, checked:partTime, set:setPartTime}, {str:job.internship, checked:internship, set:setInternship}];
+  const jobs = [{str:job.summer, checked:user.summerJob, set:(val:boolean)=>{setUser({...user,summerJob:val})}},
+               {str:job.partTime, checked:user.partTimeJob, set:(val:boolean)=>{setUser({...user, partTimeJob:val})}},
+                {str:job.internship, checked:user.internship, set:(val:boolean)=>{setUser({...user,internship:val})}}];
   const other = t.exhibitorSettings.table.row1.section2.other;
-  const others = [{str:other.thesis, checked:thesis, set:setThesis}, {str:other.trainee, checked:trainee, set:setTrainee}, {str:other.fullTime, checked:fullTime, set:setFullTime}];
-
-  /*function saveInfo(){
-    if(user.first_name && user.last_name && user.year){
-      setUser({first_name:user.first_name, last_name:user.last_name, kth_email:user.kth_email, email:user.email, cv:cv, year:user.year});
-      setInterests({summer:summer, partTime:partTime, internship:internship, thesis:thesis, trainee:trainee, fullTime:fullTime});
+  const others = [{str:other.thesis, checked:user.masterThesis, set:(val:boolean)=>{setUser({...user, masterThesis:val})}},
+                 {str:other.trainee, checked:user.traineeProgram, set:(val:boolean)=>{setUser({...user, traineeProgram:val})}},
+                  {str:other.fullTime, checked:user.fullTimeJob, set:(val:boolean)=>{setUser({...user,fullTimeJob:val})}}];
+  
+  
+  /**
+  function saveInfo(){
+    saveHandler(user);
+    
+    if(user.first_name && user.last_name && user.study_year){
+      setUser({...user, summerJob:summer, partTimeJob:partTime, internship:internship, masterThesis:thesis, traineeProgram:trainee, fullTimeJob:fullTime});
+      saveHandler(user);
     }else{
       setSaved(true);
     }
+     
   }*/
 
   function alternative(alternative:{str: string; checked: boolean; set: Dispatch<boolean>;}){
@@ -83,20 +76,20 @@ export default function StudentInfo(
                 <p className="text-white mr-[5px]">{alternative.str}</p>  
                 <CheckMark name={alternative.str}
                            checked={alternative.checked} 
-                           onClick={function func(){alternative.set(!alternative.checked)}} 
-                           onChange={function func(){}}/>
+                           onClick={()=>{alternative.set(!alternative.checked)}} 
+                           onChange={()=>{}}/>
             </div>;
-}
+  }
 
   function YearChecks(){
     function check(year: number){
       function changeYear(){
-        setUser({ ...user, year: year });
+        setUser({ ...user, study_year: year });
       }
 
       return <div key={year} className="flex ml-[10px]">
               <p className="text-slate-400 text-medium mr-[5px]">{year}</p>
-              <CheckMark name={year.toString()} checked={user.year === year} onClick={changeYear}/>
+              <CheckMark name={year.toString()} checked={user.study_year === year} onClick={changeYear}/>
             </div>
     }
     
@@ -112,10 +105,9 @@ export default function StudentInfo(
           <div className="flex flex-col items-center w-full p-4">
 
             <h1 className="text-white text-center text-3xl mt-[10px] mb-[10px]">{t.students.info.header}</h1>
-              <form 
+            <form 
                 className="flex flex-col w-[90%] bg-transparent justify-center outline-none gap-7 mt-10"
-                //onSubmit={saveInfo}
-                >
+                onSubmit={()=>{saveHandler(user)}}>
               <InputField
                 type="text"
                 name="firstName"
@@ -148,9 +140,9 @@ export default function StudentInfo(
               <InputField
                   type="text"
                   name="email"
-                  value={user.email}
+                  value={user.prefered_email}
                   required={false}
-                  setValue={(name) => {setUser({ ...user, email: name })}}
+                  setValue={(name) => {setUser({ ...user, prefered_email: name })}}
                   fields={t.students.info}
                 />
     
@@ -165,40 +157,26 @@ export default function StudentInfo(
                 <UploadCV setFile={(value)=>{setUser({...user, cv:value})}}/>
               </div>
 
-              <div className="justify-center flex flex-col">
-                <button type="submit" className="mt-4 mb-4 mx-2 flex">
+              <h2 className="text-white text-center text-3xl mt-[10px] mb-[10px]">{t.students.interests.header}</h2>
+              <div className="flex justify-between mt-[10px] ml-[40px] mr-[40px]">
+                  {jobs.map(alternative)}
+              </div>
+              <div className="flex justify-between mt-[10px] mb-[10px] ml-[40px] mr-[40px]">
+                {others.map(alternative)} 
+              </div>
+
+              <div className="justify-center flex flex-col mt-[40px]">
+                <button type="submit" className="mt-4 mb-4 mx-2 flex justify-center">
                   <a className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-medium px-6 py-2 max-lg:mx-auto w-max">
                     {t.students.info.save}
                   </a>
                 </button>
                 <p className="text-white self-center">
-                  {saved? (!user.first_name ? t.students.info.addFirstName : !user.last_name ?  t. students.info.addLastName : !user.year ? t.students.info.addYear : "") : ""}
+                  {saved? (!user.first_name ? t.students.info.addFirstName : !user.last_name ?  t. students.info.addLastName : !user.study_year ? t.students.info.addYear : "") : ""}
                 </p>
               </div>
-
-            </form>
-          </div>
-          
-          <h2 className="text-white text-center text-3xl mt-[10px] mb-[10px]">{t.students.interests.header}</h2>
-          <div className="flex justify-between mt-[10px] ml-[40px] mr-[40px]">
-              {jobs.map(alternative)}
-          </div>
-          <div className="flex justify-between mt-[10px] mb-[10px] ml-[40px] mr-[40px]">
-            {others.map(alternative)} 
-          </div>
-            
-
-          <div className="flex justify-center">
-            <button onClick={()=>{}} className="mt-4 mb-4 mx-2 flex">
-              <a className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-medium px-6 py-2 max-lg:mx-auto w-max">
-                {t.students.info.save}
-              </a>
-            </button>
-            <p className="text-white self-center">
-              {saved? (!user.first_name ? t.students.info.addFirstName : !user.last_name ?  t. students.info.addLastName : !user.year ? t.students.info.addYear : "") : ""}
-            </p>
-          </div>
-          
+              </form>
+            </div>
         </div>
       );
 }

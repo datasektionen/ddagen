@@ -24,25 +24,38 @@ export default function LoggedInPage() {
     
     
     const [user, setUser] = useState<{
+        ugkthid: string;
         first_name: string;
         last_name: string;
-        kth_email: string;
         email: string;
+        prefered_email: string;
         cv: string;
-        year: number;
+        study_year: number;
+        summerJob: boolean;
+        partTimeJob: boolean;
+        internship: boolean;
+        masterThesis: boolean;
+        traineeProgram: boolean;
+        fullTimeJob: boolean;
     }>({
+        ugkthid:"",
         first_name: "",
         last_name: "",
-        kth_email: "",
         email: "",
+        prefered_email: "",
         cv: "",
-        year: 0
+        study_year: 0,
+        summerJob: false, 
+        partTimeJob: false, 
+        internship: false, 
+        masterThesis: false, 
+        traineeProgram: false,
+        fullTimeJob: false
     });
 
     const update_user = (input: any)=>{ //this is the save handler
         inputData.mutateAsync(JSON.stringify(input))
         .then((res) =>{
-            console.log(res)
         });
     }
 
@@ -77,16 +90,33 @@ export default function LoggedInPage() {
             if (res){
                 // update prefill variables
                 const res_json = JSON.parse(res);
-                console.log("RESPONSE: ", res_json);
-                setUser({
-                    first_name: res_json.first_name,
-                    last_name: res_json.last_name,
-                    kth_email: res_json.kth_email, // Add the missing kth_email property
-                    email: res_json.email,
-                    year: res_json.year,
-                    cv: res_json.cv
+
+                studentGetData.mutateAsync(res_json.ugkthid)
+                .then((result)=>{
+                    if (result) {
+                        setUser({...user,
+                            ugkthid:result.ugkthid,
+                            first_name:result.first_name,
+                            last_name:result.last_name,
+                            study_year:result.study_year,
+                            summerJob:result.summerJob,
+                            partTimeJob:result.partTimeJob,
+                            internship:result.internship,
+                            masterThesis:result.masterThesis,
+                            fullTimeJob:result.fullTimeJob,
+                            traineeProgram:result.traineeProgram
+                        });
+                    }else{
+                        setUser({...user,
+                            ugkthid:res_json.ugkthid,
+                            first_name: res_json.first_name,
+                            last_name: res_json.last_name,
+                            email: res_json.kth_email, // Add the missing kth_email property
+                        });
+                        update_user(user);
+                    }
                 });
-                update_user(user);
+                
             }
             setIsLoggedIn(res? true:false);
             set_cookies(loginToken);
@@ -97,7 +127,6 @@ export default function LoggedInPage() {
         // Get student data, if not all data is fond in the database the response body will be false,
         // If response body is false, let the user fill out the information form
         if (ugkthid === "") return
-
         studentGetData.mutateAsync(ugkthid)
         .then((res)=>{
             if (!res) setStudentAccoundExists(false);
@@ -106,18 +135,7 @@ export default function LoggedInPage() {
         });
 
     }, [isLoggedIn, ugkthid]);
-    
-    
-    const [interests, setInterests] = useState<{
-        summer: boolean;
-        partTime: boolean;
-        internship: boolean;
-        thesis: boolean;
-        trainee: boolean;
-        fullTime: boolean;
-    }>(
-        {summer: false, partTime: false, internship: false, thesis: false, trainee: false,fullTime: false}
-    );
+
 
     function StudentView(){
         // Test companies
@@ -140,7 +158,7 @@ export default function LoggedInPage() {
 
         return <div>
                     <div className="flex items-center justify-center">
-                        <StudentInfo t={t} user={user} setUser={setUser} interests={interests} setInterests={setInterests} saveHandler={update_user}/>
+                        <StudentInfo t={t} user={user} setUser={setUser} saveHandler={update_user}/>
                     </div>
                     <div className="flex items-center justify-center">
                         <CompanyInterests t={t}/>
