@@ -488,6 +488,7 @@ export const exhibitorRouter = createTRPCRouter({
     getStudentInterests: protectedProcedure
     .query(async ({ ctx }) => {
 
+        // this is to test create interests
         // UPDATE students SET company_meeting_interests='["5567037485", "0311062624", "0304295470", "0301120713", "0205174790"]'
 
         const exhibitor = await ctx.prisma.exhibitor.findUnique({
@@ -506,15 +507,6 @@ export const exhibitorRouter = createTRPCRouter({
 
         if (!students) return;
 
-        console.log("\n\n\nLOOK AT MEEE!!! ", students.length, "\n\n\n")
-
         return students
-
-    /*
-
-     !!!Send all data to the frontend!!!
-    
-    */
-
     }),
 });

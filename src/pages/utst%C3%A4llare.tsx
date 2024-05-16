@@ -45,6 +45,7 @@ export default function Exhibitor() {
   const descriptionMutation = api.exhibitor.setDescription.useMutation();
   const jobOffersMutation = api.exhibitor.setJobOffers.useMutation();
   const setInfoStatus = api.exhibitor.setInfoStatus.useMutation();
+  const createMeeting = api.meeting.createMeeting.useMutation();
 
 
   // Queries
@@ -100,9 +101,19 @@ export default function Exhibitor() {
 
   useEffect(() => {
     if (!getAll.isSuccess) return;
-    // console.log("LOOKATME! ", getAll.data.organizationNumber);
+    if (!getStudentInterests.data) return;
 
-    console.log(getStudentInterests.data);
+
+    console.log(getStudentInterests.data[0].ugkthid);
+    console.log(getAll.data.organizationNumber);
+
+    // Call this code below to create new meetings
+
+    // createMeeting.mutateAsync(JSON.stringify({
+    //   studentId: getStudentInterests.data[0].ugkthid,
+    //   exhibitorId: getAll.data.organizationNumber,
+    // }));
+
 
   }, [getAll.data]);
 

@@ -46,13 +46,13 @@ export default function LoggedInPage() {
         });
     }
 
-    useEffect(()=>{
-        if (ugkthid === "") return
-        inputCompanyInterests.mutateAsync(JSON.stringify({
-                ugkthid: ugkthid,
-                company: "5567037485"
-        }))
-    }, [ugkthid])
+    // useEffect(()=>{
+    //     if (ugkthid === "") return
+    //     inputCompanyInterests.mutateAsync(JSON.stringify({
+    //             ugkthid: ugkthid,
+    //             company: "5567037485"
+    //     }))
+    // }, [ugkthid])
 
     useEffect(()=>{
         // log in the user if not logged in
