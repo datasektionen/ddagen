@@ -26,6 +26,7 @@ export default function StudentInfo(
           masterThesis: boolean;
           traineeProgram: boolean;
           fullTimeJob: boolean;
+          company_meeting_interests: string[];
       };
         setUser: Dispatch<{
           ugkthid: string;
@@ -41,6 +42,7 @@ export default function StudentInfo(
           masterThesis: boolean;
           traineeProgram: boolean;
           fullTimeJob: boolean;
+          company_meeting_interests: string[];
         }>;
         saveHandler: (input: any) => void;
     },
@@ -57,19 +59,6 @@ export default function StudentInfo(
                  {str:other.trainee, checked:user.traineeProgram, set:(val:boolean)=>{setUser({...user, traineeProgram:val})}},
                   {str:other.fullTime, checked:user.fullTimeJob, set:(val:boolean)=>{setUser({...user,fullTimeJob:val})}}];
   
-  
-  /**
-  function saveInfo(){
-    saveHandler(user);
-    
-    if(user.first_name && user.last_name && user.study_year){
-      setUser({...user, summerJob:summer, partTimeJob:partTime, internship:internship, masterThesis:thesis, traineeProgram:trainee, fullTimeJob:fullTime});
-      saveHandler(user);
-    }else{
-      setSaved(true);
-    }
-     
-  }*/
 
   function alternative(alternative:{str: string; checked: boolean; set: Dispatch<boolean>;}){
     return <div key={alternative.str} className="flex">
@@ -107,9 +96,15 @@ export default function StudentInfo(
             <h1 className="text-white text-center text-3xl mt-[10px] mb-[10px]">{t.students.info.header}</h1>
             <form 
                 className="flex flex-col w-[90%] bg-transparent justify-center outline-none gap-7 mt-10"
-                onSubmit={()=>{saveHandler(user)}}>
+                onSubmit={(e)=>{
+                  e.preventDefault();
+                  saveHandler(user)
+                }}
+                key="form"
+                >
               <InputField
-                type="text"
+                key="firstName"
+                type="name"
                 name="firstName"
                 value={user.first_name}
                 required={true}
@@ -118,7 +113,8 @@ export default function StudentInfo(
                 />
 
               <InputField
-                type="text"
+                key="lastName"
+                type="name"
                 name="lastName"
                 value={user.last_name}
                 required={true}
@@ -138,7 +134,8 @@ export default function StudentInfo(
 
 
               <InputField
-                  type="text"
+                  key={"email"}
+                  type="email"
                   name="email"
                   value={user.prefered_email}
                   required={false}
@@ -175,8 +172,8 @@ export default function StudentInfo(
                   {saved? (!user.first_name ? t.students.info.addFirstName : !user.last_name ?  t. students.info.addLastName : !user.study_year ? t.students.info.addYear : "") : ""}
                 </p>
               </div>
-              </form>
-            </div>
+            </form>
+          </div>
         </div>
       );
 }

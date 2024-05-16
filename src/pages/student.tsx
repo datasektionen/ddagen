@@ -5,6 +5,12 @@ import { useLocale } from "@/locales";
 import StudentInfo from '@/components/Student/Info';
 import CompanyInterests from '@/components/Student/CompanyInterests';
 
+interface Company{
+    id: string;
+    name: string;
+    description: string;
+    logo: string;
+}
 
 const set_cookies = (loginToken: string) => {
     document.cookie = `login_token=${loginToken};max-age=86400;`;
@@ -18,10 +24,14 @@ export default function LoggedInPage() {
     const inputData = api.student.inputData.useMutation();
     const studentGetData = api.student.getData.useMutation();
     
-    const [ugkthid, setUgkthid] = useState("");
+    const inputCompanyInterests = api.student.inputCompanyInterests.useMutation();
+    const companyWithMeetings = api.student.getCompaniesWithMeetings.useQuery();
+    
+    const [companies, setCompanies] = useState<Company[]>([]);
+
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [studentAccoundExists, setStudentAccoundExists] = useState(false);
-    
+
     
     const [user, setUser] = useState<{
         ugkthid: string;
@@ -37,8 +47,10 @@ export default function LoggedInPage() {
         masterThesis: boolean;
         traineeProgram: boolean;
         fullTimeJob: boolean;
+        company_meeting_interests: string[];
+
     }>({
-        ugkthid:"",
+        ugkthid: "",
         first_name: "",
         last_name: "",
         email: "",
@@ -50,22 +62,18 @@ export default function LoggedInPage() {
         internship: false, 
         masterThesis: false, 
         traineeProgram: false,
-        fullTimeJob: false
+        fullTimeJob: false,
+        company_meeting_interests: []
     });
 
-    const update_user = (input: any)=>{ //this is the save handler
+    const update_user = (input: any)=>{ 
+        //this is the save handler
         inputData.mutateAsync(JSON.stringify(input))
         .then((res) =>{
+            // provied save feedback
+            console.log("Saved: ", res);
         });
     }
-
-    useEffect(()=>{
-        if (ugkthid === "") return
-        inputCompanyInterests.mutateAsync(JSON.stringify({
-                ugkthid: ugkthid,
-                company: "5567037485"
-        }))
-    }, [ugkthid])
 
     useEffect(()=>{
         // log in the user if not logged in
@@ -81,7 +89,6 @@ export default function LoggedInPage() {
 
         // If no login_token in url, check if login token in cookies
         if ((!loginToken || loginToken === "null") && document.cookie.includes("login_token")) {
-            console.log("Checking cookies!");
             const match = document.cookie.toString().match(/login_token=([^;]*)/);
             if (match !== null) {
                 loginToken = match[1];
@@ -98,7 +105,6 @@ export default function LoggedInPage() {
             if (res){
                 // update prefill variables
                 const res_json = JSON.parse(res);
-
                 studentGetData.mutateAsync(res_json.ugkthid)
                 .then((result)=>{
                     if (result) {
@@ -112,9 +118,11 @@ export default function LoggedInPage() {
                             internship:result.internship,
                             masterThesis:result.masterThesis,
                             fullTimeJob:result.fullTimeJob,
-                            traineeProgram:result.traineeProgram
+                            traineeProgram:result.traineeProgram,
+                            cv:result.cv,
+                            company_meeting_interests:result.company_meeting_interests
                         });
-                    }else{
+                    } else {
                         setUser({...user,
                             ugkthid:res_json.ugkthid,
                             first_name: res_json.first_name,
@@ -131,23 +139,16 @@ export default function LoggedInPage() {
         });
     }, []);
 
+  
+
     useEffect(()=>{
-        // Get student data, if not all data is fond in the database the response body will be false,
-        // If response body is false, let the user fill out the information form
-        if (ugkthid === "") return
-        studentGetData.mutateAsync(ugkthid)
-        .then((res)=>{
-            if (!res) setStudentAccoundExists(false);
-            
-            //console.log("RESPONSE: ", res);
-        });
-
-    }, [isLoggedIn, ugkthid]);
-
+        if(!companyWithMeetings.data) return;
+        setCompanies(companyWithMeetings.data);
+    },[companyWithMeetings]);
 
     function StudentView(){
         // Test companies
-        const companies = [
+        const companies2 = [
             {name: "Omenga Point", logo: "/img/omegapoint_logo.svg", timeOptions: [{id:0, time:"09:00-09:30"}, {id:1, time:"10:00-10:30"}]},
             {name: "Ericsson", logo: "/img/omegapoint_logo.svg", timeOptions: [{id:2, time:"11:30-12:00"}, {id:3, time:"10:00-10:30"}]},
             {name: "Mpya", logo: "/img/omegapoint_logo.svg", timeOptions: [{id:4, time:"09:00-09:30"}, {id:5, time:"10:00-10:30"}]},
@@ -169,11 +170,11 @@ export default function LoggedInPage() {
                         <StudentInfo t={t} user={user} setUser={setUser} saveHandler={update_user}/>
                     </div>
                     <div className="flex items-center justify-center">
-                        <CompanyInterests t={t}/>
+                        <CompanyInterests t={t} companies={companies} setCompanies={setCompanies} user={user} />
                     </div>
-                    <h2 className="mt-[100px] text-3xl text-center text-white">{t.students.offersTitle1 + companies.length + t.students.offersTitle2}</h2>
+                    <h2 className="mt-[100px] text-3xl text-center text-white">{t.students.offersTitle1 + companies2.length + t.students.offersTitle2}</h2>
                     <div className="grid lg:grid-cols-2 grid-cols-1">
-                        {companies.map(renderOffer)}
+                        {companies2.map(renderOffer)}
                     </div>  
                 </div>;
     }

@@ -2,6 +2,7 @@ import Locale from "@/locales";
 import { Dispatch, useEffect, useState } from "react";
 import { CheckMark } from "../CheckMark";
 import { api } from "@/utils/api";
+import { addImageDetails } from "@/shared/addImageDetails";
 
 interface Company{
     id: string;
@@ -10,27 +11,40 @@ interface Company{
     logo: string;
 }
 
+interface User{
+    company_meeting_interests: string[];
+    
+}
+
 export default function CompanyInterests(
     {
         t,
+        user,
+        companies,
+        setCompanies,
     }: {
         t: Locale;
+        user: {
+            company_meeting_interests: string[];
+        };
+        companies: {}[];
+        setCompanies: Dispatch<Company[]>;
     }
 ){
-    const inputCompanyInterests = api.student.inputCompanyInterests.useMutation();
+    /*const inputCompanyInterests = api.student.inputCompanyInterests.useMutation();
     const companyMeeting = api.student.getCompaniesWithMeetings.useQuery();
     
     const [companies, setCompanies] = useState<{}[]>([]);
+
     useEffect(()=>{
         if(!companyMeeting.data) return;
-    
         setCompanies(companyMeeting.data)
     },[companyMeeting]);
-
+*/
 
 
     function displayCompanyOption(company: Company){
-        function changeChecked(){
+        /*function changeChecked(){
             if(companies.includes(company.id)){
                 // Remove from interests
                 setCompanies([...companies].filter(function removeInterest(interestId){return interestId !== company.id }));
@@ -38,13 +52,14 @@ export default function CompanyInterests(
                  // Add to interests
                  setCompanies([...companies,company.id])
             }
-        }
-        return (<div key={company.name} className="flex items-center border-t-2 border-white pt-[10px] pb-[10px]">
-                    <CheckMark key={'checkmark-'+company.name} name={company.name} checked={companies.includes(company.id)} onClick={changeChecked}/>
+        }*/
+
+        return (<div key={'name-'+company.name} className="flex items-center border-t-2 border-white pt-[10px] pb-[10px]">
+                    <CheckMark key={'checkmark-'+company.name} name={company.name} checked={user.company_meeting_interests.includes(company.id)} onClick={()=>{}}/>
                     <div className="ml-[10px]">
                         {company.name}
                     </div>
-                    <img className="md:min-w-[120px] w-[60px] ml-[10px]" src={company.logo}></img>
+                    <img className="md:min-w-[120px] w-[60px] ml-[10px]" src={addImageDetails(company.logo)}></img>
                     <div className="ml-[10px]">
                         {company.description}
                     </div>

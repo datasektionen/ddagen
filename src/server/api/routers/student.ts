@@ -129,7 +129,7 @@ export const studentRouter = createTRPCRouter({
                 id: true,
                 name: true,
                 description: true,
-                logoColor: true,
+                logoWhite: true,
             }
         });
 
@@ -139,7 +139,7 @@ export const studentRouter = createTRPCRouter({
                 id: company.id,
                 name: company.name,
                 description: company.description,
-                logoColor: company.logoColor?.toString('base64') || "", // add default image of the bowtie
+                logo: company.logoWhite?.toString('base64') || "", // add default image of the bowtie
             }
         });
         
