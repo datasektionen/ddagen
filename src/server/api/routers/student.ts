@@ -12,7 +12,7 @@ export const studentRouter = createTRPCRouter({
             const response = await fetch(url, {
                 method: "GET",
             });
-
+           
             if (response.status !== 200) {
                 console.log("verify was not successful");
                 return false;
@@ -30,7 +30,7 @@ export const studentRouter = createTRPCRouter({
     .input(z.string())
     .mutation(async ({ ctx, input }) => {
         let student_body: Prisma.StudentsCreateInput
-        console.log("INPUT: ", input);
+        //console.log("INPUT: ", input);
 
         const input_json = JSON.parse(input);
         // Check for required inputs:
