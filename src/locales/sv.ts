@@ -59,6 +59,8 @@ export default {
       email:"Lägg till email",
       cv: "CV",
       save: "Spara",
+      saved: "Sparat",
+      error: "Sparande misslyckades, prova igen",
       addFirstName: "Skriv in ditt förnamn",
       addLastName: "Skriv in ditt efternamn", 
       addYear: "Skriv in din årskurs",

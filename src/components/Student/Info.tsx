@@ -1,8 +1,26 @@
 import Locale from "@/locales";
-import { Dispatch, useEffect, useState } from "react";
+import { Dispatch, ReactNode, useEffect, useState } from "react";
 import UploadCV from "./UploadCV";
 import { CheckMark } from "../CheckMark";
 import { InputField } from "../InputField";
+import { api } from "@/utils/api";
+
+interface User{
+    ugkthid: string;
+    first_name: string;
+    last_name: string;
+    email: string;
+    prefered_email: string;
+    cv: string;
+    study_year: number;
+    summerJob: boolean;
+    partTimeJob: boolean;
+    internship: boolean;
+    masterThesis: boolean;
+    traineeProgram: boolean;
+    fullTimeJob: boolean;
+    company_meeting_interests: string[];
+}
 
 export default function StudentInfo(
     {
@@ -12,82 +30,47 @@ export default function StudentInfo(
         saveHandler,
     }: {
         t: Locale;
-        user: {
-          ugkthid: string;
-          first_name: string;
-          last_name: string;
-          email: string;
-          prefered_email: string;
-          cv: string;
-          study_year: number;
-          summerJob: boolean;
-          partTimeJob: boolean;
-          internship: boolean;
-          masterThesis: boolean;
-          traineeProgram: boolean;
-          fullTimeJob: boolean;
-          company_meeting_interests: string[];
-      };
-        setUser: Dispatch<{
-          ugkthid: string;
-          first_name: string;
-          last_name: string;
-          email: string;
-          prefered_email: string;
-          cv: string;
-          study_year: number;
-          summerJob: boolean;
-          partTimeJob: boolean;
-          internship: boolean;
-          masterThesis: boolean;
-          traineeProgram: boolean;
-          fullTimeJob: boolean;
-          company_meeting_interests: string[];
-        }>;
+        user: User;
+        setUser: Dispatch<User>;
         saveHandler: (input: any) => void;
     },
 ) {
-  
+  const inputData = api.student.inputData.useMutation();
   const [saved, setSaved] = useState(false);
-  
-  const job = t.exhibitorSettings.table.row1.section2.jobs;
-  const jobs = [{str:job.summer, checked:user.summerJob, set:(val:boolean)=>{setUser({...user,summerJob:val})}},
-               {str:job.partTime, checked:user.partTimeJob, set:(val:boolean)=>{setUser({...user, partTimeJob:val})}},
-                {str:job.internship, checked:user.internship, set:(val:boolean)=>{setUser({...user,internship:val})}}];
-  const other = t.exhibitorSettings.table.row1.section2.other;
-  const others = [{str:other.thesis, checked:user.masterThesis, set:(val:boolean)=>{setUser({...user, masterThesis:val})}},
-                 {str:other.trainee, checked:user.traineeProgram, set:(val:boolean)=>{setUser({...user, traineeProgram:val})}},
-                  {str:other.fullTime, checked:user.fullTimeJob, set:(val:boolean)=>{setUser({...user,fullTimeJob:val})}}];
-  
 
-  function alternative(alternative:{str: string; checked: boolean; set: Dispatch<boolean>;}){
-    return <div key={alternative.str} className="flex">
-                <p className="text-white mr-[5px]">{alternative.str}</p>  
-                <CheckMark name={alternative.str}
-                           checked={alternative.checked} 
-                           onClick={()=>{alternative.set(!alternative.checked)}} 
-                           onChange={()=>{}}/>
+  const section = t.exhibitorSettings.table.row1.section2;
+  
+  function wrapCheckMark(name: string, checkMark: ReactNode){
+    return <div key={name} className="flex">
+                <p className="text-white mr-[5px]">{name}</p>  
+                {checkMark}
             </div>;
   }
 
   function YearChecks(){
     function check(year: number){
-      function changeYear(){
-        setUser({ ...user, study_year: year });
-      }
-
       return <div key={year} className="flex ml-[10px]">
               <p className="text-slate-400 text-medium mr-[5px]">{year}</p>
-              <CheckMark name={year.toString()} checked={user.study_year === year} onClick={changeYear}/>
+              <CheckMark name={year.toString()} checked={user.study_year === year} onClick={()=>{setUser({...user, study_year: year})}}/>
             </div>
     }
-    
     const years = [1,2,3,4,5];
-
     return <div className="flex">
             {years.map(check)}
            </div>
-  }
+    }
+
+    function saveHandlerFunc(data: User){
+      inputData.mutateAsync(JSON.stringify(data))
+      .then((res) =>{
+        setSaved(true);
+        //setTimeout(()=>{setSaved(false)}, 5000);
+      })
+      .catch((err) => {
+        setSaved(false);
+      });
+      //setUser({...value})
+    }
 
     return (
         <div className="relative mt-[100px] w-[90%] lg:w-[50%] mb-12 bg-white/20 border-2 border-cerise rounded-xl overflow-hidden">
@@ -97,8 +80,8 @@ export default function StudentInfo(
             <form 
                 className="flex flex-col w-[90%] bg-transparent justify-center outline-none gap-7 mt-10"
                 onSubmit={(e)=>{
-                  e.preventDefault();
-                  saveHandler(user)
+                  e.preventDefault(); 
+                  saveHandlerFunc(user)
                 }}
                 key="form"
                 >
@@ -156,10 +139,14 @@ export default function StudentInfo(
 
               <h2 className="text-white text-center text-3xl mt-[10px] mb-[10px]">{t.students.interests.header}</h2>
               <div className="flex justify-between mt-[10px] ml-[40px] mr-[40px]">
-                  {jobs.map(alternative)}
+                {wrapCheckMark(section.jobs.summer, <CheckMark name={section.jobs.summer} checked={user.summerJob} onClick={()=>{setUser({...user, summerJob:!user.summerJob})}}/>)}
+                {wrapCheckMark(section.jobs.partTime, <CheckMark name={section.jobs.partTime} checked={user.partTimeJob} onClick={()=>{setUser({...user, partTimeJob:!user.partTimeJob})}}/>)}
+                {wrapCheckMark(section.jobs.internship, <CheckMark name={section.jobs.internship} checked={user.internship} onClick={()=>{setUser({...user,internship:!user.internship})}}/>)}
               </div>
               <div className="flex justify-between mt-[10px] mb-[10px] ml-[40px] mr-[40px]">
-                {others.map(alternative)} 
+                {wrapCheckMark(section.other.thesis, <CheckMark name={section.other.thesis} checked={user.masterThesis} onClick={()=>{setUser({...user, masterThesis:!user.masterThesis})}}/>)}
+                {wrapCheckMark(section.other.trainee, <CheckMark name={section.other.trainee} checked={user.traineeProgram} onClick={()=>{setUser({...user, traineeProgram:!user.traineeProgram})}}/>)}
+                {wrapCheckMark(section.other.fullTime, <CheckMark name={section.other.fullTime} checked={user.fullTimeJob} onClick={()=>{setUser({...user,fullTimeJob:!user.fullTimeJob})}}/>)}
               </div>
 
               <div className="justify-center flex flex-col mt-[40px]">
@@ -169,7 +156,8 @@ export default function StudentInfo(
                   </a>
                 </button>
                 <p className="text-white self-center">
-                  {saved? (!user.first_name ? t.students.info.addFirstName : !user.last_name ?  t. students.info.addLastName : !user.study_year ? t.students.info.addYear : "") : ""}
+                  {/*saved? (!user.first_name ? t.students.info.addFirstName : !user.last_name ?  t. students.info.addLastName : !user.study_year ? t.students.info.addYear : "") : "Saved"*/}
+                  {saved? t.students.info.saved : ""}
                 </p>
               </div>
             </form>

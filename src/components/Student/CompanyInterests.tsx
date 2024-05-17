@@ -20,57 +20,47 @@ export default function CompanyInterests(
     {
         t,
         user,
-        companies,
-        setCompanies,
+        company,
+    
     }: {
         t: Locale;
         user: {
             company_meeting_interests: string[];
         };
-        companies: {}[];
-        setCompanies: Dispatch<Company[]>;
+        company: Company;
     }
 ){
-    /*const inputCompanyInterests = api.student.inputCompanyInterests.useMutation();
-    const companyMeeting = api.student.getCompaniesWithMeetings.useQuery();
-    
-    const [companies, setCompanies] = useState<{}[]>([]);
-
-    useEffect(()=>{
-        if(!companyMeeting.data) return;
-        setCompanies(companyMeeting.data)
-    },[companyMeeting]);
-*/
-
-
-    function displayCompanyOption(company: Company){
-        /*function changeChecked(){
-            if(companies.includes(company.id)){
-                // Remove from interests
-                setCompanies([...companies].filter(function removeInterest(interestId){return interestId !== company.id }));
-            }else{
-                 // Add to interests
-                 setCompanies([...companies,company.id])
-            }
-        }*/
-
-        return (<div key={'name-'+company.name} className="flex items-center border-t-2 border-white pt-[10px] pb-[10px]">
-                    <CheckMark key={'checkmark-'+company.name} name={company.name} checked={user.company_meeting_interests.includes(company.id)} onClick={()=>{}}/>
-                    <div className="ml-[10px]">
-                        {company.name}
-                    </div>
-                    <img className="md:min-w-[120px] w-[60px] ml-[10px]" src={addImageDetails(company.logo)}></img>
-                    <div className="ml-[10px]">
-                        {company.description}
-                    </div>
-                </div>);
-    }
 
     function saveInterests(){
         //inputCompanyInterests(companies);
     }
 
-    return(
+    return (<div className="w-[500px] rounded-2xl bg-white/20 backdrop-blur-md text-white pt-8 m-4 text-center overflow-hidden border-2 border-cerise">
+            <h2 className="text-xl pb-4">
+                {company.name}
+            </h2>
+            {/**Länk till företaget? */}
+            <div className="flex justify-center mt-2">
+                <img className="md:min-h-[120px] h-[200px] " src={addImageDetails(company.logo)}></img>
+            </div>
+            <p className="text-left p-4">
+                {company.description}
+            </p> 
+            {
+                /* 
+                
+            <select onChange={changeTime} className="bg-cerise w-[120px] h-[30px]">
+                <option value="">{t.students.companyMeeting.chooseOption}</option>
+                {timeOptions.map(displayTimeOptions)}
+            </select>
+                */
+            }
+            <div className="flex justify-between ml-[80px] mr-[80px] mb-2">
+                <CheckMark name={"check"} />
+                 </div>
+        </div>)
+
+    /*return(
         <div className="w-90 lg:w-50  rounded-2xl bg-white/20 backdrop-blur-md text-white pt-8 text-center overflow-hidden border-2 border-cerise">
             <h2 className="text-white text-center text-3xl mt-[10px] mb-[10px]">{t.students.companyInterests.header}</h2>
             {companies.map((opt: any)=>{ return displayCompanyOption(opt)})}
@@ -82,5 +72,5 @@ export default function CompanyInterests(
                 </button>
             </div>
         </div>
-    );
+    );*/
 }

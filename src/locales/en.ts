@@ -59,6 +59,8 @@ export default {
       email:"Add email",
       cv: "Resume",
       save: "Save",
+      saved: "Saved",
+      failed: "Failed to save, try again",
       addFirstName: "Enter your first name",
       addLastName: "Enter your last name", 
       addYear: "Enter your year",
@@ -74,6 +76,7 @@ export default {
       acceptDeclineText: "Choose a time to accept the offer or decline the offer",
       chooseOption: "Choose a time:", 
     },
+
     offersTitle1: "You have ",
     offersTitle2: " company invitations",
   },

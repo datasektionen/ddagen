@@ -4,6 +4,7 @@ import CompanyMeetingOffer from "@/components/Student/CompanyMeetingOffer";
 import { useLocale } from "@/locales";
 import StudentInfo from '@/components/Student/Info';
 import CompanyInterests from '@/components/Student/CompanyInterests';
+import { CheckMark } from '@/components/CheckMark';
 
 interface Company{
     id: string;
@@ -139,8 +140,6 @@ export default function LoggedInPage() {
         });
     }, []);
 
-  
-
     useEffect(()=>{
         if(!companyWithMeetings.data) return;
         setCompanies(companyWithMeetings.data);
@@ -169,9 +168,12 @@ export default function LoggedInPage() {
                     <div className="flex items-center justify-center">
                         <StudentInfo t={t} user={user} setUser={setUser} saveHandler={update_user}/>
                     </div>
-                    <div className="flex items-center justify-center">
-                        <CompanyInterests t={t} companies={companies} setCompanies={setCompanies} user={user} />
+                
+                    <h2 className="mt-[40px] mb-[40px] text-3xl text-center text-white">{t.students.companyInterests.header}</h2>
+                    <div className="flex flex-col lg:flex-row items-center justify-center gap-8">
+                        {companies.map((company: Company) => <CompanyInterests t={t} company={company} user={user} />)}
                     </div>
+                    
                     <h2 className="mt-[100px] text-3xl text-center text-white">{t.students.offersTitle1 + companies2.length + t.students.offersTitle2}</h2>
                     <div className="grid lg:grid-cols-2 grid-cols-1">
                         {companies2.map(renderOffer)}
