@@ -4,7 +4,6 @@ import CompanyMeetingOffer from "@/components/Student/CompanyMeetingOffer";
 import { useLocale } from "@/locales";
 import StudentInfo from '@/components/Student/Info';
 import CompanyInterests from '@/components/Student/CompanyInterests';
-import { CheckMark } from '@/components/CheckMark';
 
 interface Company{
     id: string;
@@ -32,6 +31,8 @@ export default function LoggedInPage() {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [studentAccoundExists, setStudentAccoundExists] = useState(false);
+
+    const [ugkthid, setugkthid] = useState<string>("");
 
     
     const [user, setUser] = useState<{
@@ -106,24 +107,10 @@ export default function LoggedInPage() {
             if (res){
                 // update prefill variables
                 const res_json = JSON.parse(res);
+                setugkthid(res_json.ugkthid);
                 studentGetData.mutateAsync(res_json.ugkthid)
                 .then((result)=>{
-                    if (result) {
-                        setUser({...user,
-                            ugkthid:result.ugkthid,
-                            first_name:result.first_name,
-                            last_name:result.last_name,
-                            study_year:result.study_year,
-                            summerJob:result.summerJob,
-                            partTimeJob:result.partTimeJob,
-                            internship:result.internship,
-                            masterThesis:result.masterThesis,
-                            fullTimeJob:result.fullTimeJob,
-                            traineeProgram:result.traineeProgram,
-                            cv:result.cv,
-                            company_meeting_interests:result.company_meeting_interests
-                        });
-                    } else {
+                    if (!result) {
                         setUser({...user,
                             ugkthid:res_json.ugkthid,
                             first_name: res_json.first_name,
@@ -131,7 +118,7 @@ export default function LoggedInPage() {
                             email: res_json.kth_email, // Add the missing kth_email property
                         });
                         update_user(user);
-                    }
+                    } 
                 });
                 
             }
@@ -166,12 +153,13 @@ export default function LoggedInPage() {
 
         return <div>
                     <div className="flex items-center justify-center">
-                        <StudentInfo t={t} user={user} setUser={setUser} saveHandler={update_user}/>
+                        <StudentInfo t={t} id={ugkthid}/>
                     </div>
                 
                     <h2 className="mt-[40px] mb-[40px] text-3xl text-center text-white">{t.students.companyInterests.header}</h2>
                     <div className="flex flex-col lg:flex-row items-center justify-center gap-8">
-                        {companies.map((company: Company) => <CompanyInterests t={t} company={company} user={user} />)}
+                        {!companyWithMeetings.data ? <div className='text-white'>Inga företag</div>:
+                       companyWithMeetings.data.map((company: Company) => <CompanyInterests t={t} company={company} user={user} />)}
                     </div>
                     
                     <h2 className="mt-[100px] text-3xl text-center text-white">{t.students.offersTitle1 + companies2.length + t.students.offersTitle2}</h2>

@@ -19,22 +19,46 @@ interface User{
     masterThesis: boolean;
     traineeProgram: boolean;
     fullTimeJob: boolean;
-    company_meeting_interests: string[];
+    // company_meeting_interests: string[];
 }
 
 export default function StudentInfo(
     {
         t,
-        user,
-        setUser,
-        saveHandler,
+        id,
     }: {
         t: Locale;
-        user: User;
-        setUser: Dispatch<User>;
-        saveHandler: (input: any) => void;
+        id: string;
     },
 ) {
+  const [user, setUser] = useState<User | null>(null);
+  const studentGetData = api.student.getData.useMutation();
+  
+  useEffect(() => {
+    studentGetData.mutateAsync(id)
+    .then((result)=>{
+        if (result) {
+            const newUser : User = {...user,
+              ugkthid:result.ugkthid,
+              first_name:result.first_name,
+              last_name:result.last_name,
+              email:result.email,
+              prefered_email:result.prefered_email,
+              study_year:result.study_year,
+              summerJob:result.summerJob,
+              partTimeJob:result.partTimeJob,
+              internship:result.internship,
+              masterThesis:result.masterThesis,
+              fullTimeJob:result.fullTimeJob,
+              traineeProgram:result.traineeProgram,
+              cv:result.cv,
+              // company_meeting_interests:result.company_meeting_interests
+            };
+            setUser(newUser);
+        } 
+    });
+}, []);
+
   const inputData = api.student.inputData.useMutation();
   const [saved, setSaved] = useState(false);
 
@@ -49,10 +73,10 @@ export default function StudentInfo(
 
   function YearChecks(){
     function check(year: number){
-      return <div key={year} className="flex ml-[10px]">
-              <p className="text-slate-400 text-medium mr-[5px]">{year}</p>
-              <CheckMark name={year.toString()} checked={user.study_year === year} onClick={()=>{setUser({...user, study_year: year})}}/>
-            </div>
+      return user && (<div key={year} className="flex ml-[10px]">
+                      <p className="text-slate-400 text-medium mr-[5px]">{year}</p>
+                      <CheckMark name={year.toString()} checked={user.study_year === year} onClick={()=>{setUser({...user, study_year: year})}}/>
+                    </div>)
     }
     const years = [1,2,3,4,5];
     return <div className="flex">
@@ -72,7 +96,7 @@ export default function StudentInfo(
       //setUser({...value})
     }
 
-    return (
+    return user && (
         <div className="relative mt-[100px] w-[90%] lg:w-[50%] mb-12 bg-white/20 border-2 border-cerise rounded-xl overflow-hidden">
           <div className="flex flex-col items-center w-full p-4">
 
@@ -85,13 +109,15 @@ export default function StudentInfo(
                 }}
                 key="form"
                 >
+
               <InputField
-                key="firstName"
-                type="name"
+                type="text"
                 name="firstName"
                 value={user.first_name}
                 required={true}
-                setValue={(name) => {setUser({ ...user, first_name: name })}}
+                setValue={(name) => {
+                  setUser({ ...user, first_name: name });
+                }}
                 fields={t.students.info}
                 />
 
