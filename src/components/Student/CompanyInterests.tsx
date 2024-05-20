@@ -19,22 +19,16 @@ interface User{
 export default function CompanyInterests(
     {
         t,
-        user,
         company,
-    
+        status,
+        onChange,
     }: {
         t: Locale;
-        user: {
-            company_meeting_interests: string[];
-        };
         company: Company;
+        status: boolean;
+        onChange: () => void;
     }
 ){
-
-    function saveInterests(){
-        //inputCompanyInterests(companies);
-    }
-
     return (<div className="w-[500px] rounded-2xl bg-white/20 backdrop-blur-md text-white pt-8 m-4 text-center overflow-hidden border-2 border-cerise">
             <h2 className="text-xl pb-4">
                 {company.name}
@@ -56,7 +50,7 @@ export default function CompanyInterests(
                 */
             }
             <div className="flex justify-between ml-[80px] mr-[80px] mb-2">
-                <CheckMark name={"check"} />
+                <CheckMark name={"check"} defaultChecked={status} checked={status} onChange={onChange} />
                  </div>
         </div>)
 

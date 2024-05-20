@@ -3,13 +3,19 @@ import { api } from "@/utils/api";
 import CompanyMeetingOffer from "@/components/Student/CompanyMeetingOffer";
 import { useLocale } from "@/locales";
 import StudentInfo from '@/components/Student/Info';
-import CompanyInterests from '@/components/Student/CompanyInterests';
+import { CheckMark } from '@/components/CheckMark';
+import { addImageDetails } from '@/shared/addImageDetails';
+import { set } from 'zod';
 
 interface Company{
     id: string;
     name: string;
     description: string;
     logo: string;
+}
+
+interface SelectedCompanies{
+    [key: string]: boolean;
 }
 
 const set_cookies = (loginToken: string) => {
@@ -21,61 +27,18 @@ export default function LoggedInPage() {
     const t = useLocale();
     
     const studentVerify = api.student.verify.useMutation();
-    const inputData = api.student.inputData.useMutation();
-    const studentGetData = api.student.getData.useMutation();
+    const updateInterests = api.student.updateCompanyInterests.useMutation();
     
-    const inputCompanyInterests = api.student.inputCompanyInterests.useMutation();
-    const companyWithMeetings = api.student.getCompaniesWithMeetings.useQuery();
-    
-    const [companies, setCompanies] = useState<Company[]>([]);
+    const getCompanyWithMeetings = api.student.getCompaniesWithMeetings.useMutation();
+    const getCompanyMeetingInterests = api.student.getCompanyMeetingInterests.useMutation();
 
+    const [companiesWithMeeting, setCompaniesWithMetting] = useState<Company[]>([]);
+    const [selectedCompanies, setSelectedCompanies] = useState<SelectedCompanies>({});
+    
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [studentAccoundExists, setStudentAccoundExists] = useState(false);
 
     const [ugkthid, setugkthid] = useState<string>("");
 
-    
-    const [user, setUser] = useState<{
-        ugkthid: string;
-        first_name: string;
-        last_name: string;
-        email: string;
-        prefered_email: string;
-        cv: string;
-        study_year: number;
-        summerJob: boolean;
-        partTimeJob: boolean;
-        internship: boolean;
-        masterThesis: boolean;
-        traineeProgram: boolean;
-        fullTimeJob: boolean;
-        company_meeting_interests: string[];
-
-    }>({
-        ugkthid: "",
-        first_name: "",
-        last_name: "",
-        email: "",
-        prefered_email: "",
-        cv: "",
-        study_year: 0,
-        summerJob: false, 
-        partTimeJob: false, 
-        internship: false, 
-        masterThesis: false, 
-        traineeProgram: false,
-        fullTimeJob: false,
-        company_meeting_interests: []
-    });
-
-    const update_user = (input: any)=>{ 
-        //this is the save handler
-        inputData.mutateAsync(JSON.stringify(input))
-        .then((res) =>{
-            // provied save feedback
-            console.log("Saved: ", res);
-        });
-    }
 
     useEffect(()=>{
         // log in the user if not logged in
@@ -83,7 +46,7 @@ export default function LoggedInPage() {
             window.location.href = `https://login.datasektionen.se/login?callback=${window.location.href.replace(/^(https?:\/\/[^\/]+).*/, '$1')}/student?login_token=`
         }
     }, [isLoggedIn])
-    
+
     useEffect(() => {
         const params: URLSearchParams = new URL(window.location.href).searchParams;
 
@@ -101,38 +64,79 @@ export default function LoggedInPage() {
             console.log("URL not complete: LoginToken=", loginToken,);
             return;
         }
-
+        
+        
         studentVerify.mutateAsync(loginToken)
         .then((res) =>{
             if (res){
                 // update prefill variables
                 const res_json = JSON.parse(res);
                 setugkthid(res_json.ugkthid);
-                studentGetData.mutateAsync(res_json.ugkthid)
-                .then((result)=>{
-                    if (!result) {
-                        setUser({...user,
-                            ugkthid:res_json.ugkthid,
-                            first_name: res_json.first_name,
-                            last_name: res_json.last_name,
-                            email: res_json.kth_email, // Add the missing kth_email property
-                        });
-                        update_user(user);
-                    } 
-                });
+                set_cookies(loginToken);
+                setIsLoggedIn(res? true:false);
                 
+                getCompanyWithMeetings.mutateAsync().then((res) => {
+                    const result = res.map((company) => {
+                        return {
+                            id: company.id,
+                            name: company.name,
+                            description: company.description,
+                            logo: company.logo,
+                        }
+                    });
+                    setCompaniesWithMetting(result);
+
+                    const newSelectedCompanies = Object.fromEntries(result.map((company) => {
+                        return [company.id, false];
+                    }));
+                    console.log("newSelectedCompanies: ", newSelectedCompanies);
+                    setSelectedCompanies(newSelectedCompanies);
+                    
+                });
+
+                getCompanyMeetingInterests.mutateAsync(res_json.ugkthid)
+                .then((res) => {
+                    if(!res) return;
+                    const newSelectedCompanies = Object.fromEntries(res.map((company) => {
+                        return [company, true];
+                    }));
+                    setSelectedCompanies({...selectedCompanies, ...newSelectedCompanies});
+                    
+                });
             }
-            setIsLoggedIn(res? true:false);
-            set_cookies(loginToken);
         });
+        
     }, []);
-
-    useEffect(()=>{
-        if(!companyWithMeetings.data) return;
-        setCompanies(companyWithMeetings.data);
-    },[companyWithMeetings]);
-
+    
+    function handleSelection(company: Company){
+        const newValues = {...selectedCompanies, [company.id] : !selectedCompanies[company.id]};
+        setSelectedCompanies(newValues);
+        const keys = Object.keys(newValues).filter((key) => newValues[key] === true);
+        updateInterests.mutateAsync(JSON.stringify({company_meeting_interests: keys, ugkthid: ugkthid}));
+    }
+        
     function StudentView(){
+        
+
+        function renderCompany(company: Company){
+            return <div key={company.name} className="w-[500px] rounded-2xl bg-white/20 backdrop-blur-md text-white pt-8 m-4 text-center overflow-hidden border-2 border-cerise">
+            <h2 className="text-xl pb-4">
+                {company.name}
+            </h2>
+            {/**Länk till företaget? */}
+            <div className="flex justify-center mt-2">
+                <img className="md:min-h-[120px] h-[200px]" src={addImageDetails(company.logo)}></img>
+            </div>
+            <p className="text-left p-4">
+                {company.description}
+            </p> 
+          
+            <div className="flex justify-between ml-[80px] mr-[80px] mb-2">
+                <CheckMark name={"check"} checked={selectedCompanies[company.id]} onClick={()=>{handleSelection(company)}}/>
+            </div>
+        </div>
+        }
+
         // Test companies
         const companies2 = [
             {name: "Omenga Point", logo: "/img/omegapoint_logo.svg", timeOptions: [{id:0, time:"09:00-09:30"}, {id:1, time:"10:00-10:30"}]},
@@ -151,6 +155,7 @@ export default function LoggedInPage() {
             </div>;
         }
 
+
         return <div>
                     <div className="flex items-center justify-center">
                         <StudentInfo t={t} id={ugkthid}/>
@@ -158,8 +163,9 @@ export default function LoggedInPage() {
                 
                     <h2 className="mt-[40px] mb-[40px] text-3xl text-center text-white">{t.students.companyInterests.header}</h2>
                     <div className="flex flex-col lg:flex-row items-center justify-center gap-8">
-                        {!companyWithMeetings.data ? <div className='text-white'>Inga företag</div>:
-                       companyWithMeetings.data.map((company: Company) => <CompanyInterests t={t} company={company} user={user} />)}
+                    {!getCompanyWithMeetings.data ? <div className='text-white'>Inga företag</div>:
+                       companiesWithMeeting.map(renderCompany)
+                    }
                     </div>
                     
                     <h2 className="mt-[100px] text-3xl text-center text-white">{t.students.offersTitle1 + companies2.length + t.students.offersTitle2}</h2>

@@ -34,6 +34,8 @@ export default function StudentInfo(
   const [user, setUser] = useState<User | null>(null);
   const studentGetData = api.student.getData.useMutation();
   
+  const verify = api.student.verify.useMutation();
+
   useEffect(() => {
     studentGetData.mutateAsync(id)
     .then((result)=>{
@@ -55,7 +57,28 @@ export default function StudentInfo(
               // company_meeting_interests:result.company_meeting_interests
             };
             setUser(newUser);
-        } 
+        } else {
+          verify.mutateAsync(id)
+          .then((res) =>{
+            if (res){
+              const res_json = JSON.parse(res);
+              setUser({ugkthid: id, 
+                first_name: res_json.first_name, 
+                last_name: res_json.last_name, 
+                email: res_json.kth_email, 
+                prefered_email: "", 
+                cv: "", 
+                study_year: 1, 
+                summerJob: false, 
+                partTimeJob: false, 
+                internship: false, 
+                masterThesis: false, 
+                traineeProgram: false, 
+                fullTimeJob: false});
+            }
+            
+          });
+        }
     });
 }, []);
 
