@@ -183,11 +183,6 @@ export const studentRouter = createTRPCRouter({
         });
 
         if (!student) return;
-        console.log("Student exists", input_json)
-
-        // remove undefined values or duplicates
-        //const interests = Array.from(new Set(input_json.filter((interest: string) => interest !== undefined)));
-        
 
         // Update the student's company meeting interests
         const result = await ctx.prisma.students.update({
@@ -198,7 +193,7 @@ export const studentRouter = createTRPCRouter({
                 company_meeting_interests: input_json.company_meeting_interests.map((interest: string) => interest),
             }
         });
-        console.log("Updated company meeting interests: ", result);
+   
         return result;
     }),
 });
