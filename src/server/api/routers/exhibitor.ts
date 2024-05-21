@@ -501,12 +501,63 @@ export const exhibitorRouter = createTRPCRouter({
 
         const students = await ctx.prisma.students.findMany({
           where: {
-            company_meeting_interests: {contains: exhibitor.organizationNumber},
+            company_meeting_interests: {
+              contains: exhibitor.organizationNumber
+            },
           },
         });
 
         if (!students) return;
 
         return students
+    }),
+    createMeeting: protectedProcedure
+    .mutation(async ({ ctx, input }: any) => {
+        const exhibitor = await ctx.prisma.exhibitor.findUnique({
+          where: {
+            id: ctx.session.exhibitorId,
+          },
+        });
+
+        if (!exhibitor) return;
+
+        const student = await ctx.prisma.students.findUnique({
+          where: {
+            ugkthid: input.ugkthid,
+          },
+        });
+
+        if (!student) return;
+
+        const existingMatch = await ctx.prisma.meetings.findFirst({
+          where: {
+            exhibitorId: ctx.session.exhibitorId,
+            studentId: student.ugkthid,
+          },
+        });
+
+        if (existingMatch) {
+          console.log("Match already exists");
+          return;
+        }
+
+        const match = await ctx.prisma.meetings.create({
+          data: {
+            exhibitorId: ctx.session.exhibitorId,
+            studentId: student.ugkthid,
+          },
+        });
+
+        return match
+    }),
+    getMeetings: protectedProcedure
+    .query(async ({ ctx }) => {
+        const meetings = await ctx.prisma.meetings.findMany({
+          where: {
+            exhibitorId: ctx.session.exhibitorId
+          },
+        });
+
+        return meetings
     }),
 });

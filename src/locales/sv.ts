@@ -204,10 +204,15 @@ export default {
           tier1: "Mellan",
           tier2: "Stora",
           tier3: "Huvudsponsor",
-          tier4: "Startup",
-
-       
+          tier4: "Startup", 
         },
+        packageList: [
+          "Lilla",
+          "Mellan",
+          "Stora",
+          "Huvudsponsor",
+          "Startup"
+        ],
         section1: {
           header: "Paket",
           info: "För mer info kring de olika paketen",

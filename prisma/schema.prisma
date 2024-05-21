@@ -171,7 +171,7 @@ model Students {
     personal_story String     //optional, max x characters
 
     // meeting logic
-    company_meeting_interests String //optional
+    company_meeting_interests String[] //optional
 
     @@map("students")
 }

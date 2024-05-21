@@ -65,7 +65,7 @@ export const studentRouter = createTRPCRouter({
                 github_url: String(input_json.github_url) ?? "", 
                 other_link: String(input_json.other_link) ?? "", 
                 personal_story: String(input_json.personal_story) ?? "",
-                company_meeting_interests: JSON.stringify(input_json.company_meeting_interests) ?? "[]",
+                company_meeting_interests: input_json.company_meeting_interests,
             }
             // If no user exists, create a new user with default values
             await ctx.prisma.students.create({
@@ -73,7 +73,6 @@ export const studentRouter = createTRPCRouter({
             });
         }
         else{
-            console.log("Student exists", input_json,)
             // If user exists, update the existing user data with new values
             student = await ctx.prisma.students.update({
                 where: {
@@ -96,7 +95,7 @@ export const studentRouter = createTRPCRouter({
                     github_url: input_json.github_url ?? student.github_url,
                     other_link: input_json.other_link ?? student.other_link,
                     personal_story: input_json.personal_story ?? student.personal_story,
-                    //company_meeting_interests: input_json.company_meeting_interests ?? student.company_meeting_interests,
+                    //company_meeting_interests: student.company_meeting_interests,
                 },
             });
         }
@@ -112,7 +111,7 @@ export const studentRouter = createTRPCRouter({
                 ugkthid: input,
             },
         });
-        if (student === null) return false
+        if (!student) return false
         
         //console.log("STUDENT FROM DB", student)
         return student
@@ -159,7 +158,7 @@ export const studentRouter = createTRPCRouter({
 
         if (!student) return [];
 
-        return student.company_meeting_interests;    
+        return student.company_meeting_interests ?? [];    
     }),
 
     updateCompanyInterests: publicProcedure

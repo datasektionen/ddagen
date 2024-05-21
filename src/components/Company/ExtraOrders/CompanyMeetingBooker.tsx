@@ -2,6 +2,8 @@ import { useLocale } from '@/locales';
 import React, { useState, useEffect } from 'react';
 import { CheckMark } from '../../CheckMark';
 import Search from '@/components/Company/SearchStudents';
+import { api } from '@/utils/api';
+import { get } from 'http';
 
 interface MeetingData {
     checked: boolean;
@@ -16,6 +18,10 @@ export default function CompanyMeetingBooker(
     const t = useLocale();
     const [data, setData] = useState<MeetingData[]>([]);
 
+    const getInterestedStudents = api.exhibitor.getStudentInterests.useQuery();
+
+    const [students, setStudents] = useState<MeetingData[]>([]);
+
     const dummy_data = [
         { checked: false, name: "1", year: "1", cv: "cv1", other: ["1","1"] },
         { checked: false, name: "2", year: "2", cv: "cv2", other: ["2","2"] },
@@ -26,7 +32,14 @@ export default function CompanyMeetingBooker(
 
     useEffect(() => {
         setData(dummy_data);    
+        //getInterestedStudents.then((res) => {
+        //  console.log(res)
+        //})
     }, []);
+
+    useEffect(() => {
+      console.log(getInterestedStudents.data)
+    }, [getInterestedStudents]);
 
     const handleCheck = (idx: number) => {
       const updatedData = [...data];

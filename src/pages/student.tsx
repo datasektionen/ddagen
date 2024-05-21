@@ -5,7 +5,6 @@ import { useLocale } from "@/locales";
 import StudentInfo from '@/components/Student/Info';
 import { CheckMark } from '@/components/CheckMark';
 import { addImageDetails } from '@/shared/addImageDetails';
-import { set } from 'zod';
 
 interface Company{
     id: string;
@@ -96,12 +95,15 @@ export default function LoggedInPage() {
 
                 getCompanyMeetingInterests.mutateAsync(res_json.ugkthid)
                 .then((res) => {
-                    if(!res) return;
+                    if(!Array.isArray(res)) return;
                     const newSelectedCompanies = Object.fromEntries(res.map((company) => {
                         return [company, true];
                     }));
                     setSelectedCompanies({...selectedCompanies, ...newSelectedCompanies});
                     
+                }).
+                catch((err) => {
+                    console.log("Error in getCompanyMeetingInterests: ", err);
                 });
             }
         });

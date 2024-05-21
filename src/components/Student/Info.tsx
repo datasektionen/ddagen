@@ -19,7 +19,6 @@ interface User{
     masterThesis: boolean;
     traineeProgram: boolean;
     fullTimeJob: boolean;
-    // company_meeting_interests: string[];
 }
 
 export default function StudentInfo(
@@ -54,7 +53,6 @@ export default function StudentInfo(
               fullTimeJob:result.fullTimeJob,
               traineeProgram:result.traineeProgram,
               cv:result.cv,
-              // company_meeting_interests:result.company_meeting_interests
             };
             setUser(newUser);
         } else {
@@ -74,7 +72,9 @@ export default function StudentInfo(
                 internship: false, 
                 masterThesis: false, 
                 traineeProgram: false, 
-                fullTimeJob: false});
+                fullTimeJob: false,
+              
+              });
             }
             
           });

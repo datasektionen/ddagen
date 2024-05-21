@@ -62,7 +62,7 @@ export default function Exhibitor() {
     },
   });
   const getInfoStatus = api.exhibitor.getInfoStatus.useQuery();
-  const getStudentInterests = api.exhibitor.getStudentInterests.useQuery();
+  //const getStudentInterests = api.exhibitor.getStudentInterests.useQuery();
 
   // Manage login
   useEffect(() => {
@@ -101,11 +101,11 @@ export default function Exhibitor() {
 
   useEffect(() => {
     if (!getAll.isSuccess) return;
-    if (!getStudentInterests.data) return;
+    //if (!getStudentInterests.data) return;
 
 
-    console.log(getStudentInterests.data[0].ugkthid);
-    console.log(getAll.data.organizationNumber);
+    //console.log(getStudentInterests.data[0].ugkthid);
+    //console.log(getAll.data.organizationNumber);
 
     // Call this code below to create new meetings
 

@@ -205,10 +205,15 @@ export default {
           tier1: "Medium",
           tier2: "Large",
           tier3: "Main Sponsor",
-          tier4: "Startup",
-
-          
+          tier4: "Startup", 
         },
+        packageList: [
+          "Small",
+          "Medium",
+          "Large",
+          "Main Sponsor",
+          "Startup",
+        ],
         section1: {
           header: "Package",
           info: "For more information about the different packages",
