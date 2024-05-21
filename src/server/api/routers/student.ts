@@ -2,6 +2,7 @@ import { z } from "zod";
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 import { Prisma } from "@prisma/client";
 import { get } from "http";
+import { create } from "domain";
 
 export const studentRouter = createTRPCRouter({    
     verify: publicProcedure
@@ -12,7 +13,7 @@ export const studentRouter = createTRPCRouter({
             const response = await fetch(url, {
                 method: "GET",
             });
-           
+
             if (response.status !== 200) {
                 console.log("verify was not successful");
                 return false;
@@ -65,7 +66,7 @@ export const studentRouter = createTRPCRouter({
                 github_url: String(input_json.github_url) ?? "", 
                 other_link: String(input_json.other_link) ?? "", 
                 personal_story: String(input_json.personal_story) ?? "",
-                company_meeting_interests: input_json.company_meeting_interests,
+                company_meeting_interests: JSON.stringify([]),
             }
             // If no user exists, create a new user with default values
             await ctx.prisma.students.create({
@@ -105,15 +106,15 @@ export const studentRouter = createTRPCRouter({
     getData: publicProcedure
     .input(z.string())
     .mutation(async ({ ctx, input })=>{
-        // console.log("INPUT: ", input)
+        console.log("INPUT: ", input)
         const student = await ctx.prisma.students.findUnique({
             where: {
                 ugkthid: input,
             },
         });
-        if (!student) return false
+        console.log("STUDENT FROM DB", student)
+        if (student === null) return false
         
-        //console.log("STUDENT FROM DB", student)
         return student
         
     }),

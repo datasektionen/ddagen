@@ -40,7 +40,7 @@ export default function Exhibitor() {
 
 
   // Mutations
-  const setExtrasMutation = api.exhibitor.setExtras.useMutation();
+  const setExtrasMutation: ReturnType<typeof api.exhibitor.setExtras.useMutation> = api.exhibitor.setExtras.useMutation();
   const logoMutation = api.exhibitor.setLogo.useMutation();
   const descriptionMutation = api.exhibitor.setDescription.useMutation();
   const jobOffersMutation = api.exhibitor.setJobOffers.useMutation();

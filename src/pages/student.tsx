@@ -27,7 +27,9 @@ export default function LoggedInPage() {
     
     const studentVerify = api.student.verify.useMutation();
     const updateInterests = api.student.updateCompanyInterests.useMutation();
-    
+    const createStudent = api.student.inputData.useMutation();
+    const getData = api.student.getData.useMutation();
+
     const getCompanyWithMeetings = api.student.getCompaniesWithMeetings.useMutation();
     const getCompanyMeetingInterests = api.student.getCompanyMeetingInterests.useMutation();
 
@@ -67,6 +69,7 @@ export default function LoggedInPage() {
         
         studentVerify.mutateAsync(loginToken)
         .then((res) =>{
+            console.log("Student verify response: ", res);
             if (res){
                 // update prefill variables
                 const res_json = JSON.parse(res);
@@ -74,6 +77,24 @@ export default function LoggedInPage() {
                 set_cookies(loginToken);
                 setIsLoggedIn(res? true:false);
                 
+                getData.mutateAsync(res_json.ugkthid)
+                .then((res) => {
+                    if (res) {
+                        console.log("Student exists");
+                    } else {
+                        console.log("Student does not exist", res_json);
+                        createStudent.mutateAsync(
+                            JSON.stringify({
+                                ugkthid: res_json.ugkthid,
+                                first_name: res_json.first_name,
+                                last_name: res_json.last_name,
+                                email: res_json.emails,
+                                study_year: 0,
+                            })
+                        );
+                    }
+                });
+
                 getCompanyWithMeetings.mutateAsync().then((res) => {
                     const result = res.map((company) => {
                         return {
@@ -88,7 +109,6 @@ export default function LoggedInPage() {
                     const newSelectedCompanies = Object.fromEntries(result.map((company) => {
                         return [company.id, false];
                     }));
-                    console.log("newSelectedCompanies: ", newSelectedCompanies);
                     setSelectedCompanies(newSelectedCompanies);
                     
                 });
@@ -105,6 +125,8 @@ export default function LoggedInPage() {
                 catch((err) => {
                     console.log("Error in getCompanyMeetingInterests: ", err);
                 });
+            } else {
+              console.log("Student not found");
             }
         });
         
