@@ -185,7 +185,9 @@ export default function Exhibitor() {
   useEffect(() => {
     if (!getExhibitor.isSuccess) return;
     const exhibitor = getExhibitor.data;
+    console.log(getExhibitor.data);
     const exhibitorPackage = new Package(t, exhibitor.packageTier);
+    console.log(exhibitor.packageTier, exhibitorPackage.tier);
     exhibitorPackage.addCustomOrders(
       exhibitor.customTables,
       exhibitor.customChairs,

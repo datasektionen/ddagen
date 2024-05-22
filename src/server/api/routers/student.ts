@@ -53,7 +53,7 @@ export const studentRouter = createTRPCRouter({
                 first_name: String(input_json.first_name) ?? "", 
                 last_name: String(input_json.last_name) ?? "", 
                 email: String(input_json.email) ?? "", 
-                prefered_email: String(input_json.prefered_email) ?? "",
+                prefered_email: String(input_json.email) ?? "",
                 study_year: parseInt(input_json.study_year) ?? 0, 
                 summerJob: !!input_json.summerJob, 
                 partTimeJob: !!input_json.partTimeJob, 
