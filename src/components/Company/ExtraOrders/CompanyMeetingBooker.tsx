@@ -32,13 +32,15 @@ export default function CompanyMeetingBooker(
 
     useEffect(() => {
         setData(dummy_data);    
-        //getInterestedStudents.then((res) => {
-        //  console.log(res)
-        //})
+        
     }, []);
 
     useEffect(() => {
-      console.log(getInterestedStudents.data)
+      console.log(getInterestedStudents?.data)
+    }, [getInterestedStudents]);
+
+    useEffect(() => {
+      console.log(getInterestedStudents?.data)
     }, [getInterestedStudents]);
 
     const handleCheck = (idx: number) => {

@@ -106,13 +106,13 @@ export const studentRouter = createTRPCRouter({
     getData: publicProcedure
     .input(z.string())
     .mutation(async ({ ctx, input })=>{
-        console.log("INPUT: ", input)
+        //console.log("INPUT: ", input)
         const student = await ctx.prisma.students.findUnique({
             where: {
                 ugkthid: input,
             },
         });
-        console.log("STUDENT FROM DB", student)
+        //console.log("STUDENT FROM DB", student)
         if (student === null) return false
         
         return student
@@ -132,6 +132,7 @@ export const studentRouter = createTRPCRouter({
             }
         });
 
+        console.log("DATA: ", data);
 
         const result = data.map((company) => {
             return {

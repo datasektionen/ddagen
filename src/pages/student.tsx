@@ -69,7 +69,6 @@ export default function LoggedInPage() {
         
         studentVerify.mutateAsync(loginToken)
         .then((res) =>{
-            console.log("Student verify response: ", res);
             if (res){
                 // update prefill variables
                 const res_json = JSON.parse(res);
@@ -82,7 +81,6 @@ export default function LoggedInPage() {
                     if (res) {
                         console.log("Student exists");
                     } else {
-                        console.log("Student does not exist", res_json);
                         createStudent.mutateAsync(
                             JSON.stringify({
                                 ugkthid: res_json.ugkthid,

@@ -97,7 +97,7 @@ export default function StudentInfo(
     }
 
     return user && (
-        <div className="relative mt-[100px] w-[90%] lg:w-[50%] mb-12 bg-white/20 border-2 border-cerise rounded-xl overflow-hidden">
+        <div className="relative mt-[100px] w-[90%] xl:w-[50%] mb-12 bg-white/20 border-2 border-cerise rounded-xl overflow-hidden">
           <div className="flex flex-col items-center w-full p-4">
 
             <h1 className="text-white text-center text-3xl mt-[10px] mb-[10px]">{t.students.info.header}</h1>
@@ -164,12 +164,12 @@ export default function StudentInfo(
               </div>
 
               <h2 className="text-white text-center text-3xl mt-[10px] mb-[10px]">{t.students.interests.header}</h2>
-              <div className="flex justify-between mt-[10px] ml-[40px] mr-[40px]">
+              <div className="flex flex-col md:flex-row justify-between mt-[10px] ml-[40px] mr-[40px] gap-4">
                 {wrapCheckMark(section.jobs.summer, <CheckMark name={section.jobs.summer} checked={user.summerJob} onClick={()=>{setUser({...user, summerJob:!user.summerJob})}}/>)}
                 {wrapCheckMark(section.jobs.partTime, <CheckMark name={section.jobs.partTime} checked={user.partTimeJob} onClick={()=>{setUser({...user, partTimeJob:!user.partTimeJob})}}/>)}
                 {wrapCheckMark(section.jobs.internship, <CheckMark name={section.jobs.internship} checked={user.internship} onClick={()=>{setUser({...user,internship:!user.internship})}}/>)}
               </div>
-              <div className="flex justify-between mt-[10px] mb-[10px] ml-[40px] mr-[40px]">
+              <div className="flex flex-col md:flex-row justify-between mt-[10px] mb-[10px] ml-[40px] mr-[40px] gap-4">
                 {wrapCheckMark(section.other.thesis, <CheckMark name={section.other.thesis} checked={user.masterThesis} onClick={()=>{setUser({...user, masterThesis:!user.masterThesis})}}/>)}
                 {wrapCheckMark(section.other.trainee, <CheckMark name={section.other.trainee} checked={user.traineeProgram} onClick={()=>{setUser({...user, traineeProgram:!user.traineeProgram})}}/>)}
                 {wrapCheckMark(section.other.fullTime, <CheckMark name={section.other.fullTime} checked={user.fullTimeJob} onClick={()=>{setUser({...user,fullTimeJob:!user.fullTimeJob})}}/>)}

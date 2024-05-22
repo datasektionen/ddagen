@@ -502,7 +502,7 @@ export const exhibitorRouter = createTRPCRouter({
         const students = await ctx.prisma.students.findMany({
           where: {
             company_meeting_interests: {
-              contains: exhibitor.organizationNumber
+              has: exhibitor.organizationNumber
             },
           },
         });
