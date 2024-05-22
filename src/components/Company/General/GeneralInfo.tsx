@@ -11,7 +11,7 @@ export default function GeneralInfo(
         colorLogo,
         setColorLogo,
         description,
-        setDescription
+        setDescription,
     }: {
         t: Locale;
         whiteLogo: string;

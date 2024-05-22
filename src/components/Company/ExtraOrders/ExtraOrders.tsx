@@ -15,7 +15,8 @@ export default function ExtraOrders({
   preferenceCount: { banqcount: number; reprcount: number };
   exhibitorPackage: Package;
 }) {
-  const disablePreferences = true;
+  // on disable if deadline has passed
+  const disablePreferences = new Date() > new Date("2024-09-12");
   const deadline = {
     drinkCoupons: "2024-09-12",
     tables: "2024-09-12",
@@ -73,7 +74,7 @@ export default function ExtraOrders({
           <button
             className="flex hover:cursor-pointer bg-cerise rounded-lg w-full h-[21.5px] text-white font-normal select-none
                         justify-center items-center px-2 border border-white/20 hover:scale-105 transition-transform mb-[2px]
-                        disabled:bg-black/25disabled:border disabled:border-solid"
+                        disabled:bg-black/25 disabled:border disabled:border-solid"
             disabled={disableAll}
             onClick={() => {
               set(num + step);

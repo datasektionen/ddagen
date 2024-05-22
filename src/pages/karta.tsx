@@ -1,10 +1,12 @@
 import { prisma } from "@/server/db";
 import { useLocale } from "@/locales";
-import Map from "@/components/Map/Map";
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"; 
 import Search from "@/components/Map/Search";
 import { MapProp } from "@/shared/Classes";
 import ExhibitorExplorer from "@/components/Map/ExhibitorExplorer";
+
+import dynamic from 'next/dynamic';
+const Map = dynamic(() => import('@/components/Map/NewMap'), { ssr: false });
 
 export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
   const t = useLocale();
@@ -82,14 +84,9 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
   }, [query]);
 
   return (
-    <div className="flex flex-col h-full w-full pt-52 pb-40">
-      <h1 className="text-cerise text-6xl font-medium uppercase text-center">
-        {t.map.header}
-      </h1>
-      <Search t={t} setQuery={setQuery} />
-
-      <div className="flex max-lg:flex-col-reverse max-lg:items-center 
-                      lg:flex-row lg:items-start lg:space-x-10 justify-center">
+    <div className="h-80vh flex max-md:flex-col-reverse max-md:items-center md:flex-row md:items-start justify-center py-16 pt-20 overscroll-none">
+      <div className="px-8 md:pr-4 flex flex-col items-center w-full md:w-96">
+        <Search t={t} setQuery={setQuery} />
         <ExhibitorExplorer
           t={t}
           exhibitors={exhibitors}
@@ -98,6 +95,8 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
           selectedExhibitor={selectedExhibitor}
           setSelectedExhibitor={setSelectedExhibitor}
         />
+      </div>
+      <div className="w-full h-1/2 md:h-full px-4 md:px-8 md:pl-4">
         <Map
           t={t}
           exhibitors={exhibitors}
@@ -108,7 +107,7 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
         />
       </div>
     </div>
-  );
+  ); 
 }
 
 export async function getServerSideProps() {
@@ -123,7 +122,6 @@ export async function getServerSideProps() {
     logoWhite: exhibitor.logoWhite?.toString("base64") || null,
     logoColor: exhibitor.logoColor?.toString("base64") || null,
     description: exhibitor.description,
-    package: exhibitor.package,
     jobOfferId: exhibitor.jobOfferId,
     offers: {
       summerJob: exhibitor.jobOffers.summerJob,

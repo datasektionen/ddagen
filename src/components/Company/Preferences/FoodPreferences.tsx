@@ -30,6 +30,10 @@ export default function FoodPreferences({
       <p className="text-base md:text-xl font-normal">
         {t.exhibitorSettings.table.row3.section1.paragraphTwo}
       </p>
+      <p className="text-base md:text-md font-normal pt-6">
+        {t.exhibitorSettings.table.row3.usagenotice}
+      </p>
+
       <p className="text-base md:text-lg font-normal mt-4">
         {t.exhibitorSettings.table.row3.warning + deadline}
       </p>
@@ -54,6 +58,11 @@ export default function FoodPreferences({
       <p className="text-base md:text-xl font-normal">
         {t.exhibitorSettings.table.row3.section2.paragraphTwo}
       </p>
+      
+      <p className="text-base md:text-md font-normal pt-4">
+        {t.exhibitorSettings.table.row3.section2.paragraphThree}
+      </p>
+
       <p className="text-base md:text-lg font-normal mt-4">
         {t.exhibitorSettings.table.row3.warning + deadline}
       </p>

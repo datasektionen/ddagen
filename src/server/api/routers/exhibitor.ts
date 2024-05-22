@@ -123,7 +123,6 @@ export const exhibitorRouter = createTRPCRouter({
     return await ctx.prisma.exhibitor.findUniqueOrThrow({
       where: { id: ctx.session.exhibitorId },
       select: {
-        package: true,
         packageTier: true,
         customTables: true,
         customChairs: true,

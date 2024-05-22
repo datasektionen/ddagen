@@ -64,6 +64,7 @@ export default function Exhibitor() {
   const getInfoStatus = api.exhibitor.getInfoStatus.useQuery();
   //const getStudentInterests = api.exhibitor.getStudentInterests.useQuery();
 
+
   // Manage login
   useEffect(() => {
     if (!getIsLoggedIn.isSuccess) return;

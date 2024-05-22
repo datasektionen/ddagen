@@ -69,10 +69,10 @@ export default function Search({
   const [checkmarks] = useState(Array<boolean>(11).fill(false));
 
   return (
-    <div className="flex flex-col items-center justify-center mt-12">
-      <div className="flex max-md:flex-col max-md:gap-y-4 md:flex-row items-center my-4">
+    <div className="w-full flex flex-col items-center justify-center">
+      <div className="w-full flex items-center my-4">
         <input
-          className="w-[350px] xs:w-[400px] min-h-[40px] outline-none border-2 border-cerise bg-[#eaeaea] bg-opacity-10 
+          className="grow w-{200px} min-h-[40px] outline-none border-2 border-cerise bg-[#eaeaea] bg-opacity-10 
                     rounded-3xl px-3 text-white text-opacity-50 focus:placeholder:text-transparent"
           type="text"
           placeholder={t.map.search.placeHolder}
@@ -83,14 +83,14 @@ export default function Search({
               applySearch(searchQuery, checkmarks, setQuery);
           }}
         />
-        <div className="flex flex-row">
+        <div className="flex flex-row text-3xl">
           <Button
-            value={t.map.search.buttonOne}
+            value="⌕"
             loading={false}
             onClick={() => applySearch(searchQuery, checkmarks, setQuery)}
           />
           <Button
-            value={t.map.search.buttonTwo}
+            value="≡"
             loading={false}
             onClick={() => setShowFilter(!showFilter)}
           />
@@ -100,10 +100,10 @@ export default function Search({
       <div className="flex justify-center w-full">
         {showFilter && (
           <div
-            className="w-[350px] xs:w-[400px] min-h-[175px] block border-2 border-cerise bg-[#eaeaea] bg-opacity-10
+            className="block border-2 border-cerise bg-[#eaeaea] bg-opacity-10
                           rounded-lg text-white justify-center text-xl"
           >
-            <div className="w-full h-full flex flex-col justify-center items-center max-xs:p-6">
+            <div className="w-full h-full flex flex-col justify-center items-center max-xs:p-6 font-light text-base">
               <div className="flex flex-row mt-1">
                 {t.map.search.filterYear}:
                 {years.map((year, pos) => {
