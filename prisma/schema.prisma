@@ -32,6 +32,7 @@ model Exhibitor {
   logoColor    Bytes?
   description  String
   packageTier               Int @default(-1)
+  studentMeetings           Int @default(0)
 
   extraTables               Int @default(0)
   extraChairs               Int @default(0)
@@ -159,6 +160,17 @@ model Students {
     other_link     String     //optional
     personal_story String     //optional, max x characters
 
+    // meeting logic
+    company_meeting_interests String[] //optional
+
     @@map("students")
 }
 
+model Meetings {
+    id               String     @id @default(uuid())
+    studentId        String
+    exhibitorId      String
+    timeslot         Int
+
+    @@map("meetings")
+}

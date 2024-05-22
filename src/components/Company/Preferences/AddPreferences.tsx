@@ -1,7 +1,7 @@
 import Locale from "@/locales";
 import { api } from "@/utils/api";
-import { CheckMark } from "../CheckMark";
-import { InputField } from "./InputField";
+import { CheckMark } from "../../CheckMark";
+import { InputField } from "../InputField";
 import { type Dispatch, useState, useEffect, type FormEvent } from "react";
 import { Extras, Package, Preferences } from "@/shared/Classes";
 

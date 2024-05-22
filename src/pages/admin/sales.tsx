@@ -2,10 +2,10 @@ import { useLocale } from "@/locales";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import ButtonGroup from "@/components/ButtonGroup";
-import { AdminLogin } from "@/components/Admin/AdminLogin";
-import { ExhibitorPanel } from "@/components/Admin/ExhibitorPanel";
-import { ExtraOrderPanel } from "@/components/Admin/ExtraOrderPanel";
-import { PreferencesPanel } from "@/components/Admin/PreferencesPanel";
+import { AdminLogin } from "@/components/Company/Admin/AdminLogin";
+import { ExhibitorPanel } from "@/components/Company/Admin/ExhibitorPanel";
+import { ExtraOrderPanel } from "@/components/Company/Admin/ExtraOrderPanel";
+import { PreferencesPanel } from "@/components/Company/Admin/PreferencesPanel";
 import { Exhibitor, Preferences } from "@/shared/Classes";
 import { api } from "@/utils/api";
 

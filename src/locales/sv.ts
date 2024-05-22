@@ -50,6 +50,35 @@ export default {
       "I år är första året någonsin som vi kommer erbjuda kontaktsamtal för studenter, vilket innebär att ni får möjlighet att i enrum med företagsrepresentanter diskutera framtida jobbmöjligheter med mera. Anmäl er på länken nedan:",
     companyMeetingsButton: "Kontaktsamtal",
   },
+  students: {
+    info:{
+      header:"Fyll i information om dig!",
+      firstName:"Förnamn",
+      lastName:"Efternamn",
+      year:"Årskurs",
+      email:"Lägg till email",
+      cv: "CV",
+      save: "Spara",
+      saved: "Sparat",
+      error: "Sparande misslyckades, prova igen",
+      addFirstName: "Skriv in ditt förnamn",
+      addLastName: "Skriv in ditt efternamn", 
+      addYear: "Skriv in din årskurs",
+    },
+    interests:{
+      header:"Fyll i dina intressen gällande jobberbjudanden",
+    },
+    companyInterests:{
+      header: "Välj de företag du är intresserad av att träffa",
+    },
+    companyMeeting:{
+      offerText: " har bjudit in dig till ett kontaktsamtal",
+      acceptDeclineText: "Välj en tid och tacka ja till erbjudandet eller tacka nej till erbjudandet", 
+      chooseOption: "Välj tid:", 
+    },
+    offersTitle1: "Du har ",
+    offersTitle2: " st företagsinbjudningar",
+  },
   exhibitorSettings: {
     startHeader: "Dags att sätta upp eran profil",
     startButton: "Starta",
@@ -173,6 +202,20 @@ export default {
       },
       row2: {
         title: "Ert Paket Och Extra Beställningar",
+        packages: {
+          tier0: "Lilla",
+          tier1: "Mellan",
+          tier2: "Stora",
+          tier3: "Huvudsponsor",
+          tier4: "Startup", 
+        },
+        packageList: [
+          "Lilla",
+          "Mellan",
+          "Stora",
+          "Huvudsponsor",
+          "Startup"
+        ],
         section1: {
           header: "Paket",
           info: "För mer info kring de olika paketen",
@@ -250,6 +293,13 @@ export default {
           search: "Sök",
         },
       },
+    },
+    meetings: {
+      title: "Kontaktsamtal",
+      columns: ["","Namn", "År", "CV", "Annat"],
+      checkAll: "Markera alla",
+      unCheckAll: "Avmarkera alla",
+      bookSelected: "Skicka bokningsförfrågan",
     },
   },
   login: {

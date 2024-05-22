@@ -50,6 +50,36 @@ export default {
       "This year is also the first year where we will offer company meetings for students, which means that you will be able to discuss future job opportunities in a private room with representatives from selected companies. Sign up on the link below:",
     companyMeetingsButton: "Company Meetings",
   },
+  students: {
+    info:{
+      header:"Fill in information about yourself!",
+      firstName:"First name",
+      lastName:"Last name",
+      year:"Year",
+      email:"Add email",
+      cv: "Resume",
+      save: "Save",
+      saved: "Saved",
+      failed: "Failed to save, try again",
+      addFirstName: "Enter your first name",
+      addLastName: "Enter your last name", 
+      addYear: "Enter your year",
+    },
+    interests:{
+      header: "Fill in your job offer interests"
+    },
+    companyInterests:{
+      header: "Select the companies you are interested in meeting",
+    },
+    companyMeeting:{
+      offerText: " has invited you to a company meeting",
+      acceptDeclineText: "Choose a time to accept the offer or decline the offer",
+      chooseOption: "Choose a time:", 
+    },
+
+    offersTitle1: "You have ",
+    offersTitle2: " company invitations",
+  },
   exhibitorSettings: {
     startHeader: "Time to set up your profile",
     startButton: "Start",
@@ -173,7 +203,20 @@ export default {
       },
       row2: {
         title: "Your Package And Extra Orders",
-        
+        packages: {
+          tier0: "Small",
+          tier1: "Medium",
+          tier2: "Large",
+          tier3: "Main Sponsor",
+          tier4: "Startup", 
+        },
+        packageList: [
+          "Small",
+          "Medium",
+          "Large",
+          "Main Sponsor",
+          "Startup",
+        ],
         section1: {
           header: "Package",
           info: "For more information about the different packages",
@@ -253,6 +296,13 @@ export default {
         },
       },
 
+    },
+    meetings: {
+      title: "Company Meetings",
+      columns: ["Pending","","Name", "Year", "CV", "Other"],
+      checkAll: "Select all",
+      unCheckAll: "Deselect all", 
+      bookSelected: "Send booking request",
     },
   },
   login: {

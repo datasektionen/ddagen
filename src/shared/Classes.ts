@@ -51,6 +51,7 @@ export class Preferences {
 
 export class Package {
   name: string;
+  tier: number = -1;
   tables: number;
   chairs: number;
   drinkCoupons: number;
@@ -100,7 +101,7 @@ export class Package {
         this.banquetTickets = 0;
         break;
       default:
-        this.name = "Something went wrong, contact sales";
+        this.name = "Something went wrong with the package, contact sales";
         this.tables = 0;
         this.chairs = 0;
         this.drinkCoupons = 0;
@@ -164,6 +165,7 @@ export class Exhibitor {
   logoColor: string | undefined;
   description: string;
   packageTier: number;
+  studentMeetings: number;
   extraTables: number;
   extraChairs: number;
   extraDrinkCoupons: number;
@@ -185,6 +187,7 @@ export class Exhibitor {
     logoColor: string | undefined,
     description: string,
     packageTier: number,
+    studentMeetings: number,
     extraTables: number,
     extraChairs: number,
     extraDrinkCoupons: number,
@@ -205,6 +208,7 @@ export class Exhibitor {
     this.logoColor = logoColor;
     this.description = description;
     this.packageTier = packageTier;
+    this.studentMeetings = studentMeetings;
     this.extraTables = extraTables;
     this.extraChairs = extraChairs;
     this.extraDrinkCoupons = extraDrinkCoupons;

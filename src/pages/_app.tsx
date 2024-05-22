@@ -21,6 +21,7 @@ const App: AppType = ({ Component, pageProps }) => {
   }
 
   const [hasLoadedBefore, setHasLoadedBefore] = useState(false); // used to determine if the index page has been loaded before
+  
   useEffect(() => {
     setTimeout(() => {
       console.log("hasLoadedBefore: ", hasLoadedBefore);

@@ -129,6 +129,7 @@ export const exhibitorRouter = createTRPCRouter({
         customDrinkCoupons: true,
         customRepresentativeSpots: true,
         customBanquetTicketsWanted: true,
+        
       },
     });
   }),
@@ -483,5 +484,80 @@ export const exhibitorRouter = createTRPCRouter({
         });
         if (!exhibitor) return;
         return exhibitor.infoSubmissionStatus
+    }),
+    getStudentInterests: protectedProcedure
+    .query(async ({ ctx }) => {
+
+        // this is to test create interests
+        // UPDATE students SET company_meeting_interests='["5567037485", "0311062624", "0304295470", "0301120713", "0205174790"]'
+
+        const exhibitor = await ctx.prisma.exhibitor.findUnique({
+          where: {
+            id: ctx.session.exhibitorId,
+          },
+        });
+
+        if (!exhibitor) return;
+
+        const students = await ctx.prisma.students.findMany({
+          where: {
+            company_meeting_interests: {
+              has: exhibitor.organizationNumber
+            },
+          },
+        });
+
+        if (!students) return;
+
+        return students
+    }),
+    createMeeting: protectedProcedure
+    .mutation(async ({ ctx, input }: any) => {
+        const exhibitor = await ctx.prisma.exhibitor.findUnique({
+          where: {
+            id: ctx.session.exhibitorId,
+          },
+        });
+
+        if (!exhibitor) return;
+
+        const student = await ctx.prisma.students.findUnique({
+          where: {
+            ugkthid: input.ugkthid,
+          },
+        });
+
+        if (!student) return;
+
+        const existingMatch = await ctx.prisma.meetings.findFirst({
+          where: {
+            exhibitorId: ctx.session.exhibitorId,
+            studentId: student.ugkthid,
+          },
+        });
+
+        if (existingMatch) {
+          console.log("Match already exists");
+          return;
+        }
+
+        const match = await ctx.prisma.meetings.create({
+          data: {
+            exhibitorId: ctx.session.exhibitorId,
+            studentId: student.ugkthid,
+          },
+        });
+
+        return match
+    }),
+    getMeetings: protectedProcedure
+    .query(async ({ ctx }) => {
+        const meetings = await ctx.prisma.meetings.findMany({
+          where: {
+            exhibitorId: ctx.session.exhibitorId
+          },
+        });
+
+        return meetings
     }),
 });
