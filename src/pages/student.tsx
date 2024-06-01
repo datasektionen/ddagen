@@ -96,7 +96,7 @@ export default function LoggedInPage() {
                 });
 
                 getCompanyWithMeetings.mutateAsync().then((res) => {
-                    const result = res.map((company: Company) => {
+                    const result = res.map((company: any) => {
                         return {
                             id: company.id,
                             name: company.name,
@@ -106,7 +106,7 @@ export default function LoggedInPage() {
                     });
                     setCompaniesWithMetting(result);
 
-                    const newSelectedCompanies = Object.fromEntries(result.map((company: Company) => {
+                    const newSelectedCompanies = Object.fromEntries(result.map((company: any) => {
                         return [company.id, false];
                     }));
                     setSelectedCompanies(newSelectedCompanies);
@@ -116,7 +116,7 @@ export default function LoggedInPage() {
                 getCompanyMeetingInterests.mutateAsync(res_json.ugkthid)
                 .then((res) => {
                     if(!Array.isArray(res)) return;
-                    const newSelectedCompanies = Object.fromEntries(res.map((company: Company) => {
+                    const newSelectedCompanies = Object.fromEntries(res.map((company: any) => {
                         return [company, true];
                     }));
                     setSelectedCompanies({...selectedCompanies, ...newSelectedCompanies});
