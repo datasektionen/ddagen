@@ -134,7 +134,7 @@ export const studentRouter = createTRPCRouter({
 
         console.log("DATA: ", data);
 
-        const result = data.map((company) => {
+        const result = data.map((company: any) => {
             return {
                 id: company.id,
                 name: company.name,

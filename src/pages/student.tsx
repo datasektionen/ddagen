@@ -5,6 +5,7 @@ import { useLocale } from "@/locales";
 import StudentInfo from '@/components/Student/Info';
 import { CheckMark } from '@/components/CheckMark';
 import { addImageDetails } from '@/shared/addImageDetails';
+import { useRouter } from 'next/navigation';
 
 interface Company{
     id: string;
@@ -22,33 +23,34 @@ const set_cookies = (loginToken: string) => {
 };
 
 export default function LoggedInPage() {
-    
+    const router = useRouter();
     const t = useLocale();
     
     const studentVerify = api.student.verify.useMutation();
     const updateInterests = api.student.updateCompanyInterests.useMutation();
     const createStudent = api.student.inputData.useMutation();
     const getData = api.student.getData.useMutation();
-
+    
     const getCompanyWithMeetings = api.student.getCompaniesWithMeetings.useMutation();
     const getCompanyMeetingInterests = api.student.getCompanyMeetingInterests.useMutation();
-
+    
     const [companiesWithMeeting, setCompaniesWithMetting] = useState<Company[]>([]);
     const [selectedCompanies, setSelectedCompanies] = useState<SelectedCompanies>({});
     
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+    
     const [ugkthid, setugkthid] = useState<string>("");
-
-
+    
+    
     useEffect(()=>{
         // log in the user if not logged in
         if (!isLoggedIn && !document.cookie.includes("login_token")){
             window.location.href = `https://login.datasektionen.se/login?callback=${window.location.href.replace(/^(https?:\/\/[^\/]+).*/, '$1')}/student?login_token=`
         }
     }, [isLoggedIn])
-
+    
     useEffect(() => {
+        router.push("/förstudenter"); // remove when page should be available
         const params: URLSearchParams = new URL(window.location.href).searchParams;
 
         let loginToken: string = params.get('login_token') || "";
@@ -94,7 +96,7 @@ export default function LoggedInPage() {
                 });
 
                 getCompanyWithMeetings.mutateAsync().then((res) => {
-                    const result = res.map((company) => {
+                    const result = res.map((company: Company) => {
                         return {
                             id: company.id,
                             name: company.name,
@@ -104,7 +106,7 @@ export default function LoggedInPage() {
                     });
                     setCompaniesWithMetting(result);
 
-                    const newSelectedCompanies = Object.fromEntries(result.map((company) => {
+                    const newSelectedCompanies = Object.fromEntries(result.map((company: Company) => {
                         return [company.id, false];
                     }));
                     setSelectedCompanies(newSelectedCompanies);
@@ -114,7 +116,7 @@ export default function LoggedInPage() {
                 getCompanyMeetingInterests.mutateAsync(res_json.ugkthid)
                 .then((res) => {
                     if(!Array.isArray(res)) return;
-                    const newSelectedCompanies = Object.fromEntries(res.map((company) => {
+                    const newSelectedCompanies = Object.fromEntries(res.map((company: Company) => {
                         return [company, true];
                     }));
                     setSelectedCompanies({...selectedCompanies, ...newSelectedCompanies});
@@ -211,8 +213,8 @@ export default function LoggedInPage() {
             }            
         </div>*/
         ) : (
-        <p className="h-screen flex items-center justify-center text-red-500">
-            You are not logged in! :)
+        <p className="h-screen flex items-center justify-center">
+            You are not logged in!
         </p>
     )
 }

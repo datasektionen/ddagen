@@ -69,21 +69,15 @@ export default function ForStudents() {
                   {t.forStudents.companyMeetings}
                 </h2>
                 <p className="pb-8 text-[#110C30] md:text-md text-xl font-light">
-                  {t.forStudents.companyMeetingsText}
+                  {t.forStudents.tempCompanyMeetingsText}
                 </p>
-                <Link
-                  className="block uppercase text-sm hover:scale-105 transition-transform bg-white rounded-full text-cerise font-medium px-10 py-2 max-lg:mx-auto w-max"
-                  href="https://kontaktsamtal.ddagen.se/"
-                  target="_blank"
-                >
-                  {t.forStudents.companyMeetingsButton}
+                {/*
+                <Link href="/student" 
+                  className="block uppercase text-sm hover:scale-105 transition-transform bg-white rounded-full text-cerise font-medium px-10 py-2 max-lg:mx-auto w-max cursor-pointer">
+                    { t.forStudents.companyMeetingsButton}
+                 
                 </Link>
-                <p 
-                    className="block uppercase text-sm hover:scale-105 transition-transform bg-white rounded-full text-cerise font-medium px-10 py-2 max-lg:mx-auto w-max cursor-pointer" 
-                    onClick={()=>window.location.href = `/student`}
-                >
-                  Logga in
-                </p>
+                 */}
               </div>
             </div>
           </div>
