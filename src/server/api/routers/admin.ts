@@ -21,8 +21,8 @@ export const adminRouter = createTRPCRouter({
                         exhibitor.logoWhite?.toString("base64"),
                         exhibitor.logoColor?.toString("base64"),
                         exhibitor.description,
-                        exhibitor.package,
                         exhibitor.packageTier,
+                        exhibitor.studentMeetings,
                         exhibitor.extraTables,
                         exhibitor.extraChairs,
                         exhibitor.extraDrinkCoupons,
@@ -33,7 +33,7 @@ export const adminRouter = createTRPCRouter({
                         exhibitor.customChairs,
                         exhibitor.customDrinkCoupons,
                         exhibitor.customRepresentativeSpots,
-                        exhibitor.customBanquetTicketsWanted
+                        exhibitor.customBanquetTicketsWanted,
                     )
             );
         }),

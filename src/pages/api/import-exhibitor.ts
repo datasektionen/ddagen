@@ -11,10 +11,10 @@ export default async function handler(
 ) {
   if (req.method !== "PUT") return res.status(405).end();
 
-  console.log(req.body);
+  console.log("REQ BODY: ", req.body);
 
   const apiKey = req.headers["authorization"];
-  console.log(apiKey);
+  console.log("API_KEY: ", apiKey);
   if (apiKey == undefined) return res.status(400).end();
   if (!(await pls.checkApiKey("write-exhibitors", apiKey))) {
     return res.status(402).end();
@@ -36,15 +36,8 @@ export default async function handler(
       return orgNum.value;
     }),
     email: z.string().trim(),
-    exhibitorPackage: z.enum([
-      "main",
-      "base",
-      "sponsor",
-      "premium",
-      "startup",
-      "headhunter",
-    ]),
     packageTier: z.number(),
+    studentMeetings: z.number(),
     sendEmailToExhibitor: z.boolean(),
     mapPosition: z.number(),
   });
@@ -58,8 +51,8 @@ export default async function handler(
     companyName,
     organizationNumber,
     email,
-    exhibitorPackage,
     packageTier,
+    studentMeetings,
     sendEmailToExhibitor,
     mapPosition,
   } = body.data;
@@ -75,8 +68,8 @@ export default async function handler(
       logoWhite: null,
       logoColor: null,
       description: "",
-      package: exhibitorPackage,
-      packageTier: 0,
+      packageTier: packageTier,
+      studentMeetings: studentMeetings,
       extraTables: 0,
       extraChairs: 0,
       extraDrinkCoupons: 0,
@@ -104,8 +97,8 @@ export default async function handler(
       name: companyName,
       organizationNumber: organizationNumber,
       invoiceEmail: email,
-      package: exhibitorPackage,
       packageTier: packageTier,
+      studentMeetings: studentMeetings,
       mapPosition: mapPosition,
     },
   });

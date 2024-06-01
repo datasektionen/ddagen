@@ -9,6 +9,7 @@ export function InputField<F extends Record<string, string>>({
   prefix = "",
   required = true,
   step,
+  onChange = ()=>{},
 }: {
   fields: F;
   name: string & keyof F;
@@ -20,6 +21,7 @@ export function InputField<F extends Record<string, string>>({
   prefix?: string;
   required?: boolean;
   step?: number;
+  onChange?: () => void;
 }) {
   return (
     <div className={"relative " + className}>

@@ -31,8 +31,8 @@ model Exhibitor {
   logoWhite    Bytes?
   logoColor    Bytes?
   description  String
-  package      Package
   packageTier               Int @default(-1)
+  studentMeetings           Int @default(0)
 
   extraTables               Int @default(0)
   extraChairs               Int @default(0)
@@ -100,15 +100,6 @@ model Session {
   @@map("sessions")
 }
 
-enum Package {
-  main
-  base
-  sponsor
-  premium
-  startup
-  headhunter
-}
-
 model FoodPreferences {
   id      String                 @id @default(uuid())
   name    String
@@ -145,4 +136,41 @@ model JobOffers {
   exhibitor      Exhibitor?
 
   @@map("job_offers")
+}
+
+model Students {
+    id             String     @id @default(uuid())
+    ugkthid        String     @unique // prioritize data students
+    first_name     String
+    last_name      String
+    email          String
+    prefered_email String      //optional
+    study_year     Int
+    summerJob      Boolean
+    partTimeJob    Boolean
+    internship     Boolean
+    masterThesis   Boolean
+    fullTimeJob    Boolean
+    traineeProgram Boolean
+
+    cv             String     // set max size in backend, forced
+
+    linkedin_url   String     //optional
+    github_url     String     //optional
+    other_link     String     //optional
+    personal_story String     //optional, max x characters
+
+    // meeting logic
+    company_meeting_interests String[] //optional
+
+    @@map("students")
+}
+
+model Meetings {
+    id               String     @id @default(uuid())
+    studentId        String
+    exhibitorId      String
+    timeslot         Int
+
+    @@map("meetings")
 }

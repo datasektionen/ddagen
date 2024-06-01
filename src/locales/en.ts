@@ -47,8 +47,40 @@ export default {
       "This year, the fair is held on October 10th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15 and in KTH Entré which is located at Drottning Kristinas väg 4. Students will be able to have meetings with exhibitors through company meetings in order to get more of a connection with that company (limited slots per company).",
     companyMeetings: "Company Meetings",
     companyMeetingsText:
-      "This year is also the first year where we will offer company meetings for students, which means that you will be able to discuss future job opportunities in a private room with representatives from selected companies. Sign up on the link below:",
-    companyMeetingsButton: "Company Meetings",
+      "We offer company meetings for students, which means that you will be able to discuss future job opportunities in a private room with representatives from selected companies. Sign up on the link below:",
+    tempCompanyMeetingsText:
+      "We offer company meetings for students, which means that you will be able to discuss future job opportunities in a private room with representatives from selected companies. Sign up will be available soon!",
+    companyMeetingsButton: "Sign up",
+  },
+  students: {
+    info:{
+      header:"Fill in information about yourself!",
+      firstName:"First name",
+      lastName:"Last name",
+      year:"Year",
+      email:"Add email",
+      cv: "Resume",
+      save: "Save",
+      saved: "Saved",
+      failed: "Failed to save, try again",
+      addFirstName: "Enter your first name",
+      addLastName: "Enter your last name", 
+      addYear: "Enter your year",
+    },
+    interests:{
+      header: "Fill in your job offer interests"
+    },
+    companyInterests:{
+      header: "Select the companies you are interested in meeting",
+    },
+    companyMeeting:{
+      offerText: " has invited you to a company meeting",
+      acceptDeclineText: "Choose a time to accept the offer or decline the offer",
+      chooseOption: "Choose a time:", 
+    },
+
+    offersTitle1: "You have ",
+    offersTitle2: " company invitations",
   },
   exhibitorSettings: {
     startHeader: "Time to set up your profile",
@@ -58,7 +90,10 @@ export default {
     nextPage: "Next",
     lastPage: "Done",
     lastPageText: "You will be able to edit your information later on",
+    lastPageWarning: "By pressing Done I comfirm that I have read through all the input fields and have provided the correct information!",
 
+
+      
     start: {
       about: "ABOUT THE COMPANY",
       info: "We are interested in getting to know you better. Please fill in the following information in order for us at D-Dagen to help you find your future coworkers!",
@@ -152,7 +187,7 @@ export default {
         },
         section3: {
           header: "Contacts",
-          info: "Add members from company who should be able to edit this company profile",
+          info: "Add company contacts, contacts are able to view and edit this page",
           save: "Save",
           add: "Add",
           delete: "Delete",
@@ -175,10 +210,15 @@ export default {
           tier1: "Medium",
           tier2: "Large",
           tier3: "Main Sponsor",
-          tier4: "Startup",
-
-          
+          tier4: "Startup", 
         },
+        packageList: [
+          "Small",
+          "Medium",
+          "Large",
+          "Main Sponsor",
+          "Startup",
+        ],
         section1: {
           header: "Package",
           info: "For more information about the different packages",
@@ -209,20 +249,21 @@ export default {
       row3: {
         title: "Food Preferences",
         warning: "Last date for ordering ",
+        usagenotice: "Only specify for those who have special dietary requirements",
         section1: {
           header: "During the Fair",
           paragraphOne:
             "These food preferences are used for breakfast and lunch during the fair.",
-          paragraphTwo: "You change the number in extra orders",
+          paragraphTwo: "You change the number in extra orders.",
         },
         section2: {
           header: "Dinner Party",
           paragraphOne:
             "These food preferences are used for the seating after the fair.",
           paragraphTwo: "You change the number in extra orders",
+          paragraphThree: "If nothing specific is chosen for a member the default preference will be served",
         },
         preferencesHeader: "Preferences (vegetarian is default)",
-        prefrenceSubHeader: "Leave empty if no special dietary requirements",
         options: {
           vegetarian: "Vegan",
           lactoseFree: "Lactose-Free",
@@ -237,6 +278,33 @@ export default {
             `You've reached the maximum amount (${max}) of preferences allotted to you`,
         },
       },
+      row4: {
+        title: "Student Meetings",
+        psa: "This functionality will open on the {date}",
+        save: "Save",
+        info: "Choose which students you want to meet during the fair",
+        section1: {
+          title: "How it works",
+          info1: "Student choose companies they want to meet",
+          info2: "You will then be able to select which of these students you want to meet",
+          info3: "The students will then be able to choose a time slot to meet you, during the fair",
+          info4: "You will be able to select more students than the amout of avaiable timeslots and the first students to accept will then get the timeslots",
+          
+        },
+        section2: {
+          selectAll: "Select all",
+          deselectAll: "Deselect all",
+          search: "Search",
+        },
+      },
+
+    },
+    meetings: {
+      title: "Company Meetings",
+      columns: ["Pending","","Name", "Year", "CV", "Other"],
+      checkAll: "Select all",
+      unCheckAll: "Deselect all", 
+      bookSelected: "Send booking request",
     },
   },
   login: {
@@ -406,13 +474,13 @@ export default {
     companyForm: "https://ddagen.se/en/företagsanmälan",
   },
   packages: {
-    name: {
-      base: "Base Package",
-      sponsor: "Sponsor Package",
-      headhunter: "Headhunter Package",
-      premium: "Premium Package",
-      main: "Main sponsor",
-    },
+    name: [ 
+     "Small",
+     "Medium",
+     "Large",
+     "Main Sponsor",
+     "Startup",
+    ],
     boothSpace: "booth space",
   },
   error: {

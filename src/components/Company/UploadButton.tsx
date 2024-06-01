@@ -1,4 +1,5 @@
 import Locale from "@/locales";
+import { on } from "events";
 import type { ChangeEvent, Dispatch } from "react";
 
 export function UploadButton({
@@ -9,6 +10,7 @@ export function UploadButton({
   textInsideMiddle,
   textInsideBottom,
   accept,
+  onChange,
 }: {
   t: Locale;
   selectedImage: string;
@@ -17,6 +19,7 @@ export function UploadButton({
   textInsideMiddle: string;
   textInsideBottom: string;
   accept: string[];
+  onChange?: () => void;
 }) {
   function toBase64(file: Blob) {
     return new Promise((resolve, reject) => {
@@ -73,7 +76,7 @@ export function UploadButton({
             <img className="mx-auto" src={selectedImage} />
           )}
         </h2>
-        <h2 className="relative top-[70%] -translate-y-2/4 text-center text-[10px] text-slate-400">
+        <h2 className="relative  text-center text-[10px] text-slate-400">
           {selectedImage == "" ? (
             textInsideBottom
           ) : ""}
@@ -91,6 +94,7 @@ export function UploadButton({
               accept={accept.join(",")}
               onChange={onImageChange}
               className="invisible"
+              
             />
           </label>
         </div>

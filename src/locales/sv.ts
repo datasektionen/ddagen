@@ -47,8 +47,39 @@ export default {
       "I år hålls mässan 10 oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15 på KTH Campus Valhallavägen. Studenter kommer erbjudas möjligheten att gå på kontaktsamtal med företag för att knyta närmare kontakt med specifika företag (begränsade platser per företag).",
     companyMeetings: "Kontaktsamtal",
     companyMeetingsText:
-      "I år är första året någonsin som vi kommer erbjuda kontaktsamtal för studenter, vilket innebär att ni får möjlighet att i enrum med företagsrepresentanter diskutera framtida jobbmöjligheter med mera. Anmäl er på länken nedan:",
-    companyMeetingsButton: "Kontaktsamtal",
+      "Vi erbjuder kontaktsamtal för studenter, vilket innebär att ni får möjlighet att i enrum med företagsrepresentanter diskutera framtida jobbmöjligheter med mera. Anmäl er på länken nedan:",
+    tempCompanyMeetingsText:
+      "Vi erbjuder kontaktsamtal för studenter, vilket innebär att ni får möjlighet att i enrum med företagsrepresentanter diskutera framtida jobbmöjligheter med mera. Anmälan kommer tillgängliggöras senare!",
+      companyMeetingsButton: "Anmäl dig här",
+  },
+  students: {
+    info:{
+      header:"Fyll i information om dig!",
+      firstName:"Förnamn",
+      lastName:"Efternamn",
+      year:"Årskurs",
+      email:"Lägg till email",
+      cv: "CV",
+      save: "Spara",
+      saved: "Sparat",
+      error: "Sparande misslyckades, prova igen",
+      addFirstName: "Skriv in ditt förnamn",
+      addLastName: "Skriv in ditt efternamn", 
+      addYear: "Skriv in din årskurs",
+    },
+    interests:{
+      header:"Fyll i dina intressen gällande jobberbjudanden",
+    },
+    companyInterests:{
+      header: "Välj de företag du är intresserad av att träffa",
+    },
+    companyMeeting:{
+      offerText: " har bjudit in dig till ett kontaktsamtal",
+      acceptDeclineText: "Välj en tid och tacka ja till erbjudandet eller tacka nej till erbjudandet", 
+      chooseOption: "Välj tid:", 
+    },
+    offersTitle1: "Du har ",
+    offersTitle2: " st företagsinbjudningar",
   },
   exhibitorSettings: {
     startHeader: "Dags att sätta upp eran profil",
@@ -58,6 +89,9 @@ export default {
     nextPage:"Nästa",
     lastPage:"Klar",
     lastPageText: "Du har möjlighet att redigera informationen efteråt",
+    lastPageWarning: "Genom att klicka Klar erkänner du att du har läst ingeom alla inputrutor och att informationen du har fyllt i är korrekt!",
+
+
 
     start: {
       about: "OM FÖRETAGET",
@@ -152,7 +186,7 @@ export default {
         },
         section3: {
           header: "Kontaktpersoner",
-          info: "Lägg till vilka som ska delta på mässan ",
+          info: "Lägg till kontaktpersoner, kontaktpersoner kan se och redigera företagsprofilen",
           save: "Spara",
           add: "Lägg Till",
           delete: "Radera",
@@ -175,10 +209,15 @@ export default {
           tier1: "Mellan",
           tier2: "Stora",
           tier3: "Huvudsponsor",
-          tier4: "Startup",
-
-       
+          tier4: "Startup", 
         },
+        packageList: [
+          "Lilla",
+          "Mellan",
+          "Stora",
+          "Huvudsponsor",
+          "Startup"
+        ],
         section1: {
           header: "Paket",
           info: "För mer info kring de olika paketen",
@@ -199,7 +238,7 @@ export default {
           warning: "Sista datum för beställning ",
           disabledButtonMessages: {
             representatives:
-              "Ta bort matpreferenser för representanter för att minska antalet",
+            "Ta bort matpreferenser för representanter för att minska antalet",
             banquet:
               "Ta bort matpreferenser för sittningen för att minska antalet",
           },
@@ -209,6 +248,7 @@ export default {
       row3: {
         title: "Matpreferenser",
         warning: "Sista datum för att lägga till matpreferenser ",
+        usagenotice: "Välj bara preferenser för de som har specialkost, övriga får standardmaten",
         section1: {
           header: "Under Mässan",
           paragraphOne:
@@ -219,10 +259,10 @@ export default {
           header: "Sittning",
           paragraphOne:
             "Dessa matpreferenser används för sittningen efter mässan.",
-          paragraphTwo: "Ni ändrar antalet i extra beställningar",
+            paragraphTwo: "Ni ändrar antalet i extra beställningar",
+            paragraphThree: "Om inget specifikt anges för en medlem serveras standardmaten",
         },
         preferencesHeader: "Preferenser (vegetariskt är standard)",
-        prefrenceSubHeader: "Lämna tom om ingen specialkost",
         options: {
           vegetarian: "Vegansk",
           lactoseFree: "Laktosfri",
@@ -237,6 +277,31 @@ export default {
             `Du har nått det maximala antalet (${max}) preferenser som du har tilldelats`,
         },
       },
+      row4: {
+        title: "Kontaktsamtal",
+        psa: "Denna funktion kommer bli tillgänglig den {date}",
+        save: "Spara",
+        info: "Välj vilka studenter ni önskar boka kontaktsamtal med",
+        section1: {
+          title: "Hur fungerar det?",
+          info1: "Studenter väljer vilka företag de är intresserade av att boka kontaktsamtal med.",
+          info2: "Ni väljer sedan vilka av dessa studenter ni vill boka samtal med.",
+          info3: "Studenter som ni valt ut kommer sedan få välja en mötes tid under mässan.",
+          info4: "Ni kan välja fler studenter än vad det finns tillgänliga tidsslotter, så kommer de studenter som accpeterar snabbast få tiderna.",
+        },
+        section2: {
+          selectAll: "Markera alla",
+          deselectAll: "Avmarkera alla",
+          search: "Sök",
+        },
+      },
+    },
+    meetings: {
+      title: "Kontaktsamtal",
+      columns: ["","Namn", "År", "CV", "Annat"],
+      checkAll: "Markera alla",
+      unCheckAll: "Avmarkera alla",
+      bookSelected: "Skicka bokningsförfrågan",
     },
   },
   login: {
@@ -407,14 +472,15 @@ export default {
     forCompany: "https://ddagen.se/förföretag",
     companyForm: "https://ddagen.se/företagsanmälan",
   },
+
   packages: {
-    name: {
-      base: "Baspaketet",
-      sponsor: "Sponsorpaketet",
-      headhunter: "Headhunterpaketet",
-      premium: "Premiumpaketet",
-      main: "Huvudsponsor",
-    },
+    name: [
+      "Lilla",
+      "Mellan",
+      "Stora",
+      "Huvudsponsor",
+      "Startup",
+      ],
     boothSpace: "monteryta",
   },
   error: {

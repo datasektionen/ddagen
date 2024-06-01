@@ -3,14 +3,15 @@ import { useLocale } from "@/locales";
 import { useRouter } from "next/router";
 import { Table } from "@/components/Table";
 import { Extras, Package } from "@/shared/Classes";
-import { useEffect, useState } from "react";
-import ExtraFairOrders from "@/components/Settings/ExtraFairOrders";
-import FoodPreferences from "@/components/Settings/FoodPreferences";
-import GeneralInfo from "@/components/Settings/GeneralInfo";
-import JobOffers from "@/components/Settings/JobOffers";
-import { UserDetails } from "@/components/Settings/UserDetails";
+import { use, useEffect, useState } from "react";
+import ExtraFairOrders from "@/components/Company/ExtraOrders/ExtraFairOrders";
+import FoodPreferences from "@/components/Company/Preferences/FoodPreferences";
+import GeneralInfo from "@/components/Company/General/GeneralInfo";
+import JobOffers from "@/components/Company/General/JobOffers";
+import { UserDetails } from "@/components/Company/User/UserDetails";
 import { CheckMark } from "@/components/CheckMark";
 import { addImageDetails } from "@/shared/addImageDetails";
+import CompanyMeetingBooker from "@/components/Company/ExtraOrders/CompanyMeetingBooker";
 
 // TODO hook the next button to the save features
 // Maby break save changes into a separate steps for each page
@@ -39,11 +40,12 @@ export default function Exhibitor() {
 
 
   // Mutations
-  const setExtrasMutation = api.exhibitor.setExtras.useMutation();
+  const setExtrasMutation: ReturnType<typeof api.exhibitor.setExtras.useMutation> = api.exhibitor.setExtras.useMutation();
   const logoMutation = api.exhibitor.setLogo.useMutation();
   const descriptionMutation = api.exhibitor.setDescription.useMutation();
   const jobOffersMutation = api.exhibitor.setJobOffers.useMutation();
   const setInfoStatus = api.exhibitor.setInfoStatus.useMutation();
+  const createMeeting = api.meeting.createMeeting.useMutation();
 
 
   // Queries
@@ -53,12 +55,15 @@ export default function Exhibitor() {
   const getExtras = api.exhibitor.getExtras.useQuery();
   const getExhibitor = api.exhibitor.getPackage.useQuery();
   const getPreferenceCounts = api.exhibitor.getPreferenceCount.useQuery();
+  const getAll = api.exhibitor.get.useQuery();
   const getIsLoggedIn = api.account.isLoggedIn.useQuery(undefined, {
     onSuccess: (data) => {
       setIsLoggedIn(data);
     },
   });
   const getInfoStatus = api.exhibitor.getInfoStatus.useQuery();
+  //const getStudentInterests = api.exhibitor.getStudentInterests.useQuery();
+
 
   // Manage login
   useEffect(() => {
@@ -94,6 +99,24 @@ export default function Exhibitor() {
             return
     }
   }
+
+  useEffect(() => {
+    if (!getAll.isSuccess) return;
+    //if (!getStudentInterests.data) return;
+
+
+    //console.log(getStudentInterests.data[0].ugkthid);
+    //console.log(getAll.data.organizationNumber);
+
+    // Call this code below to create new meetings
+
+    // createMeeting.mutateAsync(JSON.stringify({
+    //   studentId: getStudentInterests.data[0].ugkthid,
+    //   exhibitorId: getAll.data.organizationNumber,
+    // }));
+
+
+  }, [getAll.data]);
 
   // Manage page swapping
   const pageAmout = 6;
@@ -162,7 +185,9 @@ export default function Exhibitor() {
   useEffect(() => {
     if (!getExhibitor.isSuccess) return;
     const exhibitor = getExhibitor.data;
+    console.log(getExhibitor.data);
     const exhibitorPackage = new Package(t, exhibitor.packageTier);
+    console.log(exhibitor.packageTier, exhibitorPackage.tier);
     exhibitorPackage.addCustomOrders(
       exhibitor.customTables,
       exhibitor.customChairs,
@@ -420,6 +445,25 @@ export default function Exhibitor() {
     
   ]
 
+  {/*Page Content */}
+  const meetings = Table(
+    [
+      t.exhibitorSettings.table.row4.section1.title,
+    ],
+    [],
+    [
+      <>
+        <ul>
+          <li> <span className="text-yellow font-bold w-4 mr-2">1: </span> {t.exhibitorSettings.table.row4.section1.info1}</li>
+          <li> <span className="text-yellow font-bold w-4 mr-2">2: </span> {t.exhibitorSettings.table.row4.section1.info2}</li>
+          <li> <span className="text-yellow font-bold w-4 mr-2">3: </span> {t.exhibitorSettings.table.row4.section1.info3}</li>
+          <li> <br></br></li>
+          <li> {t.exhibitorSettings.table.row4.section1.info4}</li>
+        </ul> 
+      </>,
+    ]
+  );
+
   return(
     <>
     <div className="xl:w-[1200px] lg:w-[1000px] w-full">
@@ -467,9 +511,22 @@ export default function Exhibitor() {
             </div>
           </div>
           :  
-          <></>}
+          <>{table}</>}
+     
+          {/* Packages that have the student meeting functionality
+          { [0,1,2,3].includes(exhibitorPackage.tier)  ? 
+          <>
+            <h2 className="text-cerise text-2xl md:text-4xl font-medium text-center pt-12">{t.exhibitorSettings.table.row4.title} </h2>
+            {meetings}
+
+            <CompanyMeetingBooker/>
+
+          </> 
           
-          {table}
+          
+          : <></> }
+          */}
+          
         </div>
       </div>
     </>

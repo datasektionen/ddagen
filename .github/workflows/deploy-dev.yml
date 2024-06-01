@@ -25,4 +25,4 @@ jobs:
         remote-branch: 'master'
         git-push-flags: '--force'
         dokku-host: 'medusa.datasektionen.se'
-        app-name: 'dev.ddagen'
+        app-name: 'dev-ddagen'

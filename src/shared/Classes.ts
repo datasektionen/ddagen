@@ -1,5 +1,6 @@
 import Locale from "@/locales";
 
+
 export class User {
   id?: string;
   email: string;
@@ -50,6 +51,7 @@ export class Preferences {
 
 export class Package {
   name: string;
+  tier: number = -1;
   tables: number;
   chairs: number;
   drinkCoupons: number;
@@ -59,7 +61,7 @@ export class Package {
   constructor(t: Locale, exhibitorPackageTier: number) {
     switch ( exhibitorPackageTier ) {
       case 0:
-        this.name = t.exhibitorSettings.table.row2.packages.tier0;
+        this.name = t.packages.name[0];
         this.tables = 1;
         this.chairs = 0;
         this.drinkCoupons = 8;
@@ -67,7 +69,7 @@ export class Package {
         this.banquetTickets = 2;
         break;
       case 1:
-        this.name = t.exhibitorSettings.table.row2.packages.tier1;
+        this.name = t.packages.name[1];
         this.tables = 1;
         this.chairs = 0;
         this.drinkCoupons = 8;
@@ -75,7 +77,7 @@ export class Package {
         this.banquetTickets = 2;
         break;
       case 2:
-        this.name = t.exhibitorSettings.table.row2.packages.tier2;
+        this.name = t.packages.name[2];
         this.tables = 1;
         this.chairs = 0;
         this.drinkCoupons = 16;
@@ -83,7 +85,7 @@ export class Package {
         this.banquetTickets = 4;
         break;
       case 3:
-        this.name = t.exhibitorSettings.table.row2.packages.tier3;
+        this.name = t.packages.name[3];
         this.tables = 1;
         this.chairs = 0;
         this.drinkCoupons = 16; 
@@ -91,7 +93,7 @@ export class Package {
         this.banquetTickets = 2;
         break;
       case 4:
-        this.name = t.exhibitorSettings.table.row2.packages.tier4;
+        this.name = t.packages.name[4];
         this.tables = 1;
         this.chairs = 0;
         this.drinkCoupons = 0;
@@ -99,7 +101,7 @@ export class Package {
         this.banquetTickets = 0;
         break;
       default:
-        this.name = "";
+        this.name = "Something went wrong with the package, contact sales";
         this.tables = 0;
         this.chairs = 0;
         this.drinkCoupons = 0;
@@ -162,8 +164,8 @@ export class Exhibitor {
   logoWhite: string | undefined;
   logoColor: string | undefined;
   description: string;
-  package: string;
   packageTier: number;
+  studentMeetings: number;
   extraTables: number;
   extraChairs: number;
   extraDrinkCoupons: number;
@@ -184,8 +186,8 @@ export class Exhibitor {
     logoWhite: string | undefined,
     logoColor: string | undefined,
     description: string,
-    exhibitorPackage: string,
     packageTier: number,
+    studentMeetings: number,
     extraTables: number,
     extraChairs: number,
     extraDrinkCoupons: number,
@@ -205,8 +207,8 @@ export class Exhibitor {
     this.logoWhite = logoWhite;
     this.logoColor = logoColor;
     this.description = description;
-    this.package = exhibitorPackage;
     this.packageTier = packageTier;
+    this.studentMeetings = studentMeetings;
     this.extraTables = extraTables;
     this.extraChairs = extraChairs;
     this.extraDrinkCoupons = extraDrinkCoupons;
@@ -226,7 +228,6 @@ export type MapProp = {
   logoWhite?: string | null;
   logoColor?: string | null;
   description: string;
-  package: "main" | "headhunter" | "sponsor" | "premium" | "base" | "startup";
   packageTier: number;
   jobOfferId: string;
   offers: {
@@ -241,17 +242,8 @@ export type MapProp = {
 };
 
 export function sortExhibitors(exhibitors: Exhibitor[]) {
-  const sortList = [
-    "main",
-    "headhunter",
-    "sponsor",
-    "premium",
-    "base",
-    "startup",
-  ];
-  return exhibitors.sort((a, b) => {
-    return sortList.indexOf(a.package) - sortList.indexOf(b.package);
-  });
+  // this is old sorting function from when exhibitors where enums, perhaps removable 
+  return exhibitors;
 }
 
 export function sortPreferences(preferences: Preferences[]) {

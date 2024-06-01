@@ -308,7 +308,7 @@ export default function Navbar() {
                 { href: "/katalog", text: t.catalog },
                 //{ href: "/event", text: "event" },
                 { href: "/faq", text: "faq" },
-                /*...(isLoggedIn.data == true
+                ...(isLoggedIn.data == true
                   ? [{ href: "/utställare", text: t.exhibitorSettings }]
                   : []),
                 ...(isLoggedIn.data == true
@@ -319,7 +319,7 @@ export default function Navbar() {
                         onClick: () => logout.mutate(),
                       },
                     ]
-                  : [{ href: "/logga-in", text: t.login }]),*/
+                  : [{ href: "/logga-in", text: t.login }]),
               ]}
             />
             <Group
