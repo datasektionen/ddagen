@@ -513,7 +513,7 @@ export default function Exhibitor() {
           :  
           <>{table}</>}
      
-          {/* Packages that have the student meeting functionality*/}
+          {/* Packages that have the student meeting functionality
           { [0,1,2,3].includes(exhibitorPackage.tier)  ? 
           <>
             <h2 className="text-cerise text-2xl md:text-4xl font-medium text-center pt-12">{t.exhibitorSettings.table.row4.title} </h2>
@@ -525,6 +525,7 @@ export default function Exhibitor() {
           
           
           : <></> }
+          */}
           
         </div>
       </div>
