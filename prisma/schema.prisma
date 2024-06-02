@@ -171,6 +171,7 @@ model Meetings {
     studentId        String
     exhibitorId      String
     timeslot         Int
+    createdAt        DateTime   @default(now())
 
     @@map("meetings")
 }

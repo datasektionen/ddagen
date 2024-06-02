@@ -297,9 +297,17 @@ export default {
     meetings: {
       title: "Kontaktsamtal",
       columns: ["","Namn", "År", "CV", "Annat"],
+      columns2: ["Namn", "År", "CV", "Annat"],
+      columns3: ["Tid","Namn", "År", "CV", "Annat"],
       checkAll: "Markera alla",
       unCheckAll: "Avmarkera alla",
-      bookSelected: "Skicka bokningsförfrågan",
+      bookSelected: "Skicka mötesförfrågan",
+      caution: "Student möten är inte tillgänliga för mobiler",
+      pages: {
+        interested: "Intresserade studenter",
+        pending: "Utgående mötesförfrågningar",
+        accepted: "Accepterade mötesförfrågningar",
+      }
     },
   },
   login: {

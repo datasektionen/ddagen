@@ -94,7 +94,7 @@ export default function LoggedInPage() {
                 });
 
                 getCompanyWithMeetings.mutateAsync().then((res) => {
-                    const result = res.map((company) => {
+                    const result = res.map((company: any) => {
                         return {
                             id: company.id,
                             name: company.name,
@@ -104,7 +104,7 @@ export default function LoggedInPage() {
                     });
                     setCompaniesWithMetting(result);
 
-                    const newSelectedCompanies = Object.fromEntries(result.map((company) => {
+                    const newSelectedCompanies = Object.fromEntries(result.map((company: any) => {
                         return [company.id, false];
                     }));
                     setSelectedCompanies(newSelectedCompanies);
@@ -198,18 +198,8 @@ export default function LoggedInPage() {
     }
 
 
-    return isLoggedIn? ( <StudentView/>
-        /**<div className="h-screen flex flex-col justify-center items-center">
-            <p className="text-green-500">
-                You are logged in! :)
-            </p>
-            { 
-                studentAccoundExists? 
-                <p className="text-white" >your account exists!</p>
-                :
-                <p className="text-white" >Create your account</p>
-            }            
-        </div>*/
+    return isLoggedIn? ( 
+            <StudentView/> 
         ) : (
         <p className="h-screen flex items-center justify-center text-red-500">
             You are not logged in! :)

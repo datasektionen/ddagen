@@ -10,6 +10,7 @@ import { TRPCError } from "@trpc/server";
 import { Prisma } from "@prisma/client";
 import sendEmail from "@/utils/send-email";
 import { randomUUID } from "crypto";
+import { time } from "console";
 
 const foodPreferencesType = z.enum(["Representative", "Banquet"]);
 const foodPreferencesValue = z.enum([
@@ -129,7 +130,7 @@ export const exhibitorRouter = createTRPCRouter({
         customDrinkCoupons: true,
         customRepresentativeSpots: true,
         customBanquetTicketsWanted: true,
-        
+        studentMeetings: true, 
       },
     });
   }),
@@ -487,10 +488,6 @@ export const exhibitorRouter = createTRPCRouter({
     }),
     getStudentInterests: protectedProcedure
     .query(async ({ ctx }) => {
-
-        // this is to test create interests
-        // UPDATE students SET company_meeting_interests='["5567037485", "0311062624", "0304295470", "0301120713", "0205174790"]'
-
         const exhibitor = await ctx.prisma.exhibitor.findUnique({
           where: {
             id: ctx.session.exhibitorId,
@@ -498,21 +495,61 @@ export const exhibitorRouter = createTRPCRouter({
         });
 
         if (!exhibitor) return;
+        
+        const alreadyBookedMeetings = await ctx.prisma.meetings.findMany({
+          where: {
+            exhibitorId: ctx.session.exhibitorId,
+          },
+        });
 
         const students = await ctx.prisma.students.findMany({
           where: {
             company_meeting_interests: {
-              has: exhibitor.organizationNumber
+              has: exhibitor.id,
             },
           },
         });
 
-        if (!students) return;
+        
 
-        return students
+        if (!students) return;
+        
+        const studentData = JSON.parse(JSON.stringify(students));
+
+        const output = studentData
+        .filter((student: any) => student.cv !== null) // remove all without cv
+        .filter((student: any) => { // remove all that already have a meeting
+          console.log("meetings", alreadyBookedMeetings);
+
+          var hasMeeting = false;
+          alreadyBookedMeetings.forEach((meeting: any) => {
+            if(meeting.studentId === student.id) {
+              console.log("Student already has a meeting");
+              hasMeeting = true;
+            }
+          })
+
+          return !hasMeeting;
+        }).map((student: any) => { //format the output
+          return {
+            ugkthid: student.ugkthid,
+            name: student.first_name + " " + student.last_name,
+            year: student.study_year,
+            cv: student.cv
+          }
+        });
+  
+
+        return output;
     }),
     createMeeting: protectedProcedure
+    .input(z.object({
+      ugkthid: z.string().trim(),
+    }))
     .mutation(async ({ ctx, input }: any) => {
+
+
+
         const exhibitor = await ctx.prisma.exhibitor.findUnique({
           where: {
             id: ctx.session.exhibitorId,
@@ -532,7 +569,7 @@ export const exhibitorRouter = createTRPCRouter({
         const existingMatch = await ctx.prisma.meetings.findFirst({
           where: {
             exhibitorId: ctx.session.exhibitorId,
-            studentId: student.ugkthid,
+            studentId: student.id,
           },
         });
 
@@ -544,7 +581,9 @@ export const exhibitorRouter = createTRPCRouter({
         const match = await ctx.prisma.meetings.create({
           data: {
             exhibitorId: ctx.session.exhibitorId,
-            studentId: student.ugkthid,
+            studentId: student.id,
+            timeslot: -1,
+            createdAt: new Date(),
           },
         });
 
@@ -559,5 +598,90 @@ export const exhibitorRouter = createTRPCRouter({
         });
 
         return meetings
+    }),
+    getPendingMeetings: protectedProcedure
+    .query(async ({ ctx }) => {
+        const exhibitor = await ctx.prisma.exhibitor.findUnique({
+          where: {
+            id: ctx.session.exhibitorId,
+          },
+        });
+
+        if (!exhibitor) return;
+
+        const studentMeetings = await ctx.prisma.meetings.findMany({
+          where: {
+            exhibitorId: ctx.session.exhibitorId,
+            timeslot: -1,
+          },
+        });
+
+        if (!studentMeetings) return;
+
+        const studentIds = studentMeetings.map((student) => student.studentId);
+
+        const students = await ctx.prisma.students.findMany({
+          where: {
+            id: {
+              in: studentIds,
+            },
+          },
+        });
+
+        const studentData = JSON.parse(JSON.stringify(students));
+
+        const output = studentData.map((student: any) => {
+          return {
+            ugkthid: student.ugkthid,
+            name: student.first_name + " " + student.last_name,
+            year: student.study_year,
+            cv: student.cv
+          }
+        });
+
+        return output;
+    }),
+    getAcceptedMeetings: protectedProcedure
+    .query(async ({ ctx }) => {
+        const exhibitor = await ctx.prisma.exhibitor.findUnique({
+          where: {
+            id: ctx.session.exhibitorId,
+          },
+        });
+
+        if (!exhibitor) return;
+
+        const studentMeetings = await ctx.prisma.meetings.findMany({
+          where: {
+            exhibitorId: ctx.session.exhibitorId,
+            timeslot: {
+              not: -1,
+            },
+          },
+        });
+
+        if (!studentMeetings) return;
+
+        const studentIds = studentMeetings.map((student) => student.studentId);
+        const students = await ctx.prisma.students.findMany({
+          where: {
+            id: {
+              in: studentIds,
+            },
+          },
+        });
+
+        const studentData = JSON.parse(JSON.stringify(students));
+
+        const output = studentData.map((student: any) => {
+          return {
+            name: student.first_name + " " + student.last_name,
+            year: student.study_year,
+            cv: student.cv,
+            timeslot: student.timeslot,
+          }
+        });
+
+        return output;
     }),
 });
