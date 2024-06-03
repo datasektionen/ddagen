@@ -535,7 +535,8 @@ export const exhibitorRouter = createTRPCRouter({
             ugkthid: student.ugkthid,
             name: student.first_name + " " + student.last_name,
             year: student.study_year,
-            cv: student.cv
+            cv: student.cv,
+            other: [student.summerJob, student.internship, student.partTimeJob, student.masterThesis, student.fullTimeJob, student.traineeProgram]
           }
         });
   

@@ -1,9 +1,8 @@
 import { useLocale } from '@/locales';
 import React, { useState, useEffect, use } from 'react';
 import { CheckMark } from '../../CheckMark';
-import Search from '@/components/Company/SearchStudents';
 import { api } from '@/utils/api';
-import { get } from 'http';
+
 
 interface MeetingData {
     checked?: boolean;
@@ -16,19 +15,66 @@ interface MeetingData {
 
 export default function CompanyMeetingBooker(
 ) {
-    const t = useLocale();
-
-    const getInterestedStudents = api.exhibitor.getStudentInterests.useQuery();
-    const getPendingStudents = api.exhibitor.getPendingMeetings.useQuery();
-    const getAcceptedStudents = api.exhibitor.getAcceptedMeetings.useQuery();
-    
+  const t = useLocale();
+  
+  const getInterestedStudents = api.exhibitor.getStudentInterests.useQuery();
+  const getPendingStudents = api.exhibitor.getPendingMeetings.useQuery();
+  const getAcceptedStudents = api.exhibitor.getAcceptedMeetings.useQuery();
+  
     const createMeeting = api.exhibitor.createMeeting.useMutation();
 
     const [students, setStudents] = useState<MeetingData[]>([]);
     const [tableIndex, setTableIndex] = useState(0);
-
+    
     const [pendingStudents, setPendingStudents] = useState<MeetingData[]>([]);
     const [acceptedStudents, setAcceptedStudents] = useState<MeetingData[]>([]);
+    
+    const years = [0, 1, 2, 3, 4];
+    const offers = [
+      t.exhibitorSettings.table.row1.section2.jobs.summer,
+      t.exhibitorSettings.table.row1.section2.jobs.internship,
+      t.exhibitorSettings.table.row1.section2.jobs.partTime,
+      t.exhibitorSettings.table.row1.section2.other.thesis,
+      t.exhibitorSettings.table.row1.section2.other.fullTime,
+      t.exhibitorSettings.table.row1.section2.other.trainee,
+    ];
+
+    const [searchParams, setSearchParams] = useState({
+      years: [false, false, false, false, false],
+      offers: {
+        summer: false,
+        internship: false,
+        partTime: false,
+        thesis: false,
+        fullTime: false,
+        trainee: false,
+      },
+      offerBoolean: [false, false, false, false, false, false],
+    });
+
+    const amoutOfFiltersActive = () => {
+      return searchParams.years.filter((year) => year).length + Object.values(searchParams.offerBoolean).filter((offer) => offer).length;
+    }
+
+    const filterStudents = (students: MeetingData[]) => {
+     return students.filter((student) => {
+        // student only needs to have atlest one of the selected offers
+          
+
+        // filter based on other compared to offerBoolean
+        const other = student.other;          
+        const offers = Object.keys(searchParams.offers) as (keyof typeof searchParams.offers)[];
+        const offerBoolean = Object.values(searchParams.offers);
+        //iterate over student others 
+        for (let i = 0; i < other.length; i++) {
+          if (offers.includes(other[i] as keyof typeof searchParams.offers) && !offerBoolean[offers.indexOf(other[i] as keyof typeof searchParams.offers)]) {
+            return true;
+          }
+        }
+        return false;
+
+      })
+    }
 
     useEffect(() => {
       if (!getInterestedStudents.data) return;
@@ -42,7 +88,34 @@ export default function CompanyMeetingBooker(
             other: student.other,
           }
         });
-    
+        
+        students.push({
+          checked: false,
+          ugkthid: "u1",
+          name: "A",
+          year: "1",
+          cv: "cv",
+          other: ["summer", "partTime", "fullTime", "trainee"],
+        });
+        students.push({
+          checked: false,
+          ugkthid: "u2",
+          name: "B",
+          year: "2",
+          cv: "cv",
+          other: ["internship", "thesis", "fullTime"],
+        });
+        students.push({
+          checked: false,
+          ugkthid: "u3",
+          name: "C",
+          year: "3",
+          cv: "cv",
+          other: ["summer", "partTime"],
+        });
+
+        students.sort((a: any, b: any) => a.name.localeCompare(b.name));
+
         setStudents(students);
     }, [getInterestedStudents.data]);
 
@@ -120,6 +193,15 @@ export default function CompanyMeetingBooker(
       window.open(blobUrl, '_blank');
     }
 
+    function updateSearchParam(offer: number) {
+      console.log(offer);
+      console.log(searchParams.offers);
+      // gove key the right object type so it matches the offers object
+      const key = Object.keys(searchParams.offers)[offer] as keyof typeof searchParams.offers;
+      const updatedOffers = { ...searchParams.offers, [key]: !searchParams.offers[key] };
+      setSearchParams({ ...searchParams, offers: updatedOffers });
+    }
+
     const TablePages = [
       <>
         <div className="flex flex-row items-center gap-4">
@@ -133,8 +215,30 @@ export default function CompanyMeetingBooker(
               {t.exhibitorSettings.meetings.unCheckAll}
             </a>
           </button>
-          <Search t={t} setQuery={()=>{}} />
-          
+          <button className="mt-2 mb-2">
+            <p className="block hover:scale-105 transition-transform bg-cerise rounded-full uppercase text-white text-base font-medium px-4 py-1 max-lg:mx-auto w-max">
+              {t.map.search.buttonTwo + (amoutOfFiltersActive() > 0 ? ` (${amoutOfFiltersActive()})` : "")}
+            </p>
+          </button>
+        </div>
+        <div className='flex flex-row py-2'>
+        
+          {
+          offers.map((offer, i) => (
+            <div key={i} className="flex flex-row space-x-1 ml-2 justify-between">
+              <div className='text-white'>{offer}</div>
+              <div>
+                <CheckMark
+                  name={`${i + 5}`}
+                  onClick={() => {
+                    setSearchParams({ ...searchParams, offerBoolean: searchParams.offerBoolean.map((val, idx) => idx === i ? !val : val) });
+                  }}
+                  checked={searchParams.offerBoolean[i]}
+                />
+              </div>
+            </div>
+          ))
+          }
         </div>
         <div className='overflow-y-auto h-90 p-8 bg-black/50 rounded-lg'>
           <table className='w-full '>
@@ -146,7 +250,7 @@ export default function CompanyMeetingBooker(
               </tr>
             </thead>
             <tbody className='w-full'>
-              {students.map((data, idx) =>(
+              {filterStudents(students).map((data, idx) =>(
                 <tr key={idx} className="border-b border-white h-12 text-center p-4 text-white sm-text-xs lg-text-lg text-drop-shadow">
                     <td className=""><CheckMark name="" checked={data.checked} onClick={()=>{handleCheck(idx)} } /></td>
                     <td className="px-8">{String(data['name'])}</td>
