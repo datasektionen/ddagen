@@ -302,6 +302,10 @@ export default {
       checkAll: "Markera alla",
       unCheckAll: "Avmarkera alla",
       filter: "Filter",
+      year: "År intervall",
+      selectedStudents: "markerade studenter",
+      pendingMeetings: "väntande mötesförfrågningar",
+      bookedMeetings: "bokade möten",
       bookSelected: "Skicka mötesförfrågan",
       caution: "Student möten är inte tillgänliga för mobiler",
       pages: {
