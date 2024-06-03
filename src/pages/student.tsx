@@ -18,6 +18,13 @@ interface SelectedCompanies{
     [key: string]: boolean;
 }
 
+interface InterestedCompany{
+    id: string;
+    name: string;
+    logo: string;
+    timeOptions: number[];
+}
+
 const set_cookies = (loginToken: string) => {
     document.cookie = `login_token=${loginToken};max-age=86400;`;
 };
@@ -32,8 +39,12 @@ export default function LoggedInPage() {
     const getCompanyWithMeetings = api.student.getCompaniesWithMeetings.useMutation();
     const getCompanyMeetingInterests = api.student.getCompanyMeetingInterests.useMutation();
 
+    const getInterestedCompanies = api.student.getInterestedCompanies.useMutation();
+
     const [companiesWithMeeting, setCompaniesWithMetting] = useState<Company[]>([]);
     const [selectedCompanies, setSelectedCompanies] = useState<SelectedCompanies>({});
+
+    const [interestedCompanies, setInterestedCompanies] = useState<InterestedCompany[]>([]);
     
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -103,6 +114,19 @@ export default function LoggedInPage() {
                     setSelectedCompanies({...selectedCompanies, ...newSelectedCompanies});
                     
                 });
+
+                getInterestedCompanies.mutateAsync(res_json.ugkthid)
+                .then((res) =>{
+                    const result = res.map((company): InterestedCompany =>{
+                        return {
+                            id:company.id,
+                            name:company.name,
+                            logo:"/img/omegapoint_logo.svg", // change to company.logo
+                            timeOptions:[6,7,8],             // update to company.timeOptions
+                        }
+                    });
+                    setInterestedCompanies(result);
+                });
             }
         });
         
@@ -137,18 +161,11 @@ export default function LoggedInPage() {
         </div>
         }
 
-        // Test companies
-        const companies2 = [
-            {name: "Omenga Point", logo: "/img/omegapoint_logo.svg", timeOptions: [6,7,8]},
-            {name: "Ericsson", logo: "/img/omegapoint_logo.svg", timeOptions: [5,7]},
-            {name: "Mpya", logo: "/img/omegapoint_logo.svg", timeOptions: [0,1,2,3]},
-            {name: "Cygni", logo: "/img/omegapoint_logo.svg", timeOptions: [2,4]}
-        ];
-
-
-        function renderOffer(company: { name: string; logo: string; timeOptions: number[]; }){
+        function renderOffer(company: InterestedCompany){
             return <div key={company.name} className="flex justify-center mt-[15px] mb-[15px]">
                 <CompanyMeetingOffer t={t} 
+                                    studentId={ugkthid}
+                                    companyId={company.id}
                                     companyName={company.name}
                                     companyLogo={company.logo} 
                                     timeOptions={company.timeOptions}/>
@@ -168,9 +185,9 @@ export default function LoggedInPage() {
                     }
                     </div>
                     
-                    <h2 className="mt-[100px] text-3xl text-center text-white">{t.students.offersTitle1 + companies2.length + t.students.offersTitle2}</h2>
+                    <h2 className="mt-[100px] text-3xl text-center text-white">{t.students.offersTitle1 + interestedCompanies.length + t.students.offersTitle2}</h2>
                     <div className="grid lg:grid-cols-2 grid-cols-1">
-                        {companies2.map(renderOffer)}
+                        {interestedCompanies.map(renderOffer)}
                     </div>  
                 </div>;
     }

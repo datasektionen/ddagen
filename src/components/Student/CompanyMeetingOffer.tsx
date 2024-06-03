@@ -4,17 +4,21 @@ import { useState } from "react";
 export default function CompanyMeetingOffer(
     {
         t,
+        studentId,
+        companyId,
         companyName,
         companyLogo,
         timeOptions,
     }: {
         t: Locale,
+        studentId: string;
+        companyId: string;
         companyName: string;
         companyLogo: string;
         timeOptions: number[];
     }
 ){
-    const [time, setTime] = useState<string | null>(null);
+    const [time, setTime] = useState<number | null>(null);
 
     const times = ["10:00-10:30", "10:30-11:00", "11:00-11:30", "11:30-12:00", "12:00-12:30", "12:30-13:00",
                    "13:00-13:30", "13:30-14:00", "14:00-14:30", "14:30-15:00", "15:00-15:30", "15:30-16:00"]
@@ -26,7 +30,11 @@ export default function CompanyMeetingOffer(
     function changeTime(evt: React.ChangeEvent<HTMLSelectElement>){
         const selectedIndex = evt.target.options.selectedIndex;
         const id = evt.target.options[selectedIndex].getAttribute('id');
-        setTime(id);
+        setTime(Number(id));
+    }
+
+    function acceptOffer(){
+        console.log("Student ", studentId, " accepted time ", time, " of company ", companyId);
     }
 
     return(
@@ -45,7 +53,7 @@ export default function CompanyMeetingOffer(
             </select>
             <div className="flex justify-between ml-[80px] mr-[80px] mb-2">
                 <img className="h-[50px]"
-                     onClick={()=>{console.log("check " + time)}}
+                     onClick={acceptOffer}
                      src="/img/check.png"/>
                 <img className="h-[50px]"
                      onClick={()=>{console.log("cross")}} 
