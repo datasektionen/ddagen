@@ -3,7 +3,7 @@ import React, { useState, useEffect, use } from 'react';
 import { CheckMark } from '../../CheckMark';
 import Search from '@/components/Company/SearchStudents';
 import { api } from '@/utils/api';
-import { get } from 'http';
+
 
 interface MeetingData {
     checked?: boolean;
@@ -30,6 +30,47 @@ export default function CompanyMeetingBooker(
     const [pendingStudents, setPendingStudents] = useState<MeetingData[]>([]);
     const [acceptedStudents, setAcceptedStudents] = useState<MeetingData[]>([]);
 
+
+    const [query, setQuery] = useState({
+      offers: {
+        summer: false,
+        internship: false,
+        partTime: false,
+        thesis: false,
+        fullTime: false,
+        trainee: false,
+      },
+      keyValues: ['summerJob', 'internship', 'partTimeJob', 'thesis', 'fullTimeJob', 'traineeProgram'],
+      offersBool: [false, false, false, false, false, false],
+    });
+    
+    const [showFilter, setShowFilter] = useState(false);
+
+    const offers = [
+        t.exhibitorSettings.table.row1.section2.jobs.summer,
+        t.exhibitorSettings.table.row1.section2.jobs.internship,
+        t.exhibitorSettings.table.row1.section2.jobs.partTime,
+        t.exhibitorSettings.table.row1.section2.other.thesis,
+        t.exhibitorSettings.table.row1.section2.other.fullTime,
+        t.exhibitorSettings.table.row1.section2.other.trainee,
+    ];
+
+    const countActiveQueries = () => {
+      return query.offersBool.filter((b) => b).length;
+    }
+
+    const filterStudents = (students: MeetingData[]) => {
+      const selectedOffers: string[] = query.offersBool.map((b,i)=>{ return b ? query.keyValues[i] : ''}).filter((b) => b !== '');
+      //console.log(selectedOffers);
+      return students.filter((student) => {
+        //if(selectedOffers.length === 0) return true;
+        const intersection = student.other.filter((offer) => selectedOffers.includes(offer));
+        //console.log("intersection", intersection, student)
+        return intersection.length == countActiveQueries();
+      });
+      
+    }
+
     useEffect(() => {
       if (!getInterestedStudents.data) return;
         const students = getInterestedStudents.data.map((student: any) => {
@@ -41,6 +82,34 @@ export default function CompanyMeetingBooker(
             cv: student.cv,
             other: student.other,
           }
+        });
+
+        // add dummy students
+        students.push({
+          checked: false,
+          ugkthid: 'u1',
+          name: 'John Doe',
+          year: '3',
+          cv: 'cv',
+          other: ['thesis', 'fullTimeJob'],
+        });
+
+        students.push({
+          checked: false,
+          ugkthid: 'u2',
+          name: 'Jane Doe',
+          year: '4',
+          cv: 'cv',
+          other: ['summerJob', 'internship'],
+        });
+
+        students.push({
+          checked: false,
+          ugkthid: 'u3',
+          name: 'Anders Smith',
+          year: '2',
+          cv: 'cv',
+          other: ['partTimeJob', 'traineeProgram', 'thesis'],
         });
     
         setStudents(students);
@@ -129,14 +198,37 @@ export default function CompanyMeetingBooker(
             </a>
           </button>
           <button className="mt-2 mb-2" onClick={uncheckAll}>
-          <a className="block hover:scale-105 transition-transform bg-cerise rounded-full uppercase text-white text- text-base font-medium px-4 py-1 max-lg:mx-auto w-max">
-              {t.exhibitorSettings.meetings.unCheckAll}
-            </a>
+              <a className="block hover:scale-105 transition-transform bg-cerise rounded-full uppercase text-white text- text-base font-medium px-4 py-1 max-lg:mx-auto w-max">
+                {t.exhibitorSettings.meetings.unCheckAll}
+              </a>
           </button>
-          <Search t={t} setQuery={()=>{}} />
-          
+          <button className='mt-2 mb-2' onClick={()=>{ setShowFilter(!showFilter); }}>
+              <a className="hover:scale-105 transition-transform bg-cerise rounded-full uppercase text-white text-base font-medium px-4 py-1 max-lg:mx-auto w-max flex flex-row">
+                {t.exhibitorSettings.meetings.filter + (countActiveQueries() > 0 ? ` (${countActiveQueries()})` : '')}
+                
+                <img src="\img\arrow-down.png"  
+                  className={` w-[12px] h-[8px] text-drop-shadow py-2 mt-[6px] px-4
+                  transition-all duration-500 
+                  ${showFilter ? ' rotate-180' : " rotate-0 "} `}>    
+                </img>
+              </a>
+          </button>
         </div>
-        <div className='overflow-y-auto h-90 p-8 bg-black/50 rounded-lg'>
+
+        <div className={ (showFilter ? 'flex flex-row ' : 'hidden ') + 'py-2 flex-wrap' } >
+          {offers.map((offer, i) => (
+            <div key={i} className='flex flex-row space-x-1 ml-2'>
+              <div className='text-white text-center px-1'>{offer}</div>
+              <div>
+                <CheckMark name={`${i}`} checked={query.offersBool[i]} onClick={()=>{
+                  query.offersBool[i] = !query.offersBool[i];
+                  setQuery({ ...query });
+                }} />
+              </div>
+            </div>
+          ))}
+          </div>
+        <div className='overflow-y-auto h-90 mt-4 p-8 bg-black/50 rounded-lg'>
           <table className='w-full '>
             <thead>
               <tr className="border-b border-white">
@@ -146,7 +238,7 @@ export default function CompanyMeetingBooker(
               </tr>
             </thead>
             <tbody className='w-full'>
-              {students.map((data, idx) =>(
+              {filterStudents(students).map((data, idx) =>(
                 <tr key={idx} className="border-b border-white h-12 text-center p-4 text-white sm-text-xs lg-text-lg text-drop-shadow">
                     <td className=""><CheckMark name="" checked={data.checked} onClick={()=>{handleCheck(idx)} } /></td>
                     <td className="px-8">{String(data['name'])}</td>

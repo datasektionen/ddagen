@@ -303,7 +303,8 @@ export default {
       columns2: ["Name", "Year", "CV", "Other"],
       columns3: ["Time", "Name", "Year", "CV", "Other"],
       checkAll: "Select all",
-      unCheckAll: "Deselect all", 
+      unCheckAll: "Deselect all",
+      filter: "Filter", 
       bookSelected: "Send meeting request",
       caution: "Student meetings are not available on phones",
       pages: {
