@@ -139,14 +139,14 @@ export default function LoggedInPage() {
 
         // Test companies
         const companies2 = [
-            {name: "Omenga Point", logo: "/img/omegapoint_logo.svg", timeOptions: [{id:0, time:"09:00-09:30"}, {id:1, time:"10:00-10:30"}]},
-            {name: "Ericsson", logo: "/img/omegapoint_logo.svg", timeOptions: [{id:2, time:"11:30-12:00"}, {id:3, time:"10:00-10:30"}]},
-            {name: "Mpya", logo: "/img/omegapoint_logo.svg", timeOptions: [{id:4, time:"09:00-09:30"}, {id:5, time:"10:00-10:30"}]},
-            {name: "Cygni", logo: "/img/omegapoint_logo.svg", timeOptions: [{id:6, time:"09:00-09:30"}]}
+            {name: "Omenga Point", logo: "/img/omegapoint_logo.svg", timeOptions: [6,7,8]},
+            {name: "Ericsson", logo: "/img/omegapoint_logo.svg", timeOptions: [5,7]},
+            {name: "Mpya", logo: "/img/omegapoint_logo.svg", timeOptions: [0,1,2,3]},
+            {name: "Cygni", logo: "/img/omegapoint_logo.svg", timeOptions: [2,4]}
         ];
 
 
-        function renderOffer(company: { name: string; logo: string; timeOptions: { id: number; time: string; }[]; }){
+        function renderOffer(company: { name: string; logo: string; timeOptions: number[]; }){
             return <div key={company.name} className="flex justify-center mt-[15px] mb-[15px]">
                 <CompanyMeetingOffer t={t} 
                                     companyName={company.name}
