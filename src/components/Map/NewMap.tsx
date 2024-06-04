@@ -51,14 +51,14 @@ export default function Map({
   }) {
     console.log(exhibitors);
     return (
-      <div className="w-full md:m-2 box-border backdrop-blur-sm border-4 border-pink-600 rounded-2xl">
+      <div className="h-full w-full md:m-2 box-border backdrop-blur-sm border-4 border-pink-600 rounded-2xl">
         <MapContainer
           center={[0, 0]}
           minZoom={8}
           zoom={9}
           maxZoom={11}
           attributionControl={false}
-          style={{height: '84.5vh', width: '100%', borderRadius: '0.75rem'}}
+          style={{height: '100%', width: '100%', borderRadius: '0.75rem'}}
         >
           <LayersControl position="bottomright" collapsed={false}>
             <LayersControl.BaseLayer checked={mapInView == 1} name="Floor 2">
