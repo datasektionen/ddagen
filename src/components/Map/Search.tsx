@@ -128,14 +128,14 @@ export default function Search({
                   </div>
                 ))}
               </div>
-              <div className="grid grid-cols-2 gap-4 m-4 w-[calc(100%-2rem)]">
+              <div className="grid grid-rows-3 grid-cols-2 gap-2 mt-4 mb-2">
                 {offers.map((offer, pos) => (
                   <div
                     key={`${pos + 5}`}
                     className="flex flex-row space-x-2 justify-between items-center"
                   >
                     <div className="text-sm flex-grow">{offer}</div>
-                    <div>
+                    <div style={{ marginTop: '-2px' }}>
                       <CheckMark
                         name={`${pos + 5}`}
                         checked={checkmarks[pos + 5]}
