@@ -538,11 +538,7 @@ export const exhibitorRouter = createTRPCRouter({
             name: student.first_name + " " + student.last_name,
             year: student.study_year,
             cv: student.cv,
-<<<<<<< HEAD
-            other: [student.summerJob, student.internship, student.partTimeJob, student.masterThesis, student.fullTimeJob, student.traineeProgram]
-=======
             other: keys.filter((_, i) => values[i])
->>>>>>> 6cb059b6d41f7cf85af9548686bb27514c8e2964
           }
         });
   
