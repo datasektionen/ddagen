@@ -195,4 +195,18 @@ export const studentRouter = createTRPCRouter({
    
         return result;
     }),
+
+    getInterestedCompanies: publicProcedure // Get the companies that are interested in specific student
+    .input(z.string())  // student id
+    .mutation(async ({ ctx, input })=>{
+        const companies = await ctx.prisma.exhibitor.findMany({
+            // filter companies that can have meeting with specific student
+            select: {
+                id: true,
+                name: true,
+            }
+        });
+
+        return companies;
+    }),
 });

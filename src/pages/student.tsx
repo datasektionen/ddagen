@@ -17,6 +17,13 @@ interface SelectedCompanies{
     [key: string]: boolean;
 }
 
+interface InterestedCompany{
+    id: string;
+    name: string;
+    logo: string;
+    timeOptions: number[];
+}
+
 const set_cookies = (loginToken: string) => {
     document.cookie = `login_token=${loginToken};max-age=86400;`;
 };
@@ -33,8 +40,12 @@ export default function LoggedInPage() {
     const getCompanyWithMeetings = api.student.getCompaniesWithMeetings.useMutation();
     const getCompanyMeetingInterests = api.student.getCompanyMeetingInterests.useMutation();
 
+    const getInterestedCompanies = api.student.getInterestedCompanies.useMutation();
+
     const [companiesWithMeeting, setCompaniesWithMetting] = useState<Company[]>([]);
     const [selectedCompanies, setSelectedCompanies] = useState<SelectedCompanies>({});
+
+    const [interestedCompanies, setInterestedCompanies] = useState<InterestedCompany[]>([]);
     
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -123,8 +134,19 @@ export default function LoggedInPage() {
                 catch((err) => {
                     console.log("Error in getCompanyMeetingInterests: ", err);
                 });
-            } else {
-              console.log("Student not found");
+
+                getInterestedCompanies.mutateAsync(res_json.ugkthid)
+                .then((res) =>{
+                    const result = res.map((company): InterestedCompany =>{
+                        return {
+                            id:company.id,
+                            name:company.name,
+                            logo:"/img/omegapoint_logo.svg", // change to company.logo
+                            timeOptions:[6,7,8],             // update to company.timeOptions
+                        }
+                    });
+                    setInterestedCompanies(result);
+                });
             }
         });
         
@@ -159,18 +181,11 @@ export default function LoggedInPage() {
         </div>
         }
 
-        // Test companies
-        const companies2 = [
-            {name: "Omenga Point", logo: "/img/omegapoint_logo.svg", timeOptions: [{id:0, time:"09:00-09:30"}, {id:1, time:"10:00-10:30"}]},
-            {name: "Ericsson", logo: "/img/omegapoint_logo.svg", timeOptions: [{id:2, time:"11:30-12:00"}, {id:3, time:"10:00-10:30"}]},
-            {name: "Mpya", logo: "/img/omegapoint_logo.svg", timeOptions: [{id:4, time:"09:00-09:30"}, {id:5, time:"10:00-10:30"}]},
-            {name: "Cygni", logo: "/img/omegapoint_logo.svg", timeOptions: [{id:6, time:"09:00-09:30"}]}
-        ];
-
-
-        function renderOffer(company: { name: string; logo: string; timeOptions: { id: number; time: string; }[]; }){
+        function renderOffer(company: InterestedCompany){
             return <div key={company.name} className="flex justify-center mt-[15px] mb-[15px]">
                 <CompanyMeetingOffer t={t} 
+                                    studentId={ugkthid}
+                                    companyId={company.id}
                                     companyName={company.name}
                                     companyLogo={company.logo} 
                                     timeOptions={company.timeOptions}/>
@@ -190,9 +205,9 @@ export default function LoggedInPage() {
                     }
                     </div>
                     
-                    <h2 className="mt-[100px] text-3xl text-center text-white">{t.students.offersTitle1 + companies2.length + t.students.offersTitle2}</h2>
+                    <h2 className="mt-[100px] text-3xl text-center text-white">{t.students.offersTitle1 + interestedCompanies.length + t.students.offersTitle2}</h2>
                     <div className="grid lg:grid-cols-2 grid-cols-1">
-                        {companies2.map(renderOffer)}
+                        {interestedCompanies.map(renderOffer)}
                     </div>  
                 </div>;
     }

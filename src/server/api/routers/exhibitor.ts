@@ -531,12 +531,18 @@ export const exhibitorRouter = createTRPCRouter({
 
           return !hasMeeting;
         }).map((student: any) => { //format the output
+          const keys = ["summerJob", "internship", "partTimeJob", "thesis", "fullTimeJob", "traineeProgram"]
+          const values = [student.summerJob, student.internship, student.partTimeJob, student.masterThesis, student.fullTimeJob, student.traineeProgram]
           return {
             ugkthid: student.ugkthid,
             name: student.first_name + " " + student.last_name,
             year: student.study_year,
             cv: student.cv,
+<<<<<<< HEAD
             other: [student.summerJob, student.internship, student.partTimeJob, student.masterThesis, student.fullTimeJob, student.traineeProgram]
+=======
+            other: keys.filter((_, i) => values[i])
+>>>>>>> 6cb059b6d41f7cf85af9548686bb27514c8e2964
           }
         });
   
@@ -619,7 +625,7 @@ export const exhibitorRouter = createTRPCRouter({
 
         if (!studentMeetings) return;
 
-        const studentIds = studentMeetings.map((student) => student.studentId);
+        const studentIds = studentMeetings.map((student: any) => student.studentId);
 
         const students = await ctx.prisma.students.findMany({
           where: {
@@ -663,7 +669,7 @@ export const exhibitorRouter = createTRPCRouter({
 
         if (!studentMeetings) return;
 
-        const studentIds = studentMeetings.map((student) => student.studentId);
+        const studentIds = studentMeetings.map((student: any) => student.studentId);
         const students = await ctx.prisma.students.findMany({
           where: {
             id: {
