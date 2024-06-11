@@ -209,4 +209,115 @@ export const studentRouter = createTRPCRouter({
 
         return companies;
     }),
+
+    getCompanyMeetingOffers: publicProcedure
+    .input(z.string())
+    .mutation(async ({ ctx, input }: any)=>{
+        const student = await ctx.prisma.students.findUnique({
+            where: {
+                ugkthid: input,
+            }
+        });
+
+        if (!student) return [];
+
+        const meetings = await ctx.prisma.meetings.findMany({
+            where: {
+                studentId: student.id,
+            },
+            select: {
+                exhibitorId: true,
+                studentId: true,
+                timeslot: true,
+            }
+        });
+        
+        if (!meetings) return [];
+        
+        const companyMeetings = await Promise.all(meetings.map(async (meeting: any) => {
+            // find available timeslots
+            const timeSlots = await ctx.prisma.meetings.findMany({
+                where: {
+                    exhibitorId: meeting.exhibitorId,
+                },
+                select: {
+                    timeslot: true,
+                }
+            });
+
+            
+
+            const timeSlotsArray = timeSlots.map((timeSlot: any) => timeSlot.timeslot);
+            const availableTimeSlots = [1,2,3,4,5,6,7,8,9,10,11,12].filter((timeSlot) => !timeSlotsArray.includes(timeSlot));
+            
+            const companyData = await ctx.prisma.exhibitor.findUnique({
+                where: {
+                    id: meeting.exhibitorId,
+                },
+                select: {
+                    name: true,
+                    logoWhite: true,
+                    description: true,
+                }
+            });
+
+            return {
+                exhibitorId: meeting.exhibitorId,
+                studentId: meeting.studentId,
+                name: companyData.name,
+                logo: companyData.logoWhite?.toString('base64') ?? "",
+                desciption: companyData.description,
+                timeOptions: availableTimeSlots,
+            }
+        }));
+        return companyMeetings;
+    }),
+
+    studentAcceptMeeting: publicProcedure
+    .input(z.string())
+    .mutation(async ({ ctx, input }: any)=>{
+        const meeting = await ctx.prisma.meetings.findUnique({
+            where: {
+                studentId: input.studentId,
+                exhibitorId: input.exhibitorId,
+            },
+        });
+
+
+
+        if (!meeting) return;
+        await ctx.prisma.meetings.update({
+            where: {
+                id: meeting.id
+            },
+            data: {
+                timeSlot: input.timeSlot,
+            }
+        });
+
+
+
+        return {ok: true};
+    }),
+
+    studentDeclineMeeting: publicProcedure
+    .input(z.string())
+    .mutation(async ({ ctx, input }: any)=>{
+        const meeting = await ctx.prisma.meetings.findUnique({
+            where: {
+                studentId: input.studentId,
+                exhibitorId: input.exhibitorId,
+            },
+        });
+
+        if (!meeting) return;
+        await ctx.prisma.meetings.delete({
+            where: {
+                id: meeting.id
+            }
+        });
+
+        return {ok: true};
+    }),
+        
 });

@@ -5,6 +5,7 @@ import { useLocale } from "@/locales";
 import StudentInfo from '@/components/Student/Info';
 import { CheckMark } from '@/components/CheckMark';
 import { addImageDetails } from '@/shared/addImageDetails';
+import { get } from 'http';
 
 interface Company{
     id: string;
@@ -18,8 +19,10 @@ interface SelectedCompanies{
 }
 
 interface InterestedCompany{
-    id: string;
+    exhibitorId: string;
+    studentId: string;
     name: string;
+    description: string;
     logo: string;
     timeOptions: number[];
 }
@@ -39,18 +42,21 @@ export default function LoggedInPage() {
 
     const getCompanyWithMeetings = api.student.getCompaniesWithMeetings.useMutation();
     const getCompanyMeetingInterests = api.student.getCompanyMeetingInterests.useMutation();
+    const getCompanyMeetingOffers = api.student.getCompanyMeetingOffers.useMutation();
 
     const getInterestedCompanies = api.student.getInterestedCompanies.useMutation();
 
     const [companiesWithMeeting, setCompaniesWithMetting] = useState<Company[]>([]);
     const [selectedCompanies, setSelectedCompanies] = useState<SelectedCompanies>({});
 
-    const [interestedCompanies, setInterestedCompanies] = useState<InterestedCompany[]>([]);
+    const [companyMeetingOffers, setCompanyMeetingOffers] = useState<InterestedCompany[]>([]);
+
     
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const [ugkthid, setugkthid] = useState<string>("");
 
+  
 
     useEffect(()=>{
         // log in the user if not logged in
@@ -135,17 +141,12 @@ export default function LoggedInPage() {
                     console.log("Error in getCompanyMeetingInterests: ", err);
                 });
 
-                getInterestedCompanies.mutateAsync(res_json.ugkthid)
-                .then((res) =>{
-                    const result = res.map((company): InterestedCompany =>{
-                        return {
-                            id:company.id,
-                            name:company.name,
-                            logo:"/img/omegapoint_logo.svg", // change to company.logo
-                            timeOptions:[6,7,8],             // update to company.timeOptions
-                        }
-                    });
-                    setInterestedCompanies(result);
+               
+
+                getCompanyMeetingOffers.mutateAsync(res_json.ugkthid)
+                .then((res) => {
+                    console.log("CompanyMeetingOffers: ", res);
+                    setCompanyMeetingOffers(res);
                 });
             }
         });
@@ -181,43 +182,43 @@ export default function LoggedInPage() {
         </div>
         }
 
-        function renderOffer(company: InterestedCompany){
-            return <div key={company.name} className="flex justify-center mt-[15px] mb-[15px]">
+        function renderOffer(meeting: InterestedCompany){
+            return <div key={meeting.name+"-meeting"} className="flex justify-center mt-[15px] mb-[15px]">
                 <CompanyMeetingOffer t={t} 
-                                    studentId={ugkthid}
-                                    companyId={company.id}
-                                    companyName={company.name}
-                                    companyLogo={company.logo} 
-                                    timeOptions={company.timeOptions}/>
+                                    studentId={meeting.studentId}
+                                    companyId={meeting.exhibitorId}
+                                    companyName={meeting.name}
+                                    companyLogo={meeting.logo} 
+                                    timeOptions={meeting.timeOptions}/>
             </div>;
         }
 
 
         return <div>
-                    <div className="flex items-center justify-center">
-                        <StudentInfo t={t} id={ugkthid}/>
-                    </div>
-                
-                    <h2 className="mt-[40px] mb-[40px] text-3xl text-center text-white">{t.students.companyInterests.header}</h2>
-                    <div className="flex flex-col lg:flex-row items-center justify-center gap-8">
-                    {!getCompanyWithMeetings.data ? <div className='text-white'>Inga företag</div>:
-                       companiesWithMeeting.map(renderCompany)
-                    }
-                    </div>
-                    
-                    <h2 className="mt-[100px] text-3xl text-center text-white">{t.students.offersTitle1 + interestedCompanies.length + t.students.offersTitle2}</h2>
-                    <div className="grid lg:grid-cols-2 grid-cols-1">
-                        {interestedCompanies.map(renderOffer)}
-                    </div>  
-                </div>;
+            <div className="flex items-center justify-center">
+                <StudentInfo t={t} id={ugkthid}/>
+            </div>
+        
+            <h2 className="mt-12 mb-12 text-3xl text-center text-white">{t.students.companyInterests.header}</h2>
+            <div className="flex flex-col lg:flex-row items-center flex-wrap justify-center gap-8">
+            {!getCompanyWithMeetings.data ? <div className='text-white'> ... </div>:
+                companiesWithMeeting.map(renderCompany)
+            }
+            </div>
+            
+            <h2 className="mt-[100px] text-3xl text-center text-white mb-8">{t.students.offersTitle1 + companyMeetingOffers.length + t.students.offersTitle2}</h2>
+            <div className="flex flex-row flex-wrap items-center justify-center gap-8 mb-32">
+                {companyMeetingOffers.map(renderOffer)}
+            </div>  
+            </div>;
     }
 
 
     return isLoggedIn? ( 
             <StudentView/> 
         ) : (
-        <p className="h-screen flex items-center justify-center text-red-500">
-            You are not logged in! :)
+        <p className="h-screen flex items-center justify-center text-white">
+            Loading...
         </p>
     )
 }
