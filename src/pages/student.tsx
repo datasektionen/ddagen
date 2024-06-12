@@ -25,6 +25,7 @@ interface InterestedCompany{
     description: string;
     logo: string;
     timeOptions: number[];
+    timeslot: number;
 }
 
 const set_cookies = (loginToken: string) => {
@@ -42,14 +43,14 @@ export default function LoggedInPage() {
 
     const getCompanyWithMeetings = api.student.getCompaniesWithMeetings.useMutation();
     const getCompanyMeetingInterests = api.student.getCompanyMeetingInterests.useMutation();
-    const getCompanyMeetingOffers = api.student.getCompanyMeetingOffers.useMutation();
+    const getCompanyMeetingOffers = api.student.getCompanyMeetings.useMutation();
 
     const getInterestedCompanies = api.student.getInterestedCompanies.useMutation();
 
     const [companiesWithMeeting, setCompaniesWithMetting] = useState<Company[]>([]);
     const [selectedCompanies, setSelectedCompanies] = useState<SelectedCompanies>({});
 
-    const [companyMeetingOffers, setCompanyMeetingOffers] = useState<InterestedCompany[]>([]);
+    const [companyMeetings, setCompanyMeetings] = useState<InterestedCompany[]>([]);
 
     
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -145,8 +146,7 @@ export default function LoggedInPage() {
 
                 getCompanyMeetingOffers.mutateAsync(res_json.ugkthid)
                 .then((res) => {
-                    console.log("CompanyMeetingOffers: ", res);
-                    setCompanyMeetingOffers(res);
+                    setCompanyMeetings(res);
                 });
             }
         });
@@ -184,12 +184,15 @@ export default function LoggedInPage() {
 
         function renderOffer(meeting: InterestedCompany){
             return <div key={meeting.name+"-meeting"} className="flex justify-center mt-[15px] mb-[15px]">
-                <CompanyMeetingOffer t={t} 
-                                    studentId={meeting.studentId}
-                                    companyId={meeting.exhibitorId}
-                                    companyName={meeting.name}
-                                    companyLogo={meeting.logo} 
-                                    timeOptions={meeting.timeOptions}/>
+                <CompanyMeetingOffer 
+                    t={t} 
+                    studentId={meeting.studentId}
+                    companyId={meeting.exhibitorId}
+                    companyName={meeting.name}
+                    companyLogo={meeting.logo} 
+                    timeOptions={meeting.timeOptions}
+                    currentTimeSlot={meeting.timeslot}
+                />
             </div>;
         }
 
@@ -206,9 +209,9 @@ export default function LoggedInPage() {
             }
             </div>
             
-            <h2 className="mt-[100px] text-3xl text-center text-white mb-8">{t.students.offersTitle1 + companyMeetingOffers.length + t.students.offersTitle2}</h2>
+            <h2 className="mt-[100px] text-3xl text-center text-white mb-8">{t.students.offersTitle}</h2>
             <div className="flex flex-row flex-wrap items-center justify-center gap-8 mb-32">
-                {companyMeetingOffers.map(renderOffer)}
+                {companyMeetings.map(renderOffer)}
             </div>  
             </div>;
     }

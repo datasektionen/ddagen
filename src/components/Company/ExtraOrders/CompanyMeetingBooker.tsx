@@ -12,6 +12,7 @@ interface MeetingData {
     year: string;
     cv: string;
     other: string[];
+    timeslot?: string;
 }
 
 export default function CompanyMeetingBooker(
@@ -89,7 +90,7 @@ export default function CompanyMeetingBooker(
             name: student.name,
             year: student.year,
             cv: student.cv,
-            other: student.other,
+            other: student.other
           }
         });
 
@@ -148,6 +149,7 @@ export default function CompanyMeetingBooker(
             year: student.year,
             cv: student.cv,
             other: student.other,
+            timeslot: student.timeslot,
           }
         });
     
@@ -208,15 +210,8 @@ export default function CompanyMeetingBooker(
         console.error("error opening cv ", error);
       }
     }
-
-    function updateSearchParam(offer: number) {
-      console.log(offer);
-      console.log(searchParams.offers);
-      // gove key the right object type so it matches the offers object
-      const key = Object.keys(searchParams.offers)[offer] as keyof typeof searchParams.offers;
-      const updatedOffers = { ...searchParams.offers, [key]: !searchParams.offers[key] };
-      setSearchParams({ ...searchParams, offers: updatedOffers });
-    }
+    const times = ["10:00-10:30", "10:30-11:00", "11:00-11:30", "11:30-12:00", "12:00-12:30", "12:30-13:00",
+                   "13:00-13:30", "13:30-14:00", "14:00-14:30", "14:30-15:00", "15:00-15:30", "15:30-16:00"]
 
     const TablePages = [
       <>
@@ -366,7 +361,7 @@ export default function CompanyMeetingBooker(
           <tbody className='w-full'>
             {acceptedStudents.map((data, idx) =>(
               <tr key={idx} className="border-b border-white h-12 text-center p-4 text-white sm-text-xs lg-text-lg text-drop-shadow">
-                  <td className='px-8'>{"Time"} </td>
+                  <td className='px-8'>{times[Number(data['timeslot'])-1]} </td>
                   <td className="px-8">{String(data['name'])}</td>
                   <td className="px-8">{String(data['year'])}</td>
                   <td className="px-8">

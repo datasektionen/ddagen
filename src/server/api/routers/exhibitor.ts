@@ -569,14 +569,14 @@ export const exhibitorRouter = createTRPCRouter({
 
         if (!student) return;
 
-        const existingMatch = await ctx.prisma.meetings.findFirst({
+        const existingMatch = await ctx.prisma.meetings.findMany({
           where: {
             exhibitorId: ctx.session.exhibitorId,
             studentId: student.id,
           },
         });
 
-        if (existingMatch) {
+        if (existingMatch.length > 0) {
           console.log("Match already exists");
           return;
         }
@@ -662,6 +662,8 @@ export const exhibitorRouter = createTRPCRouter({
             },
           },
         });
+        
+        // append the timeslot to the student
 
         if (!studentMeetings) return;
 
@@ -675,6 +677,16 @@ export const exhibitorRouter = createTRPCRouter({
         });
 
         const studentData = JSON.parse(JSON.stringify(students));
+
+        // timeslot to the right students
+        studentMeetings.forEach((meeting: any) => {
+          studentData.forEach((student: any) => {
+            if (student.id === meeting.studentId) {
+              student.timeslot = meeting.timeslot;
+              console.log("Timeslot: ", student.timeslot);
+            }
+          });
+        });
 
         const output = studentData.map((student: any) => {
           return {

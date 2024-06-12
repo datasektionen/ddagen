@@ -72,12 +72,27 @@ export default {
       header: "Välj de företag du är intresserad av att träffa",
     },
     companyMeeting:{
-      offerText: " har bjudit in dig till ett kontaktsamtal",
+      offerText: " Har bjudit in dig till ett kontaktsamtal",
       acceptDeclineText: "Välj en tid och tacka ja till erbjudandet eller tacka nej till erbjudandet", 
+      noTimesLeft: "Inga tider kvar",
       chooseOption: "Välj tid:", 
+    
+      status: {
+        accepted: "Möte accepterat",
+        declined: "Möte avböjt",
+        failed: "Något gick fel, försök igen",
+      },
+      
+      meetingTimeText: "Du har ett möte",
+      acceptedTime: "Tid: ",
+
+      cancelMeeting: "Avboka möte",
+      cancelWarning: "Du förlorar din plats om du avbokar",
+    
     },
+    offersTitle: "Förfrågningar om kontaktsamtal",
     offersTitle1: "Du har ",
-    offersTitle2: " st företagsinbjudningar",
+    offersTitle2: " st obesvarade företagsinbjudningar",
   },
   exhibitorSettings: {
     startHeader: "Dags att sätta upp eran profil",
