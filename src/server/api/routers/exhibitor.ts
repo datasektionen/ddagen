@@ -10,7 +10,7 @@ import { TRPCError } from "@trpc/server";
 import { Prisma } from "@prisma/client";
 import sendEmail from "@/utils/send-email";
 import { randomUUID } from "crypto";
-import { time } from "console";
+import { error, time } from "console";
 
 const foodPreferencesType = z.enum(["Representative", "Banquet"]);
 const foodPreferencesValue = z.enum([
@@ -508,6 +508,20 @@ export const exhibitorRouter = createTRPCRouter({
               has: exhibitor.id,
             },
           },
+          select: {
+            id: true,
+            ugkthid: true,
+            first_name: true,
+            last_name: true,
+            study_year: true,
+            has_cv: true,
+            summerJob: true,
+            internship: true,
+            partTimeJob: true,
+            masterThesis: true,
+            fullTimeJob: true,
+            traineeProgram: true,
+          },
         });
 
         
@@ -519,7 +533,7 @@ export const exhibitorRouter = createTRPCRouter({
         const output = studentData
         .filter((student: any) => student.cv !== null) // remove all without cv
         .filter((student: any) => { // remove all that already have a meeting
-          console.log("meetings", alreadyBookedMeetings);
+          //console.log("meetings", alreadyBookedMeetings);
 
           var hasMeeting = false;
           alreadyBookedMeetings.forEach((meeting: any) => {
@@ -537,7 +551,7 @@ export const exhibitorRouter = createTRPCRouter({
             ugkthid: student.ugkthid,
             name: student.first_name + " " + student.last_name,
             year: student.study_year,
-            cv: student.cv,
+            has_cv: student.has_cv,
             other: keys.filter((_, i) => values[i])
           }
         });
@@ -545,14 +559,28 @@ export const exhibitorRouter = createTRPCRouter({
 
         return output;
     }),
+    getStudentCV: protectedProcedure
+    .input(z.string())
+    .mutation(async ({ ctx, input }) => {
+      //console.log("Getting CV for student: ", input);
+        const student = await ctx.prisma.students.findUnique({
+          where: {
+            ugkthid: input,
+          },
+          select: {
+            cv: true,
+            has_cv: true,
+          },
+        });
+        if(!student || !student.has_cv) throw error("No CV found");
+
+        return student.cv;
+    }),
     createMeeting: protectedProcedure
     .input(z.object({
       ugkthid: z.string().trim(),
     }))
     .mutation(async ({ ctx, input }: any) => {
-
-
-
         const exhibitor = await ctx.prisma.exhibitor.findUnique({
           where: {
             id: ctx.session.exhibitorId,
@@ -638,6 +666,7 @@ export const exhibitorRouter = createTRPCRouter({
             ugkthid: student.ugkthid,
             name: student.first_name + " " + student.last_name,
             year: student.study_year,
+            has_cv: student.has_cv,
             cv: student.cv
           }
         });
@@ -683,16 +712,17 @@ export const exhibitorRouter = createTRPCRouter({
           studentData.forEach((student: any) => {
             if (student.id === meeting.studentId) {
               student.timeslot = meeting.timeslot;
-              console.log("Timeslot: ", student.timeslot);
+              //console.log("Timeslot: ", student.timeslot);
             }
           });
         });
 
         const output = studentData.map((student: any) => {
           return {
+            ugkthid: student.ugkthid,
             name: student.first_name + " " + student.last_name,
             year: student.study_year,
-            cv: student.cv,
+            has_cv: student.has_cv,
             timeslot: student.timeslot,
           }
         });

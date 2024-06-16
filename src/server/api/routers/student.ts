@@ -62,7 +62,8 @@ export const studentRouter = createTRPCRouter({
                 masterThesis: !!input_json.masterThesis, 
                 fullTimeJob: !!input_json.fullTimeJob, 
                 traineeProgram: !!input_json.traineeProgram, 
-                cv: String(input_json.cv) ?? "", 
+                cv: String(input_json.cv) ?? "",
+                has_cv: input_json.cv != null ?  true : false, 
                 linkedin_url: String(input_json.linkedin_url) ?? "", 
                 github_url: String(input_json.github_url) ?? "", 
                 other_link: String(input_json.other_link) ?? "", 
@@ -76,6 +77,8 @@ export const studentRouter = createTRPCRouter({
         }
         else{
             // If user exists, update the existing user data with new values
+            console.log("Student CV", student.cv)
+            if(student.cv != null) console.log("Student has CV")
             student = await ctx.prisma.students.update({
                 where: {
                     ugkthid: input_json.ugkthid
@@ -93,6 +96,7 @@ export const studentRouter = createTRPCRouter({
                     fullTimeJob: input_json.fullTimeJob ?? student.fullTimeJob,
                     traineeProgram: input_json.traineeProgram ?? student.traineeProgram,
                     cv: input_json.cv ?? student.cv,
+                    has_cv: input_json.cv != null ? true : false,
                     linkedin_url: input_json.linkedin_url ?? student.linkedin_url,
                     github_url: input_json.github_url ?? student.github_url,
                     other_link: input_json.other_link ?? student.other_link,
