@@ -52,14 +52,15 @@ function base64ToFile(base64String: string): File {
 
   const buffer = Buffer.from(base64Data, 'base64');
   const blob = new Blob([buffer], { type: type });
-  return new File([blob], filename, { type: type });
+  const newFile =  new File([blob], filename, { type: type });
+  return newFile;
 }
 
 
   return (
     <div className="flex text-white items-center relative bg-black/25 w-[200px] h-[100px] rounded-3xl border-solid border-yellow border-2 overflow-hidden">
     <h2 className='whitespace-normal break-words text-center'>
-      {base64ToFile(file).name}
+      {file? base64ToFile(file).name : ""}
     </h2>
     <h2 className="absolute bottom-0 left-0 right-0 text-center text-[10px] text-slate-400">
       {"" == "" ? (
