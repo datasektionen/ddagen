@@ -1,11 +1,14 @@
+import Locale from "@/locales";
 import React, { Dispatch } from 'react';
 import { Buffer } from 'buffer';
 
 export default function UploadCV(
   {
+    t,
     file,
     setFile,
   }:{
+    t: Locale;
     file: string;
     setFile: Dispatch<string>;
 
@@ -14,11 +17,22 @@ export default function UploadCV(
     const files = evt.target.files;
     if (files && files.length > 0) {
         const newFile = files[0];
+
+        // Check file size
+        const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB 
+        const FILE_SIZE = newFile.size;
+        if (FILE_SIZE > MAX_FILE_SIZE) {
+            alert(t.exhibitorSettings.table.row1.maxImageWarning(
+              (FILE_SIZE / 1e6).toFixed(2),
+              (MAX_FILE_SIZE / 1e6).toFixed(0)
+            ));
+            return;
+        }
+
         const fileReader = new FileReader();
         fileReader.readAsDataURL(newFile);
         fileReader.onload = () => {
             const base64String = fileReader.result as string;
-            // Manually add the filename to the base64 string
             const base64WithFilename = `data:${newFile.type};name=${newFile.name};base64,${base64String.split(',')[1]}`;
             setFile(base64WithFilename);
         };
