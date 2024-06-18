@@ -157,7 +157,7 @@ export default function LoggedInPage() {
         const newValues = {...selectedCompanies, [company.id] : !selectedCompanies[company.id]};
         setSelectedCompanies(newValues);
         const keys = Object.keys(newValues).filter((key) => newValues[key] === true);
-        updateInterests.mutateAsync(JSON.stringify({company_meeting_interests: keys, ugkthid: ugkthid}));
+        updateInterests.mutateAsync(JSON.stringify({company_meeting_interests: keys, ugkthid: ugkthid, exhibitorId: company.id}));
     }
         
     function StudentView(){

@@ -188,6 +188,28 @@ export const studentRouter = createTRPCRouter({
 
         if (!student) return;
 
+        // remove company from declined list
+        const companyMeetingDeclined = JSON.parse(student.company_meeting_declined[0]);
+        console.log("\n\nEXID: ", input_json.exhibitorId, "\n\n")
+        const index = companyMeetingDeclined.indexOf(input_json.exhibitorId);
+
+        console.log("STUFF DATA1: ", companyMeetingDeclined, index)
+
+        if (index > -1) {
+            companyMeetingDeclined.splice(index, 1);
+
+            console.log("STUFF DATA2: ", companyMeetingDeclined)
+
+            await ctx.prisma.students.update({
+                where: {
+                    ugkthid: input_json.ugkthid,
+                },
+                data: {
+                    company_meeting_declined: JSON.stringify(companyMeetingDeclined),
+                }
+            });
+        } 
+
         // Update the student's company meeting interests
         const result = await ctx.prisma.students.update({
             where: {
@@ -320,6 +342,8 @@ export const studentRouter = createTRPCRouter({
     studentDeclineMeeting: publicProcedure
     .input(z.string())
     .mutation(async ({ ctx, input }: any)=>{
+        input = JSON.parse(input);
+
         const meeting = await ctx.prisma.meetings.findFirst({
             where: {
                 studentId: input.studentId,
@@ -344,16 +368,22 @@ export const studentRouter = createTRPCRouter({
             },
             select: {
                 company_meeting_interests: true,
+                company_meeting_declined: true,
             }
         });
 
         if (!student) return;
 
-        const companyMeetingInterests = JSON.parse(student.company_meeting_interests);
+        console.log("1", student.company_meeting_interests, student.company_meeting_declined)
+
+        const companyMeetingInterests = student.company_meeting_interests;
+        const companyMeetingDeclined = student.company_meeting_declined;
         const index = companyMeetingInterests.indexOf(input.exhibitorId);
+        const declinedCompany = companyMeetingInterests[index];
+
         if (index > -1) {
             companyMeetingInterests.splice(index, 1);
-        }
+        } 
 
         await ctx.prisma.students.update({
             where: {
@@ -361,6 +391,7 @@ export const studentRouter = createTRPCRouter({
             },
             data: {
                 company_meeting_interests: JSON.stringify(companyMeetingInterests),
+                company_meeting_declined: JSON.stringify([...companyMeetingDeclined, declinedCompany]),
             }
         });
 

@@ -55,7 +55,8 @@ export default function CompanyMeetingOffer(
         JSON.stringify({
             studentId: studentId, 
             exhibitorId: companyId, 
-            timeSlot: time})
+            timeSlot: time
+        })
         ).then((response: any)=>{
             setChosenTimeSlot(timeThatWasSelected ?? -1);
             setStatus(response);
@@ -69,6 +70,7 @@ export default function CompanyMeetingOffer(
     }
 
     async function declineOffer(){
+        console.log("STUDENT ID: ", studentId)
         declineMeeting.mutateAsync(
             JSON.stringify({
                 studentId: studentId, 

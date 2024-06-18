@@ -163,6 +163,7 @@ model Students {
 
     // meeting logic
     company_meeting_interests String[] //optional
+    company_meeting_declined String[] //optional
 
     @@map("students")
 }
