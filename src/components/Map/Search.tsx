@@ -19,7 +19,7 @@ function applySearch(
     };
   }>
 ) {
-  setQuery({
+  const query = {
     searchQuery: searchQuery.toLowerCase().trim(),
     years: checkmarks
       .slice(0, 5)
@@ -33,7 +33,12 @@ function applySearch(
       fullTime: checkmarks[9],
       trainee: checkmarks[10],
     },
-  });
+  };
+
+  console.log('Search function called with searchQuery:', searchQuery);
+  console.log('Resulting query:', query);
+
+  setQuery(query);
 }
 
 export default function Search({
@@ -68,10 +73,16 @@ export default function Search({
   const [showFilter, setShowFilter] = useState(false);
   const [checkmarks, setCheckmarks] = useState(Array<boolean>(11).fill(false));
 
-  const toggleCheckmark = (index: number) => {
+  const setSearchQueryAndApply = (value: string) => {
+    setSearchQuery(value);
+    applySearch(value, checkmarks, setQuery);
+  };
+  
+  const toggleCheckmarkAndApply = (index: number) => {
     setCheckmarks((prev) => {
       const newCheckmarks = [...prev];
       newCheckmarks[index] = !newCheckmarks[index];
+      applySearch(searchQuery, newCheckmarks, setQuery);
       return newCheckmarks;
     });
   };
@@ -85,11 +96,7 @@ export default function Search({
           type="text"
           placeholder={t.map.search.placeHolder}
           value={searchQuery}
-          onChange={(q) => setSearchQuery(q.target.value)}
-          onKeyUp={(e) => {
-            if (e.key === "Enter")
-              applySearch(searchQuery, checkmarks, setQuery);
-          }}
+          onChange={(q) => setSearchQueryAndApply(q.target.value)}
         />
         <div className="flex flex-row text-3xl">
           <Button
@@ -120,7 +127,7 @@ export default function Search({
                       type="checkbox"
                       name={`${pos}`}
                       checked={checkmarks[pos]}
-                      onClick={() => toggleCheckmark(pos)}
+                      onClick={() => toggleCheckmarkAndApply(pos)}
                       className="form-checkbox w-6 h-6 hover:cursor-pointer hover:border-cerise
                                     bg-black/25 checked:bg-cerise checked:border-white rounded-lg focus:ring-0
                                     border-2 border-yellow"
@@ -139,7 +146,7 @@ export default function Search({
                       <CheckMark
                         name={`${pos + 5}`}
                         checked={checkmarks[pos + 5]}
-                        onClick={() => toggleCheckmark(pos + 5)}
+                        onClick={() => toggleCheckmarkAndApply(pos + 5)}
                       />
                     </div>
                   </div>

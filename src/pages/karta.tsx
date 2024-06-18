@@ -42,8 +42,8 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
   const [mapInView, setMapInView] = useState<1 | 2 | 3>(1);
   const [selectedExhibitor, setSelectedExhibitor] = useState<number>(0);
 
+  console.log(exhibitorData);
   useEffect(() => {
-    console.log(query);
     setExhibitors(
       Object.fromEntries(
         exhibitorData.map((exhibitor) => {
@@ -77,6 +77,8 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
           )
             return [];
 
+
+          console.log(exhibitor.position, exhibitor);
           return [exhibitor.position, exhibitor];
         })
       )
