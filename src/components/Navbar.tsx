@@ -325,6 +325,7 @@ export default function Navbar() {
             <Group
               links={[
                 { href: "/förstudenter", text: t.forStudents },
+                { href: "/student", text: t.login },
                 //{ href: "/karta", text: t.map },
                 //{ href: "/logos", text: t.logos },
                 //{ href: "https://kontaktsamtal.ddagen.se/", text: t.meetings },
