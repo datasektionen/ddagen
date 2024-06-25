@@ -160,7 +160,7 @@ export default function StudentInfo(
                   md:text-md text-lg ">
                   {t.students.info.cv}:
                 </label>
-                <UploadCV setFile={(value)=>{setUser({...user, cv:value})}}/>
+                <UploadCV t={t} file={user.cv} setFile={(value)=>{setUser({...user, cv:value})}}/>
               </div>
 
               <h2 className="text-white text-center text-3xl mt-[10px] mb-[10px]">{t.students.interests.header}</h2>

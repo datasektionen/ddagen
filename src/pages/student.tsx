@@ -164,21 +164,24 @@ export default function LoggedInPage() {
         
 
         function renderCompany(company: Company){
-            return <div key={company.name} className="w-[500px] rounded-2xl bg-white/20 backdrop-blur-md text-white pt-8 m-4 text-center overflow-hidden border-2 border-cerise">
-            <h2 className="text-xl pb-4">
-                {company.name}
-            </h2>
-            {/**Länk till företaget? */}
+
+            return <div key={company.name} className={`w-[500px] rounded-2xl bg-white/20 backdrop-blur-md text-white pt-8 m-4 text-center overflow-hidden border-2 ${selectedCompanies[company.id] ? 'border-yellow' : 'border-cerise'}`}>
+            <div className='flex items-center justify-center'>
+                <CheckMark name={"check"} checked={selectedCompanies[company.id]} onClick={()=>{handleSelection(company)}}/>
+                <h2 className='text-2xl ml-10'>{company.name}</h2>
+            </div>
+
+            <p className={`min-h-6 font-bold mt-6 ${selectedCompanies[company.id] ? 'text-yellow visible' : 'invisible'}`}>
+                {t.students.companyInterests.checked1 + company.name + t.students.companyInterests.checked2}
+            </p>
+
+            
             <div className="flex justify-center mt-2">
                 <img className="md:min-h-[120px] h-[200px]" src={addImageDetails(company.logo)}></img>
             </div>
-            <p className="text-left p-4">
+            <p className="text-center p-4">
                 {company.description}
             </p> 
-          
-            <div className="flex justify-between ml-[80px] mr-[80px] mb-2">
-                <CheckMark name={"check"} checked={selectedCompanies[company.id]} onClick={()=>{handleSelection(company)}}/>
-            </div>
         </div>
         }
 
@@ -202,7 +205,8 @@ export default function LoggedInPage() {
                 <StudentInfo t={t} id={ugkthid}/>
             </div>
         
-            <h2 className="mt-12 mb-12 text-3xl text-center text-white">{t.students.companyInterests.header}</h2>
+            <h2 className="mt-12 text-3xl text-center text-white">{t.students.companyInterests.header}</h2>
+            <h2 className="mt-4 mb-12 text-xl text-center text-white">{t.students.companyInterests.description}</h2>
             <div className="flex flex-col lg:flex-row items-center flex-wrap justify-center gap-8">
             {!getCompanyWithMeetings.data ? <div className='text-white'> ... </div>:
                 companiesWithMeeting.map(renderCompany)

@@ -70,6 +70,9 @@ export default {
     },
     companyInterests:{
       header: "Välj de företag du är intresserad av att träffa",
+      description: "Klicka i de företag du är intressarad av att träffa på ett kontaktsamtal. Företagen kommer sedan bjuda in till möten.",
+      checked1:"Du har visat intresse för att träffa ", 
+      checked2:" på ett kontaktsamtal.",
     },
     companyMeeting:{
       offerText: " Har bjudit in dig till ett kontaktsamtal",
