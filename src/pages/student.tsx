@@ -5,7 +5,10 @@ import { useLocale } from "@/locales";
 import StudentInfo from '@/components/Student/Info';
 import { CheckMark } from '@/components/CheckMark';
 import { addImageDetails } from '@/shared/addImageDetails';
+
 import { get } from 'http';
+import { useRouter } from 'next/navigation';
+
 
 interface Company{
     id: string;
@@ -33,19 +36,21 @@ const set_cookies = (loginToken: string) => {
 };
 
 export default function LoggedInPage() {
-    
+    const router = useRouter();
     const t = useLocale();
     
     const studentVerify = api.student.verify.useMutation();
     const updateInterests = api.student.updateCompanyInterests.useMutation();
     const createStudent = api.student.inputData.useMutation();
     const getData = api.student.getData.useMutation();
-
+    
     const getCompanyWithMeetings = api.student.getCompaniesWithMeetings.useMutation();
     const getCompanyMeetingInterests = api.student.getCompanyMeetingInterests.useMutation();
+
     const getCompanyMeetingOffers = api.student.getCompanyMeetings.useMutation();
 
     const getInterestedCompanies = api.student.getInterestedCompanies.useMutation();
+
 
     const [companiesWithMeeting, setCompaniesWithMetting] = useState<Company[]>([]);
     const [selectedCompanies, setSelectedCompanies] = useState<SelectedCompanies>({});
@@ -54,10 +59,8 @@ export default function LoggedInPage() {
 
     
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+    
     const [ugkthid, setugkthid] = useState<string>("");
-
-  
 
     useEffect(()=>{
         // log in the user if not logged in
@@ -65,8 +68,9 @@ export default function LoggedInPage() {
             window.location.href = `https://login.datasektionen.se/login?callback=${window.location.href.replace(/^(https?:\/\/[^\/]+).*/, '$1')}/student?login_token=`
         }
     }, [isLoggedIn])
-
+    
     useEffect(() => {
+        router.push("/förstudenter"); // remove when page should be available
         const params: URLSearchParams = new URL(window.location.href).searchParams;
 
         let loginToken: string = params.get('login_token') || "";
@@ -132,7 +136,7 @@ export default function LoggedInPage() {
                 getCompanyMeetingInterests.mutateAsync(res_json.ugkthid)
                 .then((res) => {
                     if(!Array.isArray(res)) return;
-                    const newSelectedCompanies = Object.fromEntries(res.map((company) => {
+                    const newSelectedCompanies = Object.fromEntries(res.map((company: any) => {
                         return [company, true];
                     }));
                     setSelectedCompanies({...selectedCompanies, ...newSelectedCompanies});
@@ -224,6 +228,7 @@ export default function LoggedInPage() {
     return isLoggedIn? ( 
             <StudentView/> 
         ) : (
+
         <p className="h-screen flex items-center justify-center text-white">
             Loading...
         </p>

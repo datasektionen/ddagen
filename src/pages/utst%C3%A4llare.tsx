@@ -515,9 +515,11 @@ export default function Exhibitor() {
           :  
           <>{table}</>}
      
+
           {/* Packages that have the student meeting functionality*/}
           { hasMeeting && !showSetUpPage ? 
           <div>
+
             <h2 className="text-cerise text-2xl md:text-4xl font-medium text-center pt-12">{t.exhibitorSettings.table.row4.title} </h2>
             
             <div className="hidden lg:block">
@@ -530,6 +532,7 @@ export default function Exhibitor() {
           
           
           : <></> }
+          */}
           
         </div>
       </div>

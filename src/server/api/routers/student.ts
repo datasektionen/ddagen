@@ -136,7 +136,6 @@ export const studentRouter = createTRPCRouter({
                 logoWhite: true,
             }
         });
-        
         const result = data.map((company: any) => {
             return {
                 id: company.id,
