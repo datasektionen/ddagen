@@ -68,19 +68,37 @@ export default {
       addYear: "Enter your year",
     },
     interests:{
-      header: "Fill in your job offer interests"
+      header: "Fill in your job offer interests",
     },
     companyInterests:{
       header: "Select the companies you are interested in meeting",
+      description: "Click on the companies you are interested in meeting for a company meeting. The companies will then send you invitations to meetings.",
+      checked1:"You have shown interest in meeting with ", 
+      checked2:" for a company meeting.",
     },
     companyMeeting:{
-      offerText: " has invited you to a company meeting",
+      offerText: " Has invited you to a company meeting",
       acceptDeclineText: "Choose a time to accept the offer or decline the offer",
       chooseOption: "Choose a time:", 
-    },
+      acceptedText: "You have accepted the meeting",
+      noTimesLeft: "No times left",
 
+      status: {
+        accepted: "You have declined the offer",
+        declined: "You have accepted the offer",
+        failed: "Failed to book meeting, try again",
+
+      },
+
+      meetingTimeText: "You have a meeting at",
+      acceptedTime: "Time:",
+      
+      cancelMeeting: "Cancel meeting",
+      cancelWarning: "You lose your meeting spot if you cancel",
+    },
+    offersTitle: "Company meeting offers",
     offersTitle1: "You have ",
-    offersTitle2: " company invitations",
+    offersTitle2: " un answered company invitations",
   },
   exhibitorSettings: {
     startHeader: "Time to set up your profile",
@@ -301,10 +319,24 @@ export default {
     },
     meetings: {
       title: "Company Meetings",
-      columns: ["Pending","","Name", "Year", "CV", "Other"],
+      columns: ["","Name", "Year", "CV", "Other"],
+      columns2: ["Name", "Year", "CV", "Other"],
+      columns3: ["Time", "Name", "Year", "CV", "Other"],
       checkAll: "Select all",
-      unCheckAll: "Deselect all", 
-      bookSelected: "Send booking request",
+      unCheckAll: "Deselect all",
+      filter: "Filter",
+      year: "Year interval",
+      selectedStudents: "selected students", 
+      pendingMeetings: "pending meeting requests",
+      bookedMeetings: "booked meetings",
+      bookSelected: "Send meeting request",
+      caution: "Student meetings are not available on phones",
+      pages: {
+        interested: "Interested students",
+        pending: "Pending requests",
+        accepted: "Accepted requests",
+      }
+      
     },
   },
   login: {

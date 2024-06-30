@@ -12,6 +12,7 @@ import { UserDetails } from "@/components/Company/User/UserDetails";
 import { CheckMark } from "@/components/CheckMark";
 import { addImageDetails } from "@/shared/addImageDetails";
 import CompanyMeetingBooker from "@/components/Company/ExtraOrders/CompanyMeetingBooker";
+import { set } from "zod";
 
 // TODO hook the next button to the save features
 // Maby break save changes into a separate steps for each page
@@ -37,7 +38,7 @@ export default function Exhibitor() {
   });
   const [exhibitorPackage, setExhibitorPackage] = useState(new Package(t, -1));
   const [showSetUpPage, setShowSetUpPage] = useState<boolean>(false);
-
+  const [hasMeeting, setHasMeeting] = useState<boolean>(false);
 
   // Mutations
   const setExtrasMutation: ReturnType<typeof api.exhibitor.setExtras.useMutation> = api.exhibitor.setExtras.useMutation();
@@ -57,7 +58,7 @@ export default function Exhibitor() {
   const getPreferenceCounts = api.exhibitor.getPreferenceCount.useQuery();
   const getAll = api.exhibitor.get.useQuery();
   const getIsLoggedIn = api.account.isLoggedIn.useQuery(undefined, {
-    onSuccess: (data) => {
+    onSuccess: (data: any) => {
       setIsLoggedIn(data);
     },
   });
@@ -103,7 +104,6 @@ export default function Exhibitor() {
   useEffect(() => {
     if (!getAll.isSuccess) return;
     //if (!getStudentInterests.data) return;
-
 
     //console.log(getStudentInterests.data[0].ugkthid);
     //console.log(getAll.data.organizationNumber);
@@ -185,9 +185,10 @@ export default function Exhibitor() {
   useEffect(() => {
     if (!getExhibitor.isSuccess) return;
     const exhibitor = getExhibitor.data;
+    
     console.log(getExhibitor.data);
     const exhibitorPackage = new Package(t, exhibitor.packageTier);
-    console.log(exhibitor.packageTier, exhibitorPackage.tier);
+    console.log(exhibitor);
     exhibitorPackage.addCustomOrders(
       exhibitor.customTables,
       exhibitor.customChairs,
@@ -196,6 +197,7 @@ export default function Exhibitor() {
       exhibitor.customBanquetTicketsWanted
     );
     setExhibitorPackage(exhibitorPackage);
+    setHasMeeting(exhibitor.studentMeetings == 1);
   }, [getExhibitor.data]);
 
   useEffect(() => {
@@ -513,19 +515,24 @@ export default function Exhibitor() {
           :  
           <>{table}</>}
      
-          {/* Packages that have the student meeting functionality
-          { [0,1,2,3].includes(exhibitorPackage.tier)  ? 
-          <>
-            <h2 className="text-cerise text-2xl md:text-4xl font-medium text-center pt-12">{t.exhibitorSettings.table.row4.title} </h2>
-            {meetings}
 
+          {/* Packages that have the student meeting functionality*/}
+          { hasMeeting && !showSetUpPage ? 
+          <div>
+
+            <h2 className="text-cerise text-2xl md:text-4xl font-medium text-center pt-12">{t.exhibitorSettings.table.row4.title} </h2>
+            
+            <div className="hidden lg:block">
+              {meetings}
+            </div>
+            <p className="block lg:hidden text-white text-center text-2xl"> {t.exhibitorSettings.meetings.caution} </p>
             <CompanyMeetingBooker/>
 
-          </> 
+          </div> 
           
           
           : <></> }
-          */}
+        
           
         </div>
       </div>

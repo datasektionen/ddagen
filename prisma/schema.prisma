@@ -154,6 +154,7 @@ model Students {
     traineeProgram Boolean
 
     cv             String     // set max size in backend, forced
+    has_cv         Boolean    @default(false)// set to true if cv is uploaded
 
     linkedin_url   String     //optional
     github_url     String     //optional
@@ -162,6 +163,7 @@ model Students {
 
     // meeting logic
     company_meeting_interests String[] //optional
+    company_meeting_declined String[] //optional
 
     @@map("students")
 }
@@ -171,6 +173,7 @@ model Meetings {
     studentId        String
     exhibitorId      String
     timeslot         Int
+    createdAt        DateTime   @default(now())
 
     @@map("meetings")
 }

@@ -3,6 +3,7 @@ import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 import { Prisma } from "@prisma/client";
 import { get } from "http";
 import { create } from "domain";
+import { Select } from "flowbite-react";
 
 export const studentRouter = createTRPCRouter({    
     verify: publicProcedure
@@ -61,7 +62,8 @@ export const studentRouter = createTRPCRouter({
                 masterThesis: !!input_json.masterThesis, 
                 fullTimeJob: !!input_json.fullTimeJob, 
                 traineeProgram: !!input_json.traineeProgram, 
-                cv: String(input_json.cv) ?? "", 
+                cv: String(input_json.cv) ?? "",
+                has_cv: input_json.cv != null ?  true : false, 
                 linkedin_url: String(input_json.linkedin_url) ?? "", 
                 github_url: String(input_json.github_url) ?? "", 
                 other_link: String(input_json.other_link) ?? "", 
@@ -75,6 +77,8 @@ export const studentRouter = createTRPCRouter({
         }
         else{
             // If user exists, update the existing user data with new values
+            console.log("Student CV", student.cv)
+            if(student.cv != null) console.log("Student has CV")
             student = await ctx.prisma.students.update({
                 where: {
                     ugkthid: input_json.ugkthid
@@ -92,6 +96,7 @@ export const studentRouter = createTRPCRouter({
                     fullTimeJob: input_json.fullTimeJob ?? student.fullTimeJob,
                     traineeProgram: input_json.traineeProgram ?? student.traineeProgram,
                     cv: input_json.cv ?? student.cv,
+                    has_cv: input_json.cv != null ? true : false,
                     linkedin_url: input_json.linkedin_url ?? student.linkedin_url,
                     github_url: input_json.github_url ?? student.github_url,
                     other_link: input_json.other_link ?? student.other_link,
@@ -131,9 +136,6 @@ export const studentRouter = createTRPCRouter({
                 logoWhite: true,
             }
         });
-
-        console.log("DATA: ", data);
-
         const result = data.map((company: any) => {
             return {
                 id: company.id,
@@ -185,6 +187,28 @@ export const studentRouter = createTRPCRouter({
 
         if (!student) return;
 
+        // remove company from declined list
+        const companyMeetingDeclined = JSON.parse(student.company_meeting_declined[0]);
+        console.log("\n\nEXID: ", input_json.exhibitorId, "\n\n")
+        const index = companyMeetingDeclined.indexOf(input_json.exhibitorId);
+
+        console.log("STUFF DATA1: ", companyMeetingDeclined, index)
+
+        if (index > -1) {
+            companyMeetingDeclined.splice(index, 1);
+
+            console.log("STUFF DATA2: ", companyMeetingDeclined)
+
+            await ctx.prisma.students.update({
+                where: {
+                    ugkthid: input_json.ugkthid,
+                },
+                data: {
+                    company_meeting_declined: JSON.stringify(companyMeetingDeclined),
+                }
+            });
+        } 
+
         // Update the student's company meeting interests
         const result = await ctx.prisma.students.update({
             where: {
@@ -197,4 +221,180 @@ export const studentRouter = createTRPCRouter({
    
         return result;
     }),
+
+    getInterestedCompanies: publicProcedure // Get the companies that are interested in specific student
+    .input(z.string())  // student id
+    .mutation(async ({ ctx, input })=>{
+        const companies = await ctx.prisma.exhibitor.findMany({
+            // filter companies that can have meeting with specific student
+            select: {
+                id: true,
+                name: true,
+            }
+        });
+
+        return companies;
+    }),
+
+    getCompanyMeetings: publicProcedure
+    .input(z.string())
+    .mutation(async ({ ctx, input }: any)=>{
+        const student = await ctx.prisma.students.findUnique({
+            where: {
+                ugkthid: input,
+            }
+        });
+
+        if (!student) return [];
+
+        const meetings = await ctx.prisma.meetings.findMany({
+            where: {
+                studentId: student.id,
+            },
+            select: {
+                exhibitorId: true,
+                studentId: true,
+                timeslot: true,
+            }
+        });
+        
+        if (!meetings) return [];
+        
+        //meetings.filter((meeting: any) => meeting.timeSlot === -1);
+        console.log("Meetings : ", meetings);
+        const companyMeetings = await Promise.all(meetings.map(async (meeting: any) => {
+            // find available timeslots
+            const timeSlots = await ctx.prisma.meetings.findMany({
+                where: {
+                    exhibitorId: meeting.exhibitorId,
+                },
+                select: {
+                    timeslot: true,
+                }
+            }); 
+
+            const timeSlotsArray = timeSlots.map((timeSlot: any) => timeSlot.timeslot);
+            
+            const availableTimeSlots = [1,2,3,4,5,6,7,8,9,10,11,12].filter((timeSlot) => !timeSlotsArray.includes(timeSlot));
+            console.log("Available time slots: ", availableTimeSlots.length);
+
+            const companyData = await ctx.prisma.exhibitor.findUnique({
+                where: {
+                    id: meeting.exhibitorId,
+                },
+                select: {
+                    name: true,
+                    logoWhite: true,
+                    description: true,
+                }
+            });
+
+            return {
+                exhibitorId: meeting.exhibitorId,
+                studentId: meeting.studentId,
+                name: companyData.name,
+                logo: companyData.logoWhite?.toString('base64') ?? "",
+                desciption: companyData.description,
+                timeOptions: availableTimeSlots,
+                timeslot: meeting.timeslot,
+            }
+        }));
+        return companyMeetings;
+    }),
+
+    studentAcceptMeeting: publicProcedure
+        .input(z.string())
+        .mutation(async ({ ctx, input }: any ) => {
+            input = JSON.parse(input);
+            const meetings = await ctx.prisma.meetings.findMany({ 
+                where: {
+                    studentId: input.studentId,
+                    exhibitorId: input.exhibitorId,
+                },
+                select: {
+                    id: true,
+                }
+            });
+            if (meetings.length !== 1) return {ok: false, type: "failed"};
+            // Validate that the company has not already accepted a meeting at that time
+            const existingMeeting = await ctx.prisma.meetings.findMany({
+                where: {
+                    exhibitorId: input.exhibitorId,
+                    timeslot: input.timeSlot,
+                }
+            });
+            console.log("Existing MEETINGs: ", existingMeeting);
+            if (existingMeeting.length > 0) return {ok: false, type: "failed"};
+            
+            await ctx.prisma.meetings.update({
+                where: {
+                    id: meetings[0].id
+                },
+                data: {
+                    timeslot: input.timeSlot,
+                }
+            });
+    
+            return {ok: true, type: "accepted"};
+        }),
+
+    studentDeclineMeeting: publicProcedure
+    .input(z.string())
+    .mutation(async ({ ctx, input }: any)=>{
+        input = JSON.parse(input);
+
+        const meeting = await ctx.prisma.meetings.findFirst({
+            where: {
+                studentId: input.studentId,
+                exhibitorId: input.exhibitorId,
+            },
+            select: {
+                id: true,
+            }
+        });
+
+        if (!meeting) return;
+        await ctx.prisma.meetings.delete({
+            where: {
+                id: meeting.id
+            }
+        });
+
+        // also update the interests for the student
+        const student = await ctx.prisma.students.findUnique({
+            where: {
+                id: input.studentId,
+            },
+            select: {
+                company_meeting_interests: true,
+                company_meeting_declined: true,
+            }
+        });
+
+        if (!student) return;
+
+        console.log("1", student.company_meeting_interests, student.company_meeting_declined)
+
+        const companyMeetingInterests = student.company_meeting_interests;
+        const companyMeetingDeclined = student.company_meeting_declined;
+        const index = companyMeetingInterests.indexOf(input.exhibitorId);
+        const declinedCompany = companyMeetingInterests[index];
+
+        if (index > -1) {
+            companyMeetingInterests.splice(index, 1);
+        } 
+
+        await ctx.prisma.students.update({
+            where: {
+                id: input.studentId,
+            },
+            data: {
+                company_meeting_interests: JSON.stringify(companyMeetingInterests),
+                company_meeting_declined: JSON.stringify([...companyMeetingDeclined, declinedCompany]),
+            }
+        });
+
+        return {ok: true, type: "declined"};
+    }),
+        
 });
