@@ -1,12 +1,11 @@
+import { useEffect, useState } from "react";
 import { prisma } from "@/server/db";
 import { useLocale } from "@/locales";
-import { useEffect, useState } from "react"; 
-import Search from "@/components/Map/Search";
 import { MapProp } from "@/shared/Classes";
-import ExhibitorExplorer from "@/components/Map/ExhibitorExplorer";
-
 import dynamic from 'next/dynamic';
 const Map = dynamic(() => import('@/components/Map/NewMap'), { ssr: false });
+import Search from "@/components/Map/Search";
+import ExhibitorExplorer from "@/components/Map/ExhibitorExplorer";
 
 export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
   const t = useLocale();
@@ -42,14 +41,13 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
   const [mapInView, setMapInView] = useState<1 | 2 | 3>(1);
   const [selectedExhibitor, setSelectedExhibitor] = useState<number>(0);
 
-  console.log(exhibitorData);
   useEffect(() => {
     setExhibitors(
       Object.fromEntries(
         exhibitorData.map((exhibitor) => {
           if (!RegExp(query.searchQuery).test(exhibitor.name.toLowerCase()))
             return [];
-          if (query.years.length != 0) {
+          if (query.years.length !== 0) {
             if (
               !query.years.some((year) =>
                 exhibitor.offers.summerJob.includes(year)
@@ -62,23 +60,20 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
               )
             ) {
               return [];
-
             }
           }
           if (
-            (query.offers.summer && exhibitor.offers.summerJob.length == 0) ||
+            (query.offers.summer && exhibitor.offers.summerJob.length === 0) ||
             (query.offers.internship &&
-              exhibitor.offers.internship.length == 0) ||
+              exhibitor.offers.internship.length === 0) ||
             (query.offers.partTime &&
-              exhibitor.offers.partTimeJob.length == 0) ||
+              exhibitor.offers.partTimeJob.length === 0) ||
             (query.offers.thesis && !exhibitor.offers.masterThesis) ||
             (query.offers.fullTime && !exhibitor.offers.fullTimeJob) ||
             (query.offers.trainee && !exhibitor.offers.traineeProgram)
           )
             return [];
 
-
-          console.log(exhibitor.position, exhibitor);
           return [exhibitor.position, exhibitor];
         })
       )
@@ -98,16 +93,17 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
           setSelectedExhibitor={setSelectedExhibitor}
         />
       </div>
-      <div className="w-full h-[50vh] md:h-[85vh] px-4 md:px-8 md:pl-4">
+      <div id="map-container" className="w-full md:px-4 md:pl-4">
         <Map
           t={t}
           exhibitors={exhibitors}
           mapInView={mapInView}
           selectedExhibitor={selectedExhibitor}
+          setSelectedExhibitor={setSelectedExhibitor}
         />
       </div>
     </div>
-  ); 
+  );
 }
 
 export async function getServerSideProps() {
