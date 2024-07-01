@@ -111,13 +111,13 @@ export default function Search({
           />
         </div>
       </div>
-      <div className="flex justify-center w-full">
+      <div className="flex justify-center w-full relative">
         {showFilter && (
           <div
-            className="w-full block border-2 border-cerise bg-[#eaeaea] bg-opacity-10
-                          rounded-lg text-white justify-center text-xl"
+            className="absolute top-full z-10 w-full block border-4 border-pink-600 bg-[#eaeaea] bg-opacity-30
+                        backdrop-blur rounded-lg text-white justify-center text-xl"
           >
-            <div className="w-full h-full flex flex-col justify-center items-center max-xs:p-6 font-light text-base">
+            <div className="w-full h-full flex flex-col justify-center items-center p-2 max-xs:p-6 font-light text-base">
               <div className="flex flex-row mt-1 space-x-4 items-center">
                 <span className="mr-2">{t.map.search.filterYear}:</span>
                 {years.map((year, pos) => (
