@@ -5,11 +5,11 @@ import { ImageOverlay, LayerGroup, LayersControl, MapContainer, Marker } from 'r
 import { DivIcon, LatLngExpression } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-const ceriseMarker = (id: string, selected: boolean): DivIcon =>
+const exhibitorMarker = (id: string, selected: boolean): DivIcon =>
   new DivIcon({
     html: id,
-    className: `rounded-full ${selected ? "bg-pink-500" : "bg-pink-600"} text-white text-center content-center`,
-    iconSize: selected ? [35, 35] : [30, 30]
+    className: `rounded-full bg-pink-600 ring ${selected ? "ring-4 ring-pink-50" : "ring-2 ring-pink-500"} text-white text-center content-center`,
+    iconSize: selected ? [38, 38] : [30, 30]
   });
 
 const positions: { [k: number]: [number, number] } = {
@@ -82,7 +82,7 @@ export default function Map({
                     <Marker
                       key={key}
                       position={positions[exhibitor.position] as LatLngExpression}
-                      icon={ceriseMarker(exhibitor.position.toString(), selectedExhibitor === +key)}
+                      icon={exhibitorMarker(exhibitor.position.toString(), selectedExhibitor === +key)}
                       eventHandlers={
                         {click: () => setSelectedExhibitor(+key)}
                       }
