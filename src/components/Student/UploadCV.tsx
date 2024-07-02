@@ -19,7 +19,7 @@ export default function UploadCV(
         const newFile = files[0];
 
         // Check file size
-        const MAX_FILE_SIZE = 4 * 1024 * 1024; // 10 MB 
+        const MAX_FILE_SIZE = 4 * 1024 * 1024; // 4 MB 
         const FILE_SIZE = newFile.size;
         if (FILE_SIZE > MAX_FILE_SIZE) {
             alert(t.exhibitorSettings.table.row1.maxImageWarning(
