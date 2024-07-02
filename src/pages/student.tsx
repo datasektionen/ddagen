@@ -180,7 +180,9 @@ export default function LoggedInPage() {
 
             
             <div className="flex justify-center mt-2">
-                <img className="md:min-h-[120px] h-[200px]" src={addImageDetails(company.logo)}></img>
+                <img className="md:min-h-[120px] h-[200px]" src={
+                    " " //addImageDetails(company.logo)
+                }></img>
             </div>
             <p className="text-center p-4">
                 {company.description}
