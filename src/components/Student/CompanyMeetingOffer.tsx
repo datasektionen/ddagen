@@ -114,7 +114,7 @@ export default function CompanyMeetingOffer(
             </h3>
             <div className="flex justify-center mt-2">
                 <img className="md:min-w-[120px] w-[200px] " src={
-                    " "//addImageDetails(companyLogo)
+                    addImageDetails(companyLogo)
                     }></img>
             </div>
             

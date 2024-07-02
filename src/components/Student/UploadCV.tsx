@@ -41,9 +41,13 @@ export default function UploadCV(
 
 
 function base64ToFile(base64String: string): File {
+ 
   const match = base64String.match(/^data:(.+?);name=(.+?);base64,(.+)$/);
   if (!match) {
-      throw new Error("Invalid base64 string format");
+    console.error("Invalid base64 string format");  
+    return new File([], "");
+
+      //throw new Error("Invalid base64 string format");
   }
 
   const type = match[1];
