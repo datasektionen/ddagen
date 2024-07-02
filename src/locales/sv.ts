@@ -72,14 +72,32 @@ export default {
     },
     companyInterests:{
       header: "Välj de företag du är intresserad av att träffa",
+      description: "Klicka i de företag du är intressarad av att träffa på ett kontaktsamtal. Företagen kommer sedan bjuda in till möten.",
+      checked1:"Du har visat intresse för att träffa ", 
+      checked2:" på ett kontaktsamtal.",
     },
     companyMeeting:{
-      offerText: " har bjudit in dig till ett kontaktsamtal",
+      offerText: " Har bjudit in dig till ett kontaktsamtal",
       acceptDeclineText: "Välj en tid och tacka ja till erbjudandet eller tacka nej till erbjudandet", 
+      noTimesLeft: "Inga tider kvar",
       chooseOption: "Välj tid:", 
+    
+      status: {
+        accepted: "Möte accepterat",
+        declined: "Möte avböjt",
+        failed: "Något gick fel, försök igen",
+      },
+      
+      meetingTimeText: "Du har ett möte",
+      acceptedTime: "Tid: ",
+
+      cancelMeeting: "Avboka möte",
+      cancelWarning: "Du förlorar din plats om du avbokar",
+    
     },
+    offersTitle: "Förfrågningar om kontaktsamtal",
     offersTitle1: "Du har ",
-    offersTitle2: " st företagsinbjudningar",
+    offersTitle2: " st obesvarade företagsinbjudningar",
   },
   exhibitorSettings: {
     startHeader: "Dags att sätta upp eran profil",
@@ -299,9 +317,22 @@ export default {
     meetings: {
       title: "Kontaktsamtal",
       columns: ["","Namn", "År", "CV", "Annat"],
+      columns2: ["Namn", "År", "CV", "Annat"],
+      columns3: ["Tid","Namn", "År", "CV", "Annat"],
       checkAll: "Markera alla",
       unCheckAll: "Avmarkera alla",
-      bookSelected: "Skicka bokningsförfrågan",
+      filter: "Filter",
+      year: "År intervall",
+      selectedStudents: "markerade studenter",
+      pendingMeetings: "väntande mötesförfrågningar",
+      bookedMeetings: "bokade möten",
+      bookSelected: "Skicka mötesförfrågan",
+      caution: "Student möten är inte tillgänliga för mobiler",
+      pages: {
+        interested: "Intresserade studenter",
+        pending: "Utgående mötesförfrågningar",
+        accepted: "Accepterade mötesförfrågningar",
+      }
     },
   },
   login: {

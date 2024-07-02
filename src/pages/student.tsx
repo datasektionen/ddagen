@@ -5,7 +5,10 @@ import { useLocale } from "@/locales";
 import StudentInfo from '@/components/Student/Info';
 import { CheckMark } from '@/components/CheckMark';
 import { addImageDetails } from '@/shared/addImageDetails';
+
+import { get } from 'http';
 import { useRouter } from 'next/navigation';
+
 
 interface Company{
     id: string;
@@ -16,6 +19,16 @@ interface Company{
 
 interface SelectedCompanies{
     [key: string]: boolean;
+}
+
+interface InterestedCompany{
+    exhibitorId: string;
+    studentId: string;
+    name: string;
+    description: string;
+    logo: string;
+    timeOptions: number[];
+    timeslot: number;
 }
 
 const set_cookies = (loginToken: string) => {
@@ -33,15 +46,22 @@ export default function LoggedInPage() {
     
     const getCompanyWithMeetings = api.student.getCompaniesWithMeetings.useMutation();
     const getCompanyMeetingInterests = api.student.getCompanyMeetingInterests.useMutation();
-    
+
+    const getCompanyMeetingOffers = api.student.getCompanyMeetings.useMutation();
+
+    const getInterestedCompanies = api.student.getInterestedCompanies.useMutation();
+
+
     const [companiesWithMeeting, setCompaniesWithMetting] = useState<Company[]>([]);
     const [selectedCompanies, setSelectedCompanies] = useState<SelectedCompanies>({});
+
+    const [companyMeetings, setCompanyMeetings] = useState<InterestedCompany[]>([]);
+
     
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     
     const [ugkthid, setugkthid] = useState<string>("");
-    
-    
+
     useEffect(()=>{
         // log in the user if not logged in
         if (!isLoggedIn && !document.cookie.includes("login_token")){
@@ -125,8 +145,13 @@ export default function LoggedInPage() {
                 catch((err) => {
                     console.log("Error in getCompanyMeetingInterests: ", err);
                 });
-            } else {
-              console.log("Student not found");
+
+               
+
+                getCompanyMeetingOffers.mutateAsync(res_json.ugkthid)
+                .then((res) => {
+                    setCompanyMeetings(res);
+                });
             }
         });
         
@@ -136,85 +161,76 @@ export default function LoggedInPage() {
         const newValues = {...selectedCompanies, [company.id] : !selectedCompanies[company.id]};
         setSelectedCompanies(newValues);
         const keys = Object.keys(newValues).filter((key) => newValues[key] === true);
-        updateInterests.mutateAsync(JSON.stringify({company_meeting_interests: keys, ugkthid: ugkthid}));
+        updateInterests.mutateAsync(JSON.stringify({company_meeting_interests: keys, ugkthid: ugkthid, exhibitorId: company.id}));
     }
         
     function StudentView(){
         
 
         function renderCompany(company: Company){
-            return <div key={company.name} className="w-[500px] rounded-2xl bg-white/20 backdrop-blur-md text-white pt-8 m-4 text-center overflow-hidden border-2 border-cerise">
-            <h2 className="text-xl pb-4">
-                {company.name}
-            </h2>
-            {/**Länk till företaget? */}
+
+            return <div key={company.name} className={`w-[500px] rounded-2xl bg-white/20 backdrop-blur-md text-white pt-8 m-4 text-center overflow-hidden border-2 ${selectedCompanies[company.id] ? 'border-yellow' : 'border-cerise'}`}>
+            <div className='flex items-center justify-center'>
+                <CheckMark name={"check"} checked={selectedCompanies[company.id]} onClick={()=>{handleSelection(company)}}/>
+                <h2 className='text-2xl ml-10'>{company.name}</h2>
+            </div>
+
+            <p className={`min-h-6 font-bold mt-6 ${selectedCompanies[company.id] ? 'text-yellow visible' : 'invisible'}`}>
+                {t.students.companyInterests.checked1 + company.name + t.students.companyInterests.checked2}
+            </p>
+
+            
             <div className="flex justify-center mt-2">
                 <img className="md:min-h-[120px] h-[200px]" src={addImageDetails(company.logo)}></img>
             </div>
-            <p className="text-left p-4">
+            <p className="text-center p-4">
                 {company.description}
             </p> 
-          
-            <div className="flex justify-between ml-[80px] mr-[80px] mb-2">
-                <CheckMark name={"check"} checked={selectedCompanies[company.id]} onClick={()=>{handleSelection(company)}}/>
-            </div>
         </div>
         }
 
-        // Test companies
-        const companies2 = [
-            {name: "Omenga Point", logo: "/img/omegapoint_logo.svg", timeOptions: [{id:0, time:"09:00-09:30"}, {id:1, time:"10:00-10:30"}]},
-            {name: "Ericsson", logo: "/img/omegapoint_logo.svg", timeOptions: [{id:2, time:"11:30-12:00"}, {id:3, time:"10:00-10:30"}]},
-            {name: "Mpya", logo: "/img/omegapoint_logo.svg", timeOptions: [{id:4, time:"09:00-09:30"}, {id:5, time:"10:00-10:30"}]},
-            {name: "Cygni", logo: "/img/omegapoint_logo.svg", timeOptions: [{id:6, time:"09:00-09:30"}]}
-        ];
-
-
-        function renderOffer(company: { name: string; logo: string; timeOptions: { id: number; time: string; }[]; }){
-            return <div key={company.name} className="flex justify-center mt-[15px] mb-[15px]">
-                <CompanyMeetingOffer t={t} 
-                                    companyName={company.name}
-                                    companyLogo={company.logo} 
-                                    timeOptions={company.timeOptions}/>
+        function renderOffer(meeting: InterestedCompany){
+            return <div key={meeting.name+"-meeting"} className="flex justify-center mt-[15px] mb-[15px]">
+                <CompanyMeetingOffer 
+                    t={t} 
+                    studentId={meeting.studentId}
+                    companyId={meeting.exhibitorId}
+                    companyName={meeting.name}
+                    companyLogo={meeting.logo} 
+                    timeOptions={meeting.timeOptions}
+                    currentTimeSlot={meeting.timeslot}
+                />
             </div>;
         }
 
 
         return <div>
-                    <div className="flex items-center justify-center">
-                        <StudentInfo t={t} id={ugkthid}/>
-                    </div>
-                
-                    <h2 className="mt-[40px] mb-[40px] text-3xl text-center text-white">{t.students.companyInterests.header}</h2>
-                    <div className="flex flex-col lg:flex-row items-center justify-center gap-8">
-                    {!getCompanyWithMeetings.data ? <div className='text-white'>Inga företag</div>:
-                       companiesWithMeeting.map(renderCompany)
-                    }
-                    </div>
-                    
-                    <h2 className="mt-[100px] text-3xl text-center text-white">{t.students.offersTitle1 + companies2.length + t.students.offersTitle2}</h2>
-                    <div className="grid lg:grid-cols-2 grid-cols-1">
-                        {companies2.map(renderOffer)}
-                    </div>  
-                </div>;
+            <div className="flex items-center justify-center">
+                <StudentInfo t={t} id={ugkthid}/>
+            </div>
+        
+            <h2 className="mt-12 text-3xl text-center text-white">{t.students.companyInterests.header}</h2>
+            <h2 className="mt-4 mb-12 text-xl text-center text-white">{t.students.companyInterests.description}</h2>
+            <div className="flex flex-col lg:flex-row items-center flex-wrap justify-center gap-8">
+            {!getCompanyWithMeetings.data ? <div className='text-white'> ... </div>:
+                companiesWithMeeting.map(renderCompany)
+            }
+            </div>
+            
+            <h2 className="mt-[100px] text-3xl text-center text-white mb-8">{t.students.offersTitle}</h2>
+            <div className="flex flex-row flex-wrap items-center justify-center gap-8 mb-32">
+                {companyMeetings.map(renderOffer)}
+            </div>  
+            </div>;
     }
 
 
-    return isLoggedIn? ( <StudentView/>
-        /**<div className="h-screen flex flex-col justify-center items-center">
-            <p className="text-green-500">
-                You are logged in! :)
-            </p>
-            { 
-                studentAccoundExists? 
-                <p className="text-white" >your account exists!</p>
-                :
-                <p className="text-white" >Create your account</p>
-            }            
-        </div>*/
+    return isLoggedIn? ( 
+            <StudentView/> 
         ) : (
-        <p className="h-screen flex items-center justify-center">
-            You are not logged in!
+
+        <p className="h-screen flex items-center justify-center text-white">
+            Loading...
         </p>
     )
 }

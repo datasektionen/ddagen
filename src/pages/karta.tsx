@@ -96,14 +96,12 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
           setSelectedExhibitor={setSelectedExhibitor}
         />
       </div>
-      <div className="w-full h-1/2 md:h-full px-4 md:px-8 md:pl-4">
+      <div className="w-full h-[50vh] md:h-[85vh] px-4 md:px-8 md:pl-4">
         <Map
           t={t}
           exhibitors={exhibitors}
           mapInView={mapInView}
-          setMapInView={setMapInView}
           selectedExhibitor={selectedExhibitor}
-          setSelectedExhibitor={setSelectedExhibitor}
         />
       </div>
     </div>
