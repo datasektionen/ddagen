@@ -1,4 +1,4 @@
-import { use, useEffect, useState } from 'react'
+import { use, useContext, useEffect, useState } from 'react'
 import { api } from "@/utils/api";
 import CompanyMeetingOffer from "@/components/Student/CompanyMeetingOffer";
 import { useLocale } from "@/locales";
@@ -8,6 +8,7 @@ import { addImageDetails } from '@/shared/addImageDetails';
 
 import { get } from 'http';
 import { useRouter } from 'next/navigation';
+import { hasLoadedBeforeContext } from "@/utils/context";
 
 
 interface Company{
@@ -38,6 +39,7 @@ const set_cookies = (loginToken: string) => {
 export default function LoggedInPage() {
     const router = useRouter();
     const t = useLocale();
+    const hasLoadedBefore = useContext(hasLoadedBeforeContext);
     
     const studentVerify = api.student.verify.useMutation();
     const updateInterests = api.student.updateCompanyInterests.useMutation();
@@ -70,7 +72,7 @@ export default function LoggedInPage() {
     }, [isLoggedIn])
     
     useEffect(() => {
-        router.push("/förstudenter"); // remove when page should be available
+        //router.push("/förstudenter"); // remove when page should be available
         const params: URLSearchParams = new URL(window.location.href).searchParams;
 
         let loginToken: string = params.get('login_token') || "";
@@ -225,7 +227,7 @@ export default function LoggedInPage() {
     }
 
 
-    return isLoggedIn? ( 
+    return isLoggedIn && hasLoadedBefore? ( 
             <StudentView/> 
         ) : (
 
