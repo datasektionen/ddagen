@@ -113,7 +113,9 @@ export default function CompanyMeetingOffer(
                 {companyName}
             </h3>
             <div className="flex justify-center mt-2">
-                <img className="md:min-w-[120px] w-[200px] " src={addImageDetails(companyLogo)}></img>
+                <img className="md:min-w-[120px] w-[200px] " src={
+                    " "//addImageDetails(companyLogo)
+                    }></img>
             </div>
             
             {  chosenTimeSlot == -1 ?  

@@ -6,7 +6,6 @@ import StudentInfo from '@/components/Student/Info';
 import { CheckMark } from '@/components/CheckMark';
 import { addImageDetails } from '@/shared/addImageDetails';
 
-import { get } from 'http';
 import { useRouter } from 'next/navigation';
 
 
