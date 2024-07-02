@@ -70,7 +70,7 @@ export default function LoggedInPage() {
     }, [isLoggedIn])
     
     useEffect(() => {
-        router.push("/förstudenter"); // remove when page should be available
+        //router.push("/förstudenter"); // remove when page should be available
         const params: URLSearchParams = new URL(window.location.href).searchParams;
 
         let loginToken: string = params.get('login_token') || "";
