@@ -63,9 +63,15 @@ function base64ToFile(base64String: string): File {
 
   return (
     <div className="flex text-white items-center relative bg-black/25 w-[200px] h-[100px] rounded-3xl border-solid border-yellow border-2 overflow-hidden">
-    <h2 className='whitespace-normal break-words text-center'>
-      {file? base64ToFile(file).name : ""}
-    </h2>
+      {
+        file!==""?
+          <h2 onClick={()=>{window.open(URL.createObjectURL(base64ToFile(file)), '_blank');}}
+            className='whitespace-normal break-words text-center cursor-pointer'>
+            {base64ToFile(file).name}
+          </h2>:
+          <></>
+      }
+    
     <h2 className="absolute bottom-0 left-0 right-0 text-center text-[10px] text-slate-400">
       {"" == "" ? (
         "pdf"
