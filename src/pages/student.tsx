@@ -1,4 +1,4 @@
-import { use, useEffect, useState } from 'react'
+import { use, useContext, useEffect, useState } from 'react'
 import { api } from "@/utils/api";
 import CompanyMeetingOffer from "@/components/Student/CompanyMeetingOffer";
 import { useLocale } from "@/locales";
@@ -7,6 +7,7 @@ import { CheckMark } from '@/components/CheckMark';
 import { addImageDetails } from '@/shared/addImageDetails';
 
 import { useRouter } from 'next/navigation';
+import { hasLoadedBeforeContext } from "@/utils/context";
 
 
 interface Company{
@@ -37,6 +38,7 @@ const set_cookies = (loginToken: string) => {
 export default function LoggedInPage() {
     const router = useRouter();
     const t = useLocale();
+    const hasLoadedBefore = useContext(hasLoadedBeforeContext);
     
     const studentVerify = api.student.verify.useMutation();
     const updateInterests = api.student.updateCompanyInterests.useMutation();
@@ -226,7 +228,7 @@ export default function LoggedInPage() {
     }
 
 
-    return isLoggedIn? ( 
+    return isLoggedIn && hasLoadedBefore? ( 
             <StudentView/> 
         ) : (
 
