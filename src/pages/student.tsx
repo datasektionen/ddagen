@@ -51,9 +51,6 @@ export default function LoggedInPage() {
 
     const getCompanyMeetingOffers = api.student.getCompanyMeetings.useMutation();
 
-    const getInterestedCompanies = api.student.getInterestedCompanies.useMutation();
-
-
     const [companiesWithMeeting, setCompaniesWithMetting] = useState<Company[]>([]);
     const [selectedCompanies, setSelectedCompanies] = useState<SelectedCompanies>({});
 
@@ -152,7 +149,23 @@ export default function LoggedInPage() {
 
                 getCompanyMeetingOffers.mutateAsync(res_json.ugkthid)
                 .then((res) => {
-                    setCompanyMeetings(res);
+                    // Booked timeslots by student
+                    const bookedTimeslotsSet = new Set();
+                    res.forEach((company) => {
+                        const timeslot = company.timeslot;
+                        if (timeslot > 0) {
+                            bookedTimeslotsSet.add(timeslot);
+                        }
+                    });
+
+                    // Update timeOptions for each company, remove options already booked for other companies
+                    const updatedMeetings = res.map((company) => {
+                        const timeOptions = company.timeOptions;
+                        const filteredTimeOptions = timeOptions.filter((time:number) => !bookedTimeslotsSet.has(time));
+                        return { ...company, timeOptions: filteredTimeOptions };
+                    });
+
+                    setCompanyMeetings(updatedMeetings);
                 });
             }
         });
@@ -232,7 +245,6 @@ export default function LoggedInPage() {
                 companiesWithMeeting.map(renderCompany)
             }
             </div>
-            
             
             </div>;
     }
