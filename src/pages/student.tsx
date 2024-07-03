@@ -5,6 +5,7 @@ import { useLocale } from "@/locales";
 import StudentInfo from '@/components/Student/Info';
 import { CheckMark } from '@/components/CheckMark';
 import { addImageDetails } from '@/shared/addImageDetails';
+import { Table } from "@/components/Table";
 
 import { useRouter } from 'next/navigation';
 import { hasLoadedBeforeContext } from "@/utils/context";
@@ -208,8 +209,12 @@ export default function LoggedInPage() {
 
 
         return <div>
-            <div className="flex items-center justify-center">
-                <StudentInfo t={t} id={ugkthid}/>
+            <div className="mx-auto flex flex-col items-center py-20 cursor-default h-full min-w-[200px] max-w-[1200px] w-full mt-8 px-[20px] min-[450px]:px-[60px] min-[704px]:px-[60px]">
+                {Table(
+                        [t.exhibitorSettings.header,],
+                        [],
+                        [<><StudentInfo t={t} id={ugkthid}/></>,]
+                )}
             </div>
         
             <h2 className="mt-12 text-3xl text-center text-white">{t.students.companyInterests.header}</h2>
