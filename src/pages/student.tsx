@@ -5,6 +5,7 @@ import { useLocale } from "@/locales";
 import StudentInfo from '@/components/Student/Info';
 import { CheckMark } from '@/components/CheckMark';
 import { addImageDetails } from '@/shared/addImageDetails';
+import { Table } from "@/components/Table";
 
 import { useRouter } from 'next/navigation';
 import { hasLoadedBeforeContext } from "@/utils/context";
@@ -49,9 +50,6 @@ export default function LoggedInPage() {
     const getCompanyMeetingInterests = api.student.getCompanyMeetingInterests.useMutation();
 
     const getCompanyMeetingOffers = api.student.getCompanyMeetings.useMutation();
-
-    const getInterestedCompanies = api.student.getInterestedCompanies.useMutation();
-
 
     const [companiesWithMeeting, setCompaniesWithMetting] = useState<Company[]>([]);
     const [selectedCompanies, setSelectedCompanies] = useState<SelectedCompanies>({});
@@ -151,7 +149,23 @@ export default function LoggedInPage() {
 
                 getCompanyMeetingOffers.mutateAsync(res_json.ugkthid)
                 .then((res) => {
-                    setCompanyMeetings(res);
+                    // Booked timeslots by student
+                    const bookedTimeslotsSet = new Set();
+                    res.forEach((company) => {
+                        const timeslot = company.timeslot;
+                        if (timeslot > 0) {
+                            bookedTimeslotsSet.add(timeslot);
+                        }
+                    });
+
+                    // Update timeOptions for each company, remove options already booked for other companies
+                    const updatedMeetings = res.map((company) => {
+                        const timeOptions = company.timeOptions;
+                        const filteredTimeOptions = timeOptions.filter((time:number) => !bookedTimeslotsSet.has(time));
+                        return { ...company, timeOptions: filteredTimeOptions };
+                    });
+
+                    setCompanyMeetings(updatedMeetings);
                 });
             }
         });
@@ -208,22 +222,30 @@ export default function LoggedInPage() {
 
 
         return <div>
-            <div className="flex items-center justify-center">
-                <StudentInfo t={t} id={ugkthid}/>
+            <div className="mx-auto flex flex-col items-center py-20 cursor-default h-full min-w-[200px] max-w-[1200px] w-full mt-8 px-[20px] min-[450px]:px-[60px] min-[704px]:px-[60px]">
+                {Table(
+                        [t.exhibitorSettings.header,],
+                        [],
+                        [<><StudentInfo t={t} id={ugkthid}/></>,]
+                )}
             </div>
+            
+            {companyMeetings.length>0?
+            <>
+                <h2 className="text-cerise text-2xl md:text-4xl font-medium text-center pt-12">{t.students.offersTitle}</h2>
+                <div className="flex flex-row flex-wrap items-center justify-center gap-8">
+                    {companyMeetings.map(renderOffer)}
+                </div>  
+            </>:<></>}
         
-            <h2 className="mt-12 text-3xl text-center text-white">{t.students.companyInterests.header}</h2>
+            <h2 className="text-cerise text-2xl md:text-4xl font-medium text-center pt-12">{t.students.companyInterests.header}</h2>
             <h2 className="mt-4 mb-12 text-xl text-center text-white">{t.students.companyInterests.description}</h2>
-            <div className="flex flex-col lg:flex-row items-center flex-wrap justify-center gap-8">
+            <div className="flex flex-col lg:flex-row items-center flex-wrap justify-center gap-8 mb-32">
             {!getCompanyWithMeetings.data ? <div className='text-white'> ... </div>:
                 companiesWithMeeting.map(renderCompany)
             }
             </div>
             
-            <h2 className="mt-[100px] text-3xl text-center text-white mb-8">{t.students.offersTitle}</h2>
-            <div className="flex flex-row flex-wrap items-center justify-center gap-8 mb-32">
-                {companyMeetings.map(renderOffer)}
-            </div>  
             </div>;
     }
 
