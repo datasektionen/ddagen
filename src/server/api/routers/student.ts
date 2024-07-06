@@ -187,7 +187,11 @@ export const studentRouter = createTRPCRouter({
 
         if (!student) return;
 
+
+        //Broken please fix @ilmal 
+
         // remove company from declined list
+        /* 
         const companyMeetingDeclined = JSON.parse(student.company_meeting_declined[0]);
         console.log("\n\nEXID: ", input_json.exhibitorId, "\n\n")
         const index = companyMeetingDeclined.indexOf(input_json.exhibitorId);
@@ -201,14 +205,14 @@ export const studentRouter = createTRPCRouter({
 
             await ctx.prisma.students.update({
                 where: {
-                    ugkthid: input_json.ugkthid,
+                    ugkt    hid: input_json.ugkthid,
                 },
                 data: {
                     company_meeting_declined: JSON.stringify(companyMeetingDeclined),
                 }
             });
         } 
-
+        */
         // Update the student's company meeting interests
         const result = await ctx.prisma.students.update({
             where: {
@@ -276,7 +280,7 @@ export const studentRouter = createTRPCRouter({
             const timeSlotsArray = timeSlots.map((timeSlot: any) => timeSlot.timeslot);
             
             const availableTimeSlots = [1,2,3,4,5,6,7,8,9,10,11,12].filter((timeSlot) => !timeSlotsArray.includes(timeSlot));
-            console.log("Available time slots: ", availableTimeSlots.length);
+  
 
             const companyData = await ctx.prisma.exhibitor.findUnique({
                 where: {

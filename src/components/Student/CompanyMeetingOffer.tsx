@@ -2,7 +2,7 @@ import Locale from "@/locales";
 import { useState } from "react";
 import { api } from "@/utils/api";
 import { addImageDetails } from "@/shared/addImageDetails";
-import { set } from "zod";
+
 
 export default function CompanyMeetingOffer(
     {
@@ -13,6 +13,7 @@ export default function CompanyMeetingOffer(
         companyLogo,
         timeOptions,
         currentTimeSlot,
+        removeMeeting,
     }: {
         t: Locale,
         studentId: string;
@@ -21,6 +22,7 @@ export default function CompanyMeetingOffer(
         companyLogo: string;
         timeOptions: number[];
         currentTimeSlot: number;
+        removeMeeting: (id: string)=>void;
     }
 ){
     interface Status{
@@ -34,6 +36,7 @@ export default function CompanyMeetingOffer(
     const [time, setTime] = useState<number | null>(1);
     const [status, setStatus] = useState<Status|undefined>(undefined);
     const [chosenTimeSlot, setChosenTimeSlot] = useState<number>(currentTimeSlot);
+    const [wasDeleted, setWasDeleted] = useState<boolean>(false);
 
     const times = ["10:00-10:30", "10:30-11:00", "11:00-11:30", "11:30-12:00", "12:00-12:30", "12:30-13:00",
                    "13:00-13:30", "13:30-14:00", "14:00-14:30", "14:30-15:00", "15:00-15:30", "15:30-16:00"]
@@ -79,7 +82,12 @@ export default function CompanyMeetingOffer(
         ).then((response: any)=>{
             console.log("Response: ", response)
             setStatus(response);
-            setTimeout(()=>{setStatus(undefined)}, 5000);
+
+            setTimeout(()=>{
+                setStatus(undefined); 
+                setWasDeleted(true);
+                removeMeeting(companyId);
+            }, 5000);
         }).catch((error)=>{
             console.log(error)
             setStatus({ok: false, type: "failed"});
@@ -90,7 +98,7 @@ export default function CompanyMeetingOffer(
 
     const statusMessage = (status: Status|undefined) => {
         if(status == undefined) return (<></>);
-
+        console.log("Status: ", status)
         if (status.ok){
             switch(
                 status.type
@@ -107,7 +115,10 @@ export default function CompanyMeetingOffer(
         }
     }
 
+
+
     return(
+        wasDeleted ? <></> :
         <div className="w-[500px] rounded-2xl bg-white/20 backdrop-blur-md text-white pt-8 text-center overflow-hidden border-2 border-cerise">
             <h3 className="text-xl pb-4">
                 {companyName}
@@ -153,7 +164,7 @@ export default function CompanyMeetingOffer(
                     {t.students.companyMeeting.meetingTimeText}
                 </p>
                 <p className="text-md ">
-                    {t.students.companyMeeting.acceptedTime} {times[currentTimeSlot-1]}
+                    {t.students.companyMeeting.acceptedTime} {times[chosenTimeSlot-1]}
                 </p>
 
                 <div className="flex flex-row justify-end py-4 pr-16">

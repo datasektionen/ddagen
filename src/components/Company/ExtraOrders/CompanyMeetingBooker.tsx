@@ -3,6 +3,8 @@ import React, { useState, useEffect, use } from 'react';
 import { CheckMark } from '../../CheckMark';
 import { api } from '@/utils/api';
 import MultiRangeSlider from '../MultiRangeSlider';
+import base64ToFile from '@/shared/HandlePDF';
+import { Alert } from 'flowbite-react';
 
 
 interface MeetingData {
@@ -93,34 +95,6 @@ export default function CompanyMeetingBooker(
           other: student.other
         }
       });
-
-      // add dummy students
-      students.push({
-        checked: false,
-        ugkthid: 'u1',
-        name: 'John Doe',
-        year: '3',
-        has_cv: true,
-        other: ['thesis', 'fullTimeJob'],
-      });
-
-      students.push({
-        checked: false,
-        ugkthid: 'u2',
-        name: 'Jane Doe',
-        year: '4',
-        has_cv: false,
-        other: ['summerJob', 'internship'],
-      });
-
-      students.push({
-        checked: false,
-        ugkthid: 'u3',
-        name: 'Anders Smith',
-        year: '2',
-        has_cv: true,
-        other: ['partTimeJob', 'traineeProgram', 'thesis'],
-      });
   
       setStudents(students);
   }, [getInterestedStudents.data]);
@@ -188,32 +162,12 @@ export default function CompanyMeetingBooker(
 
   function openPDF(pdfData: string){
     console.log("open pdf", pdfData);
-    const base64Prefix = 'data:application/pdf;base64,';
-    if (pdfData.startsWith(base64Prefix)) {
-      pdfData = pdfData.slice(base64Prefix.length);
-    } else {
+    const data = base64ToFile(pdfData);
+    if(!data) {
+      alert("Invalid pdf data");
       return; 
     }
-    if(pdfData.length == 0) return;
-    
-    try {
-    
-      // Decode base64 string to Uint8Array
-      const byteArray = Uint8Array.from(window.atob(pdfData), c => c.charCodeAt(0));
-      
-      // Create a blob from the byte array
-      const blob = new Blob([byteArray], { type: 'application/pdf' });
-      const blobUrl = URL.createObjectURL(blob);
-      
-      // Open the PDF in a new tab
-      window.open(blobUrl, '_blank');
-    } catch (error) {
-      // throw alert if error occurs
-
-      alert("Error opening CV");
-      
-      console.error("error opening cv ", error);
-    }
+    window.open(URL.createObjectURL(data), '_blank');
   }
 
   function loadAndOpenPdf(id: string) {

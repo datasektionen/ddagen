@@ -1,6 +1,7 @@
 import Locale from "@/locales";
 import React, { Dispatch } from 'react';
 import { Buffer } from 'buffer';
+import base64ToFile from "@/shared/HandlePDF";
 
 export default function UploadCV(
   {
@@ -40,39 +41,25 @@ export default function UploadCV(
 }
 
 
-function base64ToFile(base64String: string): File {
- 
-  const match = base64String.match(/^data:(.+?);name=(.+?);base64,(.+)$/);
-  if (!match) {
-    console.error("Invalid base64 string format");  
-    return new File([], "");
 
-      //throw new Error("Invalid base64 string format");
-  }
-
-  const type = match[1];
-  const filename = match[2];
-  const base64Data = match[3];
-
-  const buffer = Buffer.from(base64Data, 'base64');
-  const blob = new Blob([buffer], { type: type });
-  const newFile =  new File([blob], filename, { type: type });
-  return newFile;
-}
 
 
   return (
-    <div className="flex text-white items-center relative bg-black/25 w-[200px] h-[100px] rounded-3xl border-solid border-yellow border-2 overflow-hidden">
+    <div className="flex text-white items-center relative bg-black/25 min-w-[200px] h-[60px] p-4 rounded-3xl border-solid border-yellow border-2 overflow-hidden">
       {
         file!==""?
-          <h2 onClick={()=>{window.open(URL.createObjectURL(base64ToFile(file)), '_blank');}}
+          <h2 onClick={()=>{
+            const pdffile = base64ToFile(file);
+            if(! pdffile ){ return; }
+            window.open(URL.createObjectURL(pdffile), '_blank');
+          }}
             className='whitespace-normal break-words text-center cursor-pointer'>
-            {base64ToFile(file).name}
+            {base64ToFile(file) != null ? base64ToFile(file)?.name : ""}
           </h2>:
           <></>
       }
     
-    <h2 className="absolute bottom-0 left-0 right-0 text-center text-[10px] text-slate-400">
+    <h2 className="absolute bottom-0 left-0 right-0 text-center text-[12px] text-slate-400">
       {"" == "" ? (
         "pdf"
       ) : ""}

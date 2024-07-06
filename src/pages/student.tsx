@@ -178,13 +178,18 @@ export default function LoggedInPage() {
         const keys = Object.keys(newValues).filter((key) => newValues[key] === true);
         updateInterests.mutateAsync(JSON.stringify({company_meeting_interests: keys, ugkthid: ugkthid, exhibitorId: company.id}));
     }
-        
+    
+    function removeMeeting(id:string){
+        const newMeetings = companyMeetings.filter((meeting) => meeting.exhibitorId !== id);
+        setCompanyMeetings(newMeetings);
+    }
+
     function StudentView(){
         
 
         function renderCompany(company: Company){
 
-            return <div key={company.name} className={`w-[500px] rounded-2xl bg-white/20 backdrop-blur-md text-white pt-8 m-4 text-center overflow-hidden border-2 ${selectedCompanies[company.id] ? 'border-yellow' : 'border-cerise'}`}>
+            return <div key={company.name} className={`min-w-[200px] rounded-2xl bg-white/20 backdrop-blur-md text-white pt-8 m-4 text-center overflow-hidden border-2 ${selectedCompanies[company.id] ? 'border-yellow' : 'border-cerise'}`}>
             <div className='flex items-center justify-center'>
                 <CheckMark name={"check"} checked={selectedCompanies[company.id]} onClick={()=>{handleSelection(company)}}/>
                 <h2 className='text-2xl ml-10'>{company.name}</h2>
@@ -207,7 +212,7 @@ export default function LoggedInPage() {
         }
 
         function renderOffer(meeting: InterestedCompany){
-            return <div key={meeting.name+"-meeting"} className="flex justify-center mt-[15px] mb-[15px]">
+            return <div key={meeting.name+"-meeting"} className="flex justify-center mt-[15px] mb-[15px] min-w-[240px] mx-8">
                 <CompanyMeetingOffer 
                     t={t} 
                     studentId={meeting.studentId}
@@ -216,6 +221,7 @@ export default function LoggedInPage() {
                     companyLogo={meeting.logo} 
                     timeOptions={meeting.timeOptions}
                     currentTimeSlot={meeting.timeslot}
+                    removeMeeting={removeMeeting}
                 />
             </div>;
         }
@@ -233,20 +239,24 @@ export default function LoggedInPage() {
             {companyMeetings.length>0?
             <>
                 <h2 className="text-cerise text-2xl md:text-4xl font-medium text-center pt-12">{t.students.offersTitle}</h2>
-                <div className="flex flex-row flex-wrap items-center justify-center gap-8">
-                    {companyMeetings.map(renderOffer)}
-                </div>  
+                <div className='w-100 flex items-center justify-center'>
+                    <div className="grid grid-flow-col grid-cols-1 md:grid-cols-2 items-center justify-center gap-2 max-w-[900px] justify-self-center">
+                        {companyMeetings.map(renderOffer)}
+                    </div>  
+                </div>
             </>:<></>}
         
             <h2 className="text-cerise text-2xl md:text-4xl font-medium text-center pt-12">{t.students.companyInterests.header}</h2>
             <h2 className="mt-4 mb-12 text-xl text-center text-white">{t.students.companyInterests.description}</h2>
-            <div className="flex flex-col lg:flex-row items-center flex-wrap justify-center gap-8 mb-32">
-            {!getCompanyWithMeetings.data ? <div className='text-white'> ... </div>:
-                companiesWithMeeting.map(renderCompany)
-            }
-            </div>
+            <div className='w-100 flex items-center justify-center'>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-32 place-items-center max-w-[900px] justify-self-center">
+                {!getCompanyWithMeetings.data ? <div className='text-white'> ... </div>:
+                    companiesWithMeeting.map(renderCompany)
+                    }
+                </div>
             
-            </div>;
+                </div>;
+            </div>
     }
 
 
