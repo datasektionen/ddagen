@@ -393,8 +393,8 @@ export const studentRouter = createTRPCRouter({
                 id: input.studentId,
             },
             data: {
-                company_meeting_interests: JSON.stringify(companyMeetingInterests),
-                company_meeting_declined: JSON.stringify([...companyMeetingDeclined, declinedCompany]),
+                company_meeting_interests: companyMeetingInterests,
+                company_meeting_declined: [...companyMeetingDeclined, declinedCompany],
             }
         });
 
