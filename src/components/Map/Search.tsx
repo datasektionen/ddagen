@@ -109,6 +109,7 @@ export default function Search({
             loading={false}
             onClick={() => setShowFilter(!showFilter)}
           />
+          
         </div>
       </div>
       <div className="flex justify-center w-full relative">

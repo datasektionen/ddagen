@@ -47,8 +47,57 @@ export default {
       "I år hålls mässan 10 oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15 på KTH Campus Valhallavägen. Studenter kommer erbjudas möjligheten att gå på kontaktsamtal med företag för att knyta närmare kontakt med specifika företag (begränsade platser per företag).",
     companyMeetings: "Kontaktsamtal",
     companyMeetingsText:
-      "I år är första året någonsin som vi kommer erbjuda kontaktsamtal för studenter, vilket innebär att ni får möjlighet att i enrum med företagsrepresentanter diskutera framtida jobbmöjligheter med mera. Anmäl er på länken nedan:",
-    companyMeetingsButton: "Kontaktsamtal",
+      "Vi erbjuder kontaktsamtal för studenter, vilket innebär att ni får möjlighet att i enrum med företagsrepresentanter diskutera framtida jobbmöjligheter med mera. Anmäl er på länken nedan:",
+    tempCompanyMeetingsText:
+      "Vi erbjuder kontaktsamtal för studenter, vilket innebär att ni får möjlighet att i enrum med företagsrepresentanter diskutera framtida jobbmöjligheter med mera. Anmälan kommer tillgängliggöras senare!",
+      companyMeetingsButton: "Anmäl dig här",
+  },
+  students: {
+    info:{
+      header:"Fyll i information om dig!",
+      firstName:"Förnamn",
+      lastName:"Efternamn",
+      year:"Årskurs",
+      email:"Lägg till email",
+      cv: "CV",
+      save: "Spara",
+      saved: "Sparat",
+      error: "Sparande misslyckades, prova igen",
+      addFirstName: "Skriv in ditt förnamn",
+      addLastName: "Skriv in ditt efternamn", 
+      addYear: "Skriv in din årskurs",
+    },
+    interests:{
+      header:"Fyll i dina intressen gällande jobberbjudanden",
+    },
+    companyInterests:{
+      header: "Välj de företag du är intresserad av att träffa",
+      description: "Klicka i de företag du är intressarad av att träffa på ett kontaktsamtal. Företagen kommer sedan bjuda in till möten.",
+      checked1:"Du har visat intresse för att träffa ", 
+      checked2:" på ett kontaktsamtal.",
+    },
+    companyMeeting:{
+      offerText: " Har bjudit in dig till ett kontaktsamtal",
+      acceptDeclineText: "Välj en tid och tacka ja till erbjudandet eller tacka nej till erbjudandet", 
+      noTimesLeft: "Inga tider kvar",
+      chooseOption: "Välj tid:", 
+    
+      status: {
+        accepted: "Möte accepterat",
+        declined: "Möte avböjt",
+        failed: "Något gick fel, försök igen",
+      },
+      
+      meetingTimeText: "Du har ett möte",
+      acceptedTime: "Tid: ",
+
+      cancelMeeting: "Avboka möte",
+      cancelWarning: "Du förlorar din plats om du avbokar",
+    
+    },
+    offersTitle: "Förfrågningar om kontaktsamtal",
+    offersTitle1: "Du har ",
+    offersTitle2: " st obesvarade företagsinbjudningar",
   },
   exhibitorSettings: {
     startHeader: "Dags att sätta upp eran profil",
@@ -173,6 +222,20 @@ export default {
       },
       row2: {
         title: "Ert Paket Och Extra Beställningar",
+        packages: {
+          tier0: "Lilla",
+          tier1: "Mellan",
+          tier2: "Stora",
+          tier3: "Huvudsponsor",
+          tier4: "Startup", 
+        },
+        packageList: [
+          "Lilla",
+          "Mellan",
+          "Stora",
+          "Huvudsponsor",
+          "Startup"
+        ],
         section1: {
           header: "Paket",
           info: "För mer info kring de olika paketen",
@@ -250,6 +313,26 @@ export default {
           search: "Sök",
         },
       },
+    },
+    meetings: {
+      title: "Kontaktsamtal",
+      columns: ["","Namn", "År", "CV", "Annat"],
+      columns2: ["Namn", "År", "CV", "Annat"],
+      columns3: ["Tid","Namn", "År", "CV", "Annat"],
+      checkAll: "Markera alla",
+      unCheckAll: "Avmarkera alla",
+      filter: "Filter",
+      year: "År intervall",
+      selectedStudents: "markerade studenter",
+      pendingMeetings: "väntande mötesförfrågningar",
+      bookedMeetings: "bokade möten",
+      bookSelected: "Skicka mötesförfrågan",
+      caution: "Student möten är inte tillgänliga för mobiler",
+      pages: {
+        interested: "Intresserade studenter",
+        pending: "Utgående mötesförfrågningar",
+        accepted: "Accepterade mötesförfrågningar",
+      }
     },
   },
   login: {
