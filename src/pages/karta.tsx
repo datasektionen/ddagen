@@ -81,8 +81,8 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
   }, [query]);
 
   return (
-    <div className="h-80vh flex max-md:flex-col-reverse max-md:items-center md:flex-row md:items-start justify-center py-16 pt-20 overscroll-none">
-      <div className="px-8 md:pr-4 flex flex-col items-center w-full md:w-96">
+    <div className="h-full flex max-md:flex-col-reverse max-md:items-center md:flex-row md:items-start justify-center md:py-16 md:pt-20 overscroll-none">
+      <div className="px-4 md:pr-4 flex flex-col items-center w-full md:w-96">
         <Search t={t} setQuery={setQuery} />
         <ExhibitorExplorer
           t={t}
