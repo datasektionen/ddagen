@@ -46,16 +46,18 @@
   font-style: italic;
 }
 
+@layer base {
+  body {
+    overscroll-behavior: none;
+  }
+}
+
 @layer components {
   #__next {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
   }
-}
-
-:root {
-  overscroll-behavior: none;
 }
 
 /* For Webkit-based browsers (Chrome, Safari and Opera) */
