@@ -1,15 +1,15 @@
 import type Locale from "@/locales";
 import { MapProp } from "@/shared/Classes";
-import { Dispatch } from "react";
+import { Dispatch, useEffect } from "react";
 import { ImageOverlay, LayerGroup, LayersControl, MapContainer, Marker } from 'react-leaflet';
 import { DivIcon, LatLngExpression } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-const ceriseMarker = (id: string): DivIcon =>
+const exhibitorMarker = (id: string, selected: boolean): DivIcon =>
   new DivIcon({
     html: id,
-    className: 'rounded-full bg-pink-600 text-white text-center content-center',
-    iconSize: [30, 30]
+    className: `rounded-full bg-pink-600 ring ${selected ? "ring-4 ring-pink-50" : "ring-2 ring-pink-500"} text-white text-center content-center`,
+    iconSize: selected ? [38, 38] : [30, 30]
   });
 
 const positions: { [k: number]: [number, number] } = {
@@ -40,7 +40,8 @@ export default function Map({
     t,
     exhibitors,
     mapInView,
-    selectedExhibitor
+    selectedExhibitor,
+    setSelectedExhibitor
   }: {
     t: Locale;
     exhibitors: {
@@ -48,17 +49,24 @@ export default function Map({
     };
     mapInView: 1 | 2 | 3;
     selectedExhibitor: number;
+    setSelectedExhibitor: Dispatch<number>;
   }) {
-    console.log(exhibitors);
+    useEffect(() => {
+      document.body.classList.add('overflow-hidden');
+      return () => {
+        document.body.classList.remove('overflow-hidden');
+      };
+    }, []);
     return (
-      <div className="h-full w-full md:m-2 box-border backdrop-blur-sm border-4 border-pink-600 rounded-2xl">
+      <div className="h-full w-full md:m-2 box-border backdrop-blur-sm md:border-4 md:border-pink-600 md:rounded-2xl">
         <MapContainer
           center={[0, 0]}
           minZoom={8}
           zoom={9}
           maxZoom={11}
           attributionControl={false}
-          style={{height: '100%', width: '100%', borderRadius: '0.75rem'}}
+          className="md:rounded-xl"
+          style={{height: '100%', width: '100%'}}
         >
           <LayersControl position="bottomright" collapsed={false}>
             <LayersControl.BaseLayer checked={mapInView == 1} name="Floor 2">
@@ -71,11 +79,14 @@ export default function Map({
                     return null;
                   }
                   return (
-                  <Marker
-                    key={key}
-                    position={positions[exhibitor.position] ? positions[exhibitor.position] as LatLngExpression : [0, 0]}
-                    icon={ceriseMarker(exhibitor.position.toString())}
-                  />
+                    <Marker
+                      key={key}
+                      position={positions[exhibitor.position] as LatLngExpression}
+                      icon={exhibitorMarker(exhibitor.position.toString(), selectedExhibitor === +key)}
+                      eventHandlers={
+                        {click: () => setSelectedExhibitor(+key)}
+                      }
+                    />
                   );
                 })}
               </LayerGroup>

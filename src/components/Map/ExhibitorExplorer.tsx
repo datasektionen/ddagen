@@ -164,7 +164,7 @@ export default function ExhibitorExplorer({
 
   return (
     <div className="w-full flex grow-0 flex-col gap-y-4 items-center justify-center lg:mt-6">
-      <Button
+      {/* <Button
         value={"/img/arrow-up.png/"}
         loading={false}
         isImage={true}
@@ -175,10 +175,10 @@ export default function ExhibitorExplorer({
               buttonScrollRef.current.scrollTop - 50
             );
         }}
-      />
+      /> */}
       <div
         ref={buttonScrollRef}
-        className="w-full h-[550px] border-4 border-cerise
+        className="h-full h-[695px] border-4 border-pink-600
                 bg-[#eaeaea] bg-opacity-10 rounded-xl pb-4 overflow-scroll 
                   scrollbar-hide overflow-x-hidden"
       >
@@ -228,7 +228,7 @@ export default function ExhibitorExplorer({
           );
         })}
       </div>
-      <Button
+      {/* <Button
         value={"/img/arrow-down.png/"}
         loading={false}
         isImage={true}
@@ -239,7 +239,7 @@ export default function ExhibitorExplorer({
               buttonScrollRef.current.scrollTop + 50
             );
         }}
-      />
+      /> */}
     </div>
   );
 }

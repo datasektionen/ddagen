@@ -19,7 +19,7 @@ function applySearch(
     };
   }>
 ) {
-  setQuery({
+  const query = {
     searchQuery: searchQuery.toLowerCase().trim(),
     years: checkmarks
       .slice(0, 5)
@@ -33,7 +33,12 @@ function applySearch(
       fullTime: checkmarks[9],
       trainee: checkmarks[10],
     },
-  });
+  };
+
+  console.log('Search function called with searchQuery:', searchQuery);
+  console.log('Resulting query:', query);
+
+  setQuery(query);
 }
 
 export default function Search({
@@ -68,10 +73,16 @@ export default function Search({
   const [showFilter, setShowFilter] = useState(false);
   const [checkmarks, setCheckmarks] = useState(Array<boolean>(11).fill(false));
 
-  const toggleCheckmark = (index: number) => {
+  const setSearchQueryAndApply = (value: string) => {
+    setSearchQuery(value);
+    applySearch(value, checkmarks, setQuery);
+  };
+  
+  const toggleCheckmarkAndApply = (index: number) => {
     setCheckmarks((prev) => {
       const newCheckmarks = [...prev];
       newCheckmarks[index] = !newCheckmarks[index];
+      applySearch(searchQuery, newCheckmarks, setQuery);
       return newCheckmarks;
     });
   };
@@ -85,11 +96,7 @@ export default function Search({
           type="text"
           placeholder={t.map.search.placeHolder}
           value={searchQuery}
-          onChange={(q) => setSearchQuery(q.target.value)}
-          onKeyUp={(e) => {
-            if (e.key === "Enter")
-              applySearch(searchQuery, checkmarks, setQuery);
-          }}
+          onChange={(q) => setSearchQueryAndApply(q.target.value)}
         />
         <div className="flex flex-row text-3xl">
           <Button
@@ -105,13 +112,13 @@ export default function Search({
           
         </div>
       </div>
-      <div className="flex justify-center w-full">
+      <div className="flex justify-center w-full relative">
         {showFilter && (
           <div
-            className="w-full block border-2 border-cerise bg-[#eaeaea] bg-opacity-10
-                          rounded-lg text-white justify-center text-xl"
+            className="absolute top-full z-10 w-full block border-4 border-pink-600 bg-[#eaeaea] bg-opacity-30
+                        backdrop-blur rounded-lg text-white justify-center text-xl"
           >
-            <div className="w-full h-full flex flex-col justify-center items-center max-xs:p-6 font-light text-base">
+            <div className="w-full h-full flex flex-col justify-center items-center p-2 max-xs:p-6 font-light text-base">
               <div className="flex flex-row mt-1 space-x-4 items-center">
                 <span className="mr-2">{t.map.search.filterYear}:</span>
                 {years.map((year, pos) => (
@@ -121,10 +128,10 @@ export default function Search({
                       type="checkbox"
                       name={`${pos}`}
                       checked={checkmarks[pos]}
-                      onClick={() => toggleCheckmark(pos)}
-                      className="form-checkbox w-6 h-6 hover:cursor-pointer hover:border-cerise
+                      onClick={() => toggleCheckmarkAndApply(pos)}
+                      className="form-checkbox w-6 h-6 hover:cursor-pointer hover:border-yellow
                                     bg-black/25 checked:bg-cerise checked:border-white rounded-lg focus:ring-0
-                                    border-2 border-yellow"
+                                    border-2 border-cerise"
                     />
                   </div>
                 ))}
@@ -140,7 +147,7 @@ export default function Search({
                       <CheckMark
                         name={`${pos + 5}`}
                         checked={checkmarks[pos + 5]}
-                        onClick={() => toggleCheckmark(pos + 5)}
+                        onClick={() => toggleCheckmarkAndApply(pos + 5)}
                       />
                     </div>
                   </div>
