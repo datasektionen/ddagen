@@ -34,8 +34,6 @@ export default function StudentInfo(
   const studentGetData = api.student.getData.useMutation();
 
   useEffect(() => {
-
-
     studentGetData.mutateAsync(id)
     .then((result)=>{
         if (result) {
@@ -85,15 +83,16 @@ export default function StudentInfo(
     }
 
     function saveHandlerFunc(data: User){
+      console.log(data);
       inputData.mutateAsync(JSON.stringify(data))
       .then((res) =>{
         setSaved(true);
-        //setTimeout(()=>{setSaved(false)}, 5000);
+        setTimeout(()=>{setSaved(false)}, 2000);
       })
       .catch((err) => {
         setSaved(false);
       });
-      //setUser({...value})
+      
     }
 
     return user && (
@@ -134,7 +133,7 @@ export default function StudentInfo(
                 <label htmlFor="year"  
                 className="text-slate-400 font-medium
                 cursor-text uppercase
-                md:text-md text-lg">
+                md:text-sm text-[9px]">
                   {t.students.info.year}
                 </label>
                 <YearChecks/>
@@ -156,7 +155,7 @@ export default function StudentInfo(
                   className="
                   text-slate-400 font-medium
                   cursor-text uppercase
-                  md:text-md text-lg ">
+                  md:text-sm text-[9px] ">
                   {t.students.info.cv}:
                 </label>
                 <UploadCV t={t} file={user.cv} setFile={(value)=>{setUser({...user, cv:value})}}/>
@@ -181,9 +180,10 @@ export default function StudentInfo(
                   </a>
                 </button>
                 <p className="text-white self-center">
-                  {/*saved? (!user.first_name ? t.students.info.addFirstName : !user.last_name ?  t. students.info.addLastName : !user.study_year ? t.students.info.addYear : "") : "Saved"*/}
-                  {saved? t.students.info.saved : ""}
+                  {saved? (!user.first_name ? t.students.info.addFirstName : !user.last_name ?  t. students.info.addLastName : !user.study_year ? t.students.info.addYear : "Saved") : ""}
+                 
                 </p>
+                <p className="font-bold text-md ">*{t.students.info.subHeader} </p>
               </div>
             </form>
           </div>

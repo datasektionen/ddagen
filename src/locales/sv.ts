@@ -54,6 +54,8 @@ export default {
   },
   students: {
     info:{
+      mainHeader: "Fyll i information om dig själv!",
+      subHeader: "Om du inte fyller i CV fältet kommer företag inte att kunna se din information. \nFyll i intressen så att företag lättare kan hitta dig!",
       header:"Fyll i information om dig!",
       firstName:"Förnamn",
       lastName:"Efternamn",
@@ -91,6 +93,8 @@ export default {
       meetingTimeText: "Du har ett möte",
       acceptedTime: "Tid: ",
 
+      stopDelete: "Gå tillbaka",
+      confirmDelete: "Är du säker på att du vill avboka mötet?",
       cancelMeeting: "Avboka möte",
       cancelWarning: "Du förlorar din plats om du avbokar",
     
@@ -305,7 +309,7 @@ export default {
           info1: "Studenter väljer vilka företag de är intresserade av att boka kontaktsamtal med.",
           info2: "Ni väljer sedan vilka av dessa studenter ni vill boka samtal med.",
           info3: "Studenter som ni valt ut kommer sedan få välja en mötes tid under mässan.",
-          info4: "Ni kan välja fler studenter än vad det finns tillgänliga tidsslotter, så kommer de studenter som accpeterar snabbast få tiderna.",
+          info4: "Ni kan välja fler studenter än vad det finns tillgänliga tidsslotter, de studenter som accpeterar snabbast få tiderna.",
         },
         section2: {
           selectAll: "Markera alla",

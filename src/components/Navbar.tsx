@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState, useContext } from "react";
 import { useLocale } from "@/locales";
 import { api } from "@/utils/api";
-import { hasLoadedBeforeContext } from "@/utils/context";
+import { useAnimation } from "@/utils/context";
 
 function NavLink({
   href,
@@ -46,9 +46,8 @@ function NavLink({
 }
 
 function Logo({ class: className }: { class?: string }) {
-  
-  const hasLoadedBefore = useContext(hasLoadedBeforeContext);
-  
+  const { isAnimationDone } = useAnimation();
+  const hasLoadedBefore = isAnimationDone;
 
   return (
     <Link
