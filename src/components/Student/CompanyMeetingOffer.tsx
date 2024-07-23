@@ -45,7 +45,7 @@ export default function CompanyMeetingOffer(
     const times = ["10:00-10:30", "10:30-11:00", "11:00-11:30", "11:30-12:00", "12:00-12:30", "12:30-13:00",
                    "13:00-13:30", "13:30-14:00", "14:00-14:30", "14:30-15:00", "15:00-15:30", "15:30-16:00"]
     
-    const timeOptionsCopy = timeOptions.toSpliced(0,0, -1);
+    const timeOptionsCopy = [-1, ...timeOptions];
 
     function displayTimeOptions(option: number){
         if(option == -1) return <option key={option}> {"Select Time"} </option>;

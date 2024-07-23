@@ -1,9 +1,6 @@
 import { z } from "zod";
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 import { Prisma } from "@prisma/client";
-import { get } from "http";
-import { create } from "domain";
-import { Select } from "flowbite-react";
 
 export const studentRouter = createTRPCRouter({    
     verify: publicProcedure
