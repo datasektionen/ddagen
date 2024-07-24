@@ -46,6 +46,12 @@
   font-style: italic;
 }
 
+@layer base {
+  body {
+    overscroll-behavior: none;
+  }
+}
+
 @layer components {
   #__next {
     display: flex;
