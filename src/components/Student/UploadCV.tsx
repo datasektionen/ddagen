@@ -75,6 +75,7 @@ export default function UploadCV(
           id={"cv"}
           type="file"
           accept=".pdf"
+          name="cv"
           onChange={handleFileChange}
           className="invisible"
         />

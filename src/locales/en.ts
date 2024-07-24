@@ -54,6 +54,8 @@ export default {
   },
   students: {
     info:{
+      mainHeader: "Fill out information about yourself",
+      subHeader: "If you dont fill in the CV field, you will not appear in the list of students that companies can choose to meet with. \nFill in you interests to aid companies in finding you!",
       header:"Fill in information about yourself!",
       firstName:"First name",
       lastName:"Last name",
@@ -84,8 +86,8 @@ export default {
       noTimesLeft: "No times left",
 
       status: {
-        accepted: "You have declined the offer",
-        declined: "You have accepted the offer",
+        accepted:"You have accepted the offer",
+        declined: "You have declined the offer",
         failed: "Failed to book meeting, try again",
 
       },
@@ -93,6 +95,8 @@ export default {
       meetingTimeText: "You have a meeting at",
       acceptedTime: "Time:",
       
+      stopDelete: "Go back",
+      confirmDelete: "Are you sure you want to cancel the meeting?",
       cancelMeeting: "Cancel meeting",
       cancelWarning: "You lose your meeting spot if you cancel",
     },
@@ -302,7 +306,7 @@ export default {
         save: "Save",
         info: "Choose which students you want to meet during the fair",
         section1: {
-          title: "How it works",
+          title: "How does it work?",
           info1: "Student choose companies they want to meet",
           info2: "You will then be able to select which of these students you want to meet",
           info3: "The students will then be able to choose a time slot to meet you, during the fair",

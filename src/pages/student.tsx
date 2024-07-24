@@ -8,7 +8,7 @@ import { addImageDetails } from '@/shared/addImageDetails';
 import { Table } from "@/components/Table";
 
 import { useRouter } from 'next/navigation';
-import { hasLoadedBeforeContext } from "@/utils/context";
+
 
 
 interface Company{
@@ -39,7 +39,7 @@ const set_cookies = (loginToken: string) => {
 export default function LoggedInPage() {
     const router = useRouter();
     const t = useLocale();
-    const hasLoadedBefore = useContext(hasLoadedBeforeContext);
+
     
     const studentVerify = api.student.verify.useMutation();
     const updateInterests = api.student.updateCompanyInterests.useMutation();
@@ -55,7 +55,6 @@ export default function LoggedInPage() {
     const [selectedCompanies, setSelectedCompanies] = useState<SelectedCompanies>({});
 
     const [companyMeetings, setCompanyMeetings] = useState<InterestedCompany[]>([]);
-
     
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     
@@ -65,7 +64,7 @@ export default function LoggedInPage() {
         // log in the user if not logged in
         if (!isLoggedIn && !document.cookie.includes("login_token")){
             window.location.href = `https://login.datasektionen.se/login?callback=${window.location.href.replace(/^(https?:\/\/[^\/]+).*/, '$1')}/student?login_token=`
-        }
+        } 
     }, [isLoggedIn])
     
     useEffect(() => {
@@ -99,9 +98,7 @@ export default function LoggedInPage() {
                 
                 getData.mutateAsync(res_json.ugkthid)
                 .then((res) => {
-                    if (res) {
-                        console.log("Student exists");
-                    } else {
+                    if (!res) {
                         createStudent.mutateAsync(
                             JSON.stringify({
                                 ugkthid: res_json.ugkthid,
@@ -113,41 +110,60 @@ export default function LoggedInPage() {
                         );
                     }
                 });
+            }
+        });
+        return () => {
+            // cleanup
+           
+        };
+    }, []);
+    
+    useEffect(()=>{
+        getCompanyWithMeetings.mutateAsync()
+        .then((res) => {
+            const result = res.map((company: any) => {
+                return {
+                    id: company.id,
+                    name: company.name,
+                    description: company.description,
+                    logo: company.logo,
+                }
+            });
+            setCompaniesWithMetting(result);
 
-                getCompanyWithMeetings.mutateAsync().then((res) => {
-                    const result = res.map((company: any) => {
-                        return {
-                            id: company.id,
-                            name: company.name,
-                            description: company.description,
-                            logo: company.logo,
-                        }
-                    });
-                    setCompaniesWithMetting(result);
+            const newSelectedCompanies = Object.fromEntries(result.map((company: any) => {
+                return [company.id, false];
+            }));
+            setSelectedCompanies(newSelectedCompanies);
+            
+        });
 
-                    const newSelectedCompanies = Object.fromEntries(result.map((company: any) => {
-                        return [company.id, false];
-                    }));
-                    setSelectedCompanies(newSelectedCompanies);
-                    
-                });
+        getCompanyMeetingInterests.mutateAsync(ugkthid)
+        .then((res) => {
+            if(!Array.isArray(res)) return;
+            const newSelectedCompanies = Object.fromEntries(res.map((company: any) => {
+                return [company, true];
+            }));
+            setSelectedCompanies({...selectedCompanies, ...newSelectedCompanies});
+            
+        }).
+        catch((err) => {
+            console.log("Error in getCompanyMeetingInterests: ", err);
+        });
 
-                getCompanyMeetingInterests.mutateAsync(res_json.ugkthid)
-                .then((res) => {
-                    if(!Array.isArray(res)) return;
-                    const newSelectedCompanies = Object.fromEntries(res.map((company: any) => {
-                        return [company, true];
-                    }));
-                    setSelectedCompanies({...selectedCompanies, ...newSelectedCompanies});
-                    
-                }).
-                catch((err) => {
-                    console.log("Error in getCompanyMeetingInterests: ", err);
-                });
+        getMeetingsOffers();
+        //const interval = setInterval(getMeetingsOffers, 1000*10);
 
-               
+        return () => {
+            //clearInterval(interval);
+        };
 
-                getCompanyMeetingOffers.mutateAsync(res_json.ugkthid)
+    }, [ugkthid]);
+
+
+    async function getMeetingsOffers(){
+        if(ugkthid == "" || ugkthid == null) return;
+        getCompanyMeetingOffers.mutateAsync(ugkthid)
                 .then((res) => {
                     // Booked timeslots by student
                     const bookedTimeslotsSet = new Set();
@@ -165,13 +181,13 @@ export default function LoggedInPage() {
                         return { ...company, timeOptions: filteredTimeOptions };
                     });
 
+                    
                     setCompanyMeetings(updatedMeetings);
+                    
+
                 });
-            }
-        });
-        
-    }, []);
-    
+    }
+
     function handleSelection(company: Company){
         const newValues = {...selectedCompanies, [company.id] : !selectedCompanies[company.id]};
         setSelectedCompanies(newValues);
@@ -185,11 +201,15 @@ export default function LoggedInPage() {
     }
 
     function StudentView(){
-        
-
         function renderCompany(company: Company){
 
-            return <div key={company.name} className={`min-w-[200px] rounded-2xl bg-white/20 backdrop-blur-md text-white pt-8 m-4 text-center overflow-hidden border-2 ${selectedCompanies[company.id] ? 'border-yellow' : 'border-cerise'}`}>
+            return <div key={company.name} 
+            className={
+                `min-w-[200px] rounded-2xl bg-white/20 
+                backdrop-blur-md text-white pt-8 m-4 
+                text-center overflow-hidden border-2 
+                ${selectedCompanies[company.id] ? 'border-yellow' : 'border-cerise'}`}
+            >
             <div className='flex items-center justify-center'>
                 <CheckMark name={"check"} checked={selectedCompanies[company.id]} onClick={()=>{handleSelection(company)}}/>
                 <h2 className='text-2xl ml-10'>{company.name}</h2>
@@ -214,6 +234,7 @@ export default function LoggedInPage() {
         function renderOffer(meeting: InterestedCompany){
             return <div key={meeting.name+"-meeting"} className="flex justify-center mt-[15px] mb-[15px] min-w-[240px] mx-8">
                 <CompanyMeetingOffer 
+                    key={meeting.name+"-meeting-offer"}
                     t={t} 
                     studentId={meeting.studentId}
                     companyId={meeting.exhibitorId}
@@ -222,6 +243,12 @@ export default function LoggedInPage() {
                     timeOptions={meeting.timeOptions}
                     currentTimeSlot={meeting.timeslot}
                     removeMeeting={removeMeeting}
+                    removeTimeSlot={(time:number) => {
+                        const updatedCompany = companyMeetings.map((company) => {
+                            return {...company, timeOptions: company.timeOptions.filter((t) => t !== time)};
+                        });
+                        setCompanyMeetings(updatedCompany);
+                    }}
                 />
             </div>;
         }
@@ -230,9 +257,9 @@ export default function LoggedInPage() {
         return <div>
             <div className="mx-auto flex flex-col items-center py-20 cursor-default h-full min-w-[200px] max-w-[1200px] w-full mt-8 px-[20px] min-[450px]:px-[60px] min-[704px]:px-[60px]">
                 {Table(
-                        [t.exhibitorSettings.header,],
+                        [t.students.info.mainHeader],
                         [],
-                        [<><StudentInfo t={t} id={ugkthid}/></>,]
+                        [<><StudentInfo t={t} id={ugkthid}/></>,],
                 )}
             </div>
             
@@ -240,7 +267,7 @@ export default function LoggedInPage() {
             <>
                 <h2 className="text-cerise text-2xl md:text-4xl font-medium text-center pt-12">{t.students.offersTitle}</h2>
                 <div className='w-100 flex items-center justify-center'>
-                    <div className="grid grid-flow-col grid-cols-1 md:grid-cols-2 items-center justify-center gap-2 max-w-[900px] justify-self-center">
+                    <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-2 max-w-[900px] justify-self-center">
                         {companyMeetings.map(renderOffer)}
                     </div>  
                 </div>
@@ -260,7 +287,7 @@ export default function LoggedInPage() {
     }
 
 
-    return isLoggedIn && hasLoadedBefore? ( 
+    return isLoggedIn ? ( 
             <StudentView/> 
         ) : (
 

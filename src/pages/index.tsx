@@ -3,7 +3,7 @@ import { useLocale } from "@/locales";
 import { useEffect, useState, useContext } from "react";
 import GridCollage from "@/components/GridCollage";
 import { Countdown } from "@/components/Countdown";
-import { hasLoadedBeforeContext } from "@/utils/context";
+import { useAnimation } from "@/utils/context";
 
 export default function Home() {
   const t = useLocale();
@@ -14,9 +14,8 @@ export default function Home() {
   }
 
   const [showPage, setShowLogo] = useState(false);
-  
-  const hasLoadedBefore = useContext(hasLoadedBeforeContext);
-
+  const { isAnimationDone } = useAnimation();
+  const hasLoadedBefore = isAnimationDone; 
   useEffect(() => {
     setShowLogo(true);
   }, []);
