@@ -180,11 +180,7 @@ export default function LoggedInPage() {
                         const filteredTimeOptions = timeOptions.filter((time:number) => !bookedTimeslotsSet.has(time));
                         return { ...company, timeOptions: filteredTimeOptions };
                     });
-
-                    
                     setCompanyMeetings(updatedMeetings);
-                    
-
                 });
     }
 

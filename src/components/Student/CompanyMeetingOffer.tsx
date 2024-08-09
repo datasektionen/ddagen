@@ -95,13 +95,10 @@ export default function CompanyMeetingOffer(
             })
         ).then((response: any)=>{
             setStatus({ok: true, type: "declined"});
-            
-            setTimeout(()=>{
-                setStatus(undefined); 
-                setWasDeleted(true);
-                removeMeeting(companyId);
-                window.location.reload();
-            }, 3000);
+            setStatus(undefined); 
+            setWasDeleted(true);
+            removeMeeting(companyId);
+            window.location.reload();
         }).catch((error)=>{
             console.log(error)
 
