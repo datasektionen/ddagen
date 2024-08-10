@@ -28,8 +28,7 @@ export const studentRouter = createTRPCRouter({
     inputData: publicProcedure
     .input(z.string())
     .mutation(async ({ ctx, input }) => {
-        let student_body: Prisma.StudentsCreateInput
-        console.log("INPUT: ", input, ctx);
+        //console.log(input);
         
         const input_json = JSON.parse(input);
         
@@ -47,7 +46,8 @@ export const studentRouter = createTRPCRouter({
         });
 
         if (!student) {
-            student_body = {
+            //console.log("Should create a new student")
+            const student_body = {
                 ugkthid: String(input_json.ugkthid),
                 first_name: String(input_json.first_name) ?? "", 
                 last_name: String(input_json.last_name) ?? "", 
@@ -67,8 +67,9 @@ export const studentRouter = createTRPCRouter({
                 other_link: String(input_json.other_link) ?? "", 
                 personal_story: String(input_json.personal_story) ?? "",
                 company_meeting_interests: JSON.stringify([]),
-            }
+            } as Prisma.StudentsCreateInput;
             // If no user exists, create a new user with default values
+            
             await ctx.prisma.students.create({
                 data: student_body,
             });
@@ -76,6 +77,9 @@ export const studentRouter = createTRPCRouter({
         else{
             // If user exists, update the existing user data with new values
             if(student.cv != null) console.log("Student has CV")
+            
+            //console.log("data:",input_json.ugkthid)
+
             student = await ctx.prisma.students.update({
                 where: {
                     ugkthid: input_json.ugkthid
@@ -101,6 +105,7 @@ export const studentRouter = createTRPCRouter({
                     //company_meeting_interests: student.company_meeting_interests,
                 },
             });
+            
         }
 
         return student; // Return the updated or newly created student

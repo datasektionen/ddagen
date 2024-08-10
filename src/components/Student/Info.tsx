@@ -83,7 +83,6 @@ export default function StudentInfo(
     }
 
     function saveHandlerFunc(data: User){
-      console.log(data);
       inputData.mutateAsync(JSON.stringify(data))
       .then((res) =>{
         setSaved(true);
