@@ -58,7 +58,11 @@ export default function LoggedInPage() {
     
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     
+    
     const [ugkthid, setugkthid] = useState<string>("");
+    const [studentHasCV, setStudentHasCV] = useState<boolean>(false);
+
+    const studentGetData = api.student.getData.useMutation();
 
     useEffect(()=>{
         // log in the user if not logged in
@@ -119,6 +123,14 @@ export default function LoggedInPage() {
     }, []);
     
     useEffect(()=>{
+        studentGetData.mutateAsync(ugkthid)
+        .then((result)=>{
+            if (result) {
+              
+                setStudentHasCV(result.cv !== "");
+            } 
+        });
+
         getCompanyWithMeetings.mutateAsync()
         .then((res) => {
             const result = res.map((company: any) => {
@@ -268,17 +280,20 @@ export default function LoggedInPage() {
                     </div>  
                 </div>
             </>:<></>}
-        
-            <h2 className="text-cerise text-2xl md:text-4xl font-medium text-center pt-12">{t.students.companyInterests.header}</h2>
-            <h2 className="mt-4 mb-12 text-xl text-center text-white">{t.students.companyInterests.description}</h2>
-            <div className='w-100 flex items-center justify-center'>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-32 place-items-center max-w-[900px] justify-self-center">
-                {!getCompanyWithMeetings.data ? <div className='text-white'> ... </div>:
-                    companiesWithMeeting.map(renderCompany)
-                    }
-                </div>
+                
+            { studentHasCV && <>
             
-                </div>;
+                <h2 className="text-cerise text-2xl md:text-4xl font-medium text-center pt-12">{t.students.companyInterests.header}</h2>
+                <h2 className="mt-4 mb-12 text-xl text-center text-white">{t.students.companyInterests.description}</h2>
+                <div className='w-100 flex items-center justify-center'>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-32 place-items-center max-w-[900px] justify-self-center">
+                        {!getCompanyWithMeetings.data ? <div className='text-white'> ... </div>:
+                            companiesWithMeeting.map(renderCompany)
+                        }
+                    </div>
+                
+                </div>
+            </>}
             </div>
     }
 
