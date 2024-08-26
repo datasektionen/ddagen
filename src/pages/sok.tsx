@@ -122,7 +122,7 @@ function SingleTeam({
 
 export default function SignupPage() {
   const t = useLocale();
-  const isPageActive = false;
+  const isPageActive = true;
   const router = useRouter();
 
   if(!isPageActive) 
@@ -135,7 +135,6 @@ export default function SignupPage() {
   }
   else 
   {
-
     return (
       <div className="pt-[200px] pb-[200px]">
       <h1 className="text-5xl text-cerise font-medium text-center uppercase">

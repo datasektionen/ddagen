@@ -326,8 +326,8 @@ export default function Navbar() {
                 { href: "/förstudenter", text: t.forStudents },
                 //{ href: "/karta", text: t.map },
                 //{ href: "/logos", text: t.logos },
-                //{ href: "https://kontaktsamtal.ddagen.se/", text: t.meetings },
-                //{href: "/sok", text:t.sok}
+                //{ href: "/student", text: t.meetings },
+                {href: "/sok", text:t.sok}
               ]}
             />
             {/*<NavLink class="px-14 lg:px-0" href="/mässan">{t.about}</NavLink>*/}
