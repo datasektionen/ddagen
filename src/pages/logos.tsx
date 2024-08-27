@@ -99,7 +99,7 @@ function Logo({
           onClick={handleOverlayClick}
         >
           <div
-            className={`scrollbar-hide px-10 py-5 max-h-[80vh] overflow-y-auto cursor-default bg-slate-600 bg-opacity-50 w-[300px] sm:w-[500px] pt-10 pb-5 flex flex-col rounded-3xl`}
+            className={`border-[1px] border-yellow scrollbar-hide px-10 py-5 max-h-[80vh] overflow-y-auto cursor-default bg-slate-600 bg-opacity-50 w-[300px] sm:w-[500px] pt-10 pb-5 flex flex-col rounded-3xl`}
           >
             <div className="relative py-[0px] justify-center flex flex-row">
               <img src={addImageDetails(pic)} alt={companyName} />
