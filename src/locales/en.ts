@@ -749,10 +749,16 @@ export default {
       roles : [
         "PR Manager\n- Good communicator\n- Well-organized\n- Leader\nAs a PR Manager, you lead the PR team, ensuring they are organized and equipped to communicate effectively. Working closely within the PR team will foster a strong sense of unity. You will also engage in extensive communication with DDA.",
         "Art Director\n- Artistic\n- Accommodating\nAs an Art Director, your role is to ensure that D-Day looks professional. You'll have the opportunity to express your creativity by designing various materials, including brochures, posters, branded clothing, and more. Sometimes you'll even get to take photos. No prior experience is required; motivation and drive are what matter most. You'll, of course, have access to all the necessary software.",
-        "Web Manager\n- Independent\n- Initiating\nAs the Web Manager, you're responsible for ensuring the website looks good and functions properly. You'll also have significant opportunities to improve the website. Previous experience and knowledge in web development are definite assets. You'll work closely with the Art Director.",
-        "System Manager\n- Independent\n- Initiating\n- 'Yes, can do' attitude\nThe System Manager will collaborate extensively with the Web Manager on ambitious projects we plan to introduce at D-Day. We're looking for someone with the drive to create opportunities, and prior experience in app development is a big plus.",
         "Print Manager\n- Proactive\n- Artistic\nThe Print Manager is part of the PR team and is responsible for ensuring all printed materials are ordered and delivered on time. This includes items like stickers, patches, branded clothing, banners, brochures, and more. You'll work closely with the Art Director and assist with design work.",
         "Social Media Manager\n- Good communicator\n- Initiating\n- Social (especially on social media)\n- Creative\nThe Social Media Manager is responsible for increasing D-Day's presence on platforms like Instagram, Facebook, and other social media sites. You'll have the freedom to choose which social media platforms to use and how to express the event's message (within reasonable boundaries). In this role, you'll work closely with the Art Director to create attractive posts. This is an ideal position for those who enjoy taking photos and posting stories!"
+      ]
+    },
+    devGroup:{
+      header: "Dev Team",
+      text: "The Dev Group is a technically skilled and innovative unit within D-Dagen. Its members are responsible for the development, maintenance, and enhancement of the D-Dagen website. They handle everything from backend programming and database management to frontend design and user experience, with a focus on creating a smooth and engaging digital platform for all visitors.",
+      roles : [
+        "Web Manager\n- Independent\n- Initiating\nAs the Web Manager, you're responsible for ensuring the website looks good and functions properly. You'll also have significant opportunities to improve the website. Previous experience and knowledge in web development are definite assets. You'll work closely with the Art Director.",
+        "System Manager\n- Independent\n- Initiating\n- 'Yes, can do' attitude\nThe System Manager will collaborate extensively with the Web Manager on ambitious projects we plan to introduce at D-Day. We're looking for someone with the drive to create opportunities, and prior experience in app development is a big plus.",
       ]
     },
     saleGroup:{

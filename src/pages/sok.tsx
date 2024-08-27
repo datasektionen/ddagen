@@ -165,7 +165,7 @@ export default function SignupPage() {
         borderColor="border-[#E2B7C9]"
         toReverse={false}
         textColor="text-[#E2B7C9]"
-        image="/img/projectGroup/prTeam.jpg"
+        image="/img/projectGroup/g_pr_modified.jpg"
         teamInfo={[
           t.sok.prGroup.header,
           t.sok.prGroup.text,
@@ -173,12 +173,27 @@ export default function SignupPage() {
         ]}
         roles={t.sok.prGroup.roles}
         />
+
+      <SingleTeam
+        bgColor="bg-yellow"
+        borderColor="border-yellow"
+        toReverse={true}
+        textColor="text-[#E2B7C9]"
+        image="/img/projectGroup/g_dev.jpg"
+        teamInfo={[
+          t.sok.devGroup.header,
+          t.sok.devGroup.text,
+          t.event.fullParagraph1,
+        ]}
+        roles={t.sok.devGroup.roles}
+        />
+
       <SingleTeam
         bgColor="bg-[#D5759C]"
         borderColor="border-[#D5759C]"
-        toReverse={true}
+        toReverse={false}
         textColor="text-[#D5759C]"
-        image="/img/projectGroup/salesTeam.jpg"
+        image="/img/projectGroup/g_sales.jpg"
         teamInfo={[
           t.sok.saleGroup.header,
           t.sok.saleGroup.text,
@@ -189,9 +204,9 @@ export default function SignupPage() {
       <SingleTeam
         bgColor="bg-cerise"
         borderColor="border-cerise"
-        toReverse={false}
+        toReverse={true}
         textColor="text-cerise"
-        image="/img/projectGroup/massTeam.jpg"
+        image="/img/projectGroup/g_mass.jpg"
         teamInfo={[
           t.sok.massGroup.header,
           t.sok.massGroup.text,
@@ -202,9 +217,9 @@ export default function SignupPage() {
       <SingleTeam
         bgColor="bg-yellow"
         borderColor="border-yellow"
-        toReverse={true}
+        toReverse={false}
         textColor="text-yellow"
-        image="/img/projectGroup/ecoTeam.jpg"
+        image="/img/projectGroup/g_money.jpg"
         teamInfo={[
           t.sok.ecoGroup.header,
           t.sok.ecoGroup.text,
