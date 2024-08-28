@@ -7,9 +7,8 @@ export default function ForStudents() {
   const t = useLocale();
   const scrollRef = useRef<HTMLInputElement | null>(null);
 
-    useEffect(()=>{
-        console.log("HREF: ", )
-    },[])
+  const dayStaffAplicationOpen = false;
+  const dayStaffAplicationLink = "";
 
   return (
     <div className="w-full h-full">
@@ -49,6 +48,7 @@ export default function ForStudents() {
                 />
               </div>
             </div>
+
             <div className="lg:hidden h-[160px] bg-white/80" />
             {/* Bottom Left */}
             <div className="lg:col-[3/17] lg:row-[14/25]">
@@ -80,6 +80,46 @@ export default function ForStudents() {
                  */}
               </div>
             </div>
+
+            {/* Day Staff Text */}
+            <div className="lg:col-[3/17] lg:row-[26/39] text-center lg:text-left z-40">
+              <div className="bg-cerise lg:p-8 p-6 drop-shadow-md overflow-hidden">
+                <h2 className="font-black text-[rgb(9,14,47)] lg:text-xl xl:text-[1.9rem] text-2xl pb-3 drop-shadow-md">
+                  {t.forStudents.dayStaffTitle}
+                </h2>
+                <p className="pb-8 text-[#110C30] md:text-md text-xl font-light">
+                  {t.forStudents.dayStaffText}
+                </p>
+                
+                {dayStaffAplicationOpen ?
+                  <div className="flex justify-center pb-[30px]">
+                    <a href={dayStaffAplicationLink}
+                      className="block uppercase text-sm hover:scale-105 transition-transform bg-white rounded-full text-cerise font-medium px-10 py-2 cursor-pointer">
+                      {t.forStudents.dayStaffApply}
+                    </a>
+                  </div>
+                :
+                  <p className="pb-8 text-center text-yellow font-medium md:text-md text-xl font-light">
+                    {t.forStudents.dayStaffApplicationOpens}
+                  </p>
+              }
+                
+              </div>
+            </div>
+
+            {/* Day Staff Image */}
+            <div className="lg:col-[16/30] lg:row-[25/37]">
+              <div className="mix-blend-color bg-[#060606]" />
+              <div className="relative -mt-10"> {/* Adjust the margin-top to move the image higher */}
+                <img
+                  src="/img/dagspersonal.jpg"
+                  alt="Dagspersonal"
+                  className="w-full grayscale"
+                />
+              </div>
+            </div>
+
+
           </div>
         </div>
       </div>
