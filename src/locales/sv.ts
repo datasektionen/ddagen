@@ -51,6 +51,10 @@ export default {
     tempCompanyMeetingsText:
       "Vi erbjuder kontaktsamtal för studenter, vilket innebär att ni får möjlighet att i enrum med företagsrepresentanter diskutera framtida jobbmöjligheter med mera. Anmälan kommer tillgängliggöras senare!",
       companyMeetingsButton: "Anmäl dig här",
+      dayStaffTitle: "Dagspersonal",
+      dayStaffText: "Vill du vara med och göra D-Dagen till en succé? Vi söker engagerade studenter som kan hjälpa till under mässdagen med uppgifter som att välkomna besökare, assistera utställare och hålla ordning i lokalerna. Det är ett perfekt tillfälle att nätverka, träffa företag och få värdefull erfarenhet.",
+      dayStaffApplicationOpens: "Ansökan öppnar 2/9",
+      dayStaffApply: "Ansök här!",
   },
   students: {
     info:{
