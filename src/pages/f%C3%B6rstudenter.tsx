@@ -7,6 +7,10 @@ export default function ForStudents() {
   const t = useLocale();
   const scrollRef = useRef<HTMLInputElement | null>(null);
 
+  useEffect(()=>{
+        console.log("HREF: ", )
+    },[])
+
   const dayStaffAplicationOpen = false;
   const dayStaffAplicationLink = "";
 
