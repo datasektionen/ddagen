@@ -81,8 +81,8 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
   }, [query]);
 
   return (
-    <div className="h-full flex max-md:flex-col-reverse max-md:items-center md:flex-row md:items-start justify-center md:py-16 md:pt-20 overscroll-none">
-      <div className="px-4 md:pr-4 flex flex-col items-center w-full md:w-96">
+    <div className="h-screen flex max-md:flex-col-reverse max-md:items-center md:flex-row md:items-start justify-center md:pt-20">
+      <div id="sidebar" className="h-1/3 md:h-full px-4 md:pr-4 flex flex-col items-center w-full md:w-3/5 box-border">
         <Search t={t} setQuery={setQuery} />
         <ExhibitorExplorer
           t={t}
@@ -93,7 +93,7 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
           setSelectedExhibitor={setSelectedExhibitor}
         />
       </div>
-      <div id="map-container" className="w-full md:px-4 md:pl-4">
+      <div id="map-container" className="w-full md:pr-4">
         <Map
           t={t}
           exhibitors={exhibitors}
