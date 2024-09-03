@@ -225,6 +225,7 @@ export async function getServerSideProps() {
     logoColor: exhibitor.logoColor?.toString("base64") || null,
     description: exhibitor.description || null,
     jobOfferId: exhibitor.jobOfferId || null,
+    packageTier: exhibitor.packageTier || null,
     offers: [
       exhibitor.jobOffers?.summerJob,
       exhibitor.jobOffers?.internship,
