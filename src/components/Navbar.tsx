@@ -324,9 +324,9 @@ export default function Navbar() {
             <Group
               links={[
                 { href: "/förstudenter", text: t.forStudents },
-                //{ href: "/karta", text: t.map },
+                { href: "/karta", text: t.map },
                 { href: "/logos", text: t.logos },
-                //{ href: "/student", text: t.meetings },
+                { href: "/student", text: t.meetings },
                 {href: "/sok", text:t.sok}
               ]}
             />
