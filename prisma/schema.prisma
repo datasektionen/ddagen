@@ -32,6 +32,7 @@ model Exhibitor {
   logoColor    Bytes?
   description  String
   packageTier               Int @default(-1)
+  studentMeetings           Int @default(0)
 
   extraTables               Int @default(0)
   extraChairs               Int @default(0)
@@ -153,12 +154,26 @@ model Students {
     traineeProgram Boolean
 
     cv             String     // set max size in backend, forced
+    has_cv         Boolean    @default(false)// set to true if cv is uploaded
 
     linkedin_url   String     //optional
     github_url     String     //optional
     other_link     String     //optional
     personal_story String     //optional, max x characters
 
+    // meeting logic
+    company_meeting_interests String[] //optional
+    company_meeting_declined String[] //optional
+
     @@map("students")
 }
 
+model Meetings {
+    id               String     @id @default(uuid())
+    studentId        String
+    exhibitorId      String
+    timeslot         Int
+    createdAt        DateTime   @default(now())
+
+    @@map("meetings")
+}

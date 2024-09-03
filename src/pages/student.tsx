@@ -1,32 +1,65 @@
-import { useEffect, useState } from 'react'
+import { use, useContext, useEffect, useState } from 'react'
 import { api } from "@/utils/api";
+import CompanyMeetingOffer from "@/components/Student/CompanyMeetingOffer";
+import { useLocale } from "@/locales";
+import StudentInfo from '@/components/Student/Info';
+import { CheckMark } from '@/components/CheckMark';
+import { addImageDetails } from '@/shared/addImageDetails';
+import { Table } from "@/components/Table";
 
+import { useRouter } from 'next/navigation';
+import { hasLoadedBeforeContext } from "@/utils/context";
+
+
+interface Company{
+    id: string;
+    name: string;
+    description: string;
+    logo: string;
+}
+
+interface SelectedCompanies{
+    [key: string]: boolean;
+}
+
+interface InterestedCompany{
+    exhibitorId: string;
+    studentId: string;
+    name: string;
+    description: string;
+    logo: string;
+    timeOptions: number[];
+    timeslot: number;
+}
 
 const set_cookies = (loginToken: string) => {
     document.cookie = `login_token=${loginToken};max-age=86400;`;
 };
 
 export default function LoggedInPage() {
-
-    const inputData = api.student.inputData.useMutation();
-    const studentVerify = api.student.verify.useMutation();
-    const studentGetData = api.student.getData.useMutation();
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [ugkthid, setUgkthid] = useState("");
+    const router = useRouter();
+    const t = useLocale();
+    const hasLoadedBefore = useContext(hasLoadedBeforeContext);
     
-    const [studentAccoundExists, setStudentAccoundExists] = useState(false);
+    const studentVerify = api.student.verify.useMutation();
+    const updateInterests = api.student.updateCompanyInterests.useMutation();
+    const createStudent = api.student.inputData.useMutation();
+    const getData = api.student.getData.useMutation();
+    
+    const getCompanyWithMeetings = api.student.getCompaniesWithMeetings.useMutation();
+    const getCompanyMeetingInterests = api.student.getCompanyMeetingInterests.useMutation();
 
-    // variables from verify, used to prefill the form for students
-    let email = "";
-    let first_name = "";
-    let last_name = "";
+    const getCompanyMeetingOffers = api.student.getCompanyMeetings.useMutation();
 
-    const update_user = (input: any)=>{
-        inputData.mutateAsync(JSON.stringify(input))
-        .then((res) =>{
-            console.log(res)
-        });
-    }
+    const [companiesWithMeeting, setCompaniesWithMetting] = useState<Company[]>([]);
+    const [selectedCompanies, setSelectedCompanies] = useState<SelectedCompanies>({});
+
+    const [companyMeetings, setCompanyMeetings] = useState<InterestedCompany[]>([]);
+
+    
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    
+    const [ugkthid, setugkthid] = useState<string>("");
 
     useEffect(()=>{
         // log in the user if not logged in
@@ -34,15 +67,15 @@ export default function LoggedInPage() {
             window.location.href = `https://login.datasektionen.se/login?callback=${window.location.href.replace(/^(https?:\/\/[^\/]+).*/, '$1')}/student?login_token=`
         }
     }, [isLoggedIn])
-
+    
     useEffect(() => {
+        //router.push("/förstudenter"); // remove when page should be available
         const params: URLSearchParams = new URL(window.location.href).searchParams;
 
         let loginToken: string = params.get('login_token') || "";
 
         // If no login_token in url, check if login token in cookies
         if ((!loginToken || loginToken === "null") && document.cookie.includes("login_token")) {
-            console.log("Checking cookies!");
             const match = document.cookie.toString().match(/login_token=([^;]*)/);
             if (match !== null) {
                 loginToken = match[1];
@@ -53,58 +86,186 @@ export default function LoggedInPage() {
             console.log("URL not complete: LoginToken=", loginToken,);
             return;
         }
-
+        
+        
         studentVerify.mutateAsync(loginToken)
         .then((res) =>{
             if (res){
                 // update prefill variables
                 const res_json = JSON.parse(res);
-                email = res_json.email;
-                first_name = res_json.first_name;
-                last_name = res_json.last_name;
-                setUgkthid(res_json.ugkthid);
-                update_user({
-                    "ugkthid": res_json.ugkthid,
-                    "email": res_json.email,
-                    "first_name": res_json.first_name,
-                    "last_name": res_json.last_name
-                })
+                setugkthid(res_json.ugkthid);
+                set_cookies(loginToken);
+                setIsLoggedIn(res? true:false);
+                
+                getData.mutateAsync(res_json.ugkthid)
+                .then((res) => {
+                    if (res) {
+                        console.log("Student exists");
+                    } else {
+                        createStudent.mutateAsync(
+                            JSON.stringify({
+                                ugkthid: res_json.ugkthid,
+                                first_name: res_json.first_name,
+                                last_name: res_json.last_name,
+                                email: res_json.emails,
+                                study_year: 0,
+                            })
+                        );
+                    }
+                });
+
+                getCompanyWithMeetings.mutateAsync().then((res) => {
+                    const result = res.map((company: any) => {
+                        return {
+                            id: company.id,
+                            name: company.name,
+                            description: company.description,
+                            logo: company.logo,
+                        }
+                    });
+                    setCompaniesWithMetting(result);
+
+                    const newSelectedCompanies = Object.fromEntries(result.map((company: any) => {
+                        return [company.id, false];
+                    }));
+                    setSelectedCompanies(newSelectedCompanies);
+                    
+                });
+
+                getCompanyMeetingInterests.mutateAsync(res_json.ugkthid)
+                .then((res) => {
+                    if(!Array.isArray(res)) return;
+                    const newSelectedCompanies = Object.fromEntries(res.map((company: any) => {
+                        return [company, true];
+                    }));
+                    setSelectedCompanies({...selectedCompanies, ...newSelectedCompanies});
+                    
+                }).
+                catch((err) => {
+                    console.log("Error in getCompanyMeetingInterests: ", err);
+                });
+
+               
+
+                getCompanyMeetingOffers.mutateAsync(res_json.ugkthid)
+                .then((res) => {
+                    // Booked timeslots by student
+                    const bookedTimeslotsSet = new Set();
+                    res.forEach((company) => {
+                        const timeslot = company.timeslot;
+                        if (timeslot > 0) {
+                            bookedTimeslotsSet.add(timeslot);
+                        }
+                    });
+
+                    // Update timeOptions for each company, remove options already booked for other companies
+                    const updatedMeetings = res.map((company) => {
+                        const timeOptions = company.timeOptions;
+                        const filteredTimeOptions = timeOptions.filter((time:number) => !bookedTimeslotsSet.has(time));
+                        return { ...company, timeOptions: filteredTimeOptions };
+                    });
+
+                    setCompanyMeetings(updatedMeetings);
+                });
             }
-            setIsLoggedIn(res? true:false);
-            set_cookies(loginToken);
         });
+        
     }, []);
+    
+    function handleSelection(company: Company){
+        const newValues = {...selectedCompanies, [company.id] : !selectedCompanies[company.id]};
+        setSelectedCompanies(newValues);
+        const keys = Object.keys(newValues).filter((key) => newValues[key] === true);
+        updateInterests.mutateAsync(JSON.stringify({company_meeting_interests: keys, ugkthid: ugkthid, exhibitorId: company.id}));
+    }
+    
+    function removeMeeting(id:string){
+        const newMeetings = companyMeetings.filter((meeting) => meeting.exhibitorId !== id);
+        setCompanyMeetings(newMeetings);
+    }
 
-    useEffect(()=>{
-        // Get student data, if not all data is fond in the database the response body will be false,
-        // If response body is false, let the user fill out the information form
-        if (ugkthid === "") return
+    function StudentView(){
+        
 
-        studentGetData.mutateAsync(ugkthid)
-        .then((res)=>{
-            if (!res) setStudentAccoundExists(false);
-            
-            console.log("RESPONSE: ", res);
-        });
+        function renderCompany(company: Company){
 
-    }, [isLoggedIn, ugkthid]);
+            return <div key={company.name} className={`min-w-[200px] rounded-2xl bg-white/20 backdrop-blur-md text-white pt-8 m-4 text-center overflow-hidden border-2 ${selectedCompanies[company.id] ? 'border-yellow' : 'border-cerise'}`}>
+            <div className='flex items-center justify-center'>
+                <CheckMark name={"check"} checked={selectedCompanies[company.id]} onClick={()=>{handleSelection(company)}}/>
+                <h2 className='text-2xl ml-10'>{company.name}</h2>
+            </div>
 
-
-    return isLoggedIn? (
-        <div className="h-screen flex flex-col justify-center items-center">
-            <p className="text-green-500">
-                You are logged in! :)
+            <p className={`min-h-6 font-bold mt-6 ${selectedCompanies[company.id] ? 'text-yellow visible' : 'invisible'}`}>
+                {t.students.companyInterests.checked1 + company.name + t.students.companyInterests.checked2}
             </p>
-            {
-                studentAccoundExists? 
-                <p className="text-white" >your account exists!</p>
-                :
-                <p className="text-white" >Create your account</p>
-            }            
+
+            
+            <div className="flex justify-center mt-2">
+                <img className="md:min-h-[120px] h-[200px]" src={
+                    addImageDetails(company.logo)
+                }></img>
+            </div>
+            <p className="text-center p-4">
+                {company.description}
+            </p> 
         </div>
+        }
+
+        function renderOffer(meeting: InterestedCompany){
+            return <div key={meeting.name+"-meeting"} className="flex justify-center mt-[15px] mb-[15px] min-w-[240px] mx-8">
+                <CompanyMeetingOffer 
+                    t={t} 
+                    studentId={meeting.studentId}
+                    companyId={meeting.exhibitorId}
+                    companyName={meeting.name}
+                    companyLogo={meeting.logo} 
+                    timeOptions={meeting.timeOptions}
+                    currentTimeSlot={meeting.timeslot}
+                    removeMeeting={removeMeeting}
+                />
+            </div>;
+        }
+
+
+        return <div>
+            <div className="mx-auto flex flex-col items-center py-20 cursor-default h-full min-w-[200px] max-w-[1200px] w-full mt-8 px-[20px] min-[450px]:px-[60px] min-[704px]:px-[60px]">
+                {Table(
+                        [t.exhibitorSettings.header,],
+                        [],
+                        [<><StudentInfo t={t} id={ugkthid}/></>,]
+                )}
+            </div>
+            
+            {companyMeetings.length>0?
+            <>
+                <h2 className="text-cerise text-2xl md:text-4xl font-medium text-center pt-12">{t.students.offersTitle}</h2>
+                <div className='w-100 flex items-center justify-center'>
+                    <div className="grid grid-flow-col grid-cols-1 md:grid-cols-2 items-center justify-center gap-2 max-w-[900px] justify-self-center">
+                        {companyMeetings.map(renderOffer)}
+                    </div>  
+                </div>
+            </>:<></>}
+        
+            <h2 className="text-cerise text-2xl md:text-4xl font-medium text-center pt-12">{t.students.companyInterests.header}</h2>
+            <h2 className="mt-4 mb-12 text-xl text-center text-white">{t.students.companyInterests.description}</h2>
+            <div className='w-100 flex items-center justify-center'>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-32 place-items-center max-w-[900px] justify-self-center">
+                {!getCompanyWithMeetings.data ? <div className='text-white'> ... </div>:
+                    companiesWithMeeting.map(renderCompany)
+                    }
+                </div>
+            
+                </div>;
+            </div>
+    }
+
+
+    return isLoggedIn && hasLoadedBefore? ( 
+            <StudentView/> 
         ) : (
-        <p className="h-screen flex items-center justify-center text-red-500">
-            You are not logged in! :)
+
+        <p className="h-screen flex items-center justify-center text-white">
+            Loading...
         </p>
     )
 }

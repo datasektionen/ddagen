@@ -47,8 +47,58 @@ export default {
       "This year, the fair is held on October 10th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15 and in KTH Entré which is located at Drottning Kristinas väg 4. Students will be able to have meetings with exhibitors through company meetings in order to get more of a connection with that company (limited slots per company).",
     companyMeetings: "Company Meetings",
     companyMeetingsText:
-      "This year is also the first year where we will offer company meetings for students, which means that you will be able to discuss future job opportunities in a private room with representatives from selected companies. Sign up on the link below:",
-    companyMeetingsButton: "Company Meetings",
+      "We offer company meetings for students, which means that you will be able to discuss future job opportunities in a private room with representatives from selected companies. Sign up on the link below:",
+    tempCompanyMeetingsText:
+      "We offer company meetings for students, which means that you will be able to discuss future job opportunities in a private room with representatives from selected companies. Sign up will be available soon!",
+    companyMeetingsButton: "Sign up",
+  },
+  students: {
+    info:{
+      header:"Fill in information about yourself!",
+      firstName:"First name",
+      lastName:"Last name",
+      year:"Year",
+      email:"Add email",
+      cv: "Resume",
+      save: "Save",
+      saved: "Saved",
+      failed: "Failed to save, try again",
+      addFirstName: "Enter your first name",
+      addLastName: "Enter your last name", 
+      addYear: "Enter your year",
+    },
+    interests:{
+      header: "Fill in your job offer interests",
+    },
+    companyInterests:{
+      header: "Select the companies you are interested in meeting",
+      description: "Click on the companies you are interested in meeting for a company meeting. The companies will then send you invitations to meetings.",
+      checked1:"You have shown interest in meeting with ", 
+      checked2:" for a company meeting.",
+    },
+    companyMeeting:{
+      offerText: " Has invited you to a company meeting",
+      acceptDeclineText: "Choose a time to accept the offer or decline the offer",
+      chooseOption: "Choose a time:", 
+      acceptedText: "You have accepted the meeting",
+      noTimesLeft: "No times left",
+
+      status: {
+        accepted: "You have declined the offer",
+        declined: "You have accepted the offer",
+        failed: "Failed to book meeting, try again",
+
+      },
+
+      meetingTimeText: "You have a meeting at",
+      acceptedTime: "Time:",
+      
+      cancelMeeting: "Cancel meeting",
+      cancelWarning: "You lose your meeting spot if you cancel",
+    },
+    offersTitle: "Company meeting offers",
+    offersTitle1: "You have ",
+    offersTitle2: " un answered company invitations",
   },
   exhibitorSettings: {
     startHeader: "Time to set up your profile",
@@ -173,7 +223,20 @@ export default {
       },
       row2: {
         title: "Your Package And Extra Orders",
-        
+        packages: {
+          tier0: "Small",
+          tier1: "Medium",
+          tier2: "Large",
+          tier3: "Main Sponsor",
+          tier4: "Startup", 
+        },
+        packageList: [
+          "Small",
+          "Medium",
+          "Large",
+          "Main Sponsor",
+          "Startup",
+        ],
         section1: {
           header: "Package",
           info: "For more information about the different packages",
@@ -253,6 +316,27 @@ export default {
         },
       },
 
+    },
+    meetings: {
+      title: "Company Meetings",
+      columns: ["","Name", "Year", "CV", "Other"],
+      columns2: ["Name", "Year", "CV", "Other"],
+      columns3: ["Time", "Name", "Year", "CV", "Other"],
+      checkAll: "Select all",
+      unCheckAll: "Deselect all",
+      filter: "Filter",
+      year: "Year interval",
+      selectedStudents: "selected students", 
+      pendingMeetings: "pending meeting requests",
+      bookedMeetings: "booked meetings",
+      bookSelected: "Send meeting request",
+      caution: "Student meetings are not available on phones",
+      pages: {
+        interested: "Interested students",
+        pending: "Pending requests",
+        accepted: "Accepted requests",
+      }
+      
     },
   },
   login: {

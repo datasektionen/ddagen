@@ -10,6 +10,7 @@ import { TRPCError } from "@trpc/server";
 import { Prisma } from "@prisma/client";
 import sendEmail from "@/utils/send-email";
 import { randomUUID } from "crypto";
+import { error, time } from "console";
 
 const foodPreferencesType = z.enum(["Representative", "Banquet"]);
 const foodPreferencesValue = z.enum([
@@ -129,6 +130,7 @@ export const exhibitorRouter = createTRPCRouter({
         customDrinkCoupons: true,
         customRepresentativeSpots: true,
         customBanquetTicketsWanted: true,
+        studentMeetings: true, 
       },
     });
   }),
@@ -166,6 +168,12 @@ export const exhibitorRouter = createTRPCRouter({
         },
       });
     }),
+  getName: protectedProcedure.query(async ({ ctx }) => {
+    return await ctx.prisma.exhibitor.findUniqueOrThrow({
+      where: { id: ctx.session.exhibitorId },
+      select: { name: true },
+    });
+  }),
   getDescription: protectedProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.exhibitor.findUniqueOrThrow({
       where: { id: ctx.session.exhibitorId },
@@ -483,5 +491,248 @@ export const exhibitorRouter = createTRPCRouter({
         });
         if (!exhibitor) return;
         return exhibitor.infoSubmissionStatus
+    }),
+    getStudentInterests: protectedProcedure
+    .query(async ({ ctx }) => {
+        const exhibitor = await ctx.prisma.exhibitor.findUnique({
+          where: {
+            id: ctx.session.exhibitorId,
+          },
+        });
+
+        if (!exhibitor) return;
+        
+        const alreadyBookedMeetings = await ctx.prisma.meetings.findMany({
+          where: {
+            exhibitorId: ctx.session.exhibitorId,
+          },
+        });
+
+        const students = await ctx.prisma.students.findMany({
+          where: {
+            company_meeting_interests: {
+              has: exhibitor.id,
+            },
+          },
+          select: {
+            id: true,
+            ugkthid: true,
+            first_name: true,
+            last_name: true,
+            study_year: true,
+            has_cv: true,
+            summerJob: true,
+            internship: true,
+            partTimeJob: true,
+            masterThesis: true,
+            fullTimeJob: true,
+            traineeProgram: true,
+          },
+        });
+
+        
+
+        if (!students) return;
+        
+        const studentData = JSON.parse(JSON.stringify(students));
+
+        const output = studentData
+        .filter((student: any) => student.cv !== null) // remove all without cv
+        .filter((student: any) => { // remove all that already have a meeting
+          //console.log("meetings", alreadyBookedMeetings);
+
+          var hasMeeting = false;
+          alreadyBookedMeetings.forEach((meeting: any) => {
+            if(meeting.studentId === student.id) {
+              console.log("Student already has a meeting");
+              hasMeeting = true;
+            }
+          })
+
+          return !hasMeeting;
+        }).map((student: any) => { //format the output
+          const keys = ["summerJob", "internship", "partTimeJob", "thesis", "fullTimeJob", "traineeProgram"]
+          const values = [student.summerJob, student.internship, student.partTimeJob, student.masterThesis, student.fullTimeJob, student.traineeProgram]
+          return {
+            ugkthid: student.ugkthid,
+            name: student.first_name + " " + student.last_name,
+            year: student.study_year,
+            has_cv: student.has_cv,
+            other: keys.filter((_, i) => values[i])
+          }
+        });
+  
+
+        return output;
+    }),
+    getStudentCV: protectedProcedure
+    .input(z.string())
+    .mutation(async ({ ctx, input }) => {
+      //console.log("Getting CV for student: ", input);
+        const student = await ctx.prisma.students.findUnique({
+          where: {
+            ugkthid: input,
+          },
+          select: {
+            cv: true,
+            has_cv: true,
+          },
+        });
+        if(!student || !student.has_cv) throw error("No CV found");
+
+        return student.cv;
+    }),
+    createMeeting: protectedProcedure
+    .input(z.object({
+      ugkthid: z.string().trim(),
+    }))
+    .mutation(async ({ ctx, input }: any) => {
+        const exhibitor = await ctx.prisma.exhibitor.findUnique({
+          where: {
+            id: ctx.session.exhibitorId,
+          },
+        });
+
+        if (!exhibitor) return;
+
+        const student = await ctx.prisma.students.findUnique({
+          where: {
+            ugkthid: input.ugkthid,
+          },
+        });
+
+        if (!student) return;
+
+        const existingMatch = await ctx.prisma.meetings.findMany({
+          where: {
+            exhibitorId: ctx.session.exhibitorId,
+            studentId: student.id,
+          },
+        });
+
+        if (existingMatch.length > 0) {
+          console.log("Match already exists");
+          return;
+        }
+
+        const match = await ctx.prisma.meetings.create({
+          data: {
+            exhibitorId: ctx.session.exhibitorId,
+            studentId: student.id,
+            timeslot: -1,
+            createdAt: new Date(),
+          },
+        });
+
+        return match
+    }),
+    getMeetings: protectedProcedure
+    .query(async ({ ctx }) => {
+        const meetings = await ctx.prisma.meetings.findMany({
+          where: {
+            exhibitorId: ctx.session.exhibitorId
+          },
+        });
+
+        return meetings
+    }),
+    getPendingMeetings: protectedProcedure
+    .query(async ({ ctx }) => {
+        const exhibitor = await ctx.prisma.exhibitor.findUnique({
+          where: {
+            id: ctx.session.exhibitorId,
+          },
+        });
+
+        if (!exhibitor) return;
+
+        const studentMeetings = await ctx.prisma.meetings.findMany({
+          where: {
+            exhibitorId: ctx.session.exhibitorId,
+            timeslot: -1,
+          },
+        });
+
+        if (!studentMeetings) return;
+
+        const studentIds = studentMeetings.map((student: any) => student.studentId);
+
+        const students = await ctx.prisma.students.findMany({
+          where: {
+            id: {
+              in: studentIds,
+            },
+          },
+        });
+
+        const studentData = JSON.parse(JSON.stringify(students));
+
+        const output = studentData.map((student: any) => {
+          return {
+            ugkthid: student.ugkthid,
+            name: student.first_name + " " + student.last_name,
+            year: student.study_year,
+            has_cv: student.has_cv,
+            cv: student.cv
+          }
+        });
+
+        return output;
+    }),
+    getAcceptedMeetings: protectedProcedure
+    .query(async ({ ctx }) => {
+        const exhibitor = await ctx.prisma.exhibitor.findUnique({
+          where: {
+            id: ctx.session.exhibitorId,
+          },
+        });
+
+        if (!exhibitor) return;
+
+        const studentMeetings = await ctx.prisma.meetings.findMany({
+          where: {
+            exhibitorId: ctx.session.exhibitorId,
+            timeslot: {
+              not: -1,
+            },
+          },
+        });
+        
+        // append the timeslot to the student
+
+        if (!studentMeetings) return;
+
+        const studentIds = studentMeetings.map((student: any) => student.studentId);
+        const students = await ctx.prisma.students.findMany({
+          where: {
+            id: {
+              in: studentIds,
+            },
+          },
+        });
+
+        const studentData = JSON.parse(JSON.stringify(students));
+
+        // timeslot to the right students
+        studentMeetings.forEach((meeting: any) => {
+          studentData.forEach((student: any) => {
+            if (student.id === meeting.studentId) {
+              student.timeslot = meeting.timeslot;
+              //console.log("Timeslot: ", student.timeslot);
+            }
+          });
+        });
+
+        const output = studentData.map((student: any) => {
+          return {
+            ugkthid: student.ugkthid,
+            name: student.first_name + " " + student.last_name,
+            year: student.study_year,
+            has_cv: student.has_cv,
+            timeslot: student.timeslot,
+          }
+        });
+
+        return output;
     }),
 });

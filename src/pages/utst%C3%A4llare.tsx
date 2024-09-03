@@ -3,15 +3,19 @@ import { useLocale } from "@/locales";
 import { useRouter } from "next/router";
 import { Table } from "@/components/Table";
 import { Extras, Package } from "@/shared/Classes";
-import { useEffect, useState, useRef, use } from "react";
-import ExtraFairOrders from "@/components/Settings/ExtraFairOrders";
-import FoodPreferences from "@/components/Settings/FoodPreferences";
-import GeneralInfo from "@/components/Settings/GeneralInfo";
-import JobOffers from "@/components/Settings/JobOffers";
-import { UserDetails } from "@/components/Settings/UserDetails";
+import { use, useEffect, useState } from "react";
+import ExtraFairOrders from "@/components/Company/ExtraOrders/ExtraFairOrders";
+import FoodPreferences from "@/components/Company/Preferences/FoodPreferences";
+import GeneralInfo from "@/components/Company/General/GeneralInfo";
+import JobOffers from "@/components/Company/General/JobOffers";
+import { UserDetails } from "@/components/Company/User/UserDetails";
 import { CheckMark } from "@/components/CheckMark";
 import { addImageDetails } from "@/shared/addImageDetails";
+import CompanyMeetingBooker from "@/components/Company/ExtraOrders/CompanyMeetingBooker";
 
+// TODO hook the next button to the save features
+// Maby break save changes into a separate steps for each page
+// Add Logic to figure out saved state
 
 export default function Exhibitor() {
   const t = useLocale();
@@ -19,24 +23,14 @@ export default function Exhibitor() {
 
   // States
   const [page, setPage] = useState<number>(0);
-  const [nextPageDisabled, setNextPageDisabled] = useState<boolean>(false);
-
-  const [actionsPerPage, setActionsPerPage] = useState<number[][]>([[0],[1,1,1]]) // one means untouched and 0 means touched, this allows for row summaries
 
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
   const [saveChanges, setSaveChanges] = useState<boolean | undefined>();
-  
+  const [name, setName] = useState<string>("");
   const [whiteLogo, setWhiteLogo] = useState("");
-  const whiteLogoRef = useRef(whiteLogo);
-  
   const [colorLogo, setColorLogo] = useState("");
-  const colorLogoRef = useRef(colorLogo);
-  
   const [description, setDescription] = useState("");
-  const descriptionRef = useRef(description);
-  
   const [checkmarks, setCheckMarks] = useState<boolean[]>([]);
-  const checkmarksRef = useRef(checkmarks);
   const [extras, setExtras] = useState<Extras>();
   const [preferenceCount, setPreferenceCount] = useState({
     banqcount: 0,
@@ -44,10 +38,10 @@ export default function Exhibitor() {
   });
   const [exhibitorPackage, setExhibitorPackage] = useState(new Package(t, -1));
   const [showSetUpPage, setShowSetUpPage] = useState<boolean>(false);
-
+  const [hasMeeting, setHasMeeting] = useState<boolean>(false);
 
   // Mutations
-  const setExtrasMutation = api.exhibitor.setExtras.useMutation();
+  const setExtrasMutation: ReturnType<typeof api.exhibitor.setExtras.useMutation> = api.exhibitor.setExtras.useMutation();
   const logoMutation = api.exhibitor.setLogo.useMutation();
   const descriptionMutation = api.exhibitor.setDescription.useMutation();
   const jobOffersMutation = api.exhibitor.setJobOffers.useMutation();
@@ -57,16 +51,19 @@ export default function Exhibitor() {
   // Queries
   const getLogos = api.exhibitor.getLogo.useQuery();
   const getDescription = api.exhibitor.getDescription.useQuery();
+  const getName = api.exhibitor.getName.useQuery();
   const getJobOffers = api.exhibitor.getJobOffers.useQuery();
   const getExtras = api.exhibitor.getExtras.useQuery();
   const getExhibitor = api.exhibitor.getPackage.useQuery();
   const getPreferenceCounts = api.exhibitor.getPreferenceCount.useQuery();
   const getIsLoggedIn = api.account.isLoggedIn.useQuery(undefined, {
-    onSuccess: (data) => {
+    onSuccess: (data: any) => {
       setIsLoggedIn(data);
     },
   });
   const getInfoStatus = api.exhibitor.getInfoStatus.useQuery();
+  //const getStudentInterests = api.exhibitor.getStudentInterests.useQuery();
+
 
   // Manage login
   useEffect(() => {
@@ -103,32 +100,9 @@ export default function Exhibitor() {
     }
   }
 
-  function onInteractedWithPage(page: number, element: number){
-    if(page < 2 ) {
-      let actions = {...actionsPerPage}
-      actions[page][element] = 0
-      setActionsPerPage(actions);
-      setNextPageDisabled(!(actionsPerPage[page].reduce((a, b) => a + b, 0) == 0))
-    }
-  } 
-
-  useEffect(()=>{
-    if(page < 2 ) {  
-      setNextPageDisabled(!(actionsPerPage[page].reduce((a, b) => a + b, 0) == 0))
-    }
-  },[page])
-
-  useEffect(()=>{
-    if(page > 2)
-    {
-      setNextPageDisabled(false)
-    }
-  },[nextPageDisabled])
-
   // Manage page swapping
   const pageAmout = 6;
   let newPage;
-  
   const nextPage = () => {
     pageSave(page)
     newPage = (page + 1)
@@ -137,7 +111,6 @@ export default function Exhibitor() {
     }
     setInfoStatus.mutate(newPage)
     setPage(newPage);
-    scrollTo(0,0)
   }
 
   const prevPage = () => {
@@ -146,7 +119,7 @@ export default function Exhibitor() {
     setInfoStatus.mutate(newPage)
     setPage(newPage);
   }
-  
+
   useEffect(()=>{
     if (getInfoStatus.data !== undefined){
       if(getInfoStatus.data >= pageAmout){
@@ -155,40 +128,11 @@ export default function Exhibitor() {
       else{
         setShowSetUpPage(true)
         setPage(getInfoStatus.data)
-        console.log(getInfoStatus.data)
-        if(getInfoStatus.data > 2)
-        {
-          setNextPageDisabled(false)
-        }
       }  
+      
     }
   },[getInfoStatus.data])
   
-  // Manage input staging
-
-  useEffect(() => {
-    if(whiteLogoRef.current !== whiteLogo){
-      onInteractedWithPage(1, 0)
-    }
-    if(colorLogoRef.current !== colorLogo){
-      onInteractedWithPage(1, 1)
-    }
-    if(descriptionRef.current !== description){
-      if(description.length > 8)
-      {
-        onInteractedWithPage(1, 2)
-      } 
-      else 
-      {
-        let actions = {...actionsPerPage}
-        actions[1][2] = 1
-        setActionsPerPage(actions);
-      }
-
-    }
-   
-  }, [whiteLogo, colorLogo, description]);
- 
 
   useEffect(() => {
     if (!getDescription.isSuccess) return;
@@ -199,9 +143,6 @@ export default function Exhibitor() {
     if (!getLogos.isSuccess) return;
     setWhiteLogo(addImageDetails(getLogos.data.white));
     setColorLogo(addImageDetails(getLogos.data.color));
-    whiteLogoRef.current = whiteLogo;
-    colorLogoRef.current = colorLogo;
-    
   }, [getLogos.data]);
 
   {/* Extra orders*/}
@@ -226,7 +167,10 @@ export default function Exhibitor() {
   useEffect(() => {
     if (!getExhibitor.isSuccess) return;
     const exhibitor = getExhibitor.data;
+    
+    console.log(getExhibitor.data);
     const exhibitorPackage = new Package(t, exhibitor.packageTier);
+    console.log(exhibitor);
     exhibitorPackage.addCustomOrders(
       exhibitor.customTables,
       exhibitor.customChairs,
@@ -235,6 +179,7 @@ export default function Exhibitor() {
       exhibitor.customBanquetTicketsWanted
     );
     setExhibitorPackage(exhibitorPackage);
+    setHasMeeting(exhibitor.studentMeetings == 1);
   }, [getExhibitor.data]);
 
   useEffect(() => {
@@ -248,6 +193,10 @@ export default function Exhibitor() {
     });
   }, [extras]);
 
+  useEffect(() => {
+    if(!getName.isSuccess) return;
+    setName(getName.data.name)
+  }, [getName.data]);
 
   {/* job Offers logic*/}
   useEffect(() => {
@@ -267,7 +216,6 @@ export default function Exhibitor() {
     initCheckMarks[16] = jobOffers.fullTimeJob;
     initCheckMarks[17] = jobOffers.traineeProgram;
     setCheckMarks(initCheckMarks);
-    checkmarksRef.current = initCheckMarks;
   }, [getJobOffers.data]);
 
   function removeImageDetails(img: string) {
@@ -443,8 +391,11 @@ export default function Exhibitor() {
       <div className="uppercase text-cerise text-xl md:text-2xl font font-medium text-center px-[10px] break-words"> 
         {t.exhibitorSettings.startHeader}
       </div>
+      <h2>
+        {}
+      </h2>
       <div className="w-full min:h-[400px] flex flex-col items-center"> 
-        <button className="mt-4 mb-4" onClick={nextPage} >
+        <button className="mt-4 mb-4" onClick={nextPage}>
           <a className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-medium px-6 py-2 max-lg:mx-auto w-max">
             {t.exhibitorSettings.startButton}
           </a>
@@ -459,9 +410,7 @@ export default function Exhibitor() {
       colorLogo={colorLogo}
       setColorLogo={setColorLogo}
       description={description}
-      setDescription={setDescription}
-      
-      />
+      setDescription={setDescription}/>
     </>,
     <>  
       <JobOffers
@@ -487,6 +436,25 @@ export default function Exhibitor() {
     
   ]
 
+  {/*Page Content */}
+  const meetings = Table(
+    [
+      t.exhibitorSettings.table.row4.section1.title,
+    ],
+    [],
+    [
+      <>
+        <ul>
+          <li> <span className="text-yellow font-bold w-4 mr-2">1: </span> {t.exhibitorSettings.table.row4.section1.info1}</li>
+          <li> <span className="text-yellow font-bold w-4 mr-2">2: </span> {t.exhibitorSettings.table.row4.section1.info2}</li>
+          <li> <span className="text-yellow font-bold w-4 mr-2">3: </span> {t.exhibitorSettings.table.row4.section1.info3}</li>
+          <li> <br></br></li>
+          <li> {t.exhibitorSettings.table.row4.section1.info4}</li>
+        </ul> 
+      </>,
+    ]
+  );
+
   return(
     <>
     <div className="xl:w-[1200px] lg:w-[1000px] w-full">
@@ -497,6 +465,9 @@ export default function Exhibitor() {
         <h1 className="uppercase text-cerise text-3xl md:text-5xl font-medium text-center px-[10px] break-words">
           {t.exhibitorSettings.header} 
         </h1>
+        <h2 className="text-white text-xl pt-2" >
+          {name}
+        </h2>
         {/*Header*/}
 
         {/*Selection Cards*/}
@@ -508,27 +479,23 @@ export default function Exhibitor() {
           
           <div className=" w-full rounded-2xl bg-white/20 backdrop-blur-md text-white pt-8 overflow-hidden border-2 border-cerise">
             {pageContent[page]}
-              {page == pageAmout -1 ? 
-                <p className="text-center text-base text-white font-medium py-4">
-                  {t.exhibitorSettings.lastPageWarning}
-                </p> : <> </>
-              }
             <div className="w-full flex justify-center ">
 
+
               {page > 1 ? <button className="mt-4 mb-4 mx-2" onClick={prevPage}> 
-              <a className={ `block transition-transform rounded-full p-6 bg-cerise hover:scale-105  text-white text-base font-medium px-6 py-2 max-lg:mx-auto w-max`}  >
+                <a className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-medium px-6 py-2 max-lg:mx-auto w-max">
                 {t.exhibitorSettings.previousPage } 
                 </a>
               </button>: <> </> }
-              {page < pageAmout-1 && page > 0 ? <button className="mt-4 mb-4 mx-2" onClick={nextPage} disabled={nextPageDisabled}>
-              <a className={ `block transition-transform rounded-full p-6 ${nextPageDisabled ? "bg-black/25 " : "bg-cerise hover:scale-105 "} text-white text-base font-medium px-6 py-2 max-lg:mx-auto w-max`}  >
+              {page < pageAmout-1 && page > 0 ? <button className="mt-4 mb-4 mx-2" onClick={nextPage}>
+              <a className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-medium px-6 py-2 max-lg:mx-auto w-max">
                 {t.exhibitorSettings.nextPage}
               </a>
               </button> : <> </> }
 
               {page == pageAmout -1 ? 
-                  <button className="mt-4 mb-4 mx-2" onClick={nextPage} disabled={nextPageDisabled}>
-                  <a className={ `block transition-transform rounded-full p-6 ${nextPageDisabled ? "bg-black/25 " : "bg-cerise hover:scale-105 "} text-white text-base font-medium px-6 py-2 max-lg:mx-auto w-max`}  >
+                  <button className="mt-4 mb-4 mx-2" onClick={nextPage}>
+                  <a className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-medium px-6 py-2 max-lg:mx-auto w-max">
                     {t.exhibitorSettings.lastPage}
                   </a>
                   </button> : <> </> }
@@ -538,9 +505,27 @@ export default function Exhibitor() {
             </div>
           </div>
           :  
-          <></>}
+          <>{table}</>}
+     
+
+          {/* Packages that have the student meeting functionality*/}
+          { hasMeeting && !showSetUpPage ? 
+          <div>
+
+            <h2 className="text-cerise text-2xl md:text-4xl font-medium text-center pt-12">{t.exhibitorSettings.table.row4.title} </h2>
+            
+            <div className="hidden lg:block">
+              {meetings}
+            </div>
+            <p className="block lg:hidden text-white text-center text-2xl"> {t.exhibitorSettings.meetings.caution} </p>
+            <CompanyMeetingBooker/>
+
+          </div> 
           
-          {table}
+          
+          : <></> }
+        
+          
         </div>
       </div>
     </>
