@@ -8,7 +8,7 @@ import "leaflet/dist/leaflet.css";
 const exhibitorMarker = (id: string, selected: boolean): DivIcon =>
   new DivIcon({
     html: id,
-    className: `rounded-full bg-pink-600 ring ${selected ? "ring-4 ring-pink-50" : "ring-2 ring-pink-500"} text-white text-center content-center`,
+    className: `rounded-full bg-pink-600 ring ${selected ? "border-4 border-pink-500 ring-2 ring-yellow" : "ring-2 ring-pink-500"} text-white text-center content-center`,
     iconSize: selected ? [38, 38] : [30, 30]
   });
 
@@ -58,7 +58,7 @@ export default function Map({
       };
     }, []);
     return (
-      <div className="h-full w-full md:m-2 box-border backdrop-blur-sm md:border-4 md:border-pink-600 md:rounded-2xl">
+      <div className="h-full w-full md:m-2 box-border backdrop-blur-sm md:border-4 md:border-pink-600 md:rounded-2xl select-none">
         <MapContainer
           center={[0, 0]}
           minZoom={8}

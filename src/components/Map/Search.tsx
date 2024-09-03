@@ -100,11 +100,6 @@ export default function Search({
         />
         <div className="flex flex-row text-3xl">
           <Button
-            value="⌕"
-            loading={false}
-            onClick={() => applySearch(searchQuery, checkmarks, setQuery)}
-          />
-          <Button
             value="≡"
             loading={false}
             onClick={() => setShowFilter(!showFilter)}
@@ -115,8 +110,7 @@ export default function Search({
       <div className="flex justify-center w-full relative">
         {showFilter && (
           <div
-            className="absolute top-full z-10 w-full block border-4 border-pink-600 bg-[#eaeaea] bg-opacity-30
-                        backdrop-blur rounded-lg text-white justify-center text-xl"
+            className="absolute top-full z-10 mt-5 w-11/12 block border-4 border-pink-600 bg-[#867c8b] bg-opacity-60 backdrop-blur-sm rounded-lg text-white justify-center text-xl"
           >
             <div className="w-full h-full flex flex-col justify-center items-center p-2 max-xs:p-6 font-light text-base">
               <div className="flex flex-row mt-1 space-x-4 items-center">

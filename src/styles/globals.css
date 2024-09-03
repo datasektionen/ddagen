@@ -209,6 +209,10 @@
 
 @media (max-width: 767px) {
   #map-container {
-    height: calc(60vh - 3rem);
+    height: calc(55vh - 3rem);
   }
 }
+
+/* #sidebar {
+  height: calc(80vh - 76px);
+} */
