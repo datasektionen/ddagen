@@ -4,6 +4,7 @@ import UploadCV from "./UploadCV";
 import { CheckMark } from "../CheckMark";
 import { InputField } from "../InputField";
 import { api } from "@/utils/api";
+import { useModal } from "@/utils/context";
 
 interface User{
     ugkthid: string;
@@ -32,7 +33,7 @@ export default function StudentInfo(
 ) {
   const [user, setUser] = useState<User | null>(null);
   const studentGetData = api.student.getData.useMutation();
-
+  const modal = useModal();
   useEffect(() => {
     studentGetData.mutateAsync(id)
     .then((result)=>{
@@ -86,10 +87,12 @@ export default function StudentInfo(
       inputData.mutateAsync(JSON.stringify(data))
       .then((res) =>{
         setSaved(true);
+        
         setTimeout(()=>{setSaved(false)}, 2000);
       })
       .catch((err) => {
         setSaved(false);
+        
       });
       
     }

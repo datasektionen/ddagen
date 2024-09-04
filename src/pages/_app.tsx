@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import { useRef, useEffect } from "react";
 import type { AppType } from "next/app";
 import { api } from "@/utils/api";
-import { AnimationProvidor } from "@/utils/context";
+import { AnimationProvidor, ModalContextProvider } from "@/utils/context";
 
 
 const App: AppType = ({ Component, pageProps }) => {
@@ -50,7 +50,9 @@ const App: AppType = ({ Component, pageProps }) => {
           "
           id="main-content"
         >
-          <Component  {...pageProps} />
+          <ModalContextProvider>
+            <Component  {...pageProps} />
+          </ModalContextProvider>
         </div>
       <Footer />
     </>

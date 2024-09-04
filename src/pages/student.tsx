@@ -8,6 +8,7 @@ import { addImageDetails } from '@/shared/addImageDetails';
 import { Table } from "@/components/Table";
 
 import { useRouter } from 'next/navigation';
+import { useModal } from '@/utils/context';
 
 
 
@@ -45,7 +46,7 @@ export default function LoggedInPage() {
     const updateInterests = api.student.updateCompanyInterests.useMutation();
     const createStudent = api.student.inputData.useMutation();
     const getData = api.student.getData.useMutation();
-    
+    const modal = useModal();
     const getCompanyWithMeetings = api.student.getCompaniesWithMeetings.useMutation();
     const getCompanyMeetingInterests = api.student.getCompanyMeetingInterests.useMutation();
 
@@ -198,9 +199,15 @@ export default function LoggedInPage() {
 
     function handleSelection(company: Company){
         const newValues = {...selectedCompanies, [company.id] : !selectedCompanies[company.id]};
+        const valueToSet = !selectedCompanies[company.id];
         setSelectedCompanies(newValues);
         const keys = Object.keys(newValues).filter((key) => newValues[key] === true);
-        updateInterests.mutateAsync(JSON.stringify({company_meeting_interests: keys, ugkthid: ugkthid, exhibitorId: company.id}));
+        updateInterests.mutateAsync(JSON.stringify({company_meeting_interests: keys, ugkthid: ugkthid, exhibitorId: company.id}))
+        .then((res) => {
+            if(res){
+                modal.openModal(true, t.students.info.saved, 1500);
+            }
+        });
     }
     
     function removeMeeting(id:string){

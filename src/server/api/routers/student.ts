@@ -186,7 +186,7 @@ export const studentRouter = createTRPCRouter({
             }
         });
 
-        if (!student) return;
+        if (!student) return false;
 
 
         //Broken please fix @ilmal 

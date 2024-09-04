@@ -41,6 +41,7 @@ export default function CompanyMeetingOffer(
 
     const [wasDeleted, setWasDeleted] = useState<boolean>(false);
     const [confirmDelete, setConfirmDelete] = useState<boolean>(false);
+    
 
     const times = ["10:00-10:30", "10:30-11:00", "11:00-11:30", "11:30-12:00", "12:00-12:30", "12:30-13:00",
                    "13:00-13:30", "13:30-14:00", "14:00-14:30", "14:30-15:00", "15:00-15:30", "15:30-16:00"]
@@ -142,86 +143,71 @@ export default function CompanyMeetingOffer(
                     addImageDetails(companyLogo)
                     }></img>
             </div>
-            
-            {  chosenTimeSlot == -1 &&   
-            <>
-                {/* If the meeting has not been accepted */}
-                <p>
-                    {t.students.companyMeeting.offerText}
-                </p>
-                {/**Länk till företaget? */}
-                <div>
-                    {t.students.companyMeeting.acceptDeclineText}
-                </div> 
-                {
-                    timeOptions.length == 0 ? 
-                    <p>{t.students.companyMeeting.noTimesLeft}</p> 
-                    :
-                    <>
-                        <label htmlFor="options" className="text-white pr-4">{t.students.companyMeeting.chooseOption}</label>
-                        <select id="options" onChange={changeTime} className="bg-cerise w-[120px] h-[30px] mt-4">
-                            {(timeOptionsCopy).map(displayTimeOptions)}
-                        </select>
-                    </> 
-                }
-                <div className="flex justify-center gap-32 m-4">
-                    {time != -1 && <>
+
+            {/* Either we should confirm a decline or manage meeting */}
+            { confirmDelete ? <>
+                <div className="flex flex-col w-full content-center ">
+                    <div className="flex flex-col py-4">
+                        <h3 className="text-lg">{t.students.companyMeeting.confirmDelete}</h3>
+                        <p> {t.students.companyMeeting.cancelWarning} </p>
+                    </div>
+                        <div className="flex justify-center gap-32 m-4">
                         <img className="h-[50px] cursor-pointer hover:scale-110 transition duration-100 ease-in-out"
-                            onClick={acceptOffer}
+                            onClick={declineOffer}
                             src="/img/check.png"/>
                         <img className="h-[50px] cursor-pointer hover:scale-110 transition duration-100 ease-in-out"
-                            onClick={declineOffer} 
+                            onClick={()=>{setConfirmDelete(false)}} 
                             src="/img/cross.png"/>
-                    </>}
-                </div>
-                {statusMessage(status)}
-                
-            </>}
-            { chosenTimeSlot != -1 && <> 
-                {/* If the meeting has been accepted */}
-                <p className="text-md">
-                    {t.students.companyMeeting.meetingTimeText}
-                </p>
-                <p className="text-md ">
-                    {t.students.companyMeeting.acceptedTime} {times[chosenTimeSlot-1]}
-                </p>
-
-                {!confirmDelete && 
-                <div className="flex flex-row justify-end py-4 pr-16">
-                    <div className="flex flex-col  pr-4">
-                        <h3 className="text-lg"> 
-                            {t.students.companyMeeting.cancelMeeting}
-                        </h3>
-                        <p>
-                            {t.students.companyMeeting.cancelWarning}
-                        </p>
                     </div>
-                    
-                    <img className="h-[50px] cursor-pointer hover:scale-110 transition duration-100 ease-in-out"
-                            onClick={()=>{setConfirmDelete(true)}} 
-                        src="/img/check.png"
-                    />
                 </div>
-                }
-                {confirmDelete && (
-                    <div className="flex flex-col w-full content-center ">
-                        <div className="flex flex-col py-4">
-                            <h3 className="text-lg">{t.students.companyMeeting.confirmDelete}</h3>
-                            <p> {t.students.companyMeeting.cancelWarning} </p>
-                        </div>
+                </> : <>
+                    { chosenTimeSlot == -1 ? <>
+                        {/* If the meeting has not been accepted */}
+                        
+                        <p> {t.students.companyMeeting.offerText}</p>
+                        {/**Länk till företaget? */}
+                        <div> {t.students.companyMeeting.acceptDeclineText} </div> 
+                        { /** If there are no more times left to choose from */
+                            timeOptions.length == 0 ?  
+                            <p>
+                                {t.students.companyMeeting.noTimesLeft}
+                            </p> : <>
+                                <label htmlFor="options" className="text-white pr-4">{t.students.companyMeeting.chooseOption}</label>
+                                <select id="options" onChange={changeTime} className="bg-cerise w-[120px] h-[30px] mt-4">
+                                    {(timeOptionsCopy).map(displayTimeOptions)}
+                                </select>
+                            </> 
+                        }
                         <div className="flex justify-center gap-32 m-4">
-                            <img className="h-[50px] cursor-pointer hover:scale-110 transition duration-100 ease-in-out"
-                                onClick={declineOffer}
-                                src="/img/check.png"/>
-                            <img className="h-[50px] cursor-pointer hover:scale-110 transition duration-100 ease-in-out"
-                                onClick={()=>{setConfirmDelete(false)}} 
-                                src="/img/cross.png"/>
+                            {/* If a time has been selected */}
+                            {time != -1 && <> 
+                                <img className="h-[50px] cursor-pointer hover:scale-110 transition duration-100 ease-in-out"
+                                    onClick={acceptOffer}
+                                    src="/img/check.png"/>
+                                <img className="h-[50px] cursor-pointer hover:scale-110 transition duration-100 ease-in-out"
+                                    onClick={()=>setConfirmDelete(true)} 
+                                    src="/img/cross.png"/>
+                            </>
+                            }
                         </div>
-        
-                    </div>
-                )}
-                {statusMessage(status)}
-            </>}
+                    </> : <>
+                    {/* If the meeting has been accepted */}
+                        <p className="text-md"> {t.students.companyMeeting.meetingTimeText} </p>
+                        <p className="text-md "> {t.students.companyMeeting.acceptedTime} {times[chosenTimeSlot-1]} </p>
+                        <div className="flex flex-row justify-end py-4 pr-16">
+                            <div className="flex flex-col  pr-4">
+                                <h3 className="text-lg"> {t.students.companyMeeting.cancelMeeting}</h3>
+                                <p> {t.students.companyMeeting.cancelWarning} </p>
+                            </div>
+                            <img className="h-[50px] cursor-pointer hover:scale-110 transition duration-100 ease-in-out"
+                                    onClick={()=>{setConfirmDelete(true)}} 
+                                src="/img/check.png"
+                            />
+                        </div>  
+                    </>}
+                    {statusMessage(status)}
+                </>
+            }
         </div>
     );
 }
