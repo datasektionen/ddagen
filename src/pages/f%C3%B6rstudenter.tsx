@@ -11,8 +11,8 @@ export default function ForStudents() {
       console.log("HREF: ", )
   },[])
 
-  const dayStaffAplicationOpen = false;
-  const dayStaffAplicationLink = "";
+  const dayStaffAplicationOpen = true;
+  const dayStaffAplicationLink = "https://docs.google.com/forms/d/e/1FAIpQLSfRBriKZYXWZCssxv2Z-fsFPzPnTmfd6-gUvqtzNNgWsEV2bQ/viewform";
 
   return (
     <div className="w-full h-full">
