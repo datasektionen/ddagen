@@ -51,6 +51,10 @@ export default {
     tempCompanyMeetingsText:
       "We offer company meetings for students, which means that you will be able to discuss future job opportunities in a private room with representatives from selected companies. Sign up will be available soon!",
     companyMeetingsButton: "Sign up",
+    dayStaffTitle: "Day Staff",
+    dayStaffText: "Would you like to help make our career fair a success? We are looking for enthusiastic students to assist on the day of the event with tasks such as welcoming visitors, supporting exhibitors, and keeping the venue organized. It's a great opportunity to network, meet companies, and gain valuable experience.",
+    dayStaffApplicationOpens: "Application opens on September 2nd",
+    dayStaffApply: "Apply here!",
   },
   students: {
     info:{
