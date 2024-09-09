@@ -200,7 +200,7 @@ export default function LoggedInPage() {
 
     function handleSelection(company: Company){
         const newValues = {...selectedCompanies, [company.id] : !selectedCompanies[company.id]};
-        const valueToSet = !selectedCompanies[company.id];
+        
         setSelectedCompanies(newValues);
         const keys = Object.keys(newValues).filter((key) => newValues[key] === true);
         updateInterests.mutateAsync(JSON.stringify({company_meeting_interests: keys, ugkthid: ugkthid, exhibitorId: company.id}))

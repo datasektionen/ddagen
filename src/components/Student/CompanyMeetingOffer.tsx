@@ -194,15 +194,12 @@ export default function CompanyMeetingOffer(
                     {/* If the meeting has been accepted */}
                         <p className="text-md"> {t.students.companyMeeting.meetingTimeText} </p>
                         <p className="text-md "> {t.students.companyMeeting.acceptedTime} {times[chosenTimeSlot-1]} </p>
-                        <div className="flex flex-row justify-end py-4 pr-16">
-                            <div className="flex flex-col  pr-4">
-                                <h3 className="text-lg"> {t.students.companyMeeting.cancelMeeting}</h3>
-                                <p> {t.students.companyMeeting.cancelWarning} </p>
-                            </div>
-                            <img className="h-[50px] cursor-pointer hover:scale-110 transition duration-100 ease-in-out"
-                                    onClick={()=>{setConfirmDelete(true)}} 
-                                src="/img/check.png"
-                            />
+                        <div className="flex flex-row justify-center">
+                            <button onClick={()=>{setConfirmDelete(true)}} className="mt-4 mb-4 mx-2 flex justify-center">
+                                <a className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-medium px-6 py-2 max-lg:mx-auto w-max">
+                                    {t.students.companyMeeting.cancelMeeting}
+                                </a>
+                            </button>
                         </div>  
                     </>}
                     {statusMessage(status)}
