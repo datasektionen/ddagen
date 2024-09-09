@@ -169,8 +169,6 @@ type LogosProps = {
 export default function Logos({ exhibitorData }: LogosProps) {
   const t = useLocale();
 
-  console.log("Companies: ", exhibitorData);
-
   const mainsponsorPackages = exhibitorData.filter(
     (e) => e.packageTier === 3 && e.logoColor
   );
