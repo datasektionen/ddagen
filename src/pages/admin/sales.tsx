@@ -34,6 +34,7 @@ export default function Sales() {
         return "invalid-password";
       }
       setExhibitors(exhibitors);
+      console.log("Exhibitors, ", exhibitors);
       setPreferences(foodPreferences);
       setPassword(password);
     } catch (err) {
