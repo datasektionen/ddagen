@@ -269,8 +269,7 @@ export default function LoggedInPage() {
             </div>;
         }
 
-        
-        console.log("has cv: ", studentHasCV);
+
         return <div>
             <div className="mx-auto flex flex-col items-center py-20 cursor-default h-full min-w-[200px] max-w-[1200px] w-full mt-8 px-[20px] min-[450px]:px-[60px] min-[704px]:px-[60px]">
                 {Table(

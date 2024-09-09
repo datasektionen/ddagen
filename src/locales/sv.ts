@@ -59,7 +59,7 @@ export default {
   students: {
     info:{
       mainHeader: "Fyll i information om dig själv!",
-      subHeader: "Om du inte fyller i CV fältet kommer företag inte att kunna se din information. \nFyll i intressen så att företag lättare kan hitta dig!",
+      subHeader: "Ladda upp ditt CV för att kunna spara. När CV:et är uppladdat kan du spara din information och få tillgång till kontaktsamtalssidan.",
       header:"Fyll i information om dig!",
       firstName:"Förnamn",
       lastName:"Efternamn",

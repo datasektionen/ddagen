@@ -59,7 +59,7 @@ export default {
   students: {
     info:{
       mainHeader: "Fill out information about yourself",
-      subHeader: "If you dont fill in the CV field, you will not appear in the list of students that companies can choose to meet with. \nFill in you interests to aid companies in finding you!",
+      subHeader: "Upload your resume to save. Once the resume is uploaded, you can save your information and gain access to the company meeting page.",
       header:"Fill in information about yourself!",
       firstName:"First name",
       lastName:"Last name",
