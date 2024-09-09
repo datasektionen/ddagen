@@ -754,4 +754,29 @@ export const exhibitorRouter = createTRPCRouter({
 
         return output;
     }),
+    cancelMeeting: protectedProcedure
+    .input(z.string())
+    .mutation(async ({ ctx, input }) => {
+        const student = await ctx.prisma.students.findUnique({
+          where: {
+            ugkthid: input,
+          },
+        });
+        if(!student) return;
+        console.log(student.id);
+        const meeting = await ctx.prisma.meetings.findFirst({
+          where: {
+            studentId: student.id,
+            exhibitorId: ctx.session.exhibitorId,
+          },
+        });
+
+        if (!meeting) return;
+
+        await ctx.prisma.meetings.delete({
+          where: {
+            id: meeting.id,
+          },
+        });
+    }),
 });

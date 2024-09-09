@@ -4,7 +4,6 @@ import { CheckMark } from '../../CheckMark';
 import { api } from '@/utils/api';
 import MultiRangeSlider from '../MultiRangeSlider';
 import base64ToFile from '@/shared/HandlePDF';
-import { Alert } from 'flowbite-react';
 
 
 interface MeetingData {
@@ -25,11 +24,13 @@ export default function CompanyMeetingBooker(
   const getPendingStudents = api.exhibitor.getPendingMeetings.useQuery();
   const getAcceptedStudents = api.exhibitor.getAcceptedMeetings.useQuery();
   const getStudentCv = api.exhibitor.getStudentCV.useMutation();
+  const deleteMeeting = api.exhibitor.cancelMeeting.useMutation();
   
   const createMeeting = api.exhibitor.createMeeting.useMutation();
 
   const [students, setStudents] = useState<MeetingData[]>([]);
   const [tableIndex, setTableIndex] = useState(0);
+  const [currentCancelMeeting, setCurrentCancelMeeting] = useState<string | null>(null);
   
   const [pendingStudents, setPendingStudents] = useState<MeetingData[]>([]);
   const [acceptedStudents, setAcceptedStudents] = useState<MeetingData[]>([]);
@@ -180,11 +181,26 @@ export default function CompanyMeetingBooker(
     });
   }
 
+  function CancelMeeting(id: string){
+    if(currentCancelMeeting === id){
+      
+      deleteMeeting.mutateAsync(id);
+      setAcceptedStudents(acceptedStudents.filter((s) => s.ugkthid !== id));
+      setCurrentCancelMeeting(null);
+    } else {
+      setCurrentCancelMeeting(id);
+    }
+  }
+
+  function stopCancelMeeting(){
+    setCurrentCancelMeeting(null);
+  }
+
   const times = ["10:00-10:30", "10:30-11:00", "11:00-11:30", "11:30-12:00", "12:00-12:30", "12:30-13:00",
                   "13:00-13:30", "13:30-14:00", "14:00-14:30", "14:30-15:00", "15:00-15:30", "15:30-16:00"]
 
   const TablePages = [
-    <>
+    <> {/*Interested students*/}
       <div className="flex flex-row items-center gap-4">
         <button className="mt-2 mb-2" onClick={checkAll}>
           <a className="block hover:scale-105 transition-transform bg-cerise rounded-full uppercase text-white text-base font-medium px-4 py-1 max-lg:mx-auto w-max">
@@ -279,7 +295,7 @@ export default function CompanyMeetingBooker(
           </a>
       </button>
     </>,
-    <>
+    <> {/*Pending students*/}
     <p className='text-white mb-2'> { "("+ pendingStudents.length + ") " + t.exhibitorSettings.meetings.pendingMeetings }</p>
       <div className='overflow-y-auto h-90 p-8 bg-black/50 rounded-lg'>
         <table className='w-full '>
@@ -321,7 +337,7 @@ export default function CompanyMeetingBooker(
         </table>
       </div>
     </>,
-    <>
+    <> {/*Accepted students*/}
     <p className='text-white mb-2'> {"(" + acceptedStudents.length + ") " + t.exhibitorSettings.meetings.bookedMeetings} </p>
     <div className='overflow-y-auto h-90 p-8 bg-black/50 rounded-lg'>
       <table className='w-full '>
@@ -356,6 +372,22 @@ export default function CompanyMeetingBooker(
                   </div>
                 </td>
                 <td className="px-8">
+                  {currentCancelMeeting === data.ugkthid ? 
+                  <div className='flex flex-row gap-4'>
+                  
+                    <button onClick={()=>{CancelMeeting(data.ugkthid)}} className='block transition-transform rounded-full text-white text-base font-medium px-4 py-1 max-lg:mx-auto w-max bg-yellow hover:scale-105'>
+                      {t.exhibitorSettings.meetings.confirm}
+                    </button>
+                    <button onClick={stopCancelMeeting} className='block transition-transform rounded-full text-white text-base font-medium px-4 py-1 max-lg:mx-auto w-max bg-cerise hover:scale-105'>
+                      {t.exhibitorSettings.meetings.cancelStep}
+                    </button>
+                  </div>
+                  : 
+                 <button onClick={()=>{CancelMeeting(data.ugkthid)}} className='block transition-transform rounded-full text-white text-base font-medium px-4 py-1 max-lg:mx-auto w-max bg-cerise hover:scale-105'>
+                    {t.exhibitorSettings.meetings.cancel}
+                  </button>
+                  }
+                  
                 </td>
               </tr>
             )
