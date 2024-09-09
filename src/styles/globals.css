@@ -46,6 +46,12 @@
   font-style: italic;
 }
 
+@layer base {
+  body {
+    overscroll-behavior: none;
+  }
+}
+
 @layer components {
   #__next {
     display: flex;
@@ -159,6 +165,7 @@
 
 .leaflet-container {
   background: rgba(255, 255, 255, 0.75) !important;
+  pointer-events: auto !important;
 }
 
 .leaflet-control-zoom {
@@ -191,3 +198,21 @@
 .leaflet-control-layers-selector {
   display: none;
 }
+
+.leaflet-control-layers-list {
+  padding-right: 0px !important;
+}
+
+#map-container {
+  height: calc(100vh - 6rem);
+}
+
+@media (max-width: 767px) {
+  #map-container {
+    height: calc(55vh - 3rem);
+  }
+}
+
+/* #sidebar {
+  height: calc(80vh - 76px);
+} */

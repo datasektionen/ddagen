@@ -4,6 +4,7 @@ import UploadCV from "./UploadCV";
 import { CheckMark } from "../CheckMark";
 import { InputField } from "../InputField";
 import { api } from "@/utils/api";
+import { useModal } from "@/utils/context";
 
 interface User{
     ugkthid: string;
@@ -32,10 +33,8 @@ export default function StudentInfo(
 ) {
   const [user, setUser] = useState<User | null>(null);
   const studentGetData = api.student.getData.useMutation();
-
+  const modal = useModal();
   useEffect(() => {
-
-
     studentGetData.mutateAsync(id)
     .then((result)=>{
         if (result) {
@@ -88,19 +87,20 @@ export default function StudentInfo(
       inputData.mutateAsync(JSON.stringify(data))
       .then((res) =>{
         setSaved(true);
-        //setTimeout(()=>{setSaved(false)}, 5000);
+        
+        setTimeout(()=>{setSaved(false)}, 2000);
       })
       .catch((err) => {
         setSaved(false);
+        
       });
-      //setUser({...value})
+      
     }
 
     return user && (
-        <div className="relative mt-[100px] w-[90%] xl:w-[50%] mb-12 bg-white/20 border-2 border-cerise rounded-xl overflow-hidden">
           <div className="flex flex-col items-center w-full p-4">
 
-            <h1 className="text-white text-center text-3xl mt-[10px] mb-[10px]">{t.students.info.header}</h1>
+            <h1 className="text-cerise text-center text-3xl mt-[10px] mb-[10px]">{t.students.info.header}</h1>
             <form 
                 className="flex flex-col w-[90%] bg-transparent justify-center outline-none gap-7 mt-10"
                 onSubmit={(e)=>{
@@ -135,7 +135,7 @@ export default function StudentInfo(
                 <label htmlFor="year"  
                 className="text-slate-400 font-medium
                 cursor-text uppercase
-                md:text-md text-lg">
+                md:text-sm text-[9px]">
                   {t.students.info.year}
                 </label>
                 <YearChecks/>
@@ -157,13 +157,13 @@ export default function StudentInfo(
                   className="
                   text-slate-400 font-medium
                   cursor-text uppercase
-                  md:text-md text-lg ">
+                  md:text-sm text-[9px] ">
                   {t.students.info.cv}:
                 </label>
-                <UploadCV setFile={(value)=>{setUser({...user, cv:value})}}/>
+                <UploadCV t={t} file={user.cv} setFile={(value)=>{setUser({...user, cv:value})}}/>
               </div>
 
-              <h2 className="text-white text-center text-3xl mt-[10px] mb-[10px]">{t.students.interests.header}</h2>
+              <h2 className="text-cerise text-center text-3xl mt-[10px] mb-[10px]">{t.students.interests.header}</h2>
               <div className="flex flex-col md:flex-row justify-between mt-[10px] ml-[40px] mr-[40px] gap-4">
                 {wrapCheckMark(section.jobs.summer, <CheckMark name={section.jobs.summer} checked={user.summerJob} onClick={()=>{setUser({...user, summerJob:!user.summerJob})}}/>)}
                 {wrapCheckMark(section.jobs.partTime, <CheckMark name={section.jobs.partTime} checked={user.partTimeJob} onClick={()=>{setUser({...user, partTimeJob:!user.partTimeJob})}}/>)}
@@ -182,12 +182,12 @@ export default function StudentInfo(
                   </a>
                 </button>
                 <p className="text-white self-center">
-                  {/*saved? (!user.first_name ? t.students.info.addFirstName : !user.last_name ?  t. students.info.addLastName : !user.study_year ? t.students.info.addYear : "") : "Saved"*/}
-                  {saved? t.students.info.saved : ""}
+                  {saved? (!user.first_name ? t.students.info.addFirstName : !user.last_name ?  t. students.info.addLastName : !user.study_year ? t.students.info.addYear : "Saved") : ""}
+                 
                 </p>
+                <p className="font-bold text-md ">*{t.students.info.subHeader} </p>
               </div>
             </form>
           </div>
-        </div>
       );
 }

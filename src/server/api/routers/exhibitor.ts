@@ -168,6 +168,12 @@ export const exhibitorRouter = createTRPCRouter({
         },
       });
     }),
+  getName: protectedProcedure.query(async ({ ctx }) => {
+    return await ctx.prisma.exhibitor.findUniqueOrThrow({
+      where: { id: ctx.session.exhibitorId },
+      select: { name: true },
+    });
+  }),
   getDescription: protectedProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.exhibitor.findUniqueOrThrow({
       where: { id: ctx.session.exhibitorId },
@@ -609,6 +615,7 @@ export const exhibitorRouter = createTRPCRouter({
           return;
         }
 
+        // send email to student that a company y (comapny) has invited student x (student) to a meeting @ilmal
         const match = await ctx.prisma.meetings.create({
           data: {
             exhibitorId: ctx.session.exhibitorId,

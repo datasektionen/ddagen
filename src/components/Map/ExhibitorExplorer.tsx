@@ -41,7 +41,7 @@ function Explorer({
           key={exhibitor.position}
           className="flex flex-col min-h-[20%] cursor-pointer items-center justify-center 
                     space-y-2 mt-4 mx-4 px-4 py-6 border-2 border-white bg-white bg-opacity-40 
-                    rounded-lg text-white text-center overflow-hidden"
+                    rounded-lg text-white text-center overflow-y-auto"
           onClick={() => setSelectedExhibitor(0)}
         >
           {exhibitor.logoColor && (
@@ -163,24 +163,12 @@ export default function ExhibitorExplorer({
   }, [selectedExhibitor]);
 
   return (
-    <div className="w-full flex grow-0 flex-col gap-y-4 items-center justify-center lg:mt-6">
-      <Button
-        value={"/img/arrow-up.png/"}
-        loading={false}
-        isImage={true}
-        onClick={() => {
-          if (buttonScrollRef && buttonScrollRef.current)
-            buttonScrollRef.current.scrollTo(
-              0,
-              buttonScrollRef.current.scrollTop - 50
-            );
-        }}
-      />
+    <div className="h-full w-full mt-0 flex flex-col gap-y-4 items-center justify-center">
       <div
         ref={buttonScrollRef}
-        className="w-full h-[550px] border-4 border-cerise
+        className="h-full w-full border-4 border-pink-600
                 bg-[#eaeaea] bg-opacity-10 rounded-xl pb-4 overflow-scroll 
-                  scrollbar-hide overflow-x-hidden"
+                  scrollbar-hide overflow-x-hidden mb-3"
       >
         {floorTwoPositions.map((position) => {
           if (!exhibitorRefs.current[position])
@@ -228,7 +216,7 @@ export default function ExhibitorExplorer({
           );
         })}
       </div>
-      <Button
+      {/* <Button
         value={"/img/arrow-down.png/"}
         loading={false}
         isImage={true}
@@ -239,7 +227,7 @@ export default function ExhibitorExplorer({
               buttonScrollRef.current.scrollTop + 50
             );
         }}
-      />
+      /> */}
     </div>
   );
 }

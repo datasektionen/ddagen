@@ -99,7 +99,7 @@ export default function GridCollage({
                 : t.forCompanies.interestedText}
             </p>
             <Link
-              className="block hover:scale-105 transition-transform  rounded-full text-cerise font-medium px-6 py-2 max-lg:mx-auto w-max"
+              className="block hover:scale-105 transition-transform  rounded-full text-cerise bg-white font-medium px-6 py-2 max-lg:mx-auto w-max"
               href="/företagsanmälan"
             >
               {home ? t.home.representativeButton : t.forCompanies.formButton}

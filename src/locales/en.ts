@@ -47,11 +47,15 @@ export default {
       "This year, the fair is held on October 10th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15 and in KTH Entré which is located at Drottning Kristinas väg 4. Students will be able to have meetings with exhibitors through company meetings in order to get more of a connection with that company (limited slots per company).",
     companyMeetings: "Company Meetings",
     companyMeetingsText:
-      "This year is also the first year where we will offer company meetings for students, which means that you will be able to discuss future job opportunities in a private room with representatives from selected companies. Sign up on the link below:",
-    companyMeetingsButton: "Company Meetings",
+      "We offer company meetings for students, which means that you will be able to discuss future job opportunities in a private room with representatives from selected companies. Sign up on the link below:",
+    tempCompanyMeetingsText:
+      "We offer company meetings for students, which means that you will be able to discuss future job opportunities in a private room with representatives from selected companies. Sign up will be available soon!",
+    companyMeetingsButton: "Sign up",
   },
   students: {
     info:{
+      mainHeader: "Fill out information about yourself",
+      subHeader: "If you dont fill in the CV field, you will not appear in the list of students that companies can choose to meet with. \nFill in you interests to aid companies in finding you!",
       header:"Fill in information about yourself!",
       firstName:"First name",
       lastName:"Last name",
@@ -66,10 +70,13 @@ export default {
       addYear: "Enter your year",
     },
     interests:{
-      header: "Fill in your job offer interests"
+      header: "Fill in your job offer interests",
     },
     companyInterests:{
       header: "Select the companies you are interested in meeting",
+      description: "Click on the companies you are interested in meeting for a company meeting. The companies will then send you invitations to meetings.",
+      checked1:"You have shown interest in meeting with ", 
+      checked2:" for a company meeting.",
     },
     companyMeeting:{
       offerText: " Has invited you to a company meeting",
@@ -79,8 +86,8 @@ export default {
       noTimesLeft: "No times left",
 
       status: {
-        accepted: "You have declined the offer",
-        declined: "You have accepted the offer",
+        accepted:"You have accepted the offer",
+        declined: "You have declined the offer",
         failed: "Failed to book meeting, try again",
 
       },
@@ -88,6 +95,8 @@ export default {
       meetingTimeText: "You have a meeting at",
       acceptedTime: "Time:",
       
+      stopDelete: "Go back",
+      confirmDelete: "Are you sure you want to cancel the meeting?",
       cancelMeeting: "Cancel meeting",
       cancelWarning: "You lose your meeting spot if you cancel",
     },
@@ -297,7 +306,7 @@ export default {
         save: "Save",
         info: "Choose which students you want to meet during the fair",
         section1: {
-          title: "How it works",
+          title: "How does it work?",
           info1: "Student choose companies they want to meet",
           info2: "You will then be able to select which of these students you want to meet",
           info3: "The students will then be able to choose a time slot to meet you, during the fair",
@@ -728,7 +737,7 @@ export default {
   },
   sok:{
     notActive: "The signup is not active yet, keep an eye on social media for when it opens!",
-    header: "Signup for DDAGEN",
+    header: "Signup for D-DAGEN",
     description: "The goal for this year's D-Dagen is to make it the biggest and best career fair in Datasektionen's history! This is the vision we have as organizers this year. However, it's impossible for us to organize such a large event entirely on our own. We need an ambitious project group to help us, one that has the drive to create something extraordinary. We aim to improve internal communication from previous years, and, therefore, we will focus extensively on team building to create a close-knit group. We also expect that everyone in the project group is sociable, has good teamwork skills, and is self-driven in their tasks.",
     search:"SIGNUP",
     info:"Information about the roles",
@@ -740,10 +749,16 @@ export default {
       roles : [
         "PR Manager\n- Good communicator\n- Well-organized\n- Leader\nAs a PR Manager, you lead the PR team, ensuring they are organized and equipped to communicate effectively. Working closely within the PR team will foster a strong sense of unity. You will also engage in extensive communication with DDA.",
         "Art Director\n- Artistic\n- Accommodating\nAs an Art Director, your role is to ensure that D-Day looks professional. You'll have the opportunity to express your creativity by designing various materials, including brochures, posters, branded clothing, and more. Sometimes you'll even get to take photos. No prior experience is required; motivation and drive are what matter most. You'll, of course, have access to all the necessary software.",
-        "Web Manager\n- Independent\n- Initiating\nAs the Web Manager, you're responsible for ensuring the website looks good and functions properly. You'll also have significant opportunities to improve the website. Previous experience and knowledge in web development are definite assets. You'll work closely with the Art Director.",
-        "System Manager\n- Independent\n- Initiating\n- 'Yes, can do' attitude\nThe System Manager will collaborate extensively with the Web Manager on ambitious projects we plan to introduce at D-Day. We're looking for someone with the drive to create opportunities, and prior experience in app development is a big plus.",
         "Print Manager\n- Proactive\n- Artistic\nThe Print Manager is part of the PR team and is responsible for ensuring all printed materials are ordered and delivered on time. This includes items like stickers, patches, branded clothing, banners, brochures, and more. You'll work closely with the Art Director and assist with design work.",
         "Social Media Manager\n- Good communicator\n- Initiating\n- Social (especially on social media)\n- Creative\nThe Social Media Manager is responsible for increasing D-Day's presence on platforms like Instagram, Facebook, and other social media sites. You'll have the freedom to choose which social media platforms to use and how to express the event's message (within reasonable boundaries). In this role, you'll work closely with the Art Director to create attractive posts. This is an ideal position for those who enjoy taking photos and posting stories!"
+      ]
+    },
+    devGroup:{
+      header: "Dev Team",
+      text: "The Dev Group is a technically skilled and innovative unit within D-Dagen. Its members are responsible for the development, maintenance, and enhancement of the D-Dagen website. They handle everything from backend programming and database management to frontend design and user experience, with a focus on creating a smooth and engaging digital platform for all visitors.",
+      roles : [
+        "Web Manager\n- Independent\n- Initiating\nAs the Web Manager, you're responsible for ensuring the website looks good and functions properly. You'll also have significant opportunities to improve the website. Previous experience and knowledge in web development are definite assets. You'll work closely with the Art Director.",
+        "System Manager\n- Independent\n- Initiating\n- 'Yes, can do' attitude\nThe System Manager will collaborate extensively with the Web Manager on ambitious projects we plan to introduce at D-Day. We're looking for someone with the drive to create opportunities, and prior experience in app development is a big plus.",
       ]
     },
     saleGroup:{

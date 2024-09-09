@@ -47,11 +47,15 @@ export default {
       "I år hålls mässan 10 oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15 på KTH Campus Valhallavägen. Studenter kommer erbjudas möjligheten att gå på kontaktsamtal med företag för att knyta närmare kontakt med specifika företag (begränsade platser per företag).",
     companyMeetings: "Kontaktsamtal",
     companyMeetingsText:
-      "I år är första året någonsin som vi kommer erbjuda kontaktsamtal för studenter, vilket innebär att ni får möjlighet att i enrum med företagsrepresentanter diskutera framtida jobbmöjligheter med mera. Anmäl er på länken nedan:",
-    companyMeetingsButton: "Kontaktsamtal",
+      "Vi erbjuder kontaktsamtal för studenter, vilket innebär att ni får möjlighet att i enrum med företagsrepresentanter diskutera framtida jobbmöjligheter med mera. Anmäl er på länken nedan:",
+    tempCompanyMeetingsText:
+      "Vi erbjuder kontaktsamtal för studenter, vilket innebär att ni får möjlighet att i enrum med företagsrepresentanter diskutera framtida jobbmöjligheter med mera. Anmälan kommer tillgängliggöras senare!",
+      companyMeetingsButton: "Anmäl dig här",
   },
   students: {
     info:{
+      mainHeader: "Fyll i information om dig själv!",
+      subHeader: "Om du inte fyller i CV fältet kommer företag inte att kunna se din information. \nFyll i intressen så att företag lättare kan hitta dig!",
       header:"Fyll i information om dig!",
       firstName:"Förnamn",
       lastName:"Efternamn",
@@ -70,6 +74,9 @@ export default {
     },
     companyInterests:{
       header: "Välj de företag du är intresserad av att träffa",
+      description: "Klicka i de företag du är intressarad av att träffa på ett kontaktsamtal. Företagen kommer sedan bjuda in till möten.",
+      checked1:"Du har visat intresse för att träffa ", 
+      checked2:" på ett kontaktsamtal.",
     },
     companyMeeting:{
       offerText: " Har bjudit in dig till ett kontaktsamtal",
@@ -86,6 +93,8 @@ export default {
       meetingTimeText: "Du har ett möte",
       acceptedTime: "Tid: ",
 
+      stopDelete: "Gå tillbaka",
+      confirmDelete: "Är du säker på att du vill avboka mötet?",
       cancelMeeting: "Avboka möte",
       cancelWarning: "Du förlorar din plats om du avbokar",
     
@@ -300,7 +309,7 @@ export default {
           info1: "Studenter väljer vilka företag de är intresserade av att boka kontaktsamtal med.",
           info2: "Ni väljer sedan vilka av dessa studenter ni vill boka samtal med.",
           info3: "Studenter som ni valt ut kommer sedan få välja en mötes tid under mässan.",
-          info4: "Ni kan välja fler studenter än vad det finns tillgänliga tidsslotter, så kommer de studenter som accpeterar snabbast få tiderna.",
+          info4: "Ni kan välja fler studenter än vad det finns tillgänliga tidsslotter, de studenter som accpeterar snabbast få tiderna.",
         },
         section2: {
           selectAll: "Markera alla",
@@ -725,14 +734,20 @@ export default {
     moreInfo:"Intresserad?",
     prGroup:{
       header: "PR-Gruppen",
-      text: "PR-gruppen är en mångsidig och kreativ enhet inom D-Dagen. Dess medlemmar är ansvariga för att skapa och underhålla D-Dagens offentliga image och varumärke. De har olika ansvarsområden som spänner från ledarskap och organisation till grafisk design och tryckhantering.",
+      text: "The PR Group is a versatile and creative unit within D-Dagen. Its members are responsible for creating and maintaining D-Dagen's public image and brand. They have a variety of responsibilities that range from leadership and organization to graphic design and print management.",
       roles : [
         "PR-ansvarig\n- Bra kommunikatör\n- Välplanerad\n- Ledare\nSom PR-ansvarig är du ledare för PR-gruppen. Det är du som driver och organiserar gruppen och ser till att alla vet vad de ska göra och har det de behöver. Eftersom du jobbar så tätt ihop inom PR-gruppen kommer ni bli väldigt tajta tillsammans. Som PR-ansvarig kommer du också kommunicera extra mycket med DDA:s.",
         "Art Director\n- Artistisk\n- Tillmötgsgående\n Som Art Director är det du som ser till att D-Dagen ser proffsig ut. Du kommer ha möjligheten att uttrycka din kreativitet och designa all grafik som behövs för D-Dagen. Här ingår bland annat broschyrer, affischer, profilkläder och annat. Ibland kommer du även få ta lite bilder. Inga förkunskaper behövs; man får istället möjligheten att lära sig med tiden och det viktigaste är att du är driven och motiverad. Självklart kommer du få tillgång till alla program du behöver!",
-        "Webbansvarig\n- Självständig\n- Initiativtagande\n Som webbansvarig är det du som ser till att hemsidan ser ut och fungerar som den ska. Du har även stora möjligheter till att förbättra hemsidan. Kunskaper och tidigare erfarenheter inom webbutveckling är ett stort plus. Här jobbar du tätt intill Art Director.",
-        "Systemansvarig\n- Självständig\n- Initiativtagande\n- 'Yes, can do'-attityd\n Systemansvarig kommer att jobba mycket tillsammans med webbansvarig med ambitiösa projekt som vi hoppas introducera till D-Dagen. Vi vill ha någon med ett stort driv att skapa möjligheter, och förkunskaper i app-tillverkning är ett stort plus.",
         "Tryckansvarig\n- Proaktiv\n- Artistisk\n Tryckansvarig ingår i PR-gruppen och är den som ser till att allt tryckt material blir beställt och levererat i tid. Här ingår saker som klistermärken, tygmärken, profilkläder, banderoll, broschyr och en del annat. Du kommer ha ett nära samarbete med Art Director och hjälpa till med designarbetet.",
         "Social media-ansvarig\n- Bra kommunikatör\n- Initiativtagande\n- Social(särskilt på medier)\n- Kreativ\n Social media-ansvarig är den som ser till att D-Dagen syns ute på Instagram, Facebook och alla andra sociala medier. Här får du mycket frihet i vilka sociala medier du vill använda och hur du väljer att uttrycka dig (inom rimliga ramar förstås). I rollen som social media-ansvarig jobbar du nära Art Director för att få till snygga inlägg. Detta är en perfekt roll för dig som gillar att ta bilder och lägga ut stories!"
+      ]
+    },
+    devGroup:{
+      header: "Dev-Gruppen",
+      text: "Dev-gruppen är en tekniskt kompetent och innovativ enhet inom D-Dagen. Dess medlemmar är ansvariga för utveckling, underhåll och förbättring av D-Dagens hemsida. De hanterar allt från backend-programmering och databashantering till frontend-design och användarupplevelse, med fokus på att skapa en smidig och engagerande digital plattform för alla besökare.",
+      roles : [
+        "Webbansvarig\n- Självständig\n- Initiativtagande\n Som webbansvarig är det du som ser till att hemsidan ser ut och fungerar som den ska. Du har även stora möjligheter till att förbättra hemsidan. Kunskaper och tidigare erfarenheter inom webbutveckling är ett stort plus. Här jobbar du tätt intill Art Director.",
+        "Systemansvarig\n- Självständig\n- Initiativtagande\n- 'Yes, can do'-attityd\n Systemansvarig kommer att jobba mycket tillsammans med webbansvarig med ambitiösa projekt som vi hoppas introducera till D-Dagen. Vi vill ha någon med ett stort driv att skapa möjligheter, och förkunskaper i app-tillverkning är ett stort plus."
       ]
     },
     saleGroup:{
