@@ -65,8 +65,11 @@ export default function LoggedInPage() {
     const studentGetData = api.student.getData.useMutation();
 
     useEffect(()=>{
+        const params: URLSearchParams = new URL(window.location.href).searchParams;
+        let loginToken: string = params.get('login_token') || "";
+
         // log in the user if not logged in
-        if (!isLoggedIn && !sessionStorage.getItem("login_token")){
+        if (!isLoggedIn && !sessionStorage.getItem("login_token") && (!loginToken || loginToken === "null")){
             window.location.href = `https://login.datasektionen.se/login?callback=${window.location.href.replace(/^(https?:\/\/[^\/]+).*/, '$1')}/student?login_token=`
         } 
     }, [isLoggedIn])
@@ -74,7 +77,6 @@ export default function LoggedInPage() {
     useEffect(() => {
         //router.push("/förstudenter"); // remove when page should be available
         const params: URLSearchParams = new URL(window.location.href).searchParams;
-
         let loginToken: string = params.get('login_token') || "";
 
         // If no login_token in url, check if login token in cookies
