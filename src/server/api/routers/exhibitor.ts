@@ -615,7 +615,6 @@ export const exhibitorRouter = createTRPCRouter({
           return;
         }
 
-        // send email to student that a company y (comapny) has invited student x (student) to a meeting @ilmal
         const match = await ctx.prisma.meetings.create({
           data: {
             exhibitorId: ctx.session.exhibitorId,
@@ -624,6 +623,25 @@ export const exhibitorRouter = createTRPCRouter({
             createdAt: new Date(),
           },
         });
+
+        console.log("\n\n\n SENDING EMAIL TO STUDENT \n\n\n");
+
+        // change to "locale" if We want multiple languages
+        const t = getLocale("en");
+
+        // send email to student that a company y (comapny) has invited student x (student) to a meeting @ilmal
+        sendEmail(
+          student.email,
+          t.meeting_email.meeting_request_to_student.subject,
+          t.meeting_email.meeting_request_to_student.body(
+            student.first_name,
+            student.last_name,
+            exhibitor.name
+          ),
+          "sales@ddagen.se"
+        );
+
+        console.log("\n\n\n SENDING EMAIL TO STUDENT \n\n\n");
 
         return match
     }),

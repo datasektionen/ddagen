@@ -1,6 +1,8 @@
 import { z } from "zod";
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 import { Prisma } from "@prisma/client";
+import sendEmail from "@/utils/send-email";
+import { getLocale } from "@/locales";
 
 export const studentRouter = createTRPCRouter({    
     verify: publicProcedure
@@ -351,6 +353,40 @@ export const studentRouter = createTRPCRouter({
                 timeslot: input.timeSlot,
             }
         });
+
+        const student = await ctx.prisma.students.findUnique({
+            where: {
+                id: input.studentId,
+            },
+        });
+
+        if (!student) return;
+
+        const exhibitor = await ctx.prisma.exhibitor.findUnique({
+            where: {
+                id: input.exhibitorId,
+            },
+        });
+
+        if (!exhibitor) return;    
+
+        console.log("\n\n\n SENDING EMAIL TO COMPANY \n\n\n");
+
+        // change to "locale" if We want multiple languages
+        const t = getLocale("en");
+
+        sendEmail(
+        student.email,
+        t.meeting_email.company_meeting_created.subject,
+        t.meeting_email.company_meeting_created.body(
+            student.first_name,
+            student.last_name,
+            exhibitor.name
+        ),
+        "sales@ddagen.se"
+        );
+
+        console.log("\n\n\n SENDING EMAIL TO COMPANY \n\n\n");
 
         return {ok: true, type: "accepted"};
     }),
