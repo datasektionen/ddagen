@@ -33,8 +33,8 @@ interface InterestedCompany{
     timeslot: number;
 }
 
-const set_cookies = (loginToken: string) => {
-    document.cookie = `login_token=${loginToken};max-age=86400;`;
+const set_session_storage = (loginToken: string) => {
+    sessionStorage.setItem("login_token", loginToken);
 };
 
 export default function LoggedInPage() {
@@ -56,10 +56,9 @@ export default function LoggedInPage() {
     const [selectedCompanies, setSelectedCompanies] = useState<SelectedCompanies>({});
 
     const [companyMeetings, setCompanyMeetings] = useState<InterestedCompany[]>([]);
-    
+  
+    // login state
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    
-    
     const [ugkthid, setugkthid] = useState<string>("");
     const [studentHasCV, setStudentHasCV] = useState<boolean>(false);
 
@@ -67,7 +66,7 @@ export default function LoggedInPage() {
 
     useEffect(()=>{
         // log in the user if not logged in
-        if (!isLoggedIn && !document.cookie.includes("login_token")){
+        if (!isLoggedIn && !sessionStorage.getItem("login_token")){
             window.location.href = `https://login.datasektionen.se/login?callback=${window.location.href.replace(/^(https?:\/\/[^\/]+).*/, '$1')}/student?login_token=`
         } 
     }, [isLoggedIn])
@@ -79,10 +78,10 @@ export default function LoggedInPage() {
         let loginToken: string = params.get('login_token') || "";
 
         // If no login_token in url, check if login token in cookies
-        if ((!loginToken || loginToken === "null") && document.cookie.includes("login_token")) {
-            const match = document.cookie.toString().match(/login_token=([^;]*)/);
-            if (match !== null) {
-                loginToken = match[1];
+        if ((!loginToken || loginToken === "null") && sessionStorage.getItem("login_token")) {
+            const token = sessionStorage.getItem("login_token");
+            if (token !== null) {
+                loginToken = token;
             }
         }
 
@@ -98,7 +97,7 @@ export default function LoggedInPage() {
                 // update prefill variables
                 const res_json = JSON.parse(res);
                 setugkthid(res_json.ugkthid);
-                set_cookies(loginToken);
+                set_session_storage(loginToken);
                 setIsLoggedIn(res? true:false);
                 
                 getData.mutateAsync(res_json.ugkthid)
