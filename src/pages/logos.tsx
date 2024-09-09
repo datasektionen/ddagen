@@ -168,6 +168,9 @@ type LogosProps = {
 
 export default function Logos({ exhibitorData }: LogosProps) {
   const t = useLocale();
+
+  console.log("Companies: ", exhibitorData);
+
   const mainsponsorPackages = exhibitorData.filter(
     (e) => e.packageTier === 3 && e.logoColor
   );
@@ -219,7 +222,7 @@ export async function getServerSideProps() {
     },
   });
 
-  const exhibitorData = exhibitors.map((exhibitor) => ({
+  const exhibitorData = exhibitors.map((exhibitor:any) => ({
     name: exhibitor.name || null,
     logoWhite: exhibitor.logoWhite?.toString("base64") || null,
     logoColor: exhibitor.logoColor?.toString("base64") || null,
