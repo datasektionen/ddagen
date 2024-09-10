@@ -1,7 +1,7 @@
 import type Locale from "@/locales";
 import { MapProp } from "@/shared/Classes";
 import { Dispatch, useEffect } from "react";
-import { ImageOverlay, LayerGroup, LayersControl, MapContainer, Marker } from 'react-leaflet';
+import { ImageOverlay, LayerGroup, LayersControl, MapContainer, Marker, ZoomControl } from 'react-leaflet';
 import { DivIcon, LatLngExpression } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
@@ -67,7 +67,9 @@ export default function Map({
           attributionControl={false}
           className="md:rounded-xl"
           style={{height: '100%', width: '100%'}}
+          zoomControl={false}
         >
+          <ZoomControl position="bottomleft"/>
           <LayersControl position="bottomright" collapsed={false}>
             <LayersControl.BaseLayer checked={mapInView == 1} name="Floor 2">
               <LayerGroup>
