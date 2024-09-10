@@ -196,14 +196,23 @@
 .leaflet-control-layers-list {
   padding-right: 0px !important;
 }
+@media (max-width: 767px) {
+  #map-container {
+    height: calc(100vh - 6rem);
+  }
 
-#map-container {
-  height: calc(100vh - 6rem);
+  #sidebar {
+    height: calc(100vh - 9.5rem);
+  }
 }
 
 @media (max-width: 767px) {
   #map-container {
-    height: calc(55vh - 3rem);
+    height: 100%;
+  }
+
+  #sidebar {
+    min-height: 40%;
   }
 }
 
