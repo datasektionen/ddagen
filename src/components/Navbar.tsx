@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState, useContext } from "react";
 import { useLocale } from "@/locales";
 import { api } from "@/utils/api";
-import { hasLoadedBeforeContext } from "@/utils/context";
+import { useAnimation } from "@/utils/context";
 
 function NavLink({
   href,
@@ -46,9 +46,8 @@ function NavLink({
 }
 
 function Logo({ class: className }: { class?: string }) {
-  
-  const hasLoadedBefore = useContext(hasLoadedBeforeContext);
-  
+  const { isAnimationDone } = useAnimation();
+  const hasLoadedBefore = isAnimationDone;
 
   return (
     <Link
@@ -325,10 +324,10 @@ export default function Navbar() {
             <Group
               links={[
                 { href: "/förstudenter", text: t.forStudents },
-                //{ href: "/karta", text: t.map },
-                //{ href: "/logos", text: t.logos },
-                //{ href: "https://kontaktsamtal.ddagen.se/", text: t.meetings },
-                //{href: "/sok", text:t.sok}
+                { href: "/karta", text: t.map },
+                { href: "/logos", text: t.logos },
+                { href: "/student", text: t.meetings },
+                {href: "/sok", text:t.sok}
               ]}
             />
             {/*<NavLink class="px-14 lg:px-0" href="/mässan">{t.about}</NavLink>*/}

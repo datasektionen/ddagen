@@ -4,10 +4,12 @@ import parse from "html-react-parser";
 export function Table(
   questions: Array<string>,
   answers: Array<string>,
-  settings: Array<JSX.Element>
+  settings: Array<JSX.Element>,
+  allOpen?: boolean, // These two are a temp solution to manage the student page
+  onClick?: () => void, // -||-
 ) {
   const stateAction = Array.from({ length: questions.length }, () =>
-    useState(false)
+    useState(allOpen ?? false)
   );
 
   const length = questions.length;

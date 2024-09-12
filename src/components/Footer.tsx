@@ -20,7 +20,7 @@ export default function Footer() {
 
   return (
     <footer className="
-      bg-fill bg-[#2D2D2D]
+      bg-fill bg-[#090E2F]
       min-h-[600px] md:min-h-[300px] 
       flex flex-grow
       overflow-hidden

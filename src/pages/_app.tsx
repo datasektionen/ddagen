@@ -2,10 +2,10 @@ import Head from "next/head";
 import "@/styles/globals.css";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import { useState, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import type { AppType } from "next/app";
 import { api } from "@/utils/api";
-import { hasLoadedBeforeContext } from "@/utils/context";
+import { AnimationProvidor, ModalContextProvider } from "@/utils/context";
 
 
 const App: AppType = ({ Component, pageProps }) => {
@@ -19,16 +19,6 @@ const App: AppType = ({ Component, pageProps }) => {
       }`
     }
   }
-
-  const [hasLoadedBefore, setHasLoadedBefore] = useState(false); // used to determine if the index page has been loaded before
-  
-  useEffect(() => {
-    setTimeout(() => {
-      console.log("hasLoadedBefore: ", hasLoadedBefore);
-      setHasLoadedBefore(true);
-    }, 4000);
-  }, []);
-  
 
 
   return (
@@ -46,8 +36,9 @@ const App: AppType = ({ Component, pageProps }) => {
           key="jsonld"
         />
       </Head>
-      <hasLoadedBeforeContext.Provider value={hasLoadedBefore}>
+      <AnimationProvidor>
         <Navbar/>
+      </AnimationProvidor>
         <div
           className="
             bg-[linear-gradient(rgba(17,12,48,0),rgba(238,42,123,0.88)),url('/img/bg.png')]
@@ -59,9 +50,10 @@ const App: AppType = ({ Component, pageProps }) => {
           "
           id="main-content"
         >
-          <Component  {...pageProps} />
+          <ModalContextProvider>
+            <Component  {...pageProps} />
+          </ModalContextProvider>
         </div>
-      </hasLoadedBeforeContext.Provider>
       <Footer />
     </>
   );

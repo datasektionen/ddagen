@@ -26,6 +26,7 @@ export default function Exhibitor() {
 
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
   const [saveChanges, setSaveChanges] = useState<boolean | undefined>();
+  const [name, setName] = useState<string>("");
   const [whiteLogo, setWhiteLogo] = useState("");
   const [colorLogo, setColorLogo] = useState("");
   const [description, setDescription] = useState("");
@@ -37,7 +38,7 @@ export default function Exhibitor() {
   });
   const [exhibitorPackage, setExhibitorPackage] = useState(new Package(t, -1));
   const [showSetUpPage, setShowSetUpPage] = useState<boolean>(false);
-
+  const [hasMeeting, setHasMeeting] = useState<boolean>(false);
 
   // Mutations
   const setExtrasMutation: ReturnType<typeof api.exhibitor.setExtras.useMutation> = api.exhibitor.setExtras.useMutation();
@@ -45,19 +46,18 @@ export default function Exhibitor() {
   const descriptionMutation = api.exhibitor.setDescription.useMutation();
   const jobOffersMutation = api.exhibitor.setJobOffers.useMutation();
   const setInfoStatus = api.exhibitor.setInfoStatus.useMutation();
-  const createMeeting = api.meeting.createMeeting.useMutation();
 
 
   // Queries
   const getLogos = api.exhibitor.getLogo.useQuery();
   const getDescription = api.exhibitor.getDescription.useQuery();
+  const getName = api.exhibitor.getName.useQuery();
   const getJobOffers = api.exhibitor.getJobOffers.useQuery();
   const getExtras = api.exhibitor.getExtras.useQuery();
   const getExhibitor = api.exhibitor.getPackage.useQuery();
   const getPreferenceCounts = api.exhibitor.getPreferenceCount.useQuery();
-  const getAll = api.exhibitor.get.useQuery();
   const getIsLoggedIn = api.account.isLoggedIn.useQuery(undefined, {
-    onSuccess: (data) => {
+    onSuccess: (data: any) => {
       setIsLoggedIn(data);
     },
   });
@@ -99,24 +99,6 @@ export default function Exhibitor() {
             return
     }
   }
-
-  useEffect(() => {
-    if (!getAll.isSuccess) return;
-    //if (!getStudentInterests.data) return;
-
-
-    //console.log(getStudentInterests.data[0].ugkthid);
-    //console.log(getAll.data.organizationNumber);
-
-    // Call this code below to create new meetings
-
-    // createMeeting.mutateAsync(JSON.stringify({
-    //   studentId: getStudentInterests.data[0].ugkthid,
-    //   exhibitorId: getAll.data.organizationNumber,
-    // }));
-
-
-  }, [getAll.data]);
 
   // Manage page swapping
   const pageAmout = 6;
@@ -185,9 +167,10 @@ export default function Exhibitor() {
   useEffect(() => {
     if (!getExhibitor.isSuccess) return;
     const exhibitor = getExhibitor.data;
+    
     console.log(getExhibitor.data);
     const exhibitorPackage = new Package(t, exhibitor.packageTier);
-    console.log(exhibitor.packageTier, exhibitorPackage.tier);
+    console.log(exhibitor);
     exhibitorPackage.addCustomOrders(
       exhibitor.customTables,
       exhibitor.customChairs,
@@ -196,6 +179,7 @@ export default function Exhibitor() {
       exhibitor.customBanquetTicketsWanted
     );
     setExhibitorPackage(exhibitorPackage);
+    setHasMeeting(exhibitor.studentMeetings == 1);
   }, [getExhibitor.data]);
 
   useEffect(() => {
@@ -209,6 +193,10 @@ export default function Exhibitor() {
     });
   }, [extras]);
 
+  useEffect(() => {
+    if(!getName.isSuccess) return;
+    setName(getName.data.name)
+  }, [getName.data]);
 
   {/* job Offers logic*/}
   useEffect(() => {
@@ -403,6 +391,9 @@ export default function Exhibitor() {
       <div className="uppercase text-cerise text-xl md:text-2xl font font-medium text-center px-[10px] break-words"> 
         {t.exhibitorSettings.startHeader}
       </div>
+      <h2>
+        {}
+      </h2>
       <div className="w-full min:h-[400px] flex flex-col items-center"> 
         <button className="mt-4 mb-4" onClick={nextPage}>
           <a className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-medium px-6 py-2 max-lg:mx-auto w-max">
@@ -474,6 +465,9 @@ export default function Exhibitor() {
         <h1 className="uppercase text-cerise text-3xl md:text-5xl font-medium text-center px-[10px] break-words">
           {t.exhibitorSettings.header} 
         </h1>
+        <h2 className="text-white text-xl pt-2" >
+          {name}
+        </h2>
         {/*Header*/}
 
         {/*Selection Cards*/}
@@ -513,19 +507,24 @@ export default function Exhibitor() {
           :  
           <>{table}</>}
      
-          {/* Packages that have the student meeting functionality
-          { [0,1,2,3].includes(exhibitorPackage.tier)  ? 
-          <>
-            <h2 className="text-cerise text-2xl md:text-4xl font-medium text-center pt-12">{t.exhibitorSettings.table.row4.title} </h2>
-            {meetings}
 
+          {/* Packages that have the student meeting functionality*/}
+          { hasMeeting && !showSetUpPage ? 
+          <div>
+
+            <h2 className="text-cerise text-2xl md:text-4xl font-medium text-center pt-12">{t.exhibitorSettings.table.row4.title} </h2>
+            
+            <div className="hidden lg:block">
+              {meetings}
+            </div>
+            <p className="block lg:hidden text-white text-center text-2xl"> {t.exhibitorSettings.meetings.caution} </p>
             <CompanyMeetingBooker/>
 
-          </> 
+          </div> 
           
           
           : <></> }
-          */}
+        
           
         </div>
       </div>
