@@ -342,6 +342,7 @@ export default {
       bookedMeetings: "booked meetings",
       bookSelected: "Send meeting request",
       caution: "Student meetings are not available on phones",
+      noTimesLeft: "No times left",
       pages: {
         interested: "Interested students",
         pending: "Pending requests",

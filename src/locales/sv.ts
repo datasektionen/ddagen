@@ -339,6 +339,7 @@ export default {
       bookedMeetings: "bokade möten",
       bookSelected: "Skicka mötesförfrågan",
       caution: "Student möten är inte tillgänliga för mobiler",
+      noTimesLeft: "Inga tider kvar",
       pages: {
         interested: "Intresserade studenter",
         pending: "Utgående mötesförfrågningar",

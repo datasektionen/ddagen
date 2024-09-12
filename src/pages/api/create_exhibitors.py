@@ -11,7 +11,8 @@ users = [
         "packageTier": 1,
         "studentMeetings": 0,
         "sendEmailToExhibitor": False,
-        "mapPosition": 1
+        "mapPosition": 1,
+        "meetingTimeSlots": []
     },
     {
         "contactPerson": "Bob Smith",
@@ -22,7 +23,8 @@ users = [
         "packageTier": 2,
         "studentMeetings": 1,
         "sendEmailToExhibitor": False,
-        "mapPosition": 2
+        "mapPosition": 2,
+        "meetingTimeSlots": []
     },
     {
         "contactPerson": "Charlie Brown",
@@ -33,7 +35,8 @@ users = [
         "packageTier": 2,
         "studentMeetings": 0,
         "sendEmailToExhibitor": False,
-        "mapPosition": 3
+        "mapPosition": 3,
+        "meetingTimeSlots": [1,2,3,4,5,6]
     },
     {
         "contactPerson": "David Lee",
@@ -44,7 +47,8 @@ users = [
         "packageTier": 1,
         "studentMeetings": 0,
         "sendEmailToExhibitor": False,
-        "mapPosition": 4
+        "mapPosition": 4,
+        "meetingTimeSlots": []
     },
     {
         "contactPerson": "Emma Davis",
@@ -55,7 +59,8 @@ users = [
         "packageTier": 2,
         "studentMeetings": 1,
         "sendEmailToExhibitor": False,
-        "mapPosition": 5
+        "mapPosition": 5,
+        "meetingTimeSlots": [1,2,3,4,5,6]
     },
     {
         "contactPerson": "Frank Wilson",
@@ -66,7 +71,8 @@ users = [
         "packageTier": 3,
         "studentMeetings": 0,
         "sendEmailToExhibitor": False,
-        "mapPosition": 6
+        "mapPosition": 6,
+        "meetingTimeSlots": []
     },
     {
         "contactPerson": "Grace Taylor",
@@ -77,7 +83,8 @@ users = [
         "packageTier": 1,
         "studentMeetings": 0,
         "sendEmailToExhibitor": False,
-        "mapPosition": 7
+        "mapPosition": 7,
+        "meetingTimeSlots": []
     },
     {
         "contactPerson": "Henry Martinez",
@@ -88,7 +95,8 @@ users = [
         "packageTier": 2,
         "studentMeetings": 1,
         "sendEmailToExhibitor": False,
-        "mapPosition": 8
+        "mapPosition": 8,
+        "meetingTimeSlots" : [7,8,9,10,11,12]
     },
     {
         "contactPerson": "Ivy Johnson",
@@ -99,7 +107,8 @@ users = [
         "packageTier": 2,
         "studentMeetings": 0,
         "sendEmailToExhibitor": False,
-        "mapPosition": 9
+        "mapPosition": 9,
+        "meetingTimeSlots": []
     },
     {
         "contactPerson": "Jack Brown",
@@ -110,7 +119,8 @@ users = [
         "packageTier": 3,
         "studentMeetings": 1,
         "sendEmailToExhibitor": False,
-        "mapPosition": 10
+        "mapPosition": 10,
+        "meetingTimeSlots": [1,2,3,4,5,6]
     }
 ]
 

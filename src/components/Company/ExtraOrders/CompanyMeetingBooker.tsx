@@ -25,12 +25,14 @@ export default function CompanyMeetingBooker(
   const getAcceptedStudents = api.exhibitor.getAcceptedMeetings.useQuery();
   const getStudentCv = api.exhibitor.getStudentCV.useMutation();
   const deleteMeeting = api.exhibitor.cancelMeeting.useMutation();
+  const getTimeSlotsLeft = api.exhibitor.getTimeSlotsLeft.useQuery();
   
   const createMeeting = api.exhibitor.createMeeting.useMutation();
 
   const [students, setStudents] = useState<MeetingData[]>([]);
   const [tableIndex, setTableIndex] = useState(0);
   const [currentCancelMeeting, setCurrentCancelMeeting] = useState<string | null>(null);
+  const [hasMeetingsLeft, setHasMeetingsLeft] = useState(true);
   
   const [pendingStudents, setPendingStudents] = useState<MeetingData[]>([]);
   const [acceptedStudents, setAcceptedStudents] = useState<MeetingData[]>([]);
@@ -131,6 +133,11 @@ export default function CompanyMeetingBooker(
   
       setAcceptedStudents(students);
   }, [getAcceptedStudents.data]);
+
+  useEffect(() => {
+    if(!getTimeSlotsLeft.data) return;
+    setHasMeetingsLeft(getTimeSlotsLeft.data.length > 0);
+  }, [getTimeSlotsLeft.data]);
 
   const handleCheck = (id: string) => {
     const updatedData = [...students];
@@ -284,16 +291,21 @@ export default function CompanyMeetingBooker(
           </tbody>
         </table>
       </div>
-      <p className='text-white mt-2'> 
+
+      {hasMeetingsLeft ? <> 
+        <p className='text-white mt-2'> 
         {"("+ students.filter((student)=> student.checked).length.toString() + ") " + t.exhibitorSettings.meetings.selectedStudents}
-      </p>
-      <button className="mt-4 mb-4" onClick={bookMeetings}>
-          <a className={`block transition-transform rounded-full 
-          text-white text-base font-medium px-6 py-2 max-lg:mx-auto w-max `
-          + (students.filter((student)=> student.checked).length > 0 ? 'bg-cerise hover:scale-105' : 'bg-gray/50')}>
-            {t.exhibitorSettings.meetings.bookSelected}
-          </a>
-      </button>
+        </p>
+        <button className="mt-4 mb-4" onClick={bookMeetings}>
+            <a className={`block transition-transform rounded-full 
+            text-white text-base font-medium px-6 py-2 max-lg:mx-auto w-max `
+            + (students.filter((student)=> student.checked).length > 0 ? 'bg-cerise hover:scale-105' : 'bg-gray/50')}>
+              {t.exhibitorSettings.meetings.bookSelected}
+            </a>
+        </button>
+      </> : <>
+          <p className='text-white mt-2 text-lg font-weight'>{t.exhibitorSettings.meetings.noTimesLeft}!</p>
+      </> }
     </>,
     <> {/*Pending students*/}
     <p className='text-white mb-2'> { "("+ pendingStudents.length + ") " + t.exhibitorSettings.meetings.pendingMeetings }</p>
@@ -338,7 +350,7 @@ export default function CompanyMeetingBooker(
       </div>
     </>,
     <> {/*Accepted students*/}
-    <p className='text-white mb-2'> {"(" + acceptedStudents.length + ") " + t.exhibitorSettings.meetings.bookedMeetings} </p>
+    <p className='text-white mb-2'> {"(" + acceptedStudents.length + "/6) " + t.exhibitorSettings.meetings.bookedMeetings} </p>
     <div className='overflow-y-auto h-90 p-8 bg-black/50 rounded-lg'>
       <table className='w-full '>
         <thead>
