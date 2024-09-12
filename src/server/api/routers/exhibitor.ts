@@ -773,6 +773,43 @@ export const exhibitorRouter = createTRPCRouter({
 
         if (!meeting) return;
 
+        const exhibitor = await ctx.prisma.exhibitor.findUnique({
+          where: {
+            id: ctx.session.exhibitorId,
+          },
+        });
+
+        if (!exhibitor) return;
+
+        console.log("\n\n\n SENDING EMAIL TO COMPANY AND STUDENT \n\n\n");
+
+        // change to "locale" if We want multiple languages
+        const t = getLocale("en");
+
+        // send mail to student
+        sendEmail(
+          student.email,
+          t.meeting_email.meeting_deleted_by_company.subject,
+          t.meeting_email.meeting_deleted_by_company.body(
+            student.first_name,
+            student.last_name,
+            exhibitor.name
+          ),
+          "sales@ddagen.se"
+        );
+
+        // send mail to company
+        sendEmail(
+          student.email,
+          t.meeting_email.meeting_deleted_by_student.subject,
+          t.meeting_email.meeting_deleted_by_student.body(
+            student.first_name,
+            student.last_name,
+            exhibitor.name
+          ),
+          "sales@ddagen.se"
+        );
+
         await ctx.prisma.meetings.delete({
           where: {
             id: meeting.id,
