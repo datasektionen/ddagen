@@ -352,6 +352,7 @@ export const exhibitorRouter = createTRPCRouter({
                 type: input.type,
               },
               data: {
+                name: input.name,
                 value: input.value.length == 0 ? [] : input.value,
                 comment: input.comment,
               },

@@ -16,13 +16,13 @@ export default function ExtraOrders({
   exhibitorPackage: Package;
 }) {
   // on disable if deadline has passed
-  const disablePreferences = new Date() > new Date("2024-09-19");
+  const disablePreferences = (new Date() > new Date("2024-09-19"));
   const deadline = {
-    drinkCoupons: "2024-09-19",
-    tables: "2024-09-19",
-    chairs: "2024-09-19",
-    representatives: "2024-09-19",
-    banquet: "2024-09-19",
+    drinkCoupons: "2024-09-18",
+    tables: "2024-09-18",
+    chairs: "2024-09-18",
+    representatives: "2024-09-18",
+    banquet: "2024-09-18",
   };
 
   const [editState, setEditState] = useState(false);
@@ -111,8 +111,8 @@ export default function ExtraOrders({
       included: exhibitorPackage.tables,
       get: tables,
       set: setTables,
-      disableAll: false,
-      disableCondition: false,
+      disableAll: disablePreferences,
+      disableCondition: disablePreferences,
       disableConditionMessage: "",
       increment: 1,
       deadline: deadline.tables,
@@ -122,8 +122,8 @@ export default function ExtraOrders({
       included: exhibitorPackage.chairs,
       get: chairs,
       set: setChairs,
-      disableAll: false,
-      disableCondition: false,
+      disableAll: disablePreferences,
+      disableCondition: disablePreferences,
       disableConditionMessage: "",
       increment: 1,
       deadline: deadline.chairs,
@@ -133,8 +133,8 @@ export default function ExtraOrders({
       included: exhibitorPackage.drinkCoupons,
       get: drinkCoupons,
       set: setDrinkCoupons,
-      disableAll: false,
-      disableCondition: false,
+      disableAll: disablePreferences,
+      disableCondition: disablePreferences,
       disableConditionMessage: "",
       increment: 8,
       deadline: deadline.drinkCoupons,
@@ -200,7 +200,7 @@ export default function ExtraOrders({
         </div>
         <div className="font-normal text-2xl">{exhibitorPackage.tables}</div>
         <div className="font-normal text-2xl">
-          {editState ? plusMinus(tables, setTables, 1) : tables}
+          {editState ? plusMinus(tables, setTables, 1, disablePreferences) : tables}
         </div>
         <div className="font-normal text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] text-2xl">
           {exhibitorPackage.tables + tables}
@@ -216,7 +216,7 @@ export default function ExtraOrders({
         </div>
         <div className="font-normal text-2xl">{exhibitorPackage.chairs}</div>
         <div className={"font-normal text-2xl"}>
-          {editState ? plusMinus(chairs, setChairs, 1) : chairs}
+          {editState ? plusMinus(chairs, setChairs, 1, disablePreferences) : chairs}
         </div>
         <div className="font-normal text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] text-2xl">
           {exhibitorPackage.chairs + chairs}
@@ -235,7 +235,7 @@ export default function ExtraOrders({
         </div>
         <div className="font-normal text-2xl">
           {editState
-            ? plusMinus(drinkCoupons, setDrinkCoupons, 8)
+            ? plusMinus(drinkCoupons, setDrinkCoupons, 8, disablePreferences)
             : drinkCoupons}
         </div>
         <div className="font-normal text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] text-2xl">
