@@ -464,21 +464,6 @@ export default {
     <p>The D-Dagen project group</p>
       `,
     },
-    company_meeting_created: {
-      subject: "company_meeting_created",
-      body: (
-        firstName: string,
-        lastName: string,
-        companyName: string,
-      )=>`
-    <p>Hi ${companyName}!</p>
-    <p>We are pleased to confirm that ${firstName} ${lastName} has accepted your meeting request</p>
-    <p>If any of the information above is incorrect or if you have any other questions,
-    do not hesitate to contact our sales team at sales@ddagen.se.</p>
-    <p>Best regards,</p>
-    <p>The D-Dagen project group</p>
-      `,
-    },
     meeting_deleted_by_student: {
       subject: "meeting_deleted_by_student",
       body: (

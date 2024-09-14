@@ -190,32 +190,6 @@ export const studentRouter = createTRPCRouter({
 
         if (!student) return false;
 
-
-        //Broken please fix @ilmal 
-
-        // remove company from declined list
-        /* 
-        const companyMeetingDeclined = JSON.parse(student.company_meeting_declined[0]);
-        console.log("\n\nEXID: ", input_json.exhibitorId, "\n\n")
-        const index = companyMeetingDeclined.indexOf(input_json.exhibitorId);
-
-        console.log("STUFF DATA1: ", companyMeetingDeclined, index)
-
-        if (index > -1) {
-            companyMeetingDeclined.splice(index, 1);
-
-            console.log("STUFF DATA2: ", companyMeetingDeclined)
-
-            await ctx.prisma.students.update({
-                where: {
-                    ugkt    hid: input_json.ugkthid,
-                },
-                data: {
-                    company_meeting_declined: JSON.stringify(companyMeetingDeclined),
-                }
-            });
-        } 
-        */
         // Update the student's company meeting interests
         const result = await ctx.prisma.students.update({
             where: {
@@ -354,6 +328,13 @@ export const studentRouter = createTRPCRouter({
             }
         });
 
+        const meeting = await ctx.prisma.meetings.findUnique({
+            where: {
+                id: meetings[0].id
+            },
+        });
+
+
         const student = await ctx.prisma.students.findUnique({
             where: {
                 id: input.studentId,
@@ -377,14 +358,29 @@ export const studentRouter = createTRPCRouter({
 
         sendEmail(
         student.email,
-        t.meeting_email.company_meeting_created.subject,
-        t.meeting_email.company_meeting_created.body(
+        t.meeting_email.meeting_completed_to_company.subject,
+        t.meeting_email.meeting_completed_to_company.body(
             student.first_name,
             student.last_name,
-            exhibitor.name
+            exhibitor.name,
+            time: string,
+            location: string,
         ),
         "sales@ddagen.se"
         );
+
+        sendEmail(
+            student.email,
+            t.meeting_email.meeting_completed_to_student.subject,
+            t.meeting_email.meeting_completed_to_student.body(
+                student.first_name,
+                student.last_name,
+                exhibitor.name,
+                time: string,
+                location: string,
+            ),
+            "sales@ddagen.se"
+            );
 
         console.log("\n\n\n SENDING EMAIL TO COMPANY \n\n\n");
 
