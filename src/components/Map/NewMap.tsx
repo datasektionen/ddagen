@@ -8,7 +8,7 @@ import "leaflet/dist/leaflet.css";
 const exhibitorMarker = (id: string, selected: boolean): DivIcon =>
   new DivIcon({
     html: id,
-    className: `rounded-full bg-pink-600 ring ${selected ? "border-4 border-pink-500 ring-2 ring-yellow" : "ring-2 ring-pink-500"} text-white text-center content-center`,
+    className: `rounded-full bg-pink-600 ring ${selected ? "border-4 border-pink-500 ring-3 ring-yellow" : "ring-2 ring-pink-500"} text-white text-center content-center`,
     iconSize: selected ? [38, 38] : [30, 30]
   });
 

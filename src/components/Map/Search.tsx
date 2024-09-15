@@ -1,5 +1,5 @@
+import { Dispatch, useState, useEffect, useRef } from "react";
 import type Locale from "@/locales";
-import { Dispatch, useState } from "react";
 import { CheckMark } from "../CheckMark";
 import Button from "./Button";
 
@@ -72,6 +72,8 @@ export default function Search({
   const [searchQuery, setSearchQuery] = useState("");
   const [showFilter, setShowFilter] = useState(false);
   const [checkmarks, setCheckmarks] = useState(Array<boolean>(11).fill(false));
+  const filterRef = useRef<HTMLDivElement>(null);
+  const searchBarRef = useRef<HTMLDivElement>(null);
 
   const setSearchQueryAndApply = (value: string) => {
     setSearchQuery(value);
@@ -87,9 +89,30 @@ export default function Search({
     });
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        filterRef.current &&
+        !filterRef.current.contains(event.target as Node) &&
+        searchBarRef.current &&
+        !searchBarRef.current.contains(event.target as Node)
+      ) {
+        setShowFilter(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [filterRef, searchBarRef]);
+
   return (
-    <div className="w-full flex flex-col items-center justify-center">
-      <div className="w-full flex items-center my-4">
+    <div 
+      id={"search"}
+      className="w-full flex flex-col items-center justify-center"
+    >
+      <div ref={searchBarRef} className="w-full flex items-center my-4">
         <input
           className="grow min-h-[40px] outline-none border-2 border-cerise bg-[#eaeaea] bg-opacity-10 
                     rounded-3xl px-3 text-white text-opacity-50 focus:placeholder:text-transparent"
@@ -104,12 +127,12 @@ export default function Search({
             loading={false}
             onClick={() => setShowFilter(!showFilter)}
           />
-          
         </div>
       </div>
       <div className="flex justify-center w-full relative">
         {showFilter && (
           <div
+            ref={filterRef}
             className="absolute top-full z-10 mt-5 w-11/12 block border-4 border-pink-600 bg-[#867c8b] bg-opacity-60 backdrop-blur-sm rounded-lg text-white justify-center text-xl"
           >
             <div className="w-full h-full flex flex-col justify-center items-center p-2 max-xs:p-6 font-light text-base">

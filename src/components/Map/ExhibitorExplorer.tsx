@@ -163,10 +163,13 @@ export default function ExhibitorExplorer({
   }, [selectedExhibitor]);
 
   return (
-    <div className="h-full w-full mt-0 mb-5 md:mb-0 flex flex-col gap-y-4 items-center justify-center">
+    <div 
+      id={"explorer"}
+      className="h-full w-full mt-0 md:mb-0 flex flex-col gap-y-4 items-center justify-center"
+    >
       <div
         ref={buttonScrollRef}
-        className="h-full w-full border-4 border-pink-600
+        className="min-h-full w-full border-4 border-pink-600
                 bg-[#eaeaea] bg-opacity-10 rounded-xl pb-4 overflow-scroll 
                   scrollbar-hide overflow-x-hidden mb-3"
       >
