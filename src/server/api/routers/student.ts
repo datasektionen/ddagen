@@ -35,7 +35,6 @@ const companyLocationMap = {
     }
 }
 
-
 export const studentRouter = createTRPCRouter({    
     verify: publicProcedure
     .input(z.string())
