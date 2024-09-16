@@ -474,9 +474,8 @@ export default {
       body: (
         firstName: string,
         lastName: string,
-        companyName: string,
       )=>`
-    <p>Hi ${companyName}!</p>
+    <p>Hi!</p>
     <p>We are sorry to inform that ${firstName} ${lastName} has canceled your meeting</p>
     <p>If any of the information above is incorrect or if you have any other questions,
     do not hesitate to contact our sales team at sales@ddagen.se.</p>
