@@ -51,11 +51,15 @@ export default {
     tempCompanyMeetingsText:
       "Vi erbjuder kontaktsamtal för studenter, vilket innebär att ni får möjlighet att i enrum med företagsrepresentanter diskutera framtida jobbmöjligheter med mera. Anmälan kommer tillgängliggöras senare!",
       companyMeetingsButton: "Anmäl dig här",
+      dayStaffTitle: "Dagspersonal",
+      dayStaffText: "Vill du vara med och göra D-Dagen till en succé? Vi söker engagerade studenter som kan hjälpa till under mässdagen med uppgifter som att välkomna besökare, assistera utställare och hålla ordning i lokalerna. Det är ett perfekt tillfälle att nätverka, träffa företag och få värdefull erfarenhet.",
+      dayStaffApplicationOpens: "Ansökan öppnar 2/9",
+      dayStaffApply: "Ansök här!",
   },
   students: {
     info:{
       mainHeader: "Fyll i information om dig själv!",
-      subHeader: "Om du inte fyller i CV fältet kommer företag inte att kunna se din information. \nFyll i intressen så att företag lättare kan hitta dig!",
+      subHeader: "Ladda upp ditt CV för att kunna spara. När CV:et är uppladdat kan du spara din information och få tillgång till kontaktsamtalssidan.",
       header:"Fyll i information om dig!",
       firstName:"Förnamn",
       lastName:"Efternamn",
@@ -335,6 +339,7 @@ export default {
       bookedMeetings: "bokade möten",
       bookSelected: "Skicka mötesförfrågan",
       caution: "Student möten är inte tillgänliga för mobiler",
+      noTimesLeft: "Inga tider kvar",
       pages: {
         interested: "Intresserade studenter",
         pending: "Utgående mötesförfrågningar",

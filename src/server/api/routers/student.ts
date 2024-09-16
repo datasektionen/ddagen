@@ -253,9 +253,19 @@ export const studentRouter = createTRPCRouter({
                 }
             }); 
 
+            const exhibitorsTimeSlots = await ctx.prisma.exhibitor.findUnique({
+                where: {
+                    id: meeting.exhibitorId,
+                },
+                select: {
+                    meetingTimeSlots: true,
+                }
+            }).then((data: {meetingTimeSlots: number[]}) => data?.meetingTimeSlots ?? []);
+
+            console.log(exhibitorsTimeSlots)
             const timeSlotsArray = timeSlots.map((timeSlot: any) => timeSlot.timeslot);
             
-            const availableTimeSlots = [1,2,3,4,5,6,7,8,9,10,11,12].filter((timeSlot) => !timeSlotsArray.includes(timeSlot));
+            const availableTimeSlots = exhibitorsTimeSlots.filter((timeSlot: number) => !timeSlotsArray.includes(timeSlot));
   
 
             const companyData = await ctx.prisma.exhibitor.findUnique({

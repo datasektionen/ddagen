@@ -128,8 +128,8 @@ export default function LoggedInPage() {
         studentGetData.mutateAsync(ugkthid)
         .then((result)=>{
             if (result) {
-              
-                setStudentHasCV(result.cv !== "");
+
+                setStudentHasCV(result.cv !== "" && result.cv !== 'undefined');
             } 
         });
 

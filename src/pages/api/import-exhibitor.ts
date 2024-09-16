@@ -40,6 +40,7 @@ export default async function handler(
     studentMeetings: z.number(),
     sendEmailToExhibitor: z.boolean(),
     mapPosition: z.number(),
+    meetingTimeSlots: z.array(z.number()).optional(),
   });
 
   const body = bodySchema.safeParse(req.body);
@@ -55,6 +56,7 @@ export default async function handler(
     studentMeetings,
     sendEmailToExhibitor,
     mapPosition,
+    meetingTimeSlots,
   } = body.data;
 
   const exhibitor = await prisma.exhibitor.upsert({
@@ -81,6 +83,7 @@ export default async function handler(
       customRepresentativeSpots: 0,
       customBanquetTicketsWanted: 0,
       mapPosition: mapPosition,
+      meetingTimeSlots: meetingTimeSlots ?? [],
       foodPreferencess: undefined,
       jobOffers: {
         create: {
@@ -100,6 +103,7 @@ export default async function handler(
       packageTier: packageTier,
       studentMeetings: studentMeetings,
       mapPosition: mapPosition,
+      meetingTimeSlots: meetingTimeSlots ?? [],
     },
   });
 

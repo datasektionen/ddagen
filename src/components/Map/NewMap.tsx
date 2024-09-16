@@ -1,14 +1,14 @@
 import type Locale from "@/locales";
 import { MapProp } from "@/shared/Classes";
 import { Dispatch, useEffect } from "react";
-import { ImageOverlay, LayerGroup, LayersControl, MapContainer, Marker } from 'react-leaflet';
+import { ImageOverlay, LayerGroup, LayersControl, MapContainer, Marker, ZoomControl } from 'react-leaflet';
 import { DivIcon, LatLngExpression } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
 const exhibitorMarker = (id: string, selected: boolean): DivIcon =>
   new DivIcon({
     html: id,
-    className: `rounded-full bg-pink-600 ring ${selected ? "border-4 border-pink-500 ring-2 ring-yellow" : "ring-2 ring-pink-500"} text-white text-center content-center`,
+    className: `rounded-full bg-pink-600 ring ${selected ? "border-4 border-pink-500 ring-3 ring-yellow" : "ring-2 ring-pink-500"} text-white text-center content-center`,
     iconSize: selected ? [38, 38] : [30, 30]
   });
 
@@ -67,7 +67,9 @@ export default function Map({
           attributionControl={false}
           className="md:rounded-xl"
           style={{height: '100%', width: '100%'}}
+          zoomControl={false}
         >
+          <ZoomControl position="bottomleft"/>
           <LayersControl position="bottomright" collapsed={false}>
             <LayersControl.BaseLayer checked={mapInView == 1} name="Floor 2">
               <LayerGroup>

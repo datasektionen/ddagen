@@ -51,11 +51,15 @@ export default {
     tempCompanyMeetingsText:
       "We offer company meetings for students, which means that you will be able to discuss future job opportunities in a private room with representatives from selected companies. Sign up will be available soon!",
     companyMeetingsButton: "Sign up",
+    dayStaffTitle: "Day Staff",
+    dayStaffText: "Would you like to help make our career fair a success? We are looking for enthusiastic students to assist on the day of the event with tasks such as welcoming visitors, supporting exhibitors, and keeping the venue organized. It's a great opportunity to network, meet companies, and gain valuable experience.",
+    dayStaffApplicationOpens: "Application opens on September 2nd",
+    dayStaffApply: "Apply here!",
   },
   students: {
     info:{
       mainHeader: "Fill out information about yourself",
-      subHeader: "If you dont fill in the CV field, you will not appear in the list of students that companies can choose to meet with. \nFill in you interests to aid companies in finding you!",
+      subHeader: "Upload your resume to save. Once the resume is uploaded, you can save your information and gain access to the company meeting page.",
       header:"Fill in information about yourself!",
       firstName:"First name",
       lastName:"Last name",
@@ -338,6 +342,7 @@ export default {
       bookedMeetings: "booked meetings",
       bookSelected: "Send meeting request",
       caution: "Student meetings are not available on phones",
+      noTimesLeft: "No times left",
       pages: {
         interested: "Interested students",
         pending: "Pending requests",
