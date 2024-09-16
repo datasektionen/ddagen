@@ -351,8 +351,6 @@ export const studentRouter = createTRPCRouter({
 
         if (!exhibitor) return;    
 
-        console.log("\n\n\n SENDING EMAIL TO COMPANY \n\n\n");
-
         // change to "locale" if We want multiple languages
         const t = getLocale("en");
 
@@ -381,8 +379,6 @@ export const studentRouter = createTRPCRouter({
             ),
             "sales@ddagen.se"
             );
-
-        console.log("\n\n\n SENDING EMAIL TO COMPANY \n\n\n");
 
         return {ok: true, type: "accepted"};
     }),
