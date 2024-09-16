@@ -4,6 +4,38 @@ import { Prisma } from "@prisma/client";
 import sendEmail from "@/utils/send-email";
 import { getLocale } from "@/locales";
 
+// This is not a gud solution, but for now here we gooo! :-)
+const times = ["10:00-10:30", "10:30-11:00", "11:00-11:30", "11:30-12:00", "12:00-12:30", "12:30-13:00",
+    "13:00-13:30", "13:30-14:00", "14:00-14:30", "14:30-15:00", "15:00-15:30", "15:30-16:00"]
+
+const companyLocationMap = {
+    "5020109681":{
+        name: "Länsförsäkringar",
+        room: "Grupprum 0"
+    },
+    "5568548514": {
+        name: "Grebban Design AB",
+        room: "Grupprum 2"
+    },
+    "2021002627": {
+        name: "Sveriges Riksdag",
+        room: "Grupprum 3"
+    },
+    "5565756227": {
+        name: "Netlight Consulting AB",
+        room: "Grupprum 0"
+    },
+    "2021004284": {
+        name: "Svenska kraftnät",
+        room: "Grupprum 4"
+    },
+    "5164111683": {
+        name: "Nordea",
+        room: "Grupprum 5"
+    }
+}
+
+
 export const studentRouter = createTRPCRouter({    
     verify: publicProcedure
     .input(z.string())
@@ -364,17 +396,20 @@ export const studentRouter = createTRPCRouter({
         // change to "locale" if We want multiple languages
         const t = getLocale("en");
 
+        const time = times[meeting.timeslot]
+        const location = companyLocationMap[exhibitor.organizationNumber as keyof typeof companyLocationMap].room
+    
         sendEmail(
         student.email,
-        t.meeting_email.meeting_completed_to_company.subject,
-        t.meeting_email.meeting_completed_to_company.body(
-            student.first_name,
-            student.last_name,
-            exhibitor.name,
-            time: string,
-            location: string,
-        ),
-        "sales@ddagen.se"
+            t.meeting_email.meeting_completed_to_company.subject,
+            t.meeting_email.meeting_completed_to_company.body(
+                student.first_name,
+                student.last_name,
+                exhibitor.name,
+                time,
+                location,
+            ),
+            "sales@ddagen.se"
         );
 
         sendEmail(
@@ -384,8 +419,8 @@ export const studentRouter = createTRPCRouter({
                 student.first_name,
                 student.last_name,
                 exhibitor.name,
-                time: string,
-                location: string,
+                time,
+                location,
             ),
             "sales@ddagen.se"
             );
@@ -437,7 +472,6 @@ export const studentRouter = createTRPCRouter({
             companyMeetingInterests.splice(index, 1);
         } 
 
-        // email should be sent to the company and the student that the meeting beteen x (student) and y (company) has been declined @ilmal
         await ctx.prisma.students.update({
             where: {
                 id: input.studentId,
@@ -447,6 +481,21 @@ export const studentRouter = createTRPCRouter({
                 company_meeting_declined: [...companyMeetingDeclined, declinedCompany],
             }
         });
+
+        // change to "locale" if We want multiple languages
+        const t = getLocale("en");
+
+        // send mail to company
+        sendEmail(
+            student.email,
+            t.meeting_email.meeting_deleted_by_student.subject,
+            t.meeting_email.meeting_deleted_by_student.body(
+                student.first_name,
+                student.last_name,
+            ),
+            "sales@ddagen.se"
+            );
+          
 
         return {ok: true, type: "declined"};
     }),
