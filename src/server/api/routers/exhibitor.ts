@@ -352,6 +352,7 @@ export const exhibitorRouter = createTRPCRouter({
                 type: input.type,
               },
               data: {
+                name: input.name,
                 value: input.value.length == 0 ? [] : input.value,
                 comment: input.comment,
               },
@@ -654,6 +655,33 @@ export const exhibitorRouter = createTRPCRouter({
         });
 
         return meetings
+    }),
+    getTimeSlotsLeft: protectedProcedure
+    .query(async ({ ctx }) => {
+      const timeSlots = await ctx.prisma.meetings.findMany({
+        where: {
+            exhibitorId: ctx.session.exhibitorId,
+        },
+        select: {
+            timeslot: true,
+        }
+      }); 
+
+      const exhibitorsTimeSlots = await ctx.prisma.exhibitor.findUnique({
+          where: {
+              id: ctx.session.exhibitorId,
+          },
+          select: {
+              meetingTimeSlots: true,
+          }
+      }).then((data: any) => data?.meetingTimeSlots ?? []);
+
+      console.log(exhibitorsTimeSlots)
+      const timeSlotsArray = timeSlots.map((timeSlot: any) => timeSlot.timeslot);
+    
+      const availableTimeSlots = exhibitorsTimeSlots.filter((timeSlot: number) => !timeSlotsArray.includes(timeSlot));
+
+      return availableTimeSlots;
     }),
     getPendingMeetings: protectedProcedure
     .query(async ({ ctx }) => {

@@ -152,16 +152,6 @@ export default function StudentInfo(
                   fields={t.students.info}
                 />
     
-              <div>
-                <label htmlFor="role"
-                  className="
-                  text-slate-400 font-medium
-                  cursor-text uppercase
-                  md:text-sm text-[9px] ">
-                  {t.students.info.cv}:
-                </label>
-                <UploadCV t={t} file={user.cv} setFile={(value)=>{setUser({...user, cv:value})}}/>
-              </div>
 
               <h2 className="text-cerise text-center text-3xl mt-[10px] mb-[10px]">{t.students.interests.header}</h2>
               <div className="flex flex-col md:flex-row justify-between mt-[10px] ml-[40px] mr-[40px] gap-4">
@@ -175,17 +165,31 @@ export default function StudentInfo(
                 {wrapCheckMark(section.other.fullTime, <CheckMark name={section.other.fullTime} checked={user.fullTimeJob} onClick={()=>{setUser({...user,fullTimeJob:!user.fullTimeJob})}}/>)}
               </div>
 
-              <div className="justify-center flex flex-col mt-[40px]">
-                <button type="submit" className="mt-4 mb-4 mx-2 flex justify-center">
-                  <a className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-medium px-6 py-2 max-lg:mx-auto w-max">
-                    {t.students.info.save}
-                  </a>
-                </button>
-                <p className="text-white self-center">
-                  {saved? (!user.first_name ? t.students.info.addFirstName : !user.last_name ?  t. students.info.addLastName : !user.study_year ? t.students.info.addYear : "Saved") : ""}
-                 
-                </p>
-                <p className="font-bold text-md ">*{t.students.info.subHeader} </p>
+              <div>
+                <label htmlFor="role"
+                  className="
+                  text-slate-400 font-medium
+                  cursor-text uppercase
+                  md:text-sm text-[9px] ">
+                  {t.students.info.cv}:
+                </label>
+                <UploadCV t={t} file={user.cv} setFile={(value)=>{setUser({...user, cv:value})}}/>
+              </div>
+              <div className="justify-center flex flex-col mt-[40px] w-full max-w-[300px] mx-auto">
+              {user.cv && user.cv !== 'undefined' ? 
+                <div className="flex flex-col items-center">
+                  <button type="submit" className="mt-4 mb-4 mx-2 flex justify-center">
+                    <a className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-medium px-6 py-2 max-lg:mx-auto w-max">
+                      {t.students.info.save}
+                    </a>
+                  </button>
+                  <p className="text-white self-center">
+                    {saved? (!user.first_name ? t.students.info.addFirstName : !user.last_name ?  t. students.info.addLastName : !user.study_year ? t.students.info.addYear : "Saved") : ""}
+                  </p>
+                </div>:
+              <p className="font-bold text-xl text-yellow text-center">
+                {t.students.info.subHeader}
+              </p>}
               </div>
             </form>
           </div>

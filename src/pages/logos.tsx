@@ -168,6 +168,7 @@ type LogosProps = {
 
 export default function Logos({ exhibitorData }: LogosProps) {
   const t = useLocale();
+
   const mainsponsorPackages = exhibitorData.filter(
     (e) => e.packageTier === 3 && e.logoColor
   );
@@ -219,13 +220,13 @@ export async function getServerSideProps() {
     },
   });
 
-  const exhibitorData = exhibitors.map((exhibitor) => ({
+  const exhibitorData = exhibitors.map((exhibitor:any) => ({
     name: exhibitor.name || null,
     logoWhite: exhibitor.logoWhite?.toString("base64") || null,
     logoColor: exhibitor.logoColor?.toString("base64") || null,
     description: exhibitor.description || null,
     jobOfferId: exhibitor.jobOfferId || null,
-    packageTier: exhibitor.packageTier || null,
+    packageTier: exhibitor.packageTier,
     offers: [
       exhibitor.jobOffers?.summerJob,
       exhibitor.jobOffers?.internship,

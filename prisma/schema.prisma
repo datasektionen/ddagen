@@ -47,6 +47,7 @@ model Exhibitor {
   customBanquetTicketsWanted Int @default(0)
 
   mapPosition Int @default(0)
+  meetingTimeSlots Int[] @default([])
 
   foodPreferencess FoodPreferences[]
   users            User[]

@@ -177,6 +177,7 @@ export class Exhibitor {
   customDrinkCoupons: number;
   customRepresentativeSpots: number;
   customBanquetTicketsWanted: number;
+  meetingTimeSlots: number[];
 
   constructor(
     id: string,
@@ -198,7 +199,8 @@ export class Exhibitor {
     customChairs: number,
     customDrinkCoupons: number,
     customRepresentativeSpots: number,
-    customBanquetTicketsWanted: number
+    customBanquetTicketsWanted: number,
+    meetingTimeSlots: number[],
   ) {
     this.id = id;
     this.name = exhibitorName;
@@ -220,6 +222,7 @@ export class Exhibitor {
     this.customDrinkCoupons = customDrinkCoupons;
     this.customRepresentativeSpots = customRepresentativeSpots;
     this.customBanquetTicketsWanted = customBanquetTicketsWanted;
+    this.meetingTimeSlots = meetingTimeSlots;
   }
 }
 
