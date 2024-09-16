@@ -25,7 +25,7 @@ function SingleTeam({
   const modalRef = useRef<HTMLDivElement>(null);
   const isPageActive = false;
 
- 
+ // old form: https://forms.gle/VyigeGiQuEXgE9eS8
 
   const openModal = () => {
     setModal(true);
@@ -149,7 +149,7 @@ export default function SignupPage() {
       <div className="flex flex-row items-center justify-center">
       <Link 
             className="flex flex-row items-center justify-center w-[175px] bg-cerise rounded-full h-[60px] mt-[50px] text-white text-center" 
-            href="https://forms.gle/VyigeGiQuEXgE9eS8"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfRBriKZYXWZCssxv2Z-fsFPzPnTmfd6-gUvqtzNNgWsEV2bQ/viewform"
             target="_blank"
             >
             {t.sok.search}
@@ -232,7 +232,7 @@ export default function SignupPage() {
         {t.sok.moreInfo}
       </h1>
       <div className="flex flex-row items-center justify-center">
-        <a href="https://forms.gle/VyigeGiQuEXgE9eS8" target="_blank">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfRBriKZYXWZCssxv2Z-fsFPzPnTmfd6-gUvqtzNNgWsEV2bQ/viewform" target="_blank">
           <button className="w-[175px] bg-cerise rounded-full h-[60px] mt-[50px]">
             <p className="text-white text-center">{t.sok.search}</p>
           </button>
