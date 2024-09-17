@@ -16,13 +16,13 @@ export default function ExtraOrders({
   exhibitorPackage: Package;
 }) {
   // on disable if deadline has passed
-  const disablePreferences = (new Date() > new Date("2024-09-19"));
+  const disablePreferences = (new Date() > new Date("2024-09-22"));
   const deadline = {
-    drinkCoupons: "2024-09-18",
-    tables: "2024-09-18",
-    chairs: "2024-09-18",
-    representatives: "2024-09-18",
-    banquet: "2024-09-18",
+    drinkCoupons: "2024-09-21",
+    tables: "2024-09-21",
+    chairs: "2024-09-21",
+    representatives: "2024-09-21",
+    banquet: "2024-09-21",
   };
 
   const [editState, setEditState] = useState(false);
