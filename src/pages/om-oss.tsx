@@ -12,7 +12,7 @@ function stripLastName(name: string) {
 }
 
 const managersName        = ["Toshihide Sakao", "William Nordwall"]
-const prNames             = ["Felicia Murkes","Cissy Yang","Emilie Cao","Julia Potrus","Fredrik Sandelin"]
+const prNames             = ["Felicia Murkes","Cissy Yang","Emilie Cao","Julia Potrus","Robert Rosenquist"]
 const devNames            = ["Viktor Rönnbacka Nybäck", "Nils Malmberg", "Sofia Edvardsson", "Ivar Boqvist"]
 const salesNames          = ["Linus Markström", "Leo Modahed", "Johanna Plant", "Ella Hedberg", "Mimmi Weng", "Samuel Flodin", "Oskar Furuhed", "Farhan Syed"]
 const massNames           = ["Mortada Nasser", "Abhinav Sasikumar","Arman Montazeri","Max Berglund", "Adam Njegovanovic","Abdelrahman Aldaker"]
@@ -124,7 +124,7 @@ export default function AboutUs() {
       </h1>
       <div className="w-full lg:block xl:w-[1200px] lg:w-[1000px] lg:px-0 lg:mb-0 px-6 mb-3 ">
         <div className="flex flex-row items-center justify-center mb-10">
-          <img className="rounded-3xl" src="/img/projectGroup/g_projectGroup_modified.jpg"></img>
+          <img className="rounded-3xl" src="/img/projectGroup/g_projectGroup.jpg"></img>
         </div>
       
         <div className="flex flex-col">
@@ -153,7 +153,7 @@ export default function AboutUs() {
         
           <Team
             teamIndivudualImages={prTeamImages}
-            teamPic="/img/projectGroup/g_pr_modified.jpg"
+            teamPic="/img/projectGroup/g_pr.jpg"
             names={prNames}
             teamRoles={t.aboutUs.prTeamRoles}
             teamName={t.aboutUs.teamNames[1]}
