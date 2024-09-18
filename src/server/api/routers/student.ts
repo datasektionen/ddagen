@@ -34,10 +34,13 @@ const companyLocationMap = {
         name: "Nordea",
         room: "Grupprum 6"
     },
-    "200206042251":
-    {
+    "02060422251": {
         name: "KTH",
         room: "Doshi Room"
+    },
+    "0205174790": {
+        name: "KTH",
+        room: "Grupprum 69"
     },
 }
 
