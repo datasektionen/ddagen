@@ -633,7 +633,9 @@ export const exhibitorRouter = createTRPCRouter({
         // send email to student that a company y (comapny) has invited student x (student) to a meeting @ilmal
         sendEmail(
           student.email,
-          t.meeting_email.meeting_request_to_student.subject,
+          t.meeting_email.meeting_request_to_student.subject(
+            exhibitor.name
+          ),
           t.meeting_email.meeting_request_to_student.body(
             student.first_name,
             student.last_name,
@@ -817,7 +819,9 @@ export const exhibitorRouter = createTRPCRouter({
         // send mail to student
         sendEmail(
           student.email,
-          t.meeting_email.meeting_deleted_by_company.subject,
+          t.meeting_email.meeting_deleted_by_company.subject(
+            exhibitor.name
+          ),
           t.meeting_email.meeting_deleted_by_company.body(
             student.first_name,
             student.last_name,

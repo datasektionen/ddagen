@@ -400,7 +400,11 @@ export const studentRouter = createTRPCRouter({
     
         sendEmail(
         student.email,
-            t.meeting_email.meeting_completed_to_company.subject,
+            t.meeting_email.meeting_completed_to_company.subject(
+                student.firstName,
+                student.lastName,
+                exhibitor.name
+            ),
             t.meeting_email.meeting_completed_to_company.body(
                 student.first_name,
                 student.last_name,
@@ -413,7 +417,11 @@ export const studentRouter = createTRPCRouter({
 
         sendEmail(
             student.email,
-            t.meeting_email.meeting_completed_to_student.subject,
+            t.meeting_email.meeting_completed_to_student.subject(
+                student.firstName,
+                student.lastName,
+                exhibitor.name
+            ),
             t.meeting_email.meeting_completed_to_student.body(
                 student.first_name,
                 student.last_name,
@@ -487,7 +495,10 @@ export const studentRouter = createTRPCRouter({
         // send mail to company
         sendEmail(
             student.email,
-            t.meeting_email.meeting_deleted_by_student.subject,
+            t.meeting_email.meeting_deleted_by_student.subject(
+                student.first_name,
+                student.last_name,
+            ),
             t.meeting_email.meeting_deleted_by_student.body(
                 student.first_name,
                 student.last_name,
