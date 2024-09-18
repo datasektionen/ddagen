@@ -23,15 +23,15 @@ const companyLocationMap = {
     },
     "5565756227": {
         name: "Netlight Consulting AB",
-        room: "Grupprum 0"
+        room: "Grupprum 4"
     },
     "2021004284": {
         name: "Svenska kraftnät",
-        room: "Grupprum 4"
+        room: "Grupprum 5"
     },
     "5164111683": {
         name: "Nordea",
-        room: "Grupprum 5"
+        room: "Grupprum 6"
     }
 }
 
