@@ -487,6 +487,24 @@ export default {
     <p>The D-Dagen project group</p>
       `,
     },
+    meeting_declined_by_student: {
+      subject: (
+        firstName: string,
+        lastName: string
+      )=>
+         `Meeting Declined by ${firstName} ${lastName}`,
+      body: (
+        firstName: string,
+        lastName: string,
+      )=>`
+    <p>Hi!</p>
+    <p>We are sorry to inform that ${firstName} ${lastName} has declined your meeting offer</p>
+    <p>If any of the information above is incorrect or if you have any other questions,
+    do not hesitate to contact our sales team at sales@ddagen.se.</p>
+    <p>Best regards,</p>
+    <p>The D-Dagen project group</p>
+      `,
+    },
     meeting_deleted_by_company: {
       subject: (
         companyName: string
@@ -521,7 +539,6 @@ export default {
       <p>This is a confirmation for your student meeting with ${firstName} ${lastName}</p>
       <p>Time: ${time}</p>
       <p>Location: ${location}</p>
-      <p>If you wish to unbook your meeting please unbook via our <a href="https://ddagen.se/student">booking page</a> </p>
       <p>If any of the information above is incorrect or if you have any other questions,
       do not hesitate to contact our sales team at sales@ddagen.se.</p>
       <p>Best regards,</p>

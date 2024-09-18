@@ -3,6 +3,7 @@ import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 import { Prisma } from "@prisma/client";
 import sendEmail from "@/utils/send-email";
 import { getLocale } from "@/locales";
+import { send } from "process";
 
 // This is not a gud solution, but for now here we gooo! :-)
 const times = ["10:00-10:30", "10:30-11:00", "11:00-11:30", "11:30-12:00", "12:00-12:30", "12:30-13:00",
@@ -32,7 +33,12 @@ const companyLocationMap = {
     "5164111683": {
         name: "Nordea",
         room: "Grupprum 6"
-    }
+    },
+    "200206042251":
+    {
+        name: "KTH",
+        room: "Doshi Room"
+    },
 }
 
 export const studentRouter = createTRPCRouter({    
@@ -380,8 +386,13 @@ export const studentRouter = createTRPCRouter({
             where: {
                 id: input.studentId,
             },
+            select: {
+                first_name: true,
+                last_name: true,
+                email: true,
+            }
         });
-
+        
         if (!student) return;
 
         const exhibitor = await ctx.prisma.exhibitor.findUnique({
@@ -396,30 +407,51 @@ export const studentRouter = createTRPCRouter({
         const t = getLocale("en");
 
         const time = times[meeting.timeslot]
-        const location = companyLocationMap[exhibitor.organizationNumber as keyof typeof companyLocationMap].room
-    
-        sendEmail(
-        student.email,
-            t.meeting_email.meeting_completed_to_company.subject(
-                student.firstName,
-                student.lastName,
-                exhibitor.name
-            ),
-            t.meeting_email.meeting_completed_to_company.body(
-                student.first_name,
-                student.last_name,
-                exhibitor.name,
-                time,
-                location,
-            ),
-            "sales@ddagen.se"
-        );
+        const location = companyLocationMap[exhibitor.organizationNumber as keyof typeof companyLocationMap]?.room ?? "If you see this instead of a room, please contact the sales@ddagen.se";
+        
+        await ctx.prisma.user.findMany({
+            where: {
+                exhibitorId: input.exhibitorId,
+            },
+            select: {
+                email: true,
+            }
+        }).then((data: any)=> {
+            data.forEach((user: any) => {
+                sendEmail(
+                    user.email,
+                    t.meeting_email.meeting_completed_to_company.subject(
+                        student.first_name,
+                        student.last_name,
+                        exhibitor.name
+                    ),
+                    t.meeting_email.meeting_completed_to_company.body(
+                        student.first_name,
+                        student.last_name,
+                        exhibitor.name,
+                        time,
+                        location,
+                    ),
+                    "sales@ddagen.se"
+                );
+            });
+        }).catch((error: any) => {
+            console.error("Error sending email to company", error);
+            sendEmail(
+                "viktorrn@datasektionen.se",
+                "Error sending email to company",
+                "Error sending email to company, on student accept meeting: \n" + JSON.stringify(error) + 
+                "\n\n\nStudent: " + JSON.stringify(student) +
+                "\nExhibitor: " + JSON.stringify(exhibitor),
+            );
+        });
+        
 
         sendEmail(
             student.email,
             t.meeting_email.meeting_completed_to_student.subject(
-                student.firstName,
-                student.lastName,
+                student.first_name,
+                student.last_name,
                 exhibitor.name
             ),
             t.meeting_email.meeting_completed_to_student.body(
@@ -447,6 +479,7 @@ export const studentRouter = createTRPCRouter({
             },
             select: {
                 id: true,
+                timeslot: true,
             }
         });
 
@@ -465,6 +498,9 @@ export const studentRouter = createTRPCRouter({
             select: {
                 company_meeting_interests: true,
                 company_meeting_declined: true,
+                first_name: true,
+                last_name: true,
+                email: true,
             }
         });
 
@@ -493,18 +529,82 @@ export const studentRouter = createTRPCRouter({
         const t = getLocale("en");
 
         // send mail to company
-        sendEmail(
-            student.email,
-            t.meeting_email.meeting_deleted_by_student.subject(
-                student.first_name,
-                student.last_name,
-            ),
-            t.meeting_email.meeting_deleted_by_student.body(
-                student.first_name,
-                student.last_name,
-            ),
-            "sales@ddagen.se"
+        await ctx.prisma.user.findMany({
+            where: {
+                exhibitorId: input.exhibitorId,
+            },
+            select: {
+                email: true,
+            }
+        }).then((data: any)=> {
+            data.forEach((user: any) => {
+                if(meeting.timeslot == -1){
+                    sendEmail(
+                        user.email,
+                        t.meeting_email.meeting_declined_by_student.subject(
+                            student.first_name,
+                            student.last_name,
+                        ),
+                        t.meeting_email.meeting_declined_by_student.body(
+                            student.first_name,
+                            student.last_name,
+                        ),
+                        "sales@ddagen.se"
+                        );
+                } else {
+                    sendEmail(
+                        user.email,
+                        t.meeting_email.meeting_deleted_by_student.subject(
+                            student.first_name,
+                            student.last_name,
+                        ),
+                        t.meeting_email.meeting_deleted_by_student.body(
+                            student.first_name,
+                            student.last_name,
+                        ),
+                        "sales@ddagen.se"
+                        );
+                }
+            });
+        }).catch((error: any) => {
+            console.error("Error sending email to company", error);
+            sendEmail(
+                "viktorrn@datasektionen.se",
+                "Error sending email to company",
+                "Error sending email to company, on student accept meeting: \n" + JSON.stringify(error) + 
+                "\n\n\nStudent: " + JSON.stringify(student) +
+                "\nExhibitor: " + JSON.stringify(input.exhibitorId),
             );
+        });
+
+        if(meeting.timeslot == -1) {
+            sendEmail(
+                student.email,
+                t.meeting_email.meeting_declined_by_student.subject(
+                    student.first_name,
+                    student.last_name,
+                ),
+                t.meeting_email.meeting_declined_by_student.body(
+                    student.first_name,
+                    student.last_name,
+                ),
+                "sales@ddagen.se"
+                );
+        } else {
+            sendEmail(
+                student.email,
+                t.meeting_email.meeting_deleted_by_student.subject(
+                    student.first_name,
+                    student.last_name,
+                ),
+                t.meeting_email.meeting_deleted_by_student.body(
+                    student.first_name,
+                    student.last_name,
+                ),
+                "sales@ddagen.se"
+                );
+        }
+        
           
 
         return {ok: true, type: "declined"};
