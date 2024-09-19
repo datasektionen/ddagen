@@ -2,6 +2,8 @@ import { z } from "zod";
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 import { Prisma } from "@prisma/client";
 import { get } from "http";
+import sendEmail from "@/utils/send-email";
+import { getLocale } from "@/locales";
 
 export const meetingRouter = createTRPCRouter({    
     get: publicProcedure // get all companies that have student meetings
@@ -36,10 +38,11 @@ export const meetingRouter = createTRPCRouter({
                     id: meeting.id
                 }
             });
+
             return {ok: true};
         } catch (e){
             return {ok: false};
-        }
+        }   
     }),
     studentAcceptMeeting: publicProcedure
     .input(z.string())
@@ -85,6 +88,7 @@ export const meetingRouter = createTRPCRouter({
                 timeslot: new_timeslot,
             }
         });
+
         return {ok: true};
     }),
 });

@@ -34,6 +34,7 @@ export const adminRouter = createTRPCRouter({
                         exhibitor.customDrinkCoupons,
                         exhibitor.customRepresentativeSpots,
                         exhibitor.customBanquetTicketsWanted,
+                        exhibitor.meetingTimeSlots
                     )
             );
         }),

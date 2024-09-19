@@ -616,7 +616,6 @@ export const exhibitorRouter = createTRPCRouter({
           return;
         }
 
-        // send email to student that a company y (comapny) has invited student x (student) to a meeting @ilmal
         const match = await ctx.prisma.meetings.create({
           data: {
             exhibitorId: ctx.session.exhibitorId,
@@ -625,6 +624,25 @@ export const exhibitorRouter = createTRPCRouter({
             createdAt: new Date(),
           },
         });
+
+        console.log("\n\n\n SENDING EMAIL TO STUDENT \n\n\n");
+
+        // change to "locale" if We want multiple languages
+        const t = getLocale("en");
+
+        // send email to student that a company y (comapny) has invited student x (student) to a meeting @ilmal
+        sendEmail(
+          student.email,
+          t.meeting_email.meeting_request_to_student.subject(exhibitor.name),
+          t.meeting_email.meeting_request_to_student.body(
+            student.first_name,
+            student.last_name,
+            exhibitor.name
+          ),
+          "sales@ddagen.se"
+        );
+
+        console.log("\n\n\n SENDING EMAIL TO STUDENT \n\n\n");
 
         return match
     }),
@@ -637,6 +655,33 @@ export const exhibitorRouter = createTRPCRouter({
         });
 
         return meetings
+    }),
+    getTimeSlotsLeft: protectedProcedure
+    .query(async ({ ctx }) => {
+      const timeSlots = await ctx.prisma.meetings.findMany({
+        where: {
+            exhibitorId: ctx.session.exhibitorId,
+        },
+        select: {
+            timeslot: true,
+        }
+      }); 
+
+      const exhibitorsTimeSlots = await ctx.prisma.exhibitor.findUnique({
+          where: {
+              id: ctx.session.exhibitorId,
+          },
+          select: {
+              meetingTimeSlots: true,
+          }
+      }).then((data: any) => data?.meetingTimeSlots ?? []);
+
+      console.log(exhibitorsTimeSlots)
+      const timeSlotsArray = timeSlots.map((timeSlot: any) => timeSlot.timeslot);
+    
+      const availableTimeSlots = exhibitorsTimeSlots.filter((timeSlot: number) => !timeSlotsArray.includes(timeSlot));
+
+      return availableTimeSlots;
     }),
     getPendingMeetings: protectedProcedure
     .query(async ({ ctx }) => {
@@ -755,6 +800,31 @@ export const exhibitorRouter = createTRPCRouter({
         });
 
         if (!meeting) return;
+
+        const exhibitor = await ctx.prisma.exhibitor.findUnique({
+          where: {
+            id: ctx.session.exhibitorId,
+          },
+        });
+
+        if (!exhibitor) return;
+
+        console.log("\n\n\n SENDING EMAIL TO COMPANY AND STUDENT \n\n\n");
+
+        // change to "locale" if We want multiple languages
+        const t = getLocale("en");
+        
+        // send mail to student
+        sendEmail(
+          student.email,
+          t.meeting_email.meeting_deleted_by_company.subject(exhibitor.name),
+          t.meeting_email.meeting_deleted_by_company.body(
+            student.first_name,
+            student.last_name,
+            exhibitor.name
+          ),
+          "sales@ddagen.se"
+        );
 
         await ctx.prisma.meetings.delete({
           where: {

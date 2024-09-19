@@ -342,6 +342,7 @@ export default {
       bookedMeetings: "booked meetings",
       bookSelected: "Send meeting request",
       caution: "Student meetings are not available on phones",
+      noTimesLeft: "No times left",
       pages: {
         interested: "Interested students",
         pending: "Pending requests",
@@ -434,7 +435,7 @@ export default {
     <p>Hi!</p>
     <p>We are pleased to confirm we have received your exhibitor registration.
     We will contact you during the spring about whether you got a spot at D-Dagen.
-    You can expect to hear from us by June 8th at the latest.</p>
+    You can expect to hear from us by June 8th at the latest.</p>  
 
     <p>Here are the details of your registration:</p>
     <ul>
@@ -451,6 +452,125 @@ export default {
     <p>Best regards,</p>
     <p>The D-Dagen project group</p>
     `,
+  },
+  meeting_email: {
+    meeting_request_to_student: {
+      subject: (
+        companyName: string
+      ) => `Meeting Request from ${companyName}`,
+      body: (
+        firstName: string,
+        lastName: string,
+        companyName: string
+      )=>`
+    <p>Hi ${firstName} ${lastName}!</p>
+    <p>We are pleased to confirm that ${companyName} wants a meeting with you</p>
+    <p>If any of the information above is incorrect or if you have any other questions,
+    do not hesitate to contact our sales team at sales@ddagen.se.</p>
+    <p>Best regards,</p>
+    <p>The D-Dagen project group</p>
+      `,
+    },
+    meeting_declined_by_student: {
+      subject: (
+        firstName: string,
+        lastName: string
+      )=>
+         `Meeting Declined by ${firstName} ${lastName}`,
+      body: (
+        firstName: string,
+        lastName: string,
+      )=>`
+    <p>Hi!</p>
+    <p>We are sorry to inform that ${firstName} ${lastName} has declined your meeting offer</p>
+    <p>If any of the information above is incorrect or if you have any other questions,
+    do not hesitate to contact our sales team at sales@ddagen.se.</p>
+    <p>Best regards,</p>
+    <p>The D-Dagen project group</p>
+      `,
+    },
+    meeting_deleted_by_student: {
+      subject: (
+        firstName: string,
+        lastName: string
+      )=>
+         `Meeting Cancelled by ${firstName} ${lastName}`,
+      body: (
+        firstName: string,
+        lastName: string,
+      )=>`
+    <p>Hi!</p>
+    <p>We are sorry to inform that ${firstName} ${lastName} has canceled your meeting</p>
+    <p>If any of the information above is incorrect or if you have any other questions,
+    do not hesitate to contact our sales team at sales@ddagen.se.</p>
+    <p>Best regards,</p>
+    <p>The D-Dagen project group</p>
+      `,
+    },
+    meeting_deleted_by_company: {
+      subject: (
+        companyName: string
+      )=>`Meeting Cancelled by ${companyName}`,
+      body: (
+        firstName: string,
+        lastName: string,
+        companyName: string,
+      )=>`
+    <p>Hi ${firstName} ${lastName}!</p>
+    <p>We are sorry to inform that ${companyName} has canceled your meeting</p>
+    <p>If any of the information above is incorrect or if you have any other questions,
+    do not hesitate to contact our sales team at sales@ddagen.se.</p>
+    <p>Best regards,</p>
+    <p>The D-Dagen project group</p>
+      `,
+    },
+    meeting_completed_to_company: {
+        subject: (
+          firstName: string,
+          lastName: string,
+          companyName: string
+        )=> `Meeting Confirmed – ${companyName} and ${firstName} ${lastName}`,
+        body: (
+          firstName: string,
+          lastName: string,
+          companyName: string,
+          time: string,
+          location: string,
+        )=>`
+      <p>Hi ${companyName}!</p>
+      <p>This is a confirmation for your student meeting with ${firstName} ${lastName}</p>
+      <p>Time: ${time}</p>
+      <p>Location: ${location}</p>
+      <p>If any of the information above is incorrect or if you have any other questions,
+      do not hesitate to contact our sales team at sales@ddagen.se.</p>
+      <p>Best regards,</p>
+      <p>The D-Dagen project group</p>
+        `,
+      },
+      meeting_completed_to_student: {
+        subject: (
+          firstName: string,
+          lastName: string,
+          companyName: string
+        )=> `Meeting Confirmed – ${companyName} and ${firstName} ${lastName}`,
+        body: (
+          firstName: string,
+          lastName: string,
+          companyName: string,
+          time: string,
+          location: string,
+        )=>`
+      <p>Hi ${firstName} ${lastName}!</p>
+      <p>This is a confirmation for your student meeting with ${companyName}</p>
+      <p>Time: ${time}</p>
+      <p>Location: ${location}</p>
+      <p>If you wish to unbook your meeting please unbook via our https://ddagen.se/student </p>
+      <p>If any of the information above is incorrect or if you have any other questions,
+      do not hesitate to contact our sales team at sales@ddagen.se.</p>
+      <p>Best regards,</p>
+      <p>The D-Dagen project group</p>
+        `,
+      },
   },
   faq: {
     box1: "ABOUT D-DAGEN",

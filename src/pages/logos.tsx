@@ -190,7 +190,7 @@ export default function Logos({ exhibitorData }: LogosProps) {
         {" "}
         {t.logos.header}
       </h1>
-      <div className="bg-slate-600 py-[50px] mt-[100px] rounded-lg bg-opacity-40 px-[50px]">
+      <div className="bg-white py-[50px] mt-[100px] rounded-lg bg-opacity-50 px-[50px]">
         <div className="block sm:hidden">
           {RenderLogos(mainsponsorPackages, 1, "w-[250px]")}
           {RenderLogos(largeAndMediumPackages, 2, "w-[125px]")}
