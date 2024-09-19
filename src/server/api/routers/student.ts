@@ -34,7 +34,7 @@ const companyLocationMap = {
         name: "Nordea",
         room: "Grupprum 6"
     },
-    "02060422251": {
+    "0206042251": {
         name: "KTH",
         room: "Doshi Room"
     },
@@ -409,7 +409,7 @@ export const studentRouter = createTRPCRouter({
         // change to "locale" if We want multiple languages
         const t = getLocale("en");
 
-        const time = times[meeting.timeslot]
+        const time = times[meeting.timeslot + 1]
         const location = companyLocationMap[exhibitor.organizationNumber as keyof typeof companyLocationMap]?.room ?? "If you see this instead of a room, please contact the sales@ddagen.se";
         
         await ctx.prisma.user.findMany({
