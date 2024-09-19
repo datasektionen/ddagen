@@ -224,11 +224,11 @@
   }
 
   #sidebar {
-    height: calc(50vh - 5rem - 1rem) !important;
+    height: calc(50dvh - 5rem - 1rem) !important;
   }
   
   #explorer {
-    height: calc(50vh - 5rem - 1rem - 5rem - 1rem) !important;
+    height: calc(50dvh - 5rem - 1rem - 5rem - 1rem) !important;
   }
 }
 /* #sidebar {
