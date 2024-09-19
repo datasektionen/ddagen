@@ -211,11 +211,11 @@
 }
 
 #sidebar {
-  max-height: 90.5vh !important;
+  height: 81.5vh;
 }
 
 #explorer {
-  height: 100% !important;
+  height: 100%;
 }
 
 @media (max-width: 767px) {
@@ -224,7 +224,7 @@
   }
 
   #sidebar {
-    height: 45vh !important;
+    height: 40vh !important;
   }
 
   #explorer {
