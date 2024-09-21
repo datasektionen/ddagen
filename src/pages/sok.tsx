@@ -165,7 +165,7 @@ export default function SignupPage() {
         borderColor="border-[#E2B7C9]"
         toReverse={false}
         textColor="text-[#E2B7C9]"
-        image="/img/projectGroup/g_pr_modified.jpg"
+        image="/img/projectGroup/g_pr.jpg"
         teamInfo={[
           t.sok.prGroup.header,
           t.sok.prGroup.text,
