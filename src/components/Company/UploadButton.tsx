@@ -53,7 +53,7 @@ export function UploadButton({
           );
         }
       } else {
-        alert(t.exhibitorSettings.table.row1.imageTypeNotSupported);
+        alert(`${t.exhibitorSettings.table.row1.imageTypeNotSupported} file is ${e.target.files[0].type} but should be ${accept.join(", ")}`);
       }
 
       e.target.files = null;
