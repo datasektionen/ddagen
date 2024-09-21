@@ -3,6 +3,7 @@ import type Locale from "@/locales";
 import { CheckMark } from "../CheckMark";
 import Button from "./Button";
 
+
 function applySearch(
   searchQuery: string,
   checkmarks: boolean[],
@@ -110,22 +111,23 @@ export default function Search({
   return (
     <div 
       id={"search"}
-      className="w-full flex flex-col items-center justify-center"
+      className="h-20 w-full flex flex-col items-center justify-center"
     >
       <div ref={searchBarRef} className="w-full flex items-center my-4">
         <input
-          className="grow min-h-[40px] outline-none border-2 border-cerise bg-[#eaeaea] bg-opacity-10 
+          className="h-10 grow outline-none border-2 border-cerise bg-[#eaeaea] bg-opacity-10 
                     rounded-3xl px-3 text-white text-opacity-50 focus:placeholder:text-transparent"
           type="text"
           placeholder={t.map.search.placeHolder}
           value={searchQuery}
           onChange={(q) => setSearchQueryAndApply(q.target.value)}
         />
-        <div className="flex flex-row text-3xl">
+        <div className="h-10 flex flex-row text-3xl box-border">
           <Button
-            value="≡"
+            value="/img/hamburger.png"
             loading={false}
             onClick={() => setShowFilter(!showFilter)}
+            isImage={true}
           />
         </div>
       </div>

@@ -207,15 +207,15 @@
 }
 
 #map-container {
-  height: calc(100vh - 6rem);
+  height: calc(100vh - 5rem - 1rem);
 }
 
 #sidebar {
-  max-height: 90.5vh !important;
+  height: calc(100vh - 5rem - 1rem);
 }
 
 #explorer {
-  height: 100% !important;
+  height: calc(100vh - 5rem - 1rem - 5rem + 1rem);
 }
 
 @media (max-width: 767px) {
@@ -224,11 +224,11 @@
   }
 
   #sidebar {
-    height: 40vh !important;
+    height: calc(60vh - 5rem - 1rem) !important;
   }
-
+  
   #explorer {
-    height: 30vh !important;
+    height: calc(60vh - 5rem - 1rem - 5rem - 1rem) !important;
   }
 }
 /* #sidebar {

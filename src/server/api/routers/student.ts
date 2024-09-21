@@ -6,8 +6,8 @@ import { getLocale } from "@/locales";
 import { send } from "process";
 
 // This is not a gud solution, but for now here we gooo! :-)
-const times = ["10:00-10:30", "10:30-11:00", "11:00-11:30", "11:30-12:00", "12:00-12:30", "12:30-13:00",
-    "13:00-13:30", "13:30-14:00", "14:00-14:30", "14:30-15:00", "15:00-15:30", "15:30-16:00"]
+const times = [ "10:00-10:30", "10:30-11:00", "11:00-11:30", "11:30-12:00", "12:00-12:30", "12:30-13:00",
+                "13:00-13:30", "13:30-14:00", "14:00-14:30", "14:30-15:00", "15:00-15:30", "15:30-16:00"]
 
 const companyLocationMap = {
     "5020109681":{
@@ -34,7 +34,7 @@ const companyLocationMap = {
         name: "Nordea",
         room: "Grupprum 6"
     },
-    "02060422251": {
+    "0206042251": {
         name: "KTH",
         room: "Doshi Room"
     },
@@ -88,7 +88,7 @@ export const studentRouter = createTRPCRouter({
         });
 
         if (!student) {
-            //console.log("Should create a new student")
+            console.log("Should create a new student")
             const student_body = {
                 ugkthid: String(input_json.ugkthid),
                 first_name: String(input_json.first_name) ?? "", 
@@ -104,25 +104,31 @@ export const studentRouter = createTRPCRouter({
                 traineeProgram: !!input_json.traineeProgram, 
                 cv: String(input_json.cv) ?? "",
                 has_cv: input_json.cv != null ?  true : false, 
-                linkedin_url: String(input_json.linkedin_url) ?? "", 
-                github_url: String(input_json.github_url) ?? "", 
-                other_link: String(input_json.other_link) ?? "", 
-                personal_story: String(input_json.personal_story) ?? "",
+                linkedin_url: "",//String(input_json.linkedin_url) ?? "", 
+                github_url: "",//String(input_json.github_url) ?? "", 
+                other_link: "",//String(input_json.other_link) ?? "", 
+                personal_story: "",//String(input_json.personal_story) ?? "",
                 company_meeting_interests: JSON.stringify([]),
             } as Prisma.StudentsCreateInput;
             // If no user exists, create a new user with default values
-            
-            await ctx.prisma.students.create({
-                data: student_body,
-            });
+            try {
+                const res = await ctx.prisma.students.create({
+                    data: student_body,
+                });
+
+                if(res) console.log("Student created")
+                
+            } catch (error) {
+                console.error("Error creating student", error);
+            }    
         }
         else{
             // If user exists, update the existing user data with new values
             if(student.cv != null) console.log("Student has CV")
-            
+            console.log(input_json.cv)
             //console.log("data:",input_json.ugkthid)
 
-            student = await ctx.prisma.students.update({
+            const regular_data = await ctx.prisma.students.update({
                 where: {
                     ugkthid: input_json.ugkthid
                 },
@@ -138,16 +144,21 @@ export const studentRouter = createTRPCRouter({
                     masterThesis: input_json.masterThesis ?? student.masterThesis,
                     fullTimeJob: input_json.fullTimeJob ?? student.fullTimeJob,
                     traineeProgram: input_json.traineeProgram ?? student.traineeProgram,
-                    cv: input_json.cv ?? student.cv,
-                    has_cv: input_json.cv != null ? true : false,
-                    linkedin_url: input_json.linkedin_url ?? student.linkedin_url,
-                    github_url: input_json.github_url ?? student.github_url,
-                    other_link: input_json.other_link ?? student.other_link,
-                    personal_story: input_json.personal_story ?? student.personal_story,
                     //company_meeting_interests: student.company_meeting_interests,
                 },
             });
-            
+
+            // we sepearate the cv from the rest of the data because it is gimmicky
+            const cv_data = await ctx.prisma.students.update({
+                where: {
+                    ugkthid: input_json.ugkthid
+                },
+                data: {
+                    cv: input_json.cv ?? student.cv,
+                    has_cv: input_json.cv != null ? true : false,
+                },
+            });
+            //return {regular_data, cv_data}
         }
 
         return student; // Return the updated or newly created student
@@ -409,7 +420,7 @@ export const studentRouter = createTRPCRouter({
         // change to "locale" if We want multiple languages
         const t = getLocale("en");
 
-        const time = times[meeting.timeslot]
+        const time = times[meeting.timeslot - 1]
         const location = companyLocationMap[exhibitor.organizationNumber as keyof typeof companyLocationMap]?.room ?? "If you see this instead of a room, please contact the sales@ddagen.se";
         
         await ctx.prisma.user.findMany({
