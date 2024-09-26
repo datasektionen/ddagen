@@ -140,7 +140,7 @@ function RenderLogos(packageList: any[], rowSize: number, logoSize: string) {
           {chunk.map((exhibitor, idx) => (
             <div key={idx}>
               <Logo
-                pic={exhibitor.logoColor}
+                pic={exhibitor.logo}
                 companyName={exhibitor.name}
                 description={exhibitor.description}
                 size={logoSize}
@@ -157,8 +157,7 @@ type LogosProps = {
   exhibitorData: {
     id?: string;
     name: string;
-    logoWhite?: string | null;
-    logoColor?: string | null;
+    logo?: string | null;
     description?: string;
     packageTier: number;
     jobOfferId?: string;
@@ -170,17 +169,17 @@ export default function Logos({ exhibitorData }: LogosProps) {
   const t = useLocale();
 
   const mainsponsorPackages = exhibitorData.filter(
-    (e) => e.packageTier === 3 && e.logoColor
+    (e) => e.packageTier === 3 && e.logo
   );
   const largeAndMediumPackages = exhibitorData.filter(
     (e) =>
-      (e.packageTier === 2 || e.packageTier === 1) && e.logoColor
+      (e.packageTier === 2 || e.packageTier === 1) && e.logo
   );
   const smallPackages = exhibitorData.filter(
-    (e) => e.packageTier === 0 && e.logoColor
+    (e) => e.packageTier === 0 && e.logo
   );
   const startupPackages = exhibitorData.filter(
-    (e) => e.packageTier === 4 && e.logoColor
+    (e) => e.packageTier === 4 && e.logo
   );
   const smallAndStartUpPackages = [...smallPackages, ...startupPackages];
 
@@ -222,8 +221,7 @@ export async function getServerSideProps() {
 
   const exhibitorData = exhibitors.map((exhibitor:any) => ({
     name: exhibitor.name || null,
-    logoWhite: exhibitor.logoWhite?.toString("base64") || null,
-    logoColor: exhibitor.logoColor?.toString("base64") || null,
+    logo: exhibitor.logoColor?.toString("base64") || exhibitor.logoWhite?.toString("base64") || null,
     description: exhibitor.description || null,
     jobOfferId: exhibitor.jobOfferId || null,
     packageTier: exhibitor.packageTier,
