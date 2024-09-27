@@ -227,6 +227,9 @@ export default {
           "Det gick inte att ladda upp filen: Bildformatet stöds inte.",
         maxImageWarning: (imageSize: string, maxImageSize: string) =>
           `Det gick inte att ladda upp filen: Filen är för stor (${imageSize}MB). Max filstorlek: ${maxImageSize}MB.`,
+        fileTypeNotSupported:
+          "Det gick inte att ladda upp filen: bara PDF-formatet stöds.",
+        fileDataMalformed: "Det gick inte att ladda upp filen till vårat system: filen är skadad.",
       },
       row2: {
         title: "Ert Paket Och Extra Beställningar",

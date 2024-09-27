@@ -5,6 +5,7 @@ import { CheckMark } from "../CheckMark";
 import { InputField } from "../InputField";
 import { api } from "@/utils/api";
 import { useModal } from "@/utils/context";
+import { set } from "zod";
 
 interface User{
     ugkthid: string;
@@ -60,6 +61,7 @@ export default function StudentInfo(
 
   const inputData = api.student.inputData.useMutation();
   const [saved, setSaved] = useState(false);
+  const [error, setError] = useState(false);
 
   const section = t.exhibitorSettings.table.row1.section2;
   
@@ -84,15 +86,17 @@ export default function StudentInfo(
     }
 
     function saveHandlerFunc(data: User){
+  
       inputData.mutateAsync(JSON.stringify(data))
       .then((res) =>{
         setSaved(true);
-        
         setTimeout(()=>{setSaved(false)}, 2000);
       })
-      .catch((err) => {
+      .catch((err: any) => {
+       
+        setUser({...user, cv: ""} as User);
+        alert("Error saving user: pdf can not be saved");
         setSaved(false);
-        
       });
       
     }
@@ -173,7 +177,7 @@ export default function StudentInfo(
                   md:text-sm text-[9px] ">
                   {t.students.info.cv}:
                 </label>
-                <UploadCV t={t} file={user.cv} setFile={(value)=>{setUser({...user, cv:value})}}/>
+                <UploadCV t={t} file={user.cv ?? ""} setFile={(value)=>{setUser({...user, cv:value})}}/>
               </div>
               <div className="justify-center flex flex-col mt-[40px] w-full max-w-[300px] mx-auto">
               {user.cv && user.cv !== 'undefined' ? 
@@ -185,6 +189,9 @@ export default function StudentInfo(
                   </button>
                   <p className="text-white self-center">
                     {saved? (!user.first_name ? t.students.info.addFirstName : !user.last_name ?  t. students.info.addLastName : !user.study_year ? t.students.info.addYear : "Saved") : ""}
+                  </p>
+                  <p className="text-red-600 font-bold self-center">
+                    {error? ("Error saving user: pdf can not be saved, reloading...") : ""}
                   </p>
                 </div>:
               <p className="font-bold text-xl text-yellow text-center">

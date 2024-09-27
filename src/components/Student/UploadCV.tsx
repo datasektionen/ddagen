@@ -2,6 +2,7 @@ import Locale from "@/locales";
 import React, { Dispatch } from 'react';
 import { Buffer } from 'buffer';
 import base64ToFile from "@/shared/HandlePDF";
+import { set } from "zod";
 
 export default function UploadCV(
   {
@@ -19,6 +20,13 @@ export default function UploadCV(
     if (files && files.length > 0) {
         const newFile = files[0];
 
+        const ALLOWED_FILE_TYPE = "application/pdf";
+        if (newFile.type !== ALLOWED_FILE_TYPE) {
+            alert(t.exhibitorSettings.table.row1.fileTypeNotSupported);
+            setFile("");
+            return false;
+        }
+
         // Check file size
         const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2 MB 
         const FILE_SIZE = newFile.size;
@@ -27,22 +35,35 @@ export default function UploadCV(
               (FILE_SIZE / 1e6).toFixed(2),
               (MAX_FILE_SIZE / 1e6).toFixed(0)
             ));
-            return;
+            setFile("");
+            return false;
         }
+        
+        
 
         const fileReader = new FileReader();
-        fileReader.readAsDataURL(newFile);
+        
+        // Handle successful file load
         fileReader.onload = () => {
-            const base64String = fileReader.result as string;
-            const base64WithFilename = `data:${newFile.type};name=${newFile.name};base64,${base64String.split(',')[1]}`;
-            setFile(base64WithFilename);
+            try {
+                const base64String = fileReader.result as string;
+                const base64WithFilename = `data:${newFile.type};name=${newFile.name};base64,${base64String.split(',')[1]}`;
+                setFile(base64WithFilename);
+            } catch (error) {
+                console.error("Error processing PDF:", error);
+                alert(t.exhibitorSettings.table.row1.fileDataMalformed);
+            }
         };
+
+        // Handle file load errors
+        fileReader.onerror = () => {
+            alert(t.exhibitorSettings.table.row1.fileDataMalformed);
+            console.error("Error reading file:", fileReader.error);
+        };
+
+        fileReader.readAsDataURL(newFile);
     }
 }
-
-
-
-
 
   return (
     <div className="flex text-white items-center relative bg-black/25 min-w-[200px] h-[60px] p-4 rounded-3xl border-solid border-yellow border-2 overflow-hidden">
@@ -61,7 +82,7 @@ export default function UploadCV(
     
     <h2 className="absolute bottom-0 left-0 right-0 text-center text-[12px] text-slate-400">
       {"" == "" ? (
-        "pdf"
+        "Type: pdf"
       ) : ""}
     </h2>
     <div>

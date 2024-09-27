@@ -228,6 +228,9 @@ export default {
           "Error uploading file: The image format type is not supported.",
         maxImageWarning: (imageSize: string, maxImageSize: string) =>
           `Error uploading file: File is too big (${imageSize}MB). Max filesize: ${maxImageSize}MB.`,
+        fileTypeNotSupported:
+          "Error uploading file: Only the pdf format is supported.",
+        fileDataMalformed: "Error uploading file to our system: The file is malformed.",
       },
       row2: {
         title: "Your Package And Extra Orders",
