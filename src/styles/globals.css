@@ -207,28 +207,28 @@
 }
 
 #map-container {
-  height: calc(100vh - 5rem - 1rem);
+  height: calc(100dvh - 5rem - 1rem);
 }
 
 #sidebar {
-  height: calc(100vh - 5rem - 1rem);
+  height: calc(100dvh - 5rem - 1rem);
 }
 
 #explorer {
-  height: calc(100vh - 5rem - 1rem - 5rem + 1rem);
+  height: calc(100dvh - 5rem - 1rem - 5rem + 1rem);
 }
 
 @media (max-width: 767px) {
   #map-container {
-    height: 100% !important;
+    height: calc(40dvh + 5rem + 1rem) !important;
   }
 
   #sidebar {
-    height: calc(60vh - 5rem - 1rem) !important;
+    height: calc(60dvh - 5rem - 1rem) !important;
   }
   
   #explorer {
-    height: calc(60vh - 5rem - 1rem - 5rem - 1rem) !important;
+    height: calc(60dvh - 5rem - 1rem - 5rem) !important;
   }
 }
 /* #sidebar {

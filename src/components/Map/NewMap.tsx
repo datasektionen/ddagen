@@ -109,10 +109,11 @@ const positions: { [k: number]: [number, number] } = {
   94: [0, 0.43],
   95: [-0.08, 0.12],
   96: [-0.08, 0],
-  97: [0.09, -0.05],
-  98: [-0.08, -0.15],
-  99: [-0.08, -0.3],
-  100: [0.09, -0.37],
+  97: [-0.08, -0.15],
+  98: [-0.085, -0.3],
+  99: [-0.02, -0.65],
+  100: [-0.1, -0.72],
+  101: [-0.18, -0.79]
 };
 
 export default function Map({
@@ -175,7 +176,7 @@ export default function Map({
             <LayersControl.BaseLayer checked={mapInView == 2} name="Floor 3">
               <LayerGroup>
                 <ImageOverlay url="/img/map/floor-3.svg" bounds={[[-1, -1], [1, 1]]}/>
-                {Object.keys(Object.fromEntries(Object.entries(exhibitors).slice(79, 100))).map((key) => {
+                {Object.keys(Object.fromEntries(Object.entries(exhibitors).slice(79, 98))).map((key) => {
                     const exhibitor = exhibitors[key];
                     if (!exhibitor || exhibitor.position === undefined) {
                       console.error(`Exhibitor or exhibitor position is undefined for key: ${key}`);
@@ -194,9 +195,28 @@ export default function Map({
                 })}
               </LayerGroup>
             </LayersControl.BaseLayer>
-            {/* <LayersControl.BaseLayer checked={mapInView == 3} name="KTH Entrance">
+            <LayersControl.BaseLayer checked={mapInView == 3} name="KTH Entrance">
+              <LayerGroup>
               <ImageOverlay url="/img/map/kth-entrance.svg" bounds={[[-1, -1], [1, 1]]}/>
-            </LayersControl.BaseLayer> */}
+              {Object.keys(Object.fromEntries(Object.entries(exhibitors).slice(98, 101))).map((key) => {
+                    const exhibitor = exhibitors[key];
+                    if (!exhibitor || exhibitor.position === undefined) {
+                      console.error(`Exhibitor or exhibitor position is undefined for key: ${key}`);
+                      return null;
+                    }
+                    return (
+                      <Marker
+                        key={key}
+                        position={positions[exhibitor.position] as LatLngExpression}
+                        icon={exhibitorMarker(exhibitor.position.toString(), selectedExhibitor === +key)}
+                        eventHandlers={
+                          {click: () => setSelectedExhibitor(+key)}
+                        }
+                      />
+                    );
+                })}
+              </LayerGroup>
+            </LayersControl.BaseLayer>
           </LayersControl>
         </MapContainer>
       </div>
