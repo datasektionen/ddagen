@@ -57,7 +57,7 @@ export default function Home() {
               ${t.locale == "sv" ? "sm:ml-9" : "sm:ml-14"}
               `}
             >
-              {t.home.stats.firstPart} | {t.home.stats.secondPart}
+              {t.home.stats.firstPart} | {t.home.stats.secondPart} | {t.home.stats.thirdPart}
             </h2>
           </div>
             
