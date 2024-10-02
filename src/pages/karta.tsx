@@ -115,13 +115,7 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
 }
 
 export async function getServerSideProps() {
-  // const exhibitors = await prisma.exhibitor.findMany({
-  //   include: {
-  //     jobOffers: true,
-  //   },
-  // });
   const exhibitors = await prisma.exhibitor.findMany({
-    take: 20,
     include: {
       jobOffers: true,
     },
