@@ -122,7 +122,7 @@ function isValidPosition(position: unknown): position is [number, number] {
 
 function filterExhibitorsByFloor(exhibitors: { [k: string]: MapProp }, floorRange: { start: number, end: number }) {
   return Object.entries(exhibitors).filter(([_, exhibitor]) => {
-    return exhibitor.position >= floorRange.start && exhibitor.position <= floorRange.end;
+    return exhibitor && exhibitor.position >= floorRange.start && exhibitor.position <= floorRange.end;
   });
 }
 
@@ -156,9 +156,6 @@ export default function Map({
         document.body.classList.remove('overflow-hidden');
       };
     }, []);
-
-    console.log('Exhibitors object:', exhibitors);
-    console.log('All exhibitor positions:', Object.values(exhibitors).map(e => e.position).sort((a, b) => a - b));
 
     return (
       <div className="h-full w-full md:m-2 box-border backdrop-blur-sm md:border-4 md:border-pink-600 md:rounded-2xl select-none">
