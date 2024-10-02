@@ -301,6 +301,9 @@ export default function Navbar() {
             <NavLink class="px-0 lg:px-4 p-4 w-[300px] lg:w-auto" href="/">
               {t.home}
             </NavLink>
+            <NavLink class="px-0 lg:px-12 xl:block hidden lg:pt-4 pb-4 w-[300px] lg:w-auto" href="/karta">
+              {t.map}
+            </NavLink>
             <Group
               links={[
                 { href: "/förföretag", text: t.forCompanies },
@@ -327,7 +330,7 @@ export default function Navbar() {
                 { href: "/karta", text: t.map },
                 { href: "/logos", text: t.logos },
                 { href: "/student", text: t.meetings },
-                {href: "/sok", text:t.sok}
+                {href: "/sok", text:t.sok},
               ]}
             />
             {/*<NavLink class="px-14 lg:px-0" href="/mässan">{t.about}</NavLink>*/}
