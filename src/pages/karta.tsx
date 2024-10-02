@@ -9,7 +9,6 @@ import ExhibitorExplorer from "@/components/Map/ExhibitorExplorer";
 
 const Map = dynamic(() => import('@/components/Map/NewMap'), { 
   ssr: false,
-  loading: () => <Loading />
 });
 
 const filterExhibitors = (exhibitors: MapProp[], query: QueryType) => {
