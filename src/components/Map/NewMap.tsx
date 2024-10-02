@@ -5,6 +5,10 @@ import { ImageOverlay, LayerGroup, LayersControl, MapContainer, Marker, ZoomCont
 import { DivIcon, LatLngExpression } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
+const FLOOR_2_RANGE = { start: 1, end: 79 };
+const FLOOR_3_RANGE = { start: 80, end: 98 };
+const KTH_ENTRANCE_RANGE = { start: 99, end: 101 };
+
 const positions: { [k: number]: [number, number] } = {
   1: [-0.46, -0.542],
   2: [-0.36, -0.52],
@@ -116,7 +120,11 @@ function isValidPosition(position: unknown): position is [number, number] {
          typeof position[1] === 'number';
 }
 
-console.log('Positions object:', positions);
+function filterExhibitorsByFloor(exhibitors: { [k: string]: MapProp }, floorRange: { start: number, end: number }) {
+  return Object.entries(exhibitors).filter(([_, exhibitor]) => {
+    return exhibitor.position >= floorRange.start && exhibitor.position <= floorRange.end;
+  });
+}
 
 const exhibitorMarker = (id: string, selected: boolean): DivIcon =>
   new DivIcon({
@@ -149,6 +157,9 @@ export default function Map({
       };
     }, []);
 
+    console.log('Exhibitors object:', exhibitors);
+    console.log('All exhibitor positions:', Object.values(exhibitors).map(e => e.position).sort((a, b) => a - b));
+
     return (
       <div className="h-full w-full md:m-2 box-border backdrop-blur-sm md:border-4 md:border-pink-600 md:rounded-2xl select-none">
         <MapContainer
@@ -169,8 +180,7 @@ export default function Map({
                 <LayersControl.BaseLayer checked={mapInView == 1} name="Floor 2">
                   <LayerGroup>
                     <ImageOverlay url="/img/map/floor-2.svg" bounds={[[-1, -1], [1, 1]]}/>
-                    {Object.keys(Object.fromEntries(Object.entries(exhibitors).slice(0, 79))).map((key) => {
-                      const exhibitor = exhibitors[key];
+                    {filterExhibitorsByFloor(exhibitors, FLOOR_2_RANGE).map(([key, exhibitor]) => {
                       const position = positions[exhibitor.position];
                       
                       if (!isValidPosition(position)) {
@@ -178,8 +188,6 @@ export default function Map({
                         return null;
                       }
 
-                      console.log(`Exhibitor ${key} position:`, positions[exhibitor.position]);
-                      
                       return (
                         <Marker
                           key={key}
@@ -196,16 +204,13 @@ export default function Map({
                 <LayersControl.BaseLayer checked={mapInView == 2} name="Floor 3">
                   <LayerGroup>
                     <ImageOverlay url="/img/map/floor-3.svg" bounds={[[-1, -1], [1, 1]]}/>
-                    {Object.keys(Object.fromEntries(Object.entries(exhibitors).slice(79, 98))).map((key) => {
-                      const exhibitor = exhibitors[key];
+                    {filterExhibitorsByFloor(exhibitors, FLOOR_3_RANGE).map(([key, exhibitor]) => {
                       const position = positions[exhibitor.position];
                       
                       if (!isValidPosition(position)) {
                         console.warn(`Invalid position for exhibitor ${key}`);
                         return null;
                       }
-
-                      console.log(`Exhibitor ${key} position:`, positions[exhibitor.position]);
                       
                       return (
                         <Marker
@@ -223,8 +228,7 @@ export default function Map({
                 <LayersControl.BaseLayer checked={mapInView == 3} name="KTH Entrance">
                   <LayerGroup>
                     <ImageOverlay url="/img/map/kth-entrance.svg" bounds={[[-1, -1], [1, 1]]}/>
-                    {Object.keys(Object.fromEntries(Object.entries(exhibitors).slice(98, 101))).map((key) => {
-                      const exhibitor = exhibitors[key];
+                    {filterExhibitorsByFloor(exhibitors, KTH_ENTRANCE_RANGE).map(([key, exhibitor]) => {
                       const position = positions[exhibitor.position];
                       
                       if (!isValidPosition(position)) {
@@ -232,8 +236,6 @@ export default function Map({
                         return null;
                       }
 
-                      console.log(`Exhibitor ${key} position:`, positions[exhibitor.position]);
-                      
                       return (
                         <Marker
                           key={key}
