@@ -18,6 +18,7 @@ export default {
     stats: {
       firstPart: "100+ utställare",
       secondPart: "3000+ deltagare",
+      thirdPart: "10 oktober 10:00 - 16:00",
     },
     countDown:{
       days: "dagar",

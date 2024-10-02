@@ -18,6 +18,7 @@ export default {
     stats: {
       firstPart: "100+ exhibitors",
       secondPart: "3000+ participants",
+      thirdPart: "October 10, 10:00 AM - 4:00 PM",
     },
     countDown:{
       days: "days",
