@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useLayoutEffect } from "react";
 import { prisma } from "@/server/db";
 import { useLocale } from "@/locales";
 import { MapProp } from "@/shared/Classes";
@@ -80,8 +80,13 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
     );
   }, [query]);
 
+  // Fix unwanted behavior in mobile WebKit, excuse my hacky solution
+  useEffect(() => {
+    window.scrollTo(0, 100);
+  }, []);
+
   return (
-    <div className="h-screen flex max-md:flex-col-reverse max-md:items-center md:flex-row md:items-start md:pt-20 overflow-hidden">
+    <div className="h-screen flex max-md:flex-col-reverse max-md:items-center md:flex-row md:items-start md:pt-20 overflow-hidden relative">
       <div 
         id="sidebar" 
         className="px-4 md:pr-4 flex flex-col items-center w-full md:w-3/5 box-border"

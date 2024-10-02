@@ -6,9 +6,11 @@ import { useRef, useEffect } from "react";
 import type { AppType } from "next/app";
 import { api } from "@/utils/api";
 import { AnimationProvidor, ModalContextProvider } from "@/utils/context";
-
+import { useRouter } from 'next/router';
 
 const App: AppType = ({ Component, pageProps }) => {
+  const router = useRouter();
+
   function addMetaJsonLd(){
     return {
       __html: `{
@@ -19,7 +21,6 @@ const App: AppType = ({ Component, pageProps }) => {
       }`
     }
   }
-
 
   return (
     <>
@@ -54,7 +55,7 @@ const App: AppType = ({ Component, pageProps }) => {
             <Component  {...pageProps} />
           </ModalContextProvider>
         </div>
-      <Footer />
+      {router.pathname !== '/karta' && <Footer />}
     </>
   );
 }

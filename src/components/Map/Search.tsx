@@ -107,7 +107,7 @@ export default function Search({
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [filterRef, searchBarRef]);
-
+  
   return (
     <div 
       id={"search"}
@@ -135,33 +135,33 @@ export default function Search({
         {showFilter && (
           <div
             ref={filterRef}
-            className="absolute top-full z-10 mt-5 w-11/12 block border-4 border-pink-600 bg-[#867c8b] bg-opacity-60 backdrop-blur-sm rounded-lg text-white justify-center text-xl"
+            className="absolute top-full z-10 w-11/12 block border-4 border-pink-600 bg-[#867c8b] bg-opacity-60 backdrop-blur-sm rounded-lg text-white justify-center text-xl"
+            style={{marginTop: '10px'}}
           >
-            <div className="w-full h-full flex flex-col justify-center items-center p-2 max-xs:p-6 font-light text-base">
-              <div className="flex flex-row mt-1 space-x-4 items-center">
-                <span className="mr-2">{t.map.search.filterYear}:</span>
+            <div className="w-fullx h-full flex flex-col justify-center items-center p-3 font-light text-base">
+              <div className="flex flex-row space-x-4 items-center">
+                <span>{t.map.search.filterYear}:</span>
                 {years.map((year, pos) => (
-                  <div className="flex flex-col items-center" key={`${pos}`}>
+                  <div className="flex flex-row space-x-1 items-center" key={`${pos}`}>
                     <span className="text-lg text-gray-500">{year + 1}</span>
                     <input
                       type="checkbox"
                       name={`${pos}`}
                       checked={checkmarks[pos]}
                       onClick={() => toggleCheckmarkAndApply(pos)}
-                      className="form-checkbox w-6 h-6 hover:cursor-pointer hover:border-yellow
+                      className={`form-checkbox w-6 h-6 hover:cursor-pointer hover:border-yellow
                                     bg-black/25 checked:bg-cerise checked:border-white rounded-lg focus:ring-0
-                                    border-2 border-cerise"
+                                    border-2 border-cerise`}
                     />
                   </div>
                 ))}
               </div>
-              <div className="grid grid-rows-3 grid-cols-2 gap-2 mt-4 mb-2">
+              <div className="grid grid-rows-3 grid-cols-2 gap-y-2 mt-3">
                 {offers.map((offer, pos) => (
                   <div
                     key={`${pos + 5}`}
-                    className="flex flex-row space-x-2 justify-between items-center"
+                    className="flex flex-row space-x-1 justify-between items-center"
                   >
-                    <div className="text-sm flex-grow">{offer}</div>
                     <div style={{ marginTop: '-2px' }}>
                       <CheckMark
                         name={`${pos + 5}`}
@@ -169,6 +169,7 @@ export default function Search({
                         onClick={() => toggleCheckmarkAndApply(pos + 5)}
                       />
                     </div>
+                    <div className="text-sm flex-grow">{offer}</div>
                   </div>
                 ))}
               </div>
