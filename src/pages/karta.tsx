@@ -1,89 +1,121 @@
-import { useEffect, useState, useLayoutEffect } from "react";
+import { useEffect, useState, useCallback, Suspense } from "react";
 import { prisma } from "@/server/db";
 import { useLocale } from "@/locales";
 import { MapProp } from "@/shared/Classes";
 import dynamic from 'next/dynamic';
-const Map = dynamic(() => import('@/components/Map/NewMap'), { ssr: false });
+import Loading from "@/components/Map/Loading";
 import Search from "@/components/Map/Search";
 import ExhibitorExplorer from "@/components/Map/ExhibitorExplorer";
 
+const Map = dynamic(() => import('@/components/Map/NewMap'), { 
+  ssr: false,
+  loading: () => <Loading />
+});
+
+const filterExhibitors = (exhibitors: MapProp[], query: QueryType) => {
+  return Object.fromEntries(
+    exhibitors
+      .filter(exhibitor => {
+        if (!RegExp(query.searchQuery, 'i').test(exhibitor.name)) return false;
+        
+        if (query.years.length > 0) {
+          const hasMatchingYear = query.years.some(year => 
+            exhibitor.offers.summerJob.includes(year) ||
+            exhibitor.offers.internship.includes(year) ||
+            exhibitor.offers.partTimeJob.includes(year)
+          );
+          if (!hasMatchingYear) return false;
+        }
+        
+        const offerChecks = {
+          summer: () => query.offers.summer && exhibitor.offers.summerJob.length === 0,
+          internship: () => query.offers.internship && exhibitor.offers.internship.length === 0,
+          partTime: () => query.offers.partTime && exhibitor.offers.partTimeJob.length === 0,
+          thesis: () => query.offers.thesis && !exhibitor.offers.masterThesis,
+          fullTime: () => query.offers.fullTime && !exhibitor.offers.fullTimeJob,
+          trainee: () => query.offers.trainee && !exhibitor.offers.traineeProgram
+        };
+
+        return !Object.values(offerChecks).some(check => check());
+      })
+      .map(exhibitor => [exhibitor.position, exhibitor])
+  );
+};
+
+type QueryType = {
+  searchQuery: string;
+  years: (0 | 1 | 2 | 3 | 4)[];
+  offers: {
+    summer: boolean;
+    internship: boolean;
+    partTime: boolean;
+    thesis: boolean;
+    fullTime: boolean;
+    trainee: boolean;
+  };
+};
+
+const initialQuery: QueryType = {
+  searchQuery: "",
+  years: [],
+  offers: {
+    summer: false,
+    internship: false,
+    partTime: false,
+    thesis: false,
+    fullTime: false,
+    trainee: false,
+  },
+};
+
 export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
   const t = useLocale();
-
-  const [exhibitors, setExhibitors] = useState(
-    Object.fromEntries(
-      exhibitorData.map((exhibitor) => [exhibitor.position, exhibitor])
-    )
-  );
-  const [query, setQuery] = useState<{
-    searchQuery: string;
-    years: (0 | 1 | 2 | 3 | 4)[];
-    offers: {
-      summer: boolean;
-      internship: boolean;
-      partTime: boolean;
-      thesis: boolean;
-      fullTime: boolean;
-      trainee: boolean;
-    };
-  }>({
-    searchQuery: "",
-    years: [],
-    offers: {
-      summer: false,
-      internship: false,
-      partTime: false,
-      thesis: false,
-      fullTime: false,
-      trainee: false,
-    },
-  });
+  const [isClient, setIsClient] = useState(false);
+  const [exhibitors, setExhibitors] = useState<{[key: number]: MapProp}>({});
+  const [query, setQuery] = useState<QueryType>(initialQuery);
   const [mapInView, setMapInView] = useState<1 | 2 | 3>(1);
   const [selectedExhibitor, setSelectedExhibitor] = useState<number>(0);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
 
   useEffect(() => {
-    setExhibitors(
-      Object.fromEntries(
-        exhibitorData.map((exhibitor) => {
-          if (!RegExp(query.searchQuery).test(exhibitor.name.toLowerCase()))
-            return [];
-          if (query.years.length !== 0) {
-            if (
-              !query.years.some((year) =>
-                exhibitor.offers.summerJob.includes(year)
-              ) &&
-              !query.years.some((year) =>
-                exhibitor.offers.internship.includes(year)
-              ) &&
-              !query.years.some((year) =>
-                exhibitor.offers.partTimeJob.includes(year)
-              )
-            ) {
-              return [];
-            }
-          }
-          if (
-            (query.offers.summer && exhibitor.offers.summerJob.length === 0) ||
-            (query.offers.internship &&
-              exhibitor.offers.internship.length === 0) ||
-            (query.offers.partTime &&
-              exhibitor.offers.partTimeJob.length === 0) ||
-            (query.offers.thesis && !exhibitor.offers.masterThesis) ||
-            (query.offers.fullTime && !exhibitor.offers.fullTimeJob) ||
-            (query.offers.trainee && !exhibitor.offers.traineeProgram)
-          )
-            return [];
+    const filteredExhibitors = filterExhibitors(exhibitorData, query);
+    setExhibitors(filteredExhibitors);
+  }, [query, exhibitorData]);
 
-          return [exhibitor.position, exhibitor];
-        })
-      )
-    );
-  }, [query]);
-
-  // Fix unwanted behavior in mobile WebKit, excuse my hacky solution
   useEffect(() => {
+    const preloadImages = async () => {
+      const imagePromises = exhibitorData
+        .filter(exhibitor => exhibitor.logoColor || exhibitor.logoWhite)
+        .map(exhibitor => {
+          return Promise.all([
+            exhibitor.logoColor && new Promise(resolve => {
+              const img = new Image();
+              img.onload = resolve;
+              img.src = `data:image/png;base64,${exhibitor.logoColor}`;
+            }),
+            exhibitor.logoWhite && new Promise(resolve => {
+              const img = new Image();
+              img.onload = resolve;
+              img.src = `data:image/png;base64,${exhibitor.logoWhite}`;
+            })
+          ]);
+        });
+
+      await Promise.all(imagePromises);
+      setImagesLoaded(true);
+    };
+
+    preloadImages();
+  }, [exhibitorData]);
+
+  useEffect(() => {
+    setIsClient(true);
     window.scrollTo(0, 100);
   }, []);
+
+  if (!isClient || !imagesLoaded) {
+    return <Loading />;
+  }
 
   return (
     <div className="h-screen flex max-md:flex-col-reverse max-md:items-center md:flex-row md:items-start md:pt-20 overflow-hidden relative">
@@ -102,13 +134,15 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
         />
       </div>
       <div id="map-container" className="w-full md:pr-4">
-        <Map
-          t={t}
-          exhibitors={exhibitors}
-          mapInView={mapInView}
-          selectedExhibitor={selectedExhibitor}
-          setSelectedExhibitor={setSelectedExhibitor}
-        />
+        <Suspense fallback={<Loading />}>
+          <Map
+            t={t}
+            exhibitors={exhibitors}
+            mapInView={mapInView}
+            selectedExhibitor={selectedExhibitor}
+            setSelectedExhibitor={setSelectedExhibitor}
+          />
+        </Suspense>
       </div>
     </div>
   );

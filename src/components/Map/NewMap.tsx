@@ -1,16 +1,9 @@
 import type Locale from "@/locales";
 import { MapProp } from "@/shared/Classes";
-import { Dispatch, useEffect } from "react";
-import { ImageOverlay, LayerGroup, LayersControl, MapContainer, Marker, ZoomControl } from 'react-leaflet';
+import { Dispatch, useEffect, useState } from "react";
+import { ImageOverlay, LayerGroup, LayersControl, MapContainer, Marker, ZoomControl, useMap } from 'react-leaflet';
 import { DivIcon, LatLngExpression } from "leaflet";
 import "leaflet/dist/leaflet.css";
-
-const exhibitorMarker = (id: string, selected: boolean): DivIcon =>
-  new DivIcon({
-    html: id,
-    className: `rounded-full bg-pink-600 ring ${selected ? "border-4 border-pink-500 ring-3 ring-yellow" : "ring-2 ring-pink-500"} text-white text-center content-center`,
-    iconSize: selected ? [38, 38] : [30, 30]
-  });
 
 const positions: { [k: number]: [number, number] } = {
   1: [-0.46, -0.542],
@@ -116,7 +109,56 @@ const positions: { [k: number]: [number, number] } = {
   101: [-0.18, -0.79]
 };
 
-export default function Map({
+function MarkerLayer({ exhibitors, selectedExhibitor, setSelectedExhibitor, positions, slice }: {
+  exhibitors: { [k: string]: MapProp };
+  selectedExhibitor: number;
+  setSelectedExhibitor: Dispatch<number>;
+  positions: { [k: number]: [number, number] };
+  slice: [number, number];
+}) {
+  const map = useMap();
+  const [isMapReady, setIsMapReady] = useState(false);
+
+  useEffect(() => {
+    if (map) {
+      setIsMapReady(true);
+    }
+  }, [map]);
+
+  if (!isMapReady) return null;
+
+  return (
+    <>
+      {Object.keys(Object.fromEntries(Object.entries(exhibitors).slice(...slice))).map((key) => {
+        const exhibitor = exhibitors[key];
+        if (!exhibitor || exhibitor.position === undefined || !positions[exhibitor.position]) {
+          console.error(`Invalid exhibitor data for key: ${key}`);
+          return null;
+        }
+        
+        return (
+          <Marker
+            key={key}
+            position={positions[exhibitor.position] as LatLngExpression}
+            icon={exhibitorMarker(exhibitor.position.toString(), selectedExhibitor === +key)}
+            eventHandlers={{
+              click: () => setSelectedExhibitor(+key)
+            }}
+          />
+        );
+      })}
+    </>
+  );
+}
+
+const exhibitorMarker = (id: string, selected: boolean): DivIcon =>
+  new DivIcon({
+    html: id,
+    className: `rounded-full bg-pink-600 ring ${selected ? "border-4 border-pink-500 ring-3 ring-yellow" : "ring-2 ring-pink-500"} text-white text-center content-center`,
+    iconSize: selected ? [38, 38] : [30, 30]
+  });
+
+  export default function Map({
     t,
     exhibitors,
     mapInView,
@@ -137,6 +179,7 @@ export default function Map({
         document.body.classList.remove('overflow-hidden');
       };
     }, []);
+  
     return (
       <div className="h-full w-full md:m-2 box-border backdrop-blur-sm md:border-4 md:border-pink-600 md:rounded-2xl select-none">
         <MapContainer
@@ -154,71 +197,41 @@ export default function Map({
             <LayersControl.BaseLayer checked={mapInView == 1} name="Floor 2">
               <LayerGroup>
                 <ImageOverlay url="/img/map/floor-2.svg" bounds={[[-1, -1], [1, 1]]}/>
-                {Object.keys(Object.fromEntries(Object.entries(exhibitors).slice(0, 79))).map((key) => {
-                    const exhibitor = exhibitors[key];
-                    if (!exhibitor || exhibitor.position === undefined) {
-                      console.error(`Exhibitor or exhibitor position is undefined for key: ${key}`);
-                      return null;
-                    }
-                    return (
-                      <Marker
-                        key={key}
-                        position={positions[exhibitor.position] as LatLngExpression}
-                        icon={exhibitorMarker(exhibitor.position.toString(), selectedExhibitor === +key)}
-                        eventHandlers={
-                          {click: () => setSelectedExhibitor(+key)}
-                        }
-                      />
-                    );
-                })}
+                <MarkerLayer
+                  exhibitors={exhibitors}
+                  selectedExhibitor={selectedExhibitor}
+                  setSelectedExhibitor={setSelectedExhibitor}
+                  positions={positions}
+                  slice={[0, 79]}
+                />
               </LayerGroup>
             </LayersControl.BaseLayer>
             <LayersControl.BaseLayer checked={mapInView == 2} name="Floor 3">
               <LayerGroup>
                 <ImageOverlay url="/img/map/floor-3.svg" bounds={[[-1, -1], [1, 1]]}/>
-                {Object.keys(Object.fromEntries(Object.entries(exhibitors).slice(79, 98))).map((key) => {
-                    const exhibitor = exhibitors[key];
-                    if (!exhibitor || exhibitor.position === undefined) {
-                      console.error(`Exhibitor or exhibitor position is undefined for key: ${key}`);
-                      return null;
-                    }
-                    return (
-                      <Marker
-                        key={key}
-                        position={positions[exhibitor.position] as LatLngExpression}
-                        icon={exhibitorMarker(exhibitor.position.toString(), selectedExhibitor === +key)}
-                        eventHandlers={
-                          {click: () => setSelectedExhibitor(+key)}
-                        }
-                      />
-                    );
-                })}
+                <MarkerLayer
+                  exhibitors={exhibitors}
+                  selectedExhibitor={selectedExhibitor}
+                  setSelectedExhibitor={setSelectedExhibitor}
+                  positions={positions}
+                  slice={[79, 98]}
+                />
               </LayerGroup>
             </LayersControl.BaseLayer>
             <LayersControl.BaseLayer checked={mapInView == 3} name="KTH Entrance">
               <LayerGroup>
-              <ImageOverlay url="/img/map/kth-entrance.svg" bounds={[[-1, -1], [1, 1]]}/>
-              {Object.keys(Object.fromEntries(Object.entries(exhibitors).slice(98, 101))).map((key) => {
-                    const exhibitor = exhibitors[key];
-                    if (!exhibitor || exhibitor.position === undefined) {
-                      console.error(`Exhibitor or exhibitor position is undefined for key: ${key}`);
-                      return null;
-                    }
-                    return (
-                      <Marker
-                        key={key}
-                        position={positions[exhibitor.position] as LatLngExpression}
-                        icon={exhibitorMarker(exhibitor.position.toString(), selectedExhibitor === +key)}
-                        eventHandlers={
-                          {click: () => setSelectedExhibitor(+key)}
-                        }
-                      />
-                    );
-                })}
+                <ImageOverlay url="/img/map/kth-entrance.svg" bounds={[[-1, -1], [1, 1]]}/>
+                <MarkerLayer
+                  exhibitors={exhibitors}
+                  selectedExhibitor={selectedExhibitor}
+                  setSelectedExhibitor={setSelectedExhibitor}
+                  positions={positions}
+                  slice={[98, 101]}
+                />
               </LayerGroup>
             </LayersControl.BaseLayer>
           </LayersControl>
         </MapContainer>
       </div>
     );
-}
+  }
