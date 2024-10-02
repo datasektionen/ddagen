@@ -116,7 +116,6 @@ function isValidPosition(position: unknown): position is [number, number] {
          typeof position[1] === 'number';
 }
 
-// At the top of your NewMap.tsx file, add:
 console.log('Positions object:', positions);
 
 const exhibitorMarker = (id: string, selected: boolean): DivIcon =>
