@@ -119,7 +119,7 @@ export async function getServerSideProps() {
     include: {
       jobOffers: true,
     },
-  });
+  }).catch((err: any) => { return [] });
 
   const exhibitorData = exhibitors.map((exhibitor) => ({
     name: exhibitor.name,
