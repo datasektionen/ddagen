@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState, useContext } from "react";
+import React from "react";
 import { useLocale } from "@/locales";
 import { api } from "@/utils/api";
 import { useAnimation } from "@/utils/context";
@@ -25,7 +26,7 @@ function NavLink({
   onFocus?: React.FocusEventHandler<HTMLAnchorElement>;
 }) {
   const router = useRouter();
-
+ 
   return (
     <Link
       className={
@@ -48,6 +49,48 @@ function NavLink({
 function Logo({ class: className }: { class?: string }) {
   const { isAnimationDone } = useAnimation();
   const hasLoadedBefore = isAnimationDone;
+  const router = useRouter();
+  const usePath = router.pathname;
+  const isUsingMap = usePath == "/karta"; //Then we disable the klick effect of the logo
+
+  if(isUsingMap) {
+    return <div
+    className={
+      "relative w-[102px] h-[35px] flex-shrink-0 overflow-y" + (className ?? "")
+    }
+  >
+    {/**/}
+    <img src="/img/fluga_cerise.svg" className={`absolute w-3/4
+      ${hasLoadedBefore ? '' : 'animate-in-opacity '}
+      `}> 
+    </img>
+    <div className={` 
+      mx-[-13px] my-[-43px] absolute
+      ${hasLoadedBefore ? '' : 'animate-in-fluga '}
+      `}> 
+    </div>
+    <div className="absolute w-full top-[16%] left-[1%] ">
+    <img
+      src="/img/logo-white-ageless_v2.svg"
+      alt="D-Dagen logga"
+      className={`
+        ${hasLoadedBefore ? '' : ' animate-in-logo-text-roll-in '}
+      `}
+    />
+    </div>
+    
+    <p
+      className={`
+        absolute bottom-0 right-0
+        text-[65%] leading-none
+        ${hasLoadedBefore ? '' : ' animate-in-logo-date-drop-down '}
+       
+      `}
+    >
+      2024
+    </p>
+  </div>
+  }
 
   return (
     <Link
@@ -251,11 +294,11 @@ export default function Navbar() {
           className="
           h-20 px-7 flex justify-between items-center
           bg-gradient-to-t from-transparent to-[#000b]
-          w-full
+          w-full 
           lg:absolute lg:justify-center
         "
         >
-          <Logo class="z-10" />
+          <Logo class="z-100" />
           <button
             className="w-9 h-8 z-10 relative lg:hidden"
             data-dont-close
@@ -301,6 +344,9 @@ export default function Navbar() {
             <NavLink class="px-0 lg:px-4 p-4 w-[300px] lg:w-auto" href="/">
               {t.home}
             </NavLink>
+            <NavLink class="px-0 lg:px-4 xl:block hidden lg:pt-4 pb-4 w-[300px] lg:w-auto" href="/karta">
+              {t.map}
+            </NavLink>
             <Group
               links={[
                 { href: "/förföretag", text: t.forCompanies },
@@ -327,7 +373,7 @@ export default function Navbar() {
                 { href: "/karta", text: t.map },
                 { href: "/logos", text: t.logos },
                 { href: "/student", text: t.meetings },
-                {href: "/sok", text:t.sok}
+                {href: "/sok", text:t.sok},
               ]}
             />
             {/*<NavLink class="px-14 lg:px-0" href="/mässan">{t.about}</NavLink>*/}
