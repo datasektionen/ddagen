@@ -33,7 +33,7 @@ export default function Home() {
                 ${ hasLoadedBefore ? 'duration-0': 'delay-[2000ms] duration-[1500ms]'}   
                 ${ showPage ? "opacity-100" : "opacity-0" }
               `}
-              src={t.locale == "sv" ? "/img/logga-25-sv.svg" : "/img/logga-25-en.svg"}
+              src={t.locale == "sv" ? "/img/d-dagen-logo-25-sv.svg" : "/img/d-dagen-logo-25-en.svg"}
               alt="D-dagen Logo"
               ></img>
          </div>
