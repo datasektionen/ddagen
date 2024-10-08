@@ -18,7 +18,7 @@ export default {
     stats: {
       firstPart: "100+ utställare",
       secondPart: "3000+ deltagare",
-      thirdPart: "10 oktober 10:00 - 16:00",
+      thirdPart: "9 oktober 10:00 - 16:00",
     },
     countDown:{
       days: "dagar",
@@ -384,7 +384,7 @@ export default {
     confirm: "Skicka",
     ignoreError: "Gå vidare ändå",
     noMoreRegistrations:
-      "Anmälningar för D-Dagen 2024 har ännu inte öppnat. Håll utkik på våra sociala medier för när den öppnar!",
+      "Anmälningar för D-Dagen 2025 har ännu inte öppnat. Håll utkik på våra sociala medier för när den öppnar!",
   },
   postCompanyForm: {
     title: "Intresseanmälan bekräftad",
@@ -422,6 +422,7 @@ export default {
     salesGroup: "Säljgruppen",
     sponsorText: "Huvudsponsor för D-Dagen 2024",
     sponsorLink: "https://omegapoint.se/",
+    notDecided: "Huvudsponsor för D-Dagen kommer synas här"
   },
   email: {
     subject: "Bekräftelse på Företagsanmälan",
@@ -865,20 +866,21 @@ export default {
     moreInfo:"Intresserad?",
     prGroup:{
       header: "PR-Gruppen",
-      text: "The PR Group is a versatile and creative unit within D-Dagen. Its members are responsible for creating and maintaining D-Dagen's public image and brand. They have a variety of responsibilities that range from leadership and organization to graphic design and print management.",
+      text: "PR-gruppen är en mångsidig och kreativ grupp inom D-Dagen. Gruppen ansvarar för att skapa och upprätthålla den visuella delen av D-Dagens varumärke. De har en rad olika ansvarsområden som sträcker sig från sociala medier och marknadsföring till den grafisk designen och tryckhantering.",
       roles : [
         "PR-ansvarig\n- Bra kommunikatör\n- Välplanerad\n- Ledare\nSom PR-ansvarig är du ledare för PR-gruppen. Det är du som driver och organiserar gruppen och ser till att alla vet vad de ska göra och har det de behöver. Eftersom du jobbar så tätt ihop inom PR-gruppen kommer ni bli väldigt tajta tillsammans. Som PR-ansvarig kommer du också kommunicera extra mycket med DDA:s.",
-        "Art Director\n- Artistisk\n- Tillmötgsgående\n Som Art Director är det du som ser till att D-Dagen ser proffsig ut. Du kommer ha möjligheten att uttrycka din kreativitet och designa all grafik som behövs för D-Dagen. Här ingår bland annat broschyrer, affischer, profilkläder och annat. Ibland kommer du även få ta lite bilder. Inga förkunskaper behövs; man får istället möjligheten att lära sig med tiden och det viktigaste är att du är driven och motiverad. Självklart kommer du få tillgång till alla program du behöver!",
-        "Tryckansvarig\n- Proaktiv\n- Artistisk\n Tryckansvarig ingår i PR-gruppen och är den som ser till att allt tryckt material blir beställt och levererat i tid. Här ingår saker som klistermärken, tygmärken, profilkläder, banderoll, broschyr och en del annat. Du kommer ha ett nära samarbete med Art Director och hjälpa till med designarbetet.",
-        "Social media-ansvarig\n- Bra kommunikatör\n- Initiativtagande\n- Social(särskilt på medier)\n- Kreativ\n Social media-ansvarig är den som ser till att D-Dagen syns ute på Instagram, Facebook och alla andra sociala medier. Här får du mycket frihet i vilka sociala medier du vill använda och hur du väljer att uttrycka dig (inom rimliga ramar förstås). I rollen som social media-ansvarig jobbar du nära Art Director för att få till snygga inlägg. Detta är en perfekt roll för dig som gillar att ta bilder och lägga ut stories!"
+        "Art Director (UI/UX Design)\n- Artistisk\n- Tillmötgsgående\n Som Art Director är det du som ser till att D-Dagen ser proffsig ut. Du kommer ha möjligheten att uttrycka din kreativitet och designa all grafik som behövs för D-Dagen. Denna Art director roll har ansvaret över UX-designer för hemsidan men även hjälper till med tryck-designen. Här ingår bland annat UX interface för hemsidan, broschyrer, affischer, profilkläder och annat. Ibland kommer du även få ta lite bilder. Inga förkunskaper behövs; man får istället möjligheten att lära sig med tiden och det viktigaste är att du är driven och motiverad. Självklart kommer du få tillgång till alla program du behöver!",
+        "Art Director (Tryckansvarig) \n- Artistisk\n- Tillmötgsgående\n Som Art Director är det du som ser till att D-Dagen ser proffsig ut. Du kommer ha möjligheten att uttrycka din kreativitet och designa all grafik som behövs för D-Dagen. Denna Art director roll har främst ansvaret över tryck-designen men får även hjälp av den andra Art Director:n. Här ingår bland annat broschyrer, affischer, profilkläder och annat. Ibland kommer du även få ta lite bilder. Inga förkunskaper behövs; man får istället möjligheten att lära sig med tiden och det viktigaste är att du är driven och motiverad. Självklart kommer du få tillgång till alla program du behöver!",
+        "Social media-ansvarig\n- Bra kommunikatör\n- Initiativtagande\n- Social(särskilt på medier)\n- Kreativ\n Social media-ansvarig är den som ser till att D-Dagen syns ute på Instagram, Facebook och alla andra sociala medier. Här får du mycket frihet i vilka sociala medier du vill använda och hur du väljer att uttrycka dig (inom rimliga ramar förstås). Du ska även vara aktiv på sociala medier genom att likea/kommentera andra mässor’s inlägg och kanske göra edits över våra teambuildings (wooow!).  I rollen som social media-ansvarig jobbar du nära Art Director för att få till snygga inlägg. Detta är en perfekt roll för dig som gillar att ta bilder och lägga ut stories! Du har även ansvaret för den efterlängtade nØllegasque videon (jätteviktigt)!!!"
       ]
     },
     devGroup:{
       header: "Dev-Gruppen",
-      text: "Dev-gruppen är en tekniskt kompetent och innovativ enhet inom D-Dagen. Dess medlemmar är ansvariga för utveckling, underhåll och förbättring av D-Dagens hemsida. De hanterar allt från backend-programmering och databashantering till frontend-design och användarupplevelse, med fokus på att skapa en smidig och engagerande digital plattform för alla besökare.",
+      text: "Dev-gruppen är en tekniskt kompetent och innovativ grupp inom D-Dagen. Gruppen är ansvariga för utveckling, underhåll och förbättring av D-Dagens hemsida och bakomliggande digitala infrastruktur. De hanterar allt från backend-programmering och databashantering till frontend-design och användarupplevelse, med fokus på att skapa en smidig och engagerande digital plattform för alla besökare.",
       roles : [
-        "Webbansvarig\n- Självständig\n- Initiativtagande\n Som webbansvarig är det du som ser till att hemsidan ser ut och fungerar som den ska. Du har även stora möjligheter till att förbättra hemsidan. Kunskaper och tidigare erfarenheter inom webbutveckling är ett stort plus. Här jobbar du tätt intill Art Director.",
-        "Systemansvarig\n- Självständig\n- Initiativtagande\n- 'Yes, can do'-attityd\n Systemansvarig kommer att jobba mycket tillsammans med webbansvarig med ambitiösa projekt som vi hoppas introducera till D-Dagen. Vi vill ha någon med ett stort driv att skapa möjligheter, och förkunskaper i app-tillverkning är ett stort plus."
+        "Webbansvarig\n- Bra kommunikatör\n- Ledare\n Som Webbansvarig är du ledare för Dev-gruppen. Det är du som driver och organiserar gruppen och ser till att alla vet vad de ska göra med hemsidan. Eftersom du jobbar så tätt ihop inom Dev-gruppen kommer ni bli väldigt tajta tillsammans. Som Webbansvarig kommer du också kommunicera extra mycket med DDA:s och Art directors.",
+        "Webbutvecklare\n- Samarbetsvillig\n- Initiativtagande\n Som Webbutvecklare är det du som ser till att hemsidan ser ut och fungerar som den ska. Du har även stora möjligheter till att förbättra hemsidan. Kunskaper och tidigare erfarenheter inom webbutveckling är ett stort plus. Här jobbar du tätt intill Art Director.",
+        "Systemansvarig\n- Självständig\n- Initiativtagande\n- 'Yes, can do'-attityd\n Systemutvecklare kommer att jobba mycket tillsammans med webbansvarig med ambitiösa projekt som vi hoppas introducera till D-Dagen. Vi vill ha någon med ett stort driv och teknisk kunnighet, samt är det ett stort plus om erfarenheter med databaser finns och om Linux redan används som operativsystem."
       ]
     },
     saleGroup:{
@@ -896,9 +898,9 @@ export default {
       roles: [
         "Mässansvarig\n- Bra kommunikatör\n- Välplanerad\n- Ledare\n Som Mässansvarig är du ledare för Mäss-gruppen. Det är du som driver och organiserar gruppen och ser till att alla har det de behöver. Eftersom du jobbar så tätt ihop inom Mäss-gruppen kommer ni bli väldigt tajta tillsammans. Som Mässansvarig kommer du också kommunicera extra mycket med DDA:s.",
         "Logistikansvarig\n- Bra kommunikatör\n- Välplanerad\n- Självständig\n Logistik är ryggraden i alla stora organisationer, det är du som ser till att allting flyter på som ett välsmort maskineri. Du kommer ta emot och skicka iväg leveranser från företagen och se till så att allt vi behöver under dagen finns där det behövs när det behövs.",
-        "Personalansvarig\n- Bra kommunikatör\n- Ledare\n- Nogrann schemaläggare\n När D-Dagen väl drar igång i Nymble behöver vi mycket mer personal än bara projektgruppen. Det är här ditt huvudansvar ligger. Du kommer rekrytera personal, hålla deras teambuildings och planera ut deras scheman över själva dagen. Du ansvarar även för att planera projektgruppens teambuildings tillsammans med loungeansvarig. Det kommer också vara du som ser till att D-Dagen når upp till standard inom JML-aspekter.",
-        "Loungeansvarig\n- Serviceinriktad\n- Gillar mat\n  Loungen är dit företagens representanter och personalen kan komma över dagen för att ta en paus och koppla av. Ditt jobb är att se till så de kan förvänta sig god mat och så bra service som bara möjligt! Det är även du som planerar projektgruppens teambuildings tillsammans med personalansvarig, och det är du som ansvarar för att beställa in mat till både teambuildings och stormöten.",
-        "Festansvarig\n- Rolig\n- Kreativ\n- Initiativtagande\n Festansvarig är den som fixar alla stora fester som företagsbanquetten och tacksittningen. Detta är en perfekt roll för dig som är kreativ och gillar att ha det kul tillsammans med andra.",
+        "Personalansvarig\n- Bra kommunikatör\n- Ledare\n- Nogrann schemaläggare\n När D-Dagen väl drar igång i Nymble behöver vi mycket mer personal än bara projektgruppen. Det är här ditt huvudansvar ligger. Du kommer rekrytera personal, hålla deras teambuildings och planera ut deras scheman över själva dagen. Du ansvarar även för att planera projektgruppens teambuildings tillsammans med loungeansvarig. Du ansvarar även för att planera rekryteringspuben för dagspersonal med loungeansvarig och festansvarig. Det kommer också vara du som ser till att D-Dagen når upp till standard inom JML-aspekter.",
+        "Loungeansvarig\n- Social\n- Serviceinriktad\n- Gillar mat och fika\n  Loungen är dit företagens representanter och personalen kan komma över dagen för att ta en paus och koppla av. Ditt jobb är att se till så de kan förvänta sig god mat och så bra service som bara möjligt! Det är även du som planerar projektgruppens teambuildings tillsammans med personalansvarig, och det är du som ansvarar för att beställa in mat till både teambuildings och stormöten. Du ansvarar även för att planera rekryteringspuben för dagspersonal med personalansvarig och festansvarig.",
+        "Festansvarig\n- Rolig\n- Kreativ\n- Initiativtagande\n Festansvarig är den som fixar alla stora fester såsom Tacksittningen och även den största av dem alla: Företagsbanquetten som är den stora sittningen samma kväll som mässan! Detta är en perfekt roll för dig som är kreativ och gillar att ha det kul tillsammans med andra. Du ansvarar även för att planera rekryteringspuben för dagspersonal med personalansvarig och loungeansvarig.",
         "Lokalansvarig\n- Ansvarstagande\n- Proaktiv\n Utan någonstans att vara blir det mycket svårare att ha lyckade events. Du kommer bli experten på lokalerna i Nymble och se till att vi följer deras instruktioner och krav. Du kommer även få hjälpa till att boka lokaler för D-Dagens övriga evenemang.",
       ]
     },

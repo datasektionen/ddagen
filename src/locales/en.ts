@@ -18,7 +18,7 @@ export default {
     stats: {
       firstPart: "100+ exhibitors",
       secondPart: "3000+ participants",
-      thirdPart: "October 10, 10:00 AM - 4:00 PM",
+      thirdPart: "October 9, 10:00 AM - 4:00 PM",
     },
     countDown:{
       days: "days",
@@ -389,7 +389,7 @@ export default {
     confirm: "Send",
     ignoreError: "Continue anyway",
     noMoreRegistrations:
-      "Registrations for D-Dagen 2024 have not yet opened. Keep an eye on our social media for when it opens!",
+      "Registrations for D-Dagen 2025 have not yet opened. Keep an eye on our social media for when it opens!",
   },
   postCompanyForm: {
     title: "Registration confirmed",
@@ -426,6 +426,7 @@ export default {
     salesGroup: "Sales Team",
     sponsorText: "Main sponsor for D-Dagen 2024",
     sponsorLink: "https://en.omegapoint.se",
+    notDecided: "Main sponsor for D-Dagen 2025 will be shown here",
   },
   email: {
     subject: "Exhibitor Registration Confirmation",

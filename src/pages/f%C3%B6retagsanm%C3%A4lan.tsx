@@ -51,7 +51,7 @@ function RegistrationConfirmation({ t }: { t: Locale }) {
 
 export default function ExhibitorRegistration() {
   const t = useLocale();
-  const acceptRegistrations = true;
+  const acceptRegistrations = false;
 
   const [registationDone, setRegistationDone] = useState(false);
 

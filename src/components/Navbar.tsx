@@ -127,7 +127,7 @@ function Logo({ class: className }: { class?: string }) {
          
         `}
       >
-        2024
+        2025
       </p>
     </Link>
   );
@@ -344,19 +344,19 @@ export default function Navbar() {
             <NavLink class="px-0 lg:px-4 p-4 w-[300px] lg:w-auto" href="/">
               {t.home}
             </NavLink>
-            <NavLink class="px-0 lg:px-4 xl:block hidden lg:pt-4 pb-4 w-[300px] lg:w-auto" href="/karta">
+            {/*<NavLink class="px-0 lg:px-4 xl:block hidden lg:pt-4 pb-4 w-[300px] lg:w-auto" href="/karta">
               {t.map}
-            </NavLink>
+            </NavLink>    <= this one was only used during the fair   */} 
             <Group
               links={[
                 { href: "/förföretag", text: t.forCompanies },
-                { href: "/katalog", text: t.catalog },
+                //{ href: "/katalog", text: t.catalog },
                 //{ href: "/event", text: "event" },
                 { href: "/faq", text: "faq" },
                 ...(isLoggedIn.data == true
                   ? [{ href: "/utställare", text: t.exhibitorSettings }]
                   : []),
-                ...(isLoggedIn.data == true
+                /*...(isLoggedIn.data == true
                   ? [
                       {
                         href: "/",
@@ -364,15 +364,15 @@ export default function Navbar() {
                         onClick: () => logout.mutate(),
                       },
                     ]
-                  : [{ href: "/logga-in", text: t.login }]),
+                  : [{ href: "/logga-in", text: t.login }]),*/
               ]}
             />
             <Group
               links={[
                 { href: "/förstudenter", text: t.forStudents },
-                { href: "/karta", text: t.map },
+                /*{ href: "/karta", text: t.map }, 
                 { href: "/logos", text: t.logos },
-                { href: "/student", text: t.meetings },
+                { href: "/student", text: t.meetings },*/
                 {href: "/sok", text:t.sok},
               ]}
             />
