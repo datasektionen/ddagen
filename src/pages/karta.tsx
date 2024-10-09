@@ -45,24 +45,30 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
     setExhibitors(
       Object.fromEntries(
         exhibitorData.map((exhibitor) => {
+          // Name search check
           if (!RegExp(query.searchQuery, 'i').test(exhibitor.name.toLowerCase()))
             return [];
   
+          // Year check - matches any selected year for year-specific offers
           const yearMatch = query.years.length === 0 || query.years.some(year => 
-            exhibitor.offers.summerJob.includes(year) ||
-            exhibitor.offers.internship.includes(year) ||
-            exhibitor.offers.partTimeJob.includes(year)
+            (query.offers.summer && exhibitor.offers.summerJob.includes(year)) ||
+            (query.offers.internship && exhibitor.offers.internship.includes(year)) ||
+            (query.offers.partTime && exhibitor.offers.partTimeJob.includes(year))
           );
   
-          const offerMatch = 
-            (!query.offers.summer && exhibitor.offers.summerJob.length > 0) ||
-            (!query.offers.internship && exhibitor.offers.internship.length > 0) ||
-            (!query.offers.partTime && exhibitor.offers.partTimeJob.length > 0) ||
-            (!query.offers.thesis && exhibitor.offers.masterThesis) ||
-            (!query.offers.fullTime && exhibitor.offers.fullTimeJob) ||
-            (!query.offers.trainee && exhibitor.offers.traineeProgram);
+          // Non-year-specific offers check
+          const otherOffersMatch = 
+            (query.offers.thesis ? exhibitor.offers.masterThesis : false) ||
+            (query.offers.fullTime ? exhibitor.offers.fullTimeJob : false) ||
+            (query.offers.trainee ? exhibitor.offers.traineeProgram : false);
   
-          if (yearMatch || offerMatch) {
+          // Check if any offers are selected in the filter
+          const anyOffersSelected = 
+            query.offers.summer || query.offers.internship || query.offers.partTime ||
+            query.offers.thesis || query.offers.fullTime || query.offers.trainee;
+  
+          // Final match decision
+          if ((yearMatch || otherOffersMatch) && anyOffersSelected) {
             return [exhibitor.position, exhibitor];
           }
   
