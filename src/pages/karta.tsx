@@ -45,42 +45,36 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
     setExhibitors(
       Object.fromEntries(
         exhibitorData.map((exhibitor) => {
-          // Name search check
-          if (!RegExp(query.searchQuery, 'i').test(exhibitor.name.toLowerCase()))
+          if (!RegExp(query.searchQuery).test(exhibitor.name.toLowerCase()))
             return [];
-  
-          // Year check - matches any selected year for year-specific offers
-          const yearMatch = query.years.length === 0 || query.years.some(year => 
-            (query.offers.summer && exhibitor.offers.summerJob.includes(year)) ||
-            (query.offers.internship && exhibitor.offers.internship.includes(year)) ||
-            (query.offers.partTime && exhibitor.offers.partTimeJob.includes(year))
-          );
-
-          const noOffersSelected = 
-            !query.offers.summer &&
-            !query.offers.internship &&
-            !query.offers.partTime &&
-            !query.offers.thesis &&
-            !query.offers.fullTime &&
-            !query.offers.trainee;
-  
-          // Non-year-specific offers check (OR condition for offer types)
-          const otherOffersMatch = noOffersSelected ||
-            (query.offers.summer && exhibitor.offers.summerJob) ||
-            (query.offers.internship && exhibitor.offers.internship) ||
-            (query.offers.thesis && exhibitor.offers.masterThesis) ||
-            (query.offers.fullTime && exhibitor.offers.fullTimeJob) ||
-            (query.offers.trainee && exhibitor.offers.traineeProgram)
-  
-          // Combine both yearMatch and otherOffersMatch
-          const offerMatch = yearMatch && otherOffersMatch;
-  
-          // Final match decision: Must match any year or offer
-          if (offerMatch) {
-            return [exhibitor.position, exhibitor];
+          
+          // Year filtering - check if ANY year matches ANY offer type
+          if (query.years.length !== 0) {
+            const hasMatchingYear = 
+              query.years.some((year) =>
+                exhibitor.offers.summerJob.includes(year) ||
+                exhibitor.offers.internship.includes(year) ||
+                exhibitor.offers.partTimeJob.includes(year)
+              );
+            
+            if (!hasMatchingYear) {
+              return [];
+            }
           }
   
-          return [];
+          // Offer type filtering - check if ANY selected offer type matches
+          const hasMatchingOffer = (
+            (!query.offers.summer || exhibitor.offers.summerJob.length > 0) ||
+            (!query.offers.internship || exhibitor.offers.internship.length > 0) ||
+            (!query.offers.partTime || exhibitor.offers.partTimeJob.length > 0) ||
+            (!query.offers.thesis || exhibitor.offers.masterThesis) ||
+            (!query.offers.fullTime || exhibitor.offers.fullTimeJob) ||
+            (!query.offers.trainee || exhibitor.offers.traineeProgram)
+          );
+  
+          if (!hasMatchingOffer) return [];
+  
+          return [exhibitor.position, exhibitor];
         })
       )
     );
