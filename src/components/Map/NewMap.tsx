@@ -7,7 +7,7 @@ import "leaflet/dist/leaflet.css";
 
 const FLOOR_2_RANGE = { start: 1, end: 79 };
 const FLOOR_3_RANGE = { start: 80, end: 98 };
-const KTH_ENTRANCE_RANGE = { start: 99, end: 101 };
+const KTH_ENTRANCE_RANGE = { start: 99, end: 102 };
 
 const positions: { [k: number]: [number, number] } = {
   1: [-0.46, -0.542],
@@ -110,7 +110,8 @@ const positions: { [k: number]: [number, number] } = {
   98: [-0.085, -0.3],
   99: [-0.02, -0.65],
   100: [-0.1, -0.72],
-  101: [-0.18, -0.79]
+  101: [-0.18, -0.79],
+  102: [-0.18, -0.95]
 };
 
 function isValidPosition(position: unknown): position is [number, number] {
