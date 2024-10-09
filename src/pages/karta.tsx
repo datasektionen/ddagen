@@ -66,9 +66,11 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
   
           // Non-year-specific offers check (OR condition for offer types)
           const otherOffersMatch = noOffersSelected ||
+            (query.offers.summer && exhibitor.offers.summerJob) ||
+            (query.offers.internship && exhibitor.offers.internship) ||
             (query.offers.thesis && exhibitor.offers.masterThesis) ||
             (query.offers.fullTime && exhibitor.offers.fullTimeJob) ||
-            (query.offers.trainee && exhibitor.offers.traineeProgram);
+            (query.offers.trainee && exhibitor.offers.traineeProgram)
   
           // Combine both yearMatch and otherOffersMatch
           const offerMatch = yearMatch && otherOffersMatch;
