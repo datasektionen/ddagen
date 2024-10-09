@@ -45,27 +45,24 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
     setExhibitors(
       Object.fromEntries(
         exhibitorData.map((exhibitor) => {
-          // If search query doesn't match, exclude the exhibitor
           if (!RegExp(query.searchQuery, 'i').test(exhibitor.name.toLowerCase()))
             return [];
   
-          // Check if any selected year matches for the selected offer types
-          const yearAndOfferMatch = query.years.length === 0 || (
-            // For each selected offer type, check if any selected year matches
-            ((query.offers.summer && exhibitor.offers.summerJob.some(year => query.years.includes(year))) ||
-             (query.offers.internship && exhibitor.offers.internship.some(year => query.years.includes(year))) ||
-             (query.offers.partTime && exhibitor.offers.partTimeJob.some(year => query.years.includes(year))) ||
-             // For non-year-specific offers, just check if they're offered and any year is selected
-             (query.offers.thesis && exhibitor.offers.masterThesis) ||
-             (query.offers.fullTime && exhibitor.offers.fullTimeJob) ||
-             (query.offers.trainee && exhibitor.offers.traineeProgram)
-            ) && 
-            // Ensure at least one offer type is selected
-            (query.offers.summer || query.offers.internship || query.offers.partTime || 
-             query.offers.thesis || query.offers.fullTime || query.offers.trainee)
+          const yearMatch = query.years.length === 0 || query.years.some(year => 
+            exhibitor.offers.summerJob.includes(year) ||
+            exhibitor.offers.internship.includes(year) ||
+            exhibitor.offers.partTimeJob.includes(year)
           );
   
-          if (yearAndOfferMatch) {
+          const offerMatch = 
+            (!query.offers.summer && exhibitor.offers.summerJob.length > 0) ||
+            (!query.offers.internship && exhibitor.offers.internship.length > 0) ||
+            (!query.offers.partTime && exhibitor.offers.partTimeJob.length > 0) ||
+            (!query.offers.thesis && exhibitor.offers.masterThesis) ||
+            (!query.offers.fullTime && exhibitor.offers.fullTimeJob) ||
+            (!query.offers.trainee && exhibitor.offers.traineeProgram);
+  
+          if (yearMatch || offerMatch) {
             return [exhibitor.position, exhibitor];
           }
   
