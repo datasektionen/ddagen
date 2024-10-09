@@ -55,20 +55,26 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
             (query.offers.internship && exhibitor.offers.internship.includes(year)) ||
             (query.offers.partTime && exhibitor.offers.partTimeJob.includes(year))
           );
+
+          const noOffersSelected = 
+            !query.offers.summer &&
+            !query.offers.internship &&
+            !query.offers.partTime &&
+            !query.offers.thesis &&
+            !query.offers.fullTime &&
+            !query.offers.trainee;
   
-          // Non-year-specific offers check
-          const otherOffersMatch = 
-            (query.offers.thesis ? exhibitor.offers.masterThesis : false) ||
-            (query.offers.fullTime ? exhibitor.offers.fullTimeJob : false) ||
-            (query.offers.trainee ? exhibitor.offers.traineeProgram : false);
+          // Non-year-specific offers check (OR condition for offer types)
+          const otherOffersMatch = noOffersSelected ||
+            (query.offers.thesis && exhibitor.offers.masterThesis) ||
+            (query.offers.fullTime && exhibitor.offers.fullTimeJob) ||
+            (query.offers.trainee && exhibitor.offers.traineeProgram);
   
-          // Check if any offers are selected in the filter
-          const anyOffersSelected = 
-            query.offers.summer || query.offers.internship || query.offers.partTime ||
-            query.offers.thesis || query.offers.fullTime || query.offers.trainee;
+          // Combine both yearMatch and otherOffersMatch
+          const offerMatch = yearMatch && otherOffersMatch;
   
-          // Final match decision
-          if ((yearMatch || otherOffersMatch) && anyOffersSelected) {
+          // Final match decision: Must match any year or offer
+          if (offerMatch) {
             return [exhibitor.position, exhibitor];
           }
   
