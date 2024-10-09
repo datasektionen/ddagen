@@ -48,7 +48,6 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
           if (!RegExp(query.searchQuery).test(exhibitor.name.toLowerCase()))
             return [];
           
-          // Year filtering - check if ANY year matches ANY offer type
           if (query.years.length !== 0) {
             const hasMatchingYear = 
               query.years.some((year) =>
@@ -62,17 +61,29 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
             }
           }
   
-          // Offer type filtering - check if ANY selected offer type matches
-          const hasMatchingOffer = (
-            (!query.offers.summer || exhibitor.offers.summerJob.length > 0) ||
-            (!query.offers.internship || exhibitor.offers.internship.length > 0) ||
-            (!query.offers.partTime || exhibitor.offers.partTimeJob.length > 0) ||
-            (!query.offers.thesis || exhibitor.offers.masterThesis) ||
-            (!query.offers.fullTime || exhibitor.offers.fullTimeJob) ||
-            (!query.offers.trainee || exhibitor.offers.traineeProgram)
-          );
+          const selectedOffers = Object.entries(query.offers).filter(([_, isSelected]) => isSelected);
+          if (selectedOffers.length > 0) {
+            const hasMatchingOffer = selectedOffers.some(([offerType, _]) => {
+              switch(offerType) {
+                case 'summer':
+                  return exhibitor.offers.summerJob.length > 0;
+                case 'internship':
+                  return exhibitor.offers.internship.length > 0;
+                case 'partTime':
+                  return exhibitor.offers.partTimeJob.length > 0;
+                case 'thesis':
+                  return exhibitor.offers.masterThesis;
+                case 'fullTime':
+                  return exhibitor.offers.fullTimeJob;
+                case 'trainee':
+                  return exhibitor.offers.traineeProgram;
+                default:
+                  return false;
+              }
+            });
   
-          if (!hasMatchingOffer) return [];
+            if (!hasMatchingOffer) return [];
+          }
   
           return [exhibitor.position, exhibitor];
         })
