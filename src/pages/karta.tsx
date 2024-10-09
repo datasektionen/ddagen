@@ -45,36 +45,28 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
     setExhibitors(
       Object.fromEntries(
         exhibitorData.map((exhibitor) => {
-          if (!RegExp(query.searchQuery).test(exhibitor.name.toLowerCase()))
+          if (!RegExp(query.searchQuery, 'i').test(exhibitor.name.toLowerCase()))
             return [];
-          if (query.years.length !== 0) {
-            if (
-              !query.years.some((year) =>
-                exhibitor.offers.summerJob.includes(year)
-              ) &&
-              !query.years.some((year) =>
-                exhibitor.offers.internship.includes(year)
-              ) &&
-              !query.years.some((year) =>
-                exhibitor.offers.partTimeJob.includes(year)
-              )
-            ) {
-              return [];
-            }
+  
+          const yearMatch = query.years.length === 0 || query.years.some(year => 
+            exhibitor.offers.summerJob.includes(year) ||
+            exhibitor.offers.internship.includes(year) ||
+            exhibitor.offers.partTimeJob.includes(year)
+          );
+  
+          const offerMatch = 
+            (!query.offers.summer || exhibitor.offers.summerJob.length > 0) ||
+            (!query.offers.internship || exhibitor.offers.internship.length > 0) ||
+            (!query.offers.partTime || exhibitor.offers.partTimeJob.length > 0) ||
+            (!query.offers.thesis || exhibitor.offers.masterThesis) ||
+            (!query.offers.fullTime || exhibitor.offers.fullTimeJob) ||
+            (!query.offers.trainee || exhibitor.offers.traineeProgram);
+  
+          if (yearMatch || offerMatch) {
+            return [exhibitor.position, exhibitor];
           }
-          if (
-            (query.offers.summer && exhibitor.offers.summerJob.length === 0) ||
-            (query.offers.internship &&
-              exhibitor.offers.internship.length === 0) ||
-            (query.offers.partTime &&
-              exhibitor.offers.partTimeJob.length === 0) ||
-            (query.offers.thesis && !exhibitor.offers.masterThesis) ||
-            (query.offers.fullTime && !exhibitor.offers.fullTimeJob) ||
-            (query.offers.trainee && !exhibitor.offers.traineeProgram)
-          )
-            return [];
-
-          return [exhibitor.position, exhibitor];
+  
+          return [];
         })
       )
     );
