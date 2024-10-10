@@ -1,4 +1,5 @@
 import {useLocale} from "@/locales";
+import { Console } from "console";
 import {useEffect, useState} from "react";
 
 function TimeUnit({time, timeString}: {time: number; timeString: string}){
@@ -34,8 +35,8 @@ export function Countdown() {
     const interval = setInterval(() =>{
       const now = new Date();
       const difference = target.getTime() - now.getTime();
-
-      const d = Math.floor(difference / (1000 * 60 * 60 * 24));
+  
+      const d = Math.floor(difference / (1000 * 60 * 60 * 24)) +1 ;
       setDays(d)
 
       const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
