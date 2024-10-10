@@ -35,17 +35,22 @@ export function Countdown() {
     const interval = setInterval(() =>{
       const now = new Date();
       const difference = target.getTime() - now.getTime();
-  
-      const d = Math.floor(difference / (1000 * 60 * 60 * 24)) +1 ;
+      
+      
+      const d_diff = difference / (1000 * 60 * 60 * 24);
+      const d = difference < 0 ? Math.ceil(d_diff) : Math.floor(d_diff);
       setDays(d)
 
-      const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const h_diff = (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      const h = difference < 0 ? Math.ceil(h_diff) : Math.floor(h_diff);
       setHours(h)
 
-      const m = Math.floor((difference % (1000 * 60 * 60))/(1000*60))
+      const m_diff = (difference % (1000 * 60 * 60))/(1000*60)
+      const m = difference < 0 ? Math.ceil(m_diff) : Math.floor(m_diff) 
       setMinutes(m)
 
-      const s = Math.floor((difference % (1000 * 60))/1000)
+      const s_diff = (difference % (1000 * 60))/1000
+      const s = difference < 0 ? Math.ceil(s_diff) : Math.floor(s_diff) 
       setSeconds(s)
     },1000)
     return () => clearInterval(interval)
