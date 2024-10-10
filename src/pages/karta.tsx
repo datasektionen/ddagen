@@ -47,33 +47,44 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
         exhibitorData.map((exhibitor) => {
           if (!RegExp(query.searchQuery).test(exhibitor.name.toLowerCase()))
             return [];
+          
           if (query.years.length !== 0) {
-            if (
-              !query.years.some((year) =>
-                exhibitor.offers.summerJob.includes(year)
-              ) &&
-              !query.years.some((year) =>
-                exhibitor.offers.internship.includes(year)
-              ) &&
-              !query.years.some((year) =>
+            const hasMatchingYear = 
+              query.years.some((year) =>
+                exhibitor.offers.summerJob.includes(year) ||
+                exhibitor.offers.internship.includes(year) ||
                 exhibitor.offers.partTimeJob.includes(year)
-              )
-            ) {
+              );
+            
+            if (!hasMatchingYear) {
               return [];
             }
           }
-          if (
-            (query.offers.summer && exhibitor.offers.summerJob.length === 0) ||
-            (query.offers.internship &&
-              exhibitor.offers.internship.length === 0) ||
-            (query.offers.partTime &&
-              exhibitor.offers.partTimeJob.length === 0) ||
-            (query.offers.thesis && !exhibitor.offers.masterThesis) ||
-            (query.offers.fullTime && !exhibitor.offers.fullTimeJob) ||
-            (query.offers.trainee && !exhibitor.offers.traineeProgram)
-          )
-            return [];
-
+  
+          const selectedOffers = Object.entries(query.offers).filter(([_, isSelected]) => isSelected);
+          if (selectedOffers.length > 0) {
+            const hasMatchingOffer = selectedOffers.some(([offerType, _]) => {
+              switch(offerType) {
+                case 'summer':
+                  return exhibitor.offers.summerJob.length > 0;
+                case 'internship':
+                  return exhibitor.offers.internship.length > 0;
+                case 'partTime':
+                  return exhibitor.offers.partTimeJob.length > 0;
+                case 'thesis':
+                  return exhibitor.offers.masterThesis;
+                case 'fullTime':
+                  return exhibitor.offers.fullTimeJob;
+                case 'trainee':
+                  return exhibitor.offers.traineeProgram;
+                default:
+                  return false;
+              }
+            });
+  
+            if (!hasMatchingOffer) return [];
+          }
+  
           return [exhibitor.position, exhibitor];
         })
       )

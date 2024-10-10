@@ -144,8 +144,8 @@ export default function ExhibitorExplorer({
   setSelectedExhibitor: Dispatch<number>;
 }) {
   const floorTwoPositions = range(1, 79);
-  const floorThreePositions = range(80, 101);
-  const kthEntrancePositions = range(102, 107);
+  const floorThreePositions = range(80, 98);
+  const kthEntrancePositions = range(99, 101);
 
   const buttonScrollRef = useRef<HTMLDivElement>(null);
   const exhibitorRefs = useRef<{ [key: number]: RefObject<HTMLDivElement> }>(
@@ -219,18 +219,6 @@ export default function ExhibitorExplorer({
           );
         })}
       </div>
-      {/* <Button
-        value={"/img/arrow-down.png/"}
-        loading={false}
-        isImage={true}
-        onClick={() => {
-          if (buttonScrollRef && buttonScrollRef.current)
-            buttonScrollRef.current.scrollTo(
-              0,
-              buttonScrollRef.current.scrollTop + 50
-            );
-        }}
-      /> */}
     </div>
   );
 }
