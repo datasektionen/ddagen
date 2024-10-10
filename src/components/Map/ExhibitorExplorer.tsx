@@ -145,7 +145,7 @@ export default function ExhibitorExplorer({
 }) {
   const floorTwoPositions = range(1, 79);
   const floorThreePositions = range(80, 98);
-  const kthEntrancePositions = range(99, 102);
+  const kthEntrancePositions = range(99, 101);
 
   const buttonScrollRef = useRef<HTMLDivElement>(null);
   const exhibitorRefs = useRef<{ [key: number]: RefObject<HTMLDivElement> }>(
