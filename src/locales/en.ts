@@ -33,7 +33,7 @@ export default {
     fairText1:
       "D-Dagen is the Computer Science Chapter’s annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
     fairText2:
-      "This year the fair is held on October 10th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15-19 on the KTH Campus Valhallavägen. During the day there will be a lounge for exhibitors, and in the evening a banquet will be organized to end the day.",
+      "This year the fair is held on October 9th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15-19 on the KTH Campus Valhallavägen. During the day there will be a lounge for exhibitors, and in the evening a banquet will be organized to end the day.",
     interestedTitle: "Interested?",
     interestedText:
       "Are you interested in exhibiting on D-Dagen and connecting with thousands of students in Computer Science and IT? Click below to sign up!",
@@ -45,7 +45,7 @@ export default {
     fairText1:
       "D-Dagen is the Computer Science Chapter’s annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
     fairText2:
-      "This year, the fair is held on October 10th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15 and in KTH Entré which is located at Drottning Kristinas väg 4. Students will be able to have meetings with exhibitors through company meetings in order to get more of a connection with that company (limited slots per company).",
+      "This year, the fair is held on October 9th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15 and in KTH Entré which is located at Drottning Kristinas väg 4. Students will be able to have meetings with exhibitors through company meetings in order to get more of a connection with that company (limited slots per company).",
     companyMeetings: "Company Meetings",
     companyMeetingsText:
       "We offer company meetings for students, which means that you will be able to discuss future job opportunities in a private room with representatives from selected companies. Sign up on the link below:",
@@ -424,7 +424,7 @@ export default {
     contactHeader: "Contact",
     responsible: "Project Managers",
     salesGroup: "Sales Team",
-    sponsorText: "Main sponsor for D-Dagen 2024",
+    sponsorText: "Main sponsor for D-Dagen 2025",
     sponsorLink: "https://en.omegapoint.se",
     notDecided: "Main sponsor for D-Dagen 2025 will be shown here",
   },
@@ -579,7 +579,7 @@ export default {
   },
   faq: {
     box1: "ABOUT D-DAGEN",
-    box2: "MARKETING",
+    box2: "MARKETING", 
     box3: "GENERAL",
     box4: "EVENTS",
     table1row1: "WHAT IS D-DAGEN?",
@@ -587,7 +587,7 @@ export default {
     table1row3: "WHERE IS D-DAGEN?",
     table1text1:
       "D-Dagen is the annual career fair organized by the Computer Science chapter at KTH Royal Institute of Technology. It is today the largest IT career fair in the Nordic region.",
-    table1text2: "This year's D-Dagen is taking place on October 10.",
+    table1text2: "This year's D-Dagen is taking place on October 9.",
     table1text3:
       "D-Dagen will be held at Nymble, the student union house, located at the KTH Royal Institute of Technlogy in Stockholm.",
     table2row1: "CAN OUR COMPANY GET MORE EXPOSURE?",
