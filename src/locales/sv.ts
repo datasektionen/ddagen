@@ -420,7 +420,7 @@ export default {
     contactHeader: "Kontakt",
     responsible: "D-Dagenansvariga",
     salesGroup: "Säljgruppen",
-    sponsorText: "Huvudsponsor för D-Dagen 2025",
+    sponsorText: "Huvudsponsor för D-Dagen 2024",
     sponsorLink: "https://omegapoint.se/",
     notDecided: "Huvudsponsor för D-Dagen kommer synas här"
   },
