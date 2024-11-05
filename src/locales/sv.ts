@@ -797,7 +797,7 @@ export default {
     paragraph1:
       "D-Dagen är en årlig företagsmässa som anordnas av Datasektionen på KTH. På D-Dagen har företag möjlighet att möta och interagera med potentiella framtida anställda från KTH. Samtidigt erbjuder vi våra studenter en chans att lära sig mer om karriärmöjligheter, nätverka och delta i föreläsningar och andra företagsevent.",
     paragraph2:
-      "D-Dagen startade 2015, då med 35 närvarande företag. Året efter flyttade mässan in i kårhuset Nymble, vilket har varit lokalen för efterföljande upplagor av D-Dagen. Mässan har också vuxit varje år, bortsett från pandemi-året 2020.",
+      "D-Dagen blev Datasektionens återkommande branschdag redan år 2000, då med 13 närvarande företag i E-huset på KTH Campus. Sedan dess har D-Dagen växt och 2016 intog den kårhuset, Nymble. Nu anses D-Dagen vara Nordens största arbetsmarknads-dag för datateknik-studenter, samt en av de största arbetsmarknads-dagarna på hela KTH.",
     paragraph3:
       "I år satsar vi på att ha över 100 företag närvarande. Vi räknar också med att 3000 studenter besöker mässan. Med tiden har D-Dagen växt till mycket mer än bara en mässdag. Veckorna inför mässan ger vi företag chansen att hålla lunchföreläsningar och andra event tillsammans med våra studenter. På kvällen efter mässan anordnar vi en större sittning där studenter och företagsrepresentanter kan prata på ett mer avslappnat vis.",
     info1: "Vad är D-Dagen",
