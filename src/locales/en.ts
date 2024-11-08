@@ -798,7 +798,7 @@ export default {
     paragraph1:
       "D-Dagen is an annual trade fair organized by the Computer Science Student Association at KTH (Royal Institute of Technology). At D-Dagen, companies have the opportunity to meet and interact with potential future employees from KTH. At the same time, we offer our students a chance to learn more about career opportunities, network, and participate in lectures and other company events.",
     paragraph2:
-      "D-Dagen started in 2015 with 35 participating companies. The following year, the fair moved to the Nymble student union building, which has been the venue for subsequent editions of D-Dagen. The fair has grown every year, except for the pandemic year of 2020. This year, we are aiming to have over 100 companies in attendance. We also expect around 3000 students to visit the fair.",
+      "The term ”D-Dagen” was coined as early as the year 2000, when it was the Computer Science Chapter’s industry-day with 13 attending companies in the E-building on KTH Campus. Since then, D-Dagen has grown and in 2016 it entered the student union building, Nymble. Now D-Dagen is considered to be the largest career fair in the Nordics for Computer Science students, as well as one of the largest career fairs at KTH.",
     paragraph3:
       "Over time, D-Dagen has evolved into much more than just a one-day fair. In the weeks leading up to the fair, we give companies the opportunity to hold lunch lectures and other events together with our students. In the evening after the fair, we organize a larger dinner where students and company representatives can engage in more relaxed conversations.",
     info1: "What is D-Dagen",
