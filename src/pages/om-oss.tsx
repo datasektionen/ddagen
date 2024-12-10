@@ -11,7 +11,7 @@ function stripLastName(name: string) {
   return name.split(" ")[0].toLocaleLowerCase();
 }
 
-const managersName        = ["Toshihide Sakao", "William Nordwall"]
+const managersName        = ["Max Berglund", "William Nordwall"]
 const prNames             = ["Felicia Murkes","Cissy Yang","Emilie Cao","Julia Potrus","Robert Rosenquist"]
 const devNames            = ["Viktor Rönnbacka Nybäck", "Nils Malmberg", "Sofia Edvardsson", "Ivar Boqvist"]
 const salesNames          = ["Linus Markström", "Leo Modahed", "Johanna Plant", "Ella Hedberg", "Mimmi Weng", "Samuel Flodin", "Oskar Furuhed", "Farhan Syed"]
