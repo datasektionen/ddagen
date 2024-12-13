@@ -435,9 +435,8 @@ export default {
     ) => `
       <p>Hej!</p>
       <p>Vi har nu tagit emot er intresseanmälan om att vara utställare på
-      D-Dagen 2024! Vi kommer kontakta er under våren och meddela om ni har
-      fått plats eller inte. Ni kan förvänta er att höra från oss senast den
-      8:e juni.</p>
+      D-Dagen 2025! Vi kommer kontakta er under våren och meddela om ni har
+      fått plats eller inte. Ni kan förvänta er att höra från oss under våren.</p>
 
       <p>Här är detaljerna från er företagsanmälan:</p>
       <ul>
@@ -450,7 +449,7 @@ export default {
       <p>Om någon av informationen ovan inte stämmer eller om ni har andra
       frågor, tveka inte att kontakta vårt säljteam på sales@ddagen.se.</p>
       <p>Tack för er intresseanmälan, hoppas ni är lika taggade som oss på
-      D-Dagen 2024!</p>
+      D-Dagen 2025!</p>
 
       <p>Med vänliga hälsningar,</p>
       <p>D-Dagens projektgrupp</p>

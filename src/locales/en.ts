@@ -440,7 +440,7 @@ export default {
     <p>Hi!</p>
     <p>We are pleased to confirm we have received your exhibitor registration.
     We will contact you during the spring about whether you got a spot at D-Dagen.
-    You can expect to hear from us by June 8th at the latest.</p>  
+    You can expect to hear from us during spring.</p>  
 
     <p>Here are the details of your registration:</p>
     <ul>
