@@ -97,14 +97,15 @@ export const exhibitorRouter = createTRPCRouter({
       .map(s => parseInt(s.organizationNumber.slice(0,9)))
       .sort((a,b) => b - a);
     // Get the first 9 digits of the highest foreign organizationNumber, add 1
-    const nextForeign9 = allForeign9.length ? 
+    const nextForeignDigits = allForeign9.length ? 
       (allForeign9[0]+1).toString() :
       "000000001";
+    const nextForeign9 = String(nextForeignDigits).padStart(9, '0');
     // Get the sum of the next foreign organizationNumber (Luhn-algorithm)
     const nextForeign9Sum = nextForeign9
       .split("")
       .map(x=>parseInt(x))
-      .map((x, i) => (i % 2 > 0 ? x : x < 5 ? x * 2 : x * 2 - 9))
+      .map((x, i) => (i % 2 > 0 ? x : x * 2 >= 10 ? (x * 2) % 10 + 1 : x * 2))
       .reduce((a, b) => a + b, 0) % 10;
     // Create a correct organizationNumber
     const nextForeignNum = nextForeign9 + ((10 - nextForeign9Sum) % 10).toString();
