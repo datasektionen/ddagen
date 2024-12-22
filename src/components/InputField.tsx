@@ -9,6 +9,7 @@ export function InputField<F extends Record<string, string>>({
   prefix = "",
   required = true,
   step,
+  disabled = false,
   onChange = ()=>{},
 }: {
   fields: F;
@@ -21,6 +22,7 @@ export function InputField<F extends Record<string, string>>({
   prefix?: string;
   required?: boolean;
   step?: number;
+  disabled?: boolean,
   onChange?: () => void;
 }) {
   return (
@@ -37,12 +39,13 @@ export function InputField<F extends Record<string, string>>({
           border-0 border-b-2 border-red-500 valid:border-slate-400
           placeholder-shown:border-slate-400 focus:border-cerise
           focus:outline-none
-          peer
+          peer disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none
         "
         id={prefix + name}
         name={name}
         value={value}
         step={step}
+        disabled={disabled}
         onChange={(e) => setValue(e.target.value, e.target)}
       />
       <label

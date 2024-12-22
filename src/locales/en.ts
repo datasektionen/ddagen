@@ -381,6 +381,7 @@ export default {
       "Fill in this form to sign up your company for D-Dagen 2024. Please note that signing up through to this form is not binding.",
     fields: {
       name: "Company Name",
+      foreignOrganization: "Foreign organization",
       organizationNumber: "Organization Number",
       email: "Email Address",
       contactPerson: "Contact Person",

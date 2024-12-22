@@ -1,8 +1,10 @@
-import { type FormEvent, useState } from "react";
+import { type FormEvent, useEffect, useState } from "react";
 import type Locale from "@/locales";
 import { api } from "@/utils/api";
 import { validateOrganizationNumber } from "@/shared/validateOrganizationNumber";
 import { InputField } from "./InputField";
+import { CheckMark } from "./CheckMark";
+import { CheckMarkField } from "./CheckMarkField";
 
 export default function CompanyForm({
   t,
@@ -12,8 +14,11 @@ export default function CompanyForm({
   onRegistationDone: () => void;
 }) {
   const register = api.exhibitor.register.useMutation();
+  const getNextForeignOrg = api.exhibitor.getNextForeignOrg.useQuery();
 
   const [companyName, setCompanyName] = useState("");
+  const [foreignOrganization, setForeignOrganization] = useState(false);
+  const [nextForeignOrganizationNumber, setNextForeignOrganizationNumber] = useState("");
   const [organizationNumber, setOrganizationNumber] = useState("");
   const [email, setEmail] = useState("");
   const [contactPerson, setContactPerson] = useState("");
@@ -36,6 +41,10 @@ export default function CompanyForm({
   function trySetOrganizationNumber(value: string, element: HTMLInputElement) {
     value = value.replace(/[^0-9- ]/g, "");
 
+    if(foreignOrganization){
+      return;
+    }
+
     const res = validateOrganizationNumber(value);
     if ("error" in res) {
       element.setCustomValidity(t.error[res.error]);
@@ -45,6 +54,25 @@ export default function CompanyForm({
 
     setOrganizationNumber(value);
   }
+
+  function toggleForeignOrganization(){
+    if(foreignOrganization){
+      // Reset and require the organizationNumber
+      setOrganizationNumber("");
+    }else {
+      // Set the organizationNumber to the next foreign organizationNumber
+      setOrganizationNumber(nextForeignOrganizationNumber);
+    }
+    // Toggle the foreign state
+    setForeignOrganization(b => !b);
+  }
+
+  useEffect(() => {
+    if (!getNextForeignOrg.isSuccess) return;
+    const exhibitor = getNextForeignOrg.data;
+
+    setNextForeignOrganizationNumber(exhibitor.organizationNumber);
+  }, [getNextForeignOrg.data]);
 
   return (
     <div className="w-full flex flex-col justify-center items-center pt-[200px] pb-40">
@@ -62,12 +90,20 @@ export default function CompanyForm({
           setValue={setCompanyName}
           fields={t.companyForm.fields}
         />
+        <CheckMarkField 
+          name="foreignOrganization"
+          checked={foreignOrganization}
+          onClick={toggleForeignOrganization}
+          fields={t.companyForm.fields}
+          />
+        {
         <InputField
           name="organizationNumber"
-          value={organizationNumber}
+          value={foreignOrganization ? "" : organizationNumber}
           setValue={trySetOrganizationNumber}
+          disabled={foreignOrganization}
           fields={t.companyForm.fields}
-        />
+        />}
         <InputField
           name="email"
           type="email"

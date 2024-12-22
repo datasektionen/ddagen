@@ -247,3 +247,12 @@
   pointer-events: none;
   z-index: -1;
 }
+
+/* disable label when input is disabled */
+input:disabled+label {
+  /* disabled:opacity-50 */
+  opacity: 0.5;
+
+  /* disabled:pointer-events-none */
+  pointer-events: none;
+}
