@@ -71,7 +71,7 @@ export default {
       saved: "Sparat",
       error: "Sparande misslyckades, prova igen",
       addFirstName: "Skriv in ditt förnamn",
-      addLastName: "Skriv in ditt efternamn", 
+      addLastName: "Skriv in ditt efternamn",
       addYear: "Skriv in din årskurs",
     },
     interests:{
@@ -80,21 +80,21 @@ export default {
     companyInterests:{
       header: "Välj de företag du är intresserad av att träffa",
       description: "Klicka i de företag du är intressarad av att träffa på ett kontaktsamtal. Företagen kommer sedan bjuda in till möten.",
-      checked1:"Du har visat intresse för att träffa ", 
+      checked1:"Du har visat intresse för att träffa ",
       checked2:" på ett kontaktsamtal.",
     },
     companyMeeting:{
       offerText: " Har bjudit in dig till ett kontaktsamtal",
-      acceptDeclineText: "Välj en tid och tacka ja till erbjudandet eller tacka nej till erbjudandet", 
+      acceptDeclineText: "Välj en tid och tacka ja till erbjudandet eller tacka nej till erbjudandet",
       noTimesLeft: "Inga tider kvar",
-      chooseOption: "Välj tid:", 
-    
+      chooseOption: "Välj tid:",
+
       status: {
         accepted: "Möte accepterat",
         declined: "Möte avböjt",
         failed: "Något gick fel, försök igen",
       },
-      
+
       meetingTimeText: "Du har ett möte",
       acceptedTime: "Tid: ",
 
@@ -102,7 +102,7 @@ export default {
       confirmDelete: "Är du säker på att du vill avboka mötet?",
       cancelMeeting: "Avboka möte",
       cancelWarning: "Du förlorar din plats om du avbokar",
-    
+
     },
     offersTitle: "Förfrågningar om kontaktsamtal",
     offersTitle1: "Du har ",
@@ -209,6 +209,9 @@ export default {
             fullTime: "HELTIDSJOBB",
             trainee: "TRAINEEPROGRAM",
           },
+          masters:{
+            dataScience: "Data Science",
+          },
           save: "Spara",
         },
         section3: {
@@ -239,7 +242,7 @@ export default {
           tier1: "Mellan",
           tier2: "Stora",
           tier3: "Huvudsponsor",
-          tier4: "Startup", 
+          tier4: "Startup",
         },
         packageList: [
           "Lilla",
@@ -842,6 +845,7 @@ export default {
       buttonOne: "Sök",
       buttonTwo: "Filter",
       filterYear: "År",
+      masterPrograms: "Master Program",
     },
     floors: {
       one: "Plan 2",
