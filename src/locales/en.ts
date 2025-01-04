@@ -381,6 +381,7 @@ export default {
       "Fill in this form to sign up your company for D-Dagen 2024. Please note that signing up through to this form is not binding.",
     fields: {
       name: "Company Name",
+      foreignOrganization: "Foreign organization",
       organizationNumber: "Organization Number",
       email: "Email Address",
       contactPerson: "Contact Person",
@@ -437,25 +438,26 @@ export default {
       contactPerson: string,
       phoneNumber: string
     ) => `
-    <p>Hi!</p>
-    <p>We are pleased to confirm we have received your exhibitor registration.
-    We will contact you during the spring about whether you got a spot at D-Dagen.
-    You can expect to hear from us by June 8th at the latest.</p>  
-
-    <p>Here are the details of your registration:</p>
-    <ul>
-      <li>Company Name: ${companyName}</li>
-      <li>Organization Number: ${organizationNumber}</li>
-      <li>Email Address: ${email}</li>
-      <li>Contact Person: ${contactPerson}</li>
-      <li>Phone Number: ${phoneNumber}</li>
-    </ul>
-    <p>If any of the information above is incorrect or if you have any other questions,
-    do not hesitate to contact our sales team at sales@ddagen.se.</p>
-    <p>Thank you for your registration and we look forward to a successful event.</p>
-
-    <p>Best regards,</p>
-    <p>The D-Dagen project group</p>
+        <div class=main; style=color:blue;font-family:Arial;>
+          <p>Hi!</p>
+          <p>We are pleased to confirm we have received your exhibitor registration.
+          We will contact you during the spring about whether you got a spot at D-Dagen.
+          You can expect to hear from us by June 8th at the latest.</p>
+          <p>Here are the details of your registration:</p>
+          <ul>
+            <li>Company Name: ${companyName}</li>
+            <li>Organization Number: ${organizationNumber}</li>
+            <li>Email Address: ${email}</li>
+            <li>Contact Person: ${contactPerson}</li>
+            <li>Phone Number: ${phoneNumber}</li>
+          </ul>
+          <p>If any of the information above is incorrect or if you have any other questions,
+          do not hesitate to contact our sales team at sales@ddagen.se.</p>
+          <p>Thank you for your registration and we look forward to a successful event.</p>
+          <p>Best regards,</p>
+          <p>The D-Dagen project group</p>
+          <img src=/img/d-dagen-logo-25-en.svg></img>
+        </div>
     `,
   },
   meeting_email: {

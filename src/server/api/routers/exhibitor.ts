@@ -84,6 +84,36 @@ export const exhibitorRouter = createTRPCRouter({
         return { ok: true };
       }
     ),
+  // Gets the next allowed foreign organizationNumber 
+  getNextForeignOrg: publicProcedure.query(async ({ ctx }) => {
+    // Read all organizationNumbers
+    const exhibitor = await ctx.prisma.exhibitorInterestRegistration.findMany({
+      select: { organizationNumber: true },
+    });
+    /*const exhibitor = [{organizationNumber: "1234567897"}, {organizationNumber: "0000000019"}];*/
+    // Get all current foreign organizationNumbers, sort in descending order
+    const allForeign9 = exhibitor
+      .filter(s => s.organizationNumber[0] == '0')
+      .map(s => parseInt(s.organizationNumber.slice(0,9)))
+      .sort((a,b) => b - a);
+    // Get the first 9 digits of the highest foreign organizationNumber, add 1
+    const nextForeignDigits = allForeign9.length ? 
+      (allForeign9[0]+1).toString() :
+      "000000001";
+    const nextForeign9 = String(nextForeignDigits).padStart(9, '0');
+    // Get the sum of the next foreign organizationNumber (Luhn-algorithm)
+    const nextForeign9Sum = nextForeign9
+      .split("")
+      .map(x=>parseInt(x))
+      .map((x, i) => (i % 2 > 0 ? x : x * 2 >= 10 ? (x * 2) % 10 + 1 : x * 2))
+      .reduce((a, b) => a + b, 0) % 10;
+    // Create a correct organizationNumber
+    const nextForeignNum = nextForeign9 + ((10 - nextForeign9Sum) % 10).toString();
+    const nextForeign = String(nextForeignNum).padStart(10, '0');
+    return {
+      organizationNumber: nextForeign,
+    };
+  }),
   get: protectedProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.exhibitor.findUniqueOrThrow({
       where: { id: ctx.session.exhibitorId },

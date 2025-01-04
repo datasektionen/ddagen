@@ -1,16 +1,17 @@
 export function CheckMark({
   name,
+  id,
   checked,
   defaultChecked,
   onClick,
-  onChange,
+  onChange
 }: {
   name: string;
+  id?: string;
   checked?: boolean;
   defaultChecked?: boolean;
   onClick?: () => void;
   onChange?: () => void;
-
 }) {
   return (
     <input
@@ -19,6 +20,7 @@ export function CheckMark({
                 bg-black/25 checked:text-cerise rounded-lg focus:ring-0
                 border-2 border-pink-600"
       name={name}
+      id={id}
       checked={checked}
       defaultChecked={defaultChecked}
       onClick={() => {
