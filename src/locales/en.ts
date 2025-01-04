@@ -438,7 +438,7 @@ export default {
       contactPerson: string,
       phoneNumber: string
     ) => `
-        <body style:"font-family:georgia">
+        <div class=main; style=color:blue;font-family:Arial;>
           <p>Hi!</p>
           <p>We are pleased to confirm we have received your exhibitor registration.
           We will contact you during the spring about whether you got a spot at D-Dagen.
@@ -456,7 +456,8 @@ export default {
           <p>Thank you for your registration and we look forward to a successful event.</p>
           <p>Best regards,</p>
           <p>The D-Dagen project group</p>
-        </body>
+          <img src=/img/d-dagen-logo-25-en.svg></img>
+        </div>
     `,
   },
   meeting_email: {
