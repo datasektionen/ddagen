@@ -447,7 +447,7 @@ export default {
             You can expect to hear from us by June 8th at the latest.</p>  
 
             <p>Here are the details of your registration:</p>
-            <ul>
+          <ul>
             <li>Company Name: ${companyName}</li>
             <li>Organization Number: ${organizationNumber}</li>
             <li>Email Address: ${email}</li>
