@@ -438,8 +438,6 @@ export default {
       contactPerson: string,
       phoneNumber: string
     ) => `
-        <!DOCTYPE html>
-        <html>
         <body style:"font-family:georgia">
           <p>Hi!</p>
           <p>We are pleased to confirm we have received your exhibitor registration.
@@ -459,7 +457,6 @@ export default {
           <p>Best regards,</p>
           <p>The D-Dagen project group</p>
         </body>
-        </html>
     `,
   },
   meeting_email: {
