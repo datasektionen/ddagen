@@ -438,7 +438,7 @@ export default {
       contactPerson: string,
       phoneNumber: string
     ) => `
-        <div class="main"; style="color:blue;font-family:Arial";>
+        <div class="main" style="color:blue;font-family:Arial">
           <p>Hi!</p>
           <p>We are pleased to confirm we have received your exhibitor registration.
           We will contact you during the spring about whether you got a spot at D-Dagen.
