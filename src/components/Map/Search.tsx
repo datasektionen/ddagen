@@ -31,72 +31,84 @@ export default function Search({
     t.exhibitorSettings.table.row1.section2.other.fullTime,
     t.exhibitorSettings.table.row1.section2.other.trainee,
   ];
-  const masterPrograms = [
-    t.exhibitorSettings.table.row1.section2.masters.dataScience,
+  const dataMasterPrograms = [
+    t.exhibitorSettings.table.row1.section2.datamasters.computerScience,
+    t.exhibitorSettings.table.row1.section2.datamasters.ICTInnovation,
+    t.exhibitorSettings.table.row1.section2.datamasters.cyberSecurity,
+    t.exhibitorSettings.table.row1.section2.datamasters.sustainableDigitalisation,
+    t.exhibitorSettings.table.row1.section2.datamasters.systemControl,
+    t.exhibitorSettings.table.row1.section2.datamasters.softwareEngineering,
+    t.exhibitorSettings.table.row1.section2.datamasters.embeddedSystems,
+    t.exhibitorSettings.table.row1.section2.datamasters.informationNetworkEngineering,
+    t.exhibitorSettings.table.row1.section2.datamasters.industrialManagement,
+    t.exhibitorSettings.table.row1.section2.datamasters.interactiveMediaTechnology,
+    t.exhibitorSettings.table.row1.section2.datamasters.communicationSystems,
+    t.exhibitorSettings.table.row1.section2.datamasters.machineLearning,
+    t.exhibitorSettings.table.row1.section2.datamasters.medicalEngineering,
+    t.exhibitorSettings.table.row1.section2.datamasters.softwareEngineering,
+    t.exhibitorSettings.table.row1.section2.datamasters.apliedMathematics,
+  ];
+  const otherMasterPrograms = [
+    t.exhibitorSettings.table.row1.section2.otherMasters.other,
   ];
 
-  function applySearch(
-    searchQuery: string,
-    checkmarks: boolean[],
-    setQuery: Dispatch<{
-      searchQuery: string;
-      years: (0 | 1 | 2 | 3 | 4)[];
-      offers: {
-        summer: boolean;
-        internship: boolean;
-        partTime: boolean;
-        thesis: boolean;
-        fullTime: boolean;
-        trainee: boolean;
-      };
-      masterPrograms: string[];
-    }>
-  ) {
-    const masterProgramsSelected = masterPrograms.filter((_, index) =>
-      checkmarks[11 + index]
-    );
-    const query = {
-      searchQuery: searchQuery.toLowerCase().trim(),
-      years: checkmarks
-        .slice(0, 5)
-        .map((value, index) => (value ? index : -1))
-        .filter((index) => index !== -1) as (0 | 1 | 2 | 3 | 4)[],
-      offers: {
-        summer: checkmarks[5],
-        internship: checkmarks[6],
-        partTime: checkmarks[7],
-        thesis: checkmarks[8],
-        fullTime: checkmarks[9],
-        trainee: checkmarks[10],
-      },
-      masterPrograms: masterProgramsSelected.length > 0 ? masterProgramsSelected : [],
-    };
+  const OFFER_START_INDEX = 5;
+  const DATA_MASTER_PROGRAMS_START_INDEX = OFFER_START_INDEX + offers.length;
+  const OTHER_MASTER_PROGRAMS_START_INDEX = DATA_MASTER_PROGRAMS_START_INDEX + dataMasterPrograms.length;
 
-    console.log('Search function called with searchQuery:', searchQuery);
-    console.log('Resulting query:', query);
-
-    setQuery(query);
-  }
 
   const [searchQuery, setSearchQuery] = useState("");
   const [showFilter, setShowFilter] = useState(false);
-  const [checkmarks, setCheckmarks] = useState(Array<boolean>(11).fill(false));
+  const [checkmarks, setCheckmarks] = useState<boolean[]>([]);
+  useEffect(() => {
+    setCheckmarks(Array<boolean>(OTHER_MASTER_PROGRAMS_START_INDEX + otherMasterPrograms.length).fill(false));
+  }, [otherMasterPrograms.length]);
   const filterRef = useRef<HTMLDivElement>(null);
   const searchBarRef = useRef<HTMLDivElement>(null);
 
   const setSearchQueryAndApply = (value: string) => {
     setSearchQuery(value);
-    applySearch(value, checkmarks, setQuery);
+    // applySearch(value, checkmarks, setQuery);
   };
 
   const toggleCheckmarkAndApply = (index: number) => {
     setCheckmarks((prev) => {
       const newCheckmarks = [...prev];
       newCheckmarks[index] = !newCheckmarks[index];
-      applySearch(searchQuery, newCheckmarks, setQuery);
+      // applySearch(searchQuery, newCheckmarks, setQuery);
       return newCheckmarks;
     });
   };
+
+  useEffect(() => {
+    const applySearch = () => {
+      setQuery({
+        searchQuery,
+        years: checkmarks
+          .slice(0, 5)
+          .map((value, index) => (value ? index : -1))
+          .filter((index) => index !== -1) as (0 | 1 | 2 | 3 | 4)[],
+        offers: {
+          summer: checkmarks[OFFER_START_INDEX],
+          internship: checkmarks[OFFER_START_INDEX + 1],
+          partTime: checkmarks[OFFER_START_INDEX + 2],
+          thesis: checkmarks[OFFER_START_INDEX + 3],
+          fullTime: checkmarks[OFFER_START_INDEX + 4],
+          trainee: checkmarks[OFFER_START_INDEX + 5],
+        },
+        masterPrograms: [
+          ...dataMasterPrograms.filter((_, index) => checkmarks[DATA_MASTER_PROGRAMS_START_INDEX + index ]),
+          ...otherMasterPrograms.filter((_, index) => checkmarks[OTHER_MASTER_PROGRAMS_START_INDEX + index]),
+        ],
+      });
+    };
+
+    console.log('Search function called with searchQuery:', searchQuery);
+    console.log('State of checkmarks:', checkmarks);
+
+    applySearch();
+  }, [searchQuery, checkmarks, setQuery]);
+
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -117,10 +129,7 @@ export default function Search({
   }, [filterRef, searchBarRef]);
 
   return (
-    <div
-      id={"search"}
-      className="h-20 w-full flex flex-col items-center justify-center"
-    >
+    <div id={"search"} className="h-20 w-full flex flex-col items-center justify-center">
       <div ref={searchBarRef} className="w-full flex items-center my-4">
         <input
           className="h-10 grow outline-none border-2 border-cerise bg-[#eaeaea] bg-opacity-10
@@ -146,7 +155,8 @@ export default function Search({
             className="absolute top-full z-10 w-11/12 block border-4 border-pink-600 bg-[#867c8b] bg-opacity-60 backdrop-blur-sm rounded-lg text-white justify-center text-xl"
             style={{marginTop: '10px'}}
           >
-            <div className="w-fullx h-full flex flex-col justify-center items-center p-3 font-light text-base">
+            <div className="w-fullx h-full flex flex-col justify-center items-center p-3 font-light text-base max-h-[70vh] overflow-y-auto">
+              {/* Years */}
               <div className="flex flex-row space-x-4 items-center">
                 <span>{t.map.search.filterYear}:</span>
                 {years.map((year, pos) => (
@@ -156,7 +166,7 @@ export default function Search({
                       type="checkbox"
                       name={`${pos}`}
                       checked={checkmarks[pos]}
-                      onClick={() => toggleCheckmarkAndApply(pos)}
+                      onChange={() => toggleCheckmarkAndApply(pos)}
                       className={`form-checkbox w-6 h-6 hover:cursor-pointer hover:border-yellow
                                     bg-black/25 checked:bg-cerise checked:border-white rounded-lg focus:ring-0
                                     border-2 border-cerise`}
@@ -164,20 +174,59 @@ export default function Search({
                   </div>
                 ))}
               </div>
+              {/* Offers */}
+              <div className="grid grid-rows-3 grid-cols-2 gap-y-2 mt-3">
+                {offers.map((offer, pos) => (
+                  <div
+                    key={`${OFFER_START_INDEX + pos}`}
+                    className="flex flex-row space-x-1 justify-between items-center"
+                  >
+                    <div style={{ marginTop: '-2px' }}>
+                      <CheckMark
+                        name={`${OFFER_START_INDEX + pos}`}
+                        checked={checkmarks[OFFER_START_INDEX + pos]}
+                        onChange={() => toggleCheckmarkAndApply( OFFER_START_INDEX + pos)}
+                      />
+                    </div>
+                    <div className="text-sm flex-grow">{offer}</div>
+                  </div>
+                ))}
+              </div>
+              {/* Master Programs */}
               {checkmarks.slice(3,5).some((checked) => checked) && (
                 <div className="mt-4 pb-4">
-                  <span>{t.map.search.masterPrograms}:</span>
-                  <div className="grid grid-rows-2 grid-cols-2 gap-y-2 mt-3">
-                    {masterPrograms.map((program, index) => (
+                  {/* Data masters */}
+                  <span>{t.map.search.dataMasterPrograms}:</span>
+                  <div className="grid grid-rows-2 grid-cols-2 gap-y-2 mt-3 pb-4">
+                    {dataMasterPrograms.map((program, index) => (
                       <div
                         key={`master-${index}`}
                         className="flex flex-row space-x-1 justify-between items-center"
                       >
                         <div style={{ marginTop: '-2px' }}>
                           <CheckMark
-                            name={`master-${index}`}
-                            checked={checkmarks[11 + index]}
-                            onClick={() => toggleCheckmarkAndApply(11 + index)}
+                            name={`master-${DATA_MASTER_PROGRAMS_START_INDEX + index}`}
+                            checked={checkmarks[DATA_MASTER_PROGRAMS_START_INDEX + index]}
+                            onChange={() => toggleCheckmarkAndApply(DATA_MASTER_PROGRAMS_START_INDEX + index)}
+                          />
+                        </div>
+                        <div className="text-sm flex-grow">{program}</div>
+                      </div>
+                    ))}
+                  </div>
+                  {/* other masters */}
+                  <span>{t.map.search.otherMasterPrograms}:</span>
+                  <div className="grid grid-rows-1 grid-cols-1 gap-y-2 mt-3">
+                    {otherMasterPrograms.map((program, index) => (
+                      <div
+                        key={`master-${index}`}
+                        className="flex flex-row space-x-1 justify-between items-center"
+                      >
+                        <div style={{ marginTop: '-2px' }}>
+                          <CheckMark
+                            name={`master-${OTHER_MASTER_PROGRAMS_START_INDEX + index}`}
+                            checked={checkmarks[OTHER_MASTER_PROGRAMS_START_INDEX + index]}
+                            onChange={() => toggleCheckmarkAndApply(OTHER_MASTER_PROGRAMS_START_INDEX + index)}
                           />
                         </div>
                         <div className="text-sm flex-grow">{program}</div>
@@ -186,23 +235,6 @@ export default function Search({
                   </div>
                 </div>
               )}
-              <div className="grid grid-rows-3 grid-cols-2 gap-y-2 mt-3">
-                {offers.map((offer, pos) => (
-                  <div
-                    key={`${pos + 5}`}
-                    className="flex flex-row space-x-1 justify-between items-center"
-                  >
-                    <div style={{ marginTop: '-2px' }}>
-                      <CheckMark
-                        name={`${pos + 5}`}
-                        checked={checkmarks[pos + 5]}
-                        onClick={() => toggleCheckmarkAndApply(pos + 5)}
-                      />
-                    </div>
-                    <div className="text-sm flex-grow">{offer}</div>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         )}
