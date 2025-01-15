@@ -439,23 +439,30 @@ export default {
       phoneNumber: string
     ) => `
           """
-          <p style='background-color:blue;'>Hi!</p>
-          <p>We are pleased to confirm we have received your exhibitor registration.
-          We will contact you during the spring about whether you got a spot at D-Dagen.
-          You can expect to hear from us by June 8th at the latest.</p>
-          <p>Here are the details of your registration:</p>
-          <ul>
-            <li>Company Name: ${companyName}</li>
-            <li>Organization Number: ${organizationNumber}</li>
-            <li>Email Address: ${email}</li>
-            <li>Contact Person: ${contactPerson}</li>
-            <li>Phone Number: ${phoneNumber}</li>
-          </ul>
-          <p>If any of the information above is incorrect or if you have any other questions,
-          do not hesitate to contact our sales team at sales@ddagen.se.</p>
-          <p>Thank you for your registration and we look forward to a successful event.</p>
-          <p>Best regards,</p>
-          <p>The D-Dagen project group</p>
+          <div>
+          <div class="outer" style="background-color:#f7f7f7;margin:0;padding:0;border:0">
+            <div class="main" style="max-width:700px;margin:0 auto;padding:0;border:0">
+              <div class="top"
+                style="background-color:rgb(111 29 27);margin:0;padding:0;border:0;text-align:center;height:10px">
+              </div>
+              <div class="content" style="background-color:#fff;padding:30px 30px;margin:0;border:0">#{content}</div>
+              <table class="footer"
+                style="background-color:rgb(111 29 27);margin:0;padding:20px 0;border:0;text-align:center;width:100%;">
+                <tr>
+                    <td style="vertical-align:top;width:80px;">
+                        <img src="https://metaspexet.se/images/logo.png"
+                            style="height:36;margin:0 0 0 20px;text-align:center">
+                    </td>
+                    <td>
+                        <h2
+                            style="color:#fff;text-align:left;font-size:24px;height:30px;padding:0;margin:2px auto 0;border:0">
+                            Haj</h2>
+                    </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          </div>
           """
     `,
   },
