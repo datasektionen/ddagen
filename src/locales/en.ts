@@ -438,7 +438,7 @@ export default {
       contactPerson: string,
       phoneNumber: string
     ) => `
-          <p style="background-color:blue;">Hi!</p>
+          <p style='background-color:blue;'>Hi!</p>
           <p>We are pleased to confirm we have received your exhibitor registration.
           We will contact you during the spring about whether you got a spot at D-Dagen.
           You can expect to hear from us by June 8th at the latest.</p>

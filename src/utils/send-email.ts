@@ -28,7 +28,7 @@ export default async function sendEmail(
         replyTo,
         to,
         subject,
-        content: body,
+        html: body,
       }),
     });
     if (!res.ok) {
