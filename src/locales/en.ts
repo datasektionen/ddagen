@@ -438,9 +438,22 @@ export default {
       contactPerson: string,
       phoneNumber: string
     ) => `
-      <div style="color:blue">
-      Hej!
-      </div>
+      # **Hi!**
+      <p>We are pleased to confirm we have received your exhibitor registration.
+      We will contact you during the spring about whether you got a spot at D-Dagen.
+      You can expect to hear from us by June 8th at the latest.</p>
+      <p>Here are the details of your registration:</p>
+        - Company Name: ${companyName}
+        - Organization Number: ${organizationNumber}
+        - Email Address: ${email}
+        - Contact Person: ${contactPerson}
+        - Phone Number: ${phoneNumber}
+      <p>If any of the information above is incorrect or if you have any other questions,
+      do not hesitate to contact our sales team at sales@ddagen.se.</p>
+      <p>Thank you for your registration and we look forward to a successful event.</p>
+      <p>Best regards,</p>
+      <p>The D-Dagen project group</p>
+      ![D-Dagen](https://ddagen.se/img/d-dagen-logo-25-sv.svg)
     `,
   },
   meeting_email: {

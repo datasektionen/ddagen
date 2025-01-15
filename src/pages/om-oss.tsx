@@ -11,11 +11,11 @@ function stripLastName(name: string) {
   return name.split(" ")[0].toLocaleLowerCase();
 }
 
-const managersName        = ["Max Berglund", "William Nordwall"]
+const managersName        = ["Max Berglund", "Mortada Nasser"]
 const prNames             = ["Felicia Murkes","Cissy Yang","Emilie Cao","Julia Potrus","Robert Rosenquist"]
 const devNames            = ["Viktor Rönnbacka Nybäck", "Nils Malmberg", "Sofia Edvardsson", "Ivar Boqvist"]
-const salesNames          = ["Linus Markström", "Leo Modahed", "Johanna Plant", "Ella Hedberg", "Mimmi Weng", "Samuel Flodin", "Oskar Furuhed", "Farhan Syed"]
-const massNames           = ["Mortada Nasser", "Abhinav Sasikumar","Arman Montazeri","Max Berglund", "Adam Njegovanovic","Abdelrahman Aldaker"]
+const salesNames          = ["Oskar Furuhed", "Leo Modahed", "Johanna Plant", "Ella Hedberg", "Mimmi Weng", "Samuel Flodin", "Oskar Furuhed", "Farhan Syed"]
+const massNames           = ["Felicia Murkes", "Abhinav Sasikumar","Arman Montazeri","Max Berglund", "Adam Njegovanovic","Abdelrahman Aldaker"]
 const ecoNames            = ["Oscar Witt","Roger Chen"]
 
 const managersImages      = managersName.map(stripLastName).map(formatImagePath);
@@ -144,11 +144,11 @@ export default function AboutUs() {
         
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 md:gap-8 gap-0 mt-0 lg:mt-12 ">
           <Team
-            teamIndivudualImages={managersImages}
-            teamPic="/img/projectGroup/g_dda.jpg"
-            names={managersName}
-            teamRoles={t.aboutUs.ddaRoles}
-            teamName={t.aboutUs.teamNames[0]}
+            teamIndivudualImages={prTeamImages}
+            teamPic="/img/projectGroup/g_pr.jpg"
+            names={prNames}
+            teamRoles={t.aboutUs.prTeamRoles}
+            teamName={t.aboutUs.teamNames[1]}
           />
         
           <Team
