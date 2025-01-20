@@ -437,7 +437,25 @@ export default {
       email: string,
       contactPerson: string,
       phoneNumber: string
-    ) => "<div style=\"color:blue\">hej</div>",
+    ) => "<div style=\"color:#DE3163\">" + 
+              "Hi!<br>" +
+              "<p>We are pleased to confirm we have received your exhibitor registration." +
+              "We will contact you during the spring about whether you got a spot at D-Dagen." +
+              "You can expect to hear from us during spring</p>" +
+              "<p>Here are the details of your registration:</p>" +
+              "<ul>" +
+                "<li> Company name: " + companyName + "</li>" + 
+                organizationNumber[0] != '0' && "<li>Organisationsnummer: " + organizationNumber + "</li>" + 
+                "<li> Email address: " + email + "</li>" + 
+                "<li> Contact person: " + contactPerson + "</li>" +
+                "<li> Phone number: " + phoneNumber + "</li>" + 
+              "</ul>" + 
+              "<p> If any of the information above is incorrect or if you have any other questions," + 
+              "do not hesitate to contact our sales team at sales@ddagen.se.</p>" + 
+              "<p>Thank you for your registration and we look forward to a successful event.</p><br>" + 
+              "<p>Best regards</p>" + 
+              "<p>The D-Dagen project group</p>" + 
+    "</div>",
   },
   meeting_email: {
     meeting_request_to_student: {
