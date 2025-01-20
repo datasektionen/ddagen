@@ -437,7 +437,7 @@ export default {
       email: string,
       contactPerson: string,
       phoneNumber: string
-    ) =>  "<div style=\"baclground-color:#090E2F;margin:20px;font-family:Arial, sans-serif;line-height:1.6\">" +
+    ) =>  "<div style=\"background-color:#090E2F;padding:30px;font-family:Arial, sans-serif;line-height:1.6\">" +
           "<div style=\"background-color:#DE3163;padding:30px;color:#ffffff;border-radius:10px\">" + 
               "<div style=\"font-size:24px\">" +
               "Hi!<br>" +
@@ -457,9 +457,9 @@ export default {
               "do not hesitate to contact our sales team at sales@ddagen.se.</p><br>" + 
               "<p>Thank you for your registration and we look forward to a successful event.</p><br>" + 
               "<p>Best regards</p><br>" + 
-              "<p>The D-Dagen project group</p><br>" + 
+              "<p>The D-Dagen project group</p><br>" +
+              "</div>" +
               "<img src=\"https://dev.ddagen.se/img/d-dagen-logo.png\" alt=\"Ddagen logga\">" + 
-          "</div>" +
           "</div>",
   },
   meeting_email: {
