@@ -445,7 +445,7 @@ export default {
               "<p>Here are the details of your registration:</p>" +
               "<ul>" +
                 "<li> Company name: " + companyName + "</li>" + 
-                organizationNumber[0] != '0' && "<li>Organisationsnummer: " + organizationNumber + "</li>" + 
+                organizationNumber[0] != '0' ? "<li>Organisationsnummer: " + organizationNumber + "</li>" : "" +
                 "<li> Email address: " + email + "</li>" + 
                 "<li> Contact person: " + contactPerson + "</li>" +
                 "<li> Phone number: " + phoneNumber + "</li>" + 
