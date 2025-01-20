@@ -438,10 +438,14 @@ export default {
       contactPerson: string,
       phoneNumber: string
     ) =>  "<div style=\"background-color:#090E2F;padding:30px;font-family:Arial, sans-serif;line-height:1.6\">" +
-          "<div style=\"background-color:#DE3163;padding:30px;color:#ffffff;border-radius:10px\">" + 
-              "<div style=\"font-size:24px\">" +
+          "<table style=\"background-color:#DE3163;padding:30px;color:#ffffff;border-radius:10px\">" + 
+              "<thead style=\"font-size:24px\">" +
+              "<tr>" +
               "Hi!<br>" +
-              "</div>" +
+              "/tr" +
+              "</thead>" +
+              "<tbody>" +
+              "<tr>" +
               "<p>We are pleased to confirm we have received your exhibitor registration." +
               "We will contact you during the spring about whether you got a spot at D-Dagen." +
               "You can expect to hear from us during spring</p><br>" +
@@ -458,7 +462,9 @@ export default {
               "<p>Thank you for your registration and we look forward to a successful event.</p><br>" + 
               "<p>Best regards</p><br>" + 
               "<p>The D-Dagen project group</p><br>" +
-              "</div>" +
+              "</tbody>" +
+              "</tr>" +
+              "</table>" +
               "<img src=\"https://dev.ddagen.se/img/d-dagen-logo.png\" alt=\"Ddagen logga\">" + 
           "</div>",
   },
