@@ -445,7 +445,7 @@ export default {
               "<p>Here are the details of your registration:</p>" +
               "<ul>" +
                 "<li> Company name: " + companyName + "</li>" + 
-                organizationNumber[0] != '0' ? "<li>Organisationsnummer: " + organizationNumber + "</li>" : "" +
+                ((organizationNumber[0] != '0') ? "<li>Organisationsnummer: " + organizationNumber + "</li>" : "") +
                 "<li> Email address: " + email + "</li>" + 
                 "<li> Contact person: " + contactPerson + "</li>" +
                 "<li> Phone number: " + phoneNumber + "</li>" + 
@@ -455,6 +455,7 @@ export default {
               "<p>Thank you for your registration and we look forward to a successful event.</p><br>" + 
               "<p>Best regards</p>" + 
               "<p>The D-Dagen project group</p>" + 
+              "<img src=\"https://ddagen.se/img/favicon.ico\" alt=\"Ddagen logga\">" + 
     "</div>",
   },
   meeting_email: {
