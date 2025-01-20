@@ -446,7 +446,7 @@ export default {
     <p>Here are the details of your registration:</p>
     <ul>
       <li>Company Name: ${companyName}</li>
-      <li>Organization Number: ${organizationNumber}</li>
+      ${ organizationNumber[0] != '0' && "<li>Organization Number: " + organizationNumber + "</li>" }
       <li>Email Address: ${email}</li>
       <li>Contact Person: ${contactPerson}</li>
       <li>Phone Number: ${phoneNumber}</li>

@@ -443,7 +443,7 @@ export default {
       <p>Här är detaljerna från er företagsanmälan:</p>
       <ul>
         <li>Företagsnamn: ${companyName}</li>
-        <li>Organisationsnummer: ${organizationNumber}</li>
+        ${ organizationNumber[0] != '0' && "<li>Organisationsnummer: " + organizationNumber + "</li>" }
         <li>Mejladress: ${email}</li>
         <li>Kontaktperson: ${contactPerson}</li>
         <li>Telefonnummer: ${phoneNumber}</li>
