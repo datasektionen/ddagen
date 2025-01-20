@@ -33,7 +33,7 @@ export default {
     fairText1:
       "D-Dagen är Datasektionens årliga arbetsmarknadsdag. Det är ett heldagsevent där företag och studenter verksamma inom data och IT får en möjlighet att knyta kontakter och lära känna varandra. Detta skapar goda möjligheter för en mer direkt och personlig kontakt mellan företagsrepresentanter och studenter.",
     fairText2:
-      "I år hålls mässan 10e oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15-19 på KTH Campus Valhallavägen. Under dagen kommer det finnas en lounge för utställare, och på kvällen anordnas en bankett för att avsluta dagen.",
+      "I år hålls mässan 9e oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15-19 på KTH Campus Valhallavägen. Under dagen kommer det finnas en lounge för utställare, och på kvällen anordnas en bankett för att avsluta dagen.",
     interestedTitle: "Intresserad?",
     interestedText:
       "Är du intresserad av att ställa ut på D-Dagen och knyta kontakt med tusentals studenter inom Data och IT? Klicka här nedan för att göra en intresseanmälan!",
@@ -45,7 +45,7 @@ export default {
     fairText1:
       "D-Dagen är Datasektionens årliga arbetsmarknadsdag. Det är ett heldagsevent där företag och studenter verksamma inom data och IT får en möjlighet att knyta kontakter och lära känna varandra. Detta skapar goda möjligheter för en mer direkt och personlig kontakt mellan företagsrepresentanter och studenter.",
     fairText2:
-      "I år hålls mässan 10 oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15 på KTH Campus Valhallavägen. Studenter kommer erbjudas möjligheten att gå på kontaktsamtal med företag för att knyta närmare kontakt med specifika företag (begränsade platser per företag).",
+      "I år hålls mässan 9 oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15 på KTH Campus Valhallavägen. Studenter kommer erbjudas möjligheten att gå på kontaktsamtal med företag för att knyta närmare kontakt med specifika företag (begränsade platser per företag).",
     companyMeetings: "Kontaktsamtal",
     companyMeetingsText:
       "Vi erbjuder kontaktsamtal för studenter, vilket innebär att ni får möjlighet att i enrum med företagsrepresentanter diskutera framtida jobbmöjligheter med mera. Anmäl er på länken nedan:",
@@ -373,7 +373,7 @@ export default {
   companyForm: {
     title: "Intresseanmälan",
     description:
-      "Fyll i formuläret för att registrera ert företag för D-Dagen 2024. OBS! En intresseanmälan är inte bindande.",
+      "Fyll i formuläret för att registrera ert företag för D-Dagen 2025. OBS! En intresseanmälan är inte bindande.",
     fields: {
       name: "Företagsnamn",
       foreignOrganization: "Utländsk organisation",
@@ -586,7 +586,7 @@ export default {
     table1row3: "VAR ÄR D-DAGEN?",
     table1text1:
       "D-Dagen är den årliga karriärmässan som anordnas av Datasektionen på Kungliga Tekniska Högskolan. D-Dagen är numera Nordens största karriärmässa inom IT.",
-    table1text2: "Årets D-Dagen äger rum torsdag den 10:e oktober.",
+    table1text2: "Årets D-Dagen äger rum torsdag den 9:e oktober.",
     table1text3: "D-Dagen hålls i vårt kårhus Nymble, som ligger på KTH.",
     table2row1: "KAN VÅRT FÖRETAG FÅ MER EXPONERING MOT STUDENTER?",
     table2row2:
