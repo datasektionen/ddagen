@@ -144,11 +144,11 @@ export default function AboutUs() {
         
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 md:gap-8 gap-0 mt-0 lg:mt-12 ">
           <Team
-            teamIndivudualImages={prTeamImages}
-            teamPic="/img/projectGroup/g_pr.jpg"
-            names={prNames}
-            teamRoles={t.aboutUs.prTeamRoles}
-            teamName={t.aboutUs.teamNames[1]}
+            teamIndivudualImages={managersImages}
+            teamPic="/img/projectGroup/g_leadgroup.jpg"
+            names={managersName}
+            teamRoles={t.aboutUs.ddaRoles}
+            teamName={t.aboutUs.teamNames[0]}
           />
         
           <Team
