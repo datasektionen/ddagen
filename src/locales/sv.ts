@@ -376,6 +376,7 @@ export default {
       "Fyll i formuläret för att registrera ert företag för D-Dagen 2025. OBS! En intresseanmälan är inte bindande.",
     fields: {
       name: "Företagsnamn",
+      foreignOrganization: "Utländsk organisation",
       organizationNumber: "Organisationsnummer",
       email: "Mejladress",
       contactPerson: "Kontaktperson",
