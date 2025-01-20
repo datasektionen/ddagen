@@ -437,11 +437,7 @@ export default {
       email: string,
       contactPerson: string,
       phoneNumber: string
-    ) => `
-      <div style="color:blue">
-      Hej!
-      </div>
-    `,
+    ) => "<div style=\"color:blue\">hej</div>",
   },
   meeting_email: {
     meeting_request_to_student: {
