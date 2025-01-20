@@ -442,7 +442,7 @@ export default {
               "<thead style=\"font-size:24px\">" +
               "<tr>" +
               "Hi!<br>" +
-              "/tr" +
+              "</tr>" +
               "</thead>" +
               "<tbody>" +
               "<tr>" +
