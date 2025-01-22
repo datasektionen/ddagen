@@ -1,0 +1,15 @@
+name: Deploy to Production Environment
+
+on:
+  push:
+    branches: [ production ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Nomad
+        uses: datasektionen/nomad-deploy@v1
+        with:
+          token: ${{ secrets.NOMAD_TOKEN }}

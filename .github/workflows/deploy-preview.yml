@@ -1,0 +1,17 @@
+name: Deploy to Preview Environment
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Nomad
+        uses: datasektionen/nomad-deploy@v1
+        with:
+          token: ${{ secrets.NOMAD_TOKEN }}
+          job-file-path: preview.nomad.hcl
+          image-tag: preview
