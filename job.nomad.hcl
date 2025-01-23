@@ -1,5 +1,6 @@
 job "ddagen" {
   type = "service"
+  namespace = "ddagen"
 
   group "ddagen" {
     network {
