@@ -12,6 +12,8 @@ jobs:
       - name: Deploy to Nomad
         uses: datasektionen/nomad-deploy@v1
         with:
-          token: ${{ secrets.NOMAD_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          nomad-token: ${{ secrets.NOMAD_TOKEN }}
+          nomad-addr: ${{ vars.NOMAD_ADDR }}
           job-file-path: preview.nomad.hcl
           image-tag: preview
