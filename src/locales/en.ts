@@ -437,36 +437,27 @@ export default {
       email: string,
       contactPerson: string,
       phoneNumber: string
-    ) =>  "<div style=\"background-color:#090E2F;padding:30px;font-family:Arial, sans-serif;line-height:1.6\">" +
-          "<table style=\"background-color:#DE3163;padding:30px;color:#ffffff;border-radius:10px\">" + 
-              "<thead style=\"font-size:24px\">" +
-              "<tr>" +
-              "Hi!<br>" +
-              "</tr>" +
-              "</thead>" +
-              "<tbody>" +
-              "<tr>" +
-              "<p>We are pleased to confirm we have received your exhibitor registration." +
-              "We will contact you during the spring about whether you got a spot at D-Dagen." +
-              "You can expect to hear from us during spring</p><br>" +
-              "<p>Here are the details of your registration:</p>" +
-              "<ul><br>" +
-                "<li> Company name: " + companyName + "</li><br>" + 
-                ((organizationNumber[0] != '0') ? "<li>Organisationsnummer: " + organizationNumber + "</li><br>" : "") +
-                "<li> Email address: " + email + "</li><br>" + 
-                "<li> Contact person: " + contactPerson + "</li><br>" +
-                "<li> Phone number: " + phoneNumber + "</li><br>" + 
-              "</ul>" + 
-              "<p> If any of the information above is incorrect or if you have any other questions," + 
-              "do not hesitate to contact our sales team at sales@ddagen.se.</p><br>" + 
-              "<p>Thank you for your registration and we look forward to a successful event.</p><br>" + 
-              "<p>Best regards</p><br>" + 
-              "<p>The D-Dagen project group</p><br>" +
-              "</tbody>" +
-              "</tr>" +
-              "</table>" +
-              "<img src=\"https://dev.ddagen.se/img/d-dagen-logo.png\" alt=\"Ddagen logga\">" + 
-          "</div>",
+    ) => `
+    <p>Hi!</p>
+    <p>We are pleased to confirm we have received your exhibitor registration.
+    We will contact you during the spring about whether you got a spot at D-Dagen.
+    You can expect to hear from us during spring.</p>  
+
+    <p>Here are the details of your registration:</p>
+    <ul>
+      <li>Company Name: ${companyName}</li>
+      <li>Organization Number: ${organizationNumber}</li>
+      <li>Email Address: ${email}</li>
+      <li>Contact Person: ${contactPerson}</li>
+      <li>Phone Number: ${phoneNumber}</li>
+    </ul>
+    <p>If any of the information above is incorrect or if you have any other questions,
+    do not hesitate to contact our sales team at sales@ddagen.se.</p>
+    <p>Thank you for your registration and we look forward to a successful event.</p>
+
+    <p>Best regards,</p>
+    <p>The D-Dagen project group</p>
+    `,
   },
   meeting_email: {
     meeting_request_to_student: {
@@ -589,7 +580,7 @@ export default {
   },
   faq: {
     box1: "ABOUT D-DAGEN",
-    box2: "MARKETING",
+    box2: "MARKETING", 
     box3: "GENERAL",
     box4: "EVENTS",
     table1row1: "WHAT IS D-DAGEN?",
@@ -890,7 +881,8 @@ export default {
       text: "As the PR manager, you are the leader of the PR team. You drive and organize the group, ensuring that everyone knows what they need to do and has the necessary resources. Since you work closely with the PR team, you will become very close-knit. As the PR manager, you will also communicate extensively with the DDA's.",
       roles : [
         "PR Manager\n- Good communicator\n- Well-organized\n- Leader\nAs a PR Manager, you lead the PR team, ensuring they are organized and equipped to communicate effectively. Working closely within the PR team will foster a strong sense of unity. You will also engage in extensive communication with DDA.",
-        "Art Director\n- Artistic\n- Accommodating\nAs an Art Director, your role is to ensure that D-Day looks professional. You'll have the opportunity to express your creativity by designing various materials, including brochures, posters, branded clothing, and more. Sometimes you'll even get to take photos. No prior experience is required; motivation and drive are what matter most. You'll, of course, have access to all the necessary software.",
+        "Art Director (UI/UX Design)\n- Artistic\n- Accommodating\nAs an Art Director, you ensure that D-Day looks professional. You will have the opportunity to express your creativity and design through all of the graphics needed for D-Day. This Art Director role includes the responsibility for UX design for the website but also assists with print design. This includes designing UI/UX for the website, brochures, posters, branded clothing and more. Occasionally, you will also get to take some photos. No prior knowledge is required; you will have the chance to learn over time, and the most important thing is that you are driven and motivated. Of course, you will have access to all the programs you need!",
+        "Art Director (Print Design)\n- Artistic\n- Accommodating\nAs an Art Director, you ensure that D-Day looks professional. You will have the opportunity to express your creativity and design through all of the graphics needed for D-Day. This Art Director role is primarily responsible for print design but receives support from the other Art Director. This includes brochures, posters, branded clothing and more. Occasionally, you will also get to take some photos. No prior knowledge is required; you will have the chance to learn over time, and the most important thing is that you are driven and motivated. Of course, you will have access to all the programs you need!",
         "Print Manager\n- Proactive\n- Artistic\nThe Print Manager is part of the PR team and is responsible for ensuring all printed materials are ordered and delivered on time. This includes items like stickers, patches, branded clothing, banners, brochures, and more. You'll work closely with the Art Director and assist with design work.",
         "Social Media Manager\n- Good communicator\n- Initiating\n- Social (especially on social media)\n- Creative\nThe Social Media Manager is responsible for increasing D-Day's presence on platforms like Instagram, Facebook, and other social media sites. You'll have the freedom to choose which social media platforms to use and how to express the event's message (within reasonable boundaries). In this role, you'll work closely with the Art Director to create attractive posts. This is an ideal position for those who enjoy taking photos and posting stories!"
       ]

@@ -45,7 +45,7 @@ export default {
     fairText1:
       "D-Dagen är Datasektionens årliga arbetsmarknadsdag. Det är ett heldagsevent där företag och studenter verksamma inom data och IT får en möjlighet att knyta kontakter och lära känna varandra. Detta skapar goda möjligheter för en mer direkt och personlig kontakt mellan företagsrepresentanter och studenter.",
     fairText2:
-      "I år hålls mässan 9 oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15 på KTH Campus Valhallavägen. Studenter kommer erbjudas möjligheten att gå på kontaktsamtal med företag för att knyta närmare kontakt med specifika företag (begränsade platser per företag).",
+      "I år hålls mässan 9e oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15 på KTH Campus Valhallavägen. Studenter kommer erbjudas möjligheten att gå på kontaktsamtal med företag för att knyta närmare kontakt med specifika företag (begränsade platser per företag).",
     companyMeetings: "Kontaktsamtal",
     companyMeetingsText:
       "Vi erbjuder kontaktsamtal för studenter, vilket innebär att ni får möjlighet att i enrum med företagsrepresentanter diskutera framtida jobbmöjligheter med mera. Anmäl er på länken nedan:",
@@ -436,9 +436,8 @@ export default {
     ) => `
       <p>Hej!</p>
       <p>Vi har nu tagit emot er intresseanmälan om att vara utställare på
-      D-Dagen 2024! Vi kommer kontakta er under våren och meddela om ni har
-      fått plats eller inte. Ni kan förvänta er att höra från oss senast den
-      8:e juni.</p>
+      D-Dagen 2025! Vi kommer kontakta er under våren och meddela om ni har
+      fått plats eller inte. Ni kan förvänta er att höra från oss under våren.</p>
 
       <p>Här är detaljerna från er företagsanmälan:</p>
       <ul>
@@ -451,7 +450,7 @@ export default {
       <p>Om någon av informationen ovan inte stämmer eller om ni har andra
       frågor, tveka inte att kontakta vårt säljteam på sales@ddagen.se.</p>
       <p>Tack för er intresseanmälan, hoppas ni är lika taggade som oss på
-      D-Dagen 2024!</p>
+      D-Dagen 2025!</p>
 
       <p>Med vänliga hälsningar,</p>
       <p>D-Dagens projektgrupp</p>
@@ -799,6 +798,7 @@ export default {
       "D-Dagen är en årlig företagsmässa som anordnas av Datasektionen på KTH. På D-Dagen har företag möjlighet att möta och interagera med potentiella framtida anställda från KTH. Samtidigt erbjuder vi våra studenter en chans att lära sig mer om karriärmöjligheter, nätverka och delta i föreläsningar och andra företagsevent.",
     paragraph2:
       "Begreppet ”D-Dagen” myntades redan år 2000, då det var en branschdag med 13 närvarande företag i E-huset på KTH Campus. Sedan dess har D-Dagen växt och 2016 intog den kårhuset, Nymble. Nu anses D-Dagen vara Nordens största arbetsmarknads-dag för datateknik-studenter, samt en av de största arbetsmarknads-dagarna på hela KTH.",
+
     paragraph3:
       "I år satsar vi på att ha över 100 företag närvarande. Vi räknar också med att 3000 studenter besöker mässan. Med tiden har D-Dagen växt till mycket mer än bara en mässdag. Veckorna inför mässan ger vi företag chansen att hålla lunchföreläsningar och andra event tillsammans med våra studenter. På kvällen efter mässan anordnar vi en större sittning där studenter och företagsrepresentanter kan prata på ett mer avslappnat vis.",
     info1: "Vad är D-Dagen",
@@ -871,7 +871,8 @@ export default {
       roles : [
         "PR-ansvarig\n- Bra kommunikatör\n- Välplanerad\n- Ledare\nSom PR-ansvarig är du ledare för PR-gruppen. Det är du som driver och organiserar gruppen och ser till att alla vet vad de ska göra och har det de behöver. Eftersom du jobbar så tätt ihop inom PR-gruppen kommer ni bli väldigt tajta tillsammans. Som PR-ansvarig kommer du också kommunicera extra mycket med DDA:s.",
         "Art Director (UI/UX Design)\n- Artistisk\n- Tillmötgsgående\n Som Art Director är det du som ser till att D-Dagen ser proffsig ut. Du kommer ha möjligheten att uttrycka din kreativitet och designa all grafik som behövs för D-Dagen. Denna Art director roll har ansvaret över UX-designer för hemsidan men även hjälper till med tryck-designen. Här ingår bland annat UX interface för hemsidan, broschyrer, affischer, profilkläder och annat. Ibland kommer du även få ta lite bilder. Inga förkunskaper behövs; man får istället möjligheten att lära sig med tiden och det viktigaste är att du är driven och motiverad. Självklart kommer du få tillgång till alla program du behöver!",
-        "Art Director (Tryckansvarig) \n- Artistisk\n- Tillmötgsgående\n Som Art Director är det du som ser till att D-Dagen ser proffsig ut. Du kommer ha möjligheten att uttrycka din kreativitet och designa all grafik som behövs för D-Dagen. Denna Art director roll har främst ansvaret över tryck-designen men får även hjälp av den andra Art Director:n. Här ingår bland annat broschyrer, affischer, profilkläder och annat. Ibland kommer du även få ta lite bilder. Inga förkunskaper behövs; man får istället möjligheten att lära sig med tiden och det viktigaste är att du är driven och motiverad. Självklart kommer du få tillgång till alla program du behöver!",
+        "Art Director (Tryck Design) \n- Artistisk\n- Tillmötgsgående\n Som Art Director är det du som ser till att D-Dagen ser proffsig ut. Du kommer ha möjligheten att uttrycka din kreativitet och designa all grafik som behövs för D-Dagen. Denna Art director roll har främst ansvaret över tryck-designen men får även hjälp av den andra Art Director:n. Här ingår bland annat broschyrer, affischer, profilkläder och annat. Ibland kommer du även få ta lite bilder. Inga förkunskaper behövs; man får istället möjligheten att lära sig med tiden och det viktigaste är att du är driven och motiverad. Självklart kommer du få tillgång till alla program du behöver!",
+        "Tryckansvarig \n- Proaktiv\n- Artistisk\n Tryckansvarig ingår i PR-gruppen och är den som ser till att allt tryckt material blir beställt och levererat i tid. Här ingår saker som klistermärken, tygmärken, profilkläder, banderoll, broschyr och en del annat. Du kommer ha ett nära samarbete med Art Director och hjälpa till med designarbetet.",
         "Social media-ansvarig\n- Bra kommunikatör\n- Initiativtagande\n- Social(särskilt på medier)\n- Kreativ\n Social media-ansvarig är den som ser till att D-Dagen syns ute på Instagram, Facebook och alla andra sociala medier. Här får du mycket frihet i vilka sociala medier du vill använda och hur du väljer att uttrycka dig (inom rimliga ramar förstås). Du ska även vara aktiv på sociala medier genom att likea/kommentera andra mässor’s inlägg och kanske göra edits över våra teambuildings (wooow!).  I rollen som social media-ansvarig jobbar du nära Art Director för att få till snygga inlägg. Detta är en perfekt roll för dig som gillar att ta bilder och lägga ut stories! Du har även ansvaret för den efterlängtade nØllegasque videon (jätteviktigt)!!!"
       ]
     },
