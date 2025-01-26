@@ -23,6 +23,7 @@ export default async function sendEmail(
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         key: env.SPAM_API_KEY,
+        template: "none",
         from: "no-reply@datasektionen.se",
         replyTo,
         to,

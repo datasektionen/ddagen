@@ -18,7 +18,7 @@ export default {
     stats: {
       firstPart: "100+ exhibitors",
       secondPart: "3000+ participants",
-      thirdPart: "October 9, 10:00 AM - 4:00 PM",
+      thirdPart: "October 9th, 10:00 AM - 4:00 PM",
     },
     countDown:{
       days: "days",
@@ -588,7 +588,7 @@ export default {
     table1row3: "WHERE IS D-DAGEN?",
     table1text1:
       "D-Dagen is the annual career fair organized by the Computer Science chapter at KTH Royal Institute of Technology. It is today the largest IT career fair in the Nordic region.",
-    table1text2: "This year's D-Dagen is taking place on October 9.",
+    table1text2: "This year's D-Dagen is taking place on October 9th.",
     table1text3:
       "D-Dagen will be held at Nymble, the student union house, located at the KTH Royal Institute of Technlogy in Stockholm.",
     table2row1: "CAN OUR COMPANY GET MORE EXPOSURE?",
