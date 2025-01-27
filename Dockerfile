@@ -6,7 +6,7 @@ FROM node:18-alpine3.21 AS base
 # Install dependencies only when needed
 FROM base AS deps
 # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-RUN apk add --no-cache libc6-compat postgresql17-client # psql for when exec'ing
+RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 # Install dependencies based on the preferred package manager
@@ -53,6 +53,8 @@ COPY --from=builder /app/.next/standalone ./
 RUN chown -R nextjs:nodejs ./
 COPY --from=builder /app/.next/static ./.next/static
 RUN chown -R nextjs:nodejs ./.next/static
+
+RUN apk add postgresql17-client # psql for when shelling into container
 
 USER nextjs
 
