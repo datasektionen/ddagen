@@ -361,14 +361,36 @@ export default {
     confirmationCodeText2:
       "> om den är registrerad i vårt system. Om du inte hittar mailet, dubbelkolla att e-postadressen är korrekt samt se till att kolla i skräpposten!",
     emailSubject: "D-Dagen - Logga in",
-    emailBody: (code: string, link: string) => `
-      <p>För att slutföra inloggningen till D-Dagen, gå till följande länk:</p>
-      <p> </p>
-      <p>${link}</p>
-      <p> </p>
-      <p>eller ange koden ${code} på inloggningssidan.</p>
-      <p>Om du inte försökt logga in kan du ignorera detta mail.</p>
-    `,
+    emailBody: (code: string, link: string) => 
+  "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
+    "<tr>"+
+      "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
+          "<table style=\"background-color:#EE237B;padding:30px;color:#ffffff;border-radius:10px;width:80%;margin:auto;border-collapse:separate;border-spacing:0;box-shadow:0 4px 10px rgba(0, 0, 0, 0.2)\">"+
+                "<tbody>"+
+                    "<tr>"+
+                        "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
+                            "<p>För att slutföra inloggningen till D-Dagen, gå till följande länk:</p>"+
+                            "<p> </p>"+
+                            "<p><a href=" + link + "style=\"color:#ffffff;text-decoration:underline\">" + link + "</a></p>"+
+                            "<p> </p>"+
+                            "<p>eller ange koden " + code + " på inloggningssidan.</p>"+
+                        "</td>"+
+                      "</tr>"+
+                      "<tr>"+
+                          "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
+                            "<p>Om du inte försökt logga in kan du ignorera detta mail.</p>"+
+                          "</td>"+
+                      "</tr>"+
+                "</tbody>"+
+              "</table>"+
+      "</td>"+
+    "</tr>"+
+    "<tr>"+
+        "<td style=\"padding:0; margin:0;\">"+
+            "<img src=\"ddagen.se/img/email-signatur.png\" alt=\"D-Dagen logo\" style=\"width:100%; height:auto; display:block;\">"+
+        "</td>"+
+    "</tr>"+
+  "</table>",
   },
   companyForm: {
     title: "Intresseanmälan",
@@ -433,28 +455,52 @@ export default {
       email: string,
       contactPerson: string,
       phoneNumber: string
-    ) => `
-      <p>Hej!</p>
-      <p>Vi har nu tagit emot er intresseanmälan om att vara utställare på
-      D-Dagen 2025! Vi kommer kontakta er under våren och meddela om ni har
-      fått plats eller inte. Ni kan förvänta er att höra från oss under våren.</p>
-
-      <p>Här är detaljerna från er företagsanmälan:</p>
-      <ul>
-        <li>Företagsnamn: ${companyName}</li>
-        <li>Organisationsnummer: ${organizationNumber}</li>
-        <li>Mejladress: ${email}</li>
-        <li>Kontaktperson: ${contactPerson}</li>
-        <li>Telefonnummer: ${phoneNumber}</li>
-      </ul>
-      <p>Om någon av informationen ovan inte stämmer eller om ni har andra
-      frågor, tveka inte att kontakta vårt säljteam på sales@ddagen.se.</p>
-      <p>Tack för er intresseanmälan, hoppas ni är lika taggade som oss på
-      D-Dagen 2025!</p>
-
-      <p>Med vänliga hälsningar,</p>
-      <p>D-Dagens projektgrupp</p>
-    `,
+    ) => 
+    "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
+      "<tr>"+
+        "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
+            "<table style=\"background-color:#EE237B;padding:30px;color:#ffffff;border-radius:10px;width:80%;margin:auto;border-collapse:separate;border-spacing:0;box-shadow:0 4px 10px rgba(0, 0, 0, 0.2)\">"+
+                "<thead>"+
+                      "<tr>"+
+                          "<th colspan=\"2\" style=\"font-size:24px;text-align:left;padding-bottom:20px\">Hej!</th>"+
+                      "</tr>"+
+                "</thead>"+
+                  "<tbody>"+
+                      "<tr>"+
+                          "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
+                              "<p>Vi har nu tagit emot er intresseanmälan om att vara utställare på D-Dagen 2025! Vi kommer kontakta er under våren och meddela om ni har fått plats eller inte. Ni kan förvänta er att höra från oss under våren.</p>"+
+                              "<p>Här är detaljerna från er företagsanmälan:</p>"+
+                          "</td>"+
+                        "</tr>"+
+                      "<tr>"+
+                        "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
+                              "<ul>"+
+                                  "<li>Företagsnamn: " + companyName + "</li>"+
+((organizationNumber[0] != '0') ? ("<li>Organisationsnummer: " + organizationNumber + "</li>") : "") +
+                                  "<li>Mejladress: " + email + "</li>"+
+                                  "<li>Kontaktperson: " + contactPerson + "</li>"+
+                                  "<li>Telefonnummer: " + phoneNumber + "</li>"+
+                                "</ul>"+
+                              "</td>"+
+                          "</tr>"+
+                        "<tr>"+
+                          "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
+                              "<p>Om någon av informationen ovan inte stämmer eller om ni har andra frågor, tveka inte att kontakta vårt säljteam på <a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a>.</p>"+
+                              "<p>Tack för er intresseanmälan, hoppas ni är lika taggade som oss på D-Dagen 2025!</p>"+
+                              "<p>Med vänliga hälsningar,</p>"+
+                              "<p>D-dagens projektgrupp</p>"+
+                            "</td>"+
+                          "</tr>"+
+                      "</tbody>"+
+                "</table>"+
+            "</td>"+
+        "</tr>"+
+        "<tr>"+
+          "<td style=\"padding:0; margin:0;\">"+
+              "<img src=\"ddagen.se/img/email-signatur.png\" alt=\"D-Dagen logo\" style=\"width:100%; height:auto; display:block;\">"+
+          "</td>"+
+        "</tr>"+
+    "</table>" ,
   },
   meeting_email: {
     meeting_request_to_student: {
@@ -465,14 +511,39 @@ export default {
         firstName: string,
         lastName: string,
         companyName: string
-      )=>`
-    <p>Hi ${firstName} ${lastName}!</p>
-    <p>We are pleased to confirm that ${companyName} wants a meeting with you</p>
-    <p>If any of the information above is incorrect or if you have any other questions,
-    do not hesitate to contact our sales team at sales@ddagen.se.</p>
-    <p>Best regards,</p>
-    <p>The D-Dagen project group</p>
-      `,
+      )=>
+      "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
+        "<tr>"+
+          "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
+              "<table style=\"background-color:#EE237B;padding:30px;color:#ffffff;border-radius:10px;width:80%;margin:auto;border-collapse:separate;border-spacing:0;box-shadow:0 4px 10px rgba(0, 0, 0, 0.2)\">"+
+                  "<thead>"+
+                        "<tr>"+
+                            "<th colspan=\"2\" style=\"font-size:24px;text-align:left;padding-bottom:20px\">Hi " + firstName + " " + lastName + "!</th>"+
+                        "</tr>"+
+                  "</thead>"+
+                    "<tbody>"+
+                        "<tr>"+
+                            "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
+                                "<p>We are pleased to confirm that " + companyName + " wants a meeting with you.</p>"+
+                            "</td>"+
+                          "</tr>"+
+                          "<tr>"+
+                              "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
+                                "<p>If any of the information above is incorrect or if you have any other questions, do not hesitate to contact our sales team at <a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a>.</p>"+
+                                "<p>Best regards,</p>"+
+                                "<p>The D-Dagen project group</p>"+
+                              "</td>"+
+                          "</tr>"+
+                    "</tbody>"+
+                  "</table>"+
+          "</td>"+
+        "</tr>"+
+        "<tr>"+
+            "<td style=\"padding:0; margin:0;\">"+
+                "<img src=\"ddagen.se/img/email-signatur.png\" alt=\"D-Dagen logo\" style=\"width:100%; height:auto; display:block;\">"+
+            "</td>"+
+        "</tr>"+
+      "</table>" ,
     },
     meeting_deleted_by_student: {
       subject: (
@@ -483,14 +554,39 @@ export default {
       body: (
         firstName: string,
         lastName: string,
-      )=>`
-    <p>Hi!</p>
-    <p>We are sorry to inform that ${firstName} ${lastName} has canceled your meeting</p>
-    <p>If any of the information above is incorrect or if you have any other questions,
-    do not hesitate to contact our sales team at sales@ddagen.se.</p>
-    <p>Best regards,</p>
-    <p>The D-Dagen project group</p>
-      `,
+      )=>
+        "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
+        "<tr>"+
+          "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
+              "<table style=\"background-color:#EE237B;padding:30px;color:#ffffff;border-radius:10px;width:80%;margin:auto;border-collapse:separate;border-spacing:0;box-shadow:0 4px 10px rgba(0, 0, 0, 0.2)\">"+
+                  "<thead>"+
+                        "<tr>"+
+                            "<th colspan=\"2\" style=\"font-size:24px;text-align:left;padding-bottom:20px\">Hi!</th>"+
+                        "</tr>"+
+                  "</thead>"+
+                    "<tbody>"+
+                        "<tr>"+
+                            "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
+                                "<p>We are sorry to inform that " + firstName + " " + lastName + " has canceled your meeting.</p>"+
+                            "</td>"+
+                          "</tr>"+
+                          "<tr>"+
+                              "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
+                                "<p>If any of the information above is incorrect or if you have any other questions, do not hesitate to contact our sales team at <a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a>.</p>"+
+                                "<p>Best regards,</p>"+
+                                "<p>The D-Dagen project group</p>"+
+                              "</td>"+
+                          "</tr>"+
+                    "</tbody>"+
+                  "</table>"+
+          "</td>"+
+        "</tr>"+
+        "<tr>"+
+            "<td style=\"padding:0; margin:0;\">"+
+                "<img src=\"ddagen.se/img/email-signatur.png\" alt=\"D-Dagen logo\" style=\"width:100%; height:auto; display:block;\">"+
+            "</td>"+
+        "</tr>"+
+      "</table>",
     },
     meeting_declined_by_student: {
       subject: (
@@ -501,14 +597,39 @@ export default {
       body: (
         firstName: string,
         lastName: string,
-      )=>`
-    <p>Hi!</p>
-    <p>We are sorry to inform that ${firstName} ${lastName} has declined your meeting offer</p>
-    <p>If any of the information above is incorrect or if you have any other questions,
-    do not hesitate to contact our sales team at sales@ddagen.se.</p>
-    <p>Best regards,</p>
-    <p>The D-Dagen project group</p>
-      `,
+      )=>
+      "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
+        "<tr>"+
+          "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
+              "<table style=\"background-color:#EE237B;padding:30px;color:#ffffff;border-radius:10px;width:80%;margin:auto;border-collapse:separate;border-spacing:0;box-shadow:0 4px 10px rgba(0, 0, 0, 0.2)\">"+
+                  "<thead>"+
+                        "<tr>"+
+                            "<th colspan=\"2\" style=\"font-size:24px;text-align:left;padding-bottom:20px\">Hi!</th>"+
+                        "</tr>"+
+                  "</thead>"+
+                    "<tbody>"+
+                        "<tr>"+
+                            "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
+                                "<p>We are sorry to inform that " + firstName + " " + lastName + " has declined your meeting offer.</p>"+
+                            "</td>"+
+                          "</tr>"+
+                          "<tr>"+
+                              "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
+                                "<p>If any of the information above is incorrect or if you have any other questions, do not hesitate to contact our sales team at <a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a>.</p>"+
+                                "<p>Best regards,</p>"+
+                                "<p>The D-Dagen project group</p>"+
+                              "</td>"+
+                          "</tr>"+
+                    "</tbody>"+
+                  "</table>"+
+          "</td>"+
+        "</tr>"+
+        "<tr>"+
+            "<td style=\"padding:0; margin:0;\">"+
+                "<img src=\"ddagen.se/img/email-signatur.png\" alt=\"D-Dagen logo\" style=\"width:100%; height:auto; display:block;\">"+
+            "</td>"+
+        "</tr>"+
+      "</table>",
     },
     meeting_deleted_by_company: {
       subject: (
@@ -518,14 +639,39 @@ export default {
         firstName: string,
         lastName: string,
         companyName: string,
-      )=>`
-    <p>Hi ${firstName} ${lastName}!</p>
-    <p>We are sorry to inform that ${companyName} has canceled your meeting</p>
-    <p>If any of the information above is incorrect or if you have any other questions,
-    do not hesitate to contact our sales team at sales@ddagen.se.</p>
-    <p>Best regards,</p>
-    <p>The D-Dagen project group</p>
-      `,
+      )=>
+      "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
+        "<tr>"+
+          "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
+              "<table style=\"background-color:#EE237B;padding:30px;color:#ffffff;border-radius:10px;width:80%;margin:auto;border-collapse:separate;border-spacing:0;box-shadow:0 4px 10px rgba(0, 0, 0, 0.2)\">"+
+                  "<thead>"+
+                        "<tr>"+
+                            "<th colspan=\"2\" style=\"font-size:24px;text-align:left;padding-bottom:20px\">Hi " + firstName + " " + lastName + "!</th>"+
+                        "</tr>"+
+                  "</thead>"+
+                    "<tbody>"+
+                        "<tr>"+
+                            "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
+                                "<p>We are sorry to inform that " + companyName + " has canceled your meeting.</p>"+
+                            "</td>"+
+                          "</tr>"+
+                          "<tr>"+
+                              "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
+                                "<p>If any of the information above is incorrect or if you have any other questions, do not hesitate to contact our sales team at <a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a>.</p>"+
+                                "<p>Best regards,</p>"+
+                                "<p>The D-Dagen project group</p>"+
+                              "</td>"+
+                          "</tr>"+
+                    "</tbody>"+
+                  "</table>"+
+          "</td>"+
+        "</tr>"+
+        "<tr>"+
+            "<td style=\"padding:0; margin:0;\">"+
+                "<img src=\"ddagen.se/img/email-signatur.png\" alt=\"D-Dagen logo\" style=\"width:100%; height:auto; display:block;\">"+
+            "</td>"+
+        "</tr>"+
+      "</table>",
     },
     meeting_completed_to_company: {
         subject: (
@@ -539,16 +685,41 @@ export default {
           companyName: string,
           time: string,
           location: string,
-        )=>`
-      <p>Hi ${companyName}!</p>
-      <p>This is a confirmation for your student meeting with ${firstName} ${lastName}</p>
-      <p>Time: ${time}</p>
-      <p>Location: ${location}</p>
-      <p>If any of the information above is incorrect or if you have any other questions,
-      do not hesitate to contact our sales team at sales@ddagen.se.</p>
-      <p>Best regards,</p>
-      <p>The D-Dagen project group</p>
-        `,
+        )=>      
+      "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
+        "<tr>"+
+          "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
+              "<table style=\"background-color:#EE237B;padding:30px;color:#ffffff;border-radius:10px;width:80%;margin:auto;border-collapse:separate;border-spacing:0;box-shadow:0 4px 10px rgba(0, 0, 0, 0.2)\">"+
+                  "<thead>"+
+                        "<tr>"+
+                            "<th colspan=\"2\" style=\"font-size:24px;text-align:left;padding-bottom:20px\">Hi " + companyName + "!</th>"+
+                        "</tr>"+
+                  "</thead>"+
+                    "<tbody>"+
+                        "<tr>"+
+                            "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
+                                "<p>This is a confirmation for your student meeting with " + firstName + " " + lastName + ".</p>"+
+                                "<p>Time: " + time + "</p>"+
+                                "<p>Location: " + location + "</p>"+
+                            "</td>"+
+                          "</tr>"+
+                          "<tr>"+
+                              "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
+                                "<p>If any of the information above is incorrect or if you have any other questions, do not hesitate to contact our sales team at <a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a>.</p>"+
+                                "<p>Best regards,</p>"+
+                                "<p>The D-Dagen project group</p>"+
+                              "</td>"+
+                          "</tr>"+
+                    "</tbody>"+
+                  "</table>"+
+          "</td>"+
+        "</tr>"+
+        "<tr>"+
+            "<td style=\"padding:0; margin:0;\">"+
+                "<img src=\"ddagen.se/img/email-signatur.png\" alt=\"D-Dagen logo\" style=\"width:100%; height:auto; display:block;\">"+
+            "</td>"+
+        "</tr>"+
+      "</table>",
       },
       meeting_completed_to_student: {
         subject: (
@@ -562,17 +733,42 @@ export default {
           companyName: string,
           time: string,
           location: string,
-        )=>`
-      <p>Hi ${firstName} ${lastName}!</p>
-      <p>This is a confirmation for your student meeting with ${companyName}</p>
-      <p>Time: ${time}</p>
-      <p>Location: ${location}</p>
-      <p>If you wish to unbook your meeting please unbook via https://ddagen.se/student
-      <p>If any of the information above is incorrect or if you have any other questions,
-      do not hesitate to contact our sales team at sales@ddagen.se.</p>
-      <p>Best regards,</p>
-      <p>The D-Dagen project group</p>
-        `,
+        )=>        
+      "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
+        "<tr>"+
+          "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
+              "<table style=\"background-color:#EE237B;padding:30px;color:#ffffff;border-radius:10px;width:80%;margin:auto;border-collapse:separate;border-spacing:0;box-shadow:0 4px 10px rgba(0, 0, 0, 0.2)\">"+
+                  "<thead>"+
+                        "<tr>"+
+                            "<th colspan=\"2\" style=\"font-size:24px;text-align:left;padding-bottom:20px\">Hi " + firstName + " " + lastName + "!</th>"+
+                        "</tr>"+
+                  "</thead>"+
+                    "<tbody>"+
+                        "<tr>"+
+                            "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
+                                "<p>This is a confirmation for your student meeting with " + companyName + ".</p>"+
+                                "<p>Time: " + time + "</p>"+
+                                "<p>Location: " + location + "</p>"+
+                                "<p>If you wish to unbook your meeting please unbook via our <a href=\"https://ddagen.se/student\" style=\"color:#ffffff;text-decoration:underline\">https://ddagen.se/student</a>.</p>"+
+                            "</td>"+
+                          "</tr>"+
+                          "<tr>"+
+                              "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
+                                "<p>If any of the information above is incorrect or if you have any other questions, do not hesitate to contact our sales team at <a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a>.</p>"+
+                                "<p>Best regards,</p>"+
+                                "<p>The D-Dagen project group</p>"+
+                              "</td>"+
+                          "</tr>"+
+                    "</tbody>"+
+                  "</table>"+
+          "</td>"+
+        "</tr>"+
+        "<tr>"+
+            "<td style=\"padding:0; margin:0;\">"+
+                "<img src=\"ddagen.se/img/email-signatur.png\" alt=\"D-Dagen logo\" style=\"width:100%; height:auto; display:block;\">"+
+            "</td>"+
+        "</tr>"+
+      "</table>",
       },
   },
   faq: {

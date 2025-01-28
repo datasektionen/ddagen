@@ -12,7 +12,7 @@ export default async function sendEmail(
       "To: " + to + "\n" +
       "Subject: " + subject + "\n" +
       "Body: \n---\n" + body +
-      "---",
+      "\n---\n",
     );
     return;
   }
