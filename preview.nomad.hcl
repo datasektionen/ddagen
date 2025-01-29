@@ -13,7 +13,7 @@ job "ddagen-dev" {
       provider = "nomad"
       tags = [
         "traefik.enable=true",
-        "traefik.http.routers.ddagen-dev.rule=Host(`dev.ddagen.se`)",
+        "traefik.http.routers.ddagen-dev.rule=Host(`dev.ddagen.se`)||Host(`dev.d-dagen.se`)",
         "traefik.http.routers.ddagen-dev.tls.certresolver=default",
       ]
     }
