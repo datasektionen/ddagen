@@ -1,3 +1,5 @@
+import { AddExhibitorForm } from "@/components/Company/Admin/AddExhibitorForm";
+
 export default {
   locale: "sv" as const,
   titles: {
@@ -986,6 +988,25 @@ export default {
       },
       none: "Vegetariskt",
     },
+    addCompany: {
+      addExhibitorSuccess: {
+        added: "Företag tillagt!",
+        reload: "Ladda om sidan..."
+      },
+      addExhibitorForm: {
+        companyName: "Företagsnamn",
+        organizationNumber: "Organisationsnummer",
+        contactPerson: "Kontaktperson",
+        telephoneNumber: "Telefonnummer",
+        email: "E-post",
+        packageTier: "Paket",
+        studentMeetings: "Student Meetings",
+        sendEmailToExhibitor: "Skicka e-post till företaget",
+        mapPosition: "Map Position",
+        meetingTimeSlots: "Meeting Timeslots",
+      },
+      addCompanyButton: "Lägg till företag"
+    }
   },
   aboutUs: {
     header: "Om Oss",

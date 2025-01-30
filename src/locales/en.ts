@@ -990,6 +990,25 @@ export default {
       },
       none: "Vegatarian",
     },
+    addCompany: {
+      addExhibitorSuccess: {
+        added: "Exhibitor added!",
+        reload: "Reload the page..."
+      },
+      addExhibitorForm: {
+        companyName: "Company Name",
+        organizationNumber: "Organization Number",
+        contactPerson: "Contact Person",
+        telephoneNumber: "Telephone number",
+        email: "Email",
+        packageTier: "Package tier",
+        studentMeetings: "Student Meetings",
+        sendEmailToExhibitor: "Send Email To Exhibitor",
+        mapPosition: "Map Position",
+        meetingTimeSlots: "Meeting Timeslots",
+      },
+      addCompanyButton: "Add a company"
+    }
   },
   aboutUs: {
     header: "About us",

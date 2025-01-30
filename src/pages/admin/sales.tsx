@@ -54,7 +54,7 @@ export default function Sales() {
 
   return (
     <div>
-      {exhibitors.length === 0 ? (
+      {password === "" ? (
         <AdminLogin t={t} login={login} />
       ) : (
         <div className="w-full h-full my-48 text-white">
