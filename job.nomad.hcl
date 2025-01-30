@@ -40,6 +40,11 @@ ENV
         destination = "local/.env"
         env         = true
       }
+
+      resources {
+        memory = 1024
+        cpu    = 200
+      }
     }
   }
 }
