@@ -71,7 +71,7 @@ export default {
       saved: "Saved",
       failed: "Failed to save, try again",
       addFirstName: "Enter your first name",
-      addLastName: "Enter your last name", 
+      addLastName: "Enter your last name",
       addYear: "Enter your year",
     },
     interests:{
@@ -80,13 +80,13 @@ export default {
     companyInterests:{
       header: "Select the companies you are interested in meeting",
       description: "Click on the companies you are interested in meeting for a company meeting. The companies will then send you invitations to meetings.",
-      checked1:"You have shown interest in meeting with ", 
+      checked1:"You have shown interest in meeting with ",
       checked2:" for a company meeting.",
     },
     companyMeeting:{
       offerText: " Has invited you to a company meeting",
       acceptDeclineText: "Choose a time to accept the offer or decline the offer",
-      chooseOption: "Choose a time:", 
+      chooseOption: "Choose a time:",
       acceptedText: "You have accepted the meeting",
       noTimesLeft: "No times left",
 
@@ -99,7 +99,7 @@ export default {
 
       meetingTimeText: "You have a meeting at",
       acceptedTime: "Time:",
-      
+
       stopDelete: "Go back",
       confirmDelete: "Are you sure you want to cancel the meeting?",
       cancelMeeting: "Cancel meeting",
@@ -120,7 +120,7 @@ export default {
     lastPageWarning: "By pressing Done I comfirm that I have read through all the input fields and have provided the correct information!",
 
 
-      
+
     start: {
       about: "ABOUT THE COMPANY",
       info: "We are interested in getting to know you better. Please fill in the following information in order for us at D-Dagen to help you find your future coworkers!",
@@ -210,6 +210,11 @@ export default {
             fullTime: "FULL-TIME JOB",
             trainee: "TRAINEE PROGRAM",
           },
+          industry: {
+          tech: "TECH",
+            finance: "FINANCE",
+            consulting: "CONSULTING",
+          },
           save: "Save",
         },
         section3: {
@@ -240,7 +245,7 @@ export default {
           tier1: "Medium",
           tier2: "Large",
           tier3: "Main Sponsor",
-          tier4: "Startup", 
+          tier4: "Startup",
         },
         packageList: [
           "Small",
@@ -319,7 +324,7 @@ export default {
           info2: "You will then be able to select which of these students you want to meet",
           info3: "The students will then be able to choose a time slot to meet you, during the fair",
           info4: "You will be able to select more students than the amout of avaiable timeslots and the first students to accept will then get the timeslots",
-          
+
         },
         section2: {
           selectAll: "Select all",
@@ -341,7 +346,7 @@ export default {
       cancel: "Cancel",
       cancelStep: "Cancel",
       confirm: "Confirm",
-      selectedStudents: "selected students", 
+      selectedStudents: "selected students",
       pendingMeetings: "pending meeting requests",
       bookedMeetings: "booked meetings",
       bookSelected: "Send meeting request",
@@ -352,7 +357,7 @@ export default {
         pending: "Pending requests",
         accepted: "Accepted requests",
       }
-      
+
     },
   },
   login: {
@@ -366,7 +371,7 @@ export default {
     confirmationCodeText2:
       "> if it is registered in our system. If you can't find the email, double check that the email address is correct and make sure to check your spam folder!",
     emailSubject: "D-Dagen Login",
-    emailBody: (code: string, link: string) => 
+    emailBody: (code: string, link: string) =>
   "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
     "<tr>"+
       "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
@@ -459,7 +464,7 @@ export default {
       email: string,
       contactPerson: string,
       phoneNumber: string
-    ) => 
+    ) =>
     "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
         "<tr>"+
           "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
@@ -504,7 +509,7 @@ export default {
                 "<img src=\"ddagen.se/img/email-signatur.png\" alt=\"D-Dagen logo\" style=\"width:100%; height:auto; display:block;\">"+
             "</td>"+
           "</tr>"+
-      "</table>" 
+      "</table>"
 ,
   },
   meeting_email: {
@@ -516,7 +521,7 @@ export default {
         firstName: string,
         lastName: string,
         companyName: string
-      )=>    
+      )=>
     "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
       "<tr>"+
         "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
@@ -602,7 +607,7 @@ export default {
       body: (
         firstName: string,
         lastName: string,
-      )=>      
+      )=>
     "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
       "<tr>"+
         "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
@@ -644,7 +649,7 @@ export default {
         firstName: string,
         lastName: string,
         companyName: string,
-      )=>    
+      )=>
     "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
       "<tr>"+
         "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
@@ -690,7 +695,7 @@ export default {
           companyName: string,
           time: string,
           location: string,
-        )=>   
+        )=>
       "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
         "<tr>"+
           "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
@@ -778,7 +783,7 @@ export default {
   },
   faq: {
     box1: "ABOUT D-DAGEN",
-    box2: "MARKETING", 
+    box2: "MARKETING",
     box3: "GENERAL",
     box4: "EVENTS",
     table1row1: "WHAT IS D-DAGEN?",
@@ -841,7 +846,7 @@ export default {
     companyForm: "https://ddagen.se/en/företagsanmälan",
   },
   packages: {
-    name: [ 
+    name: [
      "Small",
      "Medium",
      "Large",
@@ -1051,6 +1056,7 @@ export default {
       buttonOne: "Search",
       buttonTwo: "Filters",
       filterYear: "Year",
+      filterIndustry: "Industry",
     },
     floors: {
       one: "Floor 2",
