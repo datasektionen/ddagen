@@ -20,11 +20,13 @@ export function ExhibitorPanel({
   exhibitors,
   preferences,
   password,
+  reloadLogin,
 }: {
   t: Locale;
   exhibitors: Exhibitor[];
   preferences: Preferences[];
   password: string;
+  reloadLogin: () => void;
 }) {
   const [preferenceCount, setPreferenceCount] =
     useState<Map<string, { banquet: number; representative: number }>>();
@@ -94,6 +96,7 @@ export function ExhibitorPanel({
       console.log(response);
       if(response?.ok === true){
         setAddExhibitorSuccess(_ => true);
+        reloadLogin();
         return "";
       }
       return response?.error || "unknown-error";
@@ -101,6 +104,10 @@ export function ExhibitorPanel({
       return "unknown-error";
     });
     return "unknown-error";
+  }
+
+  function closeAddExhibitorForm() {
+    setShowAddExhibitor(_ => false);
   }
 
   function evaluataPreferences(
@@ -175,7 +182,7 @@ export function ExhibitorPanel({
                 </p>
                 :
                 <AddExhibitorForm 
-                  t={t} addExhibitor={handleAddExhibitor} /> 
+                  t={t} addExhibitor={handleAddExhibitor} closeModal={closeAddExhibitorForm} /> 
               ) : (
                 <button
                   className="mt-2 bg-cerise bg-blue-500 py-1 px-2 rounded-md"

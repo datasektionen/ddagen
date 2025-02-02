@@ -77,6 +77,7 @@ export default function Sales() {
               exhibitors={exhibitors}
               preferences={preferences}
               password={password}
+              reloadLogin={() => login(password)}
             />
           ) : buttonSelected == 2 ? (
             <ExtraOrderPanel t={t} exhibitors={exhibitors} />
