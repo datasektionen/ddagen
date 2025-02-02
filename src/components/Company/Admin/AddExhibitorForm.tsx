@@ -1,5 +1,5 @@
 import Locale from "@/locales";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { InputField } from "@/components/InputField";
 import { CheckMarkField } from "@/components/CheckMarkField";
 import { SelectField } from "@/components/SelectField";
@@ -9,10 +9,14 @@ import { ExhibitorInfo } from "@/shared/Classes";
 export function AddExhibitorForm({
   t,
   addExhibitor,
+  closeModal,
 }: {
   t: Locale;
   addExhibitor: (exhibitor: ExhibitorInfo) => Promise<string | undefined>;
+  closeModal: () => void;
 }) {
+  const modalRef = useRef<HTMLDivElement>(null);
+
   const [error, setError] = useState("");
   
   const [companyName, setCompanyName] = useState("");
@@ -45,6 +49,12 @@ export function AddExhibitorForm({
     );
   }
 
+  function handleOverlayClick(event: React.MouseEvent) {
+    if (modalRef.current === event.target) {
+      closeModal();
+    }
+  }
+
   function Submit({ value }: { value: string }) {
     return (
       <input
@@ -60,87 +70,107 @@ export function AddExhibitorForm({
   }
 
   return (
-    <div className="flex flex-col mb-10">
-      <h3 className="text-cerise mb-8 text-2xl font-medium uppercase">
-        {t.admin.addCompany.addCompanyButton}
-      </h3>
-
-      <form
-        className="flex flex-col gap-12 min-w-[325px] max-w-[375px]"
-        onSubmit={async (e) => {
-          e.preventDefault();
-          setError("");
-          setError(await addExhibitor(createExhibitor()) ?? "");
-        }}
+    <div
+      className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-lg z-50"
+      ref={modalRef}
+      onClick={handleOverlayClick}
+    >
+      <div
+        className={`bg-slate-200 bg-opacity-100 w-[325px] sm:w-[500px] max-h-[80vh] overflow-y-auto pb-5 flex flex-col rounded-3xl z-50`}
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
-        <InputField
-          name="companyName"
-          value={companyName}
-          type="text"
-          setValue={setCompanyName}
-          //fields={{ companyName: "Företagsnamn" }}
-          fields={{ companyName: t.admin.addCompany.addExhibitorForm.companyName }}
-        />
-        <InputField
-          name="organizationNumber"
-          value={organizationNumber}
-          type="text"
-          setValue={setOrganizationNumber}
-          //fields={{ organizationNumber: "Organisationsnummer" }}
-          fields={{ organizationNumber: t.admin.addCompany.addExhibitorForm.organizationNumber }}
-          />
-        <InputField
-          name="contactPerson"
-          value={contactPerson}
-          type="text"
-          setValue={setContactPerson}
-          //fields={{ contactPerson: "Kontaktperson" }}
-          fields={{ contactPerson: t.admin.addCompany.addExhibitorForm.contactPerson }}
-          />
-        <InputField
-          name="telephoneNumber"
-          value={telephoneNumber}
-          type="text"
-          setValue={setTelephoneNumber}
-          //fields={{ telephoneNumber: "Telefonnummer" }}
-          fields={{ telephoneNumber: t.admin.addCompany.addExhibitorForm.telephoneNumber }}
-          />
-        <InputField
-          name="email"
-          value={email}
-          type="text"
-          setValue={setEmail}
-          //fields={{ email: "E-post" }}
-          fields={{ email: t.admin.addCompany.addExhibitorForm.email }}
-          />
-        <SelectField
-          name="packageTier"
-          //[ "Small","Medium","Large","Main Sponsor","Startup"],
-          options={t.packages.name}
-          //[0, 1, 2, 3, 4]
-          values={t.packages.name.map((_,i) => i)}
-          value={packageTier}
-          setValue={handlePackageTier}
-          //fields={{ packageTier: "Paket" }}
-          fields={{ packageTier: t.admin.addCompany.addExhibitorForm.packageTier }}
-          />
-        <CheckMarkField
-          name="sendEmailToExhibitor"
-          checked={sendEmailToExhibitor}
-          type="checkbox"
-          onClick={() => setSendEmailToExhibitor(b => !b)}
-          //fields={{ sendEmailToExhibitor: "Skicka e-post till utställare" }}
-          fields={{ sendEmailToExhibitor: t.admin.addCompany.addExhibitorForm.sendEmailToExhibitor }}
-          />
-        {/*
-        Not used fields: studentMeetings, mapPosition, meetingTimeSlots
-        */}
+        <div className="relative py-[25px] justify-center flex flex-row">
+          <button
+            className="absolute top-5 right-3 w-[50px] h-[50px] flex items-center justify-center"
+            onClick={closeModal}
+          >
+            <div className="absolute h-[50px] w-[5px] bg-white rounded-md rotate-45"></div>
+            <div className="absolute h-[50px] w-[5px] bg-white rounded-md -rotate-45"></div>
+          </button>
+          <div className="px-5 mt-5">
+            <h2 className="text-black mb-8 text-3xl font-medium uppercase">
+              {t.admin.addCompany.addCompanyButton}
+            </h2>
 
-        <Submit value={t.admin.addCompany.addCompanyButton} />
-      </form>
-      {error && (
-        <p className="text-red-500 font-bold mt-6">{error}</p>
-      )}
+            <form
+              className="flex flex-col gap-12 min-w-[325px] max-w-[375px] text-black"
+              onSubmit={async (e) => {
+                e.preventDefault();
+                setError("");
+                setError(await addExhibitor(createExhibitor()) ?? "");
+              }}
+            >
+              <InputField
+                name="companyName"
+                value={companyName}
+                type="text"
+                setValue={setCompanyName}
+                //fields={{ companyName: "Företagsnamn" }}
+                fields={{ companyName: t.admin.addCompany.addExhibitorForm.companyName }}
+              />
+              <InputField
+                name="organizationNumber"
+                value={organizationNumber}
+                type="text"
+                setValue={setOrganizationNumber}
+                //fields={{ organizationNumber: "Organisationsnummer" }}
+                fields={{ organizationNumber: t.admin.addCompany.addExhibitorForm.organizationNumber }}
+              />
+              <InputField
+                name="contactPerson"
+                value={contactPerson}
+                type="text"
+                setValue={setContactPerson}
+                //fields={{ contactPerson: "Kontaktperson" }}
+                fields={{ contactPerson: t.admin.addCompany.addExhibitorForm.contactPerson }}
+              />
+              <InputField
+                name="telephoneNumber"
+                value={telephoneNumber}
+                type="text"
+                setValue={setTelephoneNumber}
+                //fields={{ telephoneNumber: "Telefonnummer" }}
+                fields={{ telephoneNumber: t.admin.addCompany.addExhibitorForm.telephoneNumber }}
+              />
+              <InputField
+                name="email"
+                value={email}
+                type="text"
+                setValue={setEmail}
+                //fields={{ email: "E-post" }}
+                fields={{ email: t.admin.addCompany.addExhibitorForm.email }}
+              />
+              <SelectField
+                name="packageTier"
+                //[ "Small","Medium","Large","Main Sponsor","Startup"],
+                options={t.packages.name}
+                //[0, 1, 2, 3, 4]
+                values={t.packages.name.map((_, i) => i)}
+                value={packageTier}
+                setValue={handlePackageTier}
+                //fields={{ packageTier: "Paket" }}
+                fields={{ packageTier: t.admin.addCompany.addExhibitorForm.packageTier }}
+              />
+              <CheckMarkField
+                name="sendEmailToExhibitor"
+                checked={sendEmailToExhibitor}
+                type="checkbox"
+                onClick={() => setSendEmailToExhibitor(b => !b)}
+                //fields={{ sendEmailToExhibitor: "Skicka e-post till utställare" }}
+                fields={{ sendEmailToExhibitor: t.admin.addCompany.addExhibitorForm.sendEmailToExhibitor }}
+              />
+              {/*
+            Not used fields: studentMeetings, mapPosition, meetingTimeSlots
+            */}
+
+              <Submit value={t.admin.addCompany.addCompanyButton} />
+            </form>
+            {error && (
+              <p className="text-red-500 font-bold mt-6">{error}</p>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
