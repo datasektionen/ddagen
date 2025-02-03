@@ -71,7 +71,7 @@ export default {
       saved: "Saved",
       failed: "Failed to save, try again",
       addFirstName: "Enter your first name",
-      addLastName: "Enter your last name", 
+      addLastName: "Enter your last name",
       addYear: "Enter your year",
     },
     interests:{
@@ -80,13 +80,13 @@ export default {
     companyInterests:{
       header: "Select the companies you are interested in meeting",
       description: "Click on the companies you are interested in meeting for a company meeting. The companies will then send you invitations to meetings.",
-      checked1:"You have shown interest in meeting with ", 
+      checked1:"You have shown interest in meeting with ",
       checked2:" for a company meeting.",
     },
     companyMeeting:{
       offerText: " Has invited you to a company meeting",
       acceptDeclineText: "Choose a time to accept the offer or decline the offer",
-      chooseOption: "Choose a time:", 
+      chooseOption: "Choose a time:",
       acceptedText: "You have accepted the meeting",
       noTimesLeft: "No times left",
 
@@ -99,7 +99,7 @@ export default {
 
       meetingTimeText: "You have a meeting at",
       acceptedTime: "Time:",
-      
+
       stopDelete: "Go back",
       confirmDelete: "Are you sure you want to cancel the meeting?",
       cancelMeeting: "Cancel meeting",
@@ -120,7 +120,7 @@ export default {
     lastPageWarning: "By pressing Done I comfirm that I have read through all the input fields and have provided the correct information!",
 
 
-      
+
     start: {
       about: "ABOUT THE COMPANY",
       info: "We are interested in getting to know you better. Please fill in the following information in order for us at D-Dagen to help you find your future coworkers!",
@@ -131,6 +131,7 @@ export default {
       logoWhite: "White Logo",
       logoColour: "Logo w/ colour",
       description: "Description",
+      industry: "Industry",
       format: "SVG or PNG",
     },
     step1: {
@@ -186,10 +187,12 @@ export default {
           header: "General Information",
           description: "Description",
           placeholderText: "About Us",
+          placeholderTextIndustry: "Our industry",
           logo: "Logo",
           logoWhite: "White Logo",
           logoColour: "Logo w/ colour",
           or: "or",
+          industry: "Industry",
         },
         section2: {
           header: "Job Offers",
@@ -209,6 +212,11 @@ export default {
             thesis: "MASTER THESIS",
             fullTime: "FULL-TIME JOB",
             trainee: "TRAINEE PROGRAM",
+          },
+          industry: {
+          tech: "TECH",
+            finance: "FINANCE",
+            consulting: "CONSULTING",
           },
           save: "Save",
         },
@@ -240,7 +248,7 @@ export default {
           tier1: "Medium",
           tier2: "Large",
           tier3: "Main Sponsor",
-          tier4: "Startup", 
+          tier4: "Startup",
         },
         packageList: [
           "Small",
@@ -319,7 +327,7 @@ export default {
           info2: "You will then be able to select which of these students you want to meet",
           info3: "The students will then be able to choose a time slot to meet you, during the fair",
           info4: "You will be able to select more students than the amout of avaiable timeslots and the first students to accept will then get the timeslots",
-          
+
         },
         section2: {
           selectAll: "Select all",
@@ -341,7 +349,7 @@ export default {
       cancel: "Cancel",
       cancelStep: "Cancel",
       confirm: "Confirm",
-      selectedStudents: "selected students", 
+      selectedStudents: "selected students",
       pendingMeetings: "pending meeting requests",
       bookedMeetings: "booked meetings",
       bookSelected: "Send meeting request",
@@ -352,7 +360,7 @@ export default {
         pending: "Pending requests",
         accepted: "Accepted requests",
       }
-      
+
     },
   },
   login: {
@@ -366,7 +374,7 @@ export default {
     confirmationCodeText2:
       "> if it is registered in our system. If you can't find the email, double check that the email address is correct and make sure to check your spam folder!",
     emailSubject: "D-Dagen Login",
-    emailBody: (code: string, link: string) => 
+    emailBody: (code: string, link: string) =>
   "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
     "<tr>"+
       "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
@@ -459,48 +467,53 @@ export default {
       email: string,
       contactPerson: string,
       phoneNumber: string
-    ) => 
-      
-      "<div style=\"background-color:#14112A;padding-top:30px;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 100vw\">" +
-          "<table style=\"background-color:#DE3163;margin:30px;padding:30px;color:#ffffff;border-radius:10px\">" + 
-              "<thead style=\"font-size:24px\">" +
-                "<tr>" +
-                  "Hi!<br>" +
-                "</tr>" +
-              "</thead>" +
-              "<tbody>" +
-                "<tr>" +
-                  "<div style=\"background-color:#DE3163;color:#ffffff;\" >" +
-                    "<p>We are pleased to confirm we have received your exhibitor registration." +
-                      "We will contact you during the spring about whether you got a spot at D-Dagen." +
-                      "You can expect to hear from us during spring</p><br>" +
-                    "<p>Here are the details of your registration:</p>" +
-                  "</div>" +
-                "</tr>" +
-                "<tr>" +
-                  "<ul style=\"padding:20px 0\">" +
-                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Company name: " + companyName + "</li>" + 
-                      ((organizationNumber[0] != '0') ? "<li>Organisationsnummer: " + organizationNumber + "</li>" : "") +
-                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Email address: " + email + "</li>" + 
-                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Contact person: " + contactPerson + "</li>" +
-                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Phone number: " + phoneNumber + "</li>" + 
-                  "</ul>" + 
-                "</tr>" +
-                "<tr>" +
-                  "<div style=\"background-color:#DE3163;color:#ffffff;\" >" +
-                    "<p> If any of the information above is incorrect or if you have any other questions," + 
-                      "do not hesitate to contact our sales team at sales@ddagen.se.</p><br>" + 
-                    "<p>Thank you for your registration and we look forward to a successful event.</p><br>" + 
-                    "<p>Best regards</p><br>" + 
-                    "<p>The D-Dagen project group</p><br>" +
-                  "</div>" +
-                "</tr>" +
-              "</tbody>" +
-            "</table>" +
-            "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\" >" +
-              "<img src=\"https://dev.ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" style=\"width: 100%; height: auto; display: block;\" ></img>" + 
-            "</a>" +
-          "</div>",
+    ) =>
+    "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
+        "<tr>"+
+          "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
+              "<table style=\"background-color:#EE237B;padding:30px;color:#ffffff;border-radius:10px;width:80%;margin:auto;border-collapse:separate;border-spacing:0;box-shadow:0 4px 10px rgba(0, 0, 0, 0.2)\">"+
+                  "<thead>"+
+                        "<tr>"+
+                            "<th colspan=\"2\" style=\"font-size:24px;text-align:left;padding-bottom:20px\">Hi!</th>"+
+                        "</tr>"+
+                  "</thead>"+
+                    "<tbody>"+
+                        "<tr>"+
+                            "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
+                                "<p>We are pleased to confirm we have received your exhibitor registration. We will contact you during the spring about whether you got a spot at D-Dagen. You can expect to hear from us during spring.</p>"+
+                                "<p>Here are the details of your registration:</p>"+
+                            "</td>"+
+                          "</tr>"+
+                        "<tr>"+
+                          "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
+                                "<ul>"+
+                                    "<li>Company name: " + companyName + "</li>"+
+((organizationNumber[0] != '0') ? ("<li>Organizationumber: " + organizationNumber + "</li>") : "") +
+                                    "<li>Email address: " + email + "</li>"+
+                                    "<li>Contact person: " + contactPerson + "</li>"+
+                                    "<li>Phone number: " + phoneNumber + "</li>"+
+                                  "</ul>"+
+                                "</td>"+
+                            "</tr>"+
+                          "<tr>"+
+                            "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
+                                "<p>If any of the information above is incorrect or if you have any other questions, do not hesitate to contact our sales team at <a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a>.</p>"+
+                                "<p>Thank you for your registration and we look forward to a successful event.</p>"+
+                                "<p>Best regards,</p>"+
+                                "<p>The D-Dagen project group</p>"+
+                              "</td>"+
+                            "</tr>"+
+                        "</tbody>"+
+                  "</table>"+
+              "</td>"+
+          "</tr>"+
+          "<tr>"+
+            "<td style=\"padding:0; margin:0;\">"+
+                "<img src=\"ddagen.se/img/email-signatur.png\" alt=\"D-Dagen logo\" style=\"width:100%; height:auto; display:block;\">"+
+            "</td>"+
+          "</tr>"+
+      "</table>"
+,
   },
   meeting_email: {
     meeting_request_to_student: {
@@ -511,7 +524,7 @@ export default {
         firstName: string,
         lastName: string,
         companyName: string
-      )=>    
+      )=>
     "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
       "<tr>"+
         "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
@@ -597,7 +610,7 @@ export default {
       body: (
         firstName: string,
         lastName: string,
-      )=>      
+      )=>
     "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
       "<tr>"+
         "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
@@ -639,7 +652,7 @@ export default {
         firstName: string,
         lastName: string,
         companyName: string,
-      )=>    
+      )=>
     "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
       "<tr>"+
         "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
@@ -685,7 +698,7 @@ export default {
           companyName: string,
           time: string,
           location: string,
-        )=>   
+        )=>
       "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
         "<tr>"+
           "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
@@ -773,7 +786,7 @@ export default {
   },
   faq: {
     box1: "ABOUT D-DAGEN",
-    box2: "MARKETING", 
+    box2: "MARKETING",
     box3: "GENERAL",
     box4: "EVENTS",
     table1row1: "WHAT IS D-DAGEN?",
@@ -836,7 +849,7 @@ export default {
     companyForm: "https://ddagen.se/en/företagsanmälan",
   },
   packages: {
-    name: [ 
+    name: [
      "Small",
      "Medium",
      "Large",
@@ -1065,6 +1078,7 @@ export default {
       buttonOne: "Search",
       buttonTwo: "Filters",
       filterYear: "Year",
+      filterIndustry: "Industry",
     },
     floors: {
       one: "Floor 2",

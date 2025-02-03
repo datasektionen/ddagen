@@ -18,25 +18,11 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
   const [query, setQuery] = useState<{
     searchQuery: string;
     years: (0 | 1 | 2 | 3 | 4)[];
-    offers: {
-      summer: boolean;
-      internship: boolean;
-      partTime: boolean;
-      thesis: boolean;
-      fullTime: boolean;
-      trainee: boolean;
-    };
+    offers: string[];
   }>({
     searchQuery: "",
     years: [],
-    offers: {
-      summer: false,
-      internship: false,
-      partTime: false,
-      thesis: false,
-      fullTime: false,
-      trainee: false,
-    },
+    offers: [],
   });
   const [mapInView, setMapInView] = useState<1 | 2 | 3>(1);
   const [selectedExhibitor, setSelectedExhibitor] = useState<number>(0);
@@ -47,23 +33,23 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
         exhibitorData.map((exhibitor) => {
           if (!RegExp(query.searchQuery).test(exhibitor.name.toLowerCase()))
             return [];
-          
+
           if (query.years.length !== 0) {
-            const hasMatchingYear = 
+            const hasMatchingYear =
               query.years.some((year) =>
                 exhibitor.offers.summerJob.includes(year) ||
                 exhibitor.offers.internship.includes(year) ||
                 exhibitor.offers.partTimeJob.includes(year)
               );
-            
             if (!hasMatchingYear) {
               return [];
             }
           }
-  
-          const selectedOffers = Object.entries(query.offers).filter(([_, isSelected]) => isSelected);
-          if (selectedOffers.length > 0) {
-            const hasMatchingOffer = selectedOffers.some(([offerType, _]) => {
+
+          // const selectedOffers = Object.entries(query.offers).filter(([_, isSelected]) => isSelected);
+          if (query.offers.length > 0) {
+            // const hasMatchingOffer = selectedOffers.some(([offerType, _]) => {
+              const hasMatchingOffer = query.offers.some(([offerType, _]) => {
               switch(offerType) {
                 case 'summer':
                   return exhibitor.offers.summerJob.length > 0;
@@ -81,10 +67,10 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
                   return false;
               }
             });
-  
+
             if (!hasMatchingOffer) return [];
           }
-  
+
           return [exhibitor.position, exhibitor];
         })
       )
@@ -98,8 +84,8 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
 
   return (
     <div className="h-screen flex max-md:flex-col-reverse max-md:items-center md:flex-row md:items-start md:pt-20 overflow-hidden relative">
-      <div 
-        id="sidebar" 
+      <div
+        id="sidebar"
         className="px-4 md:pr-4 flex flex-col items-center w-full md:w-3/5 box-border"
       >
         <Search t={t} setQuery={setQuery} />
