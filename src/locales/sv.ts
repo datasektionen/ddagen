@@ -456,51 +456,27 @@ export default {
       contactPerson: string,
       phoneNumber: string
     ) => 
-    "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
-      "<tr>"+
-        "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
-            "<table style=\"background-color:#EE237B;padding:30px;color:#ffffff;border-radius:10px;width:80%;margin:auto;border-collapse:separate;border-spacing:0;box-shadow:0 4px 10px rgba(0, 0, 0, 0.2)\">"+
-                "<thead>"+
-                      "<tr>"+
-                          "<th colspan=\"2\" style=\"font-size:24px;text-align:left;padding-bottom:20px\">Hej!</th>"+
-                      "</tr>"+
-                "</thead>"+
-                  "<tbody>"+
-                      "<tr>"+
-                          "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                              "<p>Vi har nu tagit emot er intresseanmälan om att vara utställare på D-Dagen 2025! Vi kommer kontakta er under våren och meddela om ni har fått plats eller inte. Ni kan förvänta er att höra från oss under våren.</p>"+
-                              "<p>Här är detaljerna från er företagsanmälan:</p>"+
-                          "</td>"+
-                        "</tr>"+
-                      "<tr>"+
-                        "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                              "<ul>"+
-                                  "<li>Företagsnamn: " + companyName + "</li>"+
-((organizationNumber[0] != '0') ? ("<li>Organisationsnummer: " + organizationNumber + "</li>") : "") +
-                                  "<li>Mejladress: " + email + "</li>"+
-                                  "<li>Kontaktperson: " + contactPerson + "</li>"+
-                                  "<li>Telefonnummer: " + phoneNumber + "</li>"+
-                                "</ul>"+
-                              "</td>"+
-                          "</tr>"+
-                        "<tr>"+
-                          "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                              "<p>Om någon av informationen ovan inte stämmer eller om ni har andra frågor, tveka inte att kontakta vårt säljteam på <a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a>.</p>"+
-                              "<p>Tack för er intresseanmälan, hoppas ni är lika taggade som oss på D-Dagen 2025!</p>"+
-                              "<p>Med vänliga hälsningar,</p>"+
-                              "<p>D-dagens projektgrupp</p>"+
-                            "</td>"+
-                          "</tr>"+
-                      "</tbody>"+
-                "</table>"+
-            "</td>"+
-        "</tr>"+
-        "<tr>"+
-          "<td style=\"padding:0; margin:0;\">"+
-              "<img src=\"ddagen.se/img/email-signatur.png\" alt=\"D-Dagen logo\" style=\"width:100%; height:auto; display:block;\">"+
-          "</td>"+
-        "</tr>"+
-    "</table>" ,
+`
+    <p>Hi!</p>
+    <p>We are pleased to confirm we have received your exhibitor registration.
+    We will contact you during the spring about whether you got a spot at D-Dagen.
+    You can expect to hear from us during spring.</p>  
+
+    <p>Here are the details of your registration:</p>
+    <ul>
+      <li>Company Name: ${companyName}</li>
+      <li>Organization Number: ${organizationNumber}</li>
+      <li>Email Address: ${email}</li>
+      <li>Contact Person: ${contactPerson}</li>
+      <li>Phone Number: ${phoneNumber}</li>
+    </ul>
+    <p>If any of the information above is incorrect or if you have any other questions,
+    do not hesitate to contact our sales team at sales@ddagen.se.</p>
+    <p>Thank you for your registration and we look forward to a successful event.</p>
+
+    <p>Best regards,</p>
+    <p>The D-Dagen project group</p>
+    `,
   },
   meeting_email: {
     meeting_request_to_student: {
