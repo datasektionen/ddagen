@@ -461,7 +461,7 @@ export default {
       phoneNumber: string
     ) => 
       
-      "<div style=\"background-color:#090E2F;padding:30px;font-family:Arial, sans-serif;line-height:1.6; max-width: 100vw\">" +
+      "<div style=\"background-color:#14112A;padding:30px;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 100vw\">" +
           "<table style=\"background-color:#DE3163;padding:30px;color:#ffffff;border-radius:10px\">" + 
               "<thead style=\"font-size:24px\">" +
                 "<tr>" +
@@ -479,11 +479,11 @@ export default {
                 "</tr>" +
                 "<tr>" +
                   "<ul style=\"padding-top:20px\"><br>" +
-                    "<li style=\"margin: 4px; padding: 2px;\"> Company name: " + companyName + "</li><br>" + 
+                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Company name: " + companyName + "</li><br>" + 
                       ((organizationNumber[0] != '0') ? "<li>Organisationsnummer: " + organizationNumber + "</li><br>" : "") +
-                    "<li style=\"margin: 4px; padding: 2px;\"> Email address: " + email + "</li><br>" + 
-                    "<li style=\"margin: 4px; padding: 2px;\"> Contact person: " + contactPerson + "</li><br>" +
-                    "<li style=\"margin: 4px; padding: 2px;\"> Phone number: " + phoneNumber + "</li><br>" + 
+                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Email address: " + email + "</li><br>" + 
+                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Contact person: " + contactPerson + "</li><br>" +
+                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Phone number: " + phoneNumber + "</li><br>" + 
                   "</ul>" + 
                 "</tr>" +
                 "<tr>" +
@@ -498,7 +498,7 @@ export default {
               "</tbody>" +
             "</table>" +
             "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\" >" +
-              "<img src=\"https://dev.ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" style=\"width: 100%; height: auto; display: block;\" ></img>" + 
+              "<img src=\"https://dev.ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" style=\"width: 100%; max-width: 1190px; height: auto; display: block;\" ></img>" + 
             "</a>" +
           "</div>",
   },
