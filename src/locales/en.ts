@@ -131,6 +131,7 @@ export default {
       logoWhite: "White Logo",
       logoColour: "Logo w/ colour",
       description: "Description",
+      industry: "Industry",
       format: "SVG or PNG",
     },
     step1: {
@@ -186,10 +187,12 @@ export default {
           header: "General Information",
           description: "Description",
           placeholderText: "About Us",
+          placeholderTextIndustry: "Our industry",
           logo: "Logo",
           logoWhite: "White Logo",
           logoColour: "Logo w/ colour",
           or: "or",
+          industry: "Industry",
         },
         section2: {
           header: "Job Offers",

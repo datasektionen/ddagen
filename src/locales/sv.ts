@@ -130,6 +130,7 @@ export default {
       logoWhite: "Vit Logga",
       logoColour: "Logga m. färg",
       description: "Beskrivning",
+      industry: "Bransch",
       format: "SVG eller PNG",
     },
     step1: {
@@ -185,10 +186,12 @@ export default {
           header: "Allmän Info",
           description: "Beskrivning",
           placeholderText: "Om oss",
+          placeholderTextIndustry: "Vår branch",
           logo: "Logga",
           logoWhite: "Vit Logga",
           logoColour: "Logga m. färg",
           or: "eller",
+          industry: "Bransch",
         },
         section2: {
           header: "Jobberbjudanden",
