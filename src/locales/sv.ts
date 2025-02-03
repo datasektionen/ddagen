@@ -473,12 +473,12 @@ export default {
                   "</div>" +
                 "</tr>" +
                 "<tr>" +
-                  "<ul style=\"padding-top:20px\"><br>" +
-                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Company name: " + companyName + "</li><br>" + 
-                      ((organizationNumber[0] != '0') ? "<li>Organisationsnummer: " + organizationNumber + "</li><br>" : "") +
-                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Email address: " + email + "</li><br>" + 
-                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Contact person: " + contactPerson + "</li><br>" +
-                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Phone number: " + phoneNumber + "</li><br>" + 
+                  "<ul style=\"padding:20px 0;\">" +
+                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Company name: " + companyName + "</li>" + 
+                      ((organizationNumber[0] != '0') ? "<li>Organisationsnummer: " + organizationNumber + "</li>" : "") +
+                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Email address: " + email + "</li>" + 
+                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Contact person: " + contactPerson + "</li>" +
+                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Phone number: " + phoneNumber + "</li>" + 
                   "</ul>" + 
                 "</tr>" +
                 "<tr>" +
