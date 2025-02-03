@@ -30,6 +30,7 @@ export default function Exhibitor() {
   const [whiteLogo, setWhiteLogo] = useState("");
   const [colorLogo, setColorLogo] = useState("");
   const [description, setDescription] = useState("");
+  const [industry, setIndustry] = useState("");
   const [checkmarks, setCheckMarks] = useState<boolean[]>([]);
   const [extras, setExtras] = useState<Extras>();
   const [preferenceCount, setPreferenceCount] = useState({
@@ -44,6 +45,7 @@ export default function Exhibitor() {
   const setExtrasMutation: ReturnType<typeof api.exhibitor.setExtras.useMutation> = api.exhibitor.setExtras.useMutation();
   const logoMutation = api.exhibitor.setLogo.useMutation();
   const descriptionMutation = api.exhibitor.setDescription.useMutation();
+  const industryMutation = api.exhibitor.setIndustry.useMutation();
   const jobOffersMutation = api.exhibitor.setJobOffers.useMutation();
   const setInfoStatus = api.exhibitor.setInfoStatus.useMutation();
 
@@ -51,6 +53,7 @@ export default function Exhibitor() {
   // Queries
   const getLogos = api.exhibitor.getLogo.useQuery();
   const getDescription = api.exhibitor.getDescription.useQuery();
+  const getIndustry = api.exhibitor.getIndustry.useQuery();
   const getName = api.exhibitor.getName.useQuery();
   const getJobOffers = api.exhibitor.getJobOffers.useQuery();
   const getExtras = api.exhibitor.getExtras.useQuery();
@@ -84,6 +87,7 @@ export default function Exhibitor() {
                 kind: "color",
             })
             descriptionMutation.mutateAsync(description)
+            industryMutation.mutateAsync(industry)
             break;
         case 2:
             jobOffersMutation.mutateAsync({
@@ -128,16 +132,19 @@ export default function Exhibitor() {
       else{
         setShowSetUpPage(true)
         setPage(getInfoStatus.data)
-      }  
-      
+      }
     }
   },[getInfoStatus.data])
-  
 
   useEffect(() => {
     if (!getDescription.isSuccess) return;
     setDescription(getDescription.data.description);
   }, [getDescription.data]);
+
+  useEffect(() => {
+    if (!getIndustry.isSuccess) return;
+    setIndustry(getIndustry.data.industry ?? "");
+  }, [getIndustry.data]);
 
   useEffect(() => {
     if (!getLogos.isSuccess) return;
@@ -167,7 +174,6 @@ export default function Exhibitor() {
   useEffect(() => {
     if (!getExhibitor.isSuccess) return;
     const exhibitor = getExhibitor.data;
-    
     console.log(getExhibitor.data);
     const exhibitorPackage = new Package(t, exhibitor.packageTier);
     console.log(exhibitor);
@@ -264,6 +270,7 @@ export default function Exhibitor() {
         kind: "color",
       }),
       descriptionMutation.mutateAsync(description),
+      industryMutation.mutateAsync(industry),
       jobOffersMutation.mutateAsync({
         summerJob: getCheckmarksPos("summer"),
         internship: getCheckmarksPos("intern"),
@@ -314,15 +321,15 @@ export default function Exhibitor() {
   ];
 
     {/*Save changes logic*/}
-    
+
     useEffect(() => {
       if (typeof saveChanges === "boolean") {
         setTimeout(() => {
           setSaveChanges(undefined);
         }, 3000);
       }
-    }, [saveChanges]);  
-  
+    }, [saveChanges]);
+
 
   {/*Page Content */}
   const table = Table(
@@ -341,15 +348,17 @@ export default function Exhibitor() {
         colorLogo={colorLogo}
         setColorLogo={setColorLogo}
         description={description}
-        setDescription={setDescription}/>
+        setDescription={setDescription}
+        industry={industry}
+        setIndustry={setIndustry}/>
 
         <JobOffers
           t={t}
           rows={rows}
         />
         <div className="flex flex-col w-full items-center mb-8 ">
-          
-   
+
+
           <button
             className="block uppercase hover:scale-105 transition-transform
                     bg-cerise rounded-full text-white text-base font-normal
@@ -358,7 +367,7 @@ export default function Exhibitor() {
           >
             {t.exhibitorSettings.table.row1.section2.save}
           </button>
-          
+
           {saveChanges == true && (
           <p className="text-green-500 font-bold mt-6 ">{t.success.save}</p>
           )}
@@ -366,7 +375,7 @@ export default function Exhibitor() {
             <p className="text-red-500 font-bold mt-6 ">{t.error.unknown}</p>
           )}
         </div>
-       
+
         <UserDetails t={t}/>
       </>,
       <ExtraFairOrders
@@ -384,17 +393,17 @@ export default function Exhibitor() {
         exhibitorPackage={exhibitorPackage}
       />,
     ]
-  );  
+  );
 
   const pageContent = [
-    <>  
-      <div className="uppercase text-cerise text-xl md:text-2xl font font-medium text-center px-[10px] break-words"> 
+    <>
+      <div className="uppercase text-cerise text-xl md:text-2xl font font-medium text-center px-[10px] break-words">
         {t.exhibitorSettings.startHeader}
       </div>
       <h2>
         {}
       </h2>
-      <div className="w-full min:h-[400px] flex flex-col items-center"> 
+      <div className="w-full min:h-[400px] flex flex-col items-center">
         <button className="mt-4 mb-4" onClick={nextPage}>
           <a className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-medium px-6 py-2 max-lg:mx-auto w-max">
             {t.exhibitorSettings.startButton}
@@ -410,9 +419,11 @@ export default function Exhibitor() {
       colorLogo={colorLogo}
       setColorLogo={setColorLogo}
       description={description}
-      setDescription={setDescription}/>
+      setDescription={setDescription}
+      industry={industry}
+      setIndustry={setIndustry}/>
     </>,
-    <>  
+    <>
       <JobOffers
       t={t}
       rows={rows}
@@ -433,7 +444,7 @@ export default function Exhibitor() {
       setPreferenceCount={setPreferenceCount}
       exhibitorPackage={exhibitorPackage}
     />,
-    
+
   ]
 
   {/*Page Content */}
@@ -450,7 +461,7 @@ export default function Exhibitor() {
           <li> <span className="text-yellow font-bold w-4 mr-2">3: </span> {t.exhibitorSettings.table.row4.section1.info3}</li>
           <li> <br></br></li>
           <li> {t.exhibitorSettings.table.row4.section1.info4}</li>
-        </ul> 
+        </ul>
       </>,
     ]
   );
@@ -463,7 +474,7 @@ export default function Exhibitor() {
       <div className="mx-auto flex flex-col items-center py-40 cursor-default">
         {/*Header*/}
         <h1 className="uppercase text-cerise text-3xl md:text-5xl font-medium text-center px-[10px] break-words">
-          {t.exhibitorSettings.header} 
+          {t.exhibitorSettings.header}
         </h1>
         <h2 className="text-white text-xl pt-2" >
           {name}
@@ -474,17 +485,17 @@ export default function Exhibitor() {
 
         {/*Dropdown table*/}
         <div className="h-full min-w-[200px] max-w-[1200px] w-full mt-8 px-[20px] min-[450px]:px-[60px] min-[704px]:px-[60px] ">
-          
-          {showSetUpPage ?  
-          
+
+          {showSetUpPage ?
+
           <div className=" w-full rounded-2xl bg-white/20 backdrop-blur-md text-white pt-8 overflow-hidden border-2 border-cerise">
             {pageContent[page]}
             <div className="w-full flex justify-center ">
 
 
-              {page > 1 ? <button className="mt-4 mb-4 mx-2" onClick={prevPage}> 
+              {page > 1 ? <button className="mt-4 mb-4 mx-2" onClick={prevPage}>
                 <a className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-medium px-6 py-2 max-lg:mx-auto w-max">
-                {t.exhibitorSettings.previousPage } 
+                {t.exhibitorSettings.previousPage }
                 </a>
               </button>: <> </> }
               {page < pageAmout-1 && page > 0 ? <button className="mt-4 mb-4 mx-2" onClick={nextPage}>
@@ -493,7 +504,7 @@ export default function Exhibitor() {
               </a>
               </button> : <> </> }
 
-              {page == pageAmout -1 ? 
+              {page == pageAmout -1 ?
                   <button className="mt-4 mb-4 mx-2" onClick={nextPage}>
                   <a className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-medium px-6 py-2 max-lg:mx-auto w-max">
                     {t.exhibitorSettings.lastPage}
@@ -504,28 +515,28 @@ export default function Exhibitor() {
               {page > 0 ?  <p> {t.exhibitorSettings.lastPageText} </p> : <> </>}
             </div>
           </div>
-          :  
+          :
           <>{table}</>}
-     
+
 
           {/* Packages that have the student meeting functionality*/}
-          { hasMeeting && !showSetUpPage ? 
+          { hasMeeting && !showSetUpPage ?
           <div>
 
             <h2 className="text-cerise text-2xl md:text-4xl font-medium text-center pt-12">{t.exhibitorSettings.table.row4.title} </h2>
-            
+
             <div className="hidden lg:block">
               {meetings}
             </div>
             <p className="block lg:hidden text-white text-center text-2xl"> {t.exhibitorSettings.meetings.caution} </p>
             <CompanyMeetingBooker/>
 
-          </div> 
-          
-          
+          </div>
+
+
           : <></> }
-        
-          
+
+
         </div>
       </div>
     </>

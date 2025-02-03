@@ -36,6 +36,7 @@ export default function GeneralInfo(
               <div className="">
                 <TextInput
                     description={description}
+                    name="description"
                     setDescription={setDescription}
                     textAbove={t.exhibitorSettings.table.row1.section1.description}
                     placeHolderText={
@@ -46,6 +47,7 @@ export default function GeneralInfo(
               <div>
                 <TextInput
                   description={industry}
+                  name="industry"
                   setDescription={setIndustry}
                   textAbove={t.exhibitorSettings.table.row1.section1.industry}
                   placeHolderText={
