@@ -460,6 +460,7 @@ export default {
       contactPerson: string,
       phoneNumber: string
     ) => 
+    "<div>" +
     "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
         "<tr>"+
           "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
@@ -504,7 +505,8 @@ export default {
                 "<img src=\"ddagen.se/img/email-signatur.png\" alt=\"D-Dagen logo\" style=\"width:100%; height:auto; display:block;\">"+
             "</td>"+
           "</tr>"+
-      "</table>" 
+      "</table>" +
+    "</div>"
 ,
   },
   meeting_email: {
