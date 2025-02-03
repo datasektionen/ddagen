@@ -470,30 +470,36 @@ export default {
               "</thead>" +
               "<tbody>" +
                 "<tr>" +
-                  "<p>We are pleased to confirm we have received your exhibitor registration." +
-                    "We will contact you during the spring about whether you got a spot at D-Dagen." +
-                    "You can expect to hear from us during spring</p><br>" +
-                  "<p>Here are the details of your registration:</p>" +
-                  "<ul style=\"padding-top:20px\"><br>" +
-                    "<li> Company name: " + companyName + "</li><br>" + 
-                      ((organizationNumber[0] != '0') ? "<li>Organisationsnummer: " + organizationNumber + "</li><br>" : "") +
-                    "<li> Email address: " + email + "</li><br>" + 
-                    "<li> Contact person: " + contactPerson + "</li><br>" +
-                    "<li> Phone number: " + phoneNumber + "</li><br>" + 
-                  "</ul>" + 
-                  "<p> If any of the information above is incorrect or if you have any other questions," + 
-                    "do not hesitate to contact our sales team at sales@ddagen.se.</p><br>" + 
-                  "<p>Thank you for your registration and we look forward to a successful event.</p><br>" + 
-                  "<p>Best regards</p><br>" + 
-                  "<p>The D-Dagen project group</p><br>" +
+                  "<div style=\"background-color:#DE3163;color:#ffffff;\" >" +
+                    "<p>We are pleased to confirm we have received your exhibitor registration." +
+                      "We will contact you during the spring about whether you got a spot at D-Dagen." +
+                      "You can expect to hear from us during spring</p><br>" +
+                    "<p>Here are the details of your registration:</p>" +
+                  "</div>" +
                 "</tr>" +
                 "<tr>" +
-                  "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\" " +
-                    "<img src=\"https://dev.ddagen.se/img/d-dagen-logo.png\" alt=\"Ddagen logga\" style=\"width: 100%; max-width: 400px; height: auto; display: block;\" >" + 
-                  "</a>" +
+                  "<ul style=\"padding-top:20px\"><br>" +
+                    "<li style=\"margin: 4px; padding: 2px;\"> Company name: " + companyName + "</li><br>" + 
+                      ((organizationNumber[0] != '0') ? "<li>Organisationsnummer: " + organizationNumber + "</li><br>" : "") +
+                    "<li style=\"margin: 4px; padding: 2px;\"> Email address: " + email + "</li><br>" + 
+                    "<li style=\"margin: 4px; padding: 2px;\"> Contact person: " + contactPerson + "</li><br>" +
+                    "<li style=\"margin: 4px; padding: 2px;\"> Phone number: " + phoneNumber + "</li><br>" + 
+                  "</ul>" + 
+                "</tr>" +
+                "<tr>" +
+                  "<div style=\"background-color:#DE3163;color:#ffffff;\" >" +
+                    "<p> If any of the information above is incorrect or if you have any other questions," + 
+                      "do not hesitate to contact our sales team at sales@ddagen.se.</p><br>" + 
+                    "<p>Thank you for your registration and we look forward to a successful event.</p><br>" + 
+                    "<p>Best regards</p><br>" + 
+                    "<p>The D-Dagen project group</p><br>" +
+                  "</div>" +
                 "</tr>" +
               "</tbody>" +
             "</table>" +
+            "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\" >" +
+              "<img src=\"https://dev.ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" style=\"width: 100%; height: auto; display: block;\" ></img>" + 
+            "</a>" +
           "</div>",
   },
   meeting_email: {
