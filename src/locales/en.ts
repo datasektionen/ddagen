@@ -461,8 +461,8 @@ export default {
       phoneNumber: string
     ) => 
       
-      "<div style=\"background-color:#14112A;padding:30px;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 100vw\">" +
-          "<table style=\"background-color:#DE3163;padding:30px;color:#ffffff;border-radius:10px\">" + 
+      "<div style=\"background-color:#14112A;padding-top:30px;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 100vw\">" +
+          "<table style=\"background-color:#DE3163;margin:30px;padding:30px;color:#ffffff;border-radius:10px\">" + 
               "<thead style=\"font-size:24px\">" +
                 "<tr>" +
                   "Hi!<br>" +
@@ -498,7 +498,7 @@ export default {
               "</tbody>" +
             "</table>" +
             "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\" >" +
-              "<img src=\"https://dev.ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" style=\"width: 100%; max-width: 1190px; height: auto; display: block;\" ></img>" + 
+              "<img src=\"https://dev.ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" style=\"width: 100%; height: auto; display: block;\" ></img>" + 
             "</a>" +
           "</div>",
   },
