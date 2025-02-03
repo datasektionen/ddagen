@@ -38,8 +38,12 @@ model Exhibitor {
   extraChairs               Int @default(0)
   extraDrinkCoupons         Int @default(0)
   extraRepresentativeSpots  Int @default(0)
+  extraMealCoupons          Int @default(0)
   totalBanquetTicketsWanted Int @default(0)
 
+  socialMediaPost            Int @default(0)
+  panelDiscussion            Int @default(0)
+  goodiebagLogo              Int @default(0)
   customTables               Int @default(0)
   customChairs               Int @default(0)
   customDrinkCoupons         Int @default(0)
@@ -57,6 +61,11 @@ model Exhibitor {
   sessions   Session[]
 
   infoSubmissionStatus Int @default(0)
+
+  industry     String?
+  industryType String? 
+
+  lastChanged  DateTime?
 
   @@map("exhibitors")
 }
@@ -107,6 +116,7 @@ model FoodPreferences {
   value   FoodPreferencesValue[]
   comment String
   type    FoodPreferencesType
+  alcPreference Int @default(1)
 
   exhibitor   Exhibitor @relation(fields: [exhibitorId], references: [id], onDelete: Cascade)
   exhibitorId String
