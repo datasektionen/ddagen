@@ -161,6 +161,7 @@ export default {
       removeContact: "Ta bort",
       allergyValue: "Specifikation",
       allergyComment: "Kommentar",
+      companyName: "Företagsnamn",
     },
     fieldsAddContact: {
       id: "ID",
@@ -465,47 +466,52 @@ export default {
       email: string,
       contactPerson: string,
       phoneNumber: string
-    ) => 
-    "<div style=\"background-color:#14112A;padding-top:30px;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 100vw\">" +
-      "<table style=\"background-color:#DE3163;margin:30px;padding:30px;color:#ffffff;border-radius:10px\">" + 
-          "<thead style=\"font-size:24px\">" +
-            "<tr>" +
-              "Hi!<br>" +
-            "</tr>" +
-          "</thead>" +
-          "<tbody>" +
-            "<tr>" +
-              "<div style=\"background-color:#DE3163;color:#ffffff;\" >" +
-                "<p>We are pleased to confirm we have received your exhibitor registration. " +
-                  "We will contact you during the spring about whether you got a spot at D-Dagen. " +
-                  "You can expect to hear from us during spring. </p><br>" +
-                "<p>Here are the details of your registration: </p>" +
-              "</div>" +
-            "</tr>" +
-            "<tr>" +
-              "<ul style=\"padding:20px 0\">" +
-                "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Company name: " + companyName + "</li>" + 
-                  ((organizationNumber[0] != '0') ? "<li>Organisationsnummer: " + organizationNumber + "</li>" : "") +
-                "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Email address: " + email + "</li>" + 
-                "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Contact person: " + contactPerson + "</li>" +
-                "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Phone number: " + phoneNumber + "</li>" + 
-              "</ul>" + 
-            "</tr>" +
-            "<tr>" +
-              "<div style=\"background-color:#DE3163;color:#ffffff;\" >" +
-                "<p> If any of the information above is incorrect or if you have any other questions, " + 
-                  "do not hesitate to contact our sales team at sales@ddagen.se. </p><br>" + 
-                "<p>Thank you for your registration and we look forward to a successful event. </p><br>" + 
-                "<p>Best regards, </p><br>" + 
-                "<p>The D-Dagen project group</p><br>" +
-              "</div>" +
-            "</tr>" +
-          "</tbody>" +
-        "</table>" +
-        "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\" >" +
-          "<img src=\"https://dev.ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" style=\"width: 100%; height: auto; display: block;\" ></img>" + 
-        "</a>" +
-      "</div>",
+    ) =>
+    "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
+      "<tr>"+
+        "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
+            "<table style=\"background-color:#EE237B;padding:30px;color:#ffffff;border-radius:10px;width:80%;margin:auto;border-collapse:separate;border-spacing:0;box-shadow:0 4px 10px rgba(0, 0, 0, 0.2)\">"+
+                "<thead>"+
+                      "<tr>"+
+                          "<th colspan=\"2\" style=\"font-size:24px;text-align:left;padding-bottom:20px\">Hej!</th>"+
+                      "</tr>"+
+                "</thead>"+
+                  "<tbody>"+
+                      "<tr>"+
+                          "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
+                              "<p>Vi har nu tagit emot er intresseanmälan om att vara utställare på D-Dagen 2025! Vi kommer kontakta er under våren och meddela om ni har fått plats eller inte. Ni kan förvänta er att höra från oss under våren.</p>"+
+                              "<p>Här är detaljerna från er företagsanmälan:</p>"+
+                          "</td>"+
+                        "</tr>"+
+                      "<tr>"+
+                        "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
+                              "<ul>"+
+                                  "<li>Företagsnamn: " + companyName + "</li>"+
+((organizationNumber[0] != '0') ? ("<li>Organisationsnummer: " + organizationNumber + "</li>") : "") +
+                                  "<li>Mejladress: " + email + "</li>"+
+                                  "<li>Kontaktperson: " + contactPerson + "</li>"+
+                                  "<li>Telefonnummer: " + phoneNumber + "</li>"+
+                                "</ul>"+
+                              "</td>"+
+                          "</tr>"+
+                        "<tr>"+
+                          "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
+                              "<p>Om någon av informationen ovan inte stämmer eller om ni har andra frågor, tveka inte att kontakta vårt säljteam på <a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a>.</p>"+
+                              "<p>Tack för er intresseanmälan, hoppas ni är lika taggade som oss på D-Dagen 2025!</p>"+
+                              "<p>Med vänliga hälsningar,</p>"+
+                              "<p>D-dagens projektgrupp</p>"+
+                            "</td>"+
+                          "</tr>"+
+                      "</tbody>"+
+                "</table>"+
+            "</td>"+
+        "</tr>"+
+        "<tr>"+
+          "<td style=\"padding:0; margin:0;\">"+
+              "<img src=\"ddagen.se/img/email-signatur.png\" alt=\"D-Dagen logo\" style=\"width:100%; height:auto; display:block;\">"+
+          "</td>"+
+        "</tr>"+
+    "</table>" ,
   },
   meeting_email: {
     meeting_request_to_student: {
@@ -1137,3 +1143,4 @@ export default {
     },
   },
 };
+

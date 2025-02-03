@@ -207,6 +207,14 @@ export const exhibitorRouter = createTRPCRouter({
       select: { name: true },
     });
   }),
+  setName: protectedProcedure
+    .input(z.string())
+    .mutation(async ({ ctx, input }) => {
+      await ctx.prisma.exhibitor.update({
+        where: { id: ctx.session.exhibitorId },
+        data: { name: input },
+      });
+    }),
   getDescription: protectedProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.exhibitor.findUniqueOrThrow({
       where: { id: ctx.session.exhibitorId },

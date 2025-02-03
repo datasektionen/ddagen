@@ -12,6 +12,7 @@ import { UserDetails } from "@/components/Company/User/UserDetails";
 import { CheckMark } from "@/components/CheckMark";
 import { addImageDetails } from "@/shared/addImageDetails";
 import CompanyMeetingBooker from "@/components/Company/ExtraOrders/CompanyMeetingBooker";
+import { InputField } from "@/components/InputField";
 
 // TODO hook the next button to the save features
 // Maby break save changes into a separate steps for each page
@@ -40,6 +41,7 @@ export default function Exhibitor() {
   const [exhibitorPackage, setExhibitorPackage] = useState(new Package(t, -1));
   const [showSetUpPage, setShowSetUpPage] = useState<boolean>(false);
   const [hasMeeting, setHasMeeting] = useState<boolean>(false);
+  const [editState, setEditState] = useState<boolean>(false);
 
   // Mutations
   const setExtrasMutation: ReturnType<typeof api.exhibitor.setExtras.useMutation> = api.exhibitor.setExtras.useMutation();
@@ -48,6 +50,7 @@ export default function Exhibitor() {
   const industryMutation = api.exhibitor.setIndustry.useMutation();
   const jobOffersMutation = api.exhibitor.setJobOffers.useMutation();
   const setInfoStatus = api.exhibitor.setInfoStatus.useMutation();
+  const setNameMutation = api.exhibitor.setName.useMutation();
 
 
   // Queries
@@ -287,6 +290,13 @@ export default function Exhibitor() {
       });
   }
 
+  async function editCompanyName() {
+    if (editState) {
+      await setNameMutation.mutateAsync(name);
+    }
+    setEditState(!editState);
+  }
+
   const rows = [
     {
       jobOffer: t.exhibitorSettings.table.row1.section2.jobs.summer,
@@ -476,9 +486,26 @@ export default function Exhibitor() {
         <h1 className="uppercase text-cerise text-3xl md:text-5xl font-medium text-center px-[10px] break-words">
           {t.exhibitorSettings.header}
         </h1>
-        <h2 className="text-white text-xl pt-2" >
-          {name}
-        </h2>
+        <div className="flex flex-row items-center gap-4 mt-4">
+          <h2 className="text-white text-xl pt-2" >
+            {editState ? <InputField
+              value={name}
+              name="companyName"
+              fields={t.exhibitorSettings.fields}
+              setValue={setName}
+              />
+              :
+              name}
+          </h2>
+          <a
+          className={`hover:cursor-pointer ${
+            editState
+            ? "block uppercase hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-normal mt-4 px-8 py-2 max-lg:mx-auto w-max"
+            : "hover:scale-105 transition-transform bg-editIcon bg-white bg-[length:30px_30px] w-[33px] h-[33px] bg-no-repeat bg-origin-content mt-4 pl-1 pb-1 rounded-md"
+            }`}
+            onClick={editCompanyName}
+            >{editState && t.exhibitorSettings.table.row1.section2.save}</a>
+        </div>
         {/*Header*/}
 
         {/*Selection Cards*/}
