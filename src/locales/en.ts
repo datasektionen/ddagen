@@ -461,35 +461,39 @@ export default {
       phoneNumber: string
     ) => 
       
-      "<div style=\"background-color:#090E2F;padding:30px;font-family:Arial, sans-serif;line-height:1.6\">" +
+      "<div style=\"background-color:#090E2F;padding:30px;font-family:Arial, sans-serif;line-height:1.6; max-width: 100vw\">" +
           "<table style=\"background-color:#DE3163;padding:30px;color:#ffffff;border-radius:10px\">" + 
               "<thead style=\"font-size:24px\">" +
-              "<tr>" +
-              "Hi!<br>" +
-              "/tr" +
+                "<tr>" +
+                  "Hi!<br>" +
+                "</tr>" +
               "</thead>" +
               "<tbody>" +
-              "<tr>" +
-              "<p>We are pleased to confirm we have received your exhibitor registration." +
-              "We will contact you during the spring about whether you got a spot at D-Dagen." +
-              "You can expect to hear from us during spring</p><br>" +
-              "<p>Here are the details of your registration:</p>" +
-              "<ul><br>" +
-                "<li> Company name: " + companyName + "</li><br>" + 
-                ((organizationNumber[0] != '0') ? "<li>Organisationsnummer: " + organizationNumber + "</li><br>" : "") +
-                "<li> Email address: " + email + "</li><br>" + 
-                "<li> Contact person: " + contactPerson + "</li><br>" +
-                "<li> Phone number: " + phoneNumber + "</li><br>" + 
-              "</ul>" + 
-              "<p> If any of the information above is incorrect or if you have any other questions," + 
-              "do not hesitate to contact our sales team at sales@ddagen.se.</p><br>" + 
-              "<p>Thank you for your registration and we look forward to a successful event.</p><br>" + 
-              "<p>Best regards</p><br>" + 
-              "<p>The D-Dagen project group</p><br>" +
+                "<tr>" +
+                  "<p>We are pleased to confirm we have received your exhibitor registration." +
+                    "We will contact you during the spring about whether you got a spot at D-Dagen." +
+                    "You can expect to hear from us during spring</p><br>" +
+                  "<p>Here are the details of your registration:</p>" +
+                  "<ul style=\"padding-top:20px\"><br>" +
+                    "<li> Company name: " + companyName + "</li><br>" + 
+                      ((organizationNumber[0] != '0') ? "<li>Organisationsnummer: " + organizationNumber + "</li><br>" : "") +
+                    "<li> Email address: " + email + "</li><br>" + 
+                    "<li> Contact person: " + contactPerson + "</li><br>" +
+                    "<li> Phone number: " + phoneNumber + "</li><br>" + 
+                  "</ul>" + 
+                  "<p> If any of the information above is incorrect or if you have any other questions," + 
+                    "do not hesitate to contact our sales team at sales@ddagen.se.</p><br>" + 
+                  "<p>Thank you for your registration and we look forward to a successful event.</p><br>" + 
+                  "<p>Best regards</p><br>" + 
+                  "<p>The D-Dagen project group</p><br>" +
+                "</tr>" +
+                "<tr>" +
+                  "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\" " +
+                    "<img src=\"https://dev.ddagen.se/img/d-dagen-logo.png\" alt=\"Ddagen logga\" style=\"width: 100%; max-width: 400px; height: auto; display: block;\" >" + 
+                  "</a>" +
+                "</tr>" +
               "</tbody>" +
-              "</tr>" +
-              "</table>" +
-              "<img src=\"https://dev.ddagen.se/img/d-dagen-logo.png\" alt=\"Ddagen logga\">" + 
+            "</table>" +
           "</div>",
   },
   meeting_email: {
