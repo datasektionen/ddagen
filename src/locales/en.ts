@@ -462,10 +462,10 @@ export default {
     ) => 
       "<table border=\"0\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" align=\"center\" style=\"max-width:600px; margin:auto; background: #14112A\" bgcolor=\"#14112A\" class=\"email-container\">" +
         "<tr>" +
-          "<td>" +
-            "<table border=\"0\" width=\"100%\" style=\"margin: 0 30px; background: #DE3163\" cellpadding=\"0\" cellspacing=\"0\" bgcolor=\"#DE3163\">" +
+          "<td style=\"margin: 0 30px; padding: 30px; background: #DE3163; border-radius: 10px;\" bgcolor=\"#DE3163\">" +
+            "<table border=\"0\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" >" +
               "<tr>" +
-                "<td style=\"padding: 30px 30px 0 30px; color= #ffffff;\">" +
+                "<td style=\"color= #ffffff;\">" +
                   "<p>We are pleased to confirm we have received your exhibitor registration. " +
                     "We will contact you during the spring about whether you got a spot at D-Dagen. " +
                     "You can expect to hear from us during spring. </p><br>" +
@@ -473,7 +473,7 @@ export default {
                 "</td>" +
               "</tr>" +
               "<tr>" +
-                "<td style=\"padding: 20px 30px; margin: 0; color: #ffffff;\" >" +
+                "<td style=\"padding: 20px 0; margin: 0; color: #ffffff;\" >" +
                   "<ul style=\"padding: 0; margin: 0;\">" +
                     "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Company name: " + companyName + "</li>" + 
                       ((organizationNumber[0] != '0') ? "<li>Organisationsnummer: " + organizationNumber + "</li>" : "") +
@@ -484,7 +484,7 @@ export default {
                 "</td>" +
               "</tr>" +
               "<tr>" +
-                "<td style=\"padding: 30px 30px 0 30px; color: #ffffff;\">" +
+                "<td style=\"color: #ffffff;\">" +
                   "<p> If any of the information above is incorrect or if you have any other questions, " + 
                     "do not hesitate to contact our sales team at sales@ddagen.se. </p><br>" + 
                   "<p>Thank you for your registration and we look forward to a successful event. </p><br>" + 
@@ -496,13 +496,11 @@ export default {
           "</td>" +
         "</tr>" +
         "<tr>" +
-          "<td>" +
+          "<td style=\"background: #14112A\" bgcolor=\"#14112A\">" +
             "<table border=\"0\" width=\"100%\" style=\"margin: 0;\" cellpadding=\"0\" cellspacing=\"0\">" +
               "<tr>" +
                 "<td>" +
-                  "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\" >" +
-                    "<img src=\"https://dev.ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" style=\"width: 100%; height: auto; display: block;\" ></img>" + 
-                  "</a>" +
+                  "<img src=\"https://dev.ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" style=\"width: 100%; height: auto; display: block;\" ></img>" + 
                 "</td>" +
               "</tr>" +
             "</table>" +
