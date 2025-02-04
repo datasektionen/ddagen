@@ -460,73 +460,47 @@ export default {
       contactPerson: string,
       phoneNumber: string
     ) => 
-      "<div>" +
-
-        "<!-- Start big wrapper -->" +
-        "<table border=\"0\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" align=\"center\" style=\"max-width:600px; margin:auto; background: #14112A\" bgcolor=\"#14112A; font-family:Arial, sans-serif;font-size: 16px; line-height:1.6;\">" +
-          "<tr>" +
-            "<td>" +
-
-              "<!-- Start big cerise section -->" +
-              "<table border=\"0\" width=\"100%\" style=\"margin: 0;\" cellpadding=\"0\" cellspacing=\"0\">" +
-                "<tr>" +
-                  "<td style=\"margin: 5px 30px; padding: 30px; background: #DE3163; border-radius: 10px;\" bgcolor=\"#DE3163\">" +
-
-                    "<!-- Start big text content section -->" +
-                    "<table border=\"0\" width=\"100%\" style=\"border-radius: 10px;\" cellpadding=\"0\" cellspacing=\"0\" >" +
-                      "<tr>" +
-                        "<td style=\"color= #ffffff; padding: 0; margin: 0; background: #DE3163;\">" +
-                          "<p>We are pleased to confirm we have received your exhibitor registration. " +
-                            "We will contact you during the spring about whether you got a spot at D-Dagen. " +
-                            "You can expect to hear from us during spring. </p><br>" +
-                          "<p>Here are the details of your registration: </p>" +
-                        "</td>" +
-                      "</tr>" +
-                      "<tr>" +
-                        "<td style=\"padding: 20px 0; margin: 0; color: #ffffff; background: #DE3163;\" >" +
-                          "<ul style=\"padding: 0; margin: 0;\">" +
-                            "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Company name: " + companyName + "</li>" + 
-                              ((organizationNumber[0] != '0') ? "<li>Organisationsnummer: " + organizationNumber + "</li>" : "") +
-                            "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Email address: " + email + "</li>" + 
-                            "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Contact person: " + contactPerson + "</li>" +
-                            "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Phone number: " + phoneNumber + "</li>" + 
-                          "</ul>" + 
-                        "</td>" +
-                      "</tr>" +
-                      "<tr>" +
-                        "<td style=\"padding: 0; margin: 0; color: #ffffff; background: #DE3163;\">" +
-                          "<p> If any of the information above is incorrect or if you have any other questions, " + 
-                            "do not hesitate to contact our sales team at sales@ddagen.se. </p><br>" + 
-                          "<p>Thank you for your registration and we look forward to a successful event. </p><br>" + 
-                          "<p>Best regards, </p><br>" + 
-                          "<p>The D-Dagen project group</p><br>" +
-                        "</td>" +
-                      "</tr>" +
-                    "</table>" +
-                  "</td>" +
-                "</tr>" +
-              "</table>" +
-              "<!-- End big cerise section -->" +
-
-            "</td>" +
-          "</tr>" +
-
-          "<tr>" +
-          "<td style=\"margin: 0; padding: 0; background: #14112A;\" bgcolor=\"#14112A\">" +
-
-              "<!-- Start image section -->" +
-              "<table border=\"0\" width=\"100%\" style=\"margin: 0;\" cellpadding=\"0\" cellspacing=\"0\">" +
-                "<tr>" +
-                  "<td width=\"100%\">" +
-                    "<img src=\"https://dev.ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\"  width=\"600\" height=\"auto\" border=\"0\" style=\"border:0; outline:none; text-decoration:none; height: auto; display:block;\" ></img>" + 
-                  "</td>" +
-                "</tr>" +
-              "</table>" +
-              "<!-- End image section -->" +
-
-            "</td>" +
-          "</tr>" +
+      "<div style=\"background-color:#14112A;padding-top:30px;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
+        "<table style=\"background-color:#DE3163;margin:30px;padding: 0;color:#ffffff;border-radius:10px; max-width: 600px;\" width=\"100%\">" + 
+          "<thead style=\"font-size:24px\">" +
+            "<tr>" +
+              "<div style=\"padding: 30px 30px 0; font-size:24px; background-color:#DE3163;color:#ffffff;\">" +
+                "Hi!<br>" +
+              "</div>" +
+            "</tr>" +
+          "</thead>" +
+          "<tbody>" +
+            "<tr>" +
+              "<div style=\"padding: 5px 30px; background-color:#DE3163;color:#ffffff;\" >" +
+                "<p>We are pleased to confirm we have received your exhibitor registration. " +
+                  "We will contact you during the spring about whether you got a spot at D-Dagen. " +
+                  "You can expect to hear from us during spring. </p><br>" +
+                "<p>Here are the details of your registration: </p>" +
+              "</div>" +
+            "</tr>" +
+            "<tr>" +
+              "<ul style=\"padding:20px 30px\">" +
+                "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Company name: " + companyName + "</li>" + 
+                  ((organizationNumber[0] != '0') ? "<li>Organisationsnummer: " + organizationNumber + "</li>" : "") +
+                "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Email address: " + email + "</li>" + 
+                "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Contact person: " + contactPerson + "</li>" +
+                "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Phone number: " + phoneNumber + "</li>" + 
+              "</ul>" + 
+            "</tr>" +
+            "<tr>" +
+              "<div style=\"padding: 0 30px 30px; background-color:#DE3163;color:#ffffff;\" >" +
+                "<p> If any of the information above is incorrect or if you have any other questions, " + 
+                  "do not hesitate to contact our sales team at sales@ddagen.se. </p><br>" + 
+                "<p>Thank you for your registration and we look forward to a successful event. </p><br>" + 
+                "<p>Best regards, </p><br>" + 
+                "<p>The D-Dagen project group</p><br>" +
+              "</div>" +
+            "</tr>" +
+          "</tbody>" +
         "</table>" +
+        "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\" >" +
+          "<img src=\"https://dev.ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\" ></img>" + 
+        "</a>" +
       "</div>",
   },
   meeting_email: {
