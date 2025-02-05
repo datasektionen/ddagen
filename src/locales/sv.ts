@@ -456,9 +456,8 @@ export default {
       contactPerson: string,
       phoneNumber: string
     ) => 
-      "<div style=\"background:#14112A;padding-top:30px;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
-        "<div style=\"background:#DE3163;margin:30px;padding: 0;color:#ffffff;border-radius:10px; max-width: 600px;\" width=\"100%\">" + 
-          "<table style=\"background:#DE3163;margin:0;padding: 0;color:#ffffff;border-radius:10px; max-width: 600px;\" width=\"100%\">" + 
+      "<div style=\"background:#14112A;padding: 0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
+          "<table style=\"background:#DE3163;border-size: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" + 
             "<tbody>" +
               "<tr>" +
                 "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
@@ -497,7 +496,6 @@ export default {
               "</tr>" +
             "</tbody>" +
           "</table>" +
-        "</div>" +
         "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\" >" +
           "<img src=\"https://dev.ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\" ></img>" + 
         "</a>" +
