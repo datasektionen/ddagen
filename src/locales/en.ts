@@ -480,7 +480,7 @@ export default {
               "</tr>" +
               "<tr>" +
                 "<div style\"background:#DE3163;color:#ffffff;\">" +
-                  "<ul style=\"padding:20px 30px;background:#DE3163;color:#ffffff;\">" +
+                  "<ul style=\"padding:20px 30px; margin: 0; background:#DE3163;color:#ffffff;\">" +
                     "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Company name: " + companyName + "</li>" + 
                       ((organizationNumber[0] != '0') ? "<li>Organisationsnummer: " + organizationNumber + "</li>" : "") +
                     "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Email address: " + email + "</li>" + 
