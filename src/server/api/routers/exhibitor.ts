@@ -135,6 +135,7 @@ export const exhibitorRouter = createTRPCRouter({
         extraTables: z.number(),
         extraDrinkCoupons: z.number(),
         extraRepresentativeSpots: z.number(),
+        extraMealCoupons: z.number(),
       })
     )
     .mutation(async ({ ctx, input }) => {
@@ -147,6 +148,7 @@ export const exhibitorRouter = createTRPCRouter({
           extraTables: input.extraTables,
           extraDrinkCoupons: input.extraDrinkCoupons,
           extraRepresentativeSpots: input.extraRepresentativeSpots,
+          extraMealCoupons: input.extraMealCoupons,
         },
       });
     }),
@@ -173,6 +175,7 @@ export const exhibitorRouter = createTRPCRouter({
         extraDrinkCoupons: true,
         extraRepresentativeSpots: true,
         totalBanquetTicketsWanted: true,
+        extraMealCoupons: true,
       },
     });
   }),
@@ -184,6 +187,7 @@ export const exhibitorRouter = createTRPCRouter({
         extraDrinkCoupons: z.number(),
         extraRepresentativeSpots: z.number(),
         totalBanquetTicketsWanted: z.number(),
+        extraMealCoupons: z.number(),
       })
     )
     .mutation(async ({ ctx, input }) => {
@@ -195,6 +199,7 @@ export const exhibitorRouter = createTRPCRouter({
           extraDrinkCoupons: input.extraDrinkCoupons,
           extraRepresentativeSpots: input.extraRepresentativeSpots,
           totalBanquetTicketsWanted: input.totalBanquetTicketsWanted,
+          extraMealCoupons: input.extraMealCoupons,
         },
       });
     }),

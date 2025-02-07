@@ -57,6 +57,7 @@ export class Package {
   drinkCoupons: number;
   representatives: number;
   banquetTickets: number;
+  mealCoupons: number;
 
   constructor(t: Locale, exhibitorPackageTier: number) {
     switch ( exhibitorPackageTier ) {
@@ -67,6 +68,7 @@ export class Package {
         this.drinkCoupons = 8;
         this.representatives = 2;
         this.banquetTickets = 2;
+        this.mealCoupons = 2;
         break;
       case 1:
         this.name = t.packages.name[1];
@@ -75,6 +77,7 @@ export class Package {
         this.drinkCoupons = 8;
         this.representatives = 3;
         this.banquetTickets = 2;
+        this.mealCoupons = 3;
         break;
       case 2:
         this.name = t.packages.name[2];
@@ -83,6 +86,7 @@ export class Package {
         this.drinkCoupons = 16;
         this.representatives = 4;
         this.banquetTickets = 4;
+        this.mealCoupons = 4;
         break;
       case 3:
         this.name = t.packages.name[3];
@@ -91,6 +95,7 @@ export class Package {
         this.drinkCoupons = 16; 
         this.representatives = 10;
         this.banquetTickets = 2;
+        this.mealCoupons = 4; // Tillfälligt tils jag får mer info om paketet
         break;
       case 4:
         this.name = t.packages.name[4];
@@ -99,6 +104,7 @@ export class Package {
         this.drinkCoupons = 0;
         this.representatives = 2;
         this.banquetTickets = 0;
+        this.mealCoupons = 2; // Tillfälligt
         break;
       default:
         this.name = "Something went wrong with the package, contact sales";
@@ -107,6 +113,7 @@ export class Package {
         this.drinkCoupons = 0;
         this.representatives = 0;
         this.banquetTickets = 0;
+        this.mealCoupons = 0;
         break;
     }
   }
@@ -116,13 +123,15 @@ export class Package {
     chairs: number,
     drinkCoupons: number,
     representatives: number,
-    banquetTickets: number
+    banquetTickets: number,
+    mealCoupons: number
   ) {
     this.tables += tables;
     this.chairs += chairs;
     this.drinkCoupons += drinkCoupons;
     this.representatives += representatives;
     this.banquetTickets += banquetTickets;
+    this.mealCoupons += mealCoupons;
   }
 }
 
@@ -132,6 +141,7 @@ export type ExhibitorExtras = {
   drinkCoupons: number;
   representativeSpots: number;
   banquetTicket: number;
+  mealCoupons: number;
 };
 
 export class Extras {
@@ -140,19 +150,22 @@ export class Extras {
   extraDrinkCoupons: number;
   extraRepresentativeSpots: number;
   totalBanquetTicketsWanted: number;
+  extraMealCoupons: number;
 
   constructor(
     extraChairs: number,
     extraTables: number,
     extraDrinkCoupons: number,
     extraRepresentativeSpots: number,
-    totalBanquetTicketsWanted: number
+    totalBanquetTicketsWanted: number,
+    extraMealCoupons: number
   ) {
     this.extraChairs = extraChairs;
     this.extraTables = extraTables;
     this.extraDrinkCoupons = extraDrinkCoupons;
     this.extraRepresentativeSpots = extraRepresentativeSpots;
     this.totalBanquetTicketsWanted = totalBanquetTicketsWanted;
+    this.extraMealCoupons = extraMealCoupons;
   }
 }
 
@@ -170,6 +183,7 @@ export class Exhibitor {
   extraChairs: number;
   extraDrinkCoupons: number;
   extraRepresentativeSpots: number;
+  extraMealCoupons: number;
   totalBanquetTicketsWanted: number;
   jobOfferId: string;
   customTables: number;
@@ -193,6 +207,7 @@ export class Exhibitor {
     extraChairs: number,
     extraDrinkCoupons: number,
     extraRepresentativeSpots: number,
+    extraMealCoupons: number,
     totalBanquetTicketsWanted: number,
     jobOfferId: string,
     customTables: number,
@@ -215,6 +230,7 @@ export class Exhibitor {
     this.extraChairs = extraChairs;
     this.extraDrinkCoupons = extraDrinkCoupons;
     this.extraRepresentativeSpots = extraRepresentativeSpots;
+    this.extraMealCoupons = extraMealCoupons
     this.totalBanquetTicketsWanted = totalBanquetTicketsWanted;
     this.jobOfferId = jobOfferId;
     this.customTables = customTables;

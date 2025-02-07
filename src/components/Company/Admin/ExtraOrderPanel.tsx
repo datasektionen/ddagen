@@ -18,6 +18,7 @@ export function ExtraOrderPanel({
       drinkCoupons: 0,
       representativeSpots: 0,
       banquetTicket: 0,
+      mealCoupons: 0,
     };
     let extras = {
       tables: 0,
@@ -25,6 +26,7 @@ export function ExtraOrderPanel({
       drinkCoupons: 0,
       representativeSpots: 0,
       banquetTicket: 0,
+      mealCoupons: 0,
     };
 
     exhibitors.map((exhibitor) => {
@@ -38,12 +40,14 @@ export function ExtraOrderPanel({
         p.representatives + exhibitor.customRepresentativeSpots;
       exhibitorPackage.banquetTicket +=
         p.banquetTickets + exhibitor.customRepresentativeSpots;
+      exhibitorPackage.mealCoupons += p.mealCoupons;
 
       extras.tables += exhibitor.extraTables;
       extras.chairs += exhibitor.extraChairs;
       extras.drinkCoupons += exhibitor.extraDrinkCoupons;
       extras.representativeSpots += exhibitor.extraRepresentativeSpots;
       extras.banquetTicket += exhibitor.totalBanquetTicketsWanted;
+      extras.mealCoupons += exhibitor.extraMealCoupons;
     });
 
     setExtras([exhibitorPackage, extras]);
@@ -97,6 +101,17 @@ export function ExtraOrderPanel({
                     {extras
                       ? extras?.[0].representativeSpots +
                         extras?.[1].representativeSpots
+                      : 0}
+                  </td>
+                </tr>
+                <tr className="text-center">
+                  <td>{t.admin.extraOrders.row.mealCoupons}</td>
+                  <td>{extras?.[0].mealCoupons}</td>
+                  <td>{extras?.[1].mealCoupons}</td>
+                  <td>
+                    {extras
+                      ? extras?.[0].mealCoupons +
+                        extras?.[1].mealCoupons
                       : 0}
                   </td>
                 </tr>

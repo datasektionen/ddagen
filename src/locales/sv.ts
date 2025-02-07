@@ -263,6 +263,7 @@ export default {
             third: "Totalt",
           },
           drinkCoupons: "Barbongar",
+          mealCoupons: "Måltidsbiljetter",
           tables: "Bord",
           chairs: "Stolar",
           representatives: "Representanter",
@@ -951,6 +952,7 @@ export default {
           drinkCoupons: "Barbongar",
           representativeSpots: "Representantplatser",
           banquetTickets: "Sittningsbiljetter",
+          mealCoupons: "Måltidsbiljetter",
         },
         verification: {
           name: "Verification",
@@ -973,6 +975,7 @@ export default {
         drinkCoupons: "Barbongar",
         representatives: "Representanter",
         banquetTickets: "Sittningsbiljetter",
+        mealCoupons: "Måltidsbiljetter",
       },
     },
     preferences: {

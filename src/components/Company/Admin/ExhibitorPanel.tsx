@@ -263,6 +263,10 @@ export function ExhibitorPanel({
                           {exhibitor.extraRepresentativeSpots}
                         </div>
                         <div>
+                          {t.admin.sales.header.extras.mealCoupons}:{" "}
+                          {exhibitor.extraMealCoupons}
+                        </div>
+                        <div>
                           {t.admin.sales.header.extras.banquetTickets}:{" "}
                           {exhibitor.totalBanquetTicketsWanted}
                         </div>
