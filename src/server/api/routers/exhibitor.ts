@@ -163,6 +163,7 @@ export const exhibitorRouter = createTRPCRouter({
         customRepresentativeSpots: true,
         customBanquetTicketsWanted: true,
         studentMeetings: true, 
+        extraMealCoupons: true, // Måste kanske lägga till customMealCoupons i db, känns inte nödvändigt just nu
       },
     });
   }),

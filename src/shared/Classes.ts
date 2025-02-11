@@ -95,7 +95,7 @@ export class Package {
         this.drinkCoupons = 16; 
         this.representatives = 10;
         this.banquetTickets = 2;
-        this.mealCoupons = 4; // Tillfälligt tils jag får mer info om paketet
+        this.mealCoupons = 4; 
         break;
       case 4:
         this.name = t.packages.name[4];
@@ -104,7 +104,7 @@ export class Package {
         this.drinkCoupons = 0;
         this.representatives = 2;
         this.banquetTickets = 0;
-        this.mealCoupons = 2; // Tillfälligt
+        this.mealCoupons = 2; 
         break;
       default:
         this.name = "Something went wrong with the package, contact sales";
