@@ -456,7 +456,7 @@ export default {
       contactPerson: string,
       phoneNumber: string
     ) => 
-      "<div style=\"background:#14112A;padding: 0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
+      "<div style=\"padding: 0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
           "<table style=\"background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" + 
             "<tbody>" +
               "<tr>" +
