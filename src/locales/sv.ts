@@ -456,13 +456,13 @@ export default {
       contactPerson: string,
       phoneNumber: string
     ) => 
-      "<div style=\"padding: 0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
+      "<div style=\"box-sizing:border-box;padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
           "<table style=\"background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" + 
             "<tbody>" +
               "<tr>" +
                 "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
                   "<p>" +
-                    "Hi!<br>" +
+                    "Hi!<br><br>" +
                   "</p>" +
                 "</div>" +
               "</tr>" +
@@ -471,7 +471,7 @@ export default {
                   "<p>We are pleased to confirm we have received your exhibitor registration. " +
                     "We will contact you during the spring about whether you got a spot at D-Dagen. " +
                     "You can expect to hear from us during spring. </p><br>" +
-                  "<p>Here are the details of your registration: </p>" +
+                  "<p>Here are the details of your registration: </p><br>" +
                 "</div>" +
               "</tr>" +
               "<tr>" +
@@ -482,7 +482,7 @@ export default {
                     "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Email address: " + email + "</li>" + 
                     "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Contact person: " + contactPerson + "</li>" +
                     "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Phone number: " + phoneNumber + "</li>" + 
-                  "</ul>" +
+                  "</ul><br>" +
                 "</div>" +
               "</tr>" +
               "<tr>" +
