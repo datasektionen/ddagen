@@ -466,13 +466,13 @@ export default {
               "<tr>" +
                 "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
                   "<p>" +
-                    "Hi!<br><br>" +
+                  "Hi!<br>" +
                   "</p>" +
                 "</div>" +
               "</tr>" +
               "<tr>" +
                 "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
-                  "<p>We are pleased to confirm we have received your exhibitor registration. " +
+                  "<br><br><p>We are pleased to confirm we have received your exhibitor registration. " +
                     "We will contact you during the spring about whether you got a spot at D-Dagen. " +
                     "You can expect to hear from us during spring. </p><br><br>" +
                   "<p>Here are the details of your registration: </p><br><br>" +
