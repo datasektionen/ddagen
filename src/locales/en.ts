@@ -133,7 +133,6 @@ export default {
       description: "Description",
       industry: "Industry",
       format: "SVG or PNG",
-      billingAddress: "Billing Address",
     },
     step1: {
       title: "JOB OFFERS",
@@ -190,13 +189,11 @@ export default {
           description: "Description",
           placeholderText: "About Us",
           placeholderTextIndustry: "Our industry",
-          placeholderTextBillingAddress: "Our billing address",
           logo: "Logo",
           logoWhite: "White Logo",
           logoColour: "Logo w/ colour",
           or: "or",
           industry: "Industry",
-          billingAddress: "Billing Address",
         },
         section2: {
           header: "Job Offers",
