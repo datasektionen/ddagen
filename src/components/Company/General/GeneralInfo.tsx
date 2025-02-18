@@ -14,8 +14,6 @@ export default function GeneralInfo(
         setDescription,
         industry,
         setIndustry,
-        billingAddress,
-        setBillingAddress,
     }: {
         t: Locale;
         whiteLogo: string;
@@ -26,8 +24,6 @@ export default function GeneralInfo(
         setDescription: React.Dispatch<React.SetStateAction<string>>;
         industry: string;
         setIndustry: React.Dispatch<React.SetStateAction<string>>;
-        billingAddress: string;
-        setBillingAddress: React.Dispatch<React.SetStateAction<string>>;
     }
 
 ) {
@@ -80,17 +76,6 @@ export default function GeneralInfo(
                     textInsideMiddle="/img/fluga_gra.png"
                     textInsideBottom={`SVG ${t.exhibitorSettings.table.row1.section1.or} PNG`}
                     accept={["image/png", "image/svg+xml"]}
-                    />
-                </div>
-                <div>
-                    <TextInput
-                    description={billingAddress}
-                    name="billingAddress"
-                    setDescription={setBillingAddress}
-                    textAbove={t.exhibitorSettings.table.row1.section1.billingAddress}
-                    placeHolderText={
-                        t.exhibitorSettings.table.row1.section1.placeholderTextBillingAddress
-                    }
                     />
                 </div>
               </div>

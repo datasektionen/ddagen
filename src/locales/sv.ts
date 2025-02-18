@@ -134,7 +134,6 @@ export default {
       description: "Beskrivning",
       industry: "Bransch",
       format: "SVG eller PNG",
-      billingAddress: "Faktureringsadress",
     },
     step1: {
       title: "JOBBERBJUDANDEN",
@@ -191,13 +190,11 @@ export default {
           description: "Beskrivning",
           placeholderText: "Om oss",
           placeholderTextIndustry: "Vår branch",
-          placeholderTextBillingAddress: "Vår faktureringsadress",
           logo: "Logga",
           logoWhite: "Vit Logga",
           logoColour: "Logga m. färg",
           or: "eller",
           industry: "Bransch",
-          billingAddress: "Faktureringsadress",
         },
         section2: {
           header: "Jobberbjudanden",
@@ -1021,7 +1018,7 @@ export default {
   },
   aboutUs: {
     header: "Om Oss",
-    subHeader: "Möt Projektgruppen 2024",
+    subHeader: "Möt Projektgruppen 2025",
     paragraph1:
       "D-Dagen är en årlig företagsmässa som anordnas av Datasektionen på KTH. På D-Dagen har företag möjlighet att möta och interagera med potentiella framtida anställda från KTH. Samtidigt erbjuder vi våra studenter en chans att lära sig mer om karriärmöjligheter, nätverka och delta i föreläsningar och andra företagsevent.",
     paragraph2:
