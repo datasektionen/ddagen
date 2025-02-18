@@ -16,7 +16,6 @@ export default function ForCompanies() {
         <GridCollage
           t={t}
           home={false}
-          scrollRef={scrollRef}
           rightImage={["/img/ff1.webp", "People talking", "absolute bottom-0 w-full"]}
           leftImage={["/img/ff2.webp", "People talking", "absolute bottom-0 w-full object-cover"]}
         />

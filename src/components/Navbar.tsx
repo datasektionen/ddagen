@@ -158,7 +158,7 @@ function Group({
             width: `${longestWord * 12}px`,
           }}
           className={
-            "block absolute -z-10 " +
+            "block absolute z-10 " +
             (hovered
               ? "bg-[#666474] bg-opacity-60 rounded-md -top-[50px] -left-[20px] w-full "
               : "pointer-events-none")
@@ -293,7 +293,7 @@ export default function Navbar() {
         <div
           className="
           h-20 px-7 flex justify-between items-center
-          bg-gradient-to-t from-transparent to-[#000b]
+          bg-[linear-gradient(rgba(15,20,45,1),rgba(15,20,45,0.75))]
           w-full 
           lg:absolute lg:justify-center
         "
@@ -337,7 +337,7 @@ export default function Navbar() {
           ` + (open ? "left-0" : "-left-full")
           }
         >
-          <div className="flex flex-col lg:flex-row items-center px-14 pb-0 lg:px-0 lg:pb-0  mb-4">
+          <div className="flex flex-col lg:flex-row items-center px-14 pb-0 lg:px-0 lg:pb-0 mb-1">
             <a className="sr-only focus:not-sr-only" href="#main-content">
               {t.toContent}
             </a>

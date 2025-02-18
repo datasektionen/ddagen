@@ -42,15 +42,15 @@ const App: AppType = ({ Component, pageProps }) => {
       </AnimationProvidor>
         <div
           className="
-            bg-[linear-gradient(rgba(17,12,48,0),rgba(238,42,123,0.88)),url('/img/bg.png')]
-            bg-top
-            bg-[length:160%] md:bg-[length:100vw]
-            bg-blend-hue
-            bg-repeat
             overflow-x-hidden
+            relative
           "
           id="main-content"
         >
+          <div className="absolute w-full h-full z-[-2] bg-[#0F142D]"></div>
+          <div className="absolute w-full h-full z-[-1] 
+              bg-[url('/img/bg-spiral.svg')] bg-blend-hue bg-repeat
+              bg-[length:100%] md:bg-[length:100vw]"></div>
           <ModalContextProvider>
             <Component  {...pageProps} />
           </ModalContextProvider>

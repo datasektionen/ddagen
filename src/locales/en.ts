@@ -6,9 +6,11 @@ export default {
   about: "About Us",
   home: {
     introFirstBlock:
-      "It’s once again time for D-Dagen, the largest job fair for Computer Science students in the Nordics.",
+      "The largest job fair for Computer Science students in the Nordics",
     introSecondBlock:
-      "Are you studying Computer Science or IT and looking for your future work place, or do you represent a company and are looking for talented co-workers? In that case, D-Dagen is the perfect opportunity for you to meet people from the industry and expand your network with valuable contacts! We’re striving to make this year's fair the largest so far, with over 100+ exhibitors and 3000+ participants.",
+      "Are you studying Computer Science or IT and looking for your future work place, or do you represent a company and are looking for talented co-workers?",
+    introThirdBlock:
+      "In that case, D-Dagen is the perfect opportunity for you to meet people from the industry and expand your network with valuable contacts! We’re striving to make this year's fair the largest so far, with over 100+ exhibitors and 3000+ participants.",
     introSignOff: "Looking forward to meeting you!",
     introDDA: "Toshihide Sakao & William Nordwall, Project Managers",
     representative: "Company Representative?",
@@ -16,9 +18,9 @@ export default {
       "Do you want to reach thousands of Computer Science Engineering students at KTH? As an exhibitor at D-Dagen you have the opportunity to do so! Click the button below to read more and make an application of interest .",
     representativeButton: "Interest Registration",
     stats: {
-      firstPart: "100+ exhibitors",
-      secondPart: "3000+ participants",
-      thirdPart: "October 9th, 10:00 AM - 4:00 PM",
+      firstPart: "October 9th",
+      secondPart: "10:00 AM - 4:00 PM",
+      thirdPart: "KTH",
     },
     countDown:{
       days: "days",

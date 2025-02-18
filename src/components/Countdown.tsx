@@ -5,16 +5,18 @@ import {useEffect, useState} from "react";
 function TimeUnit({time, timeString}: {time: number; timeString: string}){
   // "w-1/2 max-auto bg-cerise py-2.5 rounded-full"
   return(
-        <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full
-                flex flex-col  items-center justify-center
-                bg-cerise">
+        <div className="w-16 h-32 sm:w-24 sm:h-48
+            flex flex-col
+            bg-[url('/img/ballonger/ballong_1.svg')] bg-cover bg-16">
 
-          <div className="text-white text-xl sm:text-4xl text-center">
-            {time}
-          </div>
-
-          <div className="text-white text-xs sm:text-lg text-center">
-            {timeString}
+          <div className="w-16 h-20 sm:w-24 sm:h-[7.75rem] 
+              flex flex-col items-center justify-center">
+            <div className="text-white text-xl sm:text-4xl leading-[1.25rem] sm:leading-[1.75rem] text-center">
+              {time}
+            </div>
+            <div className="text-white text-xs sm:text-lg text-center">
+              {timeString}
+            </div>
           </div>
 
         </div>
@@ -57,7 +59,7 @@ export function Countdown() {
   },[]);
 
   return (
-    <div className="pb-[100px] hover:cursor-default gap-5 columns-4 items-stretch flex items-center justify-center">
+    <div className="hover:cursor-default gap-5 columns-4 items-stretch flex items-center justify-center">
       <TimeUnit time={days} timeString={t.home.countDown.days}/>
       <TimeUnit time={hours} timeString={t.home.countDown.hours}/>
       <TimeUnit time={minutes} timeString={t.home.countDown.minutes}/>

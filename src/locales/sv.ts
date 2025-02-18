@@ -8,9 +8,11 @@ export default {
   about: "Om Oss",
   home: {
     introFirstBlock:
-      "Nu är det återigen dags för D-Dagen, Nordens största arbetsmarknads-dag för datateknikstudenter.",
+      "Nordens största arbetsmarknadsdag för datateknikstudenter",
     introSecondBlock:
-      "Är du en student inom data eller IT och söker efter din framtida arbetsplats,  eller representerar du ett företag som letar talangfulla medarbetare? Då är D-Dagen ett perfekt tillfälle för dig att träffa personer inom branschen och knyta värdefulla kontakter! Vi strävar mot att årets mässa ska bli den största hittills, med över 100+ utställare och 3000+ deltagare. ",
+      "Är du en student inom data eller IT och söker efter din framtida arbetsplats,  eller representerar du ett företag som letar talangfulla medarbetare?", 
+    introThirdBlock: 
+      "Då är D-Dagen ett perfekt tillfälle för dig att träffa personer inom branschen och knyta värdefulla kontakter! Vi strävar mot att årets mässa ska bli den största hittills, med över 100+ utställare och 3000+ deltagare. ",
     introSignOff: "Hoppas vi ses!",
     introDDA: "Toshihide Sakao & William Nordwall, D-Dagenansvariga",
     representative: "Företagsrepresentant?",
@@ -18,9 +20,9 @@ export default {
       "Vill du nå ut till tusentals civilingenjörs-studenter vid KTH? Som utställare på D-Dagen har du möjlighet att göra just det! Klicka här nedanför för att läsa mer och göra en intresseanmälan.",
     representativeButton: "Intresseanmälan",
     stats: {
-      firstPart: "100+ utställare",
-      secondPart: "3000+ deltagare",
-      thirdPart: "9 oktober 10:00 - 16:00",
+      firstPart: "9 oktober",
+      secondPart: "10:00 - 16:00",
+      thirdPart: "KTH",
     },
     countDown:{
       days: "dagar",
