@@ -12,11 +12,11 @@ function stripLastName(name: string) {
 }
 
 const managersName        = ["Max Berglund", "Mortada Nasser"]
-const prNames             = ["Felicia Murkes","Cissy Yang","Emilie Cao","Julia Potrus","Robert Rosenquist"]
-const devNames            = ["Viktor Rönnbacka Nybäck", "Nils Malmberg", "Sofia Edvardsson", "Ivar Boqvist"]
-const salesNames          = ["Oskar Furuhed", "Leo Modahed", "Johanna Plant", "Ella Hedberg", "Mimmi Weng", "Samuel Flodin", "Oskar Furuhed", "Farhan Syed"]
-const massNames           = ["Felicia Murkes", "Abhinav Sasikumar","Arman Montazeri","Max Berglund", "Adam Njegovanovic","Abdelrahman Aldaker"]
-const ecoNames            = ["Oscar Witt","Roger Chen"]
+const prNames             = ["Julia Potrus", "Sabrina Larsson", "Natalia Winiarska", "Tasfia Alam", "Abdelrahman Aldaker"]
+const devNames            = ["Theodor Fritsch", "Linus Rackner", "Elsa Linnéusson",  "David Björklund"]
+const salesNames          = ["Oskar Furuhed", "Josef Behnam", "Sean Zishend", "Hedda Litzén Hagström", "Didzis Urtnas", "Ludwig Berglind", "Oliver Zhou", "Jamie Groop"]
+const massNames           = ["Felicia Murkes", "Silan Centinkaya", "Emanuel Malki", "Elias Rosberg", "Amar Ibrahim", "Viktor Rogalin"]
+const ecoNames            = ["Melissa Arslan", "Anton Jansson"]
 
 const managersImages      = managersName.map(stripLastName).map(formatImagePath);
 const prTeamImages        = prNames.map(stripLastName).map(formatImagePath);
@@ -145,7 +145,7 @@ export default function AboutUs() {
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 md:gap-8 gap-0 mt-0 lg:mt-12 ">
           <Team
             teamIndivudualImages={managersImages}
-            teamPic="/img/projectGroup/g_leadgroup.jpg"
+            teamPic="/img/projectGroup/g_dda.jpg"
             names={managersName}
             teamRoles={t.aboutUs.ddaRoles}
             teamName={t.aboutUs.teamNames[0]}
