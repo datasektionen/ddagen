@@ -2,44 +2,43 @@ import { useLocale } from "@/locales";
 export default function Contact() {
   const t = useLocale();
   const names = [
-    "Toshihide Sakao",
-    "William Nordwall",
+    "Mortada Nasser",
+    "Max Berglund",
+    "Julia Potrus", 
+    "Theodor Fritsch",
     "Felicia Murkes", 
-    "Viktor Rönnbacka ",
-    "Mortada Nasser", 
-    "Linus Markström", 
-    "Oscar Witt", 
+    "Oskar Furuhed", 
+    "Melissa Arslan", 
   ];
   const roles = t.contact.roles;
   const phones = [
-    "072-889 52 83",
-    "070-338 35 92",
-    "076-715 50 85",
-    "070-100 70 59", 
-    "072-044 01 44", 
-    "070-517 72 78", 
-    "070-351 90 99",
+    "072-044 01 44",
+    "076-133 08 99",
+    "072-040 66 69",
+    "070-840 25 57", 
+    "076-715 50 85", 
+    "072-035 80 39", 
+    "076-076 20 81",
   ];
   const images = [
-    "/img/projectGroup/p_toshihide.jpg",
-    "/img/projectGroup/p_william.jpg",
+    "/img/projectGroup/p_mortada.jpg",
+    "/img/projectGroup/p_max.jpg",
+    "/img/projectGroup/p_julia.jpg", 
+    "/img/projectGroup/p_theodor.jpg", 
     "/img/projectGroup/p_felicia.jpg", 
-    "/img/projectGroup/p_viktor.jpg", 
-    "/img/projectGroup/p_mortada.jpg", 
-    "/img/projectGroup/p_linus.jpg", 
-    "/img/projectGroup/p_oscar.jpg",
-    "/img/projectGroup/p_oscar.jpg",
-    "/img/projectGroup/p_oscar.jpg",
-    "/img/projectGroup/p_oscar.jpg",
+    "/img/projectGroup/p_oskar.jpg", 
+    "/img/projectGroup/p_melissa.jpg",
+    "/img/projectGroup/p_melissa.jpg",
+    "/img/projectGroup/p_melissa.jpg",
   ];
   const mails = [
     "ansvarig@ddagen.se",
     "ansvarig@ddagen.se",
+    "julia.potrus@ddagen.se", 
+    "theodor.fritsch@ddagen.se", 
     "felicia.murkes@ddagen.se", 
-    "viktor.ronnbacka@ddagen.se", 
-    "mortada.nasser@ddagen.se", 
-    "linus.markstrom@ddagen.se", 
-    "oscar.witt@ddagen.se",
+    "oskar.furuhed@ddagen.se", 
+    "melissa.arslan@ddagen.se",
   ];
   const rows1 = [0, 1, 2];
   const layout1 = [
@@ -76,7 +75,7 @@ export default function Contact() {
         </div>
 
         <div className="flex flex-col md:flex-row mb-36 justify-center px-6 sm:px-[0px] gap-12 xl:pr-[0px] xl:gap-[120px] md:items-center ">
-          <img className="sm:h-[350px] md:h-[250px] lg:h-[300px] xl:h-[400px] grayscale " src="/img/BOSSES.jpg"></img>
+          <img className="sm:h-[350px] md:h-[250px] lg:h-[300px] xl:h-[400px] grayscale " src="/img/projectGroup/g_dda.jpg"></img>
           <div className="px-[15px] md:px-0 sm:w-[500px] md:w-[250px] lg:w-[300px] text-left">
             <h1 className="text-cerise text-2xl md:text-4xl font-normal uppercase"> D-DAGEN</h1>
             <h1 className="text-cerise text-2xl md:text-4xlfont-normal uppercase"> {t.contact.bossesHeader}</h1>

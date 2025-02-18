@@ -12,7 +12,7 @@ export default {
     introSecondBlock:
       "Är du en student inom data eller IT och söker efter din framtida arbetsplats,  eller representerar du ett företag som letar talangfulla medarbetare? Då är D-Dagen ett perfekt tillfälle för dig att träffa personer inom branschen och knyta värdefulla kontakter! Vi strävar mot att årets mässa ska bli den största hittills, med över 100+ utställare och 3000+ deltagare. ",
     introSignOff: "Hoppas vi ses!",
-    introDDA: "Toshihide Sakao & William Nordwall, D-Dagenansvariga",
+    introDDA: "Max Berlund & Mortada Nasser, D-Dagenansvariga",
     representative: "Företagsrepresentant?",
     representativeDescription:
       "Vill du nå ut till tusentals civilingenjörs-studenter vid KTH? Som utställare på D-Dagen har du möjlighet att göra just det! Klicka här nedanför för att läsa mer och göra en intresseanmälan.",
@@ -134,6 +134,7 @@ export default {
       description: "Beskrivning",
       industry: "Bransch",
       format: "SVG eller PNG",
+      billingAddress: "Faktureringsadress",
     },
     step1: {
       title: "JOBBERBJUDANDEN",
@@ -190,11 +191,13 @@ export default {
           description: "Beskrivning",
           placeholderText: "Om oss",
           placeholderTextIndustry: "Vår branch",
+          placeholderTextBillingAddress: "Vår faktureringsadress",
           logo: "Logga",
           logoWhite: "Vit Logga",
           logoColour: "Logga m. färg",
           or: "eller",
           industry: "Bransch",
+          billingAddress: "Faktureringsadress",
         },
         section2: {
           header: "Jobberbjudanden",
