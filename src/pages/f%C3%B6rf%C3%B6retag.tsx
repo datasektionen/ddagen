@@ -52,12 +52,12 @@ export default function ForCompanies() {
 
             {/* Product Cards Section */}
             <div className={`flex flex-col sm:flex-row flex-wrap
-                w-full max-w-[90vw] lg:max-w-[1300px] mx-auto
+                w-full max-w-[90vw] lg:max-w-5xl mx-auto
                 mt-4 sm:mt-8`}>
 
                 { /* LOOP THROUGH ALL 4 CARDS (className sets the border color) */
                   t.forCompanies.companyPackages.packages.map((companyPackage, i) => 
-                    <div className={`basis-1 sm:basis-1/2 lg:basis-1/4 
+                    <div className={`basis-1 sm:basis-1/2 lg:basis-1/3 
                         flex flex-col flex-wrap
                         rounded-lg px-1
                         justify-center

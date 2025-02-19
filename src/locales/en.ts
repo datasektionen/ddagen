@@ -6,18 +6,18 @@ export default {
   about: "About Us",
   home: {
     introFirstBlock:
-      "The largest job fair for Computer Science students in the Nordics",
+      "Scandinavia’s largest Career Fair for Computer Science students is celebrating its 25th anniversary",
     introSecondBlock:
-      "Are you studying Computer Science or IT and looking for your future work place, or do you represent a company and are looking for talented co-workers?",
+      "Are you studying Computer Science or IT looking for your future workplace, or do you represent a company searching for talented co-workers?",
     introThirdBlock:
-      "In that case, D-Dagen is the perfect opportunity for you to meet people from the industry and expand your network with valuable contacts! We’re striving to make this year's fair the largest so far, with over 100+ exhibitors and 3000+ participants.",
-    introSignOff: "Looking forward to meeting you!",
+      "Then D-Dagen is the perfect opportunity for you to meet people in the industry and expand your network with valuable contacts! This year, D-Dagen is celebrating its grand 25th anniversary, which means the fair will be bigger and better than ever, with over 100+ exhibitors and 3000+ participants.",
+    introSignOff: "This is a celebration you do not want to miss!\n Hope to see you there!",
     introDDA: "Max Berlund & Mortada Nasser, Project Managers",
     representative: "Company Representative?",
     representativeDescription:
       "Do you want to reach thousands of Computer Science Engineering students at KTH? As an exhibitor at D-Dagen you have the opportunity to do so! Click the button below to read more and make an application of interest .",
     representativeButton: "Interest Registration",
-    stats: {
+    info: {
       firstPart: "October 9th",
       secondPart: "10:00 AM - 4:00 PM",
       thirdPart: "KTH",
@@ -28,6 +28,24 @@ export default {
       minutes: "minutes",
       seconds: "seconds",
     },
+    stats: [
+      {
+        value: "100+",
+        type: "Exhibitors"
+      },
+      {
+        value: "3000+",
+        type: "Visitors"
+      },
+      {
+        value: "25th",
+        type: "Anniversary"
+      },
+      {
+        value: "100%",
+        type: "Possibilites"
+      },
+    ],
   },
   forCompanies: {
     title: "For Companies",
@@ -40,24 +58,6 @@ export default {
       title: "Does your company want to reach thousands of engineering students at KTH?",
       text: "We offer several different packages for companies:",
       packages: [
-        {
-          title: "Startup Package",
-          boldFirstPoint: false,
-          bulletPoints: [
-            "4 m² at the fair",
-            "Spot on the website and catalog",
-            "2 lunch/breakfast tickets",
-            "5 representative spots",
-            "1 standing table, 2 power outlets",
-            "Free access to the company lounge",
-            "A designated Company Host for service",
-            "Limited storage & reception of deliveries"
-          ],
-          disclaimers: [
-            "No tickets to the banquet",
-            "Placement in a different section of the fair, together with other startups"
-          ]
-        },
         {
           title: "Small Package",
           boldFirstPoint: false,
