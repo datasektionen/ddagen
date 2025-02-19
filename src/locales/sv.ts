@@ -14,7 +14,7 @@ export default {
     introThirdBlock: 
       "Då är D-Dagen ett perfekt tillfälle för dig att träffa personer inom branschen och knyta värdefulla kontakter! Vi strävar mot att årets mässa ska bli den största hittills, med över 100+ utställare och 3000+ deltagare. ",
     introSignOff: "Hoppas vi ses!",
-    introDDA: "Toshihide Sakao & William Nordwall, D-Dagenansvariga",
+    introDDA: "Max Berlund & Mortada Nasser, D-Dagenansvariga",
     representative: "Företagsrepresentant?",
     representativeDescription:
       "Vill du nå ut till tusentals civilingenjörs-studenter vid KTH? Som utställare på D-Dagen har du möjlighet att göra just det! Klicka här nedanför för att läsa mer och göra en intresseanmälan.",
@@ -1020,7 +1020,7 @@ export default {
   },
   aboutUs: {
     header: "Om Oss",
-    subHeader: "Möt Projektgruppen 2024",
+    subHeader: "Möt Projektgruppen 2025",
     paragraph1:
       "D-Dagen är en årlig företagsmässa som anordnas av Datasektionen på KTH. På D-Dagen har företag möjlighet att möta och interagera med potentiella framtida anställda från KTH. Samtidigt erbjuder vi våra studenter en chans att lära sig mer om karriärmöjligheter, nätverka och delta i föreläsningar och andra företagsevent.",
     paragraph2:

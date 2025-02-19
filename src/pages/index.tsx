@@ -87,6 +87,20 @@ export default function Home() {
             bg-[rgba(11,15,36,0.75)] w-full py-4 flex px-[5vw]
             `}>
               <StatsSection t={t} />
+          {/* Grid Collage */}
+          <div  className={` 
+            transition-all ease-in-out
+            ${ hasLoadedBefore ? 'duration-0': 'delay-[4000ms] duration-[1500ms] '}  
+            ${showPage ? "opacity-100" : "opacity-0" }`
+            }
+          >
+            <GridCollage
+              t={t}
+              home={true}
+              scrollRef={scrollRef}
+              rightImage={["\\img\\projectGroup\\g_dda.jpg", "Picture of DDA", "w-full absolute bottom-0 grayscale overflow-hidden"]}
+              leftImage={["\\img\\foretagsrepresentant-bild.png", "Picture of company representative", "w-full absolute bottom-0 grayscale "]}
+            />
           </div>
 
           {/* Section of DDAs */}
