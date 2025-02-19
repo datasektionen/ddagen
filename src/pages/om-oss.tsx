@@ -18,6 +18,7 @@ const salesNames          = ["Oskar Furuhed", "Josef Behnam", "Sean Zishend", "H
 const massNames           = ["Felicia Murkes", "Silan Centinkaya", "Emanuel Malki", "Elias Rosberg", "Amar Ibrahim", "Viktor Rogalin"]
 const ecoNames            = ["Melissa Arslan", "Anton Jansson"]
 
+
 const managersImages      = managersName.map(stripLastName).map(formatImagePath);
 const prTeamImages        = prNames.map(stripLastName).map(formatImagePath);
 const devTeamImages       = devNames.map(stripLastName).map(formatImagePath);
