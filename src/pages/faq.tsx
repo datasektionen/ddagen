@@ -54,7 +54,7 @@ export default function Faq() {
   return (
     <div className="flex flex-col items-center w-full pb-[150px] ">
       <div className="xl:w-[1200px] lg:w-[1000px] w-full">
-        <h1 className="uppercase text-center text-cerise pt-[100px] md:pt-[200px] mb-36 text-5xl font-medium">
+        <h1 className="uppercase text-center text-cerise pt-[110px] lg:pt-[140px] mb-16 text-5xl font-medium">
           {" "}
           {t.faq.header}
         </h1>

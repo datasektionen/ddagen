@@ -12,7 +12,7 @@ export default {
     introThirdBlock:
       "In that case, D-Dagen is the perfect opportunity for you to meet people from the industry and expand your network with valuable contacts! We’re striving to make this year's fair the largest so far, with over 100+ exhibitors and 3000+ participants.",
     introSignOff: "Looking forward to meeting you!",
-    introDDA: "Toshihide Sakao & William Nordwall, Project Managers",
+    introDDA: "Max Berlund & Mortada Nasser, Project Managers",
     representative: "Company Representative?",
     representativeDescription:
       "Do you want to reach thousands of Computer Science Engineering students at KTH? As an exhibitor at D-Dagen you have the opportunity to do so! Click the button below to read more and make an application of interest .",
@@ -36,6 +36,93 @@ export default {
       "D-Dagen is the Computer Science Chapter’s annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
     fairText2:
       "This year the fair is held on October 9th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15-19 on the KTH Campus Valhallavägen. During the day there will be a lounge for exhibitors, and in the evening a banquet will be organized to end the day.",
+    companyPackages: {
+      title: "Does your company want to reach thousands of engineering students at KTH?",
+      text: "We offer several different packages for companies:",
+      packages: [
+        {
+          title: "Startup Package",
+          boldFirstPoint: false,
+          bulletPoints: [
+            "4 m² at the fair",
+            "Spot on the website and catalog",
+            "2 lunch/breakfast tickets",
+            "5 representative spots",
+            "1 standing table, 2 power outlets",
+            "Free access to the company lounge",
+            "A designated Company Host for service",
+            "Limited storage & reception of deliveries"
+          ],
+          disclaimers: [
+            "No tickets to the banquet",
+            "Placement in a different section of the fair, together with other startups"
+          ]
+        },
+        {
+          title: "Small Package",
+          boldFirstPoint: false,
+          bulletPoints: [
+            "4 m² at the fair",
+            "Spot on the website and catalog",
+            "2 lunch/breakfast tickets",
+            "5 representative spots",
+            "1 standing table, 2 power outlets",
+            "2 banquet tickets*",
+            "Free access to the company lounge",
+            "A designated Company Host for service",
+            "Limited storage & reception of deliveries"
+          ],
+          disclaimers: [
+            "A total of 8 drink tickets included for the banquet"
+          ]
+        },
+        {
+          title: "Medium Package",
+          className: "border-cerise border-4",
+          discount: {
+            amount: "-3%",
+            className: "bg-cerise"
+          },
+          boldFirstPoint: true,
+          bulletPoints: [
+            "Everything from the Small Package",
+            "6 m² at the fair",
+            "Good placement at the fair",
+            "1 extra lunch/breakfast ticket",
+            "Exposure on our social media",
+            "Medium-sized logo on our website",
+            "Contact meetings, 2 hours",
+            "Unlimited storage & reception of deliveries",
+          ],
+          disclaimers: [
+            "Anniversary discount applies until April 25th"
+          ]
+        },
+        {
+          title: "Large Package",
+          className: "border-gold border-4",
+          discount: {
+            amount: "-5%",
+            className: "bg-gold"
+          },
+          boldFirstPoint: true,
+          bulletPoints: [
+            "Everything from the Medium Package",
+            "8 m², at least 4m ceiling height",
+            "Central placement at the fair",
+            "1 extra standing table, lunch/breakfast ticket",
+            "2 extra banquet tickets",
+            "Exposure on approximately 1000 goodie bags with a large logo",
+            "1 representative in a scheduled panel discussion",
+            "Sponsored post on our social media with custom content",
+            "Large logo on our website",
+          ],
+          disclaimers: [
+            "Anniversary discount applies until April 25th"
+          ]
+        },
+      ]
+    },      
     interestedTitle: "Interested?",
     interestedText:
       "Are you interested in exhibiting on D-Dagen and connecting with thousands of students in Computer Science and IT? Click below to sign up!",

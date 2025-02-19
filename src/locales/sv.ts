@@ -38,6 +38,93 @@ export default {
       "D-Dagen är Datasektionens årliga arbetsmarknadsdag. Det är ett heldagsevent där företag och studenter verksamma inom data och IT får en möjlighet att knyta kontakter och lära känna varandra. Detta skapar goda möjligheter för en mer direkt och personlig kontakt mellan företagsrepresentanter och studenter.",
     fairText2:
       "I år hålls mässan 9e oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15-19 på KTH Campus Valhallavägen. Under dagen kommer det finnas en lounge för utställare, och på kvällen anordnas en bankett för att avsluta dagen.",
+    companyPackages: {
+      title: "Vill ditt företag nå ut till tusentals civilingenjörsstudenter vid KTH?",
+      text: "Vi erbjuder flera olika paket för företag:",
+      packages: [
+        {
+          title: "Startup Paketet",
+          boldFirstPoint: false,
+          bulletPoints: [
+            "4 m^2 på mässan",
+            "Plats på hemsida och katalog",
+            "2 st lunch/frukost biljetter",
+            "5 st representantplatser",
+            "1 ståbord, 2st eluttag",
+            "Fri tillgång till företagslounge",
+            "En tilldelad Företagsvärd för service",
+            "Begränsad förvaring & mottagning av leverans"
+          ],
+          disclaimers: [
+            "Inga biljetter till banquetten",
+            "Placering på annan del av mässan, tillsammans med andra startups"
+          ]
+        },
+        {
+          title: "Lilla Paketet",
+          boldFirstPoint: false,
+          bulletPoints: [
+            "4 m^2 på mässan",
+            "Plats på hemsida och katalog",
+            "2 st lunch/frukost biljetter",
+            "5 st representantplatser",
+            "1 ståbord, 2st eluttag",
+            "2 st banquettebiljetter*",
+            "Fri tillgång till företagslounge",
+            "En tilldelad Företagsvärd för service",
+            "Begränsad förvaring & mottagning av leverans"
+          ],
+          disclaimers: [
+            "Totalt 8 st tillhörande dryckesbiljetter till banquetten"
+          ]
+        },
+        {
+          title: "Mellan Paketet",
+          className: "border-cerise border-4",
+          discount: {
+            amount: "-3%",
+            className: "bg-cerise"
+          },
+          boldFirstPoint: true,
+          bulletPoints: [
+            "Allt från lilla paketet",
+            "6 m^2 på mässan",
+            "God placering på mässan",
+            "1 extra lunch/frukost biljett",
+            "Exponering på våra sociala medier",
+            "Medelstor logotyp på vår hemsida",
+            "Kontaktsamtal, 2 timmar",
+            "Obegränsad förvaring & mottagning av leverans",
+          ],
+          disclaimers: [
+            "Jubileumsrabatten gäller till den 25:e april"
+          ]
+        },
+        {
+          title: "Stora Paketet",
+          className: "border-gold border-4",
+          discount: {
+            amount: "-5%",
+            className: "bg-gold"
+          },
+          boldFirstPoint: true,
+          bulletPoints: [
+            "Allt från mellan paketet",
+            "8 m^2, minst 4m takhöjd",
+            "Central placering på mässan",
+            "1 extra ståbord, lunch/frukost biljett",
+            "2 extra banquette biljetter",
+            "Exponering på ca. 1000 goodiebags med stor logga",
+            "1 representant i schemalagd paneldiskussion",
+            "Sponsrat inlägg på våra sociala medier med eget utformat innehåll",
+            "Stor logotyp på vår hemsida",
+          ],
+          disclaimers: [
+            "Jubileumsrabatten gäller till den 25:e april"
+          ]
+        },
+      ]
+    },
     interestedTitle: "Intresserad?",
     interestedText:
       "Är du intresserad av att ställa ut på D-Dagen och knyta kontakt med tusentals studenter inom Data och IT? Klicka här nedan för att göra en intresseanmälan!",
