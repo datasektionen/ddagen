@@ -83,7 +83,7 @@ export default function Home() {
 
           {/* Section of stats */}
           <div className={`
-            bg-[rgb(11,15,36)] bg-opacity-75 w-full py-4 flex px-[5vw] relative
+            bg-verydarkblue bg-opacity-75 w-full py-4 flex px-[5vw] relative
             transition-all ease-in-out
             ${ hasLoadedBefore ? 'duration-0': 'delay-[300ms] duration-[800ms]'}  
             ${ showPage ? "opacity-100" : "opacity-0" }

@@ -2,12 +2,20 @@ import {useLocale} from "@/locales";
 import { Console } from "console";
 import {useEffect, useState} from "react";
 
-function TimeUnit({time, timeString}: {time: number; timeString: string}){
+function TimeUnit({time, timeString, index = 0}: {time: number; timeString: string, index?: number}){
   // "w-1/2 max-auto bg-cerise py-2.5 rounded-full"
   return(
-        <div className="w-16 h-32 sm:w-24 sm:h-48
-            flex flex-col
-            bg-[url('/img/ballonger/ballong_1.svg')] bg-cover bg-16">
+        <div className={`w-16 h-32 sm:w-24 sm:h-48
+            flex flex-col bg-cover bg-16
+            ${
+              index == 2 && "bg-[url('/img/ballonger/ballong_2.svg')]"
+              ||
+              index == 3 && "bg-[url('/img/ballonger/ballong_3.svg')]"
+              ||
+              index == 4 && "bg-[url('/img/ballonger/ballong_4.svg')]"
+              ||
+              "bg-[url('/img/ballonger/ballong_1.svg')]"
+            }`}>
 
           <div className="w-16 h-20 sm:w-24 sm:h-[7.75rem] 
               flex flex-col items-center justify-center">
@@ -60,10 +68,10 @@ export function Countdown() {
 
   return (
     <div className="hover:cursor-default gap-5 columns-4 items-stretch flex items-center justify-center">
-      <TimeUnit time={days} timeString={t.home.countDown.days}/>
-      <TimeUnit time={hours} timeString={t.home.countDown.hours}/>
-      <TimeUnit time={minutes} timeString={t.home.countDown.minutes}/>
-      <TimeUnit time={seconds} timeString={t.home.countDown.seconds}/>
+      <TimeUnit time={days} timeString={t.home.countDown.days} index={1}/>
+      <TimeUnit time={hours} timeString={t.home.countDown.hours} index={2}/>
+      <TimeUnit time={minutes} timeString={t.home.countDown.minutes} index={3}/>
+      <TimeUnit time={seconds} timeString={t.home.countDown.seconds} index={4}/>
     </div>
   );
 }

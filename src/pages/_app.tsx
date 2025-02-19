@@ -49,7 +49,7 @@ const App: AppType = ({ Component, pageProps }) => {
         >
           <div className="absolute w-full h-full z-[-2] bg-[#0F142D]"></div>
           <div className="absolute w-full h-full z-[-1] 
-              bg-[url('/img/bg-spiral.svg')] bg-blend-hue bg-repeat
+              bg-[url('/img/bg-spiral-mobile.png')] sm:bg-[url('/img/bg-spiral-desktop.png')] bg-blend-hue bg-repeat
               bg-[length:100%] md:bg-[length:100vw]"></div>
           <ModalContextProvider>
             <Component  {...pageProps} />

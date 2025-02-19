@@ -57,7 +57,7 @@ export default function Sales() {
       {password === "" ? (
         <AdminLogin t={t} login={login} />
       ) : (
-        <div className="w-full h-full my-48 text-white">
+        <div className="w-full h-full py-48 text-white bg-darkblue bg-opacity-75">
           <h1 className="uppercase text-cerise text-3xl md:text-5xl font-medium text-center px-[10px] break-words">
             {t.admin.sales.header.title}
           </h1>
