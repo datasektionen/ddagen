@@ -8,18 +8,18 @@ export default {
   about: "Om Oss",
   home: {
     introFirstBlock:
-      "Nordens största arbetsmarknadsdag för datateknikstudenter",
+      "Nordens största arbetsmarknadsdag för datateknikstudenter firar 25-årsjubileum",
     introSecondBlock:
-      "Är du en student inom data eller IT och söker efter din framtida arbetsplats,  eller representerar du ett företag som letar talangfulla medarbetare?", 
+      "Är du en student inom data eller IT och söker efter din framtida arbetsplats, eller representerar du ett företag som letar talangfulla medarbetare?", 
     introThirdBlock: 
-      "Då är D-Dagen ett perfekt tillfälle för dig att träffa personer inom branschen och knyta värdefulla kontakter! Vi strävar mot att årets mässa ska bli den största hittills, med över 100+ utställare och 3000+ deltagare. ",
-    introSignOff: "Hoppas vi ses!",
+      "Då är D-Dagen det perfekta tillfället för dig att träffa personer inom branschen och knyta värdefulla kontakter! I år firar D-Dagen sitt storslagna 25-års jubileum, vilket innebär att mässan kommer bli större och bättre än någonsin, med över 100+ utställare och 3000+ deltagare.",
+    introSignOff: "Detta är ett firande som man inte vill missa!\n Hoppas vi ses!",
     introDDA: "Max Berlund & Mortada Nasser, D-Dagenansvariga",
     representative: "Företagsrepresentant?",
     representativeDescription:
       "Vill du nå ut till tusentals civilingenjörs-studenter vid KTH? Som utställare på D-Dagen har du möjlighet att göra just det! Klicka här nedanför för att läsa mer och göra en intresseanmälan.",
     representativeButton: "Intresseanmälan",
-    stats: {
+    info: {
       firstPart: "9 oktober",
       secondPart: "10:00 - 16:00",
       thirdPart: "KTH",
@@ -30,6 +30,24 @@ export default {
       minutes: "minuter",
       seconds: "sekunder",
     },
+    stats: [
+      {
+        value: "100+",
+        type: "Utställare"
+      },
+      {
+        value: "3000+",
+        type: "Deltagare"
+      },
+      {
+        value: "25 års",
+        type: "Jubileum"
+      },
+      {
+        value: "100%",
+        type: "Möjligheter"
+      },
+    ],
   },
   forCompanies: {
     title: "För Företag",
@@ -43,28 +61,10 @@ export default {
       text: "Vi erbjuder flera olika paket för företag:",
       packages: [
         {
-          title: "Startup Paketet",
-          boldFirstPoint: false,
-          bulletPoints: [
-            "4 m^2 på mässan",
-            "Plats på hemsida och katalog",
-            "2 st lunch/frukost biljetter",
-            "5 st representantplatser",
-            "1 ståbord, 2st eluttag",
-            "Fri tillgång till företagslounge",
-            "En tilldelad Företagsvärd för service",
-            "Begränsad förvaring & mottagning av leverans"
-          ],
-          disclaimers: [
-            "Inga biljetter till banquetten",
-            "Placering på annan del av mässan, tillsammans med andra startups"
-          ]
-        },
-        {
           title: "Lilla Paketet",
           boldFirstPoint: false,
           bulletPoints: [
-            "4 m^2 på mässan",
+            "4 m² på mässan",
             "Plats på hemsida och katalog",
             "2 st lunch/frukost biljetter",
             "5 st representantplatser",
@@ -88,7 +88,7 @@ export default {
           boldFirstPoint: true,
           bulletPoints: [
             "Allt från lilla paketet",
-            "6 m^2 på mässan",
+            "6 m² på mässan",
             "God placering på mässan",
             "1 extra lunch/frukost biljett",
             "Exponering på våra sociala medier",
@@ -110,7 +110,7 @@ export default {
           boldFirstPoint: true,
           bulletPoints: [
             "Allt från mellan paketet",
-            "8 m^2, minst 4m takhöjd",
+            "8 m², minst 4m takhöjd",
             "Central placering på mässan",
             "1 extra ståbord, lunch/frukost biljett",
             "2 extra banquette biljetter",

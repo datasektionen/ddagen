@@ -40,7 +40,7 @@ export default function ImageTextSection({
             <img 
               src={imageProps.src} 
               alt={imageProps.alt} 
-              className={"object-contain w-[28rem] sm:w-full sm:max-w-lg lg:max-w-lg lg:pr-4 lg:pl-4 lg:py-4 " + imageProps.className || ""} />
+              className={"object-contain w-[28rem] sm:w-full sm:max-w-lg lg:max-w-lg lg:pr-4 lg:pl-1 lg:py-4 " + imageProps.className || ""} />
           </div>
         </div>
         <div className={`basis-1 sm:basis-1/2 flex flex-col

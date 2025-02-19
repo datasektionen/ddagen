@@ -59,7 +59,7 @@ export default function Home() {
               ${t.locale == "sv" ? "sm:ml-9" : "sm:ml-14"}
               `}
             >
-              {t.home.stats.firstPart} | {t.home.stats.secondPart} | {t.home.stats.thirdPart}
+              {t.home.info.firstPart} | {t.home.info.secondPart} | {t.home.info.thirdPart}
             </h2>
           </div>
             
@@ -100,16 +100,16 @@ export default function Home() {
             ${ hasLoadedBefore ? 'duration-0': 'delay-[300ms] duration-[800ms]'}  
             ${ showPage ? "opacity-100" : "opacity-0" }`}
             >
-              <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl max-w-xl">
+              <h2 className="text-white text-2xl sm:text-2xl lg:text-3xl max-w-xl">
                 {t.home.introFirstBlock}
               </h2>
-              <p className="text-white text-base sm:text-lg pt-4 max-w-xl">{t.home.introSecondBlock}</p>
-              <p className="text-white text-base sm:text-lg pt-4 max-w-xl">{t.home.introThirdBlock}</p>
+              <p className="text-white text-base font-light sm:text-lg pt-4 max-w-xl">{t.home.introSecondBlock}</p>
+              <p className="text-white text-base font-light sm:text-lg pt-4 max-w-xl">{t.home.introThirdBlock}</p>
               <p className="text-white text-xl lg:text-2xl pt-4 max-w-xl">{t.home.introSignOff}</p>
-              <p className="text-white text-base sm-text-lg max-w-xl">{t.home.introDDA}</p>
+              <p className="text-white text-base font-light sm-text-lg max-w-xl">{t.home.introDDA}</p>
           </ImageTextSection>
 
-          {/* Section of DDAs */}
+          {/* Section of Representatives */}
           <ImageTextSection
             t={t}
             leftSideImage={false}
@@ -120,10 +120,10 @@ export default function Home() {
             ${ hasLoadedBefore ? 'duration-0': 'delay-[300ms] duration-[800ms]'}  
             ${ showPage ? "opacity-100" : "opacity-0" }`}
             >
-              <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl max-w-xl">
+              <h2 className="text-white text-2xl sm:text-2xl lg:text-3xl max-w-xl">
                 {t.home.representative}
               </h2>
-              <p className="text-white text-base sm:text-lg pt-4 max-w-xl pb-8">
+              <p className="text-white text-light sm:text-lg pt-4 max-w-xl pb-8">
                 {t.home.representativeDescription}
               </p>
               <Link

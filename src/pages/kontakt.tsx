@@ -74,11 +74,11 @@ export default function Contact() {
             <br/>
             <a className="block text-yellow" href="mailto:sales@ddagen.se">sales@ddagen.se</a>
           </div>
-          <img className="sm:h-[350px] md:h-[250px] lg:h-[300px] xl:h-[400px] grayscale" src="/img/projectGroup/g_sales.jpg"></img>
+          <img className="sm:h-[350px] md:h-[250px] lg:h-[300px] xl:h-[400px]" src="/img/projectGroup/g_sales.jpg"></img>
         </div>
 
         <div className="flex flex-col md:flex-row mb-36 justify-center px-6 sm:px-[0px] gap-12 xl:pr-[0px] xl:gap-[120px] md:items-center bg-darkblue bg-opacity-90 sm:bg-opacity-0">
-          <img className="sm:h-[350px] md:h-[250px] lg:h-[300px] xl:h-[400px] grayscale " src="/img/projectGroup/g_dda.jpg"></img>
+          <img className="sm:h-[350px] md:h-[250px] lg:h-[300px] xl:h-[400px] " src="/img/projectGroup/g_dda.jpg"></img>
           <div className="px-[15px] md:px-0 sm:w-[500px] md:w-[250px] lg:w-[300px] text-left rounded-lg bg-darkblue bg-opacity-0 sm:bg-opacity-90">
             <h1 className="text-cerise text-2xl md:text-4xl font-normal uppercase"> D-DAGEN</h1>
             <h1 className="text-cerise text-2xl md:text-4xlfont-normal uppercase"> {t.contact.bossesHeader}</h1>
@@ -108,7 +108,7 @@ export default function Contact() {
               {/** Where we use some funky indexing to ensure the seventh person is centerd but without the design breaking and the data still being correct*/}
               {layout1[i].map((i, _) => (
                 <div className="flex flex-col" key={i} style={{ visibility: (i > 7 || i == 6) ? 'hidden' : 'visible' }}> 
-                  <img className="grayscale w-full" src={images[i]} ></img>
+                  <img className=" w-full" src={images[i]} ></img>
                   <div className="py-[20px] px-[10px] rounded-lg mt-2 bg-verydarkblue bg-opacity-75 border-cerise text-white ">
                     <p className="text-cerise text-xl font-normal mb-2">
                       {names[(i < 7 ? i : i-1 )]}
@@ -127,7 +127,7 @@ export default function Contact() {
             <div className=" hidden lg:hidden sm:flex justify-center flex-row px-12 mb-12 gap-10 mb-8" key={i}>
               {layout2[i].map((i, _) => (
                 <div className="flex flex-col" key={i} style={{ visibility: i > 6 ? 'hidden' : 'visible' }}> {/** Cheat to ensure even design*/}
-                  <img className="grayscale" src={images[i]}></img>
+                  <img src={images[i]}></img>
                   <div className="py-[20px] px-[10px]  rounded-lg mt-2 bg-verydarkblue bg-opacity-75 border-cerise text-white text-sm">
                     <p className="text-cerise text-2xl font-normal mb-2">
                       {names[i]}
@@ -145,7 +145,7 @@ export default function Contact() {
             <div className=" sm:hidden justify-center flex flex-row px-6 gap-10 mb-8" key={i}>
               {layout3[i].map((i, _) => (
                 <div className="flex flex-col" key={i}>
-                  <img className="grayscale" src={images[i]}></img>
+                  <img src={images[i]}></img>
                   <div className="py-[20px] px-[10px] rounded-lg mt-2 bg-verydarkblue bg-opacity-75 border-cerise text-white text-sm">
                     <p className="text-cerise text-2xl font-normal mb-2">
                       {names[i]}
