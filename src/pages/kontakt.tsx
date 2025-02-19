@@ -60,11 +60,14 @@ export default function Contact() {
   return (
     <div className="pb-[150px] flex flex-col items-center ">
       <div className=" xl:w-[1200px] lg:w-[1000px] w-full ">
-        <h1 className="text-cerise text-5xl pt-[200px] mb-36  font-medium uppercase text-center ">
+        <h1 className="text-cerise text-5xl pt-[110px] lg:pt-[140px] mb-16 font-medium uppercase text-center ">
           {t.contact.header}
         </h1>
-        <div className="flex flex-col-reverse mb-36  md:flex-row justify-center px-6 sm:px-[0px] gap-12 xl:pl-[0px] xl:gap-[120px] md:items-center ">
-          <div className="px-[15px] md:px-0 sm:w-[500px] md:w-[250px] lg:w-[300px] text-left">
+        <div className={`flex flex-col-reverse mb-36  md:flex-row justify-center 
+            px-6 sm:px-[0px] gap-12 xl:pl-[0px] 
+            xl:gap-[120px] md:items-center
+            bg-darkblue bg-opacity-90`}>
+          <div className="px-[15px] md:px-0 sm:w-[500px] md:w-[250px] lg:w-[360px] text-left">
             <h1 className="text-cerise text-2xl md:text-4xl font-normal uppercase"> {t.contact.salesHeader}</h1>
             <br/>
             <p className="text-white text-lg">{t.contact.p1}</p>
@@ -74,9 +77,9 @@ export default function Contact() {
           <img className="sm:h-[350px] md:h-[250px] lg:h-[300px] xl:h-[400px] grayscale" src="/img/projectGroup/g_sales.jpg"></img>
         </div>
 
-        <div className="flex flex-col md:flex-row mb-36 justify-center px-6 sm:px-[0px] gap-12 xl:pr-[0px] xl:gap-[120px] md:items-center ">
+        <div className="flex flex-col md:flex-row mb-36 justify-center px-6 sm:px-[0px] gap-12 xl:pr-[0px] xl:gap-[120px] md:items-center bg-darkblue bg-opacity-90 sm:bg-opacity-0">
           <img className="sm:h-[350px] md:h-[250px] lg:h-[300px] xl:h-[400px] grayscale " src="/img/projectGroup/g_dda.jpg"></img>
-          <div className="px-[15px] md:px-0 sm:w-[500px] md:w-[250px] lg:w-[300px] text-left">
+          <div className="px-[15px] md:px-0 sm:w-[500px] md:w-[250px] lg:w-[300px] text-left bg-darkblue bg-opacity-0 sm:bg-opacity-90">
             <h1 className="text-cerise text-2xl md:text-4xl font-normal uppercase"> D-DAGEN</h1>
             <h1 className="text-cerise text-2xl md:text-4xlfont-normal uppercase"> {t.contact.bossesHeader}</h1>
             <br/>
@@ -94,10 +97,11 @@ export default function Contact() {
               Lazy implementation
         */}
         
-        
-        <h1 className="mt-[150px] text-cerise text-2xl lg:text-4xl font-bold uppercase text-center">
-          {t.contact.subheader2}
-        </h1>
+        <div className="flex justify-center mt-[150px]">
+          <h2 className="text-cerise text-2xl lg:text-4xl font-bold uppercase text-center w-auto p-2 rounded-lg bg-darkblue bg-opacity-75">
+            {t.contact.subheader2}
+          </h2>
+        </div>
         <div className="mt-12 flex flex-col">
           {rows1.map((i, _) => (
             <div className="hidden lg:flex flex-row justify-between gap-10 px-[100px] mb-12" key={i}>
@@ -105,10 +109,10 @@ export default function Contact() {
               {layout1[i].map((i, _) => (
                 <div className="flex flex-col" key={i} style={{ visibility: (i > 7 || i == 6) ? 'hidden' : 'visible' }}> 
                   <img className="grayscale w-full" src={images[i]} ></img>
-                  <p className="px-[10px] text-cerise text-xl font-normal mt-5">
-                    {names[(i < 7 ? i : i-1 )]}
-                  </p>
-                  <div className="py-[20px] px-[10px] rounded-[20px] mt-2 bg-slate-50 bg-opacity-20 border-cerise text-white ">
+                  <div className="py-[20px] px-[10px] rounded-lg mt-2 bg-verydarkblue bg-opacity-75 border-cerise text-white ">
+                    <p className="text-cerise text-xl font-normal mb-2">
+                      {names[(i < 7 ? i : i-1 )]}
+                    </p>
                     
                     <span className="block">{roles[(i < 7 ? i : i-1 )]}</span>
                     <a    className="block" href={"mailto:" + mails[ (i < 7 ? i : i-1 ) ]} >{mails[(i < 7 ? i : i-1 )]}</a> {/** Funky indexing*/}
@@ -124,10 +128,10 @@ export default function Contact() {
               {layout2[i].map((i, _) => (
                 <div className="flex flex-col" key={i} style={{ visibility: i > 6 ? 'hidden' : 'visible' }}> {/** Cheat to ensure even design*/}
                   <img className="grayscale" src={images[i]}></img>
-                  <p className="w-[10px] px-[10px] text-cerise text-2xl font-normal mt-5">
-                    {names[i]}
-                  </p>
-                  <div className="py-[20px] px-[10px]  rounded-[20px] mt-2 bg-slate-50 bg-opacity-20 border-cerise text-white text-sm">
+                  <div className="py-[20px] px-[10px]  rounded-lg mt-2 bg-verydarkblue bg-opacity-75 border-cerise text-white text-sm">
+                    <p className="text-cerise text-2xl font-normal mb-2">
+                      {names[i]}
+                    </p>
                     <span className="block">{roles[i]}</span>
                     <a    className="block" href={"mailto:" + mails[i]} >{mails[i]}</a>
                     <a    className="block" href={"tel:" + phones[i]} >{phones[i]}</a>
@@ -142,10 +146,10 @@ export default function Contact() {
               {layout3[i].map((i, _) => (
                 <div className="flex flex-col" key={i}>
                   <img className="grayscale" src={images[i]}></img>
-                  <p className="w-[10px] px-[10px] text-cerise text-2xl font-normal mt-5">
-                    {names[i]}
-                  </p>
-                  <div className="py-[20px] px-[10px]  rounded-[20px] mt-2 bg-slate-50 bg-opacity-20 border-cerise text-white text-sm">
+                  <div className="py-[20px] px-[10px] rounded-lg mt-2 bg-verydarkblue bg-opacity-75 border-cerise text-white text-sm">
+                    <p className="text-cerise text-2xl font-normal mb-2">
+                      {names[i]}
+                    </p>
                     <span className="block">{roles[i]}</span>
                     <a    className="block" href={"mailto:" + mails[i]} >{mails[i]}</a>
                     <a    className="block" href={"tel:" + phones[i]} >{phones[i]}</a>
