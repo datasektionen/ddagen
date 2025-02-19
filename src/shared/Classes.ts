@@ -163,7 +163,6 @@ export class Exhibitor {
   invoiceEmail: string;
   logoWhite: string | undefined;
   logoColor: string | undefined;
-  industry: string | undefined;
   description: string;
   packageTier: number;
   studentMeetings: number;
@@ -187,7 +186,6 @@ export class Exhibitor {
     invoiceEmail: string,
     logoWhite: string | undefined,
     logoColor: string | undefined,
-    industry: string | undefined,
     description: string,
     packageTier: number,
     studentMeetings: number,
@@ -210,7 +208,6 @@ export class Exhibitor {
     this.invoiceEmail = invoiceEmail;
     this.logoWhite = logoWhite;
     this.logoColor = logoColor;
-    this.industry = industry;
     this.description = description;
     this.packageTier = packageTier;
     this.studentMeetings = studentMeetings;
