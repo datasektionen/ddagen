@@ -226,6 +226,43 @@ export class Exhibitor {
   }
 }
 
+export class ExhibitorInfo {
+  companyName: string;
+  organizationNumber: string;
+  contactPerson: string;
+  telephoneNumber: string;
+  email: string;
+  packageTier: number;
+  studentMeetings: number;
+  sendEmailToExhibitor: boolean;
+  mapPosition: number;
+  meetingTimeSlots: number[];
+
+  constructor(
+    companyName: string,
+    organizationNumber: string,
+    contactPerson: string,
+    telephoneNumber: string,
+    email: string,
+    packageTier: number,
+    studentMeetings: number,
+    sendEmailToExhibitor: boolean,
+    mapPosition: number,
+    meetingTimeSlots: number[],
+  ) {
+    this.companyName = companyName;
+    this.organizationNumber = organizationNumber;
+    this.contactPerson = contactPerson;
+    this.telephoneNumber = telephoneNumber;
+    this.email = email;
+    this.packageTier = packageTier;
+    this.studentMeetings = studentMeetings;
+    this.sendEmailToExhibitor = sendEmailToExhibitor;
+    this.mapPosition = mapPosition;
+    this.meetingTimeSlots = meetingTimeSlots;
+  }
+}
+
 export type MapProp = {
   name: string;
   logoWhite?: string | null;

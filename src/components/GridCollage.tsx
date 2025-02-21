@@ -5,19 +5,16 @@ import { MutableRefObject } from "react";
 export default function GridCollage({
   t,
   home,
-  scrollRef,
   rightImage,
   leftImage,
 }: {
   t: Locale;
   home: boolean;
-  scrollRef: MutableRefObject<HTMLInputElement | null>;
   rightImage: [string, string, string];
   leftImage: [string, string, string];
 }) {
   return (
     <div
-      ref={scrollRef}
       className="flex flex-col items-center justify-center py-12 xs:mx-auto mb-16 max-w-5xl "
     >
       <div

@@ -5,28 +5,39 @@ import { useState, useEffect } from "react";
 import { addImageDetails } from "@/shared/addImageDetails";
 import {
   Exhibitor,
+  ExhibitorInfo,
   Preferences,
   sortExhibitors,
   Package,
 } from "@/shared/Classes";
+
+import {
+  AddExhibitorForm,
+} from "@/components/Company/Admin/AddExhibitorForm";
 
 export function ExhibitorPanel({
   t,
   exhibitors,
   preferences,
   password,
+  reloadLogin,
 }: {
   t: Locale;
   exhibitors: Exhibitor[];
   preferences: Preferences[];
   password: string;
+  reloadLogin: () => void;
 }) {
   const [preferenceCount, setPreferenceCount] =
     useState<Map<string, { banquet: number; representative: number }>>();
 
+  const [showAddExhibitor, setShowAddExhibitor] = useState<boolean>(false);
+  const [addExhibitorSuccess, setAddExhibitorSuccess] = useState<boolean>(false);
+
   const router = useRouter();
   const trpc = api.useContext();
   const login = api.admin.login.useMutation();
+  const addExhibitor = api.admin.addExhibitor.useMutation();
 
   useEffect(() => {
     if (login.isSuccess) {
@@ -66,6 +77,37 @@ export function ExhibitorPanel({
       await trpc.invalidate();
       login.mutate({ exhibitorId: exhibitorId, password });
     };
+  }
+
+  async function handleAddExhibitor(exhibitor: ExhibitorInfo) {
+    addExhibitor.mutateAsync({
+      password: password,
+      contactPerson: exhibitor.contactPerson,
+      telephoneNumber: exhibitor.telephoneNumber,
+      companyName: exhibitor.companyName,
+      organizationNumber: exhibitor.organizationNumber,
+      email: exhibitor.email,
+      packageTier: exhibitor.packageTier,
+      studentMeetings: exhibitor.studentMeetings,
+      sendEmailToExhibitor: exhibitor.sendEmailToExhibitor,
+      mapPosition: exhibitor.mapPosition,
+      meetingTimeSlots: exhibitor.meetingTimeSlots,
+    }).then((response) => {
+      console.log(response);
+      if(response?.ok === true){
+        setAddExhibitorSuccess(_ => true);
+        reloadLogin();
+        return "";
+      }
+      return response?.error || "unknown-error";
+    }).catch((err) => {
+      return "unknown-error";
+    });
+    return "unknown-error";
+  }
+
+  function closeAddExhibitorForm() {
+    setShowAddExhibitor(_ => false);
   }
 
   function evaluataPreferences(
@@ -130,6 +172,26 @@ export function ExhibitorPanel({
           </p>
         </div>
         <div className="w-[80%] sm:w-[90%]">
+          <div className="w-full text-xl mb-5 font-medium">
+            {showAddExhibitor ? 
+              (
+                addExhibitorSuccess ?
+                <p>
+                  {t.admin.addCompany.addExhibitorSuccess.added}&nbsp;
+                  <span className="text-cerise">{t.admin.addCompany.addExhibitorSuccess.reload}</span>
+                </p>
+                :
+                <AddExhibitorForm 
+                  t={t} addExhibitor={handleAddExhibitor} closeModal={closeAddExhibitorForm} /> 
+              ) : (
+                <button
+                  className="mt-2 bg-cerise bg-blue-500 py-1 px-2 rounded-md"
+                  onClick={()=>{setShowAddExhibitor(_ => true)}}
+                  >
+                  {t.admin.addCompany.addCompanyButton}
+                </button>
+            )}
+          </div>
           <div className="overflow-x-auto">
             <table className="w-full bg-slate-50 bg-opacity-20 border-collapse border-solid">
               <thead className="[&>tr>th]:border-2 [&>tr>th]:border-solid [&>tr>th]:border-cerise [&>tr>th]:py-2 [&>tr>th]:px-4 ">

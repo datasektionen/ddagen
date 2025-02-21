@@ -11,7 +11,7 @@ export function CheckMark({
   checked?: boolean;
   defaultChecked?: boolean;
   onClick?: () => void;
-  onChange?: () => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }) {
   return (
     <input
@@ -26,8 +26,8 @@ export function CheckMark({
       onClick={() => {
         if (onClick) onClick();
       }}
-      onChange={() => {
-        //if (onClick) onClick();
+      onChange={(e) => {
+        if (onChange) onChange(e);
       }}
     />
   );

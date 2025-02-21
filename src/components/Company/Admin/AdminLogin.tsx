@@ -40,13 +40,15 @@ export function AdminLogin({
           setError(await login(password) ?? "");
         }}
       >
-        <InputField
-          name="password"
-          value={password}
-          type="text"
-          setValue={setPassword}
-          fields={{ password: t.admin.login.password }}
-        />
+        <div className="py-4 px-4 rounded-lg bg-darkblue bg-opacity-90">
+          <InputField
+            name="password"
+            value={password}
+            type="text"
+            setValue={setPassword}
+            fields={{ password: t.admin.login.password }}
+            />
+        </div>
         <Submit value={t.login.confirm} />
       </form>
       {error && (
