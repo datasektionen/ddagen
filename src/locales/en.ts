@@ -57,6 +57,7 @@ export default {
     companyPackages: {
       title: "Does your company want to reach thousands of engineering students at KTH?",
       text: "We offer several different packages for companies:",
+      text2: "Prices are found in the Product Catalog above or by contacting ",
       packages: [
         {
           title: "Small Package",
@@ -545,7 +546,7 @@ export default {
     contactHeader: "Contact",
     responsible: "Project Managers",
     salesGroup: "Sales Team",
-    sponsorText: "Main sponsor for D-Dagen 2024",
+    sponsorText: "Main sponsor for D-Dagen 2025",
     sponsorLink: "https://en.omegapoint.se",
     notDecided: "Main sponsor for D-Dagen 2025 will be shown here",
   },
@@ -909,10 +910,10 @@ export default {
     table4row1:
       "WHAT KIND OF EVENTS CAN OUR COMPANY HOST TOGETHER WITH D-DAGEN?",
     table4text1:
-      "We'd be thrilled to collaborate with you, both before and after D-Dagen! Whether you're interested in hosting a lunch lecture, hackathon, or something completely different, we're open to your ideas. For more information, please contact our sponsorship manager at <a className='text-yellow' href='mailto:farhan.syed@ddagen.se'>farhan.syed@ddagen.se</a>.",
+      "We'd be thrilled to collaborate with you, both before and after D-Dagen! Whether you're interested in hosting a lunch lecture, hackathon, or something completely different, we're open to your ideas. For more information, please contact our sponsorship manager at <a className='text-yellow' href='mailto:jamie.groop@ddagen.se'>jamie.groop@ddagen.se</a>.",
     productCatalog: "PRODUCT CATALOG",
     header: "COMPANY FAQ",
-    catalogPath: "https://ddagen.se/downloadables/Product_Catalog_en.pdf",
+    catalogPath: "/downloadables/Product_Catalog_2025_en.pdf",
   },
   contact: {
     header: "Contact",
@@ -1108,7 +1109,7 @@ export default {
   },
   aboutUs: {
     header: "About us",
-    subHeader: "Meet Project Group 2024",
+    subHeader: "Meet Project Group 2025",
     paragraph1:
       "D-Dagen is an annual trade fair organized by the Computer Science Student Association at KTH (Royal Institute of Technology). At D-Dagen, companies have the opportunity to meet and interact with potential future employees from KTH. At the same time, we offer our students a chance to learn more about career opportunities, network, and participate in lectures and other company events.",
     paragraph2:

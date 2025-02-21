@@ -59,6 +59,7 @@ export default {
     companyPackages: {
       title: "Vill ditt företag nå ut till tusentals civilingenjörsstudenter vid KTH?",
       text: "Vi erbjuder flera olika paket för företag:",
+      text2: "För priser, se produktkatalogen ovan eller kontakta ",
       packages: [
         {
           title: "Lilla Paketet",
@@ -543,7 +544,7 @@ export default {
     contactHeader: "Kontakt",
     responsible: "D-Dagenansvariga",
     salesGroup: "Säljgruppen",
-    sponsorText: "Huvudsponsor för D-Dagen 2024",
+    sponsorText: "Huvudsponsor för D-Dagen 2025",
     sponsorLink: "https://omegapoint.se/",
     notDecided: "Huvudsponsor för D-Dagen kommer synas här"
   },
@@ -907,10 +908,10 @@ export default {
     table4row1:
       "VILKEN TYP AV EVENEMANG KAN VÅRT FÖRETAG ANORDNA TILLSAMMANS MED D-DAGEN?",
     table4text1:
-      "Vi samarbetar gärna med er för att organisera evenemang före och efter D-Dagen! Oavsett om ni är intresserade av lunchföreläsningar, hackathons eller något helt annat är ni välkomna att dela era idéer med oss. För mer information kontakta vår sponsoransvarige på <a className='text-yellow' href='mailto:farhan.syed@ddagen.se'>farhan.syed@ddagen.se</a>.",
+      "Vi samarbetar gärna med er för att organisera evenemang före och efter D-Dagen! Oavsett om ni är intresserade av lunchföreläsningar, hackathons eller något helt annat är ni välkomna att dela era idéer med oss. För mer information kontakta vår sponsoransvarige på <a className='text-yellow' href='mailto:jamie.groop@ddagen.se'>jamie.groop@ddagen.se</a>.",
     productCatalog: "PRODUKTKATALOG",
     header: "FÖRETAG FAQ",
-    catalogPath: "/downloadables/Product_Catalog_sv.pdf",
+    catalogPath: "/downloadables/Product_Catalog_2025_sv.pdf",
   },
   contact: {
     header: "Kontakt",
