@@ -36,7 +36,7 @@ export default function ForCompanies() {
 
         {/* Section of packages */}
         <div className={`flex flex-col w-full 
-            text-center justify-center items-center
+            lg:text-center justify-center items-center
             mt-[20px] sm:mt-[60px] mb-[20px] sm:mb-[50px]
             bg-[rgba(11,15,36,0)]`}>
 
@@ -47,6 +47,9 @@ export default function ForCompanies() {
               </h2>
               <p className="text-white text-base sm:text-lg pt-2">
                 {t.forCompanies.companyPackages.text}
+                <br />
+                {t.forCompanies.companyPackages.text2}
+                <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>
               </p>
             </div>
 
