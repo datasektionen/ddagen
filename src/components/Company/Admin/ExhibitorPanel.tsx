@@ -203,6 +203,7 @@ export function ExhibitorPanel({
                   <th>{t.admin.sales.header.package}</th>
                   <th>{t.admin.sales.header.extras.name}</th>
                   <th>{t.admin.sales.header.verification.name}</th>
+                  <th>Special orders</th>
                 </tr>
               </thead>
               <tbody
@@ -284,6 +285,7 @@ export function ExhibitorPanel({
                         </div>
                       </div>
                     </td>
+                    <td>bla</td>
                   </tr>
                 ))}
               </tbody>

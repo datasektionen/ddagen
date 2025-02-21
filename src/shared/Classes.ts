@@ -27,7 +27,7 @@ export class User {
 export class Preferences {
   id?: string;
   name: string;
-  value: ("Meat" | "Vegan" | "LactoseFree" | "GlutenFree")[];
+  value: ("Meat" | "Vegan" | "LactoseFree" | "GlutenFree" | "AlcoholFree")[];
   comment: string;
   type: "Representative" | "Banquet";
   exhibitorId?: string;
@@ -35,7 +35,7 @@ export class Preferences {
   constructor(
     id: string | undefined,
     name: string,
-    value: ("Meat" | "Vegan" | "LactoseFree" | "GlutenFree")[],
+    value: ("Meat" | "Vegan" | "LactoseFree" | "GlutenFree" | "AlcoholFree")[],
     comment: string,
     type: "Representative" | "Banquet",
     exhibitorId?: string

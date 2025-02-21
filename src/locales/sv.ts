@@ -301,6 +301,7 @@ export default {
           lactoseFree: "Laktosfri",
           glutenFree: "Glutenfri",
           meat: "Kött",
+          alcoholFree: "Alkoholfitt",
         },
         alerts: {
           errorDeletePreferenceWithoutID:

@@ -18,6 +18,7 @@ const foodPreferencesValue = z.enum([
   "Vegan",
   "LactoseFree",
   "GlutenFree",
+  "AlcoholFree",
 ]);
 
 export const exhibitorRouter = createTRPCRouter({

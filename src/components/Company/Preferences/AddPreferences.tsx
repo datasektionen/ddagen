@@ -5,7 +5,7 @@ import { InputField } from "../InputField";
 import { type Dispatch, useState, useEffect, type FormEvent } from "react";
 import { Extras, Package, Preferences } from "@/shared/Classes";
 
-type Options = "Vegan" | "Meat" | "LactoseFree" | "GlutenFree";
+type Options = "Vegan" | "Meat" | "LactoseFree" | "GlutenFree" | "AlcoholFree";
 
 export function AddPreferences({
   t,
@@ -32,8 +32,8 @@ export function AddPreferences({
   setEditState: Dispatch<undefined | string>;
   exhibitorPackage: Package;
 }) {
-  const deadline = "2024-09-18";
-  const allowPreferenceChange = new Date() <= new Date("2024-09-22");
+  const deadline = "2025-09-18";
+  const allowPreferenceChange = new Date() <= new Date("2025-09-22");
   const isRepresentative = type == "Representative";
   const defaultPreference = new Preferences(undefined, "", [], "", type);
 
@@ -52,7 +52,7 @@ export function AddPreferences({
     api.exhibitor.deleteFoodPreferences.useMutation();
 
   function convertCheckMarks(checkmarks: boolean[]): Options[] {
-    const options: Options[] = ["Meat", "Vegan", "LactoseFree", "GlutenFree"];
+    const options: Options[] = ["Meat", "Vegan", "LactoseFree", "GlutenFree", "AlcoholFree"];
     return checkmarks.map((_, i) => options[i]).filter((_, i) => checkmarks[i]);
   }
 
@@ -122,6 +122,7 @@ export function AddPreferences({
         pref.value.includes("Vegan"),
         pref.value.includes("LactoseFree"),
         pref.value.includes("GlutenFree"),
+        pref.value.includes("AlcoholFree"),
       ]);
     }
   }, [preferences, pos]);
@@ -223,11 +224,12 @@ export function AddPreferences({
                 t.exhibitorSettings.table.row3.options.vegetarian,
                 t.exhibitorSettings.table.row3.options.lactoseFree,
                 t.exhibitorSettings.table.row3.options.glutenFree,
+                t.exhibitorSettings.table.row3.options.alcoholFree,
               ].map((option, i) => (
                 <div
                   className={
                     isRepresentative
-                      ? `flex flex-row ${i == 0 ? "hidden" : ""}`
+                      ? `flex flex-row ${i == 0 || i == 4 ? "hidden" : ""}`
                       : ""
                   }
                   key={option}

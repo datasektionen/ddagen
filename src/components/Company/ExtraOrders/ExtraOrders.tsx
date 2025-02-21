@@ -250,7 +250,7 @@ export default function ExtraOrders({
         </div>
         <div className="font-normal text-2xl">
           {editState
-            ? plusMinus(drinkCoupons, setDrinkCoupons, 8, disablePreferences)
+            ? plusMinus(drinkCoupons, setDrinkCoupons, 4, disablePreferences)
             : drinkCoupons}
         </div>
         <div className="font-normal text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] text-2xl">
