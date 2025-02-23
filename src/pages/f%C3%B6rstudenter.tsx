@@ -11,7 +11,7 @@ export default function ForStudents() {
   return (
     <div className="w-full h-full">
       <div className="flex flex-col mx-auto items-center max-w-[90%]">
-        <h1 className="uppercase text-center text-cerise pt-[200px] mb-36 text-5xl font-medium">
+        <h1 className="uppercase text-center text-cerise pt-[110px] lg:pt-[140px] mb-16 text-5xl font-medium">
           {t.forStudents.title}
         </h1>
         <div

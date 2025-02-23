@@ -1,0 +1,10 @@
+g_dda.jpg
+g_dev.jpg
+g_mass.jpg
+g_money.jpg
+g_pr.jpg
+g_projectGroup.jpg
+g_projectGroup2023.jpg
+g_projectGroup_modified.jpg
+g_pr_modified.jpg
+g_sales.jpg

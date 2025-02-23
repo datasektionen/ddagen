@@ -3,44 +3,13 @@ import type Locale from "@/locales";
 import { CheckMark } from "../CheckMark";
 import Button from "./Button";
 
-
-function applySearch(
-  searchQuery: string,
-  checkmarks: boolean[],
-  setQuery: Dispatch<{
-    searchQuery: string;
-    years: (0 | 1 | 2 | 3 | 4)[];
-    offers: {
-      summer: boolean;
-      internship: boolean;
-      partTime: boolean;
-      thesis: boolean;
-      fullTime: boolean;
-      trainee: boolean;
-    };
-  }>
-) {
-  const query = {
-    searchQuery: searchQuery.toLowerCase().trim(),
-    years: checkmarks
-      .slice(0, 5)
-      .map((value, index) => (value ? index : -1))
-      .filter((index) => index !== -1) as (0 | 1 | 2 | 3 | 4)[],
-    offers: {
-      summer: checkmarks[5],
-      internship: checkmarks[6],
-      partTime: checkmarks[7],
-      thesis: checkmarks[8],
-      fullTime: checkmarks[9],
-      trainee: checkmarks[10],
-    },
-  };
-
-  console.log('Search function called with searchQuery:', searchQuery);
-  console.log('Resulting query:', query);
-
-  setQuery(query);
-}
+const YEARS = [0, 1, 2, 3, 4];
+const OFFER_LABELS = [
+  'summer', 'internship', 'partTime', 'thesis', 'fullTime', 'trainee'
+];
+const INDUSTRIES_LABELS = [
+  'tech', 'consulting', 'finance',
+];
 
 export default function Search({
   t,
@@ -50,42 +19,60 @@ export default function Search({
   setQuery: Dispatch<{
     searchQuery: string;
     years: (0 | 1 | 2 | 3 | 4)[];
-    offers: {
-      summer: boolean;
-      internship: boolean;
-      partTime: boolean;
-      thesis: boolean;
-      fullTime: boolean;
-      trainee: boolean;
-    };
+    offers: string[];
+    industries: string[];
   }>;
 }) {
-  const years = [0, 1, 2, 3, 4];
-  const offers = [
-    t.exhibitorSettings.table.row1.section2.jobs.summer,
-    t.exhibitorSettings.table.row1.section2.jobs.internship,
-    t.exhibitorSettings.table.row1.section2.jobs.partTime,
-    t.exhibitorSettings.table.row1.section2.other.thesis,
-    t.exhibitorSettings.table.row1.section2.other.fullTime,
-    t.exhibitorSettings.table.row1.section2.other.trainee,
-  ];
+  const getSafeValue = <T extends Record<string, any>>(obj: T, key: keyof T): T[keyof T] | "" => {
+    return obj && key in obj ? obj[key] : "";
+  };
+
+  const offers = OFFER_LABELS.map((label) => {
+    const jobOffer = getSafeValue(
+      t.exhibitorSettings.table.row1.section2.jobs ?? {},
+      label as keyof typeof t.exhibitorSettings.table.row1.section2.jobs
+    );
+    const otherOffer = getSafeValue(
+      t.exhibitorSettings.table.row1.section2.other ?? {},
+      label as keyof typeof t.exhibitorSettings.table.row1.section2.other
+    );
+    return jobOffer || otherOffer || "";
+  });
+
+  const industries = INDUSTRIES_LABELS.map((label) => getSafeValue(
+    t.exhibitorSettings.table.row1.section2.industry ?? {},
+    label as keyof typeof t.exhibitorSettings.table.row1.section2.industry
+  ));
+
+  const TOTAL_CHECKMARKS = YEARS.length + offers.length + industries.length;
 
   const [searchQuery, setSearchQuery] = useState("");
   const [showFilter, setShowFilter] = useState(false);
-  const [checkmarks, setCheckmarks] = useState(Array<boolean>(11).fill(false));
+  const [checkmarks, setCheckmarks] = useState<boolean[]>(Array(TOTAL_CHECKMARKS).fill(false));
   const filterRef = useRef<HTMLDivElement>(null);
   const searchBarRef = useRef<HTMLDivElement>(null);
 
-  const setSearchQueryAndApply = (value: string) => {
-    setSearchQuery(value);
-    applySearch(value, checkmarks, setQuery);
-  };
-  
+  useEffect(() => {
+    const applySearch = () => {
+      setQuery({
+        searchQuery,
+        years: checkmarks
+        .slice(0, 5)
+        .map((value, index) => (value ? index : -1))
+        .filter((index) => index !== -1) as (0 | 1 | 2 | 3 | 4)[],
+        offers: OFFER_LABELS.filter((_, index) => checkmarks[YEARS.length + index]),
+        industries:  industries.filter((_, index) => checkmarks[YEARS.length + OFFER_LABELS.length + index]),
+      });
+    };
+    console.log('Search function called with searchQuery:', searchQuery);
+    console.log('State of checkmarks:', checkmarks);
+    applySearch();
+  }, [searchQuery, checkmarks, setQuery]);
+
   const toggleCheckmarkAndApply = (index: number) => {
     setCheckmarks((prev) => {
       const newCheckmarks = [...prev];
       newCheckmarks[index] = !newCheckmarks[index];
-      applySearch(searchQuery, newCheckmarks, setQuery);
       return newCheckmarks;
     });
   };
@@ -98,6 +85,7 @@ export default function Search({
         searchBarRef.current &&
         !searchBarRef.current.contains(event.target as Node)
       ) {
+        console.log("Click outside detected");
         setShowFilter(false);
       }
     };
@@ -107,20 +95,29 @@ export default function Search({
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [filterRef, searchBarRef]);
-  
+
+  const renderCheckmarks = (labels: string[], startIndex: number) => {
+    return labels.map((label, index) => (
+      <div key={`${startIndex + index}`} className="flex flex-row space-x-1 justify-between items-center">
+        <CheckMark
+          name={`${startIndex + index}`}
+          checked={checkmarks[startIndex + index]}
+          onChange={() => toggleCheckmarkAndApply(startIndex + index)}
+        />
+        <div className="text-sm flex-grow">{label}</div>
+      </div>
+    ));
+  };
+
   return (
-    <div 
-      id={"search"}
-      className="h-20 w-full flex flex-col items-center justify-center"
-    >
+    <div id={"search"} className="h-20 w-full flex flex-col items-center justify-center">
       <div ref={searchBarRef} className="w-full flex items-center my-4">
         <input
-          className="h-10 grow outline-none border-2 border-cerise bg-[#eaeaea] bg-opacity-10 
-                    rounded-3xl px-3 text-white text-opacity-50 focus:placeholder:text-transparent"
+          className="h-10 grow outline-none border-2 border-cerise bg-[#eaeaea] bg-opacity-10 rounded-3xl px-3 text-white text-opacity-50 focus:placeholder:text-transparent"
           type="text"
           placeholder={t.map.search.placeHolder}
           value={searchQuery}
-          onChange={(q) => setSearchQueryAndApply(q.target.value)}
+          onChange={(q) => setSearchQuery(q.target.value)}
         />
         <div className="h-10 flex flex-row text-3xl box-border">
           <Button
@@ -138,40 +135,20 @@ export default function Search({
             className="absolute top-full z-10 w-11/12 block border-4 border-pink-600 bg-[#867c8b] bg-opacity-60 backdrop-blur-sm rounded-lg text-white justify-center text-xl"
             style={{marginTop: '10px'}}
           >
-            <div className="w-fullx h-full flex flex-col justify-center items-center p-3 font-light text-base">
+            <div className="w-fullx h-full flex flex-col justify-center items-center p-3 font-light text-base max-h-[70vh] overflow-y-auto">
+              {/* Years */}
               <div className="flex flex-row space-x-4 items-center">
                 <span>{t.map.search.filterYear}:</span>
-                {years.map((year, pos) => (
-                  <div className="flex flex-row space-x-1 items-center" key={`${pos}`}>
-                    <span className="text-lg text-gray-500">{year + 1}</span>
-                    <input
-                      type="checkbox"
-                      name={`${pos}`}
-                      checked={checkmarks[pos]}
-                      onClick={() => toggleCheckmarkAndApply(pos)}
-                      className={`form-checkbox w-6 h-6 hover:cursor-pointer hover:border-yellow
-                                    bg-black/25 checked:bg-cerise checked:border-white rounded-lg focus:ring-0
-                                    border-2 border-cerise`}
-                    />
-                  </div>
-                ))}
+                {renderCheckmarks(YEARS.map(year => (year + 1).toString()), 0)}
               </div>
+              {/* Offers */}
               <div className="grid grid-rows-3 grid-cols-2 gap-y-2 mt-3">
-                {offers.map((offer, pos) => (
-                  <div
-                    key={`${pos + 5}`}
-                    className="flex flex-row space-x-1 justify-between items-center"
-                  >
-                    <div style={{ marginTop: '-2px' }}>
-                      <CheckMark
-                        name={`${pos + 5}`}
-                        checked={checkmarks[pos + 5]}
-                        onClick={() => toggleCheckmarkAndApply(pos + 5)}
-                      />
-                    </div>
-                    <div className="text-sm flex-grow">{offer}</div>
-                  </div>
-                ))}
+                {renderCheckmarks(offers, YEARS.length)}
+              </div>
+              {/* Industries */}
+              <div className="grid grid-rows-3 grid-cols-2 gap-y-2 mt-3">
+                <span>{t.map.search.filterIndustry}:</span><br></br>
+                {renderCheckmarks(industries, YEARS.length + OFFER_LABELS.length)}
               </div>
             </div>
           </div>

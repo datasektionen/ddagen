@@ -54,10 +54,10 @@ export default function Sales() {
 
   return (
     <div>
-      {exhibitors.length === 0 ? (
+      {password === "" ? (
         <AdminLogin t={t} login={login} />
       ) : (
-        <div className="w-full h-full my-48 text-white">
+        <div className="w-full h-full py-48 text-white bg-darkblue bg-opacity-75">
           <h1 className="uppercase text-cerise text-3xl md:text-5xl font-medium text-center px-[10px] break-words">
             {t.admin.sales.header.title}
           </h1>
@@ -77,6 +77,7 @@ export default function Sales() {
               exhibitors={exhibitors}
               preferences={preferences}
               password={password}
+              reloadLogin={() => login(password)}
             />
           ) : buttonSelected == 2 ? (
             <ExtraOrderPanel t={t} exhibitors={exhibitors} />

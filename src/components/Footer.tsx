@@ -21,11 +21,10 @@ export default function Footer() {
 
   return (
     <footer className="
-      bg-fill bg-[#090E2F]
+      bg-fill bg-verydarkblue
       min-h-[600px] md:min-h-[300px] 
       flex flex-grow
       overflow-hidden
-    
     ">
       <div className="
         relative flex flex-col w-full h-auto md:h-[300px] pt-[20px] md:pt-[40px]

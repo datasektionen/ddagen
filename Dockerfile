@@ -1,7 +1,7 @@
 # Taken from here (with a few changes)
 # https://github.com/vercel/next.js/blob/canary/examples/with-docker/Dockerfile
 
-FROM node:18-alpine3.18 AS base
+FROM node:18-alpine3.20 AS base
 
 # Install dependencies only when needed
 FROM base AS deps
@@ -53,6 +53,8 @@ COPY --from=builder /app/.next/standalone ./
 RUN chown -R nextjs:nodejs ./
 COPY --from=builder /app/.next/static ./.next/static
 RUN chown -R nextjs:nodejs ./.next/static
+
+RUN apk add postgresql16-client # psql for when shelling into container
 
 USER nextjs
 
