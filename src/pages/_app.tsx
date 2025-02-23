@@ -26,7 +26,7 @@ const App: AppType = ({ Component, pageProps }) => {
     <>
       <Head>
         <link rel="icon" href="/img/favicon.ico" />
-        <title>D-Dagen 2024 | Konglig Datasektionens Arbetsmässodag</title>
+        <title>D-Dagen 2025 | Konglig Datasektionens Arbetsmässodag</title>
         <meta key="desc" name="description" content="Explore D-Dagen 2024 at KTH, Stockholm's leading tech job fair connecting computer science students with top Nordic IT companies for career opportunities, networking, and industry insights."/>
         <meta key="keywords" name="keywords" content="D-Dagen 2024, Computer Science Job Fair, KTH Royal Institute of Technology, Nordic Tech Career Event, IT and CS Student Recruitment, Stockholm Technology Networking, Engineering Career Opportunities, Datasektionen, THS Student Chapter, Future Tech Employment"/>
         <meta key="charSet" charSet="UTF-8" />
