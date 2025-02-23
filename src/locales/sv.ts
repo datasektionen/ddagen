@@ -911,7 +911,7 @@ export default {
       "Vi samarbetar gärna med er för att organisera evenemang före och efter D-Dagen! Oavsett om ni är intresserade av lunchföreläsningar, hackathons eller något helt annat är ni välkomna att dela era idéer med oss. För mer information kontakta vår sponsoransvarige på <a className='text-yellow' href='mailto:jamie.groop@ddagen.se'>jamie.groop@ddagen.se</a>.",
     productCatalog: "PRODUKTKATALOG",
     header: "FÖRETAG FAQ",
-    catalogPath: "/downloadables/Product_Catalog_2025_sv.pdf",
+    catalogPath: "https://ddagen.se/downloadables/Product_Catalog_2025_sv.pdf",
   },
   contact: {
     header: "Kontakt",
