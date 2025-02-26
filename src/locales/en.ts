@@ -12,7 +12,7 @@ export default {
     introThirdBlock:
       "Then D-Dagen is the perfect opportunity for you to meet people in the industry and expand your network with valuable contacts! This year, D-Dagen is celebrating its grand 25th anniversary, which means the fair will be bigger and better than ever, with over 100+ exhibitors and 3000+ participants.",
     introSignOff: "This is a celebration you do not want to miss!\n Hope to see you there!",
-    introDDA: "Max Berlund & Mortada Nasser, Project Managers",
+    introDDA: "Max Berglund & Mortada Nasser, Project Managers",
     representative: "Company Representative?",
     representativeDescription:
       "Do you want to reach thousands of Computer Science Engineering students at KTH? As an exhibitor at D-Dagen you have the opportunity to do so! Click the button below to read more and make an application of interest .",
