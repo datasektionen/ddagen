@@ -14,7 +14,7 @@ export default {
     introThirdBlock: 
       "Då är D-Dagen det perfekta tillfället för dig att träffa personer inom branschen och knyta värdefulla kontakter! I år firar D-Dagen sitt storslagna 25-års jubileum, vilket innebär att mässan kommer bli större och bättre än någonsin, med över 100+ utställare och 3000+ deltagare.",
     introSignOff: "Detta är ett firande som man inte vill missa!\n Hoppas vi ses!",
-    introDDA: "Max Berlund & Mortada Nasser, D-Dagenansvariga",
+    introDDA: "Max Berglund & Mortada Nasser, D-Dagenansvariga",
     representative: "Företagsrepresentant?",
     representativeDescription:
       "Vill du nå ut till tusentals civilingenjörs-studenter vid KTH? Som utställare på D-Dagen har du möjlighet att göra just det! Klicka här nedanför för att läsa mer och göra en intresseanmälan.",
