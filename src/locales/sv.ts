@@ -264,6 +264,7 @@ export default {
           },
           drinkCoupons: "Barbongar",
           mealCoupons: "Måltidsbiljetter",
+          lastChanged: "Senast ändrad: ",
           tables: "Bord",
           chairs: "Stolar",
           representatives: "Representanter",

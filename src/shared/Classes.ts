@@ -151,6 +151,7 @@ export class Extras {
   extraRepresentativeSpots: number;
   totalBanquetTicketsWanted: number;
   extraMealCoupons: number;
+  lastChanged?: Date;
 
   constructor(
     extraChairs: number,
@@ -158,7 +159,8 @@ export class Extras {
     extraDrinkCoupons: number,
     extraRepresentativeSpots: number,
     totalBanquetTicketsWanted: number,
-    extraMealCoupons: number
+    extraMealCoupons: number,
+    lastChanged?: Date,
   ) {
     this.extraChairs = extraChairs;
     this.extraTables = extraTables;
@@ -166,6 +168,7 @@ export class Extras {
     this.extraRepresentativeSpots = extraRepresentativeSpots;
     this.totalBanquetTicketsWanted = totalBanquetTicketsWanted;
     this.extraMealCoupons = extraMealCoupons;
+    this.lastChanged = lastChanged;
   }
 }
 

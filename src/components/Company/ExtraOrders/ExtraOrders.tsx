@@ -33,6 +33,7 @@ export default function ExtraOrders({
   const [representatives, setRepresentatives] = useState(0);
   const [banquetTickets, setBanquetTickets] = useState(0);
   const [mealCoupons, setMealCoupons] = useState(0);
+  const [lastChanged, setLastChanged] = useState<Date>();
 
   useEffect(() => {
     if (extras == undefined) return;
@@ -42,10 +43,32 @@ export default function ExtraOrders({
     setRepresentatives(extras.extraRepresentativeSpots);
     setBanquetTickets(extras.totalBanquetTicketsWanted);
     setMealCoupons(extras.extraMealCoupons);
+    extras.lastChanged && setLastChanged(extras.lastChanged);
   }, [extras]);
 
   function handleClick() {
     if (editState == true) {
+      /* IF SOMETHING CHANGED, UPDATE THE LASTCHANGED TIME */
+      if(
+        extras?.extraTables != tables || 
+        extras?.extraChairs != chairs || 
+        extras?.extraDrinkCoupons != drinkCoupons || 
+        extras?.extraRepresentativeSpots != representatives || 
+        extras?.totalBanquetTicketsWanted != banquetTickets || 
+        extras?.extraMealCoupons != mealCoupons
+      ){
+        setExtras({
+          extraTables: tables,
+          extraChairs: chairs,
+          extraDrinkCoupons: drinkCoupons,
+          extraRepresentativeSpots: representatives,
+          totalBanquetTicketsWanted: banquetTickets,
+          extraMealCoupons: mealCoupons,
+          lastChanged: new Date()
+        });
+        return;
+      }
+      /* NOTHING CHANGED, KEEP THE PREVIOUS LAST CHANGED TIME */
       setExtras({
         extraTables: tables,
         extraChairs: chairs,
@@ -53,6 +76,7 @@ export default function ExtraOrders({
         extraRepresentativeSpots: representatives,
         totalBanquetTicketsWanted: banquetTickets,
         extraMealCoupons: mealCoupons,
+        lastChanged: extras?.lastChanged
       });
     }
     setEditState(!editState);
@@ -387,6 +411,14 @@ export default function ExtraOrders({
         ))}
       </div>
       {/* Section 6 */}
+
+      {lastChanged &&
+        <div className="font-normal text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] text-2xl">
+          {t.exhibitorSettings.table.row2.section2.lastChanged + lastChanged.getDate() + "/" + (lastChanged.getMonth() + 1) + " " + 
+          lastChanged.getHours().toString().padStart(2, '0') + ":" + 
+          lastChanged.getMinutes().toString().padStart(2, '0')}
+        </div>
+      }
 
       <a
         className={`hover:cursor-pointer ${

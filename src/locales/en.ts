@@ -263,6 +263,7 @@ export default {
           },
           drinkCoupons: "Drink Coupons",
           mealCoupons: "Meal Coupons",
+          lastChanged: "Last Changed: ",
           tables: "Tables",
           chairs: "Chairs",
           representatives: "Representatives",

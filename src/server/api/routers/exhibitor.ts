@@ -178,6 +178,7 @@ export const exhibitorRouter = createTRPCRouter({
         extraRepresentativeSpots: true,
         totalBanquetTicketsWanted: true,
         extraMealCoupons: true,
+        lastChanged: true,
       },
     });
   }),
@@ -190,6 +191,7 @@ export const exhibitorRouter = createTRPCRouter({
         extraRepresentativeSpots: z.number(),
         totalBanquetTicketsWanted: z.number(),
         extraMealCoupons: z.number(),
+        lastChanged: z.date(),
       })
     )
     .mutation(async ({ ctx, input }) => {
@@ -202,6 +204,7 @@ export const exhibitorRouter = createTRPCRouter({
           extraRepresentativeSpots: input.extraRepresentativeSpots,
           totalBanquetTicketsWanted: input.totalBanquetTicketsWanted,
           extraMealCoupons: input.extraMealCoupons,
+          lastChanged: z.date().parse(input.lastChanged),
         },
       });
     }),
