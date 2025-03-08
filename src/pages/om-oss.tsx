@@ -18,6 +18,7 @@ const salesNames          = ["Oskar Furuhed", "Josef Behnam", "Sean Zishend", "H
 const massNames           = ["Felicia Murkes", "Silan Centinkaya", "Emanuel Malki", "Elias Rosberg", "Amar Ibrahim", "Viktor Rogalin"]
 const ecoNames            = ["Melissa Arslan", "Anton Jansson"]
 
+
 const managersImages      = managersName.map(stripLastName).map(formatImagePath);
 const prTeamImages        = prNames.map(stripLastName).map(formatImagePath);
 const devTeamImages       = devNames.map(stripLastName).map(formatImagePath);
@@ -119,7 +120,7 @@ export default function AboutUs() {
   const t = useLocale();
   return (
     <div className=" flex flex-col items-center pb-[150px]">
-      <h1 className="uppercase text-cerise  text-5xl font-medium text-center pt-[200px] mb-36">
+      <h1 className="uppercase text-cerise  text-5xl font-medium text-center pt-[110px] lg:pt-[140px] mb-16">
         {t.aboutUs.header}
       </h1>
       <div className="w-full lg:block xl:w-[1200px] lg:w-[1000px] lg:px-0 lg:mb-0 px-6 mb-3 ">
@@ -128,11 +129,11 @@ export default function AboutUs() {
         </div>
       
         <div className="flex flex-col">
-          <div className="flex flex-row items-center justify-center mb-10">
+          <div className="flex flex-row items-center justify-center rounded-lg p-2 mb-10 bg-darkblue bg-opacity-90 max-w-4xl">
             <H2AndParagraph header={t.aboutUs.info1} body={t.aboutUs.paragraph1}/>
           </div>
 
-          <div className="flex md:flex-row flex-col lg:gap-10 gap-5">
+          <div className="flex md:flex-row flex-col lg:gap-10 gap-5 rounded-lg p-2 mb-10 bg-darkblue bg-opacity-90">
             <H2AndParagraph header={t.aboutUs.info2} body={t.aboutUs.paragraph2}/>
             <H2AndParagraph header={t.aboutUs.info3} body={t.aboutUs.paragraph3}/>
           </div>

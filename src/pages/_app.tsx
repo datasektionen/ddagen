@@ -26,7 +26,7 @@ const App: AppType = ({ Component, pageProps }) => {
     <>
       <Head>
         <link rel="icon" href="/img/favicon.ico" />
-        <title>D-Dagen 2024 | Konglig Datasektionens Arbetsmässodag</title>
+        <title>D-Dagen 2025 | Konglig Datasektionens Arbetsmässodag</title>
         <meta key="desc" name="description" content="Explore D-Dagen 2024 at KTH, Stockholm's leading tech job fair connecting computer science students with top Nordic IT companies for career opportunities, networking, and industry insights."/>
         <meta key="keywords" name="keywords" content="D-Dagen 2024, Computer Science Job Fair, KTH Royal Institute of Technology, Nordic Tech Career Event, IT and CS Student Recruitment, Stockholm Technology Networking, Engineering Career Opportunities, Datasektionen, THS Student Chapter, Future Tech Employment"/>
         <meta key="charSet" charSet="UTF-8" />
@@ -42,15 +42,15 @@ const App: AppType = ({ Component, pageProps }) => {
       </AnimationProvidor>
         <div
           className="
-            bg-[linear-gradient(rgba(17,12,48,0),rgba(238,42,123,0.88)),url('/img/bg.png')]
-            bg-top
-            bg-[length:160%] md:bg-[length:100vw]
-            bg-blend-hue
-            bg-repeat
             overflow-x-hidden
+            relative
           "
           id="main-content"
         >
+          <div className="absolute w-full h-full z-[-2] bg-[#0F142D]"></div>
+          <div className="absolute w-full h-full z-[-1] 
+              bg-[url('/img/bg-spiral-mobile.png')] md:bg-[url('/img/bg-spiral-desktop.png')] bg-blend-hue bg-repeat-y
+              bg-[length:100%] md:bg-[length:50vw]"></div>
           <ModalContextProvider>
             <Component  {...pageProps} />
           </ModalContextProvider>

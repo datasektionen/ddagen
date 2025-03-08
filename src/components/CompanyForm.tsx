@@ -79,9 +79,9 @@ export default function CompanyForm({
       <h1 className="uppercase text-center text-3xl md:text-5xl font-medium text-cerise">
         {t.companyForm.title}
       </h1>
-      <p className="text-center min-w-[100px] max-w-[400px] w-full text-white mt-10"> {t.companyForm.description}</p>
+      <p className="text-center min-w-[100px] max-w-[400px] w-full text-white mt-10 p-2 rounded-lg bg-darkblue bg-opacity-90"> {t.companyForm.description}</p>
       <form
-        className="bg-transparent w-3/5 mt-16 flex flex-col gap-16"
+        className="w-[90vw] sm:w-3/5 mt-16 flex flex-col gap-16 px-6 py-8 rounded-lg bg-darkblue bg-opacity-90"
         onSubmit={addCompanyDocument}
       >
         <InputField

@@ -12,5 +12,34 @@ const config = {
     defaultLocale: "sv",
   },
   output: "standalone",
+  redirects: async () => {
+    return [
+      {
+        source: "/signup",
+        destination: "/en/företagsanmälan",
+        permanent: true,
+      },
+      {
+        source: "/foretagsanmalan",
+        destination: "/en/företagsanmälan",
+        permanent: true,
+      },
+      {
+        source: "/forforetag",
+        destination: "/en/förföretag",
+        permanent: true,
+      },
+      {
+        source: "/forstudenter",
+        destination: "/en/förstudenter",
+        permanent: true,
+      },
+      {
+        source: "/utstallare",
+        destination: "/en/utställare",
+        permanent: true,
+      },
+    ];
+  },
 }
 export default config;

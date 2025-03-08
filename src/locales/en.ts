@@ -6,19 +6,21 @@ export default {
   about: "About Us",
   home: {
     introFirstBlock:
-      "It’s once again time for D-Dagen, the largest job fair for Computer Science students in the Nordics.",
+      "Scandinavia’s largest Career Fair for Computer Science students is celebrating its 25th anniversary",
     introSecondBlock:
-      "Are you studying Computer Science or IT and looking for your future work place, or do you represent a company and are looking for talented co-workers? In that case, D-Dagen is the perfect opportunity for you to meet people from the industry and expand your network with valuable contacts! We’re striving to make this year's fair the largest so far, with over 100+ exhibitors and 3000+ participants.",
-    introSignOff: "Looking forward to meeting you!",
-    introDDA: "Toshihide Sakao & William Nordwall, Project Managers",
+      "Are you studying Computer Science or IT looking for your future workplace, or do you represent a company searching for talented co-workers?",
+    introThirdBlock:
+      "Then D-Dagen is the perfect opportunity for you to meet people in the industry and expand your network with valuable contacts! This year, D-Dagen is celebrating its grand 25th anniversary, which means the fair will be bigger and better than ever, with over 100+ exhibitors and 3000+ participants.",
+    introSignOff: "This is a celebration you do not want to miss!\n Hope to see you there!",
+    introDDA: "Max Berglund & Mortada Nasser, Project Managers",
     representative: "Company Representative?",
     representativeDescription:
       "Do you want to reach thousands of Computer Science Engineering students at KTH? As an exhibitor at D-Dagen you have the opportunity to do so! Click the button below to read more and make an application of interest .",
     representativeButton: "Interest Registration",
-    stats: {
-      firstPart: "100+ exhibitors",
-      secondPart: "3000+ participants",
-      thirdPart: "October 9th, 10:00 AM - 4:00 PM",
+    info: {
+      firstPart: "October 9th",
+      secondPart: "10:00 AM - 4:00 PM",
+      thirdPart: "KTH",
     },
     countDown:{
       days: "days",
@@ -26,6 +28,24 @@ export default {
       minutes: "minutes",
       seconds: "seconds",
     },
+    stats: [
+      {
+        value: "100+",
+        type: "Exhibitors"
+      },
+      {
+        value: "3000+",
+        type: "Visitors"
+      },
+      {
+        value: "25th",
+        type: "Anniversary"
+      },
+      {
+        value: "100%",
+        type: "Possibilites"
+      },
+    ],
   },
   forCompanies: {
     title: "For Companies",
@@ -34,6 +54,76 @@ export default {
       "D-Dagen is the Computer Science Chapter’s annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
     fairText2:
       "This year the fair is held on October 9th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15-19 on the KTH Campus Valhallavägen. During the day there will be a lounge for exhibitors, and in the evening a banquet will be organized to end the day.",
+    companyPackages: {
+      title: "Does your company want to reach thousands of engineering students at KTH?",
+      text: "We offer several different packages for companies:",
+      text2: "Prices are found in the Product Catalog above or by contacting ",
+      packages: [
+        {
+          title: "Small Package",
+          boldFirstPoint: false,
+          bulletPoints: [
+            "4 m² at the fair",
+            "Spot on the website and catalog",
+            "2 lunch/breakfast tickets",
+            "5 representative spots",
+            "1 standing table, 2 power outlets",
+            "2 banquet tickets*",
+            "Free access to the company lounge",
+            "A designated Company Host for service",
+            "Limited storage & reception of deliveries"
+          ],
+          disclaimers: [
+            "A total of 8 drink tickets included for the banquet"
+          ]
+        },
+        {
+          title: "Medium Package",
+          className: "border-cerise border-4",
+          discount: {
+            amount: "-3%",
+            className: "bg-cerise"
+          },
+          boldFirstPoint: true,
+          bulletPoints: [
+            "Everything from the Small Package",
+            "6 m² at the fair",
+            "Good placement at the fair",
+            "1 extra lunch/breakfast ticket",
+            "Exposure on our social media",
+            "Medium-sized logo on our website",
+            "Contact meetings, 2 hours",
+            "Unlimited storage & reception of deliveries",
+          ],
+          disclaimers: [
+            "Anniversary discount applies until April 25th"
+          ]
+        },
+        {
+          title: "Large Package",
+          className: "border-gold border-4",
+          discount: {
+            amount: "-5%",
+            className: "bg-gold"
+          },
+          boldFirstPoint: true,
+          bulletPoints: [
+            "Everything from the Medium Package",
+            "8 m², at least 4m ceiling height",
+            "Central placement at the fair",
+            "1 extra standing table, lunch/breakfast ticket",
+            "2 extra banquet tickets",
+            "Exposure on approximately 1000 goodie bags with a large logo",
+            "1 representative in a scheduled panel discussion",
+            "Sponsored post on our social media with custom content",
+            "Large logo on our website",
+          ],
+          disclaimers: [
+            "Anniversary discount applies until April 25th"
+          ]
+        },
+      ]
+    },      
     interestedTitle: "Interested?",
     interestedText:
       "Are you interested in exhibiting on D-Dagen and connecting with thousands of students in Computer Science and IT? Click below to sign up!",
@@ -133,7 +223,6 @@ export default {
       description: "Description",
       industry: "Industry",
       format: "SVG or PNG",
-      billingAddress: "Billing Address",
     },
     step1: {
       title: "JOB OFFERS",
@@ -190,13 +279,11 @@ export default {
           description: "Description",
           placeholderText: "About Us",
           placeholderTextIndustry: "Our industry",
-          placeholderTextBillingAddress: "Our billing address",
           logo: "Logo",
           logoWhite: "White Logo",
           logoColour: "Logo w/ colour",
           or: "or",
           industry: "Industry",
-          billingAddress: "Billing Address",
         },
         section2: {
           header: "Job Offers",
@@ -459,7 +546,7 @@ export default {
     contactHeader: "Contact",
     responsible: "Project Managers",
     salesGroup: "Sales Team",
-    sponsorText: "Main sponsor for D-Dagen 2024",
+    sponsorText: "Main sponsor for D-Dagen 2025",
     sponsorLink: "https://en.omegapoint.se",
     notDecided: "Main sponsor for D-Dagen 2025 will be shown here",
   },
@@ -472,13 +559,13 @@ export default {
       contactPerson: string,
       phoneNumber: string
     ) => 
-      "<div style=\"background:#14112A;padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
-          "<table style=\"background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" + 
+      "<div style=\"padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
+          "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" + 
             "<tbody>" +
               "<tr>" +
                 "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
                   "<p>" +
-                    "Hi!<br>" +
+                    "Hi!<br><br>" +
                   "</p>" +
                 "</div>" +
               "</tr>" +
@@ -486,8 +573,8 @@ export default {
                 "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                   "<p>We are pleased to confirm we have received your exhibitor registration. " +
                     "We will contact you during the spring about whether you got a spot at D-Dagen. " +
-                    "You can expect to hear from us during spring. </p><br>" +
-                  "<p>Here are the details of your registration: </p>" +
+                    "You can expect to hear from us during spring. </p><br><br>" +
+                  "<p>Here are the details of your registration: </p><br><br>" +
                 "</div>" +
               "</tr>" +
               "<tr>" +
@@ -503,11 +590,11 @@ export default {
               "</tr>" +
               "<tr>" +
                 "<div style=\"padding: 0 30px 30px; background:#DE3163;color:#ffffff;\" >" +
-                  "<p> If any of the information above is incorrect or if you have any other questions, " + 
+                  "<br><br><p> If any of the information above is incorrect or if you have any other questions, " + 
                     "do not hesitate to contact our sales team at sales@ddagen.se. </p><br>" + 
                   "<p>Thank you for your registration and we look forward to a successful event. </p><br>" + 
                   "<p>Best regards, </p><br>" + 
-                  "<p>The D-Dagen project group</p><br>" +
+                  "<p>The D-Dagen project group</p><br><br>" +
                 "</div>" +
               "</tr>" +
             "</tbody>" +
@@ -823,10 +910,10 @@ export default {
     table4row1:
       "WHAT KIND OF EVENTS CAN OUR COMPANY HOST TOGETHER WITH D-DAGEN?",
     table4text1:
-      "We'd be thrilled to collaborate with you, both before and after D-Dagen! Whether you're interested in hosting a lunch lecture, hackathon, or something completely different, we're open to your ideas. For more information, please contact our sponsorship manager at <a className='text-yellow' href='mailto:farhan.syed@ddagen.se'>farhan.syed@ddagen.se</a>.",
+      "We'd be thrilled to collaborate with you, both before and after D-Dagen! Whether you're interested in hosting a lunch lecture, hackathon, or something completely different, we're open to your ideas. For more information, please contact our sponsorship manager at <a className='text-yellow' href='mailto:jamie.groop@ddagen.se'>jamie.groop@ddagen.se</a>.",
     productCatalog: "PRODUCT CATALOG",
     header: "COMPANY FAQ",
-    catalogPath: "https://ddagen.se/downloadables/Product_Catalog_en.pdf",
+    catalogPath: "https://ddagen.se/downloadables/Product_Catalog_2025_en.pdf",
   },
   contact: {
     header: "Contact",
@@ -1022,7 +1109,7 @@ export default {
   },
   aboutUs: {
     header: "About us",
-    subHeader: "Meet Project Group 2024",
+    subHeader: "Meet Project Group 2025",
     paragraph1:
       "D-Dagen is an annual trade fair organized by the Computer Science Student Association at KTH (Royal Institute of Technology). At D-Dagen, companies have the opportunity to meet and interact with potential future employees from KTH. At the same time, we offer our students a chance to learn more about career opportunities, network, and participate in lectures and other company events.",
     paragraph2:

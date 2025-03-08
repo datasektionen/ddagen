@@ -481,7 +481,7 @@ export default function Exhibitor() {
     <div className="xl:w-[1200px] lg:w-[1000px] w-full">
 
     </div>
-      <div className="mx-auto flex flex-col items-center py-40 cursor-default">
+      <div className="mx-auto flex flex-col items-center py-40 cursor-default bg-darkblue bg-opacity-75">
         {/*Header*/}
         <h1 className="uppercase text-cerise text-3xl md:text-5xl font-medium text-center px-[10px] break-words">
           {t.exhibitorSettings.header}
