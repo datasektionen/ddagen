@@ -10,7 +10,7 @@ export default {
         {
           url: 'https://dev.ddagen.se/img/ddagen-og-image.png',
           width: 1601,
-          height: 657,
+          height: 811,
           alt: 'D-Dagen 2025',
         }
       ],
