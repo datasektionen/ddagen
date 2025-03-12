@@ -1,5 +1,5 @@
 export default {
-    titleTemplate: "D-Dagen 2025 | %s",
+    titleTemplate: "%s | D-Dagen 2025",
     description: "Upptäck D-Dagen 2025 vid KTH - Stockholms ledande teknikmässa för IT-studenter och arbetsgivare.",
     openGraph: {
       type: 'website',
