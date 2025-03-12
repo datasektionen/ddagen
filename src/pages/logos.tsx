@@ -2,6 +2,7 @@ import { useLocale } from "@/locales";
 import { useState, useRef } from "react";
 import { addImageDetails } from "@/shared/addImageDetails";
 import { prisma } from "@/server/db";
+import { NextSeo } from 'next-seo';
 
 function OffersList({ offers }: { offers: (number[] | boolean)[] }) {
   const t = useLocale();
@@ -183,32 +184,65 @@ export default function Logos({ exhibitorData }: LogosProps) {
   );
   const smallAndStartUpPackages = [...smallPackages, ...startupPackages];
 
+
+
+  const seoContent = {
+    sv: {
+      title: "D-Dagen 2025 | Våra Utställare - Träffa Ledande IT-företag",
+      description: "Upptäck företagen som deltar på D-Dagen 2025! Träffa ledande IT- och techföretag på KTH den 9 oktober och utforska karriärmöjligheter inom data och IT. Se hela listan över utställare här.",
+      url: "https://ddagen.se/utställare",
+    },
+    en: {
+      title: "D-Dagen 2025 | Our Exhibitors - Meet Leading IT Companies",
+      description: "Discover the companies attending D-Dagen 2025! Meet top IT and tech firms at KTH on October 9 and explore career opportunities in computer science and IT. View the full list of exhibitors here.",
+      url: "https://ddagen.se/en/utställare",
+    },
+  };
+
+  const { title, description, url } = seoContent[t.locale as "sv" | "en"];
   return (
-    <div className="pt-[200px] pb-[300px] px-[10px] sm:px-[100px] lg:px-[200px]">
-      <h1 className="uppercase text-cerise text-5xl font-medium text-center">
-        {" "}
-        {t.logos.header}
-      </h1>
-      <div className="bg-white py-[50px] mt-[100px] rounded-lg bg-opacity-50 px-[50px]">
-        <div className="block sm:hidden">
-          {RenderLogos(mainsponsorPackages, 1, "w-[250px]")}
-          {RenderLogos(largeAndMediumPackages, 2, "w-[125px]")}
-          {RenderLogos(smallAndStartUpPackages, 3, "w-[80px]")}
-        </div>
+    <>
+      <NextSeo
+        title={title}
+        description={description}
+        openGraph={{
+          url,
+          title,
+          description
+        }}
+        additionalMetaTags={[
+          {
+            name: 'robots',
+            content: 'index, follow'
+          }
+        ]}
+      />
+      <div className="pt-[200px] pb-[300px] px-[10px] sm:px-[100px] lg:px-[200px]">
+        <h1 className="uppercase text-cerise text-5xl font-medium text-center">
+          {" "}
+          {t.logos.header}
+        </h1>
+        <div className="bg-white py-[50px] mt-[100px] rounded-lg bg-opacity-50 px-[50px]">
+          <div className="block sm:hidden">
+            {RenderLogos(mainsponsorPackages, 1, "w-[250px]")}
+            {RenderLogos(largeAndMediumPackages, 2, "w-[125px]")}
+            {RenderLogos(smallAndStartUpPackages, 3, "w-[80px]")}
+          </div>
 
-        <div className="hidden xl:block">
-          {RenderLogos(mainsponsorPackages, 1, "w-[350px]")}
-          {RenderLogos(largeAndMediumPackages, 3, "w-[250px]")}
-          {RenderLogos(smallAndStartUpPackages, 6, "w-[125px]")}
-        </div>
+          <div className="hidden xl:block">
+            {RenderLogos(mainsponsorPackages, 1, "w-[350px]")}
+            {RenderLogos(largeAndMediumPackages, 3, "w-[250px]")}
+            {RenderLogos(smallAndStartUpPackages, 6, "w-[125px]")}
+          </div>
 
-        <div className="hidden sm:block xl:hidden">
-          {RenderLogos(mainsponsorPackages, 1, "w-[350px]")}
-          {RenderLogos(largeAndMediumPackages, 3, "w-[250px]")}
-          {RenderLogos(smallAndStartUpPackages, 4, "w-[125px]")}
+          <div className="hidden sm:block xl:hidden">
+            {RenderLogos(mainsponsorPackages, 1, "w-[350px]")}
+            {RenderLogos(largeAndMediumPackages, 3, "w-[250px]")}
+            {RenderLogos(smallAndStartUpPackages, 4, "w-[125px]")}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

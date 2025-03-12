@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic';
 const Map = dynamic(() => import('@/components/Map/NewMap'), { ssr: false });
 import Search from "@/components/Map/Search";
 import ExhibitorExplorer from "@/components/Map/ExhibitorExplorer";
+import { NextSeo } from 'next-seo';
 
 export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
   const t = useLocale();
@@ -82,7 +83,39 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
     window.scrollTo(0, 100);
   }, []);
 
+
+  const seoContent = {
+    sv: {
+      title: "D-Dagen 2025 | Karta - Hitta Utställare och Lokaler",
+      description: "Få en överblick över D-Dagen 2025 med vår interaktiva karta. Se alla utställare, lokaler och viktiga platser på KTH Campus Valhallavägen den 9 oktober. Planera ditt besök och hitta enkelt till alla företag och evenemang!",
+      url: "https://ddagen.se/karta",
+    },
+    en: {
+      title: "D-Dagen 2025 | Map – Find Exhibitors and Venues",
+      description: "Get an overview of D-Dagen 2025 with our interactive map. View all exhibitors, venues, and key locations at KTH Campus Valhallavägen on October 9. Plan your visit and easily find all companies and events!",
+      url: "https://ddagen.se/en/karta",
+    },
+  };
+
+  const { title, description, url } = seoContent[t.locale as "sv" | "en"];
+
   return (
+    <>
+      <NextSeo
+        title={title}
+        description={description}
+        openGraph={{
+          url,
+          title,
+          description
+        }}
+        additionalMetaTags={[
+          {
+            name: 'robots',
+            content: 'index, follow'
+          }
+        ]}
+      />
     <div className="h-screen flex max-md:flex-col-reverse max-md:items-center md:flex-row md:items-start md:pt-20 overflow-hidden relative">
       <div
         id="sidebar"
@@ -108,6 +141,7 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
         />
       </div>
     </div>
+    </>
   );
 }
 
