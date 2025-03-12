@@ -13,6 +13,7 @@ import { CheckMark } from "@/components/CheckMark";
 import { addImageDetails } from "@/shared/addImageDetails";
 import CompanyMeetingBooker from "@/components/Company/ExtraOrders/CompanyMeetingBooker";
 import { InputField } from "@/components/InputField";
+import Head from "next/head";
 
 // TODO hook the next button to the save features
 // Maby break save changes into a separate steps for each page
@@ -478,9 +479,12 @@ export default function Exhibitor() {
 
   return(
     <>
-    <div className="xl:w-[1200px] lg:w-[1000px] w-full">
+      <Head>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
+      <div className="xl:w-[1200px] lg:w-[1000px] w-full">
 
-    </div>
+      </div>
       <div className="mx-auto flex flex-col items-center py-40 cursor-default bg-darkblue bg-opacity-75">
         {/*Header*/}
         <h1 className="uppercase text-cerise text-3xl md:text-5xl font-medium text-center px-[10px] break-words">

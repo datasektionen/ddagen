@@ -3,6 +3,7 @@ import { useLocale } from "@/locales";
 import { useEffect, useState, useContext } from "react";
 import { Countdown } from "@/components/Countdown";
 import { useAnimation } from "@/utils/context";
+import { NextSeo } from 'next-seo';
 import StatsSection from "@/components/StatsSection";
 import ImageTextSection from "@/components/ImageTextSection";
 import Link from "next/link";
@@ -22,9 +23,38 @@ export default function Home() {
     setShowLogo(true);
   }, []);
 
+  const seoContent = {
+    sv: {
+      title: "Stockholms Ledande Teknikmässa",
+      description: "Utforska de bästa IT-företagen på D-Dagen 2025 vid KTH. Hitta jobbmöjligheter, nätverka och utforska teknikens framtid.",
+      url: "https://ddagen.se",
+    },
+    en: {
+      title: "Stockholm's Leading Tech Job Fair",
+      description: "Discover top IT companies at D-Dagen 2025 at KTH. Find job opportunities, network, and explore the future of tech careers.",
+      url: "https://ddagen.se/en",
+    },
+  };
+
+  const { title, description, url } = seoContent[t.locale as "sv" | "en"];
 
   return (
     <>
+      <NextSeo
+        title={title}
+        description={description}
+        openGraph={{
+          url,
+          title,
+          description
+        }}
+        additionalMetaTags={[
+          {
+            name: 'robots',
+            content: 'index, follow'
+          }
+        ]}
+      />
       <div className="w-full h-full">
         <div className="flex flex-col mx-auto max-w-[90%] lg:max-w-[100%] ">
           <div className="relative lg:py-[150px] py-[75px]">
