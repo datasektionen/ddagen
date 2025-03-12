@@ -8,12 +8,12 @@ export default function ForCompanies() {
 
   const seoContent = {
     sv: {
-      title: "D-Dagen 2025 | För Företag - Träffa IT-studenter & Hitta Framtidens Talanger",
+      title: "För Företag - Träffa IT-studenter & Hitta Framtidens Talanger",
       description: "D-Dagen är KTH Datasektionens årliga arbetsmarknadsdag där företag möter framtidens IT-talanger. Delta den 9 oktober på KTH Campus Valhallavägen och nätverka med civilingenjörsstudenter inom data och IT. Upptäck våra företagspaket och avsluta dagen med en exklusiv bankett. ",
       url: "https://ddagen.se/förföretag",
     },
     en: {
-      title: "D-Dagen 2025 | For Companies - Meet IT Students & Recruit Top Talent",
+      title: "For Companies - Meet IT Students & Recruit Top Talent",
       description: "D-Dagen is KTH's annual career fair where companies connect with future IT professionals. Join us on October 9 at KTH Campus Valhallavägen to network with top engineering students in computer science and IT. Explore our company packages and end the day with an exclusive banquet.",
       url: "https://ddagen.se/en/förstudenter",
     },

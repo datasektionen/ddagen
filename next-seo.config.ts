@@ -1,5 +1,5 @@
 export default {
-    titleTemplate: "%s | D-Dagen",
+    titleTemplate: "D-Dagen 2025 | %s",
     description: "Upptäck D-Dagen 2025 vid KTH - Stockholms ledande teknikmässa för IT-studenter och arbetsgivare.",
     openGraph: {
       type: 'website',
@@ -8,7 +8,7 @@ export default {
       site_name: 'D-Dagen',
       images: [
         {
-          url: 'https://dev.ddagen.se/img/ddagen-og-image.jpg',
+          url: 'https://dev.ddagen.se/img/ddagen-og-image.png',
           width: 1601,
           height: 657,
           alt: 'D-Dagen 2025',

@@ -60,12 +60,12 @@ export default function ExhibitorRegistration() {
 
   const seoContent = {
     sv: {
-      title: "D-Dagen 2025 | Företagsanmälan - Anmäl Ert Företag Till Mässan",
+      title: "Företagsanmälan - Anmäl Ert Företag Till Mässan",
       description: "Är ditt företag intresserat av att delta på D-Dagen 2025? Anmäl er till Sveriges största arbetsmarknadsmässa för IT- och datastudenter! Fyll i företagsanmälan och bli en del av D-Dagen den 9 oktober på KTH Campus Valhallavägen.",
       url: "https://ddagen.se/företagsanmälan",
     },
     en: {
-      title: "D-Dagen 2025 | Exhibitor Registration - Register Your Company for the Fair",
+      title: "Exhibitor Registration - Register Your Company for the Fair",
       description: "Is your company interested in participating in D-Dagen 2025? Register for Sweden's largest career fair for IT and computer science students! Fill out the exhibitor registration form and join us on October 9 at KTH Campus Valhallavägen.",
       url: "https://ddagen.se/en/företagsanmälan",
     },

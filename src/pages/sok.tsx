@@ -47,12 +47,12 @@ function SingleTeam({
 
   const seoContent = {
     sv: {
-      title: "D-Dagen 2025 | Sök D-Dagen - Bli en del av Projektgruppen",
+      title: "Sök D-Dagen - Bli en del av Projektgruppen",
       description: "Vill du vara med och göra D-Dagen 2025 till den största och bästa arbetsmarknadsmässan någonsin? Sök till projektgruppen och hjälp oss skapa ett extraordinärt event! Vi söker ambitiösa och drivna studenter som vill vara med och forma en unik upplevelse på KTH den 9 oktober.",
       url: "https://ddagen.se/sok",
     },
     en: {
-      title: "D-Dagen 2025 | Signup for D-Dagen - Join the Project Team",
+      title: "Signup for D-Dagen - Join the Project Team",
       description: "Want to make D-Dagen 2025 the biggest and best career fair ever? Apply to join our project team and help us create an extraordinary event! We’re looking for ambitious and driven students who want to contribute to shaping a unique experience at KTH on October 9.",
       url: "https://ddagen.se/en/sok",
     },

@@ -25,12 +25,12 @@ export default function Home() {
 
   const seoContent = {
     sv: {
-      title: "D-Dagen 2025 - Stockholms Ledande Teknikmässa",
+      title: "Stockholms Ledande Teknikmässa",
       description: "Utforska de bästa IT-företagen på D-Dagen 2025 vid KTH. Hitta jobbmöjligheter, nätverka och utforska teknikens framtid.",
       url: "https://ddagen.se",
     },
     en: {
-      title: "D-Dagen 2025 - Stockholm's Leading Tech Job Fair",
+      title: "Stockholm's Leading Tech Job Fair",
       description: "Discover top IT companies at D-Dagen 2025 at KTH. Find job opportunities, network, and explore the future of tech careers.",
       url: "https://ddagen.se/en",
     },

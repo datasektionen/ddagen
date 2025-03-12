@@ -86,12 +86,12 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
 
   const seoContent = {
     sv: {
-      title: "D-Dagen 2025 | Karta - Hitta Utställare och Lokaler",
+      title: "Karta - Hitta Utställare och Lokaler",
       description: "Få en överblick över D-Dagen 2025 med vår interaktiva karta. Se alla utställare, lokaler och viktiga platser på KTH Campus Valhallavägen den 9 oktober. Planera ditt besök och hitta enkelt till alla företag och evenemang!",
       url: "https://ddagen.se/karta",
     },
     en: {
-      title: "D-Dagen 2025 | Map – Find Exhibitors and Venues",
+      title: "Map - Find Exhibitors and Venues",
       description: "Get an overview of D-Dagen 2025 with our interactive map. View all exhibitors, venues, and key locations at KTH Campus Valhallavägen on October 9. Plan your visit and easily find all companies and events!",
       url: "https://ddagen.se/en/karta",
     },

@@ -60,12 +60,12 @@ export default function Contact() {
 
   const seoContent = {
     sv: {
-      title: "D-Dagen 2025 | Kontakt - Hör Av Dig till Oss",
+      title: "Kontakt - Hör Av Dig till Oss",
       description: "Har du förslag på evenemang eller aktiviteter för studenterna på Konglig Datasektionen? Eller har du frågor om företagspaket? Kontakta oss för mer information och för att diskutera hur vi kan samarbeta för att göra D-Dagen 2025 till en succé!",
       url: "https://ddagen.se/kontakt",
     },
     en: {
-      title: "D-Dagen 2025 | Contact - Get in Touch with Us",
+      title: "Contact - Get in Touch with Us",
       description: "Do you have ideas for events or activities for students at the Royal Institute of Technology? Or do you have questions about company packages? Contact us for more information and to discuss how we can collaborate to make D-Dagen 2025 a success!",
       url: "https://ddagen.se/en/kontakt",
     },
