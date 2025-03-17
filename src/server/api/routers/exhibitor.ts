@@ -11,6 +11,7 @@ import { Prisma } from "@prisma/client";
 import sendEmail from "@/utils/send-email";
 import { randomUUID } from "crypto";
 import { error, time } from "console";
+import { get } from "http";
 
 const foodPreferencesType = z.enum(["Representative", "Banquet"]);
 const foodPreferencesValue = z.enum([
@@ -213,6 +214,54 @@ export const exhibitorRouter = createTRPCRouter({
       await ctx.prisma.exhibitor.update({
         where: { id: ctx.session.exhibitorId },
         data: { name: input },
+      });
+    }),
+  getOrganizationNumber: protectedProcedure.query(async ({ ctx }) => {
+    return await ctx.prisma.exhibitor.findUniqueOrThrow({
+      where: { id: ctx.session.exhibitorId },
+      select: { organizationNumber: true },
+    });
+  }),
+  getInvoiceEmail: protectedProcedure.query(async ({ ctx }) => {
+    return await ctx.prisma.exhibitor.findUniqueOrThrow({
+      where: { id: ctx.session.exhibitorId },
+      select: { invoiceEmail: true },
+    });
+  }),
+  setInvoiceEmail: protectedProcedure
+    .input(z.string())
+    .mutation(async ({ ctx, input }) => {
+      await ctx.prisma.exhibitor.update({
+        where: { id: ctx.session.exhibitorId },
+        data: { invoiceEmail: input },
+      });
+    }),
+  getBillingMethod: protectedProcedure.query(async ({ ctx }) => {
+    return await ctx.prisma.exhibitor.findUniqueOrThrow({
+      where: { id: ctx.session.exhibitorId },
+      select: { billingMethod: true },
+    });
+  }),
+  setBillingMethod: protectedProcedure
+    .input(z.string())
+    .mutation(async ({ ctx, input }) => {
+      await ctx.prisma.exhibitor.update({
+        where: { id: ctx.session.exhibitorId },
+        data: { billingMethod: input },
+      });
+    }),
+  getPhysicalAddress: protectedProcedure.query(async ({ ctx }) => {
+    return await ctx.prisma.exhibitor.findUniqueOrThrow({
+      where: { id: ctx.session.exhibitorId },
+      select: { companyAddress: true },
+    });
+  }),
+  setPhysicalAddress: protectedProcedure
+    .input(z.string())
+    .mutation(async ({ ctx, input }) => {
+      await ctx.prisma.exhibitor.update({
+        where: { id: ctx.session.exhibitorId },
+        data: { companyAddress: input },
       });
     }),
   getDescription: protectedProcedure.query(async ({ ctx }) => {
