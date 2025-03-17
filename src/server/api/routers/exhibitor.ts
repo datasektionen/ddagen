@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { set, z } from "zod";
 import {
   createTRPCRouter,
   protectedProcedure,
@@ -85,7 +85,7 @@ export const exhibitorRouter = createTRPCRouter({
         return { ok: true };
       }
     ),
-  // Gets the next allowed foreign organizationNumber 
+  // Gets the next allowed foreign organizationNumber
   getNextForeignOrg: publicProcedure.query(async ({ ctx }) => {
     // Read all organizationNumbers
     const exhibitor = await ctx.prisma.exhibitorInterestRegistration.findMany({
@@ -98,7 +98,7 @@ export const exhibitorRouter = createTRPCRouter({
       .map(s => parseInt(s.organizationNumber.slice(0,9)))
       .sort((a,b) => b - a);
     // Get the first 9 digits of the highest foreign organizationNumber, add 1
-    const nextForeignDigits = allForeign9.length ? 
+    const nextForeignDigits = allForeign9.length ?
       (allForeign9[0]+1).toString() :
       "000000001";
     const nextForeign9 = String(nextForeignDigits).padStart(9, '0');
@@ -124,6 +124,7 @@ export const exhibitorRouter = createTRPCRouter({
         organizationNumber: true,
         invoiceEmail: true,
         description: true,
+        industry: true,
       },
     });
   }),
@@ -132,6 +133,7 @@ export const exhibitorRouter = createTRPCRouter({
       z.object({
         invoiceEmail: z.string().email().trim(),
         description: z.string().trim(),
+        industry: z.string().trim(),
         extraChairs: z.number(),
         extraTables: z.number(),
         extraDrinkCoupons: z.number(),
@@ -145,6 +147,7 @@ export const exhibitorRouter = createTRPCRouter({
         data: {
           invoiceEmail: input.invoiceEmail,
           description: input.description,
+          industry: input.industry,
           extraChairs: input.extraChairs,
           extraTables: input.extraTables,
           extraDrinkCoupons: input.extraDrinkCoupons,
@@ -235,6 +238,14 @@ export const exhibitorRouter = createTRPCRouter({
       select: { name: true },
     });
   }),
+  setName: protectedProcedure
+    .input(z.string())
+    .mutation(async ({ ctx, input }) => {
+      await ctx.prisma.exhibitor.update({
+        where: { id: ctx.session.exhibitorId },
+        data: { name: input },
+      });
+    }),
   getDescription: protectedProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.exhibitor.findUniqueOrThrow({
       where: { id: ctx.session.exhibitorId },
@@ -247,6 +258,20 @@ export const exhibitorRouter = createTRPCRouter({
       await ctx.prisma.exhibitor.update({
         where: { id: ctx.session.exhibitorId },
         data: { description: input },
+      });
+    }),
+    getIndustry: protectedProcedure.query(async ({ ctx }) => {
+      return await ctx.prisma.exhibitor.findUniqueOrThrow({
+        where: { id: ctx.session.exhibitorId },
+        select: { industry: true },
+      });
+    }),
+    setIndustry: protectedProcedure
+    .input(z.string())
+    .mutation(async ({ ctx, input }) => {
+      await ctx.prisma.exhibitor.update({
+        where: { id: ctx.session.exhibitorId },
+        data: { industry: input },
       });
     }),
   getLogo: protectedProcedure.query(async ({ ctx }) => {
@@ -542,7 +567,7 @@ export const exhibitorRouter = createTRPCRouter({
         }
       });
 
-      
+
     }),
     getInfoStatus: protectedProcedure
     .query(async ({ ctx }) => {
@@ -563,7 +588,7 @@ export const exhibitorRouter = createTRPCRouter({
         });
 
         if (!exhibitor) return;
-        
+
         const alreadyBookedMeetings = await ctx.prisma.meetings.findMany({
           where: {
             exhibitorId: ctx.session.exhibitorId,
@@ -592,10 +617,10 @@ export const exhibitorRouter = createTRPCRouter({
           },
         });
 
-        
+
 
         if (!students) return;
-        
+
         const studentData = JSON.parse(JSON.stringify(students));
 
         const output = studentData
@@ -623,7 +648,7 @@ export const exhibitorRouter = createTRPCRouter({
             other: keys.filter((_, i) => values[i])
           }
         });
-  
+
 
         return output;
     }),
@@ -726,7 +751,7 @@ export const exhibitorRouter = createTRPCRouter({
         select: {
             timeslot: true,
         }
-      }); 
+      });
 
       const exhibitorsTimeSlots = await ctx.prisma.exhibitor.findUnique({
           where: {
@@ -739,7 +764,7 @@ export const exhibitorRouter = createTRPCRouter({
 
       console.log(exhibitorsTimeSlots)
       const timeSlotsArray = timeSlots.map((timeSlot: any) => timeSlot.timeslot);
-    
+
       const availableTimeSlots = exhibitorsTimeSlots.filter((timeSlot: number) => !timeSlotsArray.includes(timeSlot));
 
       return availableTimeSlots;
@@ -805,7 +830,7 @@ export const exhibitorRouter = createTRPCRouter({
             },
           },
         });
-        
+
         // append the timeslot to the student
 
         if (!studentMeetings) return;
@@ -874,7 +899,7 @@ export const exhibitorRouter = createTRPCRouter({
 
         // change to "locale" if We want multiple languages
         const t = getLocale("en");
-        
+
         // send mail to student
         sendEmail(
           student.email,

@@ -44,9 +44,9 @@ def write_names_to_file(list_of_names, file_name):
             f.write("%s\n" % item)
 
 # Example usage
-img_regex = r"p_.*.jpg"
-scale_size = (744, 1116)  # New size to which the image will be downscaled these 
-crop_size = (744, 930)  # Size of the cropped area
+img_regex = r"g_.*.jpg"
+scale_size = (1500, 1000)  # New size to which the image will be downscaled these 
+crop_size = (1500, 1000)  # Size of the cropped area
 
 items = list(find_files("./",img_regex))
 for p in items:
