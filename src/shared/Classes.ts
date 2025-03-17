@@ -187,6 +187,9 @@ export class Exhibitor {
   extraDrinkCoupons: number;
   extraRepresentativeSpots: number;
   extraMealCoupons: number;
+  socialMediaPost: number;
+  panelDiscussion: number;
+  goodieBagLogo: number;
   totalBanquetTicketsWanted: number;
   jobOfferId: string;
   customTables: number;
@@ -211,6 +214,9 @@ export class Exhibitor {
     extraDrinkCoupons: number,
     extraRepresentativeSpots: number,
     extraMealCoupons: number,
+    socialMediaPost: number,
+    panelDiscussion: number,
+    goodieBagLogo: number,
     totalBanquetTicketsWanted: number,
     jobOfferId: string,
     customTables: number,
@@ -233,7 +239,10 @@ export class Exhibitor {
     this.extraChairs = extraChairs;
     this.extraDrinkCoupons = extraDrinkCoupons;
     this.extraRepresentativeSpots = extraRepresentativeSpots;
-    this.extraMealCoupons = extraMealCoupons
+    this.extraMealCoupons = extraMealCoupons;
+    this.socialMediaPost = socialMediaPost;
+    this.panelDiscussion = panelDiscussion;
+    this.goodieBagLogo = goodieBagLogo;
     this.totalBanquetTicketsWanted = totalBanquetTicketsWanted;
     this.jobOfferId = jobOfferId;
     this.customTables = customTables;

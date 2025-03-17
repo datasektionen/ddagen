@@ -14,6 +14,7 @@ import {
 import {
   AddExhibitorForm,
 } from "@/components/Company/Admin/AddExhibitorForm";
+import { UpdateSpecialOrders } from "./UpdateSpecialOrdersForm";
 
 export function ExhibitorPanel({
   t,
@@ -34,10 +35,13 @@ export function ExhibitorPanel({
   const [showAddExhibitor, setShowAddExhibitor] = useState<boolean>(false);
   const [addExhibitorSuccess, setAddExhibitorSuccess] = useState<boolean>(false);
 
+  const [selectedExhibitor, setSelectedExhibitor] = useState<Exhibitor>();
+
   const router = useRouter();
   const trpc = api.useContext();
   const login = api.admin.login.useMutation();
   const addExhibitor = api.admin.addExhibitor.useMutation();
+  const updateSpecialOrders = api.exhibitor.setSpecialOrders.useMutation();
 
   useEffect(() => {
     if (login.isSuccess) {
@@ -79,6 +83,22 @@ export function ExhibitorPanel({
     };
   }
 
+  async function handleUpdateSpecialOrders(
+    exhibitorId: string,
+    studentMeetings: number, 
+    socialmediaPost: number, 
+    panelDiscussion: number, 
+    goodieBagLogo: number) {
+
+    updateSpecialOrders.mutateAsync({
+      exhibitorId: exhibitorId,
+      studentMeetings: studentMeetings,
+      socialMediaPost: socialmediaPost,
+      panelDiscussion: panelDiscussion,
+      goodieBagLogo: goodieBagLogo
+    })
+  }
+
   async function handleAddExhibitor(exhibitor: ExhibitorInfo) {
     addExhibitor.mutateAsync({
       password: password,
@@ -108,6 +128,10 @@ export function ExhibitorPanel({
 
   function closeAddExhibitorForm() {
     setShowAddExhibitor(_ => false);
+  }
+
+  function closeUpdateSpecialOrderForm() {
+    setSelectedExhibitor(undefined);
   }
 
   function evaluataPreferences(
@@ -161,7 +185,6 @@ export function ExhibitorPanel({
     }
     <span className="font-medium text-red-500	">Fail</span>;
   }
-
   return (
     <div className="w-full h-full text-white">
       <div className="flex flex-col items-center justify-center">
@@ -197,13 +220,11 @@ export function ExhibitorPanel({
               <thead className="[&>tr>th]:border-2 [&>tr>th]:border-solid [&>tr>th]:border-cerise [&>tr>th]:py-2 [&>tr>th]:px-4 ">
                 <tr>
                   <th>{t.admin.sales.header.name}</th>
-                  <th>{t.admin.sales.header.logoWhite}</th>
                   <th>{t.admin.sales.header.logoColour}</th>
-                  <th>{t.admin.sales.header.description}</th>
                   <th>{t.admin.sales.header.package}</th>
                   <th>{t.admin.sales.header.extras.name}</th>
                   <th>{t.admin.sales.header.verification.name}</th>
-                  <th>Special orders</th>
+                  <th>{t.admin.sales.header.specialOrders.name}</th>
                 </tr>
               </thead>
               <tbody
@@ -222,16 +243,6 @@ export function ExhibitorPanel({
                       </button>
                     </td>
                     <td>
-                      {exhibitor.logoWhite ? (
-                        <img
-                          className="mx-auto w-[150px]"
-                          src={addImageDetails(exhibitor.logoWhite)}
-                        />
-                      ) : (
-                        <p className="font-bold text-center">U/A</p>
-                      )}
-                    </td>
-                    <td>
                       {exhibitor.logoColor ? (
                         <img
                           className="mx-auto max-w-[150px]"
@@ -240,9 +251,6 @@ export function ExhibitorPanel({
                       ) : (
                         <p className="font-bold text-center">U/A</p>
                       )}
-                    </td>
-                    <td className="align-top break-words max-w-[150px] text-xs">
-                      {exhibitor.description}
                     </td>
                     <td className="text-center">{ t.packages.name[exhibitor.packageTier] }</td>
                     <td>
@@ -285,7 +293,33 @@ export function ExhibitorPanel({
                         </div>
                       </div>
                     </td>
-                    <td>bla</td>
+                    <td>
+                      {exhibitor.studentMeetings != 0 ? (<div>
+                        {t.admin.sales.header.specialOrders.studentMeetings}
+                      </div>) : null}
+                      {exhibitor.socialMediaPost != 0 ? (<div>
+                        {t.admin.sales.header.specialOrders.socialMediaPost}
+                      </div>) : null}
+                      {exhibitor.panelDiscussion != 0 ? (<div>
+                        {t.admin.sales.header.specialOrders.panelDiscussion}
+                      </div>) : null}
+                      {exhibitor.goodieBagLogo != 0 ? (<div>
+                        {t.admin.sales.header.specialOrders.goodiebagLogo}
+                      </div>) : null}
+                      <div className="w-full text-xl mb-5 font-medium">
+                        {selectedExhibitor?.id == exhibitor.id ? (
+                          <UpdateSpecialOrders t={t} exhibitor={selectedExhibitor} closeModal={closeUpdateSpecialOrderForm} 
+                          setSpecialOrders={handleUpdateSpecialOrders}/>
+                        ) : (
+                          <button
+                          className="mt-2 bg-cerise bg-blue-500 py-1 px-2 rounded-md"
+                          onClick={()=>{setSelectedExhibitor(exhibitor)}}
+                          >
+                          {t.admin.sales.header.specialOrders.specialOrderButton}
+                          </button>
+                        )}
+                      </div>
+                    </td>
                   </tr>
                 ))}
               </tbody>

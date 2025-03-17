@@ -961,6 +961,15 @@ export default {
           banquet: "Banquet",
           representatives: "Representater",
         },
+        specialOrders: {
+          name: "Specialbeställningar",
+          studentMeetings: "Kontaktsamtal",
+          socialMediaPost: "Inlägg på sociala medier",
+          panelDiscussion: "Paneldiskussion",
+          goodiebagLogo: "Logga på goodiebag",
+          specialOrderButton: "Ändra",
+          specialOrderSave: "Spara"
+        }
       },
     },
     extraOrders: {

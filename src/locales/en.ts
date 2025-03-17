@@ -950,6 +950,15 @@ export default {
           banquet: "Banquet",
           representatives: "Representatives",
         },
+        specialOrders: {
+          name: "Special orders",
+          studentMeetings: "Student meetings",
+          socialMediaPost: "Social media post",
+          panelDiscussion: "Panel discussion",
+          goodiebagLogo: "Goodie bag logo",
+          specialOrderButton: "Change",
+          specialOrderSave: "Save"
+        }
       },
     },
     extraOrders: {

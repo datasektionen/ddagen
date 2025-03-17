@@ -208,6 +208,27 @@ export const exhibitorRouter = createTRPCRouter({
         },
       });
     }),
+    setSpecialOrders: publicProcedure
+    .input(
+      z.object({
+        exhibitorId: z.string(),
+        studentMeetings: z.number(),
+        socialMediaPost: z.number(),
+        panelDiscussion: z.number(),
+        goodieBagLogo: z.number(),
+      })
+    )
+    .mutation(async ({ ctx, input}) => {
+      await ctx.prisma.exhibitor.update({
+        where: { id: input.exhibitorId },
+        data: {
+          studentMeetings: input.studentMeetings,
+          socialMediaPost: input.socialMediaPost,
+          panelDiscussion: input.panelDiscussion,
+          goodiebagLogo:   input.goodieBagLogo,
+        },
+      });
+    }),
   getName: protectedProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.exhibitor.findUniqueOrThrow({
       where: { id: ctx.session.exhibitorId },
