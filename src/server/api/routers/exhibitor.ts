@@ -18,6 +18,7 @@ const foodPreferencesValue = z.enum([
   "Vegan",
   "LactoseFree",
   "GlutenFree",
+  "AlcoholFree",
 ]);
 
 export const exhibitorRouter = createTRPCRouter({
@@ -137,6 +138,7 @@ export const exhibitorRouter = createTRPCRouter({
         extraTables: z.number(),
         extraDrinkCoupons: z.number(),
         extraRepresentativeSpots: z.number(),
+        extraMealCoupons: z.number(),
       })
     )
     .mutation(async ({ ctx, input }) => {
@@ -150,6 +152,7 @@ export const exhibitorRouter = createTRPCRouter({
           extraTables: input.extraTables,
           extraDrinkCoupons: input.extraDrinkCoupons,
           extraRepresentativeSpots: input.extraRepresentativeSpots,
+          extraMealCoupons: input.extraMealCoupons,
         },
       });
     }),
@@ -163,7 +166,8 @@ export const exhibitorRouter = createTRPCRouter({
         customDrinkCoupons: true,
         customRepresentativeSpots: true,
         customBanquetTicketsWanted: true,
-        studentMeetings: true,
+        studentMeetings: true, 
+        extraMealCoupons: true, // Måste kanske lägga till customMealCoupons i db, känns inte nödvändigt just nu
       },
     });
   }),
@@ -176,6 +180,8 @@ export const exhibitorRouter = createTRPCRouter({
         extraDrinkCoupons: true,
         extraRepresentativeSpots: true,
         totalBanquetTicketsWanted: true,
+        extraMealCoupons: true,
+        lastChanged: true,
       },
     });
   }),
@@ -187,6 +193,8 @@ export const exhibitorRouter = createTRPCRouter({
         extraDrinkCoupons: z.number(),
         extraRepresentativeSpots: z.number(),
         totalBanquetTicketsWanted: z.number(),
+        extraMealCoupons: z.number(),
+        lastChanged: z.date(),
       })
     )
     .mutation(async ({ ctx, input }) => {
@@ -198,6 +206,29 @@ export const exhibitorRouter = createTRPCRouter({
           extraDrinkCoupons: input.extraDrinkCoupons,
           extraRepresentativeSpots: input.extraRepresentativeSpots,
           totalBanquetTicketsWanted: input.totalBanquetTicketsWanted,
+          extraMealCoupons: input.extraMealCoupons,
+          lastChanged: z.date().parse(input.lastChanged),
+        },
+      });
+    }),
+    setSpecialOrders: publicProcedure
+    .input(
+      z.object({
+        exhibitorId: z.string(),
+        studentMeetings: z.number(),
+        socialMediaPost: z.number(),
+        panelDiscussion: z.number(),
+        goodieBagLogo: z.number(),
+      })
+    )
+    .mutation(async ({ ctx, input}) => {
+      await ctx.prisma.exhibitor.update({
+        where: { id: input.exhibitorId },
+        data: {
+          studentMeetings: input.studentMeetings,
+          socialMediaPost: input.socialMediaPost,
+          panelDiscussion: input.panelDiscussion,
+          goodiebagLogo:   input.goodieBagLogo,
         },
       });
     }),

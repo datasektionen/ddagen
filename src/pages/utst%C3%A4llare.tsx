@@ -165,7 +165,9 @@ export default function Exhibitor() {
         getExtras.data.extraTables,
         getExtras.data.extraDrinkCoupons,
         getExtras.data.extraRepresentativeSpots,
-        getExtras.data.totalBanquetTicketsWanted
+        getExtras.data.totalBanquetTicketsWanted,
+        getExtras.data.extraMealCoupons,
+        getExtras.data?.lastChanged || undefined
       )
     );
   }, [getExtras.data]);
@@ -186,7 +188,8 @@ export default function Exhibitor() {
       exhibitor.customChairs,
       exhibitor.customDrinkCoupons,
       exhibitor.customRepresentativeSpots,
-      exhibitor.customBanquetTicketsWanted
+      exhibitor.customBanquetTicketsWanted,
+      0 // Om customMeal... finns i db så läggs det till här
     );
     setExhibitorPackage(exhibitorPackage);
     setHasMeeting(exhibitor.studentMeetings == 1);
@@ -200,6 +203,8 @@ export default function Exhibitor() {
       extraDrinkCoupons: extras.extraDrinkCoupons,
       extraRepresentativeSpots: extras.extraRepresentativeSpots,
       totalBanquetTicketsWanted: extras.totalBanquetTicketsWanted,
+      extraMealCoupons: extras.extraMealCoupons,
+      lastChanged: extras.lastChanged || new Date(),
     });
   }, [extras]);
 

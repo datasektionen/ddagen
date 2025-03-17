@@ -16,13 +16,14 @@ export default function ExtraOrders({
   exhibitorPackage: Package;
 }) {
   // on disable if deadline has passed
-  const disablePreferences = (new Date() > new Date("2024-09-23"));
+  const disablePreferences = (new Date() > new Date("2025-09-23"));
   const deadline = {
-    drinkCoupons: "2024-09-18",
-    tables: "2024-09-18",
-    chairs: "2024-09-18",
-    representatives: "2024-09-18",
-    banquet: "2024-09-18",
+    drinkCoupons: "2025-09-18",
+    tables: "2025-09-18",
+    chairs: "2025-09-18",
+    representatives: "2025-09-18",
+    banquet: "2025-09-18",
+    mealCoupons: "2025-09-18",
   };
 
   const [editState, setEditState] = useState(false);
@@ -31,6 +32,8 @@ export default function ExtraOrders({
   const [drinkCoupons, setDrinkCoupons] = useState(0);
   const [representatives, setRepresentatives] = useState(0);
   const [banquetTickets, setBanquetTickets] = useState(0);
+  const [mealCoupons, setMealCoupons] = useState(0);
+  const [lastChanged, setLastChanged] = useState<Date>();
 
   useEffect(() => {
     if (extras == undefined) return;
@@ -39,16 +42,41 @@ export default function ExtraOrders({
     setDrinkCoupons(extras.extraDrinkCoupons);
     setRepresentatives(extras.extraRepresentativeSpots);
     setBanquetTickets(extras.totalBanquetTicketsWanted);
+    setMealCoupons(extras.extraMealCoupons);
+    extras.lastChanged && setLastChanged(extras.lastChanged);
   }, [extras]);
 
   function handleClick() {
     if (editState == true) {
+      /* IF SOMETHING CHANGED, UPDATE THE LASTCHANGED TIME */
+      if(
+        extras?.extraTables != tables || 
+        extras?.extraChairs != chairs || 
+        extras?.extraDrinkCoupons != drinkCoupons || 
+        extras?.extraRepresentativeSpots != representatives || 
+        extras?.totalBanquetTicketsWanted != banquetTickets || 
+        extras?.extraMealCoupons != mealCoupons
+      ){
+        setExtras({
+          extraTables: tables,
+          extraChairs: chairs,
+          extraDrinkCoupons: drinkCoupons,
+          extraRepresentativeSpots: representatives,
+          totalBanquetTicketsWanted: banquetTickets,
+          extraMealCoupons: mealCoupons,
+          lastChanged: new Date()
+        });
+        return;
+      }
+      /* NOTHING CHANGED, KEEP THE PREVIOUS LAST CHANGED TIME */
       setExtras({
         extraTables: tables,
         extraChairs: chairs,
         extraDrinkCoupons: drinkCoupons,
         extraRepresentativeSpots: representatives,
         totalBanquetTicketsWanted: banquetTickets,
+        extraMealCoupons: mealCoupons,
+        lastChanged: extras?.lastChanged
       });
     }
     setEditState(!editState);
@@ -168,6 +196,17 @@ export default function ExtraOrders({
       increment: 1,
       deadline: deadline.banquet,
     },
+    {
+      name: t.exhibitorSettings.table.row2.section2.mealCoupons,
+      included: exhibitorPackage.mealCoupons,
+      get: mealCoupons,
+      set: setMealCoupons,
+      disableAll: disablePreferences,
+      disableCondition: disablePreferences,
+      disableConditionMessage: "",
+      increment: 1,
+      deadline: deadline.mealCoupons,
+    },
   ];
   return (
     <div
@@ -235,7 +274,7 @@ export default function ExtraOrders({
         </div>
         <div className="font-normal text-2xl">
           {editState
-            ? plusMinus(drinkCoupons, setDrinkCoupons, 8, disablePreferences)
+            ? plusMinus(drinkCoupons, setDrinkCoupons, 4, disablePreferences)
             : drinkCoupons}
         </div>
         <div className="font-normal text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] text-2xl">
@@ -278,6 +317,31 @@ export default function ExtraOrders({
         {/* Section 4 */}
 
         {/* Section 5 */}
+        <div className="text-left">
+          {t.exhibitorSettings.table.row2.section2.mealCoupons}:
+        </div>
+        <div className="font-normal text-2xl">
+          {exhibitorPackage.mealCoupons}
+        </div>
+        <div className={"font-normal text-2xl"}>
+          {editState
+            ? plusMinus(
+                mealCoupons,
+                setMealCoupons,
+                1,
+                disablePreferences)
+            : mealCoupons}
+        </div>
+        <div className="font-normal text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] text-2xl">
+          {exhibitorPackage.mealCoupons + mealCoupons}
+        </div>
+        <div className="text-right text-white/90 [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
+          {t.exhibitorSettings.table.row2.section2.warning +
+            deadline.mealCoupons}
+        </div>
+        {/* Section 5 */}
+
+        {/* Section 6 */}
         <div className="text-left !border-transparent">
           {t.exhibitorSettings.table.row2.section2.sitting}:
         </div>
@@ -346,7 +410,15 @@ export default function ExtraOrders({
           </div>
         ))}
       </div>
-      {/* Section 5 */}
+      {/* Section 6 */}
+
+      {lastChanged &&
+        <div className="font-normal text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] text-2xl">
+          {t.exhibitorSettings.table.row2.section2.lastChanged + lastChanged.getDate() + "/" + (lastChanged.getMonth() + 1) + " " + 
+          lastChanged.getHours().toString().padStart(2, '0') + ":" + 
+          lastChanged.getMinutes().toString().padStart(2, '0')}
+        </div>
+      }
 
       <a
         className={`hover:cursor-pointer ${
