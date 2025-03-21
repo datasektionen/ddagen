@@ -144,7 +144,7 @@ export default function Home() {
             t={t}
             leftSideImage={false}
             imageOverOnMobile={true}
-            imageProps={{src: "/img/foretagsrepresentant-bild.png", alt: "Picture of company representative", className: "bg-slate-300"}}
+            imageProps={{src: "/img/ddagen-massa-foretag.png", alt: "Picture of ddagen exhibition day"}}
             className={`mt-[40px] lg:mt-[70px] mb-[110px] lg:mb-[140px]
             transition-all ease-in-out
             ${ hasLoadedBefore ? 'duration-0': 'delay-[300ms] duration-[800ms]'}  
