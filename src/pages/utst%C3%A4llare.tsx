@@ -15,6 +15,7 @@ import { addImageDetails } from "@/shared/addImageDetails";
 import CompanyMeetingBooker from "@/components/Company/ExtraOrders/CompanyMeetingBooker";
 import { InputField } from "@/components/InputField";
 import { get } from "http";
+import Head from "next/head";
 
 // TODO hook the next button to the save features
 // Maby break save changes into a separate steps for each page
@@ -204,7 +205,9 @@ export default function Exhibitor() {
         getExtras.data.extraTables,
         getExtras.data.extraDrinkCoupons,
         getExtras.data.extraRepresentativeSpots,
-        getExtras.data.totalBanquetTicketsWanted
+        getExtras.data.totalBanquetTicketsWanted,
+        getExtras.data.extraMealCoupons,
+        getExtras.data?.lastChanged || undefined
       )
     );
   }, [getExtras.data]);
@@ -225,7 +228,8 @@ export default function Exhibitor() {
       exhibitor.customChairs,
       exhibitor.customDrinkCoupons,
       exhibitor.customRepresentativeSpots,
-      exhibitor.customBanquetTicketsWanted
+      exhibitor.customBanquetTicketsWanted,
+      0 // Om customMeal... finns i db så läggs det till här
     );
     setExhibitorPackage(exhibitorPackage);
     setHasMeeting(exhibitor.studentMeetings == 1);
@@ -239,6 +243,8 @@ export default function Exhibitor() {
       extraDrinkCoupons: extras.extraDrinkCoupons,
       extraRepresentativeSpots: extras.extraRepresentativeSpots,
       totalBanquetTicketsWanted: extras.totalBanquetTicketsWanted,
+      extraMealCoupons: extras.extraMealCoupons,
+      lastChanged: extras.lastChanged || new Date(),
     });
   }, [extras]);
 
@@ -535,9 +541,12 @@ export default function Exhibitor() {
 
   return(
     <>
-    <div className="xl:w-[1200px] lg:w-[1000px] w-full">
+      <Head>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
+      <div className="xl:w-[1200px] lg:w-[1000px] w-full">
 
-    </div>
+      </div>
       <div className="mx-auto flex flex-col items-center py-40 cursor-default bg-darkblue bg-opacity-75">
         {/*Header*/}
         <h1 className="uppercase text-cerise text-3xl md:text-5xl font-medium text-center px-[10px] break-words">

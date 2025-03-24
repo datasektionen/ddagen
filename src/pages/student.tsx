@@ -9,6 +9,7 @@ import { Table } from "@/components/Table";
 
 import { useRouter } from 'next/navigation';
 import { useModal } from '@/utils/context';
+import Head from 'next/head';
 
 
 
@@ -306,12 +307,19 @@ export default function LoggedInPage() {
     }
 
 
-    return isLoggedIn ? ( 
-            <StudentView/> 
-        ) : (
+    return (
+        <>
+            <Head>
+                <meta name="robots" content="noindex, nofollow" />
+            </Head>
+            {isLoggedIn ? ( 
+                <StudentView/> 
+            ) : (
 
-        <p className="h-screen flex items-center justify-center text-white">
-            Loading...
-        </p>
+            <p className="h-screen flex items-center justify-center text-white">
+                Loading...
+            </p>
+            )}
+        </>
     )
 }

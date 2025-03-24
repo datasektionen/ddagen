@@ -1,4 +1,5 @@
 import { useLocale } from "@/locales";
+import Head from "next/head";
 import { useState, useRef } from "react";
 function SingleEvent({
   bgColor,
@@ -101,60 +102,65 @@ export default function Students() {
   const t = useLocale();
 
   return (
-    <div className="pt-[200px] pb-[300px]">
-      <h1 className="text-5xl text-cerise font-medium text-center"> EVENT</h1>
-      <SingleEvent
-        bgColor="bg-[#E2B7C9]"
-        borderColor="border-[#E2B7C9]"
-        toReverse={false}
-        textColor="text-[#E2B7C9]"
-        image="/img/lunchPic.png"
-        eventInfo={[
-          t.event.header1,
-          t.event.paragraph1,
-          t.event.fullParagraph1,
-        ]}
-        price="50 000"
-      />
-      <SingleEvent
-        bgColor="bg-[#D5759C]"
-        borderColor="border-[#D5759C]"
-        toReverse={true}
-        textColor="text-[#D5759C]"
-        image="/img/officePic.png"
-        eventInfo={[
-          t.event.header2,
-          t.event.paragraph2,
-          t.event.fullParagraph2,
-        ]}
-        price="15 000"
-      />
-      <SingleEvent
-        bgColor="bg-cerise"
-        borderColor="border-cerise"
-        toReverse={false}
-        textColor="text-cerise"
-        image="/img/barPic.png"
-        eventInfo={[
-          t.event.header3,
-          t.event.paragraph3,
-          t.event.fullParagraph3,
-        ]}
-        price="60 000"
-      />
-      <SingleEvent
-        bgColor="bg-yellow"
-        borderColor="border-yellow"
-        toReverse={true}
-        textColor="text-yellow"
-        image="/img/afterworkPic.png"
-        eventInfo={[
-          t.event.header4,
-          t.event.paragraph4,
-          t.event.fullParagraph4,
-        ]}
-        price="17 000 kr + 150 kr / student"
-      />
-    </div>
+    <>
+      <Head>
+          <meta name="robots" content="noindex, nofollow" />
+      </Head>
+      <div className="pt-[200px] pb-[300px]">
+        <h1 className="text-5xl text-cerise font-medium text-center"> EVENT</h1>
+        <SingleEvent
+          bgColor="bg-[#E2B7C9]"
+          borderColor="border-[#E2B7C9]"
+          toReverse={false}
+          textColor="text-[#E2B7C9]"
+          image="/img/lunchPic.png"
+          eventInfo={[
+            t.event.header1,
+            t.event.paragraph1,
+            t.event.fullParagraph1,
+          ]}
+          price="50 000"
+        />
+        <SingleEvent
+          bgColor="bg-[#D5759C]"
+          borderColor="border-[#D5759C]"
+          toReverse={true}
+          textColor="text-[#D5759C]"
+          image="/img/officePic.png"
+          eventInfo={[
+            t.event.header2,
+            t.event.paragraph2,
+            t.event.fullParagraph2,
+          ]}
+          price="15 000"
+        />
+        <SingleEvent
+          bgColor="bg-cerise"
+          borderColor="border-cerise"
+          toReverse={false}
+          textColor="text-cerise"
+          image="/img/barPic.png"
+          eventInfo={[
+            t.event.header3,
+            t.event.paragraph3,
+            t.event.fullParagraph3,
+          ]}
+          price="60 000"
+        />
+        <SingleEvent
+          bgColor="bg-yellow"
+          borderColor="border-yellow"
+          toReverse={true}
+          textColor="text-yellow"
+          image="/img/afterworkPic.png"
+          eventInfo={[
+            t.event.header4,
+            t.event.paragraph4,
+            t.event.fullParagraph4,
+          ]}
+          price="17 000 kr + 150 kr / student"
+        />
+      </div>
+    </>
   );
 }

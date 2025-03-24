@@ -119,7 +119,6 @@ model FoodPreferences {
   value   FoodPreferencesValue[]
   comment String
   type    FoodPreferencesType
-  alcPreference Int @default(1)
 
   exhibitor   Exhibitor @relation(fields: [exhibitorId], references: [id], onDelete: Cascade)
   exhibitorId String
@@ -132,6 +131,7 @@ enum FoodPreferencesValue {
   Vegan
   LactoseFree
   GlutenFree
+  AlcoholFree
 }
 
 enum FoodPreferencesType {

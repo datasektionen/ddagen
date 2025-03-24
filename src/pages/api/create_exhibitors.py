@@ -128,7 +128,7 @@ users = [
 
 def main(user):
 
-    url = "http://localhost:3000/api/import-exhibitor?Authorization=test-WLHSxbluEaB2-B5kCPjO4h066TiKtXt_0_WrMHkLNMQ&Content-Type=application/json"
+    url = "http://localhost:3001/api/import-exhibitor?Authorization=test-WLHSxbluEaB2-B5kCPjO4h066TiKtXt_0_WrMHkLNMQ&Content-Type=application/json"
 
     payload = json.dumps(user)
     headers = {
