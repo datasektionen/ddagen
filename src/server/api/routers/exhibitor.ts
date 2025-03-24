@@ -7,7 +7,7 @@ import {
 import { validateOrganizationNumber } from "@/shared/validateOrganizationNumber";
 import { getLocale } from "@/locales";
 import { TRPCError } from "@trpc/server";
-import { Prisma } from "@prisma/client";
+import { FoodPreferencesValue, Prisma } from "@prisma/client";
 import sendEmail from "@/utils/send-email";
 import { randomUUID } from "crypto";
 import { error, time } from "console";
@@ -488,7 +488,7 @@ export const exhibitorRouter = createTRPCRouter({
               },
               data: {
                 name: input.name,
-                value: input.value.length == 0 ? [] : input.value,
+                value: input.value as Prisma.Enumerable<FoodPreferencesValue>,
                 comment: input.comment,
               },
             });
@@ -500,7 +500,7 @@ export const exhibitorRouter = createTRPCRouter({
                 id: id,
                 exhibitorId: ctx.session.exhibitorId,
                 name: input.name,
-                value: input.value,
+                value: (input.value as Prisma.Enumerable<FoodPreferencesValue>),
                 comment: input.comment,
                 type: input.type,
               },

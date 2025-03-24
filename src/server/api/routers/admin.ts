@@ -18,7 +18,7 @@ export const adminRouter = createTRPCRouter({
                         exhibitor.id,
                         exhibitor.name,
                         exhibitor.organizationNumber,
-                        exhibitor.invoiceEmail,
+                        exhibitor.invoiceEmail == null ? "" : exhibitor.invoiceEmail,
                         exhibitor.logoWhite?.toString("base64"),
                         exhibitor.logoColor?.toString("base64"),
                         exhibitor.description,
