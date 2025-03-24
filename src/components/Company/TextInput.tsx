@@ -5,13 +5,15 @@ export function TextInput({
   setDescription,
   textAbove,
   placeHolderText,
-  name
+  name,
+  disabled
 }: {
   description: string;
   setDescription: Dispatch<string>;
   textAbove: string;
   placeHolderText: string;
   name?: string;
+  disabled?: boolean;
 }) {
   const onTextChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     if (e.target.value) setDescription(e.target.value);
@@ -36,6 +38,7 @@ export function TextInput({
         onChange={onTextChange}
         id={name || "text_input"}
         value={description}
+        disabled={disabled}
       />
     </div>
   );

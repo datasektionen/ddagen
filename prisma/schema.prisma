@@ -27,7 +27,6 @@ model Exhibitor {
   name               String
   organizationNumber String @unique
 
-  invoiceEmail String
   logoWhite    Bytes?
   logoColor    Bytes?
   description  String
@@ -40,6 +39,10 @@ model Exhibitor {
   extraRepresentativeSpots  Int @default(0)
   extraMealCoupons          Int @default(0)
   totalBanquetTicketsWanted Int @default(0)
+
+  companyAddress            String?
+  invoiceEmail              String?
+  billingMethod             String?
 
   socialMediaPost            Int @default(0)
   panelDiscussion            Int @default(0)

@@ -429,7 +429,21 @@ export default {
           search: "Search",
         },
       },
-
+        row5: {
+          title: "Billing Information",
+          section1: {
+            header: "Billing Information",
+            organizationNumber: "Organization Number",
+            placeholderTextOrganizationNumber: "Enter your organization number",
+            email: "Email",
+            placeholderTextEmail: "Enter the email for invoicing",
+            physicalAddress: "Address",
+            placeholderTextPhysicalAddress: "Enter companyaddress (Ex. Drottning Kristinas väg 15-19)",
+            billingMethods: ["E-Invoice", "PDF Invoice"],
+            billingMethodText: "Billing Method",
+            placeholderTextBillingMethod: "Enter billing method",
+          },
+        },
     },
     meetings: {
       title: "Company Meetings",

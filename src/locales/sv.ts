@@ -429,6 +429,21 @@ export default {
           search: "Sök",
         },
       },
+      row5: {
+        title: "Faktureringsinformation",
+        section1: {
+          header: "Faktureringsinformation",
+          organizationNumber: "Organisationsnummer",
+          placeholderTextOrganizationNumber: "Ange organisationsnummer",
+          email: "E-post",
+          placeholderTextEmail: "Ange e-postadress",
+          physicalAddress: "Företagsadress",
+          placeholderTextPhysicalAddress: "Ange företagsadress (Ex. Drottning Kristinas väg 15-19)",
+          billingMethods: ["E-faktura", "PDF-faktura"],
+          billingMethodText: "Faktureringsmetod",
+          placeholderTextBillingMethod: "Ange faktureringsmetod",
+        },
+      },
     },
     meetings: {
       title: "Kontaktsamtal",
