@@ -1,6 +1,7 @@
 import CompanyForm from "@/components/CompanyForm";
 import { type Locale, useLocale } from "@/locales";
 import { useState } from "react";
+import { NextSeo } from 'next-seo';
 
 function NoMoreRegistrations({ t }: { t: Locale }) {
   return (
@@ -57,8 +58,38 @@ export default function ExhibitorRegistration() {
 
   const [registationDone, setRegistationDone] = useState(false);
 
+  const seoContent = {
+    sv: {
+      title: "Företagsanmälan - Anmäl Ert Företag Till Mässan",
+      description: "Är ditt företag intresserat av att delta på D-Dagen 2025? Anmäl er till Sveriges största arbetsmarknadsmässa för IT- och datastudenter! Fyll i företagsanmälan och bli en del av D-Dagen den 9 oktober på KTH Campus Valhallavägen.",
+      url: "https://ddagen.se/företagsanmälan",
+    },
+    en: {
+      title: "Exhibitor Registration - Register Your Company for the Fair",
+      description: "Is your company interested in participating in D-Dagen 2025? Register for Sweden's largest career fair for IT and computer science students! Fill out the exhibitor registration form and join us on October 9 at KTH Campus Valhallavägen.",
+      url: "https://ddagen.se/en/företagsanmälan",
+    },
+  };
+
+  const { title, description, url } = seoContent[t.locale as "sv" | "en"];
+  
   return (
     <>
+      <NextSeo
+        title={title}
+        description={description}
+        openGraph={{
+          url,
+          title,
+          description
+        }}
+        additionalMetaTags={[
+          {
+            name: 'robots',
+            content: 'index, follow'
+          }
+        ]}
+      />
       {acceptRegistrations ? (
         registationDone ? (
           <RegistrationConfirmation t={t} />

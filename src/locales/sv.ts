@@ -362,6 +362,8 @@ export default {
             third: "Totalt",
           },
           drinkCoupons: "Barbongar",
+          mealCoupons: "Måltidsbiljetter",
+          lastChanged: "Senast ändrad: ",
           tables: "Bord",
           chairs: "Stolar",
           representatives: "Representanter",
@@ -399,6 +401,7 @@ export default {
           lactoseFree: "Laktosfri",
           glutenFree: "Glutenfri",
           meat: "Kött",
+          alcoholFree: "Alkoholfitt",
         },
         alerts: {
           errorDeletePreferenceWithoutID:
@@ -1062,12 +1065,22 @@ export default {
           drinkCoupons: "Barbongar",
           representativeSpots: "Representantplatser",
           banquetTickets: "Sittningsbiljetter",
+          mealCoupons: "Måltidsbiljetter",
         },
         verification: {
           name: "Verification",
           banquet: "Banquet",
           representatives: "Representater",
         },
+        specialOrders: {
+          name: "Specialbeställningar",
+          studentMeetings: "Kontaktsamtal",
+          socialMediaPost: "Inlägg på sociala medier",
+          panelDiscussion: "Paneldiskussion",
+          goodiebagLogo: "Logga på goodiebag",
+          specialOrderButton: "Ändra",
+          specialOrderSave: "Spara"
+        }
       },
     },
     extraOrders: {
@@ -1084,6 +1097,7 @@ export default {
         drinkCoupons: "Barbongar",
         representatives: "Representanter",
         banquetTickets: "Sittningsbiljetter",
+        mealCoupons: "Måltidsbiljetter",
       },
     },
     preferences: {
