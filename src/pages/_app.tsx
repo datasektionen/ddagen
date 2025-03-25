@@ -47,8 +47,8 @@ const App: AppType = ({ Component, pageProps }) => {
         >
           <div className="absolute w-full h-full z-[-2] bg-[#0F142D]"></div>
           <div className="absolute w-full h-full z-[-1] 
-              bg-[url('/img/bg-spiral-mobile.png')] md:bg-[url('/img/bg-spiral-desktop.png')] bg-blend-hue bg-repeat-y
-              bg-[length:100%] md:bg-[length:50vw]"></div>
+              bg-[url('/img/bg-spiral-mobile.png')] lg:bg-[url('/img/bg-spiral-desktop.png')] bg-[center_top_5rem] bg-blend-hue bg-repeat-y
+              bg-[length:100%]"></div>
           <ModalContextProvider>
             <Component  {...pageProps} />
           </ModalContextProvider>

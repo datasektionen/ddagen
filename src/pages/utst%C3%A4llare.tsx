@@ -8,11 +8,13 @@ import ExtraFairOrders from "@/components/Company/ExtraOrders/ExtraFairOrders";
 import FoodPreferences from "@/components/Company/Preferences/FoodPreferences";
 import GeneralInfo from "@/components/Company/General/GeneralInfo";
 import JobOffers from "@/components/Company/General/JobOffers";
+import BillingInfo from "@/components/Company/Billing information/BillingInfo";
 import { UserDetails } from "@/components/Company/User/UserDetails";
 import { CheckMark } from "@/components/CheckMark";
 import { addImageDetails } from "@/shared/addImageDetails";
 import CompanyMeetingBooker from "@/components/Company/ExtraOrders/CompanyMeetingBooker";
 import { InputField } from "@/components/InputField";
+import { get } from "http";
 import Head from "next/head";
 
 // TODO hook the next button to the save features
@@ -39,6 +41,10 @@ export default function Exhibitor() {
     banqcount: 0,
     reprcount: 0,
   });
+  const [physicalAddress, setPhysicalAddress] = useState("");
+  const [billingMethod, setBillingMethod] = useState("");
+  const [organizationNumber, setOrganizationNumber] = useState("");
+  const [email, setEmail] = useState("");
   const [exhibitorPackage, setExhibitorPackage] = useState(new Package(t, -1));
   const [showSetUpPage, setShowSetUpPage] = useState<boolean>(false);
   const [hasMeeting, setHasMeeting] = useState<boolean>(false);
@@ -52,6 +58,9 @@ export default function Exhibitor() {
   const jobOffersMutation = api.exhibitor.setJobOffers.useMutation();
   const setInfoStatus = api.exhibitor.setInfoStatus.useMutation();
   const setNameMutation = api.exhibitor.setName.useMutation();
+  const setPhysicalAddressMutation = api.exhibitor.setPhysicalAddress.useMutation();
+  const setBillingMethodMutation = api.exhibitor.setBillingMethod.useMutation();
+  const setEmailMutation = api.exhibitor.setInvoiceEmail.useMutation();
 
 
   // Queries
@@ -69,6 +78,11 @@ export default function Exhibitor() {
     },
   });
   const getInfoStatus = api.exhibitor.getInfoStatus.useQuery();
+  const getOrganizationNumber = api.exhibitor.getOrganizationNumber.useQuery();
+  const getBillingMethod = api.exhibitor.getBillingMethod.useQuery();
+  const getPhysicalAddress = api.exhibitor.getPhysicalAddress.useQuery();
+  const getInvoiceEmail = api.exhibitor.getInvoiceEmail.useQuery();
+  
   //const getStudentInterests = api.exhibitor.getStudentInterests.useQuery();
 
 
@@ -102,6 +116,11 @@ export default function Exhibitor() {
                 fullTimeJob: checkmarks[16],
                 traineeProgram: checkmarks[17],
             })
+            break;
+        case 3:
+            setPhysicalAddressMutation.mutateAsync(physicalAddress)
+            setBillingMethodMutation.mutateAsync(billingMethod)
+            setEmailMutation.mutateAsync(email)
             break;
         default:
             return
@@ -146,6 +165,27 @@ export default function Exhibitor() {
   }, [getDescription.data]);
 
   useEffect(() => {
+    if (!getOrganizationNumber.isSuccess) return;
+    setOrganizationNumber(getOrganizationNumber.data.organizationNumber);
+  }, [getOrganizationNumber.data]);
+
+  useEffect(() => {
+    if (!getBillingMethod.isSuccess) return;
+    setBillingMethod(getBillingMethod.data.billingMethod ?? "");
+  }, [getBillingMethod.data]);
+
+  useEffect(() => {
+    if (!getPhysicalAddress.isSuccess) return;
+    setPhysicalAddress(getPhysicalAddress.data.companyAddress ?? "");
+  }, [getPhysicalAddress.data]);
+
+  useEffect(() => {
+    if (!getInvoiceEmail.isSuccess) return;
+    setEmail(getInvoiceEmail.data.invoiceEmail ?? "");
+  }, [getInvoiceEmail.data]);
+
+
+  useEffect(() => {
     if (!getIndustry.isSuccess) return;
     setIndustry(getIndustry.data.industry ?? "");
   }, [getIndustry.data]);
@@ -165,7 +205,9 @@ export default function Exhibitor() {
         getExtras.data.extraTables,
         getExtras.data.extraDrinkCoupons,
         getExtras.data.extraRepresentativeSpots,
-        getExtras.data.totalBanquetTicketsWanted
+        getExtras.data.totalBanquetTicketsWanted,
+        getExtras.data.extraMealCoupons,
+        getExtras.data?.lastChanged || undefined
       )
     );
   }, [getExtras.data]);
@@ -186,7 +228,8 @@ export default function Exhibitor() {
       exhibitor.customChairs,
       exhibitor.customDrinkCoupons,
       exhibitor.customRepresentativeSpots,
-      exhibitor.customBanquetTicketsWanted
+      exhibitor.customBanquetTicketsWanted,
+      0 // Om customMeal... finns i db så läggs det till här
     );
     setExhibitorPackage(exhibitorPackage);
     setHasMeeting(exhibitor.studentMeetings == 1);
@@ -200,6 +243,8 @@ export default function Exhibitor() {
       extraDrinkCoupons: extras.extraDrinkCoupons,
       extraRepresentativeSpots: extras.extraRepresentativeSpots,
       totalBanquetTicketsWanted: extras.totalBanquetTicketsWanted,
+      extraMealCoupons: extras.extraMealCoupons,
+      lastChanged: extras.lastChanged || new Date(),
     });
   }, [extras]);
 
@@ -283,6 +328,9 @@ export default function Exhibitor() {
         fullTimeJob: checkmarks[16],
         traineeProgram: checkmarks[17],
       }),
+      setPhysicalAddressMutation.mutateAsync(physicalAddress),
+      setBillingMethodMutation.mutateAsync(billingMethod),
+      setEmailMutation.mutateAsync(email),
     ])
       .then(() => setSaveChanges(true))
       .catch((error) => {
@@ -348,6 +396,7 @@ export default function Exhibitor() {
       t.exhibitorSettings.table.row1.title,
       t.exhibitorSettings.table.row2.title,
       t.exhibitorSettings.table.row3.title,
+      t.exhibitorSettings.table.row5.title,
     ],
     [],
     [
@@ -403,6 +452,19 @@ export default function Exhibitor() {
         setPreferenceCount={setPreferenceCount}
         exhibitorPackage={exhibitorPackage}
       />,
+      <BillingInfo
+        t={t}
+        physicalAddress={physicalAddress}
+        setPhysicalAddress={setPhysicalAddress}
+        billingMethod={billingMethod}
+        setBillingMethod={setBillingMethod}
+        organizationNumber={organizationNumber}
+        setOrganizationNumber={setOrganizationNumber}
+        email={email}
+        setEmail={setEmail}
+        saveHandler={handleClick}
+      />,
+      
     ]
   );
 

@@ -7,10 +7,11 @@ import {
 import { validateOrganizationNumber } from "@/shared/validateOrganizationNumber";
 import { getLocale } from "@/locales";
 import { TRPCError } from "@trpc/server";
-import { Prisma } from "@prisma/client";
+import { FoodPreferencesValue, Prisma } from "@prisma/client";
 import sendEmail from "@/utils/send-email";
 import { randomUUID } from "crypto";
 import { error, time } from "console";
+import { get } from "http";
 
 const foodPreferencesType = z.enum(["Representative", "Banquet"]);
 const foodPreferencesValue = z.enum([
@@ -18,6 +19,7 @@ const foodPreferencesValue = z.enum([
   "Vegan",
   "LactoseFree",
   "GlutenFree",
+  "AlcoholFree",
 ]);
 
 export const exhibitorRouter = createTRPCRouter({
@@ -137,6 +139,7 @@ export const exhibitorRouter = createTRPCRouter({
         extraTables: z.number(),
         extraDrinkCoupons: z.number(),
         extraRepresentativeSpots: z.number(),
+        extraMealCoupons: z.number(),
       })
     )
     .mutation(async ({ ctx, input }) => {
@@ -150,6 +153,7 @@ export const exhibitorRouter = createTRPCRouter({
           extraTables: input.extraTables,
           extraDrinkCoupons: input.extraDrinkCoupons,
           extraRepresentativeSpots: input.extraRepresentativeSpots,
+          extraMealCoupons: input.extraMealCoupons,
         },
       });
     }),
@@ -163,7 +167,8 @@ export const exhibitorRouter = createTRPCRouter({
         customDrinkCoupons: true,
         customRepresentativeSpots: true,
         customBanquetTicketsWanted: true,
-        studentMeetings: true,
+        studentMeetings: true, 
+        extraMealCoupons: true, // Måste kanske lägga till customMealCoupons i db, känns inte nödvändigt just nu
       },
     });
   }),
@@ -176,6 +181,8 @@ export const exhibitorRouter = createTRPCRouter({
         extraDrinkCoupons: true,
         extraRepresentativeSpots: true,
         totalBanquetTicketsWanted: true,
+        extraMealCoupons: true,
+        lastChanged: true,
       },
     });
   }),
@@ -187,6 +194,8 @@ export const exhibitorRouter = createTRPCRouter({
         extraDrinkCoupons: z.number(),
         extraRepresentativeSpots: z.number(),
         totalBanquetTicketsWanted: z.number(),
+        extraMealCoupons: z.number(),
+        lastChanged: z.date(),
       })
     )
     .mutation(async ({ ctx, input }) => {
@@ -198,6 +207,29 @@ export const exhibitorRouter = createTRPCRouter({
           extraDrinkCoupons: input.extraDrinkCoupons,
           extraRepresentativeSpots: input.extraRepresentativeSpots,
           totalBanquetTicketsWanted: input.totalBanquetTicketsWanted,
+          extraMealCoupons: input.extraMealCoupons,
+          lastChanged: z.date().parse(input.lastChanged),
+        },
+      });
+    }),
+    setSpecialOrders: publicProcedure
+    .input(
+      z.object({
+        exhibitorId: z.string(),
+        studentMeetings: z.number(),
+        socialMediaPost: z.number(),
+        panelDiscussion: z.number(),
+        goodieBagLogo: z.number(),
+      })
+    )
+    .mutation(async ({ ctx, input}) => {
+      await ctx.prisma.exhibitor.update({
+        where: { id: input.exhibitorId },
+        data: {
+          studentMeetings: input.studentMeetings,
+          socialMediaPost: input.socialMediaPost,
+          panelDiscussion: input.panelDiscussion,
+          goodiebagLogo:   input.goodieBagLogo,
         },
       });
     }),
@@ -213,6 +245,54 @@ export const exhibitorRouter = createTRPCRouter({
       await ctx.prisma.exhibitor.update({
         where: { id: ctx.session.exhibitorId },
         data: { name: input },
+      });
+    }),
+  getOrganizationNumber: protectedProcedure.query(async ({ ctx }) => {
+    return await ctx.prisma.exhibitor.findUniqueOrThrow({
+      where: { id: ctx.session.exhibitorId },
+      select: { organizationNumber: true },
+    });
+  }),
+  getInvoiceEmail: protectedProcedure.query(async ({ ctx }) => {
+    return await ctx.prisma.exhibitor.findUniqueOrThrow({
+      where: { id: ctx.session.exhibitorId },
+      select: { invoiceEmail: true },
+    });
+  }),
+  setInvoiceEmail: protectedProcedure
+    .input(z.string())
+    .mutation(async ({ ctx, input }) => {
+      await ctx.prisma.exhibitor.update({
+        where: { id: ctx.session.exhibitorId },
+        data: { invoiceEmail: input },
+      });
+    }),
+  getBillingMethod: protectedProcedure.query(async ({ ctx }) => {
+    return await ctx.prisma.exhibitor.findUniqueOrThrow({
+      where: { id: ctx.session.exhibitorId },
+      select: { billingMethod: true },
+    });
+  }),
+  setBillingMethod: protectedProcedure
+    .input(z.string())
+    .mutation(async ({ ctx, input }) => {
+      await ctx.prisma.exhibitor.update({
+        where: { id: ctx.session.exhibitorId },
+        data: { billingMethod: input },
+      });
+    }),
+  getPhysicalAddress: protectedProcedure.query(async ({ ctx }) => {
+    return await ctx.prisma.exhibitor.findUniqueOrThrow({
+      where: { id: ctx.session.exhibitorId },
+      select: { companyAddress: true },
+    });
+  }),
+  setPhysicalAddress: protectedProcedure
+    .input(z.string())
+    .mutation(async ({ ctx, input }) => {
+      await ctx.prisma.exhibitor.update({
+        where: { id: ctx.session.exhibitorId },
+        data: { companyAddress: input },
       });
     }),
   getDescription: protectedProcedure.query(async ({ ctx }) => {
@@ -408,7 +488,7 @@ export const exhibitorRouter = createTRPCRouter({
               },
               data: {
                 name: input.name,
-                value: input.value.length == 0 ? [] : input.value,
+                value: input.value as Prisma.Enumerable<FoodPreferencesValue>,
                 comment: input.comment,
               },
             });
@@ -420,7 +500,7 @@ export const exhibitorRouter = createTRPCRouter({
                 id: id,
                 exhibitorId: ctx.session.exhibitorId,
                 name: input.name,
-                value: input.value,
+                value: (input.value as Prisma.Enumerable<FoodPreferencesValue>),
                 comment: input.comment,
                 type: input.type,
               },

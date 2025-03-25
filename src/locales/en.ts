@@ -361,6 +361,8 @@ export default {
             third: "Total",
           },
           drinkCoupons: "Drink Coupons",
+          mealCoupons: "Meal Coupons",
+          lastChanged: "Last Changed: ",
           tables: "Tables",
           chairs: "Chairs",
           representatives: "Representatives",
@@ -398,6 +400,7 @@ export default {
           lactoseFree: "Lactose-Free",
           glutenFree: "Gluten-Free",
           meat: "Meat",
+          alcoholFree: "Alcohol-Free",
         },
         alerts: {
           errorDeletePreferenceWithoutID:
@@ -426,7 +429,21 @@ export default {
           search: "Search",
         },
       },
-
+        row5: {
+          title: "Billing Information",
+          section1: {
+            header: "Billing Information",
+            organizationNumber: "Organization Number",
+            placeholderTextOrganizationNumber: "Enter your organization number",
+            email: "Email",
+            placeholderTextEmail: "Enter the email for invoicing",
+            physicalAddress: "Address",
+            placeholderTextPhysicalAddress: "Enter companyaddress (Ex. Drottning Kristinas väg 15-19)",
+            billingMethods: ["E-Invoice", "PDF Invoice"],
+            billingMethodText: "Billing Method",
+            placeholderTextBillingMethod: "Enter billing method",
+          },
+        },
     },
     meetings: {
       title: "Company Meetings",
@@ -1048,12 +1065,22 @@ export default {
           drinkCoupons: "Drink Coupons",
           representativeSpots: "Representative Spots",
           banquetTickets: "Banquet Tickets",
+          mealCoupons: "Meal Coupons",
         },
         verification: {
           name: "Verification",
           banquet: "Banquet",
           representatives: "Representatives",
         },
+        specialOrders: {
+          name: "Special orders",
+          studentMeetings: "Student meetings",
+          socialMediaPost: "Social media post",
+          panelDiscussion: "Panel discussion",
+          goodiebagLogo: "Goodie bag logo",
+          specialOrderButton: "Change",
+          specialOrderSave: "Save"
+        }
       },
     },
     extraOrders: {
@@ -1070,6 +1097,7 @@ export default {
         drinkCoupons: "Drink Coupons",
         representatives: "Representatives",
         banquetTickets: "Banquet Tickets",
+        mealCoupons: "Meal Coupons",
       },
     },
     preferences: {

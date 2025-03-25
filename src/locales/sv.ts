@@ -362,6 +362,8 @@ export default {
             third: "Totalt",
           },
           drinkCoupons: "Barbongar",
+          mealCoupons: "Måltidsbiljetter",
+          lastChanged: "Senast ändrad: ",
           tables: "Bord",
           chairs: "Stolar",
           representatives: "Representanter",
@@ -399,6 +401,7 @@ export default {
           lactoseFree: "Laktosfri",
           glutenFree: "Glutenfri",
           meat: "Kött",
+          alcoholFree: "Alkoholfitt",
         },
         alerts: {
           errorDeletePreferenceWithoutID:
@@ -424,6 +427,21 @@ export default {
           selectAll: "Markera alla",
           deselectAll: "Avmarkera alla",
           search: "Sök",
+        },
+      },
+      row5: {
+        title: "Faktureringsinformation",
+        section1: {
+          header: "Faktureringsinformation",
+          organizationNumber: "Organisationsnummer",
+          placeholderTextOrganizationNumber: "Ange organisationsnummer",
+          email: "E-post",
+          placeholderTextEmail: "Ange e-postadress",
+          physicalAddress: "Företagsadress",
+          placeholderTextPhysicalAddress: "Ange företagsadress (Ex. Drottning Kristinas väg 15-19)",
+          billingMethods: ["E-faktura", "PDF-faktura"],
+          billingMethodText: "Faktureringsmetod",
+          placeholderTextBillingMethod: "Ange faktureringsmetod",
         },
       },
     },
@@ -1047,12 +1065,22 @@ export default {
           drinkCoupons: "Barbongar",
           representativeSpots: "Representantplatser",
           banquetTickets: "Sittningsbiljetter",
+          mealCoupons: "Måltidsbiljetter",
         },
         verification: {
           name: "Verification",
           banquet: "Banquet",
           representatives: "Representater",
         },
+        specialOrders: {
+          name: "Specialbeställningar",
+          studentMeetings: "Kontaktsamtal",
+          socialMediaPost: "Inlägg på sociala medier",
+          panelDiscussion: "Paneldiskussion",
+          goodiebagLogo: "Logga på goodiebag",
+          specialOrderButton: "Ändra",
+          specialOrderSave: "Spara"
+        }
       },
     },
     extraOrders: {
@@ -1069,6 +1097,7 @@ export default {
         drinkCoupons: "Barbongar",
         representatives: "Representanter",
         banquetTickets: "Sittningsbiljetter",
+        mealCoupons: "Måltidsbiljetter",
       },
     },
     preferences: {

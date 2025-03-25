@@ -27,7 +27,7 @@ export class User {
 export class Preferences {
   id?: string;
   name: string;
-  value: ("Meat" | "Vegan" | "LactoseFree" | "GlutenFree")[];
+  value: ("Meat" | "Vegan" | "LactoseFree" | "GlutenFree" | "AlcoholFree")[];
   comment: string;
   type: "Representative" | "Banquet";
   exhibitorId?: string;
@@ -35,7 +35,7 @@ export class Preferences {
   constructor(
     id: string | undefined,
     name: string,
-    value: ("Meat" | "Vegan" | "LactoseFree" | "GlutenFree")[],
+    value: ("Meat" | "Vegan" | "LactoseFree" | "GlutenFree" | "AlcoholFree")[],
     comment: string,
     type: "Representative" | "Banquet",
     exhibitorId?: string
@@ -57,6 +57,7 @@ export class Package {
   drinkCoupons: number;
   representatives: number;
   banquetTickets: number;
+  mealCoupons: number;
 
   constructor(t: Locale, exhibitorPackageTier: number) {
     switch ( exhibitorPackageTier ) {
@@ -67,6 +68,7 @@ export class Package {
         this.drinkCoupons = 8;
         this.representatives = 2;
         this.banquetTickets = 2;
+        this.mealCoupons = 2;
         break;
       case 1:
         this.name = t.packages.name[1];
@@ -75,6 +77,7 @@ export class Package {
         this.drinkCoupons = 8;
         this.representatives = 3;
         this.banquetTickets = 2;
+        this.mealCoupons = 3;
         break;
       case 2:
         this.name = t.packages.name[2];
@@ -83,6 +86,7 @@ export class Package {
         this.drinkCoupons = 16;
         this.representatives = 4;
         this.banquetTickets = 4;
+        this.mealCoupons = 4;
         break;
       case 3:
         this.name = t.packages.name[3];
@@ -91,6 +95,7 @@ export class Package {
         this.drinkCoupons = 16; 
         this.representatives = 10;
         this.banquetTickets = 2;
+        this.mealCoupons = 4; 
         break;
       case 4:
         this.name = t.packages.name[4];
@@ -99,6 +104,7 @@ export class Package {
         this.drinkCoupons = 0;
         this.representatives = 2;
         this.banquetTickets = 0;
+        this.mealCoupons = 2; 
         break;
       default:
         this.name = "Something went wrong with the package, contact sales";
@@ -107,6 +113,7 @@ export class Package {
         this.drinkCoupons = 0;
         this.representatives = 0;
         this.banquetTickets = 0;
+        this.mealCoupons = 0;
         break;
     }
   }
@@ -116,13 +123,15 @@ export class Package {
     chairs: number,
     drinkCoupons: number,
     representatives: number,
-    banquetTickets: number
+    banquetTickets: number,
+    mealCoupons: number
   ) {
     this.tables += tables;
     this.chairs += chairs;
     this.drinkCoupons += drinkCoupons;
     this.representatives += representatives;
     this.banquetTickets += banquetTickets;
+    this.mealCoupons += mealCoupons;
   }
 }
 
@@ -132,6 +141,7 @@ export type ExhibitorExtras = {
   drinkCoupons: number;
   representativeSpots: number;
   banquetTicket: number;
+  mealCoupons: number;
 };
 
 export class Extras {
@@ -140,19 +150,25 @@ export class Extras {
   extraDrinkCoupons: number;
   extraRepresentativeSpots: number;
   totalBanquetTicketsWanted: number;
+  extraMealCoupons: number;
+  lastChanged?: Date;
 
   constructor(
     extraChairs: number,
     extraTables: number,
     extraDrinkCoupons: number,
     extraRepresentativeSpots: number,
-    totalBanquetTicketsWanted: number
+    totalBanquetTicketsWanted: number,
+    extraMealCoupons: number,
+    lastChanged?: Date,
   ) {
     this.extraChairs = extraChairs;
     this.extraTables = extraTables;
     this.extraDrinkCoupons = extraDrinkCoupons;
     this.extraRepresentativeSpots = extraRepresentativeSpots;
     this.totalBanquetTicketsWanted = totalBanquetTicketsWanted;
+    this.extraMealCoupons = extraMealCoupons;
+    this.lastChanged = lastChanged;
   }
 }
 
@@ -170,6 +186,10 @@ export class Exhibitor {
   extraChairs: number;
   extraDrinkCoupons: number;
   extraRepresentativeSpots: number;
+  extraMealCoupons: number;
+  socialMediaPost: number;
+  panelDiscussion: number;
+  goodieBagLogo: number;
   totalBanquetTicketsWanted: number;
   jobOfferId: string;
   customTables: number;
@@ -193,6 +213,10 @@ export class Exhibitor {
     extraChairs: number,
     extraDrinkCoupons: number,
     extraRepresentativeSpots: number,
+    extraMealCoupons: number,
+    socialMediaPost: number,
+    panelDiscussion: number,
+    goodieBagLogo: number,
     totalBanquetTicketsWanted: number,
     jobOfferId: string,
     customTables: number,
@@ -215,6 +239,10 @@ export class Exhibitor {
     this.extraChairs = extraChairs;
     this.extraDrinkCoupons = extraDrinkCoupons;
     this.extraRepresentativeSpots = extraRepresentativeSpots;
+    this.extraMealCoupons = extraMealCoupons;
+    this.socialMediaPost = socialMediaPost;
+    this.panelDiscussion = panelDiscussion;
+    this.goodieBagLogo = goodieBagLogo;
     this.totalBanquetTicketsWanted = totalBanquetTicketsWanted;
     this.jobOfferId = jobOfferId;
     this.customTables = customTables;
