@@ -45,7 +45,7 @@ export function ExtraOrderPanel({
       extras.tables += exhibitor.extraTables;
       extras.chairs += exhibitor.extraChairs;
       extras.drinkCoupons += exhibitor.extraDrinkCoupons;
-      extras.representativeSpots += exhibitor.extraRepresentativeSpots;
+      //extras.representativeSpots += exhibitor.extraRepresentativeSpots; removed
       extras.banquetTicket += exhibitor.totalBanquetTicketsWanted;
       extras.mealCoupons += exhibitor.extraMealCoupons;
     });
@@ -93,6 +93,7 @@ export function ExtraOrderPanel({
                       : 0}
                   </td>
                 </tr>
+                {/*
                 <tr className="text-center">
                   <td>{t.admin.extraOrders.row.representatives}</td>
                   <td>{extras?.[0].representativeSpots}</td>
@@ -104,6 +105,7 @@ export function ExtraOrderPanel({
                       : 0}
                   </td>
                 </tr>
+                */}
                 <tr className="text-center">
                   <td>{t.admin.extraOrders.row.mealCoupons}</td>
                   <td>{extras?.[0].mealCoupons}</td>
