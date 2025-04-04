@@ -103,7 +103,19 @@ export function AddExhibitorForm({
               onSubmit={async (e) => {
                 e.preventDefault();
                 setError("");
-                setError(await addExhibitor(createExhibitor()) ?? "");
+                
+                try {
+                  await addExhibitor(createExhibitor());
+                  closeModal();
+                }
+                catch (err) {
+                  console.error(err);
+                  if (err instanceof Error) {
+                    setError(err.message);
+                  } else {
+                    setError("unknown-error");
+                  }
+                }
               }}
             >
               {

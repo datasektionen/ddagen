@@ -127,10 +127,11 @@ export function ExhibitorPanel({
       mapPosition: exhibitor.mapPosition,
       meetingTimeSlots: exhibitor.meetingTimeSlots,
     }).then((response) => {
-      console.log(response);
+      console.log(response, "response!!!");
       if(response?.ok === true){
         setAddExhibitorSuccess(_ => true);
         reloadLogin();
+        console.log("RETURNING blank");
         return "";
       }
       return response?.error || "unknown-error";
@@ -223,7 +224,7 @@ export function ExhibitorPanel({
           </p>
         </div>
         <div className="w-[80%] sm:w-[90%]">
-          <div className="flex w-full text-xl mb-5 font-medium justify-between">
+          <div className="flex w-full text-xl mb-5 font-medium justify-between items-end">
             <div>
               {showAddExhibitor ? 
                 (
@@ -387,7 +388,7 @@ export function ExhibitorPanel({
                         <b>{t.exhibitorSettings.table.row5.section1.physicalAddress}</b>
                         {exhibitor.physicalAddress}
                         <b>{t.exhibitorSettings.table.row5.section1.organizationNumber}</b>
-                        {exhibitor.organizationNumber}
+                        {exhibitor.organizationNumber?.[0] == "0" ? (t.locale == "sv" ? "Utländskt företag" : "Foreign company") : exhibitor.organizationNumber }
                       </div>
                     </td>
                     {showDeleteExhibitor &&
