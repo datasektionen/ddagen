@@ -292,7 +292,7 @@ export default {
     step: "STEP",
     header: "Profile Settings",
     fields: {
-      invoiceEmail: "Invoce email",
+      invoiceEmail: "Invoice email",
       description: "Company description",
       extraChairs: "Extra chairs",
       extraTables: "Extra tables",
