@@ -383,7 +383,7 @@ export function ExhibitorPanel({
                         <b>{t.exhibitorSettings.table.row5.section1.email}</b>
                         {exhibitor.invoiceEmail}
                         <b>{t.exhibitorSettings.table.row5.section1.billingMethodText}</b>
-                        {exhibitor.billingMethod}
+                        {exhibitor.billingMethod == "" ? t.exhibitorSettings.table.row5.section1.billingMethods[0] : exhibitor.billingMethod}
                         <b>{t.exhibitorSettings.table.row5.section1.physicalAddress}</b>
                         {exhibitor.physicalAddress}
                         <b>{t.exhibitorSettings.table.row5.section1.organizationNumber}</b>
