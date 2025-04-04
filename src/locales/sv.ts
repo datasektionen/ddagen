@@ -131,6 +131,63 @@ export default {
       "Är du intresserad av att ställa ut på D-Dagen och knyta kontakt med tusentals studenter inom Data och IT? Klicka här nedan för att göra en intresseanmälan!",
     formButton: "Intresseanmälan",
   },
+  forSponsors: {
+    title: "För Sponsorer",
+    aboutFair: "Om mässan",
+    fairText1: "D-Dagen är Datasektionens årliga arbetsmarknadsmässa - en unik möjlighet för ert företag att synas och bygga relationer med framtidens IT- och datatalanger. Som sponsor får ni direktkontakt med engagerade och ambitiösa studenter från KTH, samtidigt som ni stärker ert varumärke inom techbranschen.",
+    fairText2: "Mässan äger rum den 9 oktober i THS kårhus, Nymble, mitt på KTH Campus Valhallavägen. Med tusentals deltagande studenter och stor synlighet både fysiskt och digitalt är D-Dagen ett perfekt tillfälle att skapa engagemang, dela ut produkter och visa upp ert företag i en inspirerande miljö.",    
+    companyPackages: {
+      title: "Vill ni synas bland tusentals teknologstudenter på KTH?",
+      text: "Vi erbjuder flera olika sponsorpaket som ger ert företag stor synlighet och möjlighet till engagemang:",
+      text2: "Har ni frågor eller vill skräddarsy ett samarbete? Kontakta ",
+      packages: [
+        {
+          title: "MINI PAKETET",
+          costTitle: "Pris:",
+          cost: "Produkter av minst 2000:- värde",
+          offerTitle: "Erbjudande till er:",
+          boldFirstPoint: false,
+          bulletPoints: [
+            "Utdelning och exponering av era produkter bland studenter"
+          ],
+          disclaimers: []
+        },
+        {
+          title: "STANDARD PAKETET",
+          className: "border-cerise border-4",
+          costTitle: "Pris:",
+          cost: "Produkter av minst 5000:- värde",
+          offerTitle: "Erbjudande till er:",
+          boldFirstPoint: true,
+          bulletPoints: [
+            "Allt från MINI PAKETET",
+            "Exponering av era produkter på våra sociala medier",
+            "Annonsplats på vår hemsida"
+          ],
+          disclaimers: []
+        },
+        {
+          title: "PREMIUM PAKETET",
+          className: "border-gold border-4",
+          costTitle: "Pris:",
+          cost: "Produkter av minst 10000:- värde",
+          offerTitle: "Erbjudande till er:",
+          boldFirstPoint: true,
+          bulletPoints: [
+            "Allt från STANDARD PAKETET",
+            "Annonsplats och särskild exponering på vår hemsida",
+            "Vi arrangerar en utlottningstävling med särskild exponering av era produkter",
+            "Utpekad utdelningsplats för era produkter på mässan",
+            "Möjlighet till fler sponsrade event enligt era önskemål"
+          ],
+          disclaimers: []
+        }
+      ]
+    },
+    interestedTitle: "Intresserad?",
+    interestedText:
+      "Vill ni sponsra D-Dagen och nå ut till tusentals studenter inom datateknik och IT? Hör av er till ",
+  },
   forStudents: {
     title: "För Studenter",
     aboutFair: "Om mässan",
@@ -540,6 +597,7 @@ export default {
     toContent: "Till innehåll",
     home: "Hem",
     forCompanies: "För företag",
+    forSponsors: "Sponsorer",
     forStudents: "För studenter",
     about: "Om Oss",
     companyForm: "Företagsanmälan",

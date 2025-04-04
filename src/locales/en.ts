@@ -51,7 +51,7 @@ export default {
     title: "For Companies",
     aboutFair: "About the fair",
     fairText1:
-      "D-Dagen is the Computer Science Chapter’s annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
+      "D-Dagen is the Computer Science Chapter's annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
     fairText2:
       "This year the fair is held on October 9th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15-19 on the KTH Campus Valhallavägen. During the day there will be a lounge for exhibitors, and in the evening a banquet will be organized to end the day.",
     companyPackages: {
@@ -129,11 +129,68 @@ export default {
       "Are you interested in exhibiting on D-Dagen and connecting with thousands of students in Computer Science and IT? Click below to sign up!",
     formButton: "Sign up",
   },
+  forSponsors: {
+    title: "For Sponsors",
+    aboutFair: "About the fair",
+    fairText1: "D-Dagen is the Computer Science Chapter's annual career fair - a unique opportunity for your company to connect with the next generation of talent in IT and computer science. As a sponsor, you gain direct access to motivated and ambitious students from KTH, while strengthening your brand presence in the tech industry.",
+    fairText2: "The fair takes place on October 9th in the THS student union building, Nymble, located at KTH Campus Valhallavägen. With thousands of participating students and extensive visibility both on-site and online, D-Dagen is the perfect opportunity to engage, distribute products, and showcase your company in an inspiring environment.",
+    companyPackages: {
+      title: "Become a sponsor of D-Dagen!",
+      text: "We offer several sponsor packages that give your company great visibility and engagement with KTH students.",
+      text2: "Interested in tailored sponsorship or have questions? Contact ",
+      packages: [
+        {
+          title: "MINI PACKAGE",
+          costTitle: "Price:",
+          cost: "Products of minimum 2000:- value",
+          offerTitle: "Offer for you:",
+          boldFirstPoint: false,
+          bulletPoints: [
+            "Distribution and exposure of your products among students"
+          ],
+          disclaimers: []
+        },
+        {
+          title: "STANDARD PACKAGE",
+          className: "border-cerise border-4",
+          costTitle: "Price:",
+          cost: "Products of minimum 5000:- value",
+          offerTitle: "Offer for you:",
+          boldFirstPoint: true,
+          bulletPoints: [
+            "Everything from the MINI PACKAGE",
+            "Exposure of your products on our social media",
+            "Ad placement on our website"
+          ],
+          disclaimers: []
+        },
+        {
+          title: "PREMIUM PACKAGE",
+          className: "border-gold border-4",
+          costTitle: "Price:",
+          cost: "Products of minimum 10 000:- value",
+          offerTitle: "Offer for you:",
+          boldFirstPoint: true,
+          bulletPoints: [
+            "Everything from the STANDARD PACKAGE",
+            "Ad placement and special exposure on our website",
+            "We organize a giveaway contest with special exposure of your products",
+            "Designated distribution area for your products at the fair",
+            "Opportunity for additional sponsored events based on your preferences"
+          ],
+          disclaimers: []
+        }
+      ]
+    },
+    interestedTitle: "Interested?",
+    interestedText:
+      "Are you interested in being a sponsor on D-Dagen and reaching out to thousands of students in Computer Science and IT? React out to ",
+  },
   forStudents: {
     title: "For Students",
     aboutFair: "About the fair",
     fairText1:
-      "D-Dagen is the Computer Science Chapter’s annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
+      "D-Dagen is the Computer Science Chapter's annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
     fairText2:
       "This year, the fair is held on October 9th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15 and in KTH Entré which is located at Drottning Kristinas väg 4. Students will be able to have meetings with exhibitors through company meetings in order to get more of a connection with that company (limited slots per company).",
     companyMeetings: "Company Meetings",
@@ -542,6 +599,7 @@ export default {
     toContent: "To content",
     home: "Home",
     forCompanies: "For companies",
+    forSponsors: "Sponsors",
     forStudents: "For students",
     about: "About",
     companyForm: "Exhibitor Registration",
