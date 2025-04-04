@@ -20,12 +20,14 @@ export function ExhibitorPanel({
   t,
   exhibitors,
   preferences,
+  exhibitorsInterests,
   password,
   reloadLogin,
 }: {
   t: Locale;
   exhibitors: Exhibitor[];
   preferences: Preferences[];
+  exhibitorsInterests: ExhibitorInfo[];
   password: string;
   reloadLogin: () => void;
 }) {
@@ -90,13 +92,20 @@ export function ExhibitorPanel({
     panelDiscussion: number, 
     goodieBagLogo: number) {
 
-    updateSpecialOrders.mutateAsync({
-      exhibitorId: exhibitorId,
-      studentMeetings: studentMeetings,
-      socialMediaPost: socialmediaPost,
-      panelDiscussion: panelDiscussion,
-      goodieBagLogo: goodieBagLogo
-    })
+    try {
+      await updateSpecialOrders.mutateAsync({
+        exhibitorId: exhibitorId,
+        studentMeetings: studentMeetings,
+        socialMediaPost: socialmediaPost,
+        panelDiscussion: panelDiscussion,
+        goodieBagLogo: goodieBagLogo
+      });
+
+      await reloadLogin();
+    }
+    catch(err) {
+      console.error(err);
+    }
   }
 
   async function handleAddExhibitor(exhibitor: ExhibitorInfo) {
@@ -195,17 +204,16 @@ export function ExhibitorPanel({
           </p>
         </div>
         <div className="w-[80%] sm:w-[90%]">
-          <div className="w-full text-xl mb-5 font-medium">
+          <div className="flex w-full text-xl mb-5 font-medium justify-between">
             {showAddExhibitor ? 
               (
                 addExhibitorSuccess ?
                 <p>
                   {t.admin.addCompany.addExhibitorSuccess.added}&nbsp;
-                  <span className="text-cerise">{t.admin.addCompany.addExhibitorSuccess.reload}</span>
                 </p>
                 :
                 <AddExhibitorForm 
-                  t={t} addExhibitor={handleAddExhibitor} closeModal={closeAddExhibitorForm} /> 
+                  t={t} addExhibitor={handleAddExhibitor} exhibitorsInterests={exhibitorsInterests} closeModal={closeAddExhibitorForm} /> 
               ) : (
                 <button
                   className="mt-2 bg-cerise bg-blue-500 py-1 px-2 rounded-md"

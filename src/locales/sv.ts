@@ -1121,6 +1121,7 @@ export default {
         reload: "Ladda om sidan..."
       },
       addExhibitorForm: {
+        exhibitorInterest: "Intresserade Utställare",
         companyName: "Företagsnamn",
         organizationNumber: "Organisationsnummer",
         contactPerson: "Kontaktperson",

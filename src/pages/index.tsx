@@ -23,14 +23,15 @@ export default function Home() {
     setShowLogo(true);
   }, []);
 
+  
   const seoContent = {
     sv: {
-      title: "Stockholms Ledande Teknikmässa",
+      title: "Skandinaviens Ledande Teknikmässa",
       description: "Utforska de bästa IT-företagen på D-Dagen 2025 vid KTH. Hitta jobbmöjligheter, nätverka och utforska teknikens framtid.",
       url: "https://ddagen.se",
     },
     en: {
-      title: "Stockholm's Leading Tech Job Fair",
+      title: "Scandinavia's Leading Tech Job Fair",
       description: "Discover top IT companies at D-Dagen 2025 at KTH. Find job opportunities, network, and explore the future of tech careers.",
       url: "https://ddagen.se/en",
     },

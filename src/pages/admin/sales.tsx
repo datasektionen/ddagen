@@ -6,7 +6,7 @@ import { AdminLogin } from "@/components/Company/Admin/AdminLogin";
 import { ExhibitorPanel } from "@/components/Company/Admin/ExhibitorPanel";
 import { ExtraOrderPanel } from "@/components/Company/Admin/ExtraOrderPanel";
 import { PreferencesPanel } from "@/components/Company/Admin/PreferencesPanel";
-import { Exhibitor, Preferences } from "@/shared/Classes";
+import { Exhibitor, ExhibitorInfo, Preferences } from "@/shared/Classes";
 import { api } from "@/utils/api";
 import Head from "next/head";
 
@@ -17,25 +17,30 @@ export default function Sales() {
 
   const [exhibitors, setExhibitors] = useState<Exhibitor[]>([]);
   const [preferences, setPreferences] = useState<Preferences[]>([]);
+  const [exhibitorsInterests, setExhibitorsInterests] = useState<ExhibitorInfo[]>([]);
   const [buttonSelected, setButtonSelected] = useState<1 | 2 | 3>(1);
   const [password, setPassword] = useState<string>("");
 
   const logout = api.admin.logout.useMutation();
   const getExhibitors = api.admin.getExhibitors.useMutation();
   const getFoodPreferences = api.admin.getAllFoodPreferences.useMutation();
+  const getExhibitorInterestRegistration = api.admin.getExhibitorInterestRegistration.useMutation();
 
   async function login(password: string) {
     try {
       const exhibitors = await getExhibitors.mutateAsync(password);
       const foodPreferences = await getFoodPreferences.mutateAsync(password);
+      const exhibitorsInterests = await getExhibitorInterestRegistration.mutateAsync(password);
       if (
         exhibitors === "invalid-password" ||
-        foodPreferences === "invalid-password"
+        foodPreferences === "invalid-password" ||
+        exhibitorsInterests === "invalid-password"
       ) {
         return "invalid-password";
       }
       setExhibitors(exhibitors);
       setPreferences(foodPreferences);
+      setExhibitorsInterests(exhibitorsInterests);
       setPassword(password);
     } catch (err) {
       return "unknown-error " + err;
@@ -81,6 +86,7 @@ export default function Sales() {
                 t={t}
                 exhibitors={exhibitors}
                 preferences={preferences}
+                exhibitorsInterests={exhibitorsInterests}
                 password={password}
                 reloadLogin={() => login(password)}
               />
