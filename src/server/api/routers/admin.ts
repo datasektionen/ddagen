@@ -45,6 +45,21 @@ export const adminRouter = createTRPCRouter({
                     )
             );
         }),
+    deleteExhibitor: publicProcedure
+    .input(
+      z.object({
+          password: z.string(),
+          exhibitorId: z.string(),
+      }))
+    .mutation(async ({ input, ctx }) => {
+        if (!(await pls.checkApiKey("read-exhibitors", input.password)))
+            return "invalid-password";
+
+        await ctx.prisma.exhibitor.delete({
+          where: { id: input.exhibitorId },
+        });
+      }
+    ),
     getExhibitorInterestRegistration: publicProcedure
     .input(z.string())
     .mutation(async ({ input, ctx }) => {
