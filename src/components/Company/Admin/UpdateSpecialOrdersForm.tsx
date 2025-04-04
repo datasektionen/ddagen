@@ -101,37 +101,37 @@ export function UpdateSpecialOrders({
                         )
                       }}
                     >
-                        <div>
-                        {t.admin.sales.header.specialOrders.studentMeetings}
+                        <div className="flex gap-3">
                         <CheckMark
                         name="Student meetings"
                         defaultChecked = {exhibitor.studentMeetings != 0}
                         onClick={() => UpdateStudentMeetings()}
                         />
+                        {t.admin.sales.header.specialOrders.studentMeetings}
                         </div>
-                        <div>
-                        {t.admin.sales.header.specialOrders.socialMediaPost}
+                        <div className="flex gap-3">
                         <CheckMark
                         name="Social media post"
                         defaultChecked = {exhibitor.socialMediaPost != 0}
                         onClick={() => UpdateSocialMediaPost()}
                         />
+                        {t.admin.sales.header.specialOrders.socialMediaPost}
                         </div>
-                        <div>
-                        {t.admin.sales.header.specialOrders.panelDiscussion}
+                        <div className="flex gap-3">
                         <CheckMark
                         name="Paneldiscussion"
                         defaultChecked = {exhibitor.panelDiscussion != 0}
                         onClick={() => UpdatePanelDiscusson()}
                         />
+                        {t.admin.sales.header.specialOrders.panelDiscussion}
                         </div>
-                        <div>
-                        {t.admin.sales.header.specialOrders.goodiebagLogo}
+                        <div className="flex gap-3">
                         <CheckMark
                         name="Goodiebag logo"
                         defaultChecked = {exhibitor.panelDiscussion != 0}
                         onClick={() => UpdateGoodieBagLogo()}
                         />
+                        {t.admin.sales.header.specialOrders.goodiebagLogo}
                         </div>
         
                       <Submit value={t.admin.sales.header.specialOrders.specialOrderSave} />

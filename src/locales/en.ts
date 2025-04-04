@@ -1121,6 +1121,7 @@ export default {
         reload: "Reload the page..."
       },
       addExhibitorForm: {
+        exhibitorInterest: "Interested Exhibitors",
         companyName: "Company Name",
         organizationNumber: "Organization Number",
         contactPerson: "Contact Person",

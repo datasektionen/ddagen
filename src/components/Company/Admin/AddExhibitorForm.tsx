@@ -1,18 +1,21 @@
 import Locale from "@/locales";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { InputField } from "@/components/InputField";
 import { CheckMarkField } from "@/components/CheckMarkField";
 import { SelectField } from "@/components/SelectField";
 
 import { ExhibitorInfo } from "@/shared/Classes";
+import { api } from "@/utils/api";
 
 export function AddExhibitorForm({
   t,
   addExhibitor,
+  exhibitorsInterests,
   closeModal,
 }: {
   t: Locale;
   addExhibitor: (exhibitor: ExhibitorInfo) => Promise<string | undefined>;
+  exhibitorsInterests: ExhibitorInfo[];
   closeModal: () => void;
 }) {
   const modalRef = useRef<HTMLDivElement>(null);
@@ -29,6 +32,9 @@ export function AddExhibitorForm({
   const [sendEmailToExhibitor, setSendEmailToExhibitor] = useState<boolean>(false);
   const [mapPosition, setMapPosition] = useState(0);
   const [meetingTimeSlots, setMeetingTimeSlots] = useState<number[]>([]);
+
+  const [exhibitorInterestValue, setExhibitorInterestValue] = useState<number>(-1);
+
 
   const handlePackageTier = (value: number) => {
     setPackageTier(value);
@@ -100,6 +106,35 @@ export function AddExhibitorForm({
                 setError(await addExhibitor(createExhibitor()) ?? "");
               }}
             >
+              {
+              exhibitorsInterests.length > 0 &&
+              <SelectField
+                name="exhibitorInterest"
+                options={["", ...exhibitorsInterests.map((exhibitor) => exhibitor.companyName)]}
+                values={[-1, ...exhibitorsInterests.map((_, i) => i)]}
+                value={exhibitorInterestValue}
+                setValue={(value: number) => {
+                  setExhibitorInterestValue(value);
+                  if(value == -1){
+                    setCompanyName("");
+                    setOrganizationNumber("");
+                    setContactPerson("");
+                    setTelephoneNumber("");
+                    setEmail("");
+                    return;
+                  }
+                  const selectedExhibitor = exhibitorsInterests[value];
+                  if (selectedExhibitor) {
+                    setCompanyName(selectedExhibitor.companyName);
+                    setOrganizationNumber(selectedExhibitor.organizationNumber);
+                    setContactPerson(selectedExhibitor.contactPerson);
+                    setTelephoneNumber(selectedExhibitor.telephoneNumber);
+                    setEmail(selectedExhibitor.email);
+                  }
+                }}
+                fields={{ exhibitorInterest: t.admin.addCompany.addExhibitorForm.exhibitorInterest }}
+              />
+              }
               <InputField
                 name="companyName"
                 value={companyName}
