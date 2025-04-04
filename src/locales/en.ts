@@ -361,7 +361,7 @@ export default {
             third: "Total",
           },
           drinkCoupons: "Drink Coupons",
-          mealCoupons: "Meal Coupons",
+          mealCoupons: "Breakfast/Lunch Coupons",
           lastChanged: "Last Changed: ",
           tables: "Tables",
           chairs: "Chairs",
@@ -1065,7 +1065,7 @@ export default {
           drinkCoupons: "Drink Coupons",
           representativeSpots: "Representative Spots",
           banquetTickets: "Banquet Tickets",
-          mealCoupons: "Meal Coupons",
+          mealCoupons: "Breakfast/Lunch Coupons",
         },
         verification: {
           name: "Verification",
@@ -1097,7 +1097,7 @@ export default {
         drinkCoupons: "Drink Coupons",
         representatives: "Representatives",
         banquetTickets: "Banquet Tickets",
-        mealCoupons: "Meal Coupons",
+        mealCoupons: "Breakfast/Lunch Coupons",
       },
     },
     preferences: {
