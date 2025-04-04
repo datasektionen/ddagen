@@ -198,6 +198,8 @@ export class Exhibitor {
   customRepresentativeSpots: number;
   customBanquetTicketsWanted: number;
   meetingTimeSlots: number[];
+  physicalAddress: string;
+  billingMethod: string;
 
   constructor(
     id: string,
@@ -225,6 +227,8 @@ export class Exhibitor {
     customRepresentativeSpots: number,
     customBanquetTicketsWanted: number,
     meetingTimeSlots: number[],
+    physicalAddress: string,
+    billingMethod: string,
   ) {
     this.id = id;
     this.name = exhibitorName;
@@ -251,6 +255,8 @@ export class Exhibitor {
     this.customRepresentativeSpots = customRepresentativeSpots;
     this.customBanquetTicketsWanted = customBanquetTicketsWanted;
     this.meetingTimeSlots = meetingTimeSlots;
+    this.physicalAddress = physicalAddress;
+    this.billingMethod = billingMethod;
   }
 }
 
