@@ -1080,7 +1080,8 @@ export default {
           goodiebagLogo: "Logga på goodiebag",
           specialOrderButton: "Ändra",
           specialOrderSave: "Spara"
-        }
+        },
+        deleteExhibitor: "TA BORT"
       },
     },
     extraOrders: {
@@ -1134,7 +1135,8 @@ export default {
         meetingTimeSlots: "Meeting Timeslots",
       },
       addCompanyButton: "Lägg till företag"
-    }
+    },
+    deleteCompanyButton: "Ta bort ett företag"
   },
   aboutUs: {
     header: "Om Oss",
