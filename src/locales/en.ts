@@ -1080,7 +1080,8 @@ export default {
           goodiebagLogo: "Goodie bag logo",
           specialOrderButton: "Change",
           specialOrderSave: "Save"
-        }
+        },
+        deleteExhibitor: "DELETE"
       },
     },
     extraOrders: {
@@ -1134,7 +1135,8 @@ export default {
         meetingTimeSlots: "Meeting Timeslots",
       },
       addCompanyButton: "Add a company"
-    }
+    },
+    deleteCompanyButton: "Delete a company"
   },
   aboutUs: {
     header: "About us",
