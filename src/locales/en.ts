@@ -132,8 +132,8 @@ export default {
   forSponsors: {
     title: "For Sponsors",
     aboutFair: "About the fair",
-    fairText1: "D-Dagen is the Computer Science Chapter's annual career fair - a unique opportunity for your company to connect with the next generation of talent in IT and computer science. As a sponsor, you gain direct access to motivated and ambitious students from KTH, while strengthening your brand presence in the tech industry.",
-    fairText2: "The fair takes place on October 9th in the THS student union building, Nymble, located at KTH Campus Valhallavägen. With thousands of participating students and extensive visibility both on-site and online, D-Dagen is the perfect opportunity to engage, distribute products, and showcase your company in an inspiring environment.",
+    fairText1: "D-Dagen is a premier career fair connecting sponsors with top IT and computer science students at KTH. As a sponsor, you gain exposure, engagement, and the chance to build valuable relationships with future tech talent.",
+    fairText2: "Held on October 9th at KTH Campus, D-Dagen attracts thousands of students and offers strong visibility both on-site and online—perfect for showcasing your brand and products in a dynamic setting.",
     companyPackages: {
       title: "Become a sponsor of D-Dagen!",
       text: "We offer several sponsor packages that give your company great visibility and engagement with KTH students.",
@@ -141,9 +141,9 @@ export default {
       packages: [
         {
           title: "MINI PACKAGE",
-          costTitle: "Price:",
+          costTitle: "Company contribution:",
           cost: "Products of minimum 2000:- value",
-          offerTitle: "Offer for you:",
+          offerTitle: "Sponsorship perks:",
           boldFirstPoint: false,
           bulletPoints: [
             "Distribution and exposure of your products among students"
@@ -153,9 +153,9 @@ export default {
         {
           title: "STANDARD PACKAGE",
           className: "border-cerise border-4",
-          costTitle: "Price:",
+          costTitle: "Company contribution:",
           cost: "Products of minimum 5000:- value",
-          offerTitle: "Offer for you:",
+          offerTitle: "Sponsorship perks:",
           boldFirstPoint: true,
           bulletPoints: [
             "Everything from the MINI PACKAGE",
@@ -167,9 +167,9 @@ export default {
         {
           title: "PREMIUM PACKAGE",
           className: "border-gold border-4",
-          costTitle: "Price:",
+          costTitle: "Company contribution:",
           cost: "Products of minimum 10 000:- value",
-          offerTitle: "Offer for you:",
+          offerTitle: "Sponsorship perks:",
           boldFirstPoint: true,
           bulletPoints: [
             "Everything from the STANDARD PACKAGE",

@@ -134,18 +134,17 @@ export default {
   forSponsors: {
     title: "För Sponsorer",
     aboutFair: "Om mässan",
-    fairText1: "D-Dagen är Datasektionens årliga arbetsmarknadsmässa - en unik möjlighet för ert företag att synas och bygga relationer med framtidens IT- och datatalanger. Som sponsor får ni direktkontakt med engagerade och ambitiösa studenter från KTH, samtidigt som ni stärker ert varumärke inom techbranschen.",
-    fairText2: "Mässan äger rum den 9 oktober i THS kårhus, Nymble, mitt på KTH Campus Valhallavägen. Med tusentals deltagande studenter och stor synlighet både fysiskt och digitalt är D-Dagen ett perfekt tillfälle att skapa engagemang, dela ut produkter och visa upp ert företag i en inspirerande miljö.",    
-    companyPackages: {
+    fairText1: "D-Dagen är en ledande arbetsmarknadsmässa där sponsorer möter framtidens IT- och datatalanger från KTH. Som sponsor får ni synlighet, engagemang och möjlighet att bygga värdefulla relationer.",
+    fairText2: "Mässan hålls den 9 oktober på KTH Campus och lockar tusentals studenter - med stor synlighet både på plats och digitalt är det ett perfekt tillfälle att visa upp ert varumärke och era produkter i en inspirerande miljö.",    companyPackages: {
       title: "Vill ni synas bland tusentals teknologstudenter på KTH?",
       text: "Vi erbjuder flera olika sponsorpaket som ger ert företag stor synlighet och möjlighet till engagemang:",
       text2: "Har ni frågor eller vill skräddarsy ett samarbete? Kontakta ",
       packages: [
         {
           title: "MINI PAKETET",
-          costTitle: "Pris:",
+          costTitle: "Ert bidrag:",
           cost: "Produkter av minst 2000:- värde",
-          offerTitle: "Erbjudande till er:",
+          offerTitle: "Sponsorförmåner:",
           boldFirstPoint: false,
           bulletPoints: [
             "Utdelning och exponering av era produkter bland studenter"
@@ -155,9 +154,9 @@ export default {
         {
           title: "STANDARD PAKETET",
           className: "border-cerise border-4",
-          costTitle: "Pris:",
+          costTitle: "Ert bidrag:",
           cost: "Produkter av minst 5000:- värde",
-          offerTitle: "Erbjudande till er:",
+          offerTitle: "Sponsorförmåner:",
           boldFirstPoint: true,
           bulletPoints: [
             "Allt från MINI PAKETET",
@@ -169,9 +168,9 @@ export default {
         {
           title: "PREMIUM PAKETET",
           className: "border-gold border-4",
-          costTitle: "Pris:",
+          costTitle: "Ert bidrag:",
           cost: "Produkter av minst 10000:- värde",
-          offerTitle: "Erbjudande till er:",
+          offerTitle: "Sponsorförmåner:",
           boldFirstPoint: true,
           bulletPoints: [
             "Allt från STANDARD PAKETET",
