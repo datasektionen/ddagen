@@ -1116,6 +1116,12 @@ export default {
         logoColour: "Coloured Logo",
         description: "Description",
         package: "Package",
+        companyHost: {
+          name: "Company host",
+          companyHostName: "Host name",
+          companyHostEmail: "Host email",
+          companyHostNumber: "Host telephone number"
+        },
         extras: {
           name: "Extras",
           chairs: "Chairs",

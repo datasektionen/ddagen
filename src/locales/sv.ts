@@ -1115,6 +1115,12 @@ export default {
         logoColour: "Logga m. färg",
         description: "Beskrivning",
         package: "Paket",
+        companyHost: {
+          name: "Företagsvärd",
+          companyHostName: "Värdnamn",
+          companyHostEmail: "Värdens email",
+          companyHostNumber: "Värdens telefonnummer"
+        },
         extras: {
           name: "Tillägg",
           chairs: "Stolar",

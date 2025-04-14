@@ -9,12 +9,14 @@ export function UpdateSpecialOrders({
     t, 
     exhibitor,
     closeModal,
-    setSpecialOrders
+    setSpecialOrders,
+    setShowSpecialOrdersForm
 } : {
     t: Locale;
     exhibitor: Exhibitor;
     closeModal: () => void;
     setSpecialOrders: (z: string, a: number, b: number, c: number, d: number) => void;
+    setShowSpecialOrdersForm: (a: boolean) => void;
 }) {
     const modalRef = useRef<HTMLDivElement>(null);
 
@@ -91,6 +93,7 @@ export function UpdateSpecialOrders({
               <form
                 className="flex flex-col gap-12 min-w-[325px] max-w-[375px] text-black"
                 onSubmit={(e) => {
+                  setShowSpecialOrdersForm(false);
                   e.preventDefault();
                     setSpecialOrders(
                       exhibitor.id,

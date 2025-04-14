@@ -16,6 +16,7 @@ import {
 } from "@/components/Company/Admin/AddExhibitorForm";
 import { UpdateSpecialOrders } from "./UpdateSpecialOrdersForm";
 import { DeleteExhibitorLock } from "./DeleteExhibitorLock";
+import { UpdateCompanyHost } from "./updateCompanyHostForm";
 
 export function ExhibitorPanel({
   t,
@@ -43,12 +44,16 @@ export function ExhibitorPanel({
 
   const [selectedExhibitor, setSelectedExhibitor] = useState<Exhibitor>();
 
+  const [showSpecialOrdersForm, setShowSpecialOrdersForm] = useState<boolean>(false);
+  const [showCompanyHostForm, setShowCompanyHostForm] = useState<boolean>(false);
+
   const router = useRouter();
   const trpc = api.useContext();
   const login = api.admin.login.useMutation();
   const addExhibitor = api.admin.addExhibitor.useMutation();
   const deleteExhibitor = api.admin.deleteExhibitor.useMutation();
   const updateSpecialOrders = api.exhibitor.setSpecialOrders.useMutation();
+  const updateCompanyHost = api.exhibitor.setCompanyHost.useMutation();
 
   useEffect(() => {
     if (login.isSuccess) {
@@ -113,6 +118,27 @@ export function ExhibitorPanel({
     }
   }
 
+  async function handleUpdateCompanyHost(
+    exhibitorId: string,
+    companyHostName: string, 
+    companyHostNumber: string, 
+    companyHostEmail: string) {
+
+    try {
+      await updateCompanyHost.mutateAsync({
+        exhibitorId: exhibitorId,
+        companyHostName: companyHostName,
+        companyHostNumber: companyHostNumber,
+        companyHostEmail: companyHostEmail
+      });
+
+      await reloadLogin();
+    }
+    catch(err) {
+      console.error(err);
+    }
+  }
+
   async function handleAddExhibitor(exhibitor: ExhibitorInfo) {
     addExhibitor.mutateAsync({
       password: password,
@@ -146,6 +172,10 @@ export function ExhibitorPanel({
   }
 
   function closeUpdateSpecialOrderForm() {
+    setSelectedExhibitor(undefined);
+  }
+
+  function closeUpdateCompanyHostForm() {
     setSelectedExhibitor(undefined);
   }
 
@@ -278,12 +308,11 @@ export function ExhibitorPanel({
               <thead className="[&>tr>th]:border-2 [&>tr>th]:border-solid [&>tr>th]:border-cerise [&>tr>th]:py-2 [&>tr>th]:px-4 ">
                 <tr>
                   <th>{t.admin.sales.header.name}</th>
-                  <th>{t.admin.sales.header.logoColour}</th>
-                  <th>{t.admin.sales.header.package}</th>
                   <th>{t.admin.sales.header.extras.name}</th>
                   <th>{t.admin.sales.header.verification.name}</th>
                   <th>{t.admin.sales.header.specialOrders.name}</th>
                   <th>{t.exhibitorSettings.table.row5.title}</th>
+                  <th>{t.admin.sales.header.companyHost.name}</th>
                 </tr>
               </thead>
               <tbody
@@ -294,6 +323,7 @@ export function ExhibitorPanel({
                   <tr key={i}>
                     <td className="text-center break-words">
                       <p>{exhibitor.name}</p>
+                      <p>{t.admin.sales.header.package}: { t.packages.name[exhibitor.packageTier] }</p>
                       <button
                         className="mt-2 bg-cerise bg-blue-500 py-1 px-2 rounded-md"
                         onClick={getLoginFunction(exhibitor.id)}
@@ -301,17 +331,6 @@ export function ExhibitorPanel({
                         {t.admin.sales.login}
                       </button>
                     </td>
-                    <td>
-                      {exhibitor.logoColor ? (
-                        <img
-                          className="mx-auto max-w-[150px]"
-                          src={addImageDetails(exhibitor.logoColor)}
-                        />
-                      ) : (
-                        <p className="font-bold text-center">U/A</p>
-                      )}
-                    </td>
-                    <td className="text-center">{ t.packages.name[exhibitor.packageTier] }</td>
                     <td>
                       <div className="flex flex-col text-center px-2">
                         <div>
@@ -366,13 +385,14 @@ export function ExhibitorPanel({
                         {t.admin.sales.header.specialOrders.goodiebagLogo}
                       </div>) : null}
                       <div className="w-full text-xl mb-5 font-medium">
-                        {selectedExhibitor?.id == exhibitor.id ? (
+                        {selectedExhibitor?.id == exhibitor.id && showSpecialOrdersForm ? (
                           <UpdateSpecialOrders t={t} exhibitor={selectedExhibitor} closeModal={closeUpdateSpecialOrderForm} 
-                          setSpecialOrders={handleUpdateSpecialOrders}/>
+                          setSpecialOrders={handleUpdateSpecialOrders}
+                          setShowSpecialOrdersForm={setShowSpecialOrdersForm}/>
                         ) : (
                           <button
                           className="mt-2 bg-cerise bg-blue-500 py-1 px-2 rounded-md"
-                          onClick={()=>{setSelectedExhibitor(exhibitor)}}
+                          onClick={()=>{setSelectedExhibitor(exhibitor); setShowSpecialOrdersForm(true)}}
                           >
                           {t.admin.sales.header.specialOrders.specialOrderButton}
                           </button>
@@ -401,6 +421,30 @@ export function ExhibitorPanel({
                       </button>
                     </td>
                     }
+                    <td>
+                      <div className="flex flex-col">
+                        <b>{t.admin.sales.header.companyHost.companyHostName}</b>
+                        {exhibitor.companyHostName}
+                        <b>{t.admin.sales.header.companyHost.companyHostEmail}</b>
+                        {exhibitor.companyHostEmail}
+                        <b>{t.admin.sales.header.companyHost.companyHostNumber}</b>
+                        {exhibitor.companyHostNumber}
+                      </div>
+                      <div className="w-full text-xl mb-5 font-medium">
+                        {selectedExhibitor?.id == exhibitor.id && showCompanyHostForm ? (
+                          <UpdateCompanyHost t={t} exhibitor={selectedExhibitor} closeModal={closeUpdateCompanyHostForm} 
+                          setCompanyHost={handleUpdateCompanyHost}
+                          setShowUpdateCompanyHostForm={setShowCompanyHostForm}/>
+                        ) : (
+                          <button
+                          className="mt-2 bg-cerise bg-blue-500 py-1 px-2 rounded-md"
+                          onClick={()=>{setSelectedExhibitor(exhibitor); setShowCompanyHostForm(true)}}
+                          >
+                          Företagsvärd
+                          </button>
+                        )}
+                      </div>
+                    </td>
                   </tr>
                 ))}
               </tbody>
