@@ -184,7 +184,7 @@ export default {
     },
     interestedTitle: "Interested?",
     interestedText:
-      "Are you interested in being a sponsor on D-Dagen and reaching out to thousands of students in Computer Science and IT? React out to ",
+      "Are you interested in being a sponsor on D-Dagen and reaching out to thousands of students in Computer Science and IT? Reach out to ",
   },
   forStudents: {
     title: "For Students",
