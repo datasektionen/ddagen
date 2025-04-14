@@ -1,3 +1,5 @@
+import { table } from "console";
+
 export default {
   locale: "en" as const,
   titles: {
@@ -972,6 +974,7 @@ export default {
     table3row3: "HOW DO WE BECOME A PARTNER?",
     table3row4: "WE WOULD LIKE MORE INFORMATION, WHERE DO WE TURN?",
     table3row5: "ARE YOU A STARTUP?",
+    table3row6: "HOW DO STUDENT METTINGS WORK?",
     table3text1:
       "You can make a <a href='https://ddagen.se/företagsanmälan' target='blank' className='underline text-yellow'>  registration of interest </a> or contact our sales team at <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
     table3text2:
@@ -982,6 +985,8 @@ export default {
       "If the information you are looking for can't be found at our website, contact us at <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
     table3text5:
       "Contact us at <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
+    table3text6:
+      "The student meetings are a great opportunity for companies and students to meet in a more personal setting. The students will choose which companies they want to meet, and the company will then be able to select which of these students they want to meet. The students will then be able to choose a time slot to meet the company, during the fair. Read more about it <a href='https://ddagen.se/en/studentmeetings' target='blank' className='underline text-yellow'>here</a>.",
     table4row1:
       "WHAT KIND OF EVENTS CAN OUR COMPANY HOST TOGETHER WITH D-DAGEN?",
     table4text1:
