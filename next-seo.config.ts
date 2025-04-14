@@ -1,6 +1,6 @@
 export default {
     titleTemplate: "%s | D-Dagen 2025",
-    description: "Upptäck D-Dagen 2025 vid KTH - Stockholms ledande teknikmässa för IT-studenter och arbetsgivare.",
+    description: "Upptäck D-Dagen 2025 vid KTH - Skandinaviens ledande teknikmässa för IT-studenter och arbetsgivare.",
     openGraph: {
       type: 'website',
       locale: 'sv_SE',

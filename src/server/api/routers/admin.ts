@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
-import { Exhibitor, Preferences } from "@/shared/Classes";
+import { Exhibitor, ExhibitorInfo, Preferences } from "@/shared/Classes";
 import * as pls from "@/utils/pls";
 import sendEmail from "@/utils/send-email";
 
@@ -39,10 +39,50 @@ export const adminRouter = createTRPCRouter({
                         exhibitor.customDrinkCoupons,
                         exhibitor.customRepresentativeSpots,
                         exhibitor.customBanquetTicketsWanted,
-                        exhibitor.meetingTimeSlots
+                        exhibitor.meetingTimeSlots,
+                        exhibitor.companyAddress ?? "",
+                        exhibitor.billingMethod ?? "",
                     )
             );
         }),
+    deleteExhibitor: publicProcedure
+    .input(
+      z.object({
+          password: z.string(),
+          exhibitorId: z.string(),
+      }))
+    .mutation(async ({ input, ctx }) => {
+        if (!(await pls.checkApiKey("read-exhibitors", input.password)))
+            return "invalid-password";
+
+        await ctx.prisma.exhibitor.delete({
+          where: { id: input.exhibitorId },
+        });
+      }
+    ),
+    getExhibitorInterestRegistration: publicProcedure
+    .input(z.string())
+    .mutation(async ({ input, ctx }) => {
+        if (!(await pls.checkApiKey("read-exhibitors", input)))
+            return "invalid-password";
+
+        const exhibitors = await ctx.prisma.exhibitorInterestRegistration.findMany();
+        return exhibitors.map(
+            (exhibitor) =>
+                new ExhibitorInfo(
+                    exhibitor.name,
+                    exhibitor.organizationNumber,
+                    exhibitor.contactPerson,
+                    exhibitor.phoneNumber,
+                    exhibitor.email,
+                    0,
+                    0,
+                    false,
+                    0,
+                    []
+                )
+        );
+    }),
     getAllFoodPreferences: publicProcedure
         .input(z.string())
         .mutation(async ({ input, ctx }) => {

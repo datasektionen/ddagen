@@ -168,21 +168,6 @@ export default function ExtraOrders({
       deadline: deadline.drinkCoupons,
     },
     {
-      name: t.exhibitorSettings.table.row2.section2.representatives,
-      included: exhibitorPackage.representatives,
-      get: representatives,
-      set: setRepresentatives,
-      disableAll: disablePreferences,
-      disableCondition:
-        exhibitorPackage.representatives + representatives <=
-        preferenceCount.reprcount,
-      disableConditionMessage:
-        t.exhibitorSettings.table.row2.section2.disabledButtonMessages
-          .representatives,
-      increment: 1,
-      deadline: deadline.representatives,
-    },
-    {
       name: t.exhibitorSettings.table.row2.section2.sitting,
       included: exhibitorPackage.banquetTickets,
       get: banquetTickets,
@@ -286,7 +271,7 @@ export default function ExtraOrders({
         </div>
         {/* Section 3 */}
 
-        {/* Section 4 */}
+        {/*}       COMMENT: THIS WAS REMOVED FROM THE UI, BUT LEFT IN THE CODE FOR FUTURE USE
         <div className="text-left">
           {t.exhibitorSettings.table.row2.section2.representatives}:
         </div>
@@ -314,8 +299,8 @@ export default function ExtraOrders({
           {t.exhibitorSettings.table.row2.section2.warning +
             deadline.representatives}
         </div>
-        {/* Section 4 */}
-
+         Section 4 */}
+        
         {/* Section 5 */}
         <div className="text-left">
           {t.exhibitorSettings.table.row2.section2.mealCoupons}:

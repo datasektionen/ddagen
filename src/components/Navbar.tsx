@@ -350,6 +350,7 @@ export default function Navbar() {
             <Group
               links={[
                 { href: "/förföretag", text: t.forCompanies },
+                { href: "/sponsor", text: t.forSponsors },
                 //{ href: "/katalog", text: t.catalog },
                 //{ href: "/event", text: "event" },
                 { href: "/faq", text: "faq" },

@@ -1,3 +1,5 @@
+import { table } from "console";
+
 export default {
   locale: "en" as const,
   titles: {
@@ -51,7 +53,7 @@ export default {
     title: "For Companies",
     aboutFair: "About the fair",
     fairText1:
-      "D-Dagen is the Computer Science Chapter’s annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
+      "D-Dagen is the Computer Science Chapter's annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
     fairText2:
       "This year the fair is held on October 9th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15-19 on the KTH Campus Valhallavägen. During the day there will be a lounge for exhibitors, and in the evening a banquet will be organized to end the day.",
     companyPackages: {
@@ -129,11 +131,68 @@ export default {
       "Are you interested in exhibiting on D-Dagen and connecting with thousands of students in Computer Science and IT? Click below to sign up!",
     formButton: "Sign up",
   },
+  forSponsors: {
+    title: "For Sponsors",
+    aboutFair: "About the fair",
+    fairText1: "D-Dagen is a premier career fair connecting sponsors with top IT and computer science students at KTH. As a sponsor, you gain exposure, engagement, and the chance to build valuable relationships with future tech talent.",
+    fairText2: "Held on October 9th at KTH Campus, D-Dagen attracts thousands of students and offers strong visibility both on-site and online—perfect for showcasing your brand and products in a dynamic setting.",
+    companyPackages: {
+      title: "Become a sponsor of D-Dagen!",
+      text: "We offer several sponsor packages that give your company great visibility and engagement with KTH students.",
+      text2: "Interested in tailored sponsorship or have questions? Contact ",
+      packages: [
+        {
+          title: "MINI PACKAGE",
+          costTitle: "Company contribution:",
+          cost: "Products of minimum 2000:- value",
+          offerTitle: "Sponsorship perks:",
+          boldFirstPoint: false,
+          bulletPoints: [
+            "Distribution and exposure of your products among students"
+          ],
+          disclaimers: []
+        },
+        {
+          title: "STANDARD PACKAGE",
+          className: "border-cerise border-4",
+          costTitle: "Company contribution:",
+          cost: "Products of minimum 5000:- value",
+          offerTitle: "Sponsorship perks:",
+          boldFirstPoint: true,
+          bulletPoints: [
+            "Everything from the MINI PACKAGE",
+            "Exposure of your products on our social media",
+            "Ad placement on our website"
+          ],
+          disclaimers: []
+        },
+        {
+          title: "PREMIUM PACKAGE",
+          className: "border-gold border-4",
+          costTitle: "Company contribution:",
+          cost: "Products of minimum 10 000:- value",
+          offerTitle: "Sponsorship perks:",
+          boldFirstPoint: true,
+          bulletPoints: [
+            "Everything from the STANDARD PACKAGE",
+            "Ad placement and special exposure on our website",
+            "We organize a giveaway contest with special exposure of your products",
+            "Designated distribution area for your products at the fair",
+            "Opportunity for additional sponsored events based on your preferences"
+          ],
+          disclaimers: []
+        }
+      ]
+    },
+    interestedTitle: "Interested?",
+    interestedText:
+      "Are you interested in being a sponsor on D-Dagen and reaching out to thousands of students in Computer Science and IT? Reach out to ",
+  },
   forStudents: {
     title: "For Students",
     aboutFair: "About the fair",
     fairText1:
-      "D-Dagen is the Computer Science Chapter’s annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
+      "D-Dagen is the Computer Science Chapter's annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
     fairText2:
       "This year, the fair is held on October 9th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15 and in KTH Entré which is located at Drottning Kristinas väg 4. Students will be able to have meetings with exhibitors through company meetings in order to get more of a connection with that company (limited slots per company).",
     companyMeetings: "Company Meetings",
@@ -235,7 +294,7 @@ export default {
     step: "STEP",
     header: "Profile Settings",
     fields: {
-      invoiceEmail: "Invoce email",
+      invoiceEmail: "Invoice email",
       description: "Company description",
       extraChairs: "Extra chairs",
       extraTables: "Extra tables",
@@ -361,7 +420,7 @@ export default {
             third: "Total",
           },
           drinkCoupons: "Drink Coupons",
-          mealCoupons: "Meal Coupons",
+          mealCoupons: "Breakfast/Lunch Coupons",
           lastChanged: "Last Changed: ",
           tables: "Tables",
           chairs: "Chairs",
@@ -542,6 +601,7 @@ export default {
     toContent: "To content",
     home: "Home",
     forCompanies: "For companies",
+    forSponsors: "Sponsors",
     forStudents: "For students",
     about: "About",
     companyForm: "Exhibitor Registration",
@@ -914,6 +974,7 @@ export default {
     table3row3: "HOW DO WE BECOME A PARTNER?",
     table3row4: "WE WOULD LIKE MORE INFORMATION, WHERE DO WE TURN?",
     table3row5: "ARE YOU A STARTUP?",
+    table3row6: "HOW DO STUDENT METTINGS WORK?",
     table3text1:
       "You can make a <a href='https://ddagen.se/företagsanmälan' target='blank' className='underline text-yellow'>  registration of interest </a> or contact our sales team at <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
     table3text2:
@@ -924,6 +985,8 @@ export default {
       "If the information you are looking for can't be found at our website, contact us at <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
     table3text5:
       "Contact us at <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
+    table3text6:
+      "The student meetings are a great opportunity for companies and students to meet in a more personal setting. The students will choose which companies they want to meet, and the company will then be able to select which of these students they want to meet. The students will then be able to choose a time slot to meet the company, during the fair. Read more about it <a href='https://ddagen.se/en/studentmeetings' target='blank' className='underline text-yellow'>here</a>.",
     table4row1:
       "WHAT KIND OF EVENTS CAN OUR COMPANY HOST TOGETHER WITH D-DAGEN?",
     table4text1:
@@ -1065,7 +1128,7 @@ export default {
           drinkCoupons: "Drink Coupons",
           representativeSpots: "Representative Spots",
           banquetTickets: "Banquet Tickets",
-          mealCoupons: "Meal Coupons",
+          mealCoupons: "Breakfast/Lunch Coupons",
         },
         verification: {
           name: "Verification",
@@ -1080,7 +1143,8 @@ export default {
           goodiebagLogo: "Goodie bag logo",
           specialOrderButton: "Change",
           specialOrderSave: "Save"
-        }
+        },
+        deleteExhibitor: "DELETE"
       },
     },
     extraOrders: {
@@ -1097,7 +1161,7 @@ export default {
         drinkCoupons: "Drink Coupons",
         representatives: "Representatives",
         banquetTickets: "Banquet Tickets",
-        mealCoupons: "Meal Coupons",
+        mealCoupons: "Breakfast/Lunch Coupons",
       },
     },
     preferences: {
@@ -1121,6 +1185,7 @@ export default {
         reload: "Reload the page..."
       },
       addExhibitorForm: {
+        exhibitorInterest: "Interested Exhibitors",
         companyName: "Company Name",
         organizationNumber: "Organization Number",
         contactPerson: "Contact Person",
@@ -1133,7 +1198,8 @@ export default {
         meetingTimeSlots: "Meeting Timeslots",
       },
       addCompanyButton: "Add a company"
-    }
+    },
+    deleteCompanyButton: "Delete a company"
   },
   aboutUs: {
     header: "About us",

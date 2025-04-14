@@ -72,10 +72,10 @@ export function UpdateSpecialOrders({
         onClick={handleOverlayClick}
       >
         <div
-          className={`bg-slate-200 bg-opacity-100 w-[325px] sm:w-[500px] max-h-[80vh] overflow-y-auto pb-5 flex flex-col rounded-3xl z-50`}
+          className={`flex bg-slate-200 bg-opacity-100 w-[325px] sm:w-[500px] max-h-[80vh] overflow-y-auto pb-5 flex flex-col rounded-3xl z-50`}
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
-          <div className="relative py-[25px] justify-center flex flex-row focus:outline-none focus:ring-0">
+          <div className="flex relative py-[25px] justify-center flex flex-row focus:outline-none focus:ring-0">
             <button
               className="absolute top-5 right-3 w-[50px] h-[50px] flex items-center justify-center"
               onClick={closeModal}
@@ -83,62 +83,62 @@ export function UpdateSpecialOrders({
               <div className="absolute h-[50px] w-[5px] bg-white rounded-md rotate-45"></div>
               <div className="absolute h-[50px] w-[5px] bg-white rounded-md -rotate-45"></div>
             </button>
-                  <div className="px-5 mt-5">
-                    <h2 className="text-black mb-8 text-3xl font-medium uppercase">
-                      {"Update special orders for " + exhibitor.name}
-                    </h2>
-        
-                    <form
-                      className="flex flex-col gap-12 min-w-[325px] max-w-[375px] text-black"
-                      onSubmit={(e) => {
-                        e.preventDefault();
-                         setSpecialOrders(
-                            exhibitor.id,
-                            studentMeetings, 
-                            socialMediaPost,
-                            panelDiscussion,
-                            goodieBagLogo
-                        )
-                      }}
-                    >
-                        <div>
-                        {t.admin.sales.header.specialOrders.studentMeetings}
-                        <CheckMark
-                        name="Student meetings"
-                        defaultChecked = {exhibitor.studentMeetings != 0}
-                        onClick={() => UpdateStudentMeetings()}
-                        />
-                        </div>
-                        <div>
-                        {t.admin.sales.header.specialOrders.socialMediaPost}
-                        <CheckMark
-                        name="Social media post"
-                        defaultChecked = {exhibitor.socialMediaPost != 0}
-                        onClick={() => UpdateSocialMediaPost()}
-                        />
-                        </div>
-                        <div>
-                        {t.admin.sales.header.specialOrders.panelDiscussion}
-                        <CheckMark
-                        name="Paneldiscussion"
-                        defaultChecked = {exhibitor.panelDiscussion != 0}
-                        onClick={() => UpdatePanelDiscusson()}
-                        />
-                        </div>
-                        <div>
-                        {t.admin.sales.header.specialOrders.goodiebagLogo}
-                        <CheckMark
-                        name="Goodiebag logo"
-                        defaultChecked = {exhibitor.panelDiscussion != 0}
-                        onClick={() => UpdateGoodieBagLogo()}
-                        />
-                        </div>
-        
-                      <Submit value={t.admin.sales.header.specialOrders.specialOrderSave} />
-                    </form>
+            <div className="flex flex-col px-5 mt-5">
+              <h2 className="text-black mb-8 text-3xl font-medium uppercase">
+                {"Update special orders for " + exhibitor.name}
+              </h2>
+  
+              <form
+                className="flex flex-col gap-12 min-w-[325px] max-w-[375px] text-black"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                    setSpecialOrders(
+                      exhibitor.id,
+                      studentMeetings, 
+                      socialMediaPost,
+                      panelDiscussion,
+                      goodieBagLogo
+                  )
+                }}
+              >
+                  <div className="flex gap-3">
+                  <CheckMark
+                  name="Student meetings"
+                  defaultChecked = {exhibitor.studentMeetings != 0}
+                  onClick={() => UpdateStudentMeetings()}
+                  />
+                  {t.admin.sales.header.specialOrders.studentMeetings}
                   </div>
-                </div>
-              </div>
+                  <div className="flex gap-3">
+                  <CheckMark
+                  name="Social media post"
+                  defaultChecked = {exhibitor.socialMediaPost != 0}
+                  onClick={() => UpdateSocialMediaPost()}
+                  />
+                  {t.admin.sales.header.specialOrders.socialMediaPost}
+                  </div>
+                  <div className="flex gap-3">
+                  <CheckMark
+                  name="Paneldiscussion"
+                  defaultChecked = {exhibitor.panelDiscussion != 0}
+                  onClick={() => UpdatePanelDiscusson()}
+                  />
+                  {t.admin.sales.header.specialOrders.panelDiscussion}
+                  </div>
+                  <div className="flex gap-3">
+                  <CheckMark
+                  name="Goodiebag logo"
+                  defaultChecked = {exhibitor.panelDiscussion != 0}
+                  onClick={() => UpdateGoodieBagLogo()}
+                  />
+                  {t.admin.sales.header.specialOrders.goodiebagLogo}
+                  </div>
+  
+                <Submit value={t.admin.sales.header.specialOrders.specialOrderSave} />
+              </form>
             </div>
+          </div>
+        </div>
+      </div>
     );
 }

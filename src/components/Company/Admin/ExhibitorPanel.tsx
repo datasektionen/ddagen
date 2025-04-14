@@ -15,17 +15,20 @@ import {
   AddExhibitorForm,
 } from "@/components/Company/Admin/AddExhibitorForm";
 import { UpdateSpecialOrders } from "./UpdateSpecialOrdersForm";
+import { DeleteExhibitorLock } from "./DeleteExhibitorLock";
 
 export function ExhibitorPanel({
   t,
   exhibitors,
   preferences,
+  exhibitorsInterests,
   password,
   reloadLogin,
 }: {
   t: Locale;
   exhibitors: Exhibitor[];
   preferences: Preferences[];
+  exhibitorsInterests: ExhibitorInfo[];
   password: string;
   reloadLogin: () => void;
 }) {
@@ -35,12 +38,16 @@ export function ExhibitorPanel({
   const [showAddExhibitor, setShowAddExhibitor] = useState<boolean>(false);
   const [addExhibitorSuccess, setAddExhibitorSuccess] = useState<boolean>(false);
 
+  const [showDeleteLock, setShowDeleteLock] = useState<boolean>(false);
+  const [showDeleteExhibitor, setShowDeleteExhibitor] = useState<boolean>(false);
+
   const [selectedExhibitor, setSelectedExhibitor] = useState<Exhibitor>();
 
   const router = useRouter();
   const trpc = api.useContext();
   const login = api.admin.login.useMutation();
   const addExhibitor = api.admin.addExhibitor.useMutation();
+  const deleteExhibitor = api.admin.deleteExhibitor.useMutation();
   const updateSpecialOrders = api.exhibitor.setSpecialOrders.useMutation();
 
   useEffect(() => {
@@ -90,13 +97,20 @@ export function ExhibitorPanel({
     panelDiscussion: number, 
     goodieBagLogo: number) {
 
-    updateSpecialOrders.mutateAsync({
-      exhibitorId: exhibitorId,
-      studentMeetings: studentMeetings,
-      socialMediaPost: socialmediaPost,
-      panelDiscussion: panelDiscussion,
-      goodieBagLogo: goodieBagLogo
-    })
+    try {
+      await updateSpecialOrders.mutateAsync({
+        exhibitorId: exhibitorId,
+        studentMeetings: studentMeetings,
+        socialMediaPost: socialmediaPost,
+        panelDiscussion: panelDiscussion,
+        goodieBagLogo: goodieBagLogo
+      });
+
+      await reloadLogin();
+    }
+    catch(err) {
+      console.error(err);
+    }
   }
 
   async function handleAddExhibitor(exhibitor: ExhibitorInfo) {
@@ -113,10 +127,11 @@ export function ExhibitorPanel({
       mapPosition: exhibitor.mapPosition,
       meetingTimeSlots: exhibitor.meetingTimeSlots,
     }).then((response) => {
-      console.log(response);
+      console.log(response, "response!!!");
       if(response?.ok === true){
         setAddExhibitorSuccess(_ => true);
         reloadLogin();
+        console.log("RETURNING blank");
         return "";
       }
       return response?.error || "unknown-error";
@@ -132,6 +147,20 @@ export function ExhibitorPanel({
 
   function closeUpdateSpecialOrderForm() {
     setSelectedExhibitor(undefined);
+  }
+
+  const handleDeleteExhibitor = async (exhibitorId: string) => {
+    try {
+      await deleteExhibitor.mutateAsync({
+        password: password,
+        exhibitorId: exhibitorId
+      });
+      await reloadLogin(); // Reload the exhibitor list after deletion
+      setShowDeleteExhibitor(false);
+      setShowDeleteLock(false);
+    } catch (err) {
+      console.error("Failed to delete exhibitor:", err);
+    }
   }
 
   function evaluataPreferences(
@@ -195,25 +224,54 @@ export function ExhibitorPanel({
           </p>
         </div>
         <div className="w-[80%] sm:w-[90%]">
-          <div className="w-full text-xl mb-5 font-medium">
-            {showAddExhibitor ? 
-              (
-                addExhibitorSuccess ?
-                <p>
-                  {t.admin.addCompany.addExhibitorSuccess.added}&nbsp;
-                  <span className="text-cerise">{t.admin.addCompany.addExhibitorSuccess.reload}</span>
-                </p>
+          <div className="flex w-full text-xl mb-5 font-medium justify-between items-end">
+            <div>
+              {showAddExhibitor ? 
+                (
+                  <>
+                    <AddExhibitorForm 
+                      t={t} addExhibitor={handleAddExhibitor} exhibitorsInterests={exhibitorsInterests} closeModal={closeAddExhibitorForm} /> 
+                  </>
+                ) : (
+                  <>
+                    {
+                    addExhibitorSuccess &&
+                    <p>
+                      {t.admin.addCompany.addExhibitorSuccess.added}&nbsp;
+                    </p>
+                    }
+                    <button
+                      className="mt-2 bg-cerise bg-blue-500 py-1 px-2 rounded-md"
+                      onClick={()=>{setShowAddExhibitor(_ => true)}}
+                      >
+                      {t.admin.addCompany.addCompanyButton}
+                    </button>
+                  </>
+              )}
+            </div>
+            <div>
+              {showDeleteLock ?
+                <DeleteExhibitorLock
+                  t={t}
+                  onSubmit={(passcode: string) => {
+                    if(passcode == "123456"){
+                      setShowDeleteLock(_ => false);
+                      setShowDeleteExhibitor(_ => true);
+                    }
+                  }}
+                  closeModal={() => {
+                    setShowDeleteLock(_ => false);
+                  }}
+                  />
                 :
-                <AddExhibitorForm 
-                  t={t} addExhibitor={handleAddExhibitor} closeModal={closeAddExhibitorForm} /> 
-              ) : (
                 <button
-                  className="mt-2 bg-cerise bg-blue-500 py-1 px-2 rounded-md"
-                  onClick={()=>{setShowAddExhibitor(_ => true)}}
+                  className="mt-2 bg-red-800 py-1 px-2 rounded-md"
+                  onClick={()=>{setShowDeleteLock(_ => true)}}
                   >
-                  {t.admin.addCompany.addCompanyButton}
+                  {t.admin.deleteCompanyButton}
                 </button>
-            )}
+                }
+            </div>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full bg-slate-50 bg-opacity-20 border-collapse border-solid">
@@ -225,6 +283,7 @@ export function ExhibitorPanel({
                   <th>{t.admin.sales.header.extras.name}</th>
                   <th>{t.admin.sales.header.verification.name}</th>
                   <th>{t.admin.sales.header.specialOrders.name}</th>
+                  <th>{t.exhibitorSettings.table.row5.title}</th>
                 </tr>
               </thead>
               <tbody
@@ -320,6 +379,28 @@ export function ExhibitorPanel({
                         )}
                       </div>
                     </td>
+                    <td>
+                      <div className="flex flex-col">
+                        <b>{t.exhibitorSettings.table.row5.section1.email}</b>
+                        {exhibitor.invoiceEmail}
+                        <b>{t.exhibitorSettings.table.row5.section1.billingMethodText}</b>
+                        {exhibitor.billingMethod == "" ? t.exhibitorSettings.table.row5.section1.billingMethods[0] : exhibitor.billingMethod}
+                        <b>{t.exhibitorSettings.table.row5.section1.physicalAddress}</b>
+                        {exhibitor.physicalAddress}
+                        <b>{t.exhibitorSettings.table.row5.section1.organizationNumber}</b>
+                        {exhibitor.organizationNumber?.[0] == "0" ? (t.locale == "sv" ? "Utländskt företag" : "Foreign company") : exhibitor.organizationNumber }
+                      </div>
+                    </td>
+                    {showDeleteExhibitor &&
+                    <td>
+                      <button
+                        className="mt-2 bg-red-800 py-1 px-2 rounded-md"
+                        onClick={() => handleDeleteExhibitor(exhibitor.id)}
+                      >
+                        {t.admin.sales.header.deleteExhibitor}
+                      </button>
+                    </td>
+                    }
                   </tr>
                 ))}
               </tbody>

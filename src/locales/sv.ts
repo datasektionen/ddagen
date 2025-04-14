@@ -67,7 +67,7 @@ export default {
           bulletPoints: [
             "4 m² på mässan",
             "Plats på hemsida och katalog",
-            "2 st lunch/frukost biljetter",
+            "2 st frukost/lunch biljetter",
             "5 st representantplatser",
             "1 ståbord, 2st eluttag",
             "2 st banquettebiljetter*",
@@ -91,7 +91,7 @@ export default {
             "Allt från lilla paketet",
             "6 m² på mässan",
             "God placering på mässan",
-            "1 extra lunch/frukost biljett",
+            "1 extra frukost/lunch biljett",
             "Exponering på våra sociala medier",
             "Medelstor logotyp på vår hemsida",
             "Kontaktsamtal, 2 timmar",
@@ -113,7 +113,7 @@ export default {
             "Allt från mellan paketet",
             "8 m², minst 4m takhöjd",
             "Central placering på mässan",
-            "1 extra ståbord, lunch/frukost biljett",
+            "1 extra ståbord, frukost/lunch biljett",
             "2 extra banquette biljetter",
             "Exponering på ca. 1000 goodiebags med stor logga",
             "1 representant i schemalagd paneldiskussion",
@@ -130,6 +130,62 @@ export default {
     interestedText:
       "Är du intresserad av att ställa ut på D-Dagen och knyta kontakt med tusentals studenter inom Data och IT? Klicka här nedan för att göra en intresseanmälan!",
     formButton: "Intresseanmälan",
+  },
+  forSponsors: {
+    title: "För Sponsorer",
+    aboutFair: "Om mässan",
+    fairText1: "D-Dagen är en ledande arbetsmarknadsmässa där sponsorer möter framtidens IT- och datatalanger från KTH. Som sponsor får ni synlighet, engagemang och möjlighet att bygga värdefulla relationer.",
+    fairText2: "Mässan hålls den 9 oktober på KTH Campus och lockar tusentals studenter - med stor synlighet både på plats och digitalt är det ett perfekt tillfälle att visa upp ert varumärke och era produkter i en inspirerande miljö.",    companyPackages: {
+      title: "Vill ni synas bland tusentals teknologstudenter på KTH?",
+      text: "Vi erbjuder flera olika sponsorpaket som ger ert företag stor synlighet och möjlighet till engagemang:",
+      text2: "Har ni frågor eller vill skräddarsy ett samarbete? Kontakta ",
+      packages: [
+        {
+          title: "MINI PAKETET",
+          costTitle: "Ert bidrag:",
+          cost: "Produkter av minst 2000:- värde",
+          offerTitle: "Sponsorförmåner:",
+          boldFirstPoint: false,
+          bulletPoints: [
+            "Utdelning och exponering av era produkter bland studenter"
+          ],
+          disclaimers: []
+        },
+        {
+          title: "STANDARD PAKETET",
+          className: "border-cerise border-4",
+          costTitle: "Ert bidrag:",
+          cost: "Produkter av minst 5000:- värde",
+          offerTitle: "Sponsorförmåner:",
+          boldFirstPoint: true,
+          bulletPoints: [
+            "Allt från MINI PAKETET",
+            "Exponering av era produkter på våra sociala medier",
+            "Annonsplats på vår hemsida"
+          ],
+          disclaimers: []
+        },
+        {
+          title: "PREMIUM PAKETET",
+          className: "border-gold border-4",
+          costTitle: "Ert bidrag:",
+          cost: "Produkter av minst 10000:- värde",
+          offerTitle: "Sponsorförmåner:",
+          boldFirstPoint: true,
+          bulletPoints: [
+            "Allt från STANDARD PAKETET",
+            "Annonsplats och särskild exponering på vår hemsida",
+            "Vi arrangerar en utlottningstävling med särskild exponering av era produkter",
+            "Utpekad utdelningsplats för era produkter på mässan",
+            "Möjlighet till fler sponsrade event enligt era önskemål"
+          ],
+          disclaimers: []
+        }
+      ]
+    },
+    interestedTitle: "Intresserad?",
+    interestedText:
+      "Vill ni sponsra D-Dagen och nå ut till tusentals studenter inom datateknik och IT? Hör av er till ",
   },
   forStudents: {
     title: "För Studenter",
@@ -240,9 +296,9 @@ export default {
       description: "Företagsbeskrivning",
       extraChairs: "Extra stolar",
       extraTables: "Extra bord",
-      extraDrinkCoupons: "Extra barbongar",
+      extraDrinkCoupons: "Extra dryckesbiljetter",
       extraRepresentativeSpots: "Extra representantplatser",
-      totalBanquetTicketsWanted: "Sittningsbiljetter önskade",
+      totalBanquetTicketsWanted: "Banquettbiljetter önskade",
       contactName: "Namn",
       contactEmail: "E-postadress",
       contactPhone: "Telefonnummer",
@@ -267,7 +323,7 @@ export default {
     },
     contacts: "Kontakter",
     representativesAllergies: "Matspecifikationer företagsrepresentanter",
-    banquetAllergies: "Matspecifikationer sittning",
+    banquetAllergies: "Matspecifikationer banquetten",
     editAllergy: "Redigera",
     removeAllergy: "Ta bort",
     tooManyAllergies:
@@ -361,19 +417,19 @@ export default {
             second: "Tillval",
             third: "Totalt",
           },
-          drinkCoupons: "Barbongar",
-          mealCoupons: "Måltidsbiljetter",
+          drinkCoupons: "Dryckesbiljetter",
+          mealCoupons: "Frukost/lunch biljetter",
           lastChanged: "Senast ändrad: ",
           tables: "Bord",
           chairs: "Stolar",
           representatives: "Representanter",
-          sitting: "Sittningsbiljetter",
+          sitting: "Banquettbiljetter",
           warning: "Sista datum för beställning ",
           disabledButtonMessages: {
             representatives:
             "Ta bort matpreferenser för representanter för att minska antalet",
             banquet:
-              "Ta bort matpreferenser för sittningen för att minska antalet",
+              "Ta bort matpreferenser för banquetten för att minska antalet",
           },
           save: "Spara",
         },
@@ -389,9 +445,9 @@ export default {
           paragraphTwo: "Ni ändrar antalet i extra beställningar",
         },
         section2: {
-          header: "Sittning",
+          header: "Banquetten",
           paragraphOne:
-            "Dessa matpreferenser används för sittningen efter mässan.",
+            "Dessa matpreferenser används för banquetten efter mässan.",
             paragraphTwo: "Ni ändrar antalet i extra beställningar",
             paragraphThree: "Om inget specifikt anges för en medlem serveras standardmaten",
         },
@@ -401,7 +457,7 @@ export default {
           lactoseFree: "Laktosfri",
           glutenFree: "Glutenfri",
           meat: "Kött",
-          alcoholFree: "Alkoholfitt",
+          alcoholFree: "Alkoholfritt",
         },
         alerts: {
           errorDeletePreferenceWithoutID:
@@ -540,6 +596,7 @@ export default {
     toContent: "Till innehåll",
     home: "Hem",
     forCompanies: "För företag",
+    forSponsors: "Sponsorer",
     forStudents: "För studenter",
     about: "Om Oss",
     companyForm: "Företagsanmälan",
@@ -913,6 +970,7 @@ export default {
     table3row3: "HUR BLIR VI PARTNER?",
     table3row4: "VI VILL HA MER INFORMATION, VART VÄNDER VI OSS?",
     table3row5: "ÄR NI ETT STARTUP?",
+    table3row6: "Hur går kontaktsamtal till?",
     table3text1:
       "Ni får göra en <a href='https://ddagen.se/företagsanmälan' target='blank' className='underline text-yellow'>  intresseanmälan</a> eller kontakta våra säljare på <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
     table3text2:
@@ -923,6 +981,8 @@ export default {
       "Om den information du söker inte finns på vår hemsida, kontakta våra säljare på <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
     table3text5:
       "Kontakta oss på <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
+    table3text6:
+      "Studentmötena är ett utmärkt tillfälle för studenter och företag att träffas i en mer personlig miljö. Studenterna kommer att välja vilka företag de vill träffa, och företagen kommer sedan att kunna välja vilka av dessa studenter de vill träffa. Studenterna kommer därefter att kunna välja en tidslucka för att träffa företagen under mässan. Läs mer om det <a href='https://ddagen.se/en/studentmeetings' target='blank' className='underline text-yellow'>här</a>.",
     table4row1:
       "VILKEN TYP AV EVENEMANG KAN VÅRT FÖRETAG ANORDNA TILLSAMMANS MED D-DAGEN?",
     table4text1:
@@ -1004,7 +1064,7 @@ export default {
       "PLACERING",
       "EXPONERING",
       "REPRESENTANTPLATSER",
-      "KVÄLLSSITTNINGSBILJETTER",
+      "BANQUETTSBILJETTER",
       "DRYCKESBILJETTER",
       "DEDIKERAD FÖRETAGSVÄRD",
       "LOUNGETILLGÅNG",
@@ -1062,10 +1122,10 @@ export default {
           name: "Tillägg",
           chairs: "Stolar",
           tables: "Bord",
-          drinkCoupons: "Barbongar",
+          drinkCoupons: "Dryckesbiljetter",
           representativeSpots: "Representantplatser",
-          banquetTickets: "Sittningsbiljetter",
-          mealCoupons: "Måltidsbiljetter",
+          banquetTickets: "Banquettsbiljetter",
+          mealCoupons: "Frukost/lunch biljetter",
         },
         verification: {
           name: "Verification",
@@ -1080,7 +1140,8 @@ export default {
           goodiebagLogo: "Logga på goodiebag",
           specialOrderButton: "Ändra",
           specialOrderSave: "Spara"
-        }
+        },
+        deleteExhibitor: "TA BORT"
       },
     },
     extraOrders: {
@@ -1094,10 +1155,10 @@ export default {
       row: {
         tables: "Bord",
         chairs: "Stolar",
-        drinkCoupons: "Barbongar",
+        drinkCoupons: "Dryckesbiljetter",
         representatives: "Representanter",
-        banquetTickets: "Sittningsbiljetter",
-        mealCoupons: "Måltidsbiljetter",
+        banquetTickets: "Banquettsbiljetter",
+        mealCoupons: "Frukost/lunch biljetter",
       },
     },
     preferences: {
@@ -1121,6 +1182,7 @@ export default {
         reload: "Ladda om sidan..."
       },
       addExhibitorForm: {
+        exhibitorInterest: "Intresserade Utställare",
         companyName: "Företagsnamn",
         organizationNumber: "Organisationsnummer",
         contactPerson: "Kontaktperson",
@@ -1133,7 +1195,8 @@ export default {
         meetingTimeSlots: "Meeting Timeslots",
       },
       addCompanyButton: "Lägg till företag"
-    }
+    },
+    deleteCompanyButton: "Ta bort ett företag"
   },
   aboutUs: {
     header: "Om Oss",
@@ -1144,7 +1207,7 @@ export default {
       "Begreppet ”D-Dagen” myntades redan år 2000, då det var en branschdag med 13 närvarande företag i E-huset på KTH Campus. Sedan dess har D-Dagen växt och 2016 intog den kårhuset, Nymble. Nu anses D-Dagen vara Nordens största arbetsmarknads-dag för datateknik-studenter, samt en av de största arbetsmarknads-dagarna på hela KTH.",
 
     paragraph3:
-      "I år satsar vi på att ha över 100 företag närvarande. Vi räknar också med att 3000 studenter besöker mässan. Med tiden har D-Dagen växt till mycket mer än bara en mässdag. Veckorna inför mässan ger vi företag chansen att hålla lunchföreläsningar och andra event tillsammans med våra studenter. På kvällen efter mässan anordnar vi en större sittning där studenter och företagsrepresentanter kan prata på ett mer avslappnat vis.",
+      "I år satsar vi på att ha över 100 företag närvarande. Vi räknar också med att 3000 studenter besöker mässan. Med tiden har D-Dagen växt till mycket mer än bara en mässdag. Veckorna inför mässan ger vi företag chansen att hålla lunchföreläsningar och andra event tillsammans med våra studenter. På kvällen efter mässan anordnar vi en större banquett där studenter och företagsrepresentanter kan prata på ett mer avslappnat vis.",
     info1: "Vad är D-Dagen",
     info2: "D-Dagen förr",
     info3: "D-Dagen idag",
