@@ -970,6 +970,7 @@ export default {
     table3row3: "HUR BLIR VI PARTNER?",
     table3row4: "VI VILL HA MER INFORMATION, VART VÄNDER VI OSS?",
     table3row5: "ÄR NI ETT STARTUP?",
+    table3row6: "Hur går kontaktsamtal till?",
     table3text1:
       "Ni får göra en <a href='https://ddagen.se/företagsanmälan' target='blank' className='underline text-yellow'>  intresseanmälan</a> eller kontakta våra säljare på <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
     table3text2:
@@ -980,6 +981,8 @@ export default {
       "Om den information du söker inte finns på vår hemsida, kontakta våra säljare på <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
     table3text5:
       "Kontakta oss på <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
+    table3text6:
+      "Studentmötena är ett utmärkt tillfälle för studenter och företag att träffas i en mer personlig miljö. Studenterna kommer att välja vilka företag de vill träffa, och företagen kommer sedan att kunna välja vilka av dessa studenter de vill träffa. Studenterna kommer därefter att kunna välja en tidslucka för att träffa företagen under mässan. Läs mer om det <a href='https://ddagen.se/en/studentmeetings' target='blank' className='underline text-yellow'>här</a>.",
     table4row1:
       "VILKEN TYP AV EVENEMANG KAN VÅRT FÖRETAG ANORDNA TILLSAMMANS MED D-DAGEN?",
     table4text1:
