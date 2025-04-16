@@ -1097,8 +1097,7 @@ export default {
     header2: "Afterwork/Office Visit",
     header3: "Sponsored Pub",
     header4: "Case Event",
-    subheader: "Price: ",
-    extra: "Read more",
+    subheader: "About: ",
   },
   admin: {
     login: {

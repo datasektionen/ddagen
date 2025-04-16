@@ -1096,8 +1096,7 @@ export default {
     header2: "Afterwork/Kontorbesök",
     header3: "Sponsrad Pub",
     header4: "Casekväll",
-    subheader: "Pris: ",
-    extra: "Läs mer",
+    subheader: "Om ",
   },
   admin: {
     login: {
