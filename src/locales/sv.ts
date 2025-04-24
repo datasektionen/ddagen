@@ -1119,7 +1119,8 @@ export default {
           name: "Företagsvärd",
           companyHostName: "Värdnamn",
           companyHostEmail: "Värdens email",
-          companyHostNumber: "Värdens telefonnummer"
+          companyHostNumber: "Värdens telefonnummer",
+          page: "Lägg till en företagsvärd för "
         },
         extras: {
           name: "Tillägg",
@@ -1142,7 +1143,8 @@ export default {
           panelDiscussion: "Paneldiskussion",
           goodiebagLogo: "Logga på goodiebag",
           specialOrderButton: "Ändra",
-          specialOrderSave: "Spara"
+          specialOrderSave: "Spara",
+          page: "Uppdatera specialbeställningar för "
         },
         deleteExhibitor: "TA BORT"
       },

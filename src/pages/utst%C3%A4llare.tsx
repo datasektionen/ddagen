@@ -6,6 +6,7 @@ import { Extras, Package } from "@/shared/Classes";
 import { use, useEffect, useState } from "react";
 import ExtraFairOrders from "@/components/Company/ExtraOrders/ExtraFairOrders";
 import FoodPreferences from "@/components/Company/Preferences/FoodPreferences";
+import CompanyHost from "@/components/Company/CompanyHost/CompanyHost";
 import GeneralInfo from "@/components/Company/General/GeneralInfo";
 import JobOffers from "@/components/Company/General/JobOffers";
 import BillingInfo from "@/components/Company/Billing information/BillingInfo";
@@ -49,6 +50,9 @@ export default function Exhibitor() {
   const [showSetUpPage, setShowSetUpPage] = useState<boolean>(false);
   const [hasMeeting, setHasMeeting] = useState<boolean>(false);
   const [editState, setEditState] = useState<boolean>(false);
+  const [companyHostName, setCompanyHostName] = useState("");
+  const [companyHostNumber, setCompanyHostNumber] = useState("");
+  const [companyHostEmail, setCompanyHostEmail] = useState(""); 
 
   // Mutations
   const setExtrasMutation: ReturnType<typeof api.exhibitor.setExtras.useMutation> = api.exhibitor.setExtras.useMutation();
@@ -82,6 +86,9 @@ export default function Exhibitor() {
   const getBillingMethod = api.exhibitor.getBillingMethod.useQuery();
   const getPhysicalAddress = api.exhibitor.getPhysicalAddress.useQuery();
   const getInvoiceEmail = api.exhibitor.getInvoiceEmail.useQuery();
+  const getCompanyHostName = api.exhibitor.getCompanyHostName.useQuery();
+  const getCompanyHostNumber = api.exhibitor.getCompanyHostNumber.useQuery();
+  const getCompanyHostEmail = api.exhibitor.getCompanyHostEmail.useQuery();
   
   //const getStudentInterests = api.exhibitor.getStudentInterests.useQuery();
 
@@ -168,6 +175,21 @@ export default function Exhibitor() {
     if (!getOrganizationNumber.isSuccess) return;
     setOrganizationNumber(getOrganizationNumber.data.organizationNumber);
   }, [getOrganizationNumber.data]);
+
+  useEffect(() => {
+    if (!getCompanyHostName.isSuccess) return;
+    setCompanyHostName(getCompanyHostName.data.companyHostName ?? "");
+  }, [getCompanyHostName.data]);
+
+  useEffect(() => {
+    if (!getCompanyHostNumber.isSuccess) return;
+    setCompanyHostNumber(getCompanyHostNumber.data.companyHostNumber ?? "");
+  }, [getCompanyHostNumber.data]);
+
+  useEffect(() => {
+    if (!getCompanyHostEmail.isSuccess) return;
+    setCompanyHostEmail(getCompanyHostEmail.data.companyHostEmail ?? "");
+  }, [getCompanyHostEmail.data]);
 
   useEffect(() => {
     if (!getBillingMethod.isSuccess) return;
@@ -397,6 +419,7 @@ export default function Exhibitor() {
       t.exhibitorSettings.table.row2.title,
       t.exhibitorSettings.table.row3.title,
       t.exhibitorSettings.table.row5.title,
+      t.admin.sales.header.companyHost.name
     ],
     [],
     [
@@ -464,7 +487,12 @@ export default function Exhibitor() {
         setEmail={setEmail}
         saveHandler={handleClick}
       />,
-      
+      <CompanyHost
+      t={t}
+      companyHostName={companyHostName}
+      companyHostNumber={companyHostNumber}
+      companyHostEmail={companyHostEmail}
+      />
     ]
   );
 

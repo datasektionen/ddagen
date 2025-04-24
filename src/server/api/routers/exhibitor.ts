@@ -306,6 +306,24 @@ export const exhibitorRouter = createTRPCRouter({
       select: { companyAddress: true },
     });
   }),
+  getCompanyHostName: protectedProcedure.query(async ({ ctx }) => {
+    return await ctx.prisma.exhibitor.findFirstOrThrow({
+      where: { id: ctx.session.exhibitorId },
+      select: { companyHostName: true},
+    });
+  }),
+  getCompanyHostEmail: protectedProcedure.query(async ({ ctx }) => {
+    return await ctx.prisma.exhibitor.findFirstOrThrow({
+      where: { id: ctx.session.exhibitorId },
+      select: { companyHostEmail: true},
+    });
+  }),
+  getCompanyHostNumber: protectedProcedure.query(async ({ ctx }) => {
+    return await ctx.prisma.exhibitor.findFirstOrThrow({
+      where: { id: ctx.session.exhibitorId },
+      select: { companyHostNumber: true},
+    });
+  }),
   setPhysicalAddress: protectedProcedure
     .input(z.string())
     .mutation(async ({ ctx, input }) => {

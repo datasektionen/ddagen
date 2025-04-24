@@ -173,10 +173,12 @@ export function ExhibitorPanel({
 
   function closeUpdateSpecialOrderForm() {
     setSelectedExhibitor(undefined);
+    setShowSpecialOrdersForm(false);
   }
 
   function closeUpdateCompanyHostForm() {
     setSelectedExhibitor(undefined);
+    setShowCompanyHostForm(false);
   }
 
   const handleDeleteExhibitor = async (exhibitorId: string) => {
@@ -440,7 +442,7 @@ export function ExhibitorPanel({
                           className="mt-2 bg-cerise bg-blue-500 py-1 px-2 rounded-md"
                           onClick={()=>{setSelectedExhibitor(exhibitor); setShowCompanyHostForm(true)}}
                           >
-                          Företagsvärd
+                          {t.admin.sales.header.specialOrders.specialOrderButton}
                           </button>
                         )}
                       </div>
