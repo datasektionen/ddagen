@@ -233,6 +233,25 @@ export const exhibitorRouter = createTRPCRouter({
         },
       });
     }),
+    setCompanyHost: publicProcedure
+    .input(
+      z.object({
+        exhibitorId: z.string(),
+        companyHostName: z.string(),
+        companyHostNumber: z.string(),
+        companyHostEmail: z.string(),
+      })
+    )
+    .mutation(async ({ ctx, input}) => {
+      await ctx.prisma.exhibitor.update({
+        where: { id: input.exhibitorId },
+        data: {
+          companyHostName: input.companyHostName,
+          companyHostNumber: input.companyHostNumber,
+          companyHostEmail: input.companyHostEmail,
+        },
+      });
+    }),
   getName: protectedProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.exhibitor.findUniqueOrThrow({
       where: { id: ctx.session.exhibitorId },
@@ -285,6 +304,24 @@ export const exhibitorRouter = createTRPCRouter({
     return await ctx.prisma.exhibitor.findUniqueOrThrow({
       where: { id: ctx.session.exhibitorId },
       select: { companyAddress: true },
+    });
+  }),
+  getCompanyHostName: protectedProcedure.query(async ({ ctx }) => {
+    return await ctx.prisma.exhibitor.findFirstOrThrow({
+      where: { id: ctx.session.exhibitorId },
+      select: { companyHostName: true},
+    });
+  }),
+  getCompanyHostEmail: protectedProcedure.query(async ({ ctx }) => {
+    return await ctx.prisma.exhibitor.findFirstOrThrow({
+      where: { id: ctx.session.exhibitorId },
+      select: { companyHostEmail: true},
+    });
+  }),
+  getCompanyHostNumber: protectedProcedure.query(async ({ ctx }) => {
+    return await ctx.prisma.exhibitor.findFirstOrThrow({
+      where: { id: ctx.session.exhibitorId },
+      select: { companyHostNumber: true},
     });
   }),
   setPhysicalAddress: protectedProcedure

@@ -9,12 +9,14 @@ export function UpdateSpecialOrders({
     t, 
     exhibitor,
     closeModal,
-    setSpecialOrders
+    setSpecialOrders,
+    setShowSpecialOrdersForm
 } : {
     t: Locale;
     exhibitor: Exhibitor;
     closeModal: () => void;
     setSpecialOrders: (z: string, a: number, b: number, c: number, d: number) => void;
+    setShowSpecialOrdersForm: (a: boolean) => void;
 }) {
     const modalRef = useRef<HTMLDivElement>(null);
 
@@ -85,12 +87,13 @@ export function UpdateSpecialOrders({
             </button>
             <div className="flex flex-col px-5 mt-5">
               <h2 className="text-black mb-8 text-3xl font-medium uppercase">
-                {"Update special orders for " + exhibitor.name}
+                {t.admin.sales.header.specialOrders.page + exhibitor.name}
               </h2>
   
               <form
                 className="flex flex-col gap-12 min-w-[325px] max-w-[375px] text-black"
                 onSubmit={(e) => {
+                  setShowSpecialOrdersForm(false);
                   e.preventDefault();
                     setSpecialOrders(
                       exhibitor.id,

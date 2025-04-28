@@ -1121,6 +1121,13 @@ export default {
         logoColour: "Coloured Logo",
         description: "Description",
         package: "Package",
+        companyHost: {
+          name: "Company host",
+          companyHostName: "Host name",
+          companyHostEmail: "Host email",
+          companyHostNumber: "Host telephone number",
+          page: "Add a company host for "
+        },
         extras: {
           name: "Extras",
           chairs: "Chairs",
@@ -1142,7 +1149,8 @@ export default {
           panelDiscussion: "Panel discussion",
           goodiebagLogo: "Goodie bag logo",
           specialOrderButton: "Change",
-          specialOrderSave: "Save"
+          specialOrderSave: "Save",
+          page: "Update special orders for "
         },
         deleteExhibitor: "DELETE"
       },
