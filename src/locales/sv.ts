@@ -98,7 +98,7 @@ export default {
             "Obegränsad förvaring & mottagning av leverans",
           ],
           disclaimers: [
-            "Jubileumsrabatten gäller till den 25:e april"
+            "Jubileumsrabatten gäller till den 23:e maj"
           ]
         },
         {
@@ -121,7 +121,7 @@ export default {
             "Stor logotyp på vår hemsida",
           ],
           disclaimers: [
-            "Jubileumsrabatten gäller till den 25:e april"
+            "Jubileumsrabatten gäller till den 23:e maj"
           ]
         },
       ]
@@ -1118,6 +1118,13 @@ export default {
         logoColour: "Logga m. färg",
         description: "Beskrivning",
         package: "Paket",
+        companyHost: {
+          name: "Företagsvärd",
+          companyHostName: "Värdnamn",
+          companyHostEmail: "Värdens email",
+          companyHostNumber: "Värdens telefonnummer",
+          page: "Lägg till en företagsvärd för "
+        },
         extras: {
           name: "Tillägg",
           chairs: "Stolar",
@@ -1139,7 +1146,8 @@ export default {
           panelDiscussion: "Paneldiskussion",
           goodiebagLogo: "Logga på goodiebag",
           specialOrderButton: "Ändra",
-          specialOrderSave: "Spara"
+          specialOrderSave: "Spara",
+          page: "Uppdatera specialbeställningar för "
         },
         deleteExhibitor: "TA BORT"
       },

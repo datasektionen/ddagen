@@ -70,6 +70,10 @@ model Exhibitor {
 
   lastChanged  DateTime?
 
+  companyHostName String?
+  companyHostNumber String?
+  companyHostEmail String?
+
   @@map("exhibitors")
 }
 

@@ -200,6 +200,9 @@ export class Exhibitor {
   meetingTimeSlots: number[];
   physicalAddress: string;
   billingMethod: string;
+  companyHostName: string;
+  companyHostNumber: string;
+  companyHostEmail: string;
 
   constructor(
     id: string,
@@ -229,6 +232,9 @@ export class Exhibitor {
     meetingTimeSlots: number[],
     physicalAddress: string,
     billingMethod: string,
+    companyHostName: string,
+    companyHostNumber: string,
+    companyHostEmail: string,
   ) {
     this.id = id;
     this.name = exhibitorName;
@@ -257,6 +263,9 @@ export class Exhibitor {
     this.meetingTimeSlots = meetingTimeSlots;
     this.physicalAddress = physicalAddress;
     this.billingMethod = billingMethod;
+    this.companyHostName = companyHostName;
+    this.companyHostNumber = companyHostNumber;
+    this.companyHostEmail = companyHostEmail;
   }
 }
 
