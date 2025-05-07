@@ -10,6 +10,8 @@ function Year({
   pgImage,
   showDate,
   nrOfCompanies,
+  nrOfVisitors,
+  dda,
   year,
   extraInfo,
 }: {
@@ -20,6 +22,8 @@ function Year({
   pgImage: string;
   showDate: boolean;
   nrOfCompanies: string;
+  nrOfVisitors: string;
+  dda: string;
   year: number;
   extraInfo: string;
 }) {
@@ -61,7 +65,7 @@ function Year({
       </div>
       <div className={`basis-1/2 flex flex-col justify-center ${toReverse ? "items-end" : "items-start"}`}>
       <h2 className="lg:text-3xl md: text-xl text-white">D-Dagen {year}</h2>
-      <p className=" text-white text-xl">{t.history.nrOfCompanies} {nrOfCompanies} </p>
+      <p className={`text-white text-xl ${toReverse ? "text-right" : ""}`}>{t.history.nrOfCompanies} {nrOfCompanies} <br/>{t.history.nrOfVisitors} {nrOfVisitors} <br/>{t.history.dda} <br/> {dda?.split(" & ").map((x,i)=>i==0?<>{x}<br /></>:<>{x}</>)}</p>
       </div>
       {modalState && (
           <div
@@ -105,20 +109,74 @@ export default function Years() {
       year: 2025,
       pgImage: "/img/historia/pg2025.jpg",
       nrOfCompanies: "?",
+      nrOfVisitors: "?",
+      dda: "Max Berglund & Mortada Nasser",
       text: t.history.text2025
     },
     {
       year: 2024,
       pgImage: "/img/historia/pg2024.jpg",
       nrOfCompanies: "101",
-      text: t.event.fullParagraph2
+      nrOfVisitors: "3281",
+      dda: "William Nordwall & Toshihide Sakao",
+      text: ""
     },
     {
       year: 2023,
       pgImage: "/img/historia/pg2023.png",
       nrOfCompanies: "107",
-      text: t.event.fullParagraph3
+      nrOfVisitors: "≈3200",
+      dda: "Axel Andin Johansson & Johan Abdi",
+      text: ""
     },
+    {
+      year: 2020,
+      pgImage: "/img/historia/pg2020.jpg",
+      nrOfCompanies: "35",
+      nrOfVisitors: "≈1000",
+      dda: "Julia…",
+      text: ""
+    },
+    {
+      year: 2019,
+      pgImage: "/img/historia/pg2019.jpg",
+      nrOfCompanies: "81",
+      nrOfVisitors: "≈2000",
+      dda: "okänt",
+      text: ""
+    },
+    {
+      year: 2018,
+      pgImage: "/img/historia/pg2018.jpg",
+      nrOfCompanies: "75",
+      nrOfVisitors: "",
+      dda: "",
+      text: ""
+    },
+    {
+      year: 2017,
+      pgImage: "/img/historia/pg2017.jpg",
+      nrOfCompanies: "60",
+      nrOfVisitors: "",
+      dda: "Linn",
+      text: ""
+    },
+    {
+      year: 2016,
+      pgImage: "/img/historia/pg2016.png",
+      nrOfCompanies: "48",
+      nrOfVisitors: "",
+      dda: "Albin Söderholm",
+      text: ""
+    },
+    {
+      year: 2015,
+      pgImage: "/img/historia/pg2015.png",
+      nrOfCompanies: "35",
+      nrOfVisitors: "",
+      dda: "David Masko",
+      text: ""
+    }
   ]
 
   const seoContent = {
@@ -155,6 +213,7 @@ export default function Years() {
       />
       <div className="pt-[200px] pb-[300px]">
         <h1 className="text-5xl text-cerise font-medium text-center"> {t.history.header}</h1>
+        <h2 className="text-xl text-white  text-center mx-auto mt-5 max-w-4xl">{t.history.subheader}</h2>
         <div className="flex flex-col mt-8">
           <div className="flex justify-center">
             <div className="w-4 bg-cerise h-full min-h-[30px] rounded-t-full"></div>
@@ -169,6 +228,8 @@ export default function Years() {
               pgImage={year?.pgImage}
               showDate={!(i > 0 && year.year === years[i-1].year)}
               nrOfCompanies={year.nrOfCompanies}
+              nrOfVisitors={year.nrOfVisitors}
+              dda={year.dda}
               year={year.year}
               extraInfo={year.text}
               />
