@@ -1127,7 +1127,8 @@ export default {
           companyHostName: "Host name",
           companyHostEmail: "Host email",
           companyHostNumber: "Host telephone number",
-          page: "Add a company host for "
+          page: "Add a company host for ",
+          empty: "We will notify you when a company host has been added",
         },
         extras: {
           name: "Extras",

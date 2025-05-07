@@ -1124,7 +1124,8 @@ export default {
           companyHostName: "Värdnamn",
           companyHostEmail: "Värdens email",
           companyHostNumber: "Värdens telefonnummer",
-          page: "Lägg till en företagsvärd för "
+          page: "Lägg till en företagsvärd för ",
+          empty: "Vi kommer informera er när en företagsvärd är tillagd",
         },
         extras: {
           name: "Tillägg",
