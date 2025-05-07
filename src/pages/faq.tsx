@@ -37,6 +37,7 @@ export default function Faq() {
         t.faq.table3row3,
         t.faq.table3row4,
         t.faq.table3row5,
+        t.faq.table3row6,
       ],
       [
         t.faq.table3text1,
@@ -44,6 +45,7 @@ export default function Faq() {
         t.faq.table3text3,
         t.faq.table3text4,
         t.faq.table3text5,
+        t.faq.table3text6,
       ],
       []
     ),
