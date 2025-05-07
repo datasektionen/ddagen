@@ -51,9 +51,11 @@ function SingleEvent({
         ${toReverse ? "flex-row-reverse" : "flex-row"} 
         gap-4 px-[50px] md:px-[50px] justify-between`}>
       <div className={`basis-1/2 flex flex-col ${toReverse ? "items-start" : "items-end"}`}>
-        <h2 className="text-center lg:text-3xl md: text-xl text-white">{eventInfo[1]}</h2>
-        <div className="flex bg-slate-100 bg-opacity-50 mt-2 px-8 py-4" onClick={openModal}>
-          <img src={image} className="md:max-h-[300px] lg:max-h-[300px] max-w-[300px] object-contain"></img>
+        <div className={`flex flex-col w-full gap-2 items-start ${toReverse ? "items-start" : "items-end"}`}>
+          <h2 className="text-center lg:text-3xl md:text-xl text-white">{eventInfo[1]}</h2>
+          <div className="flex bg-slate-100 bg-opacity-50 px-8 py-4 w-full max-w-[350px] bg-white/80 rounded-md" onClick={openModal}>
+            <img src={image} className="flex-1 md:max-h-[300px] lg:max-h-[300px] w-full object-contain"></img>
+          </div>
         </div>
       </div>
       <div className="basis-[124px] h-full flex justify-center">
