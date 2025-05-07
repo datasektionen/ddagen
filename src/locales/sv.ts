@@ -1118,6 +1118,7 @@ export default {
         logoColour: "Logga m. färg",
         description: "Beskrivning",
         package: "Paket",
+        delete: "Ta bort",
         companyHost: {
           name: "Företagsvärd",
           companyHostName: "Värdnamn",

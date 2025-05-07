@@ -1121,6 +1121,7 @@ export default {
         logoColour: "Coloured Logo",
         description: "Description",
         package: "Package",
+        delete: "Remove",
         companyHost: {
           name: "Company host",
           companyHostName: "Host name",

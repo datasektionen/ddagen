@@ -315,6 +315,11 @@ export function ExhibitorPanel({
                   <th>{t.admin.sales.header.specialOrders.name}</th>
                   <th>{t.exhibitorSettings.table.row5.title}</th>
                   <th>{t.admin.sales.header.companyHost.name}</th>
+                    {showDeleteExhibitor &&
+                    <th>
+                      {t.admin.sales.header.delete}
+                    </th>
+                    }
                 </tr>
               </thead>
               <tbody
@@ -324,6 +329,14 @@ export function ExhibitorPanel({
                 {sortExhibitors(exhibitors).map((exhibitor, i) => (
                   <tr key={i}>
                     <td className="text-center break-words">
+                      {exhibitor.logoColor ? (
+                        <img
+                          className="mx-auto max-w-[150px]"
+                          src={addImageDetails(exhibitor.logoColor)}
+                        />
+                        ) : (
+                          <p className="font-bold text-center">U/A</p>
+                      )}
                       <p>{exhibitor.name}</p>
                       <p>{t.admin.sales.header.package}: { t.packages.name[exhibitor.packageTier] }</p>
                       <button
@@ -404,33 +417,23 @@ export function ExhibitorPanel({
                     <td>
                       <div className="flex flex-col">
                         <b>{t.exhibitorSettings.table.row5.section1.email}</b>
-                        {exhibitor.invoiceEmail}
+                        {exhibitor.invoiceEmail || "U/A"}
                         <b>{t.exhibitorSettings.table.row5.section1.billingMethodText}</b>
                         {exhibitor.billingMethod == "" ? t.exhibitorSettings.table.row5.section1.billingMethods[0] : exhibitor.billingMethod}
                         <b>{t.exhibitorSettings.table.row5.section1.physicalAddress}</b>
-                        {exhibitor.physicalAddress}
+                        {exhibitor.physicalAddress || "U/A"}
                         <b>{t.exhibitorSettings.table.row5.section1.organizationNumber}</b>
                         {exhibitor.organizationNumber?.[0] == "0" ? (t.locale == "sv" ? "Utländskt företag" : "Foreign company") : exhibitor.organizationNumber }
                       </div>
                     </td>
-                    {showDeleteExhibitor &&
-                    <td>
-                      <button
-                        className="mt-2 bg-red-800 py-1 px-2 rounded-md"
-                        onClick={() => handleDeleteExhibitor(exhibitor.id)}
-                      >
-                        {t.admin.sales.header.deleteExhibitor}
-                      </button>
-                    </td>
-                    }
                     <td>
                       <div className="flex flex-col">
                         <b>{t.admin.sales.header.companyHost.companyHostName}</b>
-                        {exhibitor.companyHostName}
+                        {exhibitor.companyHostName || "U/A"}
                         <b>{t.admin.sales.header.companyHost.companyHostEmail}</b>
-                        {exhibitor.companyHostEmail}
+                        {exhibitor.companyHostEmail || "U/A"}
                         <b>{t.admin.sales.header.companyHost.companyHostNumber}</b>
-                        {exhibitor.companyHostNumber}
+                        {exhibitor.companyHostNumber || "U/A"}
                       </div>
                       <div className="w-full text-xl mb-5 font-medium">
                         {selectedExhibitor?.id == exhibitor.id && showCompanyHostForm ? (
@@ -447,6 +450,16 @@ export function ExhibitorPanel({
                         )}
                       </div>
                     </td>
+                    {showDeleteExhibitor &&
+                    <td>
+                      <button
+                        className="mt-2 bg-red-800 py-1 px-2 rounded-md"
+                        onClick={() => handleDeleteExhibitor(exhibitor.id)}
+                      >
+                        {t.admin.sales.header.deleteExhibitor}
+                      </button>
+                    </td>
+                    }
                   </tr>
                 ))}
               </tbody>

@@ -69,7 +69,7 @@ export function UpdateCompanyHost({
               </h2>
   
               <form
-                className="flex flex-col gap-12 min-w-[325px] max-w-[375px] text-black"
+                className="flex flex-col gap-10 w-full max-w-[455px] text-black"
                 onSubmit={(e) => {
                     setShowUpdateCompanyHostForm(false);
                     e.preventDefault();
@@ -81,35 +81,36 @@ export function UpdateCompanyHost({
                   )
                 }}
               >
-                  <div className="flex gap-3">
-                  <InputField
-                  type="text"
-                  name="name"
-                  value={companyHostName}
-                  setValue={setCompanyHostName}
-                  fields={t.exhibitorSettings.fieldsAddContact}
-                  />
-                  Värdnamn
+                  <h3 className="text-lg font-medium mt-2">Företagsvärd:</h3>
+                  <div className="flex flex-col gap-3">
+                    <InputField
+                    type="text"
+                    name="name"
+                    value={companyHostName}
+                    setValue={setCompanyHostName}
+                    fields={t.exhibitorSettings.fieldsAddContact}
+                    dark={true}
+                    />
                   </div>
-                  <div className="flex gap-3">
+                  <div className="flex flex-col gap-3">
                   <InputField
                   type="text"
                   name="email"
                   value={companyHostEmail}
                   setValue={setCompanyHostEmail}
                   fields={t.exhibitorSettings.fieldsAddContact}
+                  dark={true}
                   />
-                  Värd Email
                   </div>
-                  <div className="flex gap-3">
+                  <div className="flex flex-col gap-3">
                   <InputField
                   type="tel"
                   name="phone"
                   value={companyHostNumber}
                   setValue={setCompanyHostNumber}
                   fields={t.exhibitorSettings.fieldsAddContact}
+                  dark={true}
                   />
-                  Värdnummer
                   </div>
                 <Submit value={t.admin.sales.header.specialOrders.specialOrderSave} />
               </form>
