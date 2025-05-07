@@ -26,7 +26,7 @@ function NavLink({
   onFocus?: React.FocusEventHandler<HTMLAnchorElement>;
 }) {
   const router = useRouter();
- 
+
   return (
     <Link
       className={
@@ -62,12 +62,12 @@ function Logo({ class: className }: { class?: string }) {
     {/**/}
     <img src="/img/fluga_cerise.svg" className={`absolute w-3/4
       ${hasLoadedBefore ? '' : 'animate-in-opacity '}
-      `}> 
+      `}>
     </img>
-    <div className={` 
+    <div className={`
       mx-[-13px] my-[-43px] absolute
       ${hasLoadedBefore ? '' : 'animate-in-fluga '}
-      `}> 
+      `}>
     </div>
     <div className="absolute w-full top-[16%] left-[1%] ">
     <img
@@ -78,13 +78,13 @@ function Logo({ class: className }: { class?: string }) {
       `}
     />
     </div>
-    
+
     <p
       className={`
         absolute bottom-0 right-0
         text-[65%] leading-none
         ${hasLoadedBefore ? '' : ' animate-in-logo-date-drop-down '}
-       
+
       `}
     >
       2025
@@ -102,12 +102,12 @@ function Logo({ class: className }: { class?: string }) {
       {/**/}
       <img src="/img/fluga_cerise.svg" className={`absolute w-3/4
         ${hasLoadedBefore ? '' : 'animate-in-opacity '}
-        `}> 
+        `}>
       </img>
-      <div className={` 
+      <div className={`
         mx-[-13px] my-[-43px] absolute
         ${hasLoadedBefore ? '' : 'animate-in-fluga '}
-        `}> 
+        `}>
       </div>
       <div className="absolute w-full top-[16%] left-[1%] ">
       <img
@@ -118,13 +118,13 @@ function Logo({ class: className }: { class?: string }) {
         `}
       />
       </div>
-      
+
       <p
         className={`
           absolute bottom-0 right-0
           text-[65%] leading-none
           ${hasLoadedBefore ? '' : ' animate-in-logo-date-drop-down '}
-         
+
         `}
       >
         2025
@@ -196,24 +196,24 @@ function Group({
           <NavLink href={links[0].href} onClick={links[0].onClick}>
             {links[0].text}
           </NavLink>
-          <div className={` 
-            w-8 h-8 mt-[-8px] 
-            transition-all duration-500 
+          <div className={`
+            w-8 h-8 mt-[-8px]
+            transition-all duration-500
             rounded-full flex flex-col items-center cursor-pointer
             hover:bg-cerise
             `}
           data-dont-close
-          onClick={() => setDrop((d) => !d)}> 
+          onClick={() => setDrop((d) => !d)}>
             <img
             data-dont-close
-           
+
             src="/img/smCaret.svg/"
             className={`${
               dropped ? "rotate-180 " : ""
             }  h-4 mt-2 text-cerise  transition-transform duration-300 group`}
             ></img>
           </div>
-          
+
         </div>
         <div
           className={`
@@ -247,7 +247,7 @@ export default function Navbar() {
   const locale = l.locale;
 
   const [open, setOpen] = useState(false);
-  
+
 
   const isLoggedIn = api.account.isLoggedIn.useQuery();
   const logout = api.account.logout.useMutation();
@@ -294,7 +294,7 @@ export default function Navbar() {
           className="
           h-20 px-7 flex justify-between items-center
           bg-[linear-gradient(rgba(15,20,45,1),rgba(15,20,45,0.75))]
-          w-full 
+          w-full
           lg:absolute lg:justify-center
         "
         >
@@ -330,7 +330,7 @@ export default function Navbar() {
 
         <div
           className={`
-            w-full flex justify-between flex-col items-stretch absolute 
+            w-full flex justify-between flex-col items-stretch absolute
             top-0 pt-20 pb-[300px] lg:pb-0 lg:left-0 lg:flex-row lg:items-center lg:px-8 lg:pt-0
             bg-gradient-to-b from-black lg:from-transparent via-black lg:via-transparent to-transparent lg:bg-transparent
             transition-all duration-300
@@ -346,7 +346,7 @@ export default function Navbar() {
             </NavLink>
             <NavLink class="px-0 lg:px-4 xl:block hidden lg:pt-4 pb-4 w-[300px] lg:w-auto" href="/karta">
               {t.map}
-            </NavLink>    {/*<= this one was only used during the fair   */} 
+            </NavLink>    {/*<= this one was only used during the fair   */}
             <Group
               links={[
                 { href: "/förföretag", text: t.forCompanies },
@@ -371,7 +371,7 @@ export default function Navbar() {
             <Group
               links={[
                 { href: "/förstudenter", text: t.forStudents },
-                { href: "/karta", text: t.map }, 
+                { href: "/karta", text: t.map },
                 { href: "/logos", text: t.logos },
                 /*{ href: "/student", text: t.meetings },*/
                 {href: "/sok", text:t.sok},
@@ -381,8 +381,8 @@ export default function Navbar() {
             <div className="lg:hidden">
               <Group
                 links={[
-                  { href: "/kontakt", text: t.contact },
                   { href: "/om-oss", text: t.about },
+                  { href: "/historia", text: t.history },
                 ]}
               />
             </div>
@@ -390,15 +390,19 @@ export default function Navbar() {
           <div
             className="
             flex flex-row lg:justify-center items-center lg:pl-0 justify-center lg:pr-0
-            py-4 gap-8
+            py-4 gap-3
             lg:px-0 bg-black lg:bg-transparent lg:ml-auto
           "
           >
+            <NavLink class="hidden lg:block px-0 lg:px-4 p-4 w-[300px] lg:pr-2 lg:w-auto" href="/kontakt">
+              {t.contact}
+            </NavLink>
             <div className="hidden lg:block">
               <Group
+              class=" lg:ml-0"
                 links={[
-                  { href: "/kontakt", text: t.contact },
                   { href: "/om-oss", text: t.about },
+                  { href: "/historia", text: t.history },
                 ]}
               />
             </div>
