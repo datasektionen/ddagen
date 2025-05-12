@@ -52,7 +52,13 @@ export default function Exhibitor() {
   const [editState, setEditState] = useState<boolean>(false);
   const [companyHostName, setCompanyHostName] = useState("");
   const [companyHostNumber, setCompanyHostNumber] = useState("");
-  const [companyHostEmail, setCompanyHostEmail] = useState(""); 
+  const [companyHostEmail, setCompanyHostEmail] = useState("");
+  const [allowMarketing, setAllowMarketing] = useState(false); 
+  const [hasChecked, setHasChecked] = useState<boolean>(false);
+
+  const [showMessage, setShowMessage] = useState(false); // State för att visa meddelande
+  const [message, setMessage] = useState(''); // State för att lagra meddelandet
+
 
   // Mutations
   const setExtrasMutation: ReturnType<typeof api.exhibitor.setExtras.useMutation> = api.exhibitor.setExtras.useMutation();
@@ -65,6 +71,7 @@ export default function Exhibitor() {
   const setPhysicalAddressMutation = api.exhibitor.setPhysicalAddress.useMutation();
   const setBillingMethodMutation = api.exhibitor.setBillingMethod.useMutation();
   const setEmailMutation = api.exhibitor.setInvoiceEmail.useMutation();
+  const allowMarketingMutation = api.exhibitor.setAllowMarketing.useMutation();
 
 
   // Queries
@@ -76,6 +83,7 @@ export default function Exhibitor() {
   const getExtras = api.exhibitor.getExtras.useQuery();
   const getExhibitor = api.exhibitor.getPackage.useQuery();
   const getPreferenceCounts = api.exhibitor.getPreferenceCount.useQuery();
+  const getAllowMarketing = api.exhibitor.getAllowMarketing.useQuery();
   const getIsLoggedIn = api.account.isLoggedIn.useQuery(undefined, {
     onSuccess: (data: any) => {
       setIsLoggedIn(data);
@@ -113,6 +121,7 @@ export default function Exhibitor() {
             })
             descriptionMutation.mutateAsync(description)
             industryMutation.mutateAsync(industry)
+            allowMarketingMutation.mutateAsync(allowMarketing)
             break;
         case 2:
             jobOffersMutation.mutateAsync({
@@ -138,6 +147,12 @@ export default function Exhibitor() {
   const pageAmout = 6;
   let newPage;
   const nextPage = () => {
+    if (!hasChecked) {
+      setShowMessage(true);
+      setMessage('Vänligen kontrollera innan du fortsätter.');
+      return; // Stoppar funktionen här
+    }
+
     pageSave(page)
     newPage = (page + 1)
     if (newPage == pageAmout){
@@ -170,6 +185,11 @@ export default function Exhibitor() {
     if (!getDescription.isSuccess) return;
     setDescription(getDescription.data.description);
   }, [getDescription.data]);
+
+  useEffect(() => {
+    if (!getAllowMarketing.isSuccess) return;
+    setAllowMarketing(getAllowMarketing.data.allowMarketing);
+  }, [getAllowMarketing.data]);
 
   useEffect(() => {
     if (!getOrganizationNumber.isSuccess) return;
@@ -342,6 +362,7 @@ export default function Exhibitor() {
       }),
       descriptionMutation.mutateAsync(description),
       industryMutation.mutateAsync(industry),
+      allowMarketingMutation.mutateAsync(allowMarketing),
       jobOffersMutation.mutateAsync({
         summerJob: getCheckmarksPos("summer"),
         internship: getCheckmarksPos("intern"),
@@ -433,7 +454,13 @@ export default function Exhibitor() {
         description={description}
         setDescription={setDescription}
         industry={industry}
-        setIndustry={setIndustry}/>
+        setIndustry={setIndustry}
+        allowMarketing={allowMarketing}
+        setAllowMarketing={setAllowMarketing}
+        showSetUpPage={showSetUpPage}
+        hasChecked={hasChecked}
+        setHasChecked={setHasChecked}
+        />
 
         <JobOffers
           t={t}
@@ -522,7 +549,13 @@ export default function Exhibitor() {
       description={description}
       setDescription={setDescription}
       industry={industry}
-      setIndustry={setIndustry}/>
+      setIndustry={setIndustry}
+      allowMarketing={allowMarketing}
+      setAllowMarketing={setAllowMarketing}
+      showSetUpPage={showSetUpPage}
+      hasChecked={hasChecked}
+      setHasChecked={setHasChecked}
+      />
     </>,
     <>
       <JobOffers

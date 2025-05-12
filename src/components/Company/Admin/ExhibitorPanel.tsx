@@ -195,6 +195,32 @@ export function ExhibitorPanel({
     }
   }
 
+  function convertToCSV(data: Exhibitor[], selectedAttributes: string[]): string {
+    // Skapa headern baserat på de valda attributen
+    const header = selectedAttributes.join(',');
+    
+    // Skapa rader för varje instans baserat på de valda attributen
+    const rows = data.map(exhibitor => {
+        return selectedAttributes.map(attr => JSON.stringify(exhibitor[attr as keyof Exhibitor])).join(',');
+    });
+    
+    return [header, ...rows].join('\n'); // Slå ihop header och rader till en CSV-sträng
+  }
+
+
+  function downloadCSV(data: Exhibitor[], filename: string): void {
+    console.log(data);
+    const csv = convertToCSV(data, ["organizationNumber", "name", "description", "industry"]); // Omvandla data till CSV
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' }); // Skapa en Blob från CSV-strängen
+    const link = document.createElement('a'); // Skapa en osynlig länk
+    link.href = URL.createObjectURL(blob); // Länka till Bloben
+    link.target = '_blank';
+    link.download = filename; // Sätt nedladdningsfilens namn
+    link.click(); // Starta nedladdningen
+  }
+
+
+
   function evaluataPreferences(
     exhibitor: Exhibitor,
     type: "Representative" | "Banquet"
@@ -304,6 +330,13 @@ export function ExhibitorPanel({
                 </button>
                 }
             </div>
+          </div>
+          <div>
+            <button
+            className="mt-2 bg-cerise bg-blue-500 py-1 px-2 rounded-md"
+            onClick={()=>downloadCSV(exhibitors, "utställare.csv")}>
+              Ladda ned företagsdata
+            </button>           
           </div>
           <div className="overflow-x-auto">
             <table className="w-full bg-slate-50 bg-opacity-20 border-collapse border-solid">

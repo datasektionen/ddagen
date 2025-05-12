@@ -279,7 +279,10 @@ export default {
       logoColour: "Logga m. färg",
       description: "Beskrivning",
       industry: "Bransch",
+      allowMarketing: "Vill ni nå fler potentiella kandidater genom kostnadsfri extra marknadsföring via Kollin?",
       format: "SVG eller PNG",
+      yes: "Ja",
+      no: "Nej"
     },
     step1: {
       title: "JOBBERBJUDANDEN",
