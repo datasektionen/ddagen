@@ -147,7 +147,7 @@ export default function Exhibitor() {
   const pageAmout = 6;
   let newPage;
   const nextPage = () => {
-    if (!hasChecked) {
+    if (!hasChecked && page === 1) {
       setShowMessage(true);
       setMessage('Vänligen kontrollera innan du fortsätter.');
       return; // Stoppar funktionen här
@@ -528,9 +528,6 @@ export default function Exhibitor() {
       <div className="uppercase text-cerise text-xl md:text-2xl font font-medium text-center px-[10px] break-words">
         {t.exhibitorSettings.startHeader}
       </div>
-      <h2>
-        {}
-      </h2>
       <div className="w-full min:h-[400px] flex flex-col items-center">
         <button className="mt-4 mb-4" onClick={nextPage}>
           <a className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-medium px-6 py-2 max-lg:mx-auto w-max">
@@ -556,6 +553,7 @@ export default function Exhibitor() {
       hasChecked={hasChecked}
       setHasChecked={setHasChecked}
       />
+      {showMessage ? message : ""}
     </>,
     <>
       <JobOffers
