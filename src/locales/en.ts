@@ -598,7 +598,7 @@ export default {
   nav: {
     toContent: "To content",
     home: "Home",
-    forCompanies: "For companies",
+    forCompanies: "For companies ",
     forSponsors: "Sponsors",
     forStudents: "For students",
     about: "About",
@@ -606,7 +606,7 @@ export default {
     changeLanguage: "Change language to Swedish",
     contact: "Contact  ",
     event: "Event",
-    history: "History",
+    history: "History ",
     exhibitorSettings: "Settings",
     login: "Log in",
     logout: "Log out",

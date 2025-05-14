@@ -593,7 +593,7 @@ export default {
   nav: {
     toContent: "Till innehåll",
     home: "Hem",
-    forCompanies: "För företag",
+    forCompanies: "För företag ",
     forSponsors: "Sponsorer",
     forStudents: "För studenter",
     about: "Om Oss",
@@ -601,7 +601,7 @@ export default {
     changeLanguage: "Ändra språk till engelska",
     contact: "Kontakt  ",
     event: "Event",
-    history: "Historia",
+    history: "Historia ",
     exhibitorSettings: "Inställningar",
     login: "Logga in",
     logout: "Logga ut",
