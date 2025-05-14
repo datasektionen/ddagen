@@ -9,6 +9,7 @@ import {
   Preferences,
   sortExhibitors,
   Package,
+  JobOffer,
 } from "@/shared/Classes";
 
 import {
@@ -25,6 +26,7 @@ export function ExhibitorPanel({
   exhibitorsInterests,
   password,
   reloadLogin,
+  jobOffers,
 }: {
   t: Locale;
   exhibitors: Exhibitor[];
@@ -32,6 +34,7 @@ export function ExhibitorPanel({
   exhibitorsInterests: ExhibitorInfo[];
   password: string;
   reloadLogin: () => void;
+  jobOffers: JobOffer[];
 }) {
   const [preferenceCount, setPreferenceCount] =
     useState<Map<string, { banquet: number; representative: number }>>();
@@ -195,6 +198,56 @@ export function ExhibitorPanel({
     }
   }
 
+  function convertToCSV(data: Exhibitor[], selectedAttributes: string[]): string {
+    const jobOfferFields = ["summerJob", "internship", "partTimeJob", "masterThesis", "fullTimeJob", "traineeProgram"];
+
+    // Create the header
+    const header = selectedAttributes.concat(jobOfferFields).join(',');
+
+    const consentData = data.filter(exhibitor => exhibitor.allowMarketing)
+
+    // Build the rows
+    const rows = consentData.map(exhibitor => {
+      // Find the matching job offer by ID
+      const jobOffer = jobOffers.find(offer => offer.id === exhibitor.jobOfferId);
+
+      // Extract exhibitor attributes
+      const exhibitorValues = selectedAttributes.map(attr =>
+        JSON.stringify(exhibitor[attr as keyof Exhibitor] ?? "")
+      );
+
+      // Extract job offer attributes (if matching job offer is found)
+      const jobOfferValues = jobOffer
+        ? [
+            JSON.stringify(jobOffer.summerJob.map(x => x + 1)).replaceAll(",", ";"),
+            JSON.stringify(jobOffer.internship.map(x => x + 1)).replaceAll(",", ";"),
+            JSON.stringify(jobOffer.partTimeJob.map(x => x + 1)).replaceAll(",", ";"),
+            JSON.stringify(jobOffer.masterThesis).replaceAll(",", ";"),
+            JSON.stringify(jobOffer.fullTimeJob).replaceAll(",", ";"),
+            JSON.stringify(jobOffer.traineeProgram).replaceAll(",", ";")
+          ]
+        : Array(jobOfferFields.length).fill(""); // Empty strings if no match
+
+      return exhibitorValues.concat(jobOfferValues).join(',');
+    });
+
+    return [header, ...rows].join('\n');
+  }
+
+
+  function downloadCSV(data: Exhibitor[], filename: string): void {
+    console.log(data);
+    const csv = convertToCSV(data, ["organizationNumber", "name", "description", "industry"]); // Omvandla data till CSV
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' }); // Skapa en Blob från CSV-strängen
+    const link = document.createElement('a'); // Skapa en osynlig länk
+    link.href = URL.createObjectURL(blob); // Länka till Bloben
+    link.target = '_blank';
+    link.download = filename; // Sätt nedladdningsfilens namn
+    link.click(); // Starta nedladdningen
+  }
+
+
+
   function evaluataPreferences(
     exhibitor: Exhibitor,
     type: "Representative" | "Banquet"
@@ -304,6 +357,13 @@ export function ExhibitorPanel({
                 </button>
                 }
             </div>
+          </div>
+          <div>
+            <button
+            className="mt-2 bg-cerise bg-blue-500 py-1 px-2 rounded-md"
+            onClick={()=>downloadCSV(exhibitors, "utställare.csv")}>
+              Ladda ned företagsdata
+            </button>           
           </div>
           <div className="overflow-x-auto">
             <table className="w-full bg-slate-50 bg-opacity-20 border-collapse border-solid">
