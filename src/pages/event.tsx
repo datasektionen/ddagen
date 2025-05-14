@@ -48,13 +48,14 @@ function SingleEvent({
   return (
     <div className={`
         flex
-        ${toReverse ? "flex-row-reverse" : "flex-row"} 
+        flex-row-reverse
+        ${toReverse ? "sm:flex-row-reverse" : "sm:flex-row"} 
         gap-4 px-[50px] md:px-[50px] justify-between`}>
-      <div className={`basis-1/2 flex flex-col ${toReverse ? "items-start" : "items-end"} max-h-[300px]`}>
-        <div className={`flex flex-col w-full gap-2 items-start ${toReverse ? "items-start" : "items-end"}`}>
+      <div className={`sm:basis-1/2 max-sm:w-full flex flex-col ${toReverse ? "sm:items-start" : "sm:items-end"} max-h-[300px]`}>
+        <div className={`flex flex-col w-full gap-2 items-start ${toReverse ? "sm:items-start" : "sm:items-end"}`}>
           <h2 className="text-center lg:text-3xl md:text-xl text-white">{eventInfo[1]}</h2>
           <div className="flex bg-slate-100 bg-opacity-50 px-8 py-4 w-full max-w-[350px] bg-white/80 rounded-md" onClick={openModal}>
-            <img src={image} className="flex-1 md:max-h-[300px] lg:max-h-[300px] w-full object-contain"></img>
+            <img src={image} className="flex-1 max-h-[230px] sm:max-h-[300px] lg:max-h-[300px] w-full object-contain"></img>
           </div>
         </div>
       </div>
@@ -65,7 +66,7 @@ function SingleEvent({
           </div>}
         </div>
       </div>
-      <div className="basis-1/2"></div>
+      <div className="sm:basis-1/2 max-sm:hidden"></div>
       {modalState && (
           <div
             className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-90 z-40"
@@ -222,7 +223,7 @@ export default function Events() {
       <div className="pt-[200px] pb-[300px]">
         <h1 className="text-5xl text-cerise font-medium text-center"> EVENT</h1>
         <div className="flex flex-col mt-8">  
-          <div className="flex justify-center">
+          <div className="max-sm:hidden flex justify-center">
             <div className="w-4 bg-cerise h-full min-h-[30px] rounded-t-full"></div>
           </div>
           {events?.map((event, i) => (
@@ -244,7 +245,7 @@ export default function Events() {
             ))
           }
         </div>
-          <div className="flex justify-center">
+          <div className="flex max-sm:hidden justify-center">
             <div className="w-4 bg-cerise h-full min-h-[30px] rounded-b-full"></div>
           </div>
       </div>
