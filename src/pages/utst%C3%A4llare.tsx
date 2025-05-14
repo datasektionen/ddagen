@@ -149,7 +149,7 @@ export default function Exhibitor() {
   const nextPage = () => {
     if (!hasChecked && page === 1) {
       setShowMessage(true);
-      setMessage('Vänligen kontrollera innan du fortsätter.');
+      setMessage(t.exhibitorSettings.consentWarning);
       return; // Stoppar funktionen här
     }
 

@@ -9,6 +9,7 @@ import {
   Preferences,
   sortExhibitors,
   Package,
+  JobOffer,
 } from "@/shared/Classes";
 
 import {
@@ -25,6 +26,7 @@ export function ExhibitorPanel({
   exhibitorsInterests,
   password,
   reloadLogin,
+  jobOffers,
 }: {
   t: Locale;
   exhibitors: Exhibitor[];
@@ -32,6 +34,7 @@ export function ExhibitorPanel({
   exhibitorsInterests: ExhibitorInfo[];
   password: string;
   reloadLogin: () => void;
+  jobOffers: JobOffer[];
 }) {
   const [preferenceCount, setPreferenceCount] =
     useState<Map<string, { banquet: number; representative: number }>>();
@@ -196,15 +199,39 @@ export function ExhibitorPanel({
   }
 
   function convertToCSV(data: Exhibitor[], selectedAttributes: string[]): string {
-    // Skapa headern baserat på de valda attributen
-    const header = selectedAttributes.join(',');
-    
-    // Skapa rader för varje instans baserat på de valda attributen
-    const rows = data.map(exhibitor => {
-        return selectedAttributes.map(attr => JSON.stringify(exhibitor[attr as keyof Exhibitor])).join(',');
+    const jobOfferFields = ["summerJob", "internship", "partTimeJob", "masterThesis", "fullTimeJob", "traineeProgram"];
+
+    // Create the header
+    const header = selectedAttributes.concat(jobOfferFields).join(',');
+
+    const consentData = data.filter(exhibitor => exhibitor.allowMarketing)
+
+    // Build the rows
+    const rows = consentData.map(exhibitor => {
+      // Find the matching job offer by ID
+      const jobOffer = jobOffers.find(offer => offer.id === exhibitor.jobOfferId);
+
+      // Extract exhibitor attributes
+      const exhibitorValues = selectedAttributes.map(attr =>
+        JSON.stringify(exhibitor[attr as keyof Exhibitor] ?? "")
+      );
+
+      // Extract job offer attributes (if matching job offer is found)
+      const jobOfferValues = jobOffer
+        ? [
+            JSON.stringify(jobOffer.summerJob.map(x => x + 1)).replaceAll(",", ";"),
+            JSON.stringify(jobOffer.internship.map(x => x + 1)).replaceAll(",", ";"),
+            JSON.stringify(jobOffer.partTimeJob.map(x => x + 1)).replaceAll(",", ";"),
+            JSON.stringify(jobOffer.masterThesis).replaceAll(",", ";"),
+            JSON.stringify(jobOffer.fullTimeJob).replaceAll(",", ";"),
+            JSON.stringify(jobOffer.traineeProgram).replaceAll(",", ";")
+          ]
+        : Array(jobOfferFields.length).fill(""); // Empty strings if no match
+
+      return exhibitorValues.concat(jobOfferValues).join(',');
     });
-    
-    return [header, ...rows].join('\n'); // Slå ihop header och rader till en CSV-sträng
+
+    return [header, ...rows].join('\n');
   }
 
 

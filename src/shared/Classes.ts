@@ -172,6 +172,34 @@ export class Extras {
   }
 }
 
+export class JobOffer {
+  id: string;
+  summerJob: number[];
+  internship: number[];
+  partTimeJob: number[];
+  masterThesis: boolean;
+  fullTimeJob: boolean;
+  traineeProgram: boolean;
+
+  constructor (
+    id: string,
+    summerJob: number[],
+    internShip: number[],
+    partTimeJob: number[],
+    masterThesis: boolean,
+    fullTimeJob: boolean,
+    traineeProgram: boolean,
+  ) {
+    this.id = id;
+    this.summerJob = summerJob;
+    this.internship = internShip;
+    this.partTimeJob = partTimeJob;
+    this.masterThesis = masterThesis;
+    this.fullTimeJob = fullTimeJob;
+    this.traineeProgram = traineeProgram;
+  }
+}
+
 export class Exhibitor {
   id: string;
   name: string;

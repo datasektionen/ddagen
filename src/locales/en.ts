@@ -268,7 +268,7 @@ export default {
     lastPageText: "You will be able to edit your information later on",
     lastPageWarning: "By pressing Done I comfirm that I have read through all the input fields and have provided the correct information!",
 
-
+    consentWarning: "Please answer the marketing consent question.",
 
     start: {
       about: "ABOUT THE COMPANY",

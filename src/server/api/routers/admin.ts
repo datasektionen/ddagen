@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
-import { Exhibitor, ExhibitorInfo, Preferences } from "@/shared/Classes";
+import { Exhibitor, ExhibitorInfo, JobOffer, Preferences } from "@/shared/Classes";
 import * as pls from "@/utils/pls";
 import sendEmail from "@/utils/send-email";
 
@@ -105,6 +105,27 @@ export const adminRouter = createTRPCRouter({
                         preference.type,
                         preference.exhibitorId
                     )
+            );
+        }),
+    getAllJobOffers: publicProcedure
+        .input(z.string())
+        .mutation(async ({ input, ctx }) => {
+            if (!(await pls.checkApiKey("read-exhibitors", input)))
+                return "invalid-password";
+              
+            const jobOffers = await ctx.prisma.jobOffers.findMany();
+
+            return jobOffers.map(
+              (jobOffer) =>
+                new JobOffer(
+                  jobOffer.id,
+                  jobOffer.summerJob,
+                  jobOffer.internship,
+                  jobOffer.partTimeJob,
+                  jobOffer.masterThesis,
+                  jobOffer.fullTimeJob,
+                  jobOffer.traineeProgram
+                )
             );
         }),
     login: publicProcedure
