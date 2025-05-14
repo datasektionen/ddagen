@@ -1,22 +1,23 @@
 import { useLocale } from "@/locales";
-import Head from "next/head";
+import { NextSeo } from "next-seo";
 import { useState, useRef } from "react";
+
 function SingleEvent({
   bgColor,
   borderColor,
   toReverse,
   textColor,
   image,
-  eventInfo,
-  price,
+  showDate,
+  eventInfo
 }: {
   bgColor: string;
   borderColor: string;
   toReverse: boolean;
   textColor: string;
   image: string;
+  showDate: boolean;
   eventInfo: string[];
-  price: string;
 }) {
   const t = useLocale();
   const [modalState, setModal] = useState(false);
@@ -36,7 +37,68 @@ function SingleEvent({
     }
   };
 
+  /*
+  eventInfo={[
+      event.companyName,
+      event.header,
+      event.text,
+    ]}
+  */
+
   return (
+    <div className={`
+        flex
+        ${toReverse ? "flex-row-reverse" : "flex-row"} 
+        gap-4 px-[50px] md:px-[50px] justify-between`}>
+      <div className={`basis-1/2 flex flex-col ${toReverse ? "items-start" : "items-end"} max-h-[300px]`}>
+        <div className={`flex flex-col w-full gap-2 items-start ${toReverse ? "items-start" : "items-end"}`}>
+          <h2 className="text-center lg:text-3xl md:text-xl text-white">{eventInfo[1]}</h2>
+          <div className="flex bg-slate-100 bg-opacity-50 px-8 py-4 w-full max-w-[350px] bg-white/80 rounded-md" onClick={openModal}>
+            <img src={image} className="flex-1 md:max-h-[300px] lg:max-h-[300px] w-full object-contain"></img>
+          </div>
+        </div>
+      </div>
+      <div className="basis-[124px] h-full flex justify-center">
+        <div className="flex relative justify-center w-4 bg-cerise h-full min-h-[300px]">
+          {showDate && <div className="flex absolute justify-center items-center h-16 w-16 rounded-full bg-cerise text-white text-lg">
+            {eventInfo[3]}
+          </div>}
+        </div>
+      </div>
+      <div className="basis-1/2"></div>
+      {modalState && (
+          <div
+            className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-90 z-40"
+            ref={modalRef}
+            onClick={handleOverlayClick}
+          >
+          <div className={`bg-white bg-opacity-70 w-[500px] pb-5 flex flex-col rounded-3xl`}>
+            <div className="relative px-8 py-4 justify-center flex flex-row">
+                <img src={image} />
+
+                <button
+                  className="absolute top-5 right-3 w-[50px] h-[50px] flex items-center justify-center"
+                  onClick={closeModal}
+                >
+                  <div className="absolute h-[50px] w-[5px] bg-white rounded-md rotate-45"></div>
+                  <div className="absolute h-[50px] w-[5px] bg-white rounded-md -rotate-45"></div>
+                </button>
+              </div>
+              <div className="px-5 mt-5">
+                <h2 className="text-3xl text-black">
+                  {eventInfo[1]}
+                </h2>
+                <h3 className="text-cerise text-2xl mt-2">
+                  {t.event.subheader + eventInfo[0] + ":"}
+                </h3>
+                <p className="text-black text-start mt-5">{eventInfo[2]}</p>
+              </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+  /*
     <div
       className={`${
         toReverse
@@ -51,15 +113,15 @@ function SingleEvent({
         className={`${bgColor} ${borderColor} border-[3px] rounded-lg py-[25px] md:py-[25px] lg:py-[50px] px-[20px] bg-opacity-10 md:w-[300px] md:h-[300px] lg:w-[400px] lg:h-[300px]`}
       >
         <h2 className="text-center lg:text-3xl md: text-xl text-white">
-          {eventInfo[0]}
+          {eventInfo[1]}
         </h2>
         <h3 className="text-center text-cerise  lg:text-xl md:mt-1 lg:mt-2">
           {" "}
-          {t.event.subheader + price + " :-"}
+          {t.event.subheader + eventInfo[0]}
         </h3>
         <p className="text-white text-start mt-5 text-sm">{eventInfo[1]}</p>
         <button className={`${textColor} text-start mt-3`} onClick={openModal}>
-          <u>{t.event.extra}</u>
+          
         </button>
         {modalState && (
           <div
@@ -83,10 +145,10 @@ function SingleEvent({
               </div>
               <div className="px-5 mt-5">
                 <h2 className="text-center text-3xl text-black">
-                  {eventInfo[0]}
+                  {eventInfo[1] + " - " + eventInfo[0]}
                 </h2>
                 <h3 className="text-center text-cerise text-2xl mt-2">
-                  {t.event.subheader + price + " :-"}
+                  {t.event.subheader + eventInfo[0] + " :-"}
                 </h3>
                 <p className="text-black text-start mt-5">{eventInfo[2]}</p>
               </div>
@@ -95,71 +157,96 @@ function SingleEvent({
         )}
       </div>
     </div>
-  );
+  */
 }
 
-export default function Students() {
+export default function Events() {
   const t = useLocale();
+
+  const events = [
+    {
+      date: "Tis",
+      companyName: "Qulturnämnden",
+      image: "/img/exhibitors/qn.png",
+      header: t.event.header1,
+      text: t.event.fullParagraph1
+    },
+    {
+      date: "Ons",
+      companyName: "DKM",
+      image: "/img/exhibitors/dkm.svg",
+      header: t.event.header2,
+      text: t.event.fullParagraph2
+    },
+    {
+      date: "Tor",
+      companyName: "Systemgruppen",
+      image: "/img/exhibitors/systemgruppen.svg",
+      header: t.event.header3,
+      text: t.event.fullParagraph3
+    },
+  ]
+
+  const seoContent = {
+    sv: {
+      title: "Upptäck Spännade Event",
+      description: "Upptäck spännande event inför D-Dagen 2025! Från lunchevent till afterwork, erbjuder vi flera möjligheter att nätverka med företag och förbättra dina karriärmöjligheter. Delta i våra event för att skapa värdefulla kontakter inom tech-branschen.",
+      url: "https://ddagen.se/event",
+    },
+    en: {
+      title: "Discover Exciting Events",
+      description: "Discover exciting events leading up to D-Dagen 2025! From lunch events to afterwork gatherings, we offer multiple opportunities to network with companies and enhance your career prospects. Join our events to create valuable connections in the tech industry.",
+      url: "https://ddagen.se/en/event",
+    },
+  };
+
+  const { title, description, url } = seoContent[t.locale as "sv" | "en"];
 
   return (
     <>
-      <Head>
-          <meta name="robots" content="noindex, nofollow" />
-      </Head>
+      <NextSeo
+        title={title}
+        description={description}
+        openGraph={{
+          url,
+          title,
+          description
+        }}
+        additionalMetaTags={[
+          {
+            name: 'robots',
+            content: 'index, follow'
+          }
+        ]}
+      />
       <div className="pt-[200px] pb-[300px]">
         <h1 className="text-5xl text-cerise font-medium text-center"> EVENT</h1>
-        <SingleEvent
-          bgColor="bg-[#E2B7C9]"
-          borderColor="border-[#E2B7C9]"
-          toReverse={false}
-          textColor="text-[#E2B7C9]"
-          image="/img/lunchPic.png"
-          eventInfo={[
-            t.event.header1,
-            t.event.paragraph1,
-            t.event.fullParagraph1,
-          ]}
-          price="50 000"
-        />
-        <SingleEvent
-          bgColor="bg-[#D5759C]"
-          borderColor="border-[#D5759C]"
-          toReverse={true}
-          textColor="text-[#D5759C]"
-          image="/img/officePic.png"
-          eventInfo={[
-            t.event.header2,
-            t.event.paragraph2,
-            t.event.fullParagraph2,
-          ]}
-          price="15 000"
-        />
-        <SingleEvent
-          bgColor="bg-cerise"
-          borderColor="border-cerise"
-          toReverse={false}
-          textColor="text-cerise"
-          image="/img/barPic.png"
-          eventInfo={[
-            t.event.header3,
-            t.event.paragraph3,
-            t.event.fullParagraph3,
-          ]}
-          price="60 000"
-        />
-        <SingleEvent
-          bgColor="bg-yellow"
-          borderColor="border-yellow"
-          toReverse={true}
-          textColor="text-yellow"
-          image="/img/afterworkPic.png"
-          eventInfo={[
-            t.event.header4,
-            t.event.paragraph4,
-            t.event.fullParagraph4,
-          ]}
-          price="17 000 kr + 150 kr / student"
-        />
+        <div className="flex flex-col mt-8">  
+          <div className="flex justify-center">
+            <div className="w-4 bg-cerise h-full min-h-[30px] rounded-t-full"></div>
+          </div>
+          {events?.map((event, i) => (
+            <SingleEvent
+              key={i}
+              bgColor="bg-[#E2B7C9]"
+              borderColor="border-[#E2B7C9]"
+              toReverse={i%2 == 0}
+              textColor="text-[#E2B7C9]"
+              image={event?.image}
+              showDate={!(i > 0 && event.date === events[i-1].date)}
+              eventInfo={[
+                event.companyName,
+                event.header,
+                event.text,
+                event.date
+              ]}
+              />
+            ))
+          }
+        </div>
+          <div className="flex justify-center">
+            <div className="w-4 bg-cerise h-full min-h-[30px] rounded-b-full"></div>
+          </div>
       </div>
     </>
   );

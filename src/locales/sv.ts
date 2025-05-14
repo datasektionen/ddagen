@@ -1080,27 +1080,26 @@ export default {
   },
   event: {
     paragraph1:
-      "Lunchföreläsningar är redan ett populärt koncept bland studenterna och brukar anordnas på campus. Föreläsningarna ger er en möjlighet att exempelvis prata om ert företag, en viss produkt...",
+      "Vi i Qulturnämnden försöker se till att Datasektionen får uppleva så mycket Qultur som möjligt, i alla dess former, oftast. Om du känner att du saknar någon form av Qultur på sektionen, eller känner du att du vill hjälpa oss i vårt arbete, tveka inte att höra av dig till Qulturattachén (se kontaktuppgifterna nedan). Vi har för tillfället inget medlemskap, alla är välkomna!",
     paragraph2:
-      "Ett annat förslag är att anordna en slags After-work där studenterna får möjlighet att besöka er arbetsplats samt umgås och mingla med era medarbetare. Detta ger studenterna en god ...",
+      "Varje onsdag har ni möjlighet att avnjuta en kall öl/cider/drink/alkoholfritt alternativ tillsammans med god och prisvärd mat i META. Puben öppnar 17:17 och håller på tills gäster eller personal fått nog. Passa på att ta ett avbrott från labbandet och svänga förbi META en onsdag. Vanligtvis första onsdagspuben efter CSN-utbetalning har vi dessutom temapub med nya och roliga teman varje gång, missa inte!",
     paragraph3:
-      "Här får ni en möjlighet att besöka vårt campus och mingla med oss studenter i vår fina sektionslokal META. Under själva puben kan en rad olika aktiviteter genomföras, exempelvis quiz ...",
+      "Vi försöker regelbundet hålla i hackerkvällar där alla sektionsmedlemmar är välkomna. Vanligtvis från klockan 17 och framåt på torsdagar någonstans i E-huset. Hit kan du komma för att hänga med oss, se vad vi håller på med, eller själv utveckla något för sektionen! Om du är intresserad och vill kolla om det är hackerkväll denna vecka, fråga på vår Mattermost! Hoppas vi ses!",
     paragraph4:
       "Detta liknar After-work-konceptet lite grann och kan även kombineras med det. En case kväll ger er en god möjlighet att testa studenterna och faktiskt se vad vi går för, samt ger studenterna en rolig ...",
     fullParagraph1:
-      "Lunchföreläsningar är redan ett populärt koncept bland studenterna och brukar anordnas på campus. Föreläsningarna ger er en möjlighet att exempelvis prata om ert företag, en viss produkt eller idé, eller vilken annan visdom som helst som ni vill dela med er av. I priset ingår lokal, mat till studenter samt PR för eventet. I år kommer lunchföreläsningarna runt D-Dagen hållas i samband med Datasektionens 40-årsjubileum, vilket betyder att ni dessutom kommer vara med på deras sociala medier och hemsida.",
+      "Vi i Qulturnämnden försöker se till att Datasektionen får uppleva så mycket Qultur som möjligt, i alla dess former, oftast. Om du känner att du saknar någon form av Qultur på sektionen, eller känner du att du vill hjälpa oss i vårt arbete, tveka inte att höra av dig till Qulturattachén (se kontaktuppgifterna nedan). Vi har för tillfället inget medlemskap, alla är välkomna!",
     fullParagraph2:
-      "Ett annat förslag är att anordna en slags After-work där studenterna får möjlighet att besöka er arbetsplats samt umgås och mingla med era medarbetare. Detta ger studenterna en god möjlighet att få en känsla av kulturen på arbetsplatsen samt prata med anställda om hur det är att jobba hos er. Denna typ av event brukar vara väldigt uppskattade av studenterna.",
+      "Varje onsdag har ni möjlighet att avnjuta en kall öl/cider/drink/alkoholfritt alternativ tillsammans med god och prisvärd mat i META. Puben öppnar 17:17 och håller på tills gäster eller personal fått nog. Passa på att ta ett avbrott från labbandet och svänga förbi META en onsdag. Vanligtvis första onsdagspuben efter CSN-utbetalning har vi dessutom temapub med nya och roliga teman varje gång, missa inte!",
     fullParagraph3:
-      "Här får ni en möjlighet att besöka vårt campus och mingla med oss studenter i vår fina sektionslokal META. Under själva puben kan en rad olika aktiviteter genomföras, exempelvis quiz, brädspel eller något annat (låt fantasin flöda). I priset ingår mat och barbongar, det vill säga dryckesbiljetter ni kan dela ut till studenter. Även denna pub kommer genomföras i ett samarbete med Datasektionens 40-årsjubileum.",
+      "Vi försöker regelbundet hålla i hackerkvällar där alla sektionsmedlemmar är välkomna. Vanligtvis från klockan 17 och framåt på torsdagar någonstans i E-huset. Hit kan du komma för att hänga med oss, se vad vi håller på med, eller själv utveckla något för sektionen! Om du är intresserad och vill kolla om det är hackerkväll denna vecka, fråga på vår Mattermost! Hoppas vi ses!",
     fullParagraph4:
       "Detta liknar After-work-konceptet lite grann och kan även kombineras med det. En case kväll ger er en god möjlighet att testa studenterna och faktiskt se vad vi går för, samt ger studenterna en rolig utmaning, och beroende på uppgiften kan det också ge oss en viss känsla för hur det är att jobba med programmering.  Case kvällen kommer äga rum veckan efter D-dagen med PR för att nå ut till intresserade datateknikstudenter. Vi ansvarar för lokalen som kan anpassas efter hur många studenter som ni vill ska delta på eventet.",
-    header1: "Lunchföreläsning",
-    header2: "Afterwork/Kontorbesök",
-    header3: "Sponsrad Pub",
+    header1: "Brädspelskväll",
+    header2: "Onsdagspub",
+    header3: "Hackerkväll",
     header4: "Casekväll",
-    subheader: "Pris: ",
-    extra: "Läs mer",
+    subheader: "Om ",
   },
   admin: {
     login: {
