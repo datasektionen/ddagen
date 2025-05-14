@@ -47,10 +47,10 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
             }
           }
 
-          // const selectedOffers = Object.entries(query.offers).filter(([_, isSelected]) => isSelected);
           if (query.offers.length > 0) {
-            // const hasMatchingOffer = selectedOffers.some(([offerType, _]) => {
-              const hasMatchingOffer = query.offers.some(([offerType, _]) => {
+            console.log("QUERY OFFERS: ", query.offers);
+              const hasMatchingOffer = query.offers.some((offerType, _) => {
+                console.log("COMPARE", offerType, "\nVS", exhibitor.offers);
               switch(offerType) {
                 case 'summer':
                   return exhibitor.offers.summerJob.length > 0;
@@ -68,8 +68,10 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
                   return false;
               }
             });
-
-            if (!hasMatchingOffer) return [];
+            
+            if (!hasMatchingOffer) {
+              return [];
+            }
           }
 
           return [exhibitor.position, exhibitor];
@@ -151,6 +153,23 @@ export async function getServerSideProps() {
       jobOffers: true,
     },
   }).catch((err: any) => { return [] });
+
+  /*const exhibitorData = [...(new Array(110))].map((_, i) => ({
+    name: String.fromCharCode(65 + (i % 26)),
+    logoWhite: null,
+    logoColor: null,
+    description: String.fromCharCode(65 + (i % 26)),
+    jobOfferId: 0,
+    offers: {
+      summerJob: [Math.floor(i/26) % 5],
+      internship: [Math.floor(i/13) % 5],
+      partTimeJob: [Math.floor(i/7) % 5],
+      masterThesis: i % 2 === 0,
+      fullTimeJob: i % 3 === 0,
+      traineeProgram: i % 4 === 0,
+    },
+    position: i + 1,
+  }));*/
 
   const exhibitorData = exhibitors.map((exhibitor) => ({
     name: exhibitor.name,
