@@ -2,8 +2,10 @@ import type Locale from "@/locales";
 import { MapProp } from "@/shared/Classes";
 import { Dispatch, useEffect, useState } from "react";
 import { ImageOverlay, LayerGroup, LayersControl, MapContainer, Marker, ZoomControl } from 'react-leaflet';
-import { DivIcon, LatLngExpression } from "leaflet";
+import { Control, DivIcon, DivOverlay, LatLngExpression } from "leaflet";
 import "leaflet/dist/leaflet.css";
+import IconControl from './IconControl';
+import { useMap } from 'react-leaflet';
 
 const FLOOR_2_RANGE = { start: 1, end: 79 };
 const FLOOR_3_RANGE = { start: 80, end: 98 };
@@ -127,13 +129,6 @@ function filterExhibitorsByFloor(exhibitors: { [k: string]: MapProp }, floorRang
   });
 }
 
-const exhibitorMarker = (id: string, selected: boolean): DivIcon =>
-  new DivIcon({
-    html: id,
-    className: `rounded-full bg-pink-600 ring ${selected ? "border-4 border-pink-500 ring-3 ring-yellow" : "ring-2 ring-pink-500"} text-white text-center content-center`,
-    iconSize: selected ? [38, 38] : [30, 30]
-  });
-
 export default function Map({
     t,
     exhibitors,
@@ -150,6 +145,7 @@ export default function Map({
     setSelectedExhibitor: Dispatch<number>;
   }) {
     const [mapReady, setMapReady] = useState(false);
+    const [showIcons, setShowIcons] = useState(false);
 
     useEffect(() => {
       document.body.classList.add('overflow-hidden');
@@ -157,6 +153,28 @@ export default function Map({
         document.body.classList.remove('overflow-hidden');
       };
     }, []);
+
+    const IconControlComponent = () => {
+      const map = useMap();
+      
+      useEffect(() => {
+        const control = new IconControl(setShowIcons, showIcons);
+        map.addControl(control);
+        
+        return () => {
+          map.removeControl(control);
+        };
+      }, [map]);
+      
+      return null;
+    }
+
+    const exhibitorMarker = (id: string, selected: boolean): DivIcon =>
+      new DivIcon({
+        html: showIcons ? `<img src="/img/exhibitors/dkm.svg" alt="${id}" />` : id,
+        className: `rounded-full bg-pink-600 ring ${selected ? "border-4 border-pink-500 ring-3 ring-yellow" : "ring-2 ring-pink-500"} text-white text-center content-center`,
+        iconSize: selected ? [38, 38] : [30, 30]
+      });
 
     return (
       <div className="h-full w-full md:m-2 box-border backdrop-blur-sm md:border-4 md:border-pink-600 md:rounded-2xl select-none">
@@ -173,6 +191,7 @@ export default function Map({
         >
           {mapReady && (
             <>
+              <IconControlComponent />
               <ZoomControl position="bottomleft"/>
               <LayersControl position="bottomright" collapsed={false}>
                 <LayersControl.BaseLayer checked={mapInView == 1} name="Floor 2">
