@@ -6,7 +6,7 @@ import { AdminLogin } from "@/components/Company/Admin/AdminLogin";
 import { ExhibitorPanel } from "@/components/Company/Admin/ExhibitorPanel";
 import { ExtraOrderPanel } from "@/components/Company/Admin/ExtraOrderPanel";
 import { PreferencesPanel } from "@/components/Company/Admin/PreferencesPanel";
-import { Exhibitor, ExhibitorInfo, Preferences } from "@/shared/Classes";
+import { Exhibitor, ExhibitorInfo, JobOffer, Preferences } from "@/shared/Classes";
 import { api } from "@/utils/api";
 import Head from "next/head";
 
@@ -17,6 +17,7 @@ export default function Sales() {
 
   const [exhibitors, setExhibitors] = useState<Exhibitor[]>([]);
   const [preferences, setPreferences] = useState<Preferences[]>([]);
+  const [jobOffers, setJobOffers] = useState<JobOffer[]>([]); 
   const [exhibitorsInterests, setExhibitorsInterests] = useState<ExhibitorInfo[]>([]);
   const [buttonSelected, setButtonSelected] = useState<1 | 2 | 3>(1);
   const [password, setPassword] = useState<string>("");
@@ -25,22 +26,26 @@ export default function Sales() {
   const getExhibitors = api.admin.getExhibitors.useMutation();
   const getFoodPreferences = api.admin.getAllFoodPreferences.useMutation();
   const getExhibitorInterestRegistration = api.admin.getExhibitorInterestRegistration.useMutation();
+  const getAllJobOffers = api.admin.getAllJobOffers.useMutation();
 
   async function login(password: string) {
     try {
       const exhibitors = await getExhibitors.mutateAsync(password);
       const foodPreferences = await getFoodPreferences.mutateAsync(password);
       const exhibitorsInterests = await getExhibitorInterestRegistration.mutateAsync(password);
+      const jobOffers = await getAllJobOffers.mutateAsync(password);
       if (
         exhibitors === "invalid-password" ||
         foodPreferences === "invalid-password" ||
-        exhibitorsInterests === "invalid-password"
+        exhibitorsInterests === "invalid-password" ||
+        jobOffers === "invalid-password" 
       ) {
         return "invalid-password";
       }
       setExhibitors(exhibitors);
       setPreferences(foodPreferences);
       setExhibitorsInterests(exhibitorsInterests);
+      setJobOffers(jobOffers)
       setPassword(password);
     } catch (err) {
       return "unknown-error " + err;
@@ -89,6 +94,7 @@ export default function Sales() {
                 exhibitorsInterests={exhibitorsInterests}
                 password={password}
                 reloadLogin={() => login(password)}
+                jobOffers={jobOffers}
               />
             ) : buttonSelected == 2 ? (
               <ExtraOrderPanel t={t} exhibitors={exhibitors} />

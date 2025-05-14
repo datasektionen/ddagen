@@ -268,7 +268,7 @@ export default {
     lastPageText: "You will be able to edit your information later on",
     lastPageWarning: "By pressing Done I comfirm that I have read through all the input fields and have provided the correct information!",
 
-
+    consentWarning: "Please answer the marketing consent question.",
 
     start: {
       about: "ABOUT THE COMPANY",
@@ -281,7 +281,10 @@ export default {
       logoColour: "Logo w/ colour",
       description: "Description",
       industry: "Industry",
+      allowMarketing: "Would you like to reach out to more potential candidates via free extra marketing via Kollin?",
       format: "SVG or PNG",
+      yes: "Yes",
+      no: "No",
     },
     step1: {
       title: "JOB OFFERS",

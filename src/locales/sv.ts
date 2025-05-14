@@ -266,7 +266,7 @@ export default {
     lastPageText: "Du har möjlighet att redigera informationen efteråt",
     lastPageWarning: "Genom att klicka Klar erkänner du att du har läst ingeom alla inputrutor och att informationen du har fyllt i är korrekt!",
 
-
+    consentWarning: "Svara vänligen på marknadsföringsfrågan.",
 
     start: {
       about: "OM FÖRETAGET",
@@ -279,7 +279,10 @@ export default {
       logoColour: "Logga m. färg",
       description: "Beskrivning",
       industry: "Bransch",
+      allowMarketing: "Vill ni nå fler potentiella kandidater genom kostnadsfri extra marknadsföring via Kollin?",
       format: "SVG eller PNG",
+      yes: "Ja",
+      no: "Nej"
     },
     step1: {
       title: "JOBBERBJUDANDEN",
