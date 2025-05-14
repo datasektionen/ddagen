@@ -50,7 +50,7 @@ function SingleEvent({
         flex
         ${toReverse ? "flex-row-reverse" : "flex-row"} 
         gap-4 px-[50px] md:px-[50px] justify-between`}>
-      <div className={`basis-1/2 flex flex-col ${toReverse ? "items-start" : "items-end"}`}>
+      <div className={`basis-1/2 flex flex-col ${toReverse ? "items-start" : "items-end"} max-h-[300px]`}>
         <div className={`flex flex-col w-full gap-2 items-start ${toReverse ? "items-start" : "items-end"}`}>
           <h2 className="text-center lg:text-3xl md:text-xl text-white">{eventInfo[1]}</h2>
           <div className="flex bg-slate-100 bg-opacity-50 px-8 py-4 w-full max-w-[350px] bg-white/80 rounded-md" onClick={openModal}>
@@ -73,7 +73,7 @@ function SingleEvent({
             onClick={handleOverlayClick}
           >
           <div className={`bg-white bg-opacity-70 w-[500px] pb-5 flex flex-col rounded-3xl`}>
-            <div className="relative py-[0px] justify-center flex flex-row">
+            <div className="relative px-8 py-4 justify-center flex flex-row">
                 <img src={image} />
 
                 <button
@@ -165,23 +165,23 @@ export default function Events() {
 
   const events = [
     {
-      date: "12/09",
-      companyName: "Nordea",
-      image: "/img/exhibitors/nordea.png",
+      date: "Tis",
+      companyName: "Qulturnämnden",
+      image: "/img/exhibitors/qn.png",
       header: t.event.header1,
       text: t.event.fullParagraph1
     },
     {
-      date: "12/09",
-      companyName: "RaySearch Laboratories",
-      image: "/img/exhibitors/raysearch_laboratories.webp",
+      date: "Ons",
+      companyName: "DKM",
+      image: "/img/exhibitors/dkm.svg",
       header: t.event.header2,
       text: t.event.fullParagraph2
     },
     {
-      date: "19/09",
-      companyName: "Omegapoint",
-      image: "/img/exhibitors/omegapoint.png",
+      date: "Tor",
+      companyName: "Systemgruppen",
+      image: "/img/exhibitors/systemgruppen.svg",
       header: t.event.header3,
       text: t.event.fullParagraph3
     },
