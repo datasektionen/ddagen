@@ -266,7 +266,7 @@ export default {
     lastPageText: "Du har möjlighet att redigera informationen efteråt",
     lastPageWarning: "Genom att klicka Klar erkänner du att du har läst ingeom alla inputrutor och att informationen du har fyllt i är korrekt!",
 
-
+    consentWarning: "Svara vänligen på marknadsföringsfrågan.",
 
     start: {
       about: "OM FÖRETAGET",
