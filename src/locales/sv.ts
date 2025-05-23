@@ -98,7 +98,6 @@ export default {
             "Obegränsad förvaring & mottagning av leverans",
           ],
           disclaimers: [
-            "Jubileumsrabatten gäller till den 23:e maj"
           ]
         },
         {
@@ -121,7 +120,6 @@ export default {
             "Stor logotyp på vår hemsida",
           ],
           disclaimers: [
-            "Jubileumsrabatten gäller till den 23:e maj"
           ]
         },
       ]

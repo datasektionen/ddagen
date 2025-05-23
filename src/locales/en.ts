@@ -98,7 +98,6 @@ export default {
             "Unlimited storage & reception of deliveries",
           ],
           disclaimers: [
-            "Anniversary discount applies until May 23rd"
           ]
         },
         {
@@ -121,7 +120,6 @@ export default {
             "Large logo on our website",
           ],
           disclaimers: [
-            "Anniversary discount applies until May 23rd"
           ]
         },
       ]
