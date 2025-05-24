@@ -172,6 +172,34 @@ export class Extras {
   }
 }
 
+export class JobOffer {
+  id: string;
+  summerJob: number[];
+  internship: number[];
+  partTimeJob: number[];
+  masterThesis: boolean;
+  fullTimeJob: boolean;
+  traineeProgram: boolean;
+
+  constructor (
+    id: string,
+    summerJob: number[],
+    internShip: number[],
+    partTimeJob: number[],
+    masterThesis: boolean,
+    fullTimeJob: boolean,
+    traineeProgram: boolean,
+  ) {
+    this.id = id;
+    this.summerJob = summerJob;
+    this.internship = internShip;
+    this.partTimeJob = partTimeJob;
+    this.masterThesis = masterThesis;
+    this.fullTimeJob = fullTimeJob;
+    this.traineeProgram = traineeProgram;
+  }
+}
+
 export class Exhibitor {
   id: string;
   name: string;
@@ -203,6 +231,8 @@ export class Exhibitor {
   companyHostName: string;
   companyHostNumber: string;
   companyHostEmail: string;
+  allowMarketing: boolean;
+  industry: string; 
 
   constructor(
     id: string,
@@ -235,6 +265,8 @@ export class Exhibitor {
     companyHostName: string,
     companyHostNumber: string,
     companyHostEmail: string,
+    allowMarketing: boolean,
+    industry: string,
   ) {
     this.id = id;
     this.name = exhibitorName;
@@ -266,6 +298,8 @@ export class Exhibitor {
     this.companyHostName = companyHostName;
     this.companyHostNumber = companyHostNumber;
     this.companyHostEmail = companyHostEmail;
+    this.allowMarketing = allowMarketing;
+    this.industry = industry;
   }
 }
 
