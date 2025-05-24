@@ -96,7 +96,6 @@ export default {
             "Unlimited storage & reception of deliveries",
           ],
           disclaimers: [
-            "Anniversary discount applies until May 23rd"
           ]
         },
         {
@@ -119,7 +118,6 @@ export default {
             "Large logo on our website",
           ],
           disclaimers: [
-            "Anniversary discount applies until May 23rd"
           ]
         },
       ]
@@ -266,7 +264,7 @@ export default {
     lastPageText: "You will be able to edit your information later on",
     lastPageWarning: "By pressing Done I comfirm that I have read through all the input fields and have provided the correct information!",
 
-
+    consentWarning: "Please answer the marketing consent question.",
 
     start: {
       about: "ABOUT THE COMPANY",
@@ -279,7 +277,10 @@ export default {
       logoColour: "Logo w/ colour",
       description: "Description",
       industry: "Industry",
+      allowMarketing: "Would you like to reach out to more potential candidates via free extra marketing via Kollin?",
       format: "SVG or PNG",
+      yes: "Yes",
+      no: "No",
     },
     step1: {
       title: "JOB OFFERS",
@@ -1083,19 +1084,19 @@ export default {
   },
   event: {
     paragraph1:
-      "Lunch seminars are already a popular concept among the students at KTH and are usually held on campus during lunch hours. The seminars give you an opportunity to reach a wide audience while ...",
+      "Qulture could be, for example, screenings with a completely functional projector, parlour games with appurtenant parlour game players, arts and crafts as well as meetings with cookies, many cookies. We also do not have a locker where we have candy for the chapter's needs (but we used to).",
     paragraph2:
-      "An after-work or office visit with us allows your colleagues to show your premises to the students while socializing with them. This gives the student a feel for your workplace culture and to have a ...",
+      "Every Wednesday we open the doors to META (Osquars backe 21) and give you the chance to relax and enjoy alcoholic or alcohol free beverages ranging from beer and cider to freshly made cocktails. The pub opens 17:17 and usually is open until we or the guests has had enough. Take the chance to take a break from all the studying and let loose on the dance floor!",
     paragraph3:
-      "A sponsored pub gives your company a more up close and personal experience. It allows you to socialize with the Computer Science students in META, our roomy chapter house on KTH ...",
+      "We regularly try to hold programming evenings where everyone is welcome. Usually from 5 pm onwards on Thursdays, usually somewhere in the E-house. You can come here to see what we're doing, develop something for the chapter, hang out or maybe get help with a programming lab. The easiest way to find out when we have events is to ask in our Mattermost! Hope to see you there!",
     paragraph4:
       "This event is similar to the after-work/office visit events. A case event gives you an opportunity to test the students’ skills while providing them with a fun challenge. Depending on the type of case ...",
     fullParagraph1:
-      "Lunch seminars are already a popular concept among the students at KTH and are usually held on campus during lunch hours. The seminars give you an opportunity to reach a wide audience while talking about any topic of your choice. The price includes premises, food for students and marketing of the event.  This year, the lunch seminars will be held in collaboration with our student chapter’s 40 year anniversary. This means you will get more marketing than usual, and your company will be featured on the anniversary’s social media and website.",
+      "Qulture could be, for example, screenings with a completely functional projector, parlour games with appurtenant parlour game players, arts and crafts as well as meetings with cookies, many cookies. We also do not have a locker where we have candy for the chapter's needs (but we used to).",
     fullParagraph2:
-      "An after-work or office visit with us allows your colleagues to show your premises to the students while socializing with them. This gives the student a feel for your workplace culture and to have a more personal experience with your employees. The students greatly appreciate these types of events. We handle the marketing of the event, while you make sure the students are offered food and refreshments during the event itself.",
+      "Every Wednesday we open the doors to META (Osquars backe 21) and give you the chance to relax and enjoy alcoholic or alcohol free beverages ranging from beer and cider to freshly made cocktails. The pub opens 17:17 and usually is open until we or the guests has had enough. Take the chance to take a break from all the studying and let loose on the dance floor!",
     fullParagraph3:
-      "A sponsored pub gives your company a more up close and personal experience. It allows you to socialize with the Computer Science students in META, our roomy chapter house on KTH Campus. The pub can feature several activities such as board games, quizzes, or anything your imagination might produce. We will handle the booking of the premises and help you with planning the event. The price tag includes food for all attending students and drink coupons for you to hand out to students who mingle with you. This event will also be held in collaboration with our 40th anniversary, which includes more marketing for your company.",
+      "We regularly try to hold programming evenings where everyone is welcome. Usually from 5 pm onwards on Thursdays, usually somewhere in the E-house. You can come here to see what we're doing, develop something for the chapter, hang out or maybe get help with a programming lab. The easiest way to find out when we have events is to ask in our Mattermost! Hope to see you there!",
     fullParagraph4:
       "This event is similar to the after-work/office visit events. A case event gives you an opportunity to test the students’ skills while providing them with a fun challenge. Depending on the type of case provided it can also be a good way for the students to get a feel for what it is like to work at your company. We handle marketing of the event, booking of premises and ordering food and drinks for everyone attending. We can also assist in planning the case event if desired.",
     header1: "Lunch Seminar",
@@ -1112,6 +1113,7 @@ export default {
     dda: "Project Managers:",
     text2025: "25th anniversary!",
     text2016: "D-Dagen enters Nymble",
+
   },
   admin: {
     login: {
@@ -1129,12 +1131,14 @@ export default {
         logoColour: "Coloured Logo",
         description: "Description",
         package: "Package",
+        delete: "Remove",
         companyHost: {
           name: "Company host",
           companyHostName: "Host name",
           companyHostEmail: "Host email",
           companyHostNumber: "Host telephone number",
-          page: "Add a company host for "
+          page: "Add a company host for ",
+          empty: "We will notify you when a company host has been added",
         },
         extras: {
           name: "Extras",

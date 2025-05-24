@@ -103,11 +103,16 @@ export default function ForCompanies() {
                           */}
                           <span className="absolute w-0 h-0 border-gold border-0 bg-gold"></span>
                           
+                          
                           <div className={`flex flex-col justify-between
                             bg-[#01061E] rounded-lg h-full
                             py-8 px-8 text-left relative ${companyPackage.className ?? ""}`}>
 
-                            { /* DISCOUNT ICON TOP RIGHT (className sets the background color) */
+                            { 
+                              // REMOVED
+                              
+                              /* DISCOUNT ICON TOP RIGHT (className sets the background color)
+
                               companyPackage.discount && 
                               <div className={`flex flex-col justify-center items-center
                                   absolute top-0 right-0 translate-y-[-35%] translate-x-[35%]
@@ -116,7 +121,7 @@ export default function ForCompanies() {
                                   >
                                 {companyPackage.discount.amount}
                               </div>
-                            }
+                            */}
                             
                             {/* CARD TEXT */}
                             <div className="flex flex-col">
