@@ -108,8 +108,8 @@ export default function Years() {
     {
       year: 2025,
       pgImage: "/img/historia/pg2025.jpg",
-      nrOfCompanies: "?",
-      nrOfVisitors: "?",
+      nrOfCompanies: "TBD",
+      nrOfVisitors: "TBD",
       dda: "Max Berglund & Mortada Nasser",
       text: t.history.text2025
     },
@@ -125,8 +125,24 @@ export default function Years() {
       year: 2023,
       pgImage: "/img/historia/pg2023.png",
       nrOfCompanies: "107",
-      nrOfVisitors: "≈3200",
+      nrOfVisitors: "≈3000",
       dda: "Axel Andin Johansson & Johan Abdi",
+      text: ""
+    },
+    {
+      year: 2022,
+      pgImage: "/img/historia/pg2022.png",
+      nrOfCompanies: "85",
+      nrOfVisitors: "≈2500",
+      dda: "Carl Chemnitz & Kevin Wenström",
+      text: ""
+    },
+    {
+      year: 2021,
+      pgImage: "/img/historia/pg2021.png",
+      nrOfCompanies: "60",
+      nrOfVisitors: "≈2000",
+      dda: "Erik Nordlöf & Adam Sjöberg",
       text: ""
     },
     {
@@ -134,7 +150,7 @@ export default function Years() {
       pgImage: "/img/historia/pg2020.jpg",
       nrOfCompanies: "35",
       nrOfVisitors: "≈1000",
-      dda: "Julia…",
+      dda: "Julia Byström & Andreas Wallström",
       text: ""
     },
     {
@@ -142,39 +158,71 @@ export default function Years() {
       pgImage: "/img/historia/pg2019.jpg",
       nrOfCompanies: "81",
       nrOfVisitors: "≈2000",
-      dda: "okänt",
+      dda: "Simone De Blasio & Victor Sellstedt",
       text: ""
     },
     {
       year: 2018,
-      pgImage: "/img/historia/pg2018.jpg",
+      pgImage: "/img/historia/pg2018.png",
       nrOfCompanies: "75",
-      nrOfVisitors: "",
-      dda: "",
+      nrOfVisitors: "?",
+      dda: "Nils Streijffert",
       text: ""
     },
     {
       year: 2017,
       pgImage: "/img/historia/pg2017.jpg",
       nrOfCompanies: "60",
-      nrOfVisitors: "",
-      dda: "Linn",
+      nrOfVisitors: "?",
+      dda: "Linn Jensen",
       text: ""
     },
     {
       year: 2016,
       pgImage: "/img/historia/pg2016.png",
       nrOfCompanies: "48",
-      nrOfVisitors: "",
-      dda: "Albin Söderholm",
+      nrOfVisitors: "?",
+      dda: "Albin Johansson Söderholm",
       text: ""
     },
     {
       year: 2015,
       pgImage: "/img/historia/pg2015.png",
       nrOfCompanies: "35",
-      nrOfVisitors: "",
+      nrOfVisitors: "?",
       dda: "David Masko",
+      text: ""
+    },
+    {
+      year: 2014,
+      pgImage: "/img/historia/pg2014.png",
+      nrOfCompanies: "39",
+      nrOfVisitors: "?",
+      dda: "Johan Arnör",
+      text: ""
+    },
+    {
+      year: 2013,
+      pgImage: "/img/historia/pgLama.png",
+      nrOfCompanies: "38",
+      nrOfVisitors: "?",
+      dda: "Jennie Olsson",
+      text: ""
+    },
+    {
+      year: 2012,
+      pgImage: "/img/historia/pgLama.png",
+      nrOfCompanies: "36",
+      nrOfVisitors: "?",
+      dda: "Mattias Folke",
+      text: ""
+    },
+    {
+      year: 2011,
+      pgImage: "/img/historia/pgLama.png",
+      nrOfCompanies: "?",
+      nrOfVisitors: "?",
+      dda: "Andreas Falk",
       text: ""
     }
   ]
