@@ -48,7 +48,7 @@ export default function ForCompanies() {
           <ImageTextSection
             t={t}
             leftSideImage={true}
-            imageProps={{src: "/img/ff1.webp", alt: "People talking", className: "bg-slate-300 rounded-md"}}
+            imageProps={{src: "/img/ff3.webp", alt: "People talking"}}
             className={`mt-[10px] lg:mt-[30px] mb-[20px] lg:mb-[40px]`}
             >
               <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl max-w-xl">
@@ -158,7 +158,7 @@ export default function ForCompanies() {
           <ImageTextSection
             t={t}
             leftSideImage={false}
-            imageProps={{src: "/img/ff2.webp", alt: "People talking", className: "bg-slate-300 rounded-md"}}
+            imageProps={{src: "/img/ff4.webp", alt: "People talking"}}
             className={`mt-[20px] lg:mt-[60px] mb-[30px] lg:mb-[40px]`}
             >
               <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl max-w-xl">
