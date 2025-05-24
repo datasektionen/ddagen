@@ -1,5 +1,3 @@
-import { table } from "console";
-
 export default {
   locale: "en" as const,
   titles: {
@@ -123,7 +121,7 @@ export default {
           ]
         },
       ]
-    },      
+    },
     interestedTitle: "Interested?",
     interestedText:
       "Are you interested in exhibiting on D-Dagen and connecting with thousands of students in Computer Science and IT? Click below to sign up!",
@@ -601,13 +599,15 @@ export default {
   nav: {
     toContent: "To content",
     home: "Home",
-    forCompanies: "For companies",
+    forCompanies: "For companies ",
     forSponsors: "Sponsors",
     forStudents: "For students",
     about: "About",
     companyForm: "Exhibitor Registration",
     changeLanguage: "Change language to Swedish",
     contact: "Contact  ",
+    event: "Event",
+    history: "History ",
     exhibitorSettings: "Settings",
     login: "Log in",
     logout: "Log out",
@@ -636,9 +636,9 @@ export default {
       email: string,
       contactPerson: string,
       phoneNumber: string
-    ) => 
+    ) =>
       "<div style=\"padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
-          "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" + 
+          "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" +
             "<tbody>" +
               "<tr>" +
                 "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
@@ -658,27 +658,27 @@ export default {
               "<tr>" +
                 "<div style\"background:#DE3163;color:#ffffff;\">" +
                   "<ul style=\"padding:20px 30px; margin: 0; background:#DE3163;color:#ffffff;\">" +
-                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Company name: " + companyName + "</li>" + 
+                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Company name: " + companyName + "</li>" +
                       ((organizationNumber[0] != '0') ? "<li>Organisationsnummer: " + organizationNumber + "</li>" : "") +
-                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Email address: " + email + "</li>" + 
+                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Email address: " + email + "</li>" +
                     "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Contact person: " + contactPerson + "</li>" +
-                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Phone number: " + phoneNumber + "</li>" + 
+                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Phone number: " + phoneNumber + "</li>" +
                   "</ul>" +
                 "</div>" +
               "</tr>" +
               "<tr>" +
                 "<div style=\"padding: 0 30px 30px; background:#DE3163;color:#ffffff;\" >" +
-                  "<br><br><p> If any of the information above is incorrect or if you have any other questions, " + 
-                    "do not hesitate to contact our sales team at sales@ddagen.se. </p><br>" + 
-                  "<p>Thank you for your registration and we look forward to a successful event. </p><br>" + 
-                  "<p>Best regards, </p><br>" + 
+                  "<br><br><p> If any of the information above is incorrect or if you have any other questions, " +
+                    "do not hesitate to contact our sales team at sales@ddagen.se. </p><br>" +
+                  "<p>Thank you for your registration and we look forward to a successful event. </p><br>" +
+                  "<p>Best regards, </p><br>" +
                   "<p>The D-Dagen project group</p><br><br>" +
                 "</div>" +
               "</tr>" +
             "</tbody>" +
           "</table>" +
         "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\" >" +
-          "<img src=\"https://dev.ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\" ></img>" + 
+          "<img src=\"https://dev.ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\" ></img>" +
         "</a>" +
       "</div>",
   },
@@ -1104,6 +1104,16 @@ export default {
     header3: "Sponsored Pub",
     header4: "Case Event",
     subheader: "About: ",
+  },
+  history: {
+    header: "D-Dagen History",
+    subheader: "The term ”D-Dagen” was coined as early as the year 2000, when it was the Computer Science Chapter’s industry-day with 13 attending companies in the E-building on KTH Campus. Since then, D-Dagen has grown and in 2016 it entered the student union building, Nymble. Now D-Dagen is considered to be the largest career fair in the Nordics for Computer Science students, as well as one of the largest career fairs at KTH.",
+    nrOfCompanies: "Number of companies:",
+    nrOfVisitors: "Number of visitors:",
+    dda: "Project Managers:",
+    text2025: "25th anniversary!",
+    text2016: "D-Dagen enters Nymble",
+
   },
   admin: {
     login: {

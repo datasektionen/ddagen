@@ -1,5 +1,3 @@
-import { AddExhibitorForm } from "@/components/Company/Admin/AddExhibitorForm";
-
 export default {
   locale: "sv" as const,
   titles: {
@@ -10,8 +8,8 @@ export default {
     introFirstBlock:
       "Nordens största arbetsmarknadsdag för datateknikstudenter firar 25-årsjubileum",
     introSecondBlock:
-      "Är du en student inom data eller IT och söker efter din framtida arbetsplats, eller representerar du ett företag som letar talangfulla medarbetare?", 
-    introThirdBlock: 
+      "Är du en student inom data eller IT och söker efter din framtida arbetsplats, eller representerar du ett företag som letar talangfulla medarbetare?",
+    introThirdBlock:
       "Då är D-Dagen det perfekta tillfället för dig att träffa personer inom branschen och knyta värdefulla kontakter! I år firar D-Dagen sitt storslagna 25-års jubileum, vilket innebär att mässan kommer bli större och bättre än någonsin, med över 100+ utställare och 3000+ deltagare.",
     introSignOff: "Detta är ett firande som man inte vill missa!\n Hoppas vi ses!",
     introDDA: "Max Berglund & Mortada Nasser, D-Dagenansvariga",
@@ -596,13 +594,15 @@ export default {
   nav: {
     toContent: "Till innehåll",
     home: "Hem",
-    forCompanies: "För företag",
+    forCompanies: "För företag ",
     forSponsors: "Sponsorer",
     forStudents: "För studenter",
     about: "Om Oss",
     companyForm: "Företagsanmälan",
     changeLanguage: "Ändra språk till engelska",
     contact: "Kontakt  ",
+    event: "Event",
+    history: "Historia ",
     exhibitorSettings: "Inställningar",
     login: "Logga in",
     logout: "Logga ut",
@@ -632,9 +632,9 @@ export default {
       email: string,
       contactPerson: string,
       phoneNumber: string
-    ) => 
+    ) =>
       "<div style=\"padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
-          "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" + 
+          "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" +
             "<tbody>" +
               "<tr>" +
                 "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
@@ -654,27 +654,27 @@ export default {
               "<tr>" +
                 "<div style\"background:#DE3163;color:#ffffff;\">" +
                   "<ul style=\"padding:20px 30px; margin: 0; background:#DE3163;color:#ffffff;\">" +
-                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Company name: " + companyName + "</li>" + 
+                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Company name: " + companyName + "</li>" +
                       ((organizationNumber[0] != '0') ? "<li>Organisationsnummer: " + organizationNumber + "</li>" : "") +
-                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Email address: " + email + "</li>" + 
+                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Email address: " + email + "</li>" +
                     "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Contact person: " + contactPerson + "</li>" +
-                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Phone number: " + phoneNumber + "</li>" + 
+                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Phone number: " + phoneNumber + "</li>" +
                   "</ul>" +
                 "</div>" +
               "</tr>" +
               "<tr>" +
                 "<div style=\"padding: 0 30px 30px; background:#DE3163;color:#ffffff;\" >" +
-                  "<br><br><p> If any of the information above is incorrect or if you have any other questions, " + 
-                    "do not hesitate to contact our sales team at sales@ddagen.se. </p><br>" + 
-                  "<p>Thank you for your registration and we look forward to a successful event. </p><br>" + 
-                  "<p>Best regards, </p><br>" + 
+                  "<br><br><p> If any of the information above is incorrect or if you have any other questions, " +
+                    "do not hesitate to contact our sales team at sales@ddagen.se. </p><br>" +
+                  "<p>Thank you for your registration and we look forward to a successful event. </p><br>" +
+                  "<p>Best regards, </p><br>" +
                   "<p>The D-Dagen project group</p><br><br>" +
                 "</div>" +
               "</tr>" +
             "</tbody>" +
           "</table>" +
         "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\" >" +
-          "<img src=\"https://dev.ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\" ></img>" + 
+          "<img src=\"https://dev.ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\" ></img>" +
         "</a>" +
       "</div>",
   },
@@ -1101,6 +1101,15 @@ export default {
     header3: "Hackerkväll",
     header4: "Casekväll",
     subheader: "Om ",
+  },
+  history: {
+    header: "D-Dagen Historia",
+    subheader: "Begreppet ”D-Dagen” myntades redan år 2000, då det var en branschdag med 13 närvarande företag i E-huset på KTH Campus. Sedan dess har D-Dagen växt och 2016 intog den kårhuset, Nymble. Nu anses D-Dagen vara Nordens största arbetsmarknads-dag för datateknik-studenter, samt en av de största arbetsmarknads-dagarna på hela KTH.",
+    nrOfCompanies: "Antal Företag:",
+    nrOfVisitors: "Antal Besökare:",
+    dda: "Huvudansvariga:",
+    text2025: "JUBILEUMSÅRET!",
+    text2016: "Första mässan i kårhuset Nymble, istället för i E-huset. Första personen som valdes till den faktiska rollen som “D-Dagenansvarig."
   },
   admin: {
     login: {
