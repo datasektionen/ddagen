@@ -547,15 +547,15 @@ export default {
           "<tr>" +
             "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
               "<p>" +
-                "Hi!<br><br>" +
+                "Hi!<br />" +
               "</p>" +
             "</div>" +
           "</tr>" +
           "<tr>" +
             "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
-              "<p style=\"color:#ffffff\">To complete your login to D-Dagen, please visit the following link:</p>" +
-              "<br /><p><a href=\"" + link + "\" style=\"color:#0000FF;text-decoration:underline\">" + link + "</a></p>" +
-              "<br /><p style=\"color:#ffffff\">or enter the code <span style=\"color:#FFFF00\">" + code + "</span> on the login page.</p>" +
+              "<p style=\"color:#ffffff;\">To complete your login to D-Dagen, please visit the following link:" +
+              "<br /><a href=\"" + link + "\" style=\"color:#0000FF;text-decoration:underline\">" + link + "</a>" +
+              "<br />or enter the code: <span style=\"color:#FFFF00\">" + code + "</span> <span style=\"color:#FFFFFF\"> on the login page.</span></p>" +
             "</div>" +
           "</tr>" +
           "<tr>" +
