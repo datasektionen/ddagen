@@ -642,7 +642,7 @@ export default {
             "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
               "<p style=\"color:#ffffff;\">Vi är glada att kunna meddela att ert utställar-konto har skapats." +
               "<br />Gå in på <a href=\"https://ddagen.se/utställare\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/utställare</a>" +
-              "och logga in med mail-addressen: <span style=\"color:#FFFF00\">" + email + "</span></p>" +
+              " och logga in med mail-addressen: <span style=\"color:#FFFF00\">" + email + "</span></p>" +
             "</div>" +
           "</tr>" +
           "<tr>" +
@@ -723,38 +723,37 @@ export default {
         lastName: string,
         companyName: string
       )=>
-      "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
-        "<tr>"+
-          "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
-              "<table style=\"background-color:#EE237B;padding:30px;color:#ffffff;border-radius:10px;width:80%;margin:auto;border-collapse:separate;border-spacing:0;box-shadow:0 4px 10px rgba(0, 0, 0, 0.2)\">"+
-                  "<thead>"+
-                        "<tr>"+
-                            "<th colspan=\"2\" style=\"font-size:24px;text-align:left;padding-bottom:20px\">Hi " + firstName + " " + lastName + "!</th>"+
-                        "</tr>"+
-                  "</thead>"+
-                    "<tbody>"+
-                        "<tr>"+
-                            "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                                "<p>We are pleased to confirm that " + companyName + " wants a meeting with you.</p>"+
-                            "</td>"+
-                          "</tr>"+
-                          "<tr>"+
-                              "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                                "<p>If any of the information above is incorrect or if you have any other questions, do not hesitate to contact our sales team at <a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a>.</p>"+
-                                "<p>Best regards,</p>"+
-                                "<p>The D-Dagen project group</p>"+
-                              "</td>"+
-                          "</tr>"+
-                    "</tbody>"+
-                  "</table>"+
-          "</td>"+
-        "</tr>"+
-        "<tr>"+
-            "<td style=\"padding:0; margin:0;\">"+
-                "<img src=\"ddagen.se/img/email-signatur.png\" alt=\"D-Dagen logo\" style=\"width:100%; height:auto; display:block;\">"+
-            "</td>"+
-        "</tr>"+
-      "</table>" ,
+      "<div style=\"padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
+        "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" +
+          "<tbody>" +
+            "<tr>" +
+              "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
+                "<p>" +
+                  "Hej " + firstName + " " + lastName + "!<br />" +
+                "</p>" +
+              "</div>" +
+            "</tr>" +
+            "<tr>" +
+              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+                "<p style=\"color:#ffffff;\">Vi är glada att kunna meddela att " + companyName + " vill ha ett kontaktsamtal med dig!"+
+                "<br />Gå in på <a href=\"https://ddagen.se/student\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/student</a>" +
+                " för att välja en tid för mötet: </p>" +
+              "</div>" +
+            "</tr>" +
+            "<tr>" +
+              "<div style=\"padding: 10px 30px 30px; background:#DE3163;color:#ffffff;\" >" +
+                "<p style=\"color:#ffffff;\">Kom ihåg att det är först till kvarn på att välja tider bland de studenter som har erbjudits kontaktsamtal." +
+                "<br />Vänliga hälsningar," +
+                "<br />D-Dagen Projektgruppen" +
+                "<br /><a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a></p>" +
+              "</div>" +
+            "</tr>" +
+          "</tbody>" +
+        "</table>" +
+        "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
+          "<img src=\"https://dev.ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+        "</a>" +
+      "</div>",
     },
     meeting_deleted_by_student: {
       subject: (
