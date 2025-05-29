@@ -346,6 +346,20 @@ export const exhibitorRouter = createTRPCRouter({
         data: { description: input },
       });
     }),
+    getAllowMarketing: protectedProcedure.query(async ({ ctx }) => {
+      return await ctx.prisma.exhibitor.findUniqueOrThrow({
+        where: { id: ctx.session.exhibitorId },
+        select: { allowMarketing: true },
+      });
+    }),
+    setAllowMarketing: protectedProcedure
+      .input(z.boolean())
+      .mutation(async ({ ctx, input }) => {
+        await ctx.prisma.exhibitor.update({
+          where: { id: ctx.session.exhibitorId },
+          data: { allowMarketing: input },
+        });
+      }),
     getIndustry: protectedProcedure.query(async ({ ctx }) => {
       return await ctx.prisma.exhibitor.findUniqueOrThrow({
         where: { id: ctx.session.exhibitorId },
