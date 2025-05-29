@@ -42,6 +42,8 @@ model Exhibitor {
   extraMealCoupons          Int @default(0)
   totalBanquetTicketsWanted Int @default(0)
 
+  alcFreeDrinkCoupons       Int @default(0)
+
   companyAddress            String?
   invoiceEmail              String?
   billingMethod             String?
