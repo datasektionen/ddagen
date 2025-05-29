@@ -631,6 +631,40 @@ export default {
     sponsorLink: "https://en.omegapoint.se",
     notDecided: "Main sponsor for D-Dagen 2025 will be shown here",
   },
+  newExhibitorEmail: {
+    emailSubject: "D-Dagen Exhibitor Account Created",
+    emailBody: (email: string) =>
+    "<div style=\"padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
+      "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" +
+        "<tbody>" +
+          "<tr>" +
+            "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
+              "<p>" +
+                "Hi!<br />" +
+              "</p>" +
+            "</div>" +
+          "</tr>" +
+          "<tr>" +
+            "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
+              "<p style=\"color:#ffffff;\">We are pleased to confirm your exhibitor account has been created." +
+              "<br />Visit <a href=\"https://ddagen.se/utställare\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/utställare</a>" +
+              "and log in with the email: <span style=\"color:#FFFF00\">" + email + "</span></p>" +
+            "</div>" +
+          "</tr>" +
+          "<tr>" +
+            "<div style=\"padding: 10px 30px 30px; background:#DE3163;color:#ffffff;\" >" +
+              "<p>If you did not try to log in, you can ignore this email.</p><br>" +
+              "<p>Best regards,</p>" +
+              "<p>The D-Dagen project group</p><br>" +
+            "</div>" +
+          "</tr>" +
+        "</tbody>" +
+      "</table>" +
+      "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
+        "<img src=\"https://dev.ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+      "</a>" +
+    "</div>"
+  },
   email: {
     subject: "Exhibitor Registration Confirmation",
     body: (
