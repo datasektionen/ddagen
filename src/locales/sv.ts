@@ -542,22 +542,22 @@ export default {
           "<tr>" +
             "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
               "<p>" +
-                "Hi!<br><br>" +
+                "Hej!<br><br>" +
               "</p>" +
             "</div>" +
           "</tr>" +
           "<tr>" +
             "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
-              "<p>För att slutföra inloggningen till D-Dagen, gå till följande länk:</p>" +
-              "<br /><p><a href=\"" + link + "\" style=\"color:#440FFF;text-decoration:underline\">" + link + "</a></p>" +
-              "<br /><p>Eller ange koden: <span style=\"color:#7E6C02\">" + code + "</span> på inloggningssidan.</p>" +
+              "<p style=\"color:#ffffff;\">För att slutföra inloggningen till D-Dagen, gå till följande länk:</p>" +
+              "<br /><p><a href=\"" + link + "\" style=\"color:#0000FF;text-decoration:underline\">" + link + "</a></p>" +
+              "<br /><p style=\"color:#ffffff;padding-top:5px;\">Eller ange koden: <span style=\"color:#FFFF00\">" + code + "</span> på inloggningssidan.</p>" +
             "</div>" +
           "</tr>" +
           "<tr>" +
-            "<div style=\"padding: 0 30px 30px; background:#DE3163;color:#ffffff;\" >" +
+            "<div style=\"padding: 10px 30px 30px; background:#DE3163;color:#ffffff;\" >" +
               "<p>Om du inte försökt logga in kan du ignorera detta mail.</p><br>" +
-              "<p>Best regards,</p>" +
-              "<p>The D-Dagen project group</p><br>" +
+              "<p>Vänliga hälsningar,</p>" +
+              "<p>D-Dagen Projektgruppen</p><br>" +
             "</div>" +
           "</tr>" +
         "</tbody>" +

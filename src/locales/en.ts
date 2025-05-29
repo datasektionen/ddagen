@@ -553,13 +553,13 @@ export default {
           "</tr>" +
           "<tr>" +
             "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
-              "<p>To complete your login to D-Dagen, please visit the following link:</p>" +
-              "<br /><p><a href=\"" + link + "\" style=\"color:#440FFF;text-decoration:underline\">" + link + "</a></p>" +
-              "<br /><p>or enter the code <span style=\"color:#7E6C02\">" + code + "</span> on the login page.</p>" +
+              "<p style=\"color:#ffffff\">To complete your login to D-Dagen, please visit the following link:</p>" +
+              "<br /><p><a href=\"" + link + "\" style=\"color:#0000FF;text-decoration:underline\">" + link + "</a></p>" +
+              "<br /><p style=\"color:#ffffff\">or enter the code <span style=\"color:#FFFF00\">" + code + "</span> on the login page.</p>" +
             "</div>" +
           "</tr>" +
           "<tr>" +
-            "<div style=\"padding: 0 30px 30px; background:#DE3163;color:#ffffff;\" >" +
+            "<div style=\"padding: 10px 30px 30px; background:#DE3163;color:#ffffff;\" >" +
               "<p>If you did not try to log in, you can ignore this email.</p><br>" +
               "<p>Best regards,</p>" +
               "<p>The D-Dagen project group</p><br>" +
