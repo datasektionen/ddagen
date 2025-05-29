@@ -14,6 +14,9 @@ function Year({
   dda,
   year,
   extraInfo,
+  isFirst = false,
+  isLast = false,
+  isInterval = false
 }: {
   bgColor: string;
   borderColor: string;
@@ -26,6 +29,9 @@ function Year({
   dda: string;
   year: number;
   extraInfo: string;
+  isFirst?: boolean;
+  isLast?: boolean;
+  isInterval?: boolean;
 }) {
   const t = useLocale();
   const [modalState, setModal] = useState(false);
@@ -47,25 +53,25 @@ function Year({
 
   return (
     <div className={`
-        flex
-        ${toReverse ? "flex-row-reverse" : "flex-row"}
+        flex max-sm:flex-row-reverse
+        ${toReverse ? "lg:flex-row-reverse" : "lg:flex-row"}
         gap-4 px-[50px] md:px-[50px] justify-between`}>
-      <div className={`basis-1/2 flex flex-col ${toReverse ? "items-start" : "items-end"}`}>
-        {/* <h2 className="text-center lg:text-3xl md: text-xl text-white">{eventInfo[1]}</h2> */}
-        <div className="flex bg-slate-100 bg-opacity-50 mt-2 " onClick={openModal}>
-          <img src={pgImage} className=" max-w-[400px] object-contain"></img>
+      <div className={`basis-1/2 flex flex-col ${toReverse ? "lg:items-start" : "lg:items-end"}`}>
+        <div className="flex bg-slate-100 bg-opacity-50 mt-2 cursor-pointer" onClick={openModal}>
+          <img src={pgImage} className={` max-w-[400px] object-contain ${isInterval && "grayscale"}`}></img>
         </div>
       </div>
       <div className="basis-[124px] h-full flex justify-center">
-        <div className="flex relative justify-center w-4 bg-cerise h-full min-h-[300px]">
+        <div className={`flex relative justify-center w-4 bg-cerise ${isFirst && "max-lg:rounded-t-full"} ${isLast && "max-lg:rounded-b-full"} h-full min-h-[300px]`}>
           {showDate && <div className="flex absolute justify-center items-center h-16 w-16 rounded-full bg-cerise text-white text-lg">
             {year}
           </div>}
         </div>
       </div>
-      <div className={`basis-1/2 flex flex-col justify-center ${toReverse ? "items-end" : "items-start"}`}>
+      <div className={`basis-1/2 flex flex-col justify-center max-sm:hidden ${toReverse ? "lg:items-end" : "lg:items-start"}`}>
       <h2 className="lg:text-3xl md: text-xl text-white">D-Dagen {year}</h2>
-      <p className={`text-white text-xl ${toReverse ? "text-right" : ""}`}>{t.history.nrOfCompanies} {nrOfCompanies} <br/>{t.history.nrOfVisitors} {nrOfVisitors} <br/>{t.history.dda} <br/> {dda?.split(" & ").map((x,i)=>i==0?<>{x}<br /></>:<>{x}</>)}</p>
+      <p className={`text-white text-xl ${isInterval && "hidden"} ${toReverse ? "lg:text-right" : ""}`}>{t.history.nrOfCompanies} {nrOfCompanies} <br/>{t.history.nrOfVisitors} {nrOfVisitors} <br/>{t.history.dda} <br/> {dda?.split(" & ").map((x,i)=>i==0?<>{x}<br /></>:<>{x}</>)}</p>
+      <p className={`text-white text-l max-lg:hidden ${!isInterval && "hidden"} ${toReverse ? "lg:text-right" : ""}`}>{extraInfo}</p>
       </div>
       {modalState && (
           <div
@@ -75,7 +81,7 @@ function Year({
           >
           <div className={`bg-white bg-opacity-70 w-[500px] pb-5 flex flex-col rounded-3xl`}>
             <div className="relative py-[0px] justify-center flex flex-row">
-                <img src={pgImage} />
+                <img src={pgImage} className={`${isInterval && "grayscale"}`}/>
 
                 <button
                   className="absolute top-5 right-3 w-[50px] h-[50px] flex items-center justify-center"
@@ -89,9 +95,7 @@ function Year({
                 <h2 className="text-3xl text-black">
                   {year}
                 </h2>
-                {/* <h3 className="text-cerise text-2xl mt-2">
-                  {t.event.subheader + eventInfo[0] + ":"}
-                </h3> */}
+                <p className={`text-black text-xl sm:hidden ${isInterval && "hidden"} ${toReverse ? "sm:text-right" : ""}`}>{t.history.nrOfCompanies} {nrOfCompanies} <br/>{t.history.nrOfVisitors} {nrOfVisitors} <br/>{t.history.dda} <br/> {dda?.split(" & ").map((x,i)=>i==0?<>{x}<br /></>:<>{x}</>)}</p>
                 <p className="text-black text-start mt-5">{extraInfo}</p>
               </div>
           </div>
@@ -119,7 +123,7 @@ export default function Years() {
       nrOfCompanies: "101",
       nrOfVisitors: "3281",
       dda: "William Nordwall & Toshihide Sakao",
-      text: ""
+      text: t.history.text2024
     },
     {
       year: 2023,
@@ -127,7 +131,7 @@ export default function Years() {
       nrOfCompanies: "107",
       nrOfVisitors: "≈3000",
       dda: "Axel Andin Johansson & Johan Abdi",
-      text: ""
+      text: t.history.text2023
     },
     {
       year: 2022,
@@ -135,7 +139,7 @@ export default function Years() {
       nrOfCompanies: "85",
       nrOfVisitors: "≈2500",
       dda: "Carl Chemnitz & Kevin Wenström",
-      text: ""
+      text: t.history.text2022
     },
     {
       year: 2021,
@@ -143,7 +147,7 @@ export default function Years() {
       nrOfCompanies: "60",
       nrOfVisitors: "≈2000",
       dda: "Erik Nordlöf & Adam Sjöberg",
-      text: ""
+      text: t.history.text2021
     },
     {
       year: 2020,
@@ -151,7 +155,7 @@ export default function Years() {
       nrOfCompanies: "35",
       nrOfVisitors: "≈1000",
       dda: "Julia Byström & Andreas Wallström",
-      text: ""
+      text: t.history.text2020
     },
     {
       year: 2019,
@@ -159,7 +163,7 @@ export default function Years() {
       nrOfCompanies: "81",
       nrOfVisitors: "≈2000",
       dda: "Simone De Blasio & Victor Sellstedt",
-      text: ""
+      text: t.history.text2019
     },
     {
       year: 2018,
@@ -183,7 +187,7 @@ export default function Years() {
       nrOfCompanies: "48",
       nrOfVisitors: "?",
       dda: "Albin Johansson Söderholm",
-      text: ""
+      text: t.history.text2016
     },
     {
       year: 2015,
@@ -191,7 +195,7 @@ export default function Years() {
       nrOfCompanies: "35",
       nrOfVisitors: "?",
       dda: "David Masko",
-      text: ""
+      text: t.history.text2015
     },
     {
       year: 2014,
@@ -224,7 +228,33 @@ export default function Years() {
       nrOfVisitors: "?",
       dda: "Andreas Falk",
       text: ""
-    }
+    },
+    {
+      year: 2010,
+      pgImage: "/img/historia/pgLama.png",
+      nrOfCompanies: "?",
+      nrOfVisitors: "?",
+      dda: "Andreas Falk",
+      text: ""
+    },
+    {
+      year: 2001,
+      pgImage: "/img/historia/pgLama.png",
+      nrOfCompanies: "?",
+      nrOfVisitors: "?",
+      dda: "",
+      text: t.history.text2001,
+      isInterval: true
+    },
+    {
+      year: 2000,
+      pgImage: "/img/historia/pgLama.png",
+      nrOfCompanies: "?",
+      nrOfVisitors: "?",
+      dda: "",
+      text: t.history.text2000,
+      isInterval: true
+    },
   ]
 
   const seoContent = {
@@ -262,8 +292,9 @@ export default function Years() {
       <div className="pt-[200px] pb-[300px]">
         <h1 className="text-5xl text-cerise font-medium text-center"> {t.history.header}</h1>
         <h2 className="text-xl text-white  text-center mx-auto mt-5 max-w-4xl">{t.history.subheader}</h2>
+        <p className="text-white text-center mx-auto mt-5 max-w-4xl">{t.history.subsubheader}</p>
         <div className="flex flex-col mt-8">
-          <div className="flex justify-center">
+          <div className="flex justify-center max-lg:hidden">
             <div className="w-4 bg-cerise h-full min-h-[30px] rounded-t-full"></div>
           </div>
           {years?.map((year, i) => (
@@ -280,13 +311,18 @@ export default function Years() {
               dda={year.dda}
               year={year.year}
               extraInfo={year.text}
+              isFirst={i === 0}
+              isLast={i === years.length - 1}
+              isInterval={year?.isInterval}
               />
             ))
           }
         </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center max-lg:hidden">
             <div className="w-4 bg-cerise h-full min-h-[30px] rounded-b-full"></div>
           </div>
+          <h1 className="text-5xl text-cerise font-medium text-center"> {t.history.before2000}</h1>
+          <h2 className="text-xl text-white  text-center mx-auto mt-5 max-w-4xl">{t.history.before2000Text}</h2>
       </div>
     </>
   );

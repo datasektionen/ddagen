@@ -249,6 +249,7 @@ export default function Exhibitor() {
         getExtras.data.extraRepresentativeSpots,
         getExtras.data.totalBanquetTicketsWanted,
         getExtras.data.extraMealCoupons,
+        getExtras.data.alcFreeDrinkCoupons,
         getExtras.data?.lastChanged || undefined
       )
     );
@@ -286,6 +287,7 @@ export default function Exhibitor() {
       extraRepresentativeSpots: extras.extraRepresentativeSpots,
       totalBanquetTicketsWanted: extras.totalBanquetTicketsWanted,
       extraMealCoupons: extras.extraMealCoupons,
+      alcFreeDrinkCoupons: extras.alcFreeTickets,
       lastChanged: extras.lastChanged || new Date(),
     });
   }, [extras]);

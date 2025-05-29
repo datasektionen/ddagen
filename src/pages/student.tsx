@@ -276,7 +276,13 @@ export default function LoggedInPage() {
                 {Table(
                         [t.students.info.mainHeader],
                         [],
-                        [<><StudentInfo t={t} id={ugkthid}/></>,],
+                        [<><StudentInfo 
+                            t={t} 
+                            id={ugkthid}    
+                            onSave={() => {
+                                getMeetingsOffers(); // Refresh meetings after save
+                            }}
+                        /></>,],
                 )}
             </div>
             

@@ -96,8 +96,9 @@ function Logo({ class: className }: { class?: string }) {
     <Link
       href="/"
       className={
-        "relative w-[102px] h-[35px] flex-shrink-0 overflow-y" + (className ?? "")
+        "relative w-[102px] h-[35px] flex-shrink-0 overflow-y " + (className ?? "")
       }
+      style={{ zIndex: "100" }}
     >
       {/**/}
       <img src="/img/fluga_cerise.svg" className={`absolute w-3/4
