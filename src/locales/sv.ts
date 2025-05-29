@@ -549,8 +549,8 @@ export default {
           "<tr>" +
             "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
               "<p>För att slutföra inloggningen till D-Dagen, gå till följande länk:</p>" +
-              "<p><a href=\"" + link + "\" style=\"color:#ffffff;text-decoration:underline\">" + link + "</a></p>" +
-              "<p>eller ange koden <span style=\"color:#7E6C02\"" + code + " på inloggningssidan.</p>" +
+              "<br /><p><a href=\"" + link + "\" style=\"color:#440FFF;text-decoration:underline\">" + link + "</a></p>" +
+              "<br /><p>Eller ange koden: <span style=\"color:#7E6C02\">" + code + "</span> på inloggningssidan.</p>" +
             "</div>" +
           "</tr>" +
           "<tr>" +
