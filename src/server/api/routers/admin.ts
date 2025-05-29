@@ -3,6 +3,7 @@ import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
 import { Exhibitor, ExhibitorInfo, JobOffer, Preferences } from "@/shared/Classes";
 import * as pls from "@/utils/pls";
 import sendEmail from "@/utils/send-email";
+import { getLocale } from "@/locales";
 
 export const adminRouter = createTRPCRouter({
     getExhibitors: publicProcedure
@@ -255,17 +256,15 @@ export const adminRouter = createTRPCRouter({
       });
 
       try {
+        const t = getLocale("en");
+
         if (sendEmailToExhibitor) {
           sendEmail(
             email,
-            "D-Dagen Account Created",
-            `
-            <p>Hi!</p>
-            <p>We are pleased to confirm your exhibitor account has been created.</p>
-            <p>Visit ${"ddagen.se/utställare"} and use ${email} to log into your account.</p>
-            <p>Best regards,</p>
-            <p>The D-Dagen Team</p>
-            `
+            t.newExhibitorEmail.emailSubject,
+            t.newExhibitorEmail.emailBody(
+              email
+            )
           );
         }
     } catch (e) {

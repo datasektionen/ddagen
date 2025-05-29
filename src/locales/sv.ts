@@ -625,6 +625,40 @@ export default {
     sponsorLink: "https://omegapoint.se/",
     notDecided: "Huvudsponsor för D-Dagen kommer synas här"
   },
+  newExhibitorEmail: {
+    emailSubject: "D-Dagen - Nytt Utställarkonto",
+    emailBody: (email: string) =>
+    "<div style=\"padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
+      "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" +
+        "<tbody>" +
+          "<tr>" +
+            "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
+              "<p>" +
+                "Hej!<br />" +
+              "</p>" +
+            "</div>" +
+          "</tr>" +
+          "<tr>" +
+            "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
+              "<p style=\"color:#ffffff;\">Vi är glada att kunna meddela att ert utställar-konto har skapats." +
+              "<br />Gå in på <a href=\"https://ddagen.se/utställare\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/utställare</a>" +
+              "och logga in med mail-addressen: <span style=\"color:#FFFF00\">" + email + "</span></p>" +
+            "</div>" +
+          "</tr>" +
+          "<tr>" +
+            "<div style=\"padding: 10px 30px 30px; background:#DE3163;color:#ffffff;\" >" +
+              "<p style=\"color:#ffffff;\">Om du inte försökt logga in kan du ignorera detta mail." +
+              "<br />Vänliga hälsningar," +
+              "<br />D-Dagen Projektgruppen</p><br>" +
+            "</div>" +
+          "</tr>" +
+        "</tbody>" +
+      "</table>" +
+      "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
+        "<img src=\"https://dev.ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+      "</a>" +
+    "</div>"
+  },
   email: {
     subject: "Bekräftelse på Företagsanmälan",
     body: (
