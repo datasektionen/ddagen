@@ -2,12 +2,13 @@ import { useRef } from "react";
 import { useLocale } from "@/locales";
 import { useEffect } from "react";
 import { NextSeo } from 'next-seo';
+import ImageTextSection from "@/components/ImageTextSection";
 
 export default function ForStudents() {
   const t = useLocale();
   const scrollRef = useRef<HTMLInputElement | null>(null);
 
-  const dayStaffAplicationOpen = true;
+  const dayStaffAplicationOpen = false;
   const dayStaffAplicationLink = "https://docs.google.com/forms/d/e/1FAIpQLSfRBriKZYXWZCssxv2Z-fsFPzPnTmfd6-gUvqtzNNgWsEV2bQ/viewform";
 
   const seoContent = {
@@ -47,6 +48,72 @@ export default function ForStudents() {
           <h1 className="uppercase text-center text-cerise pt-[110px] lg:pt-[140px] mb-16 text-5xl font-medium">
             {t.forStudents.title}
           </h1>
+
+          {/* Section of D-Dagen Info */}
+          <ImageTextSection
+            t={t}
+            leftSideImage={true}
+            imageProps={{src: "/img/ff3.webp", alt: "People talking"}}
+            className={`mt-[10px] lg:mt-[30px] mb-[20px] lg:mb-[40px]`}
+            >
+              <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl max-w-xl">
+                {t.forStudents.aboutFair}
+              </h2>
+              <p className="text-white text-base sm:text-lg pt-4 max-w-xl">{t.forStudents.fairText1}</p>
+              <p className="text-white text-base sm:text-lg pt-4 max-w-xl">{t.forStudents.fairText2}</p>
+          </ImageTextSection>
+
+
+          {/* Section of Representatives */}
+          <ImageTextSection
+            t={t}
+            leftSideImage={false}
+            imageOverOnMobile={true}
+            imageProps={{src: "/img/ddagen-massa-foretag.png", alt: "Picture of ddagen exhibition day"}}
+            className={`mt-[40px] lg:mt-[70px] mb-[110px] lg:mb-[140px]`}
+            >
+              <h2 className="text-white text-2xl sm:text-2xl lg:text-3xl max-w-xl">
+                {t.forStudents.companyMeetings}
+              </h2>
+              <p className="text-white text-light sm:text-lg pt-4 max-w-xl pb-8">
+                {t.forStudents.tempCompanyMeetingsText}
+              </p>
+              {/*<Link
+                className="block hover:scale-105 transition-transform  rounded-full text-cerise bg-white font-medium px-6 py-2 max-lg:mx-auto w-max"
+                href="/student"
+              >
+                {t.home.representativeButton}
+              </Link>*/}
+          </ImageTextSection>
+
+
+          {/* Section of Day Staff */}
+          <ImageTextSection
+            t={t}
+            leftSideImage={true}
+            imageProps={{src: "/img/ff3.webp", alt: "People talking"}}
+            className={`mt-[10px] lg:mt-[30px] mb-[20px] lg:mb-[40px]`}
+            >
+              <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl max-w-xl">
+                {t.forStudents.dayStaffTitle}
+              </h2>
+              <p className="text-white text-base sm:text-lg pt-4 max-w-xl">
+                {t.forStudents.dayStaffText}
+              </p>
+                {dayStaffAplicationOpen ?
+                  <div className="flex justify-center pb-[30px]">
+                    <a href={dayStaffAplicationLink}
+                      className="block uppercase text-sm hover:scale-105 transition-transform bg-white rounded-full text-cerise font-medium px-10 py-2 cursor-pointer">
+                      {t.forStudents.dayStaffApply}
+                    </a>
+                  </div>
+                :
+                  <p className="pb-8 text-center text-yellow font-medium md:text-md text-xl font-light">
+                    {t.forStudents.dayStaffApplicationOpens}
+                  </p>
+                }
+          </ImageTextSection>
+
           <div
             ref={scrollRef}
             className="flex flex-col items-center justify-center py-12 mx-auto mb-16 max-w-5xl"
@@ -120,14 +187,14 @@ export default function ForStudents() {
                     {t.forStudents.dayStaffText}
                   </p>
                   {dayStaffAplicationOpen ?
-                    <div className="flex justify-center pb-[30px]">
+                    <div className="flex pt-6 pb-[30px]">
                       <a href={dayStaffAplicationLink}
                         className="block uppercase text-sm hover:scale-105 transition-transform bg-white rounded-full text-cerise font-medium px-10 py-2 cursor-pointer">
                         {t.forStudents.dayStaffApply}
                       </a>
                     </div>
                   :
-                    <p className="pb-8 text-center text-yellow font-medium md:text-md text-xl font-light">
+                    <p className="pt-6 pb-8 text-yellow font-medium md:text-md text-xl font-light">
                       {t.forStudents.dayStaffApplicationOpens}
                     </p>
                 }
