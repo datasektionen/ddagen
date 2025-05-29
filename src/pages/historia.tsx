@@ -58,7 +58,7 @@ function Year({
         gap-4 px-[50px] md:px-[50px] justify-between`}>
       <div className={`basis-1/2 flex flex-col ${toReverse ? "lg:items-start" : "lg:items-end"}`}>
         <div className="flex bg-slate-100 bg-opacity-50 mt-2 cursor-pointer" onClick={openModal}>
-          <img src={pgImage} className=" max-w-[400px] object-contain"></img>
+          <img src={pgImage} className={` max-w-[400px] object-contain ${isInterval && "grayscale"}`}></img>
         </div>
       </div>
       <div className="basis-[124px] h-full flex justify-center">
@@ -81,7 +81,7 @@ function Year({
           >
           <div className={`bg-white bg-opacity-70 w-[500px] pb-5 flex flex-col rounded-3xl`}>
             <div className="relative py-[0px] justify-center flex flex-row">
-                <img src={pgImage} />
+                <img src={pgImage} className={`${isInterval && "grayscale"}`}/>
 
                 <button
                   className="absolute top-5 right-3 w-[50px] h-[50px] flex items-center justify-center"
@@ -292,6 +292,7 @@ export default function Years() {
       <div className="pt-[200px] pb-[300px]">
         <h1 className="text-5xl text-cerise font-medium text-center"> {t.history.header}</h1>
         <h2 className="text-xl text-white  text-center mx-auto mt-5 max-w-4xl">{t.history.subheader}</h2>
+        <p className="text-white text-center mx-auto mt-5 max-w-4xl">{t.history.subsubheader}</p>
         <div className="flex flex-col mt-8">
           <div className="flex justify-center max-lg:hidden">
             <div className="w-4 bg-cerise h-full min-h-[30px] rounded-t-full"></div>

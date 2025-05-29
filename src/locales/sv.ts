@@ -1105,6 +1105,7 @@ export default {
   history: {
     header: "D-Dagen Historia",
     subheader: "Begreppet ”D-Dagen” myntades redan år 2000, då det var en branschdag med 13 närvarande företag i E-huset på KTH Campus. Sedan dess har D-Dagen växt och 2016 intog den kårhuset, Nymble. Nu anses D-Dagen vara Nordens största arbetsmarknads-dag för datateknik-studenter, samt en av de största arbetsmarknads-dagarna på hela KTH.",
+    subsubheader: "Klicka gärna på bilderna för mer information om varje år!",
     nrOfCompanies: "Antal Företag:",
     nrOfVisitors: "Antal Besökare:",
     dda: "Huvudansvariga:",

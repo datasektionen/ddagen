@@ -1108,6 +1108,7 @@ export default {
   history: {
     header: "D-Dagen History",
     subheader: "The term ”D-Dagen” was coined as early as the year 2000, when it was the Computer Science Chapter’s industry-day with 13 attending companies in the E-building on KTH Campus. Since then, D-Dagen has grown and in 2016 it entered the student union building, Nymble. Now D-Dagen is considered to be the largest career fair in the Nordics for Computer Science students, as well as one of the largest career fairs at KTH.",
+    subsubheader: "Pleace press the images to see more information about each year!",
     nrOfCompanies: "Number of companies:",
     nrOfVisitors: "Number of visitors:",
     dda: "Project Managers:",
