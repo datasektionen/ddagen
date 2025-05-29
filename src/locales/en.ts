@@ -1111,6 +1111,8 @@ export default {
     nrOfCompanies: "Number of companies:",
     nrOfVisitors: "Number of visitors:",
     dda: "Project Managers:",
+    before2000: "Before 2000",
+    before2000Text: "",
     text2025: "25th anniversary!",
     text2024: "William & Toshihide organized D-Dagen with the most visitors ever!",
     text2023: "Axel & Johan organized D-Dagen with the most companies ever!",
@@ -1120,6 +1122,9 @@ export default {
     text2019: "Spotify was at the fair!",
     text2016: "D-Dagen enters the student union building Nymble for the first time, instead of E-Building.",
     text2015: "First person chosen for the actual role of “D-Dagen Project Manager”: Albin Söderholm, who was responsible for next year's fair.",
+    text2013: "Google was at the fair!",
+    text2001: "",
+    text2000: "",
   },
   admin: {
     login: {

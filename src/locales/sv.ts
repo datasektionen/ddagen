@@ -1108,6 +1108,8 @@ export default {
     nrOfCompanies: "Antal Företag:",
     nrOfVisitors: "Antal Besökare:",
     dda: "Huvudansvariga:",
+    before2000: "Före 2000",
+    before2000Text: "En funktionärspost som kallades för “Armu-D” skapades. Detta var Datasektionens represent som tillsammans med representanter från andra sektioner ansvarade för Armada, studentkårens gemensamma mässa för alla studenter på KTH. \n Bårde Armu-D och Datasektionens dåvarande “PR-grupp” experimenterade i framtagandet av konceptet som senare skulle bli Datasektionens alldeles egna arbetsmarknadsdag. Under 1991 och 1992 tros Armu-D ha anordnats så kallade “Data-Armador”. Senare under 1990-talet anordnade Datasektionens PR-grupp olika branschdagar som gick under olika namn, bland annat “Ericsson-dagen”, och bjöd in ett mindre antal företag till E-huset på KTH campus. På kvällen efter en branschdag bjöds det även till Datasektionens dåvarande sektionslokal, ESCapen, där man kunde få gratis öl om man hade säkrat en “ölbånge” på branschdagen. \n 1988: Datasektionens 5-års jubileum anordnade en liten branschdag och väckte intresse för konceptet, vilket syns i dBuggen (Datasektionens anrika sektionstidning). \n 1983: Begynnelsen, Datasektionen grundas den 7:e oktober 1983.",
     text2025: "JUBILEUMSÅRET!",
     text2024: "William & Toshihide anordnade D-Dagen mässan med flest besökare någonsin!",
     text2023: "Axel & Johan anordnade D-Dagen mässan med flest företag någonsin!",
@@ -1117,6 +1119,9 @@ export default {
     text2019: "Spotify var med på mässan!",
     text2016: "Första mässan i kårhuset Nymble, istället för i E-huset.",
     text2015: "Första personen som valdes till den faktiska rollen som “D-Dagenansvarig”: Albin Söderholm som ansvarade för nästa års mässa.",
+    text2013: "Google var med på mässan!",
+    text2001: "Under början av perioden 2000-2010 ökade intresset för företag att synas bland studenterna starkt. Med det blev Datasektionens branschdag en återkommande sak och fick en mer enhetlig form och struktur. Den samordnades då av Datasektionens ”PR-grupp”, som senare blev Datasektionens ”Näringslivsgrupp”. \n Tidigt 2001 syns “D-Dagen” för första gången i sektionens officiella mötesprotokoll, när dåvarande PR-chef Peter Lindström lade fram en motion för att “få mer pengar till D-Dagen och att få pengar till kommande arrangemang under våren.” Sektionens medlemmar valde att enhälligt bifalla hans yrkande.",
+    text2000: "Namnet “D-Dagen” myntades detta år! \n Branschdagen anordnades då av Datasektionens PR-grupp och var en mindre branschdag i E-huset med 13 närvarande företag. På kvällen bjöds det även till Datasektionens dåvarande sektionslokal: ESCapen där man kunde få gratis öl om man hade säkrat en “ölbong” på branschdagen.",
   },
   admin: {
     login: {

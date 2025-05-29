@@ -15,7 +15,8 @@ function Year({
   year,
   extraInfo,
   isFirst = false,
-  isLast = false
+  isLast = false,
+  isInterval = false
 }: {
   bgColor: string;
   borderColor: string;
@@ -30,6 +31,7 @@ function Year({
   extraInfo: string;
   isFirst?: boolean;
   isLast?: boolean;
+  isInterval?: boolean;
 }) {
   const t = useLocale();
   const [modalState, setModal] = useState(false);
@@ -55,7 +57,7 @@ function Year({
         ${toReverse ? "lg:flex-row-reverse" : "lg:flex-row"}
         gap-4 px-[50px] md:px-[50px] justify-between`}>
       <div className={`basis-1/2 flex flex-col ${toReverse ? "lg:items-start" : "lg:items-end"}`}>
-        <div className="flex bg-slate-100 bg-opacity-50 mt-2 " onClick={openModal}>
+        <div className="flex bg-slate-100 bg-opacity-50 mt-2 cursor-pointer" onClick={openModal}>
           <img src={pgImage} className=" max-w-[400px] object-contain"></img>
         </div>
       </div>
@@ -68,7 +70,8 @@ function Year({
       </div>
       <div className={`basis-1/2 flex flex-col justify-center max-sm:hidden ${toReverse ? "lg:items-end" : "lg:items-start"}`}>
       <h2 className="lg:text-3xl md: text-xl text-white">D-Dagen {year}</h2>
-      <p className={`text-white text-xl ${toReverse ? "lg:text-right" : ""}`}>{t.history.nrOfCompanies} {nrOfCompanies} <br/>{t.history.nrOfVisitors} {nrOfVisitors} <br/>{t.history.dda} <br/> {dda?.split(" & ").map((x,i)=>i==0?<>{x}<br /></>:<>{x}</>)}</p>
+      <p className={`text-white text-xl ${isInterval && "hidden"} ${toReverse ? "lg:text-right" : ""}`}>{t.history.nrOfCompanies} {nrOfCompanies} <br/>{t.history.nrOfVisitors} {nrOfVisitors} <br/>{t.history.dda} <br/> {dda?.split(" & ").map((x,i)=>i==0?<>{x}<br /></>:<>{x}</>)}</p>
+      <p className={`text-white text-l max-lg:hidden ${!isInterval && "hidden"} ${toReverse ? "lg:text-right" : ""}`}>{extraInfo}</p>
       </div>
       {modalState && (
           <div
@@ -92,7 +95,7 @@ function Year({
                 <h2 className="text-3xl text-black">
                   {year}
                 </h2>
-                <p className={`text-black text-xl sm:hidden ${toReverse ? "sm:text-right" : ""}`}>{t.history.nrOfCompanies} {nrOfCompanies} <br/>{t.history.nrOfVisitors} {nrOfVisitors} <br/>{t.history.dda} <br/> {dda?.split(" & ").map((x,i)=>i==0?<>{x}<br /></>:<>{x}</>)}</p>
+                <p className={`text-black text-xl sm:hidden ${isInterval && "hidden"} ${toReverse ? "sm:text-right" : ""}`}>{t.history.nrOfCompanies} {nrOfCompanies} <br/>{t.history.nrOfVisitors} {nrOfVisitors} <br/>{t.history.dda} <br/> {dda?.split(" & ").map((x,i)=>i==0?<>{x}<br /></>:<>{x}</>)}</p>
                 <p className="text-black text-start mt-5">{extraInfo}</p>
               </div>
           </div>
@@ -225,7 +228,33 @@ export default function Years() {
       nrOfVisitors: "?",
       dda: "Andreas Falk",
       text: ""
-    }
+    },
+    {
+      year: 2010,
+      pgImage: "/img/historia/pgLama.png",
+      nrOfCompanies: "?",
+      nrOfVisitors: "?",
+      dda: "Andreas Falk",
+      text: ""
+    },
+    {
+      year: 2001,
+      pgImage: "/img/historia/pgLama.png",
+      nrOfCompanies: "?",
+      nrOfVisitors: "?",
+      dda: "",
+      text: t.history.text2001,
+      isInterval: true
+    },
+    {
+      year: 2000,
+      pgImage: "/img/historia/pgLama.png",
+      nrOfCompanies: "?",
+      nrOfVisitors: "?",
+      dda: "",
+      text: t.history.text2000,
+      isInterval: true
+    },
   ]
 
   const seoContent = {
@@ -283,6 +312,7 @@ export default function Years() {
               extraInfo={year.text}
               isFirst={i === 0}
               isLast={i === years.length - 1}
+              isInterval={year?.isInterval}
               />
             ))
           }
@@ -290,6 +320,8 @@ export default function Years() {
           <div className="flex justify-center max-lg:hidden">
             <div className="w-4 bg-cerise h-full min-h-[30px] rounded-b-full"></div>
           </div>
+          <h1 className="text-5xl text-cerise font-medium text-center"> {t.history.before2000}</h1>
+          <h2 className="text-xl text-white  text-center mx-auto mt-5 max-w-4xl">{t.history.before2000Text}</h2>
       </div>
     </>
   );
