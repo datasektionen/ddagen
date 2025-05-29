@@ -1145,12 +1145,24 @@ export default {
   history: {
     header: "D-Dagen History",
     subheader: "The term ”D-Dagen” was coined as early as the year 2000, when it was the Computer Science Chapter’s industry-day with 13 attending companies in the E-building on KTH Campus. Since then, D-Dagen has grown and in 2016 it entered the student union building, Nymble. Now D-Dagen is considered to be the largest career fair in the Nordics for Computer Science students, as well as one of the largest career fairs at KTH.",
+    subsubheader: "Pleace press the images to see more information about each year!",
     nrOfCompanies: "Number of companies:",
     nrOfVisitors: "Number of visitors:",
     dda: "Project Managers:",
+    before2000: "Before 2000",
+    before2000Text: "",
     text2025: "25th anniversary!",
-    text2016: "D-Dagen enters Nymble",
-
+    text2024: "William & Toshihide organized D-Dagen with the most visitors ever!",
+    text2023: "Axel & Johan organized D-Dagen with the most companies ever!",
+    text2022: "",
+    text2021: "D-Dagen was organized physically again after the Corona restrictions were eased! \n The Computer science and engineering chapter's board, through Matteus Berg, is presenting a proposal that D-Dagen and the Computer science and engineering chapter's Business and Relations Group should be officially separated in the organizational structure. The chapter's members chose to approve the proposal.",
+    text2020: "Due to the Covid-19 pandemic, the first digital D-Dagen is being organized. The fair took place slightly later than usual due to hopes of lighter restrictions in the fall.",
+    text2019: "Spotify was at the fair!",
+    text2016: "D-Dagen enters the student union building Nymble for the first time, instead of E-Building.",
+    text2015: "First person chosen for the actual role of “D-Dagen Project Manager”: Albin Söderholm, who was responsible for next year's fair.",
+    text2013: "Google was at the fair!",
+    text2001: "",
+    text2000: "",
   },
   admin: {
     login: {
