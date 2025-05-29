@@ -541,35 +541,36 @@ export default {
       "> if it is registered in our system. If you can't find the email, double check that the email address is correct and make sure to check your spam folder!",
     emailSubject: "D-Dagen Login",
     emailBody: (code: string, link: string) =>
-  "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
-    "<tr>"+
-      "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
-          "<table style=\"background-color:#EE237B;padding:30px;color:#ffffff;border-radius:10px;width:80%;margin:auto;border-collapse:separate;border-spacing:0;box-shadow:0 4px 10px rgba(0, 0, 0, 0.2)\">"+
-                "<tbody>"+
-                    "<tr>"+
-                        "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                            "<p>To complete the login to D-Dagen, go to the link below:</p>"+
-                            "<p> </p>"+
-                            "<p><a href=" + link + "style=\"color:#ffffff;text-decoration:underline\">" + link + "</a></p>"+
-                            "<p> </p>"+
-                            "<p>or enter the code " + code + " on the login page.</p>"+
-                        "</td>"+
-                      "</tr>"+
-                      "<tr>"+
-                          "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                            "<p>If you did not request this login, please ignore this email.</p>"+
-                          "</td>"+
-                      "</tr>"+
-                "</tbody>"+
-              "</table>"+
-      "</td>"+
-    "</tr>"+
-    "<tr>"+
-        "<td style=\"padding:0; margin:0;\">"+
-            "<img src=\"ddagen.se/img/email-signatur.png\" alt=\"D-Dagen logo\" style=\"width:100%; height:auto; display:block;\">"+
-        "</td>"+
-    "</tr>"+
-  "</table>",
+    "<div style=\"padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
+      "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" +
+        "<tbody>" +
+          "<tr>" +
+            "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
+              "<p>" +
+                "Hi!<br><br>" +
+              "</p>" +
+            "</div>" +
+          "</tr>" +
+          "<tr>" +
+            "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
+              "<p>To complete your login to D-Dagen, please visit the following link:</p>" +
+              "<p><a href=\"" + link + "\" style=\"color:#ffffff;text-decoration:underline\">" + link + "</a></p>" +
+              "<p>or enter the code " + code + " on the login page.</p>" +
+            "</div>" +
+          "</tr>" +
+          "<tr>" +
+            "<div style=\"padding: 0 30px 30px; background:#DE3163;color:#ffffff;\" >" +
+              "<p>If you did not try to log in, you can ignore this email.</p><br>" +
+              "<p>Best regards,</p>" +
+              "<p>The D-Dagen project group</p><br>" +
+            "</div>" +
+          "</tr>" +
+        "</tbody>" +
+      "</table>" +
+      "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
+        "<img src=\"https://dev.ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+      "</a>" +
+    "</div>"
   },
   companyForm: {
     title: "Sign up for D-Dagen",

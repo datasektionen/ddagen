@@ -28,6 +28,7 @@ async function createCode(
 
   
   try {
+    /*
     sendEmail(
       email,
       "D-Dagen Account Login",
@@ -40,13 +41,12 @@ async function createCode(
       <p>The D-Dagen Team</p>
       `
     );
-    /*
+    */
     sendEmail(
       email,
       t.login.emailSubject,
       t.login.emailBody(loginCode, magicLink)
     );
-    */
   } catch (e) {}
 }
 
