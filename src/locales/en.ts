@@ -342,6 +342,7 @@ export default {
           logoColour: "Logo w/ colour",
           or: "or",
           industry: "Industry",
+          numPeople: "Please bring no more than five representatives to the fair"
         },
         section2: {
           header: "Job Offers",
