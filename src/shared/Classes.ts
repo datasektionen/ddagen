@@ -142,6 +142,7 @@ export type ExhibitorExtras = {
   representativeSpots: number;
   banquetTicket: number;
   mealCoupons: number;
+  alcFreeTicket: number;
 };
 
 export class Extras {
@@ -235,7 +236,8 @@ export class Exhibitor {
   companyHostNumber: string;
   companyHostEmail: string;
   allowMarketing: boolean;
-  industry: string; 
+  industry: string;
+  alcFreeTicket: number; 
 
   constructor(
     id: string,
@@ -270,6 +272,7 @@ export class Exhibitor {
     companyHostEmail: string,
     allowMarketing: boolean,
     industry: string,
+    alcFreeTicket: number,
   ) {
     this.id = id;
     this.name = exhibitorName;
@@ -303,6 +306,7 @@ export class Exhibitor {
     this.companyHostEmail = companyHostEmail;
     this.allowMarketing = allowMarketing;
     this.industry = industry;
+    this.alcFreeTicket = alcFreeTicket;
   }
 }
 

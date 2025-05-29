@@ -419,7 +419,7 @@ export default {
             third: "Total",
           },
           drinkCoupons: "Drink Coupons with alcohol",
-          alcFreeTicket: "Drin coupons without alcohol",
+          alcFreeTicket: "Drink coupons without alcohol",
           mealCoupons: "Breakfast/Lunch Coupons",
           lastChanged: "Last Changed: ",
           tables: "Tables",
