@@ -1109,7 +1109,14 @@ export default {
     nrOfVisitors: "Antal Besökare:",
     dda: "Huvudansvariga:",
     text2025: "JUBILEUMSÅRET!",
-    text2016: "Första mässan i kårhuset Nymble, istället för i E-huset. Första personen som valdes till den faktiska rollen som “D-Dagenansvarig."
+    text2024: "William & Toshihide anordnade D-Dagen mässan med flest besökare någonsin!",
+    text2023: "Axel & Johan anordnade D-Dagen mässan med flest företag någonsin!",
+    text2022: "",
+    text2021: "D-Dagen anordnas fysiskt igen efter att Corona restriktionerna lättats! \n Datasektionens styrelse, genom Matteus Berg, lägger fram en proposition om att D-Dagen och Datasektionens Näringslivsgrupp officiellt ska separeras i organisationsstrukturen. Sektionens medlemmar valde att bifalla propositionen.",
+    text2020: "På grund av coronapandemin anordnas den första digitala D-Dagen. Mässan ägede rum något senare än vanligt på grund av att man hoppades på lättare restriktioner på hösten.",
+    text2019: "Spotify var med på mässan!",
+    text2016: "Första mässan i kårhuset Nymble, istället för i E-huset.",
+    text2015: "Första personen som valdes till den faktiska rollen som “D-Dagenansvarig”: Albin Söderholm som ansvarade för nästa års mässa.",
   },
   admin: {
     login: {

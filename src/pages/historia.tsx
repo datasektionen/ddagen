@@ -119,7 +119,7 @@ export default function Years() {
       nrOfCompanies: "101",
       nrOfVisitors: "3281",
       dda: "William Nordwall & Toshihide Sakao",
-      text: ""
+      text: t.history.text2024
     },
     {
       year: 2023,
@@ -127,7 +127,7 @@ export default function Years() {
       nrOfCompanies: "107",
       nrOfVisitors: "≈3000",
       dda: "Axel Andin Johansson & Johan Abdi",
-      text: ""
+      text: t.history.text2023
     },
     {
       year: 2022,
@@ -135,7 +135,7 @@ export default function Years() {
       nrOfCompanies: "85",
       nrOfVisitors: "≈2500",
       dda: "Carl Chemnitz & Kevin Wenström",
-      text: ""
+      text: t.history.text2022
     },
     {
       year: 2021,
@@ -143,7 +143,7 @@ export default function Years() {
       nrOfCompanies: "60",
       nrOfVisitors: "≈2000",
       dda: "Erik Nordlöf & Adam Sjöberg",
-      text: ""
+      text: t.history.text2021
     },
     {
       year: 2020,
@@ -151,7 +151,7 @@ export default function Years() {
       nrOfCompanies: "35",
       nrOfVisitors: "≈1000",
       dda: "Julia Byström & Andreas Wallström",
-      text: ""
+      text: t.history.text2020
     },
     {
       year: 2019,
@@ -159,7 +159,7 @@ export default function Years() {
       nrOfCompanies: "81",
       nrOfVisitors: "≈2000",
       dda: "Simone De Blasio & Victor Sellstedt",
-      text: ""
+      text: t.history.text2019
     },
     {
       year: 2018,
@@ -183,7 +183,7 @@ export default function Years() {
       nrOfCompanies: "48",
       nrOfVisitors: "?",
       dda: "Albin Johansson Söderholm",
-      text: ""
+      text: t.history.text2016
     },
     {
       year: 2015,
@@ -191,7 +191,7 @@ export default function Years() {
       nrOfCompanies: "35",
       nrOfVisitors: "?",
       dda: "David Masko",
-      text: ""
+      text: t.history.text2015
     },
     {
       year: 2014,
