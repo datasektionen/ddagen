@@ -342,6 +342,7 @@ export default {
           logoColour: "Logo w/ colour",
           or: "or",
           industry: "Industry",
+          numPeople: "Please bring no more than five representatives to the fair"
         },
         section2: {
           header: "Job Offers",
@@ -418,7 +419,8 @@ export default {
             second: "Options",
             third: "Total",
           },
-          drinkCoupons: "Drink Coupons",
+          drinkCoupons: "Drink Coupons with alcohol",
+          alcFreeTicket: "Drink coupons without alcohol",
           mealCoupons: "Breakfast/Lunch Coupons",
           lastChanged: "Last Changed: ",
           tables: "Tables",

@@ -47,6 +47,7 @@ export const adminRouter = createTRPCRouter({
                         exhibitor.companyHostEmail ?? "",
                         exhibitor.allowMarketing,
                         exhibitor.industry ?? "",
+                        exhibitor.alcFreeDrinkCoupons,
                     )
             );
         }),

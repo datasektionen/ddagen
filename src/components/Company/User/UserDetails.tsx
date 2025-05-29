@@ -28,7 +28,7 @@ export function UserDetails({ t }: { t: Locale }) {
       <h2 className="uppercase text-cerise text-2xl md:text-4xl font-normal px-[10px] break-words mb-8 mt-6">
         {t.exhibitorSettings.table.row1.section3.header}
       </h2>
-
+      <p><b>{t.exhibitorSettings.table.row1.section1.numPeople}</b></p>
       <p className="text-white mb-4 font-normal text-base">
         {t.exhibitorSettings.table.row1.section3.info}
       </p>

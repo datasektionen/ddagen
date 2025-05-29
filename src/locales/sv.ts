@@ -340,6 +340,7 @@ export default {
           logoColour: "Logga m. färg",
           or: "eller",
           industry: "Bransch",
+          numPeople: "Ta vänligen inte med er mer än fem representanter till mässan"
         },
         section2: {
           header: "Jobberbjudanden",
@@ -416,7 +417,8 @@ export default {
             second: "Tillval",
             third: "Totalt",
           },
-          drinkCoupons: "Dryckesbiljetter",
+          drinkCoupons: "Dryckesbiljetter med alkohol",
+          alcFreeTicket: "Dryckesbiljett utan alkhol",
           mealCoupons: "Frukost/lunch biljetter",
           lastChanged: "Senast ändrad: ",
           tables: "Bord",
