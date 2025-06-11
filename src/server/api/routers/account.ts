@@ -26,7 +26,22 @@ async function createCode(
     }),
   ]);
 
+  
   try {
+    /*
+    sendEmail(
+      email,
+      "D-Dagen Account Login",
+      `
+      <p>Hi!</p>
+      <p>To login in to your account. Please visit:</p>
+      <p><a href="${magicLink}" style="color:#ffffff;text-decoration:underline">${magicLink}</a></p>
+      <p>Or type in the code ${loginCode} to log into your account.</p>
+      <p>Best regards,</p>
+      <p>The D-Dagen Team</p>
+      `
+    );
+    */
     sendEmail(
       email,
       t.login.emailSubject,
