@@ -9,7 +9,6 @@ import { PreferencesPanel } from "@/components/Company/Admin/PreferencesPanel";
 import { Exhibitor, ExhibitorInfo, JobOffer, Preferences } from "@/shared/Classes";
 import { api } from "@/utils/api";
 import Head from "next/head";
-import { CompanyMeetingsPanel } from "@/components/Company/Admin/CompanyMeetingsPanel";
 
 export default function Sales() {
   const t = useLocale();
@@ -20,7 +19,7 @@ export default function Sales() {
   const [preferences, setPreferences] = useState<Preferences[]>([]);
   const [jobOffers, setJobOffers] = useState<JobOffer[]>([]); 
   const [exhibitorsInterests, setExhibitorsInterests] = useState<ExhibitorInfo[]>([]);
-  const [buttonSelected, setButtonSelected] = useState<1 | 2 | 3 | 4>(1);
+  const [buttonSelected, setButtonSelected] = useState<1 | 2 | 3>(1);
   const [password, setPassword] = useState<string>("");
 
   const logout = api.admin.logout.useMutation();
@@ -83,7 +82,6 @@ export default function Sales() {
               buttonOneText="Exhibitors"
               buttonTwoText="Extras"
               buttonThreeText="Preferences"
-              buttonFourText="Meetings"
               buttonSelected={buttonSelected}
               setButtonSelected={setButtonSelected}
             />
@@ -100,17 +98,13 @@ export default function Sales() {
               />
             ) : buttonSelected == 2 ? (
               <ExtraOrderPanel t={t} exhibitors={exhibitors} />
-            ) : buttonSelected == 3 ? (
+            ) : (
               <PreferencesPanel
                 t={t}
                 exhibitors={exhibitors}
                 preferences={preferences}
               />
-            ) : <CompanyMeetingsPanel 
-                  t={t}
-                  exhibitors={exhibitors}
-                  password={password} />
-            }
+            )}
           </div>
         )}
       </div>
