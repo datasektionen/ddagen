@@ -260,7 +260,7 @@ export default function Years() {
   const seoContent = {
     sv: {
       title: "D-Dagen genom tiderna!",
-      description: "Utforska D-Dagens historia och se hur vi har utvecklats genom åren.",
+      description: "Utforska D-Dagens historia och se hur vi har utvecklats genom åren. ",
       url: "https://ddagen.se/historia",
     },
     en: {
@@ -322,7 +322,14 @@ export default function Years() {
             <div className="w-4 bg-cerise h-full min-h-[30px] rounded-b-full"></div>
           </div>
           <h1 className="text-5xl text-cerise font-medium text-center"> {t.history.before2000}</h1>
-          <h2 className="text-xl text-white  text-center mx-auto mt-5 max-w-4xl">{t.history.before2000Text}</h2>
+          <h2 className="text-xl text-white text-center mx-auto mt-5 mb-5 max-w-4xl">{t.history.before2000Text}</h2>
+          <h3 className="text-2xl text-cerise font-medium text-center"> {t.history.header1988}</h3>
+          <h4 className="text-xl text-white text-center mx-auto mt-2 mb-4 max-w-4xl">{t.history.text1988}</h4>
+          <h5 className="text-2xl text-cerise font-medium text-center"> {t.history.header1983}</h5>
+          <h6 className="text-xl text-white text-center mx-auto mt-2 max-w-4xl">{t.history.text1983}</h6>
+          <h6 className="text-xl text-white text-center mx-auto mt-20 max-w-4xl">{t.history.contact}
+          <a className='text-yellow' href='mailto:ansvarig@ddagen.se'> ansvarig@ddagen.se</a>
+          </h6>
       </div>
     </>
   );
