@@ -1335,6 +1335,11 @@ export default {
     info:"Information om rollerna",
     extra:"Läs mer om rollerna",
     moreInfo:"Intresserad?",
+    viceDDA:{
+      header: "Vice DDA",
+      text: "Vice-DDA är en nyckelroll inom D-Dagen och fungerar som projektledarens (DDA:s) högra hand. Genom ett nära samarbete med DDA stöttar Vice-DDA det övergripande arbetet i projektet och säkerställer att alla grupper rör sig i rätt riktning. Rollen kräver ett helhetsperspektiv, god kommunikationsförmåga och en stark känsla för ansvar. Vice-DDA bidrar till att D-Dagen blir en sammanhängande, effektiv och minnesvärd upplevelse för både studenter och företag.",
+      roles : ["\n- Driven\n- Villig att lära sig\n- Flexibel\n Som Vice-DDA så har du inga exakt satta arbetsuppgifter, utan din roll är att hjälpa till DDA på alla möjliga sätt. Allt från att gå på möten med undergrupperna till hjälpa till med företagskontakt. Det vill säga, en Vice-DDA ska gärna ha erfarenhet av D-Dagen, men det är absolut inget krav utan det viktigaste är att man har ett starkt driv och är villig att lära sig mycket"]
+    },
     prGroup:{
       header: "PR-Gruppen",
       text: "PR-gruppen är en mångsidig och kreativ grupp inom D-Dagen. Gruppen ansvarar för att skapa och upprätthålla den visuella delen av D-Dagens varumärke. De har en rad olika ansvarsområden som sträcker sig från sociala medier och marknadsföring till den grafisk designen och tryckhantering.",
