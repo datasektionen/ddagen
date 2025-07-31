@@ -81,7 +81,7 @@ export class Package {
         break;
       case 2:
         this.name = t.packages.name[2];
-        this.tables = 1;
+        this.tables = 2;
         this.chairs = 0;
         this.drinkCoupons = 16;
         this.representatives = 4;
@@ -90,7 +90,7 @@ export class Package {
         break;
       case 3:
         this.name = t.packages.name[3];
-        this.tables = 1;
+        this.tables = 2;
         this.chairs = 0;
         this.drinkCoupons = 16; 
         this.representatives = 10;
