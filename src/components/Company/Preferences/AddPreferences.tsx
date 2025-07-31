@@ -72,7 +72,7 @@ export function AddPreferences({
   function handleSubmission(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const maxPreferences = isRepresentative
-      ? exhibitorPackage.representatives
+      ? Infinity // They can have unlimited preferences for the lunch/breakfast tickets.
       : exhibitorPackage.banquetTickets;
     if (
       preference.id ||
