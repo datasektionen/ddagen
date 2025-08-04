@@ -119,7 +119,7 @@ export default function Years() {
     },
     {
       year: 2024,
-      pgImage: "/img/historia/pg2024.jpg",
+      pgImage: "/img/historia/pg2024_modified.jpg",
       nrOfCompanies: "101",
       nrOfVisitors: "3281",
       dda: "William Nordwall & Toshihide Sakao",
