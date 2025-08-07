@@ -997,6 +997,7 @@ export default {
     table3row4: "VI VILL HA MER INFORMATION, VART VÄNDER VI OSS?",
     table3row5: "ÄR NI ETT STARTUP?",
     table3row6: "Hur går kontaktsamtal till?",
+    table3row7: "Hur går Paneldiskussioner till?",
     table3text1:
       "Ni får göra en <a href='https://ddagen.se/företagsanmälan' target='blank' className='underline text-yellow'>  intresseanmälan</a> eller kontakta våra säljare på <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
     table3text2:
@@ -1008,7 +1009,9 @@ export default {
     table3text5:
       "Kontakta oss på <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
     table3text6:
-      "Studentmötena är ett utmärkt tillfälle för studenter och företag att träffas i en mer personlig miljö. Studenterna kommer att välja vilka företag de vill träffa, och företagen kommer sedan att kunna välja vilka av dessa studenter de vill träffa. Studenterna kommer därefter att kunna välja en tidslucka för att träffa företagen under mässan. Läs mer om det <a href='https://ddagen.se/en/studentmeetings' target='blank' className='underline text-yellow'>här</a>.",
+      "Studentmötena är ett utmärkt tillfälle för studenter och företag att träffas i en mer personlig miljö. Studenterna kommer att välja vilka företag de vill träffa, och företagen kommer sedan att kunna välja vilka av dessa studenter de vill träffa. Studenterna kommer därefter att kunna välja en tidslucka för att träffa företagen under mässan. Läs mer om det <a href='https://ddagen.se/kontaktsamtal' target='blank' className='underline text-yellow'>här</a>.",
+    table3text7:
+      "Under mässdagen så anordnas det 3 st paneldiskussioner som vardera behandlar ett IT-relevant ämne och som modereras av D-Dagen. Vid ett sådant tillfälle får studenter möjlighet att höra om hur det är att arbeta inom IT-branschen, samt får ta del av en intressant och lärorik diskussion mellan ett fåtal företagsrepresentanter från olika företag.",
     table4row1:
       "VILKEN TYP AV EVENEMANG KAN VÅRT FÖRETAG ANORDNA TILLSAMMANS MED D-DAGEN?",
     table4text1:
@@ -1103,6 +1106,22 @@ export default {
     subheader: "FRÅGOR, TANKAR, & IDEER?",
     paragraph:
       "Tveka inte att höra av dig om du har några frågor angående våra produkter eller har några funderingar.",
+  },
+  studentmeetings: {
+    header: "Kontaktsamtal",
+    subheader1: "Kontakta oss",
+    subheader2: "Upplägg",
+    subheader3: "Sök kontaktsamtal",
+    p1: "Kontaktsamtal är en unik möjlighet för företag och studenter att i enrum träffas och diskutera karriärsmöjligheter. Studenten får en mycket bättre inblick i förhållandena på den specifika arbetsplatsen, samt så får företag en utmärkt bild över den specifika studentens kunskaper och erfarenheter.",
+    p2: "Innan mötena kommer företag och studenter matchas via vår webbsida via följande process:",
+    bulletpoints: [
+      "Studenter loggar in på sitt konto på webbsidan via <a className='text-yellow' href='https://ddagen.se/student'>ddagen.se/student</a>",
+      "Laddar upp sitt cv",
+      "Väljer vilka företag som de är intresserade av att ha kontaktsamtal med."
+    ],
+    p3: "Företagen ser sedan över listan med studenter som är intresserade av att samtala med just dem, och väljer vilka de ska boka möten med utifrån deras studentprofiler och CV. \n\n Varje företag får en 2-timmars tidslucka någon gång under mässans öppettider (kl. 10–16) där de kommer ha möjlighet att möta så många studenter som de hinner eller har möjlighet till. \n\n Vi rekommenderar 15 minuters möten, men det är upp till respektive företag.",
+    p4: "Skapa din studentprofil och välj företag för kontaktsamtal",
+    cta: "Skapa Profil"
   },
   event: {
     paragraph1:
