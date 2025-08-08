@@ -1001,6 +1001,7 @@ export default {
     table3row4: "WE WOULD LIKE MORE INFORMATION, WHERE DO WE TURN?",
     table3row5: "ARE YOU A STARTUP?",
     table3row6: "HOW DO STUDENT METTINGS WORK?",
+    table3row7: "HOW DO THE PANEL DISCUSSIONS WORK?",
     table3text1:
       "You can make a <a href='https://ddagen.se/företagsanmälan' target='blank' className='underline text-yellow'>  registration of interest </a> or contact our sales team at <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
     table3text2:
@@ -1012,7 +1013,9 @@ export default {
     table3text5:
       "Contact us at <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
     table3text6:
-      "The student meetings are a great opportunity for companies and students to meet in a more personal setting. The students will choose which companies they want to meet, and the company will then be able to select which of these students they want to meet. The students will then be able to choose a time slot to meet the company, during the fair. Read more about it <a href='https://ddagen.se/en/studentmeetings' target='blank' className='underline text-yellow'>here</a>.",
+      "The student meetings are a great opportunity for companies and students to meet in a more personal setting. The students will choose which companies they want to meet, and the company will then be able to select which of these students they want to meet. The students will then be able to choose a time slot to meet the company, during the fair. Read more about it <a href='https://ddagen.se/en/kontaktsamtal' target='blank' className='underline text-yellow'>here</a>.",
+    table3text7:
+      " During the fair, three panel discussions are held, each focusing on a topic relevant to the IT industry and moderated by D-Dagen. These sessions give students the opportunity to learn what it's like to work in the IT field, as well as to listen to engaging and insightful discussions between a select group of company representatives from various organizations.",
     table4row1:
       "WHAT KIND OF EVENTS CAN OUR COMPANY HOST TOGETHER WITH D-DAGEN?",
     table4text1:
@@ -1106,6 +1109,22 @@ export default {
     subheader: "QUESTIONS, THOUGHTS, & IDEAS?",
     paragraph:
       "Don't hesitate to get in touch if you have any questions about our products or have any other questions.",
+  },
+  studentmeetings: {
+    header: "Student Meetings",
+    subheader1: "Contact Us",
+    subheader2: "Format",
+    subheader3: "Apply for student meetings",
+    p1: "Student meetings are a unique opportunity for companies and students to meet one-on-one and discuss career opportunities. Students gain valuable insight into the specific workplace, while companies get an excellent understanding of the student's skills and experiences.",
+    p2: "Before the meetings, companies and students are matched through our website using the following process:",
+    bulletpoints: [
+      "Students log in to their account on the website via <a className='text-yellow' href='https://ddagen.se/student'>ddagen.se/student</a>",
+      "Upload their CV",
+      "Select the companies they are interested in having a student meeting with."
+    ],
+    p3: "The companies then review the list of students who are interested in speaking with them and choose whom to schedule meetings with based on their student profiles and CVs.\n\nEach company is assigned a 2-hour time slot sometime during the fair (10:00–16:00), during which they can meet as many students as they are able to.\n\nWe recommend 15-minute meetings, but the exact duration is up to each individual company.",
+    p4: "Create your student profile and choose companies for student meetings",
+    cta: "Create Profile"
   },
   event: {
     paragraph1:
