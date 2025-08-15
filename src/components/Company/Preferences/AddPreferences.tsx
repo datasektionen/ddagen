@@ -32,7 +32,7 @@ export function AddPreferences({
   setEditState: Dispatch<undefined | string>;
   exhibitorPackage: Package;
 }) {
-  const deadline = "2025-09-18";
+  const deadline = "2025-09-10";
   const allowPreferenceChange = new Date() <= new Date("2025-09-22");
   const isRepresentative = type == "Representative";
   const defaultPreference = new Preferences(undefined, "", [], "", type);
