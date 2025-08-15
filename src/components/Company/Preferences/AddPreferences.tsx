@@ -215,7 +215,7 @@ export function AddPreferences({
             <div
               className={
                 isRepresentative
-                  ? "flex flex-col lg:flex-row pt-6 px-20"
+                  ? "flex flex-col lg:grid lg:grid-rows-2 lg:grid-cols-2 pt-6 px-36"
                   : "flex flex-col lg:grid lg:grid-rows-2 lg:grid-cols-2 pt-6 px-36"
               }
             >
@@ -229,7 +229,7 @@ export function AddPreferences({
                 <div
                   className={
                     isRepresentative
-                      ? `flex flex-row ${i == 0 || i == 4 ? "hidden" : ""}`
+                      ? `${i == 4 ? "hidden" : ""}`
                       : ""
                   }
                   key={option}
