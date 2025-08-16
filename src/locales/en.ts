@@ -499,7 +499,7 @@ export default {
             placeholderTextEmail: "Enter the email for invoicing",
             physicalAddress: "Address",
             placeholderTextPhysicalAddress: "Enter companyaddress (Ex. Drottning Kristinas väg 15-19)",
-            billingMethods: ["E-Invoice", "PDF Invoice"],
+            billingMethods: ["PDF Invoice", "E-Invoice"],
             billingMethodText: "Billing Method",
             placeholderTextBillingMethod: "Enter billing method",
           },

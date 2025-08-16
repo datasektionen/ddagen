@@ -496,7 +496,7 @@ export default {
           placeholderTextEmail: "Ange e-postadress",
           physicalAddress: "Företagsadress",
           placeholderTextPhysicalAddress: "Ange företagsadress (Ex. Drottning Kristinas väg 15-19)",
-          billingMethods: ["E-faktura", "PDF-faktura"],
+          billingMethods: ["PDF-faktura", "E-faktura"],
           billingMethodText: "Faktureringsmetod",
           placeholderTextBillingMethod: "Ange faktureringsmetod",
         },
