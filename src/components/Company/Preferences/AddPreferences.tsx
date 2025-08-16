@@ -32,7 +32,7 @@ export function AddPreferences({
   setEditState: Dispatch<undefined | string>;
   exhibitorPackage: Package;
 }) {
-  const deadline = "2025-09-18";
+  const deadline = "2025-09-10";
   const allowPreferenceChange = new Date() <= new Date("2025-09-22");
   const isRepresentative = type == "Representative";
   const defaultPreference = new Preferences(undefined, "", [], "", type);
@@ -215,7 +215,7 @@ export function AddPreferences({
             <div
               className={
                 isRepresentative
-                  ? "flex flex-col lg:flex-row pt-6 px-20"
+                  ? "flex flex-col lg:grid lg:grid-rows-2 lg:grid-cols-2 pt-6 px-36"
                   : "flex flex-col lg:grid lg:grid-rows-2 lg:grid-cols-2 pt-6 px-36"
               }
             >
@@ -229,7 +229,7 @@ export function AddPreferences({
                 <div
                   className={
                     isRepresentative
-                      ? `flex flex-row ${i == 0 || i == 4 ? "hidden" : ""}`
+                      ? `${i == 4 ? "hidden" : ""}`
                       : ""
                   }
                   key={option}
