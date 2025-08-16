@@ -1001,6 +1001,7 @@ export default {
     table3row4: "WE WOULD LIKE MORE INFORMATION, WHERE DO WE TURN?",
     table3row5: "ARE YOU A STARTUP?",
     table3row6: "HOW DO STUDENT METTINGS WORK?",
+    table3row7: "HOW DO THE PANEL DISCUSSIONS WORK?",
     table3text1:
       "You can make a <a href='https://ddagen.se/företagsanmälan' target='blank' className='underline text-yellow'>  registration of interest </a> or contact our sales team at <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
     table3text2:
@@ -1012,7 +1013,9 @@ export default {
     table3text5:
       "Contact us at <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
     table3text6:
-      "The student meetings are a great opportunity for companies and students to meet in a more personal setting. The students will choose which companies they want to meet, and the company will then be able to select which of these students they want to meet. The students will then be able to choose a time slot to meet the company, during the fair. Read more about it <a href='https://ddagen.se/en/studentmeetings' target='blank' className='underline text-yellow'>here</a>.",
+      "The student meetings are a great opportunity for companies and students to meet in a more personal setting. The students will choose which companies they want to meet, and the company will then be able to select which of these students they want to meet. The students will then be able to choose a time slot to meet the company, during the fair. Read more about it <a href='https://ddagen.se/en/kontaktsamtal' target='blank' className='underline text-yellow'>here</a>.",
+    table3text7:
+      " During the fair, three panel discussions are held, each focusing on a topic relevant to the IT industry and moderated by D-Dagen. These sessions give students the opportunity to learn what it's like to work in the IT field, as well as to listen to engaging and insightful discussions between a select group of company representatives from various organizations.",
     table4row1:
       "WHAT KIND OF EVENTS CAN OUR COMPANY HOST TOGETHER WITH D-DAGEN?",
     table4text1:
@@ -1106,6 +1109,22 @@ export default {
     subheader: "QUESTIONS, THOUGHTS, & IDEAS?",
     paragraph:
       "Don't hesitate to get in touch if you have any questions about our products or have any other questions.",
+  },
+  studentmeetings: {
+    header: "Student Meetings",
+    subheader1: "Contact Us",
+    subheader2: "Format",
+    subheader3: "Apply for student meetings",
+    p1: "Student meetings are a unique opportunity for companies and students to meet one-on-one and discuss career opportunities. Students gain valuable insight into the specific workplace, while companies get an excellent understanding of the student's skills and experiences.",
+    p2: "Before the meetings, companies and students are matched through our website using the following process:",
+    bulletpoints: [
+      "Students log in to their account on the website via <a className='text-yellow' href='https://ddagen.se/student'>ddagen.se/student</a>",
+      "Upload their CV",
+      "Select the companies they are interested in having a student meeting with."
+    ],
+    p3: "The companies then review the list of students who are interested in speaking with them and choose whom to schedule meetings with based on their student profiles and CVs.\n\nEach company is assigned a 2-hour time slot sometime during the fair (10:00–16:00), during which they can meet as many students as they are able to.\n\nWe recommend 15-minute meetings, but the exact duration is up to each individual company.",
+    p4: "Create your student profile and choose companies for student meetings",
+    cta: "Create Profile"
   },
   event: {
     paragraph1:
@@ -1341,12 +1360,19 @@ export default {
   },
   sok:{
     notActive: "The signup is not active yet, keep an eye on social media for when it opens!",
-    header: "Signup for D-DAGEN",
+    header: "Signup for leadership group 26",
     description: "The goal for this year's D-Dagen is to make it the biggest and best career fair in Datasektionen's history! This is the vision we have as organizers this year. However, it's impossible for us to organize such a large event entirely on our own. We need an ambitious project group to help us, one that has the drive to create something extraordinary. We aim to improve internal communication from previous years, and, therefore, we will focus extensively on team building to create a close-knit group. We also expect that everyone in the project group is sociable, has good teamwork skills, and is self-driven in their tasks.",
     search:"SIGNUP",
     info:"Information about the roles",
     extra:"Read more about the roles",
     moreInfo:"Interested?",
+    viceDDA:{
+      header: "Vice DDA",
+      text: "The Vice-DDA is a key role within D-Dagen and acts as the right hand of the project manager (DDA). Through close collaboration with the DDA, the Vice-DDA supports the overall work of the project and ensures that all teams move in the right direction. The role requires a holistic perspective, strong communication skills, and a strong sense of responsibility. The Vice-DDA contributes to making D-Dagen a cohesive, efficient, and memorable experience for both students and companies.",
+      roles:[
+        "\n- Driven\n- Willing to learn\n- Flexible\n As Vice-DDA, you don’t have any strictly defined tasks instead, your role is to support the DDA in all possible ways. Everything from attending meetings with subgroups to assisting with company contacts. In other words, a Vice-DDA should ideally have experience with D-Dagen, but that is by no means a requirement—the most important thing is having strong drive and a willingness to learn a lot."
+      ]
+    },
     prGroup:{
       header: "PR Team",
       text: "As the PR manager, you are the leader of the PR team. You drive and organize the group, ensuring that everyone knows what they need to do and has the necessary resources. Since you work closely with the PR team, you will become very close-knit. As the PR manager, you will also communicate extensively with the DDA's.",

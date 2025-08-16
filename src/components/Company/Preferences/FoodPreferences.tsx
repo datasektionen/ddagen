@@ -16,7 +16,7 @@ export default function FoodPreferences({
   setPreferenceCount: Dispatch<{ banqcount: number; reprcount: number }>;
   exhibitorPackage: Package;
 }) {
-  const deadline = "2024-09-18"
+  const deadline = "2025-09-10"
 
   return (
     <div className="flex flex-col w-full items-center text-center overflow-auto mt-6 outline-yellow">
