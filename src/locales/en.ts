@@ -499,7 +499,7 @@ export default {
             placeholderTextEmail: "Enter the email for invoicing",
             physicalAddress: "Address",
             placeholderTextPhysicalAddress: "Enter companyaddress (Ex. Drottning Kristinas väg 15-19)",
-            billingMethods: ["E-Invoice", "PDF Invoice"],
+            billingMethods: ["PDF Invoice", "E-Invoice"],
             billingMethodText: "Billing Method",
             placeholderTextBillingMethod: "Enter billing method",
           },
@@ -1001,6 +1001,7 @@ export default {
     table3row4: "WE WOULD LIKE MORE INFORMATION, WHERE DO WE TURN?",
     table3row5: "ARE YOU A STARTUP?",
     table3row6: "HOW DO STUDENT METTINGS WORK?",
+    table3row7: "HOW DO THE PANEL DISCUSSIONS WORK?",
     table3text1:
       "You can make a <a href='https://ddagen.se/företagsanmälan' target='blank' className='underline text-yellow'>  registration of interest </a> or contact our sales team at <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
     table3text2:
@@ -1012,7 +1013,9 @@ export default {
     table3text5:
       "Contact us at <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
     table3text6:
-      "The student meetings are a great opportunity for companies and students to meet in a more personal setting. The students will choose which companies they want to meet, and the company will then be able to select which of these students they want to meet. The students will then be able to choose a time slot to meet the company, during the fair. Read more about it <a href='https://ddagen.se/en/studentmeetings' target='blank' className='underline text-yellow'>here</a>.",
+      "The student meetings are a great opportunity for companies and students to meet in a more personal setting. The students will choose which companies they want to meet, and the company will then be able to select which of these students they want to meet. The students will then be able to choose a time slot to meet the company, during the fair. Read more about it <a href='https://ddagen.se/en/kontaktsamtal' target='blank' className='underline text-yellow'>here</a>.",
+    table3text7:
+      " During the fair, three panel discussions are held, each focusing on a topic relevant to the IT industry and moderated by D-Dagen. These sessions give students the opportunity to learn what it's like to work in the IT field, as well as to listen to engaging and insightful discussions between a select group of company representatives from various organizations.",
     table4row1:
       "WHAT KIND OF EVENTS CAN OUR COMPANY HOST TOGETHER WITH D-DAGEN?",
     table4text1:
@@ -1107,6 +1110,22 @@ export default {
     paragraph:
       "Don't hesitate to get in touch if you have any questions about our products or have any other questions.",
   },
+  studentmeetings: {
+    header: "Student Meetings",
+    subheader1: "Contact Us",
+    subheader2: "Format",
+    subheader3: "Apply for student meetings",
+    p1: "Student meetings are a unique opportunity for companies and students to meet one-on-one and discuss career opportunities. Students gain valuable insight into the specific workplace, while companies get an excellent understanding of the student's skills and experiences.",
+    p2: "Before the meetings, companies and students are matched through our website using the following process:",
+    bulletpoints: [
+      "Students log in to their account on the website via <a className='text-yellow' href='https://ddagen.se/student'>ddagen.se/student</a>",
+      "Upload their CV",
+      "Select the companies they are interested in having a student meeting with."
+    ],
+    p3: "The companies then review the list of students who are interested in speaking with them and choose whom to schedule meetings with based on their student profiles and CVs.\n\nEach company is assigned a 2-hour time slot sometime during the fair (10:00–16:00), during which they can meet as many students as they are able to.\n\nWe recommend 15-minute meetings, but the exact duration is up to each individual company.",
+    p4: "Create your student profile and choose companies for student meetings",
+    cta: "Create Profile"
+  },
   event: {
     paragraph1:
       "Qulture could be, for example, screenings with a completely functional projector, parlour games with appurtenant parlour game players, arts and crafts as well as meetings with cookies, many cookies. We also do not have a locker where we have candy for the chapter's needs (but we used to).",
@@ -1138,19 +1157,24 @@ export default {
     nrOfVisitors: "Number of visitors:",
     dda: "Project Managers:",
     before2000: "Before 2000",
-    before2000Text: "A functionary position called “Armu-D” was created. This was the Computer Science Chapter’s representative who, together with representatives from other chapters, was responsible for Armada — the student union’s joint career fair for all KTH students. \n Both Armu-D and the Chapter’s PR group experimented with developing the concept that would later become the Chapter’s very own career day. In 1991 and 1992, Armu-D is believed to have organized so-called “Data-Armadas.” Later in the 1990s, the ”PR group” arranged various company days under different names — including “Ericsson Day” — and invited a small number of companies to the E-building on the KTH campus. These events were usually followed by an evening gathering at ESCapen, where attendees could get free beer if they had secured a ”ölbånge” (beer token) earlier in the day.\n 1988 \n To celebrate the Chapter’s 5-year anniversary, a small career fair was organized, which sparked interest in the concept. This is documented in dBuggen, the Chapter’s own magazine. \n 1983 \n The beginning: The Computer Science Chapter (Datasektionen) was founded on October 7, 1983.´",
+    before2000Text: "A functionary position called “Armu-D” was created. This was the Computer Science Chapter’s representative who, together with representatives from other chapters, was responsible for Armada — the student union’s joint career fair for all KTH students. \n Both Armu-D and the Chapter’s PR group experimented with developing the concept that would later become the Chapter’s very own career day. In 1991 and 1992, Armu-D is believed to have organized so-called “Data-Armadas.” Later in the 1990s, the ”PR group” arranged various company days under different names — including “Ericsson Day” — and invited a small number of companies to the E-building on the KTH campus. These events were usually followed by an evening gathering at ESCapen, where attendees could get free beer if they had secured a ”ölbånge” (beer token) earlier in the day.\n",
+    header1988: "1988",
+    text1988: "The Computer Science Chapter's 5-year anniversary organized a small industry fair and sparked interest in the concept, which is evident in dBuggen (the Computer Science Chapter's venerable chapter magazine).",
+    header1983: "1983",
+    text1983: "The beginning: The Computer Science Chapter was founded on October 7, 1983.",
     text2025: "25th anniversary!",
     text2024: "William & Toshihide organized D-Dagen with the most visitors ever!",
     text2023: "Axel & Johan organized D-Dagen with the most companies ever!",
     text2022: "",
-    text2021: "D-Dagen was organized physically again after the Corona restrictions were eased! \n The Computer science and engineering chapter's board, through Matteus Berg, is presenting a proposal that D-Dagen and the Computer science and engineering chapter's Business and Relations Group should be officially separated in the organizational structure. The chapter's members chose to approve the proposal.",
+    text2021: "D-Dagen was organized physically again after the Corona restrictions were eased! \n The Computer science chapter's board, through Matteus Berg, is presenting a proposal that D-Dagen and the Computer science and engineering chapter's Business and Relations Group should be officially separated in the organizational structure. The chapter's members chose to approve the proposal.",
     text2020: "Due to the Covid-19 pandemic, the first digital D-Dagen is being organized. The fair took place slightly later than usual due to hopes of lighter restrictions in the fall.",
     text2019: "Spotify was at the fair!",
-    text2016: "D-Dagen enters the student union building Nymble for the first time, instead of E-Building.",
-    text2015: "First person chosen for the actual role of “D-Dagen Project Manager”: Albin Söderholm, who was responsible for next year's fair.",
+    text2016: "D-Dagen enters the student union building Nymble for the first time, instead of E-Building. First person chosen for the actual role of “D-Dagen Project Manager”: Albin Söderholm, who was responsible for this year's fair.",
+    text2015: "",
     text2013: "Google was at the fair!",
     text2001: "During the 2000 to 2010 period, companies’ interest in being visible to students increased significantly. As a result, the Computer Science Chapter’s career fair became a recurring event and took on a more uniform form and structure. At that time, it was coordinated by the Chapter’s “PR group,” which later evolved into the “Näringslivsgruppen” (Industry Relations Group). In early 2001, D-Dagen appears for the first time in the Chapter’s official meeting protocols, when then PR Manager Peter Lindström submitted a motion to “get more money for D-Dagen and for upcoming events in the spring.” The Chapter’s members unanimously approved his proposal.",
     text2000: "The name “D-Dagen” was coined this year! The career fair was organized by the Computer Science Chapter’s ”PR group” and was a smaller event held in the E-building (E-huset), with 13 participating companies. In the evening, attendees were also invited to the Chapter’s former premises, ESCapen, where one could get free beer if they had secured a “ölbånge” (beer token) during the career fair.",
+    contact: "If you have any relevant facts about the history of D-Dagen that you would like to add, contact: ",
   },
   admin: {
     login: {
@@ -1336,12 +1360,19 @@ export default {
   },
   sok:{
     notActive: "The signup is not active yet, keep an eye on social media for when it opens!",
-    header: "Signup for D-DAGEN",
+    header: "Signup for leadership group 26",
     description: "The goal for this year's D-Dagen is to make it the biggest and best career fair in Datasektionen's history! This is the vision we have as organizers this year. However, it's impossible for us to organize such a large event entirely on our own. We need an ambitious project group to help us, one that has the drive to create something extraordinary. We aim to improve internal communication from previous years, and, therefore, we will focus extensively on team building to create a close-knit group. We also expect that everyone in the project group is sociable, has good teamwork skills, and is self-driven in their tasks.",
     search:"SIGNUP",
     info:"Information about the roles",
     extra:"Read more about the roles",
     moreInfo:"Interested?",
+    viceDDA:{
+      header: "Vice DDA",
+      text: "The Vice-DDA is a key role within D-Dagen and acts as the right hand of the project manager (DDA). Through close collaboration with the DDA, the Vice-DDA supports the overall work of the project and ensures that all teams move in the right direction. The role requires a holistic perspective, strong communication skills, and a strong sense of responsibility. The Vice-DDA contributes to making D-Dagen a cohesive, efficient, and memorable experience for both students and companies.",
+      roles:[
+        "\n- Driven\n- Willing to learn\n- Flexible\n As Vice-DDA, you don’t have any strictly defined tasks instead, your role is to support the DDA in all possible ways. Everything from attending meetings with subgroups to assisting with company contacts. In other words, a Vice-DDA should ideally have experience with D-Dagen, but that is by no means a requirement—the most important thing is having strong drive and a willingness to learn a lot."
+      ]
+    },
     prGroup:{
       header: "PR Team",
       text: "As the PR manager, you are the leader of the PR team. You drive and organize the group, ensuring that everyone knows what they need to do and has the necessary resources. Since you work closely with the PR team, you will become very close-knit. As the PR manager, you will also communicate extensively with the DDA's.",
