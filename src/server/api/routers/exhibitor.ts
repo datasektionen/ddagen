@@ -872,6 +872,22 @@ export const exhibitorRouter = createTRPCRouter({
 
       return availableTimeSlots;
     }),
+    updateMeetingTimeSlots: publicProcedure  // Change from protectedProcedure to publicProcedure
+    .input(z.object({
+      password: z.string(),  // Add password to the input validation
+      exhibitorId: z.string(),
+      timeSlots: z.array(z.number())
+    }))
+    .mutation(async ({ ctx, input }) => {
+      // Add password validation if needed
+      const exhibitor = await ctx.prisma.exhibitor.update({
+        where: { id: input.exhibitorId },
+        data: { 
+          meetingTimeSlots: input.timeSlots 
+        }
+      });
+      return exhibitor;
+    }),
     getPendingMeetings: protectedProcedure
     .query(async ({ ctx }) => {
         const exhibitor = await ctx.prisma.exhibitor.findUnique({
