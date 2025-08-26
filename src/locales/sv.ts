@@ -10,8 +10,8 @@ export default {
     introFirstBlock:
       "Nordens största arbetsmarknadsdag för datateknikstudenter firar 25-årsjubileum",
     introSecondBlock:
-      "Är du en student inom data eller IT och söker efter din framtida arbetsplats, eller representerar du ett företag som letar talangfulla medarbetare?", 
-    introThirdBlock: 
+      "Är du en student inom data eller IT och söker efter din framtida arbetsplats, eller representerar du ett företag som letar talangfulla medarbetare?",
+    introThirdBlock:
       "Då är D-Dagen det perfekta tillfället för dig att träffa personer inom branschen och knyta värdefulla kontakter! I år firar D-Dagen sitt storslagna 25-års jubileum, vilket innebär att mässan kommer bli större och bättre än någonsin, med över 100+ utställare och 3000+ deltagare.",
     introSignOff: "Detta är ett firande som man inte vill missa!\n Hoppas vi ses!",
     introDDA: "Max Berglund & Mortada Nasser, D-Dagenansvariga",
@@ -631,9 +631,9 @@ export default {
       email: string,
       contactPerson: string,
       phoneNumber: string
-    ) => 
+    ) =>
       "<div style=\"padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
-          "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" + 
+          "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" +
             "<tbody>" +
               "<tr>" +
                 "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
@@ -653,27 +653,27 @@ export default {
               "<tr>" +
                 "<div style\"background:#DE3163;color:#ffffff;\">" +
                   "<ul style=\"padding:20px 30px; margin: 0; background:#DE3163;color:#ffffff;\">" +
-                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Company name: " + companyName + "</li>" + 
+                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Company name: " + companyName + "</li>" +
                       ((organizationNumber[0] != '0') ? "<li>Organisationsnummer: " + organizationNumber + "</li>" : "") +
-                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Email address: " + email + "</li>" + 
+                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Email address: " + email + "</li>" +
                     "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Contact person: " + contactPerson + "</li>" +
-                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Phone number: " + phoneNumber + "</li>" + 
+                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Phone number: " + phoneNumber + "</li>" +
                   "</ul>" +
                 "</div>" +
               "</tr>" +
               "<tr>" +
                 "<div style=\"padding: 0 30px 30px; background:#DE3163;color:#ffffff;\" >" +
-                  "<br><br><p> If any of the information above is incorrect or if you have any other questions, " + 
-                    "do not hesitate to contact our sales team at sales@ddagen.se. </p><br>" + 
-                  "<p>Thank you for your registration and we look forward to a successful event. </p><br>" + 
-                  "<p>Best regards, </p><br>" + 
+                  "<br><br><p> If any of the information above is incorrect or if you have any other questions, " +
+                    "do not hesitate to contact our sales team at sales@ddagen.se. </p><br>" +
+                  "<p>Thank you for your registration and we look forward to a successful event. </p><br>" +
+                  "<p>Best regards, </p><br>" +
                   "<p>The D-Dagen project group</p><br><br>" +
                 "</div>" +
               "</tr>" +
             "</tbody>" +
           "</table>" +
         "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\" >" +
-          "<img src=\"https://dev.ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\" ></img>" + 
+          "<img src=\"https://dev.ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\" ></img>" +
         "</a>" +
       "</div>",
   },
@@ -1079,27 +1079,9 @@ export default {
       "Tveka inte att höra av dig om du har några frågor angående våra produkter eller har några funderingar.",
   },
   event: {
-    paragraph1:
-      "Vi i Qulturnämnden försöker se till att Datasektionen får uppleva så mycket Qultur som möjligt, i alla dess former, oftast. Om du känner att du saknar någon form av Qultur på sektionen, eller känner du att du vill hjälpa oss i vårt arbete, tveka inte att höra av dig till Qulturattachén (se kontaktuppgifterna nedan). Vi har för tillfället inget medlemskap, alla är välkomna!",
-    paragraph2:
-      "Varje onsdag har ni möjlighet att avnjuta en kall öl/cider/drink/alkoholfritt alternativ tillsammans med god och prisvärd mat i META. Puben öppnar 17:17 och håller på tills gäster eller personal fått nog. Passa på att ta ett avbrott från labbandet och svänga förbi META en onsdag. Vanligtvis första onsdagspuben efter CSN-utbetalning har vi dessutom temapub med nya och roliga teman varje gång, missa inte!",
-    paragraph3:
-      "Vi försöker regelbundet hålla i hackerkvällar där alla sektionsmedlemmar är välkomna. Vanligtvis från klockan 17 och framåt på torsdagar någonstans i E-huset. Hit kan du komma för att hänga med oss, se vad vi håller på med, eller själv utveckla något för sektionen! Om du är intresserad och vill kolla om det är hackerkväll denna vecka, fråga på vår Mattermost! Hoppas vi ses!",
-    paragraph4:
-      "Detta liknar After-work-konceptet lite grann och kan även kombineras med det. En case kväll ger er en god möjlighet att testa studenterna och faktiskt se vad vi går för, samt ger studenterna en rolig ...",
-    fullParagraph1:
-      "Vi i Qulturnämnden försöker se till att Datasektionen får uppleva så mycket Qultur som möjligt, i alla dess former, oftast. Om du känner att du saknar någon form av Qultur på sektionen, eller känner du att du vill hjälpa oss i vårt arbete, tveka inte att höra av dig till Qulturattachén (se kontaktuppgifterna nedan). Vi har för tillfället inget medlemskap, alla är välkomna!",
-    fullParagraph2:
-      "Varje onsdag har ni möjlighet att avnjuta en kall öl/cider/drink/alkoholfritt alternativ tillsammans med god och prisvärd mat i META. Puben öppnar 17:17 och håller på tills gäster eller personal fått nog. Passa på att ta ett avbrott från labbandet och svänga förbi META en onsdag. Vanligtvis första onsdagspuben efter CSN-utbetalning har vi dessutom temapub med nya och roliga teman varje gång, missa inte!",
-    fullParagraph3:
-      "Vi försöker regelbundet hålla i hackerkvällar där alla sektionsmedlemmar är välkomna. Vanligtvis från klockan 17 och framåt på torsdagar någonstans i E-huset. Hit kan du komma för att hänga med oss, se vad vi håller på med, eller själv utveckla något för sektionen! Om du är intresserad och vill kolla om det är hackerkväll denna vecka, fråga på vår Mattermost! Hoppas vi ses!",
-    fullParagraph4:
-      "Detta liknar After-work-konceptet lite grann och kan även kombineras med det. En case kväll ger er en god möjlighet att testa studenterna och faktiskt se vad vi går för, samt ger studenterna en rolig utmaning, och beroende på uppgiften kan det också ge oss en viss känsla för hur det är att jobba med programmering.  Case kvällen kommer äga rum veckan efter D-dagen med PR för att nå ut till intresserade datateknikstudenter. Vi ansvarar för lokalen som kan anpassas efter hur många studenter som ni vill ska delta på eventet.",
-    header1: "Brädspelskväll",
-    header2: "Onsdagspub",
-    header3: "Hackerkväll",
-    header4: "Casekväll",
-    subheader: "Om ",
+    lunchSeminarHeader: "Lunchföreläsning",
+    lunchSeminar: " Lunchföreläsningar är ett otroligt populärt koncept bland studenter, där det bjuds på gratis lunch och en intressant föreläsning från ett företag i IT-branschen. Sker kl. 12-13 en vardag på KTH campus.",
+    with: "Med ",
   },
   admin: {
     login: {

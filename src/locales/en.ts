@@ -125,7 +125,7 @@ export default {
           ]
         },
       ]
-    },      
+    },
     interestedTitle: "Interested?",
     interestedText:
       "Are you interested in exhibiting on D-Dagen and connecting with thousands of students in Computer Science and IT? Click below to sign up!",
@@ -635,9 +635,9 @@ export default {
       email: string,
       contactPerson: string,
       phoneNumber: string
-    ) => 
+    ) =>
       "<div style=\"padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
-          "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" + 
+          "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" +
             "<tbody>" +
               "<tr>" +
                 "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
@@ -657,27 +657,27 @@ export default {
               "<tr>" +
                 "<div style\"background:#DE3163;color:#ffffff;\">" +
                   "<ul style=\"padding:20px 30px; margin: 0; background:#DE3163;color:#ffffff;\">" +
-                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Company name: " + companyName + "</li>" + 
+                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Company name: " + companyName + "</li>" +
                       ((organizationNumber[0] != '0') ? "<li>Organisationsnummer: " + organizationNumber + "</li>" : "") +
-                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Email address: " + email + "</li>" + 
+                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Email address: " + email + "</li>" +
                     "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Contact person: " + contactPerson + "</li>" +
-                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Phone number: " + phoneNumber + "</li>" + 
+                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Phone number: " + phoneNumber + "</li>" +
                   "</ul>" +
                 "</div>" +
               "</tr>" +
               "<tr>" +
                 "<div style=\"padding: 0 30px 30px; background:#DE3163;color:#ffffff;\" >" +
-                  "<br><br><p> If any of the information above is incorrect or if you have any other questions, " + 
-                    "do not hesitate to contact our sales team at sales@ddagen.se. </p><br>" + 
-                  "<p>Thank you for your registration and we look forward to a successful event. </p><br>" + 
-                  "<p>Best regards, </p><br>" + 
+                  "<br><br><p> If any of the information above is incorrect or if you have any other questions, " +
+                    "do not hesitate to contact our sales team at sales@ddagen.se. </p><br>" +
+                  "<p>Thank you for your registration and we look forward to a successful event. </p><br>" +
+                  "<p>Best regards, </p><br>" +
                   "<p>The D-Dagen project group</p><br><br>" +
                 "</div>" +
               "</tr>" +
             "</tbody>" +
           "</table>" +
         "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\" >" +
-          "<img src=\"https://dev.ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\" ></img>" + 
+          "<img src=\"https://dev.ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\" ></img>" +
         "</a>" +
       "</div>",
   },
@@ -1082,27 +1082,9 @@ export default {
       "Don't hesitate to get in touch if you have any questions about our products or have any other questions.",
   },
   event: {
-    paragraph1:
-      "Qulture could be, for example, screenings with a completely functional projector, parlour games with appurtenant parlour game players, arts and crafts as well as meetings with cookies, many cookies. We also do not have a locker where we have candy for the chapter's needs (but we used to).",
-    paragraph2:
-      "Every Wednesday we open the doors to META (Osquars backe 21) and give you the chance to relax and enjoy alcoholic or alcohol free beverages ranging from beer and cider to freshly made cocktails. The pub opens 17:17 and usually is open until we or the guests has had enough. Take the chance to take a break from all the studying and let loose on the dance floor!",
-    paragraph3:
-      "We regularly try to hold programming evenings where everyone is welcome. Usually from 5 pm onwards on Thursdays, usually somewhere in the E-house. You can come here to see what we're doing, develop something for the chapter, hang out or maybe get help with a programming lab. The easiest way to find out when we have events is to ask in our Mattermost! Hope to see you there!",
-    paragraph4:
-      "This event is similar to the after-work/office visit events. A case event gives you an opportunity to test the students’ skills while providing them with a fun challenge. Depending on the type of case ...",
-    fullParagraph1:
-      "Qulture could be, for example, screenings with a completely functional projector, parlour games with appurtenant parlour game players, arts and crafts as well as meetings with cookies, many cookies. We also do not have a locker where we have candy for the chapter's needs (but we used to).",
-    fullParagraph2:
-      "Every Wednesday we open the doors to META (Osquars backe 21) and give you the chance to relax and enjoy alcoholic or alcohol free beverages ranging from beer and cider to freshly made cocktails. The pub opens 17:17 and usually is open until we or the guests has had enough. Take the chance to take a break from all the studying and let loose on the dance floor!",
-    fullParagraph3:
-      "We regularly try to hold programming evenings where everyone is welcome. Usually from 5 pm onwards on Thursdays, usually somewhere in the E-house. You can come here to see what we're doing, develop something for the chapter, hang out or maybe get help with a programming lab. The easiest way to find out when we have events is to ask in our Mattermost! Hope to see you there!",
-    fullParagraph4:
-      "This event is similar to the after-work/office visit events. A case event gives you an opportunity to test the students’ skills while providing them with a fun challenge. Depending on the type of case provided it can also be a good way for the students to get a feel for what it is like to work at your company. We handle marketing of the event, booking of premises and ordering food and drinks for everyone attending. We can also assist in planning the case event if desired.",
-    header1: "Lunch Seminar",
-    header2: "Afterwork/Office Visit",
-    header3: "Sponsored Pub",
-    header4: "Case Event",
-    subheader: "About: ",
+    lunchSeminarHeader: "Lunch Seminar",
+    lunchSeminar: "Lunch Seminar",
+    with: "With: ",
   },
   admin: {
     login: {

@@ -37,19 +37,11 @@ function SingleEvent({
     }
   };
 
-  /*
-  eventInfo={[
-      event.companyName,
-      event.header,
-      event.text,
-    ]}
-  */
-
   return (
     <div className={`
         flex
         flex-row-reverse
-        ${toReverse ? "sm:flex-row-reverse" : "sm:flex-row"} 
+        ${toReverse ? "sm:flex-row-reverse" : "sm:flex-row"}
         gap-4 px-[50px] md:px-[50px] justify-between`}>
       <div className={`sm:basis-1/2 max-sm:w-full flex flex-col ${toReverse ? "sm:items-start" : "sm:items-end"} max-h-[300px]`}>
         <div className={`flex flex-col w-full gap-2 items-start ${toReverse ? "sm:items-start" : "sm:items-end"}`}>
@@ -90,7 +82,7 @@ function SingleEvent({
                   {eventInfo[1]}
                 </h2>
                 <h3 className="text-cerise text-2xl mt-2">
-                  {t.event.subheader + eventInfo[0] + ":"}
+                  {t.event.with + eventInfo[0] + ":"}
                 </h3>
                 <p className="text-black text-start mt-5">{eventInfo[2]}</p>
               </div>
@@ -99,66 +91,6 @@ function SingleEvent({
       )}
     </div>
   );
-  /*
-    <div
-      className={`${
-        toReverse
-          ? "md:flex-row-reverse flex-col-reverse"
-          : "md:flex-row flex-col-reverse"
-      } flex flex-row gap-[50px] px-[50px] md:px-[50px] mt-[100px] justify-center`}
-    >
-      <div className="py-[0px]">
-        <img src={image} className="md:h-[300px] lg:h-[300px]"></img>
-      </div>
-      <div
-        className={`${bgColor} ${borderColor} border-[3px] rounded-lg py-[25px] md:py-[25px] lg:py-[50px] px-[20px] bg-opacity-10 md:w-[300px] md:h-[300px] lg:w-[400px] lg:h-[300px]`}
-      >
-        <h2 className="text-center lg:text-3xl md: text-xl text-white">
-          {eventInfo[1]}
-        </h2>
-        <h3 className="text-center text-cerise  lg:text-xl md:mt-1 lg:mt-2">
-          {" "}
-          {t.event.subheader + eventInfo[0]}
-        </h3>
-        <p className="text-white text-start mt-5 text-sm">{eventInfo[1]}</p>
-        <button className={`${textColor} text-start mt-3`} onClick={openModal}>
-          
-        </button>
-        {modalState && (
-          <div
-            className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60"
-            ref={modalRef}
-            onClick={handleOverlayClick}
-          >
-            <div
-              className={` bg-white bg-opacity-70 w-[500px] pb-5 flex flex-col  rounded-3xl`}
-            >
-              <div className="relative py-[0px] justify-center flex flex-row">
-                <img src={image} />
-
-                <button
-                  className="absolute top-5 right-3 w-[50px] h-[50px] flex items-center justify-center"
-                  onClick={closeModal}
-                >
-                  <div className="absolute h-[50px] w-[5px] bg-white rounded-md rotate-45"></div>
-                  <div className="absolute h-[50px] w-[5px] bg-white rounded-md -rotate-45"></div>
-                </button>
-              </div>
-              <div className="px-5 mt-5">
-                <h2 className="text-center text-3xl text-black">
-                  {eventInfo[1] + " - " + eventInfo[0]}
-                </h2>
-                <h3 className="text-center text-cerise text-2xl mt-2">
-                  {t.event.subheader + eventInfo[0] + " :-"}
-                </h3>
-                <p className="text-black text-start mt-5">{eventInfo[2]}</p>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
-  */
 }
 
 export default function Events() {
@@ -166,25 +98,25 @@ export default function Events() {
 
   const events = [
     {
-      date: "Tis",
-      companyName: "Qulturnämnden",
-      image: "/img/exhibitors/qn.png",
-      header: t.event.header1,
-      text: t.event.fullParagraph1
+      date: "?",
+      companyName: "Försvarsmaktens Radioanstalt",
+      image: "/img/exhibitors/FRA.png",
+      header: t.event.lunchSeminarHeader,
+      text: t.event.lunchSeminar
     },
     {
-      date: "Ons",
-      companyName: "DKM",
-      image: "/img/exhibitors/dkm.svg",
-      header: t.event.header2,
-      text: t.event.fullParagraph2
+      date: "01/10",
+      companyName: "Omegapoint",
+      image: "/img/exhibitors/Omegapoint.svg",
+      header: t.event.lunchSeminarHeader,
+      text: t.event.lunchSeminar
     },
     {
-      date: "Tor",
-      companyName: "Systemgruppen",
-      image: "/img/exhibitors/systemgruppen.svg",
-      header: t.event.header3,
-      text: t.event.fullParagraph3
+      date: "07/10",
+      companyName: "Strawberry",
+      image: "/img/exhibitors/Strawberry.svg",
+      header: t.event.lunchSeminarHeader,
+      text: t.event.lunchSeminar
     },
   ]
 
@@ -222,7 +154,7 @@ export default function Events() {
       />
       <div className="pt-[200px] pb-[300px]">
         <h1 className="text-5xl text-cerise font-medium text-center"> EVENT</h1>
-        <div className="flex flex-col mt-8">  
+        <div className="flex flex-col mt-8">
           <div className="max-sm:hidden flex justify-center">
             <div className="w-4 bg-cerise h-full min-h-[30px] rounded-t-full"></div>
           </div>
