@@ -3,18 +3,14 @@ import { NextSeo } from "next-seo";
 import { useState, useRef } from "react";
 
 function SingleEvent({
-  bgColor,
-  borderColor,
+  color,
   toReverse,
-  textColor,
   image,
   showDate,
   eventInfo
 }: {
-  bgColor: string;
-  borderColor: string;
+  color: string;
   toReverse: boolean;
-  textColor: string;
   image: string;
   showDate: boolean;
   eventInfo: string[];
@@ -44,16 +40,18 @@ function SingleEvent({
         ${toReverse ? "sm:flex-row-reverse" : "sm:flex-row"}
         gap-4 px-[50px] md:px-[50px] justify-between`}>
       <div className={`sm:basis-1/2 max-sm:w-full flex flex-col ${toReverse ? "sm:items-start" : "sm:items-end"} max-h-[300px]`}>
-        <div className={`flex flex-col w-full gap-2 items-start ${toReverse ? "sm:items-start" : "sm:items-end"}`}>
+        <div className={`flex flex-col w-full gap-2 items-start ${toReverse ? "sm:items-start" : "sm:items-end"}`} onClick={openModal}>
           <h2 className="text-center lg:text-3xl md:text-xl text-white">{eventInfo[1]}</h2>
-          <div className="flex bg-slate-100 bg-opacity-50 px-8 py-4 w-full max-w-[350px] bg-white/80 rounded-md" onClick={openModal}>
-            <img src={image} className="flex-1 max-h-[230px] sm:max-h-[300px] lg:max-h-[300px] w-full object-contain"></img>
-          </div>
+          {(image != "") &&
+            <div className="flex bg-slate-100 bg-opacity-50 px-8 py-4 w-full max-w-[350px] bg-white/80 rounded-md">
+              <img src={image} className="flex-1 max-h-[230px] sm:max-h-[300px] lg:max-h-[300px] w-full object-contain"></img>
+            </div>
+          }
         </div>
       </div>
       <div className="basis-[124px] h-full flex justify-center">
-        <div className="flex relative justify-center w-4 bg-cerise h-full min-h-[300px]">
-          {showDate && <div className="flex absolute justify-center items-center h-16 w-16 rounded-full bg-cerise text-white text-lg">
+        <div className={`flex relative justify-center w-4 ${color} h-full min-h-[300px]`}>
+          {showDate && <div className={`flex absolute justify-center items-center h-16 w-16 rounded-full ${color} text-white text-lg`}>
             {eventInfo[3]}
           </div>}
         </div>
@@ -82,7 +80,7 @@ function SingleEvent({
                   {eventInfo[1]}
                 </h2>
                 <h3 className="text-cerise text-2xl mt-2">
-                  {t.event.with + eventInfo[0] + ":"}
+                  {eventInfo[0]}
                 </h3>
                 <p className="text-black text-start mt-5">{eventInfo[2]}</p>
               </div>
@@ -98,11 +96,11 @@ export default function Events() {
 
   const events = [
     {
-      date: "?",
-      companyName: "Försvarsmaktens Radioanstalt",
-      image: "/img/exhibitors/FRA.png",
-      header: t.event.lunchSeminarHeader,
-      text: t.event.lunchSeminar
+      date: "16/9",
+      companyName: "EECS event",
+      image: "",
+      header: t.event.recruitmentPub,
+      text: ""
     },
     {
       date: "01/10",
@@ -115,6 +113,61 @@ export default function Events() {
       date: "07/10",
       companyName: "Strawberry",
       image: "/img/exhibitors/Strawberry.svg",
+      header: t.event.lunchSeminarHeader,
+      text: t.event.lunchSeminar
+    },
+  ]
+
+  const fairEvents = [
+    {
+      date: "10:00",
+      companyName: t.event.opening,
+      image: "/img/d-dagen-logo-jubileum-25-sv.svg",
+      header: "",
+      text: ""
+    },
+    {
+      date: "10:15",
+      companyName: t.event.openingCeremony,
+      image: "/img/exhibitors/Omegapoint.svg",
+      header: "",
+      text: ""
+    },
+    {
+      date: "11:00",
+      companyName: t.event.panelDiscussion1,
+      image: "",
+      header: t.event.panelDiscussionHeader,
+      text: t.event.panelDiscussion1text
+    },
+    {
+      date: "13:00",
+      companyName: t.event.panelDiscussion2,
+      image: "",
+      header: t.event.panelDiscussionHeader,
+      text: t.event.panelDiscussion2text
+    },
+    {
+      date: "16:00",
+      companyName: "",
+      image: "",
+      header: t.event.fair + t.event.closes,
+      text: ""
+    },
+    {
+      date: "18:00",
+      companyName: "",
+      image: "",
+      header: t.event.banquet,
+      text: ""
+    },
+  ]
+
+  const postFairEvents = [
+    {
+      date: "13/10",
+      companyName: "Försvarsmaktens Radioanstalt",
+      image: "/img/exhibitors/FRA.png",
       header: t.event.lunchSeminarHeader,
       text: t.event.lunchSeminar
     },
@@ -161,10 +214,8 @@ export default function Events() {
           {events?.map((event, i) => (
             <SingleEvent
               key={i}
-              bgColor="bg-[#E2B7C9]"
-              borderColor="border-[#E2B7C9]"
+              color="bg-cerise"
               toReverse={i%2 == 0}
-              textColor="text-[#E2B7C9]"
               image={event?.image}
               showDate={!(i > 0 && event.date === events[i-1].date)}
               eventInfo={[
@@ -176,7 +227,54 @@ export default function Events() {
               />
             ))
           }
+          <div className="flex max-sm:hidden justify-center">
+            <div className="w-4 bg-cerise h-full min-h-[30px] rounded-b-full"></div>
+          </div>
+          <div>
+            <h1 className="text-5xl text-[#C2952C] font-medium text-center"> {t.event.fair} 10/10</h1>
+          </div>
+          <div className="max-sm:hidden flex justify-center">
+            <div className="w-4 bg-[#C2952C] h-full min-h-[30px] rounded-t-full"></div>
+          </div>
+          {fairEvents?.map((event, i) => (
+            <SingleEvent
+              key={i}
+              color="bg-[#C2952C]"
+              toReverse={i%2 == 1}
+              image={event?.image}
+              showDate={!(i > 0 && event.date === fairEvents[i-1].date)}
+              eventInfo={[
+                event.companyName,
+                event.header,
+                event.text,
+                event.date
+              ]}
+              />
+            ))
+          }
         </div>
+          <div className="flex max-sm:hidden justify-center">
+            <div className="w-4 bg-[#C2952C] h-full min-h-[30px] rounded-b-full"></div>
+          </div>
+          <div className="max-sm:hidden flex justify-center">
+            <div className="w-4 bg-cerise h-full min-h-[30px] rounded-t-full"></div>
+          </div>
+          {postFairEvents?.map((event, i) => (
+            <SingleEvent
+              key={i}
+              color="bg-cerise"
+              toReverse={i%2 == 0}
+              image={event?.image}
+              showDate={!(i > 0 && event.date === events[i-1].date)}
+              eventInfo={[
+                event.companyName,
+                event.header,
+                event.text,
+                event.date
+              ]}
+              />
+            ))
+          }
           <div className="flex max-sm:hidden justify-center">
             <div className="w-4 bg-cerise h-full min-h-[30px] rounded-b-full"></div>
           </div>

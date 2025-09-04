@@ -1084,7 +1084,17 @@ export default {
   event: {
     lunchSeminarHeader: "Lunch Seminar",
     lunchSeminar: "Lunch Seminar",
-    with: "With: ",
+    recruitmentPub: "Recruitment Pub",
+    opening: "25th Anniversary Fair Opens!",
+    openingCeremony: "Opening of the fair on stage in nya Matsalen together with Main Sponsor Omegapoint",
+    panelDiscussionHeader: "Panel Discussion",
+    panelDiscussion1: "The Future of the Fintech Industry with Nordea, Nore Technology, Revolut and Jane Street",
+    panelDiscussion1text: "The panel discussion will be held in Swedish.",
+    panelDiscussion2: "How well prepared is society for today's cyber threats? with Omegapoint, Basalt and Försvarsmaktens Radioanstalt",
+    panelDiscussion2text: "The panel discussion will be held in English.",
+    fair: "The Fair",
+    closes: " closes",
+    banquet: "The D-Dagen Banquet starts!",
   },
   admin: {
     login: {

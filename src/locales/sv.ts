@@ -1081,7 +1081,17 @@ export default {
   event: {
     lunchSeminarHeader: "Lunchföreläsning",
     lunchSeminar: " Lunchföreläsningar är ett otroligt populärt koncept bland studenter, där det bjuds på gratis lunch och en intressant föreläsning från ett företag i IT-branschen. Sker kl. 12-13 en vardag på KTH campus.",
-    with: "Med ",
+    recruitmentPub: "Rekryteringspub",
+    opening: "25-års jubileumsmässan öppnar!",
+    openingCeremony: "Invigning av mässan på scenen i Nya matsalen tillsammans med Huvudsponsor Omegapoint",
+    panelDiscussionHeader: "Paneldiskussion",
+    panelDiscussion1: "Fintech-branschens framtid med Nordea, Nore Technology, Revolut och Jane Street",
+    panelDiscussion1text: "Paneldiskussionen kommer att hållas på engelska",
+    panelDiscussion2: "Hur väl rustat är samhället inför dagens cyberhot? Med huvudsponsor Omegapoint, Basalt och Försvarsmaktens Radioanstalt",
+    panelDiscussion2text: "Paneldiskussionen kommer att hållas på svenska",
+    fair: "Mässan",
+    closes: " stänger",
+    banquet: "D-Dagen Banquetten börjar!",
   },
   admin: {
     login: {
