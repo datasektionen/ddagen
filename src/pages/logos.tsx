@@ -172,9 +172,12 @@ export default function Logos({ exhibitorData }: LogosProps) {
   const mainsponsorPackages = exhibitorData.filter(
     (e) => e.packageTier === 3 && e.logo
   );
-  const largeAndMediumPackages = exhibitorData.filter(
+  const largePackages = exhibitorData.filter(
     (e) =>
-      (e.packageTier === 2 || e.packageTier === 1) && e.logo
+      e.packageTier === 2 && e.logo
+  );
+  const mediumPackages = exhibitorData.filter(
+    (e) => e.packageTier === 1 && e.logo
   );
   const smallPackages = exhibitorData.filter(
     (e) => e.packageTier === 0 && e.logo
@@ -225,20 +228,23 @@ export default function Logos({ exhibitorData }: LogosProps) {
         <div className="bg-white py-[50px] mt-[100px] rounded-lg bg-opacity-30 px-[50px]">
           <div className="block sm:hidden">
             {RenderLogos(mainsponsorPackages, 1, "w-[250px]")}
-            {RenderLogos(largeAndMediumPackages, 2, "w-[125px]")}
-            {RenderLogos(smallAndStartUpPackages, 3, "w-[80px]")}
+            {RenderLogos(largePackages, 2, "w-[125px]")}
+            {RenderLogos(mediumPackages, 3, "w-[100px]")}
+            {RenderLogos(smallAndStartUpPackages, 4, "w-[80px]")}
           </div>
 
           <div className="hidden xl:block">
             {RenderLogos(mainsponsorPackages, 1, "w-[350px]")}
-            {RenderLogos(largeAndMediumPackages, 3, "w-[250px]")}
-            {RenderLogos(smallAndStartUpPackages, 6, "w-[125px]")}
+            {RenderLogos(largePackages, 3, "w-[250px]")}
+            {RenderLogos(mediumPackages, 5, "w-[175px]")}
+            {RenderLogos(smallAndStartUpPackages, 7, "w-[125px]")}
           </div>
 
           <div className="hidden sm:block xl:hidden">
             {RenderLogos(mainsponsorPackages, 1, "w-[350px]")}
-            {RenderLogos(largeAndMediumPackages, 3, "w-[250px]")}
-            {RenderLogos(smallAndStartUpPackages, 4, "w-[125px]")}
+            {RenderLogos(largePackages, 3, "w-[250px]")}
+            {RenderLogos(mediumPackages, 5, "w-[175px]")}
+            {RenderLogos(smallAndStartUpPackages, 7, "w-[125px]")}
           </div>
         </div>
       </div>
