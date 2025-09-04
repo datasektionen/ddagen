@@ -1127,27 +1127,19 @@ export default {
     cta: "Create Profile"
   },
   event: {
-    paragraph1:
-      "Qulture could be, for example, screenings with a completely functional projector, parlour games with appurtenant parlour game players, arts and crafts as well as meetings with cookies, many cookies. We also do not have a locker where we have candy for the chapter's needs (but we used to).",
-    paragraph2:
-      "Every Wednesday we open the doors to META (Osquars backe 21) and give you the chance to relax and enjoy alcoholic or alcohol free beverages ranging from beer and cider to freshly made cocktails. The pub opens 17:17 and usually is open until we or the guests has had enough. Take the chance to take a break from all the studying and let loose on the dance floor!",
-    paragraph3:
-      "We regularly try to hold programming evenings where everyone is welcome. Usually from 5 pm onwards on Thursdays, usually somewhere in the E-house. You can come here to see what we're doing, develop something for the chapter, hang out or maybe get help with a programming lab. The easiest way to find out when we have events is to ask in our Mattermost! Hope to see you there!",
-    paragraph4:
-      "This event is similar to the after-work/office visit events. A case event gives you an opportunity to test the students’ skills while providing them with a fun challenge. Depending on the type of case ...",
-    fullParagraph1:
-      "Qulture could be, for example, screenings with a completely functional projector, parlour games with appurtenant parlour game players, arts and crafts as well as meetings with cookies, many cookies. We also do not have a locker where we have candy for the chapter's needs (but we used to).",
-    fullParagraph2:
-      "Every Wednesday we open the doors to META (Osquars backe 21) and give you the chance to relax and enjoy alcoholic or alcohol free beverages ranging from beer and cider to freshly made cocktails. The pub opens 17:17 and usually is open until we or the guests has had enough. Take the chance to take a break from all the studying and let loose on the dance floor!",
-    fullParagraph3:
-      "We regularly try to hold programming evenings where everyone is welcome. Usually from 5 pm onwards on Thursdays, usually somewhere in the E-house. You can come here to see what we're doing, develop something for the chapter, hang out or maybe get help with a programming lab. The easiest way to find out when we have events is to ask in our Mattermost! Hope to see you there!",
-    fullParagraph4:
-      "This event is similar to the after-work/office visit events. A case event gives you an opportunity to test the students’ skills while providing them with a fun challenge. Depending on the type of case provided it can also be a good way for the students to get a feel for what it is like to work at your company. We handle marketing of the event, booking of premises and ordering food and drinks for everyone attending. We can also assist in planning the case event if desired.",
-    header1: "Lunch Seminar",
-    header2: "Afterwork/Office Visit",
-    header3: "Sponsored Pub",
-    header4: "Case Event",
-    subheader: "About: ",
+    lunchSeminarHeader: "Lunch Seminar",
+    lunchSeminar: "Lunch Seminar",
+    recruitmentPub: "Recruitment Pub",
+    opening: "25th Anniversary Fair Opens!",
+    openingCeremony: "Opening of the fair on stage in nya Matsalen together with Main Sponsor Omegapoint",
+    panelDiscussionHeader: "Panel Discussion",
+    panelDiscussion1: "The Future of the Fintech Industry with Nordea, Nore Technology, Revolut and Jane Street",
+    panelDiscussion1text: "The panel discussion will be held in Swedish.",
+    panelDiscussion2: "How well prepared is society for today's cyber threats? with Omegapoint, Basalt and Försvarsmaktens Radioanstalt",
+    panelDiscussion2text: "The panel discussion will be held in English.",
+    fair: "The Fair",
+    closes: " closes",
+    banquet: "The D-Dagen Banquet starts!",
   },
   history: {
     header: "D-Dagen History",

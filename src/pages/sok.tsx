@@ -219,7 +219,6 @@ export default function SignupPage() {
           teamInfo={[
             t.sok.viceDDA.header,
             t.sok.viceDDA.text,
-            t.event.fullParagraph1,
           ]}
           roles={t.sok.viceDDA.roles}
         />
@@ -233,7 +232,6 @@ export default function SignupPage() {
           teamInfo={[
             t.sok.prGroup.header,
             t.sok.prGroup.text,
-            t.event.fullParagraph1,
           ]}
           roles={t.sok.prGroup.roles}
         />
@@ -247,7 +245,6 @@ export default function SignupPage() {
           teamInfo={[
             t.sok.devGroup.header,
             t.sok.devGroup.text,
-            t.event.fullParagraph1,
           ]}
           roles={t.sok.devGroup.roles}
         />
@@ -261,7 +258,6 @@ export default function SignupPage() {
           teamInfo={[
             t.sok.saleGroup.header,
             t.sok.saleGroup.text,
-            t.event.fullParagraph2,
           ]}
           roles={t.sok.saleGroup.roles}
         />
@@ -274,7 +270,6 @@ export default function SignupPage() {
           teamInfo={[
             t.sok.massGroup.header,
             t.sok.massGroup.text,
-            t.event.fullParagraph3,
           ]}
           roles={t.sok.massGroup.roles}
         />
@@ -287,7 +282,6 @@ export default function SignupPage() {
           teamInfo={[
             t.sok.ecoGroup.header,
             t.sok.ecoGroup.text,
-            t.event.fullParagraph4,
           ]}
           roles={t.sok.ecoGroup.roles}
         />
