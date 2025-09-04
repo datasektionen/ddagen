@@ -31,6 +31,7 @@ job "ddagen-dev" {
 PORT={{ env "NOMAD_PORT_http" }}
 {{ with nomadVar "nomad/jobs/ddagen-dev" }}
 DATABASE_URL=postgres://ddagen-dev:{{ .db_password }}@postgres.dsekt.internal:5432/ddagen-dev
+LOGIN_API_KEY={{ .login_api_key }}
 SPAM_API_KEY={{ .spam_api_key }}
 {{ end }}
 NODE_ENV=production

@@ -1,5 +1,3 @@
-import { AddExhibitorForm } from "@/components/Company/Admin/AddExhibitorForm";
-
 export default {
   locale: "sv" as const,
   titles: {
@@ -98,7 +96,6 @@ export default {
             "Obegränsad förvaring & mottagning av leverans",
           ],
           disclaimers: [
-            "Jubileumsrabatten gäller till den 23:e maj"
           ]
         },
         {
@@ -121,7 +118,6 @@ export default {
             "Stor logotyp på vår hemsida",
           ],
           disclaimers: [
-            "Jubileumsrabatten gäller till den 23:e maj"
           ]
         },
       ]
@@ -266,7 +262,7 @@ export default {
     lastPageText: "Du har möjlighet att redigera informationen efteråt",
     lastPageWarning: "Genom att klicka Klar erkänner du att du har läst ingeom alla inputrutor och att informationen du har fyllt i är korrekt!",
 
-
+    consentWarning: "Svara vänligen på marknadsföringsfrågan.",
 
     start: {
       about: "OM FÖRETAGET",
@@ -279,7 +275,10 @@ export default {
       logoColour: "Logga m. färg",
       description: "Beskrivning",
       industry: "Bransch",
+      allowMarketing: "Vill ni nå fler potentiella kandidater genom kostnadsfri extra marknadsföring via Kollin?",
       format: "SVG eller PNG",
+      yes: "Ja",
+      no: "Nej"
     },
     step1: {
       title: "JOBBERBJUDANDEN",
@@ -341,6 +340,7 @@ export default {
           logoColour: "Logga m. färg",
           or: "eller",
           industry: "Bransch",
+          numPeople: "Ta vänligen inte med er mer än fem representanter till mässan"
         },
         section2: {
           header: "Jobberbjudanden",
@@ -417,7 +417,8 @@ export default {
             second: "Tillval",
             third: "Totalt",
           },
-          drinkCoupons: "Dryckesbiljetter",
+          drinkCoupons: "Dryckesbiljetter med alkohol",
+          alcFreeTicket: "Dryckesbiljett utan alkhol",
           mealCoupons: "Frukost/lunch biljetter",
           lastChanged: "Senast ändrad: ",
           tables: "Bord",
@@ -495,7 +496,7 @@ export default {
           placeholderTextEmail: "Ange e-postadress",
           physicalAddress: "Företagsadress",
           placeholderTextPhysicalAddress: "Ange företagsadress (Ex. Drottning Kristinas väg 15-19)",
-          billingMethods: ["E-faktura", "PDF-faktura"],
+          billingMethods: ["PDF-faktura", "E-faktura"],
           billingMethodText: "Faktureringsmetod",
           placeholderTextBillingMethod: "Ange faktureringsmetod",
         },
@@ -537,35 +538,36 @@ export default {
       "> om den är registrerad i vårt system. Om du inte hittar mailet, dubbelkolla att e-postadressen är korrekt samt se till att kolla i skräpposten!",
     emailSubject: "D-Dagen - Logga in",
     emailBody: (code: string, link: string) =>
-  "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
-    "<tr>"+
-      "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
-          "<table style=\"background-color:#EE237B;padding:30px;color:#ffffff;border-radius:10px;width:80%;margin:auto;border-collapse:separate;border-spacing:0;box-shadow:0 4px 10px rgba(0, 0, 0, 0.2)\">"+
-                "<tbody>"+
-                    "<tr>"+
-                        "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                            "<p>För att slutföra inloggningen till D-Dagen, gå till följande länk:</p>"+
-                            "<p> </p>"+
-                            "<p><a href=" + link + "style=\"color:#ffffff;text-decoration:underline\">" + link + "</a></p>"+
-                            "<p> </p>"+
-                            "<p>eller ange koden " + code + " på inloggningssidan.</p>"+
-                        "</td>"+
-                      "</tr>"+
-                      "<tr>"+
-                          "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                            "<p>Om du inte försökt logga in kan du ignorera detta mail.</p>"+
-                          "</td>"+
-                      "</tr>"+
-                "</tbody>"+
-              "</table>"+
-      "</td>"+
-    "</tr>"+
-    "<tr>"+
-        "<td style=\"padding:0; margin:0;\">"+
-            "<img src=\"ddagen.se/img/email-signatur.png\" alt=\"D-Dagen logo\" style=\"width:100%; height:auto; display:block;\">"+
-        "</td>"+
-    "</tr>"+
-  "</table>",
+    "<div style=\"padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
+      "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" +
+        "<tbody>" +
+          "<tr>" +
+            "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
+              "<p>" +
+                "Hej!<br />" +
+              "</p>" +
+            "</div>" +
+          "</tr>" +
+          "<tr>" +
+            "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
+              "<p style=\"color:#ffffff;\">För att slutföra inloggningen till D-Dagen, gå till följande länk:" +
+              "<br /><a href=\"" + link + "\" style=\"color:#0000FF;text-decoration:underline\">" + link + "</a>" +
+              "<br />Eller ange koden: <span style=\"color:#FFFF00\">" + code + "</span> <span style=\"color:#FFFFFF\"> på inloggningssidan.</span></p>" +
+            "</div>" +
+          "</tr>" +
+          "<tr>" +
+            "<div style=\"padding: 10px 30px 30px; background:#DE3163;color:#ffffff;\" >" +
+              "<p style=\"color:#ffffff;\">Om du inte försökt logga in kan du ignorera detta mail." +
+              "<br />Vänliga hälsningar," +
+              "<br />D-Dagen Projektgruppen</p><br>" +
+            "</div>" +
+          "</tr>" +
+        "</tbody>" +
+      "</table>" +
+      "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
+        "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+      "</a>" +
+    "</div>"
   },
   companyForm: {
     title: "Intresseanmälan",
@@ -595,13 +597,15 @@ export default {
   nav: {
     toContent: "Till innehåll",
     home: "Hem",
-    forCompanies: "För företag",
+    forCompanies: "För företag ",
     forSponsors: "Sponsorer",
     forStudents: "För studenter",
     about: "Om Oss",
     companyForm: "Företagsanmälan",
     changeLanguage: "Ändra språk till engelska",
     contact: "Kontakt  ",
+    event: "Event",
+    history: "Historia ",
     exhibitorSettings: "Inställningar",
     login: "Logga in",
     logout: "Logga ut",
@@ -622,6 +626,40 @@ export default {
     sponsorText: "Huvudsponsor för D-Dagen 2025",
     sponsorLink: "https://omegapoint.se/",
     notDecided: "Huvudsponsor för D-Dagen kommer synas här"
+  },
+  newExhibitorEmail: {
+    emailSubject: "D-Dagen - Nytt Utställarkonto",
+    emailBody: (email: string) =>
+    "<div style=\"padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
+      "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" +
+        "<tbody>" +
+          "<tr>" +
+            "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
+              "<p>" +
+                "Hej!<br />" +
+              "</p>" +
+            "</div>" +
+          "</tr>" +
+          "<tr>" +
+            "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
+              "<p style=\"color:#ffffff;\">Vi är glada att kunna meddela att ert utställar-konto har skapats." +
+              "<br />Gå in på <a href=\"https://ddagen.se/utställare\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/utställare</a>" +
+              " och logga in med mail-addressen: <span style=\"color:#FFFF00\">" + email + "</span></p>" +
+            "</div>" +
+          "</tr>" +
+          "<tr>" +
+            "<div style=\"padding: 10px 30px 30px; background:#DE3163;color:#ffffff;\" >" +
+              "<p style=\"color:#ffffff;\">Om du inte försökt logga in kan du ignorera detta mail." +
+              "<br />Vänliga hälsningar," +
+              "<br />D-Dagen Projektgruppen</p><br>" +
+            "</div>" +
+          "</tr>" +
+        "</tbody>" +
+      "</table>" +
+      "<a href=\"https://ddagen.se/\" alt=\"Link to ddagen.se\">" +
+        "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+      "</a>" +
+    "</div>"
   },
   email: {
     subject: "Bekräftelse på Företagsanmälan",
@@ -672,8 +710,8 @@ export default {
               "</tr>" +
             "</tbody>" +
           "</table>" +
-        "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\" >" +
-          "<img src=\"https://dev.ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\" ></img>" +
+        "<a href=\"https://ddagen.se/\" alt=\"Link to ddagen.se\" >" +
+          "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\" ></img>" +
         "</a>" +
       "</div>",
   },
@@ -687,38 +725,37 @@ export default {
         lastName: string,
         companyName: string
       )=>
-      "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
-        "<tr>"+
-          "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
-              "<table style=\"background-color:#EE237B;padding:30px;color:#ffffff;border-radius:10px;width:80%;margin:auto;border-collapse:separate;border-spacing:0;box-shadow:0 4px 10px rgba(0, 0, 0, 0.2)\">"+
-                  "<thead>"+
-                        "<tr>"+
-                            "<th colspan=\"2\" style=\"font-size:24px;text-align:left;padding-bottom:20px\">Hi " + firstName + " " + lastName + "!</th>"+
-                        "</tr>"+
-                  "</thead>"+
-                    "<tbody>"+
-                        "<tr>"+
-                            "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                                "<p>We are pleased to confirm that " + companyName + " wants a meeting with you.</p>"+
-                            "</td>"+
-                          "</tr>"+
-                          "<tr>"+
-                              "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                                "<p>If any of the information above is incorrect or if you have any other questions, do not hesitate to contact our sales team at <a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a>.</p>"+
-                                "<p>Best regards,</p>"+
-                                "<p>The D-Dagen project group</p>"+
-                              "</td>"+
-                          "</tr>"+
-                    "</tbody>"+
-                  "</table>"+
-          "</td>"+
-        "</tr>"+
-        "<tr>"+
-            "<td style=\"padding:0; margin:0;\">"+
-                "<img src=\"ddagen.se/img/email-signatur.png\" alt=\"D-Dagen logo\" style=\"width:100%; height:auto; display:block;\">"+
-            "</td>"+
-        "</tr>"+
-      "</table>" ,
+      "<div style=\"padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
+        "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" +
+          "<tbody>" +
+            "<tr>" +
+              "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
+                "<p>" +
+                  "Hej " + firstName + " " + lastName + "!<br />" +
+                "</p>" +
+              "</div>" +
+            "</tr>" +
+            "<tr>" +
+              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+                "<p style=\"color:#ffffff;\">Vi är glada att kunna meddela att " + companyName + " vill ha ett kontaktsamtal med dig!"+
+                "<br />Gå in på <a href=\"https://ddagen.se/student\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/student</a>" +
+                " för att välja en tid för mötet: </p>" +
+              "</div>" +
+            "</tr>" +
+            "<tr>" +
+              "<div style=\"padding: 10px 30px 30px; background:#DE3163;color:#ffffff;\" >" +
+                "<p style=\"color:#ffffff;\">Kom ihåg att det är först till kvarn på att välja tider bland de studenter som har erbjudits kontaktsamtal." +
+                "<br />Vänliga hälsningar," +
+                "<br />D-Dagen Projektgruppen" +
+                "<br /><a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a></p>" +
+              "</div>" +
+            "</tr>" +
+          "</tbody>" +
+        "</table>" +
+        "<a href=\"https://ddagen.se/\" alt=\"Link to ddagen.se\">" +
+          "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+        "</a>" +
+      "</div>",
     },
     meeting_deleted_by_student: {
       subject: (
@@ -730,38 +767,36 @@ export default {
         firstName: string,
         lastName: string,
       )=>
-        "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
-        "<tr>"+
-          "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
-              "<table style=\"background-color:#EE237B;padding:30px;color:#ffffff;border-radius:10px;width:80%;margin:auto;border-collapse:separate;border-spacing:0;box-shadow:0 4px 10px rgba(0, 0, 0, 0.2)\">"+
-                  "<thead>"+
-                        "<tr>"+
-                            "<th colspan=\"2\" style=\"font-size:24px;text-align:left;padding-bottom:20px\">Hi!</th>"+
-                        "</tr>"+
-                  "</thead>"+
-                    "<tbody>"+
-                        "<tr>"+
-                            "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                                "<p>We are sorry to inform that " + firstName + " " + lastName + " has canceled your meeting.</p>"+
-                            "</td>"+
-                          "</tr>"+
-                          "<tr>"+
-                              "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                                "<p>If any of the information above is incorrect or if you have any other questions, do not hesitate to contact our sales team at <a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a>.</p>"+
-                                "<p>Best regards,</p>"+
-                                "<p>The D-Dagen project group</p>"+
-                              "</td>"+
-                          "</tr>"+
-                    "</tbody>"+
-                  "</table>"+
-          "</td>"+
-        "</tr>"+
-        "<tr>"+
-            "<td style=\"padding:0; margin:0;\">"+
-                "<img src=\"ddagen.se/img/email-signatur.png\" alt=\"D-Dagen logo\" style=\"width:100%; height:auto; display:block;\">"+
-            "</td>"+
-        "</tr>"+
-      "</table>",
+      "<div style=\"padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
+        "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" +
+          "<tbody>" +
+            "<tr>" +
+              "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
+                "<p>" +
+                  "Hej!<br />" +
+                "</p>" +
+              "</div>" +
+            "</tr>" +
+            "<tr>" +
+              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+                "<p style=\"color:#ffffff;\">Tyvärr har " + firstName + " " + lastName + " nekat er kontaktsamtals-förfrågan."+
+                "<br />Logga in på <a href=\"https://ddagen.se/utställare\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/utställare</a>" +
+                " för att hantera era kontaktsamtal. </p>" +
+              "</div>" +
+            "</tr>" +
+            "<tr>" +
+              "<div style=\"padding: 10px 30px 30px; background:#DE3163;color:#ffffff;\" >" +
+                "<br />Vänliga hälsningar," +
+                "<br />D-Dagen Projektgruppen" +
+                "<br /><a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a></p>" +
+              "</div>" +
+            "</tr>" +
+          "</tbody>" +
+        "</table>" +
+        "<a href=\"https://ddagen.se/\" alt=\"Link to ddagen.se\">" +
+          "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+        "</a>" +
+      "</div>",
     },
     meeting_declined_by_student: {
       subject: (
@@ -773,38 +808,36 @@ export default {
         firstName: string,
         lastName: string,
       )=>
-      "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
-        "<tr>"+
-          "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
-              "<table style=\"background-color:#EE237B;padding:30px;color:#ffffff;border-radius:10px;width:80%;margin:auto;border-collapse:separate;border-spacing:0;box-shadow:0 4px 10px rgba(0, 0, 0, 0.2)\">"+
-                  "<thead>"+
-                        "<tr>"+
-                            "<th colspan=\"2\" style=\"font-size:24px;text-align:left;padding-bottom:20px\">Hi!</th>"+
-                        "</tr>"+
-                  "</thead>"+
-                    "<tbody>"+
-                        "<tr>"+
-                            "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                                "<p>We are sorry to inform that " + firstName + " " + lastName + " has declined your meeting offer.</p>"+
-                            "</td>"+
-                          "</tr>"+
-                          "<tr>"+
-                              "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                                "<p>If any of the information above is incorrect or if you have any other questions, do not hesitate to contact our sales team at <a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a>.</p>"+
-                                "<p>Best regards,</p>"+
-                                "<p>The D-Dagen project group</p>"+
-                              "</td>"+
-                          "</tr>"+
-                    "</tbody>"+
-                  "</table>"+
-          "</td>"+
-        "</tr>"+
-        "<tr>"+
-            "<td style=\"padding:0; margin:0;\">"+
-                "<img src=\"ddagen.se/img/email-signatur.png\" alt=\"D-Dagen logo\" style=\"width:100%; height:auto; display:block;\">"+
-            "</td>"+
-        "</tr>"+
-      "</table>",
+      "<div style=\"padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
+        "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" +
+          "<tbody>" +
+            "<tr>" +
+              "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
+                "<p>" +
+                  "Hej!<br />" +
+                "</p>" +
+              "</div>" +
+            "</tr>" +
+            "<tr>" +
+              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+                "<p style=\"color:#ffffff;\">Tyvärr har " + firstName + " " + lastName + " avbokat ert kontaktsamtal."+
+                "<br />Logga in på <a href=\"https://ddagen.se/utställare\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/utställare</a>" +
+                " för att hantera era kontaktsamtal. </p>" +
+              "</div>" +
+            "</tr>" +
+            "<tr>" +
+              "<div style=\"padding: 10px 30px 30px; background:#DE3163;color:#ffffff;\" >" +
+                "<br />Vänliga hälsningar," +
+                "<br />D-Dagen Projektgruppen" +
+                "<br /><a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a></p>" +
+              "</div>" +
+            "</tr>" +
+          "</tbody>" +
+        "</table>" +
+        "<a href=\"https://ddagen.se/\" alt=\"Link to ddagen.se\">" +
+          "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+        "</a>" +
+      "</div>",
     },
     meeting_deleted_by_company: {
       subject: (
@@ -815,38 +848,36 @@ export default {
         lastName: string,
         companyName: string,
       )=>
-      "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
-        "<tr>"+
-          "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
-              "<table style=\"background-color:#EE237B;padding:30px;color:#ffffff;border-radius:10px;width:80%;margin:auto;border-collapse:separate;border-spacing:0;box-shadow:0 4px 10px rgba(0, 0, 0, 0.2)\">"+
-                  "<thead>"+
-                        "<tr>"+
-                            "<th colspan=\"2\" style=\"font-size:24px;text-align:left;padding-bottom:20px\">Hi " + firstName + " " + lastName + "!</th>"+
-                        "</tr>"+
-                  "</thead>"+
-                    "<tbody>"+
-                        "<tr>"+
-                            "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                                "<p>We are sorry to inform that " + companyName + " has canceled your meeting.</p>"+
-                            "</td>"+
-                          "</tr>"+
-                          "<tr>"+
-                              "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                                "<p>If any of the information above is incorrect or if you have any other questions, do not hesitate to contact our sales team at <a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a>.</p>"+
-                                "<p>Best regards,</p>"+
-                                "<p>The D-Dagen project group</p>"+
-                              "</td>"+
-                          "</tr>"+
-                    "</tbody>"+
-                  "</table>"+
-          "</td>"+
-        "</tr>"+
-        "<tr>"+
-            "<td style=\"padding:0; margin:0;\">"+
-                "<img src=\"ddagen.se/img/email-signatur.png\" alt=\"D-Dagen logo\" style=\"width:100%; height:auto; display:block;\">"+
-            "</td>"+
-        "</tr>"+
-      "</table>",
+      "<div style=\"padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
+        "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" +
+          "<tbody>" +
+            "<tr>" +
+              "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
+                "<p>" +
+                  "Hej "+ firstName + " " + lastName + "!<br />" +
+                "</p>" +
+              "</div>" +
+            "</tr>" +
+            "<tr>" +
+              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+                "<p style=\"color:#ffffff;\">Tyvärr har " + companyName + " avbokat ert kontaktsamtal."+
+                "<br />Logga in på <a href=\"https://ddagen.se/student\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/student</a>" +
+                " för att hantera dina kontaktsamtal. </p>" +
+              "</div>" +
+            "</tr>" +
+            "<tr>" +
+              "<div style=\"padding: 10px 30px 30px; background:#DE3163;color:#ffffff;\" >" +
+                "<br />Vänliga hälsningar," +
+                "<br />D-Dagen Projektgruppen" +
+                "<br /><a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a></p>" +
+              "</div>" +
+            "</tr>" +
+          "</tbody>" +
+        "</table>" +
+        "<a href=\"https://ddagen.se/\" alt=\"Link to ddagen.se\">" +
+          "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+        "</a>" +
+      "</div>",
     },
     meeting_completed_to_company: {
         subject: (
@@ -861,40 +892,38 @@ export default {
           time: string,
           location: string,
         )=>
-      "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
-        "<tr>"+
-          "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
-              "<table style=\"background-color:#EE237B;padding:30px;color:#ffffff;border-radius:10px;width:80%;margin:auto;border-collapse:separate;border-spacing:0;box-shadow:0 4px 10px rgba(0, 0, 0, 0.2)\">"+
-                  "<thead>"+
-                        "<tr>"+
-                            "<th colspan=\"2\" style=\"font-size:24px;text-align:left;padding-bottom:20px\">Hi " + companyName + "!</th>"+
-                        "</tr>"+
-                  "</thead>"+
-                    "<tbody>"+
-                        "<tr>"+
-                            "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                                "<p>This is a confirmation for your student meeting with " + firstName + " " + lastName + ".</p>"+
-                                "<p>Time: " + time + "</p>"+
-                                "<p>Location: " + location + "</p>"+
-                            "</td>"+
-                          "</tr>"+
-                          "<tr>"+
-                              "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                                "<p>If any of the information above is incorrect or if you have any other questions, do not hesitate to contact our sales team at <a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a>.</p>"+
-                                "<p>Best regards,</p>"+
-                                "<p>The D-Dagen project group</p>"+
-                              "</td>"+
-                          "</tr>"+
-                    "</tbody>"+
-                  "</table>"+
-          "</td>"+
-        "</tr>"+
-        "<tr>"+
-            "<td style=\"padding:0; margin:0;\">"+
-                "<img src=\"ddagen.se/img/email-signatur.png\" alt=\"D-Dagen logo\" style=\"width:100%; height:auto; display:block;\">"+
-            "</td>"+
-        "</tr>"+
-      "</table>",
+        "<div style=\"padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
+          "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" +
+            "<tbody>" +
+              "<tr>" +
+                "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
+                  "<p>" +
+                    "Hej " + companyName + "!<br />" +
+                  "</p>" +
+                "</div>" +
+              "</tr>" +
+              "<tr>" +
+                "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+                  "<p style=\"color:#ffffff;\">Detta är en bekräftelse på ert kontaktsamtal med " + firstName + " " + lastName + "."+
+                  "<br />Tid: " + time + "<br />" +
+                  "Plats: " + location + "<br />" +
+                  "<br />Logga in på <a href=\"https://ddagen.se/utställare\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/utställare</a>" +
+                  " för att se alla era kontaktsamtal. </p>" +
+                "</div>" +
+              "</tr>" +
+              "<tr>" +
+                "<div style=\"padding: 10px 30px 30px; background:#DE3163;color:#ffffff;\" >" +
+                  "<br />Vänliga hälsningar," +
+                  "<br />D-Dagen Projektgruppen" +
+                  "<br /><a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a></p>" +
+                "</div>" +
+              "</tr>" +
+            "</tbody>" +
+          "</table>" +
+          "<a href=\"https://ddagen.se/\" alt=\"Link to ddagen.se\">" +
+            "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+          "</a>" +
+        "</div>",
       },
       meeting_completed_to_student: {
         subject: (
@@ -909,41 +938,38 @@ export default {
           time: string,
           location: string,
         )=>
-      "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
-        "<tr>"+
-          "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
-              "<table style=\"background-color:#EE237B;padding:30px;color:#ffffff;border-radius:10px;width:80%;margin:auto;border-collapse:separate;border-spacing:0;box-shadow:0 4px 10px rgba(0, 0, 0, 0.2)\">"+
-                  "<thead>"+
-                        "<tr>"+
-                            "<th colspan=\"2\" style=\"font-size:24px;text-align:left;padding-bottom:20px\">Hi " + firstName + " " + lastName + "!</th>"+
-                        "</tr>"+
-                  "</thead>"+
-                    "<tbody>"+
-                        "<tr>"+
-                            "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                                "<p>This is a confirmation for your student meeting with " + companyName + ".</p>"+
-                                "<p>Time: " + time + "</p>"+
-                                "<p>Location: " + location + "</p>"+
-                                "<p>If you wish to unbook your meeting please unbook via our <a href=\"https://ddagen.se/student\" style=\"color:#ffffff;text-decoration:underline\">https://ddagen.se/student</a>.</p>"+
-                            "</td>"+
-                          "</tr>"+
-                          "<tr>"+
-                              "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                                "<p>If any of the information above is incorrect or if you have any other questions, do not hesitate to contact our sales team at <a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a>.</p>"+
-                                "<p>Best regards,</p>"+
-                                "<p>The D-Dagen project group</p>"+
-                              "</td>"+
-                          "</tr>"+
-                    "</tbody>"+
-                  "</table>"+
-          "</td>"+
-        "</tr>"+
-        "<tr>"+
-            "<td style=\"padding:0; margin:0;\">"+
-                "<img src=\"ddagen.se/img/email-signatur.png\" alt=\"D-Dagen logo\" style=\"width:100%; height:auto; display:block;\">"+
-            "</td>"+
-        "</tr>"+
-      "</table>",
+        "<div style=\"padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
+          "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" +
+            "<tbody>" +
+              "<tr>" +
+                "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
+                  "<p>" +
+                    "Hej " + firstName + " " + lastName + "!<br />" +
+                  "</p>" +
+                "</div>" +
+              "</tr>" +
+              "<tr>" +
+                "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+                  "<p style=\"color:#ffffff;\">Detta är en bekräftelse på ert kontaktsamtal med " + companyName + "."+
+                  "<br />Tid: " + time + "<br />" +
+                  "Plats: " + location + "<br />" +
+                  "<br />Logga in på <a href=\"https://ddagen.se/utställare\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/utställare</a>" +
+                  " för att se alla era kontaktsamtal. </p>" +
+                "</div>" +
+              "</tr>" +
+              "<tr>" +
+                "<div style=\"padding: 10px 30px 30px; background:#DE3163;color:#ffffff;\" >" +
+                  "<br />Vänliga hälsningar," +
+                  "<br />D-Dagen Projektgruppen" +
+                  "<br /><a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a></p>" +
+                "</div>" +
+              "</tr>" +
+            "</tbody>" +
+          "</table>" +
+          "<a href=\"https://ddagen.se/\" alt=\"Link to ddagen.se\">" +
+            "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+          "</a>" +
+        "</div>",
       },
   },
   faq: {
@@ -971,6 +997,7 @@ export default {
     table3row4: "VI VILL HA MER INFORMATION, VART VÄNDER VI OSS?",
     table3row5: "ÄR NI ETT STARTUP?",
     table3row6: "Hur går kontaktsamtal till?",
+    table3row7: "Hur går Paneldiskussioner till?",
     table3text1:
       "Ni får göra en <a href='https://ddagen.se/företagsanmälan' target='blank' className='underline text-yellow'>  intresseanmälan</a> eller kontakta våra säljare på <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
     table3text2:
@@ -982,7 +1009,9 @@ export default {
     table3text5:
       "Kontakta oss på <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
     table3text6:
-      "Studentmötena är ett utmärkt tillfälle för studenter och företag att träffas i en mer personlig miljö. Studenterna kommer att välja vilka företag de vill träffa, och företagen kommer sedan att kunna välja vilka av dessa studenter de vill träffa. Studenterna kommer därefter att kunna välja en tidslucka för att träffa företagen under mässan. Läs mer om det <a href='https://ddagen.se/en/studentmeetings' target='blank' className='underline text-yellow'>här</a>.",
+      "Studentmötena är ett utmärkt tillfälle för studenter och företag att träffas i en mer personlig miljö. Studenterna kommer att välja vilka företag de vill träffa, och företagen kommer sedan att kunna välja vilka av dessa studenter de vill träffa. Studenterna kommer därefter att kunna välja en tidslucka för att träffa företagen under mässan. Läs mer om det <a href='https://ddagen.se/kontaktsamtal' target='blank' className='underline text-yellow'>här</a>.",
+    table3text7:
+      "Under mässdagen så anordnas det 3 st paneldiskussioner som vardera behandlar ett IT-relevant ämne och som modereras av D-Dagen. Vid ett sådant tillfälle får studenter möjlighet att höra om hur det är att arbeta inom IT-branschen, samt får ta del av en intressant och lärorik diskussion mellan ett fåtal företagsrepresentanter från olika företag.",
     table4row1:
       "VILKEN TYP AV EVENEMANG KAN VÅRT FÖRETAG ANORDNA TILLSAMMANS MED D-DAGEN?",
     table4text1:
@@ -1078,6 +1107,22 @@ export default {
     paragraph:
       "Tveka inte att höra av dig om du har några frågor angående våra produkter eller har några funderingar.",
   },
+  studentmeetings: {
+    header: "Kontaktsamtal",
+    subheader1: "Kontakta oss",
+    subheader2: "Upplägg",
+    subheader3: "Sök kontaktsamtal",
+    p1: "Kontaktsamtal är en unik möjlighet för företag och studenter att i enrum träffas och diskutera karriärsmöjligheter. Studenten får en mycket bättre inblick i förhållandena på den specifika arbetsplatsen, samt så får företag en utmärkt bild över den specifika studentens kunskaper och erfarenheter.",
+    p2: "Innan mötena kommer företag och studenter matchas via vår webbsida via följande process:",
+    bulletpoints: [
+      "Studenter loggar in på sitt konto på webbsidan via <a className='text-yellow' href='https://ddagen.se/student'>ddagen.se/student</a>",
+      "Laddar upp sitt cv",
+      "Väljer vilka företag som de är intresserade av att ha kontaktsamtal med."
+    ],
+    p3: "Företagen ser sedan över listan med studenter som är intresserade av att samtala med just dem, och väljer vilka de ska boka möten med utifrån deras studentprofiler och CV. \n\n Varje företag får en 2-timmars tidslucka någon gång under mässans öppettider (kl. 10–16) där de kommer ha möjlighet att möta så många studenter som de hinner eller har möjlighet till. \n\n Vi rekommenderar 15 minuters möten, men det är upp till respektive företag.",
+    p4: "Skapa din studentprofil och välj företag för kontaktsamtal",
+    cta: "Skapa Profil"
+  },
   event: {
     lunchSeminarHeader: "Lunchföreläsning",
     lunchSeminar: " Lunchföreläsningar är ett otroligt populärt koncept bland studenter, där det bjuds på gratis lunch och en intressant föreläsning från ett företag i IT-branschen. Sker kl. 12-13 en vardag på KTH campus.",
@@ -1092,6 +1137,33 @@ export default {
     fair: "Mässan",
     closes: " stänger",
     banquet: "D-Dagen Banquetten börjar!",
+  },
+  history: {
+    header: "D-Dagen Historia",
+    subheader: "Begreppet ”D-Dagen” myntades redan år 2000, då det var en branschdag med 13 närvarande företag i E-huset på KTH Campus. Sedan dess har D-Dagen växt och 2016 intog den kårhuset, Nymble. Nu anses D-Dagen vara Nordens största arbetsmarknads-dag för datateknik-studenter, samt en av de största arbetsmarknads-dagarna på hela KTH.",
+    subsubheader: "Klicka gärna på bilderna för mer information om varje år!",
+    nrOfCompanies: "Antal Företag:",
+    nrOfVisitors: "Antal Besökare:",
+    dda: "Huvudansvariga:",
+    before2000: "Före 2000",
+    before2000Text: "En funktionärspost som kallades för “Armu-D” skapades. Detta var Datasektionens represent som tillsammans med representanter från andra sektioner ansvarade för Armada, studentkårens gemensamma mässa för alla studenter på KTH. \n Bårde Armu-D och Datasektionens dåvarande “PR-grupp” experimenterade i framtagandet av konceptet som senare skulle bli Datasektionens alldeles egna arbetsmarknadsdag. Under 1991 och 1992 tros Armu-D ha anordnats så kallade “Data-Armador”. Senare under 1990-talet anordnade Datasektionens PR-grupp olika branschdagar som gick under olika namn, bland annat “Ericsson-dagen”, och bjöd in ett mindre antal företag till E-huset på KTH campus. På kvällen efter en branschdag bjöds det även till Datasektionens dåvarande sektionslokal, ESCapen, där man kunde få gratis öl om man hade säkrat en “ölbånge” på branschdagen.",
+    header1988: "1988",
+    text1988: "Datasektionens 5-års jubileum anordnade en liten branschdag och väckte intresse för konceptet, vilket syns i dBuggen (Datasektionens anrika sektionstidning).",
+    header1983: "1983",
+    text1983: "Begynnelsen, Datasektionen grundas den 7:e oktober 1983.",
+    text2025: "JUBILEUMSÅRET!",
+    text2024: "William & Toshihide anordnade D-Dagen mässan med flest besökare någonsin!",
+    text2023: "Axel & Johan anordnade D-Dagen mässan med flest företag någonsin!",
+    text2022: "",
+    text2021: "D-Dagen anordnas fysiskt igen efter att Corona restriktionerna lättats! \n Datasektionens styrelse, genom Matteus Berg, lägger fram en proposition om att D-Dagen och Datasektionens Näringslivsgrupp officiellt ska separeras i organisationsstrukturen. Sektionens medlemmar valde att bifalla propositionen.",
+    text2020: "På grund av coronapandemin anordnas den första digitala D-Dagen. Mässan ägede rum något senare än vanligt på grund av att man hoppades på lättare restriktioner på hösten.",
+    text2019: "Spotify var med på mässan!",
+    text2016: "Första mässan i kårhuset Nymble, istället för i E-huset. Första personen som valdes till den faktiska rollen som “D-Dagenansvarig”: Albin Söderholm som ansvarade för detta års mässa.",
+    text2015: "",
+    text2013: "Google var med på mässan!",
+    text2001: "Under början av perioden 2000-2010 ökade intresset för företag att synas bland studenterna starkt. Med det blev Datasektionens branschdag en återkommande sak och fick en mer enhetlig form och struktur. Den samordnades då av Datasektionens ”PR-grupp”, som senare blev Datasektionens ”Näringslivsgrupp”. \n Tidigt 2001 syns “D-Dagen” för första gången i sektionens officiella mötesprotokoll, när dåvarande PR-chef Peter Lindström lade fram en motion för att “få mer pengar till D-Dagen och att få pengar till kommande arrangemang under våren.” Sektionens medlemmar valde att enhälligt bifalla hans yrkande.",
+    text2000: "Namnet “D-Dagen” myntades detta år! \n Branschdagen anordnades då av Datasektionens PR-grupp och var en mindre branschdag i E-huset med 13 närvarande företag. På kvällen bjöds det även till Datasektionens dåvarande sektionslokal: ESCapen där man kunde få gratis öl om man hade säkrat en “ölbong” på branschdagen.",
+    contact: "Ifall du har någon relevant fakta om D-Dagens historia som du vill lägga till, kontakta: ",
   },
   admin: {
     login: {
@@ -1109,12 +1181,14 @@ export default {
         logoColour: "Logga m. färg",
         description: "Beskrivning",
         package: "Paket",
+        delete: "Ta bort",
         companyHost: {
           name: "Företagsvärd",
           companyHostName: "Värdnamn",
           companyHostEmail: "Värdens email",
           companyHostNumber: "Värdens telefonnummer",
-          page: "Lägg till en företagsvärd för "
+          page: "Lägg till en företagsvärd för ",
+          empty: "Vi kommer informera er när en företagsvärd är tillagd",
         },
         extras: {
           name: "Tillägg",
@@ -1266,12 +1340,17 @@ export default {
   },
   sok:{
     notActive: "Går inte att söka just nu, håll koll på sociala medier för vidare information i framtiden",
-    header: "Sök D-DAGEN",
+    header: "Sök Ledningsgruppen 26",
     description: "Årets D-Dagen ska bli Datasektionens största och bästa arbetsmarknadsmässa någonsin! Detta är i alla fall visionen vi har som ansvariga i år. Dock är det omöjligt för oss att arrangera ett så här stort evenemang helt själva. Till vår hjälp behöver vi en ambitiös projektgrupp som har drivet att skapa någonting extraordinärt. Vi vill förbättra den interna kommunikation från tidigare år och kommer därför satsa extra mycket på teambuilding för att få en tajt grupp. Vi förväntar oss också att alla i projektgruppen är sociala med god samarbetsförmåga och självgående i sina uppgifter.",
     search:"SÖK",
     info:"Information om rollerna",
     extra:"Läs mer om rollerna",
     moreInfo:"Intresserad?",
+    viceDDA:{
+      header: "Vice DDA",
+      text: "Vice-DDA är en nyckelroll inom D-Dagen och fungerar som projektledarens (DDA:s) högra hand. Genom ett nära samarbete med DDA stöttar Vice-DDA det övergripande arbetet i projektet och säkerställer att alla grupper rör sig i rätt riktning. Rollen kräver ett helhetsperspektiv, god kommunikationsförmåga och en stark känsla för ansvar. Vice-DDA bidrar till att D-Dagen blir en sammanhängande, effektiv och minnesvärd upplevelse för både studenter och företag.",
+      roles : ["\n- Driven\n- Villig att lära sig\n- Flexibel\n Som Vice-DDA så har du inga exakt satta arbetsuppgifter, utan din roll är att hjälpa till DDA på alla möjliga sätt. Allt från att gå på möten med undergrupperna till hjälpa till med företagskontakt. Det vill säga, en Vice-DDA ska gärna ha erfarenhet av D-Dagen, men det är absolut inget krav utan det viktigaste är att man har ett starkt driv och är villig att lära sig mycket"]
+    },
     prGroup:{
       header: "PR-Gruppen",
       text: "PR-gruppen är en mångsidig och kreativ grupp inom D-Dagen. Gruppen ansvarar för att skapa och upprätthålla den visuella delen av D-Dagens varumärke. De har en rad olika ansvarsområden som sträcker sig från sociala medier och marknadsföring till den grafisk designen och tryckhantering.",

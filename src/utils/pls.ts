@@ -3,6 +3,8 @@ import { env } from "@/env.mjs";
 export type Permission = "read-exhibitors" | "write-exhibitors" | "read-registrations";
 
 export async function checkApiKey(permission: Permission, apiKey: string): Promise<boolean> {
+  console.log("LOGGING!!!!")
+  console.error(`${env.PLS_URL}/api/token/${encodeURIComponent(apiKey)}/ddagen/${permission}`);
   if (env.PLS_URL === "true") {
     return true;
   }

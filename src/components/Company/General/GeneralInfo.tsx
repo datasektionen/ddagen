@@ -2,6 +2,8 @@ import React from "react";
 import Locale from "@/locales";
 import { UploadButton } from "@/components/Company/UploadButton";
 import { TextInput } from "@/components/Company/TextInput";
+import { CheckMark } from "@/components/CheckMark";
+
 
 export default function GeneralInfo(
     {
@@ -14,6 +16,11 @@ export default function GeneralInfo(
         setDescription,
         industry,
         setIndustry,
+        allowMarketing,
+        setAllowMarketing,
+        showSetUpPage,
+        hasChecked,
+        setHasChecked
     }: {
         t: Locale;
         whiteLogo: string;
@@ -24,6 +31,11 @@ export default function GeneralInfo(
         setDescription: React.Dispatch<React.SetStateAction<string>>;
         industry: string;
         setIndustry: React.Dispatch<React.SetStateAction<string>>;
+        allowMarketing: boolean;
+        setAllowMarketing: React.Dispatch<React.SetStateAction<boolean>>;
+        showSetUpPage: boolean;
+        hasChecked: boolean;
+        setHasChecked: React.Dispatch<React.SetStateAction<boolean>>;
     }
 
 ) {
@@ -78,6 +90,27 @@ export default function GeneralInfo(
                     accept={["image/png", "image/svg+xml"]}
                     />
                 </div>
+
+              </div>
+              <div>
+                  {t.exhibitorSettings.step0.allowMarketing}
+                  <br></br>{t.exhibitorSettings.step0.yes}
+                  <CheckMark name="ja"
+                  checked={!hasChecked && showSetUpPage ? false : allowMarketing}
+                  onClick={()=> {
+                    setAllowMarketing(true)
+                    setHasChecked(true)
+                  }
+                  }/>
+                  <br />{t.exhibitorSettings.step0.no}
+                  <CheckMark name="nej"
+                  checked={!hasChecked && showSetUpPage ? false : !allowMarketing}
+                  onClick={()=>{
+                    setHasChecked(true)
+                    setAllowMarketing(false)
+                  }
+                  }/>
+
               </div>
         </div>
     </>

@@ -182,6 +182,7 @@ export const exhibitorRouter = createTRPCRouter({
         extraRepresentativeSpots: true,
         totalBanquetTicketsWanted: true,
         extraMealCoupons: true,
+        alcFreeDrinkCoupons: true,
         lastChanged: true,
       },
     });
@@ -195,6 +196,7 @@ export const exhibitorRouter = createTRPCRouter({
         extraRepresentativeSpots: z.number(),
         totalBanquetTicketsWanted: z.number(),
         extraMealCoupons: z.number(),
+        alcFreeDrinkCoupons: z.number(),
         lastChanged: z.date(),
       })
     )
@@ -208,6 +210,7 @@ export const exhibitorRouter = createTRPCRouter({
           extraRepresentativeSpots: input.extraRepresentativeSpots,
           totalBanquetTicketsWanted: input.totalBanquetTicketsWanted,
           extraMealCoupons: input.extraMealCoupons,
+          alcFreeDrinkCoupons: input.alcFreeDrinkCoupons,
           lastChanged: z.date().parse(input.lastChanged),
         },
       });
@@ -346,6 +349,20 @@ export const exhibitorRouter = createTRPCRouter({
         data: { description: input },
       });
     }),
+    getAllowMarketing: protectedProcedure.query(async ({ ctx }) => {
+      return await ctx.prisma.exhibitor.findUniqueOrThrow({
+        where: { id: ctx.session.exhibitorId },
+        select: { allowMarketing: true },
+      });
+    }),
+    setAllowMarketing: protectedProcedure
+      .input(z.boolean())
+      .mutation(async ({ ctx, input }) => {
+        await ctx.prisma.exhibitor.update({
+          where: { id: ctx.session.exhibitorId },
+          data: { allowMarketing: input },
+        });
+      }),
     getIndustry: protectedProcedure.query(async ({ ctx }) => {
       return await ctx.prisma.exhibitor.findUniqueOrThrow({
         where: { id: ctx.session.exhibitorId },
@@ -854,6 +871,22 @@ export const exhibitorRouter = createTRPCRouter({
       const availableTimeSlots = exhibitorsTimeSlots.filter((timeSlot: number) => !timeSlotsArray.includes(timeSlot));
 
       return availableTimeSlots;
+    }),
+    updateMeetingTimeSlots: publicProcedure  // Change from protectedProcedure to publicProcedure
+    .input(z.object({
+      password: z.string(),  // Add password to the input validation
+      exhibitorId: z.string(),
+      timeSlots: z.array(z.number())
+    }))
+    .mutation(async ({ ctx, input }) => {
+      // Add password validation if needed
+      const exhibitor = await ctx.prisma.exhibitor.update({
+        where: { id: input.exhibitorId },
+        data: { 
+          meetingTimeSlots: input.timeSlots 
+        }
+      });
+      return exhibitor;
     }),
     getPendingMeetings: protectedProcedure
     .query(async ({ ctx }) => {
