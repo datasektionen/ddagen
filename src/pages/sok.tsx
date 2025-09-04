@@ -87,8 +87,8 @@ function SingleTeam({
           <img src={image} className="md:h-[300px] lg:h-[300px] rounded-xl"></img>
         </div>
           <div
-            className={`${borderColor} border-[3px] rounded-lg 
-              bg-darkblue bg-opacity-75 
+            className={`${borderColor} border-[3px] rounded-lg
+              bg-darkblue bg-opacity-75
               md:w-[300px] md:h-[300px] lg:w-[400px] lg:h-[300px] flex`}
           >
             <div className={`${bgColor} bg-opacity-10
@@ -164,21 +164,21 @@ export default function SignupPage() {
   const isPageActive = true;
   const router = useRouter();
 
-  if(!isPageActive) 
+  if(!isPageActive)
   {
     return (
       <div className="mt-[140px] mb-[200px] text-center text-white">
-        {t.sok.notActive} 
+        {t.sok.notActive}
       </div>
     )
   }
-  else 
+  else
   {
     return (
       <div className="pt-[80px] sm:pt-[110px] pb-[110px] sm:pb-[200px]">
-        <div className={`flex flex-col 
+        <div className={`flex flex-col
             pt-[30px] pb-[10px]
-            max-w-[90vw] lg:max-w-[600px] mx-auto 
+            max-w-[90vw] lg:max-w-[600px] mx-auto
             bg-darkblue bg-opacity-75`}>
           <h1 className="text-5xl text-cerise font-medium text-center uppercase">
             {" "}
@@ -216,7 +216,6 @@ export default function SignupPage() {
           teamInfo={[
             t.sok.prGroup.header,
             t.sok.prGroup.text,
-            t.event.fullParagraph1,
           ]}
           roles={t.sok.prGroup.roles}
         />
@@ -230,7 +229,6 @@ export default function SignupPage() {
           teamInfo={[
             t.sok.devGroup.header,
             t.sok.devGroup.text,
-            t.event.fullParagraph1,
           ]}
           roles={t.sok.devGroup.roles}
         />
@@ -244,7 +242,6 @@ export default function SignupPage() {
           teamInfo={[
             t.sok.saleGroup.header,
             t.sok.saleGroup.text,
-            t.event.fullParagraph2,
           ]}
           roles={t.sok.saleGroup.roles}
         />
@@ -257,7 +254,6 @@ export default function SignupPage() {
           teamInfo={[
             t.sok.massGroup.header,
             t.sok.massGroup.text,
-            t.event.fullParagraph3,
           ]}
           roles={t.sok.massGroup.roles}
         />
@@ -270,11 +266,10 @@ export default function SignupPage() {
           teamInfo={[
             t.sok.ecoGroup.header,
             t.sok.ecoGroup.text,
-            t.event.fullParagraph4,
           ]}
           roles={t.sok.ecoGroup.roles}
         />
-        
+
         <div className="flex flex-col justify-center items-center">
           <h2 className="text-4xl text-cerise font-normal text-center uppercase mt-[100px] w-auto px-5 py-2 rounded-lg bg-darkblue bg-opacity-75">
             {" "}
