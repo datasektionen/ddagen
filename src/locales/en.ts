@@ -224,9 +224,11 @@ export default {
     },
     companyInterests:{
       header: "Select the companies you are interested in meeting",
+      deadlineHeader: "You have shown interest in these companies",
       description: "Click on the companies you are interested in meeting for a company meeting. The companies will then send you invitations to meetings.",
       checked1:"You have shown interest in meeting with ",
       checked2:" for a company meeting.",
+      deadline: "The deadline to show interest for a company is the 7th october."
     },
     companyMeeting:{
       offerText: " Has invited you to a company meeting",

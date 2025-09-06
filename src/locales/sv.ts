@@ -223,9 +223,11 @@ export default {
     },
     companyInterests:{
       header: "Välj de företag du är intresserad av att träffa",
+      deadlineHeader: "Dessa företag har du anmält intresse till",
       description: "Klicka i de företag du är intressarad av att träffa på ett kontaktsamtal. Företagen kommer sedan bjuda in till möten.",
       checked1:"Du har visat intresse för att träffa ",
       checked2:" på ett kontaktsamtal.",
+      deadline: "Deadline för att anmäla intresse är den 7 oktober.",
     },
     companyMeeting:{
       offerText: " Har bjudit in dig till ett kontaktsamtal",
