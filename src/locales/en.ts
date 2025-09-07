@@ -204,7 +204,7 @@ export default {
     dayStaffApplicationOpens: "Application opens on September 2nd",
     dayStaffApply: "Apply here!",
     banquetTitle: "The D-Dagen Banquet",
-    banquetText: "The D-Day Banquet has long been a student favorite — if you're lucky, you might land both a new job and a really great evening all in one go! Not to be forgotten are the delicious food, the charming company representatives, and the excellent drink tickets, also known as \'Barbongar\'.",
+    banquetText: "The D-Dagen Banquet has long been a student favorite — if you're lucky, you might land both a new job and a really great evening all in one go! Not to be forgotten are the delicious food, the charming company representatives, and the excellent drink tickets, also known as \'Barbongar\'.",
     banquetButton: "Sign up",
   },
   students: {
