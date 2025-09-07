@@ -51,7 +51,7 @@ export default function ForStudents() {
           <ImageTextSection
             t={t}
             leftSideImage={true}
-            imageProps={{ src: "/img/for-students-image-1.png", alt: "People talking" }}
+            imageProps={{ src: "/img/ddagen2024/ddagen-entry-balloons.jpg", alt: "D-Dagen entry balloons" }}
             className={`mt-[10px] lg:mt-[30px] mb-[20px] lg:mb-[40px]`}
           >
             <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl max-w-xl">
@@ -61,11 +61,32 @@ export default function ForStudents() {
             <p className="text-white text-base sm:text-lg pt-4 max-w-xl">{t.forStudents.fairText2}</p>
           </ImageTextSection>
 
-          {/* Section of D-Dagen Info */}
           <ImageTextSection
             t={t}
             leftSideImage={false}
-            imageProps={{ src: "/img/for-students-image-2.png", alt: "People talking" }}
+            imageProps={{ src: "/img/ddagen2024/ddagen-staff-balloons.jpg", alt: "D-Dagen day staff balloons" }}
+            className={`mt-[10px] lg:mt-[30px] mb-[20px] lg:mb-[40px]`}
+          >
+            <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl max-w-xl">
+              {t.forStudents.dayStaffTitle}
+            </h2>
+            <p className="text-white text-base sm:text-lg pt-4 max-w-xl">{t.forStudents.dayStaffText}</p>
+            <button className="max-lg:hidden mt-6">
+              <a
+                className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base uppercase font-medium px-6 py-2 max-lg:mx-auto w-max"
+                href={"https://forms.gle/5mLBmCeh1Zv3Y7Ds5"}
+                target="_blank"
+              >
+                {t.forStudents.dayStaffApply}
+              </a>
+            </button>
+          </ImageTextSection>
+
+          {/* Section of D-Dagen Info */}
+          <ImageTextSection
+            t={t}
+            leftSideImage={true}
+            imageProps={{ src: "/img/ddagen2024/ddagen-exhibitors.jpg", alt: "D-Dagen exhibitors" }}
             className={`mt-[20px] lg:mt-[60px] mb-[30px] lg:mb-[40px]`}
           >
             <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl max-w-xl">
@@ -74,7 +95,7 @@ export default function ForStudents() {
             <p className="text-white text-base sm:text-lg pt-4 mb-6 max-w-xl">{t.forStudents.tempCompanyMeetingsText}</p>
             <button className="max-lg:hidden mt-6">
               <a
-                className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base uppercase font-medium px-6 py-2 max-lg:mx-auto w-max"
+                className="block hover:scale-105 transition-transform border-cerise border-2 bg-transparent rounded-full text-cerise text-base uppercase font-medium px-6 py-2 max-lg:mx-auto w-max"
                 href={"/kontaktsamtal"}
               >
                 {t.forStudents.companyMeetingsPageButton}
@@ -82,35 +103,24 @@ export default function ForStudents() {
             </button>
           </ImageTextSection>
 
-          <ImageTextSection
-            t={t}
-            leftSideImage={true}
-            imageProps={{ src: "/img/dagspersonal.jpg", alt: "People talking" }}
-            className={`mt-[10px] lg:mt-[30px] mb-[20px] lg:mb-[40px]`}
-          >
-            <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl max-w-xl">
-              {t.forStudents.dayStaffTitle}
-            </h2>
-            <p className="text-white text-base sm:text-lg pt-4 max-w-xl">{t.forStudents.dayStaffText}</p>
-          </ImageTextSection>
-
           {/* Section of D-Dagen Info */}
           <ImageTextSection
             t={t}
             leftSideImage={false}
-            imageProps={{ src: "/img/ddagen2024/20241010-190018-mariatsy.jpg", alt: "People talking" }}
+            imageProps={{ src: "/img/ddagen2024/banquette-dinner.jpg", alt: "Banquette Dinner" }}
             className={`mt-[20px] lg:mt-[60px] mb-[30px] lg:mb-[40px]`}
           >
             <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl max-w-xl">
               {t.forStudents.banquetteTitle}
             </h2>
-            <p className="text-white text-base sm:text-lg pt-4 mb-6 max-w-xl">{"TEXT ... ..."}</p>
+            <p className="text-white text-base sm:text-lg pt-4 mb-6 max-w-xl">{t.forStudents.banquetteText}</p>
             <button className="max-lg:hidden mt-6">
               <a
                 className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base uppercase font-medium px-6 py-2 max-lg:mx-auto w-max"
-                href={"/kontaktsamtal"}
+                href={"/banquette"}
+                target="_blank"
               >
-                {"Sign Up"}
+                {t.forStudents.banquetteButton}
               </a>
             </button>
           </ImageTextSection>
