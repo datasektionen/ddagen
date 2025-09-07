@@ -1129,27 +1129,19 @@ export default {
     cta: "Skapa Profil"
   },
   event: {
-    paragraph1:
-      "Vi i Qulturnämnden försöker se till att Datasektionen får uppleva så mycket Qultur som möjligt, i alla dess former, oftast. Om du känner att du saknar någon form av Qultur på sektionen, eller känner du att du vill hjälpa oss i vårt arbete, tveka inte att höra av dig till Qulturattachén (se kontaktuppgifterna nedan). Vi har för tillfället inget medlemskap, alla är välkomna!",
-    paragraph2:
-      "Varje onsdag har ni möjlighet att avnjuta en kall öl/cider/drink/alkoholfritt alternativ tillsammans med god och prisvärd mat i META. Puben öppnar 17:17 och håller på tills gäster eller personal fått nog. Passa på att ta ett avbrott från labbandet och svänga förbi META en onsdag. Vanligtvis första onsdagspuben efter CSN-utbetalning har vi dessutom temapub med nya och roliga teman varje gång, missa inte!",
-    paragraph3:
-      "Vi försöker regelbundet hålla i hackerkvällar där alla sektionsmedlemmar är välkomna. Vanligtvis från klockan 17 och framåt på torsdagar någonstans i E-huset. Hit kan du komma för att hänga med oss, se vad vi håller på med, eller själv utveckla något för sektionen! Om du är intresserad och vill kolla om det är hackerkväll denna vecka, fråga på vår Mattermost! Hoppas vi ses!",
-    paragraph4:
-      "Detta liknar After-work-konceptet lite grann och kan även kombineras med det. En case kväll ger er en god möjlighet att testa studenterna och faktiskt se vad vi går för, samt ger studenterna en rolig ...",
-    fullParagraph1:
-      "Vi i Qulturnämnden försöker se till att Datasektionen får uppleva så mycket Qultur som möjligt, i alla dess former, oftast. Om du känner att du saknar någon form av Qultur på sektionen, eller känner du att du vill hjälpa oss i vårt arbete, tveka inte att höra av dig till Qulturattachén (se kontaktuppgifterna nedan). Vi har för tillfället inget medlemskap, alla är välkomna!",
-    fullParagraph2:
-      "Varje onsdag har ni möjlighet att avnjuta en kall öl/cider/drink/alkoholfritt alternativ tillsammans med god och prisvärd mat i META. Puben öppnar 17:17 och håller på tills gäster eller personal fått nog. Passa på att ta ett avbrott från labbandet och svänga förbi META en onsdag. Vanligtvis första onsdagspuben efter CSN-utbetalning har vi dessutom temapub med nya och roliga teman varje gång, missa inte!",
-    fullParagraph3:
-      "Vi försöker regelbundet hålla i hackerkvällar där alla sektionsmedlemmar är välkomna. Vanligtvis från klockan 17 och framåt på torsdagar någonstans i E-huset. Hit kan du komma för att hänga med oss, se vad vi håller på med, eller själv utveckla något för sektionen! Om du är intresserad och vill kolla om det är hackerkväll denna vecka, fråga på vår Mattermost! Hoppas vi ses!",
-    fullParagraph4:
-      "Detta liknar After-work-konceptet lite grann och kan även kombineras med det. En case kväll ger er en god möjlighet att testa studenterna och faktiskt se vad vi går för, samt ger studenterna en rolig utmaning, och beroende på uppgiften kan det också ge oss en viss känsla för hur det är att jobba med programmering.  Case kvällen kommer äga rum veckan efter D-dagen med PR för att nå ut till intresserade datateknikstudenter. Vi ansvarar för lokalen som kan anpassas efter hur många studenter som ni vill ska delta på eventet.",
-    header1: "Brädspelskväll",
-    header2: "Onsdagspub",
-    header3: "Hackerkväll",
-    header4: "Casekväll",
-    subheader: "Om ",
+    lunchSeminarHeader: "Lunchföreläsning",
+    lunchSeminar: " Lunchföreläsningar är ett otroligt populärt koncept bland studenter, där det bjuds på gratis lunch och en intressant föreläsning från ett företag i IT-branschen. Sker kl. 12-13 en vardag på KTH campus.",
+    recruitmentPub: "Rekryteringspub",
+    opening: "25-års jubileumsmässan öppnar!",
+    openingCeremony: "Invigning av mässan på scenen i Nya matsalen tillsammans med Huvudsponsor Omegapoint",
+    panelDiscussionHeader: "Paneldiskussion",
+    panelDiscussion1: "Fintech-branschens framtid med Nordea, Nore Technology, Revolut och Jane Street",
+    panelDiscussion1text: "Paneldiskussionen kommer att hållas på engelska",
+    panelDiscussion2: "Hur väl rustat är samhället inför dagens cyberhot? Med huvudsponsor Omegapoint, Basalt och Försvarsmaktens Radioanstalt",
+    panelDiscussion2text: "Paneldiskussionen kommer att hållas på svenska",
+    fair: "Mässan",
+    closes: " stänger",
+    banquet: "D-Dagen Banquetten börjar!",
   },
   history: {
     header: "D-Dagen Historia",
