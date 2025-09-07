@@ -203,9 +203,9 @@ export default {
     dayStaffText: "Would you like to help make our career fair a success? We are looking for enthusiastic students to assist on the day of the event with tasks such as welcoming visitors, supporting exhibitors, and keeping the venue organized. It's a great opportunity to network, meet companies, and gain valuable experience.",
     dayStaffApplicationOpens: "Application opens on September 2nd",
     dayStaffApply: "Apply here!",
-    banquetteTitle: "The D-Dagen Banquette",
-    banquetteText: "The D-Day Banquet has long been a student favorite — if you're lucky, you might land both a new job and a really great evening all in one go! Not to be forgotten are the delicious food, the charming company representatives, and the excellent drink tickets, also known as \'Barbonga\'.",
-    banquetteButton: "Sign up",
+    banquetTitle: "The D-Dagen Banquet",
+    banquetText: "The D-Day Banquet has long been a student favorite — if you're lucky, you might land both a new job and a really great evening all in one go! Not to be forgotten are the delicious food, the charming company representatives, and the excellent drink tickets, also known as \'Barbongar\'.",
+    banquetButton: "Sign up",
   },
   students: {
     info:{

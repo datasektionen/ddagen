@@ -202,9 +202,9 @@ export default {
     dayStaffText: "Vill du vara med och göra D-Dagen till en succé? Vi söker engagerade studenter som kan hjälpa till under mässdagen med uppgifter som att välkomna besökare, assistera utställare och hålla ordning i lokalerna. Det är ett perfekt tillfälle att nätverka, träffa företag och få värdefull erfarenhet.",
     dayStaffApplicationOpens: "Ansökan öppnar 2/9",
     dayStaffApply: "Ansök här!",
-    banquetteTitle: "D-Dagen Banquetten",
-    banquetteText: "D-Dagen Banquetten har länge varit en student-favorit, om du har tur så säkrar du både ett nytt jobb och en riktigt skön kväll i ett och samma svep! Inte att glömma är även den riktigt goda maten, de charmiga företagsrepresentanterna och de förträffliga dryckesbiljetterna, även kända som \"Barbongar\".",
-    banquetteButton: "Anmäl dig här",
+    banquetTitle: "D-Dagen Banquetten",
+    banquetText: "D-Dagen Banquetten har länge varit en student-favorit, om du har tur så säkrar du både ett nytt jobb och en riktigt skön kväll i ett och samma svep! Inte att glömma är även den riktigt goda maten, de charmiga företagsrepresentanterna och de förträffliga dryckesbiljetterna, även kända som \"Barbongar\".",
+    banquetButton: "Anmäl dig här",
   },
   students: {
     info:{

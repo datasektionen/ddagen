@@ -111,16 +111,16 @@ export default function ForStudents() {
             className={`mt-[20px] lg:mt-[60px] mb-[30px] lg:mb-[40px]`}
           >
             <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl max-w-xl">
-              {t.forStudents.banquetteTitle}
+              {t.forStudents.banquetTitle}
             </h2>
-            <p className="text-white text-base sm:text-lg pt-4 mb-6 max-w-xl">{t.forStudents.banquetteText}</p>
+            <p className="text-white text-base sm:text-lg pt-4 mb-6 max-w-xl">{t.forStudents.banquetText}</p>
             <button className="max-lg:hidden mt-6">
               <a
                 className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base uppercase font-medium px-6 py-2 max-lg:mx-auto w-max"
                 href={"/banquette"}
                 target="_blank"
               >
-                {t.forStudents.banquetteButton}
+                {t.forStudents.banquetButton}
               </a>
             </button>
           </ImageTextSection>
