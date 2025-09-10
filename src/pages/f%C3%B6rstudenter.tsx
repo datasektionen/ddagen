@@ -71,7 +71,7 @@ export default function ForStudents() {
               {t.forStudents.dayStaffTitle}
             </h2>
             <p className="text-white text-base sm:text-lg pt-4 max-w-xl">{t.forStudents.dayStaffText}</p>
-            <button className="max-lg:hidden mt-6">
+            <button className="mt-6">
               <a
                 className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base uppercase font-medium px-6 py-2 max-lg:mx-auto w-max"
                 href={"https://forms.gle/5mLBmCeh1Zv3Y7Ds5"}
@@ -93,7 +93,7 @@ export default function ForStudents() {
               {t.forStudents.companyMeetings}
             </h2>
             <p className="text-white text-base sm:text-lg pt-4 mb-6 max-w-xl">{t.forStudents.tempCompanyMeetingsText}</p>
-            <button className="max-lg:hidden mt-6">
+            <button className="mt-6">
               <a
                 className="block hover:scale-105 transition-transform border-cerise border-2 bg-transparent rounded-full text-cerise text-base uppercase font-medium px-6 py-2 max-lg:mx-auto w-max"
                 href={"/kontaktsamtal"}
@@ -114,7 +114,7 @@ export default function ForStudents() {
               {t.forStudents.banquetTitle}
             </h2>
             <p className="text-white text-base sm:text-lg pt-4 mb-6 max-w-xl">{t.forStudents.banquetText}</p>
-            <button className="max-lg:hidden mt-6">
+            <button className="mt-6">
               <a
                 className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base uppercase font-medium px-6 py-2 max-lg:mx-auto w-max"
                 href={"/banquette"}
