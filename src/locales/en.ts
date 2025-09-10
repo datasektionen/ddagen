@@ -31,7 +31,7 @@ export default {
     stats: [
       {
         value: "100+",
-        type: "Exhibitors"
+        type: "Exhibitors last year"
       },
       {
         value: "3000+",
