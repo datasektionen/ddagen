@@ -1242,6 +1242,7 @@ export default {
         representatives: "Representatives",
         banquetTickets: "Banquet Tickets",
         confirmedBanquetTickets: "Confirmed Banquet Tickets",
+        confirmedDrinkCoupons: "Confirmed Drink Coupons",
         mealCoupons: "Breakfast/Lunch Coupons",
       },
     },

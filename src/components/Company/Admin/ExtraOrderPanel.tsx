@@ -12,7 +12,6 @@ export function ExtraOrderPanel({
   preferences: Preferences[];
 }) {
   const [extras, setExtras] = useState<[ExhibitorExtras, ExhibitorExtras]>();
-  const [preferenceCount, setPreferenceCount] = useState<Map<string, { banquet: number}>>();
 
   useEffect(() => {
     let exhibitorPackage = {
@@ -148,7 +147,13 @@ export function ExtraOrderPanel({
                   <td></td>
                   <td></td>
                   <td>{preferences.filter((pref) => pref.type == "Banquet").length}</td>
-                </tr>                
+                </tr>
+                <tr className="text-center">
+                  <td>{t.admin.extraOrders.row.confirmedDrinkCoupons}</td>
+                  <td></td>
+                  <td></td>
+                  <td>{preferences.filter((pref) => pref.type == "Banquet").length * 4 + (extras?.[1].drinkCoupons ?? 0)}</td>
+                </tr>                  
               </tbody>
             </table>
           </div>
