@@ -31,7 +31,7 @@ export default {
     stats: [
       {
         value: "100+",
-        type: "Utställare förra året"
+        type: "Utställare"
       },
       {
         value: "3000+",
@@ -190,21 +190,16 @@ export default {
       "D-Dagen är Datasektionens årliga arbetsmarknadsdag. Det är ett heldagsevent där företag och studenter verksamma inom data och IT får en möjlighet att knyta kontakter och lära känna varandra. Detta skapar goda möjligheter för en mer direkt och personlig kontakt mellan företagsrepresentanter och studenter.",
     fairText2:
       "I år hålls mässan 9e oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15 på KTH Campus Valhallavägen. Studenter kommer erbjudas möjligheten att gå på kontaktsamtal med företag för att knyta närmare kontakt med specifika företag (begränsade platser per företag).",
-    eventPageButton: "D-Dagen Event",
     companyMeetings: "Kontaktsamtal",
     companyMeetingsText:
       "Vi erbjuder kontaktsamtal för studenter, vilket innebär att ni får möjlighet att i enrum med företagsrepresentanter diskutera framtida jobbmöjligheter med mera. Anmäl er på länken nedan:",
     tempCompanyMeetingsText:
       "Vi erbjuder kontaktsamtal för studenter, vilket innebär att ni får möjlighet att i enrum med företagsrepresentanter diskutera framtida jobbmöjligheter med mera. Anmälan kommer tillgängliggöras senare!",
-    companyMeetingsPageButton: "Läs mer",
-    companyMeetingsButton: "Anmäl dig här",    
-    dayStaffTitle: "Dagspersonal",
-    dayStaffText: "Vill du vara med och göra D-Dagen till en succé? Vi söker engagerade studenter som kan hjälpa till under mässdagen med uppgifter som att välkomna besökare, assistera utställare och hålla ordning i lokalerna. Det är ett perfekt tillfälle att nätverka, träffa företag och få värdefull erfarenhet.",
-    dayStaffApplicationOpens: "Ansökan öppnar 2/9",
-    dayStaffApply: "Ansök här!",
-    banquetTitle: "D-Dagen Banquetten",
-    banquetText: "D-Dagen Banquetten har länge varit en student-favorit, om du har tur så säkrar du både ett nytt jobb och en riktigt skön kväll i ett och samma svep! Inte att glömma är även den riktigt goda maten, de charmiga företagsrepresentanterna och de förträffliga dryckesbiljetterna, även kända som \"Barbongar\".",
-    banquetButton: "Anmäl dig här",
+      companyMeetingsButton: "Anmäl dig här",
+      dayStaffTitle: "Dagspersonal",
+      dayStaffText: "Vill du vara med och göra D-Dagen till en succé? Vi söker engagerade studenter som kan hjälpa till under mässdagen med uppgifter som att välkomna besökare, assistera utställare och hålla ordning i lokalerna. Det är ett perfekt tillfälle att nätverka, träffa företag och få värdefull erfarenhet.",
+      dayStaffApplicationOpens: "Ansökan öppnar 2/9",
+      dayStaffApply: "Ansök här!",
   },
   students: {
     info:{
@@ -228,11 +223,9 @@ export default {
     },
     companyInterests:{
       header: "Välj de företag du är intresserad av att träffa",
-      deadlineHeader: "Dessa företag har du anmält intresse till",
       description: "Klicka i de företag du är intressarad av att träffa på ett kontaktsamtal. Företagen kommer sedan bjuda in till möten.",
       checked1:"Du har visat intresse för att träffa ",
       checked2:" på ett kontaktsamtal.",
-      deadline: "Deadline för att anmäla intresse är den 7 oktober 19:00.",
     },
     companyMeeting:{
       offerText: " Har bjudit in dig till ett kontaktsamtal",
@@ -1116,7 +1109,7 @@ export default {
   },
   studentmeetings: {
     header: "Kontaktsamtal",
-    subheader1: "Upptäck möjligheterna",
+    subheader1: "Kontakta oss",
     subheader2: "Upplägg",
     subheader3: "Sök kontaktsamtal",
     p1: "Kontaktsamtal är en unik möjlighet för företag och studenter att i enrum träffas och diskutera karriärsmöjligheter. Studenten får en mycket bättre inblick i förhållandena på den specifika arbetsplatsen, samt så får företag en utmärkt bild över den specifika studentens kunskaper och erfarenheter.",
@@ -1239,6 +1232,7 @@ export default {
         representatives: "Representanter",
         banquetTickets: "Banquettsbiljetter",
         confirmedBanquetTickets: "Bekräftade Banquettsbiljetter",
+        confirmedDrinkCoupons: "Bekräftade Dryckesbiljetter",
         mealCoupons: "Frukost/lunch biljetter",
       },
     },
