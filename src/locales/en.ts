@@ -31,7 +31,7 @@ export default {
     stats: [
       {
         value: "100+",
-        type: "Exhibitors"
+        type: "Exhibitors last year"
       },
       {
         value: "3000+",
@@ -191,16 +191,21 @@ export default {
       "D-Dagen is the Computer Science Chapter's annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
     fairText2:
       "This year, the fair is held on October 9th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15 and in KTH Entré which is located at Drottning Kristinas väg 4. Students will be able to have meetings with exhibitors through company meetings in order to get more of a connection with that company (limited slots per company).",
+    eventPageButton: "D-Dagen Events",
     companyMeetings: "Company Meetings",
     companyMeetingsText:
       "We offer company meetings for students, which means that you will be able to discuss future job opportunities in a private room with representatives from selected companies. Sign up on the link below:",
     tempCompanyMeetingsText:
       "We offer company meetings for students, which means that you will be able to discuss future job opportunities in a private room with representatives from selected companies. Sign up will be available soon!",
+    companyMeetingsPageButton: "Read more",
     companyMeetingsButton: "Sign up",
     dayStaffTitle: "Day Staff",
     dayStaffText: "Would you like to help make our career fair a success? We are looking for enthusiastic students to assist on the day of the event with tasks such as welcoming visitors, supporting exhibitors, and keeping the venue organized. It's a great opportunity to network, meet companies, and gain valuable experience.",
     dayStaffApplicationOpens: "Application opens on September 2nd",
     dayStaffApply: "Apply here!",
+    banquetTitle: "The D-Dagen Banquet",
+    banquetText: "The D-Dagen Banquet has long been a student favorite — if you're lucky, you might land both a new job and a really great evening all in one go! Not to be forgotten are the delicious food, the charming company representatives, and the excellent drink tickets, also known as \'Barbongar\'.",
+    banquetButton: "Sign up",
   },
   students: {
     info:{
@@ -224,9 +229,11 @@ export default {
     },
     companyInterests:{
       header: "Select the companies you are interested in meeting",
+      deadlineHeader: "You have shown interest in these companies",
       description: "Click on the companies you are interested in meeting for a company meeting. The companies will then send you invitations to meetings.",
       checked1:"You have shown interest in meeting with ",
       checked2:" for a company meeting.",
+      deadline: "The deadline to show interest for a company is the 7th october 19:00."
     },
     companyMeeting:{
       offerText: " Has invited you to a company meeting",
@@ -1112,7 +1119,7 @@ export default {
   },
   studentmeetings: {
     header: "Student Meetings",
-    subheader1: "Contact Us",
+    subheader1: "Seek opportunity",
     subheader2: "Format",
     subheader3: "Apply for student meetings",
     p1: "Student meetings are a unique opportunity for companies and students to meet one-on-one and discuss career opportunities. Students gain valuable insight into the specific workplace, while companies get an excellent understanding of the student's skills and experiences.",
