@@ -232,7 +232,7 @@ export default {
       description: "Klicka i de företag du är intressarad av att träffa på ett kontaktsamtal. Företagen kommer sedan bjuda in till möten.",
       checked1:"Du har visat intresse för att träffa ",
       checked2:" på ett kontaktsamtal.",
-      deadline: "Deadline för att anmäla intresse är den 7 oktober.",
+      deadline: "Deadline för att anmäla intresse är den 7 oktober 19:00.",
     },
     companyMeeting:{
       offerText: " Har bjudit in dig till ett kontaktsamtal",
