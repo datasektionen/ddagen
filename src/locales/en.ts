@@ -233,7 +233,7 @@ export default {
       description: "Click on the companies you are interested in meeting for a company meeting. The companies will then send you invitations to meetings.",
       checked1:"You have shown interest in meeting with ",
       checked2:" for a company meeting.",
-      deadline: "The deadline to show interest for a company is the 7th october."
+      deadline: "The deadline to show interest for a company is the 7th october 19:00."
     },
     companyMeeting:{
       offerText: " Has invited you to a company meeting",
@@ -1241,6 +1241,7 @@ export default {
         drinkCoupons: "Drink Coupons",
         representatives: "Representatives",
         banquetTickets: "Banquet Tickets",
+        confirmedBanquetTickets: "Confirmed Banquet Tickets",
         mealCoupons: "Breakfast/Lunch Coupons",
       },
     },
