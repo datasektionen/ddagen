@@ -136,7 +136,7 @@ function RenderLogos(packageList: any[], rowSize: number, logoSize: string) {
       {chunkArray(packageList, rowSize).map((chunk, rowIndex) => (
         <div
           key={rowIndex}
-          className="flex flex-row justify-center items-center gap-14 mt-[75px]"
+          className="flex flex-row justify-center items-center gap-4 sm:gap-10 lg:gap-14 mt-6 sm:mt-10 lg:mt-[75px]"
         >
           {chunk.map((exhibitor, idx) => (
             <div key={idx}>
