@@ -229,8 +229,8 @@ export default function Logos({ exhibitorData }: LogosProps) {
           <div className="block sm:hidden">
             {RenderLogos(mainsponsorPackages, 1, "w-[250px]")}
             {RenderLogos(largePackages, 2, "w-[125px]")}
-            {RenderLogos(mediumPackages, 3, "w-[100px]")}
-            {RenderLogos(smallAndStartUpPackages, 2, "w-[80px]")}
+            {RenderLogos(mediumPackages, 2, "w-[100px]")}
+            {RenderLogos(smallAndStartUpPackages, 3, "w-[80px]")}
           </div>
 
           <div className="hidden xl:block">
