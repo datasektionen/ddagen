@@ -100,7 +100,7 @@ export default function Events() {
       companyName: "EECS event",
       image: "",
       header: t.event.recruitmentPub,
-      text: ""
+      text: t.event.recruitmentPubText
     },
     {
       date: "01/10",
@@ -138,14 +138,14 @@ export default function Events() {
       companyName: t.event.panelDiscussion1,
       image: "",
       header: t.event.panelDiscussionHeader,
-      text: t.event.panelDiscussion1text
+      text: t.event.panelDiscussion1text + " " + t.event.panelDiscussiontext
     },
     {
       date: "13:00",
       companyName: t.event.panelDiscussion2,
       image: "",
       header: t.event.panelDiscussionHeader,
-      text: t.event.panelDiscussion2text
+      text: t.event.panelDiscussion2text + " " + t.event.panelDiscussiontext
     },
     {
       date: "16:00",
