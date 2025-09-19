@@ -1146,8 +1146,9 @@ export default {
     panelDiscussion2: "How well prepared is society for today's cyber threats? with Omegapoint, Basalt and Försvarsmaktens Radioanstalt",
     panelDiscussion2text: "The panel discussion will be held in English.",
     panelDiscussiontext: "During the fair day, several panel discussions are held and moderated by D-Dagen, each covering an IT-relevant topic. These sessions give students the opportunity to hear what it’s like to work in the IT industry and engage in an insightful and educational discussion between a few company representatives.",
-    fair: "The Fair",
-    closes: " closes",
+    fair: "THE FAIR",
+    after: "AFTER",
+    closes: "The fair closes",
     banquet: "The D-Dagen Banquet starts!",
   },
   history: {

@@ -1143,8 +1143,9 @@ export default {
     panelDiscussion2: "Hur väl rustat är samhället inför dagens cyberhot? Med huvudsponsor Omegapoint, Basalt och Försvarsmaktens Radioanstalt",
     panelDiscussion2text: "Paneldiskussionen kommer att hållas på svenska",
     panelDiscussiontext: "Under mässdagen anordnas flera paneldiskussioner som vardera behandlar ett IT-relevant ämne och som modereras av D-Dagen. Vid ett sådant tillfälle får studenter möjlighet att höra om hur det är att arbeta inom IT-branschen, samt får ta del av en intressant och lärorik diskussion mellan ett fåtal företagsrepresentanter.",
-    fair: "Mässan",
-    closes: " stänger",
+    fair: "MÄSSAN",
+    after: "EFTER",
+    closes: "Mässan stänger",
     banquet: "D-Dagen Banquetten börjar!",
   },
   history: {

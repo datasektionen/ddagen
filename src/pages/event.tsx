@@ -151,7 +151,7 @@ export default function Events() {
       date: "16:00",
       companyName: "",
       image: "",
-      header: t.event.fair + t.event.closes,
+      header: t.event.closes,
       text: ""
     },
     {
@@ -231,7 +231,7 @@ export default function Events() {
             <div className="w-4 bg-cerise h-full min-h-[30px] rounded-b-full"></div>
           </div>
           <div>
-            <h1 className="text-5xl text-[#C2952C] font-medium text-center"> {t.event.fair} 9/10</h1>
+            <h1 className="text-5xl text-[#C2952C] p-4 font-medium text-center"> {t.event.fair} 9/10</h1>
           </div>
           <div className="max-sm:hidden flex justify-center">
             <div className="w-4 bg-[#C2952C] h-full min-h-[30px] rounded-t-full"></div>
@@ -255,6 +255,9 @@ export default function Events() {
         </div>
           <div className="flex max-sm:hidden justify-center">
             <div className="w-4 bg-[#C2952C] h-full min-h-[30px] rounded-b-full"></div>
+          </div>
+          <div>
+            <h1 className="text-5xl text-cerise p-4 font-medium text-center"> {t.event.after + " " + t.event.fair}</h1>
           </div>
           <div className="max-sm:hidden flex justify-center">
             <div className="w-4 bg-cerise h-full min-h-[30px] rounded-t-full"></div>
