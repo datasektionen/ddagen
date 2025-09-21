@@ -17,6 +17,7 @@ export default function ExtraOrders({
 }) {
   // on disable if deadline has passed
   const disablePreferences = (new Date() > new Date("2025-10-10"));
+
   const deadline = {
     drinkCoupons: "2025-10-10",
     tables: "2025-10-10",

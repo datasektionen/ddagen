@@ -233,7 +233,7 @@ export default {
       description: "Click on the companies you are interested in meeting for a company meeting. The companies will then send you invitations to meetings.",
       checked1:"You have shown interest in meeting with ",
       checked2:" for a company meeting.",
-      deadline: "The deadline to show interest for a company is the 7th october."
+      deadline: "The deadline to show interest for a company is the 7th october 19:00."
     },
     companyMeeting:{
       offerText: " Has invited you to a company meeting",
@@ -1137,6 +1137,7 @@ export default {
     lunchSeminarHeader: "Lunch Seminar",
     lunchSeminar: "Lunch Seminar",
     recruitmentPub: "Recruitment Pub",
+    recruitmentPubText: "During the recruitment of D-Dagen’s fantastic 100+ day staff who will assist during the fair, the Project Group organizes the annual Recruitment Pub in the Computer Science chapter's own pub, Meta! Join us for a really pleasant evening with D-Dagen-related activities and competitions with sponsored prizes. Food and drinks are available to order.",
     opening: "25th Anniversary Fair Opens!",
     openingCeremony: "Opening of the fair on stage in nya Matsalen together with Main Sponsor Omegapoint",
     panelDiscussionHeader: "Panel Discussion",
@@ -1144,8 +1145,10 @@ export default {
     panelDiscussion1text: "The panel discussion will be held in Swedish.",
     panelDiscussion2: "How well prepared is society for today's cyber threats? with Omegapoint, Basalt and Försvarsmaktens Radioanstalt",
     panelDiscussion2text: "The panel discussion will be held in English.",
-    fair: "The Fair",
-    closes: " closes",
+    panelDiscussiontext: "During the fair day, several panel discussions are held and moderated by D-Dagen, each covering an IT-relevant topic. These sessions give students the opportunity to hear what it’s like to work in the IT industry and engage in an insightful and educational discussion between a few company representatives.",
+    fair: "THE FAIR",
+    after: "AFTER",
+    closes: "The fair closes",
     banquet: "The D-Dagen Banquet starts!",
   },
   history: {
@@ -1241,6 +1244,8 @@ export default {
         drinkCoupons: "Drink Coupons",
         representatives: "Representatives",
         banquetTickets: "Banquet Tickets",
+        confirmedBanquetTickets: "Confirmed Banquet Tickets",
+        confirmedDrinkCoupons: "Confirmed Drink Coupons",
         mealCoupons: "Breakfast/Lunch Coupons",
       },
     },
