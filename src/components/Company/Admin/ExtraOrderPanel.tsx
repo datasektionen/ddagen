@@ -1,13 +1,15 @@
 import Locale from "@/locales";
 import { useState, useEffect } from "react";
-import { Package, Exhibitor, ExhibitorExtras } from "@/shared/Classes";
+import { Package, Exhibitor, ExhibitorExtras, Preferences } from "@/shared/Classes";
 
 export function ExtraOrderPanel({
   t,
   exhibitors,
+  preferences,
 }: {
   t: Locale;
   exhibitors: Exhibitor[];
+  preferences: Preferences[];
 }) {
   const [extras, setExtras] = useState<[ExhibitorExtras, ExhibitorExtras]>();
 
@@ -140,6 +142,18 @@ export function ExtraOrderPanel({
                       : 0}
                   </td>
                 </tr>
+                <tr className="text-center">
+                  <td>{t.admin.extraOrders.row.confirmedBanquetTickets}</td>
+                  <td></td>
+                  <td></td>
+                  <td>{preferences.filter((pref) => pref.type == "Banquet").length}</td>
+                </tr>
+                <tr className="text-center">
+                  <td>{t.admin.extraOrders.row.confirmedDrinkCoupons}</td>
+                  <td></td>
+                  <td></td>
+                  <td>{preferences.filter((pref) => pref.type == "Banquet").length * 4 + (extras?.[1].drinkCoupons ?? 0)}</td>
+                </tr>                  
               </tbody>
             </table>
           </div>

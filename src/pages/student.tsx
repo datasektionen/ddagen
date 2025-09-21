@@ -218,7 +218,7 @@ export default function LoggedInPage() {
     }
 
     function StudentView(){
-        const deadline = new Date() > new Date("2025-10-07");
+        const deadline = new Date() > new Date("2025-10-07T17:00:00");
 
         function renderCompany(company: Company){
             return <div key={company.name} 

@@ -99,7 +99,7 @@ export default function Sales() {
                 jobOffers={jobOffers}
               />
             ) : buttonSelected == 2 ? (
-              <ExtraOrderPanel t={t} exhibitors={exhibitors} />
+              <ExtraOrderPanel t={t} exhibitors={exhibitors} preferences={preferences} />
             ) : buttonSelected == 3 ? (
               <PreferencesPanel
                 t={t}
