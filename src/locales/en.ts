@@ -49,6 +49,8 @@ export default {
   },
   forCompanies: {
     title: "For Companies",
+    guideText: "Welcome to D-Dagen! Here is a guide for companies on how to maximize your presence and get the most out of the fair.",
+    guideButtonText: "Read the Guide",
     aboutFair: "About the fair",
     fairText1:
       "D-Dagen is the Computer Science Chapter's annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
@@ -186,6 +188,8 @@ export default {
   },
   forStudents: {
     title: "For Students",
+    guideText: "Welcome to D-Dagen! Here is a guide for students to get the most out of the fair.",
+    guideButtonText: "Read the Guide",
     aboutFair: "About the fair",
     fairText1:
       "D-Dagen is the Computer Science Chapter's annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
@@ -206,6 +210,8 @@ export default {
     banquetTitle: "The D-Dagen Banquet",
     banquetText: "The D-Dagen Banquet has long been a student favorite — if you're lucky, you might land both a new job and a really great evening all in one go! Not to be forgotten are the delicious food, the charming company representatives, and the excellent drink tickets, also known as \'Barbongar\'.",
     banquetButton: "Sign up",
+    panelDiscussionsTitle: "Panel Discussions",
+    panelDiscussionsText: "Representatives from various companies will participate in panel discussions on IT-related topics. We encourage you to attend these to deepen your knowledge of current industry trends and explore which direction best matches your future career interests—whether it's cybersecurity, artificial intelligence, or fintech.",
   },
   students: {
     info:{
@@ -1129,7 +1135,7 @@ export default {
       "Upload their CV",
       "Select the companies they are interested in having a student meeting with."
     ],
-    p3: "The companies then review the list of students who are interested in speaking with them and choose whom to schedule meetings with based on their student profiles and CVs.\n\nEach company is assigned a 2-hour time slot sometime during the fair (10:00–16:00), during which they can meet as many students as they are able to.\n\nWe recommend 15-minute meetings, but the exact duration is up to each individual company.",
+    p3: "The companies then review the list of students who are interested in speaking with them and choose whom to schedule meetings with based on their student profiles and CVs.\n\nEach company is assigned a 3-hour time slot sometime during the fair (10:00–16:00), during which they can meet as many students as they are able to.\n\nWe recommend 15-minute meetings, but the exact duration is up to each individual company.\n\nKeep a close eye on your email after registering! You will need to schedule a meeting with the company if they select you. If, for any reason, the company needs to cancel the meeting, you will receive an email notifying you, and you will then have the opportunity to book a new time. \n\n The deadline for students to register their interest in contact meetings is October 7. However, it is still possible to book/reschedule meeting times with the companies after that date.",
     p4: "Create your student profile and choose companies for student meetings",
     cta: "Create Profile"
   },
