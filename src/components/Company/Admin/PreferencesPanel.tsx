@@ -15,6 +15,56 @@ export function PreferencesPanel({
   exhibitors: Exhibitor[];
   preferences: Preferences[];
 }) {
+  function toCSV(rows: (string | number)[][], headers: string[]) {
+    const header = headers.join(",");
+    const body = rows.map((row) =>
+      row.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(",")
+    );
+    return [header, ...body].join("\n");
+  }
+
+  function downloadCSV(filename: string, csv: string) {
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' }); 
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob); 
+    link.target = '_blank';
+    link.download = filename;
+    link.click(); 
+  }
+
+  function exportPreferencesCSV(type: "Banquet" | "Representative") {
+    const headers = [
+      "Exhibitor",
+      "Name",
+      "Choices",
+      "Type",
+      "Comment",
+    ];
+
+    const rows: (string | number)[][] = [];
+
+    sortExhibitors(exhibitors).forEach((exhibitor) => {
+      sortPreferences(
+        preferences.filter(
+          (p) => p.exhibitorId === exhibitor.id && p.type === type
+        )
+      ).forEach((preference) => {
+        rows.push([
+          exhibitor.name,
+          preference.name,
+          preference.value.length === 0
+            ? t.admin.preferences.none
+            : preference.value.join(", "),
+          preference.type,
+          preference.comment,
+        ]);
+      });
+    });
+
+    const csv = toCSV(rows, headers);
+    downloadCSV(`${type.toLowerCase()}-preferences.csv`, csv);
+  }
+  
   return (
     <div className="w-full h-full text-white">
       <div className="flex flex-col items-center justify-center mt-12 ">
@@ -23,6 +73,13 @@ export function PreferencesPanel({
             <h1 className="text-cerise text-xl md:text-2xl font-medium text-center px-[10px] break-words mb-4">
               {t.admin.preferences.types.banquet}
             </h1>
+
+            <button
+              onClick={() => exportPreferencesCSV("Banquet")}
+              className="mb-4 px-4 py-2 bg-cerise text-white rounded-lg hover:opacity-80"
+            >
+              Download Banquet CSV
+            </button>
 
             <table className="w-full bg-slate-50 bg-opacity-20 border-collapse border-solid">
               <thead className="[&>tr>th]:border-2 [&>tr>th]:border-solid [&>tr>th]:border-cerise [&>tr>th]:py-2 [&>tr>th]:px-8 ">
@@ -67,6 +124,14 @@ export function PreferencesPanel({
             <h1 className="text-cerise text-xl md:text-2xl font-medium text-center px-[10px] break-words mt-10 mb-4">
               {t.admin.preferences.types.representatives}
             </h1>
+
+
+            <button
+              onClick={() => exportPreferencesCSV("Representative")}
+              className="mb-4 px-4 py-2 bg-cerise text-white rounded-lg hover:opacity-80"
+            >
+              Download Representatives CSV
+            </button>
 
             <table className="w-full bg-slate-50 bg-opacity-20 border-collapse border-solid">
               <thead className="[&>tr>th]:border-2 [&>tr>th]:border-solid [&>tr>th]:border-cerise [&>tr>th]:py-2 [&>tr>th]:px-8 ">
