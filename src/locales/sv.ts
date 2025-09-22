@@ -49,6 +49,8 @@ export default {
   },
   forCompanies: {
     title: "För Företag",
+    guideText: "Välkommen till D-Dagen! Här är en guide för företag om hur ni kan maximera er närvaro och få ut det mesta av mässan.",
+    guideButtonText: "Läs Guiden",
     aboutFair: "Om mässan",
     fairText1:
       "D-Dagen är Datasektionens årliga arbetsmarknadsdag. Det är ett heldagsevent där företag och studenter verksamma inom data och IT får en möjlighet att knyta kontakter och lära känna varandra. Detta skapar goda möjligheter för en mer direkt och personlig kontakt mellan företagsrepresentanter och studenter.",
@@ -185,6 +187,8 @@ export default {
   },
   forStudents: {
     title: "För Studenter",
+    guideText: "Välkommen till D-Dagen! Här är en guide för studenter för att få ut det mesta av mässan.",
+    guideButtonText: "Läs Guiden",
     aboutFair: "Om mässan",
     fairText1:
       "D-Dagen är Datasektionens årliga arbetsmarknadsdag. Det är ett heldagsevent där företag och studenter verksamma inom data och IT får en möjlighet att knyta kontakter och lära känna varandra. Detta skapar goda möjligheter för en mer direkt och personlig kontakt mellan företagsrepresentanter och studenter.",
@@ -205,6 +209,8 @@ export default {
     banquetTitle: "D-Dagen Banquetten",
     banquetText: "D-Dagen Banquetten har länge varit en student-favorit, om du har tur så säkrar du både ett nytt jobb och en riktigt skön kväll i ett och samma svep! Inte att glömma är även den riktigt goda maten, de charmiga företagsrepresentanterna och de förträffliga dryckesbiljetterna, även kända som \"Barbongar\".",
     banquetButton: "Anmäl dig här",
+    panelDiscussionsTitle: "Paneldiskussioner",
+    panelDiscussionsText: "Representanter från olika företag kommer att delta i paneldiskussioner kring IT-relaterade ämnen. Vi uppmuntrar dig att delta i dessa för att fördjupa dina kunskaper om aktuella trender inom branschen samt för att utforska vilken inriktning som bäst motsvarar dina framtida yrkesintressen – vare sig det gäller cybersäkerhet, artificiell intelligens eller finans-teknologi.",
   },
   students: {
     info:{
@@ -1126,7 +1132,7 @@ export default {
       "Laddar upp sitt cv",
       "Väljer vilka företag som de är intresserade av att ha kontaktsamtal med."
     ],
-    p3: "Företagen ser sedan över listan med studenter som är intresserade av att samtala med just dem, och väljer vilka de ska boka möten med utifrån deras studentprofiler och CV. \n\n Varje företag får en 2-timmars tidslucka någon gång under mässans öppettider (kl. 10–16) där de kommer ha möjlighet att möta så många studenter som de hinner eller har möjlighet till. \n\n Vi rekommenderar 15 minuters möten, men det är upp till respektive företag.",
+    p3: "Företagen ser sedan över listan med studenter som är intresserade av att samtala med just dem, och väljer vilka de ska boka möten med utifrån deras studentprofiler och CV. \n\n Varje företag får en 2-timmars tidslucka någon gång under mässans öppettider (kl. 10–16) där de kommer ha möjlighet att möta så många studenter som de hinner eller har möjlighet till. \n\n Vi rekommenderar 15 minuters möten, men det är upp till respektive företag. \n\n Håll noga koll på din mejl när du anmält dig! Du behöver boka in en tid med företaget ifall de väljer dig. Om företaget av någon anledning behöver avboka mötestiden så kommer du få ett mail om detta och kan då boka en ny tid.",
     p4: "Skapa din studentprofil och välj företag för kontaktsamtal",
     cta: "Skapa Profil"
   },

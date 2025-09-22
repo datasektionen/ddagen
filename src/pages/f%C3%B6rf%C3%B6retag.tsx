@@ -43,6 +43,22 @@ export default function ForCompanies() {
           <h1 className="uppercase text-center text-cerise pt-[110px] lg:pt-[140px] mb-4 text-5xl font-medium">
             {t.forCompanies.title}
           </h1>
+          <div className="flex flex-row items-center justify-center mt-[50px] px-5">
+            <p className="text-white w-[300px] sm:w-[600px] text-center">
+              {t.forCompanies.guideText}
+            </p>
+          </div>
+          <div>
+            <button className="mt-6">
+              <a
+                className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base uppercase font-medium px-6 py-2 max-lg:mx-auto w-max"
+                href={""}
+                target="_blank"
+              >
+                {t.forCompanies.guideButtonText}
+              </a>
+            </button>
+          </div>
 
           {/* Section of D-Dagen Info */}
           <ImageTextSection
