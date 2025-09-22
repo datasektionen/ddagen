@@ -1132,7 +1132,7 @@ export default {
       "Laddar upp sitt cv",
       "Väljer vilka företag som de är intresserade av att ha kontaktsamtal med."
     ],
-    p3: "Företagen ser sedan över listan med studenter som är intresserade av att samtala med just dem, och väljer vilka de ska boka möten med utifrån deras studentprofiler och CV. \n\n Varje företag får en 2-timmars tidslucka någon gång under mässans öppettider (kl. 10–16) där de kommer ha möjlighet att möta så många studenter som de hinner eller har möjlighet till. \n\n Vi rekommenderar 15 minuters möten, men det är upp till respektive företag. \n\n Håll noga koll på din mejl när du anmält dig! Du behöver boka in en tid med företaget ifall de väljer dig. Om företaget av någon anledning behöver avboka mötestiden så kommer du få ett mail om detta och kan då boka en ny tid.",
+    p3: "Företagen ser sedan över listan med studenter som är intresserade av att samtala med just dem, och väljer vilka de ska boka möten med utifrån deras studentprofiler och CV. \n\n Varje företag får en 3-timmars tidslucka någon gång under mässans öppettider (kl. 10–16) där de kommer ha möjlighet att möta så många studenter som de hinner eller har möjlighet till. \n\n Vi rekommenderar 15 minuters möten, men det är upp till respektive företag. \n\n Håll noga koll på din mejl när du anmält dig! Du behöver boka in en tid med företaget ifall de väljer dig. Om företaget av någon anledning behöver avboka mötestiden så kommer du få ett mail om detta och kan då boka en ny tid. \n\n Deadline för att som student anmäla intresse för kontaktsamtal är den 7:e oktober. Dock kan man fortfarande boka/omboka mötestider med företagen efter det datumet.",
     p4: "Skapa din studentprofil och välj företag för kontaktsamtal",
     cta: "Skapa Profil"
   },
