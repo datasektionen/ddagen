@@ -52,8 +52,7 @@ export default function ForCompanies() {
             <button className="mt-6">
               <a
                 className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base uppercase font-medium px-6 py-2 max-lg:mx-auto w-max"
-                href={""}
-                target="_blank"
+                href={t.forCompanies.guidePath}
               >
                 {t.forCompanies.guideButtonText}
               </a>

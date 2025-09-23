@@ -51,6 +51,7 @@ export default {
     title: "För Företag",
     guideText: "Välkommen till D-Dagen! Här är en guide för företag om hur ni kan maximera er närvaro och få ut det mesta av mässan.",
     guideButtonText: "Läs Guiden",
+    guidePath: "https://ddagen.se/downloadables/Exhibitors_Guide_to_D-Dagen_SV.pdf",
     aboutFair: "Om mässan",
     fairText1:
       "D-Dagen är Datasektionens årliga arbetsmarknadsdag. Det är ett heldagsevent där företag och studenter verksamma inom data och IT får en möjlighet att knyta kontakter och lära känna varandra. Detta skapar goda möjligheter för en mer direkt och personlig kontakt mellan företagsrepresentanter och studenter.",
@@ -189,6 +190,7 @@ export default {
     title: "För Studenter",
     guideText: "Välkommen till D-Dagen! Här är en guide för studenter för att få ut det mesta av mässan.",
     guideButtonText: "Läs Guiden",
+    guidePath: "https://ddagen.se/downloadables/Studentens_guide_till_D-Dagen.pdf",
     aboutFair: "Om mässan",
     fairText1:
       "D-Dagen är Datasektionens årliga arbetsmarknadsdag. Det är ett heldagsevent där företag och studenter verksamma inom data och IT får en möjlighet att knyta kontakter och lära känna varandra. Detta skapar goda möjligheter för en mer direkt och personlig kontakt mellan företagsrepresentanter och studenter.",

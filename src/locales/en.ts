@@ -51,6 +51,7 @@ export default {
     title: "For Companies",
     guideText: "Welcome to D-Dagen! Here is a guide for companies on how to maximize your presence and get the most out of the fair.",
     guideButtonText: "Read the Guide",
+    guidePath: "https://ddagen.se/downloadables/Exhibitors_Guide_to_D-Dagen_ENG.pdf",
     aboutFair: "About the fair",
     fairText1:
       "D-Dagen is the Computer Science Chapter's annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
@@ -190,6 +191,7 @@ export default {
     title: "For Students",
     guideText: "Welcome to D-Dagen! Here is a guide for students to get the most out of the fair.",
     guideButtonText: "Read the Guide",
+    guidePath: "https://ddagen.se/downloadables/Studentens_guide_till_D-Dagen.pdf",
     aboutFair: "About the fair",
     fairText1:
       "D-Dagen is the Computer Science Chapter's annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
