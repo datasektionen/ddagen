@@ -31,7 +31,7 @@ export default {
     stats: [
       {
         value: "100+",
-        type: "Utställare"
+        type: "Utställare förra året"
       },
       {
         value: "3000+",
@@ -49,6 +49,9 @@ export default {
   },
   forCompanies: {
     title: "För Företag",
+    guideText: "Välkommen till D-Dagen! Här är en guide för företag om hur ni kan maximera er närvaro och få ut det mesta av mässan.",
+    guideButtonText: "Läs Guiden",
+    guidePath: "https://ddagen.se/downloadables/Exhibitors_Guide_to_D-Dagen_SV.pdf",
     aboutFair: "Om mässan",
     fairText1:
       "D-Dagen är Datasektionens årliga arbetsmarknadsdag. Det är ett heldagsevent där företag och studenter verksamma inom data och IT får en möjlighet att knyta kontakter och lära känna varandra. Detta skapar goda möjligheter för en mer direkt och personlig kontakt mellan företagsrepresentanter och studenter.",
@@ -185,21 +188,31 @@ export default {
   },
   forStudents: {
     title: "För Studenter",
+    guideText: "Välkommen till D-Dagen! Här är en guide för studenter för att få ut det mesta av mässan.",
+    guideButtonText: "Läs Guiden",
+    guidePath: "https://ddagen.se/downloadables/Studentens_guide_till_D-Dagen.pdf",
     aboutFair: "Om mässan",
     fairText1:
       "D-Dagen är Datasektionens årliga arbetsmarknadsdag. Det är ett heldagsevent där företag och studenter verksamma inom data och IT får en möjlighet att knyta kontakter och lära känna varandra. Detta skapar goda möjligheter för en mer direkt och personlig kontakt mellan företagsrepresentanter och studenter.",
     fairText2:
       "I år hålls mässan 9e oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15 på KTH Campus Valhallavägen. Studenter kommer erbjudas möjligheten att gå på kontaktsamtal med företag för att knyta närmare kontakt med specifika företag (begränsade platser per företag).",
+    eventPageButton: "D-Dagen Event",
     companyMeetings: "Kontaktsamtal",
     companyMeetingsText:
       "Vi erbjuder kontaktsamtal för studenter, vilket innebär att ni får möjlighet att i enrum med företagsrepresentanter diskutera framtida jobbmöjligheter med mera. Anmäl er på länken nedan:",
     tempCompanyMeetingsText:
       "Vi erbjuder kontaktsamtal för studenter, vilket innebär att ni får möjlighet att i enrum med företagsrepresentanter diskutera framtida jobbmöjligheter med mera. Anmälan kommer tillgängliggöras senare!",
-      companyMeetingsButton: "Anmäl dig här",
-      dayStaffTitle: "Dagspersonal",
-      dayStaffText: "Vill du vara med och göra D-Dagen till en succé? Vi söker engagerade studenter som kan hjälpa till under mässdagen med uppgifter som att välkomna besökare, assistera utställare och hålla ordning i lokalerna. Det är ett perfekt tillfälle att nätverka, träffa företag och få värdefull erfarenhet.",
-      dayStaffApplicationOpens: "Ansökan öppnar 2/9",
-      dayStaffApply: "Ansök här!",
+    companyMeetingsPageButton: "Läs mer",
+    companyMeetingsButton: "Anmäl dig här",    
+    dayStaffTitle: "Dagspersonal",
+    dayStaffText: "Vill du vara med och göra D-Dagen till en succé? Vi söker engagerade studenter som kan hjälpa till under mässdagen med uppgifter som att välkomna besökare, assistera utställare och hålla ordning i lokalerna. Det är ett perfekt tillfälle att nätverka, träffa företag och få värdefull erfarenhet.",
+    dayStaffApplicationOpens: "Ansökan öppnar 2/9",
+    dayStaffApply: "Ansök här!",
+    banquetTitle: "D-Dagen Banquetten",
+    banquetText: "D-Dagen Banquetten har länge varit en student-favorit, om du har tur så säkrar du både ett nytt jobb och en riktigt skön kväll i ett och samma svep! Inte att glömma är även den riktigt goda maten, de charmiga företagsrepresentanterna och de förträffliga dryckesbiljetterna, även kända som \"Barbongar\".",
+    banquetButton: "Anmäl dig här",
+    panelDiscussionsTitle: "Paneldiskussioner",
+    panelDiscussionsText: "Representanter från olika företag kommer att delta i paneldiskussioner kring IT-relaterade ämnen. Vi uppmuntrar dig att delta i dessa för att fördjupa dina kunskaper om aktuella trender inom branschen samt för att utforska vilken inriktning som bäst motsvarar dina framtida yrkesintressen – vare sig det gäller cybersäkerhet, artificiell intelligens eller finans-teknologi.",
   },
   students: {
     info:{
@@ -223,9 +236,11 @@ export default {
     },
     companyInterests:{
       header: "Välj de företag du är intresserad av att träffa",
+      deadlineHeader: "Dessa företag har du anmält intresse till",
       description: "Klicka i de företag du är intressarad av att träffa på ett kontaktsamtal. Företagen kommer sedan bjuda in till möten.",
       checked1:"Du har visat intresse för att träffa ",
       checked2:" på ett kontaktsamtal.",
+      deadline: "Deadline för att anmäla intresse är den 7 oktober 19:00.",
     },
     companyMeeting:{
       offerText: " Har bjudit in dig till ett kontaktsamtal",
@@ -1109,7 +1124,7 @@ export default {
   },
   studentmeetings: {
     header: "Kontaktsamtal",
-    subheader1: "Kontakta oss",
+    subheader1: "Upptäck möjligheterna",
     subheader2: "Upplägg",
     subheader3: "Sök kontaktsamtal",
     p1: "Kontaktsamtal är en unik möjlighet för företag och studenter att i enrum träffas och diskutera karriärsmöjligheter. Studenten får en mycket bättre inblick i förhållandena på den specifika arbetsplatsen, samt så får företag en utmärkt bild över den specifika studentens kunskaper och erfarenheter.",
@@ -1119,7 +1134,7 @@ export default {
       "Laddar upp sitt cv",
       "Väljer vilka företag som de är intresserade av att ha kontaktsamtal med."
     ],
-    p3: "Företagen ser sedan över listan med studenter som är intresserade av att samtala med just dem, och väljer vilka de ska boka möten med utifrån deras studentprofiler och CV. \n\n Varje företag får en 2-timmars tidslucka någon gång under mässans öppettider (kl. 10–16) där de kommer ha möjlighet att möta så många studenter som de hinner eller har möjlighet till. \n\n Vi rekommenderar 15 minuters möten, men det är upp till respektive företag.",
+    p3: "Företagen ser sedan över listan med studenter som är intresserade av att samtala med just dem, och väljer vilka de ska boka möten med utifrån deras studentprofiler och CV. \n\n Varje företag får en 3-timmars tidslucka någon gång under mässans öppettider (kl. 10–16) där de kommer ha möjlighet att möta så många studenter som de hinner eller har möjlighet till. \n\n Vi rekommenderar 15 minuters möten, men det är upp till respektive företag. \n\n Håll noga koll på din mejl när du anmält dig! Du behöver boka in en tid med företaget ifall de väljer dig. Om företaget av någon anledning behöver avboka mötestiden så kommer du få ett mail om detta och kan då boka en ny tid. \n\n Deadline för att som student anmäla intresse för kontaktsamtal är den 7:e oktober. Dock kan man fortfarande boka/omboka mötestider med företagen efter det datumet.",
     p4: "Skapa din studentprofil och välj företag för kontaktsamtal",
     cta: "Skapa Profil"
   },
@@ -1127,6 +1142,7 @@ export default {
     lunchSeminarHeader: "Lunchföreläsning",
     lunchSeminar: " Lunchföreläsningar är ett otroligt populärt koncept bland studenter, där det bjuds på gratis lunch och en intressant föreläsning från ett företag i IT-branschen. Sker kl. 12-13 en vardag på KTH campus.",
     recruitmentPub: "Rekryteringspub",
+    recruitmentPubText: "Under rekryteringen av D-Dagens fantastiska 100+ dagspersonal som ska hjälpa till under mässdagen så anordnar Projektgruppen den årliga Rekryteringspuben i Datasektionens egna pub Meta! Häng med på en riktigt trevlig kväll med D-Dagen relaterade aktiviteter och tävlingar med sponsrade priser. Mat och dryck finns att beställa.",
     opening: "25-års jubileumsmässan öppnar!",
     openingCeremony: "Invigning av mässan på scenen i Nya matsalen tillsammans med Huvudsponsor Omegapoint",
     panelDiscussionHeader: "Paneldiskussion",
@@ -1134,8 +1150,10 @@ export default {
     panelDiscussion1text: "Paneldiskussionen kommer att hållas på engelska",
     panelDiscussion2: "Hur väl rustat är samhället inför dagens cyberhot? Med huvudsponsor Omegapoint, Basalt och Försvarsmaktens Radioanstalt",
     panelDiscussion2text: "Paneldiskussionen kommer att hållas på svenska",
-    fair: "Mässan",
-    closes: " stänger",
+    panelDiscussiontext: "Under mässdagen anordnas flera paneldiskussioner som vardera behandlar ett IT-relevant ämne och som modereras av D-Dagen. Vid ett sådant tillfälle får studenter möjlighet att höra om hur det är att arbeta inom IT-branschen, samt får ta del av en intressant och lärorik diskussion mellan ett fåtal företagsrepresentanter.",
+    fair: "MÄSSAN",
+    after: "EFTER",
+    closes: "Mässan stänger",
     banquet: "D-Dagen Banquetten börjar!",
   },
   history: {
@@ -1231,6 +1249,8 @@ export default {
         drinkCoupons: "Dryckesbiljetter",
         representatives: "Representanter",
         banquetTickets: "Banquettsbiljetter",
+        confirmedBanquetTickets: "Bekräftade Banquettsbiljetter",
+        confirmedDrinkCoupons: "Bekräftade Dryckesbiljetter",
         mealCoupons: "Frukost/lunch biljetter",
       },
     },

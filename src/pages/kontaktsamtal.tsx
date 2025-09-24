@@ -46,7 +46,17 @@ export default function StudentMeetings() {
           <h1 className="text-cerise text-5xl pt-[110px] lg:pt-[140px] mb-8 font-medium uppercase text-center ">
             {t.studentmeetings.header}
           </h1>
-          <p className="text-white text-lg max-w-[1025px] px-6 mx-auto">{t.studentmeetings.p1}</p>
+        <ImageTextSection
+            t={t}
+            leftSideImage={true}
+            imageProps={{src: "/img/ddagen2024/ddagen-exhibitors.jpg", alt: "D-Dagen Utställare"}}
+            className={`mt-[10px] lg:mt-[30px] mb-[30px] lg:mb-[40px]`}
+            >
+              <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl max-w-xl">
+                {t.studentmeetings.subheader1}
+              </h2>
+              <p className="text-white text-base sm:text-lg pt-4 mb-6 max-w-xl">{t.studentmeetings.p1}</p>
+          </ImageTextSection>
 
           <div className="flex flex-col gap-4 justify-center mt-[90px] lg:mt-[110px] max-w-[1025px] mx-auto">
             <h2 className="text-cerise text-2xl lg:text-4xl font-bold uppercase text-center w-auto p-2">

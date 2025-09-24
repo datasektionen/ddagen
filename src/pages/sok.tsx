@@ -219,7 +219,6 @@ export default function SignupPage() {
           teamInfo={[
             t.sok.viceDDA.header,
             t.sok.viceDDA.text,
-            t.event.fullParagraph1,
           ]}
           roles={t.sok.viceDDA.roles}
         />

@@ -31,7 +31,7 @@ export default {
     stats: [
       {
         value: "100+",
-        type: "Exhibitors"
+        type: "Exhibitors last year"
       },
       {
         value: "3000+",
@@ -49,6 +49,9 @@ export default {
   },
   forCompanies: {
     title: "For Companies",
+    guideText: "Welcome to D-Dagen! Here is a guide for companies on how to maximize your presence and get the most out of the fair.",
+    guideButtonText: "Read the Guide",
+    guidePath: "https://ddagen.se/downloadables/Exhibitors_Guide_to_D-Dagen_ENG.pdf",
     aboutFair: "About the fair",
     fairText1:
       "D-Dagen is the Computer Science Chapter's annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
@@ -186,21 +189,31 @@ export default {
   },
   forStudents: {
     title: "For Students",
+    guideText: "Welcome to D-Dagen! Here is a guide for students to get the most out of the fair.",
+    guideButtonText: "Read the Guide",
+    guidePath: "https://ddagen.se/downloadables/Studentens_guide_till_D-Dagen.pdf",
     aboutFair: "About the fair",
     fairText1:
       "D-Dagen is the Computer Science Chapter's annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
     fairText2:
       "This year, the fair is held on October 9th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15 and in KTH Entré which is located at Drottning Kristinas väg 4. Students will be able to have meetings with exhibitors through company meetings in order to get more of a connection with that company (limited slots per company).",
+    eventPageButton: "D-Dagen Events",
     companyMeetings: "Company Meetings",
     companyMeetingsText:
       "We offer company meetings for students, which means that you will be able to discuss future job opportunities in a private room with representatives from selected companies. Sign up on the link below:",
     tempCompanyMeetingsText:
       "We offer company meetings for students, which means that you will be able to discuss future job opportunities in a private room with representatives from selected companies. Sign up will be available soon!",
+    companyMeetingsPageButton: "Read more",
     companyMeetingsButton: "Sign up",
     dayStaffTitle: "Day Staff",
     dayStaffText: "Would you like to help make our career fair a success? We are looking for enthusiastic students to assist on the day of the event with tasks such as welcoming visitors, supporting exhibitors, and keeping the venue organized. It's a great opportunity to network, meet companies, and gain valuable experience.",
     dayStaffApplicationOpens: "Application opens on September 2nd",
     dayStaffApply: "Apply here!",
+    banquetTitle: "The D-Dagen Banquet",
+    banquetText: "The D-Dagen Banquet has long been a student favorite — if you're lucky, you might land both a new job and a really great evening all in one go! Not to be forgotten are the delicious food, the charming company representatives, and the excellent drink tickets, also known as \'Barbongar\'.",
+    banquetButton: "Sign up",
+    panelDiscussionsTitle: "Panel Discussions",
+    panelDiscussionsText: "Representatives from various companies will participate in panel discussions on IT-related topics. We encourage you to attend these to deepen your knowledge of current industry trends and explore which direction best matches your future career interests—whether it's cybersecurity, artificial intelligence, or fintech.",
   },
   students: {
     info:{
@@ -224,9 +237,11 @@ export default {
     },
     companyInterests:{
       header: "Select the companies you are interested in meeting",
+      deadlineHeader: "You have shown interest in these companies",
       description: "Click on the companies you are interested in meeting for a company meeting. The companies will then send you invitations to meetings.",
       checked1:"You have shown interest in meeting with ",
       checked2:" for a company meeting.",
+      deadline: "The deadline to show interest for a company is the 7th october 19:00."
     },
     companyMeeting:{
       offerText: " Has invited you to a company meeting",
@@ -1112,7 +1127,7 @@ export default {
   },
   studentmeetings: {
     header: "Student Meetings",
-    subheader1: "Contact Us",
+    subheader1: "Seek opportunity",
     subheader2: "Format",
     subheader3: "Apply for student meetings",
     p1: "Student meetings are a unique opportunity for companies and students to meet one-on-one and discuss career opportunities. Students gain valuable insight into the specific workplace, while companies get an excellent understanding of the student's skills and experiences.",
@@ -1122,7 +1137,7 @@ export default {
       "Upload their CV",
       "Select the companies they are interested in having a student meeting with."
     ],
-    p3: "The companies then review the list of students who are interested in speaking with them and choose whom to schedule meetings with based on their student profiles and CVs.\n\nEach company is assigned a 2-hour time slot sometime during the fair (10:00–16:00), during which they can meet as many students as they are able to.\n\nWe recommend 15-minute meetings, but the exact duration is up to each individual company.",
+    p3: "The companies then review the list of students who are interested in speaking with them and choose whom to schedule meetings with based on their student profiles and CVs.\n\nEach company is assigned a 3-hour time slot sometime during the fair (10:00–16:00), during which they can meet as many students as they are able to.\n\nWe recommend 15-minute meetings, but the exact duration is up to each individual company.\n\nKeep a close eye on your email after registering! You will need to schedule a meeting with the company if they select you. If, for any reason, the company needs to cancel the meeting, you will receive an email notifying you, and you will then have the opportunity to book a new time. \n\n The deadline for students to register their interest in contact meetings is October 7. However, it is still possible to book/reschedule meeting times with the companies after that date.",
     p4: "Create your student profile and choose companies for student meetings",
     cta: "Create Profile"
   },
@@ -1130,6 +1145,7 @@ export default {
     lunchSeminarHeader: "Lunch Seminar",
     lunchSeminar: "Lunch Seminar",
     recruitmentPub: "Recruitment Pub",
+    recruitmentPubText: "During the recruitment of D-Dagen’s fantastic 100+ day staff who will assist during the fair, the Project Group organizes the annual Recruitment Pub in the Computer Science chapter's own pub, Meta! Join us for a really pleasant evening with D-Dagen-related activities and competitions with sponsored prizes. Food and drinks are available to order.",
     opening: "25th Anniversary Fair Opens!",
     openingCeremony: "Opening of the fair on stage in nya Matsalen together with Main Sponsor Omegapoint",
     panelDiscussionHeader: "Panel Discussion",
@@ -1137,8 +1153,10 @@ export default {
     panelDiscussion1text: "The panel discussion will be held in Swedish.",
     panelDiscussion2: "How well prepared is society for today's cyber threats? with Omegapoint, Basalt and Försvarsmaktens Radioanstalt",
     panelDiscussion2text: "The panel discussion will be held in English.",
-    fair: "The Fair",
-    closes: " closes",
+    panelDiscussiontext: "During the fair day, several panel discussions are held and moderated by D-Dagen, each covering an IT-relevant topic. These sessions give students the opportunity to hear what it’s like to work in the IT industry and engage in an insightful and educational discussion between a few company representatives.",
+    fair: "THE FAIR",
+    after: "AFTER",
+    closes: "The fair closes",
     banquet: "The D-Dagen Banquet starts!",
   },
   history: {
@@ -1234,6 +1252,8 @@ export default {
         drinkCoupons: "Drink Coupons",
         representatives: "Representatives",
         banquetTickets: "Banquet Tickets",
+        confirmedBanquetTickets: "Confirmed Banquet Tickets",
+        confirmedDrinkCoupons: "Confirmed Drink Coupons",
         mealCoupons: "Breakfast/Lunch Coupons",
       },
     },
