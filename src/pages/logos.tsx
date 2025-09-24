@@ -136,7 +136,7 @@ function RenderLogos(packageList: any[], rowSize: number, logoSize: string) {
       {chunkArray(packageList, rowSize).map((chunk, rowIndex) => (
         <div
           key={rowIndex}
-          className="flex flex-row justify-center items-center gap-14 mt-[75px]"
+          className="flex flex-row justify-center items-center gap-4 sm:gap-10 lg:gap-14 mt-6 sm:mt-10 lg:mt-[75px]"
         >
           {chunk.map((exhibitor, idx) => (
             <div key={idx}>
@@ -229,8 +229,8 @@ export default function Logos({ exhibitorData }: LogosProps) {
           <div className="block sm:hidden">
             {RenderLogos(mainsponsorPackages, 1, "w-[250px]")}
             {RenderLogos(largePackages, 2, "w-[125px]")}
-            {RenderLogos(mediumPackages, 3, "w-[100px]")}
-            {RenderLogos(smallAndStartUpPackages, 4, "w-[80px]")}
+            {RenderLogos(mediumPackages, 2, "w-[100px]")}
+            {RenderLogos(smallAndStartUpPackages, 3, "w-[80px]")}
           </div>
 
           <div className="hidden xl:block">

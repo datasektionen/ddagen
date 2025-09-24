@@ -51,6 +51,7 @@ export default {
     title: "För Företag",
     guideText: "Välkommen till D-Dagen! Här är en guide för företag om hur ni kan maximera er närvaro och få ut det mesta av mässan.",
     guideButtonText: "Läs Guiden",
+    guidePath: "https://ddagen.se/downloadables/Exhibitors_Guide_to_D-Dagen_SV.pdf",
     aboutFair: "Om mässan",
     fairText1:
       "D-Dagen är Datasektionens årliga arbetsmarknadsdag. Det är ett heldagsevent där företag och studenter verksamma inom data och IT får en möjlighet att knyta kontakter och lära känna varandra. Detta skapar goda möjligheter för en mer direkt och personlig kontakt mellan företagsrepresentanter och studenter.",
@@ -189,6 +190,7 @@ export default {
     title: "För Studenter",
     guideText: "Välkommen till D-Dagen! Här är en guide för studenter för att få ut det mesta av mässan.",
     guideButtonText: "Läs Guiden",
+    guidePath: "https://ddagen.se/downloadables/Studentens_guide_till_D-Dagen.pdf",
     aboutFair: "Om mässan",
     fairText1:
       "D-Dagen är Datasektionens årliga arbetsmarknadsdag. Det är ett heldagsevent där företag och studenter verksamma inom data och IT får en möjlighet att knyta kontakter och lära känna varandra. Detta skapar goda möjligheter för en mer direkt och personlig kontakt mellan företagsrepresentanter och studenter.",
@@ -1140,6 +1142,7 @@ export default {
     lunchSeminarHeader: "Lunchföreläsning",
     lunchSeminar: " Lunchföreläsningar är ett otroligt populärt koncept bland studenter, där det bjuds på gratis lunch och en intressant föreläsning från ett företag i IT-branschen. Sker kl. 12-13 en vardag på KTH campus.",
     recruitmentPub: "Rekryteringspub",
+    recruitmentPubText: "Under rekryteringen av D-Dagens fantastiska 100+ dagspersonal som ska hjälpa till under mässdagen så anordnar Projektgruppen den årliga Rekryteringspuben i Datasektionens egna pub Meta! Häng med på en riktigt trevlig kväll med D-Dagen relaterade aktiviteter och tävlingar med sponsrade priser. Mat och dryck finns att beställa.",
     opening: "25-års jubileumsmässan öppnar!",
     openingCeremony: "Invigning av mässan på scenen i Nya matsalen tillsammans med Huvudsponsor Omegapoint",
     panelDiscussionHeader: "Paneldiskussion",
@@ -1147,8 +1150,10 @@ export default {
     panelDiscussion1text: "Paneldiskussionen kommer att hållas på engelska",
     panelDiscussion2: "Hur väl rustat är samhället inför dagens cyberhot? Med huvudsponsor Omegapoint, Basalt och Försvarsmaktens Radioanstalt",
     panelDiscussion2text: "Paneldiskussionen kommer att hållas på svenska",
-    fair: "Mässan",
-    closes: " stänger",
+    panelDiscussiontext: "Under mässdagen anordnas flera paneldiskussioner som vardera behandlar ett IT-relevant ämne och som modereras av D-Dagen. Vid ett sådant tillfälle får studenter möjlighet att höra om hur det är att arbeta inom IT-branschen, samt får ta del av en intressant och lärorik diskussion mellan ett fåtal företagsrepresentanter.",
+    fair: "MÄSSAN",
+    after: "EFTER",
+    closes: "Mässan stänger",
     banquet: "D-Dagen Banquetten börjar!",
   },
   history: {

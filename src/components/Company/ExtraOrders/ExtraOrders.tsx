@@ -16,7 +16,7 @@ export default function ExtraOrders({
   exhibitorPackage: Package;
 }) {
   // on disable if deadline has passed
-  const disablePreferences = (new Date() > new Date("2025-09-11"));
+  const disablePreferences = (new Date() > new Date("2025-09-10"));
   const deadline = {
     drinkCoupons: "2025-09-10",
     tables: "2025-09-10",

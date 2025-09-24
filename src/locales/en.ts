@@ -51,6 +51,7 @@ export default {
     title: "For Companies",
     guideText: "Welcome to D-Dagen! Here is a guide for companies on how to maximize your presence and get the most out of the fair.",
     guideButtonText: "Read the Guide",
+    guidePath: "https://ddagen.se/downloadables/Exhibitors_Guide_to_D-Dagen_ENG.pdf",
     aboutFair: "About the fair",
     fairText1:
       "D-Dagen is the Computer Science Chapter's annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
@@ -190,6 +191,7 @@ export default {
     title: "For Students",
     guideText: "Welcome to D-Dagen! Here is a guide for students to get the most out of the fair.",
     guideButtonText: "Read the Guide",
+    guidePath: "https://ddagen.se/downloadables/Studentens_guide_till_D-Dagen.pdf",
     aboutFair: "About the fair",
     fairText1:
       "D-Dagen is the Computer Science Chapter's annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
@@ -1143,6 +1145,7 @@ export default {
     lunchSeminarHeader: "Lunch Seminar",
     lunchSeminar: "Lunch Seminar",
     recruitmentPub: "Recruitment Pub",
+    recruitmentPubText: "During the recruitment of D-Dagen’s fantastic 100+ day staff who will assist during the fair, the Project Group organizes the annual Recruitment Pub in the Computer Science chapter's own pub, Meta! Join us for a really pleasant evening with D-Dagen-related activities and competitions with sponsored prizes. Food and drinks are available to order.",
     opening: "25th Anniversary Fair Opens!",
     openingCeremony: "Opening of the fair on stage in nya Matsalen together with Main Sponsor Omegapoint",
     panelDiscussionHeader: "Panel Discussion",
@@ -1150,8 +1153,10 @@ export default {
     panelDiscussion1text: "The panel discussion will be held in Swedish.",
     panelDiscussion2: "How well prepared is society for today's cyber threats? with Omegapoint, Basalt and Försvarsmaktens Radioanstalt",
     panelDiscussion2text: "The panel discussion will be held in English.",
-    fair: "The Fair",
-    closes: " closes",
+    panelDiscussiontext: "During the fair day, several panel discussions are held and moderated by D-Dagen, each covering an IT-relevant topic. These sessions give students the opportunity to hear what it’s like to work in the IT industry and engage in an insightful and educational discussion between a few company representatives.",
+    fair: "THE FAIR",
+    after: "AFTER",
+    closes: "The fair closes",
     banquet: "The D-Dagen Banquet starts!",
   },
   history: {

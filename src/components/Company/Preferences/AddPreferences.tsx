@@ -33,7 +33,7 @@ export function AddPreferences({
   exhibitorPackage: Package;
 }) {
   const deadline = "2025-09-10";
-  const allowPreferenceChange = new Date() <= new Date("2025-09-22");
+  const allowPreferenceChange = new Date() <= new Date("2025-09-25");
   const isRepresentative = type == "Representative";
   const defaultPreference = new Preferences(undefined, "", [], "", type);
 
