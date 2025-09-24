@@ -33,12 +33,16 @@ model Exhibitor {
   packageTier               Int @default(-1)
   studentMeetings           Int @default(0)
 
+  allowMarketing            Boolean @default(false)
+
   extraTables               Int @default(0)
   extraChairs               Int @default(0)
   extraDrinkCoupons         Int @default(0)
   extraRepresentativeSpots  Int @default(0)
   extraMealCoupons          Int @default(0)
   totalBanquetTicketsWanted Int @default(0)
+
+  alcFreeDrinkCoupons       Int @default(0)
 
   companyAddress            String?
   invoiceEmail              String?

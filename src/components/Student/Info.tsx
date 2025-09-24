@@ -27,9 +27,11 @@ export default function StudentInfo(
     {
         t,
         id,
+        onSave
     }: {
         t: Locale;
         id: string;
+        onSave?: () => void;
     },
 ) {
   const [user, setUser] = useState<User | null>(null);
@@ -91,6 +93,7 @@ export default function StudentInfo(
       .then((res) =>{
         setSaved(true);
         setTimeout(()=>{setSaved(false)}, 2000);
+        onSave?.();
       })
       .catch((err: any) => {
        

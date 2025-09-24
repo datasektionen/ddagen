@@ -1,8 +1,9 @@
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
-import { Exhibitor, ExhibitorInfo, Preferences } from "@/shared/Classes";
+import { Exhibitor, ExhibitorInfo, JobOffer, Preferences } from "@/shared/Classes";
 import * as pls from "@/utils/pls";
 import sendEmail from "@/utils/send-email";
+import { getLocale } from "@/locales";
 
 export const adminRouter = createTRPCRouter({
     getExhibitors: publicProcedure
@@ -45,6 +46,9 @@ export const adminRouter = createTRPCRouter({
                         exhibitor.companyHostName ?? "",
                         exhibitor.companyHostNumber ?? "",
                         exhibitor.companyHostEmail ?? "",
+                        exhibitor.allowMarketing,
+                        exhibitor.industry ?? "",
+                        exhibitor.alcFreeDrinkCoupons,
                     )
             );
         }),
@@ -103,6 +107,27 @@ export const adminRouter = createTRPCRouter({
                         preference.type,
                         preference.exhibitorId
                     )
+            );
+        }),
+    getAllJobOffers: publicProcedure
+        .input(z.string())
+        .mutation(async ({ input, ctx }) => {
+            if (!(await pls.checkApiKey("read-exhibitors", input)))
+                return "invalid-password";
+              
+            const jobOffers = await ctx.prisma.jobOffers.findMany();
+
+            return jobOffers.map(
+              (jobOffer) =>
+                new JobOffer(
+                  jobOffer.id,
+                  jobOffer.summerJob,
+                  jobOffer.internship,
+                  jobOffer.partTimeJob,
+                  jobOffer.masterThesis,
+                  jobOffer.fullTimeJob,
+                  jobOffer.traineeProgram
+                )
             );
         }),
     login: publicProcedure
@@ -232,17 +257,15 @@ export const adminRouter = createTRPCRouter({
       });
 
       try {
+        const t = getLocale("en");
+
         if (sendEmailToExhibitor) {
           sendEmail(
             email,
-            "D-Dagen Account Created",
-            `
-            <p>Hi!</p>
-            <p>We are pleased to confirm your exhibitor account has been created.</p>
-            <p>Visit ${"ddagen.se/utställare"} and use ${email} to log into your account.</p>
-            <p>Best regards,</p>
-            <p>The D-Dagen Team</p>
-            `
+            t.newExhibitorEmail.emailSubject,
+            t.newExhibitorEmail.emailBody(
+              email
+            )
           );
         }
     } catch (e) {

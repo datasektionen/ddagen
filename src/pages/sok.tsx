@@ -81,19 +81,22 @@ function SingleTeam({
           toReverse
             ? "md:flex-row-reverse flex-col-reverse"
             : "md:flex-row flex-col-reverse"
-        } flex flex-row gap-[50px] px-[50px] md:px-[50px] mt-[100px] justify-center`}
+        } flex flex-row gap-[50px] px-[50px] md:px-[50px] mt-[100px] justify-center items-stretch`}
       >
-        <div className="py-[0px]">
-          <img src={image} className="md:h-[300px] lg:h-[300px] rounded-xl"></img>
+        <div className="py-0 flex items-stretch">
+          <img
+            src={image}
+            className="h-full max-h-[370px] w-auto rounded-xl object-cover"
+            style={{ aspectRatio: "1/1" }} // Optional: keeps image square
+          />
         </div>
-          <div
-            className={`${borderColor} border-[3px] rounded-lg
-              bg-darkblue bg-opacity-75
-              md:w-[300px] md:h-[300px] lg:w-[400px] lg:h-[300px] flex`}
-          >
-            <div className={`${bgColor} bg-opacity-10
-              w-full h-full
-              py-[25px] md:py-[25px] lg:py-[50px] px-[20px]`}>
+        <div
+          className={`${borderColor} border-[3px] rounded-lg
+            bg-darkblue bg-opacity-75
+            md:w-[300px] lg:w-[400px] flex`}
+          style={{ maxHeight: "400px" }}
+        >
+          <div className={`${bgColor} bg-opacity-10 w-full h-full py-[25px] md:py-[25px] lg:py-[50px] px-[20px] overflow-auto`}>
             <h2 className="text-center lg:text-3xl md: text-xl text-white">
               {teamInfo[0]}
             </h2>
@@ -193,7 +196,7 @@ export default function SignupPage() {
         <div className="flex flex-row items-center justify-center">
           <Link
             className="flex flex-row items-center justify-center w-[175px] bg-cerise rounded-full h-[60px] mt-[30px] text-white text-center"
-            href="https://docs.google.com/forms/d/1uaQAz0Yaw6M66rPnflgsJh-E3Y5kVbQOpm3RCG7RGr8/edit?edit_requested=true"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfc8vCKFG_EKLtRIetKtcsYDKNkKMK1DXZBUzpVK357Sm7KlA/viewform"
             target="_blank"
           >
             {t.sok.search}
@@ -206,6 +209,20 @@ export default function SignupPage() {
             {t.sok.info}
           </h2>
         </div>
+
+        <SingleTeam
+          bgColor="bg-[#E2B7C9]"
+          borderColor="border-[#E2B7C9]"
+          toReverse={true}
+          textColor="text-[#E2B7C9]"
+          image="/img/viceDDAsok.png"
+          teamInfo={[
+            t.sok.viceDDA.header,
+            t.sok.viceDDA.text,
+            t.event.fullParagraph1,
+          ]}
+          roles={t.sok.viceDDA.roles}
+        />
 
         <SingleTeam
           bgColor="bg-[#E2B7C9]"
@@ -276,7 +293,7 @@ export default function SignupPage() {
             {t.sok.moreInfo}
           </h2>
 
-          <a href="https://docs.google.com/forms/d/1uaQAz0Yaw6M66rPnflgsJh-E3Y5kVbQOpm3RCG7RGr8/edit?edit_requested=true" target="_blank">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfc8vCKFG_EKLtRIetKtcsYDKNkKMK1DXZBUzpVK357Sm7KlA/viewform" target="_blank">
             <button className="w-[175px] bg-cerise rounded-full h-[60px] mt-[30px]">
               <p className="text-white text-center">{t.sok.search}</p>
             </button>

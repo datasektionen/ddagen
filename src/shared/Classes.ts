@@ -81,7 +81,7 @@ export class Package {
         break;
       case 2:
         this.name = t.packages.name[2];
-        this.tables = 1;
+        this.tables = 2;
         this.chairs = 0;
         this.drinkCoupons = 16;
         this.representatives = 4;
@@ -90,7 +90,7 @@ export class Package {
         break;
       case 3:
         this.name = t.packages.name[3];
-        this.tables = 1;
+        this.tables = 2;
         this.chairs = 0;
         this.drinkCoupons = 16; 
         this.representatives = 10;
@@ -142,6 +142,7 @@ export type ExhibitorExtras = {
   representativeSpots: number;
   banquetTicket: number;
   mealCoupons: number;
+  alcFreeTicket: number;
 };
 
 export class Extras {
@@ -151,6 +152,7 @@ export class Extras {
   extraRepresentativeSpots: number;
   totalBanquetTicketsWanted: number;
   extraMealCoupons: number;
+  alcFreeTickets: number;
   lastChanged?: Date;
 
   constructor(
@@ -160,6 +162,7 @@ export class Extras {
     extraRepresentativeSpots: number,
     totalBanquetTicketsWanted: number,
     extraMealCoupons: number,
+    alcFreeTickets: number,
     lastChanged?: Date,
   ) {
     this.extraChairs = extraChairs;
@@ -168,7 +171,36 @@ export class Extras {
     this.extraRepresentativeSpots = extraRepresentativeSpots;
     this.totalBanquetTicketsWanted = totalBanquetTicketsWanted;
     this.extraMealCoupons = extraMealCoupons;
+    this.alcFreeTickets = alcFreeTickets;
     this.lastChanged = lastChanged;
+  }
+}
+
+export class JobOffer {
+  id: string;
+  summerJob: number[];
+  internship: number[];
+  partTimeJob: number[];
+  masterThesis: boolean;
+  fullTimeJob: boolean;
+  traineeProgram: boolean;
+
+  constructor (
+    id: string,
+    summerJob: number[],
+    internShip: number[],
+    partTimeJob: number[],
+    masterThesis: boolean,
+    fullTimeJob: boolean,
+    traineeProgram: boolean,
+  ) {
+    this.id = id;
+    this.summerJob = summerJob;
+    this.internship = internShip;
+    this.partTimeJob = partTimeJob;
+    this.masterThesis = masterThesis;
+    this.fullTimeJob = fullTimeJob;
+    this.traineeProgram = traineeProgram;
   }
 }
 
@@ -203,6 +235,9 @@ export class Exhibitor {
   companyHostName: string;
   companyHostNumber: string;
   companyHostEmail: string;
+  allowMarketing: boolean;
+  industry: string;
+  alcFreeTicket: number; 
 
   constructor(
     id: string,
@@ -235,6 +270,9 @@ export class Exhibitor {
     companyHostName: string,
     companyHostNumber: string,
     companyHostEmail: string,
+    allowMarketing: boolean,
+    industry: string,
+    alcFreeTicket: number,
   ) {
     this.id = id;
     this.name = exhibitorName;
@@ -266,6 +304,9 @@ export class Exhibitor {
     this.companyHostName = companyHostName;
     this.companyHostNumber = companyHostNumber;
     this.companyHostEmail = companyHostEmail;
+    this.allowMarketing = allowMarketing;
+    this.industry = industry;
+    this.alcFreeTicket = alcFreeTicket;
   }
 }
 
