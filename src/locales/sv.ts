@@ -1139,10 +1139,13 @@ export default {
     cta: "Skapa Profil"
   },
   event: {
+    description: "Klicka gärna på varje evenemang för mer information!",
     lunchSeminarHeader: "Lunchföreläsning",
     lunchSeminar: " Lunchföreläsningar är ett otroligt populärt koncept bland studenter, där det bjuds på gratis lunch och en intressant föreläsning från ett företag i IT-branschen. Sker kl. 12-13 en vardag på KTH campus.",
     recruitmentPub: "Rekryteringspub",
     recruitmentPubText: "Under rekryteringen av D-Dagens fantastiska 100+ dagspersonal som ska hjälpa till under mässdagen så anordnar Projektgruppen den årliga Rekryteringspuben i Datasektionens egna pub Meta! Häng med på en riktigt trevlig kväll med D-Dagen relaterade aktiviteter och tävlingar med sponsrade priser. Mat och dryck finns att beställa.",
+    contactConversations: "Anmälan för Kontaktsamtal stänger 23:59",
+    contactConversationsText: "Kontaktsamtal är en unik möjlighet för företag och studenter att i enrum träﬀas och diskutera karriärsmöjligheter. Studenten får en mycket bättre inblick i förhållandena på den specifika arbetsplatsen, samt så får företag en utmärkt bild över den specifika studentens kunskaper och erfarenheter. Läs mer på http://ddagen.se/kontaktsamtal.",
     opening: "25-års jubileumsmässan öppnar!",
     openingCeremony: "Invigning av mässan på scenen i Nya matsalen tillsammans med Huvudsponsor Omegapoint",
     panelDiscussionHeader: "Paneldiskussion",
@@ -1150,11 +1153,14 @@ export default {
     panelDiscussion1text: "Paneldiskussionen kommer att hållas på engelska",
     panelDiscussion2: "Hur väl rustat är samhället inför dagens cyberhot? Med huvudsponsor Omegapoint, Basalt och Försvarsmaktens Radioanstalt",
     panelDiscussion2text: "Paneldiskussionen kommer att hållas på svenska",
+    panelDiscussion3: "Design och utveckling i AI-eran, med Atlas Copco, Electronic Arts DICE, Ubiquiti",
     panelDiscussiontext: "Under mässdagen anordnas flera paneldiskussioner som vardera behandlar ett IT-relevant ämne och som modereras av D-Dagen. Vid ett sådant tillfälle får studenter möjlighet att höra om hur det är att arbeta inom IT-branschen, samt får ta del av en intressant och lärorik diskussion mellan ett fåtal företagsrepresentanter.",
     fair: "MÄSSAN",
     after: "EFTER",
     closes: "Mässan stänger",
     banquet: "D-Dagen Banquetten börjar!",
+    banquetSignup: "Deadline för anmälan av spec-kost till D-Dagen Banquetten",
+    banquetSignupText: "biljetter går att köpa efter detta så länge det finns platser kvar."
   },
   history: {
     header: "D-Dagen Historia",

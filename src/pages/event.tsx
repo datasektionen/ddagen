@@ -102,6 +102,13 @@ export default function Events() {
       header: t.event.recruitmentPub,
       text: t.event.recruitmentPubText
     },
+        {
+      date: "24/9",
+      companyName: "",
+      image: "",
+      header: t.event.banquetSignup,
+      text: t.event.banquetSignupText
+    },
     {
       date: "01/10",
       companyName: "Omegapoint",
@@ -115,6 +122,13 @@ export default function Events() {
       image: "/img/exhibitors/Strawberry.svg",
       header: t.event.lunchSeminarHeader,
       text: t.event.lunchSeminar
+    },
+        {
+      date: "07/10",
+      companyName: "http://ddagen.se/kontaktsamtal",
+      image: "",
+      header: t.event.contactConversations,
+      text: t.event.contactConversationsText
     },
   ]
 
@@ -146,6 +160,13 @@ export default function Events() {
       image: "",
       header: t.event.panelDiscussionHeader,
       text: t.event.panelDiscussion2text + " " + t.event.panelDiscussiontext
+    },
+    {
+      date: "14:30",
+      companyName: t.event.panelDiscussion3,
+      image: "",
+      header: t.event.panelDiscussionHeader,
+      text: t.event.panelDiscussiontext
     },
     {
       date: "16:00",
@@ -207,7 +228,8 @@ export default function Events() {
       />
       <div className="pt-[200px] pb-[300px]">
         <h1 className="text-5xl text-cerise font-medium text-center"> EVENT</h1>
-        <div className="flex flex-col mt-8">
+        <p className="font-medium text-2xl text-center text-cerise">{t.event.description}</p>
+        <div className="flex flex-col mt-4">
           <div className="max-sm:hidden flex justify-center">
             <div className="w-4 bg-cerise h-full min-h-[30px] rounded-t-full"></div>
           </div>

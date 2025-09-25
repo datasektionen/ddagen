@@ -1142,10 +1142,13 @@ export default {
     cta: "Create Profile"
   },
   event: {
+    description: "Klick on the events to read more about them!",
     lunchSeminarHeader: "Lunch Seminar",
     lunchSeminar: "Lunch Seminar",
     recruitmentPub: "Recruitment Pub",
-    recruitmentPubText: "During the recruitment of D-Dagen’s fantastic 100+ day staff who will assist during the fair, the Project Group organizes the annual Recruitment Pub in the Computer Science chapter's own pub, Meta! Join us for a really pleasant evening with D-Dagen-related activities and competitions with sponsored prizes. Food and drinks are available to order.",
+    recruitmentPubText: "During the recruitment of D-Dagen's fantastic 100+ day staff who will assist during the fair, the Project Group organizes the annual Recruitment Pub in the Computer Science chapter's own pub, Meta! Join us for a really pleasant evening with D-Dagen-related activities and competitions with sponsored prizes. Food and drinks are available to order.",
+    contactConversations: "Signup for Contact Conversations closes at 23:59",
+    contactConversationsText: "Contact meetings are a unique opportunity for companies and students to meet one-on-one and discuss career opportunities. Students gain a much better understanding of the conditions at a specific workplace, and companies get an excellent picture of the student's skills and experiences. Read more at http://ddagen.se/kontaktsamtal.",
     opening: "25th Anniversary Fair Opens!",
     openingCeremony: "Opening of the fair on stage in nya Matsalen together with Main Sponsor Omegapoint",
     panelDiscussionHeader: "Panel Discussion",
@@ -1153,11 +1156,14 @@ export default {
     panelDiscussion1text: "The panel discussion will be held in Swedish.",
     panelDiscussion2: "How well prepared is society for today's cyber threats? with Omegapoint, Basalt and Försvarsmaktens Radioanstalt",
     panelDiscussion2text: "The panel discussion will be held in English.",
+    panelDiscussion3: "Design and Development in the AI Era, with Atlas Copco, Electronic Arts DICE, Ubiquiti",
     panelDiscussiontext: "During the fair day, several panel discussions are held and moderated by D-Dagen, each covering an IT-relevant topic. These sessions give students the opportunity to hear what it’s like to work in the IT industry and engage in an insightful and educational discussion between a few company representatives.",
     fair: "THE FAIR",
     after: "AFTER",
     closes: "The fair closes",
     banquet: "The D-Dagen Banquet starts!",
+    banquetSignup: "Deadline for registration of special diet for the D-Dagen Banquet",
+    banquetSignupText: "tickets can still be purchased after this as long as there are seats left."
   },
   history: {
     header: "D-Dagen History",
