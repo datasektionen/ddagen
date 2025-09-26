@@ -98,14 +98,14 @@ export default function Events() {
     {
       date: "16/9",
       companyName: "EECS event",
-      image: "",
+      image: "/img/ddagen2024/rekrytPub.jpg",
       header: t.event.recruitmentPub,
       text: t.event.recruitmentPubText
     },
         {
       date: "24/9",
       companyName: "",
-      image: "",
+      image: "/img/ddagen2024/banquette-dinner.jpg",
       header: t.event.banquetSignup,
       text: t.event.banquetSignupText
     },
@@ -137,35 +137,35 @@ export default function Events() {
       date: "10:00",
       companyName: t.event.opening,
       image: "/img/d-dagen-logo-jubileum-25-sv.svg",
-      header: "",
+      header: t.event.welcome,
       text: ""
     },
     {
       date: "10:15",
       companyName: t.event.openingCeremony,
       image: "/img/exhibitors/Omegapoint.svg",
-      header: "",
+      header: t.event.inaugeration,
       text: ""
     },
     {
       date: "11:00",
       companyName: t.event.panelDiscussion1,
-      image: "",
-      header: t.event.panelDiscussionHeader,
+      image: "/img/exhibitors/panelNordea.png",
+      header: t.event.panelDiscussionHeader1,
       text: t.event.panelDiscussion1text + " " + t.event.panelDiscussiontext
     },
     {
       date: "13:00",
       companyName: t.event.panelDiscussion2,
-      image: "",
-      header: t.event.panelDiscussionHeader,
+      image: "/img/exhibitors/panelOmegaVertical.png",
+      header: t.event.panelDiscussionHeader2,
       text: t.event.panelDiscussion2text + " " + t.event.panelDiscussiontext
     },
     {
       date: "14:30",
       companyName: t.event.panelDiscussion3,
-      image: "",
-      header: t.event.panelDiscussionHeader,
+      image: "/img/exhibitors/panelAtlas.png",
+      header: t.event.panelDiscussionHeader3,
       text: t.event.panelDiscussiontext
     },
     {
@@ -178,7 +178,7 @@ export default function Events() {
     {
       date: "18:00",
       companyName: "",
-      image: "",
+      image: "/img/ddagen2024/banquette-dinner.jpg",
       header: t.event.banquet,
       text: ""
     },
