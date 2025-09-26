@@ -1144,7 +1144,7 @@ export default {
   event: {
     description: "Klick on the events to read more about them!",
     lunchSeminarHeader: "Lunch Seminar",
-    lunchSeminar: "Lunch Seminar",
+    lunchSeminar: "Lunch lectures are an incredibly popular concept among students, offering free lunch and an interesting talk from a company in the IT industry. Takes place from 12 AM–1 PM on a weekday at the KTH campus.",
     recruitmentPub: "Recruitment Pub",
     recruitmentPubText: "During the recruitment of D-Dagen's fantastic 100+ day staff who will assist during the fair, the Project Group organizes the annual Recruitment Pub in the Computer Science chapter's own pub, Meta! Join us for a really pleasant evening with D-Dagen-related activities and competitions with sponsored prizes. Food and drinks are available to order.",
     contactConversations: "Signup for Contact Conversations closes at 23:59",
