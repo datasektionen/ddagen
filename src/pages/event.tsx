@@ -98,9 +98,16 @@ export default function Events() {
     {
       date: "16/9",
       companyName: "EECS event",
-      image: "",
+      image: "/img/ddagen2024/rekrytPub.jpg",
       header: t.event.recruitmentPub,
       text: t.event.recruitmentPubText
+    },
+        {
+      date: "24/9",
+      companyName: "",
+      image: "/img/ddagen2024/banquette-dinner.jpg",
+      header: t.event.banquetSignup,
+      text: t.event.banquetSignupText
     },
     {
       date: "01/10",
@@ -116,6 +123,13 @@ export default function Events() {
       header: t.event.lunchSeminarHeader,
       text: t.event.lunchSeminar
     },
+        {
+      date: "07/10",
+      companyName: "http://ddagen.se/kontaktsamtal",
+      image: "",
+      header: t.event.contactConversations,
+      text: t.event.contactConversationsText
+    },
   ]
 
   const fairEvents = [
@@ -123,29 +137,36 @@ export default function Events() {
       date: "10:00",
       companyName: t.event.opening,
       image: "/img/d-dagen-logo-jubileum-25-sv.svg",
-      header: "",
+      header: t.event.welcome,
       text: ""
     },
     {
       date: "10:15",
       companyName: t.event.openingCeremony,
       image: "/img/exhibitors/Omegapoint.svg",
-      header: "",
+      header: t.event.inaugeration,
       text: ""
     },
     {
       date: "11:00",
       companyName: t.event.panelDiscussion1,
-      image: "",
-      header: t.event.panelDiscussionHeader,
+      image: "/img/exhibitors/panelNordea.png",
+      header: t.event.panelDiscussionHeader1,
       text: t.event.panelDiscussion1text + " " + t.event.panelDiscussiontext
     },
     {
       date: "13:00",
       companyName: t.event.panelDiscussion2,
-      image: "",
-      header: t.event.panelDiscussionHeader,
+      image: "/img/exhibitors/panelOmegaVertical.png",
+      header: t.event.panelDiscussionHeader2,
       text: t.event.panelDiscussion2text + " " + t.event.panelDiscussiontext
+    },
+    {
+      date: "14:30",
+      companyName: t.event.panelDiscussion3,
+      image: "/img/exhibitors/panelAtlas.png",
+      header: t.event.panelDiscussionHeader3,
+      text: t.event.panelDiscussiontext
     },
     {
       date: "16:00",
@@ -157,7 +178,7 @@ export default function Events() {
     {
       date: "18:00",
       companyName: "",
-      image: "",
+      image: "/img/ddagen2024/banquette-dinner.jpg",
       header: t.event.banquet,
       text: ""
     },
@@ -207,7 +228,8 @@ export default function Events() {
       />
       <div className="pt-[200px] pb-[300px]">
         <h1 className="text-5xl text-cerise font-medium text-center"> EVENT</h1>
-        <div className="flex flex-col mt-8">
+        <p className="font-medium text-2xl text-center text-cerise">{t.event.description}</p>
+        <div className="flex flex-col mt-4">
           <div className="max-sm:hidden flex justify-center">
             <div className="w-4 bg-cerise h-full min-h-[30px] rounded-t-full"></div>
           </div>
