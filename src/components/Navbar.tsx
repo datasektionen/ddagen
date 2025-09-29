@@ -373,9 +373,10 @@ export default function Navbar() {
               links={[
                 { href: "/förstudenter", text: t.forStudents },
                 { href: "/karta", text: t.map },
+                { href: "/event", text: t.event },
                 { href: "/logos", text: t.logos },
-                /*{ href: "/student", text: t.meetings },*/
-                {href: "/sok", text:t.sok},
+                { href: "/student", text: t.meetings },
+                { href: "/sok", text: t.sok },
               ]}
             />
             {/*<NavLink class="px-14 lg:px-0" href="/mässan">{t.about}</NavLink>*/}
