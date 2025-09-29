@@ -91,8 +91,8 @@ function SingleTeam({
           />
         </div>
         <div
-          className={`${borderColor} border-[3px] rounded-lg 
-            bg-darkblue bg-opacity-75 
+          className={`${borderColor} border-[3px] rounded-lg
+            bg-darkblue bg-opacity-75
             md:w-[300px] lg:w-[400px] flex`}
           style={{ maxHeight: "400px" }}
         >
@@ -167,21 +167,21 @@ export default function SignupPage() {
   const isPageActive = true;
   const router = useRouter();
 
-  if(!isPageActive) 
+  if(!isPageActive)
   {
     return (
       <div className="mt-[140px] mb-[200px] text-center text-white">
-        {t.sok.notActive} 
+        {t.sok.notActive}
       </div>
     )
   }
-  else 
+  else
   {
     return (
       <div className="pt-[80px] sm:pt-[110px] pb-[110px] sm:pb-[200px]">
-        <div className={`flex flex-col 
+        <div className={`flex flex-col
             pt-[30px] pb-[10px]
-            max-w-[90vw] lg:max-w-[600px] mx-auto 
+            max-w-[90vw] lg:max-w-[600px] mx-auto
             bg-darkblue bg-opacity-75`}>
           <h1 className="text-5xl text-cerise font-medium text-center uppercase">
             {" "}
@@ -209,7 +209,7 @@ export default function SignupPage() {
             {t.sok.info}
           </h2>
         </div>
-        
+
         <SingleTeam
           bgColor="bg-[#E2B7C9]"
           borderColor="border-[#E2B7C9]"
@@ -285,7 +285,7 @@ export default function SignupPage() {
           ]}
           roles={t.sok.ecoGroup.roles}
         />
-        
+
         <div className="flex flex-col justify-center items-center">
           <h2 className="text-4xl text-cerise font-normal text-center uppercase mt-[100px] w-auto px-5 py-2 rounded-lg bg-darkblue bg-opacity-75">
             {" "}
