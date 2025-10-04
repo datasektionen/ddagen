@@ -1,13 +1,15 @@
 import Locale from "@/locales";
 import { useState, useEffect } from "react";
-import { Package, Exhibitor, ExhibitorExtras } from "@/shared/Classes";
+import { Package, Exhibitor, ExhibitorExtras, Preferences } from "@/shared/Classes";
 
 export function ExtraOrderPanel({
   t,
   exhibitors,
+  preferences,
 }: {
   t: Locale;
   exhibitors: Exhibitor[];
+  preferences: Preferences[];
 }) {
   const [extras, setExtras] = useState<[ExhibitorExtras, ExhibitorExtras]>();
 
@@ -19,6 +21,7 @@ export function ExtraOrderPanel({
       representativeSpots: 0,
       banquetTicket: 0,
       mealCoupons: 0,
+      alcFreeTicket: 0,
     };
     let extras = {
       tables: 0,
@@ -27,6 +30,7 @@ export function ExtraOrderPanel({
       representativeSpots: 0,
       banquetTicket: 0,
       mealCoupons: 0,
+      alcFreeTicket: 0,
     };
 
     exhibitors.map((exhibitor) => {
@@ -48,6 +52,7 @@ export function ExtraOrderPanel({
       //extras.representativeSpots += exhibitor.extraRepresentativeSpots; removed
       extras.banquetTicket += exhibitor.totalBanquetTicketsWanted;
       extras.mealCoupons += exhibitor.extraMealCoupons;
+      extras.alcFreeTicket += exhibitor.alcFreeTicket;
     });
 
     setExtras([exhibitorPackage, extras]);
@@ -93,6 +98,16 @@ export function ExtraOrderPanel({
                       : 0}
                   </td>
                 </tr>
+                  <tr className="text-center">
+                  <td>{t.exhibitorSettings.table.row2.section2.alcFreeTicket}</td>
+                  <td>{extras?.[0].alcFreeTicket}</td>
+                  <td>{extras?.[1].alcFreeTicket}</td>
+                  <td>
+                    {extras
+                      ? extras?.[0].alcFreeTicket + extras?.[1].alcFreeTicket
+                      : 0}
+                  </td>
+                </tr>
                 {/*
                 <tr className="text-center">
                   <td>{t.admin.extraOrders.row.representatives}</td>
@@ -127,6 +142,18 @@ export function ExtraOrderPanel({
                       : 0}
                   </td>
                 </tr>
+                <tr className="text-center">
+                  <td>{t.admin.extraOrders.row.confirmedBanquetTickets}</td>
+                  <td></td>
+                  <td></td>
+                  <td>{preferences.filter((pref) => pref.type == "Banquet").length}</td>
+                </tr>
+                <tr className="text-center">
+                  <td>{t.admin.extraOrders.row.confirmedDrinkCoupons}</td>
+                  <td></td>
+                  <td></td>
+                  <td>{preferences.filter((pref) => pref.type == "Banquet").length * 4 + (extras?.[1].drinkCoupons ?? 0)}</td>
+                </tr>                  
               </tbody>
             </table>
           </div>

@@ -218,8 +218,9 @@ export default function LoggedInPage() {
     }
 
     function StudentView(){
-        function renderCompany(company: Company){
+        const deadline = new Date() > new Date("2025-10-07T17:00:00");
 
+        function renderCompany(company: Company){
             return <div key={company.name} 
             className={
                 `min-w-[200px] rounded-2xl bg-white/20 
@@ -228,7 +229,7 @@ export default function LoggedInPage() {
                 ${selectedCompanies[company.id] ? 'border-yellow' : 'border-cerise'}`}
             >
             <div className='flex items-center justify-center'>
-                <CheckMark name={"check"} checked={selectedCompanies[company.id]} onClick={()=>{handleSelection(company)}}/>
+                {!deadline ? <CheckMark name={"check"} checked={selectedCompanies[company.id]} onClick={()=>{handleSelection(company)}}/> : ""}
                 <h2 className='text-2xl ml-10'>{company.name}</h2>
             </div>
 
@@ -276,7 +277,13 @@ export default function LoggedInPage() {
                 {Table(
                         [t.students.info.mainHeader],
                         [],
-                        [<><StudentInfo t={t} id={ugkthid}/></>,],
+                        [<><StudentInfo 
+                            t={t} 
+                            id={ugkthid}    
+                            onSave={() => {
+                                getMeetingsOffers(); // Refresh meetings after save
+                            }}
+                        /></>,],
                 )}
             </div>
             
@@ -292,12 +299,14 @@ export default function LoggedInPage() {
                 
             { studentHasCV && <>
             
-                <h2 className="text-cerise text-2xl md:text-4xl font-medium text-center pt-12">{t.students.companyInterests.header}</h2>
-                <h2 className="mt-4 mb-12 text-xl text-center text-white">{t.students.companyInterests.description}</h2>
+                <h2 className="text-cerise text-2xl md:text-4xl font-medium text-center pt-12">{!deadline ? t.students.companyInterests.header : t.students.companyInterests.deadlineHeader}</h2>
+                <h2 className="mt-4 mb-12 text-xl text-center text-white">{!deadline ? t.students.companyInterests.description : ""}</h2>
+                <h2 className="mt-4 mb-12 text-xl text-center text-white">{t.students.companyInterests.deadline}</h2>
                 <div className='w-100 flex items-center justify-center'>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-32 place-items-center max-w-[900px] justify-self-center">
                         {!getCompanyWithMeetings.data ? <div className='text-white'> ... </div>:
-                            companiesWithMeeting.map(renderCompany)
+                            (!deadline ? companiesWithMeeting.map(renderCompany) :
+                                companiesWithMeeting.filter(comp => selectedCompanies[comp.id]).map(renderCompany))
                         }
                     </div>
                 

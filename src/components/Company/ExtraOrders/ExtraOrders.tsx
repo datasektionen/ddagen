@@ -16,14 +16,15 @@ export default function ExtraOrders({
   exhibitorPackage: Package;
 }) {
   // on disable if deadline has passed
-  const disablePreferences = (new Date() > new Date("2025-09-23"));
+  const disablePreferences = (new Date() > new Date("2025-09-10"));
   const deadline = {
-    drinkCoupons: "2025-09-18",
-    tables: "2025-09-18",
-    chairs: "2025-09-18",
-    representatives: "2025-09-18",
-    banquet: "2025-09-18",
-    mealCoupons: "2025-09-18",
+    drinkCoupons: "2025-09-10",
+    tables: "2025-09-10",
+    chairs: "2025-09-10",
+    representatives: "2025-09-10",
+    banquet: "2025-09-10",
+    mealCoupons: "2025-09-10",
+    alcFreeTicket: "2025-09-10"
   };
 
   const [editState, setEditState] = useState(false);
@@ -33,6 +34,7 @@ export default function ExtraOrders({
   const [representatives, setRepresentatives] = useState(0);
   const [banquetTickets, setBanquetTickets] = useState(0);
   const [mealCoupons, setMealCoupons] = useState(0);
+  const [alcFreeTicket, setAlcFreeTicket] = useState(0);
   const [lastChanged, setLastChanged] = useState<Date>();
 
   useEffect(() => {
@@ -42,6 +44,7 @@ export default function ExtraOrders({
     setDrinkCoupons(extras.extraDrinkCoupons);
     setRepresentatives(extras.extraRepresentativeSpots);
     setBanquetTickets(extras.totalBanquetTicketsWanted);
+    setAlcFreeTicket(extras.alcFreeTickets);
     setMealCoupons(extras.extraMealCoupons);
     extras.lastChanged && setLastChanged(extras.lastChanged);
   }, [extras]);
@@ -55,7 +58,8 @@ export default function ExtraOrders({
         extras?.extraDrinkCoupons != drinkCoupons || 
         extras?.extraRepresentativeSpots != representatives || 
         extras?.totalBanquetTicketsWanted != banquetTickets || 
-        extras?.extraMealCoupons != mealCoupons
+        extras?.alcFreeTickets != alcFreeTicket ||
+        extras?.extraMealCoupons != mealCoupons 
       ){
         setExtras({
           extraTables: tables,
@@ -64,6 +68,7 @@ export default function ExtraOrders({
           extraRepresentativeSpots: representatives,
           totalBanquetTicketsWanted: banquetTickets,
           extraMealCoupons: mealCoupons,
+          alcFreeTickets: alcFreeTicket,
           lastChanged: new Date()
         });
         return;
@@ -76,6 +81,7 @@ export default function ExtraOrders({
         extraRepresentativeSpots: representatives,
         totalBanquetTicketsWanted: banquetTickets,
         extraMealCoupons: mealCoupons,
+        alcFreeTickets: alcFreeTicket,
         lastChanged: extras?.lastChanged
       });
     }
@@ -88,7 +94,8 @@ export default function ExtraOrders({
     step: number,
     disableAll?: boolean,
     disabledCondition?: boolean,
-    disabledConditionMessage?: string
+    disabledConditionMessage?: string,
+    lower: number = 0,
   ) {
     return (
       <div className="flex flex-row items-center justify-center">
@@ -115,9 +122,9 @@ export default function ExtraOrders({
                         justify-center items-center px-2 border border-white/20 hover:scale-105 transition-transform
                         disabled:bg-black/25 disabled:border disabled:border-solid"
             onClick={() => {
-              if (num >= 0 && num - step >= 0) set(num - step);
+              if (num >= lower && num - step >= lower) set(num - step);
             }}
-            disabled={disableAll || disabledCondition || num == 0}
+            disabled={disableAll || disabledCondition || num == lower}
             title={
               disableAll
                 ? ""
@@ -164,9 +171,21 @@ export default function ExtraOrders({
       disableAll: disablePreferences,
       disableCondition: disablePreferences,
       disableConditionMessage: "",
-      increment: 8,
+      increment: 1,
       deadline: deadline.drinkCoupons,
     },
+    {
+      name: "alcfree",
+      included: 0,
+      get: alcFreeTicket,
+      set: setAlcFreeTicket,
+      disableAll: disablePreferences,
+      diableCondition: disablePreferences,
+      disableConditionMessage: "",
+      increment: 4,
+      deadline: deadline.drinkCoupons
+    },
+    /*
     {
       name: t.exhibitorSettings.table.row2.section2.sitting,
       included: exhibitorPackage.banquetTickets,
@@ -181,6 +200,7 @@ export default function ExtraOrders({
       increment: 1,
       deadline: deadline.banquet,
     },
+    */
     {
       name: t.exhibitorSettings.table.row2.section2.mealCoupons,
       included: exhibitorPackage.mealCoupons,
@@ -259,7 +279,7 @@ export default function ExtraOrders({
         </div>
         <div className="font-normal text-2xl">
           {editState
-            ? plusMinus(drinkCoupons, setDrinkCoupons, 4, disablePreferences)
+            ? plusMinus(drinkCoupons, setDrinkCoupons, 4, disablePreferences, false, "", -1 * exhibitorPackage.drinkCoupons)
             : drinkCoupons}
         </div>
         <div className="font-normal text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] text-2xl">
@@ -270,6 +290,28 @@ export default function ExtraOrders({
             deadline.drinkCoupons}
         </div>
         {/* Section 3 */}
+
+        {/* Section4 */}
+        <div className="text-left">
+          {t.exhibitorSettings.table.row2.section2.alcFreeTicket}:
+        </div>
+        <div className="font-normal text-2xl">
+          {0}
+        </div>
+        <div className="font-normal text-2xl">
+          {editState
+            ? plusMinus(alcFreeTicket, setAlcFreeTicket, 4, disablePreferences)
+            : alcFreeTicket}
+        </div>
+        <div className="font-normal text-cerise [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] text-2xl">
+          {alcFreeTicket}
+        </div>
+        <div className="text-right text-white/90 [text-shadow:_0_4px_4px_rgb(0_0_0_/_25%)] col-span-2 text-base">
+          {t.exhibitorSettings.table.row2.section2.warning +
+            deadline.alcFreeTicket}
+        </div>
+
+        {/* Section4 */}
 
         {/*}       COMMENT: THIS WAS REMOVED FROM THE UI, BUT LEFT IN THE CODE FOR FUTURE USE
         <div className="text-left">

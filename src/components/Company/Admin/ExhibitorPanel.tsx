@@ -200,6 +200,7 @@ export function ExhibitorPanel({
 
   function convertToCSV(data: Exhibitor[], selectedAttributes: string[]): string {
     const jobOfferFields = ["summerJob", "internship", "partTimeJob", "masterThesis", "fullTimeJob", "traineeProgram"];
+    const packageTiers = ["Small", "Medium", "Large", "Main sponsor", "startup", "error"];
 
     // Create the header
     const header = selectedAttributes.concat(jobOfferFields).join(',');
@@ -212,8 +213,9 @@ export function ExhibitorPanel({
       const jobOffer = jobOffers.find(offer => offer.id === exhibitor.jobOfferId);
 
       // Extract exhibitor attributes
-      const exhibitorValues = selectedAttributes.map(attr =>
-        JSON.stringify(exhibitor[attr as keyof Exhibitor] ?? "")
+      const exhibitorValues = selectedAttributes.map(attr => 
+        attr != "packageTier" ? JSON.stringify(exhibitor[attr as keyof Exhibitor] ?? "") :
+        JSON.stringify(packageTiers[exhibitor.packageTier != -1 ? exhibitor.packageTier : 5])
       );
 
       // Extract job offer attributes (if matching job offer is found)
@@ -237,13 +239,13 @@ export function ExhibitorPanel({
 
   function downloadCSV(data: Exhibitor[], filename: string): void {
     console.log(data);
-    const csv = convertToCSV(data, ["organizationNumber", "name", "description", "industry"]); // Omvandla data till CSV
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' }); // Skapa en Blob från CSV-strängen
-    const link = document.createElement('a'); // Skapa en osynlig länk
-    link.href = URL.createObjectURL(blob); // Länka till Bloben
+    const csv = convertToCSV(data, ["organizationNumber", "name", "description", "industry", "packageTier"]);
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' }); 
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob); 
     link.target = '_blank';
-    link.download = filename; // Sätt nedladdningsfilens namn
-    link.click(); // Starta nedladdningen
+    link.download = filename;
+    link.click(); 
   }
 
 

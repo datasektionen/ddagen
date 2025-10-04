@@ -16,7 +16,7 @@ const managersName        = ["Max Berglund", "Mortada Nasser"]
 const prNames             = ["Julia Potrus", "Sabrina Larsson", "Natalia Winiarska", "Tasfia Alam", "Abdelrahman Aldaker"]
 const devNames            = ["Theodor Fritsch", "Linus Rackner", "Elsa Linnéusson",  "David Björklund"]
 const salesNames          = ["Oskar Furuhed", "Josef Behnam", "Sean Zishend", "Hedda Litzén Hagström", "Didzis Urtnas", "Ludwig Berglind", "Oliver Zhou", "Jamie Groop"]
-const massNames           = ["Felicia Murkes", "Silan Centinkaya", "Emanuel Malki", "Elias Rosberg", "Amar Ibrahim", "Viktor Rogalin"]
+const massNames           = ["Felicia Murkes", "Silan Centinkaya", "Emanuel Malki", "Elias Rosberg", "Amar Ibrahim"]
 const ecoNames            = ["Melissa Arslan", "Anton Jansson"]
 
 

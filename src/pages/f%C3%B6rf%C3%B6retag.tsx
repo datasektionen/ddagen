@@ -43,12 +43,27 @@ export default function ForCompanies() {
           <h1 className="uppercase text-center text-cerise pt-[110px] lg:pt-[140px] mb-4 text-5xl font-medium">
             {t.forCompanies.title}
           </h1>
+          <div className="flex flex-row items-center justify-center mt-[50px] px-5">
+            <p className="text-white w-[300px] sm:w-[600px] text-center">
+              {t.forCompanies.guideText}
+            </p>
+          </div>
+          <div>
+            <button className="mt-6">
+              <a
+                className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base uppercase font-medium px-6 py-2 max-lg:mx-auto w-max"
+                href={t.forCompanies.guidePath}
+              >
+                {t.forCompanies.guideButtonText}
+              </a>
+            </button>
+          </div>
 
           {/* Section of D-Dagen Info */}
           <ImageTextSection
             t={t}
             leftSideImage={true}
-            imageProps={{src: "/img/ff1.webp", alt: "People talking", className: "bg-slate-300 rounded-md"}}
+            imageProps={{src: "/img/ff3.webp", alt: "People talking"}}
             className={`mt-[10px] lg:mt-[30px] mb-[20px] lg:mb-[40px]`}
             >
               <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl max-w-xl">
@@ -56,7 +71,7 @@ export default function ForCompanies() {
               </h2>
               <p className="text-white text-base sm:text-lg pt-4 max-w-xl">{t.forCompanies.fairText1}</p>
               <p className="text-white text-base sm:text-lg pt-4 max-w-xl">{t.forCompanies.fairText2}</p>
-              <button className="max-lg:hidden mt-6">
+              <button className="mt-6">
                   <a
                     className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-medium px-6 py-2 max-lg:mx-auto w-max"
                     href={t.faq.catalogPath}
@@ -103,11 +118,16 @@ export default function ForCompanies() {
                           */}
                           <span className="absolute w-0 h-0 border-gold border-0 bg-gold"></span>
                           
+                          
                           <div className={`flex flex-col justify-between
                             bg-[#01061E] rounded-lg h-full
                             py-8 px-8 text-left relative ${companyPackage.className ?? ""}`}>
 
-                            { /* DISCOUNT ICON TOP RIGHT (className sets the background color) */
+                            { 
+                              // REMOVED
+                              
+                              /* DISCOUNT ICON TOP RIGHT (className sets the background color)
+
                               companyPackage.discount && 
                               <div className={`flex flex-col justify-center items-center
                                   absolute top-0 right-0 translate-y-[-35%] translate-x-[35%]
@@ -116,7 +136,7 @@ export default function ForCompanies() {
                                   >
                                 {companyPackage.discount.amount}
                               </div>
-                            }
+                            */}
                             
                             {/* CARD TEXT */}
                             <div className="flex flex-col">
@@ -153,7 +173,7 @@ export default function ForCompanies() {
           <ImageTextSection
             t={t}
             leftSideImage={false}
-            imageProps={{src: "/img/ff2.webp", alt: "People talking", className: "bg-slate-300 rounded-md"}}
+            imageProps={{src: "/img/ff4.webp", alt: "People talking"}}
             className={`mt-[20px] lg:mt-[60px] mb-[30px] lg:mb-[40px]`}
             >
               <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl max-w-xl">

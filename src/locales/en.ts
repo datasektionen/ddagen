@@ -1,5 +1,3 @@
-import { table } from "console";
-
 export default {
   locale: "en" as const,
   titles: {
@@ -33,7 +31,7 @@ export default {
     stats: [
       {
         value: "100+",
-        type: "Exhibitors"
+        type: "Exhibitors last year"
       },
       {
         value: "3000+",
@@ -51,6 +49,9 @@ export default {
   },
   forCompanies: {
     title: "For Companies",
+    guideText: "Welcome to D-Dagen! Here is a guide for companies on how to maximize your presence and get the most out of the fair.",
+    guideButtonText: "Read the Guide",
+    guidePath: "https://ddagen.se/downloadables/Exhibitors_Guide_to_D-Dagen_ENG.pdf",
     aboutFair: "About the fair",
     fairText1:
       "D-Dagen is the Computer Science Chapter's annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
@@ -98,7 +99,6 @@ export default {
             "Unlimited storage & reception of deliveries",
           ],
           disclaimers: [
-            "Anniversary discount applies until May 23rd"
           ]
         },
         {
@@ -121,11 +121,10 @@ export default {
             "Large logo on our website",
           ],
           disclaimers: [
-            "Anniversary discount applies until May 23rd"
           ]
         },
       ]
-    },      
+    },
     interestedTitle: "Interested?",
     interestedText:
       "Are you interested in exhibiting on D-Dagen and connecting with thousands of students in Computer Science and IT? Click below to sign up!",
@@ -190,21 +189,31 @@ export default {
   },
   forStudents: {
     title: "For Students",
+    guideText: "Welcome to D-Dagen! Here is a guide for students to get the most out of the fair.",
+    guideButtonText: "Read the Guide",
+    guidePath: "https://ddagen.se/downloadables/Studentens_guide_till_D-Dagen.pdf",
     aboutFair: "About the fair",
     fairText1:
       "D-Dagen is the Computer Science Chapter's annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
     fairText2:
       "This year, the fair is held on October 9th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15 and in KTH Entré which is located at Drottning Kristinas väg 4. Students will be able to have meetings with exhibitors through company meetings in order to get more of a connection with that company (limited slots per company).",
+    eventPageButton: "D-Dagen Events",
     companyMeetings: "Company Meetings",
     companyMeetingsText:
       "We offer company meetings for students, which means that you will be able to discuss future job opportunities in a private room with representatives from selected companies. Sign up on the link below:",
     tempCompanyMeetingsText:
       "We offer company meetings for students, which means that you will be able to discuss future job opportunities in a private room with representatives from selected companies. Sign up will be available soon!",
+    companyMeetingsPageButton: "Read more",
     companyMeetingsButton: "Sign up",
     dayStaffTitle: "Day Staff",
     dayStaffText: "Would you like to help make our career fair a success? We are looking for enthusiastic students to assist on the day of the event with tasks such as welcoming visitors, supporting exhibitors, and keeping the venue organized. It's a great opportunity to network, meet companies, and gain valuable experience.",
     dayStaffApplicationOpens: "Application opens on September 2nd",
     dayStaffApply: "Apply here!",
+    banquetTitle: "The D-Dagen Banquet",
+    banquetText: "The D-Dagen Banquet has long been a student favorite — if you're lucky, you might land both a new job and a really great evening all in one go! Not to be forgotten are the delicious food, the charming company representatives, and the excellent drink tickets, also known as \'Barbongar\'.",
+    banquetButton: "Sign up",
+    panelDiscussionsTitle: "Panel Discussions",
+    panelDiscussionsText: "Representatives from various companies will participate in panel discussions on IT-related topics. We encourage you to attend these to deepen your knowledge of current industry trends and explore which direction best matches your future career interests—whether it's cybersecurity, artificial intelligence, or fintech.",
   },
   students: {
     info:{
@@ -228,9 +237,11 @@ export default {
     },
     companyInterests:{
       header: "Select the companies you are interested in meeting",
+      deadlineHeader: "You have shown interest in these companies",
       description: "Click on the companies you are interested in meeting for a company meeting. The companies will then send you invitations to meetings.",
       checked1:"You have shown interest in meeting with ",
       checked2:" for a company meeting.",
+      deadline: "The deadline to show interest for a company is the 7th october 19:00."
     },
     companyMeeting:{
       offerText: " Has invited you to a company meeting",
@@ -346,6 +357,7 @@ export default {
           logoColour: "Logo w/ colour",
           or: "or",
           industry: "Industry",
+          numPeople: "Please bring no more than five representatives to the fair"
         },
         section2: {
           header: "Job Offers",
@@ -422,7 +434,8 @@ export default {
             second: "Options",
             third: "Total",
           },
-          drinkCoupons: "Drink Coupons",
+          drinkCoupons: "Drink Coupons with alcohol",
+          alcFreeTicket: "Drink coupons without alcohol",
           mealCoupons: "Breakfast/Lunch Coupons",
           lastChanged: "Last Changed: ",
           tables: "Tables",
@@ -501,7 +514,7 @@ export default {
             placeholderTextEmail: "Enter the email for invoicing",
             physicalAddress: "Address",
             placeholderTextPhysicalAddress: "Enter companyaddress (Ex. Drottning Kristinas väg 15-19)",
-            billingMethods: ["E-Invoice", "PDF Invoice"],
+            billingMethods: ["PDF Invoice", "E-Invoice"],
             billingMethodText: "Billing Method",
             placeholderTextBillingMethod: "Enter billing method",
           },
@@ -545,35 +558,36 @@ export default {
       "> if it is registered in our system. If you can't find the email, double check that the email address is correct and make sure to check your spam folder!",
     emailSubject: "D-Dagen Login",
     emailBody: (code: string, link: string) =>
-  "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
-    "<tr>"+
-      "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
-          "<table style=\"background-color:#EE237B;padding:30px;color:#ffffff;border-radius:10px;width:80%;margin:auto;border-collapse:separate;border-spacing:0;box-shadow:0 4px 10px rgba(0, 0, 0, 0.2)\">"+
-                "<tbody>"+
-                    "<tr>"+
-                        "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                            "<p>To complete the login to D-Dagen, go to the link below:</p>"+
-                            "<p> </p>"+
-                            "<p><a href=" + link + "style=\"color:#ffffff;text-decoration:underline\">" + link + "</a></p>"+
-                            "<p> </p>"+
-                            "<p>or enter the code " + code + " on the login page.</p>"+
-                        "</td>"+
-                      "</tr>"+
-                      "<tr>"+
-                          "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                            "<p>If you did not request this login, please ignore this email.</p>"+
-                          "</td>"+
-                      "</tr>"+
-                "</tbody>"+
-              "</table>"+
-      "</td>"+
-    "</tr>"+
-    "<tr>"+
-        "<td style=\"padding:0; margin:0;\">"+
-            "<img src=\"ddagen.se/img/email-signatur.png\" alt=\"D-Dagen logo\" style=\"width:100%; height:auto; display:block;\">"+
-        "</td>"+
-    "</tr>"+
-  "</table>",
+    "<div style=\"padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
+      "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" +
+        "<tbody>" +
+          "<tr>" +
+            "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
+              "<p>" +
+                "Hi!<br />" +
+              "</p>" +
+            "</div>" +
+          "</tr>" +
+          "<tr>" +
+            "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
+              "<p style=\"color:#ffffff;\">To complete your login to D-Dagen, please visit the following link:" +
+              "<br /><a href=\"" + link + "\" style=\"color:#0000FF;text-decoration:underline\">" + link + "</a>" +
+              "<br />or enter the code: <span style=\"color:#FFFF00\">" + code + "</span> <span style=\"color:#FFFFFF\"> on the login page.</span></p>" +
+            "</div>" +
+          "</tr>" +
+          "<tr>" +
+            "<div style=\"padding: 10px 30px 30px; background:#DE3163;color:#ffffff;\" >" +
+              "<p>If you did not try to log in, you can ignore this email.</p><br>" +
+              "<p>Best regards,</p>" +
+              "<p>The D-Dagen project group</p><br>" +
+            "</div>" +
+          "</tr>" +
+        "</tbody>" +
+      "</table>" +
+      "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
+        "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+      "</a>" +
+    "</div>"
   },
   companyForm: {
     title: "Sign up for D-Dagen",
@@ -603,13 +617,15 @@ export default {
   nav: {
     toContent: "To content",
     home: "Home",
-    forCompanies: "For companies",
+    forCompanies: "For companies ",
     forSponsors: "Sponsors",
     forStudents: "For students",
     about: "About",
     companyForm: "Exhibitor Registration",
     changeLanguage: "Change language to Swedish",
     contact: "Contact  ",
+    event: "Event",
+    history: "History ",
     exhibitorSettings: "Settings",
     login: "Log in",
     logout: "Log out",
@@ -630,6 +646,40 @@ export default {
     sponsorLink: "https://en.omegapoint.se",
     notDecided: "Main sponsor for D-Dagen 2025 will be shown here",
   },
+  newExhibitorEmail: {
+    emailSubject: "D-Dagen Exhibitor Account Created",
+    emailBody: (email: string) =>
+    "<div style=\"padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
+      "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" +
+        "<tbody>" +
+          "<tr>" +
+            "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
+              "<p>" +
+                "Hi!<br />" +
+              "</p>" +
+            "</div>" +
+          "</tr>" +
+          "<tr>" +
+            "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
+              "<p style=\"color:#ffffff;\">We are pleased to confirm your exhibitor account has been created." +
+              "<br />Visit <a href=\"https://ddagen.se/utställare\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/utställare</a>" +
+              "and log in with the email: <span style=\"color:#FFFF00\">" + email + "</span></p>" +
+            "</div>" +
+          "</tr>" +
+          "<tr>" +
+            "<div style=\"padding: 10px 30px 30px; background:#DE3163;color:#ffffff;\" >" +
+              "<p>If you did not try to log in, you can ignore this email.</p><br>" +
+              "<p>Best regards,</p>" +
+              "<p>The D-Dagen project group</p><br>" +
+            "</div>" +
+          "</tr>" +
+        "</tbody>" +
+      "</table>" +
+      "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
+        "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+      "</a>" +
+    "</div>"
+  },
   email: {
     subject: "Exhibitor Registration Confirmation",
     body: (
@@ -638,9 +688,9 @@ export default {
       email: string,
       contactPerson: string,
       phoneNumber: string
-    ) => 
+    ) =>
       "<div style=\"padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
-          "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" + 
+          "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" +
             "<tbody>" +
               "<tr>" +
                 "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
@@ -660,27 +710,27 @@ export default {
               "<tr>" +
                 "<div style\"background:#DE3163;color:#ffffff;\">" +
                   "<ul style=\"padding:20px 30px; margin: 0; background:#DE3163;color:#ffffff;\">" +
-                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Company name: " + companyName + "</li>" + 
+                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Company name: " + companyName + "</li>" +
                       ((organizationNumber[0] != '0') ? "<li>Organisationsnummer: " + organizationNumber + "</li>" : "") +
-                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Email address: " + email + "</li>" + 
+                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Email address: " + email + "</li>" +
                     "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Contact person: " + contactPerson + "</li>" +
-                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Phone number: " + phoneNumber + "</li>" + 
+                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Phone number: " + phoneNumber + "</li>" +
                   "</ul>" +
                 "</div>" +
               "</tr>" +
               "<tr>" +
                 "<div style=\"padding: 0 30px 30px; background:#DE3163;color:#ffffff;\" >" +
-                  "<br><br><p> If any of the information above is incorrect or if you have any other questions, " + 
-                    "do not hesitate to contact our sales team at sales@ddagen.se. </p><br>" + 
-                  "<p>Thank you for your registration and we look forward to a successful event. </p><br>" + 
-                  "<p>Best regards, </p><br>" + 
+                  "<br><br><p> If any of the information above is incorrect or if you have any other questions, " +
+                    "do not hesitate to contact our sales team at sales@ddagen.se. </p><br>" +
+                  "<p>Thank you for your registration and we look forward to a successful event. </p><br>" +
+                  "<p>Best regards, </p><br>" +
                   "<p>The D-Dagen project group</p><br><br>" +
                 "</div>" +
               "</tr>" +
             "</tbody>" +
           "</table>" +
         "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\" >" +
-          "<img src=\"https://dev.ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\" ></img>" + 
+          "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\" ></img>" +
         "</a>" +
       "</div>",
   },
@@ -694,38 +744,37 @@ export default {
         lastName: string,
         companyName: string
       )=>
-    "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
-      "<tr>"+
-        "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
-            "<table style=\"background-color:#EE237B;padding:30px;color:#ffffff;border-radius:10px;width:80%;margin:auto;border-collapse:separate;border-spacing:0;box-shadow:0 4px 10px rgba(0, 0, 0, 0.2)\">"+
-                "<thead>"+
-                      "<tr>"+
-                          "<th colspan=\"2\" style=\"font-size:24px;text-align:left;padding-bottom:20px\">Hi " + firstName + " " + lastName + "!</th>"+
-                      "</tr>"+
-                "</thead>"+
-                  "<tbody>"+
-                      "<tr>"+
-                          "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                              "<p>We are pleased to confirm that " + companyName + " wants a meeting with you.</p>"+
-                          "</td>"+
-                        "</tr>"+
-                        "<tr>"+
-                            "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                              "<p>If any of the information above is incorrect or if you have any other questions, do not hesitate to contact our sales team at <a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a>.</p>"+
-                              "<p>Best regards,</p>"+
-                              "<p>The D-Dagen project group</p>"+
-                            "</td>"+
-                        "</tr>"+
-                  "</tbody>"+
-                "</table>"+
-        "</td>"+
-      "</tr>"+
-      "<tr>"+
-          "<td style=\"padding:0; margin:0;\">"+
-              "<img src=\"ddagen.se/img/email-signatur.png\" alt=\"D-Dagen logo\" style=\"width:100%; height:auto; display:block;\">"+
-          "</td>"+
-      "</tr>"+
-    "</table>" ,
+    "<div style=\"padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
+        "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" +
+          "<tbody>" +
+            "<tr>" +
+              "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
+                "<p>" +
+                  "Hi " + firstName + " " + lastName + "!<br />" +
+                "</p>" +
+              "</div>" +
+            "</tr>" +
+            "<tr>" +
+              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
+                "<p style=\"color:#ffffff;\">We are pleased to confirm that " + companyName + " wants a meeting with you."+
+                "<br />Visit <a href=\"https://ddagen.se/student\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/student</a>" +
+                " to choose a time for the meeting: </p>" +
+              "</div>" +
+            "</tr>" +
+            "<tr>" +
+              "<div style=\"padding: 10px 30px 30px; background:#DE3163;color:#ffffff;\" >" +
+                "<p style=\"color:#ffffff;\">PS: When choosing a time, it is --First come first served-- among the students." +
+                "<br />Best regards," +
+                "<br />The D-Dagen Project Group" +
+                "<br /><a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a></p>" +
+              "</div>" +
+            "</tr>" +
+          "</tbody>" +
+        "</table>" +
+        "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
+          "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+        "</a>" +
+      "</div>",
     },
     meeting_declined_by_student: {
       subject: (
@@ -737,38 +786,36 @@ export default {
         firstName: string,
         lastName: string,
       )=>
-      "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
-        "<tr>"+
-          "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
-              "<table style=\"background-color:#EE237B;padding:30px;color:#ffffff;border-radius:10px;width:80%;margin:auto;border-collapse:separate;border-spacing:0;box-shadow:0 4px 10px rgba(0, 0, 0, 0.2)\">"+
-                  "<thead>"+
-                        "<tr>"+
-                            "<th colspan=\"2\" style=\"font-size:24px;text-align:left;padding-bottom:20px\">Hi!</th>"+
-                        "</tr>"+
-                  "</thead>"+
-                    "<tbody>"+
-                        "<tr>"+
-                            "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                                "<p>We are sorry to inform that " + firstName + " " + lastName + " has declined your meeting offer.</p>"+
-                            "</td>"+
-                          "</tr>"+
-                          "<tr>"+
-                              "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                                "<p>If any of the information above is incorrect or if you have any other questions, do not hesitate to contact our sales team at <a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a>.</p>"+
-                                "<p>Best regards,</p>"+
-                                "<p>The D-Dagen project group</p>"+
-                              "</td>"+
-                          "</tr>"+
-                    "</tbody>"+
-                  "</table>"+
-          "</td>"+
-        "</tr>"+
-        "<tr>"+
-            "<td style=\"padding:0; margin:0;\">"+
-                "<img src=\"ddagen.se/img/email-signatur.png\" alt=\"D-Dagen logo\" style=\"width:100%; height:auto; display:block;\">"+
-            "</td>"+
-        "</tr>"+
-      "</table>",
+      "<div style=\"padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
+        "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" +
+          "<tbody>" +
+            "<tr>" +
+              "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
+                "<p>" +
+                  "Hi!<br />" +
+                "</p>" +
+              "</div>" +
+            "</tr>" +
+            "<tr>" +
+              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
+                "<p style=\"color:#ffffff;\">We regret to inform that " + firstName + " " + lastName + " has declined your meeting offer."+
+                "<br />Log in to <a href=\"https://ddagen.se/utställare\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/utställare</a>" +
+                " to handle the process of student meetings. </p>" +
+              "</div>" +
+            "</tr>" +
+            "<tr>" +
+              "<div style=\"padding: 10px 30px 30px; background:#DE3163;color:#ffffff;\" >" +
+                "<br />Best regards," +
+                "<br />The D-Dagen Project Group" +
+                "<br /><a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a></p>" +
+              "</div>" +
+            "</tr>" +
+          "</tbody>" +
+        "</table>" +
+        "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
+          "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+        "</a>" +
+      "</div>",
     },
     meeting_deleted_by_student: {
       subject: (
@@ -780,38 +827,36 @@ export default {
         firstName: string,
         lastName: string,
       )=>
-    "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
-      "<tr>"+
-        "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
-            "<table style=\"background-color:#EE237B;padding:30px;color:#ffffff;border-radius:10px;width:80%;margin:auto;border-collapse:separate;border-spacing:0;box-shadow:0 4px 10px rgba(0, 0, 0, 0.2)\">"+
-                "<thead>"+
-                      "<tr>"+
-                          "<th colspan=\"2\" style=\"font-size:24px;text-align:left;padding-bottom:20px\">Hi!</th>"+
-                      "</tr>"+
-                "</thead>"+
-                  "<tbody>"+
-                      "<tr>"+
-                          "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                              "<p>We are sorry to inform that " + firstName + " " + lastName + " has canceled your meeting.</p>"+
-                          "</td>"+
-                        "</tr>"+
-                        "<tr>"+
-                            "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                              "<p>If any of the information above is incorrect or if you have any other questions, do not hesitate to contact our sales team at <a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a>.</p>"+
-                              "<p>Best regards,</p>"+
-                              "<p>The D-Dagen project group</p>"+
-                            "</td>"+
-                        "</tr>"+
-                  "</tbody>"+
-                "</table>"+
-        "</td>"+
-      "</tr>"+
-      "<tr>"+
-          "<td style=\"padding:0; margin:0;\">"+
-              "<img src=\"ddagen.se/img/email-signatur.png\" alt=\"D-Dagen logo\" style=\"width:100%; height:auto; display:block;\">"+
-          "</td>"+
-      "</tr>"+
-    "</table>",
+        "<div style=\"padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
+          "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" +
+            "<tbody>" +
+              "<tr>" +
+                "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
+                  "<p>" +
+                    "Hi!<br />" +
+                  "</p>" +
+                "</div>" +
+              "</tr>" +
+              "<tr>" +
+                "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
+                  "<p style=\"color:#ffffff;\">We regret to inform that " + firstName + " " + lastName + " has canceled your meeting."+
+                  "<br />Log in to <a href=\"https://ddagen.se/utställare\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/utställare</a>" +
+                  " to handle the process of student meetings. </p>" +
+                "</div>" +
+              "</tr>" +
+              "<tr>" +
+                "<div style=\"padding: 10px 30px 30px; background:#DE3163;color:#ffffff;\" >" +
+                  "<br />Best regards," +
+                  "<br />The D-Dagen Project Group" +
+                  "<br /><a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a></p>" +
+                "</div>" +
+              "</tr>" +
+            "</tbody>" +
+          "</table>" +
+          "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
+            "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+          "</a>" +
+        "</div>",
     },
     meeting_deleted_by_company: {
       subject: (
@@ -822,38 +867,36 @@ export default {
         lastName: string,
         companyName: string,
       )=>
-    "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
-      "<tr>"+
-        "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
-            "<table style=\"background-color:#EE237B;padding:30px;color:#ffffff;border-radius:10px;width:80%;margin:auto;border-collapse:separate;border-spacing:0;box-shadow:0 4px 10px rgba(0, 0, 0, 0.2)\">"+
-                "<thead>"+
-                      "<tr>"+
-                          "<th colspan=\"2\" style=\"font-size:24px;text-align:left;padding-bottom:20px\">Hi " + firstName + " " + lastName + "!</th>"+
-                      "</tr>"+
-                "</thead>"+
-                  "<tbody>"+
-                      "<tr>"+
-                          "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                              "<p>We are sorry to inform that " + companyName + " has canceled your meeting.</p>"+
-                          "</td>"+
-                        "</tr>"+
-                        "<tr>"+
-                            "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                              "<p>If any of the information above is incorrect or if you have any other questions, do not hesitate to contact our sales team at <a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a>.</p>"+
-                              "<p>Best regards,</p>"+
-                              "<p>The D-Dagen project group</p>"+
-                            "</td>"+
-                        "</tr>"+
-                  "</tbody>"+
-                "</table>"+
-        "</td>"+
-      "</tr>"+
-      "<tr>"+
-          "<td style=\"padding:0; margin:0;\">"+
-              "<img src=\"ddagen.se/img/email-signatur.png\" alt=\"D-Dagen logo\" style=\"width:100%; height:auto; display:block;\">"+
-          "</td>"+
-      "</tr>"+
-    "</table>",
+      "<div style=\"padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
+        "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" +
+          "<tbody>" +
+            "<tr>" +
+              "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
+                "<p>" +
+                  "Hi " + firstName + " " + lastName +"!<br />" +
+                "</p>" +
+              "</div>" +
+            "</tr>" +
+            "<tr>" +
+              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
+                "<p style=\"color:#ffffff;\">We regret to inform that " + companyName + " has canceled your meeting."+
+                "<br />Log in to <a href=\"https://ddagen.se/student\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/student</a>" +
+                " to handle your meetings. </p>" +
+              "</div>" +
+            "</tr>" +
+            "<tr>" +
+              "<div style=\"padding: 10px 30px 30px; background:#DE3163;color:#ffffff;\" >" +
+                "<br />Best regards," +
+                "<br />The D-Dagen Project Group" +
+                "<br /><a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a></p>" +
+              "</div>" +
+            "</tr>" +
+          "</tbody>" +
+        "</table>" +
+        "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
+          "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+        "</a>" +
+      "</div>",
     },
     meeting_completed_to_company: {
         subject: (
@@ -868,40 +911,38 @@ export default {
           time: string,
           location: string,
         )=>
-      "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
-        "<tr>"+
-          "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
-              "<table style=\"background-color:#EE237B;padding:30px;color:#ffffff;border-radius:10px;width:80%;margin:auto;border-collapse:separate;border-spacing:0;box-shadow:0 4px 10px rgba(0, 0, 0, 0.2)\">"+
-                  "<thead>"+
-                        "<tr>"+
-                            "<th colspan=\"2\" style=\"font-size:24px;text-align:left;padding-bottom:20px\">Hi " + companyName + "!</th>"+
-                        "</tr>"+
-                  "</thead>"+
-                    "<tbody>"+
-                        "<tr>"+
-                            "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                                "<p>This is a confirmation for your student meeting with " + firstName + " " + lastName + ".</p>"+
-                                "<p>Time: " + time + "</p>"+
-                                "<p>Location: " + location + "</p>"+
-                            "</td>"+
-                          "</tr>"+
-                          "<tr>"+
-                              "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                                "<p>If any of the information above is incorrect or if you have any other questions, do not hesitate to contact our sales team at <a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a>.</p>"+
-                                "<p>Best regards,</p>"+
-                                "<p>The D-Dagen project group</p>"+
-                              "</td>"+
-                          "</tr>"+
-                    "</tbody>"+
-                  "</table>"+
-          "</td>"+
-        "</tr>"+
-        "<tr>"+
-            "<td style=\"padding:0; margin:0;\">"+
-                "<img src=\"ddagen.se/img/email-signatur.png\" alt=\"D-Dagen logo\" style=\"width:100%; height:auto; display:block;\">"+
-            "</td>"+
-        "</tr>"+
-      "</table>",
+        "<div style=\"padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
+          "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" +
+            "<tbody>" +
+              "<tr>" +
+                "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
+                  "<p>" +
+                    "Hi! " + companyName + " <br />" +
+                  "</p>" +
+                "</div>" +
+              "</tr>" +
+              "<tr>" +
+                "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
+                  "<p style=\"color:#ffffff;\">This is a confirmation for your student meeting with " + firstName + " " + lastName + "." +
+                  "<br />Time: " + time +
+                  "<br />Location: " + location +
+                  "<br />Log in to <a href=\"https://ddagen.se/utställare\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/utställare</a>" +
+                  " to handle your meetings. </p>" +
+                "</div>" +
+              "</tr>" +
+              "<tr>" +
+                "<div style=\"padding: 10px 30px 30px; background:#DE3163;color:#ffffff;\" >" +
+                  "<br />Best regards," +
+                  "<br />The D-Dagen Project Group" +
+                  "<br /><a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a></p>" +
+                "</div>" +
+              "</tr>" +
+            "</tbody>" +
+          "</table>" +
+          "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
+            "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+          "</a>" +
+        "</div>",
       },
       meeting_completed_to_student: {
         subject: (
@@ -916,41 +957,38 @@ export default {
           time: string,
           location: string,
         )=>
-        "<table style=\"background-color:#15112a;width:100%;padding:30px;font-family:Arial, sans-serif;line-height:1.6;border-collapse:collapse\">"+
-          "<tr>"+
-            "<td style=\"text-align:center; padding:50px 30px; padding-bottom: 0px\">"+
-                "<table style=\"background-color:#EE237B;padding:30px;color:#ffffff;border-radius:10px;width:80%;margin:auto;border-collapse:separate;border-spacing:0;box-shadow:0 4px 10px rgba(0, 0, 0, 0.2)\">"+
-                    "<thead>"+
-                          "<tr>"+
-                              "<th colspan=\"2\" style=\"font-size:24px;text-align:left;padding-bottom:20px\">Hi " + firstName + " " + lastName + "!</th>"+
-                          "</tr>"+
-                    "</thead>"+
-                      "<tbody>"+
-                          "<tr>"+
-                              "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                                  "<p>This is a confirmation for your student meeting with " + companyName + ".</p>"+
-                                  "<p>Time: " + time + "</p>"+
-                                  "<p>Location: " + location + "</p>"+
-                                  "<p>If you wish to unbook your meeting please unbook via our <a href=\"https://ddagen.se/student\" style=\"color:#ffffff;text-decoration:underline\">https://ddagen.se/student</a>.</p>"+
-                              "</td>"+
-                            "</tr>"+
-                            "<tr>"+
-                                "<td colspan=\"2\" style=\"padding-bottom:20px\">"+
-                                  "<p>If any of the information above is incorrect or if you have any other questions, do not hesitate to contact our sales team at <a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a>.</p>"+
-                                  "<p>Best regards,</p>"+
-                                  "<p>The D-Dagen project group</p>"+
-                                "</td>"+
-                            "</tr>"+
-                      "</tbody>"+
-                    "</table>"+
-            "</td>"+
-          "</tr>"+
-          "<tr>"+
-              "<td style=\"padding:0; margin:0;\">"+
-                  "<img src=\"ddagen.se/img/email-signatur.png\" alt=\"D-Dagen logo\" style=\"width:100%; height:auto; display:block;\">"+
-              "</td>"+
-          "</tr>"+
-        "</table>",
+        "<div style=\"padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
+          "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" +
+            "<tbody>" +
+              "<tr>" +
+                "<div style=\"padding: 30px 30px 0; font-size:24px; background:#DE3163;color:#ffffff;\">" +
+                  "<p>" +
+                    "Hi " + firstName + " " + lastName + "!<br />" +
+                  "</p>" +
+                "</div>" +
+              "</tr>" +
+              "<tr>" +
+                "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
+                  "<p style=\"color:#ffffff;\">This is a confirmation for your student meeting with " + companyName + "." +
+                  "<br />Time: " + time +
+                  "<br />Location: " + location +
+                  "<br />Log in to <a href=\"https://ddagen.se/student\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/student</a>" +
+                  " to handle your meetings. </p>" +
+                "</div>" +
+              "</tr>" +
+              "<tr>" +
+                "<div style=\"padding: 10px 30px 30px; background:#DE3163;color:#ffffff;\" >" +
+                  "<br />Best regards," +
+                  "<br />The D-Dagen Project Group" +
+                  "<br /><a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a></p>" +
+                "</div>" +
+              "</tr>" +
+            "</tbody>" +
+          "</table>" +
+          "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
+            "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+          "</a>" +
+        "</div>",
       },
   },
   faq: {
@@ -978,6 +1016,7 @@ export default {
     table3row4: "WE WOULD LIKE MORE INFORMATION, WHERE DO WE TURN?",
     table3row5: "ARE YOU A STARTUP?",
     table3row6: "HOW DO STUDENT METTINGS WORK?",
+    table3row7: "HOW DO THE PANEL DISCUSSIONS WORK?",
     table3text1:
       "You can make a <a href='https://ddagen.se/företagsanmälan' target='blank' className='underline text-yellow'>  registration of interest </a> or contact our sales team at <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
     table3text2:
@@ -989,7 +1028,9 @@ export default {
     table3text5:
       "Contact us at <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>.",
     table3text6:
-      "The student meetings are a great opportunity for companies and students to meet in a more personal setting. The students will choose which companies they want to meet, and the company will then be able to select which of these students they want to meet. The students will then be able to choose a time slot to meet the company, during the fair. Read more about it <a href='https://ddagen.se/en/studentmeetings' target='blank' className='underline text-yellow'>here</a>.",
+      "The student meetings are a great opportunity for companies and students to meet in a more personal setting. The students will choose which companies they want to meet, and the company will then be able to select which of these students they want to meet. The students will then be able to choose a time slot to meet the company, during the fair. Read more about it <a href='https://ddagen.se/en/kontaktsamtal' target='blank' className='underline text-yellow'>here</a>.",
+    table3text7:
+      " During the fair, three panel discussions are held, each focusing on a topic relevant to the IT industry and moderated by D-Dagen. These sessions give students the opportunity to learn what it's like to work in the IT field, as well as to listen to engaging and insightful discussions between a select group of company representatives from various organizations.",
     table4row1:
       "WHAT KIND OF EVENTS CAN OUR COMPANY HOST TOGETHER WITH D-DAGEN?",
     table4text1:
@@ -1084,28 +1125,77 @@ export default {
     paragraph:
       "Don't hesitate to get in touch if you have any questions about our products or have any other questions.",
   },
+  studentmeetings: {
+    header: "Student Meetings",
+    subheader1: "Seek opportunity",
+    subheader2: "Format",
+    subheader3: "Apply for student meetings",
+    p1: "Student meetings are a unique opportunity for companies and students to meet one-on-one and discuss career opportunities. Students gain valuable insight into the specific workplace, while companies get an excellent understanding of the student's skills and experiences.",
+    p2: "Before the meetings, companies and students are matched through our website using the following process:",
+    bulletpoints: [
+      "Students log in to their account on the website via <a className='text-yellow' href='https://ddagen.se/student'>ddagen.se/student</a>",
+      "Upload their CV",
+      "Select the companies they are interested in having a student meeting with."
+    ],
+    p3: "The companies then review the list of students who are interested in speaking with them and choose whom to schedule meetings with based on their student profiles and CVs.\n\nEach company is assigned a 3-hour time slot sometime during the fair (10:00–16:00), during which they can meet as many students as they are able to.\n\nWe recommend 15-minute meetings, but the exact duration is up to each individual company.\n\nKeep a close eye on your email after registering! You will need to schedule a meeting with the company if they select you. If, for any reason, the company needs to cancel the meeting, you will receive an email notifying you, and you will then have the opportunity to book a new time. \n\n The deadline for students to register their interest in contact meetings is October 7. However, it is still possible to book/reschedule meeting times with the companies after that date.",
+    p4: "Create your student profile and choose companies for student meetings",
+    cta: "Create Profile"
+  },
   event: {
-    paragraph1:
-      "Qulture could be, for example, screenings with a completely functional projector, parlour games with appurtenant parlour game players, arts and crafts as well as meetings with cookies, many cookies. We also do not have a locker where we have candy for the chapter's needs (but we used to).",
-    paragraph2:
-      "Every Wednesday we open the doors to META (Osquars backe 21) and give you the chance to relax and enjoy alcoholic or alcohol free beverages ranging from beer and cider to freshly made cocktails. The pub opens 17:17 and usually is open until we or the guests has had enough. Take the chance to take a break from all the studying and let loose on the dance floor!",
-    paragraph3:
-      "We regularly try to hold programming evenings where everyone is welcome. Usually from 5 pm onwards on Thursdays, usually somewhere in the E-house. You can come here to see what we're doing, develop something for the chapter, hang out or maybe get help with a programming lab. The easiest way to find out when we have events is to ask in our Mattermost! Hope to see you there!",
-    paragraph4:
-      "This event is similar to the after-work/office visit events. A case event gives you an opportunity to test the students’ skills while providing them with a fun challenge. Depending on the type of case ...",
-    fullParagraph1:
-      "Qulture could be, for example, screenings with a completely functional projector, parlour games with appurtenant parlour game players, arts and crafts as well as meetings with cookies, many cookies. We also do not have a locker where we have candy for the chapter's needs (but we used to).",
-    fullParagraph2:
-      "Every Wednesday we open the doors to META (Osquars backe 21) and give you the chance to relax and enjoy alcoholic or alcohol free beverages ranging from beer and cider to freshly made cocktails. The pub opens 17:17 and usually is open until we or the guests has had enough. Take the chance to take a break from all the studying and let loose on the dance floor!",
-    fullParagraph3:
-      "We regularly try to hold programming evenings where everyone is welcome. Usually from 5 pm onwards on Thursdays, usually somewhere in the E-house. You can come here to see what we're doing, develop something for the chapter, hang out or maybe get help with a programming lab. The easiest way to find out when we have events is to ask in our Mattermost! Hope to see you there!",
-    fullParagraph4:
-      "This event is similar to the after-work/office visit events. A case event gives you an opportunity to test the students’ skills while providing them with a fun challenge. Depending on the type of case provided it can also be a good way for the students to get a feel for what it is like to work at your company. We handle marketing of the event, booking of premises and ordering food and drinks for everyone attending. We can also assist in planning the case event if desired.",
-    header1: "Lunch Seminar",
-    header2: "Afterwork/Office Visit",
-    header3: "Sponsored Pub",
-    header4: "Case Event",
-    subheader: "About: ",
+    description: "Klick on the events to read more about them!",
+    lunchSeminarHeader: "Lunch Seminar",
+    lunchSeminar: "Lunch lectures are an incredibly popular concept among students, offering free lunch and an interesting talk from a company in the IT industry. Takes place from 12 AM–1 PM on a weekday at the KTH campus.",
+    recruitmentPub: "Recruitment Pub",
+    recruitmentPubText: "During the recruitment of D-Dagen's fantastic 100+ day staff who will assist during the fair, the Project Group organizes the annual Recruitment Pub in the Computer Science chapter's own pub, Meta! Join us for a really pleasant evening with D-Dagen-related activities and competitions with sponsored prizes. Food and drinks are available to order.",
+    contactConversations: "Signup for Contact Conversations closes at 23:59",
+    contactConversationsText: "Contact meetings are a unique opportunity for companies and students to meet one-on-one and discuss career opportunities. Students gain a much better understanding of the conditions at a specific workplace, and companies get an excellent picture of the student's skills and experiences. Read more at http://ddagen.se/kontaktsamtal.",
+    opening: "25th Anniversary Fair Opens!",
+    openingCeremony: "Opening of the fair on stage in nya Matsalen together with Main Sponsor Omegapoint",
+    welcome: "Welcome",
+    inaugeration: "Opening",
+    panelDiscussionHeader: "Panel Discussion",
+    panelDiscussionHeader1: "Panel Discussion Fintech",
+    panelDiscussionHeader3: "Panel Discussion Cyber",
+    panelDiscussionHeader2: "Panel Discussion AI",
+    panelDiscussion1: "The Future of the Fintech Industry with Nordea, Nore Technology, Revolut and Jane Street",
+    panelDiscussion1text: "The panel discussion will be held in Swedish.",
+    panelDiscussion2: "How well prepared is society for today's cyber threats? with Omegapoint, Basalt and Försvarsmaktens Radioanstalt",
+    panelDiscussion2text: "The panel discussion will be held in English.",
+    panelDiscussion3: "Design and Development in the AI Era, with Atlas Copco, Electronic Arts DICE, Ubiquiti",
+    panelDiscussiontext: "During the fair day, several panel discussions are held and moderated by D-Dagen, each covering an IT-relevant topic. These sessions give students the opportunity to hear what it’s like to work in the IT industry and engage in an insightful and educational discussion between a few company representatives.",
+    fair: "THE FAIR",
+    after: "AFTER",
+    closes: "The fair closes",
+    banquet: "The D-Dagen Banquet starts!",
+    banquetSignup: "Deadline for registration of special diet for the D-Dagen Banquet",
+    banquetSignupText: "tickets can still be purchased after this as long as there are seats left."
+  },
+  history: {
+    header: "D-Dagen History",
+    subheader: "The term ”D-Dagen” was coined as early as the year 2000, when it was the Computer Science Chapter’s industry-day with 13 attending companies in the E-building on KTH Campus. Since then, D-Dagen has grown and in 2016 it entered the student union building, Nymble. Now D-Dagen is considered to be the largest career fair in the Nordics for Computer Science students, as well as one of the largest career fairs at KTH.",
+    subsubheader: "Pleace press the images to see more information about each year!",
+    nrOfCompanies: "Number of companies:",
+    nrOfVisitors: "Number of visitors:",
+    dda: "Project Managers:",
+    before2000: "Before 2000",
+    before2000Text: "A functionary position called “Armu-D” was created. This was the Computer Science Chapter’s representative who, together with representatives from other chapters, was responsible for Armada — the student union’s joint career fair for all KTH students. \n Both Armu-D and the Chapter’s PR group experimented with developing the concept that would later become the Chapter’s very own career day. In 1991 and 1992, Armu-D is believed to have organized so-called “Data-Armadas.” Later in the 1990s, the ”PR group” arranged various company days under different names — including “Ericsson Day” — and invited a small number of companies to the E-building on the KTH campus. These events were usually followed by an evening gathering at ESCapen, where attendees could get free beer if they had secured a ”ölbånge” (beer token) earlier in the day.\n",
+    header1988: "1988",
+    text1988: "The Computer Science Chapter's 5-year anniversary organized a small industry fair and sparked interest in the concept, which is evident in dBuggen (the Computer Science Chapter's venerable chapter magazine).",
+    header1983: "1983",
+    text1983: "The beginning: The Computer Science Chapter was founded on October 7, 1983.",
+    text2025: "25th anniversary!",
+    text2024: "William & Toshihide organized D-Dagen with the most visitors ever!",
+    text2023: "Axel & Johan organized D-Dagen with the most companies ever!",
+    text2022: "",
+    text2021: "D-Dagen was organized physically again after the Corona restrictions were eased! \n The Computer science chapter's board, through Matteus Berg, is presenting a proposal that D-Dagen and the Computer science and engineering chapter's Business and Relations Group should be officially separated in the organizational structure. The chapter's members chose to approve the proposal.",
+    text2020: "Due to the Covid-19 pandemic, the first digital D-Dagen is being organized. The fair took place slightly later than usual due to hopes of lighter restrictions in the fall.",
+    text2019: "Spotify was at the fair!",
+    text2016: "D-Dagen enters the student union building Nymble for the first time, instead of E-Building. First person chosen for the actual role of “D-Dagen Project Manager”: Albin Söderholm, who was responsible for this year's fair.",
+    text2015: "",
+    text2013: "Google was at the fair!",
+    text2001: "During the 2000 to 2010 period, companies’ interest in being visible to students increased significantly. As a result, the Computer Science Chapter’s career fair became a recurring event and took on a more uniform form and structure. At that time, it was coordinated by the Chapter’s “PR group,” which later evolved into the “Näringslivsgruppen” (Industry Relations Group). In early 2001, D-Dagen appears for the first time in the Chapter’s official meeting protocols, when then PR Manager Peter Lindström submitted a motion to “get more money for D-Dagen and for upcoming events in the spring.” The Chapter’s members unanimously approved his proposal.",
+    text2000: "The name “D-Dagen” was coined this year! The career fair was organized by the Computer Science Chapter’s ”PR group” and was a smaller event held in the E-building (E-huset), with 13 participating companies. In the evening, attendees were also invited to the Chapter’s former premises, ESCapen, where one could get free beer if they had secured a “ölbånge” (beer token) during the career fair.",
+    contact: "If you have any relevant facts about the history of D-Dagen that you would like to add, contact: ",
   },
   admin: {
     login: {
@@ -1173,6 +1263,8 @@ export default {
         drinkCoupons: "Drink Coupons",
         representatives: "Representatives",
         banquetTickets: "Banquet Tickets",
+        confirmedBanquetTickets: "Confirmed Banquet Tickets",
+        confirmedDrinkCoupons: "Confirmed Drink Coupons",
         mealCoupons: "Breakfast/Lunch Coupons",
       },
     },
@@ -1258,7 +1350,7 @@ export default {
       "PR Team",
       "Dev Team",
       "Sales Team",
-      "Exhibition Team",
+      "Career Fair Team",
       "Finance Team",
     ],
   },
@@ -1291,21 +1383,28 @@ export default {
   },
   sok:{
     notActive: "The signup is not active yet, keep an eye on social media for when it opens!",
-    header: "Signup for D-DAGEN",
+    header: "Signup for leadership group 26",
     description: "The goal for this year's D-Dagen is to make it the biggest and best career fair in Datasektionen's history! This is the vision we have as organizers this year. However, it's impossible for us to organize such a large event entirely on our own. We need an ambitious project group to help us, one that has the drive to create something extraordinary. We aim to improve internal communication from previous years, and, therefore, we will focus extensively on team building to create a close-knit group. We also expect that everyone in the project group is sociable, has good teamwork skills, and is self-driven in their tasks.",
     search:"SIGNUP",
     info:"Information about the roles",
     extra:"Read more about the roles",
     moreInfo:"Interested?",
+    viceDDA:{
+      header: "Vice DDA",
+      text: "The Vice-DDA is a key role within D-Dagen and acts as the right hand of the project manager (DDA). Through close collaboration with the DDA, the Vice-DDA supports the overall work of the project and ensures that all teams move in the right direction. The role requires a holistic perspective, strong communication skills, and a strong sense of responsibility. The Vice-DDA contributes to making D-Dagen a cohesive, efficient, and memorable experience for both students and companies.",
+      roles:[
+        "\n- Driven\n- Willing to learn\n- Flexible\n As Vice-DDA, you don’t have any strictly defined tasks instead, your role is to support the DDA in all possible ways. Everything from attending meetings with subgroups to assisting with company contacts. In other words, a Vice-DDA should ideally have experience with D-Dagen, but that is by no means a requirement—the most important thing is having strong drive and a willingness to learn a lot."
+      ]
+    },
     prGroup:{
       header: "PR Team",
       text: "As the PR manager, you are the leader of the PR team. You drive and organize the group, ensuring that everyone knows what they need to do and has the necessary resources. Since you work closely with the PR team, you will become very close-knit. As the PR manager, you will also communicate extensively with the DDA's.",
       roles : [
         "PR Manager\n- Good communicator\n- Well-organized\n- Leader\nAs a PR Manager, you lead the PR team, ensuring they are organized and equipped to communicate effectively. Working closely within the PR team will foster a strong sense of unity. You will also engage in extensive communication with DDA.",
-        "Art Director (UI/UX Design)\n- Artistic\n- Accommodating\nAs an Art Director, you ensure that D-Day looks professional. You will have the opportunity to express your creativity and design through all of the graphics needed for D-Day. This Art Director role includes the responsibility for UX design for the website but also assists with print design. This includes designing UI/UX for the website, brochures, posters, branded clothing and more. Occasionally, you will also get to take some photos. No prior knowledge is required; you will have the chance to learn over time, and the most important thing is that you are driven and motivated. Of course, you will have access to all the programs you need!",
-        "Art Director (Print Design)\n- Artistic\n- Accommodating\nAs an Art Director, you ensure that D-Day looks professional. You will have the opportunity to express your creativity and design through all of the graphics needed for D-Day. This Art Director role is primarily responsible for print design but receives support from the other Art Director. This includes brochures, posters, branded clothing and more. Occasionally, you will also get to take some photos. No prior knowledge is required; you will have the chance to learn over time, and the most important thing is that you are driven and motivated. Of course, you will have access to all the programs you need!",
+        "Art Director (UI/UX Design)\n- Artistic\n- Accommodating\nAs an Art Director, you ensure that D-Dagen looks professional. You will have the opportunity to express your creativity and design through all of the graphics needed for D-Dagen. This Art Director role includes the responsibility for UX design for the website but also assists with print design. This includes designing UI/UX for the website, brochures, posters, branded clothing and more. Occasionally, you will also get to take some photos. No prior knowledge is required; you will have the chance to learn over time, and the most important thing is that you are driven and motivated. Of course, you will have access to all the programs you need!",
+        "Art Director (Print Design)\n- Artistic\n- Accommodating\nAs an Art Director, you ensure that D-Dagen looks professional. You will have the opportunity to express your creativity and design through all of the graphics needed for D-Dagen. This Art Director role is primarily responsible for print design but receives support from the other Art Director. This includes brochures, posters, branded clothing and more. Occasionally, you will also get to take some photos. No prior knowledge is required; you will have the chance to learn over time, and the most important thing is that you are driven and motivated. Of course, you will have access to all the programs you need!",
         "Print Manager\n- Proactive\n- Artistic\nThe Print Manager is part of the PR team and is responsible for ensuring all printed materials are ordered and delivered on time. This includes items like stickers, patches, branded clothing, banners, brochures, and more. You'll work closely with the Art Director and assist with design work.",
-        "Social Media Manager\n- Good communicator\n- Initiating\n- Social (especially on social media)\n- Creative\nThe Social Media Manager is responsible for increasing D-Day's presence on platforms like Instagram, Facebook, and other social media sites. You'll have the freedom to choose which social media platforms to use and how to express the event's message (within reasonable boundaries). In this role, you'll work closely with the Art Director to create attractive posts. This is an ideal position for those who enjoy taking photos and posting stories!"
+        "Social Media Manager\n- Good communicator\n- Initiating\n- Social (especially on social media)\n- Creative\nThe Social Media Manager is responsible for increasing D-Dagen's presence on platforms like Instagram, Facebook, and other social media sites. You'll have the freedom to choose which social media platforms to use and how to express the event's message (within reasonable boundaries). In this role, you'll work closely with the Art Director to create attractive posts. This is an ideal position for those who enjoy taking photos and posting stories!"
       ]
     },
     devGroup:{
@@ -1313,35 +1412,35 @@ export default {
       text: "The Dev Group is a technically skilled and innovative unit within D-Dagen. Its members are responsible for the development, maintenance, and enhancement of the D-Dagen website. They handle everything from backend programming and database management to frontend design and user experience, with a focus on creating a smooth and engaging digital platform for all visitors.",
       roles : [
         "Web Manager\n- Independent\n- Initiating\nAs the Web Manager, you're responsible for ensuring the website looks good and functions properly. You'll also have significant opportunities to improve the website. Previous experience and knowledge in web development are definite assets. You'll work closely with the Art Director.",
-        "System Manager\n- Independent\n- Initiating\n- 'Yes, can do' attitude\nThe System Manager will collaborate extensively with the Web Manager on ambitious projects we plan to introduce at D-Day. We're looking for someone with the drive to create opportunities, and prior experience in app development is a big plus.",
+        "System Manager\n- Independent\n- Initiating\n- 'Yes, can do' attitude\nThe System Manager will collaborate extensively with the Web Manager on ambitious projects we plan to introduce at D-Dagen. We're looking for someone with the drive to create opportunities, and prior experience in app development is a big plus.",
       ]
     },
     saleGroup:{
       header: "Sales Team",
-      text: "The Sales Team in D-Day is a central part of the organization and plays a crucial role in ensuring the participation of companies and the growth of the event. The group consists of three key roles, each with its specific tasks:",
+      text: "The Sales Team in D-Dagen is a central part of the organization and plays a crucial role in ensuring the participation of companies and the growth of the event. The group consists of three key roles, each with its specific tasks:",
       roles : [
         "Sales Manager\n- Good communicator\n- Well-organized\n- Leader\nAs the Sales Manager, you are the operational leader of the sales team. Your responsibilities include training the sales team, ensuring they have everything they need, and keeping the work on schedule.",
-        "Sales Person\n- Good communicator\n- Service-oriented\n- Persuasive\nSales People are the primary points of contact with companies. You will work as a team to promote and sell D-Day to businesses, ensuring D-Day's growth. You'll also serve as the main source of information and advice for companies, providing them with tips and advice for the event. No prior sales experience is required, but it's a plus.",
+        "Sales Person\n- Good communicator\n- Service-oriented\n- Persuasive\nSales People are the primary points of contact with companies. You will work as a team to promote and sell D-Dagen to businesses, ensuring D-Dagen's growth. You'll also serve as the main source of information and advice for companies, providing them with tips and advice for the event. No prior sales experience is required, but it's a plus.",
         "Sponsorship Manager\n- Good communicator\n- Initiating\n- 'Pushy' sales attitude\nAs the Sponsorship Manager, you will reach out to companies that won't have a physical presence at the event but still want to be visible in other ways. You'll also assist in organizing lunchtime lectures and other corporate events. Your tasks will involve collaborating closely with the PR team and the rest of the project team."
       ]
     },
     massGroup:{
-      header: "Exhibition Team",
-      text: "The Trade Fair Group is the heart and brain behind D-Day's trade fair and events. The group consists of a dedicated team with various responsibilities, and their collaboration is crucial to ensure that everything runs smoothly and that visitors have a memorable experience.",
+      header: "Career Fair Team",
+      text: "The Career Fair Team is the heart and brain behind D-Dagen's trade fair and events. The group consists of a dedicated team with various responsibilities, and their collaboration is crucial to ensure that everything runs smoothly and that visitors have a memorable experience.",
       roles : [
-        "Exhibition Manager\n- Good communicator\n- Well-organized\n- Leader\nAs the Exhibition Manager, you are the leader of the Exhibition team. You will drive and organize the team, ensuring everyone has what they need. Working closely within the Exhibition team, you will become a tightly-knit group. You will also have extensive communication with DDA.",
-        "Logistics Manager\n- Good communicator\n- Well-organized\n- Independent\nAs the Logistics Manager, you are the leader of the Exhibition team. You will drive and organize the team, ensuring everyone has what they need. Working closely within the Exhibition team, you will become a tightly-knit group. You will also have extensive communication with DDA.",
-        "HR Manager\n- Good communicator\n- Leader\n- Thorough scheduler\nWhen D-Day kicks off in Nymble, we need much more staff than just the project team. This is where your primary responsibility lies. You will recruit staff, conduct team-building activities, and plan their schedules for the day. You will also be responsible for planning team-building activities for the project team together with the Lounge Manager. You will also ensure that D-Day meets JML standards.",
+        "Career Fair Manager\n- Good communicator\n- Well-organized\n- Leader\nAs the Career Fair Manager, you are the leader of the Career Fair team. You will drive and organize the team, ensuring everyone has what they need. Working closely within the Career Fair team, you will become a tightly-knit group. You will also have extensive communication with DDA.",
+        "Logistics Manager\n- Good communicator\n- Well-organized\n- Independent\nAs the Logistics Manager, you are the leader of the Career Fair team. You will drive and organize the team, ensuring everyone has what they need. Working closely within the Logistics team, you will become a tightly-knit group. You will also have extensive communication with DDA.",
+        "HR Manager\n- Good communicator\n- Leader\n- Thorough scheduler\nWhen D-Dagen kicks off in Nymble, we need much more staff than just the project team. This is where your primary responsibility lies. You will recruit staff, conduct team-building activities, and plan their schedules for the day. You will also be responsible for planning team-building activities for the project team together with the Lounge Manager. You will also ensure that D-Dagen meets JML standards.",
         "Lounge Manager\n- Service-oriented\n- Enjoys food\nThe lounge is where company representatives and staff can come during the day to take a break and relax. Your job is to ensure they can expect good food and the best possible service! You will also plan team-building activities for the project team together with the HR Manager and be responsible for ordering food for both team-building and major meetings.",
         "Party Manager\n- Fun-loving\n- Creative\n- Initiator\nThe Party Manager is responsible for organizing all major events, such as the company banquet and the appreciation dinner. This role is perfect for someone who is creative and enjoys having fun with others.",
-        "Venue Manager\n- Responsible\n- Proactive\nWithout a place to be, it's much harder to have successful events. You will become an expert on Nymble's venues and ensure that we follow their instructions and requirements. You will also help book venues for D-Day's other events."
+        "Venue Manager\n- Responsible\n- Proactive\nWithout a place to be, it's much harder to have successful events. You will become an expert on Nymble's venues and ensure that we follow their instructions and requirements. You will also help book venues for D-Dagen's other events."
       ]
     },
     ecoGroup:{
       header: "Finance Team",
-      text: "The Finance Team is a key component within D-Day, responsible for maintaining a strong and stable economy. Through their meticulous work, the team ensures that D-Day can continue to grow and deliver high-quality events without financial obstacles.",
+      text: "The Finance Team is a key component within D-Dagen, responsible for maintaining a strong and stable economy. Through their meticulous work, the team ensures that D-Dagen can continue to grow and deliver high-quality events without financial obstacles.",
       roles : [
-        "Finance Manager\n- Detail-oriented\n- Can invoice and bookkeep (preferably using the computer science section's system)\n- Willing to read complex texts (contracts, statutes, etc.)\nYou have a handle on finances. You are an expert at bookkeeping (or at least have some knowledge, with instructions available). Together with the Vice Finance Manager, you will send out and book invoices once D-Day has concluded, and you will also serve as an advisor when it comes to the rest of the project team's budgeting and bookkeeping.",
+        "Finance Manager\n- Detail-oriented\n- Can invoice and bookkeep (preferably using the computer science section's system)\n- Willing to read complex texts (contracts, statutes, etc.)\nYou have a handle on finances. You are an expert at bookkeeping (or at least have some knowledge, with instructions available). Together with the Vice Finance Manager, you will send out and book invoices once D-Dagen has concluded, and you will also serve as an advisor when it comes to the rest of the project team's budgeting and bookkeeping.",
         "Vice Finance Manager\n- Willing to learn a lot\n- Initiative-driven\nThe Vice Finance Manager is one of the more flexible roles within the project team. Your primary task is to learn bookkeeping and assist the Finance Manager, but you are also expected to help where needed in other areas of the project team. That's why we hope you are a motivated person who is ready to go above and beyond your regular duties and provide assistance wherever the rest of the project team may need an extra hand."
       ]
     },

@@ -34,7 +34,7 @@ export function TextInput({
         text-white font:light
         focus:placeholder:text-transparent focus:outline-none focus:border-yellow resize-none"
         placeholder={placeHolderText}
-        maxLength={250}
+        maxLength={500}
         onChange={onTextChange}
         id={name || "text_input"}
         value={description}

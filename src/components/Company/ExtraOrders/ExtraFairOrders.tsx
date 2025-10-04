@@ -35,7 +35,8 @@ export default function ExtraFairOrders({
       <button className="mt-4 mb-2">
         <a
           className="block uppercase hover:scale-105 transition-transform bg-cerise rounded-full text-lg md:text-2xl font-normal px-6 md:px-12 py-3 max-lg:mx-auto w-max"
-          href="katalog"
+          href="downloadables/Product_Catalog_2025_sv.pdf"
+          target="_blank"
         >
           {t.exhibitorSettings.table.row2.section1.catalogue}
         </a>

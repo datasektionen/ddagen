@@ -20,6 +20,11 @@ const config = {
         permanent: true,
       },
       {
+        source: "/login",
+        destination: "/en/logga-in",
+        permanent: true,
+      },
+      {
         source: "/foretagsanmalan",
         destination: "/en/företagsanmälan",
         permanent: true,
@@ -37,6 +42,11 @@ const config = {
       {
         source: "/utstallare",
         destination: "/en/utställare",
+        permanent: true,
+      },
+      {
+        source: "/banquette",
+        destination: "https://tiki.datasektionen.se/events/36c2cf55-153a-4b61-a02f-64a90df88b89",
         permanent: true,
       },
     ];
