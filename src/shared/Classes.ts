@@ -238,6 +238,7 @@ export class Exhibitor {
   allowMarketing: boolean;
   industry: string;
   alcFreeTicket: number; 
+  mapPosition: number;
 
   constructor(
     id: string,
@@ -273,6 +274,7 @@ export class Exhibitor {
     allowMarketing: boolean,
     industry: string,
     alcFreeTicket: number,
+    mapPosition: number,
   ) {
     this.id = id;
     this.name = exhibitorName;
@@ -307,6 +309,7 @@ export class Exhibitor {
     this.allowMarketing = allowMarketing;
     this.industry = industry;
     this.alcFreeTicket = alcFreeTicket;
+    this.mapPosition = mapPosition;
   }
 }
 

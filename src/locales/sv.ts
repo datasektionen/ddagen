@@ -330,6 +330,9 @@ export default {
       email: "Meljadress",
       role: "Arbetsroll",
     },
+    fieldsUpdatePosition: {
+      name: "Plats"
+    },
     fieldsAddPreferences: {
       name: "Namn",
       preferences: "Preferenser",
@@ -921,7 +924,7 @@ export default {
                 "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
                   "<p style=\"color:#ffffff;\">Detta är en bekräftelse på ert kontaktsamtal med " + firstName + " " + lastName + "."+
                   "<br />Tid: " + time + "<br />" +
-                  "Plats: " + location + "<br />" +
+                  "Plats: <a href=\"https://maps.app.goo.gl/SRhXZYKhdvqnevPF7\" style=\"color:#0000FF;text-decoration:underline\"> KTH Entré sekundära ingången</a>" + "<br />" +
                   "<br />Logga in på <a href=\"https://ddagen.se/utställare\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/utställare</a>" +
                   " för att se alla era kontaktsamtal. </p>" +
                 "</div>" +
@@ -967,7 +970,7 @@ export default {
                 "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
                   "<p style=\"color:#ffffff;\">Detta är en bekräftelse på ert kontaktsamtal med " + companyName + "."+
                   "<br />Tid: " + time + "<br />" +
-                  "Plats: " + location + "<br />" +
+                  "Plats: <a href=\"https://maps.app.goo.gl/SRhXZYKhdvqnevPF7\" style=\"color:#0000FF;text-decoration:underline\"> KTH Entré sekundära ingången</a>" + "<br />" +
                   "<br />Logga in på <a href=\"https://ddagen.se/utställare\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/utställare</a>" +
                   " för att se alla era kontaktsamtal. </p>" +
                 "</div>" +
@@ -1209,6 +1212,7 @@ export default {
         logoColour: "Logga m. färg",
         description: "Beskrivning",
         package: "Paket",
+        position: "Plats på kartan",
         delete: "Ta bort",
         companyHost: {
           name: "Företagsvärd",
