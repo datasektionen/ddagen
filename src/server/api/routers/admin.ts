@@ -48,6 +48,7 @@ export const adminRouter = createTRPCRouter({
                         exhibitor.companyHostEmail ?? "",
                         exhibitor.allowMarketing,
                         exhibitor.industry ?? "",
+                        exhibitor.industryType ?? "",
                         exhibitor.alcFreeDrinkCoupons,
                         exhibitor.mapPosition
                     )
