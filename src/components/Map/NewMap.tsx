@@ -10,7 +10,6 @@ import { useMap } from 'react-leaflet';
 const FLOOR_2_RANGE_1 = { start: 1, end: 77 };
 const FLOOR_2_RANGE_2 = { start: 91, end: 93 };
 const FLOOR_3_RANGE = { start: 78, end: 90 };
-const KTH_ENTRANCE_RANGE = { start: 99, end: 102 };
 
 const positions: { [k: number]: [number, number] } = {
   1: [-0.48, -0.730],
@@ -258,30 +257,6 @@ export default function Map({
                         return null;
                       }
                       
-                      return (
-                        <Marker
-                          key={key}
-                          position={position as LatLngExpression}
-                          icon={exhibitorMarker(exhibitor.position.toString(), selectedExhibitor === +key)}
-                          eventHandlers={{
-                            click: () => setSelectedExhibitor(+key)
-                          }}
-                        />
-                      );
-                    })}
-                  </LayerGroup>
-                </LayersControl.BaseLayer>
-                <LayersControl.BaseLayer checked={mapInView == 3} name="KTH Entrance">
-                  <LayerGroup>
-                    <ImageOverlay url="/img/map/kth-entrance.svg" bounds={[[-1, -1], [1, 1]]}/>
-                    {filterExhibitorsByFloor(exhibitors, KTH_ENTRANCE_RANGE).map(([key, exhibitor]) => {
-                      const position = positions[exhibitor.position];
-                      
-                      if (!isValidPosition(position)) {
-                        console.warn(`Invalid position for exhibitor ${key}`);
-                        return null;
-                      }
-
                       return (
                         <Marker
                           key={key}
