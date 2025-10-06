@@ -335,7 +335,7 @@ export default {
     },
     fieldsUpdateIndustryType: {
       industryType: "Industrityp",
-      name: "Industrityp (konsult, statligt, finanse, it)",
+      name: "Industrityp (IT and Software, Finance, Industry and Energy, Public sector, Consulting, Education and Research, Media and Entertainment, Others)",
       industry: "Industri"
     },
     fieldsAddPreferences: {
