@@ -237,6 +237,7 @@ export class Exhibitor {
   companyHostEmail: string;
   allowMarketing: boolean;
   industry: string;
+  industryType: string;
   alcFreeTicket: number; 
   mapPosition: number;
 
@@ -273,6 +274,7 @@ export class Exhibitor {
     companyHostEmail: string,
     allowMarketing: boolean,
     industry: string,
+    industryType: string,
     alcFreeTicket: number,
     mapPosition: number,
   ) {
@@ -308,6 +310,7 @@ export class Exhibitor {
     this.companyHostEmail = companyHostEmail;
     this.allowMarketing = allowMarketing;
     this.industry = industry;
+    this.industryType = industryType;
     this.alcFreeTicket = alcFreeTicket;
     this.mapPosition = mapPosition;
   }
