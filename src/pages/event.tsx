@@ -6,14 +6,18 @@ function SingleEvent({
   color,
   toReverse,
   image,
+  fullImage,
   showDate,
-  eventInfo
+  eventInfo,
+  companyLink
 }: {
   color: string;
   toReverse: boolean;
   image: string;
+  fullImage?: boolean;
   showDate: boolean;
   eventInfo: string[];
+  companyLink?: boolean;
 }) {
   const t = useLocale();
   const [modalState, setModal] = useState(false);
@@ -40,11 +44,11 @@ function SingleEvent({
         ${toReverse ? "sm:flex-row-reverse" : "sm:flex-row"}
         gap-4 px-[50px] md:px-[50px] justify-between`}>
       <div className={`sm:basis-1/2 max-sm:w-full flex flex-col ${toReverse ? "sm:items-start" : "sm:items-end"} max-h-[300px]`}>
-        <div className={`flex flex-col w-full gap-2 items-start ${toReverse ? "sm:items-start" : "sm:items-end"}`} onClick={openModal}>
+        <div className={`flex flex-col w-full gap-2 items-start cursor-pointer ${toReverse ? "sm:items-start" : "sm:items-end"}`} onClick={openModal}>
           <h2 className="text-center lg:text-3xl md:text-xl text-white">{eventInfo[1]}</h2>
           {(image != "") &&
-            <div className="flex bg-slate-100 bg-opacity-50 px-8 py-4 w-full max-w-[350px] bg-white/80 rounded-md">
-              <img src={image} className="flex-1 max-h-[230px] sm:max-h-[300px] lg:max-h-[300px] w-full object-contain"></img>
+            <div className={`flex bg-slate-100 bg-opacity-50 w-full max-w-[350px] bg-white/80 rounded-md ${fullImage === true ? "overflow-hidden" : "px-8 py-4 "}`}>
+              <img src={image} className="flex-1 max-h-[230px] sm:max-h-[300px] lg:max-h-[300px] w-full object-contain ease-in duration-100 hover:scale-110"></img>
             </div>
           }
         </div>
@@ -80,7 +84,7 @@ function SingleEvent({
                   {eventInfo[1]}
                 </h2>
                 <h3 className="text-cerise text-2xl mt-2">
-                  {eventInfo[0]}
+                  {companyLink == true ? <a href={eventInfo[0]}>{eventInfo[0]}</a> : eventInfo[0]}
                 </h3>
                 <p className="text-black text-start mt-5">{eventInfo[2]}</p>
               </div>
@@ -99,6 +103,7 @@ export default function Events() {
       date: "16/9",
       companyName: "EECS event",
       image: "/img/ddagen2024/rekrytPub.jpg",
+      fullImage: true,
       header: t.event.recruitmentPub,
       text: t.event.recruitmentPubText
     },
@@ -106,6 +111,7 @@ export default function Events() {
       date: "24/9",
       companyName: "",
       image: "/img/ddagen2024/banquette-dinner.jpg",
+      fullImage: true,
       header: t.event.banquetSignup,
       text: t.event.banquetSignupText
     },
@@ -123,10 +129,12 @@ export default function Events() {
       header: t.event.lunchSeminarHeader,
       text: t.event.lunchSeminar
     },
-        {
+    {
       date: "07/10",
-      companyName: "http://ddagen.se/kontaktsamtal",
-      image: "/img/exhibitors/kontaktsamLogo.png",
+      companyName: "https://ddagen.se/kontaktsamtal",
+      companyLink: true,
+      image: "/img/ff4.webp",
+      fullImage: true,
       header: t.event.contactConversations,
       text: t.event.contactConversationsText
     },
@@ -136,7 +144,9 @@ export default function Events() {
     {
       date: "10:00",
       companyName: t.event.opening,
-      image: "/img/d-dagen-logo-jubileum-25-sv.svg",
+      //image: "/img/d-dagen-logo-jubileum-25-sv.svg",
+      image: "/img/ddagen2024/ddagen-entry-balloons.jpg",
+      fullImage: true,
       header: t.event.welcome,
       text: ""
     },
@@ -171,7 +181,8 @@ export default function Events() {
     {
       date: "16:00",
       companyName: "",
-      image: "",
+      image: "/img/ddagen2024/ddagen-exhibitors.jpg",
+      fullImage: true,
       header: t.event.closes,
       text: ""
     },
@@ -179,6 +190,7 @@ export default function Events() {
       date: "18:00",
       companyName: "",
       image: "/img/ddagen2024/banquette-dinner.jpg",
+      fullImage: true,
       header: t.event.banquet,
       text: ""
     },
@@ -239,6 +251,7 @@ export default function Events() {
               color="bg-cerise"
               toReverse={i%2 == 0}
               image={event?.image}
+              fullImage={event?.fullImage ?? false}
               showDate={!(i > 0 && event.date === events[i-1].date)}
               eventInfo={[
                 event.companyName,
@@ -246,6 +259,7 @@ export default function Events() {
                 event.text,
                 event.date
               ]}
+              companyLink={event?.companyLink ?? false}
               />
             ))
           }
@@ -264,6 +278,7 @@ export default function Events() {
               color="bg-[#C2952C]"
               toReverse={i%2 == 1}
               image={event?.image}
+              fullImage={event?.fullImage ?? false}
               showDate={!(i > 0 && event.date === fairEvents[i-1].date)}
               eventInfo={[
                 event.companyName,

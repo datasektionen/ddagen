@@ -74,6 +74,14 @@ export default function ForStudents() {
             </h2>
             <p className="text-white text-base sm:text-lg pt-4 max-w-xl">{t.forStudents.fairText1}</p>
             <p className="text-white text-base sm:text-lg pt-4 max-w-xl">{t.forStudents.fairText2}</p>
+            <button className="mt-6">
+              <a
+                className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base uppercase font-medium px-6 py-2 max-lg:mx-auto w-max"
+                href={"/event"}
+              >
+                {t.forStudents.eventPageButton}
+              </a>
+            </button>
           </ImageTextSection>
 
           <ImageTextSection
