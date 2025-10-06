@@ -333,6 +333,11 @@ export default {
     fieldsUpdatePosition: {
       name: "Plats"
     },
+    fieldsUpdateIndustryType: {
+      industryType: "Industrityp",
+      name: "Industrityp (konsult, statligt, finanse, it)",
+      industry: "Industri"
+    },
     fieldsAddPreferences: {
       name: "Namn",
       preferences: "Preferenser",
