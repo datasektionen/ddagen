@@ -1155,7 +1155,7 @@ export default {
     inaugeration: "Opening",
     panelDiscussionHeader: "Panel Discussion",
     panelDiscussionHeader1: "The Future of the Fintech Industry",
-    panelDiscussionHeader2: "Panel Discussion Cyber",
+    panelDiscussionHeader2: "Panel Discussion Society's Cyber Threats",
     panelDiscussionHeader3: "Panel Discussion Design & AI",
     panelDiscussion1: "The Future of the Fintech Industry with Nordea, Nore Technology, Revolut and Jane Street",
     panelDiscussion2: "How well prepared is society for today's cyber threats? with Omegapoint, Basalt and Försvarsmaktens Radioanstalt",

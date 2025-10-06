@@ -1151,7 +1151,7 @@ export default {
     welcome: "Välkommna",
     inaugeration: "Invigning",
     panelDiscussionHeader1: "Paneldiskussion Fintech",
-    panelDiscussionHeader2: "Hur väl rustat är samhället inför dagens cyberhot?",
+    panelDiscussionHeader2: "Paneldiskussion Samhällets Cyberhot",
     panelDiscussionHeader3: "Paneldiskussion Design & AI",
     panelDiscussion1: "Fintech-branschens framtid med Nordea, Nore Technology, Revolut och Jane Street",
     panelDiscussion2: "Hur väl rustat är samhället inför dagens cyberhot? Med huvudsponsor Omegapoint, Basalt och Försvarsmaktens Radioanstalt",
