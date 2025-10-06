@@ -171,7 +171,13 @@ export default function Map({
 
     const exhibitorMarker = (id: string, selected: boolean): DivIcon =>
       new DivIcon({
-        html: showIcons ? `<img src="/img/exhibitors/dkm.svg" alt="${id}" />` : id,
+        html: showIcons ? `
+        <div className="flex max-w-full justify-center items-center">
+          
+          <img src="/img/exhibitors/${id}.png" alt="dkm" class="w-full h-auto" 
+            onerror="this.onerror=null; this.src="/img/exhibitors/dkm.svg"  
+          />
+        </div>` : id,
         className: `rounded-full bg-pink-600 ring ${selected ? "border-4 border-pink-500 ring-3 ring-yellow" : "ring-2 ring-pink-500"} text-white text-center content-center`,
         iconSize: selected ? [38, 38] : [30, 30]
       });

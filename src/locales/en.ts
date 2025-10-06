@@ -332,6 +332,9 @@ export default {
       email: "Email Address",
       role: "Role",
     },
+    fieldsUpdatePosition: {
+      name: "Position"
+    },
     fieldsAddPreferences: {
       name: "Name",
       preferences: "Preferences",
@@ -1213,6 +1216,7 @@ export default {
         logoColour: "Coloured Logo",
         description: "Description",
         package: "Package",
+        position: "Map Position",
         delete: "Remove",
         companyHost: {
           name: "Company host",

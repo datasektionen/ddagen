@@ -330,6 +330,9 @@ export default {
       email: "Meljadress",
       role: "Arbetsroll",
     },
+    fieldsUpdatePosition: {
+      name: "Plats"
+    },
     fieldsAddPreferences: {
       name: "Namn",
       preferences: "Preferenser",
@@ -1209,6 +1212,7 @@ export default {
         logoColour: "Logga m. färg",
         description: "Beskrivning",
         package: "Paket",
+        position: "Plats på kartan",
         delete: "Ta bort",
         companyHost: {
           name: "Företagsvärd",
