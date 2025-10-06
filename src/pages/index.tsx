@@ -23,6 +23,21 @@ export default function Home() {
     setShowLogo(true);
   }, []);
 
+  const [showGif, setShowGif] = useState(false);
+  const [showStaticFirst, setShowStaticFirst] = useState(true);
+
+  useEffect(() => {
+    // Show static image first
+    setShowStaticFirst(true);
+    
+    // After delay, switch to GIF
+    const timer = setTimeout(() => {
+      setShowGif(true);
+      setShowStaticFirst(false);
+    }, 2000); // 2 second delay before GIF starts
+
+    return () => clearTimeout(timer);
+  }, []);
   
   const seoContent = {
     sv: {
@@ -58,21 +73,25 @@ export default function Home() {
       />
       <div className="w-full h-full">
         <div className="flex flex-col mx-auto max-w-[90%] lg:max-w-[100%] ">
-          <div className="relative lg:py-[150px] py-[75px]">
+          <div className="items-center relative">
             <img
               className={`
-                w-full absolute h-[290px] 
+                mx-auto pt-[80px] sm:pt-[120px] lg:pt-[160px] mt-3 md:mt-3
+                w-[90%] sm:w-[80%] md:w-[70%] lg:w-auto
+                h-[200px] sm:h-[300px] md:h-[400px] lg:h-[450px]
+                max-w-full
+                object-contain
                 transition-all ease-in-out
-                ${ hasLoadedBefore ? 'duration-0': 'delay-[300ms] duration-[800ms]'}   
+                ${ hasLoadedBefore ? 'duration-0': 'delay-[100ms] duration-[800ms]'}   
                 ${ showPage ? "opacity-100" : "opacity-0" }
               `}
-              src={t.locale == "sv" ? "/img/d-dagen-logo-jubileum-25-sv.svg" : "/img/d-dagen-logo-jubileum-25-en.svg"}
+              src={showGif ? "/img/d-dagen-logo-2526.gif" : "/img/d-dagen-logo-static.png"} // Use static version first
               alt="D-dagen Logo"
               ></img>
-         </div>
+          </div>
           
           <div className={`
-            mx-auto pt-[160px] mt-8 md:mt-8
+            mx-auto pt-[40px] mt-2 md:mt-8
             transition-all ease-in-out
             ${ hasLoadedBefore ? 'duration-0': 'delay-[300ms] duration-[800ms]'}  
             ${ showPage ? "opacity-100" : "opacity-0" }

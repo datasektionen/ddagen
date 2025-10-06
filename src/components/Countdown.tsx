@@ -41,7 +41,7 @@ export function Countdown() {
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
   useEffect(()=>{
-    const target = new Date("10/9/2025 10:00:00+02:00") // vilket datum är d-dagen?
+    const target = new Date("10/8/2026 10:00:00+02:00") // vilket datum är d-dagen?
     const interval = setInterval(() =>{
       const now = new Date();
       const difference = target.getTime() - now.getTime();
