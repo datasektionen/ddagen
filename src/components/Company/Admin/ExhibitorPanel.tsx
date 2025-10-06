@@ -18,6 +18,7 @@ import {
 import { UpdateSpecialOrders } from "./UpdateSpecialOrdersForm";
 import { DeleteExhibitorLock } from "./DeleteExhibitorLock";
 import { UpdateCompanyHost } from "./updateCompanyHostForm";
+import { UpdatePositionForm } from "./UpdatePositionForm";
 
 export function ExhibitorPanel({
   t,
@@ -49,6 +50,7 @@ export function ExhibitorPanel({
 
   const [showSpecialOrdersForm, setShowSpecialOrdersForm] = useState<boolean>(false);
   const [showCompanyHostForm, setShowCompanyHostForm] = useState<boolean>(false);
+  const [showUpdatePositionForm, setShowUpdatePositionForm] = useState<boolean>(false);
 
   const router = useRouter();
   const trpc = api.useContext();
@@ -57,6 +59,7 @@ export function ExhibitorPanel({
   const deleteExhibitor = api.admin.deleteExhibitor.useMutation();
   const updateSpecialOrders = api.exhibitor.setSpecialOrders.useMutation();
   const updateCompanyHost = api.exhibitor.setCompanyHost.useMutation();
+  const updatePosition = api.exhibitor.setPosition.useMutation();
 
   useEffect(() => {
     if (login.isSuccess) {
@@ -142,6 +145,23 @@ export function ExhibitorPanel({
     }
   }
 
+  async function handleUpdatePosition(
+    exhibitorId: string,
+    mapPosition: number) {
+
+    try {
+      await updatePosition.mutateAsync({
+        exhibitorId: exhibitorId,
+        mapPosition: mapPosition
+      });
+
+      await reloadLogin();
+    }
+    catch(err) {
+      console.error(err);
+    }
+  }
+
   async function handleAddExhibitor(exhibitor: ExhibitorInfo) {
     addExhibitor.mutateAsync({
       password: password,
@@ -182,6 +202,11 @@ export function ExhibitorPanel({
   function closeUpdateCompanyHostForm() {
     setSelectedExhibitor(undefined);
     setShowCompanyHostForm(false);
+  }
+
+  function closeUpdatePositionForm() {
+    setSelectedExhibitor(undefined);
+    setShowUpdatePositionForm(false);
   }
 
   const handleDeleteExhibitor = async (exhibitorId: string) => {
@@ -506,6 +531,26 @@ export function ExhibitorPanel({
                           <button
                           className="mt-2 bg-cerise bg-blue-500 py-1 px-2 rounded-md"
                           onClick={()=>{setSelectedExhibitor(exhibitor); setShowCompanyHostForm(true)}}
+                          >
+                          {t.admin.sales.header.specialOrders.specialOrderButton}
+                          </button>
+                        )}
+                      </div>
+                    </td>
+                    <td>
+                      <div className="flex flex-col">
+                        <b>{t.admin.sales.header.position}</b>
+                        {exhibitor.mapPosition || "N/A"}
+                      </div>
+                      <div className="w-full text-xl mb-5 font-medium">
+                        {selectedExhibitor?.id == exhibitor.id && showUpdatePositionForm ? (
+                          <UpdatePositionForm t={t} exhibitor={selectedExhibitor} closeModal={closeUpdatePositionForm} 
+                          setPosition={handleUpdatePosition}
+                          setShowUpdatePositionForm={setShowUpdatePositionForm}/>
+                        ) : (
+                          <button
+                          className="mt-2 bg-cerise bg-blue-500 py-1 px-2 rounded-md"
+                          onClick={()=>{setSelectedExhibitor(exhibitor); setShowUpdatePositionForm(true)}}
                           >
                           {t.admin.sales.header.specialOrders.specialOrderButton}
                           </button>

@@ -45,6 +45,10 @@ export function AdminLogin({
             name="password"
             value={password}
             type="text"
+            /*
+            type="password"
+            autoComplete="current-password"
+            */
             setValue={setPassword}
             fields={{ password: t.admin.login.password }}
             />

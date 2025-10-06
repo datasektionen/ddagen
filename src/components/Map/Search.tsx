@@ -61,11 +61,20 @@ export default function Search({
         .map((value, index) => (value ? index : -1))
         .filter((index) => index !== -1) as (0 | 1 | 2 | 3 | 4)[],
         offers: OFFER_LABELS.filter((_, index) => checkmarks[YEARS.length + index]),
-        industries:  industries.filter((_, index) => checkmarks[YEARS.length + OFFER_LABELS.length + index]),
+        industries: INDUSTRIES_LABELS.filter((_, index) => checkmarks[YEARS.length + OFFER_LABELS.length + index]),
       });
     };
     console.log('Search function called with searchQuery:', searchQuery);
     console.log('State of checkmarks:', checkmarks);
+    console.log("State of query: ", {
+      searchQuery,
+      years: checkmarks
+      .slice(0, 5)
+      .map((value, index) => (value ? index : -1))
+      .filter((index) => index !== -1) as (0 | 1 | 2 | 3 | 4)[],
+      offers: OFFER_LABELS.filter((_, index) => checkmarks[YEARS.length + index]),
+      industries: INDUSTRIES_LABELS.filter((_, index) => checkmarks[YEARS.length + OFFER_LABELS.length + index]),
+    });
     applySearch();
   }, [searchQuery, checkmarks, setQuery]);
 

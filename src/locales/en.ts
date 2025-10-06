@@ -332,6 +332,9 @@ export default {
       email: "Email Address",
       role: "Role",
     },
+    fieldsUpdatePosition: {
+      name: "Position"
+    },
     fieldsAddPreferences: {
       name: "Name",
       preferences: "Preferences",
@@ -925,7 +928,7 @@ export default {
                 "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                   "<p style=\"color:#ffffff;\">This is a confirmation for your student meeting with " + firstName + " " + lastName + "." +
                   "<br />Time: " + time +
-                  "<br />Location: " + location +
+                  "<br />Location: <a href=\"https://maps.app.goo.gl/SRhXZYKhdvqnevPF7\" style=\"color:#0000FF;text-decoration:underline\"> KTH Entré secondary entrance</a>"  +
                   "<br />Log in to <a href=\"https://ddagen.se/utställare\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/utställare</a>" +
                   " to handle your meetings. </p>" +
                 "</div>" +
@@ -971,7 +974,7 @@ export default {
                 "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                   "<p style=\"color:#ffffff;\">This is a confirmation for your student meeting with " + companyName + "." +
                   "<br />Time: " + time +
-                  "<br />Location: " + location +
+                  "<br />Location: <a href=\"https://maps.app.goo.gl/SRhXZYKhdvqnevPF7\" style=\"color:#0000FF;text-decoration:underline\"> KTH Entré secondary entrance</a>" +
                   "<br />Log in to <a href=\"https://ddagen.se/student\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/student</a>" +
                   " to handle your meetings. </p>" +
                 "</div>" +
@@ -1213,6 +1216,7 @@ export default {
         logoColour: "Coloured Logo",
         description: "Description",
         package: "Package",
+        position: "Map Position",
         delete: "Remove",
         companyHost: {
           name: "Company host",
