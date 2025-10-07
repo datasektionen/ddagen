@@ -337,7 +337,7 @@ export default {
     },
     fieldsUpdateIndustryType: {
       industryType: "Industrytype",
-      name: "Industrytype (IT and Software, Finance, Industry and Energy, Public sector, Consulting, Education and Research, Media and Entertainment, Others)",
+      name: "Industrytype (IT and Software(it), Finance(f), Industry and Energy(ie), Public sector(ps), Consulting(c), Education and Research(er), Media and Entertainment(me), Others(o))",
       industry: "Industry"
     },
     fieldsAddPreferences: {
@@ -387,9 +387,14 @@ export default {
             trainee: "TRAINEE PROGRAM",
           },
           industry: {
-          tech: "TECH",
-            finance: "FINANCE",
-            consulting: "CONSULTING",
+            it: "IT and Software",
+            f: "Finance",
+            ie: "Industry and Energy",
+            ps: "Public sector",
+            c: "Consulting",
+            er: "Education and Research",
+            me: "Media and Entertainment",
+            o: "Others",
           },
           save: "Save",
         },
@@ -1169,7 +1174,7 @@ export default {
     panelDiscussion2: "How well prepared is society for today's cyber threats? with Omegapoint, Basalt and Försvarsmaktens Radioanstalt",
     panelDiscussion3: "Design and Development in the AI Era, with Atlas Copco, Electronic Arts DICE, Ubiquiti",
     panelDiscussion1text: "The panel discussion will be held in Enligsh.",
-    panelDiscussion2text: "The panel discussion will be held in Swedish.",    
+    panelDiscussion2text: "The panel discussion will be held in Swedish.",
     panelDiscussiontext: "During the fair day, several panel discussions are held and moderated by D-Dagen, each covering an IT-relevant topic. These sessions give students the opportunity to hear what it’s like to work in the IT industry and engage in an insightful and educational discussion between a few company representatives.",
     fair: "THE FAIR",
     after: "AFTER",
