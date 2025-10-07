@@ -77,7 +77,7 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
           }
           if (query.industries.length > 0) {
             const hasMatchingIndustry = query.industries.some((industryType) =>
-              exhibitor.industryType?.toLowerCase().includes(industryType.toLowerCase())
+              exhibitor.industryType?.toLowerCase() === (industryType.toLowerCase())
             );
             if (!hasMatchingIndustry) {
               return [];

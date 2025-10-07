@@ -8,7 +8,7 @@ const OFFER_LABELS = [
   'summer', 'internship', 'partTime', 'thesis', 'fullTime', 'trainee'
 ];
 const INDUSTRIES_LABELS = [
-  'it', 'consulting', 'finance',
+  'it', 'f', 'ie', 'ps', 'c', 'er', 'me', 'o'
 ];
 
 export default function Search({

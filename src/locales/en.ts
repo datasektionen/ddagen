@@ -337,7 +337,7 @@ export default {
     },
     fieldsUpdateIndustryType: {
       industryType: "Industrytype",
-      name: "Industrytype (IT and Software, Finance, Industry and Energy, Public sector, Consulting, Education and Research, Media and Entertainment, Others)",
+      name: "Industrytype (IT and Software(it), Finance(f), Industry and Energy(ie), Public sector(ps), Consulting(c), Education and Research(er), Media and Entertainment(me), Others(o))",
       industry: "Industry"
     },
     fieldsAddPreferences: {
@@ -387,9 +387,14 @@ export default {
             trainee: "TRAINEE PROGRAM",
           },
           industry: {
-            it: "IT",
-            finance: "FINANCE",
-            consulting: "CONSULTING",
+            it: "IT and Software",
+            f: "Finance",
+            ie: "Industry and Energy",
+            ps: "Public sector",
+            c: "Consulting",
+            er: "Education and Research",
+            me: "Media and Entertainment",
+            o: "Others",
           },
           save: "Save",
         },

@@ -5,7 +5,7 @@ import { useRef, useState } from "react";
 import { InputField } from "../InputField";
 
 export function UpdateIndustryTypeForm({
-    t, 
+    t,
     exhibitor,
     closeModal,
     setIndustryType,
@@ -65,7 +65,7 @@ export function UpdateIndustryTypeForm({
               <h2 className="text-black mb-8 text-3xl font-medium uppercase">
                 {"Set industrytype for " + exhibitor.name}
               </h2>
-  
+
               <form
                 className="flex flex-col gap-10 w-full max-w-[455px] text-black"
                 onSubmit={(e) => {
@@ -85,6 +85,7 @@ export function UpdateIndustryTypeForm({
                     name="name"
                     value={industryTypeString}
                     setValue={setIndustryTypeString}
+                    pattern="^(it|f|ie|ps|c|er|me|o)$"
                     fields={{name: t.exhibitorSettings.fieldsUpdateIndustryType.industryType}}
                     dark={true}
                     />
