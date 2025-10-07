@@ -387,7 +387,7 @@ export default {
             trainee: "TRAINEE PROGRAM",
           },
           industry: {
-          tech: "TECH",
+            it: "IT",
             finance: "FINANCE",
             consulting: "CONSULTING",
           },
@@ -1169,7 +1169,7 @@ export default {
     panelDiscussion2: "How well prepared is society for today's cyber threats? with Omegapoint, Basalt and Försvarsmaktens Radioanstalt",
     panelDiscussion3: "Design and Development in the AI Era, with Atlas Copco, Electronic Arts DICE, Ubiquiti",
     panelDiscussion1text: "The panel discussion will be held in Enligsh.",
-    panelDiscussion2text: "The panel discussion will be held in Swedish.",    
+    panelDiscussion2text: "The panel discussion will be held in Swedish.",
     panelDiscussiontext: "During the fair day, several panel discussions are held and moderated by D-Dagen, each covering an IT-relevant topic. These sessions give students the opportunity to hear what it’s like to work in the IT industry and engage in an insightful and educational discussion between a few company representatives.",
     fair: "THE FAIR",
     after: "AFTER",

@@ -20,10 +20,12 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
     searchQuery: string;
     years: (0 | 1 | 2 | 3 | 4)[];
     offers: string[];
+    industries: string[];
   }>({
     searchQuery: "",
     years: [],
     offers: [],
+    industries: [],
   });
   const [mapInView, setMapInView] = useState<1 | 2 | 3>(1);
   const [selectedExhibitor, setSelectedExhibitor] = useState<number>(0);
@@ -68,8 +70,16 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
                   return false;
               }
             });
-            
+
             if (!hasMatchingOffer) {
+              return [];
+            }
+          }
+          if (query.industries.length > 0) {
+            const hasMatchingIndustry = query.industries.some((industryType) =>
+              exhibitor.industryType?.toLowerCase().includes(industryType.toLowerCase())
+            );
+            if (!hasMatchingIndustry) {
               return [];
             }
           }
@@ -185,6 +195,7 @@ export async function getServerSideProps() {
       fullTimeJob: exhibitor.jobOffers.fullTimeJob,
       traineeProgram: exhibitor.jobOffers.traineeProgram,
     },
+    industryType: exhibitor.industryType,
     position: exhibitor.mapPosition,
   }));
 
