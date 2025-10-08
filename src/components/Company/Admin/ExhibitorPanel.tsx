@@ -19,6 +19,7 @@ import { UpdateSpecialOrders } from "./UpdateSpecialOrdersForm";
 import { DeleteExhibitorLock } from "./DeleteExhibitorLock";
 import { UpdateCompanyHost } from "./updateCompanyHostForm";
 import { UpdatePositionForm } from "./UpdatePositionForm";
+import { UpdateIndustryTypeForm } from "./UpdateIndustryTypeForm";
 
 export function ExhibitorPanel({
   t,
@@ -51,6 +52,7 @@ export function ExhibitorPanel({
   const [showSpecialOrdersForm, setShowSpecialOrdersForm] = useState<boolean>(false);
   const [showCompanyHostForm, setShowCompanyHostForm] = useState<boolean>(false);
   const [showUpdatePositionForm, setShowUpdatePositionForm] = useState<boolean>(false);
+  const [showUpdateIndustryTypeForm, setShowIndustryTypeForm] = useState<boolean>(false);
 
   const router = useRouter();
   const trpc = api.useContext();
@@ -60,6 +62,7 @@ export function ExhibitorPanel({
   const updateSpecialOrders = api.exhibitor.setSpecialOrders.useMutation();
   const updateCompanyHost = api.exhibitor.setCompanyHost.useMutation();
   const updatePosition = api.exhibitor.setPosition.useMutation();
+  const updateIndustryType = api.exhibitor.setIndustryType.useMutation();
 
   useEffect(() => {
     if (login.isSuccess) {
@@ -162,6 +165,23 @@ export function ExhibitorPanel({
     }
   }
 
+  async function handleUpdateIndustryType(
+    exhibitorId: string,
+    industrytype: string) {
+
+      try {
+        await updateIndustryType.mutateAsync({
+          exhibitorId: exhibitorId,
+          industryType: industrytype
+        });
+
+        await reloadLogin();
+      }
+      catch(err) {
+        console.error(err);
+      }
+    }
+
   async function handleAddExhibitor(exhibitor: ExhibitorInfo) {
     addExhibitor.mutateAsync({
       password: password,
@@ -207,6 +227,11 @@ export function ExhibitorPanel({
   function closeUpdatePositionForm() {
     setSelectedExhibitor(undefined);
     setShowUpdatePositionForm(false);
+  }
+
+  function closeUpdateIndustryTypeForm() {
+    setSelectedExhibitor(undefined);
+    setShowIndustryTypeForm(false);
   }
 
   const handleDeleteExhibitor = async (exhibitorId: string) => {
@@ -555,6 +580,30 @@ export function ExhibitorPanel({
                           {t.admin.sales.header.specialOrders.specialOrderButton}
                           </button>
                         )}
+                      </div>
+                    </td>
+                    <td>
+                      <div className="flex flex-col">
+                        <b>{t.exhibitorSettings.fieldsUpdateIndustryType.name}</b>
+                        {exhibitor.industryType || "N/A"}
+                      </div>
+                      <div className="w-full text-xl mb-5 font-medium">
+                        {selectedExhibitor?.id == exhibitor.id && showUpdateIndustryTypeForm ? (
+                          <UpdateIndustryTypeForm t={t} exhibitor={selectedExhibitor} closeModal={closeUpdateIndustryTypeForm} 
+                          setIndustryType={handleUpdateIndustryType}
+                          setShowIndustryTypeForm={setShowIndustryTypeForm}/>
+                        ) : (
+                          <button
+                          className="mt-2 bg-cerise bg-blue-500 py-1 px-2 rounded-md"
+                          onClick={()=>{setSelectedExhibitor(exhibitor); setShowIndustryTypeForm(true)}}
+                          >
+                          {t.admin.sales.header.specialOrders.specialOrderButton}
+                          </button>
+                        )}
+                        <div className="flex flex-col">
+                          <b>{t.exhibitorSettings.fieldsUpdateIndustryType.industry}</b>
+                          <p>{exhibitor.industry}</p>
+                        </div>
                       </div>
                     </td>
                     {showDeleteExhibitor &&

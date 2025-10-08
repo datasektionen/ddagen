@@ -203,7 +203,7 @@ export default {
     tempCompanyMeetingsText:
       "Vi erbjuder kontaktsamtal för studenter, vilket innebär att ni får möjlighet att i enrum med företagsrepresentanter diskutera framtida jobbmöjligheter med mera. Anmälan kommer tillgängliggöras senare!",
     companyMeetingsPageButton: "Läs mer",
-    companyMeetingsButton: "Anmäl dig här",    
+    companyMeetingsButton: "Anmäl dig här",
     dayStaffTitle: "Dagspersonal",
     dayStaffText: "Vill du vara med och göra D-Dagen till en succé? Vi söker engagerade studenter som kan hjälpa till under mässdagen med uppgifter som att välkomna besökare, assistera utställare och hålla ordning i lokalerna. Det är ett perfekt tillfälle att nätverka, träffa företag och få värdefull erfarenhet.",
     dayStaffApplicationOpens: "Ansökan öppnar 2/9",
@@ -333,6 +333,11 @@ export default {
     fieldsUpdatePosition: {
       name: "Plats"
     },
+    fieldsUpdateIndustryType: {
+      industryType: "Industrityp",
+      name: "Industrityp (IT and Software, Finance, Industry and Energy, Public sector, Consulting, Education and Research, Media and Entertainment, Others)",
+      industry: "Industri"
+    },
     fieldsAddPreferences: {
       name: "Namn",
       preferences: "Preferenser",
@@ -380,9 +385,14 @@ export default {
             trainee: "TRAINEEPROGRAM",
           },
           industry: {
-            tech: "IT",
-            finance: "FINANS",
-            consulting: "KONSULT",
+            it: "IT och mjukvara",
+            f: "Finans",
+            ie: "Industri och energi",
+            ps: "Offentlig sektor",
+            c: "Konsult",
+            er: "Utbildning och forskning",
+            me: "Media och underhållning",
+            o: "Övrigt",
           },
           save: "Spara",
         },
@@ -754,7 +764,7 @@ export default {
               "</div>" +
             "</tr>" +
             "<tr>" +
-              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                 "<p style=\"color:#ffffff;\">Vi är glada att kunna meddela att " + companyName + " vill ha ett kontaktsamtal med dig!"+
                 "<br />Gå in på <a href=\"https://ddagen.se/student\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/student</a>" +
                 " för att välja en tid för mötet: </p>" +
@@ -796,7 +806,7 @@ export default {
               "</div>" +
             "</tr>" +
             "<tr>" +
-              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                 "<p style=\"color:#ffffff;\">Tyvärr har " + firstName + " " + lastName + " nekat er kontaktsamtals-förfrågan."+
                 "<br />Logga in på <a href=\"https://ddagen.se/utställare\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/utställare</a>" +
                 " för att hantera era kontaktsamtal. </p>" +
@@ -837,7 +847,7 @@ export default {
               "</div>" +
             "</tr>" +
             "<tr>" +
-              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                 "<p style=\"color:#ffffff;\">Tyvärr har " + firstName + " " + lastName + " avbokat ert kontaktsamtal."+
                 "<br />Logga in på <a href=\"https://ddagen.se/utställare\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/utställare</a>" +
                 " för att hantera era kontaktsamtal. </p>" +
@@ -877,7 +887,7 @@ export default {
               "</div>" +
             "</tr>" +
             "<tr>" +
-              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                 "<p style=\"color:#ffffff;\">Tyvärr har " + companyName + " avbokat ert kontaktsamtal."+
                 "<br />Logga in på <a href=\"https://ddagen.se/student\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/student</a>" +
                 " för att hantera dina kontaktsamtal. </p>" +
@@ -921,7 +931,7 @@ export default {
                 "</div>" +
               "</tr>" +
               "<tr>" +
-                "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+                "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                   "<p style=\"color:#ffffff;\">Detta är en bekräftelse på ert kontaktsamtal med " + firstName + " " + lastName + "."+
                   "<br />Tid: " + time + "<br />" +
                   "Plats: <a href=\"https://maps.app.goo.gl/SRhXZYKhdvqnevPF7\" style=\"color:#0000FF;text-decoration:underline\"> KTH Entré sekundära ingången</a>" + "<br />" +
@@ -967,7 +977,7 @@ export default {
                 "</div>" +
               "</tr>" +
               "<tr>" +
-                "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+                "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                   "<p style=\"color:#ffffff;\">Detta är en bekräftelse på ert kontaktsamtal med " + companyName + "."+
                   "<br />Tid: " + time + "<br />" +
                   "Plats: <a href=\"https://maps.app.goo.gl/SRhXZYKhdvqnevPF7\" style=\"color:#0000FF;text-decoration:underline\"> KTH Entré sekundära ingången</a>" + "<br />" +
@@ -1154,13 +1164,13 @@ export default {
     welcome: "Välkommna",
     inaugeration: "Invigning",
     panelDiscussionHeader1: "Paneldiskussion Fintech",
-    panelDiscussionHeader3: "Paneldiskussion Cyber",
-    panelDiscussionHeader2: "Paneldiskussion AI",
+    panelDiscussionHeader2: "Paneldiskussion Samhällets Cyberhot",
+    panelDiscussionHeader3: "Paneldiskussion Design & AI",
     panelDiscussion1: "Fintech-branschens framtid med Nordea, Nore Technology, Revolut och Jane Street",
-    panelDiscussion1text: "Paneldiskussionen kommer att hållas på engelska",
     panelDiscussion2: "Hur väl rustat är samhället inför dagens cyberhot? Med huvudsponsor Omegapoint, Basalt och Försvarsmaktens Radioanstalt",
-    panelDiscussion2text: "Paneldiskussionen kommer att hållas på svenska",
     panelDiscussion3: "Design och utveckling i AI-eran, med Atlas Copco, Electronic Arts DICE, Ubiquiti",
+    panelDiscussion1text: "Paneldiskussionen kommer att hållas på engelska",
+    panelDiscussion2text: "Paneldiskussionen kommer att hållas på svenska",
     panelDiscussiontext: "Under mässdagen anordnas flera paneldiskussioner som vardera behandlar ett IT-relevant ämne och som modereras av D-Dagen. Vid ett sådant tillfälle får studenter möjlighet att höra om hur det är att arbeta inom IT-branschen, samt får ta del av en intressant och lärorik diskussion mellan ett fåtal företagsrepresentanter.",
     fair: "MÄSSAN",
     after: "EFTER",

@@ -176,7 +176,7 @@ export default function Events() {
       companyName: t.event.panelDiscussion3,
       image: "/img/exhibitors/panelAtlas.png",
       header: t.event.panelDiscussionHeader3,
-      text: t.event.panelDiscussiontext
+      text: t.event.panelDiscussion1text + " " + t.event.panelDiscussiontext
     },
     {
       date: "16:00",

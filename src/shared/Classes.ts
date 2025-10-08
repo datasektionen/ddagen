@@ -92,10 +92,10 @@ export class Package {
         this.name = t.packages.name[3];
         this.tables = 2;
         this.chairs = 0;
-        this.drinkCoupons = 16; 
+        this.drinkCoupons = 16;
         this.representatives = 10;
         this.banquetTickets = 2;
-        this.mealCoupons = 4; 
+        this.mealCoupons = 4;
         break;
       case 4:
         this.name = t.packages.name[4];
@@ -104,7 +104,7 @@ export class Package {
         this.drinkCoupons = 0;
         this.representatives = 2;
         this.banquetTickets = 0;
-        this.mealCoupons = 2; 
+        this.mealCoupons = 2;
         break;
       default:
         this.name = "Something went wrong with the package, contact sales";
@@ -237,7 +237,8 @@ export class Exhibitor {
   companyHostEmail: string;
   allowMarketing: boolean;
   industry: string;
-  alcFreeTicket: number; 
+  industryType: string;
+  alcFreeTicket: number;
   mapPosition: number;
 
   constructor(
@@ -273,6 +274,7 @@ export class Exhibitor {
     companyHostEmail: string,
     allowMarketing: boolean,
     industry: string,
+    industryType: string,
     alcFreeTicket: number,
     mapPosition: number,
   ) {
@@ -308,6 +310,7 @@ export class Exhibitor {
     this.companyHostEmail = companyHostEmail;
     this.allowMarketing = allowMarketing;
     this.industry = industry;
+    this.industryType = industryType;
     this.alcFreeTicket = alcFreeTicket;
     this.mapPosition = mapPosition;
   }
@@ -365,11 +368,12 @@ export type MapProp = {
     fullTimeJob: boolean;
     traineeProgram: boolean;
   };
+  industryType: string;
   position: number;
 };
 
 export function sortExhibitors(exhibitors: Exhibitor[]) {
-  // this is old sorting function from when exhibitors where enums, perhaps removable 
+  // this is old sorting function from when exhibitors where enums, perhaps removable
   return exhibitors;
 }
 
