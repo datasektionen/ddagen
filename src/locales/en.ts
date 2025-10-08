@@ -1394,6 +1394,10 @@ export default {
       fullTime: "Full-time Job",
       trainee: "Trainee Program",
     },
+    iconButtons: {
+      numbers: "Numbers",
+      logos: "Logos"
+    }
   },
   sok:{
     notActive: "The signup is not active yet, keep an eye on social media for when it opens!",

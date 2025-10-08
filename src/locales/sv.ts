@@ -1381,6 +1381,10 @@ export default {
       fullTime: "Heltidsjobb",
       trainee: "Traineeprogram",
     },
+    iconButtons: {
+      numbers: "Siffror",
+      logos: "Loggor"
+    }
   },
   sok:{
     notActive: "Går inte att söka just nu, håll koll på sociala medier för vidare information i framtiden",

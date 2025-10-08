@@ -1,11 +1,12 @@
 import type Locale from "@/locales";
 import { MapProp } from "@/shared/Classes";
-import { Dispatch, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { ImageOverlay, LayerGroup, LayersControl, MapContainer, Marker, ZoomControl } from 'react-leaflet';
 import { Control, DivIcon, DivOverlay, LatLngExpression } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import IconControl from './IconControl';
 import { useMap } from 'react-leaflet';
+import L from "leaflet";
 
 const FLOOR_2_RANGE_1 = { start: 1, end: 77 };
 const FLOOR_2_RANGE_2 = { start: 91, end: 93 };
@@ -168,9 +169,18 @@ export default function Map({
         
         setZoomLevel(zoom);
       };
+
+      const handleShowIcons = (b: boolean) => {
+        // zoom in when logos should show
+        if(map.getZoom() < 9){
+          map.panTo([0.08,0]);
+          map.setZoom(9);
+        }
+        setShowIcons(b);
+      }
       
       useEffect(() => {
-        const control = new IconControl(setShowIcons, showIcons);
+        const control = new IconControl(handleShowIcons, showIcons);
         map.addControl(control);
         
         map.on("zoom", handleZoom);
@@ -178,24 +188,24 @@ export default function Map({
           map.off("zoom", handleZoom);
           map.removeControl(control);
         };
-      }, [map]);
+      }, [map, showIcons]);
       
       return null;
     }
 
     const exhibitorMarker = (id: string, selected: boolean): DivIcon => {
-      const size = 18 + (zoomLevel - 8) * (zoomLevel - 8) * 5;
+      const size = 20 + (zoomLevel - 8) * (zoomLevel - 8) * 5;
 
       return new DivIcon({
-        html: (showIcons && zoomLevel >= 10) ? `
-        <div className="flex justify-center items-center duration-200 ease-in"
+        html: (showIcons && zoomLevel >= 9) ? `
+        <div class="flex justify-center items-center duration-200 ease-in"
           style="width: ${size}px; height: ${size}px">
           <img src="/img/exhibitors/map/${id}.${endings[id] ?? "png"}" alt="${id}" 
             class="w-full h-auto duration-200 ease-in" 
             style="max-width: ${size * 2}px !important; max-height: ${size}px !important"
           />
         </div>` : id, 
-        className: !(showIcons && zoomLevel >= 10) ? `rounded-full bg-pink-600 ring ${selected ? "border-4 border-pink-500 ring-3 ring-yellow" : "ring-2 ring-pink-500"} text-white text-center content-center` : "",
+        className: !(showIcons && zoomLevel >= 9) ? `rounded-full bg-pink-600 ring ${selected ? "border-4 border-pink-500 ring-3 ring-yellow" : "ring-2 ring-pink-500"} text-white text-center content-center` : "",
         iconSize: selected ? [38, 38] : [30, 30]
       });
     }
