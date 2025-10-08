@@ -118,7 +118,7 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
           }
         ]}
       />
-    <div className="h-screen flex max-md:flex-col-reverse max-md:items-center md:flex-row md:items-start md:pt-20 overflow-hidden relative">
+    <div className="h-screen flex max-md:flex-col-reverse max-md:items-center md:flex-row md:items-start pt-20 overflow-hidden relative">
       <div
         id="sidebar"
         className="px-4 md:pr-4 flex flex-col items-center w-full md:w-3/5 box-border bg-darkblue bg-opacity-75"
