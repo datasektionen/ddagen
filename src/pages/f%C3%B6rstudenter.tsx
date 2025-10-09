@@ -129,7 +129,7 @@ export default function ForStudents() {
           <ImageTextSection
             t={t}
             leftSideImage={false}
-            imageProps={{ src: "/img/ddagen2024/banquette-dinner.jpg", alt: "Panel discussions" }}
+            imageProps={{ src: "/img/ff4.webp", alt: "Panel discussions" }}
             className={`mt-[20px] lg:mt-[60px] mb-[30px] lg:mb-[40px]`}
           >
             <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl max-w-xl">
