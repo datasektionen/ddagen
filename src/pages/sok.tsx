@@ -196,7 +196,7 @@ export default function SignupPage() {
         <div className="flex flex-row items-center justify-center">
           <Link
             className="flex flex-row items-center justify-center w-[175px] bg-cerise rounded-full h-[60px] mt-[30px] text-white text-center"
-            href="https://docs.google.com/forms/d/e/1FAIpQLSfc8vCKFG_EKLtRIetKtcsYDKNkKMK1DXZBUzpVK357Sm7KlA/viewform"
+            href="/pg26"
             target="_blank"
           >
             {t.sok.search}

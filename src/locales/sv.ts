@@ -199,7 +199,7 @@ export default {
     tempCompanyMeetingsText:
       "Vi erbjuder kontaktsamtal för studenter, vilket innebär att ni får möjlighet att i enrum med företagsrepresentanter diskutera framtida jobbmöjligheter med mera. Anmälan kommer tillgängliggöras senare!",
     companyMeetingsPageButton: "Läs mer",
-    companyMeetingsButton: "Anmäl dig här",    
+    companyMeetingsButton: "Anmäl dig här",
     dayStaffTitle: "Dagspersonal",
     dayStaffText: "Vill du vara med och göra D-Dagen till en succé? Vi söker engagerade studenter som kan hjälpa till under mässdagen med uppgifter som att välkomna besökare, assistera utställare och hålla ordning i lokalerna. Det är ett perfekt tillfälle att nätverka, träffa företag och få värdefull erfarenhet.",
     dayStaffApplicationOpens: "Ansökan öppnar 2/9",
@@ -750,7 +750,7 @@ export default {
               "</div>" +
             "</tr>" +
             "<tr>" +
-              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                 "<p style=\"color:#ffffff;\">Vi är glada att kunna meddela att " + companyName + " vill ha ett kontaktsamtal med dig!"+
                 "<br />Gå in på <a href=\"https://ddagen.se/student\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/student</a>" +
                 " för att välja en tid för mötet: </p>" +
@@ -792,7 +792,7 @@ export default {
               "</div>" +
             "</tr>" +
             "<tr>" +
-              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                 "<p style=\"color:#ffffff;\">Tyvärr har " + firstName + " " + lastName + " nekat er kontaktsamtals-förfrågan."+
                 "<br />Logga in på <a href=\"https://ddagen.se/utställare\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/utställare</a>" +
                 " för att hantera era kontaktsamtal. </p>" +
@@ -833,7 +833,7 @@ export default {
               "</div>" +
             "</tr>" +
             "<tr>" +
-              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                 "<p style=\"color:#ffffff;\">Tyvärr har " + firstName + " " + lastName + " avbokat ert kontaktsamtal."+
                 "<br />Logga in på <a href=\"https://ddagen.se/utställare\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/utställare</a>" +
                 " för att hantera era kontaktsamtal. </p>" +
@@ -873,7 +873,7 @@ export default {
               "</div>" +
             "</tr>" +
             "<tr>" +
-              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                 "<p style=\"color:#ffffff;\">Tyvärr har " + companyName + " avbokat ert kontaktsamtal."+
                 "<br />Logga in på <a href=\"https://ddagen.se/student\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/student</a>" +
                 " för att hantera dina kontaktsamtal. </p>" +
@@ -917,7 +917,7 @@ export default {
                 "</div>" +
               "</tr>" +
               "<tr>" +
-                "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+                "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                   "<p style=\"color:#ffffff;\">Detta är en bekräftelse på ert kontaktsamtal med " + firstName + " " + lastName + "."+
                   "<br />Tid: " + time + "<br />" +
                   "Plats: <a href=\"https://maps.app.goo.gl/SRhXZYKhdvqnevPF7\" style=\"color:#0000FF;text-decoration:underline\"> KTH Entré sekundära ingången</a>" + "<br />" +
@@ -963,7 +963,7 @@ export default {
                 "</div>" +
               "</tr>" +
               "<tr>" +
-                "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+                "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                   "<p style=\"color:#ffffff;\">Detta är en bekräftelse på ert kontaktsamtal med " + companyName + "."+
                   "<br />Tid: " + time + "<br />" +
                   "Plats: <a href=\"https://maps.app.goo.gl/SRhXZYKhdvqnevPF7\" style=\"color:#0000FF;text-decoration:underline\"> KTH Entré sekundära ingången</a>" + "<br />" +
@@ -1039,11 +1039,10 @@ export default {
     subheader1: "Kontakta oss",
     subheader2: "Projektansvariga",
     p1: "Om ni har några egna förslag på evenemang eller aktiviteter ni vill anordna för studenterna på Konglig Datasektionen, eller om ni har några andra frågor eller funderingar om företagspaket är det bara att höra av er till oss på...",
-    p2: "För mer information och övriga frågor till ansvariga för D-Dagen kontakta oss på...",
-    salesHeader: "Säljgruppen",
-    bossesHeader: "Ansvariga",
+    p2: "För mer information och övriga frågor till ansvarig för D-Dagen kontakta...",
+    salesHeader: "Säljgruppen 2025",
+    bossesHeader: "Ansvarig",
     roles: [
-      "D-DAGENANSVARIG",
       "D-DAGENANSVARIG",
       "PR-ANSVARIG",
       "WEBB-ANSVARIG",
@@ -1370,7 +1369,7 @@ export default {
   },
   sok:{
     notActive: "Går inte att söka just nu, håll koll på sociala medier för vidare information i framtiden",
-    header: "Sök Ledningsgruppen 26",
+    header: "Sök Projektgruppen 26",
     description: "Årets D-Dagen ska bli Datasektionens största och bästa arbetsmarknadsmässa någonsin! Detta är i alla fall visionen vi har som ansvariga i år. Dock är det omöjligt för oss att arrangera ett så här stort evenemang helt själva. Till vår hjälp behöver vi en ambitiös projektgrupp som har drivet att skapa någonting extraordinärt. Vi vill förbättra den interna kommunikation från tidigare år och kommer därför satsa extra mycket på teambuilding för att få en tajt grupp. Vi förväntar oss också att alla i projektgruppen är sociala med god samarbetsförmåga och självgående i sina uppgifter.",
     search:"SÖK",
     info:"Information om rollerna",
