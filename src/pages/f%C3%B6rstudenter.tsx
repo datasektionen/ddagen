@@ -14,12 +14,12 @@ export default function ForStudents() {
   const seoContent = {
     sv: {
       title: "För Studenter - Träffa IT-företag & Skapa Karriärmöjligheter",
-      description: "D-Dagen är Datasektionens årliga arbetsmarknadsdag för IT- och datastudenter vid KTH. Delta den 9 oktober på KTH Campus Valhallavägen och nätverka med ledande företag inom techbranschen. Boka kontaktsamtal, få karriärtips och engagera dig som dagspersonal för unika möjligheter!",
+      description: "D-Dagen är Datasektionens årliga arbetsmarknadsdag för IT- och datastudenter vid KTH. Delta den 8 oktober på KTH Campus Valhallavägen och nätverka med ledande företag inom techbranschen. Boka kontaktsamtal, få karriärtips och engagera dig som dagspersonal för unika möjligheter!",
       url: "https://ddagen.se/förstudenter",
     },
     en: {
       title: "For Students - Meet Top IT Companies & Boost Your Career",
-      description: "D-Dagen is the annual career fair for IT and computer science students at KTH. Join us on October 9 at KTH Campus Valhallavägen to connect with leading tech companies, book one-on-one career meetings, and explore job opportunities. Get involved as event staff for valuable experience and networking!",
+      description: "D-Dagen is the annual career fair for IT and computer science students at KTH. Join us on October 8 at KTH Campus Valhallavägen to connect with leading tech companies, book one-on-one career meetings, and explore job opportunities. Get involved as event staff for valuable experience and networking!",
       url: "https://ddagen.se/en/förstudenter",
     },
   };

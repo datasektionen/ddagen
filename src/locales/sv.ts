@@ -6,11 +6,11 @@ export default {
   about: "Om Oss",
   home: {
     introFirstBlock:
-      "Nordens största arbetsmarknadsdag för datateknikstudenter firar 25-årsjubileum",
+      "Nordens största arbetsmarknadsdag för datateknikstudenter firade 25-årsjubileum",
     introSecondBlock:
       "Är du en student inom data eller IT och söker efter din framtida arbetsplats, eller representerar du ett företag som letar talangfulla medarbetare?",
     introThirdBlock:
-      "Då är D-Dagen det perfekta tillfället för dig att träffa personer inom branschen och knyta värdefulla kontakter! I år firar D-Dagen sitt storslagna 25-års jubileum, vilket innebär att mässan kommer bli större och bättre än någonsin, med över 100+ utställare och 3000+ deltagare.",
+      "Då är D-Dagen det perfekta tillfället för dig att träffa personer inom branschen och knyta värdefulla kontakter! I år firade D-Dagen sitt storslagna 25-års jubileum, vilket innebär att mässan kommer bli större och bättre än någonsin, med över 100+ utställare och 3000+ deltagare.",
     introSignOff: "Detta är ett firande som man inte vill missa!\n Hoppas vi ses!",
     introDDA: "Max Berglund & Mortada Nasser, D-Dagenansvariga",
     representative: "Företagsrepresentant?",
@@ -30,16 +30,12 @@ export default {
     },
     stats: [
       {
-        value: "100+",
+        value: "90+",
         type: "Utställare förra året"
       },
       {
         value: "3000+",
         type: "Deltagare"
-      },
-      {
-        value: "25 års",
-        type: "Jubileum"
       },
       {
         value: "100%",

@@ -30,16 +30,12 @@ export default {
     },
     stats: [
       {
-        value: "100+",
+        value: "90+",
         type: "Exhibitors last year"
       },
       {
         value: "3000+",
         type: "Visitors"
-      },
-      {
-        value: "25th",
-        type: "Anniversary"
       },
       {
         value: "100%",

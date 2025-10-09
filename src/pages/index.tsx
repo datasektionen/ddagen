@@ -85,7 +85,7 @@ export default function Home() {
                 ${ hasLoadedBefore ? 'duration-0': 'delay-[100ms] duration-[800ms]'}   
                 ${ showPage ? "opacity-100" : "opacity-0" }
               `}
-              src={showGif ? "/img/d-dagen-logo-2526.gif" : "/img/d-dagen-logo-static.png"} // Use static version first
+              src={showGif ? "/img/d-dagen-logo-2526-4.gif" : "/img/d-dagen-logo-static.png"} // Use static version first
               alt="D-dagen Logo"
               ></img>
           </div>

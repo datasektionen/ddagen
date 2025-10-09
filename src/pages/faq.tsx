@@ -59,12 +59,12 @@ export default function Faq() {
   const seoContent = {
     sv: {
       title: "Vanliga Frågor (FAQ) - Allt du behöver veta",
-      description: "Har du frågor om D-Dagen 2025? Här hittar du svar på vanliga frågor om eventet, deltagande, företagsmöjligheter, kontaktsamtal och mer. Få all information du behöver inför mässan på KTH den 9 oktober.",
+      description: "Har du frågor om D-Dagen 2026? Här hittar du svar på vanliga frågor om eventet, deltagande, företagsmöjligheter, kontaktsamtal och mer. Få all information du behöver inför mässan på KTH den 8 oktober.",
       url: "https://ddagen.se/faq",
     },
     en: {
       title: "FAQ - Everything You Need to Know",
-      description: "Have questions about D-Dagen 2025? Find answers to frequently asked questions about the event, participation, company opportunities, career meetings, and more. Get all the information you need before the fair at KTH on October 9.",
+      description: "Have questions about D-Dagen 2026? Find answers to frequently asked questions about the event, participation, company opportunities, career meetings, and more. Get all the information you need before the fair at KTH on October 8.",
       url: "https://ddagen.se/en/faq",
     },
   };
