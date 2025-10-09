@@ -1,5 +1,4 @@
 import {useLocale} from "@/locales";
-import { Console } from "console";
 import {useEffect, useState} from "react";
 
 function TimeUnit({time, timeString, index = 0}: {time: number; timeString: string, index?: number}){
@@ -40,6 +39,7 @@ export function Countdown() {
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
+  /*
   useEffect(()=>{
     const target = new Date("10/9/2025 10:00:00+02:00") // vilket datum är d-dagen?
     const interval = setInterval(() =>{
@@ -65,9 +65,16 @@ export function Countdown() {
     },1000)
     return () => clearInterval(interval)
   },[]);
+  */
+  useEffect(() => {
+    setDays(0);
+    setHours(0);
+    setMinutes(0);
+    setSeconds(0);
+  }, []);
 
   return (
-    <div className="hover:cursor-default gap-5 columns-4 items-stretch flex items-center justify-center">
+    <div className="hover:cursor-default gap-5 columns-4 flex items-center justify-center">
       <TimeUnit time={days} timeString={t.home.countDown.days} index={1}/>
       <TimeUnit time={hours} timeString={t.home.countDown.hours} index={2}/>
       <TimeUnit time={minutes} timeString={t.home.countDown.minutes} index={3}/>
