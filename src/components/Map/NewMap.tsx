@@ -1,11 +1,12 @@
 import type Locale from "@/locales";
 import { MapProp } from "@/shared/Classes";
-import { Dispatch, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { ImageOverlay, LayerGroup, LayersControl, MapContainer, Marker, ZoomControl } from 'react-leaflet';
 import { Control, DivIcon, DivOverlay, LatLngExpression } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import IconControl from './IconControl';
 import { useMap } from 'react-leaflet';
+import L from "leaflet";
 
 const FLOOR_2_RANGE_1 = { start: 1, end: 77 };
 const FLOOR_2_RANGE_2 = { start: 91, end: 93 };
@@ -117,6 +118,10 @@ const positions: { [k: number]: [number, number] } = {
 };
 
 
+const endings: { [k: string]: string } = {
+  "7": "svg" , "9": "svg" , "11": "svg" , "13": "svg" , "15": "svg" , "16": "svg" , "17": "svg" , "22": "svg" , "30": "svg" , "34": "svg" , "36": "svg" , "41": "svg" , "44": "svg" , "46": "svg" , "49": "svg" , "51": "svg" , "53": "svg" , "54": "svg" , "55": "svg" , "56": "svg" , "57": "svg" , "58": "svg" , "62": "svg" , "63": "svg" , "66": "svg" , "68": "svg" , "69": "svg" , "72": "svg" , "73": "svg" , "74": "svg" , "76": "svg" , "78": "svg" , "89": "svg" , "93": "svg"
+}
+
 function isValidPosition(position: unknown): position is [number, number] {
   return Array.isArray(position) && 
          position.length === 2 && 
@@ -147,6 +152,7 @@ export default function Map({
   }) {
     const [mapReady, setMapReady] = useState(false);
     const [showIcons, setShowIcons] = useState(false);
+    const [zoomLevel, setZoomLevel] = useState(9);
 
     useEffect(() => {
       document.body.classList.add('overflow-hidden');
@@ -155,35 +161,54 @@ export default function Map({
       };
     }, []);
 
-    /*
     const IconControlComponent = () => {
       const map = useMap();
       
+      const handleZoom = () => {
+        const zoom = map.getZoom();
+        
+        setZoomLevel(zoom);
+      };
+
+      const handleShowIcons = (b: boolean) => {
+        // zoom in when logos should show
+        if(map.getZoom() < 9){
+          map.panTo([0.08,0]);
+          map.setZoom(9);
+        }
+        setShowIcons(b);
+      }
+      
       useEffect(() => {
-        const control = new IconControl(setShowIcons, showIcons);
+        const control = new IconControl(handleShowIcons, showIcons);
         map.addControl(control);
         
+        map.on("zoom", handleZoom);
         return () => {
+          map.off("zoom", handleZoom);
           map.removeControl(control);
         };
-      }, [map]);
+      }, [map, showIcons]);
       
       return null;
     }
-    */
 
-    const exhibitorMarker = (id: string, selected: boolean): DivIcon =>
-      new DivIcon({
-        html: showIcons ? `
-        <div className="flex max-w-full justify-center items-center">
-          
-          <img src="/img/exhibitors/${id}.png" alt="dkm" class="w-full h-auto" 
-            onerror="this.onerror=null; this.src="/img/exhibitors/dkm.svg"  
+    const exhibitorMarker = (id: string, selected: boolean): DivIcon => {
+      const size = 15 + (zoomLevel - 8) * (zoomLevel - 8) * 5;
+
+      return new DivIcon({
+        html: (showIcons && zoomLevel >= 9) ? `
+        <div class="flex justify-center items-center duration-200 ease-in"
+          style="width: ${size}px; height: ${size}px">
+          <img src="/img/exhibitors/map/${id}.${endings[id] ?? "png"}" alt="${id}" 
+            class="w-full h-auto duration-200 ease-in" 
+            style="max-width: ${size * 2}px !important; max-height: ${size}px !important"
           />
-        </div>` : id,
-        className: `rounded-full bg-pink-600 ring ${selected ? "border-4 border-pink-500 ring-3 ring-yellow" : "ring-2 ring-pink-500"} text-white text-center content-center`,
+        </div>` : id, 
+        className: !(showIcons && zoomLevel >= 9) ? `rounded-full bg-pink-600 ring ${selected ? "border-4 border-pink-500 ring-3 ring-yellow" : "ring-2 ring-pink-500"} text-white text-center content-center` : "",
         iconSize: selected ? [38, 38] : [30, 30]
       });
+    }
 
     return (
       <div className="h-full w-full md:m-2 box-border backdrop-blur-sm md:border-4 md:border-pink-600 md:rounded-2xl select-none">
@@ -200,7 +225,7 @@ export default function Map({
         >
           {mapReady && (
             <>
-              {/*<IconControlComponent />*/}
+              <IconControlComponent />
               <ZoomControl position="bottomleft"/>
               <LayersControl position="bottomright" collapsed={false}>
                 <LayersControl.BaseLayer checked={mapInView == 1} name="Floor 2">

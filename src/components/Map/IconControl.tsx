@@ -2,12 +2,12 @@ import { Control, DomUtil } from 'leaflet';
 import type { Dispatch, SetStateAction } from 'react';
 
 class IconControl extends Control {
-  private setShowIcons: Dispatch<SetStateAction<boolean>>;
+  private setShowIcons: (b: boolean) => void;
   private showIcons: boolean;
   private button1: HTMLButtonElement | null = null;
   private button2: HTMLButtonElement | null = null;
 
-  constructor(setShowIcons: Dispatch<SetStateAction<boolean>>, showIcons: boolean) {
+  constructor(setShowIcons: (b: boolean) => void, showIcons: boolean) {
     super({ position: 'topleft' });
     this.setShowIcons = setShowIcons;
     this.showIcons = showIcons;
@@ -34,7 +34,7 @@ class IconControl extends Control {
     const controlDiv = DomUtil.create('div', 'flex flex-row items-center gap-2 rounded-lg', container);
     
     this.button1 = DomUtil.create('button', '', controlDiv);
-    this.button1.innerHTML = 'Siffror';
+    this.button1.innerHTML = 'Numbers';
     this.button1.onclick = (e) => {
       e.stopPropagation();
       this.showIcons = false;
@@ -43,7 +43,7 @@ class IconControl extends Control {
     };
 
     this.button2 = DomUtil.create('button', '', controlDiv);
-    this.button2.innerHTML = 'Loggor';
+    this.button2.innerHTML = 'Logos';
     this.button2.onclick = (e) => {
       e.stopPropagation();
       this.showIcons = true;
