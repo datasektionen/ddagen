@@ -119,7 +119,7 @@ const positions: { [k: number]: [number, number] } = {
 
 
 const endings: { [k: string]: string } = {
-  "7": "svg" , "9": "svg" , "11": "svg" , "13": "svg" , "15": "svg" , "16": "svg" , "17": "svg" , "22": "svg" , "30": "svg" , "34": "svg" , "36": "svg" , "41": "svg" , "44": "svg" , "46": "svg" , "49": "svg" , "51": "svg" , "53": "svg" , "54": "svg" , "55": "svg" , "56": "svg" , "57": "svg" , "58": "svg" , "62": "svg" , "63": "svg" , "67": "svg" , "68": "svg" , "69": "svg" , "70": "svg" , "72": "svg" , "73": "svg" , "74": "svg" , "76": "svg" , "78": "svg" , "89": "svg" , "93": "svg"
+  "7": "svg" , "9": "svg" , "11": "svg" , "13": "svg" , "15": "svg" , "16": "svg" , "17": "svg" , "22": "svg" , "30": "svg" , "34": "svg" , "36": "svg" , "41": "svg" , "44": "svg" , "46": "svg" , "49": "svg" , "51": "svg" , "53": "svg" , "54": "svg" , "55": "svg" , "56": "svg" , "57": "svg" , "58": "svg" , "62": "svg" , "63": "svg" , "66": "svg" , "68": "svg" , "69": "svg" , "72": "svg" , "73": "svg" , "74": "svg" , "76": "svg" , "78": "svg" , "89": "svg" , "93": "svg"
 }
 
 function isValidPosition(position: unknown): position is [number, number] {
@@ -194,7 +194,7 @@ export default function Map({
     }
 
     const exhibitorMarker = (id: string, selected: boolean): DivIcon => {
-      const size = 20 + (zoomLevel - 8) * (zoomLevel - 8) * 5;
+      const size = 15 + (zoomLevel - 8) * (zoomLevel - 8) * 5;
 
       return new DivIcon({
         html: (showIcons && zoomLevel >= 9) ? `
