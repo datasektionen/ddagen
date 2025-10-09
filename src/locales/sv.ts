@@ -6,11 +6,11 @@ export default {
   about: "Om Oss",
   home: {
     introFirstBlock:
-      "Nordens största arbetsmarknadsdag för datateknikstudenter firar 25-årsjubileum",
+      "Nordens största arbetsmarknadsdag för datateknikstudenter firade 25-årsjubileum",
     introSecondBlock:
       "Är du en student inom data eller IT och söker efter din framtida arbetsplats, eller representerar du ett företag som letar talangfulla medarbetare?",
     introThirdBlock:
-      "Då är D-Dagen det perfekta tillfället för dig att träffa personer inom branschen och knyta värdefulla kontakter! I år firar D-Dagen sitt storslagna 25-års jubileum, vilket innebär att mässan kommer bli större och bättre än någonsin, med över 100+ utställare och 3000+ deltagare.",
+      "Då är D-Dagen det perfekta tillfället för dig att träffa personer inom branschen och knyta värdefulla kontakter! I år firade D-Dagen sitt storslagna 25-års jubileum, vilket innebär att mässan kommer bli större och bättre än någonsin, med över 100+ utställare och 3000+ deltagare.",
     introSignOff: "Detta är ett firande som man inte vill missa!\n Hoppas vi ses!",
     introDDA: "Max Berglund & Mortada Nasser, D-Dagenansvariga",
     representative: "Företagsrepresentant?",
@@ -30,16 +30,12 @@ export default {
     },
     stats: [
       {
-        value: "100+",
+        value: "90+",
         type: "Utställare förra året"
       },
       {
         value: "3000+",
         type: "Deltagare"
-      },
-      {
-        value: "25 års",
-        type: "Jubileum"
       },
       {
         value: "100%",
@@ -1053,11 +1049,10 @@ export default {
     subheader1: "Kontakta oss",
     subheader2: "Projektansvariga",
     p1: "Om ni har några egna förslag på evenemang eller aktiviteter ni vill anordna för studenterna på Konglig Datasektionen, eller om ni har några andra frågor eller funderingar om företagspaket är det bara att höra av er till oss på...",
-    p2: "För mer information och övriga frågor till ansvariga för D-Dagen kontakta oss på...",
-    salesHeader: "Säljgruppen",
-    bossesHeader: "Ansvariga",
+    p2: "För mer information och övriga frågor till ansvarig för D-Dagen kontakta...",
+    salesHeader: "Säljgruppen 2025",
+    bossesHeader: "Ansvarig",
     roles: [
-      "D-DAGENANSVARIG",
       "D-DAGENANSVARIG",
       "PR-ANSVARIG",
       "WEBB-ANSVARIG",
@@ -1388,7 +1383,7 @@ export default {
   },
   sok:{
     notActive: "Går inte att söka just nu, håll koll på sociala medier för vidare information i framtiden",
-    header: "Sök Ledningsgruppen 26",
+    header: "Sök Projektgruppen 26",
     description: "Årets D-Dagen ska bli Datasektionens största och bästa arbetsmarknadsmässa någonsin! Detta är i alla fall visionen vi har som ansvariga i år. Dock är det omöjligt för oss att arrangera ett så här stort evenemang helt själva. Till vår hjälp behöver vi en ambitiös projektgrupp som har drivet att skapa någonting extraordinärt. Vi vill förbättra den interna kommunikation från tidigare år och kommer därför satsa extra mycket på teambuilding för att få en tajt grupp. Vi förväntar oss också att alla i projektgruppen är sociala med god samarbetsförmåga och självgående i sina uppgifter.",
     search:"SÖK",
     info:"Information om rollerna",
