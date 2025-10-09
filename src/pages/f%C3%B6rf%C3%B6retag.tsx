@@ -9,7 +9,7 @@ export default function ForCompanies() {
   const seoContent = {
     sv: {
       title: "För Företag - Träffa IT-studenter & Hitta Framtidens Talanger",
-      description: "D-Dagen är KTH Datasektionens årliga arbetsmarknadsdag där företag möter framtidens IT-talanger. Delta den 9 oktober på KTH Campus Valhallavägen och nätverka med civilingenjörsstudenter inom data och IT. Upptäck våra företagspaket och avsluta dagen med en exklusiv bankett. ",
+      description: "D-Dagen är KTH Datasektionens årliga arbetsmarknadsdag där företag möter framtidens IT-talanger. Delta den 8 oktober på KTH Campus Valhallavägen och nätverka med civilingenjörsstudenter inom data och IT. Upptäck våra företagspaket och avsluta dagen med en exklusiv bankett. ",
       url: "https://ddagen.se/förföretag",
     },
     en: {

@@ -87,7 +87,7 @@ function Logo({ class: className }: { class?: string }) {
 
       `}
     >
-      2025
+      2026
     </p>
   </div>
   }
@@ -128,7 +128,7 @@ function Logo({ class: className }: { class?: string }) {
 
         `}
       >
-        2025
+        2026
       </p>
     </Link>
   );

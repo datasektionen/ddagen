@@ -30,16 +30,12 @@ export default {
     },
     stats: [
       {
-        value: "100+",
+        value: "90+",
         type: "Exhibitors last year"
       },
       {
         value: "3000+",
         type: "Visitors"
-      },
-      {
-        value: "25th",
-        type: "Anniversary"
       },
       {
         value: "100%",
@@ -1057,11 +1053,10 @@ export default {
     subheader1: "Contact us",
     subheader2: "Project Managers",
     p1: "If you have any suggestions for events or activities you want to organize for the students at the Computer Science Chapter, or if you have any other questions or concerns about company packages and the fair,  feel free to contact us at...",
-    p2: "For more information and other questions to those responsible for D-Dagen, contact us at...",
-    salesHeader: "Sales team",
-    bossesHeader: "Managers",
+    p2: "For more information and other questions to the responsible for D-Dagen, contact...",
+    salesHeader: "Sales team 2025",
+    bossesHeader: "Manager",
     roles: [
-      "HEAD OF D-DAGEN",
       "HEAD OF D-DAGEN",
       "HEAD OF PR",
       "LEAD DEVELOPER",
@@ -1401,7 +1396,7 @@ export default {
   },
   sok:{
     notActive: "The signup is not active yet, keep an eye on social media for when it opens!",
-    header: "Signup for leadership group 26",
+    header: "Signup for project group 26",
     description: "The goal for this year's D-Dagen is to make it the biggest and best career fair in Datasektionen's history! This is the vision we have as organizers this year. However, it's impossible for us to organize such a large event entirely on our own. We need an ambitious project group to help us, one that has the drive to create something extraordinary. We aim to improve internal communication from previous years, and, therefore, we will focus extensively on team building to create a close-knit group. We also expect that everyone in the project group is sociable, has good teamwork skills, and is self-driven in their tasks.",
     search:"SIGNUP",
     info:"Information about the roles",

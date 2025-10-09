@@ -196,7 +196,7 @@ export default function SignupPage() {
         <div className="flex flex-row items-center justify-center">
           <Link
             className="flex flex-row items-center justify-center w-[175px] bg-cerise rounded-full h-[60px] mt-[30px] text-white text-center"
-            href="https://docs.google.com/forms/d/e/1FAIpQLSfc8vCKFG_EKLtRIetKtcsYDKNkKMK1DXZBUzpVK357Sm7KlA/viewform"
+            href="/pg26"
             target="_blank"
           >
             {t.sok.search}
@@ -292,11 +292,13 @@ export default function SignupPage() {
             {t.sok.moreInfo}
           </h2>
 
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfc8vCKFG_EKLtRIetKtcsYDKNkKMK1DXZBUzpVK357Sm7KlA/viewform" target="_blank">
-            <button className="w-[175px] bg-cerise rounded-full h-[60px] mt-[30px]">
-              <p className="text-white text-center">{t.sok.search}</p>
-            </button>
-          </a>
+          <Link
+            className="flex flex-row items-center justify-center w-[175px] bg-cerise rounded-full h-[60px] mt-[30px] text-white text-center"
+            href="/pg26"
+            target="_blank"
+          >
+            {t.sok.search}
+          </Link>
         </div>
       </div>
     );
