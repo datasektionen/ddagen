@@ -39,7 +39,7 @@ export function Countdown() {
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
-  /*
+
   useEffect(()=>{
     const target = new Date("10/8/2026 10:00:00+02:00") // vilket datum är d-dagen?
     const interval = setInterval(() =>{
@@ -65,13 +65,6 @@ export function Countdown() {
     },1000)
     return () => clearInterval(interval)
   },[]);
-  */
-  useEffect(() => {
-    setDays(0);
-    setHours(0);
-    setMinutes(0);
-    setSeconds(0);
-  }, []);
 
   return (
     <div className="hover:cursor-default gap-5 columns-4 flex items-center justify-center">
