@@ -81,7 +81,7 @@ export default function forSponsors() {
                   {t.forSponsors.companyPackages.text}
                   <br />
                   {t.forSponsors.companyPackages.text2}
-                  <a className='text-yellow' href='mailto:jamie.groop@ddagen.se'>jamie.groop@ddagen.se</a>
+                  <a className='text-yellow' href='mailto:sean.zisheng@ddagen.se'>sean.zisheng@ddagen.se</a>
                 </p>
               </div>
 
@@ -163,7 +163,7 @@ export default function forSponsors() {
               </h2>
               <p className="text-white text-base sm:text-lg pt-4 mb-6 max-w-xl">
                 {t.forSponsors.interestedText}
-                <a className='text-yellow' href='mailto:jamie.groop@ddagen.se'>jamie.groop@ddagen.se</a>
+                <a className='text-yellow' href='mailto:sean.zisheng@ddagen.se'>sean.zisheng@ddagen.se</a>
               </p>
           </ImageTextSection>
         </div>
