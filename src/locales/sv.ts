@@ -34,7 +34,7 @@ export default {
         type: "Utställare förra året"
       },
       {
-        value: "3000+",
+        value: "4000+",
         type: "Deltagare"
       },
       {
