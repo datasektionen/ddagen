@@ -192,12 +192,12 @@ export default function Logos({ exhibitorData }: LogosProps) {
   const seoContent = {
     sv: {
       title: "Våra Utställare - Träffa Ledande IT-företag",
-      description: "Upptäck företagen som deltar på D-Dagen 2025! Träffa ledande IT- och techföretag på KTH den 9 oktober och utforska karriärmöjligheter inom data och IT. Se hela listan över utställare här.",
+      description: "Upptäck företagen som deltar på D-Dagen 2025! Träffa ledande IT- och techföretag på KTH den 8 oktober och utforska karriärmöjligheter inom data och IT. Se hela listan över utställare här.",
       url: "https://ddagen.se/utställare",
     },
     en: {
       title: "Our Exhibitors - Meet Leading IT Companies",
-      description: "Discover the companies attending D-Dagen 2025! Meet top IT and tech firms at KTH on October 9 and explore career opportunities in computer science and IT. View the full list of exhibitors here.",
+      description: "Discover the companies attending D-Dagen 2025! Meet top IT and tech firms at KTH on October 8 and explore career opportunities in computer science and IT. View the full list of exhibitors here.",
       url: "https://ddagen.se/en/utställare",
     },
   };
