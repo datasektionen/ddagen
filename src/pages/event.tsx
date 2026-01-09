@@ -267,7 +267,7 @@ export default function Events() {
             <div className="w-4 bg-cerise h-full min-h-[30px] rounded-b-full"></div>
           </div>
           <div>
-            <h1 className="text-5xl text-[#C2952C] p-4 font-medium text-center"> {t.event.fair} 9/10</h1>
+            <h1 className="text-5xl text-[#C2952C] p-4 font-medium text-center"> {t.event.fair} 8/10</h1>
           </div>
           <div className="max-sm:hidden flex justify-center">
             <div className="w-4 bg-[#C2952C] h-full min-h-[30px] rounded-t-full"></div>
