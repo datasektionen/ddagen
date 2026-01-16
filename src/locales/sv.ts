@@ -18,7 +18,7 @@ export default {
       "Vill du nå ut till tusentals civilingenjörs-studenter vid KTH? Som utställare på D-Dagen har du möjlighet att göra just det! Klicka här nedanför för att läsa mer och göra en intresseanmälan.",
     representativeButton: "Intresseanmälan",
     info: {
-      firstPart: "9 oktober",
+      firstPart: "8 oktober",
       secondPart: "10:00 - 16:00",
       thirdPart: "KTH",
     },
@@ -52,7 +52,7 @@ export default {
     fairText1:
       "D-Dagen är Datasektionens årliga arbetsmarknadsdag. Det är ett heldagsevent där företag och studenter verksamma inom data och IT får en möjlighet att knyta kontakter och lära känna varandra. Detta skapar goda möjligheter för en mer direkt och personlig kontakt mellan företagsrepresentanter och studenter.",
     fairText2:
-      "I år hålls mässan 9e oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15-19 på KTH Campus Valhallavägen. Under dagen kommer det finnas en lounge för utställare, och på kvällen anordnas en bankett för att avsluta dagen.",
+      "I år hålls mässan 8e oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15-19 på KTH Campus Valhallavägen. Under dagen kommer det finnas en lounge för utställare, och på kvällen anordnas en bankett för att avsluta dagen.",
     companyPackages: {
       title: "Vill ditt företag nå ut till tusentals civilingenjörsstudenter vid KTH?",
       text: "Vi erbjuder flera olika paket för företag:",
@@ -130,7 +130,7 @@ export default {
     title: "För Sponsorer",
     aboutFair: "Om mässan",
     fairText1: "D-Dagen är en ledande arbetsmarknadsmässa där sponsorer möter framtidens IT- och datatalanger från KTH. Som sponsor får ni synlighet, engagemang och möjlighet att bygga värdefulla relationer.",
-    fairText2: "Mässan hålls den 9 oktober på KTH Campus och lockar tusentals studenter - med stor synlighet både på plats och digitalt är det ett perfekt tillfälle att visa upp ert varumärke och era produkter i en inspirerande miljö.",    companyPackages: {
+    fairText2: "Mässan hålls den 8 oktober på KTH Campus och lockar tusentals studenter - med stor synlighet både på plats och digitalt är det ett perfekt tillfälle att visa upp ert varumärke och era produkter i en inspirerande miljö.",    companyPackages: {
       title: "Vill ni synas bland tusentals teknologstudenter på KTH?",
       text: "Vi erbjuder flera olika sponsorpaket som ger ert företag stor synlighet och möjlighet till engagemang:",
       text2: "Har ni frågor eller vill skräddarsy ett samarbete? Kontakta ",
@@ -191,7 +191,7 @@ export default {
     fairText1:
       "D-Dagen är Datasektionens årliga arbetsmarknadsdag. Det är ett heldagsevent där företag och studenter verksamma inom data och IT får en möjlighet att knyta kontakter och lära känna varandra. Detta skapar goda möjligheter för en mer direkt och personlig kontakt mellan företagsrepresentanter och studenter.",
     fairText2:
-      "I år hålls mässan 9e oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15 på KTH Campus Valhallavägen. Studenter kommer erbjudas möjligheten att gå på kontaktsamtal med företag för att knyta närmare kontakt med specifika företag (begränsade platser per företag).",
+      "I år hålls mässan 8e oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15 på KTH Campus Valhallavägen. Studenter kommer erbjudas möjligheten att gå på kontaktsamtal med företag för att knyta närmare kontakt med specifika företag (begränsade platser per företag).",
     eventPageButton: "D-Dagen Event",
     companyMeetings: "Kontaktsamtal",
     companyMeetingsText:
@@ -1006,7 +1006,7 @@ export default {
     table1row3: "VAR ÄR D-DAGEN?",
     table1text1:
       "D-Dagen är den årliga karriärmässan som anordnas av Datasektionen på Kungliga Tekniska Högskolan. D-Dagen är numera Nordens största karriärmässa inom IT.",
-    table1text2: "Årets D-Dagen äger rum torsdag den 9:e oktober.",
+    table1text2: "Årets D-Dagen äger rum torsdag den 8:e oktober.",
     table1text3: "D-Dagen hålls i vårt kårhus Nymble, som ligger på KTH.",
     table2row1: "KAN VÅRT FÖRETAG FÅ MER EXPONERING MOT STUDENTER?",
     table2row2:
