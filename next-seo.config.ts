@@ -1,6 +1,6 @@
 export default {
-    titleTemplate: "%s | D-Dagen 2025",
-    description: "Upptäck D-Dagen 2025 vid KTH - Skandinaviens ledande teknikmässa för IT-studenter och arbetsgivare.",
+    titleTemplate: "%s | D-Dagen 2026",
+    description: "Upptäck D-Dagen 2026 vid KTH - Skandinaviens ledande teknikmässa för IT-studenter och arbetsgivare.",
     openGraph: {
       type: 'website',
       locale: 'sv_SE',
@@ -8,10 +8,10 @@ export default {
       site_name: 'D-Dagen',
       images: [
         {
-          url: 'https://dev.ddagen.se/img/ddagen-og-image.png',
-          width: 1601,
-          height: 811,
-          alt: 'D-Dagen 2025',
+          url: 'https://dev.ddagen.se/img/logos/ddagen_2026_rectangle.png',
+          width: 1080,
+          height: 608,
+          alt: 'D-Dagen 2026',
         }
       ],
     },

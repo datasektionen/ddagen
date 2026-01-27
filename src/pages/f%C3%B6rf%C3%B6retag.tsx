@@ -14,7 +14,7 @@ export default function ForCompanies() {
     },
     en: {
       title: "For Companies - Meet IT Students & Recruit Top Talent",
-      description: "D-Dagen is KTH's annual career fair where companies connect with future IT professionals. Join us on October 9 at KTH Campus Valhallavägen to network with top engineering students in computer science and IT. Explore our company packages and end the day with an exclusive banquet.",
+      description: "D-Dagen is KTH's annual career fair where companies connect with future IT professionals. Join us on October 8 at KTH Campus Valhallavägen to network with top engineering students in computer science and IT. Explore our company packages and end the day with an exclusive banquet.",
       url: "https://ddagen.se/en/förstudenter",
     },
   };
