@@ -17,7 +17,7 @@ function FooterLink({ href, children }: { href: string, children: React.ReactNod
 
 export default function Footer() {
   const { footer } = useLocale();
-  const hasMainSponsor = true;
+  const hasMainSponsor = false;
 
   return (
     <footer className="

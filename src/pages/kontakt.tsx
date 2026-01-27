@@ -53,12 +53,12 @@ export default function Contact() {
   const seoContent = {
     sv: {
       title: "Kontakt - Hör Av Dig till Oss",
-      description: "Har du förslag på evenemang eller aktiviteter för studenterna på Konglig Datasektionen? Eller har du frågor om företagspaket? Kontakta oss för mer information och för att diskutera hur vi kan samarbeta för att göra D-Dagen 2025 till en succé!",
+      description: "Har du förslag på evenemang eller aktiviteter för studenterna på Konglig Datasektionen? Eller har du frågor om företagspaket? Kontakta oss för mer information och för att diskutera hur vi kan samarbeta för att göra D-Dagen till en succé!",
       url: "https://ddagen.se/kontakt",
     },
     en: {
       title: "Contact - Get in Touch with Us",
-      description: "Do you have ideas for events or activities for students at the Royal Institute of Technology? Or do you have questions about company packages? Contact us for more information and to discuss how we can collaborate to make D-Dagen 2025 a success!",
+      description: "Do you have ideas for events or activities for students at the Royal Institute of Technology? Or do you have questions about company packages? Contact us for more information and to discuss how we can collaborate to make D-Dagen a success!",
       url: "https://ddagen.se/en/kontakt",
     },
   };
@@ -147,7 +147,7 @@ export default function Contact() {
             ))}
 
             {rows2.map((i, _) => (
-              <div className=" hidden lg:hidden sm:flex justify-center flex-row px-12 mb-12 gap-10 mb-8" key={i}>
+              <div className=" hidden lg:hidden sm:flex justify-center flex-row px-12 gap-10 mb-8" key={i}>
                 {layout2[i].map((i, _) => (
                   <div className="flex flex-col" key={i} style={{ visibility: i > 6 ? 'hidden' : 'visible' }}> {/** Cheat to ensure even design*/}
                     <img src={images[i]}></img>

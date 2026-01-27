@@ -42,12 +42,12 @@ export default function Home() {
   const seoContent = {
     sv: {
       title: "Skandinaviens Ledande Teknikmässa",
-      description: "Utforska de bästa IT-företagen på D-Dagen 2025 vid KTH. Hitta jobbmöjligheter, nätverka och utforska teknikens framtid.",
+      description: "Utforska de bästa IT-företagen på D-Dagen vid KTH. Hitta jobbmöjligheter, nätverka och utforska teknikens framtid.",
       url: "https://ddagen.se",
     },
     en: {
       title: "Scandinavia's Leading Tech Job Fair",
-      description: "Discover top IT companies at D-Dagen 2025 at KTH. Find job opportunities, network, and explore the future of tech careers.",
+      description: "Discover top IT companies at D-Dagen at KTH. Find job opportunities, network, and explore the future of tech careers.",
       url: "https://ddagen.se/en",
     },
   };

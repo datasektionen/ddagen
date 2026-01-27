@@ -209,12 +209,12 @@ export default function Events() {
   const seoContent = {
     sv: {
       title: "Upptäck Spännade Event",
-      description: "Upptäck spännande event inför D-Dagen 2025! Från lunchevent till afterwork, erbjuder vi flera möjligheter att nätverka med företag och förbättra dina karriärmöjligheter. Delta i våra event för att skapa värdefulla kontakter inom tech-branschen.",
+      description: "Upptäck spännande event inför D-Dagen 2026! Från lunchevent till afterwork, erbjuder vi flera möjligheter att nätverka med företag och förbättra dina karriärmöjligheter. Delta i våra event för att skapa värdefulla kontakter inom tech-branschen.",
       url: "https://ddagen.se/event",
     },
     en: {
       title: "Discover Exciting Events",
-      description: "Discover exciting events leading up to D-Dagen 2025! From lunch events to afterwork gatherings, we offer multiple opportunities to network with companies and enhance your career prospects. Join our events to create valuable connections in the tech industry.",
+      description: "Discover exciting events leading up to D-Dagen 2026! From lunch events to afterwork gatherings, we offer multiple opportunities to network with companies and enhance your career prospects. Join our events to create valuable connections in the tech industry.",
       url: "https://ddagen.se/en/event",
     },
   };
