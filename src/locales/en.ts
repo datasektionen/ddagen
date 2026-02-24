@@ -28,6 +28,7 @@ export default {
       minutes: "minutes",
       seconds: "seconds",
     },
+    exhibitButton: "Exhibit at D-Dagen",
     stats: [
       {
         value: "90+",
