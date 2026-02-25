@@ -408,12 +408,12 @@ export default function Navbar() {
                 ]}
               />
             </div>
-            {/* <Link
+            <Link
               className="bg-cerise py-2.5 px-4 rounded-full text-center hover:scale-105 transition-transform"
               href="/företagsanmälan"
             >
               {t.companyForm}
-            </Link> */}
+            </Link>
             <button
               data-dont-close
               onClick={swapLocale}
