@@ -35,7 +35,7 @@ export default {
         type: "Exhibitors last year"
       },
       {
-        value: "3000+",
+        value: "4000+",
         type: "Visitors"
       },
       {
