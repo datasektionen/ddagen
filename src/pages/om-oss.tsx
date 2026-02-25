@@ -5,17 +5,21 @@ import { NextSeo } from 'next-seo';
 const imagesPath = "/img/projectGroup/p_";
 
 function formatImagePath(name: string) {
-  return imagesPath + name + ".jpg";
+  return imagesPath + name + ".png";
 }
 
 function stripLastName(name: string) {
-  return name.split(" ")[0].toLocaleLowerCase();
+  return name
+    .toLowerCase()
+    .replaceAll(" ", "_")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
 }
 
 const managersName        = ["Max Berglund", "Mortada Nasser"]
 const prNames             = ["Julia Potrus", "Sabrina Larsson", "Natalia Winiarska", "Tasfia Alam", "Abdelrahman Aldaker"]
 const devNames            = ["Theodor Fritsch", "Linus Rackner", "Elsa Linnéusson",  "David Björklund"]
-const salesNames          = ["Oskar Furuhed", "Josef Behnam", "Sean Zishend", "Hedda Litzén Hagström", "Didzis Urtnas", "Ludwig Berglind", "Oliver Zhou", "Jamie Groop"]
+const salesNames          = ["David Nilsson", "Hedda Fahlin", "Husein Jaber", "Josef Behman", "Louise Engbrink", "Oliver Haux", "Sean Zhang", "Yen Li Oh"]
 const massNames           = ["Felicia Murkes", "Silan Centinkaya", "Emanuel Malki", "Elias Rosberg", "Amar Ibrahim"]
 const ecoNames            = ["Melissa Arslan", "Anton Jansson"]
 
