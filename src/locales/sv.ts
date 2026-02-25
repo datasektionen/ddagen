@@ -28,6 +28,7 @@ export default {
       minutes: "minuter",
       seconds: "sekunder",
     },
+    exhibitButton: "Ställ ut på D-Dagen",
     stats: [
       {
         value: "90+",
