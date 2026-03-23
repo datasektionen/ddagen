@@ -28,13 +28,14 @@ export default {
       minutes: "minuter",
       seconds: "sekunder",
     },
+    exhibitButton: "Ställ ut på D-Dagen",
     stats: [
       {
         value: "90+",
         type: "Utställare förra året"
       },
       {
-        value: "3000+",
+        value: "4000+",
         type: "Deltagare"
       },
       {
@@ -592,7 +593,7 @@ export default {
         "</tbody>" +
       "</table>" +
       "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
-        "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+        "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
       "</a>" +
     "</div>"
   },
@@ -607,11 +608,12 @@ export default {
       email: "Mejladress",
       contactPerson: "Kontaktperson",
       phoneNumber: "Telefonnummer",
+      howDidYouFindUs: "Hur hittade ni D-Dagen? (Valbar)"
     },
     confirm: "Skicka",
     ignoreError: "Gå vidare ändå",
     noMoreRegistrations:
-      "Anmälningar för D-Dagen 2025 har ännu inte öppnat. Håll utkik på våra sociala medier för när den öppnar!",
+      "Anmälningar för D-Dagen 2027 har ännu inte öppnat. Håll utkik på våra sociala medier för när den öppnar!",
   },
   postCompanyForm: {
     title: "Intresseanmälan bekräftad",
@@ -684,7 +686,7 @@ export default {
         "</tbody>" +
       "</table>" +
       "<a href=\"https://ddagen.se/\" alt=\"Link to ddagen.se\">" +
-        "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+        "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
       "</a>" +
     "</div>"
   },
@@ -710,8 +712,8 @@ export default {
               "<tr>" +
                 "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                   "<p>We are pleased to confirm we have received your exhibitor registration. " +
-                    "We will contact you during the spring about whether you got a spot at D-Dagen. " +
-                    "You can expect to hear from us during spring. </p><br><br>" +
+                    "We will contact you about whether you got a spot at D-Dagen. " +
+                    "You can expect to hear from us soon! </p><br><br>" +
                   "<p>Here are the details of your registration: </p><br><br>" +
                 "</div>" +
               "</tr>" +
@@ -738,7 +740,7 @@ export default {
             "</tbody>" +
           "</table>" +
         "<a href=\"https://ddagen.se/\" alt=\"Link to ddagen.se\" >" +
-          "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\" ></img>" +
+          "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\" ></img>" +
         "</a>" +
       "</div>",
   },
@@ -780,7 +782,7 @@ export default {
           "</tbody>" +
         "</table>" +
         "<a href=\"https://ddagen.se/\" alt=\"Link to ddagen.se\">" +
-          "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+          "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
         "</a>" +
       "</div>",
     },
@@ -821,7 +823,7 @@ export default {
           "</tbody>" +
         "</table>" +
         "<a href=\"https://ddagen.se/\" alt=\"Link to ddagen.se\">" +
-          "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+          "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
         "</a>" +
       "</div>",
     },
@@ -862,7 +864,7 @@ export default {
           "</tbody>" +
         "</table>" +
         "<a href=\"https://ddagen.se/\" alt=\"Link to ddagen.se\">" +
-          "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+          "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
         "</a>" +
       "</div>",
     },
@@ -902,7 +904,7 @@ export default {
           "</tbody>" +
         "</table>" +
         "<a href=\"https://ddagen.se/\" alt=\"Link to ddagen.se\">" +
-          "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+          "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
         "</a>" +
       "</div>",
     },
@@ -948,7 +950,7 @@ export default {
             "</tbody>" +
           "</table>" +
           "<a href=\"https://ddagen.se/\" alt=\"Link to ddagen.se\">" +
-            "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+            "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
           "</a>" +
         "</div>",
       },
@@ -994,7 +996,7 @@ export default {
             "</tbody>" +
           "</table>" +
           "<a href=\"https://ddagen.se/\" alt=\"Link to ddagen.se\">" +
-            "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+            "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
           "</a>" +
         "</div>",
       },

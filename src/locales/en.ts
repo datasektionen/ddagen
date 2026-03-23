@@ -28,13 +28,14 @@ export default {
       minutes: "minutes",
       seconds: "seconds",
     },
+    exhibitButton: "Exhibit at D-Dagen",
     stats: [
       {
         value: "90+",
         type: "Exhibitors last year"
       },
       {
-        value: "3000+",
+        value: "4000+",
         type: "Visitors"
       },
       {
@@ -597,7 +598,7 @@ export default {
         "</tbody>" +
       "</table>" +
       "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
-        "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+        "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
       "</a>" +
     "</div>"
   },
@@ -612,11 +613,12 @@ export default {
       email: "Email Address",
       contactPerson: "Contact Person",
       phoneNumber: "Phone Number",
+      howDidYouFindUs: "How did you find out about D-Dagen? (Optional)"
     },
     confirm: "Send",
     ignoreError: "Continue anyway",
     noMoreRegistrations:
-      "Registrations for D-Dagen 2025 have not yet opened. Keep an eye on our social media for when it opens!",
+      "Registrations for D-Dagen 2026 have not yet opened. Keep an eye on our social media for when it opens!",
   },
   postCompanyForm: {
     title: "Registration confirmed",
@@ -656,7 +658,7 @@ export default {
     salesGroup: "Sales Team",
     sponsorText: "Main sponsor for D-Dagen 2025",
     sponsorLink: "https://en.omegapoint.se",
-    notDecided: "Main sponsor for D-Dagen 2025 will be shown here",
+    notDecided: "Main sponsor for D-Dagen 2026 will be shown here",
   },
   newExhibitorEmail: {
     emailSubject: "D-Dagen Exhibitor Account Created",
@@ -688,7 +690,7 @@ export default {
         "</tbody>" +
       "</table>" +
       "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
-        "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+        "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
       "</a>" +
     "</div>"
   },
@@ -699,7 +701,8 @@ export default {
       organizationNumber: string,
       email: string,
       contactPerson: string,
-      phoneNumber: string
+      phoneNumber: string,
+      howDidYouFindUs: string
     ) =>
       "<div style=\"padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
           "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" +
@@ -714,8 +717,8 @@ export default {
               "<tr>" +
                 "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                   "<p>We are pleased to confirm we have received your exhibitor registration. " +
-                    "We will contact you during the spring about whether you got a spot at D-Dagen. " +
-                    "You can expect to hear from us during spring. </p><br><br>" +
+                    "We will contact you during the about whether you got a spot at D-Dagen. " +
+                    "You can expect to hear from us soon! </p><br><br>" +
                   "<p>Here are the details of your registration: </p><br><br>" +
                 "</div>" +
               "</tr>" +
@@ -727,6 +730,7 @@ export default {
                     "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Email address: " + email + "</li>" +
                     "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Contact person: " + contactPerson + "</li>" +
                     "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Phone number: " + phoneNumber + "</li>" +
+                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> How did you find us: " + howDidYouFindUs + "</li>" +
                   "</ul>" +
                 "</div>" +
               "</tr>" +
@@ -742,7 +746,7 @@ export default {
             "</tbody>" +
           "</table>" +
         "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\" >" +
-          "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\" ></img>" +
+          "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\" ></img>" +
         "</a>" +
       "</div>",
   },
@@ -784,7 +788,7 @@ export default {
           "</tbody>" +
         "</table>" +
         "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
-          "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+          "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
         "</a>" +
       "</div>",
     },
@@ -825,7 +829,7 @@ export default {
           "</tbody>" +
         "</table>" +
         "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
-          "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+          "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
         "</a>" +
       "</div>",
     },
@@ -866,7 +870,7 @@ export default {
             "</tbody>" +
           "</table>" +
           "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
-            "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+            "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
           "</a>" +
         "</div>",
     },
@@ -906,7 +910,7 @@ export default {
           "</tbody>" +
         "</table>" +
         "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
-          "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+          "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
         "</a>" +
       "</div>",
     },
@@ -952,7 +956,7 @@ export default {
             "</tbody>" +
           "</table>" +
           "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
-            "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+            "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
           "</a>" +
         "</div>",
       },
@@ -998,7 +1002,7 @@ export default {
             "</tbody>" +
           "</table>" +
           "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
-            "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+            "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
           "</a>" +
         "</div>",
       },
@@ -1054,11 +1058,11 @@ export default {
   contact: {
     header: "Contact",
     subheader1: "Contact us",
-    subheader2: "Project Managers",
+    subheader2: "Project Managers 2026",
     p1: "If you have any suggestions for events or activities you want to organize for the students at the Computer Science Chapter, or if you have any other questions or concerns about company packages and the fair,  feel free to contact us at...",
     p2: "For more information and other questions to the responsible for D-Dagen, contact...",
     salesHeader: "Sales team 2025",
-    bossesHeader: "Manager",
+    bossesHeader: "Manager 2026",
     roles: [
       "HEAD OF D-DAGEN",
       "HEAD OF PR",
@@ -1323,7 +1327,7 @@ export default {
     paragraph1:
       "D-Dagen is an annual trade fair organized by the Computer Science Student Association at KTH (Royal Institute of Technology). At D-Dagen, companies have the opportunity to meet and interact with potential future employees from KTH. At the same time, we offer our students a chance to learn more about career opportunities, network, and participate in lectures and other company events.",
     paragraph2:
-      "The term ”D-Dagen” was coined as early as the year 2000, when it was the Computer Science Chapter’s industry-day with 13 attending companies in the E-building on KTH Campus. Since then, D-Dagen has grown and in 2016 it entered the student union building, Nymble. Now D-Dagen is considered to be the largest career fair in the Nordics for Computer Science students, as well as one of the largest career fairs at KTH.",
+      "The term ”D-Dagen” was coined as early as the year 2000, when it was the Computer Science Chapter's industry-day with 13 attending companies in the E-building on KTH Campus. Since then, D-Dagen has grown and in 2016 it entered the student union building, Nymble. Now D-Dagen is considered to be the largest career fair in the Nordics for Computer Science students, as well as one of the largest career fairs at KTH.",
     paragraph3:
       "Over time, D-Dagen has evolved into much more than just a one-day fair. In the weeks leading up to the fair, we give companies the opportunity to hold lunch lectures and other events together with our students. In the evening after the fair, we organize a larger dinner where students and company representatives can engage in more relaxed conversations.",
     info1: "What is D-Dagen",
