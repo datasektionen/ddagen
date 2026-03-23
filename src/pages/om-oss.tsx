@@ -69,7 +69,7 @@ function Team({
         group-hover/card:opacity-100 group-hover/card:translate-y-0 
         ${isOpen ? 'opacity-100 translate-y-0' : ''}`}
       >
-        <img src="\img\arrow-down.png" 
+        <img src="\icons\arrow-down.png" 
             className={`w-6 h-auto text-drop-shadow 
             transition-all duration-500
             ${isOpen ? 'rotate-180' : "rotate-0 "} `}>    

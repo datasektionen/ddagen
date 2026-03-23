@@ -32,7 +32,7 @@ export function Table(
           >
             {questions[i]}
             <img
-              src="/img/caret.svg"
+              src="/icons/caret.svg"
               className={`${
                 stateAction[i][0] ? "rotate-180" : ""
               } duration-200 ml-4 h-4 `}

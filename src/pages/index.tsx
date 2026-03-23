@@ -137,7 +137,7 @@ export default function Home() {
               className='absolute hover:cursor-pointer hover:scale-110 transition-transform w-10'
               onClick={scrollDown}
             >
-              <img src="/img/skrollaner-indikator.svg" alt="Scroll Indicator" />
+              <img src="/icons/skrollaner-indikator.svg" alt="Scroll Indicator" />
               
             </div>
           </div>
