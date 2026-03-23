@@ -56,7 +56,7 @@ export default {
       "I år hålls mässan 8e oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15-19 på KTH Campus Valhallavägen. Under dagen kommer det finnas en lounge för utställare, och på kvällen anordnas en bankett för att avsluta dagen.",
     companyPackages: {
       title: "Vill ditt företag nå ut till tusentals civilingenjörsstudenter vid KTH?",
-      text: "Vi erbjuder flera olika paket för företag:",
+      text: "Vi erbjuder flera olika paket för företag",
       text2: "För priser, se produktkatalogen ovan eller kontakta ",
       packages: [
         {
@@ -64,17 +64,16 @@ export default {
           boldFirstPoint: false,
           bulletPoints: [
             "4 m² på mässan",
-            "Plats på hemsida och katalog",
+            "Exponering på hemsida och katalog",
             "2 st frukost/lunch biljetter",
-            "5 st representantplatser",
-            "1 ståbord, 2st eluttag",
             "2 st banquettebiljetter*",
+            "1 ståbord, 2st eluttag",
             "Fri tillgång till företagslounge",
             "En tilldelad Företagsvärd för service",
             "Begränsad förvaring & mottagning av leverans"
           ],
           disclaimers: [
-            "Totalt 8 st tillhörande dryckesbiljetter till banquetten"
+            "Totalt 6 st tillhörande dryckesbiljetter till banquetten"
           ]
         },
         {
@@ -92,10 +91,11 @@ export default {
             "1 extra frukost/lunch biljett",
             "Exponering på våra sociala medier",
             "Medelstor logotyp på vår hemsida",
-            "Kontaktsamtal, 2 timmar",
+            "Kontaktsamtal, 2 timmar*",
             "Obegränsad förvaring & mottagning av leverans",
           ],
           disclaimers: [
+            "*Kontaktsamtal erbjuds kostnadsfritt i paketen, men måste föranmälas senast 28:e Augusti. Detta är frivilligt och kan avböjas."
           ]
         },
         {
@@ -110,14 +110,17 @@ export default {
             "Allt från mellan paketet",
             "8 m², minst 4m takhöjd",
             "Central placering på mässan",
-            "1 extra ståbord, frukost/lunch biljett",
+            "1 extra ståbord",
+            "1 extra frukost/lunch biljett",
             "2 extra banquette biljetter",
-            "Exponering på ca. 1000 goodiebags med stor logga",
-            "1 representant i schemalagd paneldiskussion",
-            "Sponsrat inlägg på våra sociala medier med eget utformat innehåll",
+            "Exponering på ca. 1000 goodiebags",
+            "Schemalagd paneldiskussion*",
+            "Särskilt sponsrat inlägg**",
             "Stor logotyp på vår hemsida",
           ],
           disclaimers: [
+            "*Paneldiskussions deltagande erbjuds kostnadsfritt i paketen, men måste föranmälassenast 28:e Augusti. Detta är frivilligt och kan avböjas.",
+            "**Inläggets innehåll utformas enligt överenskommelse"
           ]
         },
       ]
@@ -1044,7 +1047,7 @@ export default {
       "Vi samarbetar gärna med er för att organisera evenemang före och efter D-Dagen! Oavsett om ni är intresserade av lunchföreläsningar, hackathons eller något helt annat är ni välkomna att dela era idéer med oss. För mer information kontakta vår sponsoransvarige på <a className='text-yellow' href='mailto:sean.zisheng@ddagen.se'>sean.zisheng@ddagen.se</a>.",
     productCatalog: "PRODUKTKATALOG",
     header: "FÖRETAG FAQ",
-    catalogPath: "https://ddagen.se/downloadables/Product_Catalog_2025_sv.pdf",
+    catalogPath: "https://ddagen.se/downloadables/Product_Catalog_2026_sv.pdf",
   },
   contact: {
     header: "Kontakt",

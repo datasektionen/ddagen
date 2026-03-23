@@ -56,7 +56,7 @@ export default {
       "This year the fair is held on October 8th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15-19 on the KTH Campus Valhallavägen. During the day there will be a lounge for exhibitors, and in the evening a banquet will be organized to end the day.",
     companyPackages: {
       title: "Does your company want to reach thousands of engineering students at KTH?",
-      text: "We offer several different packages for companies:",
+      text: "We offer several different packages for companies",
       text2: "Prices are found in the Product Catalog above or by contacting ",
       packages: [
         {
@@ -66,15 +66,14 @@ export default {
             "4 m² at the fair",
             "Spot on the website and catalog",
             "2 lunch/breakfast tickets",
-            "5 representative spots",
-            "1 standing table, 2 power outlets",
             "2 banquet tickets*",
+            "1 standing table, 2 power outlets",
             "Free access to the company lounge",
             "A designated Company Host for service",
             "Limited storage & reception of deliveries"
           ],
           disclaimers: [
-            "A total of 8 drink tickets included for the banquet"
+            "A total of 6 drink tickets included for the banquet"
           ]
         },
         {
@@ -86,16 +85,17 @@ export default {
           },
           boldFirstPoint: true,
           bulletPoints: [
-            "Everything from the Small Package",
+            "The entire Small Package",
             "6 m² at the fair",
             "Good placement at the fair",
             "1 extra lunch/breakfast ticket",
             "Exposure on our social media",
             "Medium-sized logo on our website",
-            "Contact meetings, 2 hours",
+            "Contact meetings, 2 hours*",
             "Unlimited storage & reception of deliveries",
           ],
           disclaimers: [
+            "*Contact meetings are offered free of charge in the packages, but must be pre-booked no later than August 28. This is voluntary and may be declined."
           ]
         },
         {
@@ -107,17 +107,20 @@ export default {
           },
           boldFirstPoint: true,
           bulletPoints: [
-            "Everything from the Medium Package",
+            "The entire Medium Package",
             "8 m², at least 4m ceiling height",
             "Central placement at the fair",
-            "1 extra standing table, lunch/breakfast ticket",
+            "1 extra standing table",
+            "1 extra lunch/breakfast ticket",
             "2 extra banquet tickets",
-            "Exposure on approximately 1000 goodie bags with a large logo",
-            "1 representative in a scheduled panel discussion",
-            "Sponsored post on our social media with custom content",
+            "Exposure on approx. 1000 goodie bags",
+            "Scheduled panel discussion*",
+            "Custom sponsored social media post**",
             "Large logo on our website",
           ],
           disclaimers: [
+            "*Panel discussion participation is offered free of charge in the packages, but must be pre-registered no later than August 28. This is voluntary and may be declined.",
+            "**The content of the presentation will be determined by mutual agreement."
           ]
         },
       ]
@@ -1050,7 +1053,7 @@ export default {
       "We'd be thrilled to collaborate with you, both before and after D-Dagen! Whether you're interested in hosting a lunch lecture, hackathon, or something completely different, we're open to your ideas. For more information, please contact our sponsorship manager at <a className='text-yellow' href='mailto:sean.zisheng@ddagen.se'>sean.zisheng@ddagen.se</a>.",
     productCatalog: "PRODUCT CATALOG",
     header: "COMPANY FAQ",
-    catalogPath: "https://ddagen.se/downloadables/Product_Catalog_2025_en.pdf",
+    catalogPath: "https://ddagen.se/downloadables/Product_Catalog_2026_en.pdf",
   },
   contact: {
     header: "Contact",
