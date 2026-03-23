@@ -18,6 +18,7 @@ model ExhibitorInterestRegistration {
   contactPerson      String
   phoneNumber        String
   email              String
+  howDidYouFindUs    String?
 
   @@map("exhibitor_interest_registrations")
 }
@@ -70,7 +71,7 @@ model Exhibitor {
   infoSubmissionStatus Int @default(0)
 
   industry     String?
-  industryType String? 
+  industryType String?
 
   lastChanged  DateTime?
 
@@ -152,9 +153,9 @@ model JobOffers {
   summerJob      Int[]
   internship     Int[]
   partTimeJob    Int[]
-  masterThesis   Boolean    
-  fullTimeJob    Boolean    
-  traineeProgram Boolean   
+  masterThesis   Boolean
+  fullTimeJob    Boolean
+  traineeProgram Boolean
   exhibitor      Exhibitor?
 
   @@map("job_offers")

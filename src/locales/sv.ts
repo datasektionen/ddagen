@@ -35,7 +35,7 @@ export default {
         type: "Utställare förra året"
       },
       {
-        value: "3000+",
+        value: "4000+",
         type: "Deltagare"
       },
       {
@@ -605,6 +605,7 @@ export default {
       email: "Mejladress",
       contactPerson: "Kontaktperson",
       phoneNumber: "Telefonnummer",
+      howDidYouFindUs: "Hur hittade ni D-Dagen? (Valbar)"
     },
     confirm: "Skicka",
     ignoreError: "Gå vidare ändå",
