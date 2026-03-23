@@ -4,10 +4,42 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { InputField } from "@/components/InputField";
 import Head from "next/head";
+import Link from "next/link";
 
 // TODO hook the next button to the save features
 // Maby break save changes into a separate steps for each page
 // Add Logic to figure out saved state
+
+const exhibitorNav = [
+  {
+    text: "Översikt",
+    url: "/utställare/"
+  },
+  {
+    text: "Företagsinformation",
+    url: "/utställare/info"
+  },
+  {
+    text: "Kontaktpersoner",
+    url: "/utställare/kontaktpersoner"
+  },
+  {
+    text: "Fakturering",
+    url: "/utställare/fakturering"
+  },
+  {
+    text: "Biljetter",
+    url: "/utställare/biljetter"
+  },
+  {
+    text: "Extrabeställningar",
+    url: "/utställare/extra"
+  },
+  {
+    text: "FAQ",
+    url: "/utställare/faq"
+  },
+]
 
 export default function ExhibitorLayout({
     children
@@ -53,39 +85,27 @@ export default function ExhibitorLayout({
       <Head>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
-      <div className="xl:w-[1200px] lg:w-[1000px] w-full">
-
-      </div>
-      <div className="mx-auto flex flex-col items-center py-40 cursor-default bg-darkblue bg-opacity-75">
-        {/*Header*/}
-        <h1 className="uppercase text-cerise text-3xl md:text-5xl font-medium text-center px-[10px] break-words">
-          {t.exhibitorSettings.header}
-        </h1>
-        <div className="flex flex-row items-center gap-4 mt-4">
-        {/*}
-        <div className="flex flex-row items-center gap-4 mt-4">
-            <h2 className="text-white text-xl pt-2">
-                {editState ? <InputField
-                value={name}
-                name="companyName"
-                fields={t.exhibitorSettings.fields}
-                setValue={setName}
-                />
-                :
-                name}
-            </h2>
-            <a
-            className={`hover:cursor-pointer ${
-                editState
-                ? "block uppercase hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-normal mt-4 px-8 py-2 max-lg:mx-auto w-max"
-                : "hover:scale-105 transition-transform bg-editIcon bg-white bg-[length:30px_30px] w-[33px] h-[33px] bg-no-repeat bg-origin-content mt-4 pl-1 pb-1 rounded-md"
-                }`}
-                onClick={editCompanyName}
-                >{editState && t.exhibitorSettings.table.row1.section2.save}</a>
+      <div className="xl:w-[1200px] lg:w-[1000px] w-full mx-auto">
+        <div className="mx-auto flex flex-col items-center py-40 cursor-default bg-darkblue bg-opacity-75">
+          {/*Header*/}
+          <h1 className="uppercase text-cerise text-3xl md:text-5xl font-medium text-center px-[10px] break-words">
+            {t.exhibitorSettings.header}
+          </h1>
+          <div className="flex w-full flex-row items-center gap-4 mt-4">
+            <div className="flex flex-col gap-2 min-w-xs">
+              {exhibitorNav.map(((navItem, i) => (
+                <div className="w-full" key={i}>
+                  <Link href={navItem.url} className="text-lg font-medium text-white hover:text-cerise">
+                    {navItem.text}
+                  </Link>
+                </div>
+              )))}
             </div>
-            */}
+            <div className="flex-1">
+              {children}
+            </div>
+          </div>
         </div>
-        {children}
       </div>
     </>
   );

@@ -10,7 +10,7 @@ import ExhibitorLayout from "@/shared/exhibitorLayout";
 // Maby break save changes into a separate steps for each page
 // Add Logic to figure out saved state
 
-export default function ExhibitorOverview({
+export default function ExhibitorBilling({
     children
 } : {
     children: React.ReactElement
@@ -39,7 +39,7 @@ export default function ExhibitorOverview({
     <>
       <ExhibitorLayout>
         <>
-            <h2 className="text-white">Overview</h2>
+            <h2 className="text-white">Billing</h2>
         </>
       </ExhibitorLayout>
     </>
