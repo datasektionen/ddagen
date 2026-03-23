@@ -605,6 +605,7 @@ export default {
       email: "Mejladress",
       contactPerson: "Kontaktperson",
       phoneNumber: "Telefonnummer",
+      howDidYouFindUs: "Hur hittade ni D-Dagen? (Valbar)"
     },
     confirm: "Skicka",
     ignoreError: "Gå vidare ändå",
