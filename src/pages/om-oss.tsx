@@ -16,12 +16,22 @@ function stripLastName(name: string) {
     .replace(/[\u0300-\u036f]/g, "");
 }
 
-const managersName        = ["Max Berglund", "Mortada Nasser"]
-const prNames             = ["Julia Potrus", "Sabrina Larsson", "Natalia Winiarska", "Tasfia Alam", "Abdelrahman Aldaker"]
-const devNames            = ["Theodor Fritsch", "Linus Rackner", "Elsa Linnéusson",  "David Björklund"]
-const salesNames          = ["David Nilsson", "Hedda Fahlin", "Husein Jaber", "Josef Behman", "Louise Engbrink", "Oliver Haux", "Sean Zhang", "Yen Li Oh"]
-const massNames           = ["Felicia Murkes", "Silan Centinkaya", "Emanuel Malki", "Elias Rosberg", "Amar Ibrahim"]
-const ecoNames            = ["Melissa Arslan", "Anton Jansson"]
+const managersName = ["didde", "oliver"]
+const managersActualName = ["Didzis Urtans", "Oliver Zhou"]
+
+const prNames      = ["abood", "sofia2", "ivar", "sibell", "amar"]
+const prActualName = ["Abdelrahman Aldaker", "Sofia Hulth", "Ivar Petit", "Sibell Israelsson", "Amar Ibrahim"]
+
+const devNames     = ["david", "kajus", "oscar", "zimon"]
+const devActualName = ["David Björklund", "Kajus Sirvinskas", "Oscar Eriksson", "Zimon Moudi"]
+
+const salesNames      = ["josef", "yenli", "louise", "husein", "hedda", "oliver", "david", "sean"]
+const salesActualName = ["Josef Behnam", "Yen Li Oh", "Louise Engbrink", "Husein Hassan", "Hedda Fahlin", "Oliver Haux", "David Nilsson", "Sean Zisheng"]
+const massNames    = ["elias", "daniel-2", "emanuel", "elsa", "ting", "theodor"]
+const massActualName = ["Elias Rosberg", "Daniel Svensson", "Emanuel Malki", "Elsa Illerström", "Tingyuan Hu", "Theodor Fritsch"]
+
+const ecoNames     = ["anton", "oskar", "theo"]
+const ecoActualName = ["Anton Jansson", "Oskar Furuhed", "Theodor Laséen Kuhlström"]
 
 
 const managersImages      = managersName.map(stripLastName).map(formatImagePath);
@@ -37,13 +47,15 @@ const econonmyTeamImages  = ecoNames.map(stripLastName).map(formatImagePath);
 function Team({
   teamIndivudualImages: teamImages,
   teamPic,
-  names,
+  imageNames,
+  actualNames,
   teamName,
   teamRoles,
 }: {
   teamIndivudualImages: string[];
   teamPic: string;
-  names: string[];
+  imageNames: string[];
+  actualNames: string[];
   teamName: string;
   teamRoles: string[];
 }) {
@@ -86,13 +98,13 @@ function Team({
             ${isOpen ? 'animate-auto-show p-4' : 'animate-auto-hidden'}`}
       >
         <div className={`grid grid-cols-2 justify-center justify-items-center gap-4 overflow-y-hidden`}>
-          {teamImages.map((image, i) => (
+            {teamImages.map((image, i) => (
             <div className="flex flex-col" key={image != null ? image : "about_img_"+(i).toString() }>
               <div className=" w-auto">
                 <img src={image} className=" rounded-[20px]"></img>
                 <div className="mt-2">
                   <p className="text-center text-yellow  text-sm md:text-lg font-medium text-drop-shadow">
-                    {names[i]}
+                    {actualNames[i]}
                   </p>
                   <p className="text-center text-xs sm:text-sm md:text-base font-medium text-cerise text-drop-shadow">
                     {teamRoles[i]}
@@ -160,7 +172,7 @@ export default function AboutUs() {
         </h1>
         <div className="w-full lg:block xl:w-[1200px] lg:w-[1000px] lg:px-0 lg:mb-0 px-6 mb-3 ">
           <div className="flex flex-row items-center justify-center mb-10">
-            <img className="rounded-3xl" src="/img/projectGroup/g_projectGroup.jpg"></img>
+            <img className="rounded-3xl" src="/img/projectGroup/g_PG26.png"></img>
           </div>
         
           <div className="flex flex-col">
@@ -182,7 +194,8 @@ export default function AboutUs() {
             <Team
               teamIndivudualImages={managersImages}
               teamPic="/img/projectGroup/g_dda.jpg"
-              names={managersName}
+              imageNames={managersName}
+              actualNames={managersActualName}
               teamRoles={t.aboutUs.ddaRoles}
               teamName={t.aboutUs.teamNames[0]}
             />
@@ -190,7 +203,8 @@ export default function AboutUs() {
             <Team
               teamIndivudualImages={prTeamImages}
               teamPic="/img/projectGroup/g_pr.jpg"
-              names={prNames}
+              imageNames={prNames}
+              actualNames={prActualName}
               teamRoles={t.aboutUs.prTeamRoles}
               teamName={t.aboutUs.teamNames[1]}
               />
@@ -198,7 +212,8 @@ export default function AboutUs() {
             <Team
               teamIndivudualImages={devTeamImages}
               teamPic="/img/projectGroup/g_dev.jpg"
-              names={devNames}
+              imageNames={devNames}
+              actualNames={devActualName}
               teamRoles={t.aboutUs.devTeamRoles}
               teamName={t.aboutUs.teamNames[2]}
               />
@@ -206,7 +221,8 @@ export default function AboutUs() {
             <Team
               teamIndivudualImages={saleTeamImages}
               teamPic="/img/projectGroup/g_sales.jpg"
-              names={salesNames}
+              imageNames={salesNames}
+              actualNames={salesActualName}
               teamRoles={t.aboutUs.salesTeamRoles}
               teamName={t.aboutUs.teamNames[3]}
             />
@@ -214,14 +230,16 @@ export default function AboutUs() {
             <Team
               teamIndivudualImages={massTeamImages}
               teamPic="/img/projectGroup/g_mass.jpg"
-              names={massNames}
+              imageNames={massNames}
+              actualNames={massActualName}
               teamRoles={t.aboutUs.massTeamRoles}
               teamName={t.aboutUs.teamNames[4]}
             />
             <Team
               teamIndivudualImages={econonmyTeamImages}
               teamPic="/img/projectGroup/g_money.jpg"
-              names={ecoNames}
+              imageNames={ecoNames}
+              actualNames={ecoActualName}
               teamRoles={t.aboutUs.ecoTeamRoles}
               teamName={t.aboutUs.teamNames[5]}
             />

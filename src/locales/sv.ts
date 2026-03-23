@@ -1344,8 +1344,8 @@ export default {
       "Mäss-Ansvarig", "Fest-Ansvarig", "Logistik-Ansvarig",
        "Lokal-Ansvarig", "Lounge-Ansvarig", "Personal-Ansvarig",
     ],
-    ecoTeamRoles: ["Ekonomiansvarig","Vice Ekonomiansvarig"],
-    ddaRoles: ["DDA", "DDA"],
+    ecoTeamRoles: ["Ekonomiansvarig","Vice Ekonomiansvarig", "Vice Ekonomiansvarig"],
+    ddaRoles: ["DDA", "Vice-DDA"],
     teamNames: [
       "D-Dagenansvariga",
       "PR-Gruppen",
