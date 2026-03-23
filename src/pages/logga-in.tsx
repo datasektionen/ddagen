@@ -31,7 +31,18 @@ export default function Login() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>();
   const [state, setState] = useState<"email" | "code">("email");
 
-  const startLogin = api.account.startLogin.useMutation();
+  const startLogin = api.account.startLogin.useMutation({
+    onSuccess: (data) => {
+      console.log(data);
+      if (data?.url === undefined) {
+        return
+      }
+
+      console.log(data);
+      window.location.href = data.url;
+    }
+  });
+
   const finishLogin = api.account.finishLogin.useMutation();
   const getIsLoggedIn = api.account.isLoggedIn.useQuery(undefined, {
     onSuccess: (data) => {
@@ -39,16 +50,11 @@ export default function Login() {
     },
   });
 
+  // Redirect if already logged in
   useEffect(() => {
     if (!getIsLoggedIn.isSuccess) return;
     if (isLoggedIn == true) router.push("/utst%C3%A4llare");
   }, [isLoggedIn]);
-
-  useEffect(() => {
-    if (startLogin.isSuccess) {
-      setState("code");
-    }
-  }, [startLogin]);
 
   useEffect(() => {
     if (finishLogin.data?.ok) {
@@ -61,7 +67,7 @@ export default function Login() {
     if (typeof router.query.code === "string") {
       setState("code");
       setCode(router.query.code);
-      finishLogin.mutate(router.query.code);
+      finishLogin.mutate({ current_url: window.location.href });
     }
   }, [router.query.code]);
 
@@ -74,66 +80,20 @@ export default function Login() {
         <h1 className="text-cerise pt-[110px] lg:pt-[140px] mb-16 text-5xl font-medium uppercase">
           {t.login.title}
         </h1>
-        {state === "email" ? (
-          <>
-            <form
-              className="flex flex-col gap-6"
-              onSubmit={(e) => {
-                e.preventDefault();
-                startLogin.mutate({ email, locale });
-              }}
-            >
-              <div className="pt-8 pb-4 p-2 rounded-lg bg-darkblue bg-opacity-90">
-                <InputField
-                  name="email"
-                  value={email}
-                  type="email"
-                  setValue={setEmail}
-                  fields={{ email: t.login.email }}
-                  />
-                <p className="text-white mt-6 max-w-xs">{t.login.emailText}</p>
-              </div>
-              <Submit value={t.login.confirm} loading={startLogin.isLoading} />
-            </form>
-            {startLogin.error && (
-              <p className="text-red-500 font-bold mt-6">{t.error.unknown}</p>
-            )}
-          </>
-        ) : (
-          <>
-            <form
-              className="flex flex-col gap-6 items-center"
-              onSubmit={(e) => {
-                e.preventDefault();
-                finishLogin.mutate(code);
-              }}
-            >
-              <div className="pt-8 pb-4 p-2 rounded-lg bg-darkblue bg-opacity-90">
-                <InputField
-                  name="code"
-                  value={code}
-                  type="text"
-                  setValue={setCode}
-                  fields={{ code: t.login.confirmationCode }}
-                  class="w-96"
-                />
-                <p className="text-white text-left mt-6 max-w-xs">
-                  {t.login.confirmationCodeText1}
-                  <span className="font-bold">{email}</span>
-                  {t.login.confirmationCodeText2}
-                </p>
-              </div>
-              <Submit value={t.login.confirm} loading={finishLogin.isLoading} />
-            </form>
-            {finishLogin.data?.error && (
-              <p className="text-red-500 font-bold mt-6">
-                {t.error[finishLogin.data.error]}
-              </p>
-            )}
-            {finishLogin.error && (
-              <p className="text-red-500 font-bold mt-6">{t.error.unknown}</p>
-            )}
-          </>
+        <form
+          className="flex flex-col gap-6"
+          onSubmit={(e) => {
+            e.preventDefault();
+            startLogin.mutate({ subpath: router.asPath.split('?')[0] });
+          }}
+        >
+          <Submit value={t.login.confirm} loading={startLogin.isLoading} />
+        </form>
+        {startLogin.error && (
+          <p className="text-red-500 font-bold mt-6">{t.error.unknown}</p>
+        )}
+        {finishLogin.error && (
+          <p className="text-red-500 font-bold mt-6">{t.error.unknown}</p>
         )}
       </div>
     </>

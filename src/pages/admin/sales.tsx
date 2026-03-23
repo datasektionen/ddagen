@@ -18,7 +18,7 @@ export default function Sales() {
 
   const [exhibitors, setExhibitors] = useState<Exhibitor[]>([]);
   const [preferences, setPreferences] = useState<Preferences[]>([]);
-  const [jobOffers, setJobOffers] = useState<JobOffer[]>([]); 
+  const [jobOffers, setJobOffers] = useState<JobOffer[]>([]);
   const [exhibitorsInterests, setExhibitorsInterests] = useState<ExhibitorInfo[]>([]);
   const [buttonSelected, setButtonSelected] = useState<1 | 2 | 3 | 4>(1);
   const [password, setPassword] = useState<string>("");
@@ -39,7 +39,7 @@ export default function Sales() {
         exhibitors === "invalid-password" ||
         foodPreferences === "invalid-password" ||
         exhibitorsInterests === "invalid-password" ||
-        jobOffers === "invalid-password" 
+        jobOffers === "invalid-password"
       ) {
         return "invalid-password";
       }
@@ -106,7 +106,7 @@ export default function Sales() {
                 exhibitors={exhibitors}
                 preferences={preferences}
               />
-            ) : <CompanyMeetingsPanel 
+            ) : <CompanyMeetingsPanel
                   t={t}
                   exhibitors={exhibitors}
                   password={password} />
