@@ -212,7 +212,7 @@ export default function AboutUs() {
           <div className="w-full grid grid-cols-1 lg:grid-cols-2 md:gap-8 gap-0 mt-0 lg:mt-12 ">
             <Team
               teamIndivudualImages={managersImages}
-              teamPic="/img/projectGroup/g_dda.jpg"
+              teamPic="/img/projectGroup/g_dda.png"
               names={managersName}
               teamRoles={t.aboutUs.ddaRoles}
               teamName={t.aboutUs.teamNames[0]}
@@ -220,7 +220,7 @@ export default function AboutUs() {
           
             <Team
               teamIndivudualImages={prTeamImages}
-              teamPic="/img/projectGroup/g_pr.jpg"
+              teamPic="/img/projectGroup/g_pr.png"
               names={prNames}
               teamRoles={t.aboutUs.prTeamRoles}
               teamName={t.aboutUs.teamNames[1]}
@@ -228,7 +228,7 @@ export default function AboutUs() {
 
             <Team
               teamIndivudualImages={devTeamImages}
-              teamPic="/img/projectGroup/g_dev.jpg"
+              teamPic="/img/projectGroup/g_dev.png"
               names={devNames}
               teamRoles={t.aboutUs.devTeamRoles}
               teamName={t.aboutUs.teamNames[2]}
@@ -236,7 +236,7 @@ export default function AboutUs() {
       
             <Team
               teamIndivudualImages={saleTeamImages}
-              teamPic="/img/projectGroup/g_sales.jpg"
+              teamPic="/img/projectGroup/g_sales.png"
               names={salesNames}
               teamRoles={t.aboutUs.salesTeamRoles}
               teamName={t.aboutUs.teamNames[3]}
@@ -244,14 +244,14 @@ export default function AboutUs() {
 
             <Team
               teamIndivudualImages={massTeamImages}
-              teamPic="/img/projectGroup/g_mass.jpg"
+              teamPic="/img/projectGroup/g_mass.png"
               names={massNames}
               teamRoles={t.aboutUs.massTeamRoles}
               teamName={t.aboutUs.teamNames[4]}
             />
             <Team
               teamIndivudualImages={econonmyTeamImages}
-              teamPic="/img/projectGroup/g_money.jpg"
+              teamPic="/img/projectGroup/g_ekom.png"
               names={ecoNames}
               teamRoles={t.aboutUs.ecoTeamRoles}
               teamName={t.aboutUs.teamNames[5]}
