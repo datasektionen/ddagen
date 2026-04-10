@@ -2,30 +2,65 @@ import { useLocale } from "@/locales";
 import { useState, useRef} from "react";
 import { NextSeo } from 'next-seo';
 
-const imagesPath = "/img/projectGroup/p_";
+const managers = [
+  { name: "Didzis Urtnas", image: "/img/projectGroup/p_didde.png" },
+  { name: "Oliver Zhou", image: "/img/projectGroup/p_oliver.png" },
+];
 
-function formatImagePath(name: string) {
-  return imagesPath + name + ".jpg";
-}
+const prTeam = [
+  { name: "Abdelrahman Aldaker", image: "/img/projectGroup/p_abdelrahman.png" },
+  { name: "Amar Ibrahim", image: "/img/projectGroup/p_amar.png" },
+  { name: "Sofia Hulth", image: "/img/projectGroup/p_sofia.png" },
+  { name: "Ivar Petit", image: "/img/projectGroup/p_ivar.png" },
+  { name: "Sibell Israelsson", image: "/img/projectGroup/p_sibell.png" },
+];
 
-function stripLastName(name: string) {
-  return name.split(" ")[0].toLocaleLowerCase();
-}
+const devTeam = [
+  { name: "David Björklund", image: "/img/projectGroup/p_david.png" },
+  { name: "Zimon Moudi", image: "/img/projectGroup/p_zimon.png" },
+  { name: "Kajus Sirvinskas", image: "/img/projectGroup/p_kajus.png" },
+  { name: "Oscar Eriksson", image: "/img/projectGroup/p_oscar.png" },
+];
 
-const managersName        = ["Max Berglund", "Mortada Nasser"]
-const prNames             = ["Julia Potrus", "Sabrina Larsson", "Natalia Winiarska", "Tasfia Alam", "Abdelrahman Aldaker"]
-const devNames            = ["Theodor Fritsch", "Linus Rackner", "Elsa Linnéusson",  "David Björklund"]
-const salesNames          = ["Oskar Furuhed", "Josef Behnam", "Sean Zishend", "Hedda Litzén Hagström", "Didzis Urtnas", "Ludwig Berglind", "Oliver Zhou", "Jamie Groop"]
-const massNames           = ["Felicia Murkes", "Silan Centinkaya", "Emanuel Malki", "Elias Rosberg", "Amar Ibrahim"]
-const ecoNames            = ["Melissa Arslan", "Anton Jansson"]
+const salesTeam = [
+  { name: "Josef Behnam", image: "/img/projectGroup/p_josef.png" },
+  { name: "Sean Zishend", image: "/img/projectGroup/p_sean.png" },
+  { name: "David Nilsson", image: "/img/projectGroup/p_davidN.png" },
+  { name: "Hedda Fahlin", image: "/img/projectGroup/p_hedda.png" },
+  { name: "Husein Hassan", image: "/img/projectGroup/p_husein.png" },
+  { name: "Louise Engbrink", image: "/img/projectGroup/p_louise.png" },
+  { name: "Yenli Oh", image: "/img/projectGroup/p_yenli.png" },
+  { name: "Oliver Haux", image: "/img/projectGroup/p_oliverH.png" },
+];
 
+const massTeam = [
+  { name: "Elias Rosberg", image: "/img/projectGroup/p_elias.png" },
+  { name: "Emanuel Malki", image: "/img/projectGroup/p_emanuel.png" },
+  { name: "Daniel Svensson", image: "/img/projectGroup/p_daniel.png" },
+  { name: "Elsa Illerström", image: "/img/projectGroup/p_elsa.png" },
+  { name: "Tingyuan Hu", image: "/img/projectGroup/p_ting.png" },
+  { name: "Theodor Laséen Kuhlström", image: "/img/projectGroup/p_theodor.png" },
+];
 
-const managersImages      = managersName.map(stripLastName).map(formatImagePath);
-const prTeamImages        = prNames.map(stripLastName).map(formatImagePath);
-const devTeamImages       = devNames.map(stripLastName).map(formatImagePath);
-const saleTeamImages      = salesNames.map(stripLastName).map(formatImagePath);
-const massTeamImages      = massNames.map(stripLastName).map(formatImagePath);
-const econonmyTeamImages  = ecoNames.map(stripLastName).map(formatImagePath);
+const economyTeam = [
+  { name: "Anton Jansson", image: "/img/projectGroup/p_anton.png" },
+  { name: "Theodor Fritsch", image: "/img/projectGroup/p_theo.png" },
+  { name: "Oskar Furuhed", image: "/img/projectGroup/p_oskar.png" },
+];
+
+const managersImages      = managers.map((member) => member.image);
+const prTeamImages        = prTeam.map((member) => member.image);
+const devTeamImages       = devTeam.map((member) => member.image);
+const saleTeamImages      = salesTeam.map((member) => member.image);
+const massTeamImages      = massTeam.map((member) => member.image);
+const econonmyTeamImages  = economyTeam.map((member) => member.image);
+
+const managersName        = managers.map((member) => member.name);
+const prNames             = prTeam.map((member) => member.name);
+const devNames            = devTeam.map((member) => member.name);
+const salesNames          = salesTeam.map((member) => member.name);
+const massNames           = massTeam.map((member) => member.name);
+const ecoNames            = economyTeam.map((member) => member.name);
 
 
 
@@ -156,7 +191,7 @@ export default function AboutUs() {
         </h1>
         <div className="w-full lg:block xl:w-[1200px] lg:w-[1000px] lg:px-0 lg:mb-0 px-6 mb-3 ">
           <div className="flex flex-row items-center justify-center mb-10">
-            <img className="rounded-3xl" src="/img/projectGroup/g_projectGroup.jpg"></img>
+            <img className="rounded-3xl" src="/img/projectGroup/g_projectGroup.png"></img>
           </div>
         
           <div className="flex flex-col">
