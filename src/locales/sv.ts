@@ -1337,15 +1337,15 @@ export default {
       "Säljare", "Säljare", "Säljare","Sponsansvarig",
     ],
     devTeamRoles: [
-      "Webb-Ansvarig", "Systemutvecklare", "Webbutvecklare",
-      "Webbutvecklare",
+      "Webb-Ansvarig", "Webbutvecklare", "Webbutvecklare",
+      "Systemutvecklare",
     ],
     massTeamRoles: [
       "Mäss-Ansvarig", "Fest-Ansvarig", "Logistik-Ansvarig",
        "Lokal-Ansvarig", "Lounge-Ansvarig", "Personal-Ansvarig",
     ],
-    ecoTeamRoles: ["Ekonomiansvarig","Vice Ekonomiansvarig"],
-    ddaRoles: ["DDA", "DDA"],
+    ecoTeamRoles: ["Ekonomiansvarig","Vice Ekonomiansvarig", "Vice Ekonomiansvarig"],
+    ddaRoles: ["DDA", "Vice-DDA"],
     teamNames: [
       "D-Dagenansvariga",
       "PR-Gruppen",
