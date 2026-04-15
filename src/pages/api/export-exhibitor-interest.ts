@@ -57,7 +57,7 @@ function importExhibitors() {
   ]]).setFontWeight("bold");
 
   sheet.getRange(2, 1, data.length, 6).setValues(data.map(row => [
-    row.name, "'" + row.organizationNumber, row.contactPerson, "'" + row.phoneNumber, row.email, row.createdAt,
+    row.name, "'" + row.organizationNumber, row.contactPerson, "'" + row.phoneNumber, row.email, row.createdAt
   ])).setBackground("#eee");
   sheet.getRange(2 + data.length, 1, 1, 6).setBackground("orange");
 

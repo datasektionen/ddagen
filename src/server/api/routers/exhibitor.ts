@@ -76,7 +76,7 @@ export const exhibitorRouter = createTRPCRouter({
               organizationNumber,
               email,
               contactPerson,
-              phoneNumber
+              phoneNumber,
             ),
             "sales@ddagen.se"
           );
@@ -167,7 +167,7 @@ export const exhibitorRouter = createTRPCRouter({
         customDrinkCoupons: true,
         customRepresentativeSpots: true,
         customBanquetTicketsWanted: true,
-        studentMeetings: true, 
+        studentMeetings: true,
         extraMealCoupons: true, // Måste kanske lägga till customMealCoupons i db, känns inte nödvändigt just nu
       },
     });
@@ -912,8 +912,8 @@ export const exhibitorRouter = createTRPCRouter({
       // Add password validation if needed
       const exhibitor = await ctx.prisma.exhibitor.update({
         where: { id: input.exhibitorId },
-        data: { 
-          meetingTimeSlots: input.timeSlots 
+        data: {
+          meetingTimeSlots: input.timeSlots
         }
       });
       return exhibitor;

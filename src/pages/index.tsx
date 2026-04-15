@@ -42,12 +42,12 @@ export default function Home() {
   const seoContent = {
     sv: {
       title: "Skandinaviens Ledande Teknikmässa",
-      description: "Utforska de bästa IT-företagen på D-Dagen 2025 vid KTH. Hitta jobbmöjligheter, nätverka och utforska teknikens framtid.",
+      description: "Utforska de bästa IT-företagen på D-Dagen vid KTH. Hitta jobbmöjligheter, nätverka och utforska teknikens framtid.",
       url: "https://ddagen.se",
     },
     en: {
       title: "Scandinavia's Leading Tech Job Fair",
-      description: "Discover top IT companies at D-Dagen 2025 at KTH. Find job opportunities, network, and explore the future of tech careers.",
+      description: "Discover top IT companies at D-Dagen at KTH. Find job opportunities, network, and explore the future of tech careers.",
       url: "https://ddagen.se/en",
     },
   };
@@ -90,13 +90,24 @@ export default function Home() {
               ></img>
           </div>
           
+          {/* Countdown wrapper */}
           <div className={`
-            mx-auto pt-[40px] mt-2 md:mt-8
+            mx-auto pt-[0px] mt-2 md:mt-8
             transition-all ease-in-out
             ${ hasLoadedBefore ? 'duration-0': 'delay-[300ms] duration-[800ms]'}  
             ${ showPage ? "opacity-100" : "opacity-0" }
             `}>
               <Countdown />
+          </div>
+
+          {/* Button wrapper (separat div) */}
+          <div className="flex justify-center mt-8">
+            <Link
+              className="bg-cerise py-2.5 px-6 rounded-full text-white text-center hover:scale-105 transition-transform"
+              href="/företagsanmälan"
+            >
+              {t.home.exhibitButton}
+            </Link>
           </div>
           
           <div className="hover:cursor-default pt-[40px] pb-[50px]">
@@ -126,7 +137,7 @@ export default function Home() {
               className='absolute hover:cursor-pointer hover:scale-110 transition-transform w-10'
               onClick={scrollDown}
             >
-              <img src="/img/skrollaner-indikator.svg" alt="Scroll Indicator" />
+              <img src="/icons/skrollaner-indikator.svg" alt="Scroll Indicator" />
               
             </div>
           </div>

@@ -130,7 +130,7 @@ export default function Search({
         />
         <div className="h-10 flex flex-row text-3xl box-border">
           <Button
-            value="/img/hamburger.png"
+            value="/icons/hamburger.png"
             loading={false}
             onClick={() => setShowFilter(!showFilter)}
             isImage={true}

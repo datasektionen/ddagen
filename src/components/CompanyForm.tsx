@@ -90,7 +90,7 @@ export default function CompanyForm({
           setValue={setCompanyName}
           fields={t.companyForm.fields}
         />
-        <CheckMarkField 
+        <CheckMarkField
           name="foreignOrganization"
           checked={foreignOrganization}
           onClick={toggleForeignOrganization}
