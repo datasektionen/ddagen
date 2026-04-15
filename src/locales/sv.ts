@@ -6,21 +6,21 @@ export default {
   about: "Om Oss",
   home: {
     introFirstBlock:
-      "Nordens största arbetsmarknadsdag för datateknikstudenter firar 25-årsjubileum",
+      "Nordens största arbetsmarknadsdag för datateknikstudenter",
     introSecondBlock:
       "Är du en student inom data eller IT och söker efter din framtida arbetsplats, eller representerar du ett företag som letar talangfulla medarbetare?",
     introThirdBlock:
-      "Då är D-Dagen det perfekta tillfället för dig att träffa personer inom branschen och knyta värdefulla kontakter! I år firar D-Dagen sitt storslagna 25-års jubileum, vilket innebär att mässan kommer bli större och bättre än någonsin, med över 100+ utställare och 3000+ deltagare.",
-    introSignOff: "Detta är ett firande som man inte vill missa!\n Hoppas vi ses!",
-    introDDA: "Max Berglund & Mortada Nasser, D-Dagenansvariga",
+      "Då är D-Dagen det perfekta tillfället för dig att träffa personer inom branschen och knyta värdefulla kontakter!",
+    introSignOff: "Hoppas vi ses!",
+    introDDA: "Didzis Urtans & Oliver Zhou, D-Dagenansvariga",
     representative: "Företagsrepresentant?",
     representativeDescription:
       "Vill du nå ut till tusentals civilingenjörs-studenter vid KTH? Som utställare på D-Dagen har du möjlighet att göra just det! Klicka här nedanför för att läsa mer och göra en intresseanmälan.",
     representativeButton: "Intresseanmälan",
     info: {
-      firstPart: "9 oktober",
+      firstPart: "8 oktober",
       secondPart: "10:00 - 16:00",
-      thirdPart: "KTH",
+      thirdPart: "Nymble, KTH",
     },
     countDown:{
       days: "dagar",
@@ -28,18 +28,15 @@ export default {
       minutes: "minuter",
       seconds: "sekunder",
     },
+    exhibitButton: "Ställ ut på D-Dagen",
     stats: [
       {
-        value: "100+",
+        value: "90+",
         type: "Utställare förra året"
       },
       {
-        value: "3000+",
+        value: "4000+",
         type: "Deltagare"
-      },
-      {
-        value: "25 års",
-        type: "Jubileum"
       },
       {
         value: "100%",
@@ -56,10 +53,10 @@ export default {
     fairText1:
       "D-Dagen är Datasektionens årliga arbetsmarknadsdag. Det är ett heldagsevent där företag och studenter verksamma inom data och IT får en möjlighet att knyta kontakter och lära känna varandra. Detta skapar goda möjligheter för en mer direkt och personlig kontakt mellan företagsrepresentanter och studenter.",
     fairText2:
-      "I år hålls mässan 9e oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15-19 på KTH Campus Valhallavägen. Under dagen kommer det finnas en lounge för utställare, och på kvällen anordnas en bankett för att avsluta dagen.",
+      "I år hålls mässan 8e oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15-19 på KTH Campus Valhallavägen. Under dagen kommer det finnas en lounge för utställare, och på kvällen anordnas en bankett för att avsluta dagen.",
     companyPackages: {
       title: "Vill ditt företag nå ut till tusentals civilingenjörsstudenter vid KTH?",
-      text: "Vi erbjuder flera olika paket för företag:",
+      text: "Vi erbjuder flera olika paket för företag",
       text2: "För priser, se produktkatalogen ovan eller kontakta ",
       packages: [
         {
@@ -67,17 +64,16 @@ export default {
           boldFirstPoint: false,
           bulletPoints: [
             "4 m² på mässan",
-            "Plats på hemsida och katalog",
+            "Exponering på hemsida och katalog",
             "2 st frukost/lunch biljetter",
-            "5 st representantplatser",
-            "1 ståbord, 2st eluttag",
             "2 st banquettebiljetter*",
+            "1 ståbord, 2st eluttag",
             "Fri tillgång till företagslounge",
             "En tilldelad Företagsvärd för service",
             "Begränsad förvaring & mottagning av leverans"
           ],
           disclaimers: [
-            "Totalt 8 st tillhörande dryckesbiljetter till banquetten"
+            "Totalt 6 st tillhörande dryckesbiljetter till banquetten"
           ]
         },
         {
@@ -95,10 +91,11 @@ export default {
             "1 extra frukost/lunch biljett",
             "Exponering på våra sociala medier",
             "Medelstor logotyp på vår hemsida",
-            "Kontaktsamtal, 2 timmar",
+            "Kontaktsamtal, 2 timmar*",
             "Obegränsad förvaring & mottagning av leverans",
           ],
           disclaimers: [
+            "*Kontaktsamtal erbjuds kostnadsfritt i paketen, men måste föranmälas senast 28:e Augusti. Detta är frivilligt och kan avböjas."
           ]
         },
         {
@@ -113,14 +110,17 @@ export default {
             "Allt från mellan paketet",
             "8 m², minst 4m takhöjd",
             "Central placering på mässan",
-            "1 extra ståbord, frukost/lunch biljett",
+            "1 extra ståbord",
+            "1 extra frukost/lunch biljett",
             "2 extra banquette biljetter",
-            "Exponering på ca. 1000 goodiebags med stor logga",
-            "1 representant i schemalagd paneldiskussion",
-            "Sponsrat inlägg på våra sociala medier med eget utformat innehåll",
+            "Exponering på ca. 1000 goodiebags",
+            "Schemalagd paneldiskussion*",
+            "Särskilt sponsrat inlägg**",
             "Stor logotyp på vår hemsida",
           ],
           disclaimers: [
+            "*Paneldiskussions deltagande erbjuds kostnadsfritt i paketen, men måste föranmälassenast 28:e Augusti. Detta är frivilligt och kan avböjas.",
+            "**Inläggets innehåll utformas enligt överenskommelse"
           ]
         },
       ]
@@ -134,7 +134,7 @@ export default {
     title: "För Sponsorer",
     aboutFair: "Om mässan",
     fairText1: "D-Dagen är en ledande arbetsmarknadsmässa där sponsorer möter framtidens IT- och datatalanger från KTH. Som sponsor får ni synlighet, engagemang och möjlighet att bygga värdefulla relationer.",
-    fairText2: "Mässan hålls den 9 oktober på KTH Campus och lockar tusentals studenter - med stor synlighet både på plats och digitalt är det ett perfekt tillfälle att visa upp ert varumärke och era produkter i en inspirerande miljö.",    companyPackages: {
+    fairText2: "Mässan hålls den 8 oktober på KTH Campus och lockar tusentals studenter - med stor synlighet både på plats och digitalt är det ett perfekt tillfälle att visa upp ert varumärke och era produkter i en inspirerande miljö.",    companyPackages: {
       title: "Vill ni synas bland tusentals teknologstudenter på KTH?",
       text: "Vi erbjuder flera olika sponsorpaket som ger ert företag stor synlighet och möjlighet till engagemang:",
       text2: "Har ni frågor eller vill skräddarsy ett samarbete? Kontakta ",
@@ -195,7 +195,7 @@ export default {
     fairText1:
       "D-Dagen är Datasektionens årliga arbetsmarknadsdag. Det är ett heldagsevent där företag och studenter verksamma inom data och IT får en möjlighet att knyta kontakter och lära känna varandra. Detta skapar goda möjligheter för en mer direkt och personlig kontakt mellan företagsrepresentanter och studenter.",
     fairText2:
-      "I år hålls mässan 9e oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15 på KTH Campus Valhallavägen. Studenter kommer erbjudas möjligheten att gå på kontaktsamtal med företag för att knyta närmare kontakt med specifika företag (begränsade platser per företag).",
+      "I år hålls mässan 8e oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15 på KTH Campus Valhallavägen. Studenter kommer erbjudas möjligheten att gå på kontaktsamtal med företag för att knyta närmare kontakt med specifika företag (begränsade platser per företag).",
     eventPageButton: "D-Dagen Event",
     companyMeetings: "Kontaktsamtal",
     companyMeetingsText:
@@ -203,7 +203,7 @@ export default {
     tempCompanyMeetingsText:
       "Vi erbjuder kontaktsamtal för studenter, vilket innebär att ni får möjlighet att i enrum med företagsrepresentanter diskutera framtida jobbmöjligheter med mera. Anmälan kommer tillgängliggöras senare!",
     companyMeetingsPageButton: "Läs mer",
-    companyMeetingsButton: "Anmäl dig här",    
+    companyMeetingsButton: "Anmäl dig här",
     dayStaffTitle: "Dagspersonal",
     dayStaffText: "Vill du vara med och göra D-Dagen till en succé? Vi söker engagerade studenter som kan hjälpa till under mässdagen med uppgifter som att välkomna besökare, assistera utställare och hålla ordning i lokalerna. Det är ett perfekt tillfälle att nätverka, träffa företag och få värdefull erfarenhet.",
     dayStaffApplicationOpens: "Ansökan öppnar 2/9",
@@ -330,6 +330,14 @@ export default {
       email: "Meljadress",
       role: "Arbetsroll",
     },
+    fieldsUpdatePosition: {
+      name: "Plats"
+    },
+    fieldsUpdateIndustryType: {
+      industryType: "Industrityp",
+      name: "Industrityp (IT and Software, Finance, Industry and Energy, Public sector, Consulting, Education and Research, Media and Entertainment, Others)",
+      industry: "Industri"
+    },
     fieldsAddPreferences: {
       name: "Namn",
       preferences: "Preferenser",
@@ -377,9 +385,14 @@ export default {
             trainee: "TRAINEEPROGRAM",
           },
           industry: {
-            tech: "IT",
-            finance: "FINANS",
-            consulting: "KONSULT",
+            it: "IT och mjukvara",
+            f: "Finans",
+            ie: "Industri och energi",
+            ps: "Offentlig sektor",
+            c: "Konsult",
+            er: "Utbildning och forskning",
+            me: "Media och underhållning",
+            o: "Övrigt",
           },
           save: "Spara",
         },
@@ -580,14 +593,14 @@ export default {
         "</tbody>" +
       "</table>" +
       "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
-        "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+        "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
       "</a>" +
     "</div>"
   },
   companyForm: {
     title: "Intresseanmälan",
     description:
-      "Fyll i formuläret för att registrera ert företag för D-Dagen 2025. OBS! En intresseanmälan är inte bindande.",
+      "Fyll i formuläret för att registrera ert företag för D-Dagen 2026. OBS! En intresseanmälan är inte bindande.",
     fields: {
       name: "Företagsnamn",
       foreignOrganization: "Utländsk organisation",
@@ -595,11 +608,12 @@ export default {
       email: "Mejladress",
       contactPerson: "Kontaktperson",
       phoneNumber: "Telefonnummer",
+      howDidYouFindUs: "Hur hittade ni D-Dagen? (Valbar)"
     },
     confirm: "Skicka",
     ignoreError: "Gå vidare ändå",
     noMoreRegistrations:
-      "Anmälningar för D-Dagen 2025 har ännu inte öppnat. Håll utkik på våra sociala medier för när den öppnar!",
+      "Anmälningar för D-Dagen 2027 har ännu inte öppnat. Håll utkik på våra sociala medier för när den öppnar!",
   },
   postCompanyForm: {
     title: "Intresseanmälan bekräftad",
@@ -672,7 +686,7 @@ export default {
         "</tbody>" +
       "</table>" +
       "<a href=\"https://ddagen.se/\" alt=\"Link to ddagen.se\">" +
-        "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+        "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
       "</a>" +
     "</div>"
   },
@@ -698,8 +712,8 @@ export default {
               "<tr>" +
                 "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                   "<p>We are pleased to confirm we have received your exhibitor registration. " +
-                    "We will contact you during the spring about whether you got a spot at D-Dagen. " +
-                    "You can expect to hear from us during spring. </p><br><br>" +
+                    "We will contact you about whether you got a spot at D-Dagen. " +
+                    "You can expect to hear from us soon! </p><br><br>" +
                   "<p>Here are the details of your registration: </p><br><br>" +
                 "</div>" +
               "</tr>" +
@@ -726,7 +740,7 @@ export default {
             "</tbody>" +
           "</table>" +
         "<a href=\"https://ddagen.se/\" alt=\"Link to ddagen.se\" >" +
-          "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\" ></img>" +
+          "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\" ></img>" +
         "</a>" +
       "</div>",
   },
@@ -751,7 +765,7 @@ export default {
               "</div>" +
             "</tr>" +
             "<tr>" +
-              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                 "<p style=\"color:#ffffff;\">Vi är glada att kunna meddela att " + companyName + " vill ha ett kontaktsamtal med dig!"+
                 "<br />Gå in på <a href=\"https://ddagen.se/student\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/student</a>" +
                 " för att välja en tid för mötet: </p>" +
@@ -768,7 +782,7 @@ export default {
           "</tbody>" +
         "</table>" +
         "<a href=\"https://ddagen.se/\" alt=\"Link to ddagen.se\">" +
-          "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+          "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
         "</a>" +
       "</div>",
     },
@@ -793,7 +807,7 @@ export default {
               "</div>" +
             "</tr>" +
             "<tr>" +
-              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                 "<p style=\"color:#ffffff;\">Tyvärr har " + firstName + " " + lastName + " nekat er kontaktsamtals-förfrågan."+
                 "<br />Logga in på <a href=\"https://ddagen.se/utställare\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/utställare</a>" +
                 " för att hantera era kontaktsamtal. </p>" +
@@ -809,7 +823,7 @@ export default {
           "</tbody>" +
         "</table>" +
         "<a href=\"https://ddagen.se/\" alt=\"Link to ddagen.se\">" +
-          "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+          "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
         "</a>" +
       "</div>",
     },
@@ -834,7 +848,7 @@ export default {
               "</div>" +
             "</tr>" +
             "<tr>" +
-              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                 "<p style=\"color:#ffffff;\">Tyvärr har " + firstName + " " + lastName + " avbokat ert kontaktsamtal."+
                 "<br />Logga in på <a href=\"https://ddagen.se/utställare\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/utställare</a>" +
                 " för att hantera era kontaktsamtal. </p>" +
@@ -850,7 +864,7 @@ export default {
           "</tbody>" +
         "</table>" +
         "<a href=\"https://ddagen.se/\" alt=\"Link to ddagen.se\">" +
-          "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+          "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
         "</a>" +
       "</div>",
     },
@@ -874,7 +888,7 @@ export default {
               "</div>" +
             "</tr>" +
             "<tr>" +
-              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                 "<p style=\"color:#ffffff;\">Tyvärr har " + companyName + " avbokat ert kontaktsamtal."+
                 "<br />Logga in på <a href=\"https://ddagen.se/student\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/student</a>" +
                 " för att hantera dina kontaktsamtal. </p>" +
@@ -890,7 +904,7 @@ export default {
           "</tbody>" +
         "</table>" +
         "<a href=\"https://ddagen.se/\" alt=\"Link to ddagen.se\">" +
-          "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+          "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
         "</a>" +
       "</div>",
     },
@@ -918,10 +932,10 @@ export default {
                 "</div>" +
               "</tr>" +
               "<tr>" +
-                "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+                "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                   "<p style=\"color:#ffffff;\">Detta är en bekräftelse på ert kontaktsamtal med " + firstName + " " + lastName + "."+
                   "<br />Tid: " + time + "<br />" +
-                  "Plats: " + location + "<br />" +
+                  "Plats: <a href=\"https://maps.app.goo.gl/SRhXZYKhdvqnevPF7\" style=\"color:#0000FF;text-decoration:underline\"> KTH Entré sekundära ingången</a>" + "<br />" +
                   "<br />Logga in på <a href=\"https://ddagen.se/utställare\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/utställare</a>" +
                   " för att se alla era kontaktsamtal. </p>" +
                 "</div>" +
@@ -936,7 +950,7 @@ export default {
             "</tbody>" +
           "</table>" +
           "<a href=\"https://ddagen.se/\" alt=\"Link to ddagen.se\">" +
-            "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+            "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
           "</a>" +
         "</div>",
       },
@@ -964,10 +978,10 @@ export default {
                 "</div>" +
               "</tr>" +
               "<tr>" +
-                "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+                "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                   "<p style=\"color:#ffffff;\">Detta är en bekräftelse på ert kontaktsamtal med " + companyName + "."+
                   "<br />Tid: " + time + "<br />" +
-                  "Plats: " + location + "<br />" +
+                  "Plats: <a href=\"https://maps.app.goo.gl/SRhXZYKhdvqnevPF7\" style=\"color:#0000FF;text-decoration:underline\"> KTH Entré sekundära ingången</a>" + "<br />" +
                   "<br />Logga in på <a href=\"https://ddagen.se/utställare\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/utställare</a>" +
                   " för att se alla era kontaktsamtal. </p>" +
                 "</div>" +
@@ -982,7 +996,7 @@ export default {
             "</tbody>" +
           "</table>" +
           "<a href=\"https://ddagen.se/\" alt=\"Link to ddagen.se\">" +
-            "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+            "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
           "</a>" +
         "</div>",
       },
@@ -997,7 +1011,7 @@ export default {
     table1row3: "VAR ÄR D-DAGEN?",
     table1text1:
       "D-Dagen är den årliga karriärmässan som anordnas av Datasektionen på Kungliga Tekniska Högskolan. D-Dagen är numera Nordens största karriärmässa inom IT.",
-    table1text2: "Årets D-Dagen äger rum torsdag den 9:e oktober.",
+    table1text2: "Årets D-Dagen äger rum torsdag den 8:e oktober.",
     table1text3: "D-Dagen hålls i vårt kårhus Nymble, som ligger på KTH.",
     table2row1: "KAN VÅRT FÖRETAG FÅ MER EXPONERING MOT STUDENTER?",
     table2row2:
@@ -1030,21 +1044,20 @@ export default {
     table4row1:
       "VILKEN TYP AV EVENEMANG KAN VÅRT FÖRETAG ANORDNA TILLSAMMANS MED D-DAGEN?",
     table4text1:
-      "Vi samarbetar gärna med er för att organisera evenemang före och efter D-Dagen! Oavsett om ni är intresserade av lunchföreläsningar, hackathons eller något helt annat är ni välkomna att dela era idéer med oss. För mer information kontakta vår sponsoransvarige på <a className='text-yellow' href='mailto:jamie.groop@ddagen.se'>jamie.groop@ddagen.se</a>.",
+      "Vi samarbetar gärna med er för att organisera evenemang före och efter D-Dagen! Oavsett om ni är intresserade av lunchföreläsningar, hackathons eller något helt annat är ni välkomna att dela era idéer med oss. För mer information kontakta vår sponsoransvarige på <a className='text-yellow' href='mailto:sean.zisheng@ddagen.se'>sean.zisheng@ddagen.se</a>.",
     productCatalog: "PRODUKTKATALOG",
     header: "FÖRETAG FAQ",
-    catalogPath: "https://ddagen.se/downloadables/Product_Catalog_2025_sv.pdf",
+    catalogPath: "https://ddagen.se/downloadables/Product_Catalog_2026_sv.pdf",
   },
   contact: {
     header: "Kontakt",
     subheader1: "Kontakta oss",
     subheader2: "Projektansvariga",
     p1: "Om ni har några egna förslag på evenemang eller aktiviteter ni vill anordna för studenterna på Konglig Datasektionen, eller om ni har några andra frågor eller funderingar om företagspaket är det bara att höra av er till oss på...",
-    p2: "För mer information och övriga frågor till ansvariga för D-Dagen kontakta oss på...",
-    salesHeader: "Säljgruppen",
-    bossesHeader: "Ansvariga",
+    p2: "För mer information och övriga frågor till ansvarig för D-Dagen kontakta...",
+    salesHeader: "Säljgruppen 2026",
+    bossesHeader: "Ansvarig",
     roles: [
-      "D-DAGENANSVARIG",
       "D-DAGENANSVARIG",
       "PR-ANSVARIG",
       "WEBB-ANSVARIG",
@@ -1139,22 +1152,32 @@ export default {
     cta: "Skapa Profil"
   },
   event: {
+    description: "Klicka gärna på varje evenemang för mer information!",
     lunchSeminarHeader: "Lunchföreläsning",
     lunchSeminar: " Lunchföreläsningar är ett otroligt populärt koncept bland studenter, där det bjuds på gratis lunch och en intressant föreläsning från ett företag i IT-branschen. Sker kl. 12-13 en vardag på KTH campus.",
     recruitmentPub: "Rekryteringspub",
     recruitmentPubText: "Under rekryteringen av D-Dagens fantastiska 100+ dagspersonal som ska hjälpa till under mässdagen så anordnar Projektgruppen den årliga Rekryteringspuben i Datasektionens egna pub Meta! Häng med på en riktigt trevlig kväll med D-Dagen relaterade aktiviteter och tävlingar med sponsrade priser. Mat och dryck finns att beställa.",
+    contactConversations: "Anmälan för Kontaktsamtal stänger 23:59",
+    contactConversationsText: "Kontaktsamtal är en unik möjlighet för företag och studenter att i enrum träﬀas och diskutera karriärsmöjligheter. Studenten får en mycket bättre inblick i förhållandena på den specifika arbetsplatsen, samt så får företag en utmärkt bild över den specifika studentens kunskaper och erfarenheter. Läs mer på http://ddagen.se/kontaktsamtal.",
     opening: "25-års jubileumsmässan öppnar!",
     openingCeremony: "Invigning av mässan på scenen i Nya matsalen tillsammans med Huvudsponsor Omegapoint",
-    panelDiscussionHeader: "Paneldiskussion",
+    welcome: "Välkommna",
+    inaugeration: "Invigning",
+    panelDiscussionHeader1: "Paneldiskussion Fintech",
+    panelDiscussionHeader2: "Paneldiskussion Samhällets Cyberhot",
+    panelDiscussionHeader3: "Paneldiskussion Design & AI",
     panelDiscussion1: "Fintech-branschens framtid med Nordea, Nore Technology, Revolut och Jane Street",
-    panelDiscussion1text: "Paneldiskussionen kommer att hållas på engelska",
     panelDiscussion2: "Hur väl rustat är samhället inför dagens cyberhot? Med huvudsponsor Omegapoint, Basalt och Försvarsmaktens Radioanstalt",
+    panelDiscussion3: "Design och utveckling i AI-eran, med Atlas Copco, Electronic Arts DICE, Ubiquiti",
+    panelDiscussion1text: "Paneldiskussionen kommer att hållas på engelska",
     panelDiscussion2text: "Paneldiskussionen kommer att hållas på svenska",
     panelDiscussiontext: "Under mässdagen anordnas flera paneldiskussioner som vardera behandlar ett IT-relevant ämne och som modereras av D-Dagen. Vid ett sådant tillfälle får studenter möjlighet att höra om hur det är att arbeta inom IT-branschen, samt får ta del av en intressant och lärorik diskussion mellan ett fåtal företagsrepresentanter.",
     fair: "MÄSSAN",
     after: "EFTER",
     closes: "Mässan stänger",
     banquet: "D-Dagen Banquetten börjar!",
+    banquetSignup: "Deadline för anmälan av spec-kost till D-Dagen Banquetten",
+    banquetSignupText: "biljetter går att köpa efter detta så länge det finns platser kvar."
   },
   history: {
     header: "D-Dagen Historia",
@@ -1199,6 +1222,7 @@ export default {
         logoColour: "Logga m. färg",
         description: "Beskrivning",
         package: "Paket",
+        position: "Plats på kartan",
         delete: "Ta bort",
         companyHost: {
           name: "Företagsvärd",
@@ -1313,15 +1337,15 @@ export default {
       "Säljare", "Säljare", "Säljare","Sponsansvarig",
     ],
     devTeamRoles: [
-      "Webb-Ansvarig", "Systemutvecklare", "Webbutvecklare",
-      "Webbutvecklare",
+      "Webb-Ansvarig", "Webbutvecklare", "Webbutvecklare",
+      "Systemutvecklare",
     ],
     massTeamRoles: [
       "Mäss-Ansvarig", "Fest-Ansvarig", "Logistik-Ansvarig",
        "Lokal-Ansvarig", "Lounge-Ansvarig", "Personal-Ansvarig",
     ],
-    ecoTeamRoles: ["Ekonomiansvarig","Vice Ekonomiansvarig"],
-    ddaRoles: ["DDA", "DDA"],
+    ecoTeamRoles: ["Ekonomiansvarig","Vice Ekonomiansvarig", "Vice Ekonomiansvarig"],
+    ddaRoles: ["DDA", "Vice-DDA"],
     teamNames: [
       "D-Dagenansvariga",
       "PR-Gruppen",
@@ -1357,10 +1381,14 @@ export default {
       fullTime: "Heltidsjobb",
       trainee: "Traineeprogram",
     },
+    iconButtons: {
+      numbers: "Siffror",
+      logos: "Loggor"
+    }
   },
   sok:{
     notActive: "Går inte att söka just nu, håll koll på sociala medier för vidare information i framtiden",
-    header: "Sök Ledningsgruppen 26",
+    header: "Sök Projektgruppen 26",
     description: "Årets D-Dagen ska bli Datasektionens största och bästa arbetsmarknadsmässa någonsin! Detta är i alla fall visionen vi har som ansvariga i år. Dock är det omöjligt för oss att arrangera ett så här stort evenemang helt själva. Till vår hjälp behöver vi en ambitiös projektgrupp som har drivet att skapa någonting extraordinärt. Vi vill förbättra den interna kommunikation från tidigare år och kommer därför satsa extra mycket på teambuilding för att få en tajt grupp. Vi förväntar oss också att alla i projektgruppen är sociala med god samarbetsförmåga och självgående i sina uppgifter.",
     search:"SÖK",
     info:"Information om rollerna",

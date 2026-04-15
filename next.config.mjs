@@ -49,6 +49,11 @@ const config = {
         destination: "https://tiki.datasektionen.se/events/36c2cf55-153a-4b61-a02f-64a90df88b89",
         permanent: true,
       },
+      {
+        source: "/pg26",
+        destination: "https://docs.google.com/forms/d/e/1FAIpQLSe-cj5fFzr-aM3QTG1Oufy2acHSRMi0j6sAUhtShRu0OF-vYg/viewform?usp=header",
+        permanent: true,
+      }
     ];
   },
 }

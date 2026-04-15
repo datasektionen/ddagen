@@ -8,7 +8,7 @@ const OFFER_LABELS = [
   'summer', 'internship', 'partTime', 'thesis', 'fullTime', 'trainee'
 ];
 const INDUSTRIES_LABELS = [
-  'tech', 'consulting', 'finance',
+  'it', 'f', 'ie', 'ps', 'c', 'er', 'me', 'o'
 ];
 
 export default function Search({
@@ -55,17 +55,26 @@ export default function Search({
   useEffect(() => {
     const applySearch = () => {
       setQuery({
-        searchQuery,
+        searchQuery: searchQuery.toLowerCase(),
         years: checkmarks
         .slice(0, 5)
         .map((value, index) => (value ? index : -1))
         .filter((index) => index !== -1) as (0 | 1 | 2 | 3 | 4)[],
         offers: OFFER_LABELS.filter((_, index) => checkmarks[YEARS.length + index]),
-        industries:  industries.filter((_, index) => checkmarks[YEARS.length + OFFER_LABELS.length + index]),
+        industries: INDUSTRIES_LABELS.filter((_, index) => checkmarks[YEARS.length + OFFER_LABELS.length + index]),
       });
     };
     console.log('Search function called with searchQuery:', searchQuery);
     console.log('State of checkmarks:', checkmarks);
+    console.log("State of query: ", {
+      searchQuery,
+      years: checkmarks
+      .slice(0, 5)
+      .map((value, index) => (value ? index : -1))
+      .filter((index) => index !== -1) as (0 | 1 | 2 | 3 | 4)[],
+      offers: OFFER_LABELS.filter((_, index) => checkmarks[YEARS.length + index]),
+      industries: INDUSTRIES_LABELS.filter((_, index) => checkmarks[YEARS.length + OFFER_LABELS.length + index]),
+    });
     applySearch();
   }, [searchQuery, checkmarks, setQuery]);
 
@@ -121,7 +130,7 @@ export default function Search({
         />
         <div className="h-10 flex flex-row text-3xl box-border">
           <Button
-            value="/img/hamburger.png"
+            value="/icons/hamburger.png"
             loading={false}
             onClick={() => setShowFilter(!showFilter)}
             isImage={true}

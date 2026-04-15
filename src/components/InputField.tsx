@@ -10,6 +10,7 @@ export function InputField<F extends Record<string, string>>({
   required = true,
   step,
   disabled = false,
+  autoComplete,
   onChange = ()=>{},
 }: {
   fields: F;
@@ -23,6 +24,7 @@ export function InputField<F extends Record<string, string>>({
   required?: boolean;
   step?: number;
   disabled?: boolean,
+  autoComplete?: string;
   onChange?: () => void;
 }) {
   return (
@@ -46,6 +48,7 @@ export function InputField<F extends Record<string, string>>({
         value={value}
         step={step}
         disabled={disabled}
+        autoComplete={autoComplete}
         onChange={(e) => setValue(e.target.value, e.target)}
       />
       <label

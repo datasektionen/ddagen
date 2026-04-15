@@ -87,7 +87,7 @@ function Logo({ class: className }: { class?: string }) {
 
       `}
     >
-      2025
+      2026
     </p>
   </div>
   }
@@ -128,7 +128,7 @@ function Logo({ class: className }: { class?: string }) {
 
         `}
       >
-        2025
+        2026
       </p>
     </Link>
   );
@@ -208,7 +208,7 @@ function Group({
             <img
             data-dont-close
 
-            src="/img/smCaret.svg/"
+            src="/icons/smCaret.svg/"
             className={`${
               dropped ? "rotate-180 " : ""
             }  h-4 mt-2 text-cerise  transition-transform duration-300 group`}
@@ -373,9 +373,10 @@ export default function Navbar() {
               links={[
                 { href: "/förstudenter", text: t.forStudents },
                 { href: "/karta", text: t.map },
+                { href: "/event", text: t.event },
                 { href: "/logos", text: t.logos },
-                /*{ href: "/student", text: t.meetings },*/
-                {href: "/sok", text:t.sok},
+                { href: "/student", text: t.meetings },
+                { href: "/sok", text: t.sok },
               ]}
             />
             {/*<NavLink class="px-14 lg:px-0" href="/mässan">{t.about}</NavLink>*/}

@@ -48,12 +48,12 @@ function SingleTeam({
   const seoContent = {
     sv: {
       title: "Sök D-Dagen - Bli en del av Projektgruppen",
-      description: "Vill du vara med och göra D-Dagen 2025 till den största och bästa arbetsmarknadsmässan någonsin? Sök till projektgruppen och hjälp oss skapa ett extraordinärt event! Vi söker ambitiösa och drivna studenter som vill vara med och forma en unik upplevelse på KTH den 9 oktober.",
+      description: "Vill du vara med och göra D-Dagen 2026 till den största och bästa arbetsmarknadsmässan någonsin? Sök till projektgruppen och hjälp oss skapa ett extraordinärt event! Vi söker ambitiösa och drivna studenter som vill vara med och forma en unik upplevelse på KTH den 8 oktober.",
       url: "https://ddagen.se/sok",
     },
     en: {
       title: "Signup for D-Dagen - Join the Project Team",
-      description: "Want to make D-Dagen 2025 the biggest and best career fair ever? Apply to join our project team and help us create an extraordinary event! We’re looking for ambitious and driven students who want to contribute to shaping a unique experience at KTH on October 9.",
+      description: "Want to make D-Dagen 2026 the biggest and best career fair ever? Apply to join our project team and help us create an extraordinary event! We're looking for ambitious and driven students who want to contribute to shaping a unique experience at KTH on October 8.",
       url: "https://ddagen.se/en/sok",
     },
   };
@@ -91,8 +91,8 @@ function SingleTeam({
           />
         </div>
         <div
-          className={`${borderColor} border-[3px] rounded-lg 
-            bg-darkblue bg-opacity-75 
+          className={`${borderColor} border-[3px] rounded-lg
+            bg-darkblue bg-opacity-75
             md:w-[300px] lg:w-[400px] flex`}
           style={{ maxHeight: "400px" }}
         >
@@ -167,21 +167,21 @@ export default function SignupPage() {
   const isPageActive = true;
   const router = useRouter();
 
-  if(!isPageActive) 
+  if(!isPageActive)
   {
     return (
       <div className="mt-[140px] mb-[200px] text-center text-white">
-        {t.sok.notActive} 
+        {t.sok.notActive}
       </div>
     )
   }
-  else 
+  else
   {
     return (
       <div className="pt-[80px] sm:pt-[110px] pb-[110px] sm:pb-[200px]">
-        <div className={`flex flex-col 
+        <div className={`flex flex-col
             pt-[30px] pb-[10px]
-            max-w-[90vw] lg:max-w-[600px] mx-auto 
+            max-w-[90vw] lg:max-w-[600px] mx-auto
             bg-darkblue bg-opacity-75`}>
           <h1 className="text-5xl text-cerise font-medium text-center uppercase">
             {" "}
@@ -196,7 +196,7 @@ export default function SignupPage() {
         <div className="flex flex-row items-center justify-center">
           <Link
             className="flex flex-row items-center justify-center w-[175px] bg-cerise rounded-full h-[60px] mt-[30px] text-white text-center"
-            href="https://docs.google.com/forms/d/e/1FAIpQLSfc8vCKFG_EKLtRIetKtcsYDKNkKMK1DXZBUzpVK357Sm7KlA/viewform"
+            href="/pg26"
             target="_blank"
           >
             {t.sok.search}
@@ -209,7 +209,7 @@ export default function SignupPage() {
             {t.sok.info}
           </h2>
         </div>
-        
+
         <SingleTeam
           bgColor="bg-[#E2B7C9]"
           borderColor="border-[#E2B7C9]"
@@ -285,18 +285,20 @@ export default function SignupPage() {
           ]}
           roles={t.sok.ecoGroup.roles}
         />
-        
+
         <div className="flex flex-col justify-center items-center">
           <h2 className="text-4xl text-cerise font-normal text-center uppercase mt-[100px] w-auto px-5 py-2 rounded-lg bg-darkblue bg-opacity-75">
             {" "}
             {t.sok.moreInfo}
           </h2>
 
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfc8vCKFG_EKLtRIetKtcsYDKNkKMK1DXZBUzpVK357Sm7KlA/viewform" target="_blank">
-            <button className="w-[175px] bg-cerise rounded-full h-[60px] mt-[30px]">
-              <p className="text-white text-center">{t.sok.search}</p>
-            </button>
-          </a>
+          <Link
+            className="flex flex-row items-center justify-center w-[175px] bg-cerise rounded-full h-[60px] mt-[30px] text-white text-center"
+            href="/pg26"
+            target="_blank"
+          >
+            {t.sok.search}
+          </Link>
         </div>
       </div>
     );

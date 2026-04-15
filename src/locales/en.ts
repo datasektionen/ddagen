@@ -6,21 +6,21 @@ export default {
   about: "About Us",
   home: {
     introFirstBlock:
-      "Scandinavia’s largest Career Fair for Computer Science students is celebrating its 25th anniversary",
+      "Scandinavia's largest Career Fair for Computer Science students",
     introSecondBlock:
       "Are you studying Computer Science or IT looking for your future workplace, or do you represent a company searching for talented co-workers?",
     introThirdBlock:
-      "Then D-Dagen is the perfect opportunity for you to meet people in the industry and expand your network with valuable contacts! This year, D-Dagen is celebrating its grand 25th anniversary, which means the fair will be bigger and better than ever, with over 100+ exhibitors and 3000+ participants.",
-    introSignOff: "This is a celebration you do not want to miss!\n Hope to see you there!",
-    introDDA: "Max Berglund & Mortada Nasser, Project Managers",
+      "Then D-Dagen is the perfect opportunity for you to meet people in the industry and expand your network with valuable contacts!",
+    introSignOff: "Hope to see you there!",
+    introDDA: "Didzis Urtans & Oliver Zhou, Project Managers",
     representative: "Company Representative?",
     representativeDescription:
       "Do you want to reach thousands of Computer Science Engineering students at KTH? As an exhibitor at D-Dagen you have the opportunity to do so! Click the button below to read more and make an application of interest .",
     representativeButton: "Interest Registration",
     info: {
-      firstPart: "October 9th",
-      secondPart: "10:00 AM - 4:00 PM",
-      thirdPart: "KTH",
+      firstPart: "October 8th",
+      secondPart: "10 AM - 4 PM",
+      thirdPart: "Nymble, KTH",
     },
     countDown:{
       days: "days",
@@ -28,18 +28,15 @@ export default {
       minutes: "minutes",
       seconds: "seconds",
     },
+    exhibitButton: "Exhibit at D-Dagen",
     stats: [
       {
-        value: "100+",
+        value: "90+",
         type: "Exhibitors last year"
       },
       {
-        value: "3000+",
+        value: "4000+",
         type: "Visitors"
-      },
-      {
-        value: "25th",
-        type: "Anniversary"
       },
       {
         value: "100%",
@@ -56,10 +53,10 @@ export default {
     fairText1:
       "D-Dagen is the Computer Science Chapter's annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
     fairText2:
-      "This year the fair is held on October 9th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15-19 on the KTH Campus Valhallavägen. During the day there will be a lounge for exhibitors, and in the evening a banquet will be organized to end the day.",
+      "This year the fair is held on October 8th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15-19 on the KTH Campus Valhallavägen. During the day there will be a lounge for exhibitors, and in the evening a banquet will be organized to end the day.",
     companyPackages: {
       title: "Does your company want to reach thousands of engineering students at KTH?",
-      text: "We offer several different packages for companies:",
+      text: "We offer several different packages for companies",
       text2: "Prices are found in the Product Catalog above or by contacting ",
       packages: [
         {
@@ -69,15 +66,14 @@ export default {
             "4 m² at the fair",
             "Spot on the website and catalog",
             "2 lunch/breakfast tickets",
-            "5 representative spots",
-            "1 standing table, 2 power outlets",
             "2 banquet tickets*",
+            "1 standing table, 2 power outlets",
             "Free access to the company lounge",
             "A designated Company Host for service",
             "Limited storage & reception of deliveries"
           ],
           disclaimers: [
-            "A total of 8 drink tickets included for the banquet"
+            "A total of 6 drink tickets included for the banquet"
           ]
         },
         {
@@ -89,16 +85,17 @@ export default {
           },
           boldFirstPoint: true,
           bulletPoints: [
-            "Everything from the Small Package",
+            "The entire Small Package",
             "6 m² at the fair",
             "Good placement at the fair",
             "1 extra lunch/breakfast ticket",
             "Exposure on our social media",
             "Medium-sized logo on our website",
-            "Contact meetings, 2 hours",
+            "Contact meetings, 2 hours*",
             "Unlimited storage & reception of deliveries",
           ],
           disclaimers: [
+            "*Contact meetings are offered free of charge in the packages, but must be pre-booked no later than August 28. This is voluntary and may be declined."
           ]
         },
         {
@@ -110,17 +107,20 @@ export default {
           },
           boldFirstPoint: true,
           bulletPoints: [
-            "Everything from the Medium Package",
+            "The entire Medium Package",
             "8 m², at least 4m ceiling height",
             "Central placement at the fair",
-            "1 extra standing table, lunch/breakfast ticket",
+            "1 extra standing table",
+            "1 extra lunch/breakfast ticket",
             "2 extra banquet tickets",
-            "Exposure on approximately 1000 goodie bags with a large logo",
-            "1 representative in a scheduled panel discussion",
-            "Sponsored post on our social media with custom content",
+            "Exposure on approx. 1000 goodie bags",
+            "Scheduled panel discussion*",
+            "Custom sponsored social media post**",
             "Large logo on our website",
           ],
           disclaimers: [
+            "*Panel discussion participation is offered free of charge in the packages, but must be pre-registered no later than August 28. This is voluntary and may be declined.",
+            "**The content of the presentation will be determined by mutual agreement."
           ]
         },
       ]
@@ -134,7 +134,7 @@ export default {
     title: "For Sponsors",
     aboutFair: "About the fair",
     fairText1: "D-Dagen is a premier career fair connecting sponsors with top IT and computer science students at KTH. As a sponsor, you gain exposure, engagement, and the chance to build valuable relationships with future tech talent.",
-    fairText2: "Held on October 9th at KTH Campus, D-Dagen attracts thousands of students and offers strong visibility both on-site and online—perfect for showcasing your brand and products in a dynamic setting.",
+    fairText2: "Held on October 8th at KTH Campus, D-Dagen attracts thousands of students and offers strong visibility both on-site and online—perfect for showcasing your brand and products in a dynamic setting.",
     companyPackages: {
       title: "Become a sponsor of D-Dagen!",
       text: "We offer several sponsor packages that give your company great visibility and engagement with KTH students.",
@@ -196,7 +196,7 @@ export default {
     fairText1:
       "D-Dagen is the Computer Science Chapter's annual career fair. It is an all-day event where companies and students studying computer science and IT get the opportunity to connect and get to know each other. This creates good opportunities for a more direct and personal contact between company representatives and students.",
     fairText2:
-      "This year, the fair is held on October 9th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15 and in KTH Entré which is located at Drottning Kristinas väg 4. Students will be able to have meetings with exhibitors through company meetings in order to get more of a connection with that company (limited slots per company).",
+      "This year, the fair is held on October 8th in the THS student union building, Nymble, which is located at Drottning Kristinas väg 15 and in KTH Entré which is located at Drottning Kristinas väg 4. Students will be able to have meetings with exhibitors through company meetings in order to get more of a connection with that company (limited slots per company).",
     eventPageButton: "D-Dagen Events",
     companyMeetings: "Company Meetings",
     companyMeetingsText:
@@ -332,6 +332,14 @@ export default {
       email: "Email Address",
       role: "Role",
     },
+    fieldsUpdatePosition: {
+      name: "Position"
+    },
+    fieldsUpdateIndustryType: {
+      industryType: "Industrytype",
+      name: "Industrytype (IT and Software(it), Finance(f), Industry and Energy(ie), Public sector(ps), Consulting(c), Education and Research(er), Media and Entertainment(me), Others(o))",
+      industry: "Industry"
+    },
     fieldsAddPreferences: {
       name: "Name",
       preferences: "Preferences",
@@ -379,9 +387,14 @@ export default {
             trainee: "TRAINEE PROGRAM",
           },
           industry: {
-          tech: "TECH",
-            finance: "FINANCE",
-            consulting: "CONSULTING",
+            it: "IT and Software",
+            f: "Finance",
+            ie: "Industry and Energy",
+            ps: "Public sector",
+            c: "Consulting",
+            er: "Education and Research",
+            me: "Media and Entertainment",
+            o: "Others",
           },
           save: "Save",
         },
@@ -585,14 +598,14 @@ export default {
         "</tbody>" +
       "</table>" +
       "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
-        "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+        "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
       "</a>" +
     "</div>"
   },
   companyForm: {
     title: "Sign up for D-Dagen",
     description:
-      "Fill in this form to sign up your company for D-Dagen 2025. Please note that signing up through to this form is not binding.",
+      "Fill in this form to sign up your company for D-Dagen 2026. Please note that signing up through to this form is not binding.",
     fields: {
       name: "Company Name",
       foreignOrganization: "Foreign organization",
@@ -600,11 +613,12 @@ export default {
       email: "Email Address",
       contactPerson: "Contact Person",
       phoneNumber: "Phone Number",
+      howDidYouFindUs: "How did you find out about D-Dagen? (Optional)"
     },
     confirm: "Send",
     ignoreError: "Continue anyway",
     noMoreRegistrations:
-      "Registrations for D-Dagen 2025 have not yet opened. Keep an eye on our social media for when it opens!",
+      "Registrations for D-Dagen 2026 have not yet opened. Keep an eye on our social media for when it opens!",
   },
   postCompanyForm: {
     title: "Registration confirmed",
@@ -644,7 +658,7 @@ export default {
     salesGroup: "Sales Team",
     sponsorText: "Main sponsor for D-Dagen 2025",
     sponsorLink: "https://en.omegapoint.se",
-    notDecided: "Main sponsor for D-Dagen 2025 will be shown here",
+    notDecided: "Main sponsor for D-Dagen 2026 will be shown here",
   },
   newExhibitorEmail: {
     emailSubject: "D-Dagen Exhibitor Account Created",
@@ -676,7 +690,7 @@ export default {
         "</tbody>" +
       "</table>" +
       "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
-        "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+        "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
       "</a>" +
     "</div>"
   },
@@ -687,7 +701,7 @@ export default {
       organizationNumber: string,
       email: string,
       contactPerson: string,
-      phoneNumber: string
+      phoneNumber: string,
     ) =>
       "<div style=\"padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
           "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" +
@@ -702,8 +716,8 @@ export default {
               "<tr>" +
                 "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                   "<p>We are pleased to confirm we have received your exhibitor registration. " +
-                    "We will contact you during the spring about whether you got a spot at D-Dagen. " +
-                    "You can expect to hear from us during spring. </p><br><br>" +
+                    "We will contact you during the about whether you got a spot at D-Dagen. " +
+                    "You can expect to hear from us soon! </p><br><br>" +
                   "<p>Here are the details of your registration: </p><br><br>" +
                 "</div>" +
               "</tr>" +
@@ -730,7 +744,7 @@ export default {
             "</tbody>" +
           "</table>" +
         "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\" >" +
-          "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\" ></img>" +
+          "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\" ></img>" +
         "</a>" +
       "</div>",
   },
@@ -755,7 +769,7 @@ export default {
               "</div>" +
             "</tr>" +
             "<tr>" +
-              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                 "<p style=\"color:#ffffff;\">We are pleased to confirm that " + companyName + " wants a meeting with you."+
                 "<br />Visit <a href=\"https://ddagen.se/student\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/student</a>" +
                 " to choose a time for the meeting: </p>" +
@@ -772,7 +786,7 @@ export default {
           "</tbody>" +
         "</table>" +
         "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
-          "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+          "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
         "</a>" +
       "</div>",
     },
@@ -797,7 +811,7 @@ export default {
               "</div>" +
             "</tr>" +
             "<tr>" +
-              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                 "<p style=\"color:#ffffff;\">We regret to inform that " + firstName + " " + lastName + " has declined your meeting offer."+
                 "<br />Log in to <a href=\"https://ddagen.se/utställare\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/utställare</a>" +
                 " to handle the process of student meetings. </p>" +
@@ -813,7 +827,7 @@ export default {
           "</tbody>" +
         "</table>" +
         "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
-          "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+          "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
         "</a>" +
       "</div>",
     },
@@ -838,7 +852,7 @@ export default {
                 "</div>" +
               "</tr>" +
               "<tr>" +
-                "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+                "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                   "<p style=\"color:#ffffff;\">We regret to inform that " + firstName + " " + lastName + " has canceled your meeting."+
                   "<br />Log in to <a href=\"https://ddagen.se/utställare\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/utställare</a>" +
                   " to handle the process of student meetings. </p>" +
@@ -854,7 +868,7 @@ export default {
             "</tbody>" +
           "</table>" +
           "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
-            "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+            "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
           "</a>" +
         "</div>",
     },
@@ -878,7 +892,7 @@ export default {
               "</div>" +
             "</tr>" +
             "<tr>" +
-              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+              "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                 "<p style=\"color:#ffffff;\">We regret to inform that " + companyName + " has canceled your meeting."+
                 "<br />Log in to <a href=\"https://ddagen.se/student\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/student</a>" +
                 " to handle your meetings. </p>" +
@@ -894,7 +908,7 @@ export default {
           "</tbody>" +
         "</table>" +
         "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
-          "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+          "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
         "</a>" +
       "</div>",
     },
@@ -922,10 +936,10 @@ export default {
                 "</div>" +
               "</tr>" +
               "<tr>" +
-                "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+                "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                   "<p style=\"color:#ffffff;\">This is a confirmation for your student meeting with " + firstName + " " + lastName + "." +
                   "<br />Time: " + time +
-                  "<br />Location: " + location +
+                  "<br />Location: <a href=\"https://maps.app.goo.gl/SRhXZYKhdvqnevPF7\" style=\"color:#0000FF;text-decoration:underline\"> KTH Entré secondary entrance</a>"  +
                   "<br />Log in to <a href=\"https://ddagen.se/utställare\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/utställare</a>" +
                   " to handle your meetings. </p>" +
                 "</div>" +
@@ -940,7 +954,7 @@ export default {
             "</tbody>" +
           "</table>" +
           "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
-            "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+            "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
           "</a>" +
         "</div>",
       },
@@ -968,10 +982,10 @@ export default {
                 "</div>" +
               "</tr>" +
               "<tr>" +
-                "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +                
+                "<div style=\"padding: 5px 30px; background:#DE3163;color:#ffffff;\" >" +
                   "<p style=\"color:#ffffff;\">This is a confirmation for your student meeting with " + companyName + "." +
                   "<br />Time: " + time +
-                  "<br />Location: " + location +
+                  "<br />Location: <a href=\"https://maps.app.goo.gl/SRhXZYKhdvqnevPF7\" style=\"color:#0000FF;text-decoration:underline\"> KTH Entré secondary entrance</a>" +
                   "<br />Log in to <a href=\"https://ddagen.se/student\" style=\"color:#0000FF;text-decoration:underline\">https://ddagen.se/student</a>" +
                   " to handle your meetings. </p>" +
                 "</div>" +
@@ -986,7 +1000,7 @@ export default {
             "</tbody>" +
           "</table>" +
           "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\">" +
-            "<img src=\"https://ddagen.se/img/email-signatur.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
+            "<img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width: 100%; height: auto; display: block; max-width: 600px;\"></img>" +
           "</a>" +
         "</div>",
       },
@@ -1001,7 +1015,7 @@ export default {
     table1row3: "WHERE IS D-DAGEN?",
     table1text1:
       "D-Dagen is the annual career fair organized by the Computer Science chapter at KTH Royal Institute of Technology. It is today the largest IT career fair in the Nordic region.",
-    table1text2: "This year's D-Dagen is taking place on October 9th.",
+    table1text2: "This year's D-Dagen is taking place on October 8th.",
     table1text3:
       "D-Dagen will be held at Nymble, the student union house, located at the KTH Royal Institute of Technlogy in Stockholm.",
     table2row1: "CAN OUR COMPANY GET MORE EXPOSURE?",
@@ -1034,21 +1048,20 @@ export default {
     table4row1:
       "WHAT KIND OF EVENTS CAN OUR COMPANY HOST TOGETHER WITH D-DAGEN?",
     table4text1:
-      "We'd be thrilled to collaborate with you, both before and after D-Dagen! Whether you're interested in hosting a lunch lecture, hackathon, or something completely different, we're open to your ideas. For more information, please contact our sponsorship manager at <a className='text-yellow' href='mailto:jamie.groop@ddagen.se'>jamie.groop@ddagen.se</a>.",
+      "We'd be thrilled to collaborate with you, both before and after D-Dagen! Whether you're interested in hosting a lunch lecture, hackathon, or something completely different, we're open to your ideas. For more information, please contact our sponsorship manager at <a className='text-yellow' href='mailto:sean.zisheng@ddagen.se'>sean.zisheng@ddagen.se</a>.",
     productCatalog: "PRODUCT CATALOG",
     header: "COMPANY FAQ",
-    catalogPath: "https://ddagen.se/downloadables/Product_Catalog_2025_en.pdf",
+    catalogPath: "https://ddagen.se/downloadables/Product_Catalog_2026_en.pdf",
   },
   contact: {
     header: "Contact",
     subheader1: "Contact us",
-    subheader2: "Project Managers",
+    subheader2: "Project Managers 2026",
     p1: "If you have any suggestions for events or activities you want to organize for the students at the Computer Science Chapter, or if you have any other questions or concerns about company packages and the fair,  feel free to contact us at...",
-    p2: "For more information and other questions to those responsible for D-Dagen, contact us at...",
-    salesHeader: "Sales team",
-    bossesHeader: "Managers",
+    p2: "For more information and other questions to the responsible for D-Dagen, contact...",
+    salesHeader: "Sales team 2026",
+    bossesHeader: "Manager 2026",
     roles: [
-      "HEAD OF D-DAGEN",
       "HEAD OF D-DAGEN",
       "HEAD OF PR",
       "LEAD DEVELOPER",
@@ -1142,22 +1155,33 @@ export default {
     cta: "Create Profile"
   },
   event: {
+    description: "Klick on the events to read more about them!",
     lunchSeminarHeader: "Lunch Seminar",
-    lunchSeminar: "Lunch Seminar",
+    lunchSeminar: "Lunch lectures are an incredibly popular concept among students, offering free lunch and an interesting talk from a company in the IT industry. Takes place from 12 AM–1 PM on a weekday at the KTH campus.",
     recruitmentPub: "Recruitment Pub",
-    recruitmentPubText: "During the recruitment of D-Dagen’s fantastic 100+ day staff who will assist during the fair, the Project Group organizes the annual Recruitment Pub in the Computer Science chapter's own pub, Meta! Join us for a really pleasant evening with D-Dagen-related activities and competitions with sponsored prizes. Food and drinks are available to order.",
+    recruitmentPubText: "During the recruitment of D-Dagen's fantastic 100+ day staff who will assist during the fair, the Project Group organizes the annual Recruitment Pub in the Computer Science chapter's own pub, Meta! Join us for a really pleasant evening with D-Dagen-related activities and competitions with sponsored prizes. Food and drinks are available to order.",
+    contactConversations: "Signup for Contact Conversations closes at 23:59",
+    contactConversationsText: "Contact meetings are a unique opportunity for companies and students to meet one-on-one and discuss career opportunities. Students gain a much better understanding of the conditions at a specific workplace, and companies get an excellent picture of the student's skills and experiences. Read more at http://ddagen.se/kontaktsamtal.",
     opening: "25th Anniversary Fair Opens!",
     openingCeremony: "Opening of the fair on stage in nya Matsalen together with Main Sponsor Omegapoint",
+    welcome: "Welcome",
+    inaugeration: "Opening",
     panelDiscussionHeader: "Panel Discussion",
+    panelDiscussionHeader1: "The Future of the Fintech Industry",
+    panelDiscussionHeader2: "Panel Discussion Society's Cyber Threats",
+    panelDiscussionHeader3: "Panel Discussion Design & AI",
     panelDiscussion1: "The Future of the Fintech Industry with Nordea, Nore Technology, Revolut and Jane Street",
-    panelDiscussion1text: "The panel discussion will be held in Swedish.",
     panelDiscussion2: "How well prepared is society for today's cyber threats? with Omegapoint, Basalt and Försvarsmaktens Radioanstalt",
-    panelDiscussion2text: "The panel discussion will be held in English.",
+    panelDiscussion3: "Design and Development in the AI Era, with Atlas Copco, Electronic Arts DICE, Ubiquiti",
+    panelDiscussion1text: "The panel discussion will be held in Enligsh.",
+    panelDiscussion2text: "The panel discussion will be held in Swedish.",
     panelDiscussiontext: "During the fair day, several panel discussions are held and moderated by D-Dagen, each covering an IT-relevant topic. These sessions give students the opportunity to hear what it’s like to work in the IT industry and engage in an insightful and educational discussion between a few company representatives.",
     fair: "THE FAIR",
     after: "AFTER",
     closes: "The fair closes",
     banquet: "The D-Dagen Banquet starts!",
+    banquetSignup: "Deadline for registration of special diet for the D-Dagen Banquet",
+    banquetSignupText: "tickets can still be purchased after this as long as there are seats left."
   },
   history: {
     header: "D-Dagen History",
@@ -1202,6 +1226,7 @@ export default {
         logoColour: "Coloured Logo",
         description: "Description",
         package: "Package",
+        position: "Map Position",
         delete: "Remove",
         companyHost: {
           name: "Company host",
@@ -1300,7 +1325,7 @@ export default {
     paragraph1:
       "D-Dagen is an annual trade fair organized by the Computer Science Student Association at KTH (Royal Institute of Technology). At D-Dagen, companies have the opportunity to meet and interact with potential future employees from KTH. At the same time, we offer our students a chance to learn more about career opportunities, network, and participate in lectures and other company events.",
     paragraph2:
-      "The term ”D-Dagen” was coined as early as the year 2000, when it was the Computer Science Chapter’s industry-day with 13 attending companies in the E-building on KTH Campus. Since then, D-Dagen has grown and in 2016 it entered the student union building, Nymble. Now D-Dagen is considered to be the largest career fair in the Nordics for Computer Science students, as well as one of the largest career fairs at KTH.",
+      "The term ”D-Dagen” was coined as early as the year 2000, when it was the Computer Science Chapter's industry-day with 13 attending companies in the E-building on KTH Campus. Since then, D-Dagen has grown and in 2016 it entered the student union building, Nymble. Now D-Dagen is considered to be the largest career fair in the Nordics for Computer Science students, as well as one of the largest career fairs at KTH.",
     paragraph3:
       "Over time, D-Dagen has evolved into much more than just a one-day fair. In the weeks leading up to the fair, we give companies the opportunity to hold lunch lectures and other events together with our students. In the evening after the fair, we organize a larger dinner where students and company representatives can engage in more relaxed conversations.",
     info1: "What is D-Dagen",
@@ -1319,8 +1344,8 @@ export default {
       "Art Director", "Social Media Manager",
     ],
     devTeamRoles: [
-      "Lead Developer", "System Developer",
-      "Web Developer", "Web Developer",
+      "Lead Developer", "Web Developer",
+      "Web Developer", "System Developer",
     ],
     salesTeamRoles: [
       "Head of Sales", "Salesperson", "Salesperson",
@@ -1330,16 +1355,16 @@ export default {
       "Head of the Fair", "Event Manager", "Logistics Manager",
       "Venue Manager", "Lounge Manager", "HR Manager",
     ],
-    ecoTeamRoles: ["Head of Finances", "Deputy Financial Manager"],
+    ecoTeamRoles: ["Head of Finances", "Deputy Financial Manager", "Deputy Financial Manager"],
     ddaRoles: [
-      "DDA", "DDA", // Assuming DDA remains the same without context.
+      "DDA", "Deputy DDA", // Assuming DDA remains the same without context.
     ],
     teamNames: [
       "D-Dagen Managers",
       "PR Team",
       "Dev Team",
       "Sales Team",
-      "Exhibition Team",
+      "Career Fair Team",
       "Finance Team",
     ],
   },
@@ -1369,10 +1394,14 @@ export default {
       fullTime: "Full-time Job",
       trainee: "Trainee Program",
     },
+    iconButtons: {
+      numbers: "Numbers",
+      logos: "Logos"
+    }
   },
   sok:{
     notActive: "The signup is not active yet, keep an eye on social media for when it opens!",
-    header: "Signup for leadership group 26",
+    header: "Signup for project group 26",
     description: "The goal for this year's D-Dagen is to make it the biggest and best career fair in Datasektionen's history! This is the vision we have as organizers this year. However, it's impossible for us to organize such a large event entirely on our own. We need an ambitious project group to help us, one that has the drive to create something extraordinary. We aim to improve internal communication from previous years, and, therefore, we will focus extensively on team building to create a close-knit group. We also expect that everyone in the project group is sociable, has good teamwork skills, and is self-driven in their tasks.",
     search:"SIGNUP",
     info:"Information about the roles",
@@ -1390,10 +1419,10 @@ export default {
       text: "As the PR manager, you are the leader of the PR team. You drive and organize the group, ensuring that everyone knows what they need to do and has the necessary resources. Since you work closely with the PR team, you will become very close-knit. As the PR manager, you will also communicate extensively with the DDA's.",
       roles : [
         "PR Manager\n- Good communicator\n- Well-organized\n- Leader\nAs a PR Manager, you lead the PR team, ensuring they are organized and equipped to communicate effectively. Working closely within the PR team will foster a strong sense of unity. You will also engage in extensive communication with DDA.",
-        "Art Director (UI/UX Design)\n- Artistic\n- Accommodating\nAs an Art Director, you ensure that D-Day looks professional. You will have the opportunity to express your creativity and design through all of the graphics needed for D-Day. This Art Director role includes the responsibility for UX design for the website but also assists with print design. This includes designing UI/UX for the website, brochures, posters, branded clothing and more. Occasionally, you will also get to take some photos. No prior knowledge is required; you will have the chance to learn over time, and the most important thing is that you are driven and motivated. Of course, you will have access to all the programs you need!",
-        "Art Director (Print Design)\n- Artistic\n- Accommodating\nAs an Art Director, you ensure that D-Day looks professional. You will have the opportunity to express your creativity and design through all of the graphics needed for D-Day. This Art Director role is primarily responsible for print design but receives support from the other Art Director. This includes brochures, posters, branded clothing and more. Occasionally, you will also get to take some photos. No prior knowledge is required; you will have the chance to learn over time, and the most important thing is that you are driven and motivated. Of course, you will have access to all the programs you need!",
+        "Art Director (UI/UX Design)\n- Artistic\n- Accommodating\nAs an Art Director, you ensure that D-Dagen looks professional. You will have the opportunity to express your creativity and design through all of the graphics needed for D-Dagen. This Art Director role includes the responsibility for UX design for the website but also assists with print design. This includes designing UI/UX for the website, brochures, posters, branded clothing and more. Occasionally, you will also get to take some photos. No prior knowledge is required; you will have the chance to learn over time, and the most important thing is that you are driven and motivated. Of course, you will have access to all the programs you need!",
+        "Art Director (Print Design)\n- Artistic\n- Accommodating\nAs an Art Director, you ensure that D-Dagen looks professional. You will have the opportunity to express your creativity and design through all of the graphics needed for D-Dagen. This Art Director role is primarily responsible for print design but receives support from the other Art Director. This includes brochures, posters, branded clothing and more. Occasionally, you will also get to take some photos. No prior knowledge is required; you will have the chance to learn over time, and the most important thing is that you are driven and motivated. Of course, you will have access to all the programs you need!",
         "Print Manager\n- Proactive\n- Artistic\nThe Print Manager is part of the PR team and is responsible for ensuring all printed materials are ordered and delivered on time. This includes items like stickers, patches, branded clothing, banners, brochures, and more. You'll work closely with the Art Director and assist with design work.",
-        "Social Media Manager\n- Good communicator\n- Initiating\n- Social (especially on social media)\n- Creative\nThe Social Media Manager is responsible for increasing D-Day's presence on platforms like Instagram, Facebook, and other social media sites. You'll have the freedom to choose which social media platforms to use and how to express the event's message (within reasonable boundaries). In this role, you'll work closely with the Art Director to create attractive posts. This is an ideal position for those who enjoy taking photos and posting stories!"
+        "Social Media Manager\n- Good communicator\n- Initiating\n- Social (especially on social media)\n- Creative\nThe Social Media Manager is responsible for increasing D-Dagen's presence on platforms like Instagram, Facebook, and other social media sites. You'll have the freedom to choose which social media platforms to use and how to express the event's message (within reasonable boundaries). In this role, you'll work closely with the Art Director to create attractive posts. This is an ideal position for those who enjoy taking photos and posting stories!"
       ]
     },
     devGroup:{
@@ -1401,35 +1430,35 @@ export default {
       text: "The Dev Group is a technically skilled and innovative unit within D-Dagen. Its members are responsible for the development, maintenance, and enhancement of the D-Dagen website. They handle everything from backend programming and database management to frontend design and user experience, with a focus on creating a smooth and engaging digital platform for all visitors.",
       roles : [
         "Web Manager\n- Independent\n- Initiating\nAs the Web Manager, you're responsible for ensuring the website looks good and functions properly. You'll also have significant opportunities to improve the website. Previous experience and knowledge in web development are definite assets. You'll work closely with the Art Director.",
-        "System Manager\n- Independent\n- Initiating\n- 'Yes, can do' attitude\nThe System Manager will collaborate extensively with the Web Manager on ambitious projects we plan to introduce at D-Day. We're looking for someone with the drive to create opportunities, and prior experience in app development is a big plus.",
+        "System Manager\n- Independent\n- Initiating\n- 'Yes, can do' attitude\nThe System Manager will collaborate extensively with the Web Manager on ambitious projects we plan to introduce at D-Dagen. We're looking for someone with the drive to create opportunities, and prior experience in app development is a big plus.",
       ]
     },
     saleGroup:{
       header: "Sales Team",
-      text: "The Sales Team in D-Day is a central part of the organization and plays a crucial role in ensuring the participation of companies and the growth of the event. The group consists of three key roles, each with its specific tasks:",
+      text: "The Sales Team in D-Dagen is a central part of the organization and plays a crucial role in ensuring the participation of companies and the growth of the event. The group consists of three key roles, each with its specific tasks:",
       roles : [
         "Sales Manager\n- Good communicator\n- Well-organized\n- Leader\nAs the Sales Manager, you are the operational leader of the sales team. Your responsibilities include training the sales team, ensuring they have everything they need, and keeping the work on schedule.",
-        "Sales Person\n- Good communicator\n- Service-oriented\n- Persuasive\nSales People are the primary points of contact with companies. You will work as a team to promote and sell D-Day to businesses, ensuring D-Day's growth. You'll also serve as the main source of information and advice for companies, providing them with tips and advice for the event. No prior sales experience is required, but it's a plus.",
+        "Sales Person\n- Good communicator\n- Service-oriented\n- Persuasive\nSales People are the primary points of contact with companies. You will work as a team to promote and sell D-Dagen to businesses, ensuring D-Dagen's growth. You'll also serve as the main source of information and advice for companies, providing them with tips and advice for the event. No prior sales experience is required, but it's a plus.",
         "Sponsorship Manager\n- Good communicator\n- Initiating\n- 'Pushy' sales attitude\nAs the Sponsorship Manager, you will reach out to companies that won't have a physical presence at the event but still want to be visible in other ways. You'll also assist in organizing lunchtime lectures and other corporate events. Your tasks will involve collaborating closely with the PR team and the rest of the project team."
       ]
     },
     massGroup:{
-      header: "Exhibition Team",
-      text: "The Trade Fair Group is the heart and brain behind D-Day's trade fair and events. The group consists of a dedicated team with various responsibilities, and their collaboration is crucial to ensure that everything runs smoothly and that visitors have a memorable experience.",
+      header: "Career Fair Team",
+      text: "The Career Fair Team is the heart and brain behind D-Dagen's trade fair and events. The group consists of a dedicated team with various responsibilities, and their collaboration is crucial to ensure that everything runs smoothly and that visitors have a memorable experience.",
       roles : [
-        "Exhibition Manager\n- Good communicator\n- Well-organized\n- Leader\nAs the Exhibition Manager, you are the leader of the Exhibition team. You will drive and organize the team, ensuring everyone has what they need. Working closely within the Exhibition team, you will become a tightly-knit group. You will also have extensive communication with DDA.",
-        "Logistics Manager\n- Good communicator\n- Well-organized\n- Independent\nAs the Logistics Manager, you are the leader of the Exhibition team. You will drive and organize the team, ensuring everyone has what they need. Working closely within the Exhibition team, you will become a tightly-knit group. You will also have extensive communication with DDA.",
-        "HR Manager\n- Good communicator\n- Leader\n- Thorough scheduler\nWhen D-Day kicks off in Nymble, we need much more staff than just the project team. This is where your primary responsibility lies. You will recruit staff, conduct team-building activities, and plan their schedules for the day. You will also be responsible for planning team-building activities for the project team together with the Lounge Manager. You will also ensure that D-Day meets JML standards.",
+        "Career Fair Manager\n- Good communicator\n- Well-organized\n- Leader\nAs the Career Fair Manager, you are the leader of the Career Fair team. You will drive and organize the team, ensuring everyone has what they need. Working closely within the Career Fair team, you will become a tightly-knit group. You will also have extensive communication with DDA.",
+        "Logistics Manager\n- Good communicator\n- Well-organized\n- Independent\nAs the Logistics Manager, you are the leader of the Career Fair team. You will drive and organize the team, ensuring everyone has what they need. Working closely within the Logistics team, you will become a tightly-knit group. You will also have extensive communication with DDA.",
+        "HR Manager\n- Good communicator\n- Leader\n- Thorough scheduler\nWhen D-Dagen kicks off in Nymble, we need much more staff than just the project team. This is where your primary responsibility lies. You will recruit staff, conduct team-building activities, and plan their schedules for the day. You will also be responsible for planning team-building activities for the project team together with the Lounge Manager. You will also ensure that D-Dagen meets JML standards.",
         "Lounge Manager\n- Service-oriented\n- Enjoys food\nThe lounge is where company representatives and staff can come during the day to take a break and relax. Your job is to ensure they can expect good food and the best possible service! You will also plan team-building activities for the project team together with the HR Manager and be responsible for ordering food for both team-building and major meetings.",
         "Party Manager\n- Fun-loving\n- Creative\n- Initiator\nThe Party Manager is responsible for organizing all major events, such as the company banquet and the appreciation dinner. This role is perfect for someone who is creative and enjoys having fun with others.",
-        "Venue Manager\n- Responsible\n- Proactive\nWithout a place to be, it's much harder to have successful events. You will become an expert on Nymble's venues and ensure that we follow their instructions and requirements. You will also help book venues for D-Day's other events."
+        "Venue Manager\n- Responsible\n- Proactive\nWithout a place to be, it's much harder to have successful events. You will become an expert on Nymble's venues and ensure that we follow their instructions and requirements. You will also help book venues for D-Dagen's other events."
       ]
     },
     ecoGroup:{
       header: "Finance Team",
-      text: "The Finance Team is a key component within D-Day, responsible for maintaining a strong and stable economy. Through their meticulous work, the team ensures that D-Day can continue to grow and deliver high-quality events without financial obstacles.",
+      text: "The Finance Team is a key component within D-Dagen, responsible for maintaining a strong and stable economy. Through their meticulous work, the team ensures that D-Dagen can continue to grow and deliver high-quality events without financial obstacles.",
       roles : [
-        "Finance Manager\n- Detail-oriented\n- Can invoice and bookkeep (preferably using the computer science section's system)\n- Willing to read complex texts (contracts, statutes, etc.)\nYou have a handle on finances. You are an expert at bookkeeping (or at least have some knowledge, with instructions available). Together with the Vice Finance Manager, you will send out and book invoices once D-Day has concluded, and you will also serve as an advisor when it comes to the rest of the project team's budgeting and bookkeeping.",
+        "Finance Manager\n- Detail-oriented\n- Can invoice and bookkeep (preferably using the computer science section's system)\n- Willing to read complex texts (contracts, statutes, etc.)\nYou have a handle on finances. You are an expert at bookkeeping (or at least have some knowledge, with instructions available). Together with the Vice Finance Manager, you will send out and book invoices once D-Dagen has concluded, and you will also serve as an advisor when it comes to the rest of the project team's budgeting and bookkeeping.",
         "Vice Finance Manager\n- Willing to learn a lot\n- Initiative-driven\nThe Vice Finance Manager is one of the more flexible roles within the project team. Your primary task is to learn bookkeeping and assist the Finance Manager, but you are also expected to help where needed in other areas of the project team. That's why we hope you are a motivated person who is ready to go above and beyond your regular duties and provide assistance wherever the rest of the project team may need an extra hand."
       ]
     },

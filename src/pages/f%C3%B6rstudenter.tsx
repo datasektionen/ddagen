@@ -14,12 +14,12 @@ export default function ForStudents() {
   const seoContent = {
     sv: {
       title: "För Studenter - Träffa IT-företag & Skapa Karriärmöjligheter",
-      description: "D-Dagen är Datasektionens årliga arbetsmarknadsdag för IT- och datastudenter vid KTH. Delta den 9 oktober på KTH Campus Valhallavägen och nätverka med ledande företag inom techbranschen. Boka kontaktsamtal, få karriärtips och engagera dig som dagspersonal för unika möjligheter!",
+      description: "D-Dagen är Datasektionens årliga arbetsmarknadsdag för IT- och datastudenter vid KTH. Delta den 8 oktober på KTH Campus Valhallavägen och nätverka med ledande företag inom techbranschen. Boka kontaktsamtal, få karriärtips och engagera dig som dagspersonal för unika möjligheter!",
       url: "https://ddagen.se/förstudenter",
     },
     en: {
       title: "For Students - Meet Top IT Companies & Boost Your Career",
-      description: "D-Dagen is the annual career fair for IT and computer science students at KTH. Join us on October 9 at KTH Campus Valhallavägen to connect with leading tech companies, book one-on-one career meetings, and explore job opportunities. Get involved as event staff for valuable experience and networking!",
+      description: "D-Dagen is the annual career fair for IT and computer science students at KTH. Join us on October 8 at KTH Campus Valhallavägen to connect with leading tech companies, book one-on-one career meetings, and explore job opportunities. Get involved as event staff for valuable experience and networking!",
       url: "https://ddagen.se/en/förstudenter",
     },
   };
@@ -74,6 +74,14 @@ export default function ForStudents() {
             </h2>
             <p className="text-white text-base sm:text-lg pt-4 max-w-xl">{t.forStudents.fairText1}</p>
             <p className="text-white text-base sm:text-lg pt-4 max-w-xl">{t.forStudents.fairText2}</p>
+            <button className="mt-6">
+              <a
+                className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base uppercase font-medium px-6 py-2 max-lg:mx-auto w-max"
+                href={"/event"}
+              >
+                {t.forStudents.eventPageButton}
+              </a>
+            </button>
           </ImageTextSection>
 
           <ImageTextSection
@@ -121,7 +129,7 @@ export default function ForStudents() {
           <ImageTextSection
             t={t}
             leftSideImage={false}
-            imageProps={{ src: "/img/ddagen2024/banquette-dinner.jpg", alt: "Panel discussions" }}
+            imageProps={{ src: "/img/ff4.webp", alt: "Panel discussions" }}
             className={`mt-[20px] lg:mt-[60px] mb-[30px] lg:mb-[40px]`}
           >
             <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl max-w-xl">

@@ -1,0 +1,880 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="53.29 101.96 1054.81 776.04"
+   version="1.1"
+   id="svg1649"
+   sodipodi:docname="floor-2.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1651"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="0.87970076"
+     inkscape:cx="895.75914"
+     inkscape:cy="654.19973"
+     inkscape:window-width="1920"
+     inkscape:window-height="1027"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="Layer_2" />
+  <defs
+     id="defs858">
+    <rect
+       x="271.34382"
+       y="659.18459"
+       width="43.415011"
+       height="46.309346"
+       id="rect1" />
+    <style
+       id="style847">
+      @font-face {
+        font-family: &quot;neue-haas-normal&quot;;
+        src: url(&quot;/fonts/NeueHaasDisplay/NeueHaasDisplayRoman.ttf&quot;) format(&quot;truetype&quot;);
+      }
+
+      tspan {
+        font-family:neue-haas-normal;
+      }
+
+      .cls-1 {
+      letter-spacing: -.01em;
+      }
+
+      .cls-2 {
+      letter-spacing: 0em;
+      }
+
+      .cls-3 {
+      letter-spacing: -.02em;
+      }
+
+      .cls-4 {
+      stroke-dasharray: 0 0 .97 11.66;
+      }
+
+      .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10, .cls-11, .cls-12, .cls-13 {
+      fill: none;
+      stroke-miterlimit: 10;
+      }
+
+      .cls-4, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10 {
+      stroke: #e6e7e8;
+      stroke-linecap: round;
+      stroke-width: 8px;
+      }
+
+      .cls-5 {
+      stroke: #f0f0f0;
+      stroke-width: 7px;
+      }
+
+      .cls-14 {
+      letter-spacing: 0em;
+      }
+
+      .cls-15 {
+      fill: url(#linear-gradient);
+      }
+
+      .cls-15, .cls-16, .cls-17, .cls-18, .cls-19, .cls-20 {
+      stroke-width: 0px;
+      }
+
+      .cls-21 {
+      letter-spacing: 0em;
+      }
+
+      .cls-6 {
+      stroke-dasharray: 0 0 1.02 12.19;
+      }
+
+      .cls-7 {
+      stroke-dasharray: 0 0 1.07 12.79;
+      }
+
+      .cls-8 {
+      stroke-dasharray: 0 0 1 12;
+      }
+
+      .cls-22 {
+      letter-spacing: -.02em;
+      }
+
+      .cls-23 {
+      letter-spacing: 0em;
+      }
+
+      .cls-24 {
+      letter-spacing: -.02em;
+      }
+
+      .cls-25 {
+      letter-spacing: 0em;
+      }
+
+      .cls-26 {
+      font-size: 19px;
+      font-weight: 500;
+      cursor: pointer;
+      }
+
+      .cls-26, .cls-16 {
+      fill: #f0f0f0;
+      }
+
+      .cls-17, .cls-27 {
+      fill: #ee2a7b;
+      }
+
+      .cls-18 {
+      fill: #939598;
+      }
+
+      .cls-28 {
+      letter-spacing: -.01em;
+      }
+
+      .cls-19 {
+      fill: url(#linear-gradient-2);
+      }
+
+      .cls-27 {
+      font-family: NHaasGroteskDSPro-45Lt, 'Neue Haas Grotesk Display Pro';
+      font-size: 30px;
+      }
+
+      .cls-20 {
+      fill: url(#linear-gradient-3);
+      }
+
+      .cls-10 {
+      stroke-dasharray: 0 0 .92 11.06;
+      }
+
+      .cls-29 {
+      letter-spacing: 0em;
+      }
+
+      .cls-30 {
+      letter-spacing: 0em;
+      }
+
+      .cls-31 {
+      letter-spacing: 0em;
+      }
+
+      .cls-32 {
+      letter-spacing: -.02em;
+      }
+
+      .cls-33 {
+      fill: #231f20;
+      font-size: 25px;
+      cursor: default;
+      }
+
+      .cls-34 {
+      letter-spacing: 0em;
+      }
+
+      .cls-35 {
+      letter-spacing: 0em;
+      }
+
+      .cls-36 {
+      letter-spacing: -.02em;
+      }
+
+      .cls-37 {
+      letter-spacing: -.02em;
+      }
+
+      .cls-38 {
+      letter-spacing: .02em;
+      }
+
+      .cls-39 {
+      letter-spacing: -.01em;
+      }
+
+      .cls-11 {
+      stroke: #ee2a7b;
+      stroke-width: 3px;
+      }
+
+      .cls-40 {
+      letter-spacing: -.02em;
+      }
+
+      .cls-12, .cls-13 {
+      stroke: #808285;
+      }
+
+      .cls-13 {
+      stroke-width: 2px;
+      }
+
+      .cls-41 {
+      letter-spacing: 0em;
+      }
+
+      .cls-42 {
+      letter-spacing: 0em;
+      }
+
+      .cls-43 {
+      letter-spacing: -.06em;
+      }
+    </style>
+    <linearGradient
+       id="linear-gradient"
+       x1="117.39"
+       y1="759.14"
+       x2="30.53"
+       y2="724.49"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#fff"
+         id="stop849" />
+      <stop
+         offset=".11"
+         stop-color="#f1f1f1"
+         id="stop851" />
+      <stop
+         offset="1"
+         stop-color="#808285"
+         id="stop853" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient-2"
+       x1="552.68"
+       y1="264.72"
+       x2="627.67"
+       y2="294.88"
+       xlink:href="#linear-gradient" />
+    <linearGradient
+       id="linear-gradient-3"
+       x1="260.98"
+       y1="818.1"
+       x2="308.05"
+       y2="837.03"
+       xlink:href="#linear-gradient" />
+    <filter
+       id="mask-powermask-path-effect2_inverse"
+       inkscape:label="filtermask-powermask-path-effect2"
+       style="color-interpolation-filters:sRGB"
+       height="100"
+       width="100"
+       x="-50"
+       y="-50">
+      <feColorMatrix
+         id="mask-powermask-path-effect2_primitive1"
+         values="1"
+         type="saturate"
+         result="fbSourceGraphic" />
+      <feColorMatrix
+         id="mask-powermask-path-effect2_primitive2"
+         values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0 "
+         in="fbSourceGraphic" />
+    </filter>
+  </defs>
+  <g
+     id="Layer_2"
+     data-name="Layer 2">
+    <polygon
+       class="cls-15"
+       points="54.29 714.87 123.52 742.41 110.55 775.28 54.29 753.14 54.29 714.87"
+       id="polygon860" />
+    <polygon
+       class="cls-19"
+       points="560.11 259.21 616.36 265.08 616.36 292.27 558.41 292.27 560.11 259.21"
+       id="polygon862" />
+    <polygon
+       class="cls-20"
+       points="270.01 803.98 306.64 818.61 295.2 849.66 257.61 834.6 270.01 803.98"
+       id="polygon864" />
+    <polygon
+       class="cls-18"
+       points="295.2 849.66 363.43 877 382.32 784.01 282.37 764.22 279.94 766.84 277.34 782.34 334.48 807.01 328.69 827.41 306.29 819.29 295.2 849.66"
+       id="polygon866" />
+    <line
+       class="cls-13"
+       x1="130.82"
+       y1="710.85"
+       x2="224.47"
+       y2="746.59"
+       id="line868" />
+    <polyline
+       class="cls-13"
+       points="209.07 740.72 235.55 672.75 134.34 632.97 294.96 233.7 480.75 291.94 526.4 292.1 526.9 103.29 820.61 102.96 821.11 292.13 828.48 292.25 651.18 292.13"
+       id="polyline870" />
+    <polyline
+       class="cls-13"
+       points="862.24 484.02 823.29 292.25 783.18 292.22 783.18 327.52 829.73 328.03 740.05 327.52 740.05 471.69 859.22 471.94"
+       id="polyline872" />
+    <polyline
+       class="cls-13"
+       points="548.05 292.27 616.36 292.27 616.36 265.08 558.37 259.21"
+       id="polyline874" />
+    <polyline
+       class="cls-13"
+       points="480.75 291.94 424.48 572.76 329.45 554.51 335.87 516.24 430.78 535.38 486.62 535.11"
+       id="polyline876" />
+    <line
+       class="cls-13"
+       x1="522.29"
+       y1="535.13"
+       x2="871.97"
+       y2="533.36"
+       id="line878" />
+    <line
+       class="cls-13"
+       x1="870.45"
+       y1="522.29"
+       x2="898.15"
+       y2="653.7"
+       id="line880" />
+    <polyline
+       class="cls-13"
+       points="187.13 501.76 281.87 538.65 295.46 508.69 194.21 484.15"
+       id="polyline882" />
+    <line
+       class="cls-13"
+       x1="141.14"
+       y1="750.12"
+       x2="54.29"
+       y2="714.87"
+       id="line884" />
+    <polyline
+       class="cls-13"
+       points="54.29 753.14 363.43 877 417.06 612.92"
+       id="polyline886" />
+    <polygon
+       class="cls-13"
+       points="343.55 612.92 325.17 705.81 395.21 720.53 414.32 626.37 343.55 612.92"
+       id="polygon888" />
+    <polyline
+       class="cls-13"
+       points="382.32 784.01 282.37 764.22 279.94 766.84 277.34 782.34 334.48 807.01 328.69 827.41 268.78 803.49"
+       id="polyline890" />
+    <line
+       class="cls-13"
+       x1="265.05"
+       y1="761.46"
+       x2="279.94"
+       y2="766.84"
+       id="line892" />
+    <polyline
+       class="cls-13"
+       points="395.94 716.89 909.73 717.64 904.19 684.41 946.23 674.85 988.27 844.27 1107.1 811.04 1027.55 507.05 928.86 533.36"
+       id="polyline894" />
+    <line
+       class="cls-13"
+       x1="456.08"
+       y1="632.55"
+       x2="413.07"
+       y2="632.55"
+       id="line896" />
+    <line
+       class="cls-13"
+       x1="483.27"
+       y1="632.55"
+       x2="596.8"
+       y2="632.55"
+       id="line898" />
+    <polyline
+       class="cls-13"
+       points="622.99 632.55 788.89 632.55 788.89 662.76"
+       id="polyline900" />
+    <circle
+       class="cls-13"
+       cx="839.24"
+       cy="672.08"
+       r="26.27"
+       id="circle902" />
+    <rect
+       class="cls-16"
+       x="798.29"
+       y="665.11"
+       width="33.4"
+       height="35.92"
+       id="rect904"
+       style="fill:#ffffff" />
+    <path
+       class="cls-13"
+       d="m324.66,180.16v62.85-62.85Z"
+       id="path906" />
+    <polyline
+       class="cls-13"
+       points="324.66 180.16 481.41 180.16 481.41 213.9"
+       id="polyline908" />
+    <rect
+       class="cls-16"
+       x="512.70007"
+       y="233.67867"
+       width="20.685272"
+       height="57.273872"
+       id="rect910"
+       style="fill:#ffffff" />
+    <rect
+       class="cls-16"
+       x="352.8"
+       y="258.54"
+       width="79.55"
+       height="10.66"
+       transform="translate(94.3 -103.25) rotate(17)"
+       id="rect912"
+       style="fill:#ffffff" />
+    <line
+       class="cls-5"
+       x1="432.92"
+       y1="531.18"
+       x2="446.05"
+       y2="465.1"
+       id="line914" />
+    <polyline
+       class="cls-13"
+       points="897.44 652.78 939.18 644.29 931.63 611.06 890.35 619.11"
+       id="polyline916" />
+    <line
+       class="cls-12"
+       x1="270.36"
+       y1="804.44"
+       x2="258.11"
+       y2="834.23"
+       id="line918" />
+    <line
+       class="cls-12"
+       x1="274.9"
+       y1="806.88"
+       x2="262.65"
+       y2="836.67"
+       id="line920" />
+    <line
+       class="cls-12"
+       x1="279.71"
+       y1="808.85"
+       x2="267.46"
+       y2="838.65"
+       id="line922" />
+    <line
+       class="cls-12"
+       x1="284.55"
+       y1="810.27"
+       x2="272.29"
+       y2="840.07"
+       id="line924" />
+    <line
+       class="cls-12"
+       x1="289.59"
+       y1="811.93"
+       x2="277.34"
+       y2="841.72"
+       id="line926" />
+    <line
+       class="cls-12"
+       x1="294.66"
+       y1="814.57"
+       x2="282.4"
+       y2="844.37"
+       id="line928" />
+    <line
+       class="cls-12"
+       x1="299.82"
+       y1="816.55"
+       x2="287.56"
+       y2="846.35"
+       id="line930" />
+    <line
+       class="cls-12"
+       x1="119.88"
+       y1="742.02"
+       x2="106.64"
+       y2="774.22"
+       id="line932" />
+    <line
+       class="cls-12"
+       x1="112.79"
+       y1="738.63"
+       x2="99.55"
+       y2="770.83"
+       id="line934" />
+    <line
+       class="cls-12"
+       x1="105.62"
+       y1="735.67"
+       x2="92.37"
+       y2="767.87"
+       id="line936" />
+    <line
+       class="cls-12"
+       x1="97.71"
+       y1="733.41"
+       x2="84.47"
+       y2="765.61"
+       id="line938" />
+    <line
+       class="cls-12"
+       x1="90.17"
+       y1="730.31"
+       x2="76.93"
+       y2="762.51"
+       id="line940" />
+    <line
+       class="cls-12"
+       x1="82.7"
+       y1="727.23"
+       x2="69.45"
+       y2="759.43"
+       id="line942" />
+    <line
+       class="cls-12"
+       x1="74.84"
+       y1="724"
+       x2="61.59"
+       y2="756.2"
+       id="line944" />
+    <text
+       class="cls-27"
+       transform="rotate(22,-1919.2843,670.5031)"
+       id="text956"
+       style="font-size:28.66666667px"><tspan
+         x="0"
+         y="0"
+         id="tspan946"
+         style="font-size:28.66666667px">Entré</tspan></text>
+    <g
+       id="g962">
+      <polyline
+         class="cls-11"
+         points="377.78 854.59 397.25 854.59 397.59 843.52 416.47 843.52 416.47 831.69 434.17 831.69 434.17 820.1 452.22 820.1 452.45 806.67"
+         id="polyline958" />
+      <polygon
+         class="cls-17"
+         points="452.77 787.82 463.17 814.57 452.42 808.08 441.46 814.19 452.77 787.82"
+         id="polygon960" />
+    </g>
+    <g
+       id="g968">
+      <polyline
+         class="cls-11"
+         points="867.81 482.31 887.28 482.31 887.62 471.23 906.5 471.23 906.5 459.4 924.2 459.4 924.2 447.82 942.24 447.82 942.48 434.38"
+         id="polyline964" />
+      <polygon
+         class="cls-17"
+         points="942.8 415.53 953.2 442.28 942.45 435.79 931.49 441.9 942.8 415.53"
+         id="polygon966" />
+    </g>
+    <text
+       class="cls-27"
+       transform="translate(900.04,507.05)"
+       id="text980"
+       style="font-size:28.66666667px"><tspan
+         x="0"
+         y="0"
+         id="tspan970"
+         style="font-size:28.66666667px">Entré</tspan></text>
+    <text
+       class="cls-33"
+       transform="rotate(18)"
+       id="text984"
+       x="389.18417"
+       y="502.97195"
+       style="font-size:23.6667px"><tspan
+         x="389.18417"
+         y="502.97195"
+         id="tspan982"
+         style="font-size:23.6667px">Puben</tspan></text>
+    <text
+       class="cls-33"
+       id="text1000"
+       style="font-size:23.6667px"
+       x="526.75281"
+       y="495.10449"><tspan
+         x="526.75281"
+         y="495.10449"
+         id="tspan986"
+         style="font-size:23.6667px">Nya matsalen</tspan></text>
+    <text
+       class="cls-33"
+       transform="translate(575.01 600.9)"
+       id="text1004"
+       style="font-size:23.66666667px"><tspan
+         x="0"
+         y="0"
+         id="tspan1002"
+         style="font-size:23.66666667px">Hyllan</tspan></text>
+    <text
+       class="cls-33"
+       transform="rotate(15)"
+       id="text1016"
+       x="341.61319"
+       y="368.62863"
+       style="font-size:23.6667px"><tspan
+         x="341.61319"
+         y="368.62863"
+         id="tspan1006"
+         style="font-size:23.6667px">Gamla matsalen</tspan></text>
+    <text
+       class="cls-33"
+       id="text1022"
+       x="579.68188"
+       y="174.61717"
+       style="font-size:23.66666667px"><tspan
+         class="cls-23"
+         x="579.68188"
+         y="174.61717"
+         id="tspan1018"
+         style="font-size:23.66666667px">K</tspan><tspan
+         x="595.53192"
+         y="174.61717"
+         id="tspan1020"
+         style="font-size:23.66666667px">årbokhandeln</tspan></text>
+    <text
+       class="cls-33"
+       id="text1034"
+       style="font-size:23.6667px"
+       x="357.97568"
+       y="242.44058"><tspan
+         x="357.97568"
+         y="242.44058"
+         id="tspan1024"
+         style="font-size:23.6667px">Bistron</tspan></text>
+    <line
+       class="cls-12"
+       x1="560.11"
+       y1="259.21"
+       x2="558.41"
+       y2="292.27"
+       id="line1036" />
+    <line
+       class="cls-12"
+       x1="566.88"
+       y1="259.97"
+       x2="565.18"
+       y2="293.03"
+       id="line1038" />
+    <line
+       class="cls-12"
+       x1="573.81"
+       y1="260.69"
+       x2="572.26"
+       y2="291.83"
+       id="line1040" />
+    <line
+       class="cls-12"
+       x1="580.67"
+       y1="261.23"
+       x2="579.11"
+       y2="292.37"
+       id="line1042" />
+    <line
+       class="cls-12"
+       x1="587.09"
+       y1="261.97"
+       x2="585.54"
+       y2="293.11"
+       id="line1044" />
+    <line
+       class="cls-12"
+       x1="593.58"
+       y1="261.97"
+       x2="592.02"
+       y2="293.11"
+       id="line1046" />
+    <line
+       class="cls-12"
+       x1="600.57"
+       y1="262.84"
+       x2="598.84"
+       y2="292.46"
+       id="line1048" />
+    <line
+       class="cls-12"
+       x1="607.66"
+       y1="264.09"
+       x2="606.06"
+       y2="292.63"
+       id="line1050" />
+    <text
+       class="cls-33"
+       transform="rotate(75)"
+       id="text1062"
+       style="font-size:23.6667px"
+       x="832.84351"
+       y="-796.9549"><tspan
+         x="832.84351"
+         y="-796.9549"
+         id="tspan1052"
+         style="font-size:23.6667px">Gröten</tspan></text>
+    <rect
+       style="fill:#ffffff"
+       id="rect2"
+       width="0.23701969"
+       height="2.1331773"
+       x="526.38129"
+       y="246.54202" />
+  </g>
+  <g
+     id="Layer_4"
+     data-name="Layer 4">
+    <polyline
+       class="cls-8"
+       points="442.73 243.98 473.11 246.62 495.41 253.67 522.03 269.2"
+       id="polyline1065"
+       transform="translate(2.8844114,-6.647453)" />
+    <line
+       class="cls-8"
+       x1="401.36"
+       y1="267.05"
+       x2="414.29"
+       y2="253.67"
+       id="line1067" />
+    <polyline
+       class="cls-8"
+       points="777.87 500 723.85 489.39 676.99 465.56"
+       id="polyline1069" />
+    <polyline
+       class="cls-8"
+       points="503.43 570.62 540.03 357.56 647.73 361.61 668.3 370.23 678.12 386.34 676.99 465.56"
+       id="polyline1071" />
+    <line
+       class="cls-8"
+       x1="609.98"
+       y1="665.88"
+       x2="609.98"
+       y2="606.62"
+       id="line1073" />
+    <g
+       id="g1093">
+      <line
+         class="cls-9"
+         x1="500.37"
+         y1="581.95"
+         x2="499.97"
+         y2="582.25"
+         id="line1075" />
+      <line
+         class="cls-10"
+         x1="491.16"
+         y1="588.95"
+         x2="476.49"
+         y2="600.12"
+         id="line1077" />
+      <polyline
+         class="cls-9"
+         points="472.08 603.47 471.69 603.77 471.69 604.27"
+         id="polyline1079" />
+      <line
+         class="cls-7"
+         x1="471.69"
+         y1="617.06"
+         x2="471.69"
+         y2="652.24"
+         id="line1081" />
+      <polyline
+         class="cls-9"
+         points="471.69 658.63 471.69 659.13 472.06 659.46"
+         id="polyline1083" />
+      <polyline
+         class="cls-6"
+         points="481.28 667.44 492.45 677.11 787.88 675.69 797.91 666.33"
+         id="polyline1085" />
+      <polyline
+         class="cls-9"
+         points="802.37 662.18 802.73 661.84 802.73 661.34"
+         id="polyline1087" />
+      <polyline
+         class="cls-4"
+         points="802.73 649.68 802.73 625.92 788.05 607.63 761.18 594.23 716.72 586.15 655.58 588.88"
+         id="polyline1089" />
+      <line
+         class="cls-9"
+         x1="649.75"
+         y1="589.15"
+         x2="649.25"
+         y2="589.17"
+         id="line1091" />
+    </g>
+    <polyline
+       class="cls-8"
+       points="277.59 636.83 212.99 610.99 206.17 592.94 209.2 579.43 222.66 574.4 292.78 582.12 471.69 603.77"
+       id="polyline1095" />
+    <polyline
+       class="cls-8"
+       points="192.92 785.03 229 788.05 248.3 775.8 259.21 752.3 299.24 590.85"
+       id="polyline1097" />
+    <line
+       class="cls-8"
+       x1="253.46"
+       y1="817.74"
+       x2="231.92"
+       y2="786.2"
+       id="line1099" />
+    <polyline
+       class="cls-8"
+       points="390.96 455.95 427.04 317.01 406.57 301.84 394.15 274.99 362 290.43 338.08 293.11 322.82 310.57 289.78 412.27 296.3 435.67"
+       id="polyline1101" />
+    <line
+       class="cls-8"
+       x1="303.01"
+       y1="571.38"
+       x2="326.16"
+       y2="483.26"
+       id="line1103" />
+    <polyline
+       class="cls-8"
+       points="425.32 480.61 474.45 486.14 508.27 490.08"
+       id="polyline1105"
+       transform="translate(13.024503,2.8943341)" />
+    <polyline
+       class="cls-8"
+       points="753.87 181.8 757.89 201.14 755.66 225.08 745.31 236.05 656.09 240.96 639.73 250.4 634.99 263.87 622.92 363.62"
+       id="polyline1109" />
+    <polyline
+       class="cls-8"
+       points="541.2 346.82 528.75 313.44 524.72 273.99 544.19 248.64 585.16 236.05 583.97 185.57 593.43 173.17"
+       id="polyline1111"
+       transform="translate(-2.0742715)" />
+    <polyline
+       class="cls-8"
+       points="596.3 224.85 616.52 241.08 627.6 245.45 639.73 250.4"
+       id="polyline1113" />
+    <polyline
+       class="cls-8"
+       points="812.97 635.07 851.57 635.07 865.5 638.34 875.74 650.68 882.54 664.02 892.61 668.55 914.77 668.55 949.76 659.05 978.2 661.34 1000.02 680.47 1009.22 707.99 1016.83 740.72 1024.38 775.8"
+       id="polyline1115" />
+    <polyline
+       class="cls-8"
+       points="787.55 502.23 807.52 505.59 836.55 507.05 865.5 507.05 887.24 507.05 901.67 517.34 907.38 531.1 918.68 547.64 927.61 559.55 947.99 566.68 960.75 578.43 967.46 591.18 970.48 605.38 972.5 621.39 972.5 634.06 968.8 647.66 960.08 652.21"
+       id="polyline1117" />
+    <line
+       class="cls-8"
+       x1="512.14"
+       y1="578.53"
+       x2="570.74"
+       y2="589.95"
+       id="line1119" />
+  </g>
+  <g
+     id="Layer_3"
+     data-name="Layer 3" />
+  <text
+     xml:space="preserve"
+     transform="translate(53.29,101.96)"
+     id="text1"
+     style="font-size:31.3333px;line-height:1.1;font-family:Impact;-inkscape-font-specification:Impact;white-space:pre;shape-inside:url(#rect1);display:inline;fill:#800080" />
+</svg>
