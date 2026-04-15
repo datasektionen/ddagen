@@ -62,4 +62,4 @@ EXPOSE 3000
 
 ENV PORT 3000
 
-CMD ["sh", "-c", "prisma migrate deploy && node server.js"]
+CMD ["sh", "-c", "prisma migrate resolve --rolled-back 20260225123123_added_how_did_you_find_us || true && prisma migrate deploy && node server.js"]
