@@ -28,7 +28,6 @@ export default async function handler(
                 phoneNumber: e.phoneNumber,
                 email: e.email,
                 createdAt: e.createdAt,
-                howDidYouFindUs: e.howDidYouFindUs
             }))
         )
     );
@@ -52,17 +51,17 @@ function importExhibitors() {
 
   const data = JSON.parse(res.getContentText());
 
-  sheet.getRange(1, 1, 1, 8).setValues([[
+  sheet.getRange(1, 1, 1, 7).setValues([[
     "Företagsnamn", "Organisationsnummer", "Kontaktperson", "Telefonnummer",
-    "E-postadress", "Datum", "Hur hittade ni D-Dagen", "Anteckningar (kommer ej röras av skript). Senast uppdaterad " + new Date().toLocaleString("se"),
+    "E-postadress", "Datum", "Anteckningar (kommer ej röras av skript). Senast uppdaterad " + new Date().toLocaleString("se"),
   ]]).setFontWeight("bold");
 
-  sheet.getRange(2, 1, data.length, 7).setValues(data.map(row => [
-    row.name, "'" + row.organizationNumber, row.contactPerson, "'" + row.phoneNumber, row.email, row.createdAt, row.howDidYouFindUs
+  sheet.getRange(2, 1, data.length, 6).setValues(data.map(row => [
+    row.name, "'" + row.organizationNumber, row.contactPerson, "'" + row.phoneNumber, row.email, row.createdAt
   ])).setBackground("#eee");
-  sheet.getRange(2 + data.length, 1, 1, 7).setBackground("orange");
+  sheet.getRange(2 + data.length, 1, 1, 6).setBackground("orange");
 
-  sheet.autoResizeColumns(1, 8);
+  sheet.autoResizeColumns(1, 7);
 }
 ```
 

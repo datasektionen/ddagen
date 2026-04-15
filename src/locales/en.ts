@@ -702,7 +702,6 @@ export default {
       email: string,
       contactPerson: string,
       phoneNumber: string,
-      howDidYouFindUs: string
     ) =>
       "<div style=\"padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
           "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" +
@@ -730,7 +729,6 @@ export default {
                     "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Email address: " + email + "</li>" +
                     "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Contact person: " + contactPerson + "</li>" +
                     "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Phone number: " + phoneNumber + "</li>" +
-                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> How did you find us: " + howDidYouFindUs + "</li>" +
                   "</ul>" +
                 "</div>" +
               "</tr>" +
