@@ -5,8 +5,10 @@ export default {
   },
   about: "About Us",
   home: {
+    introBrand: "D-Dagen 2026",
+    introTitle: "Scandinavia's largest Career Fair for Computer Science students",
     introFirstBlock:
-      "Scandinavia’s largest Career Fair for Computer Science students is celebrating its 25th anniversary",
+      "Scandinavia's largest Career Fair for Computer Science students is celebrating its 25th anniversary",
     introSecondBlock:
       "Are you studying Computer Science or IT looking for your future workplace, or do you represent a company searching for talented co-workers?",
     introThirdBlock:

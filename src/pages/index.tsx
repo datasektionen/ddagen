@@ -73,23 +73,28 @@ export default function Home() {
       />
       <div className="w-full h-full">
         <div className="flex flex-col mx-auto max-w-[90%] lg:max-w-[100%] ">
-          <div className="items-center relative">
-            <img
+          <div className="hover:cursor-default pt-[40px] pb-[10px] mx-auto">
+            <h5 className="text-xl text-cerise font-medium text-center mt-[150px]">{t.home.introBrand}</h5>
+            <h2
               className={`
-                mx-auto pt-[80px] sm:pt-[120px] lg:pt-[160px] mt-3 md:mt-3
-                w-[90%] sm:w-[80%] md:w-[70%] lg:w-auto
-                h-[200px] sm:h-[300px] md:h-[400px] lg:h-[450px]
-                max-w-full
-                object-contain
-                transition-all ease-in-out
-                ${ hasLoadedBefore ? 'duration-0': 'delay-[100ms] duration-[800ms]'}   
-                ${ showPage ? "opacity-100" : "opacity-0" }
+              text-white text-6xl text-center
+              max-w-[870px]
+              mt-[12px]
+              transition-all ease-in-out 
+              ${ hasLoadedBefore ? 'duration-0': 'delay-[300ms] duration-[800ms]'}   
+              ${ showPage ? "opacity-100" : "opacity-0"} 
+              ${t.locale == "sv" ? "sm:ml-9" : "sm:ml-14"}
               `}
-              src={showGif ? "/img/d-dagen-logo-2526-4.gif" : "/img/d-dagen-logo-static.png"} // Use static version first
-              alt="D-dagen Logo"
-              ></img>
+            >
+              {t.home.introTitle}
+              {/*
+              <br />
+              {t.home.info.firstPart} | {t.home.info.secondPart} | {t.home.info.thirdPart}
+              */}
+              
+            </h2>
           </div>
-          
+
           {/* Countdown wrapper */}
           <div className={`
             mx-auto pt-[0px] mt-2 md:mt-8
@@ -109,20 +114,6 @@ export default function Home() {
               {t.home.exhibitButton}
             </Link>
           </div>
-          
-          <div className="hover:cursor-default pt-[40px] pb-[50px]">
-            <h2
-              className={`
-              text-white text-4xl text-center 
-              transition-all ease-in-out 
-              ${ hasLoadedBefore ? 'duration-0': 'delay-[300ms] duration-[800ms]'}   
-              ${ showPage ? "opacity-100" : "opacity-0"} 
-              ${t.locale == "sv" ? "sm:ml-9" : "sm:ml-14"}
-              `}
-            >
-              {t.home.info.firstPart} | {t.home.info.secondPart} | {t.home.info.thirdPart}
-            </h2>
-          </div>
             
           {/* Scroll Indicator */}
           <div className={`
@@ -133,13 +124,6 @@ export default function Home() {
             `}
             ref={scrollRef}
           >
-            <div
-              className='absolute hover:cursor-pointer hover:scale-110 transition-transform w-10'
-              onClick={scrollDown}
-            >
-              <img src="/img/skrollaner-indikator.svg" alt="Scroll Indicator" />
-              
-            </div>
           </div>
 
           {/* Section of stats */}

@@ -5,6 +5,8 @@ export default {
   },
   about: "Om Oss",
   home: {
+    introBrand: "D-Dagen 2026",
+    introTitle: "Skandinaviens största arbetsmarknadsmässa för datateknik studenter",
     introFirstBlock:
       "Nordens största arbetsmarknadsdag för datateknikstudenter firade 25-årsjubileum",
     introSecondBlock:
