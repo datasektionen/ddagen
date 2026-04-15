@@ -6,13 +6,13 @@ export default {
   about: "Om Oss",
   home: {
     introFirstBlock:
-      "Nordens största arbetsmarknadsdag för datateknikstudenter firade 25-årsjubileum",
+      "Nordens största arbetsmarknadsdag för datateknikstudenter",
     introSecondBlock:
       "Är du en student inom data eller IT och söker efter din framtida arbetsplats, eller representerar du ett företag som letar talangfulla medarbetare?",
     introThirdBlock:
-      "Då är D-Dagen det perfekta tillfället för dig att träffa personer inom branschen och knyta värdefulla kontakter! I år firade D-Dagen sitt storslagna 25-års jubileum, vilket innebär att mässan kommer bli större och bättre än någonsin, med över 100+ utställare och 3000+ deltagare.",
-    introSignOff: "Detta är ett firande som man inte vill missa!\n Hoppas vi ses!",
-    introDDA: "Max Berglund & Mortada Nasser, D-Dagenansvariga",
+      "Då är D-Dagen det perfekta tillfället för dig att träffa personer inom branschen och knyta värdefulla kontakter!",
+    introSignOff: "Hoppas vi ses!",
+    introDDA: "Didzis Urtans & Oliver Zhou, D-Dagenansvariga",
     representative: "Företagsrepresentant?",
     representativeDescription:
       "Vill du nå ut till tusentals civilingenjörs-studenter vid KTH? Som utställare på D-Dagen har du möjlighet att göra just det! Klicka här nedanför för att läsa mer och göra en intresseanmälan.",
@@ -20,7 +20,7 @@ export default {
     info: {
       firstPart: "8 oktober",
       secondPart: "10:00 - 16:00",
-      thirdPart: "KTH",
+      thirdPart: "Nymble, KTH",
     },
     countDown:{
       days: "dagar",
@@ -1055,7 +1055,7 @@ export default {
     subheader2: "Projektansvariga",
     p1: "Om ni har några egna förslag på evenemang eller aktiviteter ni vill anordna för studenterna på Konglig Datasektionen, eller om ni har några andra frågor eller funderingar om företagspaket är det bara att höra av er till oss på...",
     p2: "För mer information och övriga frågor till ansvarig för D-Dagen kontakta...",
-    salesHeader: "Säljgruppen 2025",
+    salesHeader: "Säljgruppen 2026",
     bossesHeader: "Ansvarig",
     roles: [
       "D-DAGENANSVARIG",
@@ -1337,15 +1337,15 @@ export default {
       "Säljare", "Säljare", "Säljare","Sponsansvarig",
     ],
     devTeamRoles: [
-      "Webb-Ansvarig", "Systemutvecklare", "Webbutvecklare",
-      "Webbutvecklare",
+      "Webb-Ansvarig", "Webbutvecklare", "Webbutvecklare",
+      "Systemutvecklare",
     ],
     massTeamRoles: [
       "Mäss-Ansvarig", "Fest-Ansvarig", "Logistik-Ansvarig",
        "Lokal-Ansvarig", "Lounge-Ansvarig", "Personal-Ansvarig",
     ],
-    ecoTeamRoles: ["Ekonomiansvarig","Vice Ekonomiansvarig"],
-    ddaRoles: ["DDA", "DDA"],
+    ecoTeamRoles: ["Ekonomiansvarig","Vice Ekonomiansvarig", "Vice Ekonomiansvarig"],
+    ddaRoles: ["DDA", "Vice-DDA"],
     teamNames: [
       "D-Dagenansvariga",
       "PR-Gruppen",

@@ -6,21 +6,21 @@ export default {
   about: "About Us",
   home: {
     introFirstBlock:
-      "Scandinavia’s largest Career Fair for Computer Science students is celebrating its 25th anniversary",
+      "Scandinavia's largest Career Fair for Computer Science students",
     introSecondBlock:
       "Are you studying Computer Science or IT looking for your future workplace, or do you represent a company searching for talented co-workers?",
     introThirdBlock:
-      "Then D-Dagen is the perfect opportunity for you to meet people in the industry and expand your network with valuable contacts! This year, D-Dagen is celebrating its grand 25th anniversary, which means the fair will be bigger and better than ever, with over 100+ exhibitors and 3000+ participants.",
-    introSignOff: "This is a celebration you do not want to miss!\n Hope to see you there!",
-    introDDA: "Max Berglund & Mortada Nasser, Project Managers",
+      "Then D-Dagen is the perfect opportunity for you to meet people in the industry and expand your network with valuable contacts!",
+    introSignOff: "Hope to see you there!",
+    introDDA: "Didzis Urtans & Oliver Zhou, Project Managers",
     representative: "Company Representative?",
     representativeDescription:
       "Do you want to reach thousands of Computer Science Engineering students at KTH? As an exhibitor at D-Dagen you have the opportunity to do so! Click the button below to read more and make an application of interest .",
     representativeButton: "Interest Registration",
     info: {
       firstPart: "October 8th",
-      secondPart: "10:00 AM - 4:00 PM",
-      thirdPart: "KTH",
+      secondPart: "10 AM - 4 PM",
+      thirdPart: "Nymble, KTH",
     },
     countDown:{
       days: "days",
@@ -702,7 +702,6 @@ export default {
       email: string,
       contactPerson: string,
       phoneNumber: string,
-      howDidYouFindUs: string
     ) =>
       "<div style=\"padding:0;font-family:Arial, sans-serif;font-size: 16px; line-height:1.6; max-width: 600px; \">" +
           "<table style=\"box-sizing:border-box;background:#DE3163; border: 30px solid #14112A; border-width: 30px;border-color: #14112A;border-type: solid; padding: 0;color:#ffffff;border-radius:10px 10px 0 0; max-width: 600px;\" width=\"100%\">" +
@@ -730,7 +729,6 @@ export default {
                     "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Email address: " + email + "</li>" +
                     "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Contact person: " + contactPerson + "</li>" +
                     "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> Phone number: " + phoneNumber + "</li>" +
-                    "<li style=\"margin: 4px; padding: 2px;color:#ffffff;\"> How did you find us: " + howDidYouFindUs + "</li>" +
                   "</ul>" +
                 "</div>" +
               "</tr>" +
@@ -1061,7 +1059,7 @@ export default {
     subheader2: "Project Managers 2026",
     p1: "If you have any suggestions for events or activities you want to organize for the students at the Computer Science Chapter, or if you have any other questions or concerns about company packages and the fair,  feel free to contact us at...",
     p2: "For more information and other questions to the responsible for D-Dagen, contact...",
-    salesHeader: "Sales team 2025",
+    salesHeader: "Sales team 2026",
     bossesHeader: "Manager 2026",
     roles: [
       "HEAD OF D-DAGEN",
@@ -1346,8 +1344,8 @@ export default {
       "Art Director", "Social Media Manager",
     ],
     devTeamRoles: [
-      "Lead Developer", "System Developer",
-      "Web Developer", "Web Developer",
+      "Lead Developer", "Web Developer",
+      "Web Developer", "System Developer",
     ],
     salesTeamRoles: [
       "Head of Sales", "Salesperson", "Salesperson",
@@ -1357,9 +1355,9 @@ export default {
       "Head of the Fair", "Event Manager", "Logistics Manager",
       "Venue Manager", "Lounge Manager", "HR Manager",
     ],
-    ecoTeamRoles: ["Head of Finances", "Deputy Financial Manager"],
+    ecoTeamRoles: ["Head of Finances", "Deputy Financial Manager", "Deputy Financial Manager"],
     ddaRoles: [
-      "DDA", "DDA", // Assuming DDA remains the same without context.
+      "DDA", "Deputy DDA", // Assuming DDA remains the same without context.
     ],
     teamNames: [
       "D-Dagen Managers",

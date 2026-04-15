@@ -64,7 +64,7 @@ export default function ForCompanies() {
           {/* Section of packages */}
           <div className={`flex flex-col w-full 
               text-center justify-center items-center
-              mt-[10px] sm:mt-[30px] mb-[20px] sm:mb-[50px]
+              mt-[10px] sm:mt-[30px] mb-[10px] sm:mb-[30px]
               bg-[rgba(11,15,36,0)]`}>
 
               {/* Text Section */}
@@ -74,7 +74,7 @@ export default function ForCompanies() {
                 </h2>
                 <br />
                 {/* Buttons */}
-                <div className="flex gap-4 justify-center flex-wrap ">
+                <div className="flex gap-4 justify-center flex-wrap pt-[24px]">
                   {/* Product Catalog button */}
                   <button className="">
                     <a

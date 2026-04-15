@@ -18,7 +18,6 @@ model ExhibitorInterestRegistration {
   contactPerson      String
   phoneNumber        String
   email              String
-  howDidYouFindUs    String?
 
   @@map("exhibitor_interest_registrations")
 }
