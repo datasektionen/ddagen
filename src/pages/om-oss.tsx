@@ -25,13 +25,13 @@ const prActualName = ["Abdelrahman Aldaker", "Sofia Hulth", "Ivar Petit", "Sibel
 const devNames     = ["david", "kajus", "oscar", "zimon"]
 const devActualName = ["David Björklund", "Kajus Sirvinskas", "Oscar Eriksson", "Zimon Moudi"]
 
-const salesNames      = ["josef", "yenli", "louise", "husein", "hedda", "oliver", "david", "sean"]
+const salesNames      = ["josef", "yenli", "louise", "husein", "hedda", "oliver-h", "david-n", "sean"]
 const salesActualName = ["Josef Behnam", "Yen Li Oh", "Louise Engbrink", "Husein Hassan", "Hedda Fahlin", "Oliver Haux", "David Nilsson", "Sean Zisheng"]
 const massNames    = ["elias", "daniel-2", "emanuel", "elsa", "ting", "theodor"]
-const massActualName = ["Elias Rosberg", "Daniel Svensson", "Emanuel Malki", "Elsa Illerström", "Tingyuan Hu", "Theodor Fritsch"]
+const massActualName = ["Elias Rosberg", "Daniel Svensson", "Emanuel Malki", "Elsa Illerström", "Tingyuan Hu", "Theodor Laséen Kuhlström"]
 
 const ecoNames     = ["anton", "oskar", "theo"]
-const ecoActualName = ["Anton Jansson", "Oskar Furuhed", "Theodor Laséen Kuhlström"]
+const ecoActualName = ["Anton Jansson", "Oskar Furuhed", "Theodor Fritsch"]
 
 
 const managersImages      = managersName.map(stripLastName).map(formatImagePath);
@@ -172,7 +172,7 @@ export default function AboutUs() {
         </h1>
         <div className="w-full lg:block xl:w-[1200px] lg:w-[1000px] lg:px-0 lg:mb-0 px-6 mb-3 ">
           <div className="flex flex-row items-center justify-center mb-10">
-            <img className="rounded-3xl" src="/img/projectGroup/g_PG26.png"></img>
+            <img className="rounded-3xl" src="/img/projectGroup/g_PG26.jpg"></img>
           </div>
         
           <div className="flex flex-col">

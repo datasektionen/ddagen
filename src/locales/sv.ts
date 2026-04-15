@@ -1337,8 +1337,8 @@ export default {
       "Säljare", "Säljare", "Säljare","Sponsansvarig",
     ],
     devTeamRoles: [
-      "Webb-Ansvarig", "Systemutvecklare", "Webbutvecklare",
-      "Webbutvecklare",
+      "Webb-Ansvarig", "Webbutvecklare", "Webbutvecklare",
+      "Systemutvecklare",
     ],
     massTeamRoles: [
       "Mäss-Ansvarig", "Fest-Ansvarig", "Logistik-Ansvarig",

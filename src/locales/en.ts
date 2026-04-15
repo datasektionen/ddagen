@@ -1346,8 +1346,8 @@ export default {
       "Art Director", "Social Media Manager",
     ],
     devTeamRoles: [
-      "Lead Developer", "System Developer",
-      "Web Developer", "Web Developer",
+      "Lead Developer", "Web Developer",
+      "Web Developer", "System Developer",
     ],
     salesTeamRoles: [
       "Head of Sales", "Salesperson", "Salesperson",
@@ -1357,9 +1357,9 @@ export default {
       "Head of the Fair", "Event Manager", "Logistics Manager",
       "Venue Manager", "Lounge Manager", "HR Manager",
     ],
-    ecoTeamRoles: ["Head of Finances", "Deputy Financial Manager"],
+    ecoTeamRoles: ["Head of Finances", "Deputy Financial Manager", "Deputy Financial Manager"],
     ddaRoles: [
-      "DDA", "DDA", // Assuming DDA remains the same without context.
+      "DDA", "Deputy DDA", // Assuming DDA remains the same without context.
     ],
     teamNames: [
       "D-Dagen Managers",
