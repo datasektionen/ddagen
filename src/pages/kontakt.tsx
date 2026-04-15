@@ -20,12 +20,12 @@ export default function Contact() {
     "073-841 38 69",
   ];
   const images = [
-    "/img/projectGroup/p_didzis.jpg",
-    "/img/projectGroup/p_abdelrahman.jpg",
-    "/img/projectGroup/p_david.jpg",
-    "/img/projectGroup/p_elias.jpg",
-    "/img/projectGroup/p_josef.jpg",
-    "/img/projectGroup/p_anton.jpg",
+    "/img/projectGroup/p_didde.png",
+    "/img/projectGroup/p_abood.png",
+    "/img/projectGroup/p_david.png",
+    "/img/projectGroup/p_elias.png",
+    "/img/projectGroup/p_josef.png",
+    "/img/projectGroup/p_anton.png",
   ];
   const mails = [
     "ansvarig@ddagen.se",
@@ -101,7 +101,7 @@ export default function Contact() {
           </div>
 
           <div className="flex flex-col md:flex-row mb-36 justify-center px-6 sm:px-[0px] gap-12 xl:pr-[0px] xl:gap-[120px] md:items-center bg-darkblue bg-opacity-90 sm:bg-opacity-0">
-            <img className="sm:h-[350px] md:h-[250px] lg:h-[300px] xl:h-[400px] " src="/img/projectGroup/p_didzis.jpg"></img>
+            <img className="sm:h-[350px] md:h-[250px] lg:h-[300px] xl:h-[400px] " src="/img/projectGroup/g_dda.jpg"></img>
             <div className="px-[15px] md:px-0 sm:w-[500px] md:w-[250px] lg:w-[300px] text-left rounded-lg bg-darkblue bg-opacity-0 sm:bg-opacity-90">
               <h1 className="text-cerise text-2xl md:text-4xl font-normal uppercase"> D-DAGEN</h1>
               <h1 className="text-cerise text-2xl md:text-4xlfont-normal uppercase"> {t.contact.bossesHeader}</h1>
