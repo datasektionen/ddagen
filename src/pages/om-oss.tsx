@@ -27,6 +27,7 @@ const devActualName = ["David Björklund", "Kajus Sirvinskas", "Oscar Eriksson",
 
 const salesNames      = ["josef", "yenli", "louise", "husein", "hedda", "oliver-h", "david-n", "sean"]
 const salesActualName = ["Josef Behnam", "Yen Li Oh", "Louise Engbrink", "Husein Hassan", "Hedda Fahlin", "Oliver Haux", "David Nilsson", "Sean Zisheng"]
+
 const massNames    = ["elias", "daniel-2", "emanuel", "elsa", "ting", "theodor"]
 const massActualName = ["Elias Rosberg", "Daniel Svensson", "Emanuel Malki", "Elsa Illerström", "Tingyuan Hu", "Theodor Laséen Kuhlström"]
 
