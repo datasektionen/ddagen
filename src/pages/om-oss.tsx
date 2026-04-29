@@ -19,16 +19,17 @@ function stripLastName(name: string) {
 const managersName = ["didde", "oliver"]
 const managersActualName = ["Didzis Urtans", "Oliver Zhou"]
 
-const prNames      = ["abood", "sofia2", "ivar", "sibell", "amar"]
-const prActualName = ["Abdelrahman Aldaker", "Sofia Hulth", "Ivar Petit", "Sibell Israelsson", "Amar Ibrahim"]
+const prNames      = ["abood", "amar", "sofia2", "ivar", "sibell"]
+const prActualName = ["Abdelrahman Aldaker", "Amar Ibrahim", "Sofia Hulth", "Ivar Petit", "Sibell Israelsson"]
 
-const devNames     = ["david", "kajus", "oscar", "zimon"]
-const devActualName = ["David Björklund", "Kajus Sirvinskas", "Oscar Eriksson", "Zimon Moudi"]
+const devNames      = ["david", "zimon", "kajus", "oscar"]
+const devActualName = ["David Björklund", "Zimon Moudi", "Kajus Sirvinskas", "Oscar Eriksson"]
 
-const salesNames      = ["josef", "yenli", "louise", "husein", "hedda", "oliver", "david", "sean"]
+const salesNames      = ["josef", "yenli", "louise", "husein", "hedda", "oliver2", "david2", "sean"]
 const salesActualName = ["Josef Behnam", "Yen Li Oh", "Louise Engbrink", "Husein Hassan", "Hedda Fahlin", "Oliver Haux", "David Nilsson", "Sean Zisheng"]
-const massNames    = ["elias", "daniel-2", "emanuel", "elsa", "ting", "theodor"]
-const massActualName = ["Elias Rosberg", "Daniel Svensson", "Emanuel Malki", "Elsa Illerström", "Tingyuan Hu", "Theodor Fritsch"]
+
+const massNames    = ["elias", "ting", "daniel-2", "emanuel", "elsa", "theodor"]
+const massActualName = ["Elias Rosberg", "Tingyuan Hu", "Daniel Svensson", "Emanuel Malki", "Elsa Illerström", "Theodor Fritsch"]
 
 const ecoNames     = ["anton", "oskar", "theo"]
 const ecoActualName = ["Anton Jansson", "Oskar Furuhed", "Theodor Laséen Kuhlström"]
@@ -135,6 +136,12 @@ function H2AndParagraph({header,body,}: { header: string, body: string}) {
 
 export default function AboutUs() {
   const t = useLocale();
+  const managersRoles = t.aboutUs.ddaRoles;
+  const prRoles = t.aboutUs.prTeamRoles;
+  const devRoles = t.aboutUs.devTeamRoles;
+  const salesRoles = t.aboutUs.salesTeamRoles;
+  const massRoles = t.aboutUs.massTeamRoles;
+  const ecoRoles = t.aboutUs.ecoTeamRoles;
   const seoContent = {
     sv: {
       title: "För Studenter - Träffa IT-företag & Skapa Karriärmöjligheter",
@@ -196,7 +203,7 @@ export default function AboutUs() {
               teamPic="/img/projectGroup/g_dda.jpg"
               imageNames={managersName}
               actualNames={managersActualName}
-              teamRoles={t.aboutUs.ddaRoles}
+              teamRoles={managersRoles}
               teamName={t.aboutUs.teamNames[0]}
             />
           
@@ -205,7 +212,7 @@ export default function AboutUs() {
               teamPic="/img/projectGroup/g_pr.jpg"
               imageNames={prNames}
               actualNames={prActualName}
-              teamRoles={t.aboutUs.prTeamRoles}
+              teamRoles={prRoles}
               teamName={t.aboutUs.teamNames[1]}
               />
 
@@ -214,7 +221,7 @@ export default function AboutUs() {
               teamPic="/img/projectGroup/g_dev.jpg"
               imageNames={devNames}
               actualNames={devActualName}
-              teamRoles={t.aboutUs.devTeamRoles}
+              teamRoles={devRoles}
               teamName={t.aboutUs.teamNames[2]}
               />
       
@@ -223,7 +230,7 @@ export default function AboutUs() {
               teamPic="/img/projectGroup/g_sales.jpg"
               imageNames={salesNames}
               actualNames={salesActualName}
-              teamRoles={t.aboutUs.salesTeamRoles}
+              teamRoles={salesRoles}
               teamName={t.aboutUs.teamNames[3]}
             />
 
@@ -232,7 +239,7 @@ export default function AboutUs() {
               teamPic="/img/projectGroup/g_mass.jpg"
               imageNames={massNames}
               actualNames={massActualName}
-              teamRoles={t.aboutUs.massTeamRoles}
+              teamRoles={massRoles}
               teamName={t.aboutUs.teamNames[4]}
             />
             <Team
@@ -240,7 +247,7 @@ export default function AboutUs() {
               teamPic="/img/projectGroup/g_economy.jpg"
               imageNames={ecoNames}
               actualNames={ecoActualName}
-              teamRoles={t.aboutUs.ecoTeamRoles}
+              teamRoles={ecoRoles}
               teamName={t.aboutUs.teamNames[5]}
             />
           </div>
