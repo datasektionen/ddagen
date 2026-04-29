@@ -237,7 +237,7 @@ export default function AboutUs() {
             />
             <Team
               teamIndivudualImages={econonmyTeamImages}
-              teamPic="/img/projectGroup/g_money.jpg"
+              teamPic="/img/projectGroup/g_economy.jpg"
               imageNames={ecoNames}
               actualNames={ecoActualName}
               teamRoles={t.aboutUs.ecoTeamRoles}
