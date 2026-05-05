@@ -1329,8 +1329,8 @@ export default {
     info2: "D-Dagen förr",
     info3: "D-Dagen idag",
     prTeamRoles: [
-      "PR-Ansvarig", "Tryckansvarig", "Art Director",
-      "Art Director", "Sociala medier-ansvarig",
+      "PR-Ansvarig", "Art Director", "Art Director",
+      "Sociala medier-ansvarig", "Tryckansvarig",
     ],
     salesTeamRoles: [
       "Säljansvarig", "Säljare", "Säljare", "Säljare",
@@ -1341,8 +1341,8 @@ export default {
       "Systemutvecklare",
     ],
     massTeamRoles: [
-      "Mäss-Ansvarig", "Fest-Ansvarig", "Logistik-Ansvarig",
-       "Lokal-Ansvarig", "Lounge-Ansvarig", "Personal-Ansvarig",
+      "Mäss-Ansvarig", "Logistik-Ansvarig", "Lokal-Ansvarig", 
+      "Lounge-Ansvarig", "Fest-Ansvarig", "Personal-Ansvarig",
     ],
     ecoTeamRoles: ["Ekonomiansvarig","Vice Ekonomiansvarig", "Vice Ekonomiansvarig"],
     ddaRoles: ["DDA", "Vice-DDA"],

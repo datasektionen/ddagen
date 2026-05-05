@@ -1340,8 +1340,8 @@ export default {
     "HEAD OF SALES",
     "HEAD OF FINANCES"],
     prTeamRoles: [
-      "Head of PR", "Print Manager", "Art Director",
-      "Art Director", "Social Media Manager",
+      "Head of PR", "Art Director", "Art Director", 
+      "Social Media Manager", "Print Manager", 
     ],
     devTeamRoles: [
       "Lead Developer", "Web Developer",
@@ -1352,8 +1352,8 @@ export default {
       "Salesperson", "Salesperson", "Salesperson", "Salesperson", "Sponsorship Manager",
     ],
     massTeamRoles: [
-      "Head of the Fair", "Event Manager", "Logistics Manager",
-      "Venue Manager", "Lounge Manager", "HR Manager",
+      "Head of the Fair", "Logistics Manager", "Venue Manager",
+      "Lounge Manager", "Event Manager", "HR Manager",
     ],
     ecoTeamRoles: ["Head of Finances", "Deputy Financial Manager", "Deputy Financial Manager"],
     ddaRoles: [
