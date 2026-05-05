@@ -5,8 +5,9 @@ import { useEffect, useState } from "react";
 import { InputField } from "@/components/InputField";
 import Head from "next/head";
 import ExhibitorLayout from "@/shared/exhibitorLayout";
-import JobOffers from "@/components/Company/General/JobOffers";
+import GeneralInfo from "@/components/Company/General/GeneralInfo";
 import { CheckMark } from "@/components/CheckMark";
+import { addImageDetails } from "@/shared/addImageDetails";
 
 // TODO hook the next button to the save features
 // Maby break save changes into a separate steps for each page
@@ -22,8 +23,15 @@ export default function ExhibitorInfo({
 
   // States
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
+  const [whiteLogo, setWhiteLogo] = useState("");
+  const [colorLogo, setColorLogo] = useState("");
+  const [description, setDescription] = useState("");
+  const [industry, setIndustry] = useState("");
+  const [allowMarketing, setAllowMarketing] = useState(true);
+  const [hasChecked, setHasChecked] = useState(false);
   const [checkmarks, setCheckMarks] = useState<boolean[]>([]);
   const [saveChanges, setSaveChanges] = useState<boolean | undefined>();
+  const showSetUpPage = false;
   
   const getName = api.exhibitor.getName.useQuery();
   const getIsLoggedIn = api.account.isLoggedIn.useQuery(undefined, {
@@ -39,9 +47,37 @@ export default function ExhibitorInfo({
   }, [isLoggedIn]);
 
   // Mutations
-  const jobOffersMutation = api.exhibitor.setJobOffers.useMutation();
+  const logoMutation = api.exhibitor.setLogo.useMutation();
+  const descriptionMutation = api.exhibitor.setDescription.useMutation();
+  const industryMutation = api.exhibitor.setIndustry.useMutation();
+  const allowMarketingMutation = api.exhibitor.setAllowMarketing.useMutation();
 
   // Dynamic content logic
+  const getDescription = api.exhibitor.getDescription.useQuery();
+  const getIndustry = api.exhibitor.getIndustry.useQuery();
+  const getLogos = api.exhibitor.getLogo.useQuery();
+  const getAllowMarketing = api.exhibitor.getAllowMarketing.useQuery();
+
+  useEffect(() => {
+    if (!getDescription.isSuccess) return;
+    setDescription(getDescription.data.description ?? "");
+  }, [getDescription.data]);
+
+  useEffect(() => {
+    if (!getIndustry.isSuccess) return;
+    setIndustry(getIndustry.data.industry ?? "");
+  }, [getIndustry.data]);
+
+  useEffect(() => {
+    if (!getLogos.isSuccess) return;
+    setWhiteLogo(addImageDetails(getLogos.data.white));
+    setColorLogo(addImageDetails(getLogos.data.color));
+  }, [getLogos.data]);
+
+  useEffect(() => {
+    if (!getAllowMarketing.isSuccess) return;
+    setAllowMarketing(getAllowMarketing.data.allowMarketing ?? true);
+  }, [getAllowMarketing.data]);
 
 
   // Job offers
@@ -133,25 +169,17 @@ export default function ExhibitorInfo({
   // Save button logic
   async function handleClick() {
     await Promise.all([
-      //logoMutation.mutate({
-      //  b64data: removeImageDetails(whiteLogo),
-      //  kind: "white",
-      //}),
-      //logoMutation.mutateAsync({
-      //  b64data: removeImageDetails(colorLogo),
-      //  kind: "color",
-      //}),
-      //descriptionMutation.mutateAsync(description),
-      //industryMutation.mutateAsync(industry),
-      //allowMarketingMutation.mutateAsync(allowMarketing),
-      jobOffersMutation.mutateAsync({
-        summerJob: getCheckmarksPos("summer"),
-        internship: getCheckmarksPos("intern"),
-        partTimeJob: getCheckmarksPos("partTime"),
-        masterThesis: checkmarks[15],
-        fullTimeJob: checkmarks[16],
-        traineeProgram: checkmarks[17],
+      logoMutation.mutateAsync({
+        b64data: removeImageDetails(whiteLogo),
+        kind: "white",
       }),
+      logoMutation.mutateAsync({
+        b64data: removeImageDetails(colorLogo),
+        kind: "color",
+      }),
+      descriptionMutation.mutateAsync(description),
+      industryMutation.mutateAsync(industry),
+      allowMarketingMutation.mutateAsync(allowMarketing),
       //setPhysicalAddressMutation.mutateAsync(physicalAddress),
       //setBillingMethodMutation.mutateAsync(billingMethod),
       //setEmailMutation.mutateAsync(email),
@@ -162,16 +190,31 @@ export default function ExhibitorInfo({
       setSaveChanges(false);
     });
   }
+
+  function removeImageDetails(img: string) {
+    return img.replace(/^data:image\/[a-z]+\+?[a-z]+;base64,/, "");
+  }
   
   // Rendered page
   return(
     <>
       <ExhibitorLayout>
         <>
-          <h2 className="text-white">Info</h2>
-          <JobOffers
+          <GeneralInfo
             t={t}
-            rows={rows}
+            whiteLogo={whiteLogo}
+            setWhiteLogo={setWhiteLogo}
+            colorLogo={colorLogo}
+            setColorLogo={setColorLogo}
+            description={description}
+            setDescription={setDescription}
+            industry={industry}
+            setIndustry={setIndustry}
+            allowMarketing={allowMarketing}
+            setAllowMarketing={setAllowMarketing}
+            showSetUpPage={showSetUpPage}
+            hasChecked={hasChecked}
+            setHasChecked={setHasChecked}
           />
           <div className="flex flex-col w-full items-center mb-8 ">
             <button

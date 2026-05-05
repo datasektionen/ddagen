@@ -5,7 +5,7 @@ import { Table } from "@/components/Table";
 import { Extras, Package } from "@/shared/Classes";
 import { use, useEffect, useState } from "react";
 import ExtraFairOrders from "@/components/Company/ExtraOrders/ExtraFairOrders";
-import FoodPreferences from "@/components/Company/Preferences/FoodPreferences";
+import FoodPreferences from "@/components/Company/Preferences/_FoodPreferences";
 import CompanyHost from "@/components/Company/CompanyHost/CompanyHost";
 import GeneralInfo from "@/components/Company/General/GeneralInfo";
 import JobOffers from "@/components/Company/General/JobOffers";
@@ -53,7 +53,7 @@ export default function Exhibitor() {
   const [companyHostName, setCompanyHostName] = useState("");
   const [companyHostNumber, setCompanyHostNumber] = useState("");
   const [companyHostEmail, setCompanyHostEmail] = useState("");
-  const [allowMarketing, setAllowMarketing] = useState(false); 
+  const [allowMarketing, setAllowMarketing] = useState(true); 
   const [hasChecked, setHasChecked] = useState<boolean>(false);
 
   const [showMessage, setShowMessage] = useState(false); // State för att visa meddelande

@@ -41,7 +41,7 @@ export function PreferenceDetails({
   return (
     <div className="w-full flex flex-col items-center">
       {preferences.slice(1).map((preference, pos) => (
-        <div className="w-full flex flex-col items-center" key={preference.id}>
+        <div className="w-full text-white flex flex-col items-center" key={preference.id}>
           <EditPreferences
             t={t}
             pos={pos + 1}
