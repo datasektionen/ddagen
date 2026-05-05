@@ -199,3 +199,10 @@ model Meetings {
 
     @@map("meetings")
 }
+
+model ApiKey {
+  id         String   @id @default(uuid())
+  name       String   @unique
+  hash       String   @unique
+  createdAt  DateTime @default(now())
+}
