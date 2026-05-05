@@ -79,7 +79,7 @@ export default function Sales() {
   useEffect(() => {
     if (logout.isSuccess && logout.data.status) {
       trpc.admin.invalidate();
-      router.push("/admin/logga-in");
+      router.push("/logga-in");
     }
   }, [logout.isSuccess]);
 

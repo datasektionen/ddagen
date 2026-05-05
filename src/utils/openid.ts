@@ -2,7 +2,7 @@ import * as client from "openid-client";
 import { SignJWT, jwtVerify } from "jose";
 import { z } from "zod";
 import { Cookies } from "@/shared/Classes";
-
+import { getBaseUrl } from "@/utils/api"
 
 export const openIdConfig: client.Configuration = await client.discovery(
   new URL(process.env.OIDC_PROVIDER || "localhost:7003"),
@@ -77,4 +77,25 @@ export async function getSession(cookies: Cookies) {
   if (!token) return null;
 
   return await verifySessionToken(token);
+}
+
+export async function initiateAuthorization(subpath: string) {
+      const code_verifier: string = client.randomPKCECodeVerifier();
+      const code_challenge: string = await client.calculatePKCECodeChallenge(code_verifier);
+      const state = client.randomState();
+
+      const oidc_auth_url = client.buildAuthorizationUrl(openIdConfig, {
+        redirect_uri: `${getBaseUrl()}${subpath}`,
+        scope: "openid profile email",
+        code_challenge,
+        code_challenge_method: "S256",
+        state
+      });
+
+      return {
+        code_verifier: code_verifier,
+        code_challenge: code_challenge,
+        state: state,
+        oidc_auth_url: oidc_auth_url
+      };
 }

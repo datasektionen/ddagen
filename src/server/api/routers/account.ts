@@ -6,7 +6,7 @@ import { randomBytes } from "crypto";
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 import * as hive from "@/utils/hive";
 import * as client from "openid-client";
-import { authorizeClaims, createSessionToken, getSession } from "@/utils/openid";
+import { authorizeClaims, createSessionToken, getSession, initiateAuthorization } from "@/utils/openid";
 
 /*
 const config: client.Configuration = await client.discovery(
@@ -49,23 +49,13 @@ export const accountRouter = createTRPCRouter({
   startLogin: publicProcedure
     .input(z.object({ subpath: z.string().startsWith("/") }))
     .mutation(async ({ input, ctx }) => {
-      const code_verifier: string = client.randomPKCECodeVerifier();
-      const code_challenge: string = await client.calculatePKCECodeChallenge(code_verifier);
-      const state = client.randomState();
+      const { code_verifier, code_challenge, state, oidc_auth_url } = await initiateAuthorization(input.subpath);
 
       const max_age = 10 * 60; // max request age 10 minutes
       ctx.res.setHeader("Set-Cookie", [
         `oidc_code_verifier=${code_verifier}; Max-Age=${max_age}; Path=/; HttpOnly; SameSite=Lax`,
         `oidc_state=${state}; Max-Age=${max_age}; Path=/; HttpOnly; SameSite=Lax`
       ]);
-
-      const oidc_auth_url = client.buildAuthorizationUrl(config, {
-        redirect_uri: `http://localhost:3000${input.subpath}`,
-        scope: "openid profile email",
-        code_challenge,
-        code_challenge_method: "S256",
-        state
-      });
 
       return { url: oidc_auth_url.href };
   }),
@@ -93,23 +83,35 @@ export const accountRouter = createTRPCRouter({
       if (!claims.email) {
           return { error: "userNoEmail" as const };
       }
+
       if(typeof claims.email != "string")return { error: "userInvalidEmail" as const };
 
 
       // Get the authorized users permissions in hive
       const permissions = await hive.fetchHive(claims.sub);
 
-      /*
       // Require them to have admin permissions from hive
-      if (!permissions.includes("admin") && !permissions.includes("ddagen")) {
-          return { error: "userNotAdmin" as const };
-      }
-      */
+      if (permissions.includes("admin") || permissions.includes("ddagen")) {
+          const token = await createSessionToken({
+              sub: claims.sub,
+              email: claims.email,
+              name: claims.name,
+              permissions
+          });
 
+          // Set cookie, forget the used up OIDC cookies, keep the internal JWT. Check it with isAdmin(token)
+          ctx.res.setHeader("Set-Cookie", [
+              `oidc_state=; Path=/; Max-Age=0; HttpOnly`,
+              `oidc_code_verifier=; Path=/; Max-Age=0; HttpOnly`,
+              `session=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=300; Secure`
+          ]);
+
+          return { ok: true, isAdmin: true };
+      }
 
       const user = await ctx.prisma.user.findUnique({
-          where: { email: claims.email },
-          select: { id: true, exhibitorId: true },
+        where: { email: claims.email },
+        select: { id: true, exhibitorId: true },
       });
 
       console.log(user);
@@ -135,8 +137,7 @@ export const accountRouter = createTRPCRouter({
           sub: claims.sub,
           email: claims.email,
           name: claims.name,
-          permissions,
-          exhibitor: user.exhibitorId
+          permissions
       });
       */
 
@@ -155,6 +156,7 @@ export const accountRouter = createTRPCRouter({
       ]);
       */
 
+      console.log("4");
       return { ok: true };
     }),
   /*
@@ -169,12 +171,16 @@ export const accountRouter = createTRPCRouter({
         "Set-Cookie",
         `session=; Path=/; Max-Age=0; HttpOnly; SameSite=Lax; Secure`
     );
-    
+
     return { status: true };
   }),
   */
   isLoggedIn: publicProcedure.query(async ({ ctx }) => {
-    return ctx.session !== null;
+    if ((await getSession(ctx.cookies) != null)) {
+        return { ok: true, isAdmin: true };
+    }
+
+    return { ok: ctx.session !== null };
   }),
   logout: protectedProcedure.mutation(async ({ ctx }) => {
     await ctx.prisma.session.delete({ where: { id: ctx.session.id } });

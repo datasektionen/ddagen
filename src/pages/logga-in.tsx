@@ -53,12 +53,22 @@ export default function Login() {
   // Redirect if already logged in
   useEffect(() => {
     if (!getIsLoggedIn.isSuccess) return;
-    if (isLoggedIn == true) router.push("/utst%C3%A4llare");
+    if (isLoggedIn?.ok == true) {
+      if (isLoggedIn?.isAdmin) {
+        router.push("/admin/sales");
+      } else {
+        router.push("/utst%C3%A4llare");
+      }
+    }
   }, [isLoggedIn]);
 
   useEffect(() => {
     if (finishLogin.data?.ok) {
-      router.push("/utställare");
+      if (finishLogin.data?.isAdmin) {
+        router.push("/admin/sales");
+      } else {
+        router.push("/utställare");
+      }
       trpc.account.invalidate();
     }
   }, [finishLogin]);

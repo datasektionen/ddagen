@@ -7,7 +7,7 @@ import sendEmail from "@/utils/send-email";
 import { getLocale } from "@/locales";
 
 import * as client from "openid-client";
-import { authorizeClaims, createSessionToken, getSession, openIdConfig } from "@/utils/openid"; 
+import { authorizeClaims, createSessionToken, getSession, openIdConfig, initiateAuthorization } from "@/utils/openid";
 
 export const adminRouter = createTRPCRouter({
     getExhibitors: publicProcedure
@@ -147,7 +147,7 @@ export const adminRouter = createTRPCRouter({
             const session = await ctx.prisma.session.create({
                 data: { exhibitorId: input.exhibitorId },
             });
-            
+
             ctx.res.setHeader(
                 "Set-Cookie",
                 `session=${session.id}; Path=/; HttpOnly; SameSite=Lax; Secure`
@@ -156,25 +156,15 @@ export const adminRouter = createTRPCRouter({
     startLogin: publicProcedure
         .input(z.object({ subpath: z.string().startsWith("/") }))
         .mutation(async ({ input, ctx }) => {
-        const code_verifier: string = client.randomPKCECodeVerifier();
-        const code_challenge: string = await client.calculatePKCECodeChallenge(code_verifier);
-        const state = client.randomState();
+          const { code_verifier, code_challenge, state, oidc_auth_url } = await initiateAuthorization(input.subpath);
 
-        const max_age = 10 * 60; // max request age 10 minutes
-        ctx.res.setHeader("Set-Cookie", [
+          const max_age = 10 * 60; // max request age 10 minutes
+          ctx.res.setHeader("Set-Cookie", [
             `oidc_code_verifier=${code_verifier}; Max-Age=${max_age}; Path=/; HttpOnly; SameSite=Lax`,
             `oidc_state=${state}; Max-Age=${max_age}; Path=/; HttpOnly; SameSite=Lax`
-        ]);
+          ]);
 
-        const oidc_auth_url = client.buildAuthorizationUrl(openIdConfig, {
-            redirect_uri: `http://localhost:3000${input.subpath}`,
-            scope: "openid profile email",
-            code_challenge,
-            code_challenge_method: "S256",
-            state
-        });
-
-        return { url: oidc_auth_url.href };
+          return { url: oidc_auth_url.href };
     }),
     finishLogin: publicProcedure
         .input(z.object({ current_url: z.string().url(), exhibitorId: z.string().optional() }))
