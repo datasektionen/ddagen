@@ -4,34 +4,17 @@ import { api } from "@/utils/api";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { Submit } from "../logga-in";
 
-export function Submit({ value, loading }: { value: string; loading: boolean }) {
-  return (
-    <input
-      type="submit"
-      disabled={loading}
-      value={value}
-      className="
-        bg-cerise transition-transform hover:scale-110 focus:scale-110
-        focus:outline-none text-white uppercase w-fit mx-auto py-2 px-10
-        rounded-full cursor-pointer disabled:cursor-wait disabled:grayscale
-      "
-    />
-  );
-}
-
-export default function Login() {
+export default function AdminLogin() {
   const t = useLocale();
   const router = useRouter();
   const locale = t.locale;
   const trpc = api.useContext();
 
-  const [code, setCode] = useState("");
-  const [email, setEmail] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>();
-  const [state, setState] = useState<"email" | "code">("email");
 
-  const startLogin = api.account.startLogin.useMutation({
+  const startLogin = api.admin.startLogin.useMutation({
     onSuccess: (data) => {
       console.log(data);
       if (data?.url === undefined) {
@@ -43,8 +26,8 @@ export default function Login() {
     }
   });
 
-  const finishLogin = api.account.finishLogin.useMutation();
-  const getIsLoggedIn = api.account.isLoggedIn.useQuery(undefined, {
+  const finishLogin = api.admin.finishLogin.useMutation();
+  const getIsLoggedIn = api.admin.isLoggedIn.useQuery(undefined, {
     onSuccess: (data) => {
       setIsLoggedIn(data);
     },
@@ -53,20 +36,18 @@ export default function Login() {
   // Redirect if already logged in
   useEffect(() => {
     if (!getIsLoggedIn.isSuccess) return;
-    if (isLoggedIn == true) router.push("/utst%C3%A4llare");
+    if (isLoggedIn == true) router.push("/admin/sales");
   }, [isLoggedIn]);
 
   useEffect(() => {
     if (finishLogin.data?.ok) {
-      router.push("/utställare");
-      trpc.account.invalidate();
+      router.push("/admin/sales");
+      trpc.admin.invalidate();
     }
   }, [finishLogin]);
 
   useEffect(() => {
-    if (typeof router.query.code === "string") {
-      setState("code");
-      setCode(router.query.code);
+    if (typeof router.query.code === "string"){
       finishLogin.mutate({ current_url: window.location.href });
     }
   }, [router.query.code]);

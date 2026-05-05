@@ -267,6 +267,7 @@ export default {
   exhibitorSettings: {
     startHeader: "Dags att sätta upp eran profil",
     startButton: "Starta",
+    logoutButton: "Logga ut",
 
     previousPage:"Föregående",
     nextPage:"Nästa",

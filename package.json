@@ -20,6 +20,7 @@
     "flowbite": "^1.6.4",
     "flowbite-react": "^0.4.3",
     "html-react-parser": "^4.0.0",
+    "jose": "^6.2.3",
     "leaflet": "^1.9.4",
     "next": "14.2.35",
     "next-seo": "^6.6.0",

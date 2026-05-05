@@ -908,12 +908,12 @@ export const exhibitorRouter = createTRPCRouter({
     }),
     updateMeetingTimeSlots: publicProcedure  // Change from protectedProcedure to publicProcedure
     .input(z.object({
-      password: z.string(),  // Add password to the input validation
       exhibitorId: z.string(),
       timeSlots: z.array(z.number())
     }))
     .mutation(async ({ ctx, input }) => {
-      // Add password validation if needed
+      // Add password validation if needed - TODO
+      
       const exhibitor = await ctx.prisma.exhibitor.update({
         where: { id: input.exhibitorId },
         data: {

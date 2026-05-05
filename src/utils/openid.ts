@@ -1,0 +1,80 @@
+import * as client from "openid-client";
+import { SignJWT, jwtVerify } from "jose";
+import { z } from "zod";
+import { Cookies } from "@/shared/Classes";
+
+
+export const openIdConfig: client.Configuration = await client.discovery(
+  new URL(process.env.OIDC_PROVIDER || "localhost:7003"),
+  process.env.OIDC_ID || "client-id",
+  process.env.OIDC_SECRET || "client-secret",  // metadata
+  undefined,                // clientAuthentication
+  {
+    execute: [client.allowInsecureRequests], // TODO: DON'T FORGET TO REMOVE THIS
+  }
+);
+
+export async function authorizeClaims(oidc_code_verifier: string, oidc_state: string, current_url: string){
+  console.log("VERIFIER: ", oidc_code_verifier);
+  console.log("STATE: ", oidc_state);
+  let claims;
+  try {
+      claims = (await client.authorizationCodeGrant(
+      openIdConfig,
+      new URL(current_url),
+      {
+          pkceCodeVerifier: oidc_code_verifier,
+          expectedState: oidc_state
+      }
+      )).claims();
+  } catch (error) {
+      console.error("Grant failed:", error);
+      return { error: "invalidConfirmationCode" as const };
+  }
+
+  console.log("CLAIMS", claims);
+  return claims;
+}
+
+/* INTERNAL JWT SESSIONS */
+const secret = new TextEncoder().encode(process.env.JWT_SECRET);
+
+const SessionPayloadSchema = z.object({
+  sub: z.string(),
+  email: z.string(),
+  name: z.string().optional(),
+  permissions: z.array(z.string()),
+  exhibitor: z.string().optional()
+});
+
+
+// Create token
+export async function createSessionToken(payload: any) {
+  return await new SignJWT(payload)
+    .setProtectedHeader({ alg: "HS256" })
+    .setIssuedAt()
+    .setExpirationTime("5min")
+    .sign(secret);
+}
+
+// Verify token
+export async function verifySessionToken(token: string) {
+  try {
+    const { payload } = await jwtVerify(token, secret);
+    if (!payload) return null;
+
+    const parsed = SessionPayloadSchema.safeParse(payload);
+    if (!parsed.success) return null;
+
+    return parsed.data;
+  } catch {
+    return null;
+  }
+}
+
+export async function getSession(cookies: Cookies) {
+  const token = cookies.session;
+  if (!token) return null;
+
+  return await verifySessionToken(token);
+}
