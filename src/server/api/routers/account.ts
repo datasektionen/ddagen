@@ -8,42 +8,6 @@ import * as hive from "@/utils/hive";
 import * as client from "openid-client";
 import { authorizeClaims, createSessionToken, getSession, initiateAuthorization } from "@/utils/openid";
 
-/*
-const config: client.Configuration = await client.discovery(
-  new URL(process.env.OIDC_PROVIDER),
-  process.env.OIDC_ID,
-  process.env.OIDC_SECRET,  // metadata
-  undefined,                // clientAuthentication
-  {
-    execute: [client.allowInsecureRequests], // TODO: DON'T FORGET TO REMOVE THIS
-  }
-);
-*/
-const config = await client.discovery(
-  new URL(process.env.OIDC_PROVIDER!),
-
-  // 1. client_id
-  process.env.OIDC_ID!,
-
-  // 2. metadata (THIS is where redirect_uris goes)
-  {
-    client_secret: process.env.OIDC_SECRET!,
-    redirect_uris: ["http://localhost:3000/logga-in"],
-    response_types: ["code"],
-  },
-
-  // 3. client authentication method
-  client.ClientSecretBasic(process.env.OIDC_SECRET!),
-
-  // 4. options
-  {
-    execute: [client.allowInsecureRequests], // dev only
-  }
-);
-
-/*
-const permissionPath = "/api/v1/user/:id/permissions";
-*/
 
 export const accountRouter = createTRPCRouter({
   startLogin: publicProcedure

@@ -3,10 +3,11 @@ import { Cookies } from "@/shared/Classes";
 
 export async function fetchHive(userId: string): Promise<string[]> {
   const hiveBaseUrl = process.env.HIVE_URL || "http://localhost:7004";
+  const hiveSecret = process.env.HIVE_SECRET || "test";
 
   try {
     const res = await fetch(`${hiveBaseUrl}/api/v1/user/${userId}/permissions`, {
-      headers: { Authorization: "Bearer test" }
+      headers: { Authorization: `Bearer ${hiveSecret}` }
     });
 
     if (res.status !== 200) {

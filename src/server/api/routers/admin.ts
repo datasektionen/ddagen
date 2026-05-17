@@ -7,7 +7,7 @@ import sendEmail from "@/utils/send-email";
 import { getLocale } from "@/locales";
 
 import * as client from "openid-client";
-import { authorizeClaims, createSessionToken, getSession, openIdConfig, initiateAuthorization } from "@/utils/openid";
+import { authorizeClaims, createSessionToken, getSession, initiateAuthorization } from "@/utils/openid";
 
 export const adminRouter = createTRPCRouter({
     getExhibitors: publicProcedure

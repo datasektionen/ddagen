@@ -1,3 +1,4 @@
+export {}
 /*
 import Locale from "@/locales";
 import { useEffect, useState } from "react";

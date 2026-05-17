@@ -4,20 +4,29 @@ import { z } from "zod";
 import { Cookies } from "@/shared/Classes";
 import { getBaseUrl } from "@/utils/api"
 
-export const openIdConfig: client.Configuration = await client.discovery(
-  new URL(process.env.OIDC_PROVIDER || "localhost:7003"),
-  process.env.OIDC_ID || "client-id",
-  process.env.OIDC_SECRET || "client-secret",  // metadata
-  undefined,                // clientAuthentication
-  {
-    execute: [client.allowInsecureRequests], // TODO: DON'T FORGET TO REMOVE THIS
+let oidcConfig: Awaited<ReturnType<typeof client.discovery>> | null = null;
+
+async function getOidcConfig() {
+  if (!oidcConfig) {
+    oidcConfig = await client.discovery(
+      new URL(process.env.OIDC_PROVIDER || "localhost:7003"),
+      process.env.OIDC_ID || "client-id",
+      process.env.OIDC_SECRET || "client-secret",  // metadata
+      undefined,                // clientAuthentication
+      {
+        execute: [client.allowInsecureRequests], // TODO: DON'T FORGET TO REMOVE THIS
+      }
+    )
   }
-);
+
+  return oidcConfig;
+}
 
 export async function authorizeClaims(oidc_code_verifier: string, oidc_state: string, current_url: string){
   console.log("VERIFIER: ", oidc_code_verifier);
   console.log("STATE: ", oidc_state);
   let claims;
+  const openIdConfig = await getOidcConfig();
   try {
       claims = (await client.authorizationCodeGrant(
       openIdConfig,
@@ -84,6 +93,7 @@ export async function initiateAuthorization(subpath: string) {
       const code_challenge: string = await client.calculatePKCECodeChallenge(code_verifier);
       const state = client.randomState();
 
+      const openIdConfig = await getOidcConfig();
       const oidc_auth_url = client.buildAuthorizationUrl(openIdConfig, {
         redirect_uri: `${getBaseUrl()}${subpath}`,
         scope: "openid profile email",

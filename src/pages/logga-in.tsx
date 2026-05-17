@@ -28,7 +28,7 @@ export default function Login() {
 
   const [code, setCode] = useState("");
   const [email, setEmail] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>();
+  const [isLoggedIn, setIsLoggedIn] = useState<{ok?: boolean; isAdmin?: boolean}>();
   const [state, setState] = useState<"email" | "code">("email");
 
   const startLogin = api.account.startLogin.useMutation({
