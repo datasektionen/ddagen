@@ -6,13 +6,13 @@ export default {
   about: "Om Oss",
   home: {
     introFirstBlock:
-      "Nordens största arbetsmarknadsdag för datateknikstudenter firade 25-årsjubileum",
+      "Nordens största arbetsmarknadsdag för datateknikstudenter",
     introSecondBlock:
       "Är du en student inom data eller IT och söker efter din framtida arbetsplats, eller representerar du ett företag som letar talangfulla medarbetare?",
     introThirdBlock:
-      "Då är D-Dagen det perfekta tillfället för dig att träffa personer inom branschen och knyta värdefulla kontakter! I år firade D-Dagen sitt storslagna 25-års jubileum, vilket innebär att mässan kommer bli större och bättre än någonsin, med över 100+ utställare och 3000+ deltagare.",
-    introSignOff: "Detta är ett firande som man inte vill missa!\n Hoppas vi ses!",
-    introDDA: "Max Berglund & Mortada Nasser, D-Dagenansvariga",
+      "Då är D-Dagen det perfekta tillfället för dig att träffa personer inom branschen och knyta värdefulla kontakter!",
+    introSignOff: "Hoppas vi ses!",
+    introDDA: "Didzis Urtans & Oliver Zhou, D-Dagenansvariga",
     representative: "Företagsrepresentant?",
     representativeDescription:
       "Vill du nå ut till tusentals civilingenjörs-studenter vid KTH? Som utställare på D-Dagen har du möjlighet att göra just det! Klicka här nedanför för att läsa mer och göra en intresseanmälan.",
@@ -20,7 +20,7 @@ export default {
     info: {
       firstPart: "8 oktober",
       secondPart: "10:00 - 16:00",
-      thirdPart: "KTH",
+      thirdPart: "Nymble, KTH",
     },
     countDown:{
       days: "dagar",
@@ -56,7 +56,7 @@ export default {
       "I år hålls mässan 8e oktober i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15-19 på KTH Campus Valhallavägen. Under dagen kommer det finnas en lounge för utställare, och på kvällen anordnas en bankett för att avsluta dagen.",
     companyPackages: {
       title: "Vill ditt företag nå ut till tusentals civilingenjörsstudenter vid KTH?",
-      text: "Vi erbjuder flera olika paket för företag:",
+      text: "Vi erbjuder flera olika paket för företag",
       text2: "För priser, se produktkatalogen ovan eller kontakta ",
       packages: [
         {
@@ -64,17 +64,16 @@ export default {
           boldFirstPoint: false,
           bulletPoints: [
             "4 m² på mässan",
-            "Plats på hemsida och katalog",
+            "Exponering på hemsida och katalog",
             "2 st frukost/lunch biljetter",
-            "5 st representantplatser",
-            "1 ståbord, 2st eluttag",
             "2 st banquettebiljetter*",
+            "1 ståbord, 2st eluttag",
             "Fri tillgång till företagslounge",
             "En tilldelad Företagsvärd för service",
             "Begränsad förvaring & mottagning av leverans"
           ],
           disclaimers: [
-            "Totalt 8 st tillhörande dryckesbiljetter till banquetten"
+            "Totalt 6 st tillhörande dryckesbiljetter till banquetten"
           ]
         },
         {
@@ -92,10 +91,11 @@ export default {
             "1 extra frukost/lunch biljett",
             "Exponering på våra sociala medier",
             "Medelstor logotyp på vår hemsida",
-            "Kontaktsamtal, 2 timmar",
+            "Kontaktsamtal, 2 timmar*",
             "Obegränsad förvaring & mottagning av leverans",
           ],
           disclaimers: [
+            "*Kontaktsamtal erbjuds kostnadsfritt i paketen, men måste föranmälas senast 28:e Augusti. Detta är frivilligt och kan avböjas."
           ]
         },
         {
@@ -110,14 +110,17 @@ export default {
             "Allt från mellan paketet",
             "8 m², minst 4m takhöjd",
             "Central placering på mässan",
-            "1 extra ståbord, frukost/lunch biljett",
+            "1 extra ståbord",
+            "1 extra frukost/lunch biljett",
             "2 extra banquette biljetter",
-            "Exponering på ca. 1000 goodiebags med stor logga",
-            "1 representant i schemalagd paneldiskussion",
-            "Sponsrat inlägg på våra sociala medier med eget utformat innehåll",
+            "Exponering på ca. 1000 goodiebags",
+            "Schemalagd paneldiskussion*",
+            "Särskilt sponsrat inlägg**",
             "Stor logotyp på vår hemsida",
           ],
           disclaimers: [
+            "*Paneldiskussions deltagande erbjuds kostnadsfritt i paketen, men måste föranmälassenast 28:e Augusti. Detta är frivilligt och kan avböjas.",
+            "**Inläggets innehåll utformas enligt överenskommelse"
           ]
         },
       ]
@@ -1045,7 +1048,7 @@ export default {
       "Vi samarbetar gärna med er för att organisera evenemang före och efter D-Dagen! Oavsett om ni är intresserade av lunchföreläsningar, hackathons eller något helt annat är ni välkomna att dela era idéer med oss. För mer information kontakta vår sponsoransvarige på <a className='text-yellow' href='mailto:sean.zisheng@ddagen.se'>sean.zisheng@ddagen.se</a>.",
     productCatalog: "PRODUKTKATALOG",
     header: "FÖRETAG FAQ",
-    catalogPath: "https://ddagen.se/downloadables/Product_Catalog_2025_sv.pdf",
+    catalogPath: "https://ddagen.se/downloadables/Product_Catalog_2026_sv.pdf",
   },
   contact: {
     header: "Kontakt",
@@ -1053,7 +1056,7 @@ export default {
     subheader2: "Projektansvariga",
     p1: "Om ni har några egna förslag på evenemang eller aktiviteter ni vill anordna för studenterna på Konglig Datasektionen, eller om ni har några andra frågor eller funderingar om företagspaket är det bara att höra av er till oss på...",
     p2: "För mer information och övriga frågor till ansvarig för D-Dagen kontakta...",
-    salesHeader: "Säljgruppen 2025",
+    salesHeader: "Säljgruppen 2026",
     bossesHeader: "Ansvarig",
     roles: [
       "D-DAGENANSVARIG",
@@ -1327,23 +1330,23 @@ export default {
     info2: "D-Dagen förr",
     info3: "D-Dagen idag",
     prTeamRoles: [
-      "PR-Ansvarig", "Tryckansvarig", "Art Director",
-      "Art Director", "Sociala medier-ansvarig",
+      "PR-Ansvarig", "Art Director", "Art Director",
+      "Sociala medier-ansvarig", "Tryckansvarig",
     ],
     salesTeamRoles: [
       "Säljansvarig", "Säljare", "Säljare", "Säljare",
       "Säljare", "Säljare", "Säljare","Sponsansvarig",
     ],
     devTeamRoles: [
-      "Webb-Ansvarig", "Systemutvecklare", "Webbutvecklare",
-      "Webbutvecklare",
+      "Webb-Ansvarig", "Webbutvecklare", "Webbutvecklare",
+      "Systemutvecklare",
     ],
     massTeamRoles: [
-      "Mäss-Ansvarig", "Fest-Ansvarig", "Logistik-Ansvarig",
-       "Lokal-Ansvarig", "Lounge-Ansvarig", "Personal-Ansvarig",
+      "Mäss-Ansvarig", "Logistik-Ansvarig", "Lokal-Ansvarig", 
+      "Lounge-Ansvarig", "Fest-Ansvarig", "Personal-Ansvarig",
     ],
-    ecoTeamRoles: ["Ekonomiansvarig","Vice Ekonomiansvarig"],
-    ddaRoles: ["DDA", "DDA"],
+    ecoTeamRoles: ["Ekonomiansvarig","Vice Ekonomiansvarig", "Vice Ekonomiansvarig"],
+    ddaRoles: ["DDA", "Vice-DDA"],
     teamNames: [
       "D-Dagenansvariga",
       "PR-Gruppen",

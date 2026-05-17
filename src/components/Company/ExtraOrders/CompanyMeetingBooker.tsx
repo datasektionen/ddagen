@@ -228,7 +228,7 @@ export default function CompanyMeetingBooker(
         <button className='mt-2 mb-2' onClick={()=>{ setShowFilter(!showFilter); }}>
             <a className="hover:scale-105 transition-transform bg-cerise rounded-full uppercase text-white text-base font-medium px-4 py-1 max-lg:mx-auto w-max flex flex-row">
               {t.exhibitorSettings.meetings.filter + (countActiveQueries() > 0 ? ` (${countActiveQueries()})` : '')}
-              <img src="\img\arrow-down.png"  
+              <img src="\icons\arrow-down.png"  
                 className={` w-[16px] h-[10px] transition-all duration-500 mt-2 ml-2
                 ${showFilter ? ' rotate-180' : " rotate-0 "} `}/>    
             </a>

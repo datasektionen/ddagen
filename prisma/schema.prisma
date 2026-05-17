@@ -18,7 +18,6 @@ model ExhibitorInterestRegistration {
   contactPerson      String
   phoneNumber        String
   email              String
-  howDidYouFindUs    String?
 
   @@map("exhibitor_interest_registrations")
 }
@@ -199,4 +198,11 @@ model Meetings {
     createdAt        DateTime   @default(now())
 
     @@map("meetings")
+}
+
+model ApiKey {
+  id         String   @id @default(uuid())
+  name       String   @unique
+  hash       String   @unique
+  createdAt  DateTime @default(now())
 }

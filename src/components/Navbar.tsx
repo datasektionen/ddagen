@@ -208,7 +208,7 @@ function Group({
             <img
             data-dont-close
 
-            src="/img/smCaret.svg/"
+            src="/icons/smCaret.svg/"
             className={`${
               dropped ? "rotate-180 " : ""
             }  h-4 mt-2 text-cerise  transition-transform duration-300 group`}
