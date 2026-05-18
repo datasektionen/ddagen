@@ -1,7 +1,6 @@
 import React from "react";
 import Locale from "@/locales";
 import { TextInput } from "@/components/Company/TextInput";
-import { AdminSelectField } from "../AdminSelectField";
 
 export default function BillingInfo(
     {
@@ -34,7 +33,7 @@ export default function BillingInfo(
             <h2 className="uppercase text-cerise text-2xl md:text-4xl font-normal px-[10px] break-words w-full text-center pt-4">
                 {t.exhibitorSettings.table.row5.section1.header}
             </h2>
-            <div className="w-full flex flex-col lg:flex-row gap-8 mt-8 mb-20 lg:px-24 flex-wrap items-center justify-center">
+            <div className="w-full flex flex-col gap-8 mt-8 mb-20 lg:px-24 items-center justify-center">
               <div className="">
                 <TextInput
                     description={physicalAddress}
@@ -46,16 +45,28 @@ export default function BillingInfo(
                     }
                     />
               </div>
-              <div className="self-start">
-                <AdminSelectField
-                    name="billingMethodText"
-                    fields={{billingMethodText: t.exhibitorSettings.table.row5.section1.billingMethodText}}
-                    options={t.exhibitorSettings.table.row5.section1.billingMethods}
-                    values={t.exhibitorSettings.table.row5.section1.billingMethods}
-                    value={billingMethod}
-                    setValue={setBillingMethod}
-                    />
+              <div className="flex flex-col items-center gap-5">
+                <label className="text-xl font-normal text-white tracking-wider">
+                  {t.exhibitorSettings.table.row5.section1.billingMethodText}
+                </label>
+                <div className="flex gap-8">
+                  {t.exhibitorSettings.table.row5.section1.billingMethods?.map((method: string) => (
+                    <label key={method} className="flex items-center gap-3 cursor-pointer">
+                      <input
+                        type="radio"
+                        name="billingMethod"
+                        value={method}
+                        checked={billingMethod === method}
+                        onChange={(e) => setBillingMethod(e.target.value)}
+                        className="w-6 h-6 accent-cerise cursor-pointer"
+                      />
+                      <span className="text-white text-lg">
+                        {method}
+                      </span>
+                    </label>
+                  ))}
                 </div>
+              </div>
                 {organizationNumber?.[0] != '0' && <div>
                 <TextInput
                   description={organizationNumber}

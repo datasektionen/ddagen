@@ -29,10 +29,10 @@ export function TextInput({
         {textAbove}
       </label>
       <textarea
-        className="relative w-[330px] h-[150px] bg-black/25 border-solid border-yellow border-2 rounded-xl p-2
+        className="relative w-[330px] h-[150px] bg-black/25 border-solid border-cerise border-2 rounded-xl p-2
         placeholder:text-[#D9D9D9] placeholder:font-light placeholder:text-2xl break-words
         text-white font:light
-        focus:placeholder:text-transparent focus:outline-none focus:border-yellow resize-none"
+        focus:placeholder:text-transparent focus:outline-none focus:border-cerise resize-none"
         placeholder={placeHolderText}
         maxLength={500}
         onChange={onTextChange}
