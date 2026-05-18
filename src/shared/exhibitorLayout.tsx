@@ -100,12 +100,12 @@ export default function ExhibitorLayout({
         <meta name="robots" content="noindex, nofollow" />
       </Head>
       <div className="xl:w-[1200px] lg:w-[1000px] w-full mx-auto">
-        <div className="mx-auto flex flex-col items-center py-40 cursor-default bg-darkblue bg-opacity-75">
+        <div className="mx-auto flex flex-col items-start py-40 cursor-default bg-darkblue bg-opacity-75">
           {/*Header*/}
-          <h1 className="uppercase text-cerise text-3xl md:text-5xl font-medium text-center px-[10px] break-words">
+          <h1 className="uppercase text-cerise text-3xl md:text-5xl font-medium break-words">
             {t.exhibitorSettings.header}
           </h1>
-          <div className="flex w-full flex-row items-start gap-4 mt-4">
+          <div className="flex w-full flex-row items-start gap-4 mt-12">
             <div className="flex flex-col gap-2 min-w-xs self-start">
               {exhibitorNav.map(((navItem, i) => (
                 <div className="w-full" key={i}>
