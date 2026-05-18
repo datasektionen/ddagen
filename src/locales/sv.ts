@@ -515,6 +515,7 @@ export default {
         title: "Faktureringsinformation",
         section1: {
           header: "Faktureringsinformation",
+          info: "Fyll i er faktureringsinformation så att vi kan skicka fakturor på rätt sätt",
           organizationNumber: "Organisationsnummer",
           placeholderTextOrganizationNumber: "Ange organisationsnummer",
           email: "E-post",

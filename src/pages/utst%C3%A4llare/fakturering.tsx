@@ -2,45 +2,78 @@ import { api } from "@/utils/api";
 import { useLocale } from "@/locales";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { InputField } from "@/components/InputField";
 import Head from "next/head";
 import ExhibitorLayout from "@/shared/exhibitorLayout";
+import BillingInfo from "@/components/Company/Billing information/BillingInfo";
 
-// TODO hook the next button to the save features
-// Maby break save changes into a separate steps for each page
-// Add Logic to figure out saved state
-
-export default function ExhibitorBilling({
-    children
-} : {
-    children: React.ReactElement
-}) {
+export default function ExhibitorBilling() {
   const t = useLocale();
   const router = useRouter();
-
-  // States
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
-  
-  const getName = api.exhibitor.getName.useQuery();
+
+  const [physicalAddress, setPhysicalAddress] = useState<string>("");
+  const [billingMethod, setBillingMethod] = useState<string>("");
+  const [organizationNumber, setOrganizationNumber] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+
   const getIsLoggedIn = api.account.isLoggedIn.useQuery(undefined, {
     onSuccess: (data: any) => {
       setIsLoggedIn(data);
     },
   });
 
-  // Manage login
+  const getBillingInfo = api.exhibitor.getBillingInfo.useQuery(undefined, {
+    enabled: getIsLoggedIn.isSuccess && isLoggedIn,
+  });
+  const setBillingInfoMutation = api.exhibitor.setBillingInfo.useMutation();
+
   useEffect(() => {
     if (!getIsLoggedIn.isSuccess) return;
-    //if (isLoggedIn == false) router.push("/logga-in");
   }, [isLoggedIn]);
 
-  
+  useEffect(() => {
+    if (!getBillingInfo.isSuccess) return;
+    const data = getBillingInfo.data;
+    if (data) {
+      setPhysicalAddress(data.physicalAddress || "");
+      setBillingMethod(data.billingMethod || "");
+      setOrganizationNumber(data.organizationNumber || "");
+      setEmail(data.email || "");
+    }
+  }, [getBillingInfo.isSuccess]);
+
+  function handleSave() {
+    setBillingInfoMutation.mutate({
+      physicalAddress,
+      billingMethod,
+      organizationNumber,
+      email,
+      locale: t.locale,
+    }, {
+      onSuccess: () => {
+        getBillingInfo.refetch();
+      }
+    });
+  }
+
   return(
     <>
+      <Head>
+        <title>Fakturering</title>
+      </Head>
       <ExhibitorLayout>
-        <>
-            <h2 className="text-white">Billing</h2>
-        </>
+        <BillingInfo
+          t={t}
+          physicalAddress={physicalAddress}
+          setPhysicalAddress={setPhysicalAddress}
+          billingMethod={billingMethod}
+          setBillingMethod={setBillingMethod}
+          organizationNumber={organizationNumber}
+          setOrganizationNumber={setOrganizationNumber}
+          email={email}
+          setEmail={setEmail}
+          saveHandler={handleSave}
+        />
       </ExhibitorLayout>
     </>
   );

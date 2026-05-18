@@ -10,7 +10,6 @@ import CompanyHost from "@/components/Company/CompanyHost/CompanyHost";
 import GeneralInfo from "@/components/Company/General/GeneralInfo";
 import JobOffers from "@/components/Company/General/JobOffers";
 import BillingInfo from "@/components/Company/Billing information/BillingInfo";
-import { UserDetails } from "@/components/Company/User/UserDetails";
 import { CheckMark } from "@/components/CheckMark";
 import { addImageDetails } from "@/shared/addImageDetails";
 import CompanyMeetingBooker from "@/components/Company/ExtraOrders/CompanyMeetingBooker";
@@ -144,7 +143,7 @@ export default function Exhibitor() {
   }
 
   // Manage page swapping
-  const pageAmout = 6;
+  const pageAmout = 5;
   let newPage;
   const nextPage = () => {
     if (!hasChecked && page === 1) {
@@ -488,7 +487,6 @@ export default function Exhibitor() {
           )}
         </div>
 
-        <UserDetails t={t}/>
       </>,
       <ExtraFairOrders
         t={t}
@@ -563,7 +561,6 @@ export default function Exhibitor() {
       rows={rows}
       />
     </>,
-    <UserDetails t={t}/>,
     <ExtraFairOrders
       t={t}
       extras={extras}

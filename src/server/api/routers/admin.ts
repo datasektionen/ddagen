@@ -147,17 +147,21 @@ export const adminRouter = createTRPCRouter({
                 data: { exhibitorId: input.exhibitorId },
             });
 
+            const secure = process.env.NODE_ENV === 'production' ? 'Secure;' : '';
             ctx.res.setHeader(
                 "Set-Cookie",
-                `session=${session.id}; Path=/; HttpOnly; SameSite=Lax; Secure`
+                `session=${session.id}; Path=/; HttpOnly; SameSite=Lax; ${secure}`
             );
+
+            return { ok: true };
         }),
     logout: publicProcedure.mutation(async ({ ctx }) => {
         if (ctx.session) {
             await ctx.prisma.session.delete({ where: { id: ctx.session.id } });
+            const secure = process.env.NODE_ENV === 'production' ? 'Secure;' : '';
             ctx.res.setHeader(
                 "Set-Cookie",
-                `session=; Path=/; HttpOnly; SameSite=Lax; Secure`
+                `session=; Path=/; HttpOnly; SameSite=Lax; ${secure}`
             );
         }
         return { status: ctx.session ? true : false };
