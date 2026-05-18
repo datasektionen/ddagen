@@ -20,6 +20,10 @@ const exhibitorNav = [
     url: "/utställare/info"
   },
   {
+    text: "Jobberbjudanden",
+    url: "/utställare/jobbannonser"
+  },
+  {
     text: "Kontaktpersoner",
     url: "/utställare/kontaktpersoner"
   },
@@ -28,8 +32,12 @@ const exhibitorNav = [
     url: "/utställare/fakturering"
   },
   {
-    text: "Biljetter",
-    url: "/utställare/biljetter"
+    text: "Matbiljetter",
+    url: "/utställare/matbiljetter"
+  },
+  {
+    text: "Banquetten",
+    url: "/utställare/banquetten"
   },
   {
     text: "Extrabeställningar",
@@ -47,8 +55,14 @@ export default function ExhibitorLayout({
     children: React.ReactElement
 }) {
   const t = useLocale();
-  /*
   const router = useRouter();
+
+  function normalizePath(path: string) {
+    return decodeURIComponent(path).replace(/\/$/, "") || "/";
+  }
+
+  const currentPath = normalizePath(router.asPath.split("?")[0]);
+  /*
   // States
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
   const [name, setName] = useState<string>("");
@@ -91,11 +105,19 @@ export default function ExhibitorLayout({
           <h1 className="uppercase text-cerise text-3xl md:text-5xl font-medium text-center px-[10px] break-words">
             {t.exhibitorSettings.header}
           </h1>
-          <div className="flex w-full flex-row items-center gap-4 mt-4">
-            <div className="flex flex-col gap-2 min-w-xs">
+          <div className="flex w-full flex-row items-start gap-4 mt-4">
+            <div className="flex flex-col gap-2 min-w-xs self-start">
               {exhibitorNav.map(((navItem, i) => (
                 <div className="w-full" key={i}>
-                  <Link href={navItem.url} className="text-lg font-medium text-white hover:text-cerise">
+                  <Link
+                    href={navItem.url}
+                    aria-current={currentPath === normalizePath(navItem.url) ? "page" : undefined}
+                    className={`text-lg font-medium transition-colors hover:text-cerise ${
+                      currentPath === normalizePath(navItem.url)
+                        ? "text-cerise"
+                        : "text-white"
+                    }`}
+                  >
                     {navItem.text}
                   </Link>
                 </div>
