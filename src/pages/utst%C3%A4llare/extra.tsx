@@ -127,6 +127,7 @@ export default function ExhibitorExtra({
 }) {
   const t = useLocale();
   const router = useRouter();
+  const trpc = api.useContext();
 
   // States
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
@@ -136,9 +137,15 @@ export default function ExhibitorExtra({
   const [itemType, setItemType] = useState<ExtraOrderType>("table");
   const [itemAmount, setItemAmount] = useState<string>("1");
 
-  const [accepted, setAccepted] = useState<ExtraOrderAccepted[]>([]);
-  const [requested, setRequested] = useState<ExtraOrderRequest[]>([]);
-  const [history, setHistory] = useState<ExtraOrderHistory[]>([]);
+  const createOrderRequest = api.exhibitor.createOrderRequest.useMutation();
+  const acceptOrderRequest = api.exhibitor.acceptOrderRequest.useMutation();
+  const cancelOrderRequest = api.exhibitor.cancelOrderRequest.useMutation();
+
+  const { data: ordersData, isLoading } = api.exhibitor.getOrders.useQuery();
+
+  const requested = ordersData?.requests ?? [];
+  const history = ordersData?.history.filter((el) => el.action !== "UPDATED_REQUEST") ?? [];
+  const accepted = ordersData?.history.filter((el) => el.action === "ACCEPTED_REQUEST") ?? [];
 
   const getName = api.exhibitor.getName.useQuery();
   const getIsLoggedIn = api.account.isLoggedIn.useQuery(undefined, {
@@ -155,53 +162,24 @@ export default function ExhibitorExtra({
     //if (isLoggedIn == false) router.push("/logga-in");
   }, [isLoggedIn]);
 
-  
   const handleAcceptRequest = (request_id: string) => {
     console.log("ACCEPT REQUEST WITH ID", request_id);
-    if(!isAdmin)return;
+    if (!isAdmin) return;
     const rq = requested.find(x => x.id == request_id)
-    if(!rq)return;
+    if (!rq) return;
 
-    setRequested(l => l.filter(x => x.id != request_id));
-    setAccepted(l => ([
-      ...l,
-      rq
-    ]));
-    setHistory(l => ([
-      ...l,
-      {
-        id: crypto.randomUUID(),
-        item: rq.item,
-        action: "ACCEPTED_REQUEST",
-        person: {
-          name: "",
-          is_admin: isAdmin
-        },
-        created_at: new Date
-      },
-    ]))
+    acceptOrderRequest.mutateAsync(rq.item.id);
+    trpc.exhibitor.getOrders.invalidate();
   }
 
   const handleCancelRequest = (request_id: string) => {
     console.log("CANCEL REQUEST WITH ID", request_id);
 
     const rq = requested.find(x => x.id == request_id)
-    if(!rq)return;
+    if(!rq) return;
 
-    setRequested(l => l.filter(x => x.id != request_id));
-    setHistory(l => ([
-      ...l,
-      {
-        id: crypto.randomUUID(),
-        item: rq.item,
-        action: "CANCELED_REQUEST",
-        person: {
-          name: "",
-          is_admin: isAdmin
-        },
-        created_at: new Date
-      },
-    ]))
+    cancelOrderRequest.mutateAsync(rq.item.id);
+    trpc.exhibitor.getOrders.invalidate();
   }
 
   const acceptedColumns = getOrderColumns({
@@ -222,45 +200,24 @@ export default function ExhibitorExtra({
 
 
   const handleAddItem = () => {
-    if(!itemType)return;
-    if(!(parseInt(itemAmount ?? 0) > 0))return;
+    if(!itemType) return;
+    if(!(parseInt(itemAmount ?? 0) > 0)) return;
 
-    const nextItem: ExtraOrderItem = {
-      id: crypto.randomUUID(),
+    createOrderRequest.mutateAsync({
       type: itemType,
       amount: parseInt(itemAmount ?? 0),
       price_per_unit: extraOrderDetails[itemType].price_per_unit
-    };
+    });
 
-    setRequested(l => ([
-      ...l,
-      {
-        id: crypto.randomUUID(),
-        item: nextItem
-      }
-    ]));
-
-    setHistory(l => ([
-      ...l,
-      {
-        id: crypto.randomUUID(),
-        item: nextItem,
-        action: "CREATED_REQUEST",
-        person: {
-          name: "",
-          is_admin: isAdmin
-        },
-        created_at: new Date
-      },
-    ]));
-
+    trpc.exhibitor.getOrders.invalidate();
     setAddItem(false);
   }
 
   const pricePerUnit = itemType ? extraOrderDetails[itemType].price_per_unit : "-";
   const totalPrice = parseInt(itemAmount ?? 0) > 0 && pricePerUnit != "-" ? parseInt(itemAmount ?? 0) * pricePerUnit : "-"
 
-  console.log("REQUESTED", requested);
+  console.log(history);
+
   const dropdownEntries = Object.entries(extraOrderDetails).filter(([_k, v]) => v.dropdown == true);
 
   return(

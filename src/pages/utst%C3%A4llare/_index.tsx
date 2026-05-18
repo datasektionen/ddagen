@@ -53,7 +53,7 @@ export default function Exhibitor() {
   const [companyHostName, setCompanyHostName] = useState("");
   const [companyHostNumber, setCompanyHostNumber] = useState("");
   const [companyHostEmail, setCompanyHostEmail] = useState("");
-  const [allowMarketing, setAllowMarketing] = useState(true); 
+  const [allowMarketing, setAllowMarketing] = useState(true);
   const [hasChecked, setHasChecked] = useState<boolean>(false);
 
   const [showMessage, setShowMessage] = useState(false); // State för att visa meddelande
@@ -99,7 +99,7 @@ export default function Exhibitor() {
   const getCompanyHostEmail = api.exhibitor.getCompanyHostEmail.useQuery();
 
   const logout = api.account.logout.useMutation();
-  
+
   const handleLogout = () => {
     logout.mutate();
   }

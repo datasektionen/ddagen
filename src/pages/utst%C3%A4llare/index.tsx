@@ -20,7 +20,7 @@ export default function ExhibitorOverview({
 
   // States
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
-  
+
   const getName = api.exhibitor.getName.useQuery();
   const getIsLoggedIn = api.account.isLoggedIn.useQuery(undefined, {
     onSuccess: (data: any) => {
@@ -34,7 +34,7 @@ export default function ExhibitorOverview({
     //if (isLoggedIn == false) router.push("/logga-in");
   }, [isLoggedIn]);
 
-  
+
   return(
     <>
       <ExhibitorLayout>

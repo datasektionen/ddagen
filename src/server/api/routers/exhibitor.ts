@@ -909,7 +909,7 @@ export const exhibitorRouter = createTRPCRouter({
     }))
     .mutation(async ({ ctx, input }) => {
       // Add password validation if needed - TODO
-      
+
       const exhibitor = await ctx.prisma.exhibitor.update({
         where: { id: input.exhibitorId },
         data: {
@@ -1067,23 +1067,23 @@ export const exhibitorRouter = createTRPCRouter({
           },
         });
     }),
-  getBillingInfo: protectedProcedure.query(async ({ ctx }) => {
-    return await ctx.prisma.exhibitor.findUniqueOrThrow({
-      where: { id: ctx.session.exhibitorId },
-      select: {
-        companyAddress: true,
-        billingMethod: true,
-        organizationNumber: true,
-        invoiceEmail: true,
-      },
-    }).then((data) => ({
-      physicalAddress: data.companyAddress,
-      billingMethod: data.billingMethod,
-      organizationNumber: data.organizationNumber,
-      email: data.invoiceEmail,
-    }));
-  }),
-  setBillingInfo: protectedProcedure
+    getBillingInfo: protectedProcedure.query(async ({ ctx }) => {
+      return await ctx.prisma.exhibitor.findUniqueOrThrow({
+        where: { id: ctx.session.exhibitorId },
+        select: {
+          companyAddress: true,
+          billingMethod: true,
+          organizationNumber: true,
+          invoiceEmail: true,
+        },
+      }).then((data) => ({
+        physicalAddress: data.companyAddress,
+        billingMethod: data.billingMethod,
+        organizationNumber: data.organizationNumber,
+        email: data.invoiceEmail,
+      }));
+    }),
+    setBillingInfo: protectedProcedure
     .input(
       z.object({
         physicalAddress: z.string(),
@@ -1104,5 +1104,121 @@ export const exhibitorRouter = createTRPCRouter({
         },
       });
       return { ok: true };
+    }),
+
+    getOrders: protectedProcedure.query(async ({ ctx }) => {
+      return {
+        requests: await ctx.prisma.extraOrderReq.findMany({ where: { exhibitor_id: ctx.session.exhibitorId }, include: { item: true } }),
+        history: await ctx.prisma.extraOrderHistory.findMany({ where: { exhibitor_id: ctx.session.exhibitorId }, include: { item: true } })
+      };
+    }),
+
+    createOrderRequest: protectedProcedure
+    .input(z.object({
+      type: z.string(),
+      amount: z.number(),
+      price_per_unit: z.number().positive(),
+    }))
+    .mutation(async ({ ctx, input }) => {
+      const item = await ctx.prisma.extraOrderItem.create({
+        data: {
+          type: input.type,
+          amount: input.amount,
+          price_per_unit: input.price_per_unit,
+        }
+      });
+
+      if (!item?.id) {
+        return;
+      }
+
+      const existing_request = await ctx.prisma.extraOrderReq.findFirst({
+        where: {
+          exhibitor_id: ctx.session.exhibitorId,
+          item: {
+            type: input.type,
+            price_per_unit: input.price_per_unit,
+          }
+        }
+      });
+
+      let action;
+
+      if (existing_request) {
+        action = "UPDATED_REQUEST";
+        await ctx.prisma.extraOrderReq.update({
+          data: {
+            item_id: item.id
+          },
+          where: {
+            item_id: existing_request.item_id
+          }
+        });
+        console.log("Updated existing request");
+      } else {
+        action = "CREATED_REQUEST";
+        await ctx.prisma.extraOrderReq.create({
+          data: {
+            exhibitor_id: ctx.session.exhibitorId,
+            item_id: item.id,
+          }
+        });
+      }
+
+      await ctx.prisma.extraOrderHistory.create({
+        data: {
+          exhibitor_id: ctx.session.exhibitorId,
+          item_id: item.id,
+          action: action,
+          person_name: "",
+          person_email: "",
+        }
+      });
+
+      console.log(Object.keys(ctx));
+      console.log(item)
+      console.log(existing_request);
+
+      return;
+    }),
+
+    cancelOrderRequest: protectedProcedure
+    .input(z.string())
+    .mutation(async ({ ctx, input }) => {
+      await ctx.prisma.extraOrderReq.delete({
+        where: {
+          item_id: input
+        }
+      });
+
+      await ctx.prisma.extraOrderHistory.create({
+        data: {
+          exhibitor_id: ctx.session.exhibitorId,
+          item_id: input,
+          action: "CANCELED_REQUEST",
+          person_name: "",
+          person_email: "",
+        }
+      });
+    }),
+
+    acceptOrderRequest: protectedProcedure
+    .input(z.string())
+    .mutation(async ({ ctx, input }) => {
+      await ctx.prisma.extraOrderReq.delete({
+        where: {
+          item_id: input
+        }
+      });
+
+      await ctx.prisma.extraOrderHistory.create({
+        data: {
+          exhibitor_id: ctx.session.exhibitorId,
+          item_id: input,
+          action: "ACCEPTED_REQUEST",
+          person_name: "",
+          person_email: "",
+        }
+      });
     }),
 });
