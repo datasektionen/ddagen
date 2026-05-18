@@ -42,7 +42,7 @@ export default function BillingInfo(
             <p className="text-white mb-4 font-normal text-base mt-4">
                 {t.exhibitorSettings.table.row5.section1.info}
             </p>
-            <div className="flex flex-col items-center w-[80%] bg-black/25 border-2 border-cerise rounded-xl pb-8 mb-16 overflow-hidden">
+            <div className="flex flex-col items-center w-[80%] bg-black/25 border-2 border-cerise rounded-xl pt-6 pb-8 mb-16 overflow-hidden">
               <form className="flex flex-col w-[90%] bg-transparent outline-none gap-10 mt-10">
                 {/* Physical Address */}
                 <InputField
