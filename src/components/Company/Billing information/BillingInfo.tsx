@@ -65,7 +65,7 @@ export default function BillingInfo(
                   placeHolderText={
                     t.exhibitorSettings.table.row5.section1.placeholderTextOrganizationNumber
                   }
-                  disabled={true}
+                  
                 />
                 </div>}
                 <div>
