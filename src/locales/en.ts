@@ -521,6 +521,7 @@ export default {
           title: "Billing Information",
           section1: {
             header: "Billing Information",
+            info: "Please fill in your billing information so we can send invoices properly",
             organizationNumber: "Organization Number",
             placeholderTextOrganizationNumber: "Enter your organization number",
             email: "Email",

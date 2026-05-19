@@ -202,7 +202,7 @@ export function AddPreferences({
           }}
           fields={t.exhibitorSettings.fieldsAddPreferences}
         />
-        <div className="flex flex-col">
+        <div className="text-white flex flex-col">
           <div className="border-b-2 border-white border-solid">
             <p className="font-normal text-lg">
               {t.exhibitorSettings.table.row3.preferencesHeader}

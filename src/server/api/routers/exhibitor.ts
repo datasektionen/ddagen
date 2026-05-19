@@ -1067,4 +1067,42 @@ export const exhibitorRouter = createTRPCRouter({
           },
         });
     }),
+  getBillingInfo: protectedProcedure.query(async ({ ctx }) => {
+    return await ctx.prisma.exhibitor.findUniqueOrThrow({
+      where: { id: ctx.session.exhibitorId },
+      select: {
+        companyAddress: true,
+        billingMethod: true,
+        organizationNumber: true,
+        invoiceEmail: true,
+      },
+    }).then((data) => ({
+      physicalAddress: data.companyAddress,
+      billingMethod: data.billingMethod,
+      organizationNumber: data.organizationNumber,
+      email: data.invoiceEmail,
+    }));
+  }),
+  setBillingInfo: protectedProcedure
+    .input(
+      z.object({
+        physicalAddress: z.string(),
+        billingMethod: z.string(),
+        organizationNumber: z.string(),
+        email: z.string().email(),
+        locale: z.enum(["en", "sv"]),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      await ctx.prisma.exhibitor.update({
+        where: { id: ctx.session.exhibitorId },
+        data: {
+          companyAddress: input.physicalAddress,
+          billingMethod: input.billingMethod,
+          organizationNumber: input.organizationNumber,
+          invoiceEmail: input.email,
+        },
+      });
+      return { ok: true };
+    }),
 });

@@ -105,9 +105,10 @@ export const accountRouter = createTRPCRouter({
         }),
       ]);
 
+      const secure = process.env.NODE_ENV === 'production' ? 'Secure;' : '';
       ctx.res.setHeader(
         "Set-Cookie",
-        `session=${session.id}; Path=/; HttpOnly; SameSite=Lax; Secure`
+        `session=${session.id}; Path=/; HttpOnly; SameSite=Lax; ${secure}`
       );
 
       return { ok: true };
@@ -117,9 +118,10 @@ export const accountRouter = createTRPCRouter({
   }),
   logout: protectedProcedure.mutation(async ({ ctx }) => {
     await ctx.prisma.session.delete({ where: { id: ctx.session.id } });
+    const secure = process.env.NODE_ENV === 'production' ? 'Secure;' : '';
     ctx.res.setHeader(
       "Set-Cookie",
-      `session=; Path=/; HttpOnly; SameSite=Lax; Secure`
+      `session=; Path=/; HttpOnly; SameSite=Lax; ${secure}`
     );
   }),
 });

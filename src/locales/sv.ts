@@ -471,13 +471,13 @@ export default {
           header: "Under Mässan",
           paragraphOne:
             "Dessa matpreferenser används för frukosten och lunchen under mässan.",
-          paragraphTwo: "Ni ändrar antalet i extra beställningar",
+          paragraphTwo: "Ni ändrar antalet i extrabeställningar",
         },
         section2: {
           header: "Banquetten",
           paragraphOne:
             "Dessa matpreferenser används för banquetten efter mässan.",
-            paragraphTwo: "Ni ändrar antalet i extra beställningar",
+            paragraphTwo: "Ni ändrar antalet i extrabeställningar",
             paragraphThree: "Om inget specifikt anges för en medlem serveras standardmaten",
         },
         preferencesHeader: "Preferenser (vegetariskt är standard)",
@@ -518,6 +518,7 @@ export default {
         title: "Faktureringsinformation",
         section1: {
           header: "Faktureringsinformation",
+          info: "Fyll i er faktureringsinformation så att vi kan skicka fakturor på rätt sätt",
           organizationNumber: "Organisationsnummer",
           placeholderTextOrganizationNumber: "Ange organisationsnummer",
           email: "E-post",
