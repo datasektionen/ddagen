@@ -24,6 +24,7 @@ import Head from "next/head";
 export default function Exhibitor() {
   const t = useLocale();
   const router = useRouter();
+  const trpc = api.useContext();
 
   // States
   const [page, setPage] = useState<number>(0);
@@ -96,7 +97,19 @@ export default function Exhibitor() {
   const getCompanyHostName = api.exhibitor.getCompanyHostName.useQuery();
   const getCompanyHostNumber = api.exhibitor.getCompanyHostNumber.useQuery();
   const getCompanyHostEmail = api.exhibitor.getCompanyHostEmail.useQuery();
+
+  const logout = api.account.logout.useMutation();
   
+  const handleLogout = () => {
+    logout.mutate();
+  }
+
+  useEffect(() => {
+    if (logout.isSuccess) {
+      trpc.account.invalidate();
+      router.push("/logga-in");
+    }
+  }, [logout.isSuccess]);
   //const getStudentInterests = api.exhibitor.getStudentInterests.useQuery();
 
 
@@ -610,6 +623,12 @@ export default function Exhibitor() {
         <h1 className="uppercase text-cerise text-3xl md:text-5xl font-medium text-center px-[10px] break-words">
           {t.exhibitorSettings.header}
         </h1>
+        <button
+          className="text-center mt-2 text-white hover:text-red-300 cursor-pointer"
+          onClick={() => {handleLogout()}}
+        >
+          {t.exhibitorSettings.logoutButton}
+        </button>
         <div className="flex flex-row items-center gap-4 mt-4">
           <h2 className="text-white text-xl pt-2" >
             {editState ? <InputField

@@ -379,6 +379,9 @@ export type ExtraOrderItem = {
     id: string;
     created_at?: Date;
 }
+export type Cookies = Partial<{
+    [key: string]: string;
+}>
 
 export function sortExhibitors(exhibitors: Exhibitor[]) {
   // this is old sorting function from when exhibitors where enums, perhaps removable

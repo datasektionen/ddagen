@@ -26,7 +26,6 @@ export function ExhibitorPanel({
   exhibitors,
   preferences,
   exhibitorsInterests,
-  password,
   reloadLogin,
   jobOffers,
 }: {
@@ -34,7 +33,6 @@ export function ExhibitorPanel({
   exhibitors: Exhibitor[];
   preferences: Preferences[];
   exhibitorsInterests: ExhibitorInfo[];
-  password: string;
   reloadLogin: () => void;
   jobOffers: JobOffer[];
 }) {
@@ -100,7 +98,7 @@ export function ExhibitorPanel({
   function getLoginFunction(exhibitorId: string) {
     return async () => {
       await trpc.invalidate();
-      login.mutate({ exhibitorId: exhibitorId, password });
+      login.mutate({ exhibitorId: exhibitorId });
     };
   }
 
@@ -184,7 +182,6 @@ export function ExhibitorPanel({
 
   async function handleAddExhibitor(exhibitor: ExhibitorInfo) {
     addExhibitor.mutateAsync({
-      password: password,
       contactPerson: exhibitor.contactPerson,
       telephoneNumber: exhibitor.telephoneNumber,
       companyName: exhibitor.companyName,
@@ -196,6 +193,8 @@ export function ExhibitorPanel({
       mapPosition: exhibitor.mapPosition,
       meetingTimeSlots: exhibitor.meetingTimeSlots,
     }).then((response) => {
+      if(response == "UNAUTHORIZED")return response;
+
       console.log(response, "response!!!");
       if(response?.ok === true){
         setAddExhibitorSuccess(_ => true);
@@ -237,7 +236,6 @@ export function ExhibitorPanel({
   const handleDeleteExhibitor = async (exhibitorId: string) => {
     try {
       await deleteExhibitor.mutateAsync({
-        password: password,
         exhibitorId: exhibitorId
       });
       await reloadLogin(); // Reload the exhibitor list after deletion

@@ -256,3 +256,7 @@ input:disabled+label {
   /* disabled:pointer-events-none */
   pointer-events: none;
 }
+
+.linear-bg-26 {
+  background: linear-gradient(200deg, #16152A 6%, #130D18 93%);
+}

@@ -272,6 +272,7 @@ export default {
   exhibitorSettings: {
     startHeader: "Time to set up your profile",
     startButton: "Start",
+    logoutButton: "Logout",
 
     previousPage: "Previous",
     nextPage: "Next",
