@@ -372,6 +372,14 @@ export type MapProp = {
   position: number;
 };
 
+export type ExtraOrderItem = {
+    type: string;
+    amount: number;
+    price_per_unit: number;
+    id: string;
+    created_at?: Date;
+}
+
 export function sortExhibitors(exhibitors: Exhibitor[]) {
   // this is old sorting function from when exhibitors where enums, perhaps removable
   return exhibitors;
