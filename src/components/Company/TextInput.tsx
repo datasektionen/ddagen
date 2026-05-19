@@ -49,10 +49,7 @@ export function TextInput({
       </label>
       <textarea
         ref={textAreaRef}
-        className="relative w-[330px] h-[150px] bg-black/25 border-solid border-gray border-2 rounded-xl p-2
-        placeholder:text-[#D9D9D9] placeholder:font-light placeholder:text-2xl break-words
-        text-white font:light
-        focus:placeholder:text-transparent focus:outline-none focus:border-cerise resize-none ${
+        className={`relative w-[330px] h-[150px] bg-black/25 border-solid border-gray border-2 rounded-xl p-2 placeholder:text-[#D9D9D9] placeholder:font-light placeholder:text-2xl break-words text-white font-light focus:placeholder:text-transparent focus:outline-none focus:border-cerise resize-none ${
           autoGrow ? "min-h-[105px] h-auto overflow-y-hidden" : ""
         } ${textAreaClassName}`}
         placeholder={placeHolderText}
