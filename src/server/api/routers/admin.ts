@@ -211,10 +211,11 @@ export const adminRouter = createTRPCRouter({
         });
 
         // Set cookie, forget the used up OIDC cookies, keep the internal JWT. Check it with isAdmin(token)
+        const secure = process.env.NODE_ENV === 'production' ? 'Secure;' : '';
         ctx.res.setHeader("Set-Cookie", [
             `oidc_state=; Path=/; Max-Age=0; HttpOnly`,
             `oidc_code_verifier=; Path=/; Max-Age=0; HttpOnly`,
-            `session=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=300; Secure`
+            `token=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=300; ${secure}`
         ]);
 
         return { ok: true };
@@ -226,9 +227,12 @@ export const adminRouter = createTRPCRouter({
     }),
     logout: publicProcedure.mutation(async ({ ctx }) => {
         // Forget the interal JWT
+        const secure = process.env.NODE_ENV === 'production' ? 'Secure;' : '';
         ctx.res.setHeader(
-            "Set-Cookie",
-            `session=; Path=/; Max-Age=0; HttpOnly; SameSite=Lax; Secure`
+            "Set-Cookie", [
+                `session=; Path=/; Max-Age=0; HttpOnly; SameSite=Lax; ${secure}`,
+                `token=; Path=/; HttpOnly; SameSite=Lax; ${secure}`
+            ]
         );
 
         return { status: true };

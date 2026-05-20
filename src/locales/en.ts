@@ -1283,6 +1283,31 @@ export default {
         confirmedDrinkCoupons: "Confirmed Drink Coupons",
         mealCoupons: "Breakfast/Lunch Coupons",
       },
+      sections: {
+        accepted: {
+          title: "Extra orders",
+          disclaimer: "Wish to edit a current extra order? Contact"
+        },
+        requested: {
+          title: "Requested extra orders",
+        },
+        history: {
+          title: "History",
+        }
+      },
+      itemFields: {
+        action: "Action",
+        person: "By",
+        type: "Type",
+        amount: "Amount",
+        price_per_unit: "Price per unit",
+        total_price: "Total price",
+        empty: "No extra orders found"
+      },
+      addItem: {
+        cancel: "Cancel",
+        submit: "Send request"
+      }
     },
     preferences: {
       header: {

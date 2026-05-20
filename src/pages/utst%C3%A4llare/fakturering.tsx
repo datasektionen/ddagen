@@ -18,12 +18,12 @@ export default function ExhibitorBilling() {
 
   const getIsLoggedIn = api.account.isLoggedIn.useQuery(undefined, {
     onSuccess: (data: any) => {
-      setIsLoggedIn(data);
+      setIsLoggedIn(data?.ok);
     },
   });
 
   const getBillingInfo = api.exhibitor.getBillingInfo.useQuery(undefined, {
-    enabled: getIsLoggedIn.isSuccess && isLoggedIn,
+    enabled: !!(getIsLoggedIn.isSuccess && isLoggedIn),
   });
   const setBillingInfoMutation = api.exhibitor.setBillingInfo.useMutation();
 

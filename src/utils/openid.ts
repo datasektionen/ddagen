@@ -82,7 +82,7 @@ export async function verifySessionToken(token: string) {
 }
 
 export async function getSession(cookies: Cookies) {
-  const token = cookies.session;
+  const token = cookies.token;
   if (!token) return null;
 
   return await verifySessionToken(token);

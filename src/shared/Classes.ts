@@ -373,12 +373,41 @@ export type MapProp = {
 };
 
 export type ExtraOrderItem = {
-    type: string;
-    amount: number;
-    price_per_unit: number;
-    id: string;
-    created_at?: Date;
+  type: string;
+  amount: number;
+  price_per_unit: number;
+  id: string;
+  created_at?: Date;
 }
+
+export type ExtraOrderRequest = {
+  id: string;
+  item: ExtraOrderItem;
+  updated_at?: Date;
+}
+
+export type ExtraOrderAccepted = {
+  id: string;
+  item: ExtraOrderItem;
+  updated_at?: Date;
+}
+
+export type ExtraOrderAction = "CREATED_REQUEST" | "CANCELED_REQUEST" | "ACCEPTED_REQUEST" | "UPDATED_ORDER" | "CANCELED_ORDER" | "CREATED_ORDER";
+
+export type ExtraOrderPerson = {
+  name?: string;
+  email?: string;
+  is_admin?: boolean;
+}
+
+export type ExtraOrderHistory = {
+  id: string;
+  item: ExtraOrderItem;
+  person?: ExtraOrderPerson;
+  action?: ExtraOrderAction;
+  created_at?: Date;
+}
+
 export type Cookies = Partial<{
     [key: string]: string;
 }>

@@ -11,8 +11,10 @@ import type {
 import { cn } from "@/utils/utils";
 import type { Dispatch, SetStateAction } from "react";
 import { CompanyTable, CompanyTableBody, CompanyTableCell, CompanyTableHead, CompanyTableHeader, CompanyTableRow } from "./CompanyTable";
+import Locale from "@/locales";
 
 interface CompanyDataTableProps<TData, TValue> {
+  t: Locale
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
   setData?: Dispatch<SetStateAction<TData[]>>;
@@ -24,6 +26,7 @@ interface CompanyDataTableProps<TData, TValue> {
 }
 
 export function CompanyDataTable<TData, TValue>({
+  t,
   columns,
   data,
   className,
@@ -37,13 +40,13 @@ export function CompanyDataTable<TData, TValue>({
 
   return (
     <div className={cn(
-        "rounded-md border border-white bg-background overflow-hidden",
+        "rounded-md border border-slate-400 bg-background overflow-hidden",
         className
     )}>
       <CompanyTable>
         <CompanyTableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
-            <CompanyTableRow key={headerGroup.id} className="hover:bg-transparent">
+            <CompanyTableRow key={headerGroup.id} className="hover:bg-transparent border-slate-400">
               {headerGroup.headers.map((header) => (
                 <CompanyTableHead
                   key={header.id}
@@ -66,6 +69,7 @@ export function CompanyDataTable<TData, TValue>({
               <CompanyTableRow
                 key={row.id}
                 data-state={row.getIsSelected() && "selected"}
+                className="!border-slate-400"
               >
                 {row.getVisibleCells().map((cell) => (
                   <CompanyTableCell 
@@ -83,7 +87,7 @@ export function CompanyDataTable<TData, TValue>({
                 colSpan={columns.length}
                 className="h-24 text-center text-placeholder"
               >
-                Inga resultat hittades.
+                {t.admin.extraOrders.itemFields.empty}
               </CompanyTableCell>
             </CompanyTableRow>
           )}

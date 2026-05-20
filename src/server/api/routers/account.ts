@@ -56,6 +56,7 @@ export const accountRouter = createTRPCRouter({
 
       // Require them to have admin permissions from hive
       if (permissions.includes("admin") || permissions.includes("ddagen")) {
+          console.log("ACCOUNT IS ADMIN!")
           const token = await createSessionToken({
               sub: claims.sub,
               email: claims.email,
@@ -64,10 +65,11 @@ export const accountRouter = createTRPCRouter({
           });
 
           // Set cookie, forget the used up OIDC cookies, keep the internal JWT. Check it with isAdmin(token)
+          const secure = process.env.NODE_ENV === 'production' ? 'Secure;' : '';
           ctx.res.setHeader("Set-Cookie", [
               `oidc_state=; Path=/; Max-Age=0; HttpOnly`,
               `oidc_code_verifier=; Path=/; Max-Age=0; HttpOnly`,
-              `session=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=300; Secure`
+              `token=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=300; ${secure}`
           ]);
 
           return { ok: true, isAdmin: true };
@@ -106,8 +108,9 @@ export const accountRouter = createTRPCRouter({
       */
 
       // Set cookie, forget the used up OIDC cookies, keep the internal JWT. Check it with isAdmin(token)
+      const secure = process.env.NODE_ENV === 'production' ? 'Secure;' : '';
       ctx.res.setHeader("Set-Cookie", [
-        `session=${session.id}; Path=/; HttpOnly; SameSite=Lax; Secure`, // TODO , remove old session prisma state, only do jwt
+        `session=${session.id}; Path=/; HttpOnly; SameSite=Lax; ${secure}`, // TODO , remove old session prisma state, only do jwt
         `oidc_state=; Path=/; Max-Age=0; HttpOnly`,
         `oidc_code_verifier=; Path=/; Max-Age=0; HttpOnly`,
       ]);
@@ -132,8 +135,10 @@ export const accountRouter = createTRPCRouter({
   logout: publicProcedure.mutation(async ({ ctx }) => {
     // Forget the interal JWT
     ctx.res.setHeader(
-        "Set-Cookie",
-        `session=; Path=/; Max-Age=0; HttpOnly; SameSite=Lax; Secure`
+        "Set-Cookie", [
+          `session=; Path=/; Max-Age=0; HttpOnly; SameSite=Lax; Secure`,
+          `token=; Path=/; HttpOnly; SameSite=Lax; ${secure}`
+        ]
     );
 
     return { status: true };
@@ -150,8 +155,12 @@ export const accountRouter = createTRPCRouter({
     await ctx.prisma.session.delete({ where: { id: ctx.session.id } });
     const secure = process.env.NODE_ENV === 'production' ? 'Secure;' : '';
     ctx.res.setHeader(
-      "Set-Cookie",
-      `session=; Path=/; HttpOnly; SameSite=Lax; ${secure}`
+      "Set-Cookie", [
+        `session=; Path=/; HttpOnly; SameSite=Lax; ${secure}`,
+        `token=; Path=/; HttpOnly; SameSite=Lax; ${secure}`
+      ]
     );
+
+    return { status: true }
   }),
 });

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { InputField } from "@/components/InputField";
 import Head from "next/head";
 import Link from "next/link";
+import { cn } from "@/utils/utils";
 
 // TODO hook the next button to the save features
 // Maby break save changes into a separate steps for each page
@@ -62,6 +63,20 @@ export default function ExhibitorLayout({
   }
 
   const currentPath = normalizePath(router.asPath.split("?")[0]);
+
+  const trpc = api.useContext();
+  const logout = api.account.logout.useMutation();
+
+  const handleLogout = () => {
+    logout.mutate();
+  }
+
+  useEffect(() => {
+    if (logout.isSuccess && logout.data.status) {
+      trpc.account.invalidate();
+      router.push("/logga-in");
+    }
+  }, [logout.isSuccess]);
   /*
   // States
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
@@ -100,11 +115,22 @@ export default function ExhibitorLayout({
         <meta name="robots" content="noindex, nofollow" />
       </Head>
       <div className="xl:w-[1200px] lg:w-[1000px] w-full mx-auto">
-        <div className="mx-auto flex flex-col items-start py-40 cursor-default bg-darkblue bg-opacity-75">
+        <div className="mx-auto flex flex-1 flex-col items-start py-40 cursor-default bg-darkblue bg-opacity-75">
           {/*Header*/}
-          <h1 className="uppercase text-cerise text-3xl md:text-5xl font-medium break-words">
-            {t.exhibitorSettings.header}
-          </h1>
+          <div className="flex flex-1 w-full flex-col sm:flex-row justify-between items-center">
+            <h1 className="uppercase text-cerise text-3xl md:text-5xl font-medium break-words">
+              {t.exhibitorSettings.header}
+            </h1>
+            <button
+              className={cn(
+                "bg-transparent border-[1px] border-white rounded-full text-center hover:scale-105 transition-transform text-white uppercase",
+                "py-1.5 px-3 text-sm",
+                "sm:py-2.5 sm:px-4 sm:text-base"
+              )}
+              onClick={handleLogout}>
+              Logga ut
+            </button>
+          </div>
           <div className="flex w-full flex-row items-start gap-4 mt-12">
             <div className="flex flex-col gap-2 min-w-xs self-start">
               {exhibitorNav.map(((navItem, i) => (

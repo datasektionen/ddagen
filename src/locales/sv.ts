@@ -1279,6 +1279,31 @@ export default {
         confirmedDrinkCoupons: "Bekräftade Dryckesbiljetter",
         mealCoupons: "Frukost/lunch biljetter",
       },
+      sections: {
+        accepted: {
+          title: "Extrabeställningar",
+          disclaimer: "Vill du ändra nuvarande extrabeställningar? Kontakta"
+        },
+        requested: {
+          title: "Pågående förfrågningar",
+        },
+        history: {
+          title: "Historik",
+        },
+      },
+      itemFields: {
+        action: "Händelse",
+        person: "Av",
+        type: "Typ",
+        amount: "Antal",
+        price_per_unit: "Pris/st",
+        total_price: "Total pris",
+        empty: "Inga extrabeställningar hittades"
+      },
+      addItem: {
+        cancel: "Avbryt",
+        submit: "Skicka förfrågan"
+      }
     },
     preferences: {
       header: {
