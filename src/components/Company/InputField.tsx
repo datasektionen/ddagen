@@ -36,7 +36,7 @@ export function InputField<F extends Record<string, string>>({
           border-0 border-b-2
           focus:outline-none
           peer
-        ${dark == true ? " text-black placeholder-shown:border-black focus:border-black" : "text-white placeholder-shown:border-white focus:border-white"}`}
+        ${dark == true ? " text-black placeholder-shown:border-black focus:border-black" : "text-white placeholder-shown:border-white border-white focus:border-white"}`}
         id={prefix + name}
         name={name}
         value={value}
