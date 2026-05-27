@@ -26,6 +26,8 @@ export default function ForStudents() {
 
   const { title, description, url } = seoContent[t.locale as "sv" | "en"];
 
+  const comingSoon = true;
+
   return (
     <>
       <NextSeo
@@ -74,14 +76,15 @@ export default function ForStudents() {
             </h2>
             <p className="text-white text-base sm:text-lg pt-4 max-w-xl">{t.forStudents.fairText1}</p>
             <p className="text-white text-base sm:text-lg pt-4 max-w-xl">{t.forStudents.fairText2}</p>
-            <button className="mt-6">
+            
+            {!comingSoon && <button className="mt-6">
               <a
                 className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base uppercase font-medium px-6 py-2 max-lg:mx-auto w-max"
                 href={"/event"}
               >
                 {t.forStudents.eventPageButton}
               </a>
-            </button>
+            </button>}
           </ImageTextSection>
 
           <ImageTextSection
@@ -94,7 +97,7 @@ export default function ForStudents() {
               {t.forStudents.dayStaffTitle}
             </h2>
             <p className="text-white text-base sm:text-lg pt-4 max-w-xl">{t.forStudents.dayStaffText}</p>
-            <button className="mt-6">
+            {!comingSoon && <button className="mt-6">
               <a
                 className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base uppercase font-medium px-6 py-2 max-lg:mx-auto w-max"
                 href={"https://forms.gle/5mLBmCeh1Zv3Y7Ds5"}
@@ -102,7 +105,7 @@ export default function ForStudents() {
               >
                 {t.forStudents.dayStaffApply}
               </a>
-            </button>
+            </button>}
           </ImageTextSection>
 
           {/* Section of D-Dagen Info */}
@@ -149,7 +152,7 @@ export default function ForStudents() {
               {t.forStudents.banquetTitle}
             </h2>
             <p className="text-white text-base sm:text-lg pt-4 mb-6 max-w-xl">{t.forStudents.banquetText}</p>
-            <button className="mt-6">
+            {!comingSoon && <button className="mt-6">
               <a
                 className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base uppercase font-medium px-6 py-2 max-lg:mx-auto w-max"
                 href={"/banquette"}
@@ -157,7 +160,7 @@ export default function ForStudents() {
               >
                 {t.forStudents.banquetButton}
               </a>
-            </button>
+            </button>}
           </ImageTextSection>
         </div>
       </div>
