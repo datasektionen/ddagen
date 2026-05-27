@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   viewBox="53.29 101.96 1054.81 776.04"
    version="1.1"
-   id="svg1649"
+   viewBox="0 0 1388 1000"
+   id="svg240"
    sodipodi:docname="floor-2.svg"
-   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
-     id="namedview1651"
+     id="namedview242"
      pagecolor="#ffffff"
      bordercolor="#000000"
      borderopacity="0.25"
@@ -20,861 +20,728 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
-     inkscape:zoom="0.87970076"
-     inkscape:cx="895.75914"
-     inkscape:cy="654.19973"
+     inkscape:zoom="0.56851385"
+     inkscape:cx="451.17634"
+     inkscape:cy="438.86354"
      inkscape:window-width="1920"
-     inkscape:window-height="1027"
-     inkscape:window-x="0"
-     inkscape:window-y="25"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
      inkscape:window-maximized="1"
-     inkscape:current-layer="Layer_2" />
+     inkscape:current-layer="svg240" />
+  <!-- Generator: Adobe Illustrator 29.8.2, SVG Export Plug-In . SVG Version: 2.1.1 Build 3)  -->
   <defs
-     id="defs858">
-    <rect
-       x="271.34382"
-       y="659.18459"
-       width="43.415011"
-       height="46.309346"
-       id="rect1" />
+     id="defs14">
     <style
-       id="style847">
-      @font-face {
-        font-family: &quot;neue-haas-normal&quot;;
-        src: url(&quot;/fonts/NeueHaasDisplay/NeueHaasDisplayRoman.ttf&quot;) format(&quot;truetype&quot;);
+       id="style2">
+      .st0, .st1, .st2, .st3, .st4, .st5, .st6, .st7, .st8, .st9 {
+        fill: none;
       }
 
-      tspan {
-        font-family:neue-haas-normal;
+      .st1 {
+        stroke-dasharray: 1 12;
       }
 
-      .cls-1 {
-      letter-spacing: -.01em;
+      .st1, .st2, .st10, .st3, .st4, .st5, .st6, .st7, .st8, .st9 {
+        stroke-miterlimit: 10;
       }
 
-      .cls-2 {
-      letter-spacing: 0em;
+      .st1, .st3, .st4, .st5, .st8, .st9 {
+        stroke: #e6e7e8;
+        stroke-linecap: round;
+        stroke-width: 8px;
       }
 
-      .cls-3 {
-      letter-spacing: -.02em;
+      .st11 {
+        fill: url(#linear-gradient2);
       }
 
-      .cls-4 {
-      stroke-dasharray: 0 0 .97 11.66;
+      .st12 {
+        fill: url(#linear-gradient1);
       }
 
-      .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10, .cls-11, .cls-12, .cls-13 {
-      fill: none;
-      stroke-miterlimit: 10;
+      .st2 {
+        stroke: #ee2a7b;
+        stroke-width: 3px;
       }
 
-      .cls-4, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10 {
-      stroke: #e6e7e8;
-      stroke-linecap: round;
-      stroke-width: 8px;
+      .st13 {
+        fill: url(#linear-gradient);
       }
 
-      .cls-5 {
-      stroke: #f0f0f0;
-      stroke-width: 7px;
+      .st10 {
+        fill: #0e122f;
+        stroke: #ab84bc;
       }
 
-      .cls-14 {
-      letter-spacing: 0em;
+      .st14 {
+        font-size: 30px;
       }
 
-      .cls-15 {
-      fill: url(#linear-gradient);
+      .st14, .st15 {
+        font-family: NHaasGroteskDSPro-45Lt, 'Neue Haas Grotesk Display Pro';
       }
 
-      .cls-15, .cls-16, .cls-17, .cls-18, .cls-19, .cls-20 {
-      stroke-width: 0px;
+      .st14, .st16 {
+        fill: #ee2a7b;
       }
 
-      .cls-21 {
-      letter-spacing: 0em;
+      .st4 {
+        stroke-dasharray: 1 11.7;
       }
 
-      .cls-6 {
-      stroke-dasharray: 0 0 1.02 12.19;
+      .st5 {
+        stroke-dasharray: .9 11.1;
       }
 
-      .cls-7 {
-      stroke-dasharray: 0 0 1.07 12.79;
+      .st15 {
+        fill: #231f20;
+        font-size: 19.8px;
       }
 
-      .cls-8 {
-      stroke-dasharray: 0 0 1 12;
+      .st6, .st7 {
+        stroke: #808285;
       }
 
-      .cls-22 {
-      letter-spacing: -.02em;
+      .st7 {
+        stroke-width: 2px;
       }
 
-      .cls-23 {
-      letter-spacing: 0em;
+      .st8 {
+        stroke-dasharray: 1 12.2;
       }
 
-      .cls-24 {
-      letter-spacing: -.02em;
+      .st17 {
+        display: none;
       }
 
-      .cls-25 {
-      letter-spacing: 0em;
+      .st18 {
+        fill: #939598;
       }
 
-      .cls-26 {
-      font-size: 19px;
-      font-weight: 500;
-      cursor: pointer;
-      }
-
-      .cls-26, .cls-16 {
-      fill: #f0f0f0;
-      }
-
-      .cls-17, .cls-27 {
-      fill: #ee2a7b;
-      }
-
-      .cls-18 {
-      fill: #939598;
-      }
-
-      .cls-28 {
-      letter-spacing: -.01em;
-      }
-
-      .cls-19 {
-      fill: url(#linear-gradient-2);
-      }
-
-      .cls-27 {
-      font-family: NHaasGroteskDSPro-45Lt, 'Neue Haas Grotesk Display Pro';
-      font-size: 30px;
-      }
-
-      .cls-20 {
-      fill: url(#linear-gradient-3);
-      }
-
-      .cls-10 {
-      stroke-dasharray: 0 0 .92 11.06;
-      }
-
-      .cls-29 {
-      letter-spacing: 0em;
-      }
-
-      .cls-30 {
-      letter-spacing: 0em;
-      }
-
-      .cls-31 {
-      letter-spacing: 0em;
-      }
-
-      .cls-32 {
-      letter-spacing: -.02em;
-      }
-
-      .cls-33 {
-      fill: #231f20;
-      font-size: 25px;
-      cursor: default;
-      }
-
-      .cls-34 {
-      letter-spacing: 0em;
-      }
-
-      .cls-35 {
-      letter-spacing: 0em;
-      }
-
-      .cls-36 {
-      letter-spacing: -.02em;
-      }
-
-      .cls-37 {
-      letter-spacing: -.02em;
-      }
-
-      .cls-38 {
-      letter-spacing: .02em;
-      }
-
-      .cls-39 {
-      letter-spacing: -.01em;
-      }
-
-      .cls-11 {
-      stroke: #ee2a7b;
-      stroke-width: 3px;
-      }
-
-      .cls-40 {
-      letter-spacing: -.02em;
-      }
-
-      .cls-12, .cls-13 {
-      stroke: #808285;
-      }
-
-      .cls-13 {
-      stroke-width: 2px;
-      }
-
-      .cls-41 {
-      letter-spacing: 0em;
-      }
-
-      .cls-42 {
-      letter-spacing: 0em;
-      }
-
-      .cls-43 {
-      letter-spacing: -.06em;
+      .st9 {
+        stroke-dasharray: 1.1 12.8;
       }
     </style>
     <linearGradient
        id="linear-gradient"
-       x1="117.39"
-       y1="759.14"
-       x2="30.53"
-       y2="724.49"
+       x1="117.4"
+       y1="759.1"
+       x2="30.5"
+       y2="724.5"
        gradientUnits="userSpaceOnUse">
       <stop
          offset="0"
          stop-color="#fff"
-         id="stop849" />
+         id="stop4" />
       <stop
-         offset=".11"
+         offset=".1"
          stop-color="#f1f1f1"
-         id="stop851" />
+         id="stop6" />
       <stop
          offset="1"
          stop-color="#808285"
-         id="stop853" />
+         id="stop8" />
     </linearGradient>
     <linearGradient
-       id="linear-gradient-2"
-       x1="552.68"
-       y1="264.72"
-       x2="627.67"
-       y2="294.88"
+       id="linear-gradient1"
+       x1="552.7"
+       y1="264.7"
+       x2="627.7"
+       y2="294.9"
        xlink:href="#linear-gradient" />
     <linearGradient
-       id="linear-gradient-3"
-       x1="260.98"
+       id="linear-gradient2"
+       x1="261"
        y1="818.1"
-       x2="308.05"
-       y2="837.03"
+       x2="308"
+       y2="837"
        xlink:href="#linear-gradient" />
-    <filter
-       id="mask-powermask-path-effect2_inverse"
-       inkscape:label="filtermask-powermask-path-effect2"
-       style="color-interpolation-filters:sRGB"
-       height="100"
-       width="100"
-       x="-50"
-       y="-50">
-      <feColorMatrix
-         id="mask-powermask-path-effect2_primitive1"
-         values="1"
-         type="saturate"
-         result="fbSourceGraphic" />
-      <feColorMatrix
-         id="mask-powermask-path-effect2_primitive2"
-         values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0 "
-         in="fbSourceGraphic" />
-    </filter>
+    <path
+       id="path"
+       d="M54.3,753.1l309.1,123.9,53.6-264.1" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linear-gradient"
+       id="linearGradient488"
+       gradientUnits="userSpaceOnUse"
+       x1="117.4"
+       y1="759.1"
+       x2="30.5"
+       y2="724.5" />
   </defs>
   <g
+     id="Lager_5"
+     class="st17">
+    <rect
+       class="st10"
+       x="11.4"
+       y="45.9"
+       width="1379.2"
+       height="1000"
+       id="rect16" />
+  </g>
+  <g
      id="Layer_2"
-     data-name="Layer 2">
+     transform="matrix(1.3153307,0,0,1.2880086,-70.92815,-130.63377)">
     <polygon
-       class="cls-15"
-       points="54.29 714.87 123.52 742.41 110.55 775.28 54.29 753.14 54.29 714.87"
-       id="polygon860" />
+       class="st13"
+       points="54.3,714.9 123.5,742.4 110.6,775.3 54.3,753.1 "
+       id="polygon19"
+       style="fill:url(#linearGradient488)" />
     <polygon
-       class="cls-19"
-       points="560.11 259.21 616.36 265.08 616.36 292.27 558.41 292.27 560.11 259.21"
-       id="polygon862" />
+       class="st12"
+       points="560.1,259.2 616.4,265.1 616.4,292.3 558.4,292.3 "
+       id="polygon21"
+       style="fill:url(#linear-gradient1)" />
     <polygon
-       class="cls-20"
-       points="270.01 803.98 306.64 818.61 295.2 849.66 257.61 834.6 270.01 803.98"
-       id="polygon864" />
+       class="st11"
+       points="270,804 306.6,818.6 295.2,849.7 257.6,834.6 "
+       id="polygon23"
+       style="fill:url(#linear-gradient2)" />
     <polygon
-       class="cls-18"
-       points="295.2 849.66 363.43 877 382.32 784.01 282.37 764.22 279.94 766.84 277.34 782.34 334.48 807.01 328.69 827.41 306.29 819.29 295.2 849.66"
-       id="polygon866" />
+       class="st18"
+       points="334.5,807 328.7,827.4 306.3,819.3 295.2,849.7 363.4,877 382.3,784 282.4,764.2 279.9,766.8 277.3,782.3 "
+       id="polygon25" />
     <line
-       class="cls-13"
-       x1="130.82"
-       y1="710.85"
-       x2="224.47"
-       y2="746.59"
-       id="line868" />
-    <polyline
-       class="cls-13"
-       points="209.07 740.72 235.55 672.75 134.34 632.97 294.96 233.7 480.75 291.94 526.4 292.1 526.9 103.29 820.61 102.96 821.11 292.13 828.48 292.25 651.18 292.13"
-       id="polyline870" />
-    <polyline
-       class="cls-13"
-       points="862.24 484.02 823.29 292.25 783.18 292.22 783.18 327.52 829.73 328.03 740.05 327.52 740.05 471.69 859.22 471.94"
-       id="polyline872" />
-    <polyline
-       class="cls-13"
-       points="548.05 292.27 616.36 292.27 616.36 265.08 558.37 259.21"
-       id="polyline874" />
-    <polyline
-       class="cls-13"
-       points="480.75 291.94 424.48 572.76 329.45 554.51 335.87 516.24 430.78 535.38 486.62 535.11"
-       id="polyline876" />
-    <line
-       class="cls-13"
-       x1="522.29"
-       y1="535.13"
-       x2="871.97"
-       y2="533.36"
-       id="line878" />
-    <line
-       class="cls-13"
-       x1="870.45"
-       y1="522.29"
-       x2="898.15"
-       y2="653.7"
-       id="line880" />
-    <polyline
-       class="cls-13"
-       points="187.13 501.76 281.87 538.65 295.46 508.69 194.21 484.15"
-       id="polyline882" />
-    <line
-       class="cls-13"
-       x1="141.14"
-       y1="750.12"
-       x2="54.29"
-       y2="714.87"
-       id="line884" />
-    <polyline
-       class="cls-13"
-       points="54.29 753.14 363.43 877 417.06 612.92"
-       id="polyline886" />
-    <polygon
-       class="cls-13"
-       points="343.55 612.92 325.17 705.81 395.21 720.53 414.32 626.37 343.55 612.92"
-       id="polygon888" />
-    <polyline
-       class="cls-13"
-       points="382.32 784.01 282.37 764.22 279.94 766.84 277.34 782.34 334.48 807.01 328.69 827.41 268.78 803.49"
-       id="polyline890" />
-    <line
-       class="cls-13"
-       x1="265.05"
-       y1="761.46"
-       x2="279.94"
-       y2="766.84"
-       id="line892" />
-    <polyline
-       class="cls-13"
-       points="395.94 716.89 909.73 717.64 904.19 684.41 946.23 674.85 988.27 844.27 1107.1 811.04 1027.55 507.05 928.86 533.36"
-       id="polyline894" />
-    <line
-       class="cls-13"
-       x1="456.08"
-       y1="632.55"
-       x2="413.07"
-       y2="632.55"
-       id="line896" />
-    <line
-       class="cls-13"
-       x1="483.27"
-       y1="632.55"
-       x2="596.8"
-       y2="632.55"
-       id="line898" />
-    <polyline
-       class="cls-13"
-       points="622.99 632.55 788.89 632.55 788.89 662.76"
-       id="polyline900" />
-    <circle
-       class="cls-13"
-       cx="839.24"
-       cy="672.08"
-       r="26.27"
-       id="circle902" />
-    <rect
-       class="cls-16"
-       x="798.29"
-       y="665.11"
-       width="33.4"
-       height="35.92"
-       id="rect904"
-       style="fill:#ffffff" />
+       class="st7"
+       x1="130.8"
+       y1="710.79999"
+       x2="224.5"
+       y2="746.59998"
+       id="line27" />
     <path
-       class="cls-13"
-       d="m324.66,180.16v62.85-62.85Z"
-       id="path906" />
+       class="st7"
+       d="M 526.8,231.4 C 527,188 527,146 527,103 c 32.4,0.3 0,9.4 0,0 98,1 196,-3 294,2 0,63 -2,125 2,188 0,1 3,-2 5.5,-0.7 -1,0 -1.9,0 -2.9,0 1,0 1.9,0 2.9,0 C 769,292 710,292 651.2,292.2"
+       id="path29" />
+    <path
+       class="st7"
+       d="M 422.3,273.6 C 442,279 461,288 482,291 c 21,3 14,4 21.5,1.4"
+       id="path31" />
+    <path
+       class="st7"
+       d="M 209.1,740.7 C 218,718 227,696 235,673 c -20,-10 -41,-16 -61,-24 -13,-6 -26,-11 -39.7,-16 0.5,-1.3 0.1,0 0,0 13.7,-33 26.7,-66 39.7,-100 3,-6 6,-11 8,-17 15,-41 32,-79 47,-120 2,-6 5,-11 8,-17 2,-3 2,-7 3,-10 18,-45 36,-90 55,-135 25,7 49,15 74.4,23"
+       id="path33" />
     <polyline
-       class="cls-13"
-       points="324.66 180.16 481.41 180.16 481.41 213.9"
-       id="polyline908" />
-    <rect
-       class="cls-16"
-       x="512.70007"
-       y="233.67867"
-       width="20.685272"
-       height="57.273872"
-       id="rect910"
-       style="fill:#ffffff" />
-    <rect
-       class="cls-16"
-       x="352.8"
-       y="258.54"
-       width="79.55"
-       height="10.66"
-       transform="translate(94.3 -103.25) rotate(17)"
-       id="rect912"
-       style="fill:#ffffff" />
-    <line
-       class="cls-5"
-       x1="432.92"
-       y1="531.18"
-       x2="446.05"
-       y2="465.1"
-       id="line914" />
+       class="st7"
+       points="862.2 484 823.3 292.2 783.2 292.2 783.2 327.5 829.7 328 740 327.5 740 471.7 859.2 471.9"
+       id="polyline35" />
     <polyline
-       class="cls-13"
-       points="897.44 652.78 939.18 644.29 931.63 611.06 890.35 619.11"
-       id="polyline916" />
+       class="st7"
+       points="548 292.3 616.4 292.3 616.4 265.1 558.4 259.2"
+       id="polyline37" />
+    <path
+       class="st7"
+       d="M 434.3,523.6 C 431,540 429,555 425,571 c 0,2 -1,2 -2,2 -32,-7 -62,-12 -93,-18 1,-13 4,-26 5.9,-38.8 7.2,1.4 -0.1,0.6 0,0 C 367,523 397,527 429,535 c 32,8 9,1 13,1 15,-2 30,0 44.6,-0.9"
+       id="path39" />
+    <path
+       class="st7"
+       d="m 487.9,292.6 c -7.7,40.1 -16.7,79.1 -23.7,121.1 -4,20 -9,39 -12.4,59.3"
+       id="path41" />
     <line
-       class="cls-12"
-       x1="270.36"
-       y1="804.44"
-       x2="258.11"
-       y2="834.23"
-       id="line918" />
+       class="st7"
+       x1="522.29999"
+       y1="535.09998"
+       x2="744.59998"
+       y2="533.40002"
+       id="line43" />
     <line
-       class="cls-12"
-       x1="274.9"
-       y1="806.88"
-       x2="262.65"
-       y2="836.67"
-       id="line920" />
+       class="st7"
+       x1="870.5"
+       y1="522.29999"
+       x2="898.09998"
+       y2="653.70001"
+       id="line45" />
+    <polyline
+       class="st7"
+       points="187.1 501.8 281.9 538.7 295.5 508.7 194.2 484.2"
+       id="polyline47" />
     <line
-       class="cls-12"
-       x1="279.71"
-       y1="808.85"
-       x2="267.46"
-       y2="838.65"
-       id="line922" />
+       class="st7"
+       x1="141.10001"
+       y1="750.09998"
+       x2="54.299999"
+       y2="714.90002"
+       id="line49" />
+    <text
+       id="text51" />
+    <polygon
+       class="st7"
+       points="343.5,612.9 325.2,705.8 395.2,720.5 414.3,626.4 "
+       id="polygon53" />
+    <polyline
+       class="st7"
+       points="382.3 784 282.4 764.2 279.9 766.8 277.3 782.3 334.5 807 328.7 827.4 268.8 803.5"
+       id="polyline55" />
     <line
-       class="cls-12"
-       x1="284.55"
-       y1="810.27"
-       x2="272.29"
-       y2="840.07"
-       id="line924" />
+       class="st7"
+       x1="265.10001"
+       y1="761.5"
+       x2="279.89999"
+       y2="766.79999"
+       id="line57" />
+    <polyline
+       class="st7"
+       points="395.9 716.9 909.7 717.6 904.2 684.4 946.2 674.8 988.3 844.3 1107.1 811 1027.5 507.1 928.9 533.4"
+       id="polyline59" />
     <line
-       class="cls-12"
-       x1="289.59"
-       y1="811.93"
-       x2="277.34"
-       y2="841.72"
-       id="line926" />
+       class="st7"
+       x1="456.10001"
+       y1="632.59998"
+       x2="413.10001"
+       y2="632.59998"
+       id="line61" />
     <line
-       class="cls-12"
-       x1="294.66"
-       y1="814.57"
-       x2="282.4"
-       y2="844.37"
-       id="line928" />
+       class="st7"
+       x1="483.29999"
+       y1="632.59998"
+       x2="596.79999"
+       y2="632.59998"
+       id="line63" />
+    <polyline
+       class="st7"
+       points="623 632.6 788.9 632.6 788.9 662.8"
+       id="polyline65" />
+    <circle
+       class="st7"
+       cx="839.20001"
+       cy="672.09998"
+       r="26.299999"
+       id="circle67" />
+    <path
+       class="st7"
+       d="m 324.7,180.2 v 62.9 z"
+       id="path69" />
+    <polyline
+       class="st7"
+       points="324.7 180.2 481.4 180.2 481.4 213.9"
+       id="polyline71" />
+    <rect
+       class="st0"
+       x="352.79999"
+       y="258.5"
+       width="79.599998"
+       height="10.7"
+       transform="rotate(17,392.41366,263.88802)"
+       id="rect73" />
+    <polyline
+       class="st7"
+       points="897.4 652.8 939.2 644.3 931.6 611.1 890.3 619.1"
+       id="polyline75" />
     <line
-       class="cls-12"
-       x1="299.82"
-       y1="816.55"
-       x2="287.56"
-       y2="846.35"
-       id="line930" />
+       class="st6"
+       x1="270.39999"
+       y1="804.40002"
+       x2="258.10001"
+       y2="834.20001"
+       id="line77" />
     <line
-       class="cls-12"
-       x1="119.88"
-       y1="742.02"
-       x2="106.64"
-       y2="774.22"
-       id="line932" />
+       class="st6"
+       x1="274.89999"
+       y1="806.90002"
+       x2="262.60001"
+       y2="836.70001"
+       id="line79" />
     <line
-       class="cls-12"
-       x1="112.79"
-       y1="738.63"
-       x2="99.55"
-       y2="770.83"
-       id="line934" />
+       class="st6"
+       x1="279.70001"
+       y1="808.90002"
+       x2="267.5"
+       y2="838.59998"
+       id="line81" />
     <line
-       class="cls-12"
-       x1="105.62"
-       y1="735.67"
-       x2="92.37"
-       y2="767.87"
-       id="line936" />
+       class="st6"
+       x1="284.5"
+       y1="810.29999"
+       x2="272.29999"
+       y2="840.09998"
+       id="line83" />
     <line
-       class="cls-12"
-       x1="97.71"
-       y1="733.41"
-       x2="84.47"
-       y2="765.61"
-       id="line938" />
+       class="st6"
+       x1="289.60001"
+       y1="811.90002"
+       x2="277.29999"
+       y2="841.70001"
+       id="line85" />
     <line
-       class="cls-12"
-       x1="90.17"
-       y1="730.31"
-       x2="76.93"
-       y2="762.51"
-       id="line940" />
+       class="st6"
+       x1="294.70001"
+       y1="814.59998"
+       x2="282.39999"
+       y2="844.40002"
+       id="line87" />
     <line
-       class="cls-12"
-       x1="82.7"
-       y1="727.23"
-       x2="69.45"
-       y2="759.43"
-       id="line942" />
+       class="st6"
+       x1="299.79999"
+       y1="816.59998"
+       x2="287.60001"
+       y2="846.29999"
+       id="line89" />
     <line
-       class="cls-12"
-       x1="74.84"
+       class="st6"
+       x1="119.9"
+       y1="742"
+       x2="106.6"
+       y2="774.20001"
+       id="line91" />
+    <line
+       class="st6"
+       x1="112.8"
+       y1="738.59998"
+       x2="99.5"
+       y2="770.79999"
+       id="line93" />
+    <line
+       class="st6"
+       x1="105.6"
+       y1="735.70001"
+       x2="92.400002"
+       y2="767.90002"
+       id="line95" />
+    <line
+       class="st6"
+       x1="97.699997"
+       y1="733.40002"
+       x2="84.5"
+       y2="765.59998"
+       id="line97" />
+    <line
+       class="st6"
+       x1="90.199997"
+       y1="730.29999"
+       x2="76.900002"
+       y2="762.5"
+       id="line99" />
+    <line
+       class="st6"
+       x1="82.699997"
+       y1="727.20001"
+       x2="69.5"
+       y2="759.40002"
+       id="line101" />
+    <line
+       class="st6"
+       x1="74.800003"
        y1="724"
-       x2="61.59"
-       y2="756.2"
-       id="line944" />
+       x2="61.599998"
+       y2="756.20001"
+       id="line103" />
     <text
-       class="cls-27"
-       transform="rotate(22,-1919.2843,670.5031)"
-       id="text956"
-       style="font-size:28.66666667px"><tspan
+       class="st14"
+       transform="rotate(22,-1919.2943,670.45166)"
+       id="text107"><tspan
          x="0"
          y="0"
-         id="tspan946"
-         style="font-size:28.66666667px">Entré</tspan></text>
+         id="tspan105">Entré</tspan></text>
     <g
-       id="g962">
+       id="g113">
       <polyline
-         class="cls-11"
-         points="377.78 854.59 397.25 854.59 397.59 843.52 416.47 843.52 416.47 831.69 434.17 831.69 434.17 820.1 452.22 820.1 452.45 806.67"
-         id="polyline958" />
+         class="st2"
+         points="377.8 854.6 397.3 854.6 397.6 843.5 416.5 843.5 416.5 831.7 434.2 831.7 434.2 820.1 452.2 820.1 452.4 806.7"
+         id="polyline109" />
       <polygon
-         class="cls-17"
-         points="452.77 787.82 463.17 814.57 452.42 808.08 441.46 814.19 452.77 787.82"
-         id="polygon960" />
+         class="st16"
+         points="452.8,787.8 463.2,814.6 452.4,808.1 441.5,814.2 "
+         id="polygon111" />
     </g>
     <g
-       id="g968">
+       id="g119">
       <polyline
-         class="cls-11"
-         points="867.81 482.31 887.28 482.31 887.62 471.23 906.5 471.23 906.5 459.4 924.2 459.4 924.2 447.82 942.24 447.82 942.48 434.38"
-         id="polyline964" />
+         class="st2"
+         points="867.8 482.3 887.3 482.3 887.6 471.2 906.5 471.2 906.5 459.4 924.2 459.4 924.2 447.8 942.2 447.8 942.5 434.4"
+         id="polyline115" />
       <polygon
-         class="cls-17"
-         points="942.8 415.53 953.2 442.28 942.45 435.79 931.49 441.9 942.8 415.53"
-         id="polygon966" />
+         class="st16"
+         points="942.8,415.5 953.2,442.3 942.5,435.8 931.5,441.9 "
+         id="polygon117" />
     </g>
     <text
-       class="cls-27"
-       transform="translate(900.04,507.05)"
-       id="text980"
-       style="font-size:28.66666667px"><tspan
+       class="st14"
+       transform="translate(900,507.1)"
+       id="text123"><tspan
          x="0"
          y="0"
-         id="tspan970"
-         style="font-size:28.66666667px">Entré</tspan></text>
+         id="tspan121">Entré</tspan></text>
     <text
-       class="cls-33"
-       transform="rotate(18)"
-       id="text984"
-       x="389.18417"
-       y="502.97195"
-       style="font-size:23.6667px"><tspan
-         x="389.18417"
-         y="502.97195"
-         id="tspan982"
-         style="font-size:23.6667px">Puben</tspan></text>
-    <text
-       class="cls-33"
-       id="text1000"
-       style="font-size:23.6667px"
-       x="526.75281"
-       y="495.10449"><tspan
-         x="526.75281"
-         y="495.10449"
-         id="tspan986"
-         style="font-size:23.6667px">Nya matsalen</tspan></text>
-    <text
-       class="cls-33"
-       transform="translate(575.01 600.9)"
-       id="text1004"
-       style="font-size:23.66666667px"><tspan
+       class="st15"
+       transform="rotate(18,-1572.6059,875.25546)"
+       id="text127"><tspan
          x="0"
          y="0"
-         id="tspan1002"
-         style="font-size:23.66666667px">Hyllan</tspan></text>
+         id="tspan125">Puben</tspan></text>
     <text
-       class="cls-33"
-       transform="rotate(15)"
-       id="text1016"
-       x="341.61319"
-       y="368.62863"
-       style="font-size:23.6667px"><tspan
-         x="341.61319"
-         y="368.62863"
-         id="tspan1006"
-         style="font-size:23.6667px">Gamla matsalen</tspan></text>
+       class="st15"
+       transform="translate(549.2,479.1)"
+       id="text131"><tspan
+         x="0"
+         y="0"
+         id="tspan129">Nya matsalen</tspan></text>
     <text
-       class="cls-33"
-       id="text1022"
-       x="579.68188"
-       y="174.61717"
-       style="font-size:23.66666667px"><tspan
-         class="cls-23"
-         x="579.68188"
-         y="174.61717"
-         id="tspan1018"
-         style="font-size:23.66666667px">K</tspan><tspan
-         x="595.53192"
-         y="174.61717"
-         id="tspan1020"
-         style="font-size:23.66666667px">årbokhandeln</tspan></text>
+       class="st15"
+       transform="translate(582.6,589.9)"
+       id="text135"><tspan
+         x="0"
+         y="0"
+         id="tspan133">Hyllan</tspan></text>
     <text
-       class="cls-33"
-       id="text1034"
-       style="font-size:23.6667px"
-       x="357.97568"
-       y="242.44058"><tspan
-         x="357.97568"
-         y="242.44058"
-         id="tspan1024"
-         style="font-size:23.6667px">Bistron</tspan></text>
-    <line
-       class="cls-12"
-       x1="560.11"
-       y1="259.21"
-       x2="558.41"
-       y2="292.27"
-       id="line1036" />
-    <line
-       class="cls-12"
-       x1="566.88"
-       y1="259.97"
-       x2="565.18"
-       y2="293.03"
-       id="line1038" />
-    <line
-       class="cls-12"
-       x1="573.81"
-       y1="260.69"
-       x2="572.26"
-       y2="291.83"
-       id="line1040" />
-    <line
-       class="cls-12"
-       x1="580.67"
-       y1="261.23"
-       x2="579.11"
-       y2="292.37"
-       id="line1042" />
-    <line
-       class="cls-12"
-       x1="587.09"
-       y1="261.97"
-       x2="585.54"
-       y2="293.11"
-       id="line1044" />
-    <line
-       class="cls-12"
-       x1="593.58"
-       y1="261.97"
-       x2="592.02"
-       y2="293.11"
-       id="line1046" />
-    <line
-       class="cls-12"
-       x1="600.57"
-       y1="262.84"
-       x2="598.84"
-       y2="292.46"
-       id="line1048" />
-    <line
-       class="cls-12"
-       x1="607.66"
-       y1="264.09"
-       x2="606.06"
-       y2="292.63"
-       id="line1050" />
+       class="st15"
+       transform="rotate(15,-1618.3533,1348.2163)"
+       id="text139"><tspan
+         x="0"
+         y="0"
+         id="tspan137">Gamla matsalen</tspan></text>
     <text
-       class="cls-33"
-       transform="rotate(75)"
-       id="text1062"
-       style="font-size:23.6667px"
-       x="832.84351"
-       y="-796.9549"><tspan
-         x="832.84351"
-         y="-796.9549"
-         id="tspan1052"
-         style="font-size:23.6667px">Gröten</tspan></text>
-    <rect
-       style="fill:#ffffff"
-       id="rect2"
-       width="0.23701969"
-       height="2.1331773"
-       x="526.38129"
-       y="246.54202" />
+       class="st15"
+       transform="translate(588.4,164.2)"
+       id="text143"><tspan
+         x="0"
+         y="0"
+         id="tspan141">Kårbokhandeln</tspan></text>
+    <text
+       class="st15"
+       transform="translate(377.9,250.4)"
+       id="text147"><tspan
+         x="0"
+         y="0"
+         id="tspan145">Bistron</tspan></text>
+    <line
+       class="st6"
+       x1="560.09998"
+       y1="259.20001"
+       x2="558.40002"
+       y2="292.29999"
+       id="line149" />
+    <line
+       class="st6"
+       x1="566.90002"
+       y1="260"
+       x2="565.20001"
+       y2="293"
+       id="line151" />
+    <line
+       class="st6"
+       x1="573.79999"
+       y1="260.70001"
+       x2="572.29999"
+       y2="291.79999"
+       id="line153" />
+    <line
+       class="st6"
+       x1="580.70001"
+       y1="261.20001"
+       x2="579.09998"
+       y2="292.39999"
+       id="line155" />
+    <line
+       class="st6"
+       x1="587.09998"
+       y1="262"
+       x2="585.5"
+       y2="293.10001"
+       id="line157" />
+    <line
+       class="st6"
+       x1="593.59998"
+       y1="262"
+       x2="592"
+       y2="293.10001"
+       id="line159" />
+    <line
+       class="st6"
+       x1="600.59998"
+       y1="262.79999"
+       x2="598.79999"
+       y2="292.5"
+       id="line161" />
+    <line
+       class="st6"
+       x1="607.70001"
+       y1="264.10001"
+       x2="606.09998"
+       y2="292.60001"
+       id="line163" />
+    <text
+       class="st15"
+       transform="rotate(75,98.18497,943.68237)"
+       id="text167"><tspan
+         x="0"
+         y="0"
+         id="tspan165">Gröten</tspan></text>
+    <line
+       class="st7"
+       x1="805.90002"
+       y1="533.5"
+       x2="872.20001"
+       y2="533.29999"
+       id="line169" />
+    <text
+       class="st15"
+       transform="rotate(7.7,-5348.9007,2597.5064)"
+       id="text173"><tspan
+         x="0"
+         y="0"
+         id="tspan171">Monter</tspan></text>
+    <text
+       class="st15"
+       transform="rotate(75,35.834987,966.98915)"
+       id="text177"><tspan
+         x="0"
+         y="0"
+         id="tspan175">Paneldiskussioner</tspan></text>
   </g>
   <g
      id="Layer_4"
-     data-name="Layer 4">
-    <polyline
-       class="cls-8"
-       points="442.73 243.98 473.11 246.62 495.41 253.67 522.03 269.2"
-       id="polyline1065"
-       transform="translate(2.8844114,-6.647453)" />
+     transform="matrix(1.3153307,0,0,1.2880086,-70.92815,-130.63377)">
+    <path
+       class="st1"
+       d="m 443.4,238.5 23.1,-3 c 4.6,-0.6 9.3,-0.4 13.9,0.7 l 16.3,3.8 c 7.6,1.8 14.1,6.8 17.6,13.8 l 11,17.2"
+       id="path180" />
     <line
-       class="cls-8"
-       x1="401.36"
-       y1="267.05"
-       x2="414.29"
-       y2="253.67"
-       id="line1067" />
+       class="st1"
+       x1="401.39999"
+       y1="267.10001"
+       x2="414.29999"
+       y2="253.7"
+       id="line182" />
+    <path
+       class="st1"
+       d="M 777.9,500 736,491.8 c -8,-1.6 -15.6,-4.6 -22.5,-9 l -22.2,-18.2"
+       id="path184" />
     <polyline
-       class="cls-8"
-       points="777.87 500 723.85 489.39 676.99 465.56"
-       id="polyline1069" />
-    <polyline
-       class="cls-8"
-       points="503.43 570.62 540.03 357.56 647.73 361.61 668.3 370.23 678.12 386.34 676.99 465.56"
-       id="polyline1071" />
+       class="st1"
+       points="503.4 570.6 540 357.6 647.7 361.6 681 367.1 687 387.8 693.9 468.9"
+       id="polyline186" />
     <line
-       class="cls-8"
-       x1="609.98"
-       y1="665.88"
-       x2="609.98"
-       y2="606.62"
-       id="line1073" />
+       class="st1"
+       x1="610"
+       y1="665.90002"
+       x2="610"
+       y2="606.59998"
+       id="line188" />
     <g
-       id="g1093">
+       id="g208">
       <line
-         class="cls-9"
-         x1="500.37"
-         y1="581.95"
-         x2="499.97"
-         y2="582.25"
-         id="line1075" />
+         class="st3"
+         x1="500.39999"
+         y1="582"
+         x2="500"
+         y2="582.29999"
+         id="line190" />
       <line
-         class="cls-10"
-         x1="491.16"
-         y1="588.95"
-         x2="476.49"
-         y2="600.12"
-         id="line1077" />
+         class="st5"
+         x1="491.20001"
+         y1="589"
+         x2="476.5"
+         y2="600.09998"
+         id="line192" />
       <polyline
-         class="cls-9"
-         points="472.08 603.47 471.69 603.77 471.69 604.27"
-         id="polyline1079" />
+         class="st3"
+         points="472.1 603.5 471.7 603.8 471.7 604.3"
+         id="polyline194" />
       <line
-         class="cls-7"
-         x1="471.69"
-         y1="617.06"
-         x2="471.69"
-         y2="652.24"
-         id="line1081" />
+         class="st9"
+         x1="471.70001"
+         y1="617.09998"
+         x2="471.70001"
+         y2="652.20001"
+         id="line196" />
       <polyline
-         class="cls-9"
-         points="471.69 658.63 471.69 659.13 472.06 659.46"
-         id="polyline1083" />
+         class="st3"
+         points="471.7 658.6 471.7 659.1 472.1 659.5"
+         id="polyline198" />
       <polyline
-         class="cls-6"
-         points="481.28 667.44 492.45 677.11 787.88 675.69 797.91 666.33"
-         id="polyline1085" />
+         class="st8"
+         points="481.3 667.4 492.5 677.1 787.9 675.7 797.9 666.3"
+         id="polyline200" />
       <polyline
-         class="cls-9"
-         points="802.37 662.18 802.73 661.84 802.73 661.34"
-         id="polyline1087" />
+         class="st3"
+         points="802.4 662.2 802.7 661.8 802.7 661.3"
+         id="polyline202" />
       <polyline
-         class="cls-4"
-         points="802.73 649.68 802.73 625.92 788.05 607.63 761.18 594.23 716.72 586.15 655.58 588.88"
-         id="polyline1089" />
+         class="st4"
+         points="802.7 649.7 802.7 625.9 788 607.6 761.2 594.2 716.7 586.1 655.6 588.9"
+         id="polyline204" />
       <line
-         class="cls-9"
-         x1="649.75"
-         y1="589.15"
-         x2="649.25"
-         y2="589.17"
-         id="line1091" />
+         class="st3"
+         x1="649.79999"
+         y1="589.09998"
+         x2="649.29999"
+         y2="589.20001"
+         id="line206" />
     </g>
+    <path
+       class="st1"
+       d="M 277.6,636.8 213,611 l -6.8,-18 3,-13.5 7.7,-17.8 c 4.3,-9.9 16.5,-13.7 25.6,-8 l 37.6,23.5 191.6,26.6"
+       id="path210" />
     <polyline
-       class="cls-8"
-       points="277.59 636.83 212.99 610.99 206.17 592.94 209.2 579.43 222.66 574.4 292.78 582.12 471.69 603.77"
-       id="polyline1095" />
-    <polyline
-       class="cls-8"
-       points="192.92 785.03 229 788.05 248.3 775.8 259.21 752.3 299.24 590.85"
-       id="polyline1097" />
+       class="st1"
+       points="192.9 785 229 788 248.3 775.8 259.2 752.3 299.2 590.8"
+       id="polyline212" />
     <line
-       class="cls-8"
-       x1="253.46"
-       y1="817.74"
-       x2="231.92"
-       y2="786.2"
-       id="line1099" />
-    <polyline
-       class="cls-8"
-       points="390.96 455.95 427.04 317.01 406.57 301.84 394.15 274.99 362 290.43 338.08 293.11 322.82 310.57 289.78 412.27 296.3 435.67"
-       id="polyline1101" />
+       class="st1"
+       x1="253.5"
+       y1="817.70001"
+       x2="231.89999"
+       y2="786.20001"
+       id="line214" />
+    <path
+       class="st1"
+       d="m 374.8,463 16.2,-1 30.2,-145.4 -11.6,-25.2 -15.4,-16.4 -36,2.8 -24.2,7.8 -18.4,20.3 -27.5,103.9 c -2.3,8.6 -1.2,17.7 2.9,25.6 l 5.4,10.2"
+       id="path216" />
     <line
-       class="cls-8"
-       x1="303.01"
-       y1="571.38"
-       x2="326.16"
-       y2="483.26"
-       id="line1103" />
+       class="st1"
+       x1="303"
+       y1="571.40002"
+       x2="326.20001"
+       y2="483.29999"
+       id="line218" />
     <polyline
-       class="cls-8"
-       points="425.32 480.61 474.45 486.14 508.27 490.08"
-       id="polyline1105"
-       transform="translate(13.024503,2.8943341)" />
-    <polyline
-       class="cls-8"
-       points="753.87 181.8 757.89 201.14 755.66 225.08 745.31 236.05 656.09 240.96 639.73 250.4 634.99 263.87 622.92 363.62"
-       id="polyline1109" />
-    <polyline
-       class="cls-8"
-       points="541.2 346.82 528.75 313.44 524.72 273.99 544.19 248.64 585.16 236.05 583.97 185.57 593.43 173.17"
-       id="polyline1111"
-       transform="translate(-2.0742715)" />
-    <polyline
-       class="cls-8"
-       points="596.3 224.85 616.52 241.08 627.6 245.45 639.73 250.4"
-       id="polyline1113" />
-    <polyline
-       class="cls-8"
-       points="812.97 635.07 851.57 635.07 865.5 638.34 875.74 650.68 882.54 664.02 892.61 668.55 914.77 668.55 949.76 659.05 978.2 661.34 1000.02 680.47 1009.22 707.99 1016.83 740.72 1024.38 775.8"
-       id="polyline1115" />
-    <polyline
-       class="cls-8"
-       points="787.55 502.23 807.52 505.59 836.55 507.05 865.5 507.05 887.24 507.05 901.67 517.34 907.38 531.1 918.68 547.64 927.61 559.55 947.99 566.68 960.75 578.43 967.46 591.18 970.48 605.38 972.5 621.39 972.5 634.06 968.8 647.66 960.08 652.21"
-       id="polyline1117" />
+       class="st1"
+       points="435.3 495.6 474.5 501.1 508.3 505.1"
+       id="polyline220" />
     <line
-       class="cls-8"
-       x1="512.14"
-       y1="578.53"
-       x2="570.74"
-       y2="589.95"
-       id="line1119" />
+       class="st1"
+       x1="399.29999"
+       y1="465.89999"
+       x2="412.29999"
+       y2="476.5"
+       id="line222" />
+    <path
+       class="st1"
+       d="m 639.8,245.1 19.3,-3.3 76.6,-1.8 c 5.8,-0.1 11.1,-2.9 14.6,-7.6 l 5.4,-7.4 2.2,-23.9 -4,-19.3 -2.3,-10.6 c -1.1,-5.1 -5.1,-9 -10.2,-10 l -17.7,-2.3"
+       id="path224" />
+    <polyline
+       class="st1"
+       points="541.2 346.8 528.7 313.4 524.7 274 544.2 248.6 568 234.9 568 184.3 579 160.9"
+       id="polyline226" />
+    <polyline
+       class="st1"
+       points="576 238.6 608 246.6 626.5 248.4 639.7 250.4"
+       id="polyline228" />
+    <polyline
+       class="st1"
+       points="813 635.1 851.6 635.1 865.5 638.3 875.7 650.7 882.5 664 892.6 668.6 914.8 668.6 949.8 659 978.2 661.3 1000 680.5 1009.2 708 1016.8 740.7 1024.4 775.8"
+       id="polyline230" />
+    <polyline
+       class="st1"
+       points="960.1 652.2 968.8 647.7 972.5 634.1 972.5 621.4 970.5 605.4 967.5 591.2 960.7 578.4 948 566.7 927.6 559.5 918.7 547.6 907.4 531.1 901.7 517.3 887.2 507.1 865.5 507.1 836.6 507.1 807.5 505.6 787.5 502.2 781.9 553.3 761.2 594.2"
+       id="polyline232" />
+    <line
+       class="st1"
+       x1="512.09998"
+       y1="578.5"
+       x2="570.70001"
+       y2="589.90002"
+       id="line234" />
   </g>
   <g
-     id="Layer_3"
-     data-name="Layer 3" />
-  <text
-     xml:space="preserve"
-     transform="translate(53.29,101.96)"
-     id="text1"
-     style="font-size:31.3333px;line-height:1.1;font-family:Impact;-inkscape-font-specification:Impact;white-space:pre;shape-inside:url(#rect1);display:inline;fill:#800080" />
+     id="Layer_1"
+     class="st17">
+    <image
+       width="1744"
+       height="1437"
+       transform="translate(0 61.2) scale(.6)"
+       xlink:href="karta-plan2-1.png"
+       id="image237" />
+  </g>
 </svg>

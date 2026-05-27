@@ -36,7 +36,7 @@ SPAM_API_KEY={{ .spam_api_key }}
 {{ end }}
 NODE_ENV=production
 PLS_URL=http://pls.nomad.dsekt.internal
-SPAM_URL=https://spam.datasektionen.se/api/sendmail
+SPAM_URL=https://spam.datasektionen.se/api/legacy/sendmail
 ENV
         destination = "local/.env"
         env         = true
