@@ -221,6 +221,8 @@ export default function Events() {
 
   const { title, description, url } = seoContent[t.locale as "sv" | "en"];
 
+  const comingSoon = true;
+
   return (
     <>
       <NextSeo
@@ -238,6 +240,15 @@ export default function Events() {
           }
         ]}
       />
+      {comingSoon &&
+      <div className="pt-[200px] pb-[300px]">
+        <h1 className="text-5xl text-cerise font-medium text-center"> EVENT</h1>
+        <p className="font-medium text-2xl text-center text-cerise">{t.event.comingSoon}</p>
+      </div>
+      }
+      
+
+      {!comingSoon &&
       <div className="pt-[200px] pb-[300px]">
         <h1 className="text-5xl text-cerise font-medium text-center"> EVENT</h1>
         <p className="font-medium text-2xl text-center text-cerise">{t.event.description}</p>
@@ -319,6 +330,7 @@ export default function Events() {
             <div className="w-4 bg-cerise h-full min-h-[30px] rounded-b-full"></div>
           </div>
       </div>
+      }
     </>
   );
 }
