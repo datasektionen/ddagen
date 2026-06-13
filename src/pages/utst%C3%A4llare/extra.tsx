@@ -137,9 +137,9 @@ export default function ExhibitorExtra({
   const [itemType, setItemType] = useState<ExtraOrderType>("table");
   const [itemAmount, setItemAmount] = useState<string>("1");
 
-  const createOrderRequest = api.exhibitor.createOrderRequest.useMutation();
-  const acceptOrderRequest = api.exhibitor.acceptOrderRequest.useMutation();
-  const cancelOrderRequest = api.exhibitor.cancelOrderRequest.useMutation();
+  const createOrderRequest = api.exhibitor.createOrderRequest.useMutation({ onSuccess: trpc.exhibitor.getOrders.invalidate });
+  const acceptOrderRequest = api.exhibitor.acceptOrderRequest.useMutation({ onSuccess: trpc.exhibitor.getOrders.invalidate });
+  const cancelOrderRequest = api.exhibitor.cancelOrderRequest.useMutation({ onSuccess: trpc.exhibitor.getOrders.invalidate });
 
   const { data: ordersData, isLoading } = api.exhibitor.getOrders.useQuery();
 
@@ -169,7 +169,6 @@ export default function ExhibitorExtra({
     if (!rq) return;
 
     acceptOrderRequest.mutateAsync(rq.item.id);
-    trpc.exhibitor.getOrders.invalidate();
   }
 
   const handleCancelRequest = (request_id: string) => {
@@ -179,7 +178,6 @@ export default function ExhibitorExtra({
     if(!rq) return;
 
     cancelOrderRequest.mutateAsync(rq.item.id);
-    trpc.exhibitor.getOrders.invalidate();
   }
 
   const acceptedColumns = getOrderColumns({
@@ -209,7 +207,6 @@ export default function ExhibitorExtra({
       price_per_unit: extraOrderDetails[itemType].price_per_unit
     });
 
-    trpc.exhibitor.getOrders.invalidate();
     setAddItem(false);
   }
 
