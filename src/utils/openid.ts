@@ -96,7 +96,7 @@ export async function initiateAuthorization(subpath: string) {
       const openIdConfig = await getOidcConfig();
       const oidc_auth_url = client.buildAuthorizationUrl(openIdConfig, {
         redirect_uri: `${getBaseUrl()}${subpath}`,
-        scope: "openid profile email",
+        scope: "openid profile email permissions",
         code_challenge,
         code_challenge_method: "S256",
         state

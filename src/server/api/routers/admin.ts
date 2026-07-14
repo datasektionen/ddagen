@@ -195,7 +195,12 @@ export const adminRouter = createTRPCRouter({
         }
 
         // Get the authorized users permissions in hive
-        const permissions = await hive.fetchHive(claims.sub);
+        // const permissions = await hive.fetchHive(claims.sub);
+        const permissions = Array.isArray(claims?.permissions)
+            ? (claims.permissions as any[])
+                  .map((p: any) => p.id)
+                  .filter(Boolean)
+            : [];
 
         // Require them to have admin permissions from hive
         if (!permissions.includes("admin") && !permissions.includes("ddagen")) {

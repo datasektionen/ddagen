@@ -7,7 +7,7 @@ import {
 import { validateOrganizationNumber } from "@/shared/validateOrganizationNumber";
 import { getLocale } from "@/locales";
 import { TRPCError } from "@trpc/server";
-import { FoodPreferencesValue, Prisma } from "@prisma/client";
+import { ExtraOrderHistoryType, FoodPreferencesValue, Prisma } from "@prisma/client";
 import sendEmail from "@/utils/send-email";
 import { randomUUID } from "crypto";
 import { error, time } from "console";
@@ -1146,7 +1146,7 @@ export const exhibitorRouter = createTRPCRouter({
         }
       });
 
-      let action;
+      let action: ExtraOrderHistoryType;
 
       if (existing_request) {
         action = "UPDATED_REQUEST";

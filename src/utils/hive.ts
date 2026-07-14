@@ -1,6 +1,7 @@
 import { getSession, verifySessionToken } from "./openid";
 import { Cookies } from "@/shared/Classes";
 
+// Not in use, we pass permissions scope to SSO, and get the SSO permissions list.
 export async function fetchHive(userId: string): Promise<string[]> {
   const hiveBaseUrl = process.env.HIVE_URL || "http://localhost:7004";
   const hiveSecret = process.env.HIVE_SECRET || "test";

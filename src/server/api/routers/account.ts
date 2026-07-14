@@ -52,7 +52,12 @@ export const accountRouter = createTRPCRouter({
 
 
       // Get the authorized users permissions in hive
-      const permissions = await hive.fetchHive(claims.sub);
+      //const permissions = await hive.fetchHive(claims.sub);
+      const permissions = Array.isArray(claims?.permissions)
+          ? (claims.permissions as any[])
+                .map((p: any) => p.id)
+                .filter(Boolean)
+          : [];
 
       // Require them to have admin permissions from hive
       if (permissions.includes("admin") || permissions.includes("ddagen")) {
@@ -75,6 +80,7 @@ export const accountRouter = createTRPCRouter({
           return { ok: true, isAdmin: true };
       }
 
+      // If they are not admin, then check if they have a company account
       const user = await ctx.prisma.user.findUnique({
         where: { email: claims.email },
         select: { id: true, exhibitorId: true },
