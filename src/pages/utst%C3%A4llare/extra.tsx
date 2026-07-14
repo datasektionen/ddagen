@@ -103,9 +103,9 @@ const extraOrderActionDetails: Record<ExtraOrderAction, {
     en: "Accepted request",
     color: "#00FF00"
   },
-  "UPDATED_ORDER": {
-    sv: "Uppdaterad order",
-    en: "Updated order",
+  "UPDATED_REQUEST": {
+    sv: "Uppdaterad förfrågan",
+    en: "Updated request",
     color: "#FFFF00"
   },
   "CANCELED_ORDER": {
@@ -137,9 +137,9 @@ export default function ExhibitorExtra({
   const [itemType, setItemType] = useState<ExtraOrderType>("table");
   const [itemAmount, setItemAmount] = useState<string>("1");
 
-  const createOrderRequest = api.exhibitor.createOrderRequest.useMutation({ onSuccess: trpc.exhibitor.getOrders.invalidate });
-  const acceptOrderRequest = api.exhibitor.acceptOrderRequest.useMutation({ onSuccess: trpc.exhibitor.getOrders.invalidate });
-  const cancelOrderRequest = api.exhibitor.cancelOrderRequest.useMutation({ onSuccess: trpc.exhibitor.getOrders.invalidate });
+  const createOrderRequest = api.exhibitor.createOrderRequest.useMutation({ onSuccess: () => trpc.exhibitor.getOrders.invalidate() });
+  const acceptOrderRequest = api.exhibitor.acceptOrderRequest.useMutation({ onSuccess: () => trpc.exhibitor.getOrders.invalidate() });
+  const cancelOrderRequest = api.exhibitor.cancelOrderRequest.useMutation({ onSuccess: () => trpc.exhibitor.getOrders.invalidate() });
 
   const { data: ordersData, isLoading } = api.exhibitor.getOrders.useQuery();
 
@@ -306,6 +306,7 @@ export default function ExhibitorExtra({
                 data={accepted.map(x => ({
                   ...x.item,
                   id: x.id,
+                  price_per_unit: Number(x.item.price_per_unit),
                   type: extraOrderDetails?.[x.item.type]?.name?.[t.locale]
                 }))}
                 />
@@ -326,6 +327,7 @@ export default function ExhibitorExtra({
                 data={requested.map(x => ({
                   ...x.item,
                   id: x.id,
+                  price_per_unit: Number(x.item.price_per_unit),
                   type: extraOrderDetails?.[x.item.type]?.name?.[t.locale]
                 }))}
                 />
@@ -343,7 +345,8 @@ export default function ExhibitorExtra({
                 data={history.sort((a, b) => (b?.created_at?.getTime() ?? 0) - (a?.created_at?.getTime() ?? 0)).map(x => ({
                   ...x.item,
                   id: x.id,
-                  person: x.person,
+                  //person: x.person,
+                  price_per_unit: Number(x.item.price_per_unit),
                   action: x.action ? extraOrderActionDetails[x.action]?.[t.locale] : undefined,
                   actionColor: x.action ? extraOrderActionDetails[x.action]?.color : undefined,
                   type: extraOrderDetails?.[x.item.type]?.name?.[t.locale]
