@@ -272,6 +272,7 @@ export default {
   exhibitorSettings: {
     startHeader: "Time to set up your profile",
     startButton: "Start",
+    logoutButton: "Logout",
 
     previousPage: "Previous",
     nextPage: "Next",
@@ -521,6 +522,7 @@ export default {
           title: "Billing Information",
           section1: {
             header: "Billing Information",
+            info: "Please fill in your billing information so we can send invoices properly",
             organizationNumber: "Organization Number",
             placeholderTextOrganizationNumber: "Enter your organization number",
             email: "Email",
@@ -1284,6 +1286,31 @@ export default {
         confirmedDrinkCoupons: "Confirmed Drink Coupons",
         mealCoupons: "Breakfast/Lunch Coupons",
       },
+      sections: {
+        accepted: {
+          title: "Extra orders",
+          disclaimer: "Wish to edit a current extra order? Contact"
+        },
+        requested: {
+          title: "Requested extra orders",
+        },
+        history: {
+          title: "History",
+        }
+      },
+      itemFields: {
+        action: "Action",
+        person: "By",
+        type: "Type",
+        amount: "Amount",
+        price_per_unit: "Price per unit",
+        total_price: "Total price",
+        empty: "No extra orders found"
+      },
+      addItem: {
+        cancel: "Cancel",
+        submit: "Send request"
+      }
     },
     preferences: {
       header: {

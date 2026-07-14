@@ -270,6 +270,7 @@ export default {
   exhibitorSettings: {
     startHeader: "Dags att sätta upp eran profil",
     startButton: "Starta",
+    logoutButton: "Logga ut",
 
     previousPage:"Föregående",
     nextPage:"Nästa",
@@ -471,13 +472,13 @@ export default {
           header: "Under Mässan",
           paragraphOne:
             "Dessa matpreferenser används för frukosten och lunchen under mässan.",
-          paragraphTwo: "Ni ändrar antalet i extra beställningar",
+          paragraphTwo: "Ni ändrar antalet i extrabeställningar",
         },
         section2: {
           header: "Banquetten",
           paragraphOne:
             "Dessa matpreferenser används för banquetten efter mässan.",
-            paragraphTwo: "Ni ändrar antalet i extra beställningar",
+            paragraphTwo: "Ni ändrar antalet i extrabeställningar",
             paragraphThree: "Om inget specifikt anges för en medlem serveras standardmaten",
         },
         preferencesHeader: "Preferenser (vegetariskt är standard)",
@@ -518,6 +519,7 @@ export default {
         title: "Faktureringsinformation",
         section1: {
           header: "Faktureringsinformation",
+          info: "Fyll i er faktureringsinformation så att vi kan skicka fakturor på rätt sätt",
           organizationNumber: "Organisationsnummer",
           placeholderTextOrganizationNumber: "Ange organisationsnummer",
           email: "E-post",
@@ -1278,6 +1280,31 @@ export default {
         confirmedDrinkCoupons: "Bekräftade Dryckesbiljetter",
         mealCoupons: "Frukost/lunch biljetter",
       },
+      sections: {
+        accepted: {
+          title: "Extrabeställningar",
+          disclaimer: "Vill du ändra nuvarande extrabeställningar? Kontakta"
+        },
+        requested: {
+          title: "Pågående förfrågningar",
+        },
+        history: {
+          title: "Historik",
+        },
+      },
+      itemFields: {
+        action: "Händelse",
+        person: "Av",
+        type: "Typ",
+        amount: "Antal",
+        price_per_unit: "Pris/st",
+        total_price: "Total pris",
+        empty: "Inga extrabeställningar hittades"
+      },
+      addItem: {
+        cancel: "Avbryt",
+        submit: "Skicka förfrågan"
+      }
     },
     preferences: {
       header: {

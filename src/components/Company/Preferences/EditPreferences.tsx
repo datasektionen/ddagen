@@ -11,6 +11,7 @@ export function EditPreferences({
   preferences,
   editState,
   setEditState,
+  borderClass,
 }: {
   t: Locale;
   pos: number;
@@ -18,6 +19,7 @@ export function EditPreferences({
   preferences: Preferences[];
   editState: undefined | string;
   setEditState: Dispatch<undefined | string>;
+  borderClass?: string;
 }) {
   
   function valueToString(options: Options[]) {
@@ -45,8 +47,10 @@ export function EditPreferences({
     return str.substring(0, str.length - 2);
   }
 
+  const effectiveBorder = borderClass ?? "border-yellow";
+
   return (
-    <div className="relative w-[80%] py-5 px-3 mt-6 mb-6 bg-black/25 border-solid border-yellow border-2 rounded-xl overflow-hidden">
+    <div className={`relative w-[80%] py-5 px-3 mt-6 mb-6 bg-black/25 border-solid ${effectiveBorder} border-2 rounded-xl overflow-hidden`}>
       <table>
         <tbody
           className="text-lg [&>tr>td]:text-right [&>tr>td>label]:font-normal [&>tr>td>label]:text-white

@@ -5,12 +5,11 @@ import { Table } from "@/components/Table";
 import { Extras, Package } from "@/shared/Classes";
 import { use, useEffect, useState } from "react";
 import ExtraFairOrders from "@/components/Company/ExtraOrders/ExtraFairOrders";
-import FoodPreferences from "@/components/Company/Preferences/FoodPreferences";
+import FoodPreferences from "@/components/Company/Preferences/_FoodPreferences";
 import CompanyHost from "@/components/Company/CompanyHost/CompanyHost";
 import GeneralInfo from "@/components/Company/General/GeneralInfo";
 import JobOffers from "@/components/Company/General/JobOffers";
 import BillingInfo from "@/components/Company/Billing information/BillingInfo";
-import { UserDetails } from "@/components/Company/User/UserDetails";
 import { CheckMark } from "@/components/CheckMark";
 import { addImageDetails } from "@/shared/addImageDetails";
 import CompanyMeetingBooker from "@/components/Company/ExtraOrders/CompanyMeetingBooker";
@@ -25,6 +24,7 @@ import Head from "next/head";
 export default function Exhibitor() {
   const t = useLocale();
   const router = useRouter();
+  const trpc = api.useContext();
 
   // States
   const [page, setPage] = useState<number>(0);
@@ -53,7 +53,7 @@ export default function Exhibitor() {
   const [companyHostName, setCompanyHostName] = useState("");
   const [companyHostNumber, setCompanyHostNumber] = useState("");
   const [companyHostEmail, setCompanyHostEmail] = useState("");
-  const [allowMarketing, setAllowMarketing] = useState(false); 
+  const [allowMarketing, setAllowMarketing] = useState(true);
   const [hasChecked, setHasChecked] = useState<boolean>(false);
 
   const [showMessage, setShowMessage] = useState(false); // State för att visa meddelande
@@ -97,7 +97,19 @@ export default function Exhibitor() {
   const getCompanyHostName = api.exhibitor.getCompanyHostName.useQuery();
   const getCompanyHostNumber = api.exhibitor.getCompanyHostNumber.useQuery();
   const getCompanyHostEmail = api.exhibitor.getCompanyHostEmail.useQuery();
-  
+
+  const logout = api.account.logout.useMutation();
+
+  const handleLogout = () => {
+    logout.mutate();
+  }
+
+  useEffect(() => {
+    if (logout.isSuccess) {
+      trpc.account.invalidate();
+      router.push("/logga-in");
+    }
+  }, [logout.isSuccess]);
   //const getStudentInterests = api.exhibitor.getStudentInterests.useQuery();
 
 
@@ -144,7 +156,7 @@ export default function Exhibitor() {
   }
 
   // Manage page swapping
-  const pageAmout = 6;
+  const pageAmout = 5;
   let newPage;
   const nextPage = () => {
     if (!hasChecked && page === 1) {
@@ -488,7 +500,6 @@ export default function Exhibitor() {
           )}
         </div>
 
-        <UserDetails t={t}/>
       </>,
       <ExtraFairOrders
         t={t}
@@ -563,7 +574,6 @@ export default function Exhibitor() {
       rows={rows}
       />
     </>,
-    <UserDetails t={t}/>,
     <ExtraFairOrders
       t={t}
       extras={extras}
@@ -613,6 +623,12 @@ export default function Exhibitor() {
         <h1 className="uppercase text-cerise text-3xl md:text-5xl font-medium text-center px-[10px] break-words">
           {t.exhibitorSettings.header}
         </h1>
+        <button
+          className="text-center mt-2 text-white hover:text-red-300 cursor-pointer"
+          onClick={() => {handleLogout()}}
+        >
+          {t.exhibitorSettings.logoutButton}
+        </button>
         <div className="flex flex-row items-center gap-4 mt-4">
           <h2 className="text-white text-xl pt-2" >
             {editState ? <InputField

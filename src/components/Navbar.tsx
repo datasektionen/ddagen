@@ -249,22 +249,12 @@ export default function Navbar() {
 
   const [open, setOpen] = useState(false);
 
-
-  const isLoggedIn = api.account.isLoggedIn.useQuery();
-  const logout = api.account.logout.useMutation();
-
   function swapLocale() {
     router.push(router.pathname, router.pathname, {
       locale: locale === "sv" ? "en" : "sv",
       scroll: false,
     });
   }
-
-  useEffect(() => {
-    if (logout.isSuccess) {
-      trpc.account.invalidate();
-    }
-  }, [logout.isSuccess]);
 
   useEffect(() => {
     function close(event: MouseEvent) {
@@ -355,9 +345,6 @@ export default function Navbar() {
                 //{ href: "/katalog", text: t.catalog },
                 //{ href: "/event", text: "event" },
                 { href: "/faq", text: "faq" },
-                ...(isLoggedIn.data == true
-                  ? [{ href: "/utställare", text: t.exhibitorSettings }]
-                  : []),
                 /*...(isLoggedIn.data == true
                   ? [
                       {
