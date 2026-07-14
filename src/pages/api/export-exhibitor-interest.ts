@@ -34,6 +34,7 @@ export default async function handler(
                 phoneNumber: e.phoneNumber,
                 email: e.email,
                 createdAt: e.createdAt,
+                // howDidYouFindUs: e.howDidYouFindUs
             }))
         )
     );
