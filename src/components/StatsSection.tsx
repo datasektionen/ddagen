@@ -39,16 +39,6 @@ export default function StatsSection({
           {t.home.stats[2].type}
         </div>
       </div>
-      <div className="flex flex-col min-w-[200px] py-2 basis-1 sm:basis-1/2 lg:basis-1/4">
-        <div className="text-white text-4xl sm:text-6xl">
-          {t.home.stats[3].value}
-        </div>
-        <div className="separator w-full mt-1 sm:mt-3 mb-2 max-w-[200px] border-[1px] border-slate-400">
-        </div>
-        <div className="text-white text-base sm:text-xl">
-          {t.home.stats[3].type}
-        </div>
-      </div>
     </div>
   );
 }

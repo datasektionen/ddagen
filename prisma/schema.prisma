@@ -18,6 +18,7 @@ model ExhibitorInterestRegistration {
   contactPerson      String
   phoneNumber        String
   email              String
+  howDidYouFindUs    String?
 
   @@map("exhibitor_interest_registrations")
 }
@@ -27,13 +28,13 @@ model Exhibitor {
   name               String
   organizationNumber String @unique
 
-  logoWhite    Bytes?
-  logoColor    Bytes?
-  description  String
-  packageTier               Int @default(-1)
-  studentMeetings           Int @default(0)
+  logoWhite       Bytes?
+  logoColor       Bytes?
+  description     String
+  packageTier     Int    @default(-1)
+  studentMeetings Int    @default(0)
 
-  allowMarketing            Boolean @default(false)
+  allowMarketing Boolean @default(false)
 
   extraTables               Int @default(0)
   extraChairs               Int @default(0)
@@ -42,11 +43,11 @@ model Exhibitor {
   extraMealCoupons          Int @default(0)
   totalBanquetTicketsWanted Int @default(0)
 
-  alcFreeDrinkCoupons       Int @default(0)
+  alcFreeDrinkCoupons Int @default(0)
 
-  companyAddress            String?
-  invoiceEmail              String?
-  billingMethod             String?
+  companyAddress String?
+  invoiceEmail   String?
+  billingMethod  String?
 
   socialMediaPost            Int @default(0)
   panelDiscussion            Int @default(0)
@@ -57,7 +58,7 @@ model Exhibitor {
   customRepresentativeSpots  Int @default(0)
   customBanquetTicketsWanted Int @default(0)
 
-  mapPosition Int @default(0)
+  mapPosition      Int   @default(0)
   meetingTimeSlots Int[] @default([])
 
   foodPreferencess FoodPreferences[]
@@ -70,13 +71,13 @@ model Exhibitor {
   infoSubmissionStatus Int @default(0)
 
   industry     String?
-  industryType String? 
+  industryType String?
 
-  lastChanged  DateTime?
+  lastChanged DateTime?
 
-  companyHostName String?
+  companyHostName   String?
   companyHostNumber String?
-  companyHostEmail String?
+  companyHostEmail  String?
 
   @@map("exhibitors")
 }
@@ -152,50 +153,105 @@ model JobOffers {
   summerJob      Int[]
   internship     Int[]
   partTimeJob    Int[]
-  masterThesis   Boolean    
-  fullTimeJob    Boolean    
-  traineeProgram Boolean   
+  masterThesis   Boolean
+  fullTimeJob    Boolean
+  traineeProgram Boolean
   exhibitor      Exhibitor?
 
   @@map("job_offers")
 }
 
 model Students {
-    id             String     @id @default(uuid())
-    ugkthid        String     @unique // prioritize data students
-    first_name     String
-    last_name      String
-    email          String
-    prefered_email String      //optional
-    study_year     Int
-    summerJob      Boolean
-    partTimeJob    Boolean
-    internship     Boolean
-    masterThesis   Boolean
-    fullTimeJob    Boolean
-    traineeProgram Boolean
+  id             String  @id @default(uuid())
+  ugkthid        String  @unique // prioritize data students
+  first_name     String
+  last_name      String
+  email          String
+  prefered_email String //optional
+  study_year     Int
+  summerJob      Boolean
+  partTimeJob    Boolean
+  internship     Boolean
+  masterThesis   Boolean
+  fullTimeJob    Boolean
+  traineeProgram Boolean
 
-    cv             String     // set max size in backend, forced
-    has_cv         Boolean    @default(false)// set to true if cv is uploaded
+  cv     String // set max size in backend, forced
+  has_cv Boolean @default(false) // set to true if cv is uploaded
 
-    linkedin_url   String     //optional
-    github_url     String     //optional
-    other_link     String     //optional
-    personal_story String     //optional, max x characters
+  linkedin_url   String //optional
+  github_url     String //optional
+  other_link     String //optional
+  personal_story String //optional, max x characters
 
-    // meeting logic
-    company_meeting_interests String[] //optional
-    company_meeting_declined String[] //optional
+  // meeting logic
+  company_meeting_interests String[] //optional
+  company_meeting_declined  String[] //optional
 
-    @@map("students")
+  @@map("students")
 }
 
 model Meetings {
-    id               String     @id @default(uuid())
-    studentId        String
-    exhibitorId      String
-    timeslot         Int
-    createdAt        DateTime   @default(now())
+  id          String   @id @default(uuid())
+  studentId   String
+  exhibitorId String
+  timeslot    Int
+  createdAt   DateTime @default(now())
 
-    @@map("meetings")
+  @@map("meetings")
+}
+
+model ApiKey {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  hash      String   @unique
+  createdAt DateTime @default(now())
+}
+
+model ExtraOrderItem {
+  id             String         @id @default(uuid())
+  type           String
+  amount         Int
+  price_per_unit Decimal        @db.Money
+  created_at     DateTime       @default(now())
+  ExtraOrderReq  ExtraOrderReq?
+  ExtraOrderHistory ExtraOrderHistory[]
+}
+
+model ExtraOrderReq {
+  id String @id @default(uuid())
+
+  item_id String         @unique
+  item    ExtraOrderItem @relation(fields: [item_id], references: [id], onDelete: SetNull)
+
+  exhibitor_id String
+  updated_at   DateTime @updatedAt
+}
+
+model ExtraOrder {
+  id           String   @id @default(uuid())
+  item_id      String
+  exhibitor_id String
+  updated_at   DateTime @updatedAt
+}
+
+enum ExtraOrderHistoryType {
+  CREATED_REQUEST
+  CANCELED_REQUEST
+  ACCEPTED_REQUEST
+  UPDATED_REQUEST
+  CREATED_ORDER
+  CANCELED_ORDER
+}
+
+model ExtraOrderHistory {
+  id              String   @id @default(uuid())
+  exhibitor_id    String
+  item_id         String
+  item            ExtraOrderItem @relation(fields: [item_id], references: [id], onDelete: SetNull)
+  action          ExtraOrderHistoryType
+  person_name     String
+  person_email    String
+  person_is_admin Boolean  @default(false)
+  created_at      DateTime @default(now())
 }

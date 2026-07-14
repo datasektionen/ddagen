@@ -30,12 +30,23 @@ export function UploadButton({
     });
   }
 
+  function isAcceptedType(fileType: string) {
+    return accept.some((acceptedType) => {
+      if (acceptedType.endsWith("/*")) {
+        const baseType = acceptedType.slice(0, acceptedType.length - 2);
+        return fileType.startsWith(`${baseType}/`);
+      }
+
+      return acceptedType === fileType;
+    });
+  }
+
   async function onImageChange(e: ChangeEvent<HTMLInputElement>) {
     if (e.target.files && e.target.files.length == 1) {
       const MAX_FILE_SIZE = 5e6;
       const FILE_SIZE = e.target.files[0].size as number;
 
-      if (accept.includes(e.target.files[0].type)) {
+      if (isAcceptedType(e.target.files[0].type)) {
         if (FILE_SIZE <= MAX_FILE_SIZE) {
           await toBase64(e.target.files[0])
             .then((data) => {
@@ -68,7 +79,7 @@ export function UploadButton({
       >
         {textAbove}
       </label>
-      <div className="relative flex flex-col bg-black/25 w-[150px] h-[150px] rounded-3xl border-solid border-yellow border-2 mx-auto overflow-hidden">
+      <div className="relative flex flex-col bg-black/25 w-[150px] h-[150px] rounded-3xl border-solid border-cerise border-2 mx-auto overflow-hidden">
         <h2 className="relative top-[50%] -translate-y-2/4 text-center text-2xl">
           {selectedImage == "" ? (
             <img className="mx-auto" src={textInsideMiddle} />

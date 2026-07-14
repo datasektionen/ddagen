@@ -112,8 +112,8 @@ export default function Years() {
     {
       year: 2025,
       pgImage: "/img/historia/pg2025.jpg",
-      nrOfCompanies: "TBD",
-      nrOfVisitors: "TBD",
+      nrOfCompanies: "94",
+      nrOfVisitors: "4270",
       dda: "Max Berglund & Mortada Nasser",
       text: t.history.text2025
     },

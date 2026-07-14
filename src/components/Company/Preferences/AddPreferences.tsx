@@ -32,8 +32,8 @@ export function AddPreferences({
   setEditState: Dispatch<undefined | string>;
   exhibitorPackage: Package;
 }) {
-  const deadline = "2025-09-10";
-  const allowPreferenceChange = new Date() <= new Date("2025-09-25");
+  const deadline = "2026-09-10";
+  const allowPreferenceChange = new Date() <= new Date("2026-09-25");
   const isRepresentative = type == "Representative";
   const defaultPreference = new Preferences(undefined, "", [], "", type);
 
@@ -202,7 +202,7 @@ export function AddPreferences({
           }}
           fields={t.exhibitorSettings.fieldsAddPreferences}
         />
-        <div className="flex flex-col">
+        <div className="text-white flex flex-col">
           <div className="border-b-2 border-white border-solid">
             <p className="font-normal text-lg">
               {t.exhibitorSettings.table.row3.preferencesHeader}

@@ -25,7 +25,7 @@ DATABASE_URL=postgresql://ddagen:ddagen@localhost:5432/ddagen?schema=public
 
 # These two are unused when NODE_ENV == "development", which it is when running `npm run dev`, but still must be set :)
 SPAM_API_KEY=2AkdhsQ9cTTSBKtNXdd6E07rqN8CFWvRqeY4GeAyXAn09urF
-SPAM_URL=https://spam.datasektionen.se/api/sendmail
+SPAM_URL=https://spam.datasektionen.se/api/legacy/sendmail
 
 # If this is set to "true" or "false", that value will be used instead of querying pls at the URL given.
 PLS_URL=true
