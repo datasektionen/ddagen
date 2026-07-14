@@ -608,7 +608,7 @@ export default {
       email: "Mejladress",
       contactPerson: "Kontaktperson",
       phoneNumber: "Telefonnummer",
-      howDidYouFindUs: "Hur hittade ni D-Dagen? (Valbar)"
+      howDidYouFindUs: "Hur hittade ni D-Dagen? (Valfri)"
     },
     confirm: "Skicka",
     ignoreError: "Gå vidare ändå",
