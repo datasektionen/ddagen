@@ -610,7 +610,7 @@ export default {
       email: "Mejladress",
       contactPerson: "Kontaktperson",
       phoneNumber: "Telefonnummer",
-      howDidYouFindUs: "Hur hittade ni D-Dagen? (Valbar)"
+      howDidYouFindUs: "Hur hittade ni D-Dagen? (Valfri)"
     },
     confirm: "Skicka",
     ignoreError: "Gå vidare ändå",
@@ -1154,6 +1154,7 @@ export default {
     cta: "Skapa Profil"
   },
   event: {
+    comingSoon: "Höstens event kommer avslöjas inom kort!",
     description: "Klicka gärna på varje evenemang för mer information!",
     lunchSeminarHeader: "Lunchföreläsning",
     lunchSeminar: " Lunchföreläsningar är ett otroligt populärt koncept bland studenter, där det bjuds på gratis lunch och en intressant föreläsning från ett företag i IT-branschen. Sker kl. 12-13 en vardag på KTH campus.",

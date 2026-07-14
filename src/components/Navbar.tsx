@@ -359,11 +359,11 @@ export default function Navbar() {
             <Group
               links={[
                 { href: "/förstudenter", text: t.forStudents },
-                { href: "/karta", text: t.map },
-                { href: "/event", text: t.event },
-                { href: "/logos", text: t.logos },
-                { href: "/student", text: t.meetings },
-                { href: "/sok", text: t.sok },
+                //{ href: "/karta", text: t.map }, 2026
+                //{ href: "/event", text: t.event }, 2026
+                //{ href: "/logos", text: t.logos }, 2026
+                { href: "/kontaktsamtal", text: t.meetings },
+                //{ href: "/sok", text: t.sok }, 2026
               ]}
             />
             {/*<NavLink class="px-14 lg:px-0" href="/mässan">{t.about}</NavLink>*/}

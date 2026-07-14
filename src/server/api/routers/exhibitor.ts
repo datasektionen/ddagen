@@ -31,6 +31,7 @@ export const exhibitorRouter = createTRPCRouter({
         email: z.string().email().trim(),
         contactPerson: z.string().trim(),
         phoneNumber: z.string().trim(),
+        howDidYouFindUs: z.string().trim(),
         locale: z.enum(["en", "sv"]),
       })
     )
@@ -42,6 +43,7 @@ export const exhibitorRouter = createTRPCRouter({
           email,
           contactPerson,
           phoneNumber,
+          howDidYouFindUs,
           locale,
         },
         ctx,
@@ -64,6 +66,7 @@ export const exhibitorRouter = createTRPCRouter({
             contactPerson,
             phoneNumber,
             email,
+            howDidYouFindUs,
           },
         });
 
@@ -77,6 +80,7 @@ export const exhibitorRouter = createTRPCRouter({
               email,
               contactPerson,
               phoneNumber,
+              howDidYouFindUs
             ),
             "sales@ddagen.se"
           );
