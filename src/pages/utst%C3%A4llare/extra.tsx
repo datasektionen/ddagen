@@ -105,7 +105,7 @@ const extraOrderActionDetails: Record<ExtraOrderAction, {
   },
   "UPDATED_REQUEST": {
     sv: "Uppdaterad förfrågan",
-    en: "Updated förfrågan",
+    en: "Updated request",
     color: "#FFFF00"
   },
   "CANCELED_ORDER": {
