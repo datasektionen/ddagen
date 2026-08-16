@@ -5,17 +5,18 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-export function Submit({ value, loading }: { value: string; loading: boolean }) {
+export function Submit({ value, loading, className }: { value: string; loading: boolean, className?: string }) {
   return (
     <input
       type="submit"
       disabled={loading}
       value={value}
-      className="
+      className={`
         bg-cerise transition-transform hover:scale-110 focus:scale-110
         focus:outline-none text-white uppercase w-fit mx-auto py-2 px-10
         rounded-full cursor-pointer disabled:cursor-wait disabled:grayscale
-      "
+        ${className}
+      `}
     />
   );
 }
@@ -23,88 +24,126 @@ export function Submit({ value, loading }: { value: string; loading: boolean }) 
 export default function Login() {
   const t = useLocale();
   const router = useRouter();
-  const locale = t.locale;
   const trpc = api.useContext();
 
-  const [code, setCode] = useState("");
   const [email, setEmail] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState<{ok?: boolean; isAdmin?: boolean}>();
-  const [state, setState] = useState<"email" | "code">("email");
+  const [code, setCode] = useState("");
+  const [step, setStep] = useState<"email" | "otp">("email");
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const startLogin = api.account.startLogin.useMutation({
-    onSuccess: (data) => {
-      console.log(data);
-      if (data?.url === undefined) {
-        return
-      }
-
-      console.log(data);
-      window.location.href = data.url;
+  const handleSetCode = (value: string) => {
+    const numericValue = value.replace(/[^0-9]/g, "");
+    if (numericValue.length <= 6) {
+      setCode(numericValue);
     }
-  });
+  }
 
-  const finishLogin = api.account.finishLogin.useMutation();
   const getIsLoggedIn = api.account.isLoggedIn.useQuery(undefined, {
     onSuccess: (data) => {
-      setIsLoggedIn(data);
+      if (data?.ok) {
+        router.push(data.isAdmin ? "/admin/sales" : "/utställare");
+      }
     },
   });
 
-  // Redirect if already logged in
-  useEffect(() => {
-    if (!getIsLoggedIn.isSuccess) return;
-    if (isLoggedIn?.ok == true) {
-      if (isLoggedIn?.isAdmin) {
-        router.push("/admin/sales");
-      } else {
-        router.push("/utst%C3%A4llare");
-      }
-    }
-  }, [isLoggedIn]);
+  const requestOtp = api.account.requestOtp.useMutation({
+    onSuccess: () => {
+      setStep("otp");
+      setErrorMsg("");
+    },
+    onError: () => setErrorMsg(t.error?.unknown || "An error occurred."),
+  });
 
-  useEffect(() => {
-    if (finishLogin.data?.ok) {
-      if (finishLogin.data?.isAdmin) {
-        router.push("/admin/sales");
-      } else {
-        router.push("/utställare");
+  const verifyOtp = api.account.verifyOtp.useMutation({
+    onSuccess: (data) => {
+      if (data.error) {
+        setErrorMsg(data.error === "invalidCode" ? "Invalid code." : "Code expired or too many attempts.");
+        return;
       }
       trpc.account.invalidate();
-    }
-  }, [finishLogin]);
+      router.push(data.isAdmin ? "/admin/sales" : "/utställare");
+    },
+    onError: () => setErrorMsg(t.error?.unknown || "An error occurred."),
+  });
 
-  useEffect(() => {
-    if (typeof router.query.code === "string") {
-      setState("code");
-      setCode(router.query.code);
-      finishLogin.mutate({ current_url: window.location.href });
+  // Keep OIDC as a fallback/alternative option if required
+  const startOidcLogin = api.account.startLogin.useMutation({
+    onSuccess: (data) => {
+      if (data?.url) window.location.href = data.url;
     }
-  }, [router.query.code]);
+  });
 
   return (
     <>
       <Head>
-          <meta name="robots" content="noindex, nofollow" />
+        <meta name="robots" content="noindex, nofollow" />
       </Head>
-      <div className="mx-auto flex flex-col items-center text-center mb-20">
-        <h1 className="text-cerise pt-[110px] lg:pt-[140px] mb-16 text-5xl font-medium uppercase">
+      <div className="mx-auto flex flex-col items-center text-center mb-20 max-w-md w-full px-4">
+        <h1 className="text-cerise pt-[110px] lg:pt-[140px] mb-12 text-5xl font-medium uppercase">
           {t.login.title}
         </h1>
-        <form
-          className="flex flex-col gap-6"
-          onSubmit={(e) => {
-            e.preventDefault();
-            startLogin.mutate({ subpath: router.asPath.split('?')[0] });
-          }}
-        >
-          <Submit value={t.login.confirm} loading={startLogin.isLoading} />
-        </form>
-        {startLogin.error && (
-          <p className="text-red-500 font-bold mt-6">{t.error.unknown}</p>
+
+        {step === "email" && (
+          <form
+            className="flex flex-col gap-6 w-full"
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (email) requestOtp.mutate({ email });
+            }}
+          >
+            <InputField
+              name="email"
+              type="email"
+              value={email}
+              setValue={setEmail}
+              fields={{ email: t.admin.login.email }}
+              required
+            />
+            <Submit value={t.admin.login.otpSendButton} loading={requestOtp.isLoading} />
+            
+            <div className="mt-8 text-sm text-slate-300 flex flex-col gap-2 pt-8">
+               <p>Or sign in with KTH OIDC</p>
+               <button 
+                 type="button"
+                 onClick={() => startOidcLogin.mutate({ subpath: router.asPath.split('?')[0] })}
+                 className="text-cerise underline hover:text-white transition-colors"
+               >
+                 OIDC SSO Login
+               </button>
+            </div>
+          </form>
         )}
-        {finishLogin.error && (
-          <p className="text-red-500 font-bold mt-6">{t.error.unknown}</p>
+
+        {step === "otp" && (
+          <form
+            className="flex flex-col gap-6 w-full"
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (code.length === 6) verifyOtp.mutate({ email, code });
+            }}
+          >
+            <p className="text-white mb-2">{t.admin.login.otpSentDescription} <b>{email}</b>.</p>
+            <InputField
+              name="otp"
+              type="text"
+              value={code}
+              setValue={handleSetCode}
+              fields={{ otp: t.admin.login.otp }}
+              required
+            />
+            <Submit value="Verify & Log In" loading={verifyOtp.isLoading} />
+            
+            <button
+              type="button"
+              className="text-sm text-white underline mt-4"
+              onClick={() => { setStep("email"); setCode(""); }}
+            >
+              {t.admin.login.otpCancelButton}
+            </button>
+          </form>
         )}
+
+        {errorMsg && <p className="text-red-500 font-bold mt-6">{errorMsg}</p>}
       </div>
     </>
   );

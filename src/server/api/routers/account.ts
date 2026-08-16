@@ -7,6 +7,22 @@ import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 import * as hive from "@/utils/hive";
 import * as client from "openid-client";
 import { authorizeClaims, createSessionToken, getSession, initiateAuthorization } from "@/utils/openid";
+import { randomInt, createHash, timingSafeEqual } from "crypto";
+
+
+const hashOtp = (code: string) => createHash("sha256").update(code).digest("hex");
+
+// Protect against timing attacks during comparison
+const secureCompare = (storedHash: string, inputCode: string) => {
+  const inputHash = hashOtp(inputCode);
+  if (storedHash.length !== inputHash.length) return false;
+  
+  // Wrap in standard Uint8Array to satisfy strict TS configurations
+  const storedArr = new Uint8Array(Buffer.from(storedHash, "hex"));
+  const inputArr = new Uint8Array(Buffer.from(inputHash, "hex"));
+  
+  return timingSafeEqual(storedArr, inputArr);
+};
 
 
 export const accountRouter = createTRPCRouter({
@@ -169,4 +185,110 @@ export const accountRouter = createTRPCRouter({
 
     return { status: true }
   }),
+
+
+  // OTP Flow:
+  requestOtp: publicProcedure
+    .input(z.object({ email: z.string().email() }))
+    .mutation(async ({ input, ctx }) => {
+      const email = input.email.toLowerCase();
+      const isAdmin = email.endsWith("@ddagen.se");
+
+      // 1. Verify existence if not an admin
+      if (!isAdmin) {
+        const user = await ctx.prisma.user.findUnique({ where: { email } });
+        if (!user) {
+          // Security: Return true anyway to prevent user enumeration attacks
+          return { ok: true }; 
+        }
+      }
+
+      // 2. Generate cryptographically secure 6-digit code
+      const otp = randomInt(100000, 999999).toString();
+      const validUntil = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
+
+      // 3. Upsert the hashed code to the database
+      await ctx.prisma.otpCode.upsert({
+        where: { email },
+        update: { codeHash: hashOtp(otp), attempts: 0, validUntil, createdAt: new Date() },
+        create: { email, codeHash: hashOtp(otp), validUntil },
+      });
+
+      // 4. Send email
+      await sendEmail(
+        email,
+        "Your Login Code - D-Dagen",
+        `Your one-time login code is: <strong>${otp}</strong>.<br><br>It is valid for 10 minutes.`
+      );
+
+      return { ok: true };
+    }),
+
+  verifyOtp: publicProcedure
+    .input(z.object({ email: z.string().email(), code: z.string().length(6) }))
+    .mutation(async ({ input, ctx }) => {
+      const email = input.email.toLowerCase();
+      
+      // 1. Fetch OTP record
+      const otpRecord = await ctx.prisma.otpCode.findUnique({ where: { email } });
+      if (!otpRecord) return { error: "invalidCode" as const };
+
+      // 2. Verify Expiration
+      if (otpRecord.validUntil < new Date()) {
+        await ctx.prisma.otpCode.delete({ where: { email } });
+        return { error: "expiredCode" as const };
+      }
+
+      // 3. Brute-Force Protection
+      if (otpRecord.attempts >= 5) {
+        await ctx.prisma.otpCode.delete({ where: { email } });
+        return { error: "tooManyAttempts" as const };
+      }
+
+      // 4. Secure constant-time comparison
+      if (!secureCompare(otpRecord.codeHash, input.code)) {
+        await ctx.prisma.otpCode.update({
+          where: { email },
+          data: { attempts: { increment: 1 } },
+        });
+        return { error: "invalidCode" as const };
+      }
+
+      // 5. Code valid -> delete it to ensure single-use
+      await ctx.prisma.otpCode.delete({ where: { email } });
+
+      const isAdmin = email.endsWith("@ddagen.se");
+      const secure = process.env.NODE_ENV === "production" ? "Secure;" : "";
+
+      if (isAdmin) {
+        // --- ADMIN LOGIN LOGIC ---
+        const token = await createSessionToken({
+          sub: `admin-${email}`,
+          email: email,
+          name: "Admin User",
+          permissions: ["admin", "ddagen"],
+        });
+
+        ctx.res.setHeader("Set-Cookie", [
+          `token=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=300; ${secure}`,
+        ]);
+
+        return { ok: true, isAdmin: true };
+      } else {
+        // --- EXHIBITOR LOGIN LOGIC ---
+        const user = await ctx.prisma.user.findUnique({ where: { email } });
+        if (!user) return { error: "userNotFound" as const };
+
+        const [_, session] = await ctx.prisma.$transaction([
+          ctx.prisma.session.deleteMany({ where: { userId: user.id } }),
+          ctx.prisma.session.create({ data: { userId: user.id, exhibitorId: user.exhibitorId } }),
+        ]);
+
+        ctx.res.setHeader("Set-Cookie", [
+          `session=${session.id}; Path=/; HttpOnly; SameSite=Lax; ${secure}`,
+        ]);
+
+        return { ok: true, isAdmin: false };
+      }
+    }),
 });

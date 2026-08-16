@@ -1219,7 +1219,14 @@ export default {
     login: {
       title: "Log In",
       username: "Username",
+      email: "Email",
       password: "Password",
+      otp: "6-Digit code",
+      otpSubmit: "Log in",
+      otpSendButton: "Send login code",
+      otpCancelButton: "Cancel login",
+      otpSentDescription: "We sent a 6-digit code to ", // expected email
+      otpSentDisclaimer: "It may take a little while for the email to arrive"
     },
     sales: {
       login: "Log in",
