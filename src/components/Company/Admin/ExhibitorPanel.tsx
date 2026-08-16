@@ -26,7 +26,6 @@ export function ExhibitorPanel({
   exhibitors,
   preferences,
   exhibitorsInterests,
-  password,
   reloadLogin,
   jobOffers,
 }: {
@@ -34,7 +33,6 @@ export function ExhibitorPanel({
   exhibitors: Exhibitor[];
   preferences: Preferences[];
   exhibitorsInterests: ExhibitorInfo[];
-  password: string;
   reloadLogin: () => void;
   jobOffers: JobOffer[];
 }) {
@@ -100,15 +98,15 @@ export function ExhibitorPanel({
   function getLoginFunction(exhibitorId: string) {
     return async () => {
       await trpc.invalidate();
-      login.mutate({ exhibitorId: exhibitorId, password });
+      login.mutate({ exhibitorId: exhibitorId });
     };
   }
 
   async function handleUpdateSpecialOrders(
     exhibitorId: string,
-    studentMeetings: number, 
-    socialmediaPost: number, 
-    panelDiscussion: number, 
+    studentMeetings: number,
+    socialmediaPost: number,
+    panelDiscussion: number,
     goodieBagLogo: number) {
 
     try {
@@ -129,8 +127,8 @@ export function ExhibitorPanel({
 
   async function handleUpdateCompanyHost(
     exhibitorId: string,
-    companyHostName: string, 
-    companyHostNumber: string, 
+    companyHostName: string,
+    companyHostNumber: string,
     companyHostEmail: string) {
 
     try {
@@ -184,7 +182,6 @@ export function ExhibitorPanel({
 
   async function handleAddExhibitor(exhibitor: ExhibitorInfo) {
     addExhibitor.mutateAsync({
-      password: password,
       contactPerson: exhibitor.contactPerson,
       telephoneNumber: exhibitor.telephoneNumber,
       companyName: exhibitor.companyName,
@@ -196,6 +193,8 @@ export function ExhibitorPanel({
       mapPosition: exhibitor.mapPosition,
       meetingTimeSlots: exhibitor.meetingTimeSlots,
     }).then((response) => {
+      if(response == "UNAUTHORIZED")return response;
+
       console.log(response, "response!!!");
       if(response?.ok === true){
         setAddExhibitorSuccess(_ => true);
@@ -237,7 +236,6 @@ export function ExhibitorPanel({
   const handleDeleteExhibitor = async (exhibitorId: string) => {
     try {
       await deleteExhibitor.mutateAsync({
-        password: password,
         exhibitorId: exhibitorId
       });
       await reloadLogin(); // Reload the exhibitor list after deletion
@@ -263,7 +261,7 @@ export function ExhibitorPanel({
       const jobOffer = jobOffers.find(offer => offer.id === exhibitor.jobOfferId);
 
       // Extract exhibitor attributes
-      const exhibitorValues = selectedAttributes.map(attr => 
+      const exhibitorValues = selectedAttributes.map(attr =>
         attr != "packageTier" ? JSON.stringify(exhibitor[attr as keyof Exhibitor] ?? "") :
         JSON.stringify(packageTiers[exhibitor.packageTier != -1 ? exhibitor.packageTier : 5])
       );
@@ -290,12 +288,12 @@ export function ExhibitorPanel({
   function downloadCSV(data: Exhibitor[], filename: string): void {
     console.log(data);
     const csv = convertToCSV(data, ["organizationNumber", "name", "description", "industry", "packageTier"]);
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' }); 
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob); 
+    link.href = URL.createObjectURL(blob);
     link.target = '_blank';
     link.download = filename;
-    link.click(); 
+    link.click();
   }
 
 
@@ -316,9 +314,9 @@ export function ExhibitorPanel({
           exhibitorPackage.banquetTickets +
           exhibitor.totalBanquetTicketsWanted +
           exhibitor.customBanquetTicketsWanted;
-        
 
-        let amount = "0/0";          
+
+        let amount = "0/0";
         switch (type) {
           case 'Representative':
             amount = `${prefCount.representative}/${exhibitorRepresentativeCount}`;
@@ -363,11 +361,11 @@ export function ExhibitorPanel({
         <div className="w-[80%] sm:w-[90%]">
           <div className="flex w-full text-xl mb-5 font-medium justify-between items-end">
             <div>
-              {showAddExhibitor ? 
+              {showAddExhibitor ?
                 (
                   <>
-                    <AddExhibitorForm 
-                      t={t} addExhibitor={handleAddExhibitor} exhibitorsInterests={exhibitorsInterests} closeModal={closeAddExhibitorForm} /> 
+                    <AddExhibitorForm
+                      t={t} addExhibitor={handleAddExhibitor} exhibitorsInterests={exhibitorsInterests} closeModal={closeAddExhibitorForm} />
                   </>
                 ) : (
                   <>
@@ -415,7 +413,7 @@ export function ExhibitorPanel({
             className="mt-2 bg-cerise bg-blue-500 py-1 px-2 rounded-md"
             onClick={()=>downloadCSV(exhibitors, "utställare.csv")}>
               Ladda ned företagsdata
-            </button>           
+            </button>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full bg-slate-50 bg-opacity-20 border-collapse border-solid">
@@ -513,7 +511,7 @@ export function ExhibitorPanel({
                       </div>) : null}
                       <div className="w-full text-xl mb-5 font-medium">
                         {selectedExhibitor?.id == exhibitor.id && showSpecialOrdersForm ? (
-                          <UpdateSpecialOrders t={t} exhibitor={selectedExhibitor} closeModal={closeUpdateSpecialOrderForm} 
+                          <UpdateSpecialOrders t={t} exhibitor={selectedExhibitor} closeModal={closeUpdateSpecialOrderForm}
                           setSpecialOrders={handleUpdateSpecialOrders}
                           setShowSpecialOrdersForm={setShowSpecialOrdersForm}/>
                         ) : (
@@ -549,7 +547,7 @@ export function ExhibitorPanel({
                       </div>
                       <div className="w-full text-xl mb-5 font-medium">
                         {selectedExhibitor?.id == exhibitor.id && showCompanyHostForm ? (
-                          <UpdateCompanyHost t={t} exhibitor={selectedExhibitor} closeModal={closeUpdateCompanyHostForm} 
+                          <UpdateCompanyHost t={t} exhibitor={selectedExhibitor} closeModal={closeUpdateCompanyHostForm}
                           setCompanyHost={handleUpdateCompanyHost}
                           setShowUpdateCompanyHostForm={setShowCompanyHostForm}/>
                         ) : (
@@ -569,7 +567,7 @@ export function ExhibitorPanel({
                       </div>
                       <div className="w-full text-xl mb-5 font-medium">
                         {selectedExhibitor?.id == exhibitor.id && showUpdatePositionForm ? (
-                          <UpdatePositionForm t={t} exhibitor={selectedExhibitor} closeModal={closeUpdatePositionForm} 
+                          <UpdatePositionForm t={t} exhibitor={selectedExhibitor} closeModal={closeUpdatePositionForm}
                           setPosition={handleUpdatePosition}
                           setShowUpdatePositionForm={setShowUpdatePositionForm}/>
                         ) : (
@@ -589,7 +587,7 @@ export function ExhibitorPanel({
                       </div>
                       <div className="w-full text-xl mb-5 font-medium">
                         {selectedExhibitor?.id == exhibitor.id && showUpdateIndustryTypeForm ? (
-                          <UpdateIndustryTypeForm t={t} exhibitor={selectedExhibitor} closeModal={closeUpdateIndustryTypeForm} 
+                          <UpdateIndustryTypeForm t={t} exhibitor={selectedExhibitor} closeModal={closeUpdateIndustryTypeForm}
                           setIndustryType={handleUpdateIndustryType}
                           setShowIndustryTypeForm={setShowIndustryTypeForm}/>
                         ) : (
