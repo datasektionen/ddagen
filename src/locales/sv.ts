@@ -1213,7 +1213,14 @@ export default {
     login: {
       title: "Logga in",
       username: "Användarnamn",
+      email: "Email",
       password: "Lösenord",
+      otp: "6-siffrig kod",
+      otpSubmit: "Logga in",
+      otpSendButton: "Skicka inloggningskod",
+      otpCancelButton: "Avbryt inloggning",
+      otpSentDescription: "Vi har skickat ett mail med en 6-siffrig inloggningskod till ", // expected email recipient
+      otpSentDisclaimer: "Det kan ta en stund för mailet att komma fram"
     },
     sales: {
       login: "Logga in",

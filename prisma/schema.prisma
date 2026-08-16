@@ -255,3 +255,14 @@ model ExtraOrderHistory {
   person_is_admin Boolean  @default(false)
   created_at      DateTime @default(now())
 }
+
+
+model OtpCode {
+  email      String   @id
+  codeHash   String   // Store securely hashed code, never plain text
+  attempts   Int      @default(0)
+  validUntil DateTime
+  createdAt  DateTime @default(now())
+
+  @@map("otp_codes")
+}
