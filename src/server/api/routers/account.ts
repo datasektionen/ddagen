@@ -167,11 +167,16 @@ export const accountRouter = createTRPCRouter({
   }),
   */
   isLoggedIn: publicProcedure.query(async ({ ctx }) => {
-    if ((await getSession(ctx.cookies) != null)) {
-        return { ok: true, isAdmin: true };
+    const user = await getSession(ctx.cookies);
+
+    if (user != null) {
+        return { ok: true, isAdmin: user?.permissions?.includes("admin") || user?.permissions?.includes("ddagen") };
     }
 
     return { ok: ctx.session !== null };
+  }),
+  getUser: publicProcedure.query(async ({ ctx }) => {
+    return await getSession(ctx.cookies);
   }),
   logout: protectedProcedure.mutation(async ({ ctx }) => {
     await ctx.prisma.session.delete({ where: { id: ctx.session.id } });

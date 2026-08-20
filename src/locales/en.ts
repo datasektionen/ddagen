@@ -1276,6 +1276,30 @@ export default {
       },
     },
     extraOrders: {
+      addItem: {
+        title: "Add an extra order",
+        button: "Add order",
+        cancel: "Cancel",
+        submit: "Send request",
+        accept: "Accept request",
+        cancelRequest: "Cancel request",
+      },
+      itemNames: {
+        table: "Standing Table",
+        chair: "Chair",
+        drink_tickets_alc: "Drink coupons (x3) (w. alcohol)",
+        drink_tickets_alc_free: "Drink coupons (x3) (non-alcoholic)",
+        meal_ticket: "Meal ticket (incl. lunch & breakfast)",
+        banquette_ticket: "Ticket to the dinner & after-party",
+      },
+      actionLabels: {
+        CREATED_REQUEST: "Created request",
+        CANCELED_REQUEST: "Canceled request",
+        ACCEPTED_REQUEST: "Accepted request",
+        UPDATED_REQUEST: "Updated request",
+        CANCELED_ORDER: "Canceled order",
+        CREATED_ORDER: "Created order",
+      },
       header: {
         order: "Order",
         extras: "Extras",
@@ -1314,10 +1338,7 @@ export default {
         total_price: "Total price",
         empty: "No extra orders found"
       },
-      addItem: {
-        cancel: "Cancel",
-        submit: "Send request"
-      }
+      currency: "kr",
     },
     preferences: {
       header: {

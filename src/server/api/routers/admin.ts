@@ -149,10 +149,10 @@ export const adminRouter = createTRPCRouter({
             });
 
             const secure = process.env.NODE_ENV === 'production' ? 'Secure;' : '';
-            ctx.res.setHeader(
-                "Set-Cookie",
-                `session=${session.id}; Path=/; HttpOnly; SameSite=Lax; ${secure}`
-            );
+            ctx.res.setHeader("Set-Cookie", [
+                `session=${session.id}; Path=/; HttpOnly; SameSite=Lax; ${secure}`,
+                `token=${ctx.cookies.token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=300; ${secure}`
+            ]);
 
             return { ok: true };
         }),
@@ -228,7 +228,9 @@ export const adminRouter = createTRPCRouter({
     isLoggedIn: publicProcedure.query(async ({ ctx }) => {
         // As long as the internal JWT is still being parsed as valid
         const session = await getSession(ctx.cookies);
-        return session !== null;
+        const isAdmin = session?.permissions?.includes("admin") || session?.permissions?.includes("ddagen");
+
+        return session !== null && isAdmin;
     }),
     logout: publicProcedure.mutation(async ({ ctx }) => {
         // Forget the interal JWT

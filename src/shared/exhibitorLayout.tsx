@@ -11,44 +11,84 @@ import { cn } from "@/utils/utils";
 // Maby break save changes into a separate steps for each page
 // Add Logic to figure out saved state
 
-const exhibitorNav = [
-  {
-    text: "Översikt",
-    url: "/utställare/"
-  },
-  {
-    text: "Företagsinformation",
-    url: "/utställare/info"
-  },
-  {
-    text: "Jobberbjudanden",
-    url: "/utställare/jobbannonser"
-  },
-  {
-    text: "Kontaktpersoner",
-    url: "/utställare/kontaktpersoner"
-  },
-  {
-    text: "Fakturering",
-    url: "/utställare/fakturering"
-  },
-  {
-    text: "Matbiljetter",
-    url: "/utställare/matbiljetter"
-  },
-  {
-    text: "Banquetten",
-    url: "/utställare/banquetten"
-  },
-  {
-    text: "Extrabeställningar",
-    url: "/utställare/extra"
-  },
-  {
-    text: "FAQ",
-    url: "/utställare/faq"
-  },
-]
+const exhibitorNav = {
+  sv: [
+    {
+      text: "Översikt",
+      url: "/utställare/"
+    },
+    {
+      text: "Företagsinformation",
+      url: "/utställare/info"
+    },
+    {
+      text: "Jobberbjudanden",
+      url: "/utställare/jobbannonser"
+    },
+    {
+      text: "Kontaktpersoner",
+      url: "/utställare/kontaktpersoner"
+    },
+    {
+      text: "Fakturering",
+      url: "/utställare/fakturering"
+    },
+    {
+      text: "Matbiljetter",
+      url: "/utställare/matbiljetter"
+    },
+    {
+      text: "Banquetten",
+      url: "/utställare/banquetten"
+    },
+    {
+      text: "Extrabeställningar",
+      url: "/utställare/extra"
+    },
+    {
+      text: "FAQ",
+      url: "/utställare/faq"
+    },
+  ],
+  en: [
+    {
+      text: "Overview",
+      url: "/utställare/"
+    },
+    {
+      text: "Company information",
+      url: "/utställare/info"
+    },
+    {
+      text: "Job offers",
+      url: "/utställare/jobbannonser"
+    },
+    {
+      text: "Contact persons",
+      url: "/utställare/kontaktpersoner"
+    },
+    {
+      text: "Billing",
+      url: "/utställare/fakturering"
+    },
+    {
+      text: "Meal tickets",
+      url: "/utställare/matbiljetter"
+    },
+    {
+      text: "Banquet",
+      url: "/utställare/banquetten"
+    },
+    {
+      text: "Additional orders",
+      url: "/utställare/extra"
+    },
+    {
+      text: "FAQ",
+      url: "/utställare/faq"
+    },
+  ],
+}
 
 export default function ExhibitorLayout({
     children
@@ -57,58 +97,73 @@ export default function ExhibitorLayout({
 }) {
   const t = useLocale();
   const router = useRouter();
+  const trpc = api.useContext();
 
   function normalizePath(path: string) {
     return decodeURIComponent(path).replace(/\/$/, "") || "/";
   }
 
   const currentPath = normalizePath(router.asPath.split("?")[0]);
+  
+  const [name, setName] = useState<string>("");
+  const [editNameState, setEditNameState] = useState<boolean>(false);
 
-  const trpc = api.useContext();
-  const logout = api.account.logout.useMutation();
+  // States
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
+
+  const logout = api.admin.logout.useMutation();
+
+  const getName = api.exhibitor.getName.useQuery();
+  const setNameMutation = api.exhibitor.setName.useMutation();
+
+
+  const getIsLoggedIn = api.account.isLoggedIn.useQuery(undefined, {
+    onSuccess: (data: any) => {
+      setIsLoggedIn(data.ok);
+    },
+  });
+
+  useEffect(() => {
+    console.log("IS LOGGED IN?", getIsLoggedIn.isSuccess)
+    if (!getIsLoggedIn.isSuccess) return;
+    if (!isLoggedIn){
+      console.log("IS NOT LOGGED IN, HANDLE LOG OUT")
+      handleLogout();
+      return;
+    }
+  }, [getIsLoggedIn.isSuccess, isLoggedIn]);
 
   const handleLogout = () => {
+    console.log("CALL LOGOUT")
     logout.mutate();
   }
 
   useEffect(() => {
+    console.log("LOG OUT IS SUCCESS?", logout.isSuccess);
     if (logout.isSuccess && logout.data.status) {
       trpc.account.invalidate();
       router.push("/logga-in");
     }
   }, [logout.isSuccess]);
-  /*
-  // States
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
-  const [name, setName] = useState<string>("");
-  const [editState, setEditState] = useState<boolean>(false);
-  const setNameMutation = api.exhibitor.setName.useMutation();
 
-  const getName = api.exhibitor.getName.useQuery();
-  const getIsLoggedIn = api.account.isLoggedIn.useQuery(undefined, {
-    onSuccess: (data: any) => {
-      setIsLoggedIn(data);
-    },
-  });
-
-  // Manage login
-  useEffect(() => {
-    if (!getIsLoggedIn.isSuccess) return;
-    if (isLoggedIn == false) router.push("/logga-in");
-  }, [isLoggedIn]);
 
   useEffect(() => {
     if(!getName.isSuccess) return;
     setName(getName.data.name)
   }, [getName.data]);
 
+
   async function editCompanyName() {
-    if (editState) {
+    if (editNameState) {
       await setNameMutation.mutateAsync(name);
     }
-    setEditState(!editState);
+    setEditNameState(!editNameState);
   }
-  */
+
+  const allowNameEdit = false;
+
+  if (!getIsLoggedIn.isSuccess) return null;
+
   return(
     <>
       <Head>
@@ -117,23 +172,56 @@ export default function ExhibitorLayout({
       <div className="xl:w-[1200px] lg:w-[1000px] w-full mx-auto">
         <div className="mx-auto flex flex-1 flex-col items-start py-40 cursor-default bg-darkblue bg-opacity-75">
           {/*Header*/}
-          <div className="flex flex-1 w-full flex-col sm:flex-row justify-between items-center">
-            <h1 className="uppercase text-cerise text-3xl md:text-5xl font-medium break-words">
-              {t.exhibitorSettings.header}
-            </h1>
-            <button
-              className={cn(
-                "bg-transparent border-[1px] border-white rounded-full text-center hover:scale-105 transition-transform text-white uppercase",
-                "py-1.5 px-3 text-sm",
-                "sm:py-2.5 sm:px-4 sm:text-base"
-              )}
-              onClick={handleLogout}>
-              Logga ut
-            </button>
+          <div className="flex flex-1 w-full flex-col sm:flex-row justify-between items-start">
+            <div className="flex flex-col gap-2">
+              <h1 className="uppercase text-cerise text-3xl md:text-5xl font-medium break-words">
+                {t.exhibitorSettings.header}
+              </h1>
+              {allowNameEdit ?
+                <div className="flex flex-row items-center gap-4 mt-4">
+                  <h2 className="text-white text-xl" >
+                    {editNameState ? <InputField
+                      value={name}
+                      name="companyName"
+                      fields={t.exhibitorSettings.fields}
+                      setValue={setName}
+                      />
+                      :
+                      name}
+                  </h2>
+                  <a
+                  className={`hover:cursor-pointer ${
+                    editNameState
+                    ? "block uppercase hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-normal px-8 py-2 max-lg:mx-auto w-max"
+                    : "hover:scale-105 transition-transform bg-editIcon bg-white bg-[length:30px_30px] w-[33px] h-[33px] bg-no-repeat bg-origin-content pl-1 pb-1 rounded-md"
+                    }`}
+                    onClick={editCompanyName}
+                    >{editNameState && t.exhibitorSettings.table.row1.section2.save}
+                  </a>
+                </div>
+                :
+                <div>
+                  <h2 className="text-white text-2xl font-medium" >
+                  {name}
+                  </h2>
+                </div>
+              }
+            </div>
+            <div className="flex flex-row items-center gap-4">
+              <button
+                className={cn(
+                  "bg-transparent border-[1px] border-white rounded-full text-center hover:scale-105 transition-transform text-white uppercase",
+                  "py-1.5 px-3 text-sm",
+                  "sm:py-2.5 sm:px-4 sm:text-base"
+                )}
+                onClick={handleLogout}>
+                {t.exhibitorSettings.logoutButton}
+              </button>
+            </div>
           </div>
-          <div className="flex w-full flex-row items-start gap-4 mt-12">
+          <div className="flex w-full flex-row items-start gap-8 mt-12">
             <div className="flex flex-col gap-2 min-w-xs self-start">
-              {exhibitorNav.map(((navItem, i) => (
+              {exhibitorNav[t.locale].map(((navItem, i) => (
                 <div className="w-full" key={i}>
                   <Link
                     href={navItem.url}

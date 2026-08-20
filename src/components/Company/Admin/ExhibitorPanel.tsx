@@ -425,6 +425,8 @@ export function ExhibitorPanel({
                   <th>{t.admin.sales.header.specialOrders.name}</th>
                   <th>{t.exhibitorSettings.table.row5.title}</th>
                   <th>{t.admin.sales.header.companyHost.name}</th>
+                  <th>{t.admin.sales.header.position}</th>
+                  <th>{t.exhibitorSettings.fieldsUpdateIndustryType.industry}</th>
                     {showDeleteExhibitor &&
                     <th>
                       {t.admin.sales.header.delete}
@@ -581,8 +583,12 @@ export function ExhibitorPanel({
                       </div>
                     </td>
                     <td>
+                        <div className="flex flex-col">
+                          <b>{t.exhibitorSettings.fieldsUpdateIndustryType.industry}</b>
+                          <p>{exhibitor.industry}</p>
+                        </div>
                       <div className="flex flex-col">
-                        <b>{t.exhibitorSettings.fieldsUpdateIndustryType.name}</b>
+                        {/*<b>{t.exhibitorSettings.fieldsUpdateIndustryType.name}</b>*/}
                         {exhibitor.industryType || "N/A"}
                       </div>
                       <div className="w-full text-xl mb-5 font-medium">
@@ -598,10 +604,6 @@ export function ExhibitorPanel({
                           {t.admin.sales.header.specialOrders.specialOrderButton}
                           </button>
                         )}
-                        <div className="flex flex-col">
-                          <b>{t.exhibitorSettings.fieldsUpdateIndustryType.industry}</b>
-                          <p>{exhibitor.industry}</p>
-                        </div>
                       </div>
                     </td>
                     {showDeleteExhibitor &&
