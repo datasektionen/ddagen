@@ -658,9 +658,9 @@ export default {
     contactHeader: "Contact",
     responsible: "Project Managers",
     salesGroup: "Sales Team",
-    sponsorText: "Main sponsor for D-Dagen 2025",
-    sponsorLink: "https://en.omegapoint.se",
-    notDecided: "Main sponsor for D-Dagen 2026 will be shown here",
+    sponsorText: "Main partner for D-Dagen 2026",
+    sponsorLink: "https://www.ericsson.com/en",
+    notDecided: "Main partner for D-Dagen 2027 will be shown here",
   },
   newExhibitorEmail: {
     emailSubject: "D-Dagen Exhibitor Account Created",

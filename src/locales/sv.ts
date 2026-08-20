@@ -654,9 +654,9 @@ export default {
     contactHeader: "Kontakt",
     responsible: "D-Dagenansvariga",
     salesGroup: "Säljgruppen",
-    sponsorText: "Huvudsponsor för D-Dagen 2025",
-    sponsorLink: "https://omegapoint.se/",
-    notDecided: "Huvudsponsor för D-Dagen kommer synas här"
+    sponsorText: "Huvudpartner för D-Dagen 2026",
+    sponsorLink: "https://www.ericsson.com/en",
+    notDecided: "Huvudpartner för D-Dagen 2027 kommer synas här"
   },
   newExhibitorEmail: {
     emailSubject: "D-Dagen - Nytt Utställarkonto",
