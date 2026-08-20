@@ -658,9 +658,9 @@ export default {
     contactHeader: "Contact",
     responsible: "Project Managers",
     salesGroup: "Sales Team",
-    sponsorText: "Main sponsor for D-Dagen 2025",
-    sponsorLink: "https://en.omegapoint.se",
-    notDecided: "Main sponsor for D-Dagen 2026 will be shown here",
+    sponsorText: "Main partner for D-Dagen 2026",
+    sponsorLink: "https://www.ericsson.com/en",
+    notDecided: "Main partner for D-Dagen 2027 will be shown here",
   },
   newExhibitorEmail: {
     emailSubject: "D-Dagen Exhibitor Account Created",
@@ -1154,7 +1154,7 @@ export default {
       "Upload their CV",
       "Select the companies they are interested in having a student meeting with."
     ],
-    p3: "The companies then review the list of students who are interested in speaking with them and choose whom to schedule meetings with based on their student profiles and CVs.\n\nEach company is assigned a 3-hour time slot sometime during the fair (10:00–16:00), during which they can meet as many students as they are able to.\n\nWe recommend 15-minute meetings, but the exact duration is up to each individual company.\n\nKeep a close eye on your email after registering! You will need to schedule a meeting with the company if they select you. If, for any reason, the company needs to cancel the meeting, you will receive an email notifying you, and you will then have the opportunity to book a new time. \n\n The deadline for students to register their interest in contact meetings is October 7. However, it is still possible to book/reschedule meeting times with the companies after that date.",
+    p3: "The companies then review the list of students who are interested in speaking with them and choose whom to schedule meetings with based on their student profiles and CVs.\n\nEach company is assigned a 2-hour time slot sometime during the fair (10:00–16:00), during which they can meet as many students as they are able to.\n\nWe recommend 15-minute meetings, but the exact duration is up to each individual company.\n\nKeep a close eye on your email after registering! You will need to schedule a meeting with the company if they select you. If, for any reason, the company needs to cancel the meeting, you will receive an email notifying you, and you will then have the opportunity to book a new time. \n\n The deadline for students to register their interest in contact meetings is October 7. However, it is still possible to book/reschedule meeting times with the companies after that date.",
     p4: "Create your student profile and choose companies for student meetings",
     cta: "Create Profile"
   },
@@ -1276,6 +1276,30 @@ export default {
       },
     },
     extraOrders: {
+      addItem: {
+        title: "Add an extra order",
+        button: "Add order",
+        cancel: "Cancel",
+        submit: "Send request",
+        accept: "Accept request",
+        cancelRequest: "Cancel request",
+      },
+      itemNames: {
+        table: "Standing Table",
+        chair: "Chair",
+        drink_tickets_alc: "Drink coupons (x3) (w. alcohol)",
+        drink_tickets_alc_free: "Drink coupons (x3) (non-alcoholic)",
+        meal_ticket: "Meal ticket (incl. lunch & breakfast)",
+        banquette_ticket: "Ticket to the dinner & after-party",
+      },
+      actionLabels: {
+        CREATED_REQUEST: "Created request",
+        CANCELED_REQUEST: "Canceled request",
+        ACCEPTED_REQUEST: "Accepted request",
+        UPDATED_REQUEST: "Updated request",
+        CANCELED_ORDER: "Canceled order",
+        CREATED_ORDER: "Created order",
+      },
       header: {
         order: "Order",
         extras: "Extras",
@@ -1314,10 +1338,7 @@ export default {
         total_price: "Total price",
         empty: "No extra orders found"
       },
-      addItem: {
-        cancel: "Cancel",
-        submit: "Send request"
-      }
+      currency: "kr",
     },
     preferences: {
       header: {

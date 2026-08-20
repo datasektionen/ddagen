@@ -23,102 +23,46 @@ export type ExtraOrderType = "chair"
   | "banquette_ticket";
 
 type ExtraOrderDetail = {
-  name: {
-    sv: string;
-    en: string;
-  },
   price_per_unit: number;
   dropdown?: boolean;
 }
 
 export const extraOrderDetails: Record<string, ExtraOrderDetail> = {
   "table": {
-    name: {
-      sv: "Ståbord",
-      en: "Standing Table"
-    },
     price_per_unit: 500,
     dropdown: true
   },
   "chair": {
-    name: {
-      sv: "Stol",
-      en: "Chair"
-    },
     price_per_unit: 250,
     dropdown: true
   },
   "drink_tickets_alc": {
-    name: {
-      sv: "Dryckesbiljetter (3 st) (alkohol)",
-      en: "Drink coupons (x3) (w. alcohol)"
-    },
     price_per_unit: 300,
     dropdown: true
   },
   "drink_tickets_alc_free": {
-    name: {
-      sv: "Dryckesbiljetter (3 st) (alkoholfri)",
-      en: "Drink coupons (x3) (non-alcoholic)"
-    },
     price_per_unit: 300,
     dropdown: true
   },
   "meal_ticket": {
-    name: {
-      sv: "Matbiljett (inkl. lunch & frukost)",
-      en: "Meal ticket (incl. lunch & breakfast)"
-    },
     price_per_unit: 450,
     dropdown: false
   }
   ,
   "banquette_ticket": {
-    name: {
-      sv: "Banquettebiljett",
-      en: "Ticket to the dinner & after-party"
-    },
     price_per_unit: 2000,
     dropdown: false
   }
 }
 
-const extraOrderActionDetails: Record<ExtraOrderAction, {
-  en: string;
-  sv: string;
-  color: string;
-}> = {
-  "CREATED_REQUEST": {
-    sv: "Skapad förfrågan",
-    en: "Created request",
-    color: "#FFFF00"
-  },
-  "CANCELED_REQUEST": {
-    sv: "Avbruten förfrågan",
-    en: "Canceled request",
-    color: "#FF0000"
-  },
-  "ACCEPTED_REQUEST": {
-    sv: "Accepterad förfrågan",
-    en: "Accepted request",
-    color: "#00FF00"
-  },
-  "UPDATED_REQUEST": {
-    sv: "Uppdaterad förfrågan",
-    en: "Updated request",
-    color: "#FFFF00"
-  },
-  "CANCELED_ORDER": {
-    sv: "Avbruten order",
-    en: "Canceled order",
-    color: "#FF0000"
-  },
-  "CREATED_ORDER": {
-    sv: "Skapad order",
-    en: "Created order",
-    color: "#00FF00"
-  },
-}
+const extraOrderActionColors: Record<ExtraOrderAction, string> = {
+  CREATED_REQUEST: "#FFFF00",
+  CANCELED_REQUEST: "#FF0000",
+  ACCEPTED_REQUEST: "#00FF00",
+  UPDATED_REQUEST: "#FFFF00",
+  CANCELED_ORDER: "#FF0000",
+  CREATED_ORDER: "#00FF00",
+};
 
 export default function ExhibitorExtra({
     children
@@ -148,6 +92,7 @@ export default function ExhibitorExtra({
   const accepted = ordersData?.history.filter((el) => el.action === "ACCEPTED_REQUEST") ?? [];
 
   const getName = api.exhibitor.getName.useQuery();
+  const { data: user } = api.account.getUser.useQuery();
   const getIsLoggedIn = api.account.isLoggedIn.useQuery(undefined, {
     onSuccess: (data: any) => {
       setIsLoggedIn(data.ok);
@@ -215,7 +160,7 @@ export default function ExhibitorExtra({
 
   console.log(history);
 
-  const dropdownEntries = Object.entries(extraOrderDetails).filter(([_k, v]) => v.dropdown == true);
+  const dropdownEntries = Object.entries(extraOrderDetails).filter(([_k, v]) => isAdmin || v.dropdown == true);
 
   return(
     <>
@@ -225,7 +170,7 @@ export default function ExhibitorExtra({
             <div className="flex flex-1 flex-col items-center bg-black/25 border-2 border-cerise rounded-xl pt-6 pb-10 overflow-hidden">
               <form className="flex flex-col w-[90%] bg-transparent outline-none gap-4">
                 <div className="flex justify-between items-end flex-1">
-                  <h2 className="text-2xl text-white font-medium">Lägg till extrabeställning</h2>
+                      <h2 className="text-2xl text-white font-medium">{t.admin.extraOrders.addItem.title}</h2>
                 </div>
                 <div className="flex items-end gap-4">
                   <div className="flex flex-col flex-1 max-w-xs">
@@ -235,7 +180,7 @@ export default function ExhibitorExtra({
                     <Select
                       name="type"
                       values={dropdownEntries.map(([k, _v]) => k)}
-                      options={dropdownEntries.map(([_k, v]) => v.name[t.locale])}
+                      options={dropdownEntries.map(([k]) => t.admin.extraOrders.itemNames[k as ExtraOrderType])}
                       value={itemType}
                       setValue={setItemType}
                       />
@@ -255,7 +200,7 @@ export default function ExhibitorExtra({
                       {t.admin.extraOrders.itemFields.price_per_unit}:
                     </h4>
                     <div className="flex h-8 items-center">
-                      <p className="text-white md:text-sm text-[9px]">{pricePerUnit} kr</p>
+                      <p className="text-white md:text-sm text-[9px]">{pricePerUnit} {t.admin.extraOrders.currency}</p>
                     </div>
                   </div>
                   <div className="flex flex-col items-end flex-1">
@@ -263,7 +208,7 @@ export default function ExhibitorExtra({
                       {t.admin.extraOrders.itemFields.total_price}:
                     </h4>
                     <div className="flex h-8 items-center">
-                      <p className="text-white md:text-base text-sm">{totalPrice} kr</p>
+                      <p className="text-white md:text-base text-sm">{totalPrice} {t.admin.extraOrders.currency}</p>
                     </div>
                   </div>
                 </div>
@@ -296,7 +241,7 @@ export default function ExhibitorExtra({
             <div className="flex justify-between items-end flex-1">
               <h2 className="text-2xl text-white font-medium">{t.admin.extraOrders.sections.accepted.title}</h2>
               <button className="bg-cerise py-2.5 px-4 rounded-full text-center hover:scale-105 transition-transform text-white uppercase" onClick={() => setAddItem(true)}>
-                Lägg till
+                {t.admin.extraOrders.addItem.button}
               </button>
             </div>
             <div className="flex flex-1">
@@ -307,7 +252,7 @@ export default function ExhibitorExtra({
                   ...x.item,
                   id: x.id,
                   price_per_unit: Number(x.item.price_per_unit),
-                  type: extraOrderDetails?.[x.item.type]?.name?.[t.locale]
+                  type: t.admin.extraOrders.itemNames[x.item.type as ExtraOrderType]
                 }))}
                 />
             </div>
@@ -328,32 +273,34 @@ export default function ExhibitorExtra({
                   ...x.item,
                   id: x.id,
                   price_per_unit: Number(x.item.price_per_unit),
-                  type: extraOrderDetails?.[x.item.type]?.name?.[t.locale]
+                  type: t.admin.extraOrders.itemNames[x.item.type as ExtraOrderType]
                 }))}
                 />
             </div>
           </div>
-
-          <div className={cn("flex flex-col gap-2 ", addItem ? "opacity-60 pointer-events-none" : "")}>
-            <div className="flex justify-between items-end flex-1">
-              <h2 className="text-2xl text-white font-medium">{t.admin.extraOrders.sections.history.title}</h2>
+          
+          {isAdmin &&
+            <div className={cn("flex flex-col gap-2 ", addItem ? "opacity-60 pointer-events-none" : "")}>
+              <div className="flex justify-between items-end flex-1">
+                <h2 className="text-2xl text-white font-medium">{t.admin.extraOrders.sections.history.title}</h2>
+              </div>
+              <div className="flex flex-1">
+                <CompanyDataTable
+                  t={t}
+                  columns={historyColumns}
+                  data={history.sort((a, b) => (b?.created_at?.getTime() ?? 0) - (a?.created_at?.getTime() ?? 0)).map(x => ({
+                    ...x.item,
+                    id: x.id,
+                    //person: x.person,
+                    price_per_unit: Number(x.item.price_per_unit),
+                    action: x.action ? t.admin.extraOrders.actionLabels[x.action] : undefined,
+                    actionColor: x.action ? extraOrderActionColors[x.action] : undefined,
+                    type: t.admin.extraOrders.itemNames[x.item.type as ExtraOrderType]
+                  }))}
+                  />
+              </div>
             </div>
-            <div className="flex flex-1">
-              <CompanyDataTable
-                t={t}
-                columns={historyColumns}
-                data={history.sort((a, b) => (b?.created_at?.getTime() ?? 0) - (a?.created_at?.getTime() ?? 0)).map(x => ({
-                  ...x.item,
-                  id: x.id,
-                  //person: x.person,
-                  price_per_unit: Number(x.item.price_per_unit),
-                  action: x.action ? extraOrderActionDetails[x.action]?.[t.locale] : undefined,
-                  actionColor: x.action ? extraOrderActionDetails[x.action]?.color : undefined,
-                  type: extraOrderDetails?.[x.item.type]?.name?.[t.locale]
-                }))}
-                />
-            </div>
-          </div>
+          }
         </div>
       </ExhibitorLayout>
     </>

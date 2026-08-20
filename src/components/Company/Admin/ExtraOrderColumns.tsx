@@ -126,7 +126,6 @@ export const getOrderColumns = ({
   });
 
   if(!!onAccept || !!onCancel){
-    console.log("CREATE COLUMN ACTIONS")
     columns.push({
       id: "actions",
       header: () => (
@@ -143,7 +142,7 @@ export const getOrderColumns = ({
                   className="rounded-md border-1 border-cerise background-transparent hover:scale-105"
                   onClick={() => onAccept(row.original.id)}
                 >
-                  <img src={"/icons/check.png"} alt="Accept" className="max-h-6" />
+                  <img src={"/icons/check.png"} alt={t.admin.extraOrders.addItem.accept} className="max-h-6" />
                 </button>
               }
               {onCancel &&
@@ -151,7 +150,7 @@ export const getOrderColumns = ({
                   className="rounded-md border-1 border-white background-transparent hover:scale-105"
                   onClick={() => onCancel(row.original.id)}
                 >
-                  <img src={"/icons/cross.png"} alt="Cancel" className="max-h-6" />
+                  <img src={"/icons/cross.png"} alt={t.admin.extraOrders.addItem.cancelRequest} className="max-h-6" />
                 </button>
               }
             </div>
