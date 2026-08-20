@@ -17,30 +17,27 @@ export default function ExhibitorOverview({
 }) {
   const t = useLocale();
   const router = useRouter();
+  const trpc = api.useContext();
 
   // States
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
+  const [name, setName] = useState<string>("");
 
   const getName = api.exhibitor.getName.useQuery();
-  const getIsLoggedIn = api.account.isLoggedIn.useQuery(undefined, {
-    onSuccess: (data: any) => {
-      setIsLoggedIn(data);
-    },
-  });
 
-  // Manage login
   useEffect(() => {
-    if (!getIsLoggedIn.isSuccess) return;
-    //if (isLoggedIn == false) router.push("/logga-in");
-  }, [isLoggedIn]);
-
+    if(!getName.isSuccess) return;
+    setName(getName.data.name)
+  }, [getName.data]);
 
   return(
     <>
       <ExhibitorLayout>
-        <>
-            <h2 className="text-white">Overview</h2>
-        </>
+        <div className="flex flex-col gap-2">
+            <h2 className="uppercase text-cerise text-2xl md:text-4xl font-normal px-[10px] break-words w-full text-center pt-4">
+                {name}
+            </h2>
+            <p className="text-white text-center">Fill out your company information</p>
+        </div>
       </ExhibitorLayout>
     </>
   );

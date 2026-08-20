@@ -1270,6 +1270,30 @@ export default {
       },
     },
     extraOrders: {
+      addItem: {
+        title: "Lägg till extrabeställning",
+        button: "Lägg till",
+        cancel: "Avbryt",
+        submit: "Skicka förfrågan",
+        accept: "Acceptera förfrågan",
+        cancelRequest: "Avbryt förfrågan",
+      },
+      itemNames: {
+        table: "Ståbord",
+        chair: "Stol",
+        drink_tickets_alc: "Dryckesbiljetter (3 st) (alkohol)",
+        drink_tickets_alc_free: "Dryckesbiljetter (3 st) (alkoholfri)",
+        meal_ticket: "Matbiljett (inkl. lunch & frukost)",
+        banquette_ticket: "Biljett till middag och efterfest",
+      },
+      actionLabels: {
+        CREATED_REQUEST: "Skapad förfrågan",
+        CANCELED_REQUEST: "Avbruten förfrågan",
+        ACCEPTED_REQUEST: "Accepterad förfrågan",
+        UPDATED_REQUEST: "Uppdaterad förfrågan",
+        CANCELED_ORDER: "Avbruten order",
+        CREATED_ORDER: "Skapad order",
+      },
       header: {
         order: "Beställning",
         extras: "Tillägg",
@@ -1308,10 +1332,7 @@ export default {
         total_price: "Total pris",
         empty: "Inga extrabeställningar hittades"
       },
-      addItem: {
-        cancel: "Avbryt",
-        submit: "Skicka förfrågan"
-      }
+      currency: "kr",
     },
     preferences: {
       header: {

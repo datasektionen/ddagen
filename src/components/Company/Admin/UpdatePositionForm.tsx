@@ -63,7 +63,7 @@ export function UpdatePositionForm({
             </button>
             <div className="flex flex-col px-5 mt-5">
               <h2 className="text-black mb-8 text-3xl font-medium uppercase">
-                {t.admin.sales.header.position + exhibitor.name}
+                {t.admin.sales.header.position + " - " + exhibitor.name}
               </h2>
   
               <form
