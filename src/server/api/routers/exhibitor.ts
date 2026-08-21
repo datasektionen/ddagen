@@ -12,6 +12,7 @@ import sendEmail from "@/utils/send-email";
 import { randomUUID } from "crypto";
 import { error, time } from "console";
 import { get } from "http";
+import { getSession } from "@/utils/openid";
 
 const foodPreferencesType = z.enum(["Representative", "Banquet"]);
 const foodPreferencesValue = z.enum([
@@ -1136,6 +1137,11 @@ export const exhibitorRouter = createTRPCRouter({
         return;
       }
 
+      const exhibitor = await ctx.prisma.exhibitor.findUnique({
+        where: { id: ctx.session.exhibitorId },
+        select: { name: true, salesperson: true },
+      });
+
       const existing_request = await ctx.prisma.extraOrderReq.findFirst({
         where: {
           exhibitor_id: ctx.session.exhibitorId,
@@ -1147,6 +1153,7 @@ export const exhibitorRouter = createTRPCRouter({
       });
 
       let action: ExtraOrderHistoryType;
+      let userEmail = (await getSession(ctx.cookies))?.email ?? "";
 
       if (existing_request) {
         action = "UPDATED_REQUEST";
@@ -1175,9 +1182,25 @@ export const exhibitorRouter = createTRPCRouter({
           item_id: item.id,
           action: action,
           person_name: "",
-          person_email: "",
+          person_email: userEmail,
         }
       });
+
+      const isAdmin = userEmail.toLowerCase().endsWith("@ddagen.se");
+      const salespersonEmail = exhibitor?.salesperson;
+      if (!isAdmin && salespersonEmail && z.string().email().safeParse(salespersonEmail).success) {
+        try {
+          await sendEmail(
+            salespersonEmail,
+            `Extra order request from ${exhibitor.name}`,
+            `<p>${exhibitor.name} (${userEmail}) has requested an extra order:</p>` +
+              `<ul><li>Type: ${input.type}</li><li>Amount: ${input.amount}</li>` +
+              `<li>Price per unit: ${input.price_per_unit}</li></ul>`
+          );
+        } catch (error) {
+          console.error("Failed to notify salesperson about extra order request", error);
+        }
+      }
 
       console.log(Object.keys(ctx));
       console.log(item)
@@ -1195,13 +1218,15 @@ export const exhibitorRouter = createTRPCRouter({
         }
       });
 
+      let userEmail = (await getSession(ctx.cookies))?.email ?? "";
+
       await ctx.prisma.extraOrderHistory.create({
         data: {
           exhibitor_id: ctx.session.exhibitorId,
           item_id: input,
           action: "CANCELED_REQUEST",
           person_name: "",
-          person_email: "",
+          person_email: userEmail,
         }
       });
     }),
@@ -1215,13 +1240,15 @@ export const exhibitorRouter = createTRPCRouter({
         }
       });
 
+      let userEmail = (await getSession(ctx.cookies))?.email ?? "";
+
       await ctx.prisma.extraOrderHistory.create({
         data: {
           exhibitor_id: ctx.session.exhibitorId,
           item_id: input,
           action: "ACCEPTED_REQUEST",
           person_name: "",
-          person_email: "",
+          person_email: userEmail,
         }
       });
     }),

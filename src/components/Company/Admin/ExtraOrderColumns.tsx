@@ -16,6 +16,13 @@ export type ExtraOrderColumns = {
   person?: ExtraOrderPerson;
 } & ExtraOrderItem;
 
+const formatAction = (action?: string) =>
+  action
+    ? action.toLowerCase().replace(/(^|_)(\w)/g, (_, separator, character) =>
+        `${separator ? " " : ""}${character.toUpperCase()}`
+      )
+    : "";
+
 export const getOrderColumns = ({
   t,
   showAction,
@@ -40,7 +47,7 @@ export const getOrderColumns = ({
             className="text-header"
             style={{color: row.original.actionColor ?? "#FFFFFF"}}
           >
-            {row.original.action}
+            {formatAction(row.original.action)}
           </span>
         </div>
       ),
@@ -58,15 +65,7 @@ export const getOrderColumns = ({
       size: 30,
       cell: ({ row }) => (
         <div className="flex flex-1 items-center gap-3">
-          {row.original.person?.is_admin ?
-            <img
-              src="/img/fluga_cerise.svg"
-              alt="D-Dagen"
-              className="h-6"
-              />
-            :
-            <div className="min-w-6 min-h-6 h-6 w-6 max-w-6 max-h-6 bg-black rounded-md"></div>
-          }
+          <span className="text-header">{row.original.person?.email?.[0]?.toUpperCase() ?? "-"}</span>
         </div>
       ),
     });

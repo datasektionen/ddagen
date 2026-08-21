@@ -96,7 +96,7 @@ export default function ExhibitorExtra({
   const getIsLoggedIn = api.account.isLoggedIn.useQuery(undefined, {
     onSuccess: (data: any) => {
       setIsLoggedIn(data.ok);
-      console.log("IS ADMIN?", data);
+      //console.log("IS ADMIN?", data);
       setIsAdmin(data.isAdmin);
     },
   });
@@ -108,7 +108,7 @@ export default function ExhibitorExtra({
   }, [isLoggedIn]);
 
   const handleAcceptRequest = (request_id: string) => {
-    console.log("ACCEPT REQUEST WITH ID", request_id);
+    //console.log("ACCEPT REQUEST WITH ID", request_id);
     if (!isAdmin) return;
     const rq = requested.find(x => x.id == request_id)
     if (!rq) return;
@@ -117,7 +117,7 @@ export default function ExhibitorExtra({
   }
 
   const handleCancelRequest = (request_id: string) => {
-    console.log("CANCEL REQUEST WITH ID", request_id);
+    //console.log("CANCEL REQUEST WITH ID", request_id);
 
     const rq = requested.find(x => x.id == request_id)
     if(!rq) return;
@@ -157,8 +157,6 @@ export default function ExhibitorExtra({
 
   const pricePerUnit = itemType ? extraOrderDetails[itemType].price_per_unit : "-";
   const totalPrice = parseInt(itemAmount ?? 0) > 0 && pricePerUnit != "-" ? parseInt(itemAmount ?? 0) * pricePerUnit : "-"
-
-  console.log(history);
 
   const dropdownEntries = Object.entries(extraOrderDetails).filter(([_k, v]) => isAdmin || v.dropdown == true);
 
@@ -291,6 +289,7 @@ export default function ExhibitorExtra({
                   data={history.sort((a, b) => (b?.created_at?.getTime() ?? 0) - (a?.created_at?.getTime() ?? 0)).map(x => ({
                     ...x.item,
                     id: x.id,
+                    person: { email: x.person_email },
                     //person: x.person,
                     price_per_unit: Number(x.item.price_per_unit),
                     action: x.action ? t.admin.extraOrders.actionLabels[x.action] : undefined,

@@ -48,6 +48,7 @@ model Exhibitor {
   companyAddress String?
   invoiceEmail   String?
   billingMethod  String?
+  salesperson    String  @default("")
 
   socialMediaPost            Int @default(0)
   panelDiscussion            Int @default(0)
