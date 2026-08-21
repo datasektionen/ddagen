@@ -27,6 +27,7 @@ export function AddExhibitorForm({
   const [contactPerson, setContactPerson] = useState("");
   const [telephoneNumber, setTelephoneNumber] = useState("");
   const [email, setEmail] = useState("");
+  const [salesperson, setSalesperson] = useState("");
   const [packageTier, setPackageTier] = useState<number>(-1);
   const [studentMeetings, setStudentMeetings] = useState<number>(0);
   const [sendEmailToExhibitor, setSendEmailToExhibitor] = useState<boolean>(false);
@@ -34,6 +35,13 @@ export function AddExhibitorForm({
   const [meetingTimeSlots, setMeetingTimeSlots] = useState<number[]>([]);
 
   const [exhibitorInterestValue, setExhibitorInterestValue] = useState<number>(-1);
+  const { data: user } = api.account.getUser.useQuery();
+
+  useEffect(() => {
+    if (user?.email && !salesperson) {
+      setSalesperson(user.email);
+    }
+  }, [user?.email, salesperson]);
 
 
   const handlePackageTier = (value: number) => {
@@ -52,6 +60,7 @@ export function AddExhibitorForm({
       Boolean(sendEmailToExhibitor),
       Number(mapPosition),
       meetingTimeSlots,
+      salesperson,
     );
   }
 
@@ -187,6 +196,14 @@ export function AddExhibitorForm({
                 setValue={setEmail}
                 //fields={{ email: "E-post" }}
                 fields={{ email: t.admin.addCompany.addExhibitorForm.email }}
+              />
+              <InputField
+                name="salesperson"
+                value={salesperson}
+                type="email"
+                setValue={setSalesperson}
+                fields={{ salesperson: t.admin.sales.header.salesperson }}
+                required
               />
               <SelectField
                 name="packageTier"

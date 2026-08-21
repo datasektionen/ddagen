@@ -54,7 +54,8 @@ export const adminRouter = createTRPCRouter({
                         exhibitor.industry ?? "",
                         exhibitor.industryType ?? "",
                         exhibitor.alcFreeDrinkCoupons,
-                        exhibitor.mapPosition
+                        exhibitor.mapPosition,
+                        exhibitor.salesperson
                     )
             );
         }),
@@ -91,7 +92,8 @@ export const adminRouter = createTRPCRouter({
                     0,
                     false,
                     0,
-                    []
+                    [],
+                    ""
                 )
         );
     }),
@@ -257,6 +259,7 @@ export const adminRouter = createTRPCRouter({
         sendEmailToExhibitor: z.boolean(),
         mapPosition: z.number(),
         meetingTimeSlots: z.array(z.number()),
+        salesperson: z.string().email(),
       })
     )
     .mutation(async ({ ctx, input }) => {
@@ -275,6 +278,7 @@ export const adminRouter = createTRPCRouter({
         sendEmailToExhibitor,
         mapPosition,
         meetingTimeSlots,
+        salesperson,
       } = input;
       const exhibitor = await ctx.prisma.exhibitor.upsert({
         where: {
@@ -284,6 +288,7 @@ export const adminRouter = createTRPCRouter({
           name: companyName,
           organizationNumber: organizationNumber,
           invoiceEmail: email,
+          salesperson: salesperson,
           logoWhite: null,
           logoColor: null,
           description: "",
@@ -322,6 +327,7 @@ export const adminRouter = createTRPCRouter({
           studentMeetings: studentMeetings,
           mapPosition: mapPosition,
           meetingTimeSlots: meetingTimeSlots ?? [],
+                    salesperson: salesperson,
         },
       });
 
@@ -358,4 +364,17 @@ export const adminRouter = createTRPCRouter({
     }
     return { ok: true };
     }),
+    updateSalesperson: publicProcedure
+        .input(z.object({ exhibitorId: z.string(), salesperson: z.string().email() }))
+        .mutation(async ({ input, ctx }) => {
+            if (!(await hive.isAdmin(ctx.cookies))) {
+                return "UNAUTHORIZED";
+            }
+
+            await ctx.prisma.exhibitor.update({
+                where: { id: input.exhibitorId },
+                data: { salesperson: input.salesperson },
+            });
+            return { ok: true };
+        }),
 });

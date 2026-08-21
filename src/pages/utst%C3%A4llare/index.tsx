@@ -36,7 +36,7 @@ export default function ExhibitorOverview({
             <h2 className="uppercase text-cerise text-2xl md:text-4xl font-normal px-[10px] break-words w-full text-center pt-4">
                 {name}
             </h2>
-            <p className="text-white text-center">Fill out your company information</p>
+            <p className="text-white text-center">{t.exhibitorSettings.header}</p>
         </div>
       </ExhibitorLayout>
     </>

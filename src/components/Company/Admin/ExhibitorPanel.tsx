@@ -20,6 +20,7 @@ import { DeleteExhibitorLock } from "./DeleteExhibitorLock";
 import { UpdateCompanyHost } from "./updateCompanyHostForm";
 import { UpdatePositionForm } from "./UpdatePositionForm";
 import { UpdateIndustryTypeForm } from "./UpdateIndustryTypeForm";
+import { UpdateSalespersonForm } from "./UpdateSalespersonForm";
 
 export function ExhibitorPanel({
   t,
@@ -51,6 +52,7 @@ export function ExhibitorPanel({
   const [showCompanyHostForm, setShowCompanyHostForm] = useState<boolean>(false);
   const [showUpdatePositionForm, setShowUpdatePositionForm] = useState<boolean>(false);
   const [showUpdateIndustryTypeForm, setShowIndustryTypeForm] = useState<boolean>(false);
+  const [showUpdateSalespersonForm, setShowUpdateSalespersonForm] = useState<boolean>(false);
 
   const router = useRouter();
   const trpc = api.useContext();
@@ -61,6 +63,7 @@ export function ExhibitorPanel({
   const updateCompanyHost = api.exhibitor.setCompanyHost.useMutation();
   const updatePosition = api.exhibitor.setPosition.useMutation();
   const updateIndustryType = api.exhibitor.setIndustryType.useMutation();
+  const updateSalesperson = api.admin.updateSalesperson.useMutation();
 
   useEffect(() => {
     if (login.isSuccess) {
@@ -180,6 +183,16 @@ export function ExhibitorPanel({
       }
     }
 
+  async function handleUpdateSalesperson(exhibitorId: string, salesperson: string) {
+    try {
+      await updateSalesperson.mutateAsync({ exhibitorId, salesperson });
+      await reloadLogin();
+    }
+    catch(err) {
+      console.error(err);
+    }
+  }
+
   async function handleAddExhibitor(exhibitor: ExhibitorInfo) {
     addExhibitor.mutateAsync({
       contactPerson: exhibitor.contactPerson,
@@ -187,6 +200,7 @@ export function ExhibitorPanel({
       companyName: exhibitor.companyName,
       organizationNumber: exhibitor.organizationNumber,
       email: exhibitor.email,
+      salesperson: exhibitor.salesperson,
       packageTier: exhibitor.packageTier,
       studentMeetings: exhibitor.studentMeetings,
       sendEmailToExhibitor: exhibitor.sendEmailToExhibitor,
@@ -231,6 +245,11 @@ export function ExhibitorPanel({
   function closeUpdateIndustryTypeForm() {
     setSelectedExhibitor(undefined);
     setShowIndustryTypeForm(false);
+  }
+
+  function closeUpdateSalespersonForm() {
+    setSelectedExhibitor(undefined);
+    setShowUpdateSalespersonForm(false);
   }
 
   const handleDeleteExhibitor = async (exhibitorId: string) => {
@@ -426,6 +445,7 @@ export function ExhibitorPanel({
                   <th>{t.exhibitorSettings.table.row5.title}</th>
                   <th>{t.admin.sales.header.companyHost.name}</th>
                   <th>{t.admin.sales.header.position}</th>
+                  <th>{t.admin.sales.header.salesperson}</th>
                   <th>{t.exhibitorSettings.fieldsUpdateIndustryType.industry}</th>
                     {showDeleteExhibitor &&
                     <th>
@@ -531,7 +551,7 @@ export function ExhibitorPanel({
                         <b>{t.exhibitorSettings.table.row5.section1.email}</b>
                         {exhibitor.invoiceEmail || "U/A"}
                         <b>{t.exhibitorSettings.table.row5.section1.billingMethodText}</b>
-                        {exhibitor.billingMethod == "" ? t.exhibitorSettings.table.row5.section1.billingMethods[0] : exhibitor.billingMethod}
+                        {exhibitor.billingMethod == "" ? "U/A"/*t.exhibitorSettings.table.row5.section1.billingMethods[0]*/ : exhibitor.billingMethod}
                         <b>{t.exhibitorSettings.table.row5.section1.physicalAddress}</b>
                         {exhibitor.physicalAddress || "U/A"}
                         <b>{t.exhibitorSettings.table.row5.section1.organizationNumber}</b>
@@ -578,6 +598,26 @@ export function ExhibitorPanel({
                           onClick={()=>{setSelectedExhibitor(exhibitor); setShowUpdatePositionForm(true)}}
                           >
                           {t.admin.sales.header.specialOrders.specialOrderButton}
+                          </button>
+                        )}
+                      </div>
+                    </td>
+                    <td>
+                      <div className="flex flex-col">
+                        <b>{t.admin.sales.header.salesperson}</b>
+                        {exhibitor.salesperson || "N/A"}
+                      </div>
+                      <div className="w-full text-xl mb-5 font-medium">
+                        {selectedExhibitor?.id == exhibitor.id && showUpdateSalespersonForm ? (
+                          <UpdateSalespersonForm t={t} exhibitor={selectedExhibitor} closeModal={closeUpdateSalespersonForm}
+                            setSalesperson={handleUpdateSalesperson}
+                            setShowUpdateSalespersonForm={setShowUpdateSalespersonForm}/>
+                        ) : (
+                          <button
+                            className="mt-2 bg-cerise bg-blue-500 py-1 px-2 rounded-md"
+                            onClick={() => { setSelectedExhibitor(exhibitor); setShowUpdateSalespersonForm(true); }}
+                          >
+                            {t.admin.sales.header.specialOrders.specialOrderButton}
                           </button>
                         )}
                       </div>

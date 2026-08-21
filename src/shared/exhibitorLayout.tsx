@@ -80,7 +80,7 @@ const exhibitorNav = {
       url: "/utställare/banquetten"
     },
     {
-      text: "Additional orders",
+      text: "Extra orders",
       url: "/utställare/extra"
     },
     {
@@ -110,6 +110,7 @@ export default function ExhibitorLayout({
 
   // States
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
 
   const logout = api.admin.logout.useMutation();
 
@@ -120,26 +121,27 @@ export default function ExhibitorLayout({
   const getIsLoggedIn = api.account.isLoggedIn.useQuery(undefined, {
     onSuccess: (data: any) => {
       setIsLoggedIn(data.ok);
+      setIsAdmin(data.isAdmin);
     },
   });
 
   useEffect(() => {
-    console.log("IS LOGGED IN?", getIsLoggedIn.isSuccess)
+    //console.log("IS LOGGED IN?", getIsLoggedIn.isSuccess)
     if (!getIsLoggedIn.isSuccess) return;
     if (!isLoggedIn){
-      console.log("IS NOT LOGGED IN, HANDLE LOG OUT")
+      //console.log("IS NOT LOGGED IN, HANDLE LOG OUT")
       handleLogout();
       return;
     }
   }, [getIsLoggedIn.isSuccess, isLoggedIn]);
 
   const handleLogout = () => {
-    console.log("CALL LOGOUT")
+    //console.log("CALL LOGOUT")
     logout.mutate();
   }
 
   useEffect(() => {
-    console.log("LOG OUT IS SUCCESS?", logout.isSuccess);
+    //console.log("LOG OUT IS SUCCESS?", logout.isSuccess);
     if (logout.isSuccess && logout.data.status) {
       trpc.account.invalidate();
       router.push("/logga-in");
@@ -169,16 +171,13 @@ export default function ExhibitorLayout({
       <Head>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
-      <div className="xl:w-[1200px] lg:w-[1000px] w-full mx-auto">
+      <div className="xl:w-[1200px] lg:w-[1000px] w-full mx-auto my-36">
         <div className="mx-auto flex flex-1 flex-col items-start py-40 cursor-default bg-darkblue bg-opacity-75">
           {/*Header*/}
-          <div className="flex flex-1 w-full flex-col sm:flex-row justify-between items-start">
+          <div className="flex flex-1 w-full flex-col sm:flex-row justify-between items-end">
             <div className="flex flex-col gap-2">
-              <h1 className="uppercase text-cerise text-3xl md:text-5xl font-medium break-words">
-                {t.exhibitorSettings.header}
-              </h1>
-              {allowNameEdit ?
-                <div className="flex flex-row items-center gap-4 mt-4">
+              {isAdmin ?
+                <div className="flex flex-row items-center gap-4 mb-2">
                   <h2 className="text-white text-xl" >
                     {editNameState ? <InputField
                       value={name}
@@ -206,8 +205,11 @@ export default function ExhibitorLayout({
                   </h2>
                 </div>
               }
+              <h1 className="uppercase text-cerise text-3xl md:text-5xl font-medium break-words">
+                {t.exhibitorSettings.header}
+              </h1>
             </div>
-            <div className="flex flex-row items-center gap-4">
+            <div className="flex flex-row items-center gap-4 mb-2">
               <button
                 className={cn(
                   "bg-transparent border-[1px] border-white rounded-full text-center hover:scale-105 transition-transform text-white uppercase",

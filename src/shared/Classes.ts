@@ -240,6 +240,7 @@ export class Exhibitor {
   industryType: string;
   alcFreeTicket: number;
   mapPosition: number;
+  salesperson: string;
 
   constructor(
     id: string,
@@ -277,6 +278,7 @@ export class Exhibitor {
     industryType: string,
     alcFreeTicket: number,
     mapPosition: number,
+    salesperson: string,
   ) {
     this.id = id;
     this.name = exhibitorName;
@@ -313,6 +315,7 @@ export class Exhibitor {
     this.industryType = industryType;
     this.alcFreeTicket = alcFreeTicket;
     this.mapPosition = mapPosition;
+    this.salesperson = salesperson;
   }
 }
 
@@ -327,6 +330,7 @@ export class ExhibitorInfo {
   sendEmailToExhibitor: boolean;
   mapPosition: number;
   meetingTimeSlots: number[];
+  salesperson: string;
 
   constructor(
     companyName: string,
@@ -339,6 +343,7 @@ export class ExhibitorInfo {
     sendEmailToExhibitor: boolean,
     mapPosition: number,
     meetingTimeSlots: number[],
+    salesperson: string,
   ) {
     this.companyName = companyName;
     this.organizationNumber = organizationNumber;
@@ -350,6 +355,7 @@ export class ExhibitorInfo {
     this.sendEmailToExhibitor = sendEmailToExhibitor;
     this.mapPosition = mapPosition;
     this.meetingTimeSlots = meetingTimeSlots;
+    this.salesperson = salesperson;
   }
 }
 
