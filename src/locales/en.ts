@@ -1239,6 +1239,7 @@ export default {
         description: "Description",
         package: "Package",
         position: "Map Position",
+        salesperson: "Salesperson",
         delete: "Remove",
         companyHost: {
           name: "Company host",

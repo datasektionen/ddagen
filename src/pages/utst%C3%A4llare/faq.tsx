@@ -38,9 +38,12 @@ export default function ExhibitorFAQ({
   return(
     <>
       <ExhibitorLayout>
-        <>
-            <h2 className="text-white">FAQ</h2>
-        </>
+        <div className="flex flex-col gap-2">
+            <h2 className="uppercase text-cerise text-2xl md:text-4xl font-normal px-[10px] break-words w-full text-center pt-4">
+                FAQ
+            </h2>
+            <p className="text-white text-center"></p>
+        </div>
       </ExhibitorLayout>
     </>
   );

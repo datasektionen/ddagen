@@ -1233,6 +1233,7 @@ export default {
         description: "Beskrivning",
         package: "Paket",
         position: "Plats på kartan",
+        salesperson: "Säljare",
         delete: "Ta bort",
         companyHost: {
           name: "Företagsvärd",
