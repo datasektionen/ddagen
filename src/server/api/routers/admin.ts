@@ -152,8 +152,8 @@ export const adminRouter = createTRPCRouter({
 
             const secure = process.env.NODE_ENV === 'production' ? 'Secure;' : '';
             ctx.res.setHeader("Set-Cookie", [
-                `session=${session.id}; Path=/; HttpOnly; SameSite=Lax; ${secure}`,
-                `token=${ctx.cookies.token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=300; ${secure}`
+                `session=${session.id}; Path=/; HttpOnly; SameSite=Lax; Max-Age=86400; ${secure}`,
+                `token=${ctx.cookies.token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=86400; ${secure}`
             ]);
 
             return { ok: true };
@@ -222,7 +222,7 @@ export const adminRouter = createTRPCRouter({
         ctx.res.setHeader("Set-Cookie", [
             `oidc_state=; Path=/; Max-Age=0; HttpOnly`,
             `oidc_code_verifier=; Path=/; Max-Age=0; HttpOnly`,
-            `token=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=300; ${secure}`
+            `token=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=86400; ${secure}`
         ]);
 
         return { ok: true };

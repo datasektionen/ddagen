@@ -90,7 +90,7 @@ export const accountRouter = createTRPCRouter({
           ctx.res.setHeader("Set-Cookie", [
               `oidc_state=; Path=/; Max-Age=0; HttpOnly`,
               `oidc_code_verifier=; Path=/; Max-Age=0; HttpOnly`,
-              `token=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=300; ${secure}`
+              `token=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=86400; ${secure}`
           ]);
 
           return { ok: true, isAdmin: true };
@@ -132,7 +132,7 @@ export const accountRouter = createTRPCRouter({
       // Set cookie, forget the used up OIDC cookies, keep the internal JWT. Check it with isAdmin(token)
       const secure = process.env.NODE_ENV === 'production' ? 'Secure;' : '';
       ctx.res.setHeader("Set-Cookie", [
-        `session=${session.id}; Path=/; HttpOnly; SameSite=Lax; ${secure}`, // TODO , remove old session prisma state, only do jwt
+        `session=${session.id}; Path=/; HttpOnly; SameSite=Lax; Max-Age=86400; ${secure}`, // TODO , remove old session prisma state, only do jwt
         `oidc_state=; Path=/; Max-Age=0; HttpOnly`,
         `oidc_code_verifier=; Path=/; Max-Age=0; HttpOnly`,
       ]);
@@ -275,7 +275,7 @@ export const accountRouter = createTRPCRouter({
         });
 
         ctx.res.setHeader("Set-Cookie", [
-          `token=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=300; ${secure}`,
+          `token=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=86400; ${secure}`,
         ]);
 
         return { ok: true, isAdmin: true };
@@ -290,7 +290,7 @@ export const accountRouter = createTRPCRouter({
         ]);
 
         ctx.res.setHeader("Set-Cookie", [
-          `session=${session.id}; Path=/; HttpOnly; SameSite=Lax; ${secure}`,
+          `session=${session.id}; Path=/; HttpOnly; SameSite=Lax; Max-Age=86400; ${secure}`,
         ]);
 
         return { ok: true, isAdmin: false };

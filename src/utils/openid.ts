@@ -62,7 +62,7 @@ export async function createSessionToken(payload: any) {
   return await new SignJWT(payload)
     .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
-    .setExpirationTime("60m")
+    .setExpirationTime("24h")
     .sign(secret);
 }
 
