@@ -118,7 +118,7 @@ model Session {
   user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   exhibitorId String
-  exhibitor   Exhibitor @relation(fields: [exhibitorId], references: [id])
+  exhibitor   Exhibitor @relation(fields: [exhibitorId], references: [id], onDelete: Cascade)
 
   @@map("sessions")
 }
