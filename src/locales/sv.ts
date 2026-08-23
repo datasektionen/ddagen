@@ -1269,6 +1269,7 @@ export default {
         },
         deleteExhibitor: "TA BORT"
       },
+      allCompanies: "Alla företag",
     },
     extraOrders: {
       addItem: {

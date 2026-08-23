@@ -21,6 +21,7 @@ import { UpdateCompanyHost } from "./updateCompanyHostForm";
 import { UpdatePositionForm } from "./UpdatePositionForm";
 import { UpdateIndustryTypeForm } from "./UpdateIndustryTypeForm";
 import { UpdateSalespersonForm } from "./UpdateSalespersonForm";
+import { SelectField } from "@/components/SelectField";
 
 export function ExhibitorPanel({
   t,
@@ -53,6 +54,7 @@ export function ExhibitorPanel({
   const [showUpdatePositionForm, setShowUpdatePositionForm] = useState<boolean>(false);
   const [showUpdateIndustryTypeForm, setShowIndustryTypeForm] = useState<boolean>(false);
   const [showUpdateSalespersonForm, setShowUpdateSalespersonForm] = useState<boolean>(false);
+  const [selectedSalesperson, setSelectedSalesperson] = useState<string>("");
 
   const router = useRouter();
   const trpc = api.useContext();
@@ -64,6 +66,13 @@ export function ExhibitorPanel({
   const updatePosition = api.exhibitor.setPosition.useMutation();
   const updateIndustryType = api.exhibitor.setIndustryType.useMutation();
   const updateSalesperson = api.admin.updateSalesperson.useMutation();
+
+  const salespersonOptions = Array.from(
+    new Set(exhibitors.map((exhibitor) => exhibitor.salesperson).filter(Boolean))
+  );
+  const filteredExhibitors = sortExhibitors(exhibitors).filter(
+    (exhibitor) => !selectedSalesperson || exhibitor.salesperson === selectedSalesperson
+  );
 
   useEffect(() => {
     if (login.isSuccess) {
@@ -427,12 +436,22 @@ export function ExhibitorPanel({
                 }
             </div>
           </div>
-          <div>
+          <div className="flex items-end justify-between gap-4 mb-2">
             <button
             className="mt-2 bg-cerise bg-blue-500 py-1 px-2 rounded-md"
             onClick={()=>downloadCSV(exhibitors, "utställare.csv")}>
               Ladda ned företagsdata
             </button>
+            <div className="w-full max-w-[250px]">
+              <SelectField
+                name="salespersonFilter"
+                options={[t.admin.sales.allCompanies, ...salespersonOptions]}
+                values={["", ...salespersonOptions]}
+                value={selectedSalesperson}
+                setValue={setSelectedSalesperson}
+                fields={{ salespersonFilter: "" }}
+              />
+            </div>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full bg-slate-50 bg-opacity-20 border-collapse border-solid">
@@ -458,7 +477,7 @@ export function ExhibitorPanel({
                 className="[&>tr>td]:border-2 [&>tr>td]:border-t-2 [&>tr>td]:border-solid
                       [&>tr>td]:border-cerise [&>tr>td]:p-4"
               >
-                {sortExhibitors(exhibitors).map((exhibitor, i) => (
+                {filteredExhibitors.map((exhibitor, i) => (
                   <tr key={i}>
                     <td className="text-center break-words">
                       {exhibitor.logoColor ? (

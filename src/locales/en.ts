@@ -1275,6 +1275,7 @@ export default {
         },
         deleteExhibitor: "DELETE"
       },
+      allCompanies: "All companies",
     },
     extraOrders: {
       addItem: {
