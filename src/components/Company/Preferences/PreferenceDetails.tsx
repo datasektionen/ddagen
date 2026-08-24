@@ -22,8 +22,9 @@ export function PreferenceDetails({
 }) {
   const defaultPreference = new Preferences(undefined, "", [], "", type);
 
-  // Number of preferences that are included (show cerise border)
-  const includedCount: number = 2;
+  const includedCount = type === "Banquet"
+    ? exhibitorPackage.banquetTickets
+    : exhibitorPackage.mealCoupons;
 
   const getPreferences = api.exhibitor.getFoodPreferences.useQuery(type);
 
@@ -43,22 +44,6 @@ export function PreferenceDetails({
 
   return (
     <div className="w-full flex flex-col items-center">
-      {preferences.slice(1).map((preference, pos) => {
-        const borderClass = pos < includedCount ? "border-cerise" : "border-red-500";
-        return (
-          <div className={`w-full text-white flex flex-col items-center rounded-xl p-3 mb-4`} key={preference.id}>
-            <EditPreferences
-              t={t}
-              pos={pos + 1}
-              setPos={setPos}
-              preferences={preferences}
-              editState={editState}
-              setEditState={setEditState}
-              borderClass={borderClass}
-            />
-          </div>
-        );
-      })}
       <AddPreferences
         t={t}
         pos={pos}
@@ -70,8 +55,27 @@ export function PreferenceDetails({
         setPreferenceCount={setPreferenceCount}
         editState={editState}
         setEditState={setEditState}
+        setPos={setPos}
         exhibitorPackage={exhibitorPackage}
+        includedCount={includedCount}
       />
+      {preferences.slice(1).map((preference, pos) => {
+        const borderClass = pos < includedCount ? "border-cerise" : "border-gold";
+        return (
+          <div className={`w-full text-white flex flex-col items-center rounded-xl`} key={preference.id}>
+            <EditPreferences
+              t={t}
+              pos={pos + 1}
+              setPos={setPos}
+              preferences={preferences}
+              editState={editState}
+              setEditState={setEditState}
+              borderClass={borderClass}
+              ticketPrice={pos >= includedCount ? (type === "Banquet" ? 2000 : 450) : undefined}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 }

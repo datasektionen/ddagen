@@ -9,6 +9,7 @@ export function UploadButton({
   textAbove,
   textInsideMiddle,
   textInsideBottom,
+  textInsideMiddleClass,
   accept,
   onChange,
 }: {
@@ -18,6 +19,7 @@ export function UploadButton({
   textAbove: string;
   textInsideMiddle: string;
   textInsideBottom: string;
+  textInsideMiddleClass?: string;
   accept: string[];
   onChange?: () => void;
 }) {
@@ -82,7 +84,7 @@ export function UploadButton({
       <div className="relative flex flex-col bg-black/25 w-[150px] h-[150px] rounded-3xl border-solid border-cerise border-2 mx-auto overflow-hidden">
         <h2 className="relative top-[50%] -translate-y-2/4 text-center text-2xl">
           {selectedImage == "" ? (
-            <img className="mx-auto" src={textInsideMiddle} />
+            <img className={`mx-auto ${!!textInsideMiddleClass ? textInsideMiddleClass : ""}`} src={textInsideMiddle} />
           ) : (
             <img className="mx-auto" src={selectedImage} />
           )}

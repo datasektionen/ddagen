@@ -10,43 +10,33 @@ import ExhibitorLayout from "@/shared/exhibitorLayout";
 // Maby break save changes into a separate steps for each page
 // Add Logic to figure out saved state
 
-export default function ExhibitorFAQ({
+export default function ExhibitorOverview({
     children
 } : {
     children: React.ReactElement
 }) {
   const t = useLocale();
   const router = useRouter();
+  const trpc = api.useContext();
 
   // States
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
-  
+  const [name, setName] = useState<string>("");
+
   const getName = api.exhibitor.getName.useQuery();
-  const getIsLoggedIn = api.account.isLoggedIn.useQuery(undefined, {
-    onSuccess: (data: any) => {
-      setIsLoggedIn(data);
-    },
-  });
 
-  // Manage login
   useEffect(() => {
-    if (!getIsLoggedIn.isSuccess) return;
-    //if (isLoggedIn == false) router.push("/logga-in");
-  }, [isLoggedIn]);
+    if(!getName.isSuccess) return;
+    setName(getName.data.name)
+  }, [getName.data]);
 
-  
   return(
     <>
       <ExhibitorLayout>
         <div className="flex flex-col gap-2">
             <h2 className="uppercase text-cerise text-2xl md:text-4xl font-normal px-[10px] break-words w-full text-center pt-4">
-                {t.admin.faq.header}
+                {name}
             </h2>
-            <p className="text-white text-center text-lg">{t.admin.faq.comingSoon}</p>
-            <p className="text-white text-center">
-              {t.admin.faq.contact}
-              <a href="mailto:sales@ddagen.se" className="text-yellow hover:underline">sales@ddagen.se</a>
-            </p>
+            <p className="text-white text-center">{t.exhibitorSettings.header}</p>
         </div>
       </ExhibitorLayout>
     </>

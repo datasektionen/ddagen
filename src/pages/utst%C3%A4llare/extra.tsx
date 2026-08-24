@@ -7,7 +7,7 @@ import Head from "next/head";
 import ExhibitorLayout from "@/shared/exhibitorLayout";
 import { CompanyDataTable } from "@/components/Company/CompanyDataTable";
 import { getOrderColumns } from "@/components/Company/Admin/ExtraOrderColumns";
-import { ExtraOrderAccepted, ExtraOrderAction, ExtraOrderHistory, ExtraOrderItem, ExtraOrderRequest } from "@/shared/Classes";
+import { ExtraOrderAccepted, ExtraOrderAction, ExtraOrderHistory, ExtraOrderRequest, Package } from "@/shared/Classes";
 import { cn } from "@/utils/utils";
 import { Select } from "@/components/Select";
 
@@ -60,6 +60,7 @@ const extraOrderActionColors: Record<ExtraOrderAction, string> = {
   CANCELED_REQUEST: "#FF0000",
   ACCEPTED_REQUEST: "#00FF00",
   UPDATED_REQUEST: "#FFFF00",
+  UPDATED_ORDER: "#FFFF00",
   CANCELED_ORDER: "#FF0000",
   CREATED_ORDER: "#00FF00",
 };
@@ -77,6 +78,8 @@ export default function ExhibitorExtra({
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
   const [isAdmin, setIsAdmin] = useState<boolean>(true);
   const [addItem, setAddItem] = useState<boolean>(false);
+  const [editingItemId, setEditingItemId] = useState<string>();
+  const [editMode, setEditMode] = useState<boolean>(false);
 
   const [itemType, setItemType] = useState<ExtraOrderType>("table");
   const [itemAmount, setItemAmount] = useState<string>("1");
@@ -84,12 +87,76 @@ export default function ExhibitorExtra({
   const createOrderRequest = api.exhibitor.createOrderRequest.useMutation({ onSuccess: () => trpc.exhibitor.getOrders.invalidate() });
   const acceptOrderRequest = api.exhibitor.acceptOrderRequest.useMutation({ onSuccess: () => trpc.exhibitor.getOrders.invalidate() });
   const cancelOrderRequest = api.exhibitor.cancelOrderRequest.useMutation({ onSuccess: () => trpc.exhibitor.getOrders.invalidate() });
+  const cancelOrder = api.exhibitor.cancelOrder.useMutation({ onSuccess: () => trpc.exhibitor.getOrders.invalidate() });
+  const updateOrder = api.exhibitor.updateOrder.useMutation({ onSuccess: () => trpc.exhibitor.getOrders.invalidate() });
 
   const { data: ordersData, isLoading } = api.exhibitor.getOrders.useQuery();
+  const { data: packageData } = api.exhibitor.getPackage.useQuery();
+  const { data: banquetPreferences } = api.exhibitor.getFoodPreferences.useQuery("Banquet");
+  const { data: representativePreferences } = api.exhibitor.getFoodPreferences.useQuery("Representative");
 
   const requested = ordersData?.requests ?? [];
   const history = ordersData?.history.filter((el) => el.action !== "UPDATED_REQUEST") ?? [];
-  const accepted = ordersData?.history.filter((el) => el.action === "ACCEPTED_REQUEST") ?? [];
+  const accepted = Array.from(
+    new Map(
+      (ordersData?.history.filter((el) =>
+        el.action === "ACCEPTED_REQUEST" ||
+        el.action === "UPDATED_ORDER" ||
+        el.action === "CANCELED_ORDER"
+      ) ?? [])
+        .map((entry) => [entry.item.id, entry] as const)
+    ).values()
+  ).filter((entry) => entry.action !== "CANCELED_ORDER");
+
+  const exhibitorPackage = packageData
+    ? new Package(t, packageData.packageTier)
+    : undefined;
+
+  if (exhibitorPackage && packageData) {
+    exhibitorPackage.addCustomOrders(
+      packageData.customTables,
+      packageData.customChairs,
+      packageData.customDrinkCoupons,
+      packageData.customRepresentativeSpots,
+      packageData.customBanquetTicketsWanted,
+      0
+    );
+  }
+
+  const extraMealTicketCount = Math.max(
+    0,
+    (representativePreferences?.length ?? 0) - (exhibitorPackage?.mealCoupons ?? 0)
+  );
+  const extraBanquetteTicketCount = Math.max(
+    0,
+    (banquetPreferences?.length ?? 0) - (exhibitorPackage?.banquetTickets ?? 0)
+  );
+
+  const acceptedExtraOrders = [
+    ...accepted,
+    ...(extraMealTicketCount > 0
+      ? [{
+          item: {
+            id: "extra-meal-tickets",
+            type: "meal_ticket",
+            amount: extraMealTicketCount,
+            price_per_unit: extraOrderDetails.meal_ticket.price_per_unit,
+          },
+          readOnly: true,
+        }]
+      : []),
+    ...(extraBanquetteTicketCount > 0
+      ? [{
+          item: {
+            id: "extra-banquette-tickets",
+            type: "banquette_ticket",
+            amount: extraBanquetteTicketCount,
+            price_per_unit: extraOrderDetails.banquette_ticket.price_per_unit,
+          },
+          readOnly: true,
+        }]
+      : []),
+  ];
 
   const getName = api.exhibitor.getName.useQuery();
   const { data: user } = api.account.getUser.useQuery();
@@ -110,23 +177,31 @@ export default function ExhibitorExtra({
   const handleAcceptRequest = (request_id: string) => {
     //console.log("ACCEPT REQUEST WITH ID", request_id);
     if (!isAdmin) return;
-    const rq = requested.find(x => x.id == request_id)
-    if (!rq) return;
 
-    acceptOrderRequest.mutateAsync(rq.item.id);
+    acceptOrderRequest.mutateAsync(request_id);
   }
 
   const handleCancelRequest = (request_id: string) => {
     //console.log("CANCEL REQUEST WITH ID", request_id);
 
-    const rq = requested.find(x => x.id == request_id)
-    if(!rq) return;
+    cancelOrderRequest.mutateAsync(request_id);
+  }
 
-    cancelOrderRequest.mutateAsync(rq.item.id);
+  const handleCancelOrder = (itemId: string) => {
+    cancelOrder.mutateAsync(itemId);
   }
 
   const acceptedColumns = getOrderColumns({
-    t: t
+    t: t,
+    onCancel: isAdmin && editMode ? handleCancelOrder : undefined,
+    onEdit: isAdmin && editMode ? (itemId: string) => {
+      const order = acceptedExtraOrders.find((entry) => entry.item.id === itemId);
+      if (!order) return;
+
+      setEditingItemId(order.item.id);
+      setItemType(order.item.type as ExtraOrderType);
+      setItemAmount(String(order.item.amount));
+    } : undefined
   });
 
   const requestedColumns = getOrderColumns({
@@ -155,20 +230,36 @@ export default function ExhibitorExtra({
     setAddItem(false);
   }
 
+  const handleEditItem = () => {
+    if (!editingItemId || !(parseInt(itemAmount ?? 0) > 0)) return;
+
+    updateOrder.mutate({
+      itemId: editingItemId,
+      type: itemType,
+      amount: parseInt(itemAmount),
+      price_per_unit: extraOrderDetails[itemType].price_per_unit,
+    });
+
+    setEditingItemId(undefined);
+    setEditMode(false);
+  }
+
   const pricePerUnit = itemType ? extraOrderDetails[itemType].price_per_unit : "-";
   const totalPrice = parseInt(itemAmount ?? 0) > 0 && pricePerUnit != "-" ? parseInt(itemAmount ?? 0) * pricePerUnit : "-"
 
-  const dropdownEntries = Object.entries(extraOrderDetails).filter(([_k, v]) => isAdmin || v.dropdown == true);
+  const dropdownEntries = Object.entries(extraOrderDetails).filter(([_k, v]) => v.dropdown == true);
 
   return(
     <>
       <ExhibitorLayout>
         <div className="flex flex-col gap-8 sm:ml-8 flex-1 text-white">
-          {addItem &&
+          {(addItem || editingItemId) &&
             <div className="flex flex-1 flex-col items-center bg-black/25 border-2 border-cerise rounded-xl pt-6 pb-10 overflow-hidden">
               <form className="flex flex-col w-[90%] bg-transparent outline-none gap-4">
                 <div className="flex justify-between items-end flex-1">
-                      <h2 className="text-2xl text-white font-medium">{t.admin.extraOrders.addItem.title}</h2>
+                      <h2 className="text-2xl text-white font-medium">
+                        {editingItemId ? t.admin.extraOrders.addItem.editTitle : t.admin.extraOrders.addItem.title}
+                      </h2>
                 </div>
                 <div className="flex items-end gap-4">
                   <div className="flex flex-col flex-1 max-w-xs">
@@ -220,14 +311,17 @@ export default function ExhibitorExtra({
                       "disabled:text-slate-400 disabled:cursor-not-allowed disabled:hover:scale-100"
                     )}
                     disabled={!(parseInt(itemAmount ?? 0) > 0)}
-                    onClick={() => handleAddItem()}
+                    onClick={() => editingItemId ? handleEditItem() : handleAddItem()}
                   >
-                    {t.admin.extraOrders.addItem.submit}
+                    {editingItemId ? t.admin.extraOrders.addItem.saveEdit : t.admin.extraOrders.addItem.submit}
                   </button>
                   <button
                     type="button"
                     className="bg-transparent border-[1px] border-white py-1.5 px-3 rounded-full text-center hover:scale-105 transition-transform text-white uppercase"
-                    onClick={() => setAddItem(false)}
+                    onClick={() => {
+                      setAddItem(false);
+                      setEditingItemId(undefined);
+                    }}
                   >
                     {t.admin.extraOrders.addItem.cancel}
                   </button>
@@ -235,21 +329,30 @@ export default function ExhibitorExtra({
               </form>
             </div>
           }
-          <div className={cn("flex flex-col gap-2 ", addItem ? "opacity-60 pointer-events-none" : "")}>
+          <div className={cn("flex flex-col gap-2 ", addItem || editingItemId ? "opacity-60 pointer-events-none" : "")}>
             <div className="flex justify-between items-end flex-1">
               <h2 className="text-2xl text-white font-medium">{t.admin.extraOrders.sections.accepted.title}</h2>
-              <button className="bg-cerise py-2.5 px-4 rounded-full text-center hover:scale-105 transition-transform text-white uppercase" onClick={() => setAddItem(true)}>
-                {t.admin.extraOrders.addItem.button}
-              </button>
+              <div className="flex items-center gap-2">
+                {isAdmin &&
+                  <button className="bg-transparent border border-cerise py-2.5 px-4 rounded-full text-center hover:scale-105 transition-transform text-white uppercase" onClick={() => setEditMode((value) => !value)}>
+                    {t.admin.extraOrders.addItem.edit}
+                  </button>
+                }
+                <button className="bg-cerise py-2.5 px-4 rounded-full text-center hover:scale-105 transition-transform text-white uppercase" onClick={() => setAddItem(true)}>
+                  {t.admin.extraOrders.addItem.button}
+                </button>
+              </div>
             </div>
             <div className="flex flex-1">
               <CompanyDataTable
                 t={t}
                 columns={acceptedColumns}
-                data={accepted.map(x => ({
+                data={acceptedExtraOrders.map(x => ({
                   ...x.item,
-                  id: x.id,
-                  price_per_unit: Number(x.item.price_per_unit),
+                  id: x.item.id,
+                  readOnly: (x as { readOnly?: boolean }).readOnly,
+                  amount: x.item.amount ?? undefined,
+                  price_per_unit: x.item.price_per_unit == null ? undefined : Number(x.item.price_per_unit),
                   type: t.admin.extraOrders.itemNames[x.item.type as ExtraOrderType]
                 }))}
                 />
@@ -259,7 +362,7 @@ export default function ExhibitorExtra({
             </div>
           </div>
 
-          <div className={cn("flex flex-col gap-2 ", addItem ? "opacity-60 pointer-events-none" : "")}>
+          <div className={cn("flex flex-col gap-2 ", addItem || editingItemId ? "opacity-60 pointer-events-none" : "")}>
             <div className="flex justify-between items-end flex-1">
               <h2 className="text-2xl text-white font-medium">{t.admin.extraOrders.sections.requested.title}</h2>
             </div>
@@ -269,8 +372,8 @@ export default function ExhibitorExtra({
                 columns={requestedColumns}
                 data={requested.map(x => ({
                   ...x.item,
-                  id: x.id,
-                  price_per_unit: Number(x.item.price_per_unit),
+                  id: x.item.id,
+                  price_per_unit: x.item.price_per_unit == null ? undefined : Number(x.item.price_per_unit),
                   type: t.admin.extraOrders.itemNames[x.item.type as ExtraOrderType]
                 }))}
                 />
@@ -289,9 +392,10 @@ export default function ExhibitorExtra({
                   data={history.sort((a, b) => (b?.created_at?.getTime() ?? 0) - (a?.created_at?.getTime() ?? 0)).map(x => ({
                     ...x.item,
                     id: x.id,
+                    amount: x.item.amount ?? undefined,
                     person: { email: x.person_email },
                     //person: x.person,
-                    price_per_unit: Number(x.item.price_per_unit),
+                    price_per_unit: x.item.price_per_unit == null ? undefined : Number(x.item.price_per_unit),
                     action: x.action ? t.admin.extraOrders.actionLabels[x.action] : undefined,
                     actionColor: x.action ? extraOrderActionColors[x.action] : undefined,
                     type: t.admin.extraOrders.itemNames[x.item.type as ExtraOrderType]

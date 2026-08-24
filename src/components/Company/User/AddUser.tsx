@@ -11,6 +11,7 @@ export function AddUser({
   setUsers,
   editState,
   setEditState,
+  setPos,
 }: {
   t: Locale;
   pos: number;
@@ -18,11 +19,13 @@ export function AddUser({
   setUsers: Dispatch<User[]>;
   editState: undefined | string;
   setEditState: Dispatch<undefined | string>;
+  setPos: Dispatch<number>;
 }) {
   const defaultUser = new User(undefined, "", "", "", "");
 
   const [user, setUser] = useState(users[pos]);
   const [errorMessage, setErrorMessage] = useState<string | undefined>();
+  const [showForm, setShowForm] = useState(false);
 
   const setUserMutation = api.exhibitor.setUsers.useMutation();
   const deleteUserMutation = api.exhibitor.deleteUser.useMutation();
@@ -65,6 +68,7 @@ export function AddUser({
             { ...user, id: setUserMutation.data.id },
           ]);
         setEditState(undefined);
+        setShowForm(false);
       } else {
         if (errorMessage == undefined)
           setErrorMessage(setUserMutation.data.error);
@@ -78,6 +82,7 @@ export function AddUser({
       if (deleteUserMutation.data.ok) {
         setUsers(users.filter((u) => u.id != user.id));
         setEditState(undefined);
+        setShowForm(false);
       } else {
         if (errorMessage == undefined)
           setErrorMessage(deleteUserMutation.data.error);
@@ -101,8 +106,29 @@ export function AddUser({
     }
   }, [errorMessage]);
 
+  useEffect(() => {
+    if (editState !== undefined) setShowForm(true);
+  }, [editState]);
+
+  if (!showForm) {
+    return (
+      <button
+        type="button"
+        className="block uppercase hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-normal px-8 py-2 mx-auto mt-4 mb-4 w-max"
+        onClick={() => {
+          setPos(0);
+          setEditState(undefined);
+          setUser(defaultUser);
+          setShowForm(true);
+        }}
+      >
+        {t.exhibitorSettings.table.row1.section3.add}
+      </button>
+    );
+  }
+
   return (
-    <div className="flex flex-col items-center w-[80%] bg-black/25 border-2 border-cerise rounded-xl pb-8 mb-16 overflow-hidden">
+    <div className={`flex flex-col items-center w-[80%] bg-black/25 border-2 ${editState ? "border-cerise" : "border-gold"} rounded-xl pb-8 mb-4 overflow-hidden`}>
       <form
         className="flex flex-col w-[90%] bg-transparent outline-none gap-7 mt-10"
         onSubmit={handleSubmission}
@@ -149,7 +175,7 @@ export function AddUser({
           {editState ? 
           <button type="button" onClick={deleteUserInDatabase}>
             
-            <a className="block uppercase hover:scale-105 transition-transform bg-black/75 rounded-full text-white text-base font-normal px-8 py-2 max-lg:mx-auto w-max">
+            <a className="block uppercase hover:scale-105 transition-transform bg-transparent border border-red-400 rounded-full text-red-400 text-base font-normal px-8 py-2 max-lg:mx-auto w-max">
               {t.exhibitorSettings.table.row1.section3.delete}
             </a>
           </button>
@@ -159,6 +185,17 @@ export function AddUser({
               {editState
                 ? t.exhibitorSettings.table.row1.section3.save
                 : t.exhibitorSettings.table.row1.section3.add}
+            </a>
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setEditState(undefined);
+              setShowForm(false);
+            }}
+          >
+            <a className="block uppercase hover:scale-105 transition-transform bg-transparent border border-white rounded-full text-white text-base font-normal px-8 py-2 max-lg:mx-auto w-max">
+              {t.exhibitorSettings.table.row1.section3.cancel}
             </a>
           </button>
         </div>

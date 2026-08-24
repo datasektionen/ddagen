@@ -18,7 +18,9 @@ export function AddPreferences({
   setPreferenceCount,
   editState,
   setEditState,
+  setPos,
   exhibitorPackage,
+  includedCount,
 }: {
   t: Locale;
   pos: number;
@@ -30,10 +32,11 @@ export function AddPreferences({
   setPreferenceCount: Dispatch<{ banqcount: number; reprcount: number }>;
   editState: undefined | string;
   setEditState: Dispatch<undefined | string>;
+  setPos: Dispatch<number>;
   exhibitorPackage: Package;
+  includedCount: number;
 }) {
-  const deadline = "2026-09-10";
-  const allowPreferenceChange = new Date() <= new Date("2026-09-25");
+  const allowPreferenceChange = new Date() <= new Date("2026-09-09T23:59:59");
   const isRepresentative = type == "Representative";
   const defaultPreference = new Preferences(undefined, "", [], "", type);
 
@@ -46,6 +49,7 @@ export function AddPreferences({
   const [extraPreferences, setExtraPreferences] = useState(0);
   const [preference, setPreference] = useState(preferences[pos]);
   const [errorMessage, setErrorMessage] = useState<string | undefined>();
+  const [showForm, setShowForm] = useState(false);
 
   const setPreferenceMutation = api.exhibitor.setFoodPreferences.useMutation();
   const deletePreferenceMutation =
@@ -71,13 +75,7 @@ export function AddPreferences({
 
   function handleSubmission(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const maxPreferences = isRepresentative
-      ? Infinity // They can have unlimited preferences for the lunch/breakfast tickets.
-      : exhibitorPackage.banquetTickets;
-    if (
-      preference.id ||
-      preferences.length <= maxPreferences + extraPreferences
-    ) {
+    if (allowPreferenceChange) {
       setPreferenceMutation.mutate({
         id: preference.id,
         name: preference.name,
@@ -91,13 +89,8 @@ export function AddPreferences({
         banqcount: setCount("Banquet", 1),
         reprcount: setCount("Representative", 1),
       });
-    } else {
-      if (errorMessage == undefined)
-        setErrorMessage(
-          t.exhibitorSettings.table.row3.alerts.errorAddingMorePreferencesThanAllowed(
-            maxPreferences + extraPreferences
-          )
-        );
+    } else if (!allowPreferenceChange) {
+      setErrorMessage(t.error.changePreferencesAfterDeadline);
     }
   }
 
@@ -142,6 +135,7 @@ export function AddPreferences({
             { ...preference, id: setPreferenceMutation.data.id },
           ]);
         setEditState(undefined);
+        setShowForm(false);
       } else {
         if (errorMessage == undefined)
           setErrorMessage(setPreferenceMutation.data.error);
@@ -155,6 +149,7 @@ export function AddPreferences({
       if (deletePreferenceMutation.data.ok) {
         setPreferences(preferences.filter((p) => p.id != preference.id));
         setEditState(undefined);
+        setShowForm(false);
       } else {
         if (errorMessage == undefined)
           setErrorMessage(deletePreferenceMutation.data.error);
@@ -187,12 +182,51 @@ export function AddPreferences({
     );
   }, [extras]);
 
+  useEffect(() => {
+    if (editState !== undefined) setShowForm(true);
+  }, [editState]);
+
+  if (!showForm) {
+    const ticketCount = preferences.length - 1;
+    const extraTicketCount = Math.max(0, ticketCount - includedCount);
+
+    return (
+      <div className={`w-[80%] flex items-center ${ticketCount > 0 ? "justify-between" : "justify-center"} mt-8 mb-4`}>
+        {ticketCount > 0 && (
+          <p className="text-white text-lg">
+            {t.exhibitorSettings.table.row3.ticketCount(ticketCount, extraTicketCount)}
+          </p>
+        )}
+        <button
+          type="button"
+          className="uppercase hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-normal px-8 py-2 w-max"
+          onClick={() => {
+            setPos(0);
+            setEditState(undefined);
+            setPreference(defaultPreference);
+            setCheckMarks([false, false, false, false, false]);
+            setShowForm(true);
+          }}
+        >
+          {t.exhibitorSettings.table.row3.addTicket}
+        </button>
+      </div>
+    );
+  }
+
+  const addingExtraTicket = !preference.id && preferences.length > includedCount;
+
   return (
-    <div className="flex flex-col items-center w-[80%] bg-black/25 border-solid border-yellow border-2 rounded-xl pb-8 mt-8 mb-16 overflow-hidden">
+    <div className={`flex flex-col items-center w-[80%] bg-black/25 border-solid ${editState ? "border-cerise" : "border-gold"} border-2 rounded-xl my-8 pb-8 overflow-hidden`}>
       <form
         className="flex flex-col w-[90%] bg-transparent outline-none gap-7 mt-10"
         onSubmit={handleSubmission}
       >
+        {addingExtraTicket && (
+          <p className="text-white text-center">
+            {t.exhibitorSettings.table.row3.extraTicketDisclaimer}
+          </p>
+        )}
         <InputField
           type="text"
           name="name"
@@ -288,7 +322,7 @@ export function AddPreferences({
         <div className="flex flex-col max-sm:gap-y-4 sm:flex-row gap-x-8 mt-4 justify-center">
           {editState ? 
           <button type="button" onClick={deletePreferenceInDatabase}>
-            <a className="block uppercase hover:scale-105 transition-transform bg-black/75 rounded-full text-white text-base font-normal px-8 py-2 max-lg:mx-auto w-max">
+            <a className="block uppercase hover:scale-105 transition-transform bg-transparent border border-red-400 rounded-full text-red-400 text-base font-normal px-8 py-2 max-lg:mx-auto w-max">
               {t.exhibitorSettings.table.row1.section3.delete}
             </a>
           </button>
@@ -298,6 +332,17 @@ export function AddPreferences({
               {editState
                 ? t.exhibitorSettings.table.row1.section3.save
                 : t.exhibitorSettings.table.row1.section3.add}
+            </a>
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setEditState(undefined);
+              setShowForm(false);
+            }}
+          >
+            <a className="block uppercase hover:scale-105 transition-transform bg-transparent border border-white rounded-full text-white text-base font-normal px-8 py-2 max-lg:mx-auto w-max">
+              {t.exhibitorSettings.table.row1.section3.cancel}
             </a>
           </button>
         </div>

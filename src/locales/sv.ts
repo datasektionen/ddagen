@@ -401,6 +401,7 @@ export default {
           header: "Kontaktpersoner",
           info: "Lägg till kontaktpersoner, kontaktpersoner kan se och redigera företagsprofilen",
           save: "Spara",
+          cancel: "Avbryt",
           add: "Lägg Till",
           delete: "Radera",
           alerts: {
@@ -466,6 +467,9 @@ export default {
       },
       row3: {
         title: "Matpreferenser",
+        addTicket: "Lägg till biljett",
+        ticketCount: (count: number, extra: number) => `${count} Biljetter (${extra} extra)`,
+        extraTicketDisclaimer: "Den här biljetten är en extra beställning och ingår inte i ert paket.",
         warning: "Sista datum för att lägga till matpreferenser ",
         usagenotice: "Välj bara preferenser för de som har specialkost, övriga får standardmaten",
         section1: {
@@ -1210,6 +1214,11 @@ export default {
     contact: "Ifall du har någon relevant fakta om D-Dagens historia som du vill lägga till, kontakta: ",
   },
   admin: {
+    faq: {
+      header: "FAQ",
+      comingSoon: "Kommer snart...",
+      contact: "Om ni har några frågor kan ni mejla ",
+    },
     login: {
       title: "Logga in",
       username: "Användarnamn",
@@ -1220,7 +1229,23 @@ export default {
       otpSendButton: "Skicka inloggningskod",
       otpCancelButton: "Avbryt inloggning",
       otpSentDescription: "Vi har skickat ett mail med en 6-siffrig inloggningskod till ", // expected email recipient
-      otpSentDisclaimer: "Det kan ta en stund för mailet att komma fram"
+      otpSentDisclaimer: "Det kan ta en stund för mailet att komma fram",
+      otpEmailSubject: "Din inloggningskod - D-Dagen",
+      otpEmailBody: (otp: string) =>
+        "<div style=\"padding:0;font-family:Arial, sans-serif;font-size:16px;line-height:1.6;max-width:600px;\">" +
+          "<table style=\"box-sizing:border-box;background:#DE3163;border:30px solid #14112A;padding:0;color:#ffffff;border-radius:10px 10px 0 0;max-width:600px;\" width=\"100%\">" +
+            "<tbody>" +
+              "<tr><td style=\"padding:30px 30px 0;font-size:24px;background:#DE3163;color:#ffffff;\">Hej!<br><br></td></tr>" +
+              "<tr><td style=\"padding:5px 30px;background:#DE3163;color:#ffffff;\">" +
+                "<p style=\"color:#ffffff;\">Använd koden nedan för att slutföra din inloggning till D-Dagen. Den är giltig i 10 minuter.</p>" +
+                "<p style=\"margin:28px 0;text-align:center;\"><span style=\"display:inline-block;padding:14px 22px;background:#14112A;border-radius:8px;color:#FFFF00;font-family:monospace;font-size:42px;font-weight:700;line-height:1.2;letter-spacing:0.18em;white-space:nowrap;user-select:all;-webkit-user-select:all;\"><code style=\"font-family:inherit;\">" + otp + "</code></span></p>" +
+                "<p style=\"color:#ffffff;\">Markera koden som ett block och klistra in den på inloggningssidan.</p>" +
+              "</td></tr>" +
+              "<tr><td style=\"padding:10px 30px 30px;background:#DE3163;color:#ffffff;\"><br>Vänliga hälsningar,<br>D-Dagen Projektgruppen<br><a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a></td></tr>" +
+            "</tbody>" +
+          "</table>" +
+          "<a href=\"https://ddagen.se/\" alt=\"Link to ddagen.se\"><img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width:100%;height:auto;display:block;max-width:600px;\"></a>" +
+        "</div>"
     },
     sales: {
       login: "Logga in",
@@ -1269,13 +1294,17 @@ export default {
         },
         deleteExhibitor: "TA BORT"
       },
+      allCompanies: "Alla företag",
     },
     extraOrders: {
       addItem: {
         title: "Lägg till extrabeställning",
+        editTitle: "Redigera extrabeställning",
         button: "Lägg till",
+        edit: "Redigera",
         cancel: "Avbryt",
         submit: "Skicka förfrågan",
+        saveEdit: "Spara ändringar",
         accept: "Acceptera förfrågan",
         cancelRequest: "Avbryt förfrågan",
       },
@@ -1292,6 +1321,7 @@ export default {
         CANCELED_REQUEST: "Avbruten förfrågan",
         ACCEPTED_REQUEST: "Accepterad förfrågan",
         UPDATED_REQUEST: "Uppdaterad förfrågan",
+        UPDATED_ORDER: "Uppdaterad order",
         CANCELED_ORDER: "Avbruten order",
         CREATED_ORDER: "Skapad order",
       },

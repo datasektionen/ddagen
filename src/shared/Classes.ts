@@ -398,7 +398,7 @@ export type ExtraOrderAccepted = {
   updated_at?: Date;
 }
 
-export type ExtraOrderAction = "CREATED_REQUEST" | "CANCELED_REQUEST" | "ACCEPTED_REQUEST" | "UPDATED_REQUEST" | "CANCELED_ORDER" | "CREATED_ORDER";
+export type ExtraOrderAction = "CREATED_REQUEST" | "CANCELED_REQUEST" | "ACCEPTED_REQUEST" | "UPDATED_REQUEST" | "UPDATED_ORDER" | "CANCELED_ORDER" | "CREATED_ORDER";
 
 export type ExtraOrderPerson = {
   name?: string;
