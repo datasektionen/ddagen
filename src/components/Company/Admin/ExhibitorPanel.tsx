@@ -75,6 +75,12 @@ export function ExhibitorPanel({
   );
 
   useEffect(() => {
+    if (selectedSalesperson && !salespersonOptions.includes(selectedSalesperson)) {
+      setSelectedSalesperson("");
+    }
+  }, [exhibitors, selectedSalesperson]);
+
+  useEffect(() => {
     if (login.isSuccess) {
       router.push("/utställare");
     }

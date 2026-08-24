@@ -222,6 +222,17 @@ export default function ExhibitorLayout({
               </h1>
             </div>
             <div className="flex flex-row items-center gap-4 mb-2">
+              <Link href="/admin/sales">
+                <button
+                  className={cn(
+                    "bg-transparent border-[1px] border-white rounded-full text-center hover:scale-105 transition-transform text-white uppercase",
+                    "py-1.5 px-3 text-sm",
+                    "sm:py-2.5 sm:px-4 sm:text-base"
+                  )}
+                >
+                  Admin
+                </button>
+              </Link>
               <button
                 className={cn(
                   "bg-transparent border-[1px] border-white rounded-full text-center hover:scale-105 transition-transform text-white uppercase",
