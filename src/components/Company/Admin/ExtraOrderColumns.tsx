@@ -8,13 +8,17 @@ interface ColumnProps {
   showPerson?: boolean;
   onAccept?: (id: string) => void;
   onCancel?: (id: string) => void;
+  onEdit?: (id: string) => void;
 }
 
-export type ExtraOrderColumns = {
+export type ExtraOrderColumns = Omit<ExtraOrderItem, "type" | "amount" | "price_per_unit"> & {
+  type?: string;
+  amount?: number;
+  price_per_unit?: number;
   action?: string;
   actionColor?: string;
   person?: ExtraOrderPerson;
-} & ExtraOrderItem;
+};
 
 const formatAction = (action?: string) =>
   action
@@ -28,7 +32,8 @@ export const getOrderColumns = ({
   showAction,
   showPerson,
   onAccept,
-  onCancel
+  onCancel,
+  onEdit
 }: ColumnProps): ColumnDef<ExtraOrderColumns>[] => {
   const columns: ColumnDef<ExtraOrderColumns>[] = [];
 
@@ -98,7 +103,7 @@ export const getOrderColumns = ({
       return (
         <div className="flex flex-1 justify-end items-center">
           <div className="flex flex-1 cursor-text justify-end items-center h-10">
-            <p className="text-primary">{row.original.amount}</p>
+            <p className="text-primary">{row.original.amount ?? ""}</p>
           </div>
         </div>
       );
@@ -107,7 +112,7 @@ export const getOrderColumns = ({
 
   columns.push({
     id: "price_per_unit",
-    size: 240,
+    size: 250,
     header: () => (
       <div className="flex items-center justify-end text-primary font-bold gap-3">
         <p className="font-medium text-sub-header">{t.admin.extraOrders.itemFields.price_per_unit}</p>
@@ -117,14 +122,16 @@ export const getOrderColumns = ({
       return (
         <div className="flex flex-1 justify-end items-center">
           <div className="flex flex-1 cursor-text justify-end items-center h-10">
-            <p className="text-primary">{row.original.price_per_unit}:-</p>
+            <p className="text-primary">
+              {row.original.price_per_unit == null ? "" : `${row.original.price_per_unit}:-`}
+            </p>
           </div>
         </div>
       );
     },
   });
 
-  if(!!onAccept || !!onCancel){
+  if(!!onAccept || !!onCancel || !!onEdit){
     columns.push({
       id: "actions",
       header: () => (
@@ -150,6 +157,15 @@ export const getOrderColumns = ({
                   onClick={() => onCancel(row.original.id)}
                 >
                   <img src={"/icons/cross.png"} alt={t.admin.extraOrders.addItem.cancelRequest} className="max-h-6" />
+                </button>
+              }
+              {onEdit &&
+                <button
+                  type="button"
+                  className="rounded-md border border-cerise px-2 py-1 text-sm text-primary hover:scale-105"
+                  onClick={() => onEdit(row.original.id)}
+                >
+                  {t.admin.extraOrders.addItem.edit}
                 </button>
               }
             </div>

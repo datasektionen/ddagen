@@ -1274,9 +1274,12 @@ export default {
     extraOrders: {
       addItem: {
         title: "Lägg till extrabeställning",
+        editTitle: "Redigera extrabeställning",
         button: "Lägg till",
+        edit: "Redigera",
         cancel: "Avbryt",
         submit: "Skicka förfrågan",
+        saveEdit: "Spara ändringar",
         accept: "Acceptera förfrågan",
         cancelRequest: "Avbryt förfrågan",
       },
@@ -1293,6 +1296,7 @@ export default {
         CANCELED_REQUEST: "Avbruten förfrågan",
         ACCEPTED_REQUEST: "Accepterad förfrågan",
         UPDATED_REQUEST: "Uppdaterad förfrågan",
+        UPDATED_ORDER: "Uppdaterad order",
         CANCELED_ORDER: "Avbruten order",
         CREATED_ORDER: "Skapad order",
       },

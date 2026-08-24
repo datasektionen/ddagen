@@ -241,6 +241,7 @@ enum ExtraOrderHistoryType {
   CANCELED_REQUEST
   ACCEPTED_REQUEST
   UPDATED_REQUEST
+  UPDATED_ORDER
   CREATED_ORDER
   CANCELED_ORDER
 }
@@ -249,6 +250,9 @@ model ExtraOrderHistory {
   id              String   @id @default(uuid())
   exhibitor_id    String
   item_id         String
+  type            String?
+  amount          Int?
+  price_per_unit  Decimal? @db.Money
   item            ExtraOrderItem @relation(fields: [item_id], references: [id], onDelete: SetNull)
   action          ExtraOrderHistoryType
   person_name     String

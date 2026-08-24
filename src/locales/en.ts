@@ -1280,9 +1280,12 @@ export default {
     extraOrders: {
       addItem: {
         title: "Add an extra order",
+        editTitle: "Edit an extra order",
         button: "Add order",
+        edit: "Edit",
         cancel: "Cancel",
         submit: "Send request",
+        saveEdit: "Save changes",
         accept: "Accept request",
         cancelRequest: "Cancel request",
       },
@@ -1299,6 +1302,7 @@ export default {
         CANCELED_REQUEST: "Canceled request",
         ACCEPTED_REQUEST: "Accepted request",
         UPDATED_REQUEST: "Updated request",
+        UPDATED_ORDER: "Updated order",
         CANCELED_ORDER: "Canceled order",
         CREATED_ORDER: "Created order",
       },
