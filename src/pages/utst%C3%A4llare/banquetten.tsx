@@ -92,7 +92,7 @@ export default function Banquetten() {
 		}
 	}
 
-	const deadline = "2026-09-10"
+	const deadline = "2026-09-09"
 
 	return (
 		<>
@@ -105,12 +105,14 @@ export default function Banquetten() {
 						<p className="text-base text-white md:text-xl font-normal pt-6">
 							{t.exhibitorSettings.table.row3.section2.paragraphOne}
 						</p>
+						{/*
 						<p className="text-base text-white md:text-xl font-normal">
 							{t.exhibitorSettings.table.row3.section2.paragraphTwo}
 						</p>
 						<p className="text-base text-white md:text-md font-normal pt-6">
 							{t.exhibitorSettings.table.row3.usagenotice}
 						</p>
+						*/}
 
 						<p className="text-base text-white md:text-lg font-normal mt-4">
 							{t.exhibitorSettings.table.row3.warning + deadline}

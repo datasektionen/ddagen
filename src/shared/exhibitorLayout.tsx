@@ -13,6 +13,7 @@ import { cn } from "@/utils/utils";
 
 const exhibitorNav = {
   sv: [
+    /*
     {
       text: "Översikt",
       url: "/utställare/"
@@ -20,6 +21,11 @@ const exhibitorNav = {
     {
       text: "Företagsinformation",
       url: "/utställare/info"
+    },
+    */
+    {
+      text: "Företagsinformation",
+      url: "/utställare"
     },
     {
       text: "Jobberbjudanden",
@@ -51,13 +57,19 @@ const exhibitorNav = {
     },
   ],
   en: [
+    /*
     {
       text: "Overview",
       url: "/utställare/"
     },
     {
-      text: "Company information",
+      text: "Company info",
       url: "/utställare/info"
+    },
+    */
+    {
+      text: "Company info",
+      url: "/utställare"
     },
     {
       text: "Job offers",

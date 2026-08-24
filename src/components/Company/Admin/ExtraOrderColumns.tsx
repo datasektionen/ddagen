@@ -15,6 +15,7 @@ export type ExtraOrderColumns = Omit<ExtraOrderItem, "type" | "amount" | "price_
   type?: string;
   amount?: number;
   price_per_unit?: number;
+  readOnly?: boolean;
   action?: string;
   actionColor?: string;
   person?: ExtraOrderPerson;
@@ -143,6 +144,14 @@ export const getOrderColumns = ({
         return (
           <div className="flex flex-1 justify-end items-center">
             <div className="flex flex-1 cursor-text justify-end items-center h-10 gap-2">
+              {onEdit && !row.original.readOnly &&
+                <button
+                  type="button"
+                  className="hover:scale-105 transition-transform bg-editIcon bg-white bg-[length:23px_23px] w-[26px] h-[26px] bg-no-repeat bg-origin-content pl-1 pb-1 rounded-md"
+                  onClick={() => onEdit(row.original.id)}
+                  aria-label={t.admin.extraOrders.addItem.edit}
+                />
+              }
               {onAccept &&
                 <button
                   className="rounded-md border-1 border-cerise background-transparent hover:scale-105"
@@ -151,21 +160,12 @@ export const getOrderColumns = ({
                   <img src={"/icons/check.png"} alt={t.admin.extraOrders.addItem.accept} className="max-h-6" />
                 </button>
               }
-              {onCancel &&
+              {onCancel && !row.original.readOnly &&
                 <button
                   className="rounded-md border-1 border-white background-transparent hover:scale-105"
                   onClick={() => onCancel(row.original.id)}
                 >
                   <img src={"/icons/cross.png"} alt={t.admin.extraOrders.addItem.cancelRequest} className="max-h-6" />
-                </button>
-              }
-              {onEdit &&
-                <button
-                  type="button"
-                  className="rounded-md border border-cerise px-2 py-1 text-sm text-primary hover:scale-105"
-                  onClick={() => onEdit(row.original.id)}
-                >
-                  {t.admin.extraOrders.addItem.edit}
                 </button>
               }
             </div>

@@ -32,8 +32,16 @@ export function UserDetails({ t }: { t: Locale }) {
       <p className="text-white mb-4 font-normal text-base">
         {t.exhibitorSettings.table.row1.section3.info}
       </p>
-      
 
+      <AddUser
+        t={t}
+        pos={pos}
+        users={users}
+        setUsers={setUsers}
+        editState={editState}
+        setEditState={setEditState}
+        setPos={setPos}
+      />
       {users.slice(1).map((user, pos) => (
         <div className="w-full flex flex-col items-center" key={user.email}>
           <EditUser
@@ -46,14 +54,6 @@ export function UserDetails({ t }: { t: Locale }) {
           />
         </div>
       ))}
-      <AddUser
-        t={t}
-        pos={pos}
-        users={users}
-        setUsers={setUsers}
-        editState={editState}
-        setEditState={setEditState}
-      />
     </div>
   );
 }

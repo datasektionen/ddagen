@@ -12,6 +12,7 @@ export function EditPreferences({
   editState,
   setEditState,
   borderClass,
+  ticketPrice,
 }: {
   t: Locale;
   pos: number;
@@ -20,6 +21,7 @@ export function EditPreferences({
   editState: undefined | string;
   setEditState: Dispatch<undefined | string>;
   borderClass?: string;
+  ticketPrice?: number;
 }) {
   
   function valueToString(options: Options[]) {
@@ -50,7 +52,7 @@ export function EditPreferences({
   const effectiveBorder = borderClass ?? "border-yellow";
 
   return (
-    <div className={`relative w-[80%] py-5 px-3 mt-6 mb-6 bg-black/25 border-solid ${effectiveBorder} border-2 rounded-xl overflow-hidden`}>
+    <div className={`relative w-[80%] py-5 px-3 mb-4 bg-black/25 border-solid ${effectiveBorder} border-2 rounded-xl overflow-hidden`}>
       <table>
         <tbody
           className="text-lg [&>tr>td]:text-right [&>tr>td>label]:font-normal [&>tr>td>label]:text-white
@@ -119,6 +121,11 @@ export function EditPreferences({
           }}
         />
       </div>
+      {ticketPrice !== undefined && (
+        <p className="absolute bottom-2 right-3 text-lg font-normal">
+          {ticketPrice}:-
+        </p>
+      )}
     </div>
   );
 }

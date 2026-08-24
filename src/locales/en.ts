@@ -403,6 +403,7 @@ export default {
           header: "Contacts",
           info: "Add company contacts, contacts are able to view and edit this page",
           save: "Save",
+          cancel: "Cancel",
           add: "Add",
           delete: "Delete",
 
@@ -468,6 +469,9 @@ export default {
       },
       row3: {
         title: "Food Preferences",
+        addTicket: "Add ticket",
+        ticketCount: (count: number, extra: number) => `${count} Tickets (${extra} extra)`,
+        extraTicketDisclaimer: "This ticket is an extra order and is not included in your package.",
         warning: "Last date for ordering ",
         usagenotice: "Only specify for those who have special dietary requirements",
         section1: {
@@ -1216,6 +1220,11 @@ export default {
     contact: "If you have any relevant facts about the history of D-Dagen that you would like to add, contact: ",
   },
   admin: {
+    faq: {
+      header: "FAQ",
+      comingSoon: "Coming soon...",
+      contact: "If you have any questions, you can email ",
+    },
     login: {
       title: "Log In",
       username: "Username",

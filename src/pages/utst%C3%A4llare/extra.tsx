@@ -7,7 +7,7 @@ import Head from "next/head";
 import ExhibitorLayout from "@/shared/exhibitorLayout";
 import { CompanyDataTable } from "@/components/Company/CompanyDataTable";
 import { getOrderColumns } from "@/components/Company/Admin/ExtraOrderColumns";
-import { ExtraOrderAccepted, ExtraOrderAction, ExtraOrderHistory, ExtraOrderRequest } from "@/shared/Classes";
+import { ExtraOrderAccepted, ExtraOrderAction, ExtraOrderHistory, ExtraOrderRequest, Package } from "@/shared/Classes";
 import { cn } from "@/utils/utils";
 import { Select } from "@/components/Select";
 
@@ -91,6 +91,9 @@ export default function ExhibitorExtra({
   const updateOrder = api.exhibitor.updateOrder.useMutation({ onSuccess: () => trpc.exhibitor.getOrders.invalidate() });
 
   const { data: ordersData, isLoading } = api.exhibitor.getOrders.useQuery();
+  const { data: packageData } = api.exhibitor.getPackage.useQuery();
+  const { data: banquetPreferences } = api.exhibitor.getFoodPreferences.useQuery("Banquet");
+  const { data: representativePreferences } = api.exhibitor.getFoodPreferences.useQuery("Representative");
 
   const requested = ordersData?.requests ?? [];
   const history = ordersData?.history.filter((el) => el.action !== "UPDATED_REQUEST") ?? [];
@@ -104,6 +107,56 @@ export default function ExhibitorExtra({
         .map((entry) => [entry.item.id, entry] as const)
     ).values()
   ).filter((entry) => entry.action !== "CANCELED_ORDER");
+
+  const exhibitorPackage = packageData
+    ? new Package(t, packageData.packageTier)
+    : undefined;
+
+  if (exhibitorPackage && packageData) {
+    exhibitorPackage.addCustomOrders(
+      packageData.customTables,
+      packageData.customChairs,
+      packageData.customDrinkCoupons,
+      packageData.customRepresentativeSpots,
+      packageData.customBanquetTicketsWanted,
+      0
+    );
+  }
+
+  const extraMealTicketCount = Math.max(
+    0,
+    (representativePreferences?.length ?? 0) - (exhibitorPackage?.mealCoupons ?? 0)
+  );
+  const extraBanquetteTicketCount = Math.max(
+    0,
+    (banquetPreferences?.length ?? 0) - (exhibitorPackage?.banquetTickets ?? 0)
+  );
+
+  const acceptedExtraOrders = [
+    ...accepted,
+    ...(extraMealTicketCount > 0
+      ? [{
+          item: {
+            id: "extra-meal-tickets",
+            type: "meal_ticket",
+            amount: extraMealTicketCount,
+            price_per_unit: extraOrderDetails.meal_ticket.price_per_unit,
+          },
+          readOnly: true,
+        }]
+      : []),
+    ...(extraBanquetteTicketCount > 0
+      ? [{
+          item: {
+            id: "extra-banquette-tickets",
+            type: "banquette_ticket",
+            amount: extraBanquetteTicketCount,
+            price_per_unit: extraOrderDetails.banquette_ticket.price_per_unit,
+          },
+          readOnly: true,
+        }]
+      : []),
+  ];
 
   const getName = api.exhibitor.getName.useQuery();
   const { data: user } = api.account.getUser.useQuery();
@@ -142,7 +195,7 @@ export default function ExhibitorExtra({
     t: t,
     onCancel: isAdmin && editMode ? handleCancelOrder : undefined,
     onEdit: isAdmin && editMode ? (itemId: string) => {
-      const order = accepted.find((entry) => entry.item.id === itemId);
+      const order = acceptedExtraOrders.find((entry) => entry.item.id === itemId);
       if (!order) return;
 
       setEditingItemId(order.item.id);
@@ -194,7 +247,7 @@ export default function ExhibitorExtra({
   const pricePerUnit = itemType ? extraOrderDetails[itemType].price_per_unit : "-";
   const totalPrice = parseInt(itemAmount ?? 0) > 0 && pricePerUnit != "-" ? parseInt(itemAmount ?? 0) * pricePerUnit : "-"
 
-  const dropdownEntries = Object.entries(extraOrderDetails).filter(([_k, v]) => isAdmin || v.dropdown == true);
+  const dropdownEntries = Object.entries(extraOrderDetails).filter(([_k, v]) => v.dropdown == true);
 
   return(
     <>
@@ -294,9 +347,10 @@ export default function ExhibitorExtra({
               <CompanyDataTable
                 t={t}
                 columns={acceptedColumns}
-                data={accepted.map(x => ({
+                data={acceptedExtraOrders.map(x => ({
                   ...x.item,
                   id: x.item.id,
+                  readOnly: (x as { readOnly?: boolean }).readOnly,
                   amount: x.item.amount ?? undefined,
                   price_per_unit: x.item.price_per_unit == null ? undefined : Number(x.item.price_per_unit),
                   type: t.admin.extraOrders.itemNames[x.item.type as ExtraOrderType]

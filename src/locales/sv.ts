@@ -401,6 +401,7 @@ export default {
           header: "Kontaktpersoner",
           info: "Lägg till kontaktpersoner, kontaktpersoner kan se och redigera företagsprofilen",
           save: "Spara",
+          cancel: "Avbryt",
           add: "Lägg Till",
           delete: "Radera",
           alerts: {
@@ -466,6 +467,9 @@ export default {
       },
       row3: {
         title: "Matpreferenser",
+        addTicket: "Lägg till biljett",
+        ticketCount: (count: number, extra: number) => `${count} Biljetter (${extra} extra)`,
+        extraTicketDisclaimer: "Den här biljetten är en extra beställning och ingår inte i ert paket.",
         warning: "Sista datum för att lägga till matpreferenser ",
         usagenotice: "Välj bara preferenser för de som har specialkost, övriga får standardmaten",
         section1: {
@@ -1210,6 +1214,11 @@ export default {
     contact: "Ifall du har någon relevant fakta om D-Dagens historia som du vill lägga till, kontakta: ",
   },
   admin: {
+    faq: {
+      header: "FAQ",
+      comingSoon: "Kommer snart...",
+      contact: "Om ni har några frågor kan ni mejla ",
+    },
     login: {
       title: "Logga in",
       username: "Användarnamn",
