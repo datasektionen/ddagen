@@ -1235,7 +1235,23 @@ export default {
       otpSendButton: "Send login code",
       otpCancelButton: "Cancel login",
       otpSentDescription: "We sent a 6-digit code to ", // expected email
-      otpSentDisclaimer: "It may take a little while for the email to arrive"
+      otpSentDisclaimer: "It may take a little while for the email to arrive",
+      otpEmailSubject: "Your Login Code - D-Dagen",
+      otpEmailBody: (otp: string) =>
+        "<div style=\"padding:0;font-family:Arial, sans-serif;font-size:16px;line-height:1.6;max-width:600px;\">" +
+          "<table style=\"box-sizing:border-box;background:#DE3163;border:30px solid #14112A;padding:0;color:#ffffff;border-radius:10px 10px 0 0;max-width:600px;\" width=\"100%\">" +
+            "<tbody>" +
+              "<tr><td style=\"padding:30px 30px 0;font-size:24px;background:#DE3163;color:#ffffff;\">Hi!<br><br></td></tr>" +
+              "<tr><td style=\"padding:5px 30px;background:#DE3163;color:#ffffff;\">" +
+                "<p style=\"color:#ffffff;\">Use the code below to complete your login to D-Dagen. It is valid for 10 minutes.</p>" +
+                "<p style=\"margin:28px 0;text-align:center;\"><span style=\"display:inline-block;padding:14px 22px;background:#14112A;border-radius:8px;color:#FFFF00;font-family:monospace;font-size:42px;font-weight:700;line-height:1.2;letter-spacing:0.18em;white-space:nowrap;user-select:all;-webkit-user-select:all;\"><code style=\"font-family:inherit;\">" + otp + "</code></span></p>" +
+                "<p style=\"color:#ffffff;\">Select the code as one block and paste it into the login page.</p>" +
+              "</td></tr>" +
+              "<tr><td style=\"padding:10px 30px 30px;background:#DE3163;color:#ffffff;\"><br>Best regards,<br>The D-Dagen Project Group<br><a href=\"mailto:sales@ddagen.se\" style=\"color:#ffffff;text-decoration:underline\">sales@ddagen.se</a></td></tr>" +
+            "</tbody>" +
+          "</table>" +
+          "<a href=\"https://ddagen.se/en\" alt=\"Link to ddagen.se\"><img src=\"https://ddagen.se/img/logos/ddagen_2026_signature.png\" alt=\"Ddagen logga\" width=\"600\" height=\"auto\" style=\"width:100%;height:auto;display:block;max-width:600px;\"></a>" +
+        "</div>"
     },
     sales: {
       login: "Log in",

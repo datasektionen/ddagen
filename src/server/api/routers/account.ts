@@ -222,8 +222,8 @@ export const accountRouter = createTRPCRouter({
       // 4. Send email
       await sendEmail(
         email,
-        "Your Login Code - D-Dagen",
-        `Your one-time login code is: <strong>${otp}</strong>.<br><br>It is valid for 10 minutes.`
+        getLocale("en").admin.login.otpEmailSubject,
+        getLocale("en").admin.login.otpEmailBody(otp)
       );
 
       return { ok: true };
