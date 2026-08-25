@@ -419,8 +419,9 @@ export type Cookies = Partial<{
 }>
 
 export function sortExhibitors(exhibitors: Exhibitor[]) {
-  // this is old sorting function from when exhibitors where enums, perhaps removable
-  return exhibitors;
+  return [...exhibitors].sort((a, b) =>
+    a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
+  );
 }
 
 export function sortPreferences(preferences: Preferences[]) {

@@ -34,7 +34,7 @@ model Exhibitor {
   packageTier     Int    @default(-1)
   studentMeetings Int    @default(0)
 
-  allowMarketing Boolean @default(false)
+  allowMarketing Boolean @default(true)
 
   extraTables               Int @default(0)
   extraChairs               Int @default(0)
