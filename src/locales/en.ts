@@ -470,8 +470,15 @@ export default {
       row3: {
         title: "Food Preferences",
         addTicket: "Add ticket",
-        ticketCount: (count: number, extra: number) => `${count} Tickets (${extra} extra)`,
+        addExtraTicket: "Add extra ticket",
+        ticketCount: (count: number, included: number, extra: number) =>
+          count <= included
+            ? `${count} Ticket${count == 1 ? "" : "s"} (${included} included)`
+            : `${count} Ticket${count == 1 ? "" : "s"} (${extra} extra)`,
         extraTicketDisclaimer: "This ticket is an extra order and is not included in your package.",
+        extraTicketPrice: (price: number) => `Price: ${price}:-`,
+        ticketRequestDisclaimer: "The deadline has passed. This ticket will be sent to an administrator for approval.",
+        pendingTicket: "Ticket request pending approval",
         warning: "Last date for ordering ",
         usagenotice: "Only specify for those who have special dietary requirements",
         section1: {

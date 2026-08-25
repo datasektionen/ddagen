@@ -117,7 +117,7 @@ export function EditPreferences({
              pl-1 pb-1 rounded-md hover:scale-105 transition-transform`}
           onClick={() => {
             setPos(pos);
-            setEditState(preferences[pos].id);
+            setEditState(preferences[pos].id ?? `included-${pos}`);
           }}
         />
       </div>

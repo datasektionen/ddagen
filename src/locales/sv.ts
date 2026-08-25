@@ -468,8 +468,15 @@ export default {
       row3: {
         title: "Matpreferenser",
         addTicket: "Lägg till biljett",
-        ticketCount: (count: number, extra: number) => `${count} Biljetter (${extra} extra)`,
+        addExtraTicket: "Lägg till extra biljett",
+        ticketCount: (count: number, included: number, extra: number) =>
+          count <= included
+            ? `${count} Biljetter (${included} inkluderade)`
+            : `${count} Biljetter (${extra} extra)`,
         extraTicketDisclaimer: "Den här biljetten är en extra beställning och ingår inte i ert paket.",
+        extraTicketPrice: (price: number) => `Pris: ${price}:-`,
+        ticketRequestDisclaimer: "Sista beställningsdatum har passerat. Biljetten skickas till en administratör för godkännande.",
+        pendingTicket: "Biljettförfrågan väntar på godkännande",
         warning: "Sista datum för att lägga till matpreferenser ",
         usagenotice: "Välj bara preferenser för de som har specialkost, övriga får standardmaten",
         section1: {
