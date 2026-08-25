@@ -383,6 +383,9 @@ export type ExtraOrderItem = {
   amount: number;
   price_per_unit: number;
   id: string;
+  ticket_name?: string | null;
+  ticket_value?: string[];
+  ticket_comment?: string | null;
   created_at?: Date;
 }
 

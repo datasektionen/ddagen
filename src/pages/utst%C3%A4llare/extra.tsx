@@ -85,7 +85,13 @@ export default function ExhibitorExtra({
   const [itemAmount, setItemAmount] = useState<string>("1");
 
   const createOrderRequest = api.exhibitor.createOrderRequest.useMutation({ onSuccess: () => trpc.exhibitor.getOrders.invalidate() });
-  const acceptOrderRequest = api.exhibitor.acceptOrderRequest.useMutation({ onSuccess: () => trpc.exhibitor.getOrders.invalidate() });
+  const acceptOrderRequest = api.exhibitor.acceptOrderRequest.useMutation({
+    onSuccess: () => {
+      trpc.exhibitor.getOrders.invalidate();
+      trpc.exhibitor.getFoodPreferences.invalidate("Representative");
+      trpc.exhibitor.getFoodPreferences.invalidate("Banquet");
+    },
+  });
   const cancelOrderRequest = api.exhibitor.cancelOrderRequest.useMutation({ onSuccess: () => trpc.exhibitor.getOrders.invalidate() });
   const cancelOrder = api.exhibitor.cancelOrder.useMutation({ onSuccess: () => trpc.exhibitor.getOrders.invalidate() });
   const updateOrder = api.exhibitor.updateOrder.useMutation({ onSuccess: () => trpc.exhibitor.getOrders.invalidate() });
@@ -103,6 +109,8 @@ export default function ExhibitorExtra({
         el.action === "ACCEPTED_REQUEST" ||
         el.action === "UPDATED_ORDER" ||
         el.action === "CANCELED_ORDER"
+      ).filter((el) =>
+        el.item.type !== "meal_ticket" && el.item.type !== "banquette_ticket"
       ) ?? [])
         .map((entry) => [entry.item.id, entry] as const)
     ).values()

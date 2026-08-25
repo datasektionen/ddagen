@@ -1183,7 +1183,10 @@ export const exhibitorRouter = createTRPCRouter({
     .input(z.object({
       type: z.string(),
       amount: z.number(),
-      price_per_unit: z.number().positive(),
+      price_per_unit: z.number().nonnegative(),
+      ticket_name: z.string().optional(),
+      ticket_value: z.array(foodPreferencesValue).optional(),
+      ticket_comment: z.string().optional(),
     }))
     .mutation(async ({ ctx, input }) => {
       const item = await ctx.prisma.extraOrderItem.create({
@@ -1191,9 +1194,11 @@ export const exhibitorRouter = createTRPCRouter({
           type: input.type,
           amount: input.amount,
           price_per_unit: input.price_per_unit,
+          ticket_name: input.ticket_name,
+          ticket_value: input.ticket_value,
+          ticket_comment: input.ticket_comment,
         }
       });
-
       if (!item?.id) {
         return;
       }
@@ -1203,15 +1208,18 @@ export const exhibitorRouter = createTRPCRouter({
         select: { name: true, salesperson: true },
       });
 
-      const existing_request = await ctx.prisma.extraOrderReq.findFirst({
-        where: {
-          exhibitor_id: ctx.session.exhibitorId,
-          item: {
-            type: input.type,
-            price_per_unit: input.price_per_unit,
-          }
-        }
-      });
+      const isTicketRequest = input.type === "meal_ticket" || input.type === "banquette_ticket";
+      const existing_request = isTicketRequest
+        ? null
+        : (await ctx.prisma.extraOrderReq.findFirst({
+            where: {
+              exhibitor_id: ctx.session.exhibitorId,
+              item: {
+                type: input.type,
+                price_per_unit: input.price_per_unit,
+              }
+            }
+          }));
 
       let action: ExtraOrderHistoryType;
       let userEmail = (await getSession(ctx.cookies))?.email ?? "";
@@ -1381,9 +1389,10 @@ export const exhibitorRouter = createTRPCRouter({
       const itemId = existingOrder?.item.id ?? request.item.id;
       const acceptedAmount = (existingOrder?.item.amount ?? 0) + request.item.amount;
       const userEmail = (await getSession(ctx.cookies))?.email ?? "";
+      const isTicketRequest = request.item.type === "meal_ticket" || request.item.type === "banquette_ticket";
 
       await ctx.prisma.$transaction(async (transaction) => {
-        if (existingOrder) {
+        if (existingOrder && !isTicketRequest) {
           await transaction.extraOrderItem.update({
             where: { id: existingOrder.item.id },
             data: { amount: { increment: request.item.amount } },
@@ -1406,6 +1415,18 @@ export const exhibitorRouter = createTRPCRouter({
             person_email: userEmail,
           },
         });
+
+        if (isTicketRequest && request.item.ticket_name) {
+          await transaction.foodPreferences.create({
+            data: {
+              exhibitorId: ctx.session.exhibitorId,
+              name: request.item.ticket_name,
+              value: request.item.ticket_value,
+              comment: request.item.ticket_comment ?? "",
+              type: request.item.type === "meal_ticket" ? "Representative" : "Banquet",
+            },
+          });
+        }
       });
     }),
 });

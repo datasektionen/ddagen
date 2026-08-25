@@ -468,8 +468,15 @@ export default {
       row3: {
         title: "Matpreferenser",
         addTicket: "Lägg till biljett",
-        ticketCount: (count: number, extra: number) => `${count} Biljetter (${extra} extra)`,
+        addExtraTicket: "Lägg till extra biljett",
+        ticketCount: (count: number, included: number, extra: number) =>
+          count <= included
+            ? `${count} Biljetter (${included} inkluderade)`
+            : `${count} Biljetter (${extra} extra)`,
         extraTicketDisclaimer: "Den här biljetten är en extra beställning och ingår inte i ert paket.",
+        extraTicketPrice: (price: number) => `Pris: ${price}:-`,
+        ticketRequestDisclaimer: "Sista beställningsdatum har passerat. Biljetten skickas till en administratör för godkännande.",
+        pendingTicket: "Biljettförfrågan väntar på godkännande",
         warning: "Sista datum för att lägga till matpreferenser ",
         usagenotice: "Välj bara preferenser för de som har specialkost, övriga får standardmaten",
         section1: {
@@ -1404,7 +1411,7 @@ export default {
   },
   aboutUs: {
     header: "Om Oss",
-    subHeader: "Möt Projektgruppen 2025",
+    subHeader: "Möt Projektgruppen 2026",
     paragraph1:
       "D-Dagen är en årlig företagsmässa som anordnas av Datasektionen på KTH. På D-Dagen har företag möjlighet att möta och interagera med potentiella framtida anställda från KTH. Samtidigt erbjuder vi våra studenter en chans att lära sig mer om karriärmöjligheter, nätverka och delta i föreläsningar och andra företagsevent.",
     paragraph2:

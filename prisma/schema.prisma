@@ -214,6 +214,9 @@ model ExtraOrderItem {
   type           String
   amount         Int
   price_per_unit Decimal        @db.Money
+  ticket_name    String?
+  ticket_value   FoodPreferencesValue[] @default([])
+  ticket_comment String?
   created_at     DateTime       @default(now())
   ExtraOrderReq  ExtraOrderReq?
   ExtraOrderHistory ExtraOrderHistory[]

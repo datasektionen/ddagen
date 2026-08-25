@@ -87,7 +87,18 @@ export const getOrderColumns = ({
     size: 1000,
     cell: ({ row }) => (
       <div className="flex items-center gap-3">
-        <span className="text-header">{row.original.type}</span>
+        <div className="text-header">
+          <span>{row.original.type}</span>
+          {row.original.ticket_name && (
+            <p className="text-sm text-primary/80">
+              {row.original.ticket_name}
+              {row.original.ticket_value?.length
+                ? ` (${row.original.ticket_value.join(", ")})`
+                : ""}
+              {row.original.ticket_comment ? ` - ${row.original.ticket_comment}` : ""}
+            </p>
+          )}
+        </div>
       </div>
     ),
   });

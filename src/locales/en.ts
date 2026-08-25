@@ -470,8 +470,15 @@ export default {
       row3: {
         title: "Food Preferences",
         addTicket: "Add ticket",
-        ticketCount: (count: number, extra: number) => `${count} Tickets (${extra} extra)`,
+        addExtraTicket: "Add extra ticket",
+        ticketCount: (count: number, included: number, extra: number) =>
+          count <= included
+            ? `${count} Ticket${count == 1 ? "" : "s"} (${included} included)`
+            : `${count} Ticket${count == 1 ? "" : "s"} (${extra} extra)`,
         extraTicketDisclaimer: "This ticket is an extra order and is not included in your package.",
+        extraTicketPrice: (price: number) => `Price: ${price}:-`,
+        ticketRequestDisclaimer: "The deadline has passed. This ticket will be sent to an administrator for approval.",
+        pendingTicket: "Ticket request pending approval",
         warning: "Last date for ordering ",
         usagenotice: "Only specify for those who have special dietary requirements",
         section1: {
@@ -1410,7 +1417,7 @@ export default {
   },
   aboutUs: {
     header: "About us",
-    subHeader: "Meet Project Group 2025",
+    subHeader: "Meet Project Group 2026",
     paragraph1:
       "D-Dagen is an annual trade fair organized by the Computer Science Student Association at KTH (Royal Institute of Technology). At D-Dagen, companies have the opportunity to meet and interact with potential future employees from KTH. At the same time, we offer our students a chance to learn more about career opportunities, network, and participate in lectures and other company events.",
     paragraph2:
