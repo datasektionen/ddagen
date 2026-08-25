@@ -1410,7 +1410,7 @@ export default {
   },
   aboutUs: {
     header: "About us",
-    subHeader: "Meet Project Group 2025",
+    subHeader: "Meet Project Group 2026",
     paragraph1:
       "D-Dagen is an annual trade fair organized by the Computer Science Student Association at KTH (Royal Institute of Technology). At D-Dagen, companies have the opportunity to meet and interact with potential future employees from KTH. At the same time, we offer our students a chance to learn more about career opportunities, network, and participate in lectures and other company events.",
     paragraph2:
