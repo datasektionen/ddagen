@@ -234,6 +234,8 @@ export const exhibitorRouter = createTRPCRouter({
         studentMeetings: z.number(),
         socialMediaPost: z.number(),
         panelDiscussion: z.number(),
+        lunchLecture: z.number(),
+        aw: z.number(),
         goodieBagLogo: z.number(),
       })
     )
@@ -244,6 +246,8 @@ export const exhibitorRouter = createTRPCRouter({
           studentMeetings: input.studentMeetings,
           socialMediaPost: input.socialMediaPost,
           panelDiscussion: input.panelDiscussion,
+          lunchLecture: input.lunchLecture,
+          aw: input.aw,
           goodiebagLogo:   input.goodieBagLogo,
         },
       });

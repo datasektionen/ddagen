@@ -427,13 +427,15 @@ export default {
           tier2: "Stora",
           tier3: "Huvudsponsor",
           tier4: "Startup",
+          tier5: "Ideelt",
         },
         packageList: [
           "Lilla",
           "Mellan",
           "Stora",
           "Huvudsponsor",
-          "Startup"
+          "Startup",
+          "Ideelt"
         ],
         section1: {
           header: "Paket",
@@ -1091,6 +1093,7 @@ export default {
       "Stora",
       "Huvudsponsor",
       "Startup",
+      "Ideelt",
       ],
     boothSpace: "monteryta",
   },
@@ -1294,6 +1297,8 @@ export default {
           studentMeetings: "Kontaktsamtal",
           socialMediaPost: "Inlägg på sociala medier",
           panelDiscussion: "Paneldiskussion",
+          lunchLecture: "Lunchföreläsning",
+          aw: "AW",
           goodiebagLogo: "Logga på goodiebag",
           specialOrderButton: "Ändra",
           specialOrderSave: "Spara",

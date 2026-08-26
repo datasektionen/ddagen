@@ -125,7 +125,9 @@ export function ExhibitorPanel({
     studentMeetings: number,
     socialmediaPost: number,
     panelDiscussion: number,
-    goodieBagLogo: number) {
+    goodieBagLogo: number,
+    lunchLecture: number,
+    aw: number) {
 
     try {
       await updateSpecialOrders.mutateAsync({
@@ -133,7 +135,9 @@ export function ExhibitorPanel({
         studentMeetings: studentMeetings,
         socialMediaPost: socialmediaPost,
         panelDiscussion: panelDiscussion,
-        goodieBagLogo: goodieBagLogo
+        goodieBagLogo: goodieBagLogo,
+        lunchLecture: lunchLecture,
+        aw: aw,
       });
 
       await reloadLogin();
@@ -282,7 +286,7 @@ export function ExhibitorPanel({
 
   function convertToCSV(data: Exhibitor[], selectedAttributes: string[]): string {
     const jobOfferFields = ["summerJob", "internship", "partTimeJob", "masterThesis", "fullTimeJob", "traineeProgram"];
-    const packageTiers = ["Small", "Medium", "Large", "Main sponsor", "startup", "error"];
+    const packageTiers = ["Small", "Medium", "Large", "Main sponsor", "startup", "nonprofit", "error"];
 
     // Create the header
     const header = selectedAttributes.concat(jobOfferFields).join(',');
@@ -552,6 +556,12 @@ export function ExhibitorPanel({
                       </div>) : null}
                       {exhibitor.panelDiscussion != 0 ? (<div>
                         {t.admin.sales.header.specialOrders.panelDiscussion}
+                      </div>) : null}
+                      {exhibitor.lunchLecture != 0 ? (<div>
+                        {t.admin.sales.header.specialOrders.lunchLecture}
+                      </div>) : null}
+                      {exhibitor.aw != 0 ? (<div>
+                        {t.admin.sales.header.specialOrders.aw}
                       </div>) : null}
                       {exhibitor.goodieBagLogo != 0 ? (<div>
                         {t.admin.sales.header.specialOrders.goodiebagLogo}
