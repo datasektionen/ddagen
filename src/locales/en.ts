@@ -429,6 +429,7 @@ export default {
           tier2: "Large",
           tier3: "Main Sponsor",
           tier4: "Startup",
+          tier5: "Nonprofit",
         },
         packageList: [
           "Small",
@@ -436,6 +437,7 @@ export default {
           "Large",
           "Main Sponsor",
           "Startup",
+          "Nonprofit",
         ],
         section1: {
           header: "Package",
@@ -1096,6 +1098,7 @@ export default {
      "Large",
      "Main Sponsor",
      "Startup",
+    "Nonprofit",
     ],
     boothSpace: "booth space",
   },
@@ -1300,6 +1303,8 @@ export default {
           studentMeetings: "Student meetings",
           socialMediaPost: "Social media post",
           panelDiscussion: "Panel discussion",
+          lunchLecture: "Lunch lecture",
+          aw: "AW",
           goodiebagLogo: "Goodie bag logo",
           specialOrderButton: "Change",
           specialOrderSave: "Save",

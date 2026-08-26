@@ -104,7 +104,16 @@ export class Package {
         this.drinkCoupons = 0;
         this.representatives = 2;
         this.banquetTickets = 0;
-        this.mealCoupons = 2;
+        this.mealCoupons = 0;
+        break;
+      case 5:
+        this.name = t.packages.name[5];
+        this.tables = 1;
+        this.chairs = 0;
+        this.drinkCoupons = 0;
+        this.representatives = 2;
+        this.banquetTickets = 0;
+        this.mealCoupons = 0;
         break;
       default:
         this.name = "Something went wrong with the package, contact sales";
@@ -221,6 +230,8 @@ export class Exhibitor {
   extraMealCoupons: number;
   socialMediaPost: number;
   panelDiscussion: number;
+  lunchLecture: number;
+  aw: number;
   goodieBagLogo: number;
   totalBanquetTicketsWanted: number;
   jobOfferId: string;
@@ -259,6 +270,8 @@ export class Exhibitor {
     extraMealCoupons: number,
     socialMediaPost: number,
     panelDiscussion: number,
+    lunchLecture: number,
+    aw: number,
     goodieBagLogo: number,
     totalBanquetTicketsWanted: number,
     jobOfferId: string,
@@ -296,6 +309,8 @@ export class Exhibitor {
     this.extraMealCoupons = extraMealCoupons;
     this.socialMediaPost = socialMediaPost;
     this.panelDiscussion = panelDiscussion;
+    this.lunchLecture = lunchLecture;
+    this.aw = aw;
     this.goodieBagLogo = goodieBagLogo;
     this.totalBanquetTicketsWanted = totalBanquetTicketsWanted;
     this.jobOfferId = jobOfferId;

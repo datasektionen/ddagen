@@ -52,6 +52,8 @@ model Exhibitor {
 
   socialMediaPost            Int @default(0)
   panelDiscussion            Int @default(0)
+  lunchLecture               Int @default(0)
+  aw                         Int @default(0)
   goodiebagLogo              Int @default(0)
   customTables               Int @default(0)
   customChairs               Int @default(0)
