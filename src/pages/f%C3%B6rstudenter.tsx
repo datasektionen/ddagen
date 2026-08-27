@@ -26,7 +26,7 @@ export default function ForStudents() {
 
   const { title, description, url } = seoContent[t.locale as "sv" | "en"];
 
-  const comingSoon = true;
+  const comingSoon = false;
 
   return (
     <>
