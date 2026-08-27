@@ -1169,7 +1169,8 @@ export default {
   },
   event: {
     comingSoon: "Höstens event kommer avslöjas inom kort!",
-    description: "Klicka gärna på varje evenemang för mer information!",
+    description: "Här kan du läsa information om de olika evenemangen!",
+    readMore: "Läs mer",
     lunchSeminarHeader: "Lunchföreläsning",
     lunchSeminar: " Lunchföreläsningar är ett otroligt populärt koncept bland studenter, där det bjuds på gratis lunch och en intressant föreläsning från ett företag i IT-branschen. Sker kl. 12-13 en vardag på KTH campus.",
     recruitmentPub: "Rekryteringspub",

@@ -43,19 +43,27 @@ function SingleEvent({
         flex-row-reverse
         ${toReverse ? "sm:flex-row-reverse" : "sm:flex-row"}
         gap-4 px-[50px] md:px-[50px] justify-between`}>
-      <div className={`sm:basis-1/2 max-sm:w-full flex flex-col ${toReverse ? "sm:items-start" : "sm:items-end"} max-h-[300px]`}>
-        <div className={`flex flex-col w-full gap-2 items-start cursor-pointer ${toReverse ? "sm:items-start" : "sm:items-end"}`} onClick={openModal}>
-          <h2 className="text-center lg:text-3xl md:text-xl text-white">{eventInfo[1]}</h2>
+      <div className={`sm:basis-1/2 max-sm:min-w-0 max-sm:flex-1 flex flex-col ${toReverse ? "sm:items-start" : "sm:items-end"}`}>
+        <button
+          type="button"
+          aria-label={`${t.event.description}: ${eventInfo[1]}`}
+          className={`group flex w-full max-w-[420px] flex-col items-start gap-3 rounded-xl border-2 border-cerise bg-black/10 p-3 text-left shadow-[0_6px_0_rgba(238,47,123,0.35)] transition duration-200 hover:-translate-y-1 hover:bg-black/20 hover:shadow-[0_10px_0_rgba(238,47,123,0.45)] focus:outline-none focus:ring-4 focus:ring-cerise/40 active:translate-y-0 active:shadow-[0_3px_0_rgba(238,47,123,0.35)] ${toReverse ? "sm:items-start" : "sm:items-end"}`}
+          onClick={openModal}
+        >
+          <h2 className="text-left text-white sm:text-center md:text-xl lg:text-3xl">{eventInfo[1]}</h2>
           {(image != "") &&
-            <div className={`flex bg-slate-100 bg-opacity-50 w-full max-w-[350px] bg-white/80 rounded-md ${fullImage === true ? "overflow-hidden" : "px-8 py-4 "}`}>
-              <img src={image} className="flex-1 max-h-[230px] sm:max-h-[300px] lg:max-h-[300px] w-full object-contain ease-in duration-100 hover:scale-110"></img>
+            <div className={`flex w-full max-w-[350px] overflow-hidden rounded-md bg-white/80 ${fullImage === true ? "" : "px-8 py-4"}`}>
+              <img src={image} alt="" className="flex-1 max-h-[230px] sm:max-h-[300px] lg:max-h-[300px] w-full object-contain transition duration-200 group-hover:scale-105"></img>
             </div>
           }
-        </div>
+          <span className="self-center text-sm font-medium text-white underline decoration-cerise decoration-2 underline-offset-4 transition group-hover:text-cerise sm:self-auto">
+            {t.event.readMore}
+          </span>
+        </button>
       </div>
-      <div className="basis-[124px] h-full flex justify-center">
-        <div className={`flex relative justify-center w-4 ${color} h-full min-h-[300px]`}>
-          {showDate && <div className={`flex absolute justify-center items-center h-16 w-16 rounded-full ${color} text-white text-lg`}>
+      <div className="flex h-full w-16 shrink-0 justify-center sm:basis-[124px]">
+        <div className={`relative flex h-full min-h-[360px] w-1 justify-center ${color} sm:min-h-[420px]`}>
+          {showDate && <div className={`absolute flex h-14 w-14 items-center justify-center rounded-full ${color} text-center text-xs text-white sm:h-16 sm:w-16 sm:text-lg`}>
             {eventInfo[3]}
           </div>}
         </div>
@@ -63,30 +71,34 @@ function SingleEvent({
       <div className="sm:basis-1/2 max-sm:hidden"></div>
       {modalState && (
           <div
-            className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-90 z-40"
+            className="fixed inset-0 z-[60] flex items-start justify-center overflow-y-auto bg-verydarkblue/80 px-4 pb-6 pt-24 backdrop-blur-sm sm:pt-28"
             ref={modalRef}
             onClick={handleOverlayClick}
+            role="dialog"
+            aria-modal="true"
+            aria-label={eventInfo[1]}
           >
-          <div className={`bg-white bg-opacity-70 w-[500px] pb-5 flex flex-col rounded-3xl`}>
-            <div className="relative px-8 py-4 justify-center flex flex-row">
-                <img src={image} />
-
-                <button
-                  className="absolute top-5 right-3 w-[50px] h-[50px] flex items-center justify-center"
-                  onClick={closeModal}
-                >
-                  <div className="absolute h-[50px] w-[5px] bg-white rounded-md rotate-45"></div>
-                  <div className="absolute h-[50px] w-[5px] bg-white rounded-md -rotate-45"></div>
-                </button>
+          <div className="flex max-h-[calc(100vh-7rem)] w-full max-w-[520px] flex-col overflow-y-auto rounded-xl border-2 border-cerise bg-darkblue text-white shadow-[0_10px_0_rgba(238,47,123,0.35)] sm:max-h-[calc(100vh-8rem)]">
+            <button
+              type="button"
+              aria-label="Close event details"
+              className="sticky right-3 top-3 z-10 -mb-10 mr-3 flex h-10 w-10 shrink-0 self-end items-center justify-center rounded-full border border-white/50 bg-darkblue/90 transition hover:border-white hover:bg-cerise focus:outline-none focus:ring-4 focus:ring-cerise/40"
+              onClick={closeModal}
+            >
+              <div className="absolute h-5 w-0.5 rotate-45 rounded-md bg-white"></div>
+              <div className="absolute h-5 w-0.5 -rotate-45 rounded-md bg-white"></div>
+            </button>
+            <div className={`relative flex justify-center p-4 sm:p-6 ${fullImage ? "bg-white/10" : "bg-white/80"}`}>
+                <img src={image} alt="" className="max-h-[320px] w-full object-contain" />
               </div>
-              <div className="px-5 mt-5">
-                <h2 className="text-3xl text-black">
+              <div className="px-6 pb-7 pt-5 sm:px-8">
+                <h2 className="text-3xl text-white">
                   {eventInfo[1]}
                 </h2>
-                <h3 className="text-cerise text-2xl mt-2">
-                  {companyLink == true ? <a href={eventInfo[0]}>{eventInfo[0]}</a> : eventInfo[0]}
+                <h3 className="mt-2 break-words text-2xl text-cerise">
+                  {companyLink == true ? <a className="underline decoration-1 underline-offset-4 hover:text-white" href={eventInfo[0]}>{eventInfo[0]}</a> : eventInfo[0]}
                 </h3>
-                <p className="text-black text-start mt-5">{eventInfo[2]}</p>
+                <p className="mt-5 text-start text-white/85">{eventInfo[2]}</p>
               </div>
           </div>
         </div>
@@ -221,7 +233,7 @@ export default function Events() {
 
   const { title, description, url } = seoContent[t.locale as "sv" | "en"];
 
-  const comingSoon = true;
+  const comingSoon = false;
 
   return (
     <>

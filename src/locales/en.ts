@@ -1174,7 +1174,8 @@ export default {
   },
   event: {
     comingSoon: "The upcoming events will be revealed soon!",
-    description: "Klick on the events to read more about them!",
+    description: "Here you can read information about the different events!",
+    readMore: "Read more",
     lunchSeminarHeader: "Lunch Seminar",
     lunchSeminar: "Lunch lectures are an incredibly popular concept among students, offering free lunch and an interesting talk from a company in the IT industry. Takes place from 12 AM–1 PM on a weekday at the KTH campus.",
     recruitmentPub: "Recruitment Pub",
