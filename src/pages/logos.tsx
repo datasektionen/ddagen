@@ -82,9 +82,11 @@ function cardTheme(tier: number) {
 function Tag({
   children,
   tone = "dark",
+  className = "",
 }: {
   children: React.ReactNode;
   tone?: "light" | "dark";
+  className?: string;
 }) {
   const cls =
     tone === "light"
@@ -92,7 +94,7 @@ function Tag({
       : "border-white/25 bg-white/10 text-white";
   return (
     <span
-      className={`whitespace-nowrap rounded-full border px-2.5 py-1 text-[11px] leading-none ${cls}`}
+      className={`whitespace-nowrap rounded-full border px-2.5 py-1 text-[11px] leading-none ${cls} ${className}`}
     >
       {children}
     </span>
@@ -108,7 +110,13 @@ function ExhibitorCard({
   exhibitor: Exhibitor;
   onOpen: () => void;
 }) {
-  const tags = activeOffers(exhibitor.offers);
+  // One primary chip (the company's industry if it wrote one, otherwise its
+  // first job offer) plus a "+N" count — keeps the row on a single line even
+  // on a narrow two-column phone layout. The rest is in the detail modal.
+  const chips = [
+    ...(exhibitor.industry ? [exhibitor.industry] : []),
+    ...activeOffers(exhibitor.offers).map((k) => offerLabel(t, k)),
+  ];
 
   return (
     <button
@@ -133,17 +141,14 @@ function ExhibitorCard({
         )}
       </div>
 
-      {(tags.length > 0 || exhibitor.industry) && (
-        <div className="flex flex-wrap items-center gap-1.5">
-          {exhibitor.industry && <Tag tone="light">{exhibitor.industry}</Tag>}
-          {tags.slice(0, exhibitor.industry ? 1 : 2).map((k) => (
-            <Tag key={k} tone="light">
-              {offerLabel(t, k)}
-            </Tag>
-          ))}
-          {tags.length > (exhibitor.industry ? 1 : 2) && (
-            <span className="text-[11px] text-darkblue/50">
-              +{tags.length - (exhibitor.industry ? 1 : 2)}
+      {chips.length > 0 && (
+        <div className="flex items-center gap-1.5">
+          <Tag tone="light" className="min-w-0 truncate">
+            {chips[0]}
+          </Tag>
+          {chips.length > 1 && (
+            <span className="shrink-0 rounded-full border border-darkblue/15 bg-darkblue/5 px-2 py-1 text-[11px] leading-none text-darkblue/60">
+              +{chips.length - 1}
             </span>
           )}
         </div>
