@@ -1174,7 +1174,7 @@ export default {
     lunchSeminarHeader: "Lunchföreläsning",
     lunchSeminar: " Lunchföreläsningar är ett otroligt populärt koncept bland studenter, där det bjuds på gratis lunch och en intressant föreläsning från ett företag i IT-branschen. Sker kl. 12-13 en vardag på KTH campus.",
     recruitmentPub: "Rekryteringspub",
-    recruitmentPubText: "Under rekryteringen av D-Dagens fantastiska 100+ dagspersonal som ska hjälpa till under mässdagen så anordnar Projektgruppen den årliga Rekryteringspuben i Datasektionens egna pub Meta! Häng med på en riktigt trevlig kväll med D-Dagen relaterade aktiviteter och tävlingar med sponsrade priser. Mat och dryck finns att beställa.",
+    recruitmentPubText: "Under rekryteringen av D-Dagens fantastiska 100+ dagspersonal som ska hjälpa till under mässdagen så anordnar Projektgruppen den årliga Rekryteringspuben i Datasektionens egna pub Meta! Häng med på en riktigt trevlig kväll med D-Dagen relaterade aktiviteter och tävlingar med sponsrade priser. Mat och dryck finns att beställa. Puben öppnar 17:17",
     contactConversations: "Anmälan för Kontaktsamtal stänger 23:59",
     contactConversationsText: "Kontaktsamtal är en unik möjlighet för företag och studenter att i enrum träﬀas och diskutera karriärsmöjligheter. Studenten får en mycket bättre inblick i förhållandena på den specifika arbetsplatsen, samt så får företag en utmärkt bild över den specifika studentens kunskaper och erfarenheter. Läs mer på http://ddagen.se/kontaktsamtal.",
     opening: "25-års jubileumsmässan öppnar!",
@@ -1195,7 +1195,28 @@ export default {
     closes: "Mässan stänger",
     banquet: "D-Dagen Banquetten börjar!",
     banquetSignup: "Deadline för anmälan av spec-kost till D-Dagen Banquetten",
-    banquetSignupText: "biljetter går att köpa efter detta så länge det finns platser kvar."
+    banquetSignupText: "biljetter går att köpa efter detta så länge det finns platser kvar.",
+    modalAW: {
+      header: "Modal AW",
+      text: "Tid: 17:30 \nPlats: Modals kontor på Sveavägen 17",
+      eventText: "Eventsida"
+    },
+    ddagenXericssonNight: {
+      header: "D-Dagen X Ericsson Night",
+      text: "Tid: 17:XX \nPlats: META",
+      eventText: "Eventsida"
+    },
+    innovationPitchCompetition: {
+      header: "KTH Innovation Pitch Competition",
+      text: "Tid: 16:30 \nPlats: KTH Innovation",
+      eventSignUpText: "Tävlingsanmälan",
+      eventText: "Eventsida"
+    },
+    ais: {
+      header: "Event med AI Society",
+      text: "Tid: TBD \nPlats: TBD",
+      eventText: "Eventsida"
+    },
   },
   history: {
     header: "D-Dagen Historia",

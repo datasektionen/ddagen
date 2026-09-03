@@ -2,6 +2,20 @@ import { useLocale } from "@/locales";
 import { NextSeo } from "next-seo";
 import { useState, useRef } from "react";
 
+type EventItem = {
+  date: string;
+  companyName: string;
+  image: string;
+  fullImage?: boolean;
+  header: string;
+  text: string;
+  companyUrl?: string;
+  eventLinkText?: string;
+  eventLinkUrl?: string;
+  eventLinkSecondaryText?: string;
+  eventLinkSecondaryUrl?: string;
+};
+
 function SingleEvent({
   color,
   toReverse,
@@ -9,7 +23,11 @@ function SingleEvent({
   fullImage,
   showDate,
   eventInfo,
-  companyLink
+  companyUrl,
+  eventLinkText,
+  eventLinkUrl,
+  eventLinkSecondaryText,
+  eventLinkSecondaryUrl,
 }: {
   color: string;
   toReverse: boolean;
@@ -17,7 +35,11 @@ function SingleEvent({
   fullImage?: boolean;
   showDate: boolean;
   eventInfo: string[];
-  companyLink?: boolean;
+  companyUrl?: string;
+  eventLinkText?: string;
+  eventLinkUrl?: string;
+  eventLinkSecondaryText?: string;
+  eventLinkSecondaryUrl?: string;
 }) {
   const t = useLocale();
   const [modalState, setModal] = useState(false);
@@ -62,7 +84,7 @@ function SingleEvent({
         </button>
       </div>
       <div className="flex h-full w-16 shrink-0 justify-center sm:basis-[124px]">
-        <div className={`relative flex h-full min-h-[360px] w-1 justify-center ${color} sm:min-h-[420px]`}>
+        <div className={`relative flex min-h-[360px] w-1 self-stretch justify-center ${color} sm:min-h-[420px]`}>
           {showDate && <div className={`absolute flex h-14 w-14 items-center justify-center rounded-full ${color} text-center text-xs text-white sm:h-16 sm:w-16 sm:text-lg`}>
             {eventInfo[3]}
           </div>}
@@ -96,9 +118,33 @@ function SingleEvent({
                   {eventInfo[1]}
                 </h2>
                 <h3 className="mt-2 break-words text-2xl text-cerise">
-                  {companyLink == true ? <a className="underline decoration-1 underline-offset-4 hover:text-white" href={eventInfo[0]}>{eventInfo[0]}</a> : eventInfo[0]}
+                  {companyUrl ? <a className="underline decoration-1 underline-offset-4 hover:text-white" href={companyUrl}>{eventInfo[0]}</a> : eventInfo[0]}
                 </h3>
-                <p className="mt-5 text-start text-white/85">{eventInfo[2]}</p>
+                <p className="mt-5 whitespace-pre-line text-start text-white/85">{eventInfo[2]}</p>
+                {(eventLinkText && eventLinkUrl) || (eventLinkSecondaryText && eventLinkSecondaryUrl) ? (
+                  <div className="mt-5 flex flex-wrap gap-3">
+                    {eventLinkText && eventLinkUrl && (
+                      <a
+                        href={eventLinkUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center justify-center rounded-full bg-cerise px-5 py-2.5 font-medium text-white shadow-md transition hover:bg-cerise/80 focus:outline-none focus:ring-4 focus:ring-cerise/40"
+                      >
+                        {eventLinkText}
+                      </a>
+                    )}
+                    {eventLinkSecondaryText && eventLinkSecondaryUrl && (
+                      <a
+                        href={eventLinkSecondaryUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 font-medium text-verydarkblue shadow-md transition hover:bg-white/80 focus:outline-none focus:ring-4 focus:ring-white/40"
+                      >
+                        {eventLinkSecondaryText}
+                      </a>
+                    )}
+                  </div>
+                ) : null}
               </div>
           </div>
         </div>
@@ -110,7 +156,7 @@ function SingleEvent({
 export default function Events() {
   const t = useLocale();
 
-  const events = [
+  const events: EventItem[] = [
     {
       date: "16/9",
       companyName: "EECS event",
@@ -119,6 +165,52 @@ export default function Events() {
       header: t.event.recruitmentPub,
       text: t.event.recruitmentPubText
     },
+    {
+      date: "23/9",
+      companyName: "Modal",
+      companyUrl: "https://modal.com/",
+      image: "/img/exhibitors/modal-logo.svg",
+      fullImage: false,
+      header: t.event.modalAW.header,
+      text: t.event.modalAW.text,
+      eventLinkText:  t.event.modalAW.eventText,
+      eventLinkUrl: "https://lu.ma/"
+    },
+    {
+      date: "30/9",
+      companyName: "Ericsson",
+      companyUrl: "https://www.ericsson.com/",
+      image: "/img/exhibitors/ericsson.png",
+      fullImage: true,
+      header: t.event.ddagenXericssonNight.header,
+      text: t.event.ddagenXericssonNight.text,
+      eventLinkText: t.event.ddagenXericssonNight.eventText,
+      eventLinkUrl: "https://lu.ma/"
+    },
+    {
+      date: "1/10",
+      companyName: "KTH Innovation",
+      companyUrl: "https://www.kth.se/innovation",
+      image: "/img/logos/kth.png",
+      fullImage: false,
+      header: t.event.innovationPitchCompetition.header,
+      text: t.event.innovationPitchCompetition.text,
+      eventLinkText: t.event.innovationPitchCompetition.eventText,
+      eventLinkUrl: "https://lu.ma/",
+      eventLinkSecondaryText: t.event.innovationPitchCompetition.eventSignUpText,
+      eventLinkSecondaryUrl: "https://lu.ma/"
+    },
+    {
+      date: "TBD",
+      companyName: "AI Society",
+      companyUrl: "https://kthais.com/",
+      image: "/img/exhibitors/ais.png",
+      fullImage: true,
+      header: t.event.ais.header,
+      text: t.event.ais.text,
+      eventLinkText: t.event.ais.eventText,
+      eventLinkUrl: "https://lu.ma/"
+    },/*
         {
       date: "24/9",
       companyName: "",
@@ -126,33 +218,26 @@ export default function Events() {
       fullImage: true,
       header: t.event.banquetSignup,
       text: t.event.banquetSignupText
-    },
+    },*//*
     {
       date: "01/10",
       companyName: "Omegapoint",
       image: "/img/exhibitors/Omegapoint.svg",
       header: t.event.lunchSeminarHeader,
       text: t.event.lunchSeminar
-    },
-    {
-      date: "07/10",
-      companyName: "Strawberry",
-      image: "/img/exhibitors/Strawberry.svg",
-      header: t.event.lunchSeminarHeader,
-      text: t.event.lunchSeminar
-    },
+    },*//*
     {
       date: "07/10",
       companyName: "https://ddagen.se/kontaktsamtal",
-      companyLink: true,
+      companyUrl: "https://ddagen.se/kontaktsamtal",
       image: "/img/ff4.webp",
       fullImage: true,
       header: t.event.contactConversations,
       text: t.event.contactConversationsText
-    },
+    },*/
   ]
 
-  const fairEvents = [
+  const fairEvents: EventItem[] = [
     {
       date: "10:00",
       companyName: t.event.opening,
@@ -161,7 +246,7 @@ export default function Events() {
       fullImage: true,
       header: t.event.welcome,
       text: ""
-    },
+    },/*
     {
       date: "10:15",
       companyName: t.event.openingCeremony,
@@ -189,7 +274,7 @@ export default function Events() {
       image: "/img/exhibitors/panelAtlas.png",
       header: t.event.panelDiscussionHeader3,
       text: t.event.panelDiscussion1text + " " + t.event.panelDiscussiontext
-    },
+    },*/
     {
       date: "16:00",
       companyName: "",
@@ -208,14 +293,14 @@ export default function Events() {
     },
   ]
 
-  const postFairEvents = [
+  const postFairEvents: EventItem[] = [/*
     {
       date: "13/10",
       companyName: "Försvarsmaktens Radioanstalt",
       image: "/img/exhibitors/FRA.png",
       header: t.event.lunchSeminarHeader,
       text: t.event.lunchSeminar
-    },
+    },*/
   ]
 
   const seoContent = {
@@ -266,34 +351,40 @@ export default function Events() {
         <p className="font-medium text-2xl text-center text-cerise">{t.event.description}</p>
         <div className="flex flex-col mt-4">
           <div className="max-sm:hidden flex justify-center">
-            <div className="w-4 bg-cerise h-full min-h-[30px] rounded-t-full"></div>
+            <div className="w-1 bg-cerise h-full min-h-[30px] rounded-t-full"></div>
           </div>
-          {events?.map((event, i) => (
-            <SingleEvent
-              key={i}
-              color="bg-cerise"
-              toReverse={i%2 == 0}
-              image={event?.image}
-              fullImage={event?.fullImage ?? false}
-              showDate={!(i > 0 && event.date === events[i-1].date)}
-              eventInfo={[
-                event.companyName,
-                event.header,
-                event.text,
-                event.date
-              ]}
-              companyLink={event?.companyLink ?? false}
-              />
-            ))
-          }
+          <div className="relative before:absolute before:bottom-0 before:left-1/2 before:top-0 before:z-0 before:hidden before:w-1 before:-translate-x-1/2 before:bg-cerise before:content-[''] sm:before:block">
+            {events?.map((event, i) => (
+              <SingleEvent
+                key={i}
+                color="bg-cerise"
+                toReverse={i%2 == 0}
+                image={event?.image}
+                fullImage={event?.fullImage ?? false}
+                showDate={!(i > 0 && event.date === events[i-1].date)}
+                eventInfo={[
+                  event.companyName,
+                  event.header,
+                  event.text,
+                  event.date
+                ]}
+                companyUrl={event?.companyUrl}
+                eventLinkText={event?.eventLinkText}
+                eventLinkUrl={event?.eventLinkUrl}
+                eventLinkSecondaryText={event?.eventLinkSecondaryText}
+                eventLinkSecondaryUrl={event?.eventLinkSecondaryUrl}
+                />
+              ))
+            }
+          </div>
           <div className="flex max-sm:hidden justify-center">
-            <div className="w-4 bg-cerise h-full min-h-[30px] rounded-b-full"></div>
+            <div className="w-1 bg-cerise h-full min-h-[30px] rounded-b-full"></div>
           </div>
           <div>
             <h1 className="text-5xl text-[#C2952C] p-4 font-medium text-center"> {t.event.fair} 8/10</h1>
           </div>
           <div className="max-sm:hidden flex justify-center">
-            <div className="w-4 bg-[#C2952C] h-full min-h-[30px] rounded-t-full"></div>
+            <div className="w-1 bg-[#C2952C] h-full min-h-[30px] rounded-t-full"></div>
           </div>
           {fairEvents?.map((event, i) => (
             <SingleEvent
@@ -309,38 +400,57 @@ export default function Events() {
                 event.text,
                 event.date
               ]}
+              companyUrl={event?.companyUrl}
+              eventLinkText={event?.eventLinkText}
+              eventLinkUrl={event?.eventLinkUrl}
+              eventLinkSecondaryText={event?.eventLinkSecondaryText}
+              eventLinkSecondaryUrl={event?.eventLinkSecondaryUrl}
               />
             ))
           }
         </div>
-          <div className="flex max-sm:hidden justify-center">
-            <div className="w-4 bg-[#C2952C] h-full min-h-[30px] rounded-b-full"></div>
-          </div>
-          <div>
-            <h1 className="text-5xl text-cerise p-4 font-medium text-center"> {t.event.after + " " + t.event.fair}</h1>
-          </div>
-          <div className="max-sm:hidden flex justify-center">
-            <div className="w-4 bg-cerise h-full min-h-[30px] rounded-t-full"></div>
-          </div>
-          {postFairEvents?.map((event, i) => (
-            <SingleEvent
-              key={i}
-              color="bg-cerise"
-              toReverse={i%2 == 0}
-              image={event?.image}
-              showDate={!(i > 0 && event.date === events[i-1].date)}
-              eventInfo={[
-                event.companyName,
-                event.header,
-                event.text,
-                event.date
-              ]}
-              />
-            ))
-          }
-          <div className="flex max-sm:hidden justify-center">
-            <div className="w-4 bg-cerise h-full min-h-[30px] rounded-b-full"></div>
-          </div>
+          {postFairEvents.length === 0 && (
+            <div className="flex max-sm:hidden justify-center">
+              <div className="w-1 bg-[#C2952C] h-full min-h-[30px] rounded-b-full"></div>
+            </div>
+          )}
+          {postFairEvents.length > 0 && (
+            <>
+              <div className="flex max-sm:hidden justify-center">
+                <div className="w-4 bg-[#C2952C] h-full min-h-[30px] rounded-b-full"></div>
+              </div>
+              <div>
+                <h1 className="text-5xl text-cerise p-4 font-medium text-center"> {t.event.after + " " + t.event.fair}</h1>
+              </div>
+              <div className="max-sm:hidden flex justify-center">
+                <div className="w-1 bg-cerise h-full min-h-[30px] rounded-t-full"></div>
+              </div>
+              {postFairEvents.map((event, i) => (
+                <SingleEvent
+                  key={i}
+                  color="bg-cerise"
+                  toReverse={i%2 == 0}
+                  image={event?.image}
+                  showDate={!(i > 0 && event.date === postFairEvents[i-1].date)}
+                  eventInfo={[
+                    event.companyName,
+                    event.header,
+                    event.text,
+                    event.date
+                  ]}
+                  companyUrl={event?.companyUrl}
+                  eventLinkText={event?.eventLinkText}
+                  eventLinkUrl={event?.eventLinkUrl}
+                  eventLinkSecondaryText={event?.eventLinkSecondaryText}
+                  eventLinkSecondaryUrl={event?.eventLinkSecondaryUrl}
+                  />
+                ))
+              }
+              <div className="flex max-sm:hidden justify-center">
+                <div className="w-1 bg-cerise h-full min-h-[30px] rounded-b-full"></div>
+              </div>
+            </>
+          )}
       </div>
       }
     </>

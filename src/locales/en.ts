@@ -1179,7 +1179,7 @@ export default {
     lunchSeminarHeader: "Lunch Seminar",
     lunchSeminar: "Lunch lectures are an incredibly popular concept among students, offering free lunch and an interesting talk from a company in the IT industry. Takes place from 12 AM–1 PM on a weekday at the KTH campus.",
     recruitmentPub: "Recruitment Pub",
-    recruitmentPubText: "During the recruitment of D-Dagen's fantastic 100+ day staff who will assist during the fair, the Project Group organizes the annual Recruitment Pub in the Computer Science chapter's own pub, Meta! Join us for a really pleasant evening with D-Dagen-related activities and competitions with sponsored prizes. Food and drinks are available to order.",
+    recruitmentPubText: "During the recruitment of D-Dagen's fantastic 100+ day staff who will assist during the fair, the Project Group organizes the annual Recruitment Pub in the Computer Science chapter's own pub, Meta! Join us for a really pleasant evening with D-Dagen-related activities and competitions with sponsored prizes. Food and drinks are available to order. The pub opens 17:17",
     contactConversations: "Signup for Contact Conversations closes at 23:59",
     contactConversationsText: "Contact meetings are a unique opportunity for companies and students to meet one-on-one and discuss career opportunities. Students gain a much better understanding of the conditions at a specific workplace, and companies get an excellent picture of the student's skills and experiences. Read more at http://ddagen.se/kontaktsamtal.",
     opening: "25th Anniversary Fair Opens!",
@@ -1201,7 +1201,28 @@ export default {
     closes: "The fair closes",
     banquet: "The D-Dagen Banquet starts!",
     banquetSignup: "Deadline for registration of special diet for the D-Dagen Banquet",
-    banquetSignupText: "tickets can still be purchased after this as long as there are seats left."
+    banquetSignupText: "tickets can still be purchased after this as long as there are seats left.",
+    modalAW: {
+      header: "Modal AW",
+      text: "Time 17:30. \nPlace: Modal's office at Sveavägen 17",
+      eventText: "Event Page"
+    },
+    ddagenXericssonNight: {
+      header: "D-Dagen X Ericsson Night",
+      text: "Time: 17:XX \nPlace: META",
+      eventText: "Event Page"
+    },
+    innovationPitchCompetition: {
+      header: "KTH Innovation Pitch Competition",
+      text: "Time: 16:30 \nPlace: KTH Innovation",
+      eventSignUpText: "Competition Sign Up",
+      eventText: "Event Page"
+    },
+    ais: {
+      header: "Event with AI Society",
+      text: "Time: TBD \nPlace: TBD",
+      eventText: "Event Page"
+    },
   },
   history: {
     header: "D-Dagen History",
