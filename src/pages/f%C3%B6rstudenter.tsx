@@ -47,10 +47,10 @@ export default function ForStudents() {
       />
       <div className="w-full h-full">
         <div className="flex flex-col mx-auto items-center max-w-[90%]">
-          <h1 className="uppercase text-center text-cerise pt-[110px] lg:pt-[140px] mb-4 text-5xl font-medium">
+          <h1 className="uppercase text-center text-cerise pt-[110px] lg:pt-[140px] mb-0 text-5xl font-medium">
             {t.forStudents.title}
           </h1>
-          <div className="flex flex-row items-center justify-center mt-[50px] px-5">
+          {/* <div className="flex flex-row items-center justify-center mt-[50px] px-5">
             <p className="text-white w-[300px] sm:w-[600px] text-center">
               {t.forStudents.guideText}
             </p>
@@ -64,7 +64,7 @@ export default function ForStudents() {
                 {t.forStudents.guideButtonText}
               </a>
             </button>
-          </div>
+          </div> */}
           <ImageTextSection
             t={t}
             leftSideImage={true}
