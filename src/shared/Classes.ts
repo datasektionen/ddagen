@@ -65,7 +65,7 @@ export class Package {
         this.name = t.packages.name[0];
         this.tables = 1;
         this.chairs = 0;
-        this.drinkCoupons = 8;
+        this.drinkCoupons = 6;
         this.representatives = 2;
         this.banquetTickets = 2;
         this.mealCoupons = 2;
@@ -74,7 +74,7 @@ export class Package {
         this.name = t.packages.name[1];
         this.tables = 1;
         this.chairs = 0;
-        this.drinkCoupons = 8;
+        this.drinkCoupons = 6;
         this.representatives = 3;
         this.banquetTickets = 2;
         this.mealCoupons = 3;
@@ -83,7 +83,7 @@ export class Package {
         this.name = t.packages.name[2];
         this.tables = 2;
         this.chairs = 0;
-        this.drinkCoupons = 16;
+        this.drinkCoupons = 12;
         this.representatives = 4;
         this.banquetTickets = 4;
         this.mealCoupons = 4;
@@ -92,10 +92,10 @@ export class Package {
         this.name = t.packages.name[3];
         this.tables = 2;
         this.chairs = 0;
-        this.drinkCoupons = 16; 
+        this.drinkCoupons = 12;
         this.representatives = 10;
-        this.banquetTickets = 2;
-        this.mealCoupons = 4; 
+        this.banquetTickets = 4;
+        this.mealCoupons = 4;
         break;
       case 4:
         this.name = t.packages.name[4];
@@ -104,7 +104,16 @@ export class Package {
         this.drinkCoupons = 0;
         this.representatives = 2;
         this.banquetTickets = 0;
-        this.mealCoupons = 2; 
+        this.mealCoupons = 0;
+        break;
+      case 5:
+        this.name = t.packages.name[5];
+        this.tables = 1;
+        this.chairs = 0;
+        this.drinkCoupons = 0;
+        this.representatives = 2;
+        this.banquetTickets = 0;
+        this.mealCoupons = 0;
         break;
       default:
         this.name = "Something went wrong with the package, contact sales";
@@ -221,6 +230,8 @@ export class Exhibitor {
   extraMealCoupons: number;
   socialMediaPost: number;
   panelDiscussion: number;
+  lunchLecture: number;
+  aw: number;
   goodieBagLogo: number;
   totalBanquetTicketsWanted: number;
   jobOfferId: string;
@@ -237,7 +248,10 @@ export class Exhibitor {
   companyHostEmail: string;
   allowMarketing: boolean;
   industry: string;
-  alcFreeTicket: number; 
+  industryType: string;
+  alcFreeTicket: number;
+  mapPosition: number;
+  salesperson: string;
 
   constructor(
     id: string,
@@ -256,6 +270,8 @@ export class Exhibitor {
     extraMealCoupons: number,
     socialMediaPost: number,
     panelDiscussion: number,
+    lunchLecture: number,
+    aw: number,
     goodieBagLogo: number,
     totalBanquetTicketsWanted: number,
     jobOfferId: string,
@@ -272,7 +288,10 @@ export class Exhibitor {
     companyHostEmail: string,
     allowMarketing: boolean,
     industry: string,
+    industryType: string,
     alcFreeTicket: number,
+    mapPosition: number,
+    salesperson: string,
   ) {
     this.id = id;
     this.name = exhibitorName;
@@ -290,6 +309,8 @@ export class Exhibitor {
     this.extraMealCoupons = extraMealCoupons;
     this.socialMediaPost = socialMediaPost;
     this.panelDiscussion = panelDiscussion;
+    this.lunchLecture = lunchLecture;
+    this.aw = aw;
     this.goodieBagLogo = goodieBagLogo;
     this.totalBanquetTicketsWanted = totalBanquetTicketsWanted;
     this.jobOfferId = jobOfferId;
@@ -306,7 +327,10 @@ export class Exhibitor {
     this.companyHostEmail = companyHostEmail;
     this.allowMarketing = allowMarketing;
     this.industry = industry;
+    this.industryType = industryType;
     this.alcFreeTicket = alcFreeTicket;
+    this.mapPosition = mapPosition;
+    this.salesperson = salesperson;
   }
 }
 
@@ -321,6 +345,7 @@ export class ExhibitorInfo {
   sendEmailToExhibitor: boolean;
   mapPosition: number;
   meetingTimeSlots: number[];
+  salesperson: string;
 
   constructor(
     companyName: string,
@@ -333,6 +358,7 @@ export class ExhibitorInfo {
     sendEmailToExhibitor: boolean,
     mapPosition: number,
     meetingTimeSlots: number[],
+    salesperson: string,
   ) {
     this.companyName = companyName;
     this.organizationNumber = organizationNumber;
@@ -344,6 +370,7 @@ export class ExhibitorInfo {
     this.sendEmailToExhibitor = sendEmailToExhibitor;
     this.mapPosition = mapPosition;
     this.meetingTimeSlots = meetingTimeSlots;
+    this.salesperson = salesperson;
   }
 }
 
@@ -362,12 +389,57 @@ export type MapProp = {
     fullTimeJob: boolean;
     traineeProgram: boolean;
   };
+  industryType: string;
   position: number;
 };
 
+export type ExtraOrderItem = {
+  type: string;
+  amount: number;
+  price_per_unit: number;
+  id: string;
+  ticket_name?: string | null;
+  ticket_value?: string[];
+  ticket_comment?: string | null;
+  created_at?: Date;
+}
+
+export type ExtraOrderRequest = {
+  id: string;
+  item: ExtraOrderItem;
+  updated_at?: Date;
+}
+
+export type ExtraOrderAccepted = {
+  id: string;
+  item: ExtraOrderItem;
+  updated_at?: Date;
+}
+
+export type ExtraOrderAction = "CREATED_REQUEST" | "CANCELED_REQUEST" | "ACCEPTED_REQUEST" | "UPDATED_REQUEST" | "UPDATED_ORDER" | "CANCELED_ORDER" | "CREATED_ORDER";
+
+export type ExtraOrderPerson = {
+  name?: string;
+  email?: string;
+  is_admin?: boolean;
+}
+
+export type ExtraOrderHistory = {
+  id: string;
+  item: ExtraOrderItem;
+  person?: ExtraOrderPerson;
+  action?: ExtraOrderAction;
+  created_at?: Date;
+}
+
+export type Cookies = Partial<{
+    [key: string]: string;
+}>
+
 export function sortExhibitors(exhibitors: Exhibitor[]) {
-  // this is old sorting function from when exhibitors where enums, perhaps removable 
-  return exhibitors;
+  return [...exhibitors].sort((a, b) =>
+    a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
+  );
 }
 
 export function sortPreferences(preferences: Preferences[]) {

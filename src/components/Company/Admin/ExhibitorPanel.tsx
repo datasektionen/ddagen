@@ -18,21 +18,33 @@ import {
 import { UpdateSpecialOrders } from "./UpdateSpecialOrdersForm";
 import { DeleteExhibitorLock } from "./DeleteExhibitorLock";
 import { UpdateCompanyHost } from "./updateCompanyHostForm";
+import { UpdatePositionForm } from "./UpdatePositionForm";
+import { UpdateIndustryTypeForm } from "./UpdateIndustryTypeForm";
+import { UpdateSalespersonForm } from "./UpdateSalespersonForm";
+import { SelectField } from "@/components/SelectField";
+
+type AcceptedExtraOrders = {
+  tables: number;
+  chairs: number;
+  drinkCoupons: number;
+  alcFreeTicket: number;
+  byExhibitor?: Record<string, AcceptedExtraOrders>;
+};
 
 export function ExhibitorPanel({
   t,
   exhibitors,
   preferences,
+  acceptedExtraOrders,
   exhibitorsInterests,
-  password,
   reloadLogin,
   jobOffers,
 }: {
   t: Locale;
   exhibitors: Exhibitor[];
   preferences: Preferences[];
+  acceptedExtraOrders: AcceptedExtraOrders;
   exhibitorsInterests: ExhibitorInfo[];
-  password: string;
   reloadLogin: () => void;
   jobOffers: JobOffer[];
 }) {
@@ -49,6 +61,10 @@ export function ExhibitorPanel({
 
   const [showSpecialOrdersForm, setShowSpecialOrdersForm] = useState<boolean>(false);
   const [showCompanyHostForm, setShowCompanyHostForm] = useState<boolean>(false);
+  const [showUpdatePositionForm, setShowUpdatePositionForm] = useState<boolean>(false);
+  const [showUpdateIndustryTypeForm, setShowIndustryTypeForm] = useState<boolean>(false);
+  const [showUpdateSalespersonForm, setShowUpdateSalespersonForm] = useState<boolean>(false);
+  const [selectedSalesperson, setSelectedSalesperson] = useState<string>("");
 
   const router = useRouter();
   const trpc = api.useContext();
@@ -57,12 +73,53 @@ export function ExhibitorPanel({
   const deleteExhibitor = api.admin.deleteExhibitor.useMutation();
   const updateSpecialOrders = api.exhibitor.setSpecialOrders.useMutation();
   const updateCompanyHost = api.exhibitor.setCompanyHost.useMutation();
+  const updatePosition = api.exhibitor.setPosition.useMutation();
+  const updateIndustryType = api.exhibitor.setIndustryType.useMutation();
+  const updateSalesperson = api.admin.updateSalesperson.useMutation();
+
+  const salespersonOptions = Array.from(
+    new Set(exhibitors.map((exhibitor) => exhibitor.salesperson).filter(Boolean))
+  );
+  const filteredExhibitors = sortExhibitors(exhibitors).filter(
+    (exhibitor) => !selectedSalesperson || exhibitor.salesperson === selectedSalesperson
+  );
+
+  function getAcceptedExtraOrders(exhibitorId: string) {
+    return acceptedExtraOrders.byExhibitor?.[exhibitorId] ?? {
+      tables: 0,
+      chairs: 0,
+      drinkCoupons: 0,
+      alcFreeTicket: 0,
+    };
+  }
+
+  function getInferredTicketExtras(exhibitor: Exhibitor) {
+    const p = new Package(t, exhibitor.packageTier);
+    const exhibitorPreferences = preferences.filter(
+      (preference) => preference.exhibitorId === exhibitor.id
+    );
+
+    return {
+      mealCoupons: Math.max(
+        0,
+        exhibitorPreferences.filter(
+          (preference) => preference.type === "Representative"
+        ).length - p.mealCoupons
+      ),
+      banquetTicket: Math.max(
+        0,
+        exhibitorPreferences.filter(
+          (preference) => preference.type === "Banquet"
+        ).length - p.banquetTickets
+      ),
+    };
+  }
 
   useEffect(() => {
-    if (login.isSuccess) {
-      router.push("/utställare");
+    if (selectedSalesperson && !salespersonOptions.includes(selectedSalesperson)) {
+      setSelectedSalesperson("");
     }
-  }, [login.isSuccess]);
+  }, [exhibitors, selectedSalesperson]);
 
   useEffect(() => {
     const count = new Map<
@@ -93,17 +150,20 @@ export function ExhibitorPanel({
 
   function getLoginFunction(exhibitorId: string) {
     return async () => {
+      await login.mutateAsync({ exhibitorId });
       await trpc.invalidate();
-      login.mutate({ exhibitorId: exhibitorId, password });
+      await router.push("/utställare");
     };
   }
 
   async function handleUpdateSpecialOrders(
     exhibitorId: string,
-    studentMeetings: number, 
-    socialmediaPost: number, 
-    panelDiscussion: number, 
-    goodieBagLogo: number) {
+    studentMeetings: number,
+    socialmediaPost: number,
+    panelDiscussion: number,
+    goodieBagLogo: number,
+    lunchLecture: number,
+    aw: number) {
 
     try {
       await updateSpecialOrders.mutateAsync({
@@ -111,7 +171,9 @@ export function ExhibitorPanel({
         studentMeetings: studentMeetings,
         socialMediaPost: socialmediaPost,
         panelDiscussion: panelDiscussion,
-        goodieBagLogo: goodieBagLogo
+        goodieBagLogo: goodieBagLogo,
+        lunchLecture: lunchLecture,
+        aw: aw,
       });
 
       await reloadLogin();
@@ -123,8 +185,8 @@ export function ExhibitorPanel({
 
   async function handleUpdateCompanyHost(
     exhibitorId: string,
-    companyHostName: string, 
-    companyHostNumber: string, 
+    companyHostName: string,
+    companyHostNumber: string,
     companyHostEmail: string) {
 
     try {
@@ -142,20 +204,66 @@ export function ExhibitorPanel({
     }
   }
 
+  async function handleUpdatePosition(
+    exhibitorId: string,
+    mapPosition: number) {
+
+    try {
+      await updatePosition.mutateAsync({
+        exhibitorId: exhibitorId,
+        mapPosition: mapPosition
+      });
+
+      await reloadLogin();
+    }
+    catch(err) {
+      console.error(err);
+    }
+  }
+
+  async function handleUpdateIndustryType(
+    exhibitorId: string,
+    industrytype: string) {
+
+      try {
+        await updateIndustryType.mutateAsync({
+          exhibitorId: exhibitorId,
+          industryType: industrytype
+        });
+
+        await reloadLogin();
+      }
+      catch(err) {
+        console.error(err);
+      }
+    }
+
+  async function handleUpdateSalesperson(exhibitorId: string, salesperson: string) {
+    try {
+      await updateSalesperson.mutateAsync({ exhibitorId, salesperson });
+      await reloadLogin();
+    }
+    catch(err) {
+      console.error(err);
+    }
+  }
+
   async function handleAddExhibitor(exhibitor: ExhibitorInfo) {
     addExhibitor.mutateAsync({
-      password: password,
       contactPerson: exhibitor.contactPerson,
       telephoneNumber: exhibitor.telephoneNumber,
       companyName: exhibitor.companyName,
       organizationNumber: exhibitor.organizationNumber,
       email: exhibitor.email,
+      salesperson: exhibitor.salesperson,
       packageTier: exhibitor.packageTier,
       studentMeetings: exhibitor.studentMeetings,
       sendEmailToExhibitor: exhibitor.sendEmailToExhibitor,
       mapPosition: exhibitor.mapPosition,
       meetingTimeSlots: exhibitor.meetingTimeSlots,
     }).then((response) => {
+      if(response == "UNAUTHORIZED")return response;
+
       console.log(response, "response!!!");
       if(response?.ok === true){
         setAddExhibitorSuccess(_ => true);
@@ -184,10 +292,24 @@ export function ExhibitorPanel({
     setShowCompanyHostForm(false);
   }
 
+  function closeUpdatePositionForm() {
+    setSelectedExhibitor(undefined);
+    setShowUpdatePositionForm(false);
+  }
+
+  function closeUpdateIndustryTypeForm() {
+    setSelectedExhibitor(undefined);
+    setShowIndustryTypeForm(false);
+  }
+
+  function closeUpdateSalespersonForm() {
+    setSelectedExhibitor(undefined);
+    setShowUpdateSalespersonForm(false);
+  }
+
   const handleDeleteExhibitor = async (exhibitorId: string) => {
     try {
       await deleteExhibitor.mutateAsync({
-        password: password,
         exhibitorId: exhibitorId
       });
       await reloadLogin(); // Reload the exhibitor list after deletion
@@ -200,7 +322,7 @@ export function ExhibitorPanel({
 
   function convertToCSV(data: Exhibitor[], selectedAttributes: string[]): string {
     const jobOfferFields = ["summerJob", "internship", "partTimeJob", "masterThesis", "fullTimeJob", "traineeProgram"];
-    const packageTiers = ["Small", "Medium", "Large", "Main sponsor", "startup", "error"];
+    const packageTiers = ["Small", "Medium", "Large", "Main sponsor", "startup", "nonprofit", "error"];
 
     // Create the header
     const header = selectedAttributes.concat(jobOfferFields).join(',');
@@ -213,7 +335,7 @@ export function ExhibitorPanel({
       const jobOffer = jobOffers.find(offer => offer.id === exhibitor.jobOfferId);
 
       // Extract exhibitor attributes
-      const exhibitorValues = selectedAttributes.map(attr => 
+      const exhibitorValues = selectedAttributes.map(attr =>
         attr != "packageTier" ? JSON.stringify(exhibitor[attr as keyof Exhibitor] ?? "") :
         JSON.stringify(packageTiers[exhibitor.packageTier != -1 ? exhibitor.packageTier : 5])
       );
@@ -240,12 +362,12 @@ export function ExhibitorPanel({
   function downloadCSV(data: Exhibitor[], filename: string): void {
     console.log(data);
     const csv = convertToCSV(data, ["organizationNumber", "name", "description", "industry", "packageTier"]);
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' }); 
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob); 
+    link.href = URL.createObjectURL(blob);
     link.target = '_blank';
     link.download = filename;
-    link.click(); 
+    link.click();
   }
 
 
@@ -266,9 +388,9 @@ export function ExhibitorPanel({
           exhibitorPackage.banquetTickets +
           exhibitor.totalBanquetTicketsWanted +
           exhibitor.customBanquetTicketsWanted;
-        
 
-        let amount = "0/0";          
+
+        let amount = "0/0";
         switch (type) {
           case 'Representative':
             amount = `${prefCount.representative}/${exhibitorRepresentativeCount}`;
@@ -313,11 +435,11 @@ export function ExhibitorPanel({
         <div className="w-[80%] sm:w-[90%]">
           <div className="flex w-full text-xl mb-5 font-medium justify-between items-end">
             <div>
-              {showAddExhibitor ? 
+              {showAddExhibitor ?
                 (
                   <>
-                    <AddExhibitorForm 
-                      t={t} addExhibitor={handleAddExhibitor} exhibitorsInterests={exhibitorsInterests} closeModal={closeAddExhibitorForm} /> 
+                    <AddExhibitorForm
+                      t={t} addExhibitor={handleAddExhibitor} exhibitorsInterests={exhibitorsInterests} closeModal={closeAddExhibitorForm} />
                   </>
                 ) : (
                   <>
@@ -360,12 +482,22 @@ export function ExhibitorPanel({
                 }
             </div>
           </div>
-          <div>
+          <div className="flex items-end justify-between gap-4 mb-2">
             <button
             className="mt-2 bg-cerise bg-blue-500 py-1 px-2 rounded-md"
             onClick={()=>downloadCSV(exhibitors, "utställare.csv")}>
               Ladda ned företagsdata
-            </button>           
+            </button>
+            <div className="w-full max-w-[250px]">
+              <SelectField
+                name="salespersonFilter"
+                options={[t.admin.sales.allCompanies, ...salespersonOptions]}
+                values={["", ...salespersonOptions]}
+                value={selectedSalesperson}
+                setValue={setSelectedSalesperson}
+                fields={{ salespersonFilter: "" }}
+              />
+            </div>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full bg-slate-50 bg-opacity-20 border-collapse border-solid">
@@ -377,6 +509,9 @@ export function ExhibitorPanel({
                   <th>{t.admin.sales.header.specialOrders.name}</th>
                   <th>{t.exhibitorSettings.table.row5.title}</th>
                   <th>{t.admin.sales.header.companyHost.name}</th>
+                  <th>{t.admin.sales.header.position}</th>
+                  <th>{t.admin.sales.header.salesperson}</th>
+                  <th>{t.exhibitorSettings.fieldsUpdateIndustryType.industry}</th>
                     {showDeleteExhibitor &&
                     <th>
                       {t.admin.sales.header.delete}
@@ -388,7 +523,7 @@ export function ExhibitorPanel({
                 className="[&>tr>td]:border-2 [&>tr>td]:border-t-2 [&>tr>td]:border-solid
                       [&>tr>td]:border-cerise [&>tr>td]:p-4"
               >
-                {sortExhibitors(exhibitors).map((exhibitor, i) => (
+                {filteredExhibitors.map((exhibitor, i) => (
                   <tr key={i}>
                     <td className="text-center break-words">
                       {exhibitor.logoColor ? (
@@ -409,30 +544,36 @@ export function ExhibitorPanel({
                       </button>
                     </td>
                     <td>
-                      <div className="flex flex-col text-center px-2">
-                        <div>
-                          {t.admin.sales.header.extras.chairs}:{" "}
-                          {exhibitor.extraChairs}
+                      <div className="flex flex-col px-2">
+                        {(() => {
+                          const accepted = getAcceptedExtraOrders(exhibitor.id);
+                          const inferredTicketExtras = getInferredTicketExtras(exhibitor);
+                          return <>
+                        <div className="flex gap-1">
+                          <div>{t.admin.sales.header.extras.chairs}:{" "}</div>
+                          <div>{accepted.chairs}</div>
                         </div>
-                        <div>
-                          {t.admin.sales.header.extras.tables}:{" "}
-                          {exhibitor.extraTables}
+                        <div className="flex gap-1">
+                          <div>{t.admin.sales.header.extras.tables}:{" "}</div>
+                          <div>{accepted.tables}</div>
                         </div>
-                        <div>
-                          {t.admin.sales.header.extras.drinkCoupons}:{" "}
-                          {exhibitor.extraDrinkCoupons}
+                        <div className="flex gap-1">
+                          <div>{t.admin.sales.header.extras.drinkCoupons}:{" "}</div>
+                          <div>{(accepted.drinkCoupons + accepted.alcFreeTicket) * 3}</div>
                         </div>
-                        <div>
-                          {t.admin.sales.header.extras.representativeSpots}:{" "}
-                          {exhibitor.extraRepresentativeSpots}
+                          </>;
+                        })()}
+                        <div className="flex gap-1">
+                          <div>{t.admin.sales.header.extras.representativeSpots}:{" "}</div>
+                          <div>{exhibitor.extraRepresentativeSpots}</div>
                         </div>
-                        <div>
-                          {t.admin.sales.header.extras.mealCoupons}:{" "}
-                          {exhibitor.extraMealCoupons}
+                        <div className="flex gap-1">
+                          <div>{t.admin.sales.header.extras.mealCoupons}:{" "}</div>
+                          <div>{getInferredTicketExtras(exhibitor).mealCoupons}</div>
                         </div>
-                        <div>
-                          {t.admin.sales.header.extras.banquetTickets}:{" "}
-                          {exhibitor.totalBanquetTicketsWanted}
+                        <div className="flex gap-1">
+                          <div>{t.admin.sales.header.extras.banquetTickets}:{" "}</div>
+                          <div>{getInferredTicketExtras(exhibitor).banquetTicket}</div>
                         </div>
                       </div>
                     </td>
@@ -458,12 +599,18 @@ export function ExhibitorPanel({
                       {exhibitor.panelDiscussion != 0 ? (<div>
                         {t.admin.sales.header.specialOrders.panelDiscussion}
                       </div>) : null}
+                      {exhibitor.lunchLecture != 0 ? (<div>
+                        {t.admin.sales.header.specialOrders.lunchLecture}
+                      </div>) : null}
+                      {exhibitor.aw != 0 ? (<div>
+                        {t.admin.sales.header.specialOrders.aw}
+                      </div>) : null}
                       {exhibitor.goodieBagLogo != 0 ? (<div>
                         {t.admin.sales.header.specialOrders.goodiebagLogo}
                       </div>) : null}
                       <div className="w-full text-xl mb-5 font-medium">
                         {selectedExhibitor?.id == exhibitor.id && showSpecialOrdersForm ? (
-                          <UpdateSpecialOrders t={t} exhibitor={selectedExhibitor} closeModal={closeUpdateSpecialOrderForm} 
+                          <UpdateSpecialOrders t={t} exhibitor={selectedExhibitor} closeModal={closeUpdateSpecialOrderForm}
                           setSpecialOrders={handleUpdateSpecialOrders}
                           setShowSpecialOrdersForm={setShowSpecialOrdersForm}/>
                         ) : (
@@ -481,7 +628,7 @@ export function ExhibitorPanel({
                         <b>{t.exhibitorSettings.table.row5.section1.email}</b>
                         {exhibitor.invoiceEmail || "U/A"}
                         <b>{t.exhibitorSettings.table.row5.section1.billingMethodText}</b>
-                        {exhibitor.billingMethod == "" ? t.exhibitorSettings.table.row5.section1.billingMethods[0] : exhibitor.billingMethod}
+                        {exhibitor.billingMethod == "" ? "U/A"/*t.exhibitorSettings.table.row5.section1.billingMethods[0]*/ : exhibitor.billingMethod}
                         <b>{t.exhibitorSettings.table.row5.section1.physicalAddress}</b>
                         {exhibitor.physicalAddress || "U/A"}
                         <b>{t.exhibitorSettings.table.row5.section1.organizationNumber}</b>
@@ -499,13 +646,77 @@ export function ExhibitorPanel({
                       </div>
                       <div className="w-full text-xl mb-5 font-medium">
                         {selectedExhibitor?.id == exhibitor.id && showCompanyHostForm ? (
-                          <UpdateCompanyHost t={t} exhibitor={selectedExhibitor} closeModal={closeUpdateCompanyHostForm} 
+                          <UpdateCompanyHost t={t} exhibitor={selectedExhibitor} closeModal={closeUpdateCompanyHostForm}
                           setCompanyHost={handleUpdateCompanyHost}
                           setShowUpdateCompanyHostForm={setShowCompanyHostForm}/>
                         ) : (
                           <button
                           className="mt-2 bg-cerise bg-blue-500 py-1 px-2 rounded-md"
                           onClick={()=>{setSelectedExhibitor(exhibitor); setShowCompanyHostForm(true)}}
+                          >
+                          {t.admin.sales.header.specialOrders.specialOrderButton}
+                          </button>
+                        )}
+                      </div>
+                    </td>
+                    <td>
+                      <div className="flex flex-col">
+                        <b>{t.admin.sales.header.position}</b>
+                        {exhibitor.mapPosition || "N/A"}
+                      </div>
+                      <div className="w-full text-xl mb-5 font-medium">
+                        {selectedExhibitor?.id == exhibitor.id && showUpdatePositionForm ? (
+                          <UpdatePositionForm t={t} exhibitor={selectedExhibitor} closeModal={closeUpdatePositionForm}
+                          setPosition={handleUpdatePosition}
+                          setShowUpdatePositionForm={setShowUpdatePositionForm}/>
+                        ) : (
+                          <button
+                          className="mt-2 bg-cerise bg-blue-500 py-1 px-2 rounded-md"
+                          onClick={()=>{setSelectedExhibitor(exhibitor); setShowUpdatePositionForm(true)}}
+                          >
+                          {t.admin.sales.header.specialOrders.specialOrderButton}
+                          </button>
+                        )}
+                      </div>
+                    </td>
+                    <td>
+                      <div className="flex flex-col">
+                        <b>{t.admin.sales.header.salesperson}</b>
+                        {exhibitor.salesperson || "N/A"}
+                      </div>
+                      <div className="w-full text-xl mb-5 font-medium">
+                        {selectedExhibitor?.id == exhibitor.id && showUpdateSalespersonForm ? (
+                          <UpdateSalespersonForm t={t} exhibitor={selectedExhibitor} closeModal={closeUpdateSalespersonForm}
+                            setSalesperson={handleUpdateSalesperson}
+                            setShowUpdateSalespersonForm={setShowUpdateSalespersonForm}/>
+                        ) : (
+                          <button
+                            className="mt-2 bg-cerise bg-blue-500 py-1 px-2 rounded-md"
+                            onClick={() => { setSelectedExhibitor(exhibitor); setShowUpdateSalespersonForm(true); }}
+                          >
+                            {t.admin.sales.header.specialOrders.specialOrderButton}
+                          </button>
+                        )}
+                      </div>
+                    </td>
+                    <td>
+                        <div className="flex flex-col">
+                          <b>{t.exhibitorSettings.fieldsUpdateIndustryType.industry}</b>
+                          <p>{exhibitor.industry}</p>
+                        </div>
+                      <div className="flex flex-col">
+                        {/*<b>{t.exhibitorSettings.fieldsUpdateIndustryType.name}</b>*/}
+                        {exhibitor.industryType || "N/A"}
+                      </div>
+                      <div className="w-full text-xl mb-5 font-medium">
+                        {selectedExhibitor?.id == exhibitor.id && showUpdateIndustryTypeForm ? (
+                          <UpdateIndustryTypeForm t={t} exhibitor={selectedExhibitor} closeModal={closeUpdateIndustryTypeForm}
+                          setIndustryType={handleUpdateIndustryType}
+                          setShowIndustryTypeForm={setShowIndustryTypeForm}/>
+                        ) : (
+                          <button
+                          className="mt-2 bg-cerise bg-blue-500 py-1 px-2 rounded-md"
+                          onClick={()=>{setSelectedExhibitor(exhibitor); setShowIndustryTypeForm(true)}}
                           >
                           {t.admin.sales.header.specialOrders.specialOrderButton}
                           </button>

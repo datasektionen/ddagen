@@ -12,11 +12,9 @@ interface MeetingTimeSlot {
 export function CompanyMeetingsPanel({
   t,
   exhibitors,
-  password,
 }: {
   t: Locale;
   exhibitors: Exhibitor[];
-  password: string;
 }) {
   const [selectedTimeSlots, setSelectedTimeSlots] = useState<MeetingTimeSlot[]>([]);
   const updateMeetingSlots = api.exhibitor.updateMeetingTimeSlots.useMutation();
@@ -71,7 +69,6 @@ export function CompanyMeetingsPanel({
         .map(slot => slot.timeSlot);
 
       await updateMeetingSlots.mutateAsync({
-        password: password,
         exhibitorId: exhibitorId,
         timeSlots: companySlots,
       });

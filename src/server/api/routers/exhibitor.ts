@@ -7,11 +7,13 @@ import {
 import { validateOrganizationNumber } from "@/shared/validateOrganizationNumber";
 import { getLocale } from "@/locales";
 import { TRPCError } from "@trpc/server";
-import { FoodPreferencesValue, Prisma } from "@prisma/client";
+import { ExtraOrderHistoryType, FoodPreferencesValue, Prisma } from "@prisma/client";
 import sendEmail from "@/utils/send-email";
 import { randomUUID } from "crypto";
 import { error, time } from "console";
 import { get } from "http";
+import { getSession } from "@/utils/openid";
+import * as hive from "@/utils/hive";
 
 const foodPreferencesType = z.enum(["Representative", "Banquet"]);
 const foodPreferencesValue = z.enum([
@@ -22,6 +24,12 @@ const foodPreferencesValue = z.enum([
   "AlcoholFree",
 ]);
 
+type ExtraOrderHistorySnapshot = {
+  type: string | null;
+  amount: number | null;
+  price_per_unit: Prisma.Decimal | null;
+};
+
 export const exhibitorRouter = createTRPCRouter({
   register: publicProcedure
     .input(
@@ -31,6 +39,7 @@ export const exhibitorRouter = createTRPCRouter({
         email: z.string().email().trim(),
         contactPerson: z.string().trim(),
         phoneNumber: z.string().trim(),
+        howDidYouFindUs: z.string().trim(),
         locale: z.enum(["en", "sv"]),
       })
     )
@@ -42,6 +51,7 @@ export const exhibitorRouter = createTRPCRouter({
           email,
           contactPerson,
           phoneNumber,
+          howDidYouFindUs,
           locale,
         },
         ctx,
@@ -64,6 +74,7 @@ export const exhibitorRouter = createTRPCRouter({
             contactPerson,
             phoneNumber,
             email,
+            howDidYouFindUs,
           },
         });
 
@@ -76,7 +87,8 @@ export const exhibitorRouter = createTRPCRouter({
               organizationNumber,
               email,
               contactPerson,
-              phoneNumber
+              phoneNumber,
+              howDidYouFindUs
             ),
             "sales@ddagen.se"
           );
@@ -167,7 +179,7 @@ export const exhibitorRouter = createTRPCRouter({
         customDrinkCoupons: true,
         customRepresentativeSpots: true,
         customBanquetTicketsWanted: true,
-        studentMeetings: true, 
+        studentMeetings: true,
         extraMealCoupons: true, // Måste kanske lägga till customMealCoupons i db, känns inte nödvändigt just nu
       },
     });
@@ -222,6 +234,8 @@ export const exhibitorRouter = createTRPCRouter({
         studentMeetings: z.number(),
         socialMediaPost: z.number(),
         panelDiscussion: z.number(),
+        lunchLecture: z.number(),
+        aw: z.number(),
         goodieBagLogo: z.number(),
       })
     )
@@ -232,6 +246,8 @@ export const exhibitorRouter = createTRPCRouter({
           studentMeetings: input.studentMeetings,
           socialMediaPost: input.socialMediaPost,
           panelDiscussion: input.panelDiscussion,
+          lunchLecture: input.lunchLecture,
+          aw: input.aw,
           goodiebagLogo:   input.goodieBagLogo,
         },
       });
@@ -255,6 +271,36 @@ export const exhibitorRouter = createTRPCRouter({
         },
       });
     }),
+    setPosition: publicProcedure
+    .input(
+      z.object({
+        exhibitorId: z.string(),
+        mapPosition: z.number()
+      })
+    )
+    .mutation(async ({ ctx, input}) => {
+      await ctx.prisma.exhibitor.update({
+        where: { id: input.exhibitorId },
+        data: {
+          mapPosition: input.mapPosition
+        },
+      });
+    }),
+  setIndustryType: publicProcedure
+  .input(
+    z.object({
+      exhibitorId: z.string(),
+      industryType: z.string()
+    })
+  )
+  .mutation(async ({ ctx, input}) => {
+    await ctx.prisma.exhibitor.update({
+      where: { id: input.exhibitorId },
+      data: {
+        industryType: input.industryType
+      },
+    });
+  }),
   getName: protectedProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.exhibitor.findUniqueOrThrow({
       where: { id: ctx.session.exhibitorId },
@@ -874,16 +920,16 @@ export const exhibitorRouter = createTRPCRouter({
     }),
     updateMeetingTimeSlots: publicProcedure  // Change from protectedProcedure to publicProcedure
     .input(z.object({
-      password: z.string(),  // Add password to the input validation
       exhibitorId: z.string(),
       timeSlots: z.array(z.number())
     }))
     .mutation(async ({ ctx, input }) => {
-      // Add password validation if needed
+      // Add password validation if needed - TODO
+
       const exhibitor = await ctx.prisma.exhibitor.update({
         where: { id: input.exhibitorId },
-        data: { 
-          meetingTimeSlots: input.timeSlots 
+        data: {
+          meetingTimeSlots: input.timeSlots
         }
       });
       return exhibitor;
@@ -1036,5 +1082,355 @@ export const exhibitorRouter = createTRPCRouter({
             id: meeting.id,
           },
         });
+    }),
+    getBillingInfo: protectedProcedure.query(async ({ ctx }) => {
+      return await ctx.prisma.exhibitor.findUniqueOrThrow({
+        where: { id: ctx.session.exhibitorId },
+        select: {
+          companyAddress: true,
+          billingMethod: true,
+          organizationNumber: true,
+          invoiceEmail: true,
+        },
+      }).then((data) => ({
+        physicalAddress: data.companyAddress,
+        billingMethod: data.billingMethod,
+        organizationNumber: data.organizationNumber,
+        email: data.invoiceEmail,
+      }));
+    }),
+    setBillingInfo: protectedProcedure
+    .input(
+      z.object({
+        physicalAddress: z.string(),
+        billingMethod: z.string(),
+        organizationNumber: z.string(),
+        email: z.string().email(),
+        locale: z.enum(["en", "sv"]),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      await ctx.prisma.exhibitor.update({
+        where: { id: ctx.session.exhibitorId },
+        data: {
+          companyAddress: input.physicalAddress,
+          billingMethod: input.billingMethod,
+          organizationNumber: input.organizationNumber,
+          invoiceEmail: input.email,
+        },
+      });
+      return { ok: true };
+    }),
+
+    getOrders: protectedProcedure.query(async ({ ctx }) => {
+      const history = await ctx.prisma.extraOrderHistory.findMany({
+        where: { exhibitor_id: ctx.session.exhibitorId },
+        include: { item: true },
+        orderBy: { created_at: "asc" },
+      }) as Array<Prisma.ExtraOrderHistoryGetPayload<{ include: { item: true } }> & ExtraOrderHistorySnapshot>;
+
+      return {
+        requests: await ctx.prisma.extraOrderReq.findMany({ where: { exhibitor_id: ctx.session.exhibitorId }, include: { item: true } }),
+        history: history.map(({ item, ...entry }) => ({
+          ...entry,
+          item: {
+            ...item,
+            type: entry.type,
+            amount: entry.amount,
+            price_per_unit: entry.price_per_unit,
+          },
+        })),
+      };
+    }),
+
+    updateOrder: protectedProcedure
+    .input(z.object({
+      itemId: z.string(),
+      type: z.string(),
+      amount: z.number().int().positive(),
+      price_per_unit: z.number().positive(),
+    }))
+    .mutation(async ({ ctx, input }) => {
+      if (!(await hive.isAdmin(ctx.cookies))) {
+        throw new TRPCError({ code: "UNAUTHORIZED" });
+      }
+
+      const session = await getSession(ctx.cookies);
+      const personEmail = session?.email ?? "";
+
+      await ctx.prisma.$transaction([
+        ctx.prisma.extraOrderItem.update({
+          where: { id: input.itemId },
+          data: {
+            type: input.type,
+            amount: input.amount,
+            price_per_unit: input.price_per_unit,
+          },
+        }),
+        ctx.prisma.extraOrderHistory.create({
+          data: {
+            exhibitor_id: ctx.session.exhibitorId,
+            item_id: input.itemId,
+            type: input.type,
+            amount: input.amount,
+            price_per_unit: input.price_per_unit,
+            action: "UPDATED_ORDER" as unknown as ExtraOrderHistoryType,
+            person_name: "",
+            person_email: personEmail,
+            person_is_admin: true,
+          },
+        }),
+      ]);
+    }),
+
+    createOrderRequest: protectedProcedure
+    .input(z.object({
+      type: z.string(),
+      amount: z.number(),
+      price_per_unit: z.number().nonnegative(),
+      ticket_name: z.string().optional(),
+      ticket_value: z.array(foodPreferencesValue).optional(),
+      ticket_comment: z.string().optional(),
+    }))
+    .mutation(async ({ ctx, input }) => {
+      const item = await ctx.prisma.extraOrderItem.create({
+        data: {
+          type: input.type,
+          amount: input.amount,
+          price_per_unit: input.price_per_unit,
+          ticket_name: input.ticket_name,
+          ticket_value: input.ticket_value,
+          ticket_comment: input.ticket_comment,
+        }
+      });
+      if (!item?.id) {
+        return;
+      }
+
+      const exhibitor = await ctx.prisma.exhibitor.findUnique({
+        where: { id: ctx.session.exhibitorId },
+        select: { name: true, salesperson: true },
+      });
+
+      const isTicketRequest = input.type === "meal_ticket" || input.type === "banquette_ticket";
+      const existing_request = isTicketRequest
+        ? null
+        : (await ctx.prisma.extraOrderReq.findFirst({
+            where: {
+              exhibitor_id: ctx.session.exhibitorId,
+              item: {
+                type: input.type,
+                price_per_unit: input.price_per_unit,
+              }
+            }
+          }));
+
+      let action: ExtraOrderHistoryType;
+      let userEmail = (await getSession(ctx.cookies))?.email ?? "";
+
+      if (existing_request) {
+        action = "UPDATED_REQUEST";
+        await ctx.prisma.extraOrderReq.update({
+          data: {
+            item_id: item.id
+          },
+          where: {
+            item_id: existing_request.item_id
+          }
+        });
+        console.log("Updated existing request");
+      } else {
+        action = "CREATED_REQUEST";
+        await ctx.prisma.extraOrderReq.create({
+          data: {
+            exhibitor_id: ctx.session.exhibitorId,
+            item_id: item.id,
+          }
+        });
+      }
+
+      await ctx.prisma.extraOrderHistory.create({
+        data: {
+          exhibitor_id: ctx.session.exhibitorId,
+          item_id: item.id,
+          type: item.type,
+          amount: item.amount,
+          price_per_unit: item.price_per_unit,
+          action: action,
+          person_name: "",
+          person_email: userEmail,
+        }
+      });
+
+      const isAdmin = userEmail.toLowerCase().endsWith("@ddagen.se");
+      const salespersonEmail = exhibitor?.salesperson;
+      if (!isAdmin && salespersonEmail && z.string().email().safeParse(salespersonEmail).success) {
+        try {
+          await sendEmail(
+            salespersonEmail,
+            `Extra order request from ${exhibitor.name}`,
+            `<p>${exhibitor.name} (${userEmail}) has requested an extra order:</p>` +
+              `<ul><li>Type: ${input.type}</li><li>Amount: ${input.amount}</li>` +
+              `<li>Price per unit: ${input.price_per_unit}</li></ul>`
+          );
+        } catch (error) {
+          console.error("Failed to notify salesperson about extra order request", error);
+        }
+      }
+
+      console.log(Object.keys(ctx));
+      console.log(item)
+      console.log(existing_request);
+
+      return;
+    }),
+
+    cancelOrderRequest: protectedProcedure
+    .input(z.string())
+    .mutation(async ({ ctx, input }) => {
+      const request = await ctx.prisma.extraOrderReq.findFirst({
+        where: {
+          item_id: input,
+          exhibitor_id: ctx.session.exhibitorId,
+        },
+        include: { item: true },
+      });
+
+      if (!request) {
+        throw new TRPCError({ code: "NOT_FOUND" });
+      }
+
+      await ctx.prisma.extraOrderReq.delete({
+        where: {
+          item_id: input
+        }
+      });
+
+      let userEmail = (await getSession(ctx.cookies))?.email ?? "";
+
+      await ctx.prisma.extraOrderHistory.create({
+        data: {
+          exhibitor_id: ctx.session.exhibitorId,
+          item_id: input,
+          type: request.item.type,
+          amount: request.item.amount,
+          price_per_unit: request.item.price_per_unit,
+          action: "CANCELED_REQUEST",
+          person_name: "",
+          person_email: userEmail,
+        }
+      });
+    }),
+
+    cancelOrder: protectedProcedure
+    .input(z.string())
+    .mutation(async ({ ctx, input }) => {
+      if (!(await hive.isAdmin(ctx.cookies))) {
+        throw new TRPCError({ code: "UNAUTHORIZED" });
+      }
+
+      const acceptedOrder = await ctx.prisma.extraOrderHistory.findFirst({
+        where: {
+          exhibitor_id: ctx.session.exhibitorId,
+          item_id: input,
+          action: "ACCEPTED_REQUEST",
+        },
+        include: { item: true },
+      });
+
+      if (!acceptedOrder) {
+        throw new TRPCError({ code: "NOT_FOUND" });
+      }
+
+      const userEmail = (await getSession(ctx.cookies))?.email ?? "";
+
+      await ctx.prisma.extraOrderHistory.create({
+        data: {
+          exhibitor_id: ctx.session.exhibitorId,
+          item_id: input,
+          type: acceptedOrder.item.type,
+          amount: acceptedOrder.item.amount,
+          price_per_unit: acceptedOrder.item.price_per_unit,
+          action: "CANCELED_ORDER",
+          person_name: "",
+          person_email: userEmail,
+          person_is_admin: true,
+        },
+      });
+    }),
+
+    acceptOrderRequest: protectedProcedure
+    .input(z.string())
+    .mutation(async ({ ctx, input }) => {
+      if (!(await hive.isAdmin(ctx.cookies))) {
+        throw new TRPCError({ code: "UNAUTHORIZED" });
+      }
+
+      const request = await ctx.prisma.extraOrderReq.findFirst({
+        where: {
+          item_id: input,
+          exhibitor_id: ctx.session.exhibitorId,
+        },
+        include: { item: true },
+      });
+
+      if (!request) {
+        throw new TRPCError({ code: "NOT_FOUND" });
+      }
+
+      const existingOrder = await ctx.prisma.extraOrderHistory.findFirst({
+        where: {
+          exhibitor_id: ctx.session.exhibitorId,
+          action: "ACCEPTED_REQUEST",
+          item: {
+            type: request.item.type,
+            price_per_unit: request.item.price_per_unit,
+          },
+        },
+        include: { item: true },
+      });
+
+      const itemId = existingOrder?.item.id ?? request.item.id;
+      const acceptedAmount = (existingOrder?.item.amount ?? 0) + request.item.amount;
+      const userEmail = (await getSession(ctx.cookies))?.email ?? "";
+      const isTicketRequest = request.item.type === "meal_ticket" || request.item.type === "banquette_ticket";
+
+      await ctx.prisma.$transaction(async (transaction) => {
+        if (existingOrder && !isTicketRequest) {
+          await transaction.extraOrderItem.update({
+            where: { id: existingOrder.item.id },
+            data: { amount: { increment: request.item.amount } },
+          });
+        }
+
+        await transaction.extraOrderReq.delete({
+          where: { item_id: request.item.id },
+        });
+
+        await transaction.extraOrderHistory.create({
+          data: {
+            exhibitor_id: ctx.session.exhibitorId,
+            item_id: itemId,
+            type: request.item.type,
+            amount: acceptedAmount,
+            price_per_unit: request.item.price_per_unit,
+            action: "ACCEPTED_REQUEST",
+            person_name: "",
+            person_email: userEmail,
+          },
+        });
+
+        if (isTicketRequest && request.item.ticket_name) {
+          await transaction.foodPreferences.create({
+            data: {
+              exhibitorId: ctx.session.exhibitorId,
+              name: request.item.ticket_name,
+              value: request.item.ticket_value,
+              comment: request.item.ticket_comment ?? "",
+              type: request.item.type === "meal_ticket" ? "Representative" : "Banquet",
+            },
+          });
+        }
+      });
     }),
 });

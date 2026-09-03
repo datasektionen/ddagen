@@ -1,8 +1,7 @@
 import { useLocale } from "@/locales";
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import ButtonGroup from "@/components/ButtonGroup";
-import { AdminLogin } from "@/components/Company/Admin/AdminLogin";
 import { ExhibitorPanel } from "@/components/Company/Admin/ExhibitorPanel";
 import { ExtraOrderPanel } from "@/components/Company/Admin/ExtraOrderPanel";
 import { PreferencesPanel } from "@/components/Company/Admin/PreferencesPanel";
@@ -18,49 +17,74 @@ export default function Sales() {
 
   const [exhibitors, setExhibitors] = useState<Exhibitor[]>([]);
   const [preferences, setPreferences] = useState<Preferences[]>([]);
-  const [jobOffers, setJobOffers] = useState<JobOffer[]>([]); 
+  const [jobOffers, setJobOffers] = useState<JobOffer[]>([]);
+  const [acceptedExtraOrders, setAcceptedExtraOrders] = useState<any>({});
   const [exhibitorsInterests, setExhibitorsInterests] = useState<ExhibitorInfo[]>([]);
   const [buttonSelected, setButtonSelected] = useState<1 | 2 | 3 | 4>(1);
-  const [password, setPassword] = useState<string>("");
 
   const logout = api.admin.logout.useMutation();
   const getExhibitors = api.admin.getExhibitors.useMutation();
+  const getAcceptedExtraOrders = api.admin.getAcceptedExtraOrders.useMutation();
   const getFoodPreferences = api.admin.getAllFoodPreferences.useMutation();
   const getExhibitorInterestRegistration = api.admin.getExhibitorInterestRegistration.useMutation();
   const getAllJobOffers = api.admin.getAllJobOffers.useMutation();
 
-  async function login(password: string) {
-    try {
-      const exhibitors = await getExhibitors.mutateAsync(password);
-      const foodPreferences = await getFoodPreferences.mutateAsync(password);
-      const exhibitorsInterests = await getExhibitorInterestRegistration.mutateAsync(password);
-      const jobOffers = await getAllJobOffers.mutateAsync(password);
-      if (
-        exhibitors === "invalid-password" ||
-        foodPreferences === "invalid-password" ||
-        exhibitorsInterests === "invalid-password" ||
-        jobOffers === "invalid-password" 
-      ) {
-        return "invalid-password";
-      }
-      setExhibitors(exhibitors);
-      setPreferences(foodPreferences);
-      setExhibitorsInterests(exhibitorsInterests);
-      setJobOffers(jobOffers)
-      setPassword(password);
-    } catch (err) {
-      return "unknown-error " + err;
+
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
+  const getIsLoggedIn = api.admin.isLoggedIn.useQuery(undefined, {
+    onSuccess: (data: any) => {
+      setIsLoggedIn(data);
+    },
+  });
+
+  const hasLoaded = useRef(false);
+
+  useEffect(() => {
+    if (!getIsLoggedIn.isSuccess) return;
+    if (!isLoggedIn){
+      handleLogout();
+      return;
     }
+
+    if (hasLoaded.current) return;
+    hasLoaded.current = true;
+
+    loadExhibitors();
+  }, [getIsLoggedIn.isSuccess, isLoggedIn]);
+
+
+  const loadExhibitors = async () => {
+    const exhibitors = await getExhibitors.mutateAsync();
+    const acceptedExtraOrders = await getAcceptedExtraOrders.mutateAsync();
+    const foodPreferences = await getFoodPreferences.mutateAsync();
+    const exhibitorsInterests = await getExhibitorInterestRegistration.mutateAsync();
+    const jobOffers = await getAllJobOffers.mutateAsync();
+    if (
+      exhibitors === "UNAUTHORIZED" ||
+      acceptedExtraOrders === "UNAUTHORIZED" ||
+      foodPreferences === "UNAUTHORIZED" ||
+      exhibitorsInterests === "UNAUTHORIZED" ||
+      jobOffers === "UNAUTHORIZED"
+    ) {
+      setIsLoggedIn(false);
+      return;
+    }
+
+    setExhibitors(exhibitors);
+    setAcceptedExtraOrders(acceptedExtraOrders);
+    setPreferences(foodPreferences);
+    setExhibitorsInterests(exhibitorsInterests);
+    setJobOffers(jobOffers)
+  }
+
+  const handleLogout = () => {
+    logout.mutate();
   }
 
   useEffect(() => {
-    logout.mutate();
-  }, []);
-
-  useEffect(() => {
     if (logout.isSuccess && logout.data.status) {
-      trpc.account.invalidate();
-      router.reload();
+      trpc.admin.invalidate();
+      router.push("/logga-in");
     }
   }, [logout.isSuccess]);
 
@@ -70,13 +94,19 @@ export default function Sales() {
           <meta name="robots" content="noindex, nofollow" />
       </Head>
       <div>
-        {password === "" ? (
-          <AdminLogin t={t} login={login} />
-        ) : (
+        {(!isLoggedIn || !getIsLoggedIn.isSuccess) ?
+          <div className="w-full h-full py-48 text-white bg-darkblue bg-opacity-75"></div>
+          :
           <div className="w-full h-full py-48 text-white bg-darkblue bg-opacity-75">
             <h1 className="uppercase text-cerise text-3xl md:text-5xl font-medium text-center px-[10px] break-words">
               {t.admin.sales.header.title}
             </h1>
+            <button
+              className="w-full text-center mt-2 text-white hover:text-red-300 cursor-pointer"
+              onClick={() => {handleLogout()}}
+            >
+              {t.exhibitorSettings.logoutButton}
+            </button>
 
             <ButtonGroup
               t={t}
@@ -93,26 +123,31 @@ export default function Sales() {
                 t={t}
                 exhibitors={exhibitors}
                 preferences={preferences}
+                acceptedExtraOrders={acceptedExtraOrders}
                 exhibitorsInterests={exhibitorsInterests}
-                password={password}
-                reloadLogin={() => login(password)}
+                reloadLogin={() => loadExhibitors()}
                 jobOffers={jobOffers}
               />
             ) : buttonSelected == 2 ? (
-              <ExtraOrderPanel t={t} exhibitors={exhibitors} preferences={preferences} />
+              <ExtraOrderPanel
+                t={t}
+                exhibitors={exhibitors}
+                preferences={preferences}
+                acceptedExtraOrders={acceptedExtraOrders}
+              />
             ) : buttonSelected == 3 ? (
               <PreferencesPanel
                 t={t}
                 exhibitors={exhibitors}
                 preferences={preferences}
               />
-            ) : <CompanyMeetingsPanel 
+            ) : <CompanyMeetingsPanel
                   t={t}
                   exhibitors={exhibitors}
-                  password={password} />
+                  />
             }
           </div>
-        )}
+        }
       </div>
     </>
   );
