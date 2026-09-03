@@ -95,12 +95,9 @@
  
 }
 
-/* Track */
+/* Track – flat and full height so the bar never looks like it stops short */
 ::-webkit-scrollbar-track {
-  background-blend-mode: darken;
-  background: rgb(17,12,48);
-  background: linear-gradient(0deg, rgba(17,12,48,1) 0vh, rgba(238,42,123,1) 200vh);
-  
+  background: rgba(255, 255, 255, 0.04);
 }
 
 /* Handle */
