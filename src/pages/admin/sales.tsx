@@ -18,11 +18,13 @@ export default function Sales() {
   const [exhibitors, setExhibitors] = useState<Exhibitor[]>([]);
   const [preferences, setPreferences] = useState<Preferences[]>([]);
   const [jobOffers, setJobOffers] = useState<JobOffer[]>([]);
+  const [acceptedExtraOrders, setAcceptedExtraOrders] = useState<any>({});
   const [exhibitorsInterests, setExhibitorsInterests] = useState<ExhibitorInfo[]>([]);
   const [buttonSelected, setButtonSelected] = useState<1 | 2 | 3 | 4>(1);
 
   const logout = api.admin.logout.useMutation();
   const getExhibitors = api.admin.getExhibitors.useMutation();
+  const getAcceptedExtraOrders = api.admin.getAcceptedExtraOrders.useMutation();
   const getFoodPreferences = api.admin.getAllFoodPreferences.useMutation();
   const getExhibitorInterestRegistration = api.admin.getExhibitorInterestRegistration.useMutation();
   const getAllJobOffers = api.admin.getAllJobOffers.useMutation();
@@ -53,11 +55,13 @@ export default function Sales() {
 
   const loadExhibitors = async () => {
     const exhibitors = await getExhibitors.mutateAsync();
+    const acceptedExtraOrders = await getAcceptedExtraOrders.mutateAsync();
     const foodPreferences = await getFoodPreferences.mutateAsync();
     const exhibitorsInterests = await getExhibitorInterestRegistration.mutateAsync();
     const jobOffers = await getAllJobOffers.mutateAsync();
     if (
       exhibitors === "UNAUTHORIZED" ||
+      acceptedExtraOrders === "UNAUTHORIZED" ||
       foodPreferences === "UNAUTHORIZED" ||
       exhibitorsInterests === "UNAUTHORIZED" ||
       jobOffers === "UNAUTHORIZED"
@@ -67,6 +71,7 @@ export default function Sales() {
     }
 
     setExhibitors(exhibitors);
+    setAcceptedExtraOrders(acceptedExtraOrders);
     setPreferences(foodPreferences);
     setExhibitorsInterests(exhibitorsInterests);
     setJobOffers(jobOffers)
@@ -118,12 +123,18 @@ export default function Sales() {
                 t={t}
                 exhibitors={exhibitors}
                 preferences={preferences}
+                acceptedExtraOrders={acceptedExtraOrders}
                 exhibitorsInterests={exhibitorsInterests}
                 reloadLogin={() => loadExhibitors()}
                 jobOffers={jobOffers}
               />
             ) : buttonSelected == 2 ? (
-              <ExtraOrderPanel t={t} exhibitors={exhibitors} preferences={preferences} />
+              <ExtraOrderPanel
+                t={t}
+                exhibitors={exhibitors}
+                preferences={preferences}
+                acceptedExtraOrders={acceptedExtraOrders}
+              />
             ) : buttonSelected == 3 ? (
               <PreferencesPanel
                 t={t}

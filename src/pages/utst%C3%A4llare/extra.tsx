@@ -20,7 +20,10 @@ export type ExtraOrderType = "chair"
   | "drink_tickets_alc"
   | "drink_tickets_alc_free"
   | "meal_ticket"
-  | "banquette_ticket";
+  | "banquette_ticket"
+  | "sponsored_post"
+  | "talent_pool"
+  ;
 
 type ExtraOrderDetail = {
   price_per_unit: number;
@@ -44,11 +47,18 @@ export const extraOrderDetails: Record<string, ExtraOrderDetail> = {
     price_per_unit: 300,
     dropdown: true
   },
+  "talent_pool": {
+    price_per_unit: 10000,
+    dropdown: true
+  },
+  "sponsored_post": {
+    price_per_unit: 6000,
+    dropdown: true
+  },
   "meal_ticket": {
     price_per_unit: 450,
     dropdown: false
-  }
-  ,
+  },
   "banquette_ticket": {
     price_per_unit: 2000,
     dropdown: false
@@ -83,6 +93,7 @@ export default function ExhibitorExtra({
 
   const [itemType, setItemType] = useState<ExtraOrderType>("table");
   const [itemAmount, setItemAmount] = useState<string>("1");
+  const [itemPricePerUnit, setItemPricePerUnit] = useState<string>(String(extraOrderDetails.table.price_per_unit));
 
   const createOrderRequest = api.exhibitor.createOrderRequest.useMutation({ onSuccess: () => trpc.exhibitor.getOrders.invalidate() });
   const acceptOrderRequest = api.exhibitor.acceptOrderRequest.useMutation({
@@ -209,6 +220,7 @@ export default function ExhibitorExtra({
       setEditingItemId(order.item.id);
       setItemType(order.item.type as ExtraOrderType);
       setItemAmount(String(order.item.amount));
+      setItemPricePerUnit(String(order.item.price_per_unit));
     } : undefined
   });
 
@@ -245,15 +257,21 @@ export default function ExhibitorExtra({
       itemId: editingItemId,
       type: itemType,
       amount: parseInt(itemAmount),
-      price_per_unit: extraOrderDetails[itemType].price_per_unit,
+      price_per_unit: parseFloat(itemPricePerUnit),
     });
 
     setEditingItemId(undefined);
     setEditMode(false);
   }
 
-  const pricePerUnit = itemType ? extraOrderDetails[itemType].price_per_unit : "-";
-  const totalPrice = parseInt(itemAmount ?? 0) > 0 && pricePerUnit != "-" ? parseInt(itemAmount ?? 0) * pricePerUnit : "-"
+  const pricePerUnit = editingItemId
+    ? parseFloat(itemPricePerUnit)
+    : itemType
+      ? extraOrderDetails[itemType].price_per_unit
+      : "-";
+  const totalPrice = parseInt(itemAmount ?? 0) > 0 && pricePerUnit != "-" && !Number.isNaN(pricePerUnit)
+    ? parseInt(itemAmount ?? 0) * pricePerUnit
+    : "-";
 
   const dropdownEntries = Object.entries(extraOrderDetails).filter(([_k, v]) => v.dropdown == true);
 
@@ -296,9 +314,19 @@ export default function ExhibitorExtra({
                     <h4 className="text-slate-400 font-medium uppercase md:text-sm text-[9px]">
                       {t.admin.extraOrders.itemFields.price_per_unit}:
                     </h4>
-                    <div className="flex h-8 items-center">
-                      <p className="text-white md:text-sm text-[9px]">{pricePerUnit} {t.admin.extraOrders.currency}</p>
-                    </div>
+                    {editingItemId ? (
+                      <InputField
+                        name="price_per_unit"
+                        value={itemPricePerUnit}
+                        type="number"
+                        setValue={(value: string) => value.length === 0 || parseFloat(value) >= 0 ? setItemPricePerUnit(value) : null}
+                        fields={{ price_per_unit: t.admin.extraOrders.itemFields.price_per_unit }}
+                      />
+                    ) : (
+                      <div className="flex h-8 items-center">
+                        <p className="text-white md:text-sm text-[9px]">{pricePerUnit} {t.admin.extraOrders.currency}</p>
+                      </div>
+                    )}
                   </div>
                   <div className="flex flex-col items-end flex-1">
                     <h4 className="text-white font-medium uppercase md:text-sm text-[9px]">
@@ -318,7 +346,7 @@ export default function ExhibitorExtra({
                       "uppercase hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-normal px-8 py-2 max-lg:mx-auto w-max",
                       "disabled:text-slate-400 disabled:cursor-not-allowed disabled:hover:scale-100"
                     )}
-                    disabled={!(parseInt(itemAmount ?? 0) > 0)}
+                    disabled={!(parseInt(itemAmount ?? 0) > 0) || (Boolean(editingItemId) && !(parseFloat(itemPricePerUnit) > 0))}
                     onClick={() => editingItemId ? handleEditItem() : handleAddItem()}
                   >
                     {editingItemId ? t.admin.extraOrders.addItem.saveEdit : t.admin.extraOrders.addItem.submit}

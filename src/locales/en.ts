@@ -1333,6 +1333,8 @@ export default {
         drink_tickets_alc_free: "Drink coupons (x3) (non-alcoholic)",
         meal_ticket: "Meal ticket (incl. lunch & breakfast)",
         banquette_ticket: "Ticket to the dinner & after-party",
+        talent_pool: "Talent pool",
+        sponsored_post: "Sponsored post"
       },
       actionLabels: {
         CREATED_REQUEST: "Created request",
@@ -1354,10 +1356,12 @@ export default {
         tables: "Tables",
         chairs: "Chairs",
         drinkCoupons: "Drink Coupons",
+        drinkCouponsAlcFree: "Drink Coupons Alc-Free",
         representatives: "Representatives",
         banquetTickets: "Banquet Tickets",
         confirmedBanquetTickets: "Confirmed Banquet Tickets",
-        confirmedDrinkCoupons: "Confirmed Drink Coupons",
+        confirmedAlcoholDrinkCoupons: "Tickets with Alc",
+        confirmedAlcoholFreeDrinkCoupons: "Tickets Alc-free",
         mealCoupons: "Breakfast/Lunch Coupons",
       },
       sections: {
