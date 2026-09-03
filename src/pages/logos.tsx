@@ -74,9 +74,9 @@ const tierRank = (tier: number) =>
 // package (tier 2) is marked with a cerise border.
 function cardTheme(tier: number) {
   const base = "bg-[#dfe1e9]";
-  if (tier === 2)
-    return { card: `${base} border-2 border-cerise`, name: "text-darkblue/55" };
-  return { card: `${base} border-2 border-black/10`, name: "text-darkblue/55" };
+  return tier === 2
+    ? `${base} border-2 border-cerise`
+    : `${base} border-2 border-black/10`;
 }
 
 function Tag({
@@ -108,30 +108,26 @@ function ExhibitorCard({
   exhibitor: Exhibitor;
   onOpen: () => void;
 }) {
-  const theme = cardTheme(exhibitor.packageTier);
   const tags = activeOffers(exhibitor.offers);
 
   return (
     <button
       type="button"
       onClick={onOpen}
-      className={`group flex min-h-[190px] flex-col gap-3 rounded-2xl p-4 text-left transition-transform duration-150 hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow ${theme.card}`}
+      aria-label={exhibitor.name}
+      className={`group flex min-h-[180px] flex-col gap-3 rounded-2xl p-4 text-left transition-transform duration-150 hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow ${cardTheme(
+        exhibitor.packageTier
+      )}`}
     >
-      <span
-        className={`text-xs font-medium uppercase tracking-wide ${theme.name}`}
-      >
-        {exhibitor.name}
-      </span>
-
-      <div className="flex flex-1 items-center justify-center py-1">
+      <div className="flex flex-1 items-center justify-center px-2 py-3">
         {exhibitor.logo ? (
           <img
             src={addImageDetails(exhibitor.logo)}
             alt={exhibitor.name}
-            className="max-h-16 max-w-full object-contain"
+            className="max-h-20 max-w-full object-contain"
           />
         ) : (
-          <span className="text-center text-base font-medium text-darkblue">
+          <span className="text-center text-lg font-medium text-darkblue">
             {exhibitor.name}
           </span>
         )}
