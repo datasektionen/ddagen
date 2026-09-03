@@ -47,7 +47,12 @@
 }
 
 @layer base {
+  html,
   body {
+    /* The site is dark; without this the page has no background of its own,
+       so browser chrome (scrollbar gutter, overscroll area, rounded corners)
+       shows through as white. */
+    background-color: #0f142d;
     overscroll-behavior: none;
   }
 }
