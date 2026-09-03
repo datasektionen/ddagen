@@ -38,12 +38,14 @@ export default function Login() {
     }
   }
 
+  const redirect_on_logged_in = (data) => {
+    if (data?.ok) {
+      router.push(data.isAdmin ? "/admin/sales" : "/utställare");
+    }
+  };
+
   const getIsLoggedIn = api.account.isLoggedIn.useQuery(undefined, {
-    onSuccess: (data) => {
-      if (data?.ok) {
-        router.push(data.isAdmin ? "/admin/sales" : "/utställare");
-      }
-    },
+    onSuccess: redirect_on_logged_in
   });
 
   const requestOtp = api.account.requestOtp.useMutation({
@@ -55,16 +57,34 @@ export default function Login() {
   });
 
   const verifyOtp = api.account.verifyOtp.useMutation({
-    onSuccess: (data) => {
+    onSuccess: async (data) => {
       if (data.error) {
         setErrorMsg(data.error === "invalidCode" ? "Invalid code." : "Code expired or too many attempts.");
         return;
       }
-      trpc.account.invalidate();
-      router.push(data.isAdmin ? "/admin/sales" : "/utställare");
+
+      trpc.account.invalidate()
+      redirect_on_logged_in(data);
     },
     onError: () => setErrorMsg(t.error?.unknown || "An error occurred."),
   });
+
+  const finishLogin = api.account.finishLogin.useMutation({
+    onSuccess: (data) => {
+      console.log("Inloggad");
+      redirect_on_logged_in(data);
+    },
+    onError: () => {
+      setErrorMsg(t.error?.unknown || "An error occurred during OIDC completion.");
+    },
+  });
+
+  useEffect(() => {
+    if (typeof router.query.code === "string") {
+      finishLogin.mutate({ current_url: window.location.href });
+    }
+  }, [router.query.code]);
+
 
   // Keep OIDC as a fallback/alternative option if required
   const startOidcLogin = api.account.startLogin.useMutation({
@@ -100,10 +120,10 @@ export default function Login() {
               required
             />
             <Submit value={t.admin.login.otpSendButton} loading={requestOtp.isLoading} />
-            
+
             <div className="mt-8 text-sm text-slate-300 flex flex-col gap-2 pt-8">
                <p>Or sign in with KTH OIDC</p>
-               <button 
+               <button
                  type="button"
                  onClick={() => startOidcLogin.mutate({ subpath: router.asPath.split('?')[0] })}
                  className="text-cerise underline hover:text-white transition-colors"
@@ -132,7 +152,7 @@ export default function Login() {
               required
             />
             <Submit value="Verify & Log In" loading={verifyOtp.isLoading} />
-            
+
             <button
               type="button"
               className="text-sm text-white underline mt-4"
