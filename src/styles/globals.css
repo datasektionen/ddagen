@@ -47,12 +47,7 @@
 }
 
 @layer base {
-  html,
   body {
-    /* The site is dark; without this the page has no background of its own,
-       so browser chrome (scrollbar gutter, overscroll area, rounded corners)
-       shows through as white. */
-    background-color: #0f142d;
     overscroll-behavior: none;
   }
 }
@@ -95,9 +90,12 @@
  
 }
 
-/* Track – flat and full height so the bar never looks like it stops short */
+/* Track */
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.04);
+  background-blend-mode: darken;
+  background: rgb(17,12,48);
+  background: linear-gradient(0deg, rgba(17,12,48,1) 0vh, rgba(238,42,123,1) 200vh);
+  
 }
 
 /* Handle */
@@ -109,16 +107,6 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: #e83d84;
-}
-
-/* Kill the default white square where the scrollbars would meet */
-::-webkit-scrollbar-corner {
-  background: transparent;
-}
-::-webkit-scrollbar-button {
-  display: none;
-  width: 0;
-  height: 0;
 }
 
 /* Hide the custom scrollbar on phones – it renders as a chunky pink bar there */

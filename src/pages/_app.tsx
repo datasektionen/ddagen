@@ -40,7 +40,7 @@ const App: AppType = ({ Component, pageProps }) => {
       </AnimationProvidor>
         <div
           className="
-            overflow-x-clip
+            overflow-x-hidden
             relative
           "
           id="main-content"
