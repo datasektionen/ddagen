@@ -109,6 +109,16 @@
   background: #e83d84;
 }
 
+/* Kill the default white square where the scrollbars would meet */
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
 /* Hide the custom scrollbar on phones – it renders as a chunky pink bar there */
 @media (max-width: 767px) {
   ::-webkit-scrollbar {
