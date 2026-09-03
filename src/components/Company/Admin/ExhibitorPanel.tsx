@@ -23,10 +23,19 @@ import { UpdateIndustryTypeForm } from "./UpdateIndustryTypeForm";
 import { UpdateSalespersonForm } from "./UpdateSalespersonForm";
 import { SelectField } from "@/components/SelectField";
 
+type AcceptedExtraOrders = {
+  tables: number;
+  chairs: number;
+  drinkCoupons: number;
+  alcFreeTicket: number;
+  byExhibitor?: Record<string, AcceptedExtraOrders>;
+};
+
 export function ExhibitorPanel({
   t,
   exhibitors,
   preferences,
+  acceptedExtraOrders,
   exhibitorsInterests,
   reloadLogin,
   jobOffers,
@@ -34,6 +43,7 @@ export function ExhibitorPanel({
   t: Locale;
   exhibitors: Exhibitor[];
   preferences: Preferences[];
+  acceptedExtraOrders: AcceptedExtraOrders;
   exhibitorsInterests: ExhibitorInfo[];
   reloadLogin: () => void;
   jobOffers: JobOffer[];
@@ -74,17 +84,42 @@ export function ExhibitorPanel({
     (exhibitor) => !selectedSalesperson || exhibitor.salesperson === selectedSalesperson
   );
 
+  function getAcceptedExtraOrders(exhibitorId: string) {
+    return acceptedExtraOrders.byExhibitor?.[exhibitorId] ?? {
+      tables: 0,
+      chairs: 0,
+      drinkCoupons: 0,
+      alcFreeTicket: 0,
+    };
+  }
+
+  function getInferredTicketExtras(exhibitor: Exhibitor) {
+    const p = new Package(t, exhibitor.packageTier);
+    const exhibitorPreferences = preferences.filter(
+      (preference) => preference.exhibitorId === exhibitor.id
+    );
+
+    return {
+      mealCoupons: Math.max(
+        0,
+        exhibitorPreferences.filter(
+          (preference) => preference.type === "Representative"
+        ).length - p.mealCoupons
+      ),
+      banquetTicket: Math.max(
+        0,
+        exhibitorPreferences.filter(
+          (preference) => preference.type === "Banquet"
+        ).length - p.banquetTickets
+      ),
+    };
+  }
+
   useEffect(() => {
     if (selectedSalesperson && !salespersonOptions.includes(selectedSalesperson)) {
       setSelectedSalesperson("");
     }
   }, [exhibitors, selectedSalesperson]);
-
-  useEffect(() => {
-    if (login.isSuccess) {
-      router.push("/utställare");
-    }
-  }, [login.isSuccess]);
 
   useEffect(() => {
     const count = new Map<
@@ -115,8 +150,9 @@ export function ExhibitorPanel({
 
   function getLoginFunction(exhibitorId: string) {
     return async () => {
+      await login.mutateAsync({ exhibitorId });
       await trpc.invalidate();
-      login.mutate({ exhibitorId: exhibitorId });
+      await router.push("/utställare");
     };
   }
 
@@ -508,30 +544,36 @@ export function ExhibitorPanel({
                       </button>
                     </td>
                     <td>
-                      <div className="flex flex-col text-center px-2">
-                        <div>
-                          {t.admin.sales.header.extras.chairs}:{" "}
-                          {exhibitor.extraChairs}
+                      <div className="flex flex-col px-2">
+                        {(() => {
+                          const accepted = getAcceptedExtraOrders(exhibitor.id);
+                          const inferredTicketExtras = getInferredTicketExtras(exhibitor);
+                          return <>
+                        <div className="flex gap-1">
+                          <div>{t.admin.sales.header.extras.chairs}:{" "}</div>
+                          <div>{accepted.chairs}</div>
                         </div>
-                        <div>
-                          {t.admin.sales.header.extras.tables}:{" "}
-                          {exhibitor.extraTables}
+                        <div className="flex gap-1">
+                          <div>{t.admin.sales.header.extras.tables}:{" "}</div>
+                          <div>{accepted.tables}</div>
                         </div>
-                        <div>
-                          {t.admin.sales.header.extras.drinkCoupons}:{" "}
-                          {exhibitor.extraDrinkCoupons}
+                        <div className="flex gap-1">
+                          <div>{t.admin.sales.header.extras.drinkCoupons}:{" "}</div>
+                          <div>{(accepted.drinkCoupons + accepted.alcFreeTicket) * 3}</div>
                         </div>
-                        <div>
-                          {t.admin.sales.header.extras.representativeSpots}:{" "}
-                          {exhibitor.extraRepresentativeSpots}
+                          </>;
+                        })()}
+                        <div className="flex gap-1">
+                          <div>{t.admin.sales.header.extras.representativeSpots}:{" "}</div>
+                          <div>{exhibitor.extraRepresentativeSpots}</div>
                         </div>
-                        <div>
-                          {t.admin.sales.header.extras.mealCoupons}:{" "}
-                          {exhibitor.extraMealCoupons}
+                        <div className="flex gap-1">
+                          <div>{t.admin.sales.header.extras.mealCoupons}:{" "}</div>
+                          <div>{getInferredTicketExtras(exhibitor).mealCoupons}</div>
                         </div>
-                        <div>
-                          {t.admin.sales.header.extras.banquetTickets}:{" "}
-                          {exhibitor.totalBanquetTicketsWanted}
+                        <div className="flex gap-1">
+                          <div>{t.admin.sales.header.extras.banquetTickets}:{" "}</div>
+                          <div>{getInferredTicketExtras(exhibitor).banquetTicket}</div>
                         </div>
                       </div>
                     </td>

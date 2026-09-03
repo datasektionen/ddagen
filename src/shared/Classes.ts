@@ -65,7 +65,7 @@ export class Package {
         this.name = t.packages.name[0];
         this.tables = 1;
         this.chairs = 0;
-        this.drinkCoupons = 8;
+        this.drinkCoupons = 6;
         this.representatives = 2;
         this.banquetTickets = 2;
         this.mealCoupons = 2;
@@ -74,7 +74,7 @@ export class Package {
         this.name = t.packages.name[1];
         this.tables = 1;
         this.chairs = 0;
-        this.drinkCoupons = 8;
+        this.drinkCoupons = 6;
         this.representatives = 3;
         this.banquetTickets = 2;
         this.mealCoupons = 3;
@@ -83,7 +83,7 @@ export class Package {
         this.name = t.packages.name[2];
         this.tables = 2;
         this.chairs = 0;
-        this.drinkCoupons = 16;
+        this.drinkCoupons = 12;
         this.representatives = 4;
         this.banquetTickets = 4;
         this.mealCoupons = 4;
@@ -92,9 +92,9 @@ export class Package {
         this.name = t.packages.name[3];
         this.tables = 2;
         this.chairs = 0;
-        this.drinkCoupons = 16;
+        this.drinkCoupons = 12;
         this.representatives = 10;
-        this.banquetTickets = 2;
+        this.banquetTickets = 4;
         this.mealCoupons = 4;
         break;
       case 4:
