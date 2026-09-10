@@ -37,8 +37,10 @@ export function AddExhibitorForm({
   const [exhibitorInterestValue, setExhibitorInterestValue] = useState<number>(-1);
   const { data: user } = api.account.getUser.useQuery();
 
+  const once = useRef(false);
   useEffect(() => {
-    if (user?.email && !salesperson) {
+    if (user?.email && !salesperson && !once.current) {
+      once.current = true;
       setSalesperson(user.email);
     }
   }, [user?.email, salesperson]);

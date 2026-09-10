@@ -61,6 +61,60 @@ export const adminRouter = createTRPCRouter({
                     )
             );
         }),
+    getAcceptedExtraOrders: publicProcedure
+        .mutation(async ({ ctx }) => {
+            if (!(await hive.isAdmin(ctx.cookies))) {
+                return "UNAUTHORIZED";
+            }
+
+            const history = await ctx.prisma.extraOrderHistory.findMany({
+                where: {
+                    action: {
+                        in: ["ACCEPTED_REQUEST", "UPDATED_ORDER", "CANCELED_ORDER"],
+                    },
+                },
+                orderBy: { created_at: "asc" },
+            });
+
+            const currentOrders = new Map<string, typeof history[number]>();
+            history.forEach((entry) => currentOrders.set(entry.item_id, entry));
+
+            const totals = { tables: 0, chairs: 0, drinkCoupons: 0, alcFreeTicket: 0 };
+            const byExhibitor: Record<string, typeof totals> = {};
+
+            Array.from(currentOrders.values())
+                .filter((entry) => entry.action !== "CANCELED_ORDER")
+                .forEach((entry) => {
+                    const amount = entry.amount ?? 0;
+                    const exhibitorTotals = byExhibitor[entry.exhibitor_id] ?? {
+                        tables: 0,
+                        chairs: 0,
+                        drinkCoupons: 0,
+                        alcFreeTicket: 0,
+                    };
+
+                    if (entry.type === "table") {
+                        totals.tables += amount;
+                        exhibitorTotals.tables += amount;
+                    }
+                    if (entry.type === "chair") {
+                        totals.chairs += amount;
+                        exhibitorTotals.chairs += amount;
+                    }
+                    if (entry.type === "drink_tickets_alc") {
+                        totals.drinkCoupons += amount;
+                        exhibitorTotals.drinkCoupons += amount;
+                    }
+                    if (entry.type === "drink_tickets_alc_free") {
+                        totals.alcFreeTicket += amount;
+                        exhibitorTotals.alcFreeTicket += amount;
+                    }
+
+                    byExhibitor[entry.exhibitor_id] = exhibitorTotals;
+                });
+
+            return { ...totals, byExhibitor };
+        }),
     deleteExhibitor: publicProcedure
         .input(
             z.object({

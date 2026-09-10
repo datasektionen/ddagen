@@ -71,7 +71,7 @@ export const getOrderColumns = ({
       size: 30,
       cell: ({ row }) => (
         <div className="flex flex-1 items-center gap-3">
-          <span className="text-header">{row.original.person?.email?.[0]?.toUpperCase() ?? "-"}</span>
+          <span className="text-header">{row.original.person?.email?.replace("@ddagen.se", "")?.toLowerCase() ?? "-"}</span>
         </div>
       ),
     });
