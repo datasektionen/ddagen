@@ -1191,6 +1191,7 @@ export const exhibitorRouter = createTRPCRouter({
       ticket_name: z.string().optional(),
       ticket_value: z.array(foodPreferencesValue).optional(),
       ticket_comment: z.string().optional(),
+      ticket_preference_id: z.string().optional(),
     }))
     .mutation(async ({ ctx, input }) => {
       const item = await ctx.prisma.extraOrderItem.create({
@@ -1201,6 +1202,7 @@ export const exhibitorRouter = createTRPCRouter({
           ticket_name: input.ticket_name,
           ticket_value: input.ticket_value,
           ticket_comment: input.ticket_comment,
+          ticket_preference_id: input.ticket_preference_id,
         }
       });
       if (!item?.id) {
@@ -1213,9 +1215,16 @@ export const exhibitorRouter = createTRPCRouter({
       });
 
       const isTicketRequest = input.type === "meal_ticket" || input.type === "banquette_ticket";
-      const existing_request = isTicketRequest
-        ? null
-        : (await ctx.prisma.extraOrderReq.findFirst({
+      const existing_request = input.ticket_preference_id
+        ? await ctx.prisma.extraOrderReq.findFirst({
+            where: {
+              exhibitor_id: ctx.session.exhibitorId,
+              item: { ticket_preference_id: input.ticket_preference_id },
+            },
+          })
+        : isTicketRequest
+          ? null
+          : (await ctx.prisma.extraOrderReq.findFirst({
             where: {
               exhibitor_id: ctx.session.exhibitorId,
               item: {
@@ -1390,8 +1399,11 @@ export const exhibitorRouter = createTRPCRouter({
         include: { item: true },
       });
 
-      const itemId = existingOrder?.item.id ?? request.item.id;
-      const acceptedAmount = (existingOrder?.item.amount ?? 0) + request.item.amount;
+      const isTicketChange = Boolean(request.item.ticket_preference_id);
+      const itemId = isTicketChange ? request.item.id : (existingOrder?.item.id ?? request.item.id);
+      const acceptedAmount = isTicketChange
+        ? request.item.amount
+        : (existingOrder?.item.amount ?? 0) + request.item.amount;
       const userEmail = (await getSession(ctx.cookies))?.email ?? "";
       const isTicketRequest = request.item.type === "meal_ticket" || request.item.type === "banquette_ticket";
 
@@ -1421,15 +1433,34 @@ export const exhibitorRouter = createTRPCRouter({
         });
 
         if (isTicketRequest && request.item.ticket_name) {
-          await transaction.foodPreferences.create({
-            data: {
-              exhibitorId: ctx.session.exhibitorId,
-              name: request.item.ticket_name,
-              value: request.item.ticket_value,
-              comment: request.item.ticket_comment ?? "",
-              type: request.item.type === "meal_ticket" ? "Representative" : "Banquet",
-            },
-          });
+          const preferenceType = request.item.type === "meal_ticket" ? "Representative" : "Banquet";
+          if (request.item.ticket_preference_id) {
+            const updated = await transaction.foodPreferences.updateMany({
+              where: {
+                id: request.item.ticket_preference_id,
+                exhibitorId: ctx.session.exhibitorId,
+                type: preferenceType,
+              },
+              data: {
+                name: request.item.ticket_name,
+                value: request.item.ticket_value,
+                comment: request.item.ticket_comment ?? "",
+              },
+            });
+            if (updated.count === 0) {
+              throw new TRPCError({ code: "NOT_FOUND" });
+            }
+          } else {
+            await transaction.foodPreferences.create({
+              data: {
+                exhibitorId: ctx.session.exhibitorId,
+                name: request.item.ticket_name,
+                value: request.item.ticket_value,
+                comment: request.item.ticket_comment ?? "",
+                type: preferenceType,
+              },
+            });
+          }
         }
       });
     }),

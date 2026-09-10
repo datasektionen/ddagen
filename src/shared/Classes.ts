@@ -401,6 +401,7 @@ export type ExtraOrderItem = {
   ticket_name?: string | null;
   ticket_value?: string[];
   ticket_comment?: string | null;
+  ticket_preference_id?: string | null;
   created_at?: Date;
 }
 

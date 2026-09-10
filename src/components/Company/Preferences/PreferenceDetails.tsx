@@ -33,8 +33,11 @@ export function PreferenceDetails({
   const pendingTicketRequests = (getOrders.data?.requests ?? []).filter(
     (request) => request.item.type === pendingTicketType
   );
+  const pendingNewTicketRequests = pendingTicketRequests.filter(
+    (request) => !(request.item as { ticket_preference_id?: string | null }).ticket_preference_id
+  );
   const pendingIncludedCount = Math.min(
-    pendingTicketRequests.length,
+    pendingNewTicketRequests.length,
     Math.max(0, includedCount - (getPreferences.data?.length ?? 0))
   );
 
@@ -68,7 +71,7 @@ export function PreferenceDetails({
         setPos={setPos}
         exhibitorPackage={exhibitorPackage}
         includedCount={includedCount}
-        pendingTicketCount={pendingTicketRequests.length}
+        pendingTicketCount={pendingNewTicketRequests.length}
       />
       {preferences.slice(1).map((preference, pos) => {
         const borderClass = pos < includedCount ? "border-cerise" : "border-gold";

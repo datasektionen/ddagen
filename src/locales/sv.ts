@@ -478,6 +478,7 @@ export default {
         extraTicketDisclaimer: "Den här biljetten är en extra beställning och ingår inte i ert paket.",
         extraTicketPrice: (price: number) => `Pris: ${price}:-`,
         ticketRequestDisclaimer: "Sista beställningsdatum har passerat. Biljetten skickas till en administratör för godkännande.",
+        requestChange: "Begär ändring",
         pendingTicket: "Biljettförfrågan väntar på godkännande",
         warning: "Sista datum för att lägga till matpreferenser ",
         usagenotice: "Välj bara preferenser för de som har specialkost, övriga får standardmaten",

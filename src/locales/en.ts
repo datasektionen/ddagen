@@ -480,6 +480,7 @@ export default {
         extraTicketDisclaimer: "This ticket is an extra order and is not included in your package.",
         extraTicketPrice: (price: number) => `Price: ${price}:-`,
         ticketRequestDisclaimer: "The deadline has passed. This ticket will be sent to an administrator for approval.",
+        requestChange: "Request change",
         pendingTicket: "Ticket request pending approval",
         warning: "Last date for ordering ",
         usagenotice: "Only specify for those who have special dietary requirements",
