@@ -1178,7 +1178,7 @@ export default {
     recruitmentPubText: "Under rekryteringen av D-Dagens fantastiska 100+ dagspersonal som ska hjälpa till under mässdagen så anordnar Projektgruppen den årliga Rekryteringspuben i Datasektionens egna pub Meta! Häng med på en riktigt trevlig kväll med D-Dagen relaterade aktiviteter och tävlingar med sponsrade priser. Mat och dryck finns att beställa. Puben öppnar 17:17",
     contactConversations: "Anmälan för Kontaktsamtal stänger 23:59",
     contactConversationsText: "Kontaktsamtal är en unik möjlighet för företag och studenter att i enrum träﬀas och diskutera karriärsmöjligheter. Studenten får en mycket bättre inblick i förhållandena på den specifika arbetsplatsen, samt så får företag en utmärkt bild över den specifika studentens kunskaper och erfarenheter. Läs mer på http://ddagen.se/kontaktsamtal.",
-    opening: "25-års jubileumsmässan öppnar!",
+    opening: "Mässan öppnar!",
     openingCeremony: "Invigning av mässan på scenen i Nya matsalen tillsammans med Huvudsponsor Omegapoint",
     welcome: "Välkommna",
     inaugeration: "Invigning",
