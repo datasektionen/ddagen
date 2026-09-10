@@ -1305,9 +1305,9 @@ export default {
           chairs: "Stolar",
           tables: "Bord",
           drinkCoupons: "Dryckesbiljetter",
-          representativeSpots: "Representantplatser",
-          banquetTickets: "Banquettsbiljetter",
-          mealCoupons: "Frukost/lunch biljetter",
+          representativeSpots: "Representanter",
+          banquetTickets: "Banquett",
+          mealCoupons: "Frukost/lunch",
         },
         verification: {
           name: "Verification",
@@ -1349,6 +1349,8 @@ export default {
         drink_tickets_alc_free: "Dryckesbiljetter (3 st) (alkoholfri)",
         meal_ticket: "Matbiljett (inkl. lunch & frukost)",
         banquette_ticket: "Biljett till middag och efterfest",
+        talent_pool: "Talent pool",
+        sponsored_post: "Sponsrat inlägg"
       },
       actionLabels: {
         CREATED_REQUEST: "Skapad förfrågan",
@@ -1370,10 +1372,12 @@ export default {
         tables: "Bord",
         chairs: "Stolar",
         drinkCoupons: "Dryckesbiljetter",
+        drinkCouponsAlcFree: "Dryckesbiljetter Alkfri",
         representatives: "Representanter",
         banquetTickets: "Banquettsbiljetter",
         confirmedBanquetTickets: "Bekräftade Banquettsbiljetter",
-        confirmedDrinkCoupons: "Bekräftade Dryckesbiljetter",
+        confirmedAlcoholDrinkCoupons: "Biljetter alk",
+        confirmedAlcoholFreeDrinkCoupons: "Biljetter alk-fri",
         mealCoupons: "Frukost/lunch biljetter",
       },
       sections: {

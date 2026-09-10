@@ -474,6 +474,7 @@ export default function Exhibitor() {
         showSetUpPage={showSetUpPage}
         hasChecked={hasChecked}
         setHasChecked={setHasChecked}
+        showKollin={true}
         />
 
         <JobOffers
@@ -565,6 +566,7 @@ export default function Exhibitor() {
       showSetUpPage={showSetUpPage}
       hasChecked={hasChecked}
       setHasChecked={setHasChecked}
+      showKollin={true}
       />
       {showMessage ? message : ""}
     </>,
