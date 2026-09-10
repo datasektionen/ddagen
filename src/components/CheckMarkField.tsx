@@ -7,6 +7,7 @@ export function CheckMarkField<F extends Record<string, string>>({
   prefix = "",
   onChange = ()=>{},
   checked,
+  disabled,
   defaultChecked,
   onClick,
 }: {
@@ -28,12 +29,13 @@ export function CheckMarkField<F extends Record<string, string>>({
     <div className={"relative " + className}>
       <label
         htmlFor={prefix + name}
-        className="
+        className={`
           transform transition-all
           text-slate-400 peer-focus:text-cerise font-medium
           cursor-pointer autofill:bg-transparent uppercase
           md:text-lg text-xs text-[9px] pr-3
-        "
+          ${disabled ? "pointer-events-none" : ""}`
+      }
       >
         {fields[name]}:
       </label>
@@ -42,6 +44,7 @@ export function CheckMarkField<F extends Record<string, string>>({
           id={prefix + name}
           checked={checked}
           defaultChecked={defaultChecked}
+          disabled={disabled}
           onClick={onClick}
           onChange={onChange}
           />

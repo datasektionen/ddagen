@@ -44,6 +44,91 @@ export default function forSponsors() {
             {t.forSponsors.title}
           </h1>
 
+          {/* Section of packages */}
+          <div className={`flex flex-col w-full 
+              lg:text-center justify-center items-center
+              mt-[20px] sm:mt-[10px] mb-[20px] sm:mb-[50px]
+              bg-[rgba(11,15,36,0)]`}>
+
+              {/* Text Section */}
+              <div className="flex flex-col max-w-2xl bg-[rgba(15,20,45,0.75)] py-4 rounded-lg">
+                <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl">
+                  {t.forSponsors.companyPackages.title}
+                </h2>
+                <p className="text-white text-base sm:text-lg pt-2">
+                  {t.forSponsors.companyPackages.text}
+                  <br />
+                  {t.forSponsors.companyPackages.text2}
+                  <a className='text-yellow' href='mailto:sean.zisheng@ddagen.se'>sean.zisheng@ddagen.se</a>
+                </p>
+              </div>
+
+              {/* Product Cards Section */} {/*
+              <div className={`flex flex-col sm:flex-row flex-wrap
+                  w-full max-w-[90vw] lg:max-w-5xl mx-auto
+                  mt-4 sm:mt-8`}>
+                  { /* LOOP THROUGH ALL 4 CARDS (className sets the border color) 
+                    t.forSponsors.companyPackages.packages.map((companyPackage, i) => 
+                      <div className={`basis-1 sm:basis-1/2 lg:basis-1/3 
+                          flex flex-col flex-wrap
+                          rounded-lg px-1
+                          justify-center
+                          mt-2 lg:mt-0`} key={i}>
+                          {/* 
+                            SPAN TO PRE INCLUDE DYNAMICALLY RENDERED BORDERS AND BACKGROUNDS
+                            IF CUSTOM COLOR IS NOT SHOWING UP, RENDER IT HERE
+                          }
+                          <span className="absolute w-0 h-0 border-gold border-0 bg-gold"></span>
+                          
+                          <div className={`flex flex-col justify-between
+                            bg-[#01061E] rounded-lg h-full
+                            py-8 px-8 text-left relative ${companyPackage.className ?? ""}`}>
+
+                            { /* DISCOUNT ICON TOP RIGHT (className sets the background color) 
+                              /*companyPackage.discount && 
+                              <div className={`flex flex-col justify-center items-center
+                                  absolute top-0 right-0 translate-y-[-35%] translate-x-[35%]
+                                  w-10 h-10 rounded-full 
+                                  text-white text-base font-medium ${companyPackage.discount.className}`}
+                                  >
+                                {companyPackage.discount.amount}
+                              </div>
+                            }
+                            
+                            {/* CARD TEXT }
+                            <div className="flex flex-col">
+                              <h3 className="text-white text-lg sm:text-xl lg:text-xl">{companyPackage.title}</h3>
+                              <p className={`text-white text-base leading-[1.75rem] font-medium pt-2`}>{companyPackage.costTitle}</p>
+                              <p className={`text-white text-base leading-[1.75rem]`}>{companyPackage.cost}</p>
+                              <p className={`text-white text-base leading-[1.75rem] font-medium pt-4`}>{companyPackage.offerTitle}</p>
+                              <ul className="list-disc text-white font-light ml-3 mt-1">
+                                { /* LOOP THROUGH ALL BULLET POINTS 
+                                  companyPackage.bulletPoints.map((bulletPoint, i) => 
+                                    <li key={i}>
+                                      <p className={`text-white text-base leading-[1.75rem] ${companyPackage.boldFirstPoint && i == 0 && "underline"}`}>{bulletPoint}</p>
+                                    </li>
+                                  )
+                                }
+                              </ul>
+                            </div>
+                            <div>
+                              <ul className="list-disc text-slate-400 font-light ml-3 mt-4">
+                                { /* LOOP THROUGH ALL DISCLAIMER BULLET POINTS 
+                                  companyPackage.disclaimers.map((disclaimer, i) => 
+                                    <li key={i}>
+                                      <p className="text-slate-400 text-base">{disclaimer}</p>
+                                    </li>
+                                  )
+                                }
+                              </ul>
+                            </div>
+                          </div>
+                      </div>
+                    )
+                  }
+              </div> */}
+          </div>
+
           {/* Section of D-Dagen Info */}
           <ImageTextSection
             t={t}
@@ -66,92 +151,7 @@ export default function forSponsors() {
               </button>
           </ImageTextSection>
 
-          {/* Section of packages */}
-          <div className={`flex flex-col w-full 
-              lg:text-center justify-center items-center
-              mt-[20px] sm:mt-[60px] mb-[20px] sm:mb-[50px]
-              bg-[rgba(11,15,36,0)]`}>
-
-              {/* Text Section */}
-              <div className="flex flex-col max-w-2xl bg-[rgba(15,20,45,0.75)] py-4 rounded-lg">
-                <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl">
-                  {t.forSponsors.companyPackages.title}
-                </h2>
-                <p className="text-white text-base sm:text-lg pt-2">
-                  {t.forSponsors.companyPackages.text}
-                  <br />
-                  {t.forSponsors.companyPackages.text2}
-                  <a className='text-yellow' href='mailto:jamie.groop@ddagen.se'>jamie.groop@ddagen.se</a>
-                </p>
-              </div>
-
-              {/* Product Cards Section */}
-              <div className={`flex flex-col sm:flex-row flex-wrap
-                  w-full max-w-[90vw] lg:max-w-5xl mx-auto
-                  mt-4 sm:mt-8`}>
-                  { /* LOOP THROUGH ALL 4 CARDS (className sets the border color) */
-                    t.forSponsors.companyPackages.packages.map((companyPackage, i) => 
-                      <div className={`basis-1 sm:basis-1/2 lg:basis-1/3 
-                          flex flex-col flex-wrap
-                          rounded-lg px-1
-                          justify-center
-                          mt-2 lg:mt-0`} key={i}>
-                          {/* 
-                            SPAN TO PRE INCLUDE DYNAMICALLY RENDERED BORDERS AND BACKGROUNDS
-                            IF CUSTOM COLOR IS NOT SHOWING UP, RENDER IT HERE
-                          */}
-                          <span className="absolute w-0 h-0 border-gold border-0 bg-gold"></span>
-                          
-                          <div className={`flex flex-col justify-between
-                            bg-[#01061E] rounded-lg h-full
-                            py-8 px-8 text-left relative ${companyPackage.className ?? ""}`}>
-
-                            { /* DISCOUNT ICON TOP RIGHT (className sets the background color) */
-                              /*companyPackage.discount && 
-                              <div className={`flex flex-col justify-center items-center
-                                  absolute top-0 right-0 translate-y-[-35%] translate-x-[35%]
-                                  w-10 h-10 rounded-full 
-                                  text-white text-base font-medium ${companyPackage.discount.className}`}
-                                  >
-                                {companyPackage.discount.amount}
-                              </div>
-                            */}
-                            
-                            {/* CARD TEXT */}
-                            <div className="flex flex-col">
-                              <h3 className="text-white text-lg sm:text-xl lg:text-xl">{companyPackage.title}</h3>
-                              <p className={`text-white text-base leading-[1.75rem] font-medium pt-2`}>{companyPackage.costTitle}</p>
-                              <p className={`text-white text-base leading-[1.75rem]`}>{companyPackage.cost}</p>
-                              <p className={`text-white text-base leading-[1.75rem] font-medium pt-4`}>{companyPackage.offerTitle}</p>
-                              <ul className="list-disc text-white font-light ml-3 mt-1">
-                                { /* LOOP THROUGH ALL BULLET POINTS */
-                                  companyPackage.bulletPoints.map((bulletPoint, i) => 
-                                    <li key={i}>
-                                      <p className={`text-white text-base leading-[1.75rem] ${companyPackage.boldFirstPoint && i == 0 && "underline"}`}>{bulletPoint}</p>
-                                    </li>
-                                  )
-                                }
-                              </ul>
-                            </div>
-                            <div>
-                              <ul className="list-disc text-slate-400 font-light ml-3 mt-4">
-                                { /* LOOP THROUGH ALL DISCLAIMER BULLET POINTS */
-                                  companyPackage.disclaimers.map((disclaimer, i) => 
-                                    <li key={i}>
-                                      <p className="text-slate-400 text-base">{disclaimer}</p>
-                                    </li>
-                                  )
-                                }
-                              </ul>
-                            </div>
-                          </div>
-                      </div>
-                    )
-                  }
-              </div>
-          </div>
-
-          {/* Section of D-Dagen Info */}
+          {/* Section of "Interested?" */}
           <ImageTextSection
             t={t}
             leftSideImage={false}
@@ -163,7 +163,7 @@ export default function forSponsors() {
               </h2>
               <p className="text-white text-base sm:text-lg pt-4 mb-6 max-w-xl">
                 {t.forSponsors.interestedText}
-                <a className='text-yellow' href='mailto:jamie.groop@ddagen.se'>jamie.groop@ddagen.se</a>
+                <a className='text-yellow' href='mailto:sean.zisheng@ddagen.se'>sean.zisheng@ddagen.se</a>
               </p>
           </ImageTextSection>
         </div>

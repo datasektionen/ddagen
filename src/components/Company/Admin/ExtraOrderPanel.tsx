@@ -2,14 +2,24 @@ import Locale from "@/locales";
 import { useState, useEffect } from "react";
 import { Package, Exhibitor, ExhibitorExtras, Preferences } from "@/shared/Classes";
 
+type AcceptedExtraOrders = {
+  tables: number;
+  chairs: number;
+  drinkCoupons: number;
+  alcFreeTicket: number;
+  byExhibitor?: Record<string, AcceptedExtraOrders>;
+};
+
 export function ExtraOrderPanel({
   t,
   exhibitors,
   preferences,
+  acceptedExtraOrders,
 }: {
   t: Locale;
   exhibitors: Exhibitor[];
   preferences: Preferences[];
+  acceptedExtraOrders: AcceptedExtraOrders;
 }) {
   const [extras, setExtras] = useState<[ExhibitorExtras, ExhibitorExtras]>();
 
@@ -33,30 +43,48 @@ export function ExtraOrderPanel({
       alcFreeTicket: 0,
     };
 
-    exhibitors.map((exhibitor) => {
+    exhibitors.forEach((exhibitor) => {
       const p = new Package(t, exhibitor.packageTier);
 
-      exhibitorPackage.tables += p.tables + exhibitor.customTables;
-      exhibitorPackage.chairs += p.chairs + exhibitor.customChairs;
-      exhibitorPackage.drinkCoupons +=
-        p.drinkCoupons + exhibitor.customDrinkCoupons;
-      exhibitorPackage.representativeSpots +=
-        p.representatives + exhibitor.customRepresentativeSpots;
-      exhibitorPackage.banquetTicket +=
-        p.banquetTickets + exhibitor.customRepresentativeSpots;
+      exhibitorPackage.tables += p.tables// + exhibitor.customTables;
+      exhibitorPackage.chairs += p.chairs// + exhibitor.customChairs;
+      exhibitorPackage.drinkCoupons += p.drinkCoupons// + exhibitor.customDrinkCoupons;
+      exhibitorPackage.representativeSpots += p.representatives// + exhibitor.customRepresentativeSpots;
+
+      exhibitorPackage.banquetTicket += p.banquetTickets// + exhibitor.customBanquetTicketsWanted;
       exhibitorPackage.mealCoupons += p.mealCoupons;
 
-      extras.tables += exhibitor.extraTables;
-      extras.chairs += exhibitor.extraChairs;
-      extras.drinkCoupons += exhibitor.extraDrinkCoupons;
-      //extras.representativeSpots += exhibitor.extraRepresentativeSpots; removed
-      extras.banquetTicket += exhibitor.totalBanquetTicketsWanted;
-      extras.mealCoupons += exhibitor.extraMealCoupons;
-      extras.alcFreeTicket += exhibitor.alcFreeTicket;
+      console.log("EXHIBITOR", p, exhibitor, preferences.filter((preference) => preference.exhibitorId == exhibitor.id))
+      extras.mealCoupons += Math.max(
+        0,
+        preferences.filter((preference) => preference.type === "Representative" && preference.exhibitorId == exhibitor.id).length -
+          p.mealCoupons
+      );
+      extras.banquetTicket += Math.max(
+        0,
+        preferences.filter((preference) => preference.type === "Banquet" && preference.exhibitorId == exhibitor.id).length -
+          p.banquetTickets
+      );
     });
 
+    extras.tables = acceptedExtraOrders.tables;
+    extras.chairs = acceptedExtraOrders.chairs;
+    extras.drinkCoupons = acceptedExtraOrders.drinkCoupons * 3;
+    extras.alcFreeTicket = acceptedExtraOrders.alcFreeTicket * 3;
+
     setExtras([exhibitorPackage, extras]);
-  }, [exhibitors]);
+  }, [acceptedExtraOrders, exhibitors, preferences, t]);
+
+  console.log("PREFERENCES", preferences);
+
+  const banquetPreferences = preferences.filter(
+    (preference) => preference.type === "Banquet"
+  );
+  const confirmedAlcoholFreeDrinkCoupons = banquetPreferences.filter(
+    (ticket) => ticket.value?.includes("AlcoholFree")
+  ).length;
+  const confirmedAlcoholDrinkCoupons =
+    banquetPreferences.length - confirmedAlcoholFreeDrinkCoupons;
 
   return (
     <div className="w-full h-full text-white">
@@ -99,7 +127,7 @@ export function ExtraOrderPanel({
                   </td>
                 </tr>
                   <tr className="text-center">
-                  <td>{t.exhibitorSettings.table.row2.section2.alcFreeTicket}</td>
+                  <td>{t.admin.extraOrders.row.drinkCouponsAlcFree}</td>
                   <td>{extras?.[0].alcFreeTicket}</td>
                   <td>{extras?.[1].alcFreeTicket}</td>
                   <td>
@@ -149,10 +177,16 @@ export function ExtraOrderPanel({
                   <td>{preferences.filter((pref) => pref.type == "Banquet").length}</td>
                 </tr>
                 <tr className="text-center">
-                  <td>{t.admin.extraOrders.row.confirmedDrinkCoupons}</td>
+                  <td>{t.admin.extraOrders.row.confirmedAlcoholDrinkCoupons}</td>
                   <td></td>
                   <td></td>
-                  <td>{preferences.filter((pref) => pref.type == "Banquet").length * 4 + (extras?.[1].drinkCoupons ?? 0)}</td>
+                  <td>{confirmedAlcoholDrinkCoupons}</td>
+                </tr>
+                <tr className="text-center">
+                  <td>{t.admin.extraOrders.row.confirmedAlcoholFreeDrinkCoupons}</td>
+                  <td></td>
+                  <td></td>
+                  <td>{confirmedAlcoholFreeDrinkCoupons}</td>
                 </tr>                  
               </tbody>
             </table>
