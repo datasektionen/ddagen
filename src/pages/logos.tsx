@@ -186,7 +186,7 @@ function SponsorHero({
           <img
             src={addImageDetails(exhibitor.logo)}
             alt={exhibitor.name}
-            className="max-h-36 max-w-[280px] object-contain sm:max-h-48 sm:max-w-[380px]"
+            className="max-h-36 max-w-[280px] object-contain sm:max-h-48 sm:max-w-[380px] w-full h-full"
           />
         ) : (
           <span className="text-2xl font-medium text-darkblue">
