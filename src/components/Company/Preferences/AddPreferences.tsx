@@ -83,7 +83,7 @@ export function AddPreferences({
 
   function handleSubmission(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (deadlinePassed && !editState) {
+    if (deadlinePassed) {
       const addingExtraTicket = preferences.length - 1 + pendingTicketCount >= includedCount;
       createOrderRequest.mutate({
         type: isRepresentative ? "meal_ticket" : "banquette_ticket",
@@ -92,6 +92,7 @@ export function AddPreferences({
         ticket_name: preference.name,
         ticket_value: preference.value,
         ticket_comment: preference.comment,
+        ...(editState ? { ticket_preference_id: preference.id } : {}),
       });
       return;
     }
@@ -368,7 +369,7 @@ export function AddPreferences({
               {t.exhibitorSettings.table.row3.extraTicketDisclaimer} <strong>{t.exhibitorSettings.table.row3.extraTicketPrice(extraTicketPrice)}</strong>
             </p>
           )}
-          {deadlinePassed && !editState && (
+          {deadlinePassed && (
             <p className="text-white text-center text-lg rounded-md border-[1px] border-cerise p-2">
               {t.exhibitorSettings.table.row3.ticketRequestDisclaimer}
             </p>
@@ -385,7 +386,9 @@ export function AddPreferences({
           <button type="submit">
             <a className="block uppercase hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-normal px-8 py-2 max-lg:mx-auto w-max">
               {editState
-                ? t.exhibitorSettings.table.row1.section3.save
+                ? deadlinePassed
+                  ? t.exhibitorSettings.table.row3.requestChange
+                  : t.exhibitorSettings.table.row1.section3.save
                 : t.exhibitorSettings.table.row1.section3.add}
             </a>
           </button>

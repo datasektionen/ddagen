@@ -9,7 +9,9 @@ export default function ForStudents() {
   const scrollRef = useRef<HTMLInputElement | null>(null);
 
   const dayStaffAplicationOpen = true;
-  const dayStaffAplicationLink = "https://docs.google.com/forms/d/e/1FAIpQLSfRBriKZYXWZCssxv2Z-fsFPzPnTmfd6-gUvqtzNNgWsEV2bQ/viewform";
+  const dayStaffAplicationLink = "https://dsekt.se/dagspersonal";
+
+  const banquetteTicketLink = "https://dsekt.se/ddagensittning";
 
   const seoContent = {
     sv: {
@@ -26,7 +28,7 @@ export default function ForStudents() {
 
   const { title, description, url } = seoContent[t.locale as "sv" | "en"];
 
-  const comingSoon = true;
+  const comingSoon = false;
 
   return (
     <>
@@ -47,10 +49,10 @@ export default function ForStudents() {
       />
       <div className="w-full h-full">
         <div className="flex flex-col mx-auto items-center max-w-[90%]">
-          <h1 className="uppercase text-center text-cerise pt-[110px] lg:pt-[140px] mb-4 text-5xl font-medium">
+          <h1 className="uppercase text-center text-cerise pt-[110px] lg:pt-[140px] mb-0 text-5xl font-medium">
             {t.forStudents.title}
           </h1>
-          <div className="flex flex-row items-center justify-center mt-[50px] px-5">
+          {/* <div className="flex flex-row items-center justify-center mt-[50px] px-5">
             <p className="text-white w-[300px] sm:w-[600px] text-center">
               {t.forStudents.guideText}
             </p>
@@ -64,7 +66,7 @@ export default function ForStudents() {
                 {t.forStudents.guideButtonText}
               </a>
             </button>
-          </div>
+          </div> */}
           <ImageTextSection
             t={t}
             leftSideImage={true}
@@ -97,10 +99,10 @@ export default function ForStudents() {
               {t.forStudents.dayStaffTitle}
             </h2>
             <p className="text-white text-base sm:text-lg pt-4 max-w-xl">{t.forStudents.dayStaffText}</p>
-            {!comingSoon && <button className="mt-6">
+            {(dayStaffAplicationOpen && dayStaffAplicationLink) && <button className="mt-6">
               <a
                 className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base uppercase font-medium px-6 py-2 max-lg:mx-auto w-max"
-                href={"https://forms.gle/5mLBmCeh1Zv3Y7Ds5"}
+                href={dayStaffAplicationLink}
                 target="_blank"
               >
                 {t.forStudents.dayStaffApply}
@@ -152,10 +154,10 @@ export default function ForStudents() {
               {t.forStudents.banquetTitle}
             </h2>
             <p className="text-white text-base sm:text-lg pt-4 mb-6 max-w-xl">{t.forStudents.banquetText}</p>
-            {!comingSoon && <button className="mt-6">
+            {(!comingSoon && banquetteTicketLink) && <button className="mt-6">
               <a
                 className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base uppercase font-medium px-6 py-2 max-lg:mx-auto w-max"
-                href={"/banquette"}
+                href={banquetteTicketLink}
                 target="_blank"
               >
                 {t.forStudents.banquetButton}

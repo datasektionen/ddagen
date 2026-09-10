@@ -360,8 +360,8 @@ export default function Navbar() {
               links={[
                 { href: "/förstudenter", text: t.forStudents },
                 //{ href: "/karta", text: t.map }, 2026
-                //{ href: "/event", text: t.event }, 2026
-                //{ href: "/logos", text: t.logos }, 2026
+                { href: "/event", text: t.event }, //2026
+                { href: "/logos", text: t.logos },
                 { href: "/kontaktsamtal", text: t.meetings },
                 //{ href: "/sok", text: t.sok }, 2026
               ]}

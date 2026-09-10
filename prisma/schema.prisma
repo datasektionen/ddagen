@@ -219,6 +219,7 @@ model ExtraOrderItem {
   ticket_name    String?
   ticket_value   FoodPreferencesValue[] @default([])
   ticket_comment String?
+  ticket_preference_id String?
   created_at     DateTime       @default(now())
   ExtraOrderReq  ExtraOrderReq?
   ExtraOrderHistory ExtraOrderHistory[]
