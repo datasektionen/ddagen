@@ -166,17 +166,6 @@ export default function Events() {
       text: t.event.recruitmentPubText
     },
     {
-      date: "23/9",
-      companyName: "Modal",
-      companyUrl: "https://modal.com/",
-      image: "/img/exhibitors/modal-logo.svg",
-      fullImage: false,
-      header: t.event.modalAW.header,
-      text: t.event.modalAW.text,
-      eventLinkText:  t.event.modalAW.eventText,
-      eventLinkUrl: "https://lu.ma/"
-    },
-    {
       date: "30/9",
       companyName: "Ericsson",
       companyUrl: "https://www.ericsson.com/",
@@ -210,7 +199,19 @@ export default function Events() {
       text: t.event.ais.text,
       eventLinkText: t.event.ais.eventText,
       eventLinkUrl: "https://lu.ma/"
-    },/*
+    },
+    {
+      date: "5/10",
+      companyName: "Modal",
+      companyUrl: "https://modal.com/",
+      image: "/img/exhibitors/modal-logo.svg",
+      fullImage: false,
+      header: t.event.modalAW.header,
+      text: t.event.modalAW.text,
+      eventLinkText:  t.event.modalAW.eventText,
+      eventLinkUrl: "https://lu.ma/"
+    },
+    /*
         {
       date: "24/9",
       companyName: "",
