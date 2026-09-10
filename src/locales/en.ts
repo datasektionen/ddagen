@@ -1183,7 +1183,7 @@ export default {
     recruitmentPubText: "During the recruitment of D-Dagen's fantastic 100+ day staff who will assist during the fair, the Project Group organizes the annual Recruitment Pub in the Computer Science chapter's own pub, Meta! Join us for a really pleasant evening with D-Dagen-related activities and competitions with sponsored prizes. Food and drinks are available to order. The pub opens 17:17",
     contactConversations: "Signup for Contact Conversations closes at 23:59",
     contactConversationsText: "Contact meetings are a unique opportunity for companies and students to meet one-on-one and discuss career opportunities. Students gain a much better understanding of the conditions at a specific workplace, and companies get an excellent picture of the student's skills and experiences. Read more at http://ddagen.se/kontaktsamtal.",
-    opening: "25th Anniversary Fair Opens!",
+    opening: "The Fair Opens!",
     openingCeremony: "Opening of the fair on stage in nya Matsalen together with Main Sponsor Omegapoint",
     welcome: "Welcome",
     inaugeration: "Opening",
