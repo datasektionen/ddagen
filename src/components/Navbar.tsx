@@ -343,7 +343,7 @@ export default function Navbar() {
                 { href: "/förföretag", text: t.forCompanies },
                 { href: "/sponsor", text: t.forSponsors },
                 //{ href: "/katalog", text: t.catalog },
-                { href: "/event", text: "event" },
+                //{ href: "/event", text: "event" },
                 { href: "/faq", text: "faq" },
                 /*...(isLoggedIn.data == true
                   ? [
