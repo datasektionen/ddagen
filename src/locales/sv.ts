@@ -1483,6 +1483,12 @@ export default {
   logos: {
     header: "Våra utställare",
     offers: "Erbjuder",
+    clear: "Rensa filter",
+    results: "utställare",
+    noResults: "Inga utställare matchar din sökning.",
+    years: "Årskurs",
+    mainSponsor: "Huvudsponsor",
+    close: "Stäng",
   },
   map: {
     header: "Karta",

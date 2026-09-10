@@ -1498,6 +1498,12 @@ export default {
   logos: {
     header: "Our exhibitors",
     offers: "Offers",
+    clear: "Clear filters",
+    results: "exhibitors",
+    noResults: "No exhibitors match your search.",
+    years: "Year",
+    mainSponsor: "Main sponsor",
+    close: "Close",
   },
   map: {
     header: "Map",
