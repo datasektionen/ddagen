@@ -16,7 +16,7 @@ import { addImageDetails } from "@/shared/addImageDetails";
 export default function ExhibitorInfo({
     children
 } : {
-    children: React.ReactElement
+    children: React.ReactElement<any>
 }) {
   const t = useLocale();
   const router = useRouter();

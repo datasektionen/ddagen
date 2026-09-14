@@ -31,7 +31,7 @@ function Explorer({
   exhibitor: MapProp | undefined;
   selectedExhibitor: number;
   setSelectedExhibitor: Dispatch<number>;
-  explorerRef: RefObject<HTMLDivElement>;
+  explorerRef: RefObject<HTMLDivElement | null>;
 }) {
   if (exhibitor) {
     {
@@ -148,7 +148,7 @@ export default function ExhibitorExplorer({
   const kthEntrancePositions = range(99, 101);
 
   const buttonScrollRef = useRef<HTMLDivElement>(null);
-  const exhibitorRefs = useRef<{ [key: number]: RefObject<HTMLDivElement> }>(
+  const exhibitorRefs = useRef<{ [key: number]: RefObject<HTMLDivElement | null> }>(
     {}
   );
 

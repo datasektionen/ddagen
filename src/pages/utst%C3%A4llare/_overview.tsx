@@ -13,7 +13,7 @@ import ExhibitorLayout from "@/shared/exhibitorLayout";
 export default function ExhibitorOverview({
     children
 } : {
-    children: React.ReactElement
+    children: React.ReactElement<any>
 }) {
   const t = useLocale();
   const router = useRouter();

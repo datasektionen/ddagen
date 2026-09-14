@@ -105,7 +105,7 @@ const exhibitorNav = {
 export default function ExhibitorLayout({
     children
 } : {
-    children: React.ReactElement
+    children: React.ReactElement<any>
 }) {
   const t = useLocale();
   const router = useRouter();

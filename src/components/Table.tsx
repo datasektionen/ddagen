@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type JSX } from "react";
 import parse from "html-react-parser";
 
 export function Table(

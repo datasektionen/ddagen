@@ -15,7 +15,7 @@ import { Extras, Package } from "@/shared/Classes";
 export default function ExhibitorTickets({
     children
 } : {
-    children: React.ReactElement
+    children: React.ReactElement<any>
 }) {
   const t = useLocale();
   const router = useRouter();
