@@ -668,7 +668,7 @@ export default {
     contactHeader: "Kontakt",
     responsible: "D-Dagenansvariga",
     salesGroup: "Säljgruppen",
-    sponsorText: "Huvudpartner för D-Dagen 2026",
+    sponsorText: "Huvudsponsor 2026",
     sponsorLink: "https://www.ericsson.com/en",
     notDecided: "Huvudpartner för D-Dagen 2027 kommer synas här"
   },
@@ -1199,7 +1199,7 @@ export default {
     banquetSignupText: "biljetter går att köpa efter detta så länge det finns platser kvar.",
     modalAW: {
       header: "Modal AW",
-      text: "Tid: 17:30 \nPlats: Modals kontor på Sveavägen 17",
+      text: "Tid: 16:00 \nPlats: Modals kontor på Sveavägen 17",
       eventText: "Eventsida"
     },
     ddagenXericssonNight: {
@@ -1209,7 +1209,7 @@ export default {
     },
     innovationPitchCompetition: {
       header: "KTH Innovation Pitch Competition",
-      text: "Tid: 16:30 \nPlats: KTH Innovation",
+      text: "D-Dagen och KTH Innovation anordnar en pitchtävling där vinnarlaget får en monterplats på D-Dagen. Kom och pitcha eller bara njut av stämningen genom att registrera dig nedan:",
       eventSignUpText: "Tävlingsanmälan",
       eventText: "Eventsida"
     },

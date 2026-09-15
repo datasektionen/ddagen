@@ -98,7 +98,7 @@ function SingleEvent({
           <h2 className="text-left text-white sm:text-center md:text-xl lg:text-3xl">{eventInfo[1]}</h2>
           {(image != "") &&
             <div className={`flex w-full max-w-[350px] overflow-hidden rounded-md bg-white/80 ${fullImage === true ? "" : "px-8 py-4"}`}>
-              <img src={image} alt="" className="flex-1 max-h-[230px] sm:max-h-[300px] lg:max-h-[300px] w-full object-contain transition duration-200 group-hover:scale-105"></img>
+              <img src={image} alt="" className={`w-full object-contain transition duration-200 group-hover:scale-105 ${fullImage ? "h-auto" : "max-h-[230px] sm:max-h-[300px] lg:max-h-[300px]"}`}></img>
             </div>
           }
           <span className="self-center text-sm font-medium text-white underline decoration-cerise decoration-2 underline-offset-4 transition group-hover:text-cerise sm:self-auto">
@@ -203,8 +203,8 @@ export default function Events() {
       date: "1/10",
       companyName: "KTH Innovation",
       companyUrl: "https://www.kth.se/innovation",
-      image: "/img/logos/kth.png",
-      fullImage: false,
+      image: "/img/events/pitch-comp.png",
+      fullImage: true,
       header: t.event.innovationPitchCompetition.header,
       text: t.event.innovationPitchCompetition.text,
       eventLinkText: t.event.innovationPitchCompetition.eventText,
@@ -228,8 +228,8 @@ export default function Events() {
       date: "5/10",
       companyName: "Modal",
       companyUrl: "https://modal.com/",
-      image: "/img/exhibitors/modal-logo.svg",
-      fullImage: false,
+      image: "/img/events/modal_aw.png",
+      fullImage: true,
       header: t.event.modalAW.header,
       text: t.event.modalAW.text,
       eventLinkText:  t.event.modalAW.eventText,
