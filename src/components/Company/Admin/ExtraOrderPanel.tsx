@@ -48,43 +48,66 @@ export function ExtraOrderPanel({
 
       exhibitorPackage.tables += p.tables// + exhibitor.customTables;
       exhibitorPackage.chairs += p.chairs// + exhibitor.customChairs;
-      exhibitorPackage.drinkCoupons += p.drinkCoupons// + exhibitor.customDrinkCoupons;
       exhibitorPackage.representativeSpots += p.representatives// + exhibitor.customRepresentativeSpots;
 
       exhibitorPackage.banquetTicket += p.banquetTickets// + exhibitor.customBanquetTicketsWanted;
       exhibitorPackage.mealCoupons += p.mealCoupons;
 
-      console.log("EXHIBITOR", p, exhibitor, preferences.filter((preference) => preference.exhibitorId == exhibitor.id))
+      const representativePreferences = preferences.filter(
+        (preference) =>
+          preference.type === "Representative" &&
+          preference.exhibitorId === exhibitor.id
+      );
+      const banquetPreferences = preferences.filter(
+        (preference) =>
+          preference.type === "Banquet" &&
+          preference.exhibitorId === exhibitor.id
+      );
+      const includedBanquetPreferences = banquetPreferences.slice(
+        0,
+        p.banquetTickets
+      );
+      const extraBanquetPreferences = banquetPreferences.slice(
+        p.banquetTickets
+      );
+      const includedAlcoholFreeTickets = includedBanquetPreferences.filter(
+        (preference) => preference.value?.includes("AlcoholFree")
+      ).length;
+      const extraAlcoholFreeTickets = extraBanquetPreferences.filter(
+        (preference) => preference.value?.includes("AlcoholFree")
+      ).length;
+
+      exhibitorPackage.alcFreeTicket += includedAlcoholFreeTickets * 3;
+      exhibitorPackage.drinkCoupons +=
+        p.drinkCoupons - includedAlcoholFreeTickets * 3;
+      extras.alcFreeTicket += extraAlcoholFreeTickets * 3;
+      extras.drinkCoupons +=
+        (extraBanquetPreferences.length - extraAlcoholFreeTickets) * 3;
+
       extras.mealCoupons += Math.max(
         0,
-        preferences.filter((preference) => preference.type === "Representative" && preference.exhibitorId == exhibitor.id).length -
+        representativePreferences.length -
           p.mealCoupons
       );
-      extras.banquetTicket += Math.max(
-        0,
-        preferences.filter((preference) => preference.type === "Banquet" && preference.exhibitorId == exhibitor.id).length -
-          p.banquetTickets
-      );
+      extras.banquetTicket += extraBanquetPreferences.length;
     });
 
     extras.tables = acceptedExtraOrders.tables;
     extras.chairs = acceptedExtraOrders.chairs;
-    extras.drinkCoupons = acceptedExtraOrders.drinkCoupons * 3;
-    extras.alcFreeTicket = acceptedExtraOrders.alcFreeTicket * 3;
+    extras.drinkCoupons += acceptedExtraOrders.drinkCoupons * 3;
+    extras.alcFreeTicket += acceptedExtraOrders.alcFreeTicket * 3;
 
     setExtras([exhibitorPackage, extras]);
   }, [acceptedExtraOrders, exhibitors, preferences, t]);
-
-  console.log("PREFERENCES", preferences);
 
   const banquetPreferences = preferences.filter(
     (preference) => preference.type === "Banquet"
   );
   const confirmedAlcoholFreeDrinkCoupons = banquetPreferences.filter(
     (ticket) => ticket.value?.includes("AlcoholFree")
-  ).length;
+  ).length * 3;
   const confirmedAlcoholDrinkCoupons =
-    banquetPreferences.length - confirmedAlcoholFreeDrinkCoupons;
+    banquetPreferences.length * 3 - confirmedAlcoholFreeDrinkCoupons;
 
   return (
     <div className="w-full h-full text-white">

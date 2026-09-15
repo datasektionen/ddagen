@@ -115,6 +115,32 @@ export function ExhibitorPanel({
     };
   }
 
+  function getInferredDrinkExtras(exhibitor: Exhibitor) {
+    const p = new Package(t, exhibitor.packageTier);
+    const banquetPreferences = preferences.filter(
+      (preference) =>
+        preference.type === "Banquet" &&
+        preference.exhibitorId === exhibitor.id
+    );
+    const extraBanquetPreferences = banquetPreferences.slice(p.banquetTickets);
+    const extraAlcoholFreeTickets = extraBanquetPreferences.filter(
+      (preference) => preference.value?.includes("AlcoholFree")
+    ).length;
+    const accepted = getAcceptedExtraOrders(exhibitor.id);
+
+    return {
+      drinkCoupons: {
+        direct: accepted.drinkCoupons * 3,
+        inferred:
+          (extraBanquetPreferences.length - extraAlcoholFreeTickets) * 3,
+      },
+      alcFreeTicket: {
+        direct: accepted.alcFreeTicket * 3,
+        inferred: extraAlcoholFreeTickets * 3,
+      },
+    };
+  }
+
   useEffect(() => {
     if (selectedSalesperson && !salespersonOptions.includes(selectedSalesperson)) {
       setSelectedSalesperson("");
@@ -547,7 +573,7 @@ export function ExhibitorPanel({
                       <div className="flex flex-col px-2">
                         {(() => {
                           const accepted = getAcceptedExtraOrders(exhibitor.id);
-                          const inferredTicketExtras = getInferredTicketExtras(exhibitor);
+                          const inferredDrinkExtras = getInferredDrinkExtras(exhibitor);
                           return <>
                         <div className="flex gap-1">
                           <div>{t.admin.sales.header.extras.chairs}:{" "}</div>
@@ -559,7 +585,19 @@ export function ExhibitorPanel({
                         </div>
                         <div className="flex gap-1">
                           <div>{t.admin.sales.header.extras.drinkCoupons}:{" "}</div>
-                          <div>{(accepted.drinkCoupons + accepted.alcFreeTicket) * 3}</div>
+                          <div>
+                            {inferredDrinkExtras.drinkCoupons.direct}
+                            {inferredDrinkExtras.drinkCoupons.inferred > 0 &&
+                              ` (+${inferredDrinkExtras.drinkCoupons.inferred})`}
+                          </div>
+                        </div>
+                        <div className="flex gap-1">
+                          <div>{t.admin.extraOrders.row.alcFree}:{" "}</div>
+                          <div>
+                            {inferredDrinkExtras.alcFreeTicket.direct}
+                            {inferredDrinkExtras.alcFreeTicket.inferred > 0 &&
+                              ` (+${inferredDrinkExtras.alcFreeTicket.inferred})`}
+                          </div>
                         </div>
                           </>;
                         })()}

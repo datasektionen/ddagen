@@ -573,8 +573,13 @@ export default {
   },
   login: {
     title: "Logga in",
+    paragraph:
+      "Logga in som student för att söka kontaktsamtal, eller som företagsrepresentant inför mässan.",
+    companyParagraph:
+      "Vi skickar en engångskod om din e-postadress finns i vårt system.",
     email: "E-post",
     emailText: "E-postadressen du angav när du gjorde din intresseanmälan",
+    confirmKth: "Logga in genom KTH",
     confirm: "Logga in",
     confirmationCode: "Bekräftelsekod",
     confirmationCodeText1: "Vi har skickat en kod till din e-postadress <",
@@ -1373,6 +1378,7 @@ export default {
         tables: "Bord",
         chairs: "Stolar",
         drinkCoupons: "Dryckesbiljetter",
+        alcFree: "Alkfri",
         drinkCouponsAlcFree: "Dryckesbiljetter Alkfri",
         representatives: "Representanter",
         banquetTickets: "Banquettsbiljetter",

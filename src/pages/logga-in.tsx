@@ -3,7 +3,7 @@ import { useLocale } from "@/locales";
 import { api } from "@/utils/api";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export function Submit({ value, loading, className }: { value: string; loading: boolean, className?: string }) {
   return (
@@ -28,6 +28,7 @@ export default function Login() {
 
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
+  const [accountType, setAccountType] = useState<"company">();
   const [step, setStep] = useState<"email" | "otp">("email");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -79,11 +80,41 @@ export default function Login() {
         <meta name="robots" content="noindex, nofollow" />
       </Head>
       <div className="mx-auto flex flex-col items-center text-center mb-20 max-w-md w-full px-4">
-        <h1 className="text-cerise pt-[110px] lg:pt-[140px] mb-12 text-5xl font-medium uppercase">
+        <h1 className="text-cerise pt-[110px] lg:pt-[140px] mb-4 text-5xl font-medium uppercase">
           {t.login.title}
         </h1>
 
-        {step === "email" && (
+        {!accountType ? (
+          <p className="w-full mb-8 text-left text-white">
+            {t.login.paragraph}
+          </p>
+        ) : (
+          <p className="w-full mb-8 text-left text-white">{t.login.companyParagraph}</p>
+        )}
+
+        {!accountType && (
+          <div className="flex justify-center gap-6 sm:gap-10">
+            <button
+              type="button"
+              disabled={startOidcLogin.isLoading}
+              onClick={() => startOidcLogin.mutate({ subpath: router.asPath.split('?')[0] })}
+              className="flex h-40 w-40 flex-col items-center justify-center gap-3 rounded-2xl border-2 border-cerise text-center transition-transform hover:scale-105 focus:scale-105 focus:outline-none sm:h-44 sm:w-44"
+            >
+              <img src="/icons/user-round-key.svg" alt="" className="h-16 w-16 brightness-0 invert" />
+              <span className="text-xl text-white">Student</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setAccountType("company")}
+              className="flex h-40 w-40 flex-col items-center justify-center gap-3 rounded-2xl border-2 border-cerise text-center transition-transform hover:scale-105 focus:scale-105 focus:outline-none sm:h-44 sm:w-44"
+            >
+              <img src="/icons/building-complex.svg" alt="" className="h-16 w-16 brightness-0 invert" />
+              <span className="text-xl text-white">Company</span>
+            </button>
+          </div>
+        )}
+
+        {accountType === "company" && step === "email" && (
           <form
             className="flex flex-col gap-6 w-full"
             onSubmit={(e) => {
@@ -101,20 +132,20 @@ export default function Login() {
             />
             <Submit value={t.admin.login.otpSendButton} loading={requestOtp.isLoading} />
             
-            <div className="mt-8 text-sm text-slate-300 flex flex-col gap-2 pt-8">
-               <p>Or sign in with KTH OIDC</p>
+            <div className="mt-8 text-sm text-slate-300 flex flex-col pt-8">
+               <p>Or sign in as a KTH Student</p>
                <button 
                  type="button"
                  onClick={() => startOidcLogin.mutate({ subpath: router.asPath.split('?')[0] })}
-                 className="text-cerise underline hover:text-white transition-colors"
+                 className="text-cerise w-fit mx-auto p-2 underline hover:text-white transition-colors"
                >
-                 OIDC SSO Login
+                 KTH Student Login
                </button>
             </div>
           </form>
         )}
 
-        {step === "otp" && (
+        {accountType === "company" && step === "otp" && (
           <form
             className="flex flex-col gap-6 w-full"
             onSubmit={(e) => {
