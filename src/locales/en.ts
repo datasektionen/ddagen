@@ -672,7 +672,7 @@ export default {
     contactHeader: "Contact",
     responsible: "Project Managers",
     salesGroup: "Sales Team",
-    sponsorText: "Main partner for D-Dagen 2026",
+    sponsorText: "Head Sponsor 2026",
     sponsorLink: "https://www.ericsson.com/en",
     notDecided: "Main partner for D-Dagen 2027 will be shown here",
   },
@@ -1183,7 +1183,7 @@ export default {
     recruitmentPubText: "During the recruitment of D-Dagen's fantastic 100+ day staff who will assist during the fair, the Project Group organizes the annual Recruitment Pub in the Computer Science chapter's own pub, Meta! Join us for a really pleasant evening with D-Dagen-related activities and competitions with sponsored prizes. Food and drinks are available to order. The pub opens 17:17",
     contactConversations: "Signup for Contact Conversations closes at 23:59",
     contactConversationsText: "Contact meetings are a unique opportunity for companies and students to meet one-on-one and discuss career opportunities. Students gain a much better understanding of the conditions at a specific workplace, and companies get an excellent picture of the student's skills and experiences. Read more at http://ddagen.se/kontaktsamtal.",
-    opening: "25th Anniversary Fair Opens!",
+    opening: "The Fair Opens!",
     openingCeremony: "Opening of the fair on stage in nya Matsalen together with Main Sponsor Omegapoint",
     welcome: "Welcome",
     inaugeration: "Opening",
@@ -1215,7 +1215,7 @@ export default {
     },
     innovationPitchCompetition: {
       header: "KTH Innovation Pitch Competition",
-      text: "Time: 16:30 \nPlace: KTH Innovation",
+      text: "D-Dagen and KTH Innovation are hosting a pitch competition and the winning team walks away with a booth at D-Dagen. Come pitch or just enjoy the vibes by registering below:",
       eventSignUpText: "Competition Sign Up",
       eventText: "Event Page"
     },
