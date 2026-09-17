@@ -228,15 +228,15 @@ export default function Events() {
       eventHash: "pitch"
     },
     {
-      date: "TBD",
+      date: "28/9 - 9/10",
       companyName: "AI Society",
       companyUrl: "https://kthais.com/",
-      image: "/img/exhibitors/ais.png",
+      image: "/img/events/ais_hackathon.png",
       fullImage: true,
       header: t.event.ais.header,
       text: t.event.ais.text,
       eventLinkText: t.event.ais.eventText,
-      eventLinkUrl: "https://lu.ma/"
+      eventLinkUrl: "https://luma.com/kthais-d6jh"
     },
     {
       date: "5/10",
