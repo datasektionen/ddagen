@@ -15,7 +15,7 @@
     "module": "esnext",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "ignoreDeprecations": "6.0",
     "downlevelIteration": true,
     "paths": {

@@ -5,6 +5,7 @@ import { useState, useRef, useEffect } from "react";
 
 type EventItem = {
   date: string;
+  eventDate?: string;
   companyName: string;
   image: string;
   fullImage?: boolean;
@@ -31,6 +32,7 @@ function SingleEvent({
   eventLinkSecondaryText,
   eventLinkSecondaryUrl,
   eventHash,
+  eventDate,
 }: {
   color: string;
   toReverse: boolean;
@@ -44,11 +46,20 @@ function SingleEvent({
   eventLinkSecondaryText?: string;
   eventLinkSecondaryUrl?: string;
   eventHash?: string;
+  eventDate?: string;
 }) {
   const t = useLocale();
   const router = useRouter();
   const [modalState, setModal] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
+  const stockholmDateParts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "Europe/Stockholm",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(new Date());
+  const stockholmToday = `${stockholmDateParts.find((part) => part.type === "year")?.value}-${stockholmDateParts.find((part) => part.type === "month")?.value}-${stockholmDateParts.find((part) => part.type === "day")?.value}`;
+  const isPast = eventDate ? eventDate < stockholmToday : false;
 
   const openModal = () => {
     setModal(true);
@@ -92,7 +103,7 @@ function SingleEvent({
         <button
           type="button"
           aria-label={`${t.event.description}: ${eventInfo[1]}`}
-          className={`group flex w-full max-w-[420px] flex-col items-start gap-3 rounded-xl border-2 border-cerise bg-black/10 p-3 text-left shadow-[0_6px_0_rgba(238,47,123,0.35)] transition duration-200 hover:-translate-y-1 hover:bg-black/20 hover:shadow-[0_10px_0_rgba(238,47,123,0.45)] focus:outline-none focus:ring-4 focus:ring-cerise/40 active:translate-y-0 active:shadow-[0_3px_0_rgba(238,47,123,0.35)] ${toReverse ? "sm:items-start" : "sm:items-end"}`}
+          className={`group flex w-full max-w-[420px] flex-col items-start gap-3 rounded-xl border-2 ${isPast ? "border-slate-500" : "border-cerise"} bg-black/10 p-3 text-left shadow-[0_6px_0_rgba(238,47,123,0.35)] transition duration-200 hover:-translate-y-1 hover:bg-black/20 hover:shadow-[0_10px_0_rgba(238,47,123,0.45)] focus:outline-none focus:ring-4 focus:ring-cerise/40 active:translate-y-0 active:shadow-[0_3px_0_rgba(238,47,123,0.35)] ${toReverse ? "sm:items-start" : "sm:items-end"}`}
           onClick={openModal}
         >
           <h2 className="text-left text-white sm:text-center md:text-xl lg:text-3xl">{eventInfo[1]}</h2>
@@ -108,7 +119,7 @@ function SingleEvent({
       </div>
       <div className="flex h-full w-16 shrink-0 justify-center sm:basis-[124px]">
         <div className={`relative flex min-h-[360px] w-1 self-stretch justify-center ${color} sm:min-h-[420px]`}>
-          {showDate && <div className={`absolute flex h-14 w-14 items-center justify-center rounded-full ${color} text-center text-xs text-white sm:h-16 sm:w-16 sm:text-lg`}>
+          {showDate && <div className={`absolute flex h-14 w-14 items-center justify-center rounded-full ${isPast ? "bg-slate-500 ring-2 ring-cerise/60" : color} text-center text-xs text-white sm:h-16 sm:w-16 sm:text-lg`}>
             {eventInfo[3]}
           </div>}
         </div>
@@ -182,6 +193,7 @@ export default function Events() {
   const events: EventItem[] = [
     {
       date: "16/9",
+      eventDate: "2026-09-16",
       companyName: "EECS event",
       image: "/img/ddagen2024/rekrytPub.jpg",
       fullImage: true,
@@ -190,6 +202,7 @@ export default function Events() {
     },
     {
       date: "30/9",
+      eventDate: "2026-09-30",
       companyName: "Ericsson",
       companyUrl: "https://www.ericsson.com/",
       image: "/img/exhibitors/ericsson.png",
@@ -201,6 +214,7 @@ export default function Events() {
     },
     {
       date: "1/10",
+      eventDate: "2026-10-01",
       companyName: "KTH Innovation",
       companyUrl: "https://www.kth.se/innovation",
       image: "/img/events/pitch-comp.png",
@@ -226,6 +240,7 @@ export default function Events() {
     },
     {
       date: "5/10",
+      eventDate: "2026-10-05",
       companyName: "Modal",
       companyUrl: "https://modal.com/",
       image: "/img/events/modal_aw.png",
@@ -399,6 +414,7 @@ export default function Events() {
                 eventLinkSecondaryText={event?.eventLinkSecondaryText}
                 eventLinkSecondaryUrl={event?.eventLinkSecondaryUrl}
                 eventHash={event?.eventHash}
+                eventDate={event?.eventDate}
                 />
               ))
             }
@@ -431,6 +447,7 @@ export default function Events() {
               eventLinkUrl={event?.eventLinkUrl}
               eventLinkSecondaryText={event?.eventLinkSecondaryText}
               eventLinkSecondaryUrl={event?.eventLinkSecondaryUrl}
+              eventDate={event?.eventDate}
               />
             ))
           }
