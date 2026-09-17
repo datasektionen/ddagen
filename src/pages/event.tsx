@@ -1,6 +1,7 @@
 import { useLocale } from "@/locales";
 import { NextSeo } from "next-seo";
-import { useState, useRef } from "react";
+import { useRouter } from "next/router";
+import { useState, useRef, useEffect } from "react";
 
 type EventItem = {
   date: string;
@@ -14,6 +15,7 @@ type EventItem = {
   eventLinkUrl?: string;
   eventLinkSecondaryText?: string;
   eventLinkSecondaryUrl?: string;
+  eventHash?: string;
 };
 
 function SingleEvent({
@@ -28,6 +30,7 @@ function SingleEvent({
   eventLinkUrl,
   eventLinkSecondaryText,
   eventLinkSecondaryUrl,
+  eventHash,
 }: {
   color: string;
   toReverse: boolean;
@@ -40,8 +43,10 @@ function SingleEvent({
   eventLinkUrl?: string;
   eventLinkSecondaryText?: string;
   eventLinkSecondaryUrl?: string;
+  eventHash?: string;
 }) {
   const t = useLocale();
+  const router = useRouter();
   const [modalState, setModal] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -51,7 +56,25 @@ function SingleEvent({
 
   const closeModal = () => {
     setModal(false);
+    if (eventHash && window.location.hash === `#${eventHash}`) {
+      window.history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
   };
+
+  useEffect(() => {
+    if (!eventHash || !router.isReady) return;
+
+    const openFromHash = () => {
+      if (window.location.hash.slice(1) !== eventHash) return;
+
+      setModal(true);
+      document.getElementById(eventHash)?.scrollIntoView({ behavior: "smooth", block: "center" });
+    };
+
+    openFromHash();
+    window.addEventListener("hashchange", openFromHash);
+    return () => window.removeEventListener("hashchange", openFromHash);
+  }, [eventHash, router.isReady]);
 
   const handleOverlayClick = (event: React.MouseEvent) => {
     if (modalRef.current === event.target) {
@@ -60,7 +83,7 @@ function SingleEvent({
   };
 
   return (
-    <div className={`
+    <div id={eventHash} className={`
         flex
         flex-row-reverse
         ${toReverse ? "sm:flex-row-reverse" : "sm:flex-row"}
@@ -75,7 +98,7 @@ function SingleEvent({
           <h2 className="text-left text-white sm:text-center md:text-xl lg:text-3xl">{eventInfo[1]}</h2>
           {(image != "") &&
             <div className={`flex w-full max-w-[350px] overflow-hidden rounded-md bg-white/80 ${fullImage === true ? "" : "px-8 py-4"}`}>
-              <img src={image} alt="" className="flex-1 max-h-[230px] sm:max-h-[300px] lg:max-h-[300px] w-full object-contain transition duration-200 group-hover:scale-105"></img>
+              <img src={image} alt="" className={`w-full object-contain transition duration-200 group-hover:scale-105 ${fullImage ? "h-auto" : "max-h-[230px] sm:max-h-[300px] lg:max-h-[300px]"}`}></img>
             </div>
           }
           <span className="self-center text-sm font-medium text-white underline decoration-cerise decoration-2 underline-offset-4 transition group-hover:text-cerise sm:self-auto">
@@ -180,14 +203,15 @@ export default function Events() {
       date: "1/10",
       companyName: "KTH Innovation",
       companyUrl: "https://www.kth.se/innovation",
-      image: "/img/logos/kth.png",
-      fullImage: false,
+      image: "/img/events/pitch-comp.png",
+      fullImage: true,
       header: t.event.innovationPitchCompetition.header,
       text: t.event.innovationPitchCompetition.text,
       eventLinkText: t.event.innovationPitchCompetition.eventText,
-      eventLinkUrl: "https://lu.ma/",
+      eventLinkUrl: "https://luma.com/225vk2jh",
       eventLinkSecondaryText: t.event.innovationPitchCompetition.eventSignUpText,
-      eventLinkSecondaryUrl: "https://lu.ma/"
+      eventLinkSecondaryUrl: "https://tally.so/r/yPQLRx",
+      eventHash: "pitch"
     },
     {
       date: "TBD",
@@ -204,8 +228,8 @@ export default function Events() {
       date: "5/10",
       companyName: "Modal",
       companyUrl: "https://modal.com/",
-      image: "/img/exhibitors/modal-logo.svg",
-      fullImage: false,
+      image: "/img/events/modal_aw.png",
+      fullImage: true,
       header: t.event.modalAW.header,
       text: t.event.modalAW.text,
       eventLinkText:  t.event.modalAW.eventText,
@@ -374,6 +398,7 @@ export default function Events() {
                 eventLinkUrl={event?.eventLinkUrl}
                 eventLinkSecondaryText={event?.eventLinkSecondaryText}
                 eventLinkSecondaryUrl={event?.eventLinkSecondaryUrl}
+                eventHash={event?.eventHash}
                 />
               ))
             }
