@@ -110,6 +110,14 @@ export default function Years() {
 
   const years = [
     {
+      year: 2026,
+      pgImage: "/img/historia/pg2026.jpg",
+      nrOfCompanies: "???",
+      nrOfVisitors: "????",
+      dda: "Didzis Urtans & Oliver Zhou",
+      text: t.history.text2026
+    },
+    {
       year: 2025,
       pgImage: "/img/historia/pg2025.jpg",
       nrOfCompanies: "94",

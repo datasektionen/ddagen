@@ -1232,6 +1232,7 @@ export default {
     text1988: "Datasektionens 5-års jubileum anordnade en liten branschdag och väckte intresse för konceptet, vilket syns i dBuggen (Datasektionens anrika sektionstidning).",
     header1983: "1983",
     text1983: "Begynnelsen, Datasektionen grundas den 7:e oktober 1983.",
+    text2026: "Didzis & Oliver anordnar mässan 2026!",
     text2025: "JUBILEUMSÅRET!",
     text2024: "William & Toshihide anordnade D-Dagen mässan med flest besökare någonsin!",
     text2023: "Axel & Johan anordnade D-Dagen mässan med flest företag någonsin!",
