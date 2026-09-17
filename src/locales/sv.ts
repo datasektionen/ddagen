@@ -1199,12 +1199,12 @@ export default {
     banquetSignupText: "biljetter går att köpa efter detta så länge det finns platser kvar.",
     modalAW: {
       header: "Modal AW",
-      text: "Tid: 16:00 \nPlats: Modals kontor på Sveavägen 17",
+      text: "Tid: 17:30 \nPlats: Modals kontor på Sveavägen 17",
       eventText: "Eventsida"
     },
     ddagenXericssonNight: {
       header: "D-Dagen X Ericsson Night",
-      text: "Tid: 17:XX \nPlats: META",
+      text: "Tid: 17:17 \nPlats: META",
       eventText: "Eventsida"
     },
     innovationPitchCompetition: {
@@ -1214,8 +1214,8 @@ export default {
       eventText: "Eventsida"
     },
     ais: {
-      header: "Event med AI Society",
-      text: "Tid: TBD \nPlats: TBD",
+      header: "AI Society Hackathon",
+      text: "",
       eventText: "Eventsida"
     },
   },

@@ -1210,7 +1210,7 @@ export default {
     },
     ddagenXericssonNight: {
       header: "D-Dagen X Ericsson Night",
-      text: "Time: 17:XX \nPlace: META",
+      text: "Time: 17:17 \nPlace: META",
       eventText: "Event Page"
     },
     innovationPitchCompetition: {
@@ -1220,8 +1220,8 @@ export default {
       eventText: "Event Page"
     },
     ais: {
-      header: "Event with AI Society",
-      text: "Time: TBD \nPlace: TBD",
+      header: "AI Society Hackathon",
+      text: "",
       eventText: "Event Page"
     },
   },
