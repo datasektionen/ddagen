@@ -44,6 +44,8 @@ export const accountRouter = createTRPCRouter({
     .mutation(async ({ input, ctx }) => {
       const { oidc_code_verifier, oidc_state } = ctx?.cookies;
 
+      console.log(ctx?.cookies);
+
       if (!oidc_state || !oidc_code_verifier) {
         console.error("Missing OIDC cookies in header");
         return { error: "invalidConfirmationCode" as const };
@@ -55,6 +57,8 @@ export const accountRouter = createTRPCRouter({
           oidc_state,
           input.current_url
       );
+
+      console.log(claims);
 
       if (!claims || "error" in claims) {
           return { error: "invalidConfirmationCode" as const };
