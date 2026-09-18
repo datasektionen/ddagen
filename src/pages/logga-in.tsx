@@ -38,7 +38,7 @@ export default function Login() {
     }
   }
 
-  const redirect_on_logged_in = (data) => {
+  const redirect_on_logged_in = (data: any) => {
     if (data?.ok) {
       router.push(data.isAdmin ? "/admin/sales" : "/utställare");
     }

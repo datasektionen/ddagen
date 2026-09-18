@@ -113,25 +113,25 @@ export const accountRouter = createTRPCRouter({
 
       return { ok: true, isAdmin: false };
 
-      // If they are not admin, then check if they have a company account
-      const user = await ctx.prisma.user.findUnique({
-        where: { email: claims.email },
-        select: { id: true, exhibitorId: true },
-      });
-
-      if (!user) {
-        console.log("User not found");
-        return { error: "userNotFound" as const };
-      }
-
-      const [_, session] = await ctx.prisma.$transaction([
-        ctx.prisma.session.deleteMany({
-          where: { userId: user.id },
-        }),
-        ctx.prisma.session.create({
-          data: { userId: user.id, exhibitorId: user.exhibitorId },
-        }),
-      ]);
+      // // If they are not admin, then check if they have a company account
+      // const user = await ctx.prisma.user.findUnique({
+      //   where: { email: claims.email },
+      //   select: { id: true, exhibitorId: true },
+      // });
+      //
+      // if (!user) {
+      //   console.log("User not found");
+      //   return { error: "userNotFound" as const };
+      // }
+      //
+      // const [_, session] = await ctx.prisma.$transaction([
+      //   ctx.prisma.session.deleteMany({
+      //     where: { userId: user.id },
+      //   }),
+      //   ctx.prisma.session.create({
+      //     data: { userId: user.id, exhibitorId: user.exhibitorId },
+      //   }),
+      // ]);
 
 
       // Sign an internal JWT to keep the permissions and user_id (sub) verified
