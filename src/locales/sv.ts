@@ -1199,12 +1199,12 @@ export default {
     banquetSignupText: "biljetter går att köpa efter detta så länge det finns platser kvar.",
     modalAW: {
       header: "Modal AW",
-      text: "Tid: 16:00 \nPlats: Modals kontor på Sveavägen 17",
+      text: "Tid: 17:30 \nPlats: Modals kontor på Sveavägen 17",
       eventText: "Eventsida"
     },
     ddagenXericssonNight: {
       header: "D-Dagen X Ericsson Night",
-      text: "Tid: 17:XX \nPlats: META",
+      text: "Tid: 17:17 \nPlats: META",
       eventText: "Eventsida"
     },
     innovationPitchCompetition: {
@@ -1214,8 +1214,8 @@ export default {
       eventText: "Eventsida"
     },
     ais: {
-      header: "Event med AI Society",
-      text: "Tid: TBD \nPlats: TBD",
+      header: "AI Society Hackathon",
+      text: "",
       eventText: "Eventsida"
     },
   },
@@ -1232,6 +1232,7 @@ export default {
     text1988: "Datasektionens 5-års jubileum anordnade en liten branschdag och väckte intresse för konceptet, vilket syns i dBuggen (Datasektionens anrika sektionstidning).",
     header1983: "1983",
     text1983: "Begynnelsen, Datasektionen grundas den 7:e oktober 1983.",
+    text2026: "Didzis & Oliver anordnar mässan 2026!",
     text2025: "JUBILEUMSÅRET!",
     text2024: "William & Toshihide anordnade D-Dagen mässan med flest besökare någonsin!",
     text2023: "Axel & Johan anordnade D-Dagen mässan med flest företag någonsin!",

@@ -1285,6 +1285,20 @@ export const exhibitorRouter = createTRPCRouter({
         } catch (error) {
           console.error("Failed to notify salesperson about extra order request", error);
         }
+
+        // TO REQUEST
+        try {
+          await sendEmail(
+            "requests@ddagen.se",
+            `Extra order request from ${exhibitor.name}`,
+            `<p>${exhibitor.name} (${userEmail}) has requested an extra order:</p>` +
+              `<ul><li>Type: ${input.type}</li><li>Amount: ${input.amount}</li>` +
+              `<li>Price per unit: ${input.price_per_unit}</li></ul>` +
+            `<p>Salesperson: ${salespersonEmail}</p>`
+          );
+        } catch (error) {
+          console.error("Failed to notify requests at ddagen about extra order request", error);
+        }
       }
 
       console.log(Object.keys(ctx));
