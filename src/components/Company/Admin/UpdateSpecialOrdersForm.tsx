@@ -15,7 +15,7 @@ export function UpdateSpecialOrders({
     t: Locale;
     exhibitor: Exhibitor;
     closeModal: () => void;
-    setSpecialOrders: (z: string, a: number, b: number, c: number, d: number) => void;
+    setSpecialOrders: (z: string, a: number, b: number, c: number, d: number, e: number, f: number) => void;
     setShowSpecialOrdersForm: (a: boolean) => void;
 }) {
     const modalRef = useRef<HTMLDivElement>(null);
@@ -25,6 +25,8 @@ export function UpdateSpecialOrders({
     const [studentMeetings, setStudentMeetings] = useState<number>(exhibitor.studentMeetings);
     const [socialMediaPost, setSocialMediaPost] = useState<number>(exhibitor.socialMediaPost);
     const [panelDiscussion, setPanelDiscussion] = useState<number>(exhibitor.panelDiscussion);
+    const [lunchLecture, setLunchLecture] = useState<number>(exhibitor.lunchLecture);
+    const [aw, setAw] = useState<number>(exhibitor.aw);
     const [goodieBagLogo, setGoodieBagLogo] = useState<number>(exhibitor.goodieBagLogo);
     
     function handleOverlayClick(event: React.MouseEvent) {
@@ -52,6 +54,9 @@ export function UpdateSpecialOrders({
         setGoodieBagLogo(exhibitor.goodieBagLogo);
         setGoodieBagLogo(goodieBagLogo == 0 ? 1 : 0);
     };
+
+    const UpdateLunchLecture = () => setLunchLecture(lunchLecture == 0 ? 1 : 0);
+    const UpdateAw = () => setAw(aw == 0 ? 1 : 0);
 
     function Submit({ value }: { value: string }) {
         return (
@@ -100,7 +105,9 @@ export function UpdateSpecialOrders({
                       studentMeetings, 
                       socialMediaPost,
                       panelDiscussion,
-                      goodieBagLogo
+                      goodieBagLogo,
+                      lunchLecture,
+                      aw
                   )
                 }}
               >
@@ -127,6 +134,22 @@ export function UpdateSpecialOrders({
                   onClick={() => UpdatePanelDiscusson()}
                   />
                   {t.admin.sales.header.specialOrders.panelDiscussion}
+                  </div>
+                  <div className="flex gap-3">
+                  <CheckMark
+                  name="Lunch lecture"
+                  defaultChecked = {exhibitor.lunchLecture != 0}
+                  onClick={() => UpdateLunchLecture()}
+                  />
+                  {t.admin.sales.header.specialOrders.lunchLecture}
+                  </div>
+                  <div className="flex gap-3">
+                  <CheckMark
+                  name="AW"
+                  defaultChecked = {exhibitor.aw != 0}
+                  onClick={() => UpdateAw()}
+                  />
+                  {t.admin.sales.header.specialOrders.aw}
                   </div>
                   <div className="flex gap-3">
                   <CheckMark

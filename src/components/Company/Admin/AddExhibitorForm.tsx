@@ -27,13 +27,23 @@ export function AddExhibitorForm({
   const [contactPerson, setContactPerson] = useState("");
   const [telephoneNumber, setTelephoneNumber] = useState("");
   const [email, setEmail] = useState("");
-  const [packageTier, setPackageTier] = useState<number>(0);
+  const [salesperson, setSalesperson] = useState("");
+  const [packageTier, setPackageTier] = useState<number>(-1);
   const [studentMeetings, setStudentMeetings] = useState<number>(0);
   const [sendEmailToExhibitor, setSendEmailToExhibitor] = useState<boolean>(false);
   const [mapPosition, setMapPosition] = useState(0);
   const [meetingTimeSlots, setMeetingTimeSlots] = useState<number[]>([]);
 
   const [exhibitorInterestValue, setExhibitorInterestValue] = useState<number>(-1);
+  const { data: user } = api.account.getUser.useQuery();
+
+  const once = useRef(false);
+  useEffect(() => {
+    if (user?.email && !salesperson && !once.current) {
+      once.current = true;
+      setSalesperson(user.email);
+    }
+  }, [user?.email, salesperson]);
 
 
   const handlePackageTier = (value: number) => {
@@ -52,6 +62,7 @@ export function AddExhibitorForm({
       Boolean(sendEmailToExhibitor),
       Number(mapPosition),
       meetingTimeSlots,
+      salesperson,
     );
   }
 
@@ -61,11 +72,12 @@ export function AddExhibitorForm({
     }
   }
 
-  function Submit({ value }: { value: string }) {
+  function Submit({ value, disabled = false }: { value: string; disabled?: boolean; }) {
     return (
       <input
         type="submit"
         value={value}
+        disabled={disabled}
         className="
           bg-cerise transition-transform hover:scale-110 focus:scale-110
           focus:outline-none text-white uppercase w-fit py-2 px-10
@@ -187,14 +199,23 @@ export function AddExhibitorForm({
                 //fields={{ email: "E-post" }}
                 fields={{ email: t.admin.addCompany.addExhibitorForm.email }}
               />
+              <InputField
+                name="salesperson"
+                value={salesperson}
+                type="email"
+                setValue={setSalesperson}
+                fields={{ salesperson: t.admin.sales.header.salesperson }}
+                required
+              />
               <SelectField
                 name="packageTier"
                 //[ "Small","Medium","Large","Main Sponsor","Startup"],
-                options={t.packages.name}
+                options={["Select package", ...t.packages.name]}
                 //[0, 1, 2, 3, 4]
-                values={t.packages.name.map((_, i) => i)}
+                values={[-1, ...(t.packages.name.map((_, i) => i))]}
                 value={packageTier}
                 setValue={handlePackageTier}
+                class={packageTier == -1 ? "!border-red-500 border-b-2" : ""}
                 //fields={{ packageTier: "Paket" }}
                 fields={{ packageTier: t.admin.addCompany.addExhibitorForm.packageTier }}
               />
@@ -203,6 +224,8 @@ export function AddExhibitorForm({
                 checked={sendEmailToExhibitor}
                 type="checkbox"
                 onClick={() => setSendEmailToExhibitor(b => !b)}
+                disabled={true}
+                class="line-through"
                 //fields={{ sendEmailToExhibitor: "Skicka e-post till utställare" }}
                 fields={{ sendEmailToExhibitor: t.admin.addCompany.addExhibitorForm.sendEmailToExhibitor }}
               />
@@ -210,7 +233,7 @@ export function AddExhibitorForm({
             Not used fields: studentMeetings, mapPosition, meetingTimeSlots
             */}
 
-              <Submit value={t.admin.addCompany.addCompanyButton} />
+              <Submit value={t.admin.addCompany.addCompanyButton} disabled={packageTier == -1} />
             </form>
             {error && (
               <p className="text-red-500 font-bold mt-6">{error}</p>

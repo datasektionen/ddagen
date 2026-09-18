@@ -18,7 +18,10 @@ export function AddPreferences({
   setPreferenceCount,
   editState,
   setEditState,
+  setPos,
   exhibitorPackage,
+  includedCount,
+  pendingTicketCount,
 }: {
   t: Locale;
   pos: number;
@@ -30,11 +33,16 @@ export function AddPreferences({
   setPreferenceCount: Dispatch<{ banqcount: number; reprcount: number }>;
   editState: undefined | string;
   setEditState: Dispatch<undefined | string>;
+  setPos: Dispatch<number>;
   exhibitorPackage: Package;
+  includedCount: number;
+  pendingTicketCount: number;
 }) {
-  const deadline = "2025-09-10";
-  const allowPreferenceChange = new Date() <= new Date("2025-09-25");
+  const trpc = api.useContext();
+  const allowPreferenceChange = new Date() <= new Date("2026-09-09T23:59:59");
+  const deadlinePassed = new Date() > new Date("2026-09-09T17:00:00");
   const isRepresentative = type == "Representative";
+  const extraTicketPrice = isRepresentative ? 450 : 2000;
   const defaultPreference = new Preferences(undefined, "", [], "", type);
 
   const [checkmarks, setCheckMarks] = useState<boolean[]>([
@@ -46,8 +54,12 @@ export function AddPreferences({
   const [extraPreferences, setExtraPreferences] = useState(0);
   const [preference, setPreference] = useState(preferences[pos]);
   const [errorMessage, setErrorMessage] = useState<string | undefined>();
+  const [showForm, setShowForm] = useState(false);
 
   const setPreferenceMutation = api.exhibitor.setFoodPreferences.useMutation();
+  const createOrderRequest = api.exhibitor.createOrderRequest.useMutation({
+    onSuccess: () => trpc.exhibitor.getOrders.invalidate(),
+  });
   const deletePreferenceMutation =
     api.exhibitor.deleteFoodPreferences.useMutation();
 
@@ -71,13 +83,21 @@ export function AddPreferences({
 
   function handleSubmission(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const maxPreferences = isRepresentative
-      ? Infinity // They can have unlimited preferences for the lunch/breakfast tickets.
-      : exhibitorPackage.banquetTickets;
-    if (
-      preference.id ||
-      preferences.length <= maxPreferences + extraPreferences
-    ) {
+    if (deadlinePassed) {
+      const addingExtraTicket = preferences.length - 1 + pendingTicketCount >= includedCount;
+      createOrderRequest.mutate({
+        type: isRepresentative ? "meal_ticket" : "banquette_ticket",
+        amount: 1,
+        price_per_unit: addingExtraTicket ? extraTicketPrice : 0,
+        ticket_name: preference.name,
+        ticket_value: preference.value,
+        ticket_comment: preference.comment,
+        ...(editState ? { ticket_preference_id: preference.id } : {}),
+      });
+      return;
+    }
+
+    if (allowPreferenceChange) {
       setPreferenceMutation.mutate({
         id: preference.id,
         name: preference.name,
@@ -91,17 +111,17 @@ export function AddPreferences({
         banqcount: setCount("Banquet", 1),
         reprcount: setCount("Representative", 1),
       });
-    } else {
-      if (errorMessage == undefined)
-        setErrorMessage(
-          t.exhibitorSettings.table.row3.alerts.errorAddingMorePreferencesThanAllowed(
-            maxPreferences + extraPreferences
-          )
-        );
+    } else if (!allowPreferenceChange) {
+      setErrorMessage(t.error.changePreferencesAfterDeadline);
     }
   }
 
   function deletePreferenceInDatabase() {
+    if (deadlinePassed) {
+      setErrorMessage(t.error.changePreferencesAfterDeadline);
+      return;
+    }
+
     setPreferenceCount({
       banqcount: setCount("Banquet", -1),
       reprcount: setCount("Representative", -1),
@@ -133,7 +153,13 @@ export function AddPreferences({
         if (setPreferenceMutation.data.update)
           setPreferences(
             preferences.map((p, i) =>
-              i == 0 ? defaultPreference : i == pos ? preference : p
+              i == 0
+                ? defaultPreference
+                : i == pos
+                  ? setPreferenceMutation.data.update
+                    ? preference
+                    : { ...preference, id: setPreferenceMutation.data.id }
+                  : p
             )
           );
         else
@@ -142,6 +168,7 @@ export function AddPreferences({
             { ...preference, id: setPreferenceMutation.data.id },
           ]);
         setEditState(undefined);
+        setShowForm(false);
       } else {
         if (errorMessage == undefined)
           setErrorMessage(setPreferenceMutation.data.error);
@@ -155,6 +182,7 @@ export function AddPreferences({
       if (deletePreferenceMutation.data.ok) {
         setPreferences(preferences.filter((p) => p.id != preference.id));
         setEditState(undefined);
+        setShowForm(false);
       } else {
         if (errorMessage == undefined)
           setErrorMessage(deletePreferenceMutation.data.error);
@@ -169,6 +197,17 @@ export function AddPreferences({
     deletePreferenceMutation.isSuccess,
     deletePreferenceMutation.isError,
   ]);
+
+  useEffect(() => {
+    if (createOrderRequest.isSuccess) {
+      setEditState(undefined);
+      setShowForm(false);
+      createOrderRequest.reset();
+    } else if (createOrderRequest.isError) {
+      setErrorMessage(t.error.unknown);
+      createOrderRequest.reset();
+    }
+  }, [createOrderRequest.isSuccess, createOrderRequest.isError]);
 
   useEffect(() => {
     if (typeof errorMessage === "string") {
@@ -187,8 +226,47 @@ export function AddPreferences({
     );
   }, [extras]);
 
+  useEffect(() => {
+    if (editState !== undefined) setShowForm(true);
+  }, [editState]);
+
+  if (!showForm) {
+    const ticketCount = preferences.length - 1;
+    const extraTicketCount = Math.max(0, ticketCount - includedCount);
+
+    return (
+      <div className={`w-[80%] flex items-center ${ticketCount > 0 ? "justify-between" : "justify-center"} mt-8 mb-4`}>
+        {ticketCount > 0 && (
+          <p className="text-white text-lg">
+            {t.exhibitorSettings.table.row3.ticketCount(
+              ticketCount,
+              includedCount,
+              extraTicketCount
+            )}
+          </p>
+        )}
+        <button
+          type="button"
+          className="uppercase hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-normal px-8 py-2 w-max"
+          onClick={() => {
+            setPos(0);
+            setEditState(undefined);
+            setPreference(defaultPreference);
+            setCheckMarks([false, false, false, false, false]);
+            setShowForm(true);
+          }}
+        >
+          {t.exhibitorSettings.table.row3.addTicket}
+        </button>
+      </div>
+    );
+  }
+
+  const addingExtraTicket = !preference.id &&
+    (preferences.length - 1 + pendingTicketCount >= includedCount);
+
   return (
-    <div className="flex flex-col items-center w-[80%] bg-black/25 border-solid border-yellow border-2 rounded-xl pb-8 mt-8 mb-16 overflow-hidden">
+    <div className={`flex flex-col items-center w-[80%] bg-black/25 border-solid ${editState ? "border-cerise" : "border-gold"} border-2 rounded-xl my-8 pb-8 overflow-hidden`}>
       <form
         className="flex flex-col w-[90%] bg-transparent outline-none gap-7 mt-10"
         onSubmit={handleSubmission}
@@ -202,7 +280,7 @@ export function AddPreferences({
           }}
           fields={t.exhibitorSettings.fieldsAddPreferences}
         />
-        <div className="flex flex-col">
+        <div className="text-white flex flex-col">
           <div className="border-b-2 border-white border-solid">
             <p className="font-normal text-lg">
               {t.exhibitorSettings.table.row3.preferencesHeader}
@@ -285,10 +363,22 @@ export function AddPreferences({
           required={false}
           fields={t.exhibitorSettings.fieldsAddPreferences}
         />
-        <div className="flex flex-col max-sm:gap-y-4 sm:flex-row gap-x-8 mt-4 justify-center">
-          {editState ? 
+        <div className="mt-2">
+          {addingExtraTicket && (
+            <p className={`text-white text-center text-lg rounded-md p-2 ${deadlinePassed ? "" : "border-[1px] border-cerise"}`}>
+              {t.exhibitorSettings.table.row3.extraTicketDisclaimer} <strong>{t.exhibitorSettings.table.row3.extraTicketPrice(extraTicketPrice)}</strong>
+            </p>
+          )}
+          {deadlinePassed && (
+            <p className="text-white text-center text-lg rounded-md border-[1px] border-cerise p-2">
+              {t.exhibitorSettings.table.row3.ticketRequestDisclaimer}
+            </p>
+          )}
+        </div>
+        <div className="flex flex-col max-sm:gap-y-4 sm:flex-row gap-x-8 justify-center">
+          {editState && !deadlinePassed ? 
           <button type="button" onClick={deletePreferenceInDatabase}>
-            <a className="block uppercase hover:scale-105 transition-transform bg-black/75 rounded-full text-white text-base font-normal px-8 py-2 max-lg:mx-auto w-max">
+            <a className="block uppercase hover:scale-105 transition-transform bg-transparent border border-red-400 rounded-full text-red-400 text-base font-normal px-8 py-2 max-lg:mx-auto w-max">
               {t.exhibitorSettings.table.row1.section3.delete}
             </a>
           </button>
@@ -296,8 +386,21 @@ export function AddPreferences({
           <button type="submit">
             <a className="block uppercase hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-normal px-8 py-2 max-lg:mx-auto w-max">
               {editState
-                ? t.exhibitorSettings.table.row1.section3.save
+                ? deadlinePassed
+                  ? t.exhibitorSettings.table.row3.requestChange
+                  : t.exhibitorSettings.table.row1.section3.save
                 : t.exhibitorSettings.table.row1.section3.add}
+            </a>
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setEditState(undefined);
+              setShowForm(false);
+            }}
+          >
+            <a className="block uppercase hover:scale-105 transition-transform bg-transparent border border-white rounded-full text-white text-base font-normal px-8 py-2 max-lg:mx-auto w-max">
+              {t.exhibitorSettings.table.row1.section3.cancel}
             </a>
           </button>
         </div>
