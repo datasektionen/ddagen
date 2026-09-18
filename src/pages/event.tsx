@@ -248,7 +248,7 @@ export default function Events() {
       header: t.event.modalAW.header,
       text: t.event.modalAW.text,
       eventLinkText:  t.event.modalAW.eventText,
-      eventLinkUrl: "https://lu.ma/"
+      eventLinkUrl: "https://luma.com/2ammix32"
     },
     /*
         {
@@ -329,7 +329,8 @@ export default function Events() {
       image: "/img/ddagen2024/banquette-dinner.jpg",
       fullImage: true,
       header: t.event.banquet,
-      text: ""
+      text: "",
+      eventLinkUrl: "https://dsekt.se/ddagensittning"
     },
   ]
 
