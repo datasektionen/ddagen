@@ -577,9 +577,14 @@ export default {
   },
   login: {
     title: "Log in",
+    paragraph:
+      "Log in as a student to sign up for company meetings, or as a company representative for the fair.",
+    companyParagraph:
+      "We will send a one-time passcode if your email is in our system.",
     email: "Email",
     emailText: "The email address you used to register your company",
     confirm: "Log in",
+    confirmKth: "Log in through KTH",
     confirmationCode: "Confirmation code",
     confirmationCodeText1:
       "We sent you a confirmation code to your email address <",
@@ -1380,6 +1385,7 @@ export default {
         tables: "Tables",
         chairs: "Chairs",
         drinkCoupons: "Drink Coupons",
+        alcFree: "Alc-Free",
         drinkCouponsAlcFree: "Drink Coupons Alc-Free",
         representatives: "Representatives",
         banquetTickets: "Banquet Tickets",
@@ -1395,6 +1401,18 @@ export default {
         },
         requested: {
           title: "Requested extra orders",
+        },
+        pending: {
+          title: "Pending requests",
+          company: "Company",
+          type: "Type",
+          amount: "Amount",
+          pricePerUnit: "Price per unit",
+          totalPrice: "Total price",
+          details: "Details",
+          updated: "Updated",
+          login: "Log in",
+          empty: "No pending requests",
         },
         history: {
           title: "History",
