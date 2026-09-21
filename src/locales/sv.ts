@@ -1395,6 +1395,18 @@ export default {
         requested: {
           title: "Pågående förfrågningar",
         },
+        pending: {
+          title: "Pågående förfrågningar",
+          company: "Företag",
+          type: "Typ",
+          amount: "Antal",
+          pricePerUnit: "Pris/st",
+          totalPrice: "Totalpris",
+          details: "Detaljer",
+          updated: "Uppdaterad",
+          login: "Logga in",
+          empty: "Inga pågående förfrågningar",
+        },
         history: {
           title: "Historik",
         },

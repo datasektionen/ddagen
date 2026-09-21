@@ -1401,6 +1401,18 @@ export default {
         requested: {
           title: "Requested extra orders",
         },
+        pending: {
+          title: "Pending requests",
+          company: "Company",
+          type: "Type",
+          amount: "Amount",
+          pricePerUnit: "Price per unit",
+          totalPrice: "Total price",
+          details: "Details",
+          updated: "Updated",
+          login: "Log in",
+          empty: "No pending requests",
+        },
         history: {
           title: "History",
         }
