@@ -1215,7 +1215,7 @@ export default {
     },
     ddagenXericssonNight: {
       header: "D-Dagen X Ericsson Night",
-      text: "Time: 17:XX \nPlace: META",
+      text: "Time: 17:17 \nPlace: META",
       eventText: "Event Page"
     },
     innovationPitchCompetition: {
@@ -1225,8 +1225,8 @@ export default {
       eventText: "Event Page"
     },
     ais: {
-      header: "Event with AI Society",
-      text: "Time: TBD \nPlace: TBD",
+      header: "AI Society Hackathon",
+      text: "",
       eventText: "Event Page"
     },
   },
@@ -1243,6 +1243,7 @@ export default {
     text1988: "The Computer Science Chapter's 5-year anniversary organized a small industry fair and sparked interest in the concept, which is evident in dBuggen (the Computer Science Chapter's venerable chapter magazine).",
     header1983: "1983",
     text1983: "The beginning: The Computer Science Chapter was founded on October 7, 1983.",
+    text2026: "Didzis & Oliver are organizing the fair in 2026!",
     text2025: "25th anniversary!",
     text2024: "William & Toshihide organized D-Dagen with the most visitors ever!",
     text2023: "Axel & Johan organized D-Dagen with the most companies ever!",

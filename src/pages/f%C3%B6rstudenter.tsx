@@ -110,7 +110,7 @@ export default function ForStudents() {
             </button>}
           </ImageTextSection>
 
-          {/* Section of D-Dagen Info */}
+          {/* Section of D-Dagen Info
           <ImageTextSection
             t={t}
             leftSideImage={true}
@@ -130,6 +130,7 @@ export default function ForStudents() {
               </a>
             </button>
           </ImageTextSection>
+          */}
 
           <ImageTextSection
             t={t}

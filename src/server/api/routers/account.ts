@@ -16,11 +16,11 @@ const hashOtp = (code: string) => createHash("sha256").update(code).digest("hex"
 const secureCompare = (storedHash: string, inputCode: string) => {
   const inputHash = hashOtp(inputCode);
   if (storedHash.length !== inputHash.length) return false;
-  
+
   // Wrap in standard Uint8Array to satisfy strict TS configurations
   const storedArr = new Uint8Array(Buffer.from(storedHash, "hex"));
   const inputArr = new Uint8Array(Buffer.from(inputHash, "hex"));
-  
+
   return timingSafeEqual(storedArr, inputArr);
 };
 
@@ -44,6 +44,8 @@ export const accountRouter = createTRPCRouter({
     .mutation(async ({ input, ctx }) => {
       const { oidc_code_verifier, oidc_state } = ctx?.cookies;
 
+      console.log(ctx?.cookies);
+
       if (!oidc_state || !oidc_code_verifier) {
         console.error("Missing OIDC cookies in header");
         return { error: "invalidConfirmationCode" as const };
@@ -55,6 +57,8 @@ export const accountRouter = createTRPCRouter({
           oidc_state,
           input.current_url
       );
+
+      console.log(claims);
 
       if (!claims || "error" in claims) {
           return { error: "invalidConfirmationCode" as const };
@@ -96,27 +100,42 @@ export const accountRouter = createTRPCRouter({
           return { ok: true, isAdmin: true };
       }
 
-      // If they are not admin, then check if they have a company account
-      const user = await ctx.prisma.user.findUnique({
-        where: { email: claims.email },
-        select: { id: true, exhibitorId: true },
+      const token = await createSessionToken({
+          sub: claims.sub,
+          email: claims.email,
+          name: claims.name,
+          permissions
       });
 
-      console.log(user);
-
-      if (!user) {
-        console.log("User not found");
-        return { error: "userNotFound" as const };
-      }
-
-      const [_, session] = await ctx.prisma.$transaction([
-        ctx.prisma.session.deleteMany({
-          where: { userId: user.id },
-        }),
-        ctx.prisma.session.create({
-          data: { userId: user.id, exhibitorId: user.exhibitorId },
-        }),
+      // Set cookie, forget the used up OIDC cookies, keep the internal JWT. Check it with isAdmin(token)
+      const secure = process.env.NODE_ENV === 'production' ? 'Secure;' : '';
+      ctx.res.setHeader("Set-Cookie", [
+          `oidc_state=; Path=/; Max-Age=0; HttpOnly`,
+          `oidc_code_verifier=; Path=/; Max-Age=0; HttpOnly`,
+          `token=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=86400; ${secure}`
       ]);
+
+      return { ok: true, isAdmin: false };
+
+      // // If they are not admin, then check if they have a company account
+      // const user = await ctx.prisma.user.findUnique({
+      //   where: { email: claims.email },
+      //   select: { id: true, exhibitorId: true },
+      // });
+      //
+      // if (!user) {
+      //   console.log("User not found");
+      //   return { error: "userNotFound" as const };
+      // }
+      //
+      // const [_, session] = await ctx.prisma.$transaction([
+      //   ctx.prisma.session.deleteMany({
+      //     where: { userId: user.id },
+      //   }),
+      //   ctx.prisma.session.create({
+      //     data: { userId: user.id, exhibitorId: user.exhibitorId },
+      //   }),
+      // ]);
 
 
       // Sign an internal JWT to keep the permissions and user_id (sub) verified
@@ -130,12 +149,12 @@ export const accountRouter = createTRPCRouter({
       */
 
       // Set cookie, forget the used up OIDC cookies, keep the internal JWT. Check it with isAdmin(token)
-      const secure = process.env.NODE_ENV === 'production' ? 'Secure;' : '';
-      ctx.res.setHeader("Set-Cookie", [
-        `session=${session.id}; Path=/; HttpOnly; SameSite=Lax; Max-Age=86400; ${secure}`, // TODO , remove old session prisma state, only do jwt
-        `oidc_state=; Path=/; Max-Age=0; HttpOnly`,
-        `oidc_code_verifier=; Path=/; Max-Age=0; HttpOnly`,
-      ]);
+      // const secure = process.env.NODE_ENV === 'production' ? 'Secure;' : '';
+      // ctx.res.setHeader("Set-Cookie", [
+      //   `session=${session.id}; Path=/; HttpOnly; SameSite=Lax; Max-Age=86400; ${secure}`, // TODO , remove old session prisma state, only do jwt
+      //   `oidc_state=; Path=/; Max-Age=0; HttpOnly`,
+      //   `oidc_code_verifier=; Path=/; Max-Age=0; HttpOnly`,
+      // ]);
       //`session=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=300; Secure`
       /*
       ctx.res.setHeader("Set-Cookie", [
@@ -145,7 +164,6 @@ export const accountRouter = createTRPCRouter({
       ]);
       */
 
-      console.log("4");
       return { ok: true };
     }),
   /*
@@ -204,7 +222,7 @@ export const accountRouter = createTRPCRouter({
         const user = await ctx.prisma.user.findUnique({ where: { email } });
         if (!user) {
           // Security: Return true anyway to prevent user enumeration attacks
-          return { ok: true }; 
+          return { ok: true };
         }
       }
 
@@ -233,7 +251,7 @@ export const accountRouter = createTRPCRouter({
     .input(z.object({ email: z.string().email(), code: z.string().length(6) }))
     .mutation(async ({ input, ctx }) => {
       const email = input.email.toLowerCase();
-      
+
       // 1. Fetch OTP record
       const otpRecord = await ctx.prisma.otpCode.findUnique({ where: { email } });
       if (!otpRecord) return { error: "invalidCode" as const };

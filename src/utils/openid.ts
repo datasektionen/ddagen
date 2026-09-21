@@ -13,9 +13,9 @@ async function getOidcConfig() {
       process.env.OIDC_ID || "client-id",
       process.env.OIDC_SECRET || "client-secret",  // metadata
       undefined,                // clientAuthentication
-      {
-        execute: [client.allowInsecureRequests], // TODO: DON'T FORGET TO REMOVE THIS
-      }
+      // {
+      //   execute: [client.allowInsecureRequests], // TODO: DON'T FORGET TO REMOVE THIS
+      // }
     )
   }
 
@@ -23,8 +23,6 @@ async function getOidcConfig() {
 }
 
 export async function authorizeClaims(oidc_code_verifier: string, oidc_state: string, current_url: string){
-  console.log("VERIFIER: ", oidc_code_verifier);
-  console.log("STATE: ", oidc_state);
   let claims;
   const openIdConfig = await getOidcConfig();
   try {
@@ -41,7 +39,6 @@ export async function authorizeClaims(oidc_code_verifier: string, oidc_state: st
       return { error: "invalidConfirmationCode" as const };
   }
 
-  console.log("CLAIMS", claims);
   return claims;
 }
 
