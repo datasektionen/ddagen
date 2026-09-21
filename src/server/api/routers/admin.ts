@@ -115,6 +115,32 @@ export const adminRouter = createTRPCRouter({
 
             return { ...totals, byExhibitor };
         }),
+    getPendingExtraOrders: publicProcedure
+        .mutation(async ({ ctx }) => {
+            if (!(await hive.isAdmin(ctx.cookies))) {
+                return "UNAUTHORIZED";
+            }
+
+            const requests = await ctx.prisma.extraOrderReq.findMany({
+                include: { item: true },
+                orderBy: { updated_at: "asc" },
+            });
+
+            const exhibitors = await ctx.prisma.exhibitor.findMany({
+                where: { id: { in: requests.map((request) => request.exhibitor_id) } },
+                select: { id: true, name: true },
+            });
+            const exhibitorNames = new Map(exhibitors.map((exhibitor) => [exhibitor.id, exhibitor.name]));
+
+            return requests.map(({ item, ...request }) => ({
+                ...request,
+                companyName: exhibitorNames.get(request.exhibitor_id) ?? request.exhibitor_id,
+                item: {
+                    ...item,
+                    price_per_unit: Number(item.price_per_unit),
+                },
+            }));
+        }),
     deleteExhibitor: publicProcedure
         .input(
             z.object({

@@ -88,7 +88,7 @@ export function AddPreferences({
       createOrderRequest.mutate({
         type: isRepresentative ? "meal_ticket" : "banquette_ticket",
         amount: 1,
-        price_per_unit: addingExtraTicket ? extraTicketPrice : 0,
+        price_per_unit: editState ? 0 : (addingExtraTicket ? extraTicketPrice : 0),
         ticket_name: preference.name,
         ticket_value: preference.value,
         ticket_comment: preference.comment,

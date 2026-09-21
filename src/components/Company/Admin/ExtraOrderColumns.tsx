@@ -88,7 +88,7 @@ export const getOrderColumns = ({
     cell: ({ row }) => (
       <div className="flex items-center gap-3">
         <div className="text-header">
-          <span>{row.original.type}</span>
+          <span>{row.original.ticket_preference_id ? "Preference update" : row.original.type}</span>
           {row.original.ticket_name && (
             <p className="text-sm text-primary/80">
               {row.original.ticket_name}
