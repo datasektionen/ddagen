@@ -8,15 +8,20 @@ let oidcConfig: Awaited<ReturnType<typeof client.discovery>> | null = null;
 
 async function getOidcConfig() {
   if (!oidcConfig) {
+    console.log(process.env.OIDC_PROVIDER);
+    console.log(process.env.OIDC_ID);
+    console.log(process.env.OIDC_SECRET);
+
     oidcConfig = await client.discovery(
       new URL(process.env.OIDC_PROVIDER || "localhost:7003"),
       process.env.OIDC_ID || "client-id",
       process.env.OIDC_SECRET || "client-secret",  // metadata
       undefined,                // clientAuthentication
-      // {
-      //   execute: [client.allowInsecureRequests], // TODO: DON'T FORGET TO REMOVE THIS
-      // }
+      {
+        execute: [client.allowInsecureRequests], // TODO: DON'T FORGET TO REMOVE THIS
+      }
     )
+
   }
 
   return oidcConfig;
