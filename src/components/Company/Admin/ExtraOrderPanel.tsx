@@ -43,6 +43,10 @@ export function ExtraOrderPanel({
   const [extras, setExtras] = useState<[ExhibitorExtras, ExhibitorExtras]>();
   const router = useRouter();
   const login = api.admin.login.useMutation();
+  const activeExhibitorIds = new Set(exhibitors.map((exhibitor) => exhibitor.id));
+  const visiblePendingExtraOrders = pendingExtraOrders.filter((request) =>
+    activeExhibitorIds.has(request.exhibitor_id)
+  );
 
   useEffect(() => {
     let exhibitorPackage = {
@@ -113,10 +117,24 @@ export function ExtraOrderPanel({
       extras.banquetTicket += extraBanquetPreferences.length;
     });
 
-    extras.tables = acceptedExtraOrders.tables;
-    extras.chairs = acceptedExtraOrders.chairs;
-    extras.drinkCoupons += acceptedExtraOrders.drinkCoupons * 3;
-    extras.alcFreeTicket += acceptedExtraOrders.alcFreeTicket * 3;
+    const activeAcceptedExtraOrders = exhibitors.reduce(
+      (totals, exhibitor) => {
+        const accepted = acceptedExtraOrders.byExhibitor?.[exhibitor.id];
+        if (!accepted) return totals;
+
+        totals.tables += accepted.tables;
+        totals.chairs += accepted.chairs;
+        totals.drinkCoupons += accepted.drinkCoupons;
+        totals.alcFreeTicket += accepted.alcFreeTicket;
+        return totals;
+      },
+      { tables: 0, chairs: 0, drinkCoupons: 0, alcFreeTicket: 0 }
+    );
+
+    extras.tables = activeAcceptedExtraOrders.tables;
+    extras.chairs = activeAcceptedExtraOrders.chairs;
+    extras.drinkCoupons += activeAcceptedExtraOrders.drinkCoupons * 3;
+    extras.alcFreeTicket += activeAcceptedExtraOrders.alcFreeTicket * 3;
 
     setExtras([exhibitorPackage, extras]);
   }, [acceptedExtraOrders, exhibitors, preferences, t]);
@@ -260,11 +278,11 @@ export function ExtraOrderPanel({
                 </tr>
               </thead>
               <tbody className="[&>tr>td]:border-2 [&>tr>td]:border-t-2 [&>tr>td]:border-solid [&>tr>td]:border-cerise [&>tr>td]:p-4">
-                {pendingExtraOrders.length === 0 ? (
+                {visiblePendingExtraOrders.length === 0 ? (
                   <tr>
                     <td colSpan={7} className="text-center">{t.admin.extraOrders.sections.pending.empty}</td>
                   </tr>
-                ) : pendingExtraOrders.map((request) => {
+                ) : visiblePendingExtraOrders.map((request) => {
                   const itemName = t.admin.extraOrders.itemNames[request.item.type as keyof typeof t.admin.extraOrders.itemNames];
                   const details = [
                     request.item.ticket_name,
