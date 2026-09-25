@@ -9,8 +9,11 @@ let oidcConfig: Awaited<ReturnType<typeof client.discovery>> | null = null;
 async function getOidcConfig() {
   if (!oidcConfig) {
     console.log(process.env.OIDC_PROVIDER);
+    console.log(process.env.oidc_provider);
     console.log(process.env.OIDC_ID);
+    console.log(process.env.oidc_id);
     console.log(process.env.OIDC_SECRET);
+    console.log(process.env.oidc_secret);
 
     oidcConfig = await client.discovery(
       new URL(process.env.OIDC_PROVIDER || "localhost:7003"),
