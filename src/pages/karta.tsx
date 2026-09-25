@@ -20,10 +20,12 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
     searchQuery: string;
     years: (0 | 1 | 2 | 3 | 4)[];
     offers: string[];
+    industries: string[];
   }>({
     searchQuery: "",
     years: [],
     offers: [],
+    industries: [],
   });
   const [mapInView, setMapInView] = useState<1 | 2 | 3>(1);
   const [selectedExhibitor, setSelectedExhibitor] = useState<number>(0);
@@ -68,8 +70,16 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
                   return false;
               }
             });
-            
+
             if (!hasMatchingOffer) {
+              return [];
+            }
+          }
+          if (query.industries.length > 0) {
+            const hasMatchingIndustry = query.industries.some((industryType) =>
+              exhibitor.industryType?.toLowerCase() === (industryType.toLowerCase())
+            );
+            if (!hasMatchingIndustry) {
               return [];
             }
           }
@@ -89,12 +99,12 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
   const seoContent = {
     sv: {
       title: "Karta - Hitta Utställare och Lokaler",
-      description: "Få en överblick över D-Dagen 2025 med vår interaktiva karta. Se alla utställare, lokaler och viktiga platser på KTH Campus Valhallavägen den 9 oktober. Planera ditt besök och hitta enkelt till alla företag och evenemang!",
+      description: "Få en överblick över D-Dagen med vår interaktiva karta. Se alla utställare, lokaler och viktiga platser på KTH Campus Valhallavägen den 8 oktober. Planera ditt besök och hitta enkelt till alla företag och evenemang!",
       url: "https://ddagen.se/karta",
     },
     en: {
       title: "Map - Find Exhibitors and Venues",
-      description: "Get an overview of D-Dagen 2025 with our interactive map. View all exhibitors, venues, and key locations at KTH Campus Valhallavägen on October 9. Plan your visit and easily find all companies and events!",
+      description: "Get an overview of D-Dagen with our interactive map. View all exhibitors, venues, and key locations at KTH Campus Valhallavägen on October 8. Plan your visit and easily find all companies and events!",
       url: "https://ddagen.se/en/karta",
     },
   };
@@ -118,7 +128,7 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
           }
         ]}
       />
-    <div className="h-screen flex max-md:flex-col-reverse max-md:items-center md:flex-row md:items-start md:pt-20 overflow-hidden relative">
+    <div className="h-screen flex max-md:flex-col-reverse max-md:items-center md:flex-row md:items-start overflow-hidden relative max-lg:mt-20 lg:pt-20">
       <div
         id="sidebar"
         className="px-4 md:pr-4 flex flex-col items-center w-full md:w-3/5 box-border bg-darkblue bg-opacity-75"
@@ -185,6 +195,7 @@ export async function getServerSideProps() {
       fullTimeJob: exhibitor.jobOffers.fullTimeJob,
       traineeProgram: exhibitor.jobOffers.traineeProgram,
     },
+    industryType: exhibitor.industryType,
     position: exhibitor.mapPosition,
   }));
 

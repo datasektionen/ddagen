@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "exhibitors" ADD COLUMN     "aw" INTEGER NOT NULL DEFAULT 0,
+ADD COLUMN     "lunchLecture" INTEGER NOT NULL DEFAULT 0;
