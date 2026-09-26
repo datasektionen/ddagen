@@ -12,6 +12,20 @@ const config = {
     defaultLocale: "sv",
   },
   output: "standalone",
+  rewrites: async () => {
+    return [
+      {
+        source: "/:locale(sv|en)/ddagen.ics",
+        destination: "/api/calendar",
+        locale: false,
+      },
+      {
+        source: "/:locale(sv|en)/api/calendar.ics",
+        destination: "/api/calendar",
+        locale: false,
+      },
+    ];
+  },
   redirects: async () => {
     return [
       {
