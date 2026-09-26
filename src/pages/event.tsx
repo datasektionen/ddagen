@@ -1,12 +1,11 @@
+import AddToCalendar from "@/components/AddToCalendar";
 import { useLocale, type Locale } from "@/locales";
 import {
-  calendarLinks,
   eventText,
   fairTimeline,
   getEvent,
   googleTemplateUrl,
   preFairTimeline,
-  SITE_URL,
   timelineLabel,
   timelinePastDate,
   type TimelineEntry,
@@ -51,45 +50,6 @@ function toEventItem(entry: TimelineEntry, t: Locale): EventItem {
     eventHash: event.pageHash,
     googleCalendarUrl: googleTemplateUrl(t.locale, event),
   };
-}
-
-const calendarButtonClass =
-  "inline-flex items-center justify-center rounded-full border-2 border-cerise px-3 py-2 text-sm font-medium text-white transition sm:px-5 sm:text-base hover:bg-cerise focus:outline-none focus:ring-4 focus:ring-cerise/40";
-
-function CalendarExport() {
-  const t = useLocale();
-  const [origin, setOrigin] = useState(SITE_URL);
-
-  useEffect(() => {
-    setOrigin(window.location.origin);
-  }, []);
-
-  const links = calendarLinks(t.locale, origin);
-
-  return (
-    <section aria-labelledby="calendar-export-heading" className="mx-auto mt-10 flex w-full max-w-[720px] flex-col items-center gap-4 px-4 text-center">
-      <h2 id="calendar-export-heading" className="text-sm font-medium uppercase tracking-wider text-white">
-        {t.event.calendar.title}
-      </h2>
-      <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-        <a href={links.google} target="_blank" rel="noopener noreferrer" className={calendarButtonClass}>
-          {t.event.calendar.google}
-          <span className="sr-only"> {t.event.calendar.newTab}</span>
-        </a>
-        <a href={links.webcal} className={calendarButtonClass}>
-          {t.event.calendar.appleOutlook}
-        </a>
-        <a
-          href={links.download}
-          aria-label={t.event.calendar.download}
-          title={t.event.calendar.download}
-          className={calendarButtonClass}
-        >
-          .ics
-        </a>
-      </div>
-    </section>
-  );
 }
 
 function SingleEvent({
@@ -394,7 +354,7 @@ export default function Events() {
       <div className="pt-[200px] pb-[300px]">
         <h1 className="text-5xl text-cerise font-medium text-center"> EVENT</h1>
         <p className="font-medium text-2xl text-center text-cerise">{t.event.description}</p>
-        <CalendarExport />
+        <AddToCalendar />
         <div className="flex flex-col mt-4">
           <div className="max-sm:hidden flex justify-center">
             <div className="w-1 bg-cerise h-full min-h-[30px] rounded-t-full"></div>
