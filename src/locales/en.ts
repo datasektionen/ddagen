@@ -1229,6 +1229,23 @@ export default {
       text: "",
       eventText: "Event Page"
     },
+    calendar: {
+      title: "Add to your calendar",
+      help: "Subscribe and the events update automatically.",
+      google: "Google Calendar",
+      appleOutlook: "Apple / Outlook",
+      download: "Download .ics",
+      addToGoogle: "Add to Google Calendar",
+      newTab: "(opens in a new tab)",
+      name: "D-Dagen 2026",
+      moreInfo: "More info",
+      fairSummary: "D-Dagen 2026 – the fair",
+      fairDescription: "Datasektionen's career fair. Opens 10:00, closes 16:00.",
+      banquetSummary: "D-Dagen banquet",
+      banquetDescription: "The banquet after the fair. Starts 18:00.",
+      banquetLinkText: "Sign up",
+      hackathonDescription: "The hackathon runs 28/9–9/10.",
+    },
   },
   history: {
     header: "D-Dagen History",

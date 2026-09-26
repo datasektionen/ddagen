@@ -1223,6 +1223,23 @@ export default {
       text: "",
       eventText: "Eventsida"
     },
+    calendar: {
+      title: "Lägg till i din kalender",
+      help: "Prenumerera så uppdateras eventen automatiskt.",
+      google: "Google Kalender",
+      appleOutlook: "Apple / Outlook",
+      download: "Ladda ner .ics",
+      addToGoogle: "Lägg till i Google Kalender",
+      newTab: "(öppnas i ny flik)",
+      name: "D-Dagen 2026",
+      moreInfo: "Mer info",
+      fairSummary: "D-Dagen 2026 – mässan",
+      fairDescription: "Datasektionens arbetsmarknadsmässa. Öppnar 10:00, stänger 16:00.",
+      banquetSummary: "D-Dagen-banketten",
+      banquetDescription: "Banketten efter mässan. Start 18:00.",
+      banquetLinkText: "Anmälan",
+      hackathonDescription: "Hackathonet pågår 28/9–9/10.",
+    },
   },
   history: {
     header: "D-Dagen Historia",
