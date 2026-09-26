@@ -1,4 +1,16 @@
-import { useLocale } from "@/locales";
+import { useLocale, type Locale } from "@/locales";
+import {
+  calendarLinks,
+  eventText,
+  fairTimeline,
+  getEvent,
+  googleTemplateUrl,
+  preFairTimeline,
+  SITE_URL,
+  timelineLabel,
+  timelinePastDate,
+  type TimelineEntry,
+} from "@/shared/events";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 import { useState, useRef, useEffect } from "react";
@@ -17,7 +29,74 @@ type EventItem = {
   eventLinkSecondaryText?: string;
   eventLinkSecondaryUrl?: string;
   eventHash?: string;
+  googleCalendarUrl?: string;
 };
+
+function toEventItem(entry: TimelineEntry, t: Locale): EventItem {
+  const event = getEvent(entry.eventId);
+  const [primary, secondary] = entry.showLinks ? event.links : [];
+  return {
+    date: timelineLabel(entry),
+    eventDate: timelinePastDate(entry),
+    companyName: entry.companyNameKey ? eventText(t.locale, entry.companyNameKey) : entry.companyName ?? "",
+    companyUrl: entry.companyUrl,
+    image: entry.image,
+    fullImage: entry.fullImage,
+    header: eventText(t.locale, entry.headerKey),
+    text: entry.textKey ? eventText(t.locale, entry.textKey) : "",
+    eventLinkText: primary?.labelKey && eventText(t.locale, primary.labelKey),
+    eventLinkUrl: primary?.url,
+    eventLinkSecondaryText: secondary?.labelKey && eventText(t.locale, secondary.labelKey),
+    eventLinkSecondaryUrl: secondary?.url,
+    eventHash: event.pageHash,
+    googleCalendarUrl: googleTemplateUrl(t.locale, event),
+  };
+}
+
+function CalendarExport() {
+  const t = useLocale();
+  const [origin, setOrigin] = useState(SITE_URL);
+
+  useEffect(() => {
+    setOrigin(window.location.origin);
+  }, []);
+
+  const links = calendarLinks(t.locale, origin);
+
+  return (
+    <section aria-labelledby="calendar-export-heading" className="mx-auto mt-8 w-full max-w-[720px] px-4">
+      <div className="flex flex-col items-center gap-4 rounded-xl border-2 border-cerise bg-black/10 p-5 text-center shadow-[0_6px_0_rgba(238,47,123,0.35)] sm:p-6">
+        <h2 id="calendar-export-heading" className="text-2xl font-medium text-white">
+          {t.event.calendar.title}
+        </h2>
+        <p className="text-white">{t.event.calendar.help}</p>
+        <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center">
+          <a
+            href={links.google}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center rounded-full bg-cerise px-5 py-2.5 font-medium text-white shadow-md transition hover:bg-cerise/80 focus:outline-none focus:ring-4 focus:ring-cerise/40"
+          >
+            {t.event.calendar.google}
+            <span className="sr-only"> {t.event.calendar.newTab}</span>
+          </a>
+          <a
+            href={links.webcal}
+            className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 font-medium text-verydarkblue shadow-md transition hover:bg-white/80 focus:outline-none focus:ring-4 focus:ring-white/40"
+          >
+            {t.event.calendar.appleOutlook}
+          </a>
+          <a
+            href={links.download}
+            className="inline-flex items-center justify-center rounded-full border-2 border-cerise px-5 py-2 font-medium text-white shadow-md transition hover:bg-cerise focus:outline-none focus:ring-4 focus:ring-cerise/40"
+          >
+            {t.event.calendar.download}
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 function SingleEvent({
   color,
@@ -33,6 +112,7 @@ function SingleEvent({
   eventLinkSecondaryUrl,
   eventHash,
   eventDate,
+  googleCalendarUrl,
 }: {
   color: string;
   toReverse: boolean;
@@ -47,6 +127,7 @@ function SingleEvent({
   eventLinkSecondaryUrl?: string;
   eventHash?: string;
   eventDate?: string;
+  googleCalendarUrl?: string;
 }) {
   const t = useLocale();
   const router = useRouter();
@@ -179,6 +260,17 @@ function SingleEvent({
                     )}
                   </div>
                 ) : null}
+                {googleCalendarUrl && (
+                  <a
+                    href={googleCalendarUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 inline-block text-sm font-medium text-white underline decoration-cerise decoration-2 underline-offset-4 transition hover:text-cerise focus:outline-none focus:ring-4 focus:ring-cerise/40"
+                  >
+                    {t.event.calendar.addToGoogle}
+                    <span className="sr-only"> {t.event.calendar.newTab}</span>
+                  </a>
+                )}
               </div>
           </div>
         </div>
@@ -191,65 +283,7 @@ export default function Events() {
   const t = useLocale();
 
   const events: EventItem[] = [
-    {
-      date: "16/9",
-      eventDate: "2026-09-16",
-      companyName: "EECS event",
-      image: "/img/ddagen2024/rekrytPub.jpg",
-      fullImage: true,
-      header: t.event.recruitmentPub,
-      text: t.event.recruitmentPubText
-    },
-    {
-      date: "30/9",
-      eventDate: "2026-09-30",
-      companyName: "Ericsson",
-      companyUrl: "https://www.ericsson.com/",
-      image: "/img/exhibitors/ericsson.png",
-      fullImage: true,
-      header: t.event.ddagenXericssonNight.header,
-      text: t.event.ddagenXericssonNight.text,
-      eventLinkText: t.event.ddagenXericssonNight.eventText,
-      eventLinkUrl: "https://lu.ma/"
-    },
-    {
-      date: "1/10",
-      eventDate: "2026-10-01",
-      companyName: "KTH Innovation",
-      companyUrl: "https://www.kth.se/innovation",
-      image: "/img/events/pitch-comp.png",
-      fullImage: true,
-      header: t.event.innovationPitchCompetition.header,
-      text: t.event.innovationPitchCompetition.text,
-      eventLinkText: t.event.innovationPitchCompetition.eventText,
-      eventLinkUrl: "https://luma.com/225vk2jh",
-      eventLinkSecondaryText: t.event.innovationPitchCompetition.eventSignUpText,
-      eventLinkSecondaryUrl: "https://tally.so/r/yPQLRx",
-      eventHash: "pitch"
-    },
-    {
-      date: "28/9 - 9/10",
-      companyName: "AI Society",
-      companyUrl: "https://kthais.com/",
-      image: "/img/events/ais_hackathon.png",
-      fullImage: true,
-      header: t.event.ais.header,
-      text: t.event.ais.text,
-      eventLinkText: t.event.ais.eventText,
-      eventLinkUrl: "https://luma.com/kthais-d6jh"
-    },
-    {
-      date: "5/10",
-      eventDate: "2026-10-05",
-      companyName: "Modal",
-      companyUrl: "https://modal.com/",
-      image: "/img/events/modal_aw.png",
-      fullImage: true,
-      header: t.event.modalAW.header,
-      text: t.event.modalAW.text,
-      eventLinkText:  t.event.modalAW.eventText,
-      eventLinkUrl: "https://luma.com/2ammix32"
-    },
+    ...preFairTimeline.map((entry) => toEventItem(entry, t)),
     /*
         {
       date: "24/9",
@@ -278,15 +312,8 @@ export default function Events() {
   ]
 
   const fairEvents: EventItem[] = [
-    {
-      date: "10:00",
-      companyName: t.event.opening,
-      //image: "/img/d-dagen-logo-jubileum-25-sv.svg",
-      image: "/img/ddagen2024/ddagen-entry-balloons.jpg",
-      fullImage: true,
-      header: t.event.welcome,
-      text: ""
-    },/*
+    ...fairTimeline.map((entry) => toEventItem(entry, t)),
+    /*
     {
       date: "10:15",
       companyName: t.event.openingCeremony,
@@ -315,23 +342,6 @@ export default function Events() {
       header: t.event.panelDiscussionHeader3,
       text: t.event.panelDiscussion1text + " " + t.event.panelDiscussiontext
     },*/
-    {
-      date: "16:00",
-      companyName: "",
-      image: "/img/ddagen2024/ddagen-exhibitors.jpg",
-      fullImage: true,
-      header: t.event.closes,
-      text: ""
-    },
-    {
-      date: "18:00",
-      companyName: "",
-      image: "/img/ddagen2024/banquette-dinner.jpg",
-      fullImage: true,
-      header: t.event.banquet,
-      text: "",
-      eventLinkUrl: "https://dsekt.se/ddagensittning"
-    },
   ]
 
   const postFairEvents: EventItem[] = [/*
@@ -390,6 +400,7 @@ export default function Events() {
       <div className="pt-[200px] pb-[300px]">
         <h1 className="text-5xl text-cerise font-medium text-center"> EVENT</h1>
         <p className="font-medium text-2xl text-center text-cerise">{t.event.description}</p>
+        <CalendarExport />
         <div className="flex flex-col mt-4">
           <div className="max-sm:hidden flex justify-center">
             <div className="w-1 bg-cerise h-full min-h-[30px] rounded-t-full"></div>
@@ -416,6 +427,7 @@ export default function Events() {
                 eventLinkSecondaryUrl={event?.eventLinkSecondaryUrl}
                 eventHash={event?.eventHash}
                 eventDate={event?.eventDate}
+                googleCalendarUrl={event?.googleCalendarUrl}
                 />
               ))
             }
@@ -449,6 +461,7 @@ export default function Events() {
               eventLinkSecondaryText={event?.eventLinkSecondaryText}
               eventLinkSecondaryUrl={event?.eventLinkSecondaryUrl}
               eventDate={event?.eventDate}
+              googleCalendarUrl={event?.googleCalendarUrl}
               />
             ))
           }
