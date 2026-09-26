@@ -1231,7 +1231,6 @@ export default {
     },
     calendar: {
       title: "Add to your calendar",
-      help: "Subscribe and the events update automatically.",
       google: "Google Calendar",
       appleOutlook: "Apple / Outlook",
       download: "Download .ics",

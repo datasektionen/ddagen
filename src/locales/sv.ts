@@ -1225,7 +1225,6 @@ export default {
     },
     calendar: {
       title: "Lägg till i din kalender",
-      help: "Prenumerera så uppdateras eventen automatiskt.",
       google: "Google Kalender",
       appleOutlook: "Apple / Outlook",
       download: "Ladda ner .ics",

@@ -64,35 +64,34 @@ function CalendarExport() {
   const links = calendarLinks(t.locale, origin);
 
   return (
-    <section aria-labelledby="calendar-export-heading" className="mx-auto mt-8 w-full max-w-[720px] px-4">
-      <div className="flex flex-col items-center gap-4 rounded-xl border-2 border-cerise bg-black/10 p-5 text-center shadow-[0_6px_0_rgba(238,47,123,0.35)] sm:p-6">
-        <h2 id="calendar-export-heading" className="text-2xl font-medium text-white">
-          {t.event.calendar.title}
-        </h2>
-        <p className="text-white">{t.event.calendar.help}</p>
-        <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center">
-          <a
-            href={links.google}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center rounded-full bg-cerise px-5 py-2.5 font-medium text-white shadow-md transition hover:bg-cerise/80 focus:outline-none focus:ring-4 focus:ring-cerise/40"
-          >
-            {t.event.calendar.google}
-            <span className="sr-only"> {t.event.calendar.newTab}</span>
-          </a>
-          <a
-            href={links.webcal}
-            className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 font-medium text-verydarkblue shadow-md transition hover:bg-white/80 focus:outline-none focus:ring-4 focus:ring-white/40"
-          >
-            {t.event.calendar.appleOutlook}
-          </a>
-          <a
-            href={links.download}
-            className="inline-flex items-center justify-center rounded-full border-2 border-cerise px-5 py-2 font-medium text-white shadow-md transition hover:bg-cerise focus:outline-none focus:ring-4 focus:ring-cerise/40"
-          >
-            {t.event.calendar.download}
-          </a>
-        </div>
+    <section aria-labelledby="calendar-export-heading" className="mx-auto mt-8 flex w-full max-w-[720px] flex-col items-center gap-4 px-4 text-center">
+      <h2 id="calendar-export-heading" className="text-2xl font-medium text-white">
+        {t.event.calendar.title}
+      </h2>
+      <div className="flex flex-wrap items-center justify-center gap-3">
+        <a
+          href={links.google}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center rounded-full bg-cerise px-5 py-2.5 font-medium text-white shadow-md transition hover:bg-cerise/80 focus:outline-none focus:ring-4 focus:ring-cerise/40"
+        >
+          {t.event.calendar.google}
+          <span className="sr-only"> {t.event.calendar.newTab}</span>
+        </a>
+        <a
+          href={links.webcal}
+          className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 font-medium text-verydarkblue shadow-md transition hover:bg-white/80 focus:outline-none focus:ring-4 focus:ring-white/40"
+        >
+          {t.event.calendar.appleOutlook}
+        </a>
+        <a
+          href={links.download}
+          aria-label={t.event.calendar.download}
+          title={t.event.calendar.download}
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border-2 border-cerise text-xs font-medium text-white shadow-md transition hover:bg-cerise focus:outline-none focus:ring-4 focus:ring-cerise/40"
+        >
+          .ics
+        </a>
       </div>
     </section>
   );
