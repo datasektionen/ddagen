@@ -353,7 +353,7 @@ export default function Events() {
       {!comingSoon &&
       <div className="pt-[200px] pb-[300px]">
         <h1 className="text-5xl text-cerise font-medium text-center"> EVENT</h1>
-        <p className="font-medium text-2xl text-center text-cerise">{t.event.description}</p>
+        <p className="mt-2 px-4 font-medium text-2xl text-center text-cerise [text-wrap:balance]">{t.event.description}</p>
         <AddToCalendar />
         <div className="flex flex-col mt-4">
           <div className="max-sm:hidden flex justify-center">
