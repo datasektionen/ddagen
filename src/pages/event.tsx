@@ -1,4 +1,15 @@
-import { useLocale } from "@/locales";
+import AddToCalendar from "@/components/AddToCalendar";
+import { useLocale, type Locale } from "@/locales";
+import {
+  eventText,
+  fairTimeline,
+  getEvent,
+  googleTemplateUrl,
+  preFairTimeline,
+  timelineLabel,
+  timelinePastDate,
+  type TimelineEntry,
+} from "@/shared/events";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 import { useState, useRef, useEffect } from "react";
@@ -17,7 +28,29 @@ type EventItem = {
   eventLinkSecondaryText?: string;
   eventLinkSecondaryUrl?: string;
   eventHash?: string;
+  googleCalendarUrl?: string;
 };
+
+function toEventItem(entry: TimelineEntry, t: Locale): EventItem {
+  const event = getEvent(entry.eventId);
+  const [primary, secondary] = entry.showLinks ? event.links : [];
+  return {
+    date: timelineLabel(entry),
+    eventDate: timelinePastDate(entry),
+    companyName: entry.companyNameKey ? eventText(t.locale, entry.companyNameKey) : entry.companyName ?? "",
+    companyUrl: entry.companyUrl,
+    image: entry.image,
+    fullImage: entry.fullImage,
+    header: eventText(t.locale, entry.headerKey),
+    text: entry.textKey ? eventText(t.locale, entry.textKey) : "",
+    eventLinkText: primary?.labelKey && eventText(t.locale, primary.labelKey),
+    eventLinkUrl: primary?.url,
+    eventLinkSecondaryText: secondary?.labelKey && eventText(t.locale, secondary.labelKey),
+    eventLinkSecondaryUrl: secondary?.url,
+    eventHash: event.pageHash,
+    googleCalendarUrl: googleTemplateUrl(t.locale, event),
+  };
+}
 
 function SingleEvent({
   color,
@@ -33,6 +66,7 @@ function SingleEvent({
   eventLinkSecondaryUrl,
   eventHash,
   eventDate,
+  googleCalendarUrl,
 }: {
   color: string;
   toReverse: boolean;
@@ -47,6 +81,7 @@ function SingleEvent({
   eventLinkSecondaryUrl?: string;
   eventHash?: string;
   eventDate?: string;
+  googleCalendarUrl?: string;
 }) {
   const t = useLocale();
   const router = useRouter();
@@ -179,6 +214,17 @@ function SingleEvent({
                     )}
                   </div>
                 ) : null}
+                {googleCalendarUrl && (
+                  <a
+                    href={googleCalendarUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 inline-block text-sm font-medium text-white underline decoration-cerise decoration-2 underline-offset-4 transition hover:text-cerise focus:outline-none focus:ring-4 focus:ring-cerise/40"
+                  >
+                    {t.event.calendar.addToGoogle}
+                    <span className="sr-only"> {t.event.calendar.newTab}</span>
+                  </a>
+                )}
               </div>
           </div>
         </div>
@@ -191,65 +237,7 @@ export default function Events() {
   const t = useLocale();
 
   const events: EventItem[] = [
-    {
-      date: "16/9",
-      eventDate: "2026-09-16",
-      companyName: "EECS event",
-      image: "/img/ddagen2024/rekrytPub.jpg",
-      fullImage: true,
-      header: t.event.recruitmentPub,
-      text: t.event.recruitmentPubText
-    },
-    {
-      date: "30/9",
-      eventDate: "2026-09-30",
-      companyName: "Ericsson",
-      companyUrl: "https://www.ericsson.com/",
-      image: "/img/exhibitors/ericsson.png",
-      fullImage: true,
-      header: t.event.ddagenXericssonNight.header,
-      text: t.event.ddagenXericssonNight.text,
-      eventLinkText: t.event.ddagenXericssonNight.eventText,
-      eventLinkUrl: "https://lu.ma/"
-    },
-    {
-      date: "1/10",
-      eventDate: "2026-10-01",
-      companyName: "KTH Innovation",
-      companyUrl: "https://www.kth.se/innovation",
-      image: "/img/events/pitch-comp.png",
-      fullImage: true,
-      header: t.event.innovationPitchCompetition.header,
-      text: t.event.innovationPitchCompetition.text,
-      eventLinkText: t.event.innovationPitchCompetition.eventText,
-      eventLinkUrl: "https://luma.com/225vk2jh",
-      eventLinkSecondaryText: t.event.innovationPitchCompetition.eventSignUpText,
-      eventLinkSecondaryUrl: "https://tally.so/r/yPQLRx",
-      eventHash: "pitch"
-    },
-    {
-      date: "28/9 - 9/10",
-      companyName: "AI Society",
-      companyUrl: "https://kthais.com/",
-      image: "/img/events/ais_hackathon.png",
-      fullImage: true,
-      header: t.event.ais.header,
-      text: t.event.ais.text,
-      eventLinkText: t.event.ais.eventText,
-      eventLinkUrl: "https://luma.com/kthais-d6jh"
-    },
-    {
-      date: "5/10",
-      eventDate: "2026-10-05",
-      companyName: "Modal",
-      companyUrl: "https://modal.com/",
-      image: "/img/events/modal_aw.png",
-      fullImage: true,
-      header: t.event.modalAW.header,
-      text: t.event.modalAW.text,
-      eventLinkText:  t.event.modalAW.eventText,
-      eventLinkUrl: "https://luma.com/2ammix32"
-    },
+    ...preFairTimeline.map((entry) => toEventItem(entry, t)),
     /*
         {
       date: "24/9",
@@ -278,15 +266,8 @@ export default function Events() {
   ]
 
   const fairEvents: EventItem[] = [
-    {
-      date: "10:00",
-      companyName: t.event.opening,
-      //image: "/img/d-dagen-logo-jubileum-25-sv.svg",
-      image: "/img/ddagen2024/ddagen-entry-balloons.jpg",
-      fullImage: true,
-      header: t.event.welcome,
-      text: ""
-    },/*
+    ...fairTimeline.map((entry) => toEventItem(entry, t)),
+    /*
     {
       date: "10:15",
       companyName: t.event.openingCeremony,
@@ -315,23 +296,6 @@ export default function Events() {
       header: t.event.panelDiscussionHeader3,
       text: t.event.panelDiscussion1text + " " + t.event.panelDiscussiontext
     },*/
-    {
-      date: "16:00",
-      companyName: "",
-      image: "/img/ddagen2024/ddagen-exhibitors.jpg",
-      fullImage: true,
-      header: t.event.closes,
-      text: ""
-    },
-    {
-      date: "18:00",
-      companyName: "",
-      image: "/img/ddagen2024/banquette-dinner.jpg",
-      fullImage: true,
-      header: t.event.banquet,
-      text: "",
-      eventLinkUrl: "https://dsekt.se/ddagensittning"
-    },
   ]
 
   const postFairEvents: EventItem[] = [/*
@@ -389,7 +353,8 @@ export default function Events() {
       {!comingSoon &&
       <div className="pt-[200px] pb-[300px]">
         <h1 className="text-5xl text-cerise font-medium text-center"> EVENT</h1>
-        <p className="font-medium text-2xl text-center text-cerise">{t.event.description}</p>
+        <p className="mt-2 px-4 font-medium text-2xl text-center text-cerise [text-wrap:balance]">{t.event.description}</p>
+        <AddToCalendar />
         <div className="flex flex-col mt-4">
           <div className="max-sm:hidden flex justify-center">
             <div className="w-1 bg-cerise h-full min-h-[30px] rounded-t-full"></div>
@@ -416,6 +381,7 @@ export default function Events() {
                 eventLinkSecondaryUrl={event?.eventLinkSecondaryUrl}
                 eventHash={event?.eventHash}
                 eventDate={event?.eventDate}
+                googleCalendarUrl={event?.googleCalendarUrl}
                 />
               ))
             }
@@ -449,6 +415,7 @@ export default function Events() {
               eventLinkSecondaryText={event?.eventLinkSecondaryText}
               eventLinkSecondaryUrl={event?.eventLinkSecondaryUrl}
               eventDate={event?.eventDate}
+              googleCalendarUrl={event?.googleCalendarUrl}
               />
             ))
           }
