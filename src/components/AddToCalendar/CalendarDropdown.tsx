@@ -12,7 +12,7 @@ import {
 } from "./shared";
 
 const rowClass =
-  "flex min-h-[56px] w-full items-center gap-3 rounded-xl px-3 py-2 text-left text-white transition hover:bg-white/10 focus:bg-white/10 focus:outline-none";
+  "flex min-h-[56px] w-full items-center gap-3 rounded-xl px-3 py-2 text-left text-white transition hover:bg-white/10 focus:outline-none focus-visible:bg-white/10";
 
 function RowText({ label, hint }: { label: ReactNode; hint?: string }) {
   return (
