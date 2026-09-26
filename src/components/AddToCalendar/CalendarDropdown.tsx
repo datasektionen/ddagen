@@ -150,9 +150,6 @@ export default function CalendarDropdown() {
           className="absolute left-1/2 top-full z-40 mt-3 w-[360px] max-w-[calc(100vw-2rem)] -translate-x-1/2 overflow-hidden rounded-2xl border border-white/10 bg-darkblue shadow-2xl shadow-black/50"
         >
           <div className="bg-white/5 p-2">
-            <p className="px-3 pb-2 pt-2 text-xs font-bold uppercase tracking-wider text-white/60">
-              {c.subscribeCaption}
-            </p>
             <a role="menuitem" href={links.google} target="_blank" rel="noopener noreferrer" onClick={() => close()} className={rowClass}>
               <Tile letter="G" />
               <RowText

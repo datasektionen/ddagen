@@ -1226,7 +1226,6 @@ export default {
     calendar: {
       triggerDesktop: "Lägg till alla event i din kalender",
       triggerMobile: "Lägg till i kalender",
-      subscribeCaption: "Prenumerera · uppdateras automatiskt",
       google: "Google Kalender",
       googleHint: "Öppnas i Google, ett klick",
       apple: "Apple Kalender",

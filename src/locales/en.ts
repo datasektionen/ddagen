@@ -1232,7 +1232,6 @@ export default {
     calendar: {
       triggerDesktop: "Add all events to your calendar",
       triggerMobile: "Add to calendar",
-      subscribeCaption: "Subscribe · updates automatically",
       google: "Google Calendar",
       googleHint: "Opens in Google, one click",
       apple: "Apple Calendar",
