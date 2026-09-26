@@ -53,6 +53,9 @@ function toEventItem(entry: TimelineEntry, t: Locale): EventItem {
   };
 }
 
+const calendarButtonClass =
+  "inline-flex items-center justify-center rounded-full border-2 border-cerise px-3 py-2 text-sm font-medium text-white transition sm:px-5 sm:text-base hover:bg-cerise focus:outline-none focus:ring-4 focus:ring-cerise/40";
+
 function CalendarExport() {
   const t = useLocale();
   const [origin, setOrigin] = useState(SITE_URL);
@@ -64,31 +67,23 @@ function CalendarExport() {
   const links = calendarLinks(t.locale, origin);
 
   return (
-    <section aria-labelledby="calendar-export-heading" className="mx-auto mt-8 flex w-full max-w-[720px] flex-col items-center gap-4 px-4 text-center">
-      <h2 id="calendar-export-heading" className="text-2xl font-medium text-white">
+    <section aria-labelledby="calendar-export-heading" className="mx-auto mt-10 flex w-full max-w-[720px] flex-col items-center gap-4 px-4 text-center">
+      <h2 id="calendar-export-heading" className="text-sm font-medium uppercase tracking-wider text-white">
         {t.event.calendar.title}
       </h2>
-      <div className="flex flex-wrap items-center justify-center gap-3">
-        <a
-          href={links.google}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center justify-center rounded-full bg-cerise px-5 py-2.5 font-medium text-white shadow-md transition hover:bg-cerise/80 focus:outline-none focus:ring-4 focus:ring-cerise/40"
-        >
+      <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+        <a href={links.google} target="_blank" rel="noopener noreferrer" className={calendarButtonClass}>
           {t.event.calendar.google}
           <span className="sr-only"> {t.event.calendar.newTab}</span>
         </a>
-        <a
-          href={links.webcal}
-          className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 font-medium text-verydarkblue shadow-md transition hover:bg-white/80 focus:outline-none focus:ring-4 focus:ring-white/40"
-        >
+        <a href={links.webcal} className={calendarButtonClass}>
           {t.event.calendar.appleOutlook}
         </a>
         <a
           href={links.download}
           aria-label={t.event.calendar.download}
           title={t.event.calendar.download}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border-2 border-cerise text-xs font-medium text-white shadow-md transition hover:bg-cerise focus:outline-none focus:ring-4 focus:ring-cerise/40"
+          className={calendarButtonClass}
         >
           .ics
         </a>
