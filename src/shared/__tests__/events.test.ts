@@ -143,11 +143,13 @@ describe("calendar feed parsed with ical.js", () => {
 describe("links", () => {
   it("builds subscription links", () => {
     expect(calendarLinks("sv")).toEqual({
+      https: "https://ddagen.se/ddagen.ics",
       webcal: "webcal://ddagen.se/ddagen.ics",
       google: "https://calendar.google.com/calendar/r?cid=webcal%3A%2F%2Fddagen.se%2Fddagen.ics",
       download: "https://ddagen.se/ddagen.ics?download=1",
     });
     const en = calendarLinks("en");
+    expect(en.https).toBe("https://ddagen.se/ddagen.ics?lang=en");
     expect(en.webcal).toBe("webcal://ddagen.se/ddagen.ics?lang=en");
     expect(new URL(en.google).searchParams.get("cid")).toBe("webcal://ddagen.se/ddagen.ics?lang=en");
     expect(en.download).toBe("https://ddagen.se/ddagen.ics?lang=en&download=1");

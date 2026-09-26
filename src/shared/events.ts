@@ -303,6 +303,7 @@ export function calendarLinks(locale: EventLocale, origin: string = SITE_URL) {
   const https = `${origin}${CALENDAR_PATH}${query}`;
   const webcal = https.replace(/^https?:/, "webcal:");
   return {
+    https,
     webcal,
     google: `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(webcal)}`,
     download: `${origin}${CALENDAR_PATH}${query ? `${query}&` : "?"}download=1`,
