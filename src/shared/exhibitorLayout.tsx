@@ -120,22 +120,36 @@ export default function ExhibitorLayout({
   const [name, setName] = useState<string>("");
   const [editNameState, setEditNameState] = useState<boolean>(false);
 
+  // States
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
+  const [hasExhibitorSession, setHasExhibitorSession] = useState<boolean>(false);
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
+
   const logout = api.admin.logout.useMutation();
 
   const getName = api.exhibitor.getName.useQuery();
   const setNameMutation = api.exhibitor.setName.useMutation();
 
 
-  const getIsLoggedIn = api.account.isLoggedIn.useQuery();
-  const isAdmin = Boolean(getIsLoggedIn.data?.isAdmin);
-  const hasExhibitorSession = Boolean(getIsLoggedIn.data?.hasExhibitorSession);
+  const getIsLoggedIn = api.account.isLoggedIn.useQuery(undefined, {
+    onSuccess: (data: any) => {
+      setIsLoggedIn(data.ok);
+      setIsAdmin(data.isAdmin);
+      setHasExhibitorSession(data.hasExhibitorSession);
+      setIsLoaded(true);
+    },
+  });
 
   useEffect(() => {
     if (!getIsLoggedIn.isSuccess) return;
-    if (!isAdmin && !hasExhibitorSession) {
+    if (!isLoggedIn) handleLogout();
+
+    console.log("LOGGED IN", isAdmin, hasExhibitorSession);
+    if (isLoaded && !isAdmin && !hasExhibitorSession) {
       void router.replace("/logga-in");
     }
-  }, [getIsLoggedIn.isSuccess, hasExhibitorSession, isAdmin, router]);
+  }, [getIsLoggedIn.isSuccess, isLoggedIn, hasExhibitorSession, isAdmin, isLoaded, router]);
 
   const handleLogout = () => {
     //console.log("CALL LOGOUT")
