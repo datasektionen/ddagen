@@ -189,6 +189,7 @@ export const accountRouter = createTRPCRouter({
     const user = await getSession(ctx.cookies);
     const hasExhibitorSession = Boolean(ctx.session?.exhibitorId);
 
+    console.log("CHECK LOGGED IN", user, hasExhibitorSession);
     if (user != null) {
         return {
           ok: true,
