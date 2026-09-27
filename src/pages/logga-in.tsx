@@ -40,7 +40,13 @@ export default function Login() {
 
   const redirect_on_logged_in = (data: any) => {
     if (data?.ok) {
-      router.push(data.isAdmin ? "/admin/sales" : "/utställare");
+      if (data.isAdmin) {
+        void router.push("/admin/sales");
+      } else if (data.hasExhibitorSession) {
+        void router.push("/utställare");
+      } else {
+        void router.push("/student");
+      }
     }
   };
 

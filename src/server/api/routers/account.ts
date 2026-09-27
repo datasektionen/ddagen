@@ -79,7 +79,10 @@ export const accountRouter = createTRPCRouter({
           : [];
 
       // Require them to have admin permissions from hive
-      if (permissions.includes("admin") || permissions.includes("ddagen")) {
+        if (
+          permissions.includes("admin") ||
+          permissions.includes("ddagen")
+        ) {
           console.log("ACCOUNT IS ADMIN!")
           const token = await createSessionToken({
               sub: claims.sub,
@@ -184,12 +187,18 @@ export const accountRouter = createTRPCRouter({
   */
   isLoggedIn: publicProcedure.query(async ({ ctx }) => {
     const user = await getSession(ctx.cookies);
+    const hasExhibitorSession = Boolean(ctx.session?.exhibitorId);
 
     if (user != null) {
-        return { ok: true, isAdmin: user?.permissions?.includes("admin") || user?.permissions?.includes("ddagen") };
+        return {
+          ok: true,
+          isAdmin: user?.permissions?.includes("admin") ||
+            user?.permissions?.includes("ddagen"),
+          hasExhibitorSession,
+        };
     }
 
-    return { ok: ctx.session !== null };
+    return { ok: ctx.session !== null, isAdmin: false, hasExhibitorSession };
   }),
   getUser: publicProcedure.query(async ({ ctx }) => {
     return await getSession(ctx.cookies);
@@ -294,7 +303,7 @@ export const accountRouter = createTRPCRouter({
           `token=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=86400; ${secure}`,
         ]);
 
-        return { ok: true, isAdmin: true };
+        return { ok: true, isAdmin: true, hasExhibitorSession: false };
       } else {
         // --- EXHIBITOR LOGIN LOGIC ---
         const user = await ctx.prisma.user.findUnique({ where: { email } });
@@ -309,7 +318,7 @@ export const accountRouter = createTRPCRouter({
           `session=${session.id}; Path=/; HttpOnly; SameSite=Lax; Max-Age=86400; ${secure}`,
         ]);
 
-        return { ok: true, isAdmin: false };
+        return { ok: true, isAdmin: false, hasExhibitorSession: true };
       }
     }),
 });
