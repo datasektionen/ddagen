@@ -22,7 +22,8 @@ export default function GeneralInfo(
 		showSetUpPage,
 		hasChecked,
 		setHasChecked,
-		showKollin = false
+		showKollin = false,
+		autoSave,
 	}: {
 		t: Locale;
 		whiteLogo: string;
@@ -39,6 +40,7 @@ export default function GeneralInfo(
 		hasChecked: boolean;
 		setHasChecked: React.Dispatch<React.SetStateAction<boolean>>;
 		showKollin?: boolean;
+		autoSave?: (image: string, kind: "white" | "color") => void | Promise<void>;
 	}
 
 ) {
@@ -91,6 +93,7 @@ export default function GeneralInfo(
 							textInsideMiddleClass={"opacity-50"}
 							textInsideBottom={""}
 							accept={["image/*"]}
+							onChange={(image) => autoSave?.(image, "white")}
 						/>
 					</div>
 					<div>
@@ -103,6 +106,7 @@ export default function GeneralInfo(
 							textInsideMiddleClass={"opacity-50"}
 							textInsideBottom={""}
 							accept={["image/*"]}
+							onChange={(image) => autoSave?.(image, "color")}
 						/>
 					</div>
 			  </div>
