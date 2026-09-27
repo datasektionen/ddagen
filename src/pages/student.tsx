@@ -1,4 +1,4 @@
-import { use, useContext, useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { api } from "@/utils/api";
 import CompanyMeetingOffer from "@/components/Student/CompanyMeetingOffer";
 import { useLocale } from "@/locales";
@@ -7,7 +7,7 @@ import { CheckMark } from '@/components/CheckMark';
 import { addImageDetails } from '@/shared/addImageDetails';
 import { Table } from "@/components/Table";
 
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/router';
 import { useModal } from '@/utils/context';
 import Head from 'next/head';
 
@@ -34,19 +34,14 @@ interface InterestedCompany{
     timeslot: number;
 }
 
-const set_session_storage = (loginToken: string) => {
-    sessionStorage.setItem("d_login_token", loginToken);
-};
-
 export default function LoggedInPage() {
     const router = useRouter();
     const t = useLocale();
 
     
-    const studentVerify = api.student.verify.useMutation();
     const updateInterests = api.student.updateCompanyInterests.useMutation();
-    const createStudent = api.student.inputData.useMutation();
-    const getData = api.student.getData.useMutation();
+    const initializeStudent = api.student.initializeFromAccount.useMutation();
+    const accountStatus = api.account.isLoggedIn.useQuery();
     const modal = useModal();
     const getCompanyWithMeetings = api.student.getCompaniesWithMeetings.useMutation();
     const getCompanyMeetingInterests = api.student.getCompanyMeetingInterests.useMutation();
@@ -62,70 +57,44 @@ export default function LoggedInPage() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [ugkthid, setugkthid] = useState<string>("");
     const [studentHasCV, setStudentHasCV] = useState<boolean>(false);
+    const [loginError, setLoginError] = useState(false);
+    const studentBootstrapStarted = useRef(false);
 
     const studentGetData = api.student.getData.useMutation();
 
-    useEffect(()=>{
-        const params: URLSearchParams = new URL(window.location.href).searchParams;
-        let loginToken: string = params.get('d_login_token') ?? "";
-
-        // log in the user if not logged in
-        if (!isLoggedIn && !sessionStorage.getItem("d_login_token") && (!loginToken || loginToken === "null" || loginToken === "")) {
-            window.location.href = `https://login.datasektionen.se/login?callback=${window.location.href.replace(/^(https?:\/\/[^\/]+).*/, '$1')}/student?d_login_token=`
-        } 
-    }, [isLoggedIn])
-    
     useEffect(() => {
-        //router.push("/förstudenter"); // remove when page should be available
-        const params: URLSearchParams = new URL(window.location.href).searchParams;
-        let loginToken: string = params.get('d_login_token') ?? "";
+        if (!accountStatus.isSuccess) return;
 
-        // If no login_token in url, check if login token in session storage
-        if ((!loginToken || loginToken === "null") && sessionStorage.getItem("d_login_token")) {
-            const token = sessionStorage.getItem("d_login_token");
-            if (token !== null) {
-                loginToken = token;
-            }
-        }
-
-        if (!loginToken || loginToken === "null") {
-            console.log("URL not complete: LoginToken=", loginToken,);
+        const account = accountStatus.data;
+        if (!account.ok) {
+            void router.replace("/logga-in");
             return;
         }
-        
-        
-        studentVerify.mutateAsync(loginToken)
-        .then((res) =>{
-            if (res){
-                // update prefill variables
-                const res_json = JSON.parse(res);
-                setugkthid(res_json.ugkthid);
-                set_session_storage(loginToken);
-                setIsLoggedIn(res? true:false);
-                
-                getData.mutateAsync(res_json.ugkthid)
-                .then((res) => {
-                    if (!res) {
-                        createStudent.mutateAsync(
-                            JSON.stringify({
-                                ugkthid: res_json.ugkthid,
-                                first_name: res_json.first_name,
-                                last_name: res_json.last_name,
-                                email: res_json.emails,
-                                study_year: 0,
-                            })
-                        );
-                    }
-                });
-            }
-        });
-        return () => {
-            // cleanup
-           
-        };
-    }, []);
+        if (account.isAdmin) {
+            void router.replace("/admin/sales");
+            return;
+        }
+        if (account.hasExhibitorSession) {
+            void router.replace("/utställare");
+            return;
+        }
+        if (studentBootstrapStarted.current) return;
+
+        studentBootstrapStarted.current = true;
+        initializeStudent.mutateAsync()
+            .then((student) => {
+                setugkthid(student.ugkthid);
+                setIsLoggedIn(true);
+            })
+            .catch((error) => {
+                console.error("Failed to initialize student profile", error);
+                setLoginError(true);
+            });
+    }, [accountStatus.data, accountStatus.isSuccess, initializeStudent, router]);
     
     useEffect(()=>{
+        if (!ugkthid) return;
+
         studentGetData.mutateAsync(ugkthid)
         .then((result)=>{
             if (result) {
@@ -321,7 +290,11 @@ export default function LoggedInPage() {
             <Head>
                 <meta name="robots" content="noindex, nofollow" />
             </Head>
-            {isLoggedIn ? ( 
+            {loginError ? (
+                <p className="h-screen flex items-center justify-center text-red-400">
+                    {t.error.unknown}
+                </p>
+            ) : isLoggedIn ? ( 
                 <StudentView/> 
             ) : (
 

@@ -1,9 +1,11 @@
 import { z } from "zod";
-import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
+import { TRPCError } from "@trpc/server";
+import { createTRPCRouter, publicProcedure } from "../trpc";
 import { Prisma } from "@prisma/client";
 import sendEmail from "@/utils/send-email";
 import { getLocale } from "@/locales";
 import { send } from "process";
+import { getSession } from "@/utils/openid";
 
 // This is not a gud solution, but for now here we gooo! :-)
 const times = [
@@ -51,6 +53,54 @@ const companyLocationMap = {
 }
 
 export const studentRouter = createTRPCRouter({    
+    initializeFromAccount: publicProcedure
+    .mutation(async ({ ctx }) => {
+        const account = await getSession(ctx.cookies);
+        if (!account) {
+            throw new TRPCError({ code: "UNAUTHORIZED" });
+        }
+
+        const isAdmin = account.permissions.includes("admin") ||
+            account.permissions.includes("ddagen");
+        if (isAdmin || ctx.session?.exhibitorId) {
+            throw new TRPCError({ code: "FORBIDDEN" });
+        }
+
+        const ugkthid = account.sub;
+        const nameParts = account.name?.trim().split(/\s+/).filter(Boolean) ?? [];
+        const first_name = nameParts.shift() || "Student";
+        const last_name = nameParts.join(" ");
+
+        const student = await ctx.prisma.students.upsert({
+            where: { ugkthid },
+            create: {
+                ugkthid,
+                first_name,
+                last_name,
+                email: account.email,
+                prefered_email: account.email,
+                study_year: 0,
+                summerJob: false,
+                partTimeJob: false,
+                internship: false,
+                masterThesis: false,
+                fullTimeJob: false,
+                traineeProgram: false,
+                cv: "",
+                has_cv: false,
+                linkedin_url: "",
+                github_url: "",
+                other_link: "",
+                personal_story: "",
+                company_meeting_interests: [],
+                company_meeting_declined: [],
+            },
+            update: {},
+            select: { ugkthid: true },
+        });
+
+        return student;
+    }),
     verify: publicProcedure
     .input(z.string())
     .mutation(async ({ input })=>{
