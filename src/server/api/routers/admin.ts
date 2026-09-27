@@ -243,11 +243,11 @@ export const adminRouter = createTRPCRouter({
     startLogin: publicProcedure
         .input(z.object({ subpath: z.string().startsWith("/") }))
         .mutation(async ({ input, ctx }) => {
-          const { code_verifier, code_challenge, state, oidc_auth_url } = await initiateAuthorization(input.subpath);
+          const { state, oidc_auth_url } = await initiateAuthorization(input.subpath);
 
           const max_age = 10 * 60; // max request age 10 minutes
           ctx.res.setHeader("Set-Cookie", [
-            `oidc_code_verifier=${code_verifier}; Max-Age=${max_age}; Path=/; HttpOnly; SameSite=Lax`,
+            `Max-Age=${max_age}; Path=/; HttpOnly; SameSite=Lax`,
             `oidc_state=${state}; Max-Age=${max_age}; Path=/; HttpOnly; SameSite=Lax`
           ]);
 
@@ -256,16 +256,15 @@ export const adminRouter = createTRPCRouter({
     finishLogin: publicProcedure
         .input(z.object({ current_url: z.string().url(), exhibitorId: z.string().optional() }))
         .mutation(async ({ input, ctx }) => {
-        const { oidc_code_verifier, oidc_state } = ctx?.cookies;
+        const { oidc_state } = ctx?.cookies;
 
-        if (!oidc_state || !oidc_code_verifier) {
+        if (!oidc_state) {
             console.error("Missing OIDC cookies in header");
             return { error: "invalidConfirmationCode" as const };
         }
 
         // OIDC Authorization of the cookies, previous redirect_uri must match current_url, only works once
         const claims = await authorizeClaims(
-            oidc_code_verifier,
             oidc_state,
             input.current_url
         );

@@ -1465,7 +1465,7 @@ export const exhibitorRouter = createTRPCRouter({
               throw new TRPCError({ code: "NOT_FOUND" });
             }
           } else {
-            await transaction.foodPreferences.create({
+            const preference = await transaction.foodPreferences.create({
               data: {
                 exhibitorId: ctx.session.exhibitorId,
                 name: request.item.ticket_name,
@@ -1474,8 +1474,110 @@ export const exhibitorRouter = createTRPCRouter({
                 type: preferenceType,
               },
             });
+            await transaction.extraOrderItem.update({
+              where: { id: request.item.id },
+              data: { ticket_preference_id: preference.id },
+            });
           }
         }
       });
+    }),
+
+    deleteTicketPreference: protectedProcedure
+    .input(z.object({
+      preferenceId: z.string(),
+      passcode: z.string().length(6),
+    }))
+    .mutation(async ({ ctx, input }) => {
+      if (!(await hive.isAdmin(ctx.cookies))) {
+        throw new TRPCError({ code: "UNAUTHORIZED" });
+      }
+      if (input.passcode !== "123456") {
+        throw new TRPCError({ code: "FORBIDDEN", message: "Invalid passcode" });
+      }
+
+      const preference = await ctx.prisma.foodPreferences.findFirst({
+        where: {
+          id: input.preferenceId,
+          exhibitorId: ctx.session.exhibitorId,
+        },
+      });
+      if (!preference) {
+        throw new TRPCError({ code: "NOT_FOUND" });
+      }
+
+      const ticketType = preference.type === "Representative" ? "meal_ticket" : "banquette_ticket";
+      const userEmail = (await getSession(ctx.cookies))?.email ?? "";
+
+      await ctx.prisma.$transaction(async (transaction) => {
+        const pendingRequests = await transaction.extraOrderReq.findMany({
+          where: {
+            exhibitor_id: ctx.session.exhibitorId,
+            item: { ticket_preference_id: preference.id },
+          },
+          include: { item: true },
+        });
+
+        for (const request of pendingRequests) {
+          await transaction.extraOrderHistory.create({
+            data: {
+              exhibitor_id: ctx.session.exhibitorId,
+              item_id: request.item_id,
+              type: request.item.type,
+              amount: request.item.amount,
+              price_per_unit: request.item.price_per_unit,
+              action: "CANCELED_REQUEST",
+              person_name: "",
+              person_email: userEmail,
+              person_is_admin: true,
+            },
+          });
+          await transaction.extraOrderReq.delete({
+            where: { item_id: request.item_id },
+          });
+        }
+
+        const acceptedTicket = await transaction.extraOrderHistory.findFirst({
+          where: {
+            exhibitor_id: ctx.session.exhibitorId,
+            action: "ACCEPTED_REQUEST",
+            item: { ticket_preference_id: preference.id },
+          },
+          include: { item: true },
+          orderBy: { created_at: "desc" },
+        });
+
+        const auditItem = acceptedTicket?.item ?? await transaction.extraOrderItem.create({
+          data: {
+            type: ticketType,
+            amount: 1,
+            price_per_unit: 0,
+            ticket_name: preference.name,
+            ticket_value: preference.value,
+            ticket_comment: preference.comment,
+            ticket_preference_id: preference.id,
+          },
+        });
+
+        await transaction.extraOrderHistory.create({
+          data: {
+            exhibitor_id: ctx.session.exhibitorId,
+            item_id: auditItem.id,
+            type: acceptedTicket?.type ?? ticketType,
+            amount: acceptedTicket?.amount ?? 1,
+            price_per_unit: acceptedTicket?.price_per_unit ?? auditItem.price_per_unit,
+            action: "CANCELED_ORDER",
+            person_name: "",
+            person_email: userEmail,
+            person_is_admin: true,
+          },
+        });
+
+        await transaction.foodPreferences.delete({
+          where: { id: preference.id },
+        });
+      });
+
+      return { ok: true };
     }),
 });

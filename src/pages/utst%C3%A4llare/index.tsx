@@ -169,14 +169,14 @@ export default function ExhibitorInfo({
   }
 
   // Save button logic
-  async function handleClick() {
+  async function handleClick(logoOverride?: { image: string; kind: "white" | "color" }) {
     await Promise.all([
       logoMutation.mutateAsync({
-        b64data: removeImageDetails(whiteLogo),
+        b64data: removeImageDetails(logoOverride?.kind === "white" ? logoOverride.image : whiteLogo),
         kind: "white",
       }),
       logoMutation.mutateAsync({
-        b64data: removeImageDetails(colorLogo),
+        b64data: removeImageDetails(logoOverride?.kind === "color" ? logoOverride.image : colorLogo),
         kind: "color",
       }),
       descriptionMutation.mutateAsync(description),
@@ -218,13 +218,14 @@ export default function ExhibitorInfo({
             hasChecked={hasChecked}
             setHasChecked={setHasChecked}
             showKollin={isAdmin}
+            autoSave={(image, kind) => handleClick({ image, kind })}
           />
           <div className="flex w-[90vw] max-w-[520px] mx-auto flex-col w-full items-start mb-8 ">
             <button
               className="block uppercase hover:scale-105 transition-transform
                       bg-cerise rounded-full text-white text-base font-normal
                         px-16 py-2 max-lg:mx-auto w-max"
-              onClick={handleClick}
+              onClick={() => handleClick()}
             >
               {t.exhibitorSettings.table.row1.section2.save}
             </button>

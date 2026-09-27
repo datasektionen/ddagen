@@ -8,18 +8,13 @@ let oidcConfig: Awaited<ReturnType<typeof client.discovery>> | null = null;
 
 async function getOidcConfig() {
   if (!oidcConfig) {
-    console.log(process.env.OIDC_PROVIDER);
-    console.log(process.env.OIDC_ID);
-    console.log(process.env.OIDC_SECRET);
-
+    const isLocal = process.env.NODE_ENV !== "production";
     oidcConfig = await client.discovery(
       new URL(process.env.OIDC_PROVIDER || "localhost:7003"),
       process.env.OIDC_ID || "client-id",
       process.env.OIDC_SECRET || "client-secret",  // metadata
       undefined,                // clientAuthentication
-      {
-        execute: [client.allowInsecureRequests], // TODO: DON'T FORGET TO REMOVE THIS
-      }
+      isLocal ? { execute: [client.allowInsecureRequests] } : undefined
     )
 
   }
@@ -27,15 +22,15 @@ async function getOidcConfig() {
   return oidcConfig;
 }
 
-export async function authorizeClaims(oidc_code_verifier: string, oidc_state: string, current_url: string){
+export async function authorizeClaims(oidc_state: string, current_url: string){
   let claims;
   const openIdConfig = await getOidcConfig();
+
   try {
       claims = (await client.authorizationCodeGrant(
       openIdConfig,
       new URL(current_url),
       {
-          pkceCodeVerifier: oidc_code_verifier,
           expectedState: oidc_state
       }
       )).claims();
@@ -96,17 +91,15 @@ export async function initiateAuthorization(subpath: string) {
       const state = client.randomState();
 
       const openIdConfig = await getOidcConfig();
+      console.log(`baseurl: ${getBaseUrl()}${subpath}`);
       const oidc_auth_url = client.buildAuthorizationUrl(openIdConfig, {
         redirect_uri: `${getBaseUrl()}${subpath}`,
         scope: "openid profile email permissions",
-        code_challenge,
         code_challenge_method: "S256",
         state
       });
 
       return {
-        code_verifier: code_verifier,
-        code_challenge: code_challenge,
         state: state,
         oidc_auth_url: oidc_auth_url
       };
