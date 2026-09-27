@@ -21,7 +21,7 @@ export function UploadButton({
   textInsideBottom: string;
   textInsideMiddleClass?: string;
   accept: string[];
-  onChange?: () => void;
+  onChange?: (image: string) => void | Promise<void>;
 }) {
   function toBase64(file: Blob) {
     return new Promise((resolve, reject) => {
@@ -51,8 +51,9 @@ export function UploadButton({
       if (isAcceptedType(e.target.files[0].type)) {
         if (FILE_SIZE <= MAX_FILE_SIZE) {
           await toBase64(e.target.files[0])
-            .then((data) => {
+            .then(async (data) => {
               setSelectedImage(data as string);
+              await onChange?.(data as string);
             })
             .catch((error) => {
               console.log(error);
