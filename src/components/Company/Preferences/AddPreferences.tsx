@@ -4,6 +4,7 @@ import { CheckMark } from "../../CheckMark";
 import { InputField } from "../InputField";
 import { type Dispatch, useState, useEffect, type FormEvent } from "react";
 import { Extras, Package, Preferences } from "@/shared/Classes";
+import { DeleteExhibitorLock } from "@/components/Company/Admin/DeleteExhibitorLock";
 
 type Options = "Vegan" | "Meat" | "LactoseFree" | "GlutenFree" | "AlcoholFree";
 
@@ -39,6 +40,8 @@ export function AddPreferences({
   pendingTicketCount: number;
 }) {
   const trpc = api.useContext();
+  const { data: accountStatus } = api.account.isLoggedIn.useQuery();
+  const isAdmin = Boolean(accountStatus?.isAdmin);
   const allowPreferenceChange = new Date() <= new Date("2026-09-09T23:59:59");
   const deadlinePassed = new Date() > new Date("2026-09-09T17:00:00");
   const isRepresentative = type == "Representative";
@@ -55,6 +58,7 @@ export function AddPreferences({
   const [preference, setPreference] = useState(preferences[pos]);
   const [errorMessage, setErrorMessage] = useState<string | undefined>();
   const [showForm, setShowForm] = useState(false);
+  const [showDeleteLock, setShowDeleteLock] = useState(false);
 
   const setPreferenceMutation = api.exhibitor.setFoodPreferences.useMutation();
   const createOrderRequest = api.exhibitor.createOrderRequest.useMutation({
@@ -62,6 +66,7 @@ export function AddPreferences({
   });
   const deletePreferenceMutation =
     api.exhibitor.deleteFoodPreferences.useMutation();
+  const deleteTicketPreference = api.exhibitor.deleteTicketPreference.useMutation();
 
   function convertCheckMarks(checkmarks: boolean[]): Options[] {
     const options: Options[] = ["Meat", "Vegan", "LactoseFree", "GlutenFree", "AlcoholFree"];
@@ -265,8 +270,36 @@ export function AddPreferences({
   const addingExtraTicket = !preference.id &&
     (preferences.length - 1 + pendingTicketCount >= includedCount);
 
+  async function handleAdminTicketDelete(passcode: string) {
+    if (!preference.id) return false;
+
+    try {
+      await deleteTicketPreference.mutateAsync({
+        preferenceId: preference.id,
+        passcode,
+      });
+      setShowDeleteLock(false);
+      setEditState(undefined);
+      setShowForm(false);
+      await trpc.exhibitor.getFoodPreferences.invalidate(type);
+      await trpc.exhibitor.getPreferenceCount.invalidate();
+      await trpc.exhibitor.getOrders.invalidate();
+      return true;
+    } catch (error) {
+      console.error("Failed to delete ticket preference", error);
+      return false;
+    }
+  }
+
   return (
     <div className={`flex flex-col items-center w-[80%] bg-black/25 border-solid ${editState ? "border-cerise" : "border-gold"} border-2 rounded-xl my-8 pb-8 overflow-hidden`}>
+      {showDeleteLock && (
+        <DeleteExhibitorLock
+          t={t}
+          onSubmit={handleAdminTicketDelete}
+          closeModal={() => setShowDeleteLock(false)}
+        />
+      )}
       <form
         className="flex flex-col w-[90%] bg-transparent outline-none gap-7 mt-10"
         onSubmit={handleSubmission}
@@ -376,13 +409,23 @@ export function AddPreferences({
           )}
         </div>
         <div className="flex flex-col max-sm:gap-y-4 sm:flex-row gap-x-8 justify-center">
-          {editState && !deadlinePassed ? 
+          {editState && !deadlinePassed && !isAdmin ? 
           <button type="button" onClick={deletePreferenceInDatabase}>
             <a className="block uppercase hover:scale-105 transition-transform bg-transparent border border-red-400 rounded-full text-red-400 text-base font-normal px-8 py-2 max-lg:mx-auto w-max">
               {t.exhibitorSettings.table.row1.section3.delete}
             </a>
           </button>
           : <div></div>}
+          {editState && isAdmin && preference.id && (
+            <button
+              type="button"
+              onClick={() => setShowDeleteLock(true)}
+              disabled={deleteTicketPreference.isLoading}
+              className="block uppercase hover:scale-105 transition-transform bg-transparent border border-red-400 rounded-full text-red-400 text-base font-normal px-8 py-2 max-lg:mx-auto w-max disabled:opacity-50"
+            >
+              {t.exhibitorSettings.table.row1.section3.delete}
+            </button>
+          )}
           <button type="submit">
             <a className="block uppercase hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-normal px-8 py-2 max-lg:mx-auto w-max">
               {editState
