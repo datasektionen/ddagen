@@ -25,21 +25,22 @@ import { prisma } from "@/server/db";
  * @see https://trpc.io/docs/context
  */
 export const createTRPCContext = async (opts: CreateNextContextOptions) => {
-  const cookie = opts.req.cookies.session;
+  const sessionCookie = opts.req.cookies.session;
   let session = null;
-  if (cookie) {
+  if (sessionCookie) {
     session = await prisma.session.findUnique({
-      where: { id: cookie },
+      where: { id: sessionCookie },
       include: { user: true },
     });
     if (session && session.lastUsed < new Date(Date.now() - 1000 * 60 * 60 * 24)) {
-      await prisma.session.delete({ where: { id: cookie } });
+      await prisma.session.delete({ where: { id: sessionCookie } });
       session = null;
     }
   }
   return {
     prisma,
     res: opts.res,
+    cookies: opts.req.cookies, // needed for the current implementation of account signin using OIDC
     session,
   };
 };
