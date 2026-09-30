@@ -117,8 +117,8 @@ function SingleEvent({
           </span>
         </button>
       </div>
-      <div className="flex h-full w-16 shrink-0 justify-center sm:basis-[124px]">
-        <div className={`relative flex min-h-[360px] w-1 self-stretch justify-center ${color} sm:min-h-[420px]`}>
+      <div className="flex w-16 shrink-0 justify-center sm:basis-[124px]">
+        <div className={`relative flex w-1 self-stretch justify-center ${color}`}>
           {showDate && <div className={`absolute flex h-14 w-14 items-center justify-center rounded-full ${isPast ? "bg-slate-500 ring-2 ring-cerise/60" : color} text-center text-xs text-white sm:h-16 sm:w-16 sm:text-lg`}>
             {eventInfo[3]}
           </div>}
@@ -293,28 +293,31 @@ export default function Events() {
       image: "/img/exhibitors/Omegapoint.svg",
       header: t.event.inaugeration,
       text: ""
-    },
+    },*/
     {
       date: "11:00",
       companyName: t.event.panelDiscussion1,
-      image: "/img/exhibitors/panelNordea.png",
+      image: "/img/events/panelDiscussions/1.png",
+      fullImage: true,
       header: t.event.panelDiscussionHeader1,
-      text: t.event.panelDiscussion1text + " " + t.event.panelDiscussiontext
+      text: t.event.panelDiscussionInEnglish + " " + t.event.panelDiscussiontext
     },
     {
       date: "13:00",
       companyName: t.event.panelDiscussion2,
-      image: "/img/exhibitors/panelOmegaVertical.png",
+      image: "/img/events/panelDiscussions/2.png",
+      fullImage: true,
       header: t.event.panelDiscussionHeader2,
-      text: t.event.panelDiscussion2text + " " + t.event.panelDiscussiontext
+      text: t.event.panelDiscussionInEnglish + " " + t.event.panelDiscussiontext
     },
     {
       date: "14:30",
       companyName: t.event.panelDiscussion3,
-      image: "/img/exhibitors/panelAtlas.png",
+      image: "/img/events/panelDiscussions/3.png",
+      fullImage: true,
       header: t.event.panelDiscussionHeader3,
-      text: t.event.panelDiscussion1text + " " + t.event.panelDiscussiontext
-    },*/
+      text: t.event.panelDiscussionInEnglish + " " + t.event.panelDiscussiontext
+    },
     {
       date: "16:00",
       companyName: "",
@@ -429,29 +432,31 @@ export default function Events() {
           <div className="max-sm:hidden flex justify-center">
             <div className="w-1 bg-[#C2952C] h-full min-h-[30px] rounded-t-full"></div>
           </div>
-          {fairEvents?.map((event, i) => (
-            <SingleEvent
-              key={i}
-              color="bg-[#C2952C]"
-              toReverse={i%2 == 1}
-              image={event?.image}
-              fullImage={event?.fullImage ?? false}
-              showDate={!(i > 0 && event.date === fairEvents[i-1].date)}
-              eventInfo={[
-                event.companyName,
-                event.header,
-                event.text,
-                event.date
-              ]}
-              companyUrl={event?.companyUrl}
-              eventLinkText={event?.eventLinkText}
-              eventLinkUrl={event?.eventLinkUrl}
-              eventLinkSecondaryText={event?.eventLinkSecondaryText}
-              eventLinkSecondaryUrl={event?.eventLinkSecondaryUrl}
-              eventDate={event?.eventDate}
-              />
-            ))
-          }
+          <div className="relative before:absolute before:bottom-0 before:left-1/2 before:top-0 before:z-0 before:hidden before:w-1 before:-translate-x-1/2 before:bg-[#C2952C] before:content-[''] sm:before:block">
+            {fairEvents?.map((event, i) => (
+              <SingleEvent
+                key={i}
+                color="bg-[#C2952C]"
+                toReverse={i%2 == 1}
+                image={event?.image}
+                fullImage={event?.fullImage ?? false}
+                showDate={!(i > 0 && event.date === fairEvents[i-1].date)}
+                eventInfo={[
+                  event.companyName,
+                  event.header,
+                  event.text,
+                  event.date
+                ]}
+                companyUrl={event?.companyUrl}
+                eventLinkText={event?.eventLinkText}
+                eventLinkUrl={event?.eventLinkUrl}
+                eventLinkSecondaryText={event?.eventLinkSecondaryText}
+                eventLinkSecondaryUrl={event?.eventLinkSecondaryUrl}
+                eventDate={event?.eventDate}
+                />
+              ))
+            }
+          </div>
         </div>
           {postFairEvents.length === 0 && (
             <div className="flex max-sm:hidden justify-center">
