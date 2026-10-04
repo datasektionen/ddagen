@@ -104,16 +104,19 @@ export function SearchInput({
   onChange,
   className = "",
   inputRef,
+  id,
 }: {
   t: Locale;
   value: string;
   onChange: (v: string) => void;
   className?: string;
   inputRef?: React.Ref<HTMLInputElement>;
+  id?: string;
 }) {
   return (
     <input
       ref={inputRef}
+      id={id}
       type="search"
       value={value}
       onChange={(e) => onChange(e.target.value)}
