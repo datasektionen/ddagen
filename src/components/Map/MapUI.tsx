@@ -1,6 +1,5 @@
 import type Locale from "@/locales";
 import { useEffect, useState } from "react";
-import { NextSeo } from "next-seo";
 import { CheckMark } from "@/components/CheckMark";
 import {
   ExhibitorCard,
@@ -13,8 +12,8 @@ import type { Floor } from "./floors";
 import type { MapApi } from "./FloorMap";
 import { INDUSTRIES, OFFERS, YEARS, type MapState } from "./useMapState";
 
-// Short labels the site's locale files don't have yet (mockups only).
-export function mockText(t: Locale) {
+// Short labels the site's locale files don't have yet.
+export function mapText(t: Locale) {
   const sv = t.locale === "sv";
   return {
     floor: (f: Floor) => (f === 2 ? t.map.floors.one : t.map.floors.two),
@@ -32,10 +31,6 @@ export function mockText(t: Locale) {
     filters: t.map.search.buttonTwo,
     industry: t.map.search.filterIndustry,
   };
-}
-
-export function MockupSeo({ title }: { title: string }) {
-  return <NextSeo title={title} noindex nofollow />;
 }
 
 // Map number in the same style as the dots on the map.
@@ -72,7 +67,7 @@ export function FloorSwitch({
   counts?: (f: Floor) => number;
   className?: string;
 }) {
-  const text = mockText(t);
+  const text = mapText(t);
   return (
     <div
       role="tablist"
@@ -157,7 +152,7 @@ export function FilterButton({
 
 // The /logos filter fields, plus the industry filter the map page has.
 export function FilterFields({ t, state }: { t: Locale; state: MapState }) {
-  const text = mockText(t);
+  const text = mapText(t);
   const yLabels = yearLabels(t);
   const industryLabels = t.exhibitorSettings.table.row1.section2.industry as Record<
     string,
@@ -247,7 +242,7 @@ export function MapControls({
   className?: string;
   vertical?: boolean;
 }) {
-  const text = mockText(t);
+  const text = mapText(t);
   const btn =
     "flex h-11 w-11 items-center justify-center text-xl leading-none text-white hover:bg-cerise/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow";
   return (

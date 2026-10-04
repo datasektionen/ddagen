@@ -34,8 +34,7 @@ function hasOffer(e: MapProp, offer: Offer) {
   }
 }
 
-// Search, filters, floor, selection and modal state shared by every mockup.
-// The filter rules are the same as on the real map page.
+// Search, filters, floor, selection and modal state for the map page.
 export function useMapState(exhibitorData: MapProp[]) {
   const [search, setSearch] = useState("");
   const [years, setYears] = useState<number[]>([]);

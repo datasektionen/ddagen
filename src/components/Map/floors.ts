@@ -1,5 +1,5 @@
-// Copied from the real map (src/components/Map/NewMap.tsx) so the mockups don't
-// touch it. Positions sit on top of the dots in plan2TOM.svg / plan3TOM.svg.
+// Marker positions sit on top of the dots in plan2TOM.svg / plan3TOM.svg. The
+// numbers match public/downloadables/exhibitor_map/exhibitors.md.
 const FLOOR_2_POSITIONS: { [k: number]: [number, number] } = {
   1: [-0.352, -0.270],
   2: [-0.395, -0.119],

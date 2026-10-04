@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useLocale } from "@/locales";
 import { MapProp } from "@/shared/Classes";
 import { loadMapData } from "@/components/MapMockups/data";
-import FloorMap from "@/components/MapMockups/FloorMap";
-import { useMapState } from "@/components/MapMockups/useMapState";
+import FloorMap from "@/components/Map/FloorMap";
+import { useMapState } from "@/components/Map/useMapState";
 import {
   AppFrame,
   CompanyModal,
@@ -11,12 +11,11 @@ import {
   FilterFields,
   FloorSwitch,
   MapControls,
-  MockupSeo,
   NumberedCard,
   SearchInput,
-  mockText,
+  mapText,
   useIsDesktop,
-} from "@/components/MapMockups/ui";
+} from "@/components/Map/MapUI";
 
 export const getServerSideProps = loadMapData;
 
@@ -27,7 +26,7 @@ export const getServerSideProps = loadMapData;
 
 export default function Mockup10({ exhibitorData }: { exhibitorData: MapProp[] }) {
   const t = useLocale();
-  const text = mockText(t);
+  const text = mapText(t);
   const state = useMapState(exhibitorData);
   const desktop = useIsDesktop();
   const [showFilters, setShowFilters] = useState(false);
@@ -101,7 +100,6 @@ export default function Mockup10({ exhibitorData }: { exhibitorData: MapProp[] }
 
   return (
     <>
-      <MockupSeo title="Map mockup 10 — Today's page, fixed" />
       <AppFrame>
         {desktop ? (
           <div className="flex h-full gap-4 p-4">
