@@ -162,6 +162,66 @@ function Controller({
     };
   }, [tools]);
 
+  // Smooth zoom for mouse wheels and trackpads. Leaflet's own wheel zoom
+  // collects input for 40ms and then animates a step, which feels slow on a
+  // trackpad, and it ignores Safari's pinch events. Here every frame zooms a
+  // little around the cursor. Touch pinch is still handled by Leaflet.
+  useEffect(() => {
+    const el = map.getContainer();
+    let pending = 0;
+    let at = L.point(0, 0);
+    let frame = 0;
+    const apply = () => {
+      frame = 0;
+      const z = Math.min(map.getMaxZoom(), Math.max(map.getMinZoom(), map.getZoom() + pending));
+      pending = 0;
+      if (Math.abs(z - map.getZoom()) > 0.001) map.setZoomAround(at, z, { animate: false });
+    };
+    const zoomBy = (dz: number, clientX: number, clientY: number) => {
+      const r = el.getBoundingClientRect();
+      at = L.point(clientX - r.left, clientY - r.top);
+      pending += dz;
+      if (!frame) frame = requestAnimationFrame(apply);
+    };
+
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      map.stop();
+      const px = e.deltaMode === 1 ? e.deltaY * 33 : e.deltaMode === 2 ? e.deltaY * 400 : e.deltaY;
+      // A trackpad pinch arrives as ctrl + wheel with small steps.
+      const rate = e.ctrlKey ? 0.015 : 0.004;
+      zoomBy(Math.max(-1, Math.min(1, -px * rate)), e.clientX, e.clientY);
+    };
+
+    // Safari on a Mac sends its own gesture events for trackpad pinch.
+    type Gesture = Event & { scale: number; clientX: number; clientY: number };
+    let startZoom = 0;
+    const onGestureStart = (e: Event) => {
+      e.preventDefault();
+      map.stop();
+      startZoom = map.getZoom();
+    };
+    const onGestureChange = (e: Event) => {
+      const g = e as Gesture;
+      e.preventDefault();
+      pending = 0;
+      zoomBy(startZoom + Math.log2(g.scale) - map.getZoom(), g.clientX, g.clientY);
+    };
+    const safariPinch = "GestureEvent" in window && navigator.maxTouchPoints === 0;
+
+    el.addEventListener("wheel", onWheel, { passive: false });
+    if (safariPinch) {
+      el.addEventListener("gesturestart", onGestureStart);
+      el.addEventListener("gesturechange", onGestureChange);
+    }
+    return () => {
+      cancelAnimationFrame(frame);
+      el.removeEventListener("wheel", onWheel);
+      el.removeEventListener("gesturestart", onGestureStart);
+      el.removeEventListener("gesturechange", onGestureChange);
+    };
+  }, [map]);
+
   // Panels opening or closing change the free area.
   useEffect(() => {
     tools.refresh();
@@ -200,7 +260,14 @@ function Markers({
     return (map.project(b.getNorthEast(), z).x - map.project(b.getSouthWest(), z).x) / PLAN_WIDTH;
   };
   const [scale, setScale] = useState(measure);
-  useMapEvents({ zoomend: () => setScale(measure()), resize: () => setScale(measure()) });
+  // Resize the dots once zooming pauses, not on every frame of a pinch.
+  const timer = useRef<ReturnType<typeof setTimeout>>();
+  const remeasure = () => {
+    clearTimeout(timer.current);
+    timer.current = setTimeout(() => setScale(measure()), 80);
+  };
+  useEffect(() => () => clearTimeout(timer.current), []);
+  useMapEvents({ zoomend: remeasure, resize: remeasure });
   // The first fit can happen before the events above are registered.
   useEffect(() => setScale(measure()), []);
   const bucket = Math.round(scale * 20) / 20;
@@ -246,6 +313,7 @@ export default function FloorMapInner(props: FloorMapProps) {
       zoom={8}
       zoomSnap={0}
       zoomDelta={0.75}
+      scrollWheelZoom={false}
       maxBoundsViscosity={1}
       bounceAtZoomLimits={false}
       zoomControl={false}
