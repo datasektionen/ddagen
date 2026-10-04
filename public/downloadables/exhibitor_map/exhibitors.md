@@ -24,7 +24,7 @@ Källa: karta.pdf. Nr = numret på pricken i plan2.svg / plan3.svg.
 | 18 | RandomForest | 2 |
 | 19 | Skatteverket | 2 |
 | 20 | Afry | 2 |
-| 21 | EA DICE | 2 |
+| 21 | EA Digital Illusions CE AB | 2 |
 | 22 | Revolut | 2 |
 | 23 | SVT | 2 |
 | 24 | Ubiquiti | 2 |
@@ -34,7 +34,7 @@ Källa: karta.pdf. Nr = numret på pricken i plan2.svg / plan3.svg.
 | 28 | Nore Technology AB | 2 |
 | 29 | Basalt | 2 |
 | 30 | Ericsson | 2 |
-| 31 | FOI | 2 |
+| 31 | Totalförsvarets forskningsinstitut | 2 |
 | 32 | Saab | 2 |
 | 33 | Compileit AB | 2 |
 | 34 | Postnord | 2 |
@@ -57,7 +57,7 @@ Källa: karta.pdf. Nr = numret på pricken i plan2.svg / plan3.svg.
 | 51 | Omicron | 2 |
 | 52 | Megger | 2 |
 | 53 | Inera | 2 |
-| 54 | PwC | 2 |
+| 54 | Öhrlings PricewaterhouseCoopers AB | 2 |
 | 55 | Avanza | 2 |
 | 56 | Regeringskansliet | 2 |
 | 57 | Delaval | 2 |
@@ -81,5 +81,5 @@ Källa: karta.pdf. Nr = numret på pricken i plan2.svg / plan3.svg.
 | 75 | Kodcentrum | 3 |
 | 76 | Datatjej | 3 |
 | 77 | AI Society | 3 |
-| 79 | Säpo | 2 |
+| 79 | Säkerhetspolisen | 2 |
 | 80 | AWS | 2 |
