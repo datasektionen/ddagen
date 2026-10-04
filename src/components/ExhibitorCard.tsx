@@ -147,6 +147,61 @@ export function ExhibitorCard({
   );
 }
 
+// main sponsor -> large -> medium -> small -> startup
+export const tierRank = (tier: number) =>
+  tier === 3 ? 0 : tier === 2 ? 1 : tier === 1 ? 2 : tier === 0 ? 3 : 4;
+
+// The main sponsor (tier 3) — pulled out above the grid, larger, centred, on a
+// clean white panel so a black wordmark like Ericsson's sits well.
+export function SponsorHero({
+  t,
+  exhibitor,
+  onOpen,
+}: {
+  t: Locale;
+  exhibitor: Exhibitor;
+  onOpen: () => void;
+}) {
+  const tags = activeOffers(exhibitor.offers);
+
+  return (
+    <button
+      type="button"
+      onClick={onOpen}
+      aria-label={exhibitor.name}
+      className="group flex w-full max-w-xl flex-col items-center gap-2 rounded-3xl border-4 border-yellow bg-white p-6 text-center transition-transform duration-150 hover:scale-[1.01] focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow sm:p-8"
+    >
+      <span className="text-xs font-semibold uppercase tracking-[0.18em] text-darkblue/70">
+        {t.logos.mainSponsor}
+      </span>
+
+      <div className="flex min-h-[150px] items-center justify-center sm:min-h-[190px]">
+        {exhibitor.logo ? (
+          <img
+            src={addImageDetails(exhibitor.logo)}
+            alt={exhibitor.name}
+            className="max-h-36 max-w-[280px] object-contain sm:max-h-48 sm:max-w-[380px] w-full h-full"
+          />
+        ) : (
+          <span className="text-2xl font-medium text-darkblue">
+            {exhibitor.name}
+          </span>
+        )}
+      </div>
+
+      {tags.length > 0 && (
+        <div className="mt-2 flex flex-wrap justify-center gap-1.5">
+          {tags.map((k) => (
+            <Tag key={k} tone="light">
+              {offerLabel(t, k)}
+            </Tag>
+          ))}
+        </div>
+      )}
+    </button>
+  );
+}
+
 export function ExhibitorModal({
   t,
   exhibitor,
