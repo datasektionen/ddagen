@@ -7,6 +7,7 @@ import "leaflet/dist/leaflet.css";
 import IconControl from './IconControl';
 import { useMap } from 'react-leaflet';
 import L from "leaflet";
+import { addImageDetails } from "@/shared/addImageDetails";
 
 // Image bounds keep each floor plan's aspect ratio (height / width of the svg).
 const FLOOR_2_BOUNDS: LatLngBoundsExpression = [[-0.737, -1], [0.737, 1]];
@@ -100,10 +101,6 @@ const FLOOR_3_POSITIONS: { [k: number]: [number, number] } = {
 };
 
 
-const endings: { [k: string]: string } = {
-  "7": "svg" , "9": "svg" , "11": "svg" , "13": "svg" , "15": "svg" , "16": "svg" , "17": "svg" , "22": "svg" , "30": "svg" , "34": "svg" , "36": "svg" , "41": "svg" , "44": "svg" , "46": "svg" , "49": "svg" , "51": "svg" , "53": "svg" , "54": "svg" , "55": "svg" , "56": "svg" , "57": "svg" , "58": "svg" , "62": "svg" , "63": "svg" , "66": "svg" , "68": "svg" , "69": "svg" , "72": "svg" , "73": "svg" , "74": "svg" , "76": "svg" , "78": "svg" , "89": "svg" , "93": "svg"
-}
-
 function isValidPosition(position: unknown): position is [number, number] {
   return Array.isArray(position) && 
          position.length === 2 && 
@@ -175,19 +172,21 @@ export default function Map({
       return null;
     }
 
-    const exhibitorMarker = (id: string, selected: boolean): DivIcon => {
+    const exhibitorMarker = (exhibitor: MapProp, selected: boolean): DivIcon => {
+      const id = exhibitor.position.toString();
       const size = 15 + (zoomLevel - 8) * (zoomLevel - 8) * 5;
+      const showLogo = showIcons && zoomLevel >= 9 && exhibitor.logo;
 
       return new DivIcon({
-        html: (showIcons && zoomLevel >= 9) ? `
+        html: showLogo ? `
         <div class="flex justify-center items-center duration-200 ease-in"
           style="width: ${size}px; height: ${size}px">
-          <img src="/img/exhibitors/map/${id}.${endings[id] ?? "png"}" alt="${id}" 
+          <img src="${addImageDetails(exhibitor.logo ?? undefined)}" alt="${id}" 
             class="w-full h-auto duration-200 ease-in" 
             style="max-width: ${size * 2}px !important; max-height: ${size}px !important"
           />
         </div>` : id, 
-        className: !(showIcons && zoomLevel >= 9) ? `rounded-full bg-pink-600 ring ${selected ? "border-4 border-pink-500 ring-3 ring-yellow" : "ring-2 ring-pink-500"} text-white text-center content-center` : "",
+        className: !showLogo ? `rounded-full bg-pink-600 ring ${selected ? "border-4 border-pink-500 ring-3 ring-yellow" : "ring-2 ring-pink-500"} text-white text-center content-center` : "",
         iconSize: selected ? [38, 38] : [30, 30]
       });
     }
@@ -225,7 +224,7 @@ export default function Map({
                         <Marker
                           key={key}
                           position={position as LatLngExpression}
-                          icon={exhibitorMarker(exhibitor.position.toString(), selectedExhibitor === +key)}
+                          icon={exhibitorMarker(exhibitor, selectedExhibitor === +key)}
                           eventHandlers={{
                             click: () => setSelectedExhibitor(+key)
                           }}
@@ -249,7 +248,7 @@ export default function Map({
                         <Marker
                           key={key}
                           position={position as LatLngExpression}
-                          icon={exhibitorMarker(exhibitor.position.toString(), selectedExhibitor === +key)}
+                          icon={exhibitorMarker(exhibitor, selectedExhibitor === +key)}
                           eventHandlers={{
                             click: () => setSelectedExhibitor(+key)
                           }}

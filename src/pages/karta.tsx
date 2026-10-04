@@ -1,4 +1,6 @@
 import { useEffect, useState, useLayoutEffect } from "react";
+import fs from "fs";
+import path from "path";
 import { prisma } from "@/server/db";
 import { useLocale } from "@/locales";
 import { MapProp } from "@/shared/Classes";
@@ -6,6 +8,7 @@ import dynamic from 'next/dynamic';
 const Map = dynamic(() => import('@/components/Map/NewMap'), { ssr: false });
 import Search from "@/components/Map/Search";
 import ExhibitorExplorer from "@/components/Map/ExhibitorExplorer";
+import { ExhibitorModal } from "@/components/ExhibitorCard";
 import { NextSeo } from 'next-seo';
 
 export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
@@ -29,6 +32,7 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
   });
   const [mapInView, setMapInView] = useState<1 | 2 | 3>(1);
   const [selectedExhibitor, setSelectedExhibitor] = useState<number>(0);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     setExhibitors(
@@ -137,10 +141,10 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
         <ExhibitorExplorer
           t={t}
           exhibitors={exhibitors}
-          mapInView={mapInView}
           setMapInView={setMapInView}
           selectedExhibitor={selectedExhibitor}
           setSelectedExhibitor={setSelectedExhibitor}
+          onOpen={() => setShowModal(true)}
         />
       </div>
       <div id="map-container" className="w-full md:pr-4">
@@ -149,12 +153,46 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
           exhibitors={exhibitors}
           mapInView={mapInView}
           selectedExhibitor={selectedExhibitor}
-          setSelectedExhibitor={setSelectedExhibitor}
+          setSelectedExhibitor={(position) => {
+            setSelectedExhibitor(position);
+            setShowModal(true);
+          }}
         />
       </div>
     </div>
+    {showModal && exhibitors[selectedExhibitor] && (
+      <ExhibitorModal
+        t={t}
+        exhibitor={exhibitors[selectedExhibitor]}
+        onClose={() => setShowModal(false)}
+      />
+    )}
     </>
   );
+}
+
+// Map number -> company, maintained by hand from the printed map.
+const EXHIBITOR_LIST = path.join(
+  process.cwd(),
+  "public/downloadables/exhibitor_map/exhibitors.md"
+);
+
+function readExhibitorList() {
+  return fs
+    .readFileSync(EXHIBITOR_LIST, "utf8")
+    .split("\n")
+    .map((line) => line.match(/^\|\s*(\d+)\s*\|\s*(.+?)\s*\|\s*([23])\s*\|$/))
+    .filter((m): m is RegExpMatchArray => m !== null)
+    .map((m) => ({ position: +m[1], name: m[2], floor: +m[3] as 2 | 3 }));
+}
+
+// "Nore Technology AB" and "Nore Technology", "AtlasCopco" and "Atlas Copco"
+// should count as the same company.
+function normalizeName(name: string) {
+  return name
+    .toLowerCase()
+    .replace(/\s+ab$/, "")
+    .replace(/[^a-z0-9åäöé]/g, "");
 }
 
 export async function getServerSideProps() {
@@ -164,40 +202,50 @@ export async function getServerSideProps() {
     },
   }).catch((err: any) => { return [] });
 
-  /*const exhibitorData = [...(new Array(110))].map((_, i) => ({
-    name: String.fromCharCode(65 + (i % 26)),
-    logoWhite: null,
-    logoColor: null,
-    description: String.fromCharCode(65 + (i % 26)),
-    jobOfferId: 0,
-    offers: {
-      summerJob: [Math.floor(i/26) % 5],
-      internship: [Math.floor(i/13) % 5],
-      partTimeJob: [Math.floor(i/7) % 5],
-      masterThesis: i % 2 === 0,
-      fullTimeJob: i % 3 === 0,
-      traineeProgram: i % 4 === 0,
-    },
-    position: i + 1,
-  }));*/
+  const byName = Object.fromEntries(
+    exhibitors.map((e) => [normalizeName(e.name), e])
+  );
 
-  const exhibitorData = exhibitors.map((exhibitor) => ({
-    name: exhibitor.name,
-    logoWhite: exhibitor.logoWhite?.toString("base64") || null,
-    logoColor: exhibitor.logoColor?.toString("base64") || null,
-    description: exhibitor.description,
-    jobOfferId: exhibitor.jobOfferId,
-    offers: {
-      summerJob: exhibitor.jobOffers.summerJob,
-      internship: exhibitor.jobOffers.internship,
-      partTimeJob: exhibitor.jobOffers.partTimeJob,
-      masterThesis: exhibitor.jobOffers.masterThesis,
-      fullTimeJob: exhibitor.jobOffers.fullTimeJob,
-      traineeProgram: exhibitor.jobOffers.traineeProgram,
-    },
-    industryType: exhibitor.industryType,
-    position: exhibitor.mapPosition,
-  }));
+  // Exact name first, then a unique prefix match ("Tieto" -> "Tietoevry").
+  function findExhibitor(name: string) {
+    const key = normalizeName(name);
+    if (byName[key]) return byName[key];
+    if (key.length < 4) return undefined;
+    const candidates = Object.entries(byName).filter(
+      ([k]) => k.startsWith(key) || (k.length >= 4 && key.startsWith(k))
+    );
+    return candidates.length === 1 ? candidates[0][1] : undefined;
+  }
+
+  const exhibitorData: MapProp[] = readExhibitorList().map(
+    ({ position, name, floor }) => {
+      const exhibitor = findExhibitor(name);
+      if (!exhibitor && exhibitors.length > 0)
+        console.warn(`karta: no exhibitor in the database matches "${name}" (${position})`);
+
+      return {
+        name: exhibitor?.name ?? name,
+        logo:
+          exhibitor?.logoColor?.toString("base64") ||
+          exhibitor?.logoWhite?.toString("base64") ||
+          null,
+        description: exhibitor?.description || "",
+        industry: exhibitor?.industry || "",
+        packageTier: exhibitor?.packageTier ?? -1,
+        offers: {
+          summerJob: exhibitor?.jobOffers?.summerJob ?? [],
+          internship: exhibitor?.jobOffers?.internship ?? [],
+          partTimeJob: exhibitor?.jobOffers?.partTimeJob ?? [],
+          masterThesis: exhibitor?.jobOffers?.masterThesis ?? false,
+          fullTimeJob: exhibitor?.jobOffers?.fullTimeJob ?? false,
+          traineeProgram: exhibitor?.jobOffers?.traineeProgram ?? false,
+        },
+        industryType: exhibitor?.industryType || "",
+        position,
+        floor,
+      };
+    }
+  );
 
   return {
     props: {
