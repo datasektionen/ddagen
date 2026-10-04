@@ -146,6 +146,10 @@ function Controller({
       reset: () => {
         map.stop();
         fit(true);
+        // If another movement interrupts the animation, finish without it.
+        map.once("moveend", () => {
+          if (map.getZoom() > map.getMinZoom() + 0.05) fit(false);
+        });
       },
       zoomIn: () => map.zoomIn(0.75),
       zoomOut: () => map.zoomOut(0.75),
