@@ -123,7 +123,7 @@ function Controller({
   }, [map, floor]);
 
   useEffect(() => {
-    const { fit, limitPan, syncDragging, refresh, fitOptions } = tools;
+    const { fit, limitPan, syncDragging, refresh } = tools;
     const onZoomEnd = () => {
       limitPan();
       syncDragging();
@@ -153,17 +153,6 @@ function Controller({
       },
       zoomIn: () => map.zoomIn(0.75),
       zoomOut: () => map.zoomOut(0.75),
-      showPositions: (positions: number[]) => {
-        const pts = positions
-          .map((p) => FLOORS[floor].positions[p])
-          .filter(Boolean);
-        if (pts.length)
-          map.flyToBounds(L.latLngBounds(pts).pad(0.35), {
-            ...fitOptions(),
-            maxZoom: map.getMinZoom() + 2,
-            duration: 0.4,
-          });
-      },
     });
 
     return () => {
@@ -247,7 +236,6 @@ export default function FloorMapInner(props: FloorMapProps) {
     selected,
     onSelect,
     markerMode = "number",
-    wheelZoom = true,
     className = "",
   } = props;
   const plan = FLOORS[floor];
@@ -262,7 +250,6 @@ export default function FloorMapInner(props: FloorMapProps) {
       zoomDelta={0.75}
       maxBoundsViscosity={1}
       bounceAtZoomLimits={false}
-      scrollWheelZoom={wheelZoom}
       zoomControl={false}
       attributionControl={false}
       className={`!bg-[#dfe1e9] ${className}`}

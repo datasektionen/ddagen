@@ -58,13 +58,11 @@ export function FloorSwitch({
   t,
   floor,
   setFloor,
-  counts,
   className = "",
 }: {
   t: Locale;
   floor: Floor;
   setFloor: (f: Floor) => void;
-  counts?: (f: Floor) => number;
   className?: string;
 }) {
   const text = mapText(t);
@@ -86,7 +84,6 @@ export function FloorSwitch({
           }`}
         >
           {text.floor(f)}
-          {counts && <span className="ml-1.5 opacity-70">{counts(f)}</span>}
         </button>
       ))}
     </div>
@@ -98,20 +95,14 @@ export function SearchInput({
   value,
   onChange,
   className = "",
-  inputRef,
-  id,
 }: {
   t: Locale;
   value: string;
   onChange: (v: string) => void;
   className?: string;
-  inputRef?: React.Ref<HTMLInputElement>;
-  id?: string;
 }) {
   return (
     <input
-      ref={inputRef}
-      id={id}
       type="search"
       value={value}
       onChange={(e) => onChange(e.target.value)}

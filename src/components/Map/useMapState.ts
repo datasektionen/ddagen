@@ -109,8 +109,6 @@ export function useMapState(exhibitorData: MapProp[]) {
       setIndustries([]);
     },
     filtered,
-    filteredOnFloor: filtered.filter((e) => e.floor === floor),
-    countOnFloor: (f: Floor) => filtered.filter((e) => e.floor === f).length,
     byPosition,
     floor,
     setFloor,

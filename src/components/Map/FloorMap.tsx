@@ -7,7 +7,6 @@ export type MapApi = {
   reset: () => void;
   zoomIn: () => void;
   zoomOut: () => void;
-  showPositions: (positions: number[]) => void;
 };
 
 export type FloorMapProps = {
@@ -17,7 +16,6 @@ export type FloorMapProps = {
   selected?: number;
   onSelect: (position: number) => void;
   markerMode?: "number" | "logo";
-  wheelZoom?: boolean;
   padding?: number;
   // Space in px covered by panels drawn on top of the map.
   inset?: { top?: number; right?: number; bottom?: number; left?: number };
