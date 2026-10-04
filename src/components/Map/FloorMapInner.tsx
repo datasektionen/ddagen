@@ -11,12 +11,12 @@ import type { FloorMapProps } from "./FloorMap";
 const PLAN_WIDTH = 765;
 const DOT_SIZE = 30;
 
-// A plain dot on top of the printed one. The selected company is shown as a
-// pin above its dot with its logo, or its name when it has no logo.
+// A plain dot on top of the printed one. The selected company's dot turns into
+// its logo (or its name when it has no logo).
 function markerIcon(e: MapProp, selected: boolean, dimmed: boolean, scale: number): DivIcon {
   // Same size as the printed dot so it is fully covered at every zoom level.
   const size = Math.round(Math.max(12, DOT_SIZE * scale));
-  if (selected) return pinIcon(e, size);
+  if (selected) return logoIcon(e, size);
   return new DivIcon({
     className: "",
     iconSize: [size, size],
@@ -30,23 +30,19 @@ function markerIcon(e: MapProp, selected: boolean, dimmed: boolean, scale: numbe
 const escapeHtml = (text: string) =>
   text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
-// The pin's tip touches the top of the company's dot.
-function pinIcon(e: MapProp, dotSize: number): DivIcon {
+// Centred on the dot and never smaller than a readable logo.
+function logoIcon(e: MapProp, dotSize: number): DivIcon {
   const name = escapeHtml(e.name);
-  const w = e.logo ? 132 : Math.min(220, Math.max(88, e.name.length * 8 + 32));
-  const h = e.logo ? 68 : 42;
-  const tip = 10;
+  const base = Math.min(Math.max(dotSize, 52), 80);
+  const w = e.logo ? Math.round(base * 1.8) : Math.min(220, Math.max(88, e.name.length * 8 + 32));
+  const h = e.logo ? Math.round(base * 1.15) : 42;
   const content = e.logo
-    ? `<img src="${addImageDetails(e.logo)}" alt="${name}" class="object-contain" style="max-width: ${w - 20}px !important; max-height: ${h - 16}px !important" />`
+    ? `<img src="${addImageDetails(e.logo)}" alt="${name}" class="object-contain" style="max-width: ${w - 16}px !important; max-height: ${h - 12}px !important" />`
     : `<span class="truncate text-sm font-medium text-darkblue">${name}</span>`;
   return new DivIcon({
     className: "",
-    iconSize: [w, h + tip],
-    iconAnchor: [w / 2, h + tip + dotSize / 2],
-    html: `<div class="flex flex-col items-center drop-shadow-lg">
-      <div class="flex items-center justify-center rounded-xl bg-[#dfe1e9] px-2.5 ring-4 ring-yellow" style="width:${w}px;height:${h}px">${content}</div>
-      <div style="width:0;height:0;border-left:${tip}px solid transparent;border-right:${tip}px solid transparent;border-top:${tip}px solid #ffc800"></div>
-    </div>`,
+    iconSize: [w, h],
+    html: `<div class="flex h-full w-full items-center justify-center rounded-xl bg-[#dfe1e9] px-2 shadow-lg ring-4 ring-yellow">${content}</div>`,
   });
 }
 
