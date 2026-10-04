@@ -100,6 +100,12 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
         selected={state.selected}
         // First tap shows the logo on the map, tapping the logo opens the card.
         onSelect={(p) => (p === state.selected ? state.setModalOpen(true) : state.focus(p))}
+        // Clicking next to the dots deselects and zooms back out.
+        onMapClick={() => {
+          if (!state.selected) return;
+          state.setSelected(0);
+          state.api?.reset();
+        }}
         onApi={state.setApi}
         padding={12}
         inset={{ top: 60, bottom: 60 }}

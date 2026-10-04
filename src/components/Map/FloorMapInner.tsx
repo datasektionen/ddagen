@@ -294,6 +294,12 @@ function Markers({
   );
 }
 
+// Leaflet only fires this for clicks that miss the dots and aren't drags.
+function MapClick({ onMapClick }: Pick<FloorMapProps, "onMapClick">) {
+  useMapEvents({ click: () => onMapClick?.() });
+  return null;
+}
+
 export default function FloorMapInner(props: FloorMapProps) {
   const {
     floor,
@@ -322,6 +328,7 @@ export default function FloorMapInner(props: FloorMapProps) {
       style={{ height: "100%", width: "100%" }}
     >
       <Controller {...props} />
+      <MapClick onMapClick={props.onMapClick} />
       <ImageOverlay url={plan.image} bounds={plan.bounds} />
       <Markers
         floor={floor}

@@ -15,6 +15,8 @@ export type FloorMapProps = {
   dimmed?: number[];
   selected?: number;
   onSelect: (position: number) => void;
+  // A click on the map that isn't on a dot.
+  onMapClick?: () => void;
   padding?: number;
   // Space in px covered by panels drawn on top of the map.
   inset?: { top?: number; right?: number; bottom?: number; left?: number };
