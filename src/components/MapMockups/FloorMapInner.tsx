@@ -20,10 +20,11 @@ function markerIcon(
 ): DivIcon {
   // Dimmed markers are solid grey so the pink dot in the svg doesn't show through.
   const fade = dimmed ? "!bg-[#a7a9b6] !ring-white/60" : "";
-  const size = Math.round(Math.min(40, Math.max(12, DOT_SIZE * scale)));
+  // Same size as the printed dot so it is fully covered at every zoom level.
+  const size = Math.round(Math.max(12, DOT_SIZE * scale));
   if (mode === "logo" && e.logo && size >= 24) {
-    const w = Math.round(size * 1.8);
-    const h = Math.round(size * 1.15);
+    const w = Math.round(Math.min(size, 80) * 1.8);
+    const h = Math.round(Math.min(size, 80) * 1.15);
     return new DivIcon({
       className: "",
       iconSize: selected ? [w + 14, h + 9] : [w, h],
@@ -40,7 +41,7 @@ function markerIcon(
     iconSize: [shown, shown],
     html: `<div class="flex h-full w-full items-center justify-center rounded-full ${dimmed ? "" : "bg-cerise"} font-medium leading-none text-white shadow-md ${
       selected ? "ring-4 ring-yellow" : shown >= 20 ? "ring-2 ring-white/80" : "ring-1 ring-white/80"
-    } ${fade}" style="font-size:${Math.max(11, Math.round(shown * 0.42))}px">${label}</div>`,
+    } ${fade}" style="font-size:${Math.min(24, Math.max(11, Math.round(shown * 0.42)))}px">${label}</div>`,
   });
 }
 
@@ -141,6 +142,7 @@ function Controller({
     observer.observe(map.getContainer());
 
     onApi?.({
+      floor,
       reset: () => {
         map.stop();
         fit(true);

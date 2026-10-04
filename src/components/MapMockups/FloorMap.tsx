@@ -3,6 +3,7 @@ import { MapProp } from "@/shared/Classes";
 import type { Floor } from "./floors";
 
 export type MapApi = {
+  floor: Floor;
   reset: () => void;
   zoomIn: () => void;
   zoomOut: () => void;
