@@ -130,11 +130,21 @@ function Controller({
     fit(false);
     syncDragging();
     map.on("zoomend", onZoomEnd);
-    const observer = new ResizeObserver(refresh);
+    // ResizeObserver also fires once on start; only react to real size changes.
+    let last = `${map.getContainer().clientWidth}x${map.getContainer().clientHeight}`;
+    const observer = new ResizeObserver(() => {
+      const size = `${map.getContainer().clientWidth}x${map.getContainer().clientHeight}`;
+      if (size === last) return;
+      last = size;
+      refresh();
+    });
     observer.observe(map.getContainer());
 
     onApi?.({
-      reset: () => fit(true),
+      reset: () => {
+        map.stop();
+        fit(true);
+      },
       zoomIn: () => map.zoomIn(0.75),
       zoomOut: () => map.zoomOut(0.75),
       showPositions: (positions: number[]) => {
