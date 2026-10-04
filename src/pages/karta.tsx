@@ -1,104 +1,65 @@
-import { useEffect, useState, useLayoutEffect } from "react";
+import { useState } from "react";
 import fs from "fs";
 import path from "path";
 import { prisma } from "@/server/db";
 import { useLocale } from "@/locales";
 import { MapProp } from "@/shared/Classes";
-import dynamic from 'next/dynamic';
-const Map = dynamic(() => import('@/components/Map/NewMap'), { ssr: false });
-import Search from "@/components/Map/Search";
-import ExhibitorExplorer from "@/components/Map/ExhibitorExplorer";
-import { ExhibitorModal } from "@/components/ExhibitorCard";
-import { NextSeo } from 'next-seo';
+import { NextSeo } from "next-seo";
+import FloorMap from "@/components/Map/FloorMap";
+import { useMapState } from "@/components/Map/useMapState";
+import {
+  AppFrame,
+  CompanyModal,
+  FilterButton,
+  FilterFields,
+  FloorSwitch,
+  MapControls,
+  NumberedCard,
+  SearchInput,
+  mapText,
+  useIsDesktop,
+} from "@/components/Map/MapUI";
+
+// List on the left and map on the right (map over list on a phone). The map
+// stops at the floor plan's edges and has a button to show the whole plan.
 
 export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
   const t = useLocale();
+  const text = mapText(t);
+  const state = useMapState(exhibitorData);
+  const desktop = useIsDesktop();
+  const [showFilters, setShowFilters] = useState(false);
+  const [logos, setLogos] = useState(false);
 
-  const [exhibitors, setExhibitors] = useState(
-    Object.fromEntries(
-      exhibitorData.map((exhibitor) => [exhibitor.position, exhibitor])
-    )
+  const list = (
+    <div className="flex h-full flex-col">
+      <div className="shrink-0">
+        <div className="flex gap-2">
+          <SearchInput t={t} value={state.search} onChange={state.setSearch} className="flex-1" />
+          <FilterButton t={t} count={state.filterCount} open={showFilters} onClick={() => setShowFilters((v) => !v)} />
+        </div>
+        {showFilters && (
+          <div className="mt-3 max-h-[40vh] overflow-y-auto rounded-2xl border-2 border-cerise/60 bg-black/40 p-4">
+            <FilterFields t={t} state={state} />
+          </div>
+        )}
+        <p className="mb-3 mt-3 text-sm text-white/70" aria-live="polite">
+          {state.filtered.length} {text.results}
+        </p>
+      </div>
+      <div className="flex-1 overflow-y-auto rounded-xl border-4 border-cerise bg-white/5 p-3 md:p-4">
+        {state.filtered.length === 0 ? (
+          <p className="py-10 text-center text-white/70">{text.noResults}</p>
+        ) : (
+          <div className="grid grid-cols-2 gap-3 md:gap-4 xl:grid-cols-3">
+            {state.filtered.map((e) => (
+              <NumberedCard key={e.position} t={t} exhibitor={e} selected={state.selected === e.position} onOpen={() => state.focus(e.position, true)} />
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
   );
-  const [query, setQuery] = useState<{
-    searchQuery: string;
-    years: (0 | 1 | 2 | 3 | 4)[];
-    offers: string[];
-    industries: string[];
-  }>({
-    searchQuery: "",
-    years: [],
-    offers: [],
-    industries: [],
-  });
-  const [mapInView, setMapInView] = useState<1 | 2 | 3>(1);
-  const [selectedExhibitor, setSelectedExhibitor] = useState<number>(0);
-  const [showModal, setShowModal] = useState(false);
-
-  useEffect(() => {
-    setExhibitors(
-      Object.fromEntries(
-        exhibitorData.map((exhibitor) => {
-          if (!RegExp(query.searchQuery).test(exhibitor.name.toLowerCase()))
-            return [];
-
-          if (query.years.length !== 0) {
-            const hasMatchingYear =
-              query.years.some((year) =>
-                exhibitor.offers.summerJob.includes(year) ||
-                exhibitor.offers.internship.includes(year) ||
-                exhibitor.offers.partTimeJob.includes(year)
-              );
-            if (!hasMatchingYear) {
-              return [];
-            }
-          }
-
-          if (query.offers.length > 0) {
-            console.log("QUERY OFFERS: ", query.offers);
-              const hasMatchingOffer = query.offers.some((offerType, _) => {
-                console.log("COMPARE", offerType, "\nVS", exhibitor.offers);
-              switch(offerType) {
-                case 'summer':
-                  return exhibitor.offers.summerJob.length > 0;
-                case 'internship':
-                  return exhibitor.offers.internship.length > 0;
-                case 'partTime':
-                  return exhibitor.offers.partTimeJob.length > 0;
-                case 'thesis':
-                  return exhibitor.offers.masterThesis;
-                case 'fullTime':
-                  return exhibitor.offers.fullTimeJob;
-                case 'trainee':
-                  return exhibitor.offers.traineeProgram;
-                default:
-                  return false;
-              }
-            });
-
-            if (!hasMatchingOffer) {
-              return [];
-            }
-          }
-          if (query.industries.length > 0) {
-            const hasMatchingIndustry = query.industries.some((industryType) =>
-              exhibitor.industryType?.toLowerCase() === (industryType.toLowerCase())
-            );
-            if (!hasMatchingIndustry) {
-              return [];
-            }
-          }
-
-          return [exhibitor.position, exhibitor];
-        })
-      )
-    );
-  }, [query]);
-
-  // Fix unwanted behavior in mobile WebKit, excuse my hacky solution
-  useEffect(() => {
-    window.scrollTo(0, 100);
-  }, []);
-
 
   const seoContent = {
     sv: {
@@ -114,6 +75,42 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
   };
 
   const { title, description, url } = seoContent[t.locale as "sv" | "en"];
+
+  const map = (
+    <div className="relative h-full overflow-hidden md:rounded-2xl md:border-4 md:border-cerise">
+      <FloorMap
+        floor={state.floor}
+        markers={exhibitorData}
+        dimmed={exhibitorData.filter((e) => !state.filtered.includes(e)).map((e) => e.position)}
+        selected={state.selected}
+        onSelect={(p) => state.focus(p, true)}
+        markerMode={logos ? "logo" : "number"}
+        onApi={state.setApi}
+        padding={12}
+        inset={{ top: 60, bottom: 60 }}
+      />
+      {/* Numbers/Logos and floor switch */}
+      <div className="absolute inset-x-3 top-3 z-[600] flex items-center justify-between gap-2">
+        <div className="inline-flex rounded-full border-2 border-cerise bg-darkblue/90 p-1">
+          {[false, true].map((on) => (
+            <button
+              key={String(on)}
+              type="button"
+              aria-pressed={logos === on}
+              onClick={() => setLogos(on)}
+              className={`whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-medium uppercase tracking-wide md:px-4 md:py-2 md:text-sm ${
+                logos === on ? "bg-cerise text-white" : "text-white"
+              }`}
+            >
+              {on ? t.map.iconButtons.logos : t.map.iconButtons.numbers}
+            </button>
+          ))}
+        </div>
+        <FloorSwitch t={t} floor={state.floor} setFloor={state.setFloor} className="[&>button]:px-3 [&>button]:py-1.5 [&>button]:text-xs md:[&>button]:px-4 md:[&>button]:py-2 md:[&>button]:text-sm" />
+      </div>
+      <MapControls t={t} api={state.api} vertical={false} className="absolute bottom-3 left-3" />
+    </div>
+  );
 
   return (
     <>
@@ -132,41 +129,20 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
           }
         ]}
       />
-    <div className="h-screen flex max-md:flex-col-reverse max-md:items-center md:flex-row md:items-start overflow-hidden relative max-lg:mt-20 lg:pt-20">
-      <div
-        id="sidebar"
-        className="px-4 md:pr-4 flex flex-col items-center w-full md:w-3/5 box-border bg-darkblue bg-opacity-75"
-      >
-        <Search t={t} setQuery={setQuery} />
-        <ExhibitorExplorer
-          t={t}
-          exhibitors={exhibitors}
-          setMapInView={setMapInView}
-          selectedExhibitor={selectedExhibitor}
-          setSelectedExhibitor={setSelectedExhibitor}
-          onOpen={() => setShowModal(true)}
-        />
-      </div>
-      <div id="map-container" className="w-full md:pr-4">
-        <Map
-          t={t}
-          exhibitors={exhibitors}
-          mapInView={mapInView}
-          selectedExhibitor={selectedExhibitor}
-          setSelectedExhibitor={(position) => {
-            setSelectedExhibitor(position);
-            setShowModal(true);
-          }}
-        />
-      </div>
-    </div>
-    {showModal && exhibitors[selectedExhibitor] && (
-      <ExhibitorModal
-        t={t}
-        exhibitor={exhibitors[selectedExhibitor]}
-        onClose={() => setShowModal(false)}
-      />
-    )}
+      <AppFrame>
+        {desktop ? (
+          <div className="flex h-full gap-4 p-4">
+            <div className="w-[45%] min-w-[420px]">{list}</div>
+            <div className="flex-1">{map}</div>
+          </div>
+        ) : (
+          <div className="flex h-full flex-col">
+            <div className="h-[46%] shrink-0 border-b-4 border-cerise">{map}</div>
+            <div className="min-h-0 flex-1 p-3">{list}</div>
+          </div>
+        )}
+      </AppFrame>
+      <CompanyModal t={t} state={state} />
     </>
   );
 }
