@@ -157,13 +157,14 @@ export function ExhibitorModal({
   onClose: () => void;
 }) {
   useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
     document.addEventListener("keydown", onKey);
     return () => {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", onKey);
     };
   }, [onClose]);
