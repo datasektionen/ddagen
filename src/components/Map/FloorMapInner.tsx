@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import { ImageOverlay, MapContainer, Marker, useMap, useMapEvents } from "react-leaflet";
+import { useEffect, useMemo, useRef } from "react";
+import { ImageOverlay, MapContainer, Marker, SVGOverlay, useMap, useMapEvents } from "react-leaflet";
 import L, { DivIcon } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { MapProp } from "@/shared/Classes";
@@ -7,35 +7,19 @@ import { addImageDetails } from "@/shared/addImageDetails";
 import { FLOORS } from "./floors";
 import type { FloorMapProps } from "./FloorMap";
 
-// Width of the floor plans in svg units; markers are sized like the printed dots.
+// Width of the floor plans in svg units and the size of a printed dot in them.
 const PLAN_WIDTH = 765;
 const DOT_SIZE = 30;
-
-// A plain dot on top of the printed one. The selected company's dot turns into
-// its logo (or its name when it has no logo).
-function markerIcon(e: MapProp, selected: boolean, dimmed: boolean, scale: number): DivIcon {
-  // Same size as the printed dot so it is fully covered at every zoom level.
-  const size = Math.round(Math.max(12, DOT_SIZE * scale));
-  if (selected) return logoIcon(e, size);
-  return new DivIcon({
-    className: "",
-    iconSize: [size, size],
-    // Dimmed dots are solid grey so the pink dot in the svg doesn't show through.
-    html: `<div class="h-full w-full rounded-full shadow-md ${
-      dimmed ? "bg-[#a7a9b6] ring-1 ring-white/60" : "bg-cerise ring-1 ring-white/80"
-    }"></div>`,
-  });
-}
 
 const escapeHtml = (text: string) =>
   text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
-// Centred on the dot and never smaller than a readable logo.
-function logoIcon(e: MapProp, dotSize: number): DivIcon {
+// The selected company's dot turns into its logo (or its name when it has no
+// logo), centred where the dot is.
+function logoIcon(e: MapProp): DivIcon {
   const name = escapeHtml(e.name);
-  const base = Math.min(Math.max(dotSize, 52), 80);
-  const w = e.logo ? Math.round(base * 1.8) : Math.min(220, Math.max(88, e.name.length * 8 + 32));
-  const h = e.logo ? Math.round(base * 1.15) : 42;
+  const w = e.logo ? 108 : Math.min(220, Math.max(88, e.name.length * 8 + 32));
+  const h = e.logo ? 68 : 42;
   const content = e.logo
     ? `<img src="${addImageDetails(e.logo)}" alt="${name}" class="object-contain" style="max-width: ${w - 16}px !important; max-height: ${h - 12}px !important" />`
     : `<span class="truncate text-sm font-medium text-darkblue">${name}</span>`;
@@ -243,7 +227,9 @@ function Controller({
   return null;
 }
 
-function Markers({
+// The dots are drawn in an svg laid over the floor plan, in the plan's own
+// coordinates, so they grow and shrink with it on every frame of a zoom.
+function Dots({
   floor,
   markers,
   dimmedSet,
@@ -254,49 +240,72 @@ function Markers({
 }) {
   const map = useMap();
   const plan = FLOORS[floor];
-  const measure = () => {
-    const b = L.latLngBounds(plan.bounds);
-    const z = map.getZoom();
-    return (map.project(b.getNorthEast(), z).x - map.project(b.getSouthWest(), z).x) / PLAN_WIDTH;
-  };
-  const [scale, setScale] = useState(measure);
-  // Resize the dots once zooming pauses, not on every frame of a pinch.
-  const timer = useRef<ReturnType<typeof setTimeout>>();
-  const remeasure = () => {
-    clearTimeout(timer.current);
-    timer.current = setTimeout(() => setScale(measure()), 80);
-  };
-  useEffect(() => () => clearTimeout(timer.current), []);
-  useMapEvents({ zoomend: remeasure, resize: remeasure });
-  // The first fit can happen before the events above are registered.
-  useEffect(() => setScale(measure()), []);
-  const bucket = Math.round(scale * 20) / 20;
+  const [[south, west], [north, east]] = plan.bounds;
+  const r = (DOT_SIZE / 2 / PLAN_WIDTH) * (east - west);
+  const onFloor = markers.filter((e) => e.floor === floor && plan.positions[e.position]);
+  const picked = onFloor.find((e) => e.position === selected);
 
   return (
     <>
-      {markers
-        .filter((e) => e.floor === floor && plan.positions[e.position])
-        .map((e) => {
-          const isSelected = selected === e.position;
-          const isDimmed = dimmedSet.has(e.position);
-          return (
-            <Marker
-              key={`${e.position}-${isSelected}-${isDimmed}-${bucket}`}
-              position={plan.positions[e.position]}
-              icon={markerIcon(e, isSelected, isDimmed, bucket)}
-              title={e.name}
-              zIndexOffset={isSelected ? 1000 : 0}
-              eventHandlers={{ click: () => onSelect(e.position) }}
-            />
-          );
-        })}
+      <SVGOverlay
+        bounds={plan.bounds}
+        attributes={{
+          viewBox: `${west} ${-north} ${east - west} ${north - south}`,
+          preserveAspectRatio: "none",
+        }}
+      >
+        {onFloor
+          .filter((e) => e !== picked)
+          .map((e) => {
+            const [lat, lng] = plan.positions[e.position];
+            // Dimmed dots are solid grey so the pink dot in the plan doesn't show through.
+            const dimmed = dimmedSet.has(e.position);
+            return (
+              <circle
+                key={e.position}
+                data-dot
+                cx={lng}
+                cy={-lat}
+                r={r}
+                fill={dimmed ? "#a7a9b6" : "#ee2f7b"}
+                stroke="#ffffff"
+                strokeOpacity={dimmed ? 0.6 : 0.8}
+                strokeWidth={r * 0.08}
+                className="cursor-pointer"
+                style={{ pointerEvents: "auto" }}
+                onClick={() => {
+                  // A drag that ends on a dot isn't a click.
+                  if (!(map.dragging as L.Handler & { moved: () => boolean }).moved()) onSelect(e.position);
+                }}
+              >
+                <title>{e.name}</title>
+              </circle>
+            );
+          })}
+      </SVGOverlay>
+      {picked && (
+        <Marker
+          key={picked.position}
+          position={plan.positions[picked.position]}
+          icon={logoIcon(picked)}
+          title={picked.name}
+          zIndexOffset={1000}
+          eventHandlers={{ click: () => onSelect(picked.position) }}
+        />
+      )}
     </>
   );
 }
 
-// Leaflet only fires this for clicks that miss the dots and aren't drags.
+// Leaflet doesn't fire this for drags or clicks on the logo; clicks on the
+// dots are skipped here because the dots handle those themselves.
 function MapClick({ onMapClick }: Pick<FloorMapProps, "onMapClick">) {
-  useMapEvents({ click: () => onMapClick?.() });
+  useMapEvents({
+    click: (e) => {
+      if ((e.originalEvent.target as Element).closest?.("[data-dot]")) return;
+      onMapClick?.();
+    },
+  });
   return null;
 }
 
@@ -330,7 +339,7 @@ export default function FloorMapInner(props: FloorMapProps) {
       <Controller {...props} />
       <MapClick onMapClick={props.onMapClick} />
       <ImageOverlay url={plan.image} bounds={plan.bounds} />
-      <Markers
+      <Dots
         floor={floor}
         markers={markers}
         dimmedSet={dimmedSet}
