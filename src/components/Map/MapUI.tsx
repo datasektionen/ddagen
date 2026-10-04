@@ -2,12 +2,10 @@ import type Locale from "@/locales";
 import { useEffect, useState } from "react";
 import { CheckMark } from "@/components/CheckMark";
 import {
-  ExhibitorCard,
   ExhibitorModal,
   offerLabel,
   yearLabels,
 } from "@/components/ExhibitorCard";
-import { MapProp } from "@/shared/Classes";
 import type { Floor } from "./floors";
 import type { MapApi } from "./FloorMap";
 import { INDUSTRIES, OFFERS, YEARS, type MapState } from "./useMapState";
@@ -31,27 +29,6 @@ export function mapText(t: Locale) {
     filters: t.map.search.buttonTwo,
     industry: t.map.search.filterIndustry,
   };
-}
-
-// Map number in the same style as the dots on the map.
-export function NumberBadge({
-  position,
-  selected = false,
-  className = "",
-}: {
-  position: number;
-  selected?: boolean;
-  className?: string;
-}) {
-  return (
-    <span
-      className={`flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full bg-cerise text-[13px] font-medium leading-none text-white ${
-        selected ? "ring-4 ring-yellow" : "ring-2 ring-white/80"
-      } ${className}`}
-    >
-      {position}
-    </span>
-  );
 }
 
 export function FloorSwitch({
@@ -108,7 +85,7 @@ export function SearchInput({
       onChange={(e) => onChange(e.target.value)}
       placeholder={t.map.search.placeHolder}
       aria-label={t.map.search.placeHolder}
-      className={`box-border h-12 min-w-0 rounded-full border-2 border-cerise bg-darkblue/90 px-5 text-base text-white outline-none backdrop-blur-sm placeholder:text-white/40 focus:border-yellow ${className}`}
+      className={`box-border h-12 min-w-0 rounded-full border-2 border-cerise bg-white/5 px-5 text-base text-white outline-none placeholder:text-white/40 focus:border-yellow ${className}`}
     />
   );
 }
@@ -131,8 +108,8 @@ export function FilterButton({
       type="button"
       onClick={onClick}
       aria-expanded={open}
-      className={`box-border inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-full border-2 border-cerise px-4 text-sm font-medium uppercase tracking-wide transition-colors ${
-        open || count ? "bg-cerise text-white" : "bg-darkblue/90 text-white hover:bg-cerise/20"
+      className={`box-border inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-full border-2 border-cerise px-4 text-sm font-medium uppercase tracking-wide transition-colors sm:px-6 ${
+        open || count ? "bg-cerise text-white" : "text-white hover:bg-cerise/20"
       } ${className}`}
     >
       {t.map.search.buttonTwo}
@@ -264,32 +241,6 @@ export function useLockBodyScroll(lock = true) {
     document.body.classList.add("overflow-hidden");
     return () => document.body.classList.remove("overflow-hidden");
   }, [lock]);
-}
-
-// The /logos card with the company's map number on it.
-export function NumberedCard({
-  t,
-  exhibitor,
-  selected = false,
-  onOpen,
-  className = "",
-}: {
-  t: Locale;
-  exhibitor: MapProp;
-  selected?: boolean;
-  onOpen: () => void;
-  className?: string;
-}) {
-  return (
-    <div className={`relative flex flex-col ${className}`}>
-      <ExhibitorCard t={t} exhibitor={exhibitor} onOpen={onOpen} />
-      <NumberBadge
-        position={exhibitor.position}
-        selected={selected}
-        className="pointer-events-none absolute left-3 top-3"
-      />
-    </div>
-  );
 }
 
 // The /logos modal for the selected company.

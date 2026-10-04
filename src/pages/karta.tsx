@@ -5,6 +5,7 @@ import { prisma } from "@/server/db";
 import { useLocale } from "@/locales";
 import { MapProp } from "@/shared/Classes";
 import { NextSeo } from "next-seo";
+import { ExhibitorCard, SponsorHero, tierRank } from "@/components/ExhibitorCard";
 import FloorMap from "@/components/Map/FloorMap";
 import { useMapState } from "@/components/Map/useMapState";
 import {
@@ -14,7 +15,6 @@ import {
   FilterFields,
   FloorSwitch,
   MapControls,
-  NumberedCard,
   SearchInput,
   mapText,
   useIsDesktop,
@@ -31,33 +31,49 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
   const [showFilters, setShowFilters] = useState(false);
   const [logos, setLogos] = useState(false);
 
+  // Same order and layout as /logos: main sponsor on top, then by package.
+  const sorted = [...state.filtered].sort(
+    (a, b) =>
+      tierRank(a.packageTier) - tierRank(b.packageTier) ||
+      a.name.localeCompare(b.name, "sv")
+  );
+  const sponsors = sorted.filter((e) => e.packageTier === 3);
+  const rest = sorted.filter((e) => e.packageTier !== 3);
+
   const list = (
-    <div className="flex h-full flex-col">
-      <div className="shrink-0">
-        <div className="flex gap-2">
-          <SearchInput t={t} value={state.search} onChange={state.setSearch} className="flex-1" />
-          <FilterButton t={t} count={state.filterCount} open={showFilters} onClick={() => setShowFilters((v) => !v)} />
+    <div className="h-full overflow-y-auto pb-6 md:pr-2">
+      <div className="flex flex-row items-stretch gap-3">
+        <SearchInput t={t} value={state.search} onChange={state.setSearch} className="flex-1" />
+        <FilterButton t={t} count={state.filterCount} open={showFilters} onClick={() => setShowFilters((v) => !v)} />
+      </div>
+      {showFilters && (
+        <div className="mt-3 rounded-2xl border-2 border-cerise/60 bg-black/40 p-5 backdrop-blur-sm">
+          <FilterFields t={t} state={state} />
         </div>
-        {showFilters && (
-          <div className="mt-3 max-h-[40vh] overflow-y-auto rounded-2xl border-2 border-cerise/60 bg-black/40 p-4">
-            <FilterFields t={t} state={state} />
-          </div>
-        )}
-        <p className="mb-3 mt-3 text-sm text-white/70" aria-live="polite">
-          {state.filtered.length} {text.results}
-        </p>
-      </div>
-      <div className="flex-1 overflow-y-auto rounded-xl border-4 border-cerise bg-white/5 p-3 md:p-4">
-        {state.filtered.length === 0 ? (
-          <p className="py-10 text-center text-white/70">{text.noResults}</p>
-        ) : (
-          <div className="grid grid-cols-2 gap-3 md:gap-4 xl:grid-cols-3">
-            {state.filtered.map((e) => (
-              <NumberedCard key={e.position} t={t} exhibitor={e} selected={state.selected === e.position} onOpen={() => state.focus(e.position, true)} />
-            ))}
-          </div>
-        )}
-      </div>
+      )}
+      <p className="mt-4 text-sm text-white/70" aria-live="polite">
+        {state.filtered.length} {text.results}
+      </p>
+      {state.filtered.length === 0 ? (
+        <p className="py-20 text-center text-white/70">{text.noResults}</p>
+      ) : (
+        <>
+          {sponsors.length > 0 && (
+            <div className="mt-6 flex flex-wrap justify-center gap-6">
+              {sponsors.map((e) => (
+                <SponsorHero key={e.position} t={t} exhibitor={e} onOpen={() => state.focus(e.position, true)} />
+              ))}
+            </div>
+          )}
+          {rest.length > 0 && (
+            <div className="mt-6 grid grid-cols-1 gap-4 xs:grid-cols-2 lg:grid-cols-3">
+              {rest.map((e) => (
+                <ExhibitorCard key={e.position} t={t} exhibitor={e} onOpen={() => state.focus(e.position, true)} />
+              ))}
+            </div>
+          )}
+        </>
+      )}
     </div>
   );
 
