@@ -70,7 +70,7 @@ Källa: karta.pdf. Nr = numret på pricken i plan2.svg / plan3.svg.
 | 64 | SopraSteria | 2 |
 | 65 | Prevas | 2 |
 | 66 | Scila | 2 |
-| 67 | Sellhelp | 2 |
+| 67 | Sellpy | 2 |
 | 68 | Valcon | 2 |
 | 69 | Kollin | 3 |
 | 70 | Sveriges Ingenjörer | 3 |
