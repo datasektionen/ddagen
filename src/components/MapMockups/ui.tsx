@@ -86,7 +86,7 @@ export function FloorSwitch({
           role="tab"
           aria-selected={floor === f}
           onClick={() => setFloor(f)}
-          className={`rounded-full px-4 py-2 text-sm font-medium uppercase tracking-wide transition-colors ${
+          className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium uppercase tracking-wide transition-colors ${
             floor === f ? "bg-cerise text-white" : "text-white hover:bg-cerise/20"
           }`}
         >
