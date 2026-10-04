@@ -29,7 +29,7 @@ function markerIcon(
       iconSize: selected ? [w + 14, h + 9] : [w, h],
       html: `<div class="flex h-full w-full items-center justify-center rounded-xl bg-[#dfe1e9] p-1 shadow-md ${
         selected ? "ring-4 ring-yellow" : "ring-2 ring-cerise"
-      } ${fade}"><img src="${addImageDetails(e.logo)}" alt="${e.name}" class="max-h-full max-w-full object-contain" /></div>`,
+      } ${fade}"><img src="${addImageDetails(e.logo)}" alt="${e.name}" class="object-contain" style="max-width: ${w - 8}px !important; max-height: ${h - 8}px !important" /></div>`,
     });
   }
   // Too small to read: a plain dot, the number shows once zoomed in.
