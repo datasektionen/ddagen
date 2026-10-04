@@ -11,37 +11,42 @@ import type { FloorMapProps } from "./FloorMap";
 const PLAN_WIDTH = 765;
 const DOT_SIZE = 30;
 
-function markerIcon(
-  e: MapProp,
-  mode: "number" | "logo",
-  selected: boolean,
-  dimmed: boolean,
-  scale: number
-): DivIcon {
-  // Dimmed markers are solid grey so the pink dot in the svg doesn't show through.
-  const fade = dimmed ? "!bg-[#a7a9b6] !ring-white/60" : "";
+// A plain dot on top of the printed one. The selected company is shown as a
+// pin above its dot with its logo, or its name when it has no logo.
+function markerIcon(e: MapProp, selected: boolean, dimmed: boolean, scale: number): DivIcon {
   // Same size as the printed dot so it is fully covered at every zoom level.
   const size = Math.round(Math.max(12, DOT_SIZE * scale));
-  if (mode === "logo" && e.logo && size >= 24) {
-    const w = Math.round(Math.min(size, 80) * 1.8);
-    const h = Math.round(Math.min(size, 80) * 1.15);
-    return new DivIcon({
-      className: "",
-      iconSize: selected ? [w + 14, h + 9] : [w, h],
-      html: `<div class="flex h-full w-full items-center justify-center rounded-xl bg-[#dfe1e9] p-1 shadow-md ${
-        selected ? "ring-4 ring-yellow" : "ring-2 ring-cerise"
-      } ${fade}"><img src="${addImageDetails(e.logo)}" alt="${e.name}" class="object-contain" style="max-width: ${w - 8}px !important; max-height: ${h - 8}px !important" /></div>`,
-    });
-  }
-  // Too small to read: a plain dot, the number shows once zoomed in.
-  const shown = selected ? Math.max(size, 30) + 6 : size;
-  const label = shown >= 20 ? String(e.position) : "";
+  if (selected) return pinIcon(e, size);
   return new DivIcon({
     className: "",
-    iconSize: [shown, shown],
-    html: `<div class="flex h-full w-full items-center justify-center rounded-full ${dimmed ? "" : "bg-cerise"} font-medium leading-none text-white shadow-md ${
-      selected ? "ring-4 ring-yellow" : shown >= 20 ? "ring-2 ring-white/80" : "ring-1 ring-white/80"
-    } ${fade}" style="font-size:${Math.min(24, Math.max(11, Math.round(shown * 0.42)))}px">${label}</div>`,
+    iconSize: [size, size],
+    // Dimmed dots are solid grey so the pink dot in the svg doesn't show through.
+    html: `<div class="h-full w-full rounded-full shadow-md ${
+      dimmed ? "bg-[#a7a9b6] ring-1 ring-white/60" : "bg-cerise ring-1 ring-white/80"
+    }"></div>`,
+  });
+}
+
+const escapeHtml = (text: string) =>
+  text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+
+// The pin's tip touches the top of the company's dot.
+function pinIcon(e: MapProp, dotSize: number): DivIcon {
+  const name = escapeHtml(e.name);
+  const w = e.logo ? 132 : Math.min(220, Math.max(88, e.name.length * 8 + 32));
+  const h = e.logo ? 68 : 42;
+  const tip = 10;
+  const content = e.logo
+    ? `<img src="${addImageDetails(e.logo)}" alt="${name}" class="object-contain" style="max-width: ${w - 20}px !important; max-height: ${h - 16}px !important" />`
+    : `<span class="truncate text-sm font-medium text-darkblue">${name}</span>`;
+  return new DivIcon({
+    className: "",
+    iconSize: [w, h + tip],
+    iconAnchor: [w / 2, h + tip + dotSize / 2],
+    html: `<div class="flex flex-col items-center drop-shadow-lg">
+      <div class="flex items-center justify-center rounded-xl bg-[#dfe1e9] px-2.5 ring-4 ring-yellow" style="width:${w}px;height:${h}px">${content}</div>
+      <div style="width:0;height:0;border-left:${tip}px solid transparent;border-right:${tip}px solid transparent;border-top:${tip}px solid #ffc800"></div>
+    </div>`,
   });
 }
 
@@ -188,10 +193,8 @@ function Markers({
   dimmedSet,
   selected,
   onSelect,
-  markerMode,
 }: Pick<FloorMapProps, "floor" | "markers" | "selected" | "onSelect"> & {
   dimmedSet: Set<number>;
-  markerMode: "number" | "logo";
 }) {
   const map = useMap();
   const plan = FLOORS[floor];
@@ -215,10 +218,10 @@ function Markers({
           const isDimmed = dimmedSet.has(e.position);
           return (
             <Marker
-              key={`${e.position}-${markerMode}-${isSelected}-${isDimmed}-${bucket}`}
+              key={`${e.position}-${isSelected}-${isDimmed}-${bucket}`}
               position={plan.positions[e.position]}
-              icon={markerIcon(e, markerMode, isSelected, isDimmed, bucket)}
-              title={`${e.position} ${e.name}`}
+              icon={markerIcon(e, isSelected, isDimmed, bucket)}
+              title={e.name}
               zIndexOffset={isSelected ? 1000 : 0}
               eventHandlers={{ click: () => onSelect(e.position) }}
             />
@@ -235,7 +238,6 @@ export default function FloorMapInner(props: FloorMapProps) {
     dimmed,
     selected,
     onSelect,
-    markerMode = "number",
     className = "",
   } = props;
   const plan = FLOORS[floor];
@@ -263,7 +265,6 @@ export default function FloorMapInner(props: FloorMapProps) {
         dimmedSet={dimmedSet}
         selected={selected}
         onSelect={onSelect}
-        markerMode={markerMode}
       />
     </MapContainer>
   );

@@ -29,7 +29,6 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
   const state = useMapState(exhibitorData);
   const desktop = useIsDesktop();
   const [showFilters, setShowFilters] = useState(false);
-  const [logos, setLogos] = useState(false);
 
   // Same order and layout as /logos: main sponsor on top, then by package.
   const sorted = [...state.filtered].sort(
@@ -99,31 +98,18 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
         markers={exhibitorData}
         dimmed={exhibitorData.filter((e) => !state.filtered.includes(e)).map((e) => e.position)}
         selected={state.selected}
-        onSelect={(p) => state.focus(p, true)}
-        markerMode={logos ? "logo" : "number"}
+        // First tap shows the logo on the map, tapping the logo opens the card.
+        onSelect={(p) => (p === state.selected ? state.setModalOpen(true) : state.focus(p))}
         onApi={state.setApi}
         padding={12}
         inset={{ top: 60, bottom: 60 }}
       />
-      {/* Numbers/Logos and floor switch */}
-      <div className="absolute inset-x-3 top-3 z-[600] flex items-center justify-between gap-2">
-        <div className="inline-flex rounded-full border-2 border-cerise bg-darkblue/90 p-1">
-          {[false, true].map((on) => (
-            <button
-              key={String(on)}
-              type="button"
-              aria-pressed={logos === on}
-              onClick={() => setLogos(on)}
-              className={`whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-medium uppercase tracking-wide md:px-4 md:py-2 md:text-sm ${
-                logos === on ? "bg-cerise text-white" : "text-white"
-              }`}
-            >
-              {on ? t.map.iconButtons.logos : t.map.iconButtons.numbers}
-            </button>
-          ))}
-        </div>
-        <FloorSwitch t={t} floor={state.floor} setFloor={state.setFloor} className="[&>button]:px-3 [&>button]:py-1.5 [&>button]:text-xs md:[&>button]:px-4 md:[&>button]:py-2 md:[&>button]:text-sm" />
-      </div>
+      <FloorSwitch
+        t={t}
+        floor={state.floor}
+        setFloor={state.setFloor}
+        className="absolute right-3 top-3 z-[600] [&>button]:px-3 [&>button]:py-1.5 [&>button]:text-xs md:[&>button]:px-4 md:[&>button]:py-2 md:[&>button]:text-sm"
+      />
       <MapControls t={t} api={state.api} vertical={false} className="absolute bottom-3 left-3" />
     </div>
   );

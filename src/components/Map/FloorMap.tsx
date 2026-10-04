@@ -15,7 +15,6 @@ export type FloorMapProps = {
   dimmed?: number[];
   selected?: number;
   onSelect: (position: number) => void;
-  markerMode?: "number" | "logo";
   padding?: number;
   // Space in px covered by panels drawn on top of the map.
   inset?: { top?: number; right?: number; bottom?: number; left?: number };
