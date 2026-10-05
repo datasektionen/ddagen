@@ -9,6 +9,7 @@ interface ColumnProps {
   onAccept?: (id: string) => void;
   onCancel?: (id: string) => void;
   onEdit?: (id: string) => void;
+  onPreferenceClick?: (item: Pick<ExtraOrderColumns, "type" | "ticket_preference_id" | "ticket_name" | "ticket_value" | "ticket_comment">) => void;
 }
 
 export type ExtraOrderColumns = Omit<ExtraOrderItem, "type" | "amount" | "price_per_unit"> & {
@@ -34,7 +35,8 @@ export const getOrderColumns = ({
   showPerson,
   onAccept,
   onCancel,
-  onEdit
+  onEdit,
+  onPreferenceClick,
 }: ColumnProps): ColumnDef<ExtraOrderColumns>[] => {
   const columns: ColumnDef<ExtraOrderColumns>[] = [];
 
@@ -85,9 +87,9 @@ export const getOrderColumns = ({
       </div>
     ),
     size: 1000,
-    cell: ({ row }) => (
-      <div className="flex items-center gap-3">
-        <div className="text-header">
+    cell: ({ row }) => {
+      const content = (
+        <>
           <span>{row.original.ticket_preference_id ? "Preference update" : row.original.type}</span>
           {row.original.ticket_name && (
             <p className="text-sm text-primary/80">
@@ -98,9 +100,26 @@ export const getOrderColumns = ({
               {row.original.ticket_comment ? ` - ${row.original.ticket_comment}` : ""}
             </p>
           )}
+        </>
+      );
+
+      return (
+        <div className="flex items-center gap-3">
+          {onPreferenceClick && row.original.ticket_name ? (
+            <button
+              type="button"
+              className="text-left text-header rounded-sm hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-cerise"
+              onClick={() => onPreferenceClick(row.original)}
+              aria-label={`${row.original.type}: ${row.original.ticket_name}`}
+            >
+              {content}
+            </button>
+          ) : (
+            <div className="text-header">{content}</div>
+          )}
         </div>
-      </div>
-    ),
+      );
+    },
   });
 
   columns.push({

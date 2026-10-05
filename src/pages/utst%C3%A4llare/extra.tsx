@@ -6,7 +6,7 @@ import { InputField } from "@/components/InputField";
 import Head from "next/head";
 import ExhibitorLayout from "@/shared/exhibitorLayout";
 import { CompanyDataTable } from "@/components/Company/CompanyDataTable";
-import { getOrderColumns } from "@/components/Company/Admin/ExtraOrderColumns";
+import { ExtraOrderColumns, getOrderColumns } from "@/components/Company/Admin/ExtraOrderColumns";
 import { ExtraOrderAccepted, ExtraOrderAction, ExtraOrderHistory, ExtraOrderRequest, Package } from "@/shared/Classes";
 import { cn } from "@/utils/utils";
 import { Select } from "@/components/Select";
@@ -75,6 +75,55 @@ const extraOrderActionColors: Record<ExtraOrderAction, string> = {
   CREATED_ORDER: "#00FF00",
 };
 
+type PreferenceTicketSnapshot = {
+  name?: string | null;
+  value?: readonly string[] | null;
+  comment?: string | null;
+};
+
+function PreferenceTicketDetails({
+  t,
+  ticket,
+}: {
+  t: ReturnType<typeof useLocale>;
+  ticket: PreferenceTicketSnapshot;
+}) {
+  const optionLabels: Record<string, string> = {
+    Meat: t.exhibitorSettings.table.row3.options.meat,
+    Vegan: t.exhibitorSettings.table.row3.options.vegetarian,
+    LactoseFree: t.exhibitorSettings.table.row3.options.lactoseFree,
+    GlutenFree: t.exhibitorSettings.table.row3.options.glutenFree,
+    AlcoholFree: t.exhibitorSettings.table.row3.options.alcoholFree,
+  };
+
+  return (
+    <dl className="space-y-4 text-left">
+      <div>
+        <dt className="text-sm font-medium text-white/60">
+          {t.exhibitorSettings.fieldsAddPreferences.name}
+        </dt>
+        <dd className="break-words text-white">{ticket.name || "—"}</dd>
+      </div>
+      <div>
+        <dt className="text-sm font-medium text-white/60">
+          {t.exhibitorSettings.fieldsAddPreferences.preferences}
+        </dt>
+        <dd className="break-words text-white">
+          {ticket.value?.length
+            ? ticket.value.map((value) => optionLabels[value] ?? value).join(", ")
+            : "—"}
+        </dd>
+      </div>
+      <div>
+        <dt className="text-sm font-medium text-white/60">
+          {t.exhibitorSettings.fieldsAddPreferences.comment}
+        </dt>
+        <dd className="break-words whitespace-pre-wrap text-white">{ticket.comment || "—"}</dd>
+      </div>
+    </dl>
+  );
+}
+
 export default function ExhibitorExtra({
     children
 } : {
@@ -90,6 +139,7 @@ export default function ExhibitorExtra({
   const [addItem, setAddItem] = useState<boolean>(false);
   const [editingItemId, setEditingItemId] = useState<string>();
   const [editMode, setEditMode] = useState<boolean>(false);
+  const [selectedPreferenceRequest, setSelectedPreferenceRequest] = useState<Pick<ExtraOrderColumns, "type" | "ticket_preference_id" | "ticket_name" | "ticket_value" | "ticket_comment"> | null>(null);
 
   const [itemType, setItemType] = useState<ExtraOrderType>("table");
   const [itemAmount, setItemAmount] = useState<string>("1");
@@ -111,6 +161,11 @@ export default function ExhibitorExtra({
   const { data: packageData } = api.exhibitor.getPackage.useQuery();
   const { data: banquetPreferences } = api.exhibitor.getFoodPreferences.useQuery("Banquet");
   const { data: representativePreferences } = api.exhibitor.getFoodPreferences.useQuery("Representative");
+  const currentTicketPreference = selectedPreferenceRequest?.ticket_preference_id
+    ? [...(representativePreferences ?? []), ...(banquetPreferences ?? [])].find(
+        (preference) => preference.id === selectedPreferenceRequest.ticket_preference_id
+      )
+    : undefined;
 
   const requested = ordersData?.requests ?? [];
   const history = ordersData?.history.filter((el) => el.action !== "UPDATED_REQUEST") ?? [];
@@ -227,7 +282,8 @@ export default function ExhibitorExtra({
   const requestedColumns = getOrderColumns({
     t: t,
     onAccept: isAdmin ? handleAcceptRequest : undefined,
-    onCancel: handleCancelRequest
+    onCancel: handleCancelRequest,
+    onPreferenceClick: (item) => setSelectedPreferenceRequest(item),
   });
 
   const historyColumns = getOrderColumns({
@@ -278,6 +334,7 @@ export default function ExhibitorExtra({
   return(
     <>
       <ExhibitorLayout>
+        <>
         <div className="flex flex-col gap-8 sm:ml-8 flex-1 text-white">
           {(addItem || editingItemId) &&
             <div className="flex flex-1 flex-col items-center bg-black/25 border-2 border-cerise rounded-xl pt-6 pb-10 overflow-hidden">
@@ -441,6 +498,70 @@ export default function ExhibitorExtra({
             </div>
           }
         </div>
+        {selectedPreferenceRequest && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+            role="presentation"
+            onClick={(event) => {
+              if (event.target === event.currentTarget) setSelectedPreferenceRequest(null);
+            }}
+            onKeyDown={(event) => {
+              if (event.key === "Escape") setSelectedPreferenceRequest(null);
+            }}
+            tabIndex={-1}
+          >
+            <section
+              aria-labelledby="ticket-comparison-title"
+              aria-modal="true"
+              className="relative w-full max-w-3xl rounded-2xl border border-cerise bg-slate-900 p-6 text-white shadow-2xl sm:p-8"
+              role="dialog"
+            >
+              <button
+                type="button"
+                className="absolute right-4 top-4 rounded-full border border-white/50 px-3 py-1 text-sm hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cerise"
+                onClick={() => setSelectedPreferenceRequest(null)}
+              >
+                {t.admin.extraOrders.comparison.close}
+              </button>
+              <h2 id="ticket-comparison-title" className="mb-1 pr-20 text-2xl font-medium">
+                {t.admin.extraOrders.comparison.title}
+              </h2>
+              <p className="mb-6 text-sm text-white/70">
+                {selectedPreferenceRequest.type}
+              </p>
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div className="rounded-xl border border-white/20 bg-black/20 p-4">
+                  <h3 className="mb-4 border-b border-white/15 pb-2 text-lg font-medium">
+                    {t.admin.extraOrders.comparison.current}
+                  </h3>
+                  {selectedPreferenceRequest.ticket_preference_id ? (
+                    currentTicketPreference ? (
+                      <PreferenceTicketDetails t={t} ticket={currentTicketPreference} />
+                    ) : (
+                      <p className="text-white/70">{t.admin.extraOrders.comparison.notFound}</p>
+                    )
+                  ) : (
+                    <p className="text-white/70">{t.admin.extraOrders.comparison.noCurrent}</p>
+                  )}
+                </div>
+                <div className="rounded-xl border border-cerise/70 bg-cerise/10 p-4">
+                  <h3 className="mb-4 border-b border-cerise/30 pb-2 text-lg font-medium">
+                    {t.admin.extraOrders.comparison.requested}
+                  </h3>
+                  <PreferenceTicketDetails
+                    t={t}
+                    ticket={{
+                      name: selectedPreferenceRequest.ticket_name,
+                      value: selectedPreferenceRequest.ticket_value,
+                      comment: selectedPreferenceRequest.ticket_comment,
+                    }}
+                  />
+                </div>
+              </div>
+            </section>
+          </div>
+        )}
+        </>
       </ExhibitorLayout>
     </>
   );
