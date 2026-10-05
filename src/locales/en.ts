@@ -1427,6 +1427,14 @@ export default {
         total_price: "Total price",
         empty: "No extra orders found"
       },
+      comparison: {
+        title: "Ticket comparison",
+        current: "Current ticket",
+        requested: "Requested ticket",
+        noCurrent: "No existing ticket (new ticket request)",
+        notFound: "The current ticket could not be found.",
+        close: "Close",
+      },
       currency: "kr",
     },
     preferences: {

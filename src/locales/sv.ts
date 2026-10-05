@@ -1421,6 +1421,14 @@ export default {
         total_price: "Total pris",
         empty: "Inga extrabeställningar hittades"
       },
+      comparison: {
+        title: "Biljettjämförelse",
+        current: "Nuvarande biljett",
+        requested: "Önskad biljett",
+        noCurrent: "Ingen befintlig biljett (ny biljettförfrågan)",
+        notFound: "Den nuvarande biljetten kunde inte hittas.",
+        close: "Stäng",
+      },
       currency: "kr",
     },
     preferences: {

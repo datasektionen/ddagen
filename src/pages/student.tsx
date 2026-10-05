@@ -284,6 +284,13 @@ export default function LoggedInPage() {
             </div>
     }
 
+    const isStudentLocked = true;
+    const StudentLocked = () => (
+        <div className="flex flex-col gap-2 mx-auto my-36 text-center">
+            <h2 className="text-cerise text-3xl font-medium">There's nothing to do here...</h2>
+            <p className="text-white">This part of the site has been decomissioned.</p>
+        </div>
+    )
 
     return (
         <>
@@ -294,8 +301,11 @@ export default function LoggedInPage() {
                 <p className="h-screen flex items-center justify-center text-red-400">
                     {t.error.unknown}
                 </p>
-            ) : isLoggedIn ? ( 
-                <StudentView/> 
+            ) : isLoggedIn ? (
+                isStudentLocked ?
+                    <StudentLocked />
+                    :
+                    <StudentView />
             ) : (
 
             <p className="h-screen flex items-center justify-center text-white">
