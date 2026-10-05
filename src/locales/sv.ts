@@ -1195,7 +1195,7 @@ export default {
     panelDiscussion3: "Vad kräver framtiden av utvecklare? med Omegapoint, SVT och Sopra Steria",
     panelDiscussionInEnglish: "Paneldiskussionen kommer att hållas på engelska",
     panelDiscussionInSwedish: "Paneldiskussionen kommer att hållas på svenska",
-    panelDiscussiontext: "Under mässdagen anordnas flera paneldiskussioner som vardera behandlar ett IT-relevant ämne och som modereras av D-Dagen. Vid ett sådant tillfälle får studenter möjlighet att höra om hur det är att arbeta inom IT-branschen, samt får ta del av en intressant och lärorik diskussion mellan ett fåtal företagsrepresentanter.",
+    panelDiscussiontext: "Under mässdagen anordnas flera paneldiskussioner som vardera behandlar ett IT-relevant ämne och som modereras av D-Dagen. Vid ett sådant tillfälle får studenter möjlighet att höra om hur det är att arbeta inom IT-branschen, samt får ta del av en intressant och lärorik diskussion mellan ett fåtal företagsrepresentanter. De hålls i Gröten på plan 2 i Nymble.",
     fair: "MÄSSAN",
     after: "EFTER",
     closes: "Mässan stänger",

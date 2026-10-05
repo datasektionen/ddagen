@@ -1201,7 +1201,7 @@ export default {
     panelDiscussion3: "What does the future demand of developers? with  Omegapoint, SVT and Sopra Steria",
     panelDiscussionInEnglish: "The panel discussion will be held in Enligsh.",
     panelDiscussionInSwedish: "The panel discussion will be held in Swedish.",
-    panelDiscussiontext: "During the fair day, several panel discussions are held and moderated by D-Dagen, each covering an IT-relevant topic. These sessions give students the opportunity to hear what it’s like to work in the IT industry and engage in an insightful and educational discussion between a few company representatives.",
+    panelDiscussiontext: "During the fair day, several panel discussions are held and moderated by D-Dagen, each covering an IT-relevant topic. These sessions give students the opportunity to hear what it’s like to work in the IT industry and engage in an insightful and educational discussion between a few company representatives. They are held in Gröten in Nymble on floor 2 during the fair.",
     fair: "THE FAIR",
     after: "AFTER",
     closes: "The fair closes",
