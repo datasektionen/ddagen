@@ -111,7 +111,11 @@ export function useMapState(exhibitorData: MapProp[]) {
     filtered,
     byPosition,
     floor,
-    setFloor,
+    // Switching floor by hand drops the selection on the other floor.
+    setFloor: (f: Floor) => {
+      setFloor(f);
+      setSelected(0);
+    },
     selected,
     setSelected,
     selectedExhibitor: byPosition[selected] as MapProp | undefined,

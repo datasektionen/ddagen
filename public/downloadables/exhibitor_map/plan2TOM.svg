@@ -185,75 +185,7 @@
     <polyline points="551.01 389.73 579.02 387.58 589.13 389.95 596.56 398.91 601.5 408.59 608.8 411.88 624.88 411.88 650.28 404.98 670.93 406.64 686.76 420.53 693.44 440.5 698.96 464.25 704.44 489.71" style="fill: none; stroke: #e8e8e8; stroke-dasharray: 0 12; stroke-linecap: round; stroke-miterlimit: 10; stroke-width: 6px;"/>
     <polyline points="664.89 396.3 664.1 396.71 666.78 386.85 666.78 377.65 665.32 366.03 663.13 355.73 658.26 346.47 649 337.94 634.2 332.76 627.72 324.13 619.52 312.12 615.38 302.13 604.91 294.67 589.13 294.67 568.12 294.67 547.05 293.6 532.55 291.17 528.46 328.23 520.32 350.69" style="fill: none; stroke: #e8e8e8; stroke-dasharray: 0 12; stroke-linecap: round; stroke-miterlimit: 10; stroke-width: 6px;"/>
     <line x1="332.68" y1="346.55" x2="382.82" y2="351.91" style="fill: none; stroke: #e8e8e8; stroke-dasharray: 0 12; stroke-linecap: round; stroke-miterlimit: 10; stroke-width: 6px;"/>
-    <circle cx="126.04" cy="394.69" r="13.52" style="fill: #dc2e79;"/>
-    <circle cx="143.79" cy="355.48" r="13.52" style="fill: #dc2e79;"/>
-    <circle cx="84.58" cy="376.22" r="13.52" style="fill: #dc2e79;"/>
-    <circle cx="96.79" cy="336.54" r="13.52" style="fill: #dc2e79;"/>
-    <circle cx="279.38" cy="417.04" r="13.52" style="fill: #dc2e79;"/>
-    <circle cx="375.71" cy="433.5" r="12.03" style="fill: #dc2e79;"/>
-    <circle cx="337.45" cy="433.5" r="12.07" style="fill: #dc2e79;"/>
-    <circle cx="413.03" cy="433.59" r="11.98" style="fill: #dc2e79;"/>
-    <circle cx="341.71" cy="400.27" r="11.77" style="fill: #dc2e79;"/>
-    <circle cx="377.39" cy="400.27" r="11.77" style="fill: #dc2e79;"/>
-    <circle cx="488.01" cy="433.28" r="12.25" style="fill: #dc2e79;"/>
-    <circle cx="430.33" cy="400.02" r="12.03" style="fill: #dc2e79;"/>
-    <circle cx="450.26" cy="433.59" r="12.03" style="fill: #dc2e79;"/>
-    <circle cx="471.04" cy="400.02" r="12.03" style="fill: #dc2e79;"/>
-    <circle cx="403.28" cy="369.48" r="11.5" style="fill: #dc2e79;"/>
-    <circle cx="358.22" cy="368.81" r="12.18" style="fill: #dc2e79;"/>
-    <circle cx="511.76" cy="400.02" r="12.03" transform="translate(34.93 841.09) rotate(-80.78)" style="fill: #dc2e79;"/>
-    <circle cx="450.49" cy="368.81" r="12.18" style="fill: #dc2e79;"/>
-    <circle cx="495.52" cy="368.81" r="12.18" style="fill: #dc2e79;"/>
-    <circle cx="296.93" cy="334.4" r="13.52" style="fill: #dc2e79;"/>
-    <circle cx="326.35" cy="194.47" r="13.52" style="fill: #dc2e79;"/>
-    <circle cx="473.32" cy="329.29" r="13.52" style="fill: #dc2e79;"/>
-    <circle cx="560.7" cy="346.55" r="13.52" style="fill: #dc2e79;"/>
-    <circle cx="361.69" cy="298.01" r="13.52" style="fill: #dc2e79;"/>
-    <circle cx="417.5" cy="299.15" r="13.52" style="fill: #dc2e79;"/>
-    <circle cx="472.46" cy="298.01" r="13.52" style="fill: #dc2e79;"/>
-    <circle cx="319.53" cy="243.72" r="13.52" style="fill: #dc2e79;"/>
-    <ellipse cx="385.41" cy="243.06" rx="12.99" ry="12.9" style="fill: #dc2e79;"/>
-    <ellipse cx="413.88" cy="214.96" rx="12.99" ry="12.9" style="fill: #dc2e79;"/>
-    <ellipse cx="385.78" cy="214.96" rx="12.99" ry="12.9" style="fill: #dc2e79;"/>
-    <ellipse cx="413.88" cy="243.72" rx="12.99" ry="12.9" style="fill: #dc2e79;"/>
-    <circle cx="506.93" cy="120.94" r="11.5" style="fill: #dc2e79;"/>
-    <ellipse cx="430.2" cy="160.56" rx="13.52" ry="13.65" style="fill: #dc2e79;"/>
-    <ellipse cx="387.74" cy="160.56" rx="13.52" ry="13.65" style="fill: #dc2e79;"/>
-    <ellipse cx="417.05" cy="87.2" rx="12.79" ry="12.62" style="fill: #dc2e79;"/>
-    <ellipse cx="448.06" cy="87.63" rx="12.47" ry="12.9" style="fill: #dc2e79;"/>
-    <circle cx="476.4" cy="121.11" r="11.67" style="fill: #dc2e79;"/>
-    <ellipse cx="391.78" cy="73.24" rx="12.66" ry="12.8" style="fill: #dc2e79;"/>
-    <circle cx="446.4" cy="121.11" r="11.67" style="fill: #dc2e79;"/>
-    <circle cx="536.6" cy="54.38" r="11.44" style="fill: #dc2e79;"/>
-    <ellipse cx="481.51" cy="61.03" rx="12.35" ry="12.47" style="fill: #dc2e79;"/>
-    <circle cx="536.6" cy="87.63" r="11.54" style="fill: #dc2e79;"/>
-    <ellipse cx="417.84" cy="61.03" rx="12.37" ry="12.21" style="fill: #dc2e79;"/>
-    <circle cx="448.06" cy="61.03" r="12.38" style="fill: #dc2e79;"/>
-    <ellipse cx="481.51" cy="87.2" rx="12.41" ry="12.19" style="fill: #dc2e79;"/>
-    <ellipse cx="358.73" cy="19.05" rx="12.41" ry="12.49" style="fill: #dc2e79;"/>
-    <ellipse cx="322.61" cy="124.69" rx="12.24" ry="12.17" style="fill: #dc2e79;"/>
-    <ellipse cx="397.21" cy="17.81" rx="12.69" ry="12.41" style="fill: #dc2e79;"/>
-    <ellipse cx="435.68" cy="19.31" rx="12.41" ry="12.66" style="fill: #dc2e79;"/>
-    <ellipse cx="473.74" cy="19.31" rx="12.28" ry="12.41" style="fill: #dc2e79;"/>
-    <ellipse cx="163.83" cy="170.81" rx="14.28" ry="14.63" style="fill: #dc2e79;"/>
-    <ellipse cx="149.55" cy="213.74" rx="15.44" ry="15.61" style="fill: #dc2e79;"/>
-    <circle cx="292.65" cy="78.37" r="13.52" style="fill: #dc2e79;"/>
-    <circle cx="253.63" cy="78.37" r="13.52" style="fill: #dc2e79;"/>
-    <circle cx="214.61" cy="78.37" r="13.52" style="fill: #dc2e79;"/>
-    <circle cx="234.49" cy="194.47" r="13.52" style="fill: #dc2e79;"/>
-    <circle cx="208.59" cy="159.32" r="13.52" style="fill: #dc2e79;"/>
-    <circle cx="201.09" cy="193.69" r="13.52" style="fill: #dc2e79;"/>
-    <circle cx="208.59" cy="228.44" r="13.52" style="fill: #dc2e79;"/>
-    <ellipse cx="290.98" cy="115.95" rx="12.43" ry="12.17" style="fill: #dc2e79;"/>
-    <circle cx="273" cy="241.57" r="13.52" style="fill: #dc2e79;"/>
-    <circle cx="240.79" cy="162.35" r="13.52" style="fill: #dc2e79;"/>
-    <circle cx="278.54" cy="204.88" r="13.52" style="fill: #dc2e79;"/>
-    <circle cx="286.52" cy="165.5" r="13.52" style="fill: #dc2e79;"/>
-    <circle cx="482.46" cy="218.11" r="13.52" style="fill: #dc2e79;"/>
-    <circle cx="361.69" cy="330.79" r="13.52" style="fill: #dc2e79;"/>
-    <circle cx="417.5" cy="329.66" r="13.52" style="fill: #dc2e79;"/>
-    <ellipse cx="180.89" cy="128.9" rx="14.28" ry="14.59" style="fill: #dc2e79;"/>
-    <circle cx="187.57" cy="395.98" r="13.52" style="fill: #dc2e79;"/>
-    <ellipse cx="136.65" cy="259.34" rx="15.44" ry="15.61" style="fill: #dc2e79;"/>
+    <path d="M707.28,341.73c.93-1.33,1.49-2.89,1.49-4.56,0-2.08-.86-3.99-2.24-5.49-1.39-1.5-3.29-2.63-5.48-3.22l-.58,2.12c1.83.5,3.38,1.43,4.44,2.59,1.07,1.17,1.66,2.53,1.66,4.01,0,1.19-.38,2.3-1.09,3.3-.7,1-1.73,1.88-3,2.53l-.93.47,1.2,2.68c-3.64-.63-7.01-1.81-8.72-2.48h-.03l-.03-.02c-2.29-.72-4.07-2.13-4.98-3.8l-1.92,1.06c1.23,2.24,3.46,3.93,6.18,4.81h0c2.11.82,6.55,2.37,11.2,2.89l1.91.21-1.97-4.4c1.16-.73,2.15-1.63,2.89-2.69h0Z" style="fill: #dc2e79;"/>
+    <path d="M696.6,333.78c1.78-2.03,2.86-4.56,2.86-7.28,0-1.78-.46-3.49-1.28-5.02-1.23-2.3-3.25-4.2-5.75-5.54-2.5-1.33-5.48-2.1-8.69-2.1-4.27,0-8.16,1.36-11.01,3.62-1.43,1.13-2.6,2.49-3.42,4.02s-1.28,3.23-1.28,5.02c0,2.28.75,4.42,2.03,6.24,1.1,1.56,2.58,2.89,4.34,3.94l-2.64,5.9,1.91-.21c6.58-.74,12.88-2.94,15.87-4.1,2.84-.91,5.3-2.46,7.06-4.48h0ZM688.78,336.2h-.03c-2.59,1.02-7.83,2.85-13.39,3.72l1.89-4.22-.93-.47c-1.87-.96-3.4-2.26-4.45-3.75-1.05-1.5-1.63-3.18-1.63-4.98,0-1.41.36-2.75,1.02-3.98.99-1.85,2.68-3.48,4.84-4.64,2.17-1.16,4.8-1.85,7.65-1.85,3.8,0,7.22,1.22,9.65,3.15,1.22.96,2.18,2.1,2.84,3.33.66,1.24,1.02,2.58,1.02,3.98,0,2.15-.83,4.14-2.31,5.84-1.48,1.69-3.61,3.06-6.14,3.86h-.03Z" style="fill: #dc2e79;"/>
   </g>
 </svg>

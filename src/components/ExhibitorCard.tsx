@@ -122,6 +122,7 @@ export function ExhibitorCard({
           <img
             src={addImageDetails(exhibitor.logo)}
             alt={exhibitor.name}
+            loading="lazy"
             className="max-h-20 max-w-full object-contain"
           />
         ) : (

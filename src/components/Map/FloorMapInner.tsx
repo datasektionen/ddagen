@@ -11,6 +11,9 @@ import type { FloorMapProps } from "./FloorMap";
 const PLAN_WIDTH = 765;
 const DOT_SIZE = 30;
 
+// A finger moves a little during a tap; don't count that as a drag (default 3px).
+(L.Draggable.prototype as unknown as { options: L.DraggableOptions }).options.clickTolerance = 8;
+
 const escapeHtml = (text: string) =>
   text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
@@ -57,6 +60,13 @@ function Controller({
   // Latest insets for handlers set up once per floor.
   const boxRef = useRef(box);
   boxRef.current = box;
+  // The pending "finish the reset" handler, dropped when a new move starts so
+  // it can't snap a later selection back out.
+  const finishReset = useRef<() => void>();
+  const cancelReset = () => {
+    if (finishReset.current) map.off("moveend", finishReset.current);
+    finishReset.current = undefined;
+  };
 
   const tools = useMemo(() => {
     const bounds = L.latLngBounds(FLOORS[floor].bounds);
@@ -129,12 +139,15 @@ function Controller({
     onApi?.({
       floor,
       reset: () => {
+        cancelReset();
         map.stop();
         fit(true);
         // If another movement interrupts the animation, finish without it.
-        map.once("moveend", () => {
+        finishReset.current = () => {
+          finishReset.current = undefined;
           if (map.getZoom() > map.getMinZoom() + 0.05) fit(false);
-        });
+        };
+        map.once("moveend", finishReset.current);
       },
       zoomIn: () => map.zoomIn(0.75),
       zoomOut: () => map.zoomOut(0.75),
@@ -221,6 +234,7 @@ function Controller({
     // Offset so the dot lands in the middle of the area not covered by panels.
     const shift = L.point((b.left - b.right) / 2, (b.top - b.bottom) / 2);
     const target = map.unproject(map.project(pos, zoom).subtract(shift), zoom);
+    cancelReset();
     map.flyTo(target, zoom, { duration: 0.4 });
   }, [map, floor, selected]);
 
@@ -235,13 +249,17 @@ function Dots({
   dimmedSet,
   selected,
   onSelect,
-}: Pick<FloorMapProps, "floor" | "markers" | "selected" | "onSelect"> & {
+  markerMode,
+}: Pick<FloorMapProps, "floor" | "markers" | "selected" | "onSelect" | "markerMode"> & {
   dimmedSet: Set<number>;
 }) {
   const map = useMap();
   const plan = FLOORS[floor];
   const [[south, west], [north, east]] = plan.bounds;
-  const r = (DOT_SIZE / 2 / PLAN_WIDTH) * (east - west);
+  // Drawn in plan units, not lat/lng: with lat/lng the numbers would be under
+  // the browser's minimum font size and get blown up over the whole map.
+  const k = PLAN_WIDTH / (east - west);
+  const r = DOT_SIZE / 2;
   const onFloor = markers.filter((e) => e.floor === floor && plan.positions[e.position]);
   const picked = onFloor.find((e) => e.position === selected);
 
@@ -250,27 +268,24 @@ function Dots({
       <SVGOverlay
         bounds={plan.bounds}
         attributes={{
-          viewBox: `${west} ${-north} ${east - west} ${north - south}`,
+          viewBox: `${west * k} ${-north * k} ${(east - west) * k} ${(north - south) * k}`,
           preserveAspectRatio: "none",
         }}
       >
         {onFloor
           .filter((e) => e !== picked)
           .map((e) => {
-            const [lat, lng] = plan.positions[e.position];
-            // Dimmed dots are solid grey so the pink dot in the plan doesn't show through.
+            const [y, x] = plan.positions[e.position];
+            const lat = y * k;
+            const lng = x * k;
             const dimmed = dimmedSet.has(e.position);
+            // Small enough that neighbouring logos on floor 2 barely overlap.
+            const w = r * 1.8;
+            const h = r * 1.6;
             return (
-              <circle
+              <g
                 key={e.position}
                 data-dot
-                cx={lng}
-                cy={-lat}
-                r={r}
-                fill={dimmed ? "#a7a9b6" : "#ee2f7b"}
-                stroke="#ffffff"
-                strokeOpacity={dimmed ? 0.6 : 0.8}
-                strokeWidth={r * 0.08}
                 className="cursor-pointer"
                 style={{ pointerEvents: "auto" }}
                 onClick={() => {
@@ -279,7 +294,53 @@ function Dots({
                 }}
               >
                 <title>{e.name}</title>
-              </circle>
+                {markerMode === "logo" && e.logo ? (
+                  <g opacity={dimmed ? 0.4 : 1}>
+                    <rect
+                      x={lng - w / 2}
+                      y={-lat - h / 2}
+                      width={w}
+                      height={h}
+                      rx={r * 0.35}
+                      fill="#dfe1e9"
+                      stroke={dimmed ? "#a7a9b6" : "#ee2f7b"}
+                      strokeWidth={r * 0.1}
+                    />
+                    <image
+                      href={addImageDetails(e.logo)}
+                      x={lng - w / 2 + r * 0.15}
+                      y={-lat - h / 2 + r * 0.15}
+                      width={w - r * 0.3}
+                      height={h - r * 0.3}
+                      preserveAspectRatio="xMidYMid meet"
+                    />
+                  </g>
+                ) : (
+                  <>
+                    <circle
+                      cx={lng}
+                      cy={-lat}
+                      r={r}
+                      fill={dimmed ? "#a7a9b6" : "#ee2f7b"}
+                      stroke="#ffffff"
+                      strokeOpacity={dimmed ? 0.6 : 0.8}
+                      strokeWidth={r * 0.08}
+                    />
+                    <text
+                      x={lng}
+                      y={-lat}
+                      fill="#ffffff"
+                      fontSize={r * 0.84}
+                      fontWeight={500}
+                      textAnchor="middle"
+                      dominantBaseline="central"
+                      pointerEvents="none"
+                    >
+                      {e.position}
+                    </text>
+                  </>
+                )}
+              </g>
             );
           })}
       </SVGOverlay>
@@ -328,6 +389,7 @@ export default function FloorMapInner(props: FloorMapProps) {
       zoom={8}
       zoomSnap={0}
       zoomDelta={0.75}
+      doubleClickZoom={false}
       scrollWheelZoom={false}
       maxBoundsViscosity={1}
       bounceAtZoomLimits={false}
@@ -345,6 +407,7 @@ export default function FloorMapInner(props: FloorMapProps) {
         dimmedSet={dimmedSet}
         selected={selected}
         onSelect={onSelect}
+        markerMode={props.markerMode ?? "number"}
       />
     </MapContainer>
   );

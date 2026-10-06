@@ -245,17 +245,32 @@ export default function Logos({
 }
 
 export async function getServerSideProps() {
-  const exhibitors = await prisma.exhibitor
-    .findMany({ include: { jobOffers: true } })
-    .catch(() => [] as never[]);
+  // Logos are not loaded here, the page links to /api/logo/<id> instead.
+  const [exhibitors, withLogo] = await Promise.all([
+    prisma.exhibitor.findMany({
+      select: {
+        id: true,
+        name: true,
+        description: true,
+        industry: true,
+        packageTier: true,
+        jobOffers: true,
+      },
+    }),
+    prisma.exhibitor.findMany({
+      where: { OR: [{ logoColor: { not: null } }, { logoWhite: { not: null } }] },
+      select: { id: true },
+    }),
+  ]).catch((err) => {
+    console.error("logos: could not load exhibitors from the database", err);
+    return [[], []] as const;
+  });
+  const hasLogo = new Set(withLogo.map((e) => e.id));
 
   const exhibitorData: Exhibitor[] = exhibitors
     .map((exhibitor) => ({
       name: exhibitor.name,
-      logo:
-        exhibitor.logoColor?.toString("base64") ||
-        exhibitor.logoWhite?.toString("base64") ||
-        null,
+      logo: hasLogo.has(exhibitor.id) ? `/api/logo/${exhibitor.id}` : null,
       description: exhibitor.description || "",
       industry: exhibitor.industry || "",
       packageTier: exhibitor.packageTier,

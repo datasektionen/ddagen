@@ -1,6 +1,15 @@
 # Utställare på kartan
 
-Källa: karta.pdf. Nr = numret på pricken i plan2.svg / plan3.svg.
+Källa: karta.pdf. Den här tabellen styr vilka företag som syns på /karta.
+
+- **Företag hoppar av:** ta bort raden. Pricken försvinner från kartan.
+- **Annat företag på samma plats:** ändra namnet. Det ska vara samma namn som
+  i admin, annars visas ingen logga.
+- **Ny plats:** lägg till en rad, och koordinaten för numret i
+  `src/components/Map/floors.ts`.
+- Ändringar syns först efter en ny deploy. Fel i tabellen (rader som inte går
+  att läsa, dubbla nummer, namn som inte matchar admin) skrivs i serverloggen
+  med prefixet `karta:`.
 
 | Nr | Företag | Våning |
 |----|---------|--------|

@@ -8,6 +8,7 @@ import { NextSeo } from "next-seo";
 import { ExhibitorCard, SponsorHero, tierRank } from "@/components/ExhibitorCard";
 import FloorMap from "@/components/Map/FloorMap";
 import { useMapState } from "@/components/Map/useMapState";
+import { FLOORS, type Floor } from "@/components/Map/floors";
 import {
   AppFrame,
   CompanyModal,
@@ -29,6 +30,7 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
   const state = useMapState(exhibitorData);
   const desktop = useIsDesktop();
   const [showFilters, setShowFilters] = useState(false);
+  const [logos, setLogos] = useState(false);
 
   // Same order and layout as /logos: main sponsor on top, then by package.
   const sorted = [...state.filtered].sort(
@@ -40,7 +42,7 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
   const rest = sorted.filter((e) => e.packageTier !== 3);
 
   const list = (
-    <div className="h-full overflow-y-auto pb-6 md:pr-2">
+    <div className="scrollbar-hide h-full overflow-y-auto pb-6 md:pr-2">
       <div className="flex flex-row items-stretch gap-3">
         <SearchInput t={t} value={state.search} onChange={state.setSearch} className="flex-1" />
         <FilterButton t={t} count={state.filterCount} open={showFilters} onClick={() => setShowFilters((v) => !v)} />
@@ -106,16 +108,30 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
           state.setSelected(0);
           state.api?.reset();
         }}
+        markerMode={logos ? "logo" : "number"}
         onApi={state.setApi}
         padding={12}
         inset={{ top: 60, bottom: 60 }}
       />
-      <FloorSwitch
-        t={t}
-        floor={state.floor}
-        setFloor={state.setFloor}
-        className="absolute right-3 top-3 z-[600] [&>button]:px-3 [&>button]:py-1.5 [&>button]:text-xs md:[&>button]:px-4 md:[&>button]:py-2 md:[&>button]:text-sm"
-      />
+      {/* Numbers/Logos and floor switch */}
+      <div className="absolute inset-x-3 top-3 z-[600] flex items-center justify-between gap-2">
+        <div className="inline-flex rounded-full border-2 border-cerise bg-darkblue/90 p-1">
+          {[false, true].map((on) => (
+            <button
+              key={String(on)}
+              type="button"
+              aria-pressed={logos === on}
+              onClick={() => setLogos(on)}
+              className={`whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-medium uppercase tracking-wide md:px-4 md:py-2 md:text-sm ${
+                logos === on ? "bg-cerise text-white" : "text-white"
+              }`}
+            >
+              {on ? t.map.iconButtons.logos : t.map.iconButtons.numbers}
+            </button>
+          ))}
+        </div>
+        <FloorSwitch t={t} floor={state.floor} setFloor={state.setFloor} className="[&>button]:px-3 [&>button]:py-1.5 [&>button]:text-xs md:[&>button]:px-4 md:[&>button]:py-2 md:[&>button]:text-sm" />
+      </div>
       <MapControls t={t} api={state.api} vertical={false} className="absolute bottom-3 left-3" />
     </div>
   );
@@ -161,30 +177,67 @@ const EXHIBITOR_LIST = path.join(
   "public/downloadables/exhibitor_map/exhibitors.md"
 );
 
+// Mistakes in the list are logged instead of silently hiding a company.
 function readExhibitorList() {
-  return fs
-    .readFileSync(EXHIBITOR_LIST, "utf8")
-    .split("\n")
-    .map((line) => line.match(/^\|\s*(\d+)\s*\|\s*(.+?)\s*\|\s*([23])\s*\|$/))
-    .filter((m): m is RegExpMatchArray => m !== null)
-    .map((m) => ({ position: +m[1], name: m[2], floor: +m[3] as 2 | 3 }));
+  let text = "";
+  try {
+    text = fs.readFileSync(EXHIBITOR_LIST, "utf8");
+  } catch (err) {
+    console.error("karta: could not read exhibitors.md", err);
+    return [];
+  }
+  const rows: { position: number; name: string; floor: Floor }[] = [];
+  for (const line of text.split(/\r?\n/).map((l) => l.trim())) {
+    if (!line.startsWith("|") || /^\|\s*(Nr|-)/.test(line)) continue;
+    const m = line.match(/^\|\s*(\d+)\s*\|\s*(.+?)\s*\|\s*([23])\s*\|$/);
+    if (!m) {
+      console.warn(`karta: can't read the row "${line}" in exhibitors.md`);
+      continue;
+    }
+    const row = { position: +m[1], name: m[2], floor: +m[3] as Floor };
+    if (rows.some((r) => r.position === row.position)) {
+      console.warn(`karta: number ${row.position} is used twice in exhibitors.md, skipping "${row.name}"`);
+      continue;
+    }
+    if (!FLOORS[row.floor].positions[row.position])
+      console.warn(`karta: ${row.position} "${row.name}" has no dot on floor ${row.floor} in floors.ts`);
+    rows.push(row);
+  }
+  return rows;
 }
 
 // "Nore Technology AB" and "Nore Technology", "AtlasCopco" and "Atlas Copco"
 // should count as the same company.
 function normalizeName(name: string) {
   return name
+    .normalize("NFC")
     .toLowerCase()
+    .trim()
     .replace(/\s+ab$/, "")
-    .replace(/[^a-z0-9åäöé]/g, "");
+    .replace(/[^a-z0-9åäöéü]/g, "");
 }
 
 export async function getServerSideProps() {
-  const exhibitors = await prisma.exhibitor.findMany({
-    include: {
-      jobOffers: true,
-    },
-  }).catch((err: any) => { return [] });
+  // Logos are not loaded here, the page links to /api/logo/<id> instead.
+  const [exhibitors, withLogo] = await Promise.all([
+    prisma.exhibitor.findMany({
+      select: {
+        id: true,
+        name: true,
+        description: true,
+        industry: true,
+        industryType: true,
+        packageTier: true,
+        jobOffers: true,
+      },
+    }),
+    // Only colour logos: a white logo can't be seen on the light cards.
+    prisma.exhibitor.findMany({ where: { logoColor: { not: null } }, select: { id: true } }),
+  ]).catch((err) => {
+    console.error("karta: could not load exhibitors from the database", err);
+    return [[], []] as const;
+  });
+  const hasLogo = new Set(withLogo.map((e) => e.id));
 
   const byName = Object.fromEntries(
     exhibitors.map((e) => [normalizeName(e.name), e])
@@ -198,21 +251,27 @@ export async function getServerSideProps() {
     const candidates = Object.entries(byName).filter(
       ([k]) => k.startsWith(key) || (k.length >= 4 && key.startsWith(k))
     );
-    return candidates.length === 1 ? candidates[0][1] : undefined;
+    if (candidates.length !== 1) return undefined;
+    console.info(`karta: "${name}" matched "${candidates[0][1].name}" by its start, check that it is the same company`);
+    return candidates[0][1];
   }
 
+  const used = new Set<string>();
   const exhibitorData: MapProp[] = readExhibitorList().map(
     ({ position, name, floor }) => {
       const exhibitor = findExhibitor(name);
       if (!exhibitor && exhibitors.length > 0)
         console.warn(`karta: no exhibitor in the database matches "${name}" (${position})`);
+      if (exhibitor && used.has(exhibitor.id))
+        console.warn(`karta: "${exhibitor.name}" matches more than one row in exhibitors.md (${position})`);
+      if (exhibitor) used.add(exhibitor.id);
 
       return {
         name: exhibitor?.name ?? name,
         logo:
-          exhibitor?.logoColor?.toString("base64") ||
-          exhibitor?.logoWhite?.toString("base64") ||
-          null,
+          exhibitor && hasLogo.has(exhibitor.id)
+            ? `/api/logo/${exhibitor.id}`
+            : null,
         description: exhibitor?.description || "",
         industry: exhibitor?.industry || "",
         packageTier: exhibitor?.packageTier ?? -1,

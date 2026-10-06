@@ -15,6 +15,7 @@ export type FloorMapProps = {
   dimmed?: number[];
   selected?: number;
   onSelect: (position: number) => void;
+  markerMode?: "number" | "logo";
   // A click on the map that isn't on a dot.
   onMapClick?: () => void;
   padding?: number;
