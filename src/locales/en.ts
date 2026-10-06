@@ -1177,8 +1177,14 @@ export default {
     comingSoon: "The upcoming events will be revealed soon!",
     description: "Here you can read information about the different events!",
     readMore: "Read more",
-    lunchSeminarHeader: "Lunch Seminar",
-    lunchSeminar: "Lunch lectures are an incredibly popular concept among students, offering free lunch and an interesting talk from a company in the IT industry. Takes place from 12 AM–1 PM on a weekday at the KTH campus.",
+    lunchSeminar: {
+      header: "Lunch Seminar",
+      overviewText: "Lunch lectures are an incredibly popular concept among students, offering free lunch and an interesting talk from a company in the IT industry. Takes place from 12 AM–1 PM on a weekday at the KTH campus.",
+      signUpText: "Sign Up Form",
+      handelsbanken: {
+        text: "We are one of Sweden's largest Tech organizations with almost 2000 employees and together we develop the bank. Our way of conducting banking is based on trust and respect for the individual. You are given personal responsibility and trust to make decisions. We think that different experiences, knowledge and ways of solving problems contribute to diverse perspectives which helps us develop, together. The driving force behind all of Handelsbanken's technological growth is a desire for making a difference and bringing ideas, thoughts, and aspirations to life."
+      }
+    },
     recruitmentPub: "Recruitment Pub",
     recruitmentPubText: "During the recruitment of D-Dagen's fantastic 100+ day staff who will assist during the fair, the Project Group organizes the annual Recruitment Pub in the Computer Science chapter's own pub, Meta! Join us for a really pleasant evening with D-Dagen-related activities and competitions with sponsored prizes. Food and drinks are available to order. The pub opens 17:17",
     contactConversations: "Signup for Contact Conversations closes at 23:59",

@@ -1172,8 +1172,14 @@ export default {
     comingSoon: "Höstens event kommer avslöjas inom kort!",
     description: "Här kan du läsa information om de olika evenemangen!",
     readMore: "Läs mer",
-    lunchSeminarHeader: "Lunchföreläsning",
-    lunchSeminar: " Lunchföreläsningar är ett otroligt populärt koncept bland studenter, där det bjuds på gratis lunch och en intressant föreläsning från ett företag i IT-branschen. Sker kl. 12-13 en vardag på KTH campus.",
+    lunchSeminar: {
+      header: "Lunchföreläsning",
+      overviewText: "Lunchföreläsningar är ett otroligt populärt koncept bland studenter, där det bjuds på gratis lunch och en intressant föreläsning från ett företag i IT-branschen. Sker kl. 12-13 en vardag på KTH campus.",
+      signUpText: "Anmälningsformulär",
+      handelsbanken: {
+        text: "Vi är en av Sveriges största IT-organisationer med nästan 2000 medarbetare som tillsammans utvecklar banken. Vårt sätt att bedriva bank bygger på att vi har stor tilltro och respekt för den enskilde individen. Våra medarbetare får stort eget ansvar och stora befogenheter att ta beslut i olika frågor som rör verksamheten. Olika erfarenheter, kunskaper och sätt att lösa problem bidrar med olika perspektiv. Handelsbanken drivs av personer som brinner för att göra skillnad och att göra verklighet av idéer, tankar och visioner. "
+      }
+    },
     recruitmentPub: "Rekryteringspub",
     recruitmentPubText: "Under rekryteringen av D-Dagens fantastiska 100+ dagspersonal som ska hjälpa till under mässdagen så anordnar Projektgruppen den årliga Rekryteringspuben i Datasektionens egna pub Meta! Häng med på en riktigt trevlig kväll med D-Dagen relaterade aktiviteter och tävlingar med sponsrade priser. Mat och dryck finns att beställa. Puben öppnar 17:17",
     contactConversations: "Anmälan för Kontaktsamtal stänger 23:59",
