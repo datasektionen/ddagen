@@ -14,7 +14,7 @@ Källa: karta.pdf. Den här tabellen styr vilka företag som syns på /karta.
 | Nr | Företag | Våning |
 |----|---------|--------|
 | 1 | Ida Infront | 2 |
-| 2 | Truesec Group | 2 |
+| 2 | Postnord | 2 |
 | 3 | Sylog | 2 |
 | 4 | Unionen | 2 |
 | 5 | Sweco | 2 |
@@ -46,7 +46,7 @@ Källa: karta.pdf. Den här tabellen styr vilka företag som syns på /karta.
 | 31 | Totalförsvarets forskningsinstitut | 2 |
 | 32 | Saab | 2 |
 | 33 | Compileit AB | 2 |
-| 34 | Postnord | 2 |
+| 34 | Truesec Group | 2 |
 | 35 | Subset | 2 |
 | 36 | Framna | 2 |
 | 37 | CombinedX | 2 |
@@ -79,16 +79,22 @@ Källa: karta.pdf. Den här tabellen styr vilka företag som syns på /karta.
 | 64 | SopraSteria | 2 |
 | 65 | Prevas | 2 |
 | 66 | Scila | 2 |
-| 67 | Sellpy | 2 |
+| 67 | Sellhelp | 2 |
 | 68 | Valcon | 2 |
 | 69 | Kollin | 3 |
 | 70 | Sveriges Ingenjörer | 3 |
 | 71 | Vantir | 3 |
-| 72 | Pango | 3 |
+| 72 | Laguna | 3 |
 | 73 | Gradr | 3 |
 | 74 | RebaseEnergy | 3 |
 | 75 | Kodcentrum | 3 |
 | 76 | Datatjej | 3 |
 | 77 | AI Society | 3 |
+| 78 | KTH Systemförvaltning | 3 |
 | 79 | Säkerhetspolisen | 2 |
-| 80 | AWS | 2 |
+| 80 | Tutus | 2 |
+| 81 | Ernst & Young | 2 |
+| 82 | Pango | 3 |
+| 83 | Zaplar | 3 |
+| 84 | Everi Labs | 3 |
+| 85 | SafeVolt | 3 |

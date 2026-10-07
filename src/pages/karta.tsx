@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import fs from "fs";
 import path from "path";
 import { prisma } from "@/server/db";
@@ -31,6 +31,8 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
   const desktop = useIsDesktop();
   const [showFilters, setShowFilters] = useState(false);
   const [logos, setLogos] = useState(false);
+  // Which of SHEET_STOPS the list is at on a phone.
+  const [sheet, setSheet] = useState(1);
 
   // Same order and layout as /logos: main sponsor on top, then by package.
   const sorted = [...state.filtered].sort(
@@ -41,10 +43,24 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
   const sponsors = sorted.filter((e) => e.packageTier === 3);
   const rest = sorted.filter((e) => e.packageTier !== 3);
 
+  // Opening a company from the list also puts the list down on a phone, so
+  // the map shows where it is once the card is closed.
+  const openCompany = (position: number) => {
+    state.focus(position, true);
+    setSheet(0);
+  };
+
   const list = (
     <div className="scrollbar-hide h-full overflow-y-auto pb-6 md:pr-2">
       <div className="flex flex-row items-stretch gap-3">
-        <SearchInput t={t} value={state.search} onChange={state.setSearch} className="flex-1" />
+        <SearchInput
+          t={t}
+          value={state.search}
+          onChange={state.setSearch}
+          // On a phone, pull the list up to make room for the results.
+          onFocus={() => setSheet(SHEET_STOPS.length - 1)}
+          className="flex-1"
+        />
         <FilterButton t={t} count={state.filterCount} open={showFilters} onClick={() => setShowFilters((v) => !v)} />
       </div>
       {showFilters && (
@@ -62,14 +78,14 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
           {sponsors.length > 0 && (
             <div className="mt-6 flex flex-wrap justify-center gap-6">
               {sponsors.map((e) => (
-                <SponsorHero key={e.position} t={t} exhibitor={e} onOpen={() => state.focus(e.position, true)} />
+                <SponsorHero key={e.position} t={t} exhibitor={e} onOpen={() => openCompany(e.position)} />
               ))}
             </div>
           )}
           {rest.length > 0 && (
             <div className="mt-6 grid grid-cols-1 gap-4 xs:grid-cols-2 lg:grid-cols-3">
               {rest.map((e) => (
-                <ExhibitorCard key={e.position} t={t} exhibitor={e} onOpen={() => state.focus(e.position, true)} />
+                <ExhibitorCard key={e.position} t={t} exhibitor={e} onOpen={() => openCompany(e.position)} />
               ))}
             </div>
           )}
@@ -101,9 +117,15 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
         dimmed={exhibitorData.filter((e) => !state.filtered.includes(e)).map((e) => e.position)}
         selected={state.selected}
         // First tap shows the logo on the map, tapping the logo opens the card.
-        onSelect={(p) => (p === state.selected ? state.setModalOpen(true) : state.focus(p))}
-        // Clicking next to the dots deselects and zooms back out.
+        onSelect={(p) => {
+          if (p === state.selected) return state.setModalOpen(true);
+          state.focus(p);
+          setSheet(0);
+        }}
+        // Clicking next to the dots deselects and zooms back out. On a phone
+        // any tap on the map also puts the list down to give the map room.
         onMapClick={() => {
+          setSheet(0);
           if (!state.selected) return;
           state.setSelected(0);
           state.api?.reset();
@@ -111,7 +133,8 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
         markerMode={logos ? "logo" : "number"}
         onApi={state.setApi}
         padding={12}
-        inset={{ top: 60, bottom: 60 }}
+        // On a phone there are no zoom buttons at the bottom, pinch zooms instead.
+        inset={{ top: 60, bottom: desktop ? 60 : 0 }}
       />
       {/* Numbers/Logos and floor switch */}
       <div className="absolute inset-x-3 top-3 z-[600] flex items-center justify-between gap-2">
@@ -132,7 +155,9 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
         </div>
         <FloorSwitch t={t} floor={state.floor} setFloor={state.setFloor} className="[&>button]:px-3 [&>button]:py-1.5 [&>button]:text-xs md:[&>button]:px-4 md:[&>button]:py-2 md:[&>button]:text-sm" />
       </div>
-      <MapControls t={t} api={state.api} vertical={false} className="absolute bottom-3 left-3" />
+      {desktop && (
+        <MapControls t={t} api={state.api} vertical={false} className="absolute bottom-3 left-3" />
+      )}
     </div>
   );
 
@@ -160,14 +185,94 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
             <div className="flex-1">{map}</div>
           </div>
         ) : (
-          <div className="flex h-full flex-col">
-            <div className="h-[46%] shrink-0 border-b-4 border-cerise">{map}</div>
-            <div className="min-h-0 flex-1 p-3">{list}</div>
-          </div>
+          <MobileSheet map={map} list={list} stop={sheet} setStop={setSheet} />
         )}
       </AppFrame>
       <CompanyModal t={t} state={state} />
     </>
+  );
+}
+
+// Phone layout: map on top, list below. The list can be dragged up and down by
+// its handle and stops at one of these heights (share of the screen). The top
+// stop leaves the map tall enough to still show the plan on small phones.
+const SHEET_STOPS = [20, 54, 75];
+
+function MobileSheet({
+  map,
+  list,
+  stop,
+  setStop,
+}: {
+  map: React.ReactNode;
+  list: React.ReactNode;
+  stop: number;
+  setStop: (i: number) => void;
+}) {
+  // Height while dragging; null when resting on a stop.
+  const [dragHeight, setDragHeight] = useState<number | null>(null);
+  const box = useRef<HTMLDivElement>(null);
+  // Only the finger that started the drag counts.
+  const drag = useRef({ id: -1, y: 0, moved: 0, furthest: 0 });
+  const height = dragHeight ?? SHEET_STOPS[stop];
+
+  const onDown = (e: React.PointerEvent) => {
+    if (drag.current.id !== -1) return;
+    e.currentTarget.setPointerCapture(e.pointerId);
+    drag.current = { id: e.pointerId, y: e.clientY, moved: 0, furthest: 0 };
+    setDragHeight(SHEET_STOPS[stop]);
+  };
+  const onMove = (e: React.PointerEvent) => {
+    if (e.pointerId !== drag.current.id || !box.current) return;
+    const dy = e.clientY - drag.current.y;
+    drag.current.moved = dy;
+    drag.current.furthest = Math.max(drag.current.furthest, Math.abs(dy));
+    const h = SHEET_STOPS[stop] - (dy / box.current.clientHeight) * 100;
+    setDragHeight(Math.min(SHEET_STOPS[2], Math.max(SHEET_STOPS[0], h)));
+  };
+  const onUp = (e: React.PointerEvent) => {
+    if (e.pointerId !== drag.current.id) return;
+    const { moved, furthest } = drag.current;
+    drag.current.id = -1;
+    setDragHeight(null);
+    if (e.type === "pointercancel") return;
+    // A tap goes one stop up (or back to the middle from the top).
+    if (furthest < 8) return setStop(stop === SHEET_STOPS.length - 1 ? 1 : stop + 1);
+    // The browser sends a click where the finger was lifted, often on the
+    // map, which would put the list down again.
+    const swallow = (ev: Event) => ev.stopPropagation();
+    window.addEventListener("click", swallow, { capture: true, once: true });
+    setTimeout(() => window.removeEventListener("click", swallow, true), 300);
+    // Otherwise the closest stop, but always at least one step for a swipe.
+    const closest = SHEET_STOPS.reduce(
+      (best, h, i) => (Math.abs(h - height) < Math.abs(SHEET_STOPS[best] - height) ? i : best),
+      0
+    );
+    if (closest !== stop || Math.abs(moved) < 24) setStop(closest);
+    else setStop(Math.min(SHEET_STOPS.length - 1, Math.max(0, stop + (moved < 0 ? 1 : -1))));
+  };
+
+  return (
+    <div ref={box} className="flex h-full flex-col">
+      <div className="min-h-0 flex-1 border-b-4 border-cerise">{map}</div>
+      <div
+        className={`flex shrink-0 flex-col ${dragHeight === null ? "transition-[height] duration-200" : ""}`}
+        style={{ height: `${height}%` }}
+      >
+        <div
+          role="button"
+          aria-label="Dra listan upp eller ner"
+          onPointerDown={onDown}
+          onPointerMove={onMove}
+          onPointerUp={onUp}
+          onPointerCancel={onUp}
+          className="flex h-10 shrink-0 cursor-grab touch-none items-center justify-center"
+        >
+          <div className="h-1.5 w-12 rounded-full bg-white/70" />
+        </div>
+        <div className="min-h-0 flex-1 px-3">{list}</div>
+      </div>
+    </div>
   );
 }
 

@@ -71,16 +71,19 @@ export function SearchInput({
   t,
   value,
   onChange,
+  onFocus,
   className = "",
 }: {
   t: Locale;
   value: string;
   onChange: (v: string) => void;
+  onFocus?: () => void;
   className?: string;
 }) {
   return (
     <input
       type="search"
+      onFocus={onFocus}
       value={value}
       onChange={(e) => onChange(e.target.value)}
       placeholder={t.map.search.placeHolder}
