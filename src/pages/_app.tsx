@@ -28,6 +28,8 @@ const App: AppType = ({ Component, pageProps }) => {
       <DefaultSeo {...SEO} />
       <Head>
         <link rel="icon" href="/img/favicon.ico" />
+        {/* Browser bars in the site's dark blue instead of white. */}
+        <meta name="theme-color" content="#0f142d" />
         {/* Hreflang meta tags for SEO */}
         {hreflangs.map(({ rel, hrefLang, href }) => (
           <link key={hrefLang} rel={rel} hrefLang={hrefLang} href={href} />

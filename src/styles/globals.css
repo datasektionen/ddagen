@@ -47,6 +47,12 @@
 }
 
 @layer base {
+  /* The site's dark blue on the page itself, so the area behind the browser's
+     own bars (e.g. Safari's floating toolbar on iPhone) isn't white. */
+  html,
+  body {
+    background-color: #0f142d;
+  }
   body {
     overscroll-behavior: none;
   }
