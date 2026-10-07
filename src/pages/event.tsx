@@ -187,10 +187,76 @@ function SingleEvent({
   );
 }
 
+type EventTimelineProps = {
+  events: EventItem[];
+  color: string;
+  lineClass: string;
+  reverseOnEven: boolean;
+  heading?: string;
+  headingClass?: string;
+  topConnectorClass?: string;
+  topConnectorWidth?: string;
+  bottomConnectorClass?: string;
+  bottomConnectorWidth?: string;
+};
+
+function EventTimeline({
+  events,
+  color,
+  lineClass,
+  reverseOnEven,
+  heading,
+  headingClass = "",
+  topConnectorClass,
+  topConnectorWidth = "w-1",
+  bottomConnectorClass,
+  bottomConnectorWidth = "w-1",
+}: EventTimelineProps) {
+  return (
+    <>
+      {heading && (
+        <div>
+          <h1 className={`text-5xl p-4 font-medium text-center ${headingClass}`}>{heading}</h1>
+        </div>
+      )}
+      {topConnectorClass && (
+        <div className="flex max-sm:hidden justify-center">
+          <div className={`${topConnectorWidth} ${topConnectorClass} h-full min-h-[30px] rounded-t-full`}></div>
+        </div>
+      )}
+      <div className={`relative before:absolute before:bottom-0 before:left-1/2 before:top-0 before:z-0 before:hidden before:w-1 before:-translate-x-1/2 before:content-[''] sm:before:block ${lineClass}`}>
+        {events.map((event, i) => (
+          <SingleEvent
+            key={i}
+            color={color}
+            toReverse={reverseOnEven ? i % 2 === 0 : i % 2 === 1}
+            image={event.image}
+            fullImage={event.fullImage ?? false}
+            showDate={!(i > 0 && event.date === events[i - 1].date)}
+            eventInfo={[event.companyName, event.header, event.text, event.date]}
+            companyUrl={event.companyUrl}
+            eventLinkText={event.eventLinkText}
+            eventLinkUrl={event.eventLinkUrl}
+            eventLinkSecondaryText={event.eventLinkSecondaryText}
+            eventLinkSecondaryUrl={event.eventLinkSecondaryUrl}
+            eventHash={event.eventHash}
+            eventDate={event.eventDate}
+          />
+        ))}
+      </div>
+      {bottomConnectorClass && (
+        <div className="flex max-sm:hidden justify-center">
+          <div className={`${bottomConnectorWidth} ${bottomConnectorClass} h-full min-h-[30px] rounded-b-full`}></div>
+        </div>
+      )}
+    </>
+  );
+}
+
 export default function Events() {
   const t = useLocale();
 
-  const events: EventItem[] = [
+  const preFairEvents: EventItem[] = [
     {
       date: "16/9",
       eventDate: "2026-09-16",
@@ -229,6 +295,7 @@ export default function Events() {
     },
     {
       date: "28/9 - 9/10",
+      eventDate: "2026-10-09",
       companyName: "AI Society",
       companyUrl: "https://kthais.com/",
       image: "/img/events/ais_hackathon.png",
@@ -337,14 +404,18 @@ export default function Events() {
     },
   ]
 
-  const postFairEvents: EventItem[] = [/*
+  const postFairEvents: EventItem[] = [
     {
-      date: "13/10",
-      companyName: "Försvarsmaktens Radioanstalt",
-      image: "/img/exhibitors/FRA.png",
-      header: t.event.lunchSeminarHeader,
-      text: t.event.lunchSeminar
-    },*/
+      date: "12/10",
+      eventDate: "2026-10-12",
+      companyName: "Handelsbanken",
+      fullImage: true,
+      image: "/img/events/lunchSeminars/handelsbanken.png",
+      header: t.event.lunchSeminar.header,
+      text: t.event.lunchSeminar.handelsbanken.text + "\n\n" + t.event.lunchSeminar.overviewText,
+      eventLinkText: t.event.lunchSeminar.signUpText,
+      eventLinkUrl: "https://forms.gle/882K9io77bT6jhEJ7",
+    },
   ]
 
   const seoContent = {
@@ -394,110 +465,37 @@ export default function Events() {
         <h1 className="text-5xl text-cerise font-medium text-center"> EVENT</h1>
         <p className="font-medium text-2xl text-center text-cerise">{t.event.description}</p>
         <div className="flex flex-col mt-4">
-          <div className="max-sm:hidden flex justify-center">
-            <div className="w-1 bg-cerise h-full min-h-[30px] rounded-t-full"></div>
-          </div>
-          <div className="relative before:absolute before:bottom-0 before:left-1/2 before:top-0 before:z-0 before:hidden before:w-1 before:-translate-x-1/2 before:bg-cerise before:content-[''] sm:before:block">
-            {events?.map((event, i) => (
-              <SingleEvent
-                key={i}
-                color="bg-cerise"
-                toReverse={i%2 == 0}
-                image={event?.image}
-                fullImage={event?.fullImage ?? false}
-                showDate={!(i > 0 && event.date === events[i-1].date)}
-                eventInfo={[
-                  event.companyName,
-                  event.header,
-                  event.text,
-                  event.date
-                ]}
-                companyUrl={event?.companyUrl}
-                eventLinkText={event?.eventLinkText}
-                eventLinkUrl={event?.eventLinkUrl}
-                eventLinkSecondaryText={event?.eventLinkSecondaryText}
-                eventLinkSecondaryUrl={event?.eventLinkSecondaryUrl}
-                eventHash={event?.eventHash}
-                eventDate={event?.eventDate}
-                />
-              ))
-            }
-          </div>
-          <div className="flex max-sm:hidden justify-center">
-            <div className="w-1 bg-cerise h-full min-h-[30px] rounded-b-full"></div>
-          </div>
-          <div>
-            <h1 className="text-5xl text-[#C2952C] p-4 font-medium text-center"> {t.event.fair} 8/10</h1>
-          </div>
-          <div className="max-sm:hidden flex justify-center">
-            <div className="w-1 bg-[#C2952C] h-full min-h-[30px] rounded-t-full"></div>
-          </div>
-          <div className="relative before:absolute before:bottom-0 before:left-1/2 before:top-0 before:z-0 before:hidden before:w-1 before:-translate-x-1/2 before:bg-[#C2952C] before:content-[''] sm:before:block">
-            {fairEvents?.map((event, i) => (
-              <SingleEvent
-                key={i}
-                color="bg-[#C2952C]"
-                toReverse={i%2 == 1}
-                image={event?.image}
-                fullImage={event?.fullImage ?? false}
-                showDate={!(i > 0 && event.date === fairEvents[i-1].date)}
-                eventInfo={[
-                  event.companyName,
-                  event.header,
-                  event.text,
-                  event.date
-                ]}
-                companyUrl={event?.companyUrl}
-                eventLinkText={event?.eventLinkText}
-                eventLinkUrl={event?.eventLinkUrl}
-                eventLinkSecondaryText={event?.eventLinkSecondaryText}
-                eventLinkSecondaryUrl={event?.eventLinkSecondaryUrl}
-                eventDate={event?.eventDate}
-                />
-              ))
-            }
-          </div>
+          <EventTimeline
+            events={preFairEvents}
+            color="bg-cerise"
+            lineClass="before:bg-cerise"
+            reverseOnEven={true}
+            topConnectorClass="bg-cerise"
+            bottomConnectorClass="bg-cerise"
+          />
+          <EventTimeline
+            events={fairEvents}
+            color="bg-[#C2952C]"
+            lineClass="before:bg-[#C2952C]"
+            reverseOnEven={preFairEvents.length % 2 == 0}
+            heading={`${t.event.fair} 8/10`}
+            headingClass="text-[#C2952C]"
+            topConnectorClass="bg-[#C2952C]"
+            bottomConnectorClass="bg-[#C2952C]"
+          />
         </div>
-          {postFairEvents.length === 0 && (
-            <div className="flex max-sm:hidden justify-center">
-              <div className="w-1 bg-[#C2952C] h-full min-h-[30px] rounded-b-full"></div>
-            </div>
-          )}
           {postFairEvents.length > 0 && (
             <>
-              <div className="flex max-sm:hidden justify-center">
-                <div className="w-4 bg-[#C2952C] h-full min-h-[30px] rounded-b-full"></div>
-              </div>
-              <div>
-                <h1 className="text-5xl text-cerise p-4 font-medium text-center"> {t.event.after + " " + t.event.fair}</h1>
-              </div>
-              <div className="max-sm:hidden flex justify-center">
-                <div className="w-1 bg-cerise h-full min-h-[30px] rounded-t-full"></div>
-              </div>
-              {postFairEvents.map((event, i) => (
-                <SingleEvent
-                  key={i}
-                  color="bg-cerise"
-                  toReverse={i%2 == 0}
-                  image={event?.image}
-                  showDate={!(i > 0 && event.date === postFairEvents[i-1].date)}
-                  eventInfo={[
-                    event.companyName,
-                    event.header,
-                    event.text,
-                    event.date
-                  ]}
-                  companyUrl={event?.companyUrl}
-                  eventLinkText={event?.eventLinkText}
-                  eventLinkUrl={event?.eventLinkUrl}
-                  eventLinkSecondaryText={event?.eventLinkSecondaryText}
-                  eventLinkSecondaryUrl={event?.eventLinkSecondaryUrl}
-                  />
-                ))
-              }
-              <div className="flex max-sm:hidden justify-center">
-                <div className="w-1 bg-cerise h-full min-h-[30px] rounded-b-full"></div>
-              </div>
+              <EventTimeline
+                events={postFairEvents}
+                color="bg-cerise"
+                lineClass="before:bg-cerise"
+                reverseOnEven={(preFairEvents.length + fairEvents.length) % 2 == 0}
+                heading={`${t.event.after} ${t.event.fair}`}
+                headingClass="text-cerise"
+                topConnectorClass="bg-cerise"
+                bottomConnectorClass="bg-cerise"
+              />
             </>
           )}
       </div>
