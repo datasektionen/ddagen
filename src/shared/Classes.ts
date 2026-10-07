@@ -376,11 +376,10 @@ export class ExhibitorInfo {
 
 export type MapProp = {
   name: string;
-  logoWhite?: string | null;
-  logoColor?: string | null;
+  logo: string | null;
   description: string;
+  industry: string;
   packageTier: number;
-  jobOfferId: string;
   offers: {
     summerJob: number[];
     internship: number[];
@@ -391,6 +390,7 @@ export type MapProp = {
   };
   industryType: string;
   position: number;
+  floor: 2 | 3;
 };
 
 export type ExtraOrderItem = {
