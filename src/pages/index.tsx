@@ -101,7 +101,12 @@ export default function Home() {
           </div>
 
           {/* Button wrapper (separat div) */}
-          <div className="flex flex-wrap justify-center gap-4 mt-8">
+          <div className={`
+            flex flex-wrap justify-center gap-4 mt-8
+            transition-all ease-in-out
+            ${ hasLoadedBefore ? 'duration-0': 'delay-[300ms] duration-[800ms]'}
+            ${ showPage ? "opacity-100" : "opacity-0" }
+            `}>
             {/* Exhibitor registration is closed during the fair, the map and exhibitors take its place.
             <Link
               className="bg-cerise py-2.5 px-6 rounded-full text-white text-center hover:scale-105 transition-transform"
