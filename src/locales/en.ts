@@ -190,6 +190,15 @@ export default {
     interestedText:
       "Are you interested in being a sponsor on D-Dagen and reaching out to thousands of students in Computer Science and IT? Reach out to ",
   },
+  partners: {
+    title: "Our Partners",
+    kthAiSocietyTitle: "KTH AI Society",
+    kthAiSocietyText: "We are proud to partner with KTH AI Society, a student-run organization at KTH focused on artificial intelligence and machine learning. Together, we create opportunities for students to deepen their knowledge and build connections within the field of AI.",
+    kthAiSocietyButton: "Visit KTH AI Society",
+    eventsTitle: "Joint Events",
+    eventsText: "Together with our partners, we host exciting hackathons and events throughout the year. Explore all current and upcoming events on our event page.",
+    eventsButton: "View Our Events",
+  },
   forStudents: {
     title: "For Students",
     guideText: "Welcome to D-Dagen! Here is a guide for students to get the most out of the fair.",
@@ -671,6 +680,7 @@ export default {
     logout: "Log out",
     catalog: "Catalog",
     logos: "Our Exhibitors",
+    parnters: "Partners",
     meetings: "Company Meetings",
     map: "Map",
     sok: "Signup for D-Dagen",

@@ -189,6 +189,15 @@ export default {
     interestedText:
       "Vill ni sponsra D-Dagen och nå ut till tusentals studenter inom datateknik och IT? Hör av er till ",
   },
+  partners: {
+    title: "Våra Partners",
+    kthAiSocietyTitle: "KTH AI Society",
+    kthAiSocietyText: "Vi är stolta över att samarbeta med KTH AI Society, en studentdriven organisation vid KTH som fokuserar på artificiell intelligens och maskininlärning. Tillsammans skapar vi möjligheter för studenter att fördjupa sina kunskaper och knyta kontakter inom AI-området.",
+    kthAiSocietyButton: "Besök KTH AI Society",
+    eventsTitle: "Gemensamma Event",
+    eventsText: "Tillsammans med våra partners anordnar vi spännande hackathon och event under hela året. Utforska alla våra aktuella och kommande event på vår eventsida.",
+    eventsButton: "Se Våra Event",
+  },
   forStudents: {
     title: "För Studenter",
     guideText: "Välkommen till D-Dagen! Här är en guide för studenter för att få ut det mesta av mässan.",
@@ -666,6 +675,7 @@ export default {
     logout: "Logga ut",
     catalog: "Katalog",
     logos: "Våra Utställare",
+    parnters: "Partners",
     meetings: "Kontaktsamtal",
     map: "Karta",
     sok: "Sök D-Dagen",
