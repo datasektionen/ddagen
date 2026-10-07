@@ -303,6 +303,9 @@ function Dots({
             const lat = y * k;
             const lng = x * k;
             const dimmed = dimmedSet.has(e.position);
+            // The main sponsor is yellow, like its card in the list.
+            const sponsor = e.packageTier === 3 && !dimmed;
+            const color = dimmed ? "#a7a9b6" : sponsor ? "#ffc800" : "#ee2f7b";
             // Small enough that neighbouring logos on floor 2 barely overlap.
             const w = r * 1.8;
             const h = r * 1.6;
@@ -327,8 +330,8 @@ function Dots({
                       height={h}
                       rx={r * 0.35}
                       fill="#dfe1e9"
-                      stroke={dimmed ? "#a7a9b6" : "#ee2f7b"}
-                      strokeWidth={r * 0.1}
+                      stroke={color}
+                      strokeWidth={r * (sponsor ? 0.2 : 0.1)}
                     />
                     <image
                       href={addImageDetails(e.logo)}
@@ -345,7 +348,7 @@ function Dots({
                       cx={lng}
                       cy={-lat}
                       r={r}
-                      fill={dimmed ? "#a7a9b6" : "#ee2f7b"}
+                      fill={color}
                       stroke="#ffffff"
                       strokeOpacity={dimmed ? 0.6 : 0.8}
                       strokeWidth={r * 0.08}
@@ -353,7 +356,7 @@ function Dots({
                     <text
                       x={lng}
                       y={-lat}
-                      fill="#ffffff"
+                      fill={sponsor ? "#0f142d" : "#ffffff"}
                       fontSize={r * 0.84}
                       fontWeight={500}
                       textAnchor="middle"
