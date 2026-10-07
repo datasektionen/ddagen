@@ -111,7 +111,8 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
         markerMode={logos ? "logo" : "number"}
         onApi={state.setApi}
         padding={12}
-        inset={{ top: 60, bottom: 60 }}
+        // On a phone there are no zoom buttons at the bottom, pinch zooms instead.
+        inset={{ top: 60, bottom: desktop ? 60 : 0 }}
       />
       {/* Numbers/Logos and floor switch */}
       <div className="absolute inset-x-3 top-3 z-[600] flex items-center justify-between gap-2">
@@ -132,7 +133,9 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
         </div>
         <FloorSwitch t={t} floor={state.floor} setFloor={state.setFloor} className="[&>button]:px-3 [&>button]:py-1.5 [&>button]:text-xs md:[&>button]:px-4 md:[&>button]:py-2 md:[&>button]:text-sm" />
       </div>
-      <MapControls t={t} api={state.api} vertical={false} className="absolute bottom-3 left-3" />
+      {desktop && (
+        <MapControls t={t} api={state.api} vertical={false} className="absolute bottom-3 left-3" />
+      )}
     </div>
   );
 
