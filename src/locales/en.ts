@@ -483,6 +483,8 @@ export default {
         requestChange: "Request change",
         pendingTicket: "Ticket request pending approval",
         warning: "Last date for ordering ",
+        locked: "The food preferences are locked - if you want to make a change:",
+        lockedAction: "Send an email, explaining what you want to order to both:",
         usagenotice: "Only specify for those who have special dietary requirements",
         section1: {
           header: "During the Fair",
