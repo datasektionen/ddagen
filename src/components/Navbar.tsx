@@ -363,7 +363,6 @@ export default function Navbar() {
                 //{ href: "/karta", text: t.map }, 2026
                 { href: "/event", text: t.event }, //2026
                 { href: "/logos", text: t.logos },
-                { href: "/partners", text: t.parnters },
                 //{ href: "/kontaktsamtal", text: t.meetings },
                 //{ href: "/sok", text: t.sok }, 2026
               ]}
@@ -373,10 +372,12 @@ export default function Navbar() {
               <Group
                 links={[
                   { href: "/om-oss", text: t.about },
+                  { href: "/contact", text: t.contact },
                   { href: "/historia", text: t.history },
                 ]}
               />
             </div>
+            <NavLink class="px-0 w-[300px] lg:hidden" href="/partners">{t.partners}</NavLink>
           </div>
           <div
             className="
@@ -385,14 +386,15 @@ export default function Navbar() {
             lg:px-0 bg-black lg:bg-transparent lg:ml-auto
           "
           >
-            <NavLink class="hidden lg:block px-0 lg:px-4 p-4 w-[300px] lg:pr-2 lg:w-auto" href="/kontakt">
-              {t.contact}
+            <NavLink class="hidden lg:block px-0 lg:px-4 p-4 w-[300px] lg:pr-2 lg:w-auto" href="/partners">
+              {t.partners}
             </NavLink>
             <div className="hidden lg:block">
               <Group
               class=" lg:ml-0"
                 links={[
                   { href: "/om-oss", text: t.about },
+                  { href: "/contact", text: t.contact },
                   { href: "/historia", text: t.history },
                 ]}
               />

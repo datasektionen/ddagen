@@ -75,7 +75,22 @@ export default function Partners() {
             </button>
           </ImageTextSection>
 
-          {/* Section 2: Joint Events (Text left, image right) */}
+          {/* Section 2: AIS Company Highlights (Inline Centered Section) */}
+          <div className="flex flex-col items-center text-center max-w-[90vw] lg:max-w-5xl mx-auto p-6 sm:p-8 rounded-lg bg-[rgba(15,20,45,0.75)] mt-[10px] lg:mt-[30px] mb-[20px] lg:mb-[40px] w-full">
+            <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl max-w-xl">
+              {t.partners.highlightsTitle}
+            </h2>
+            <p className="text-white text-base sm:text-lg pt-4 max-w-xl">
+              {t.partners.highlightsText}
+            </p>
+            <img
+              src="/img/partners/ais_champions.png"
+              alt="AIS Company Highlights"
+              className="object-contain w-full max-w-xl lg:max-w-2xl mt-6 rounded-md"
+            />
+          </div>
+
+          {/* Section 3: Joint Events (Text left, image right) */}
           <ImageTextSection
             t={t}
             leftSideImage={false}
