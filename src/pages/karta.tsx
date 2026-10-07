@@ -32,7 +32,7 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
   const [showFilters, setShowFilters] = useState(false);
   const [logos, setLogos] = useState(false);
   // Which of SHEET_STOPS the list is at on a phone.
-  const [sheet, setSheet] = useState(1);
+  const [sheet, setSheet] = useState(0);
 
   // Same order and layout as /logos: main sponsor on top, then by package.
   const sorted = [...state.filtered].sort(
@@ -51,7 +51,7 @@ export default function Karta({ exhibitorData }: { exhibitorData: MapProp[] }) {
   };
 
   const list = (
-    <div className="scrollbar-hide h-full overflow-y-auto pb-6 md:pr-2">
+    <div className="scrollbar-hide h-full overflow-y-auto pb-[calc(1.5rem+var(--bar,0px))] md:pr-2">
       <div className="flex flex-row items-stretch gap-3">
         <SearchInput
           t={t}
@@ -227,7 +227,9 @@ function MobileSheet({
     const dy = e.clientY - drag.current.y;
     drag.current.moved = dy;
     drag.current.furthest = Math.max(drag.current.furthest, Math.abs(dy));
-    const h = SHEET_STOPS[stop] - (dy / box.current.clientHeight) * 100;
+    // Stops are shares of the visible part, not of what's under the bottom bar.
+    const visible = window.innerHeight - box.current.getBoundingClientRect().top;
+    const h = SHEET_STOPS[stop] - (dy / visible) * 100;
     setDragHeight(Math.min(SHEET_STOPS[2], Math.max(SHEET_STOPS[0], h)));
   };
   const onUp = (e: React.PointerEvent) => {
@@ -257,7 +259,8 @@ function MobileSheet({
       <div className="min-h-0 flex-1 border-b-4 border-cerise">{map}</div>
       <div
         className={`flex shrink-0 flex-col ${dragHeight === null ? "transition-[height] duration-200" : ""}`}
-        style={{ height: `${height}%` }}
+        // A share of the visible height, plus the part under the browser's bar.
+        style={{ height: `calc(${height / 100} * (100dvh - 5rem) + var(--bar, 0px))` }}
       >
         <div
           role="button"

@@ -269,13 +269,48 @@ export function AppFrame({
   className?: string;
 }) {
   useLockBodyScroll();
+  useScrollBackAfterKeyboard();
+  // On a phone the frame also reaches under the browser's own bottom bar
+  // (--bar tall), so content shows through it like on the rest of the site.
   return (
-    <div className="relative z-10 h-[100dvh] pt-20">
+    <div className="relative z-10 h-[calc(100dvh+var(--bar))] pt-20 [--bar:calc(100lvh-100dvh)] md:[--bar:0px]">
       <div className={`relative isolate h-full overflow-hidden bg-darkblue ${className}`}>
         {children}
       </div>
     </div>
   );
+}
+
+// iOS Safari scrolls the page to show a focused input, even with page scroll
+// locked, and leaves it scrolled after the keyboard closes. That pushes the
+// frame up under the navbar, so scroll back once the keyboard is gone.
+function useScrollBackAfterKeyboard() {
+  useEffect(() => {
+    const vv = window.visualViewport;
+    const typing = () => {
+      const el = document.activeElement;
+      return el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement;
+    };
+    // The keyboard only shrinks the visual viewport, so when that is back to
+    // (almost) the window's height the keyboard is closed, even if the input
+    // still has focus.
+    const keyboardOpen = () => !!vv && vv.height < window.innerHeight * 0.85;
+    const reset = () => window.scrollTo(0, 0);
+    const onResize = () => {
+      if (!keyboardOpen()) reset();
+    };
+    // Wait a moment so focus moving to another input counts as still typing.
+    const onFocusOut = () =>
+      setTimeout(() => {
+        if (!typing() && !keyboardOpen()) reset();
+      }, 100);
+    document.addEventListener("focusout", onFocusOut);
+    vv?.addEventListener("resize", onResize);
+    return () => {
+      document.removeEventListener("focusout", onFocusOut);
+      vv?.removeEventListener("resize", onResize);
+    };
+  }, []);
 }
 
 // True on md screens and up. Mobile and desktop get separate layouts.

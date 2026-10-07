@@ -335,7 +335,7 @@ export default function Navbar() {
             <NavLink class="px-0 lg:px-4 p-4 w-[300px] lg:w-auto" href="/">
               {t.home}
             </NavLink>
-            <NavLink class="px-0 lg:px-4 xl:block hidden lg:pt-4 pb-4 w-[300px] lg:w-auto" href="/karta">
+            <NavLink class="px-0 lg:px-4 p-4 lg:pt-4 w-[300px] lg:w-auto lg:hidden xl:block" href="/karta">
               {t.map}
             </NavLink>    {/*<= this one was only used during the fair   */}
             <Group
