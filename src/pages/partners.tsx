@@ -80,7 +80,7 @@ export default function Partners() {
             t={t}
             leftSideImage={false}
             imageProps={{
-              src: "/img/ddagen2024/ddagen-exhibitors.jpg",
+              src: "/img/partners/ais_event.jpg",
               alt: "D-Dagen Events",
             }}
             className="mt-[10px] lg:mt-[30px] mb-[20px] lg:mb-[40px]"
