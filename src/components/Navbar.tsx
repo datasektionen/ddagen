@@ -335,9 +335,10 @@ export default function Navbar() {
             <NavLink class="px-0 lg:px-4 p-4 w-[300px] lg:w-auto" href="/">
               {t.home}
             </NavLink>
+            {/* The map is the pink button on the right during the fair.
             <NavLink class="px-0 lg:px-4 p-4 lg:pt-4 w-[300px] lg:w-auto lg:hidden xl:block" href="/karta">
               {t.map}
-            </NavLink>    {/*<= this one was only used during the fair   */}
+            </NavLink>*/}
             <Group
               links={[
                 { href: "/förföretag", text: t.forCompanies },
@@ -379,7 +380,7 @@ export default function Navbar() {
           <div
             className="
             flex flex-row lg:justify-center items-center lg:pl-0 justify-center lg:pr-0
-            py-4 gap-3
+            py-4 gap-4
             lg:px-0 bg-black lg:bg-transparent lg:ml-auto
           "
           >
@@ -395,11 +396,18 @@ export default function Navbar() {
                 ]}
               />
             </div>
+            {/* Exhibitor registration is closed during the fair, the map takes its place.
             <Link
               className="bg-cerise py-2.5 px-4 rounded-full text-center hover:scale-105 transition-transform"
               href="/företagsanmälan"
             >
               {t.companyForm}
+            </Link>*/}
+            <Link
+              className="bg-cerise py-2.5 px-7 lg:ml-2 rounded-full text-center hover:scale-105 transition-transform"
+              href="/karta"
+            >
+              {t.map}
             </Link>
             <button
               data-dont-close
