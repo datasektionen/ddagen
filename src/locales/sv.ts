@@ -27,6 +27,9 @@ export default {
       hours: "timmar",
       minutes: "minuter",
       seconds: "sekunder",
+      welcome: "Välkomna - Mässan är öpen!",
+      welcomeDisclaimer: "10:00 - 16:00",
+      closed: "Mässan är nu stängd!"
     },
     exhibitButton: "Ställ ut på D-Dagen",
     stats: [
@@ -482,6 +485,8 @@ export default {
         pendingTicket: "Biljettförfrågan väntar på godkännande",
         warning: "Sista datum för att lägga till matpreferenser ",
         usagenotice: "Välj bara preferenser för de som har specialkost, övriga får standardmaten",
+        locked: "Matpreferenserna är låsta - om du vill ändra något:",
+        lockedAction: "Skicka ett mail, som förklarar vad du vill beställa - till båda:",
         section1: {
           header: "Under Mässan",
           paragraphOne:

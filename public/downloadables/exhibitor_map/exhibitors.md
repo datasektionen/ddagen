@@ -39,9 +39,9 @@ Källa: karta.pdf. Den här tabellen styr vilka företag som syns på /karta.
 | 24 | Ubiquiti | 2 |
 | 25 | AtlasCopco | 2 |
 | 26 | OmegaPoint | 2 |
-| 27 | Länsförsäkringar | 2 |
+| 27 | Basalt | 2 |
 | 28 | Nore Technology AB | 2 |
-| 29 | Basalt | 2 |
+| 29 | Länsförsäkringar | 2 |
 | 30 | Ericsson | 2 |
 | 31 | Totalförsvarets forskningsinstitut | 2 |
 | 32 | Saab | 2 |

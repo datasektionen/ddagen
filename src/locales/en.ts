@@ -27,6 +27,9 @@ export default {
       hours: "hours",
       minutes: "minutes",
       seconds: "seconds",
+      welcome: "Welcome - The fair is open!",
+      welcomeDisclaimer: "10:00 - 16:00",
+      closed: "The fair is now closed!"
     },
     exhibitButton: "Exhibit at D-Dagen",
     stats: [
@@ -483,6 +486,8 @@ export default {
         requestChange: "Request change",
         pendingTicket: "Ticket request pending approval",
         warning: "Last date for ordering ",
+        locked: "The food preferences are locked - if you want to make a change:",
+        lockedAction: "Send an email, explaining what you want to order to both:",
         usagenotice: "Only specify for those who have special dietary requirements",
         section1: {
           header: "During the Fair",

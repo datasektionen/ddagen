@@ -48,6 +48,8 @@ export function AddPreferences({
   const extraTicketPrice = isRepresentative ? 450 : 2000;
   const defaultPreference = new Preferences(undefined, "", [], "", type);
 
+  const [lockPreferenceChange, setLockPreferences] = useState<boolean>(new Date() >= new Date("2026-10-07T15:59:59"));
+
   const [checkmarks, setCheckMarks] = useState<boolean[]>([
     false,
     false,
@@ -67,6 +69,9 @@ export function AddPreferences({
   const deletePreferenceMutation =
     api.exhibitor.deleteFoodPreferences.useMutation();
   const deleteTicketPreference = api.exhibitor.deleteTicketPreference.useMutation();
+
+  const { data: salesperson } = api.exhibitor.getSalesperson.useQuery();
+  const salespersonEmail = salesperson || "sales@ddagen.se";
 
   function convertCheckMarks(checkmarks: boolean[]): Options[] {
     const options: Options[] = ["Meat", "Vegan", "LactoseFree", "GlutenFree", "AlcoholFree"];
@@ -234,6 +239,36 @@ export function AddPreferences({
   useEffect(() => {
     if (editState !== undefined) setShowForm(true);
   }, [editState]);
+
+  if (lockPreferenceChange) {
+    return (
+      <div className={`w-[80%] flex flex-col relative items-center justify-between mt-8 mb-4`}>
+          <div className="w-full flex-1 rounded-md border-[1px] border-cerise p-2 py-4">
+            {/*t.exhibitorSettings.table.row3.ticketRequestDisclaimer*/}
+            <h3 className="text-white text-center text-xl">
+              {t.exhibitorSettings.table.row3.locked}
+            </h3>
+            <p className="text-white text-center text-lg mt-4">
+              {t.exhibitorSettings.table.row3.lockedAction}
+            </p>
+            <a className="text-cerise" href={`mailto:${salespersonEmail},ekonomi@ddagen.se`}>{salespersonEmail}<span className="text-white">&nbsp;&&nbsp;</span> ekonomi@ddagen.se</a>
+          </div>
+          {!!isAdmin &&
+            <div className="absolute top-2 right-2">
+              <button
+                className={`
+                  bg-editIcon bg-white
+                  bg-[length:30px_30px] w-[33px] h-[33px] bg-no-repeat bg-origin-content 
+                  pl-1 pb-1 rounded-md hover:scale-105 transition-transform`}
+                onClick={() => {
+                  setLockPreferences(false);
+                }}
+              />
+            </div>
+          }
+      </div>
+    )
+  }
 
   if (!showForm) {
     const ticketCount = preferences.length - 1;
