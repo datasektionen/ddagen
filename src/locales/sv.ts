@@ -482,6 +482,8 @@ export default {
         pendingTicket: "Biljettförfrågan väntar på godkännande",
         warning: "Sista datum för att lägga till matpreferenser ",
         usagenotice: "Välj bara preferenser för de som har specialkost, övriga får standardmaten",
+        locked: "Matpreferenserna är låsta - om du vill ändra något:",
+        lockedAction: "Skicka ett mail, som förklarar vad du vill beställa - till båda:",
         section1: {
           header: "Under Mässan",
           paragraphOne:
