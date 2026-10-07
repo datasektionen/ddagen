@@ -60,6 +60,8 @@ function Controller({
   // Latest insets for handlers set up once per floor.
   const boxRef = useRef(box);
   boxRef.current = box;
+  const selectedRef = useRef(selected);
+  selectedRef.current = selected;
   // The pending "finish the reset" handler, dropped when a new move starts so
   // it can't snap a later selection back out.
   const finishReset = useRef<() => void>();
@@ -76,6 +78,10 @@ function Controller({
     });
     const fitZoom = () => {
       const b = boxRef.current;
+      // getBoundsZoom is clamped to the current limits, which would stop the
+      // map from zooming further out when it gets smaller.
+      map.options.minZoom = 0;
+      map.options.maxZoom = 30;
       return map.getBoundsZoom(bounds, false, L.point(b.left + b.right, b.top + b.bottom));
     };
     // Panning stops when the plan's edge reaches the edge of the free area,
@@ -86,6 +92,13 @@ function Controller({
       const sw = map.project(bounds.getSouthWest(), z).add(L.point(-b.left, b.bottom));
       const ne = map.project(bounds.getNorthEast(), z).add(L.point(b.right, -b.top));
       map.setMaxBounds(L.latLngBounds(map.unproject(sw, z), map.unproject(ne, z)));
+    };
+    // While the map is squeezed (e.g. the list on a phone pulled up) there is
+    // nothing to fit into, and fitting would give a broken zoom.
+    const noRoom = () => {
+      const b = boxRef.current;
+      const size = map.getSize();
+      return size.x - b.left - b.right < 40 || size.y - b.top - b.bottom < 40;
     };
     const atMin = () => map.getZoom() <= map.getMinZoom() + 0.05;
     const syncDragging = () => {
@@ -101,20 +114,37 @@ function Controller({
     };
     const fit = (animate: boolean) => {
       map.invalidateSize();
+      if (noRoom()) return;
       setLimits();
       if (animate) map.flyToBounds(bounds, { ...fitOptions(), duration: 0.4 });
       else map.fitBounds(bounds, { ...fitOptions(), animate: false });
       limitPan();
     };
-    // After a resize or new insets: refit when fully zoomed out, else keep the view.
+    // Zoomed in on the selected company's dot, which lands in the middle of
+    // the area not covered by panels. False when it isn't on this floor.
+    const showSelected = (animate: boolean) => {
+      const pos = FLOORS[floor].positions[selectedRef.current ?? 0];
+      if (!pos) return false;
+      const b = boxRef.current;
+      const zoom = Math.max(map.getZoom(), map.getMinZoom() + 1.25);
+      const shift = L.point((b.left - b.right) / 2, (b.top - b.bottom) / 2);
+      const target = map.unproject(map.project(pos, zoom).subtract(shift), zoom);
+      if (animate) map.flyTo(target, zoom, { duration: 0.4 });
+      else map.setView(target, zoom, { animate: false });
+      return true;
+    };
+    // After a resize or new insets: keep the selected company in view, else
+    // refit when fully zoomed out, else keep the view.
     const refresh = () => {
       const wasMin = atMin();
       map.invalidateSize();
+      if (noRoom()) return;
       setLimits();
-      if (wasMin || map.getZoom() < map.getMinZoom()) fit(false);
+      if (showSelected(false)) limitPan();
+      else if (wasMin || map.getZoom() < map.getMinZoom()) fit(false);
       else limitPan();
     };
-    return { bounds, fitOptions, limitPan, syncDragging, fit, refresh };
+    return { bounds, fitOptions, limitPan, syncDragging, fit, refresh, showSelected };
   }, [map, floor]);
 
   useEffect(() => {
@@ -227,16 +257,10 @@ function Controller({
 
   // Move to the selected company's dot when it's on this floor.
   useEffect(() => {
-    const pos = FLOORS[floor].positions[selected ?? 0];
-    if (!pos) return;
-    const b = boxRef.current;
-    const zoom = Math.max(map.getZoom(), map.getMinZoom() + 1.25);
-    // Offset so the dot lands in the middle of the area not covered by panels.
-    const shift = L.point((b.left - b.right) / 2, (b.top - b.bottom) / 2);
-    const target = map.unproject(map.project(pos, zoom).subtract(shift), zoom);
+    if (!FLOORS[floor].positions[selected ?? 0]) return;
     cancelReset();
-    map.flyTo(target, zoom, { duration: 0.4 });
-  }, [map, floor, selected]);
+    tools.showSelected(true);
+  }, [tools, selected]);
 
   return null;
 }
