@@ -22,28 +22,58 @@ export function Countdown() {
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
 
+  const target = new Date("10/8/2026 10:00:00+02:00");
+  const openTarget = new Date("10/8/2026 16:00:00+02:00");
   useEffect(() => {
-    const target = new Date("10/8/2026 10:00:00+02:00");
+
     const interval = setInterval(() => {
       const now = new Date();
       const difference = target.getTime() - now.getTime();
 
       const d_diff = difference / (1000 * 60 * 60 * 24);
-      setDays(difference < 0 ? Math.ceil(d_diff) : Math.floor(d_diff));
+      setDays(difference < 0 ? 0 : Math.floor(d_diff));
 
       const h_diff =
         (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60);
-      setHours(difference < 0 ? Math.ceil(h_diff) : Math.floor(h_diff));
+      setHours(difference < 0 ? 0 : Math.floor(h_diff));
 
       const m_diff = (difference % (1000 * 60 * 60)) / (1000 * 60);
-      setMinutes(difference < 0 ? Math.ceil(m_diff) : Math.floor(m_diff));
+      setMinutes(difference < 0 ? 0 : Math.floor(m_diff));
 
       const s_diff = (difference % (1000 * 60)) / 1000;
-      setSeconds(difference < 0 ? Math.ceil(s_diff) : Math.floor(s_diff));
+      setSeconds(difference < 0 ? 0 : Math.floor(s_diff));
     }, 1000);
 
     return () => clearInterval(interval);
   }, []);
+
+  const now = new Date();
+  const isOpen = now > target && now < openTarget;
+  const isClosed = now > target && now > openTarget;
+
+  if(isOpen)return (
+    <div className="hover:cursor-default flex items-center justify-center">
+      <div className="flex flex-col items-center text-center">
+        <div className="text-white text-3xl sm:text-4xl leading-none">
+          Welcome - The fair is open!
+        </div>
+        <div className="text-white text-sm sm:text-lg mt-1">
+          10:00 - 16:00
+        </div>
+      </div>
+    </div>
+  )
+
+  if(isClosed)return (
+    <div className="hover:cursor-default flex items-center justify-center">
+      <div className="flex flex-col items-center text-center">
+        <div className="text-white text-3xl sm:text-4xl leading-none">
+          The fair is now closed!
+        </div>
+      </div>
+    </div>
+  )
+
 
   return (
     <div className="hover:cursor-default flex items-center justify-center">
