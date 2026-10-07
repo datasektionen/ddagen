@@ -120,7 +120,7 @@ export function ExhibitorCard({
       <div className="flex flex-1 items-center justify-center px-2 py-3">
         {exhibitor.logo ? (
           <img
-            src={addImageDetails(exhibitor.logo)}
+            src={addImageDetails(exhibitor.logo, 640)}
             alt={exhibitor.name}
             loading="lazy"
             className="max-h-20 max-w-full object-contain"
@@ -179,7 +179,7 @@ export function SponsorHero({
       <div className="flex min-h-[150px] items-center justify-center sm:min-h-[190px]">
         {exhibitor.logo ? (
           <img
-            src={addImageDetails(exhibitor.logo)}
+            src={addImageDetails(exhibitor.logo, 640)}
             alt={exhibitor.name}
             className="max-h-36 max-w-[280px] object-contain sm:max-h-48 sm:max-w-[380px] w-full h-full"
           />
@@ -254,7 +254,7 @@ export function ExhibitorModal({
           <div className="flex h-28 w-28 flex-none items-center justify-center rounded-2xl bg-[#e9eaf0] p-3">
             {exhibitor.logo ? (
               <img
-                src={addImageDetails(exhibitor.logo)}
+                src={addImageDetails(exhibitor.logo, 640)}
                 alt={exhibitor.name}
                 className="max-h-full max-w-full object-contain"
               />

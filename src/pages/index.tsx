@@ -101,12 +101,25 @@ export default function Home() {
           </div>
 
           {/* Button wrapper (separat div) */}
-          <div className="flex justify-center mt-8">
+          <div className="flex flex-wrap justify-center gap-4 mt-8">
+            {/* Exhibitor registration is closed during the fair, the map and exhibitors take its place.
             <Link
               className="bg-cerise py-2.5 px-6 rounded-full text-white text-center hover:scale-105 transition-transform"
               href="/företagsanmälan"
             >
               {t.home.exhibitButton}
+            </Link>*/}
+            <Link
+              className="bg-cerise py-2.5 px-7 rounded-full text-white text-center hover:scale-105 transition-transform"
+              href="/karta"
+            >
+              {t.nav.map}
+            </Link>
+            <Link
+              className="bg-white py-2.5 px-7 rounded-full text-darkblue text-center hover:scale-105 transition-transform"
+              href="/logos"
+            >
+              {t.nav.logos}
             </Link>
           </div>
           

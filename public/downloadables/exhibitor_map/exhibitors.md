@@ -79,7 +79,7 @@ Källa: karta.pdf. Den här tabellen styr vilka företag som syns på /karta.
 | 64 | SopraSteria | 2 |
 | 65 | Prevas | 2 |
 | 66 | Scila | 2 |
-| 67 | Sellhelp | 2 |
+| 67 | Sellpy | 2 |
 | 68 | Valcon | 2 |
 | 69 | Kollin | 3 |
 | 70 | Sveriges Ingenjörer | 3 |
@@ -89,7 +89,7 @@ Källa: karta.pdf. Den här tabellen styr vilka företag som syns på /karta.
 | 74 | RebaseEnergy | 3 |
 | 75 | Kodcentrum | 3 |
 | 76 | Datatjej | 3 |
-| 77 | AI Society | 3 |
+| 77 | KTH AI Society | 3 |
 | 78 | KTH Systemförvaltning | 3 |
 | 79 | Säkerhetspolisen | 2 |
 | 80 | Tutus | 2 |
