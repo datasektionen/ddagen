@@ -24,7 +24,7 @@ function logoIcon(e: MapProp): DivIcon {
   const w = e.logo ? 108 : Math.min(220, Math.max(88, e.name.length * 8 + 32));
   const h = e.logo ? 68 : 42;
   const content = e.logo
-    ? `<img src="${addImageDetails(e.logo)}" alt="${name}" class="object-contain" style="max-width: ${w - 16}px !important; max-height: ${h - 12}px !important" />`
+    ? `<img src="${addImageDetails(e.logo, 640)}" alt="${name}" class="object-contain" style="max-width: ${w - 16}px !important; max-height: ${h - 12}px !important" />`
     : `<span class="truncate text-sm font-medium text-darkblue">${name}</span>`;
   return new DivIcon({
     className: "",
@@ -334,7 +334,7 @@ function Dots({
                       strokeWidth={r * (sponsor ? 0.2 : 0.1)}
                     />
                     <image
-                      href={addImageDetails(e.logo)}
+                      href={addImageDetails(e.logo, 256)}
                       x={lng - w / 2 + r * 0.15}
                       y={-lat - h / 2 + r * 0.15}
                       width={w - r * 0.3}

@@ -1,5 +1,7 @@
-export function addImageDetails(img: string | undefined): string {
+// width asks /api/logo for a smaller copy; it does nothing for other images.
+export function addImageDetails(img: string | undefined, width?: 256 | 640): string {
   if (!img) return "";
+  if (img.startsWith("/api/logo/") && width && !img.includes("?")) return `${img}?w=${width}`;
   // Already a url, e.g. /api/logo/<id>.
   if (img.startsWith("/api/") || img.startsWith("http") || img.startsWith("data:")) return img;
   switch (img.charAt(0)) {
