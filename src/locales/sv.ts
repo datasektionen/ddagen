@@ -27,6 +27,9 @@ export default {
       hours: "timmar",
       minutes: "minuter",
       seconds: "sekunder",
+      welcome: "Välkomna - Mässan är öpen!",
+      welcomeDisclaimer: "10:00 - 16:00",
+      closed: "Mässan är nu stängd!"
     },
     exhibitButton: "Ställ ut på D-Dagen",
     stats: [

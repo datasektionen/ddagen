@@ -55,10 +55,10 @@ export function Countdown() {
     <div className="hover:cursor-default flex items-center justify-center">
       <div className="flex flex-col items-center text-center">
         <div className="text-white text-3xl sm:text-4xl leading-none">
-          Welcome - The fair is open!
+          {t.home.countDown.welcome}
         </div>
         <div className="text-white text-sm sm:text-lg mt-1">
-          10:00 - 16:00
+          {t.home.countDown.welcomeDisclaimer}
         </div>
       </div>
     </div>
@@ -68,7 +68,7 @@ export function Countdown() {
     <div className="hover:cursor-default flex items-center justify-center">
       <div className="flex flex-col items-center text-center">
         <div className="text-white text-3xl sm:text-4xl leading-none">
-          The fair is now closed!
+          {t.home.countDown.closed}
         </div>
       </div>
     </div>

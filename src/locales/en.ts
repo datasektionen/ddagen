@@ -27,6 +27,9 @@ export default {
       hours: "hours",
       minutes: "minutes",
       seconds: "seconds",
+      welcome: "Welcome - The fair is open!",
+      welcomeDisclaimer: "10:00 - 16:00",
+      closed: "The fair is now closed!"
     },
     exhibitButton: "Exhibit at D-Dagen",
     stats: [
