@@ -169,6 +169,13 @@ export const exhibitorRouter = createTRPCRouter({
         },
       });
     }),
+  getSalesperson: protectedProcedure.query(async ({ ctx }) => {
+    const exhibitor = await ctx.prisma.exhibitor.findUniqueOrThrow({
+      where: { id: ctx.session.exhibitorId },
+      select: { salesperson: true },
+    });
+    return exhibitor.salesperson;
+  }),
   getPackage: protectedProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.exhibitor.findUniqueOrThrow({
       where: { id: ctx.session.exhibitorId },
