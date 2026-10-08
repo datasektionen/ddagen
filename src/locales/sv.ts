@@ -18,7 +18,7 @@ export default {
       "Vill du nå ut till tusentals civilingenjörs-studenter vid KTH? Som utställare på D-Dagen har du möjlighet att göra just det! Klicka här nedanför för att läsa mer och göra en intresseanmälan.",
     representativeButton: "Intresseanmälan",
     info: {
-      firstPart: "7 oktober 2027",
+      firstPart: "7 oktober",
       secondPart: "10:00 - 16:00",
       thirdPart: "Nymble, KTH",
     },

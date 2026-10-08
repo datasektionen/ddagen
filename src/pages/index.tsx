@@ -23,6 +23,7 @@ export default function Home() {
     setShowLogo(true);
   }, []);
 
+  const gifExists = false;
   const [showGif, setShowGif] = useState(false);
   const [showStaticFirst, setShowStaticFirst] = useState(true);
 
@@ -85,7 +86,7 @@ export default function Home() {
                 ${ hasLoadedBefore ? 'duration-0': 'delay-[100ms] duration-[800ms]'}   
                 ${ showPage ? "opacity-100" : "opacity-0" }
               `}
-              src={showGif ? "/img/d-dagen-logo-2526-4.gif" : "/img/d-dagen-logo-static.png"} // Use static version first
+              src={showGif && gifExists ? "/img/d-dagen-logo-2526-4.gif" : "/img/logos/2027/ddagen_2027_static.png"} // Use static version first
               alt="D-dagen Logo"
               ></img>
           </div>

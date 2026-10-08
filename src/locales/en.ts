@@ -18,7 +18,7 @@ export default {
       "Do you want to reach thousands of Computer Science Engineering students at KTH? As an exhibitor at D-Dagen you have the opportunity to do so! Click the button below to read more and make an application of interest .",
     representativeButton: "Interest Registration",
     info: {
-      firstPart: "October 7th, 2027",
+      firstPart: "October 7th",
       secondPart: "10 AM - 4 PM",
       thirdPart: "Nymble, KTH",
     },
