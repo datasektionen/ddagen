@@ -18,7 +18,7 @@ export default {
       "Do you want to reach thousands of Computer Science Engineering students at KTH? As an exhibitor at D-Dagen you have the opportunity to do so! Click the button below to read more and make an application of interest .",
     representativeButton: "Interest Registration",
     info: {
-      firstPart: "October 8th",
+      firstPart: "October 7th",
       secondPart: "10 AM - 4 PM",
       thirdPart: "Nymble, KTH",
     },
@@ -642,7 +642,7 @@ export default {
   companyForm: {
     title: "Sign up for D-Dagen",
     description:
-      "Fill in this form to sign up your company for D-Dagen 2026. Please note that signing up through to this form is not binding.",
+      "Fill in this form to sign up your company for D-Dagen 2027. Please note that signing up through to this form is not binding.",
     fields: {
       name: "Company Name",
       foreignOrganization: "Foreign organization",
@@ -1518,8 +1518,8 @@ export default {
     "HEAD OF SALES",
     "HEAD OF FINANCES"],
     prTeamRoles: [
-      "Head of PR", "Art Director", "Art Director", 
-      "Social Media Manager", "Print Manager", 
+      "Head of PR", "Art Director", "Art Director",
+      "Social Media Manager", "Print Manager",
     ],
     devTeamRoles: [
       "Lead Developer", "Web Developer",
@@ -1585,7 +1585,7 @@ export default {
   },
   sok:{
     notActive: "The signup is not active yet, keep an eye on social media for when it opens!",
-    header: "Signup for project group 26",
+    header: "Signup for project group 27",
     description: "The goal for this year's D-Dagen is to make it the biggest and best career fair in Datasektionen's history! This is the vision we have as organizers this year. However, it's impossible for us to organize such a large event entirely on our own. We need an ambitious project group to help us, one that has the drive to create something extraordinary. We aim to improve internal communication from previous years, and, therefore, we will focus extensively on team building to create a close-knit group. We also expect that everyone in the project group is sociable, has good teamwork skills, and is self-driven in their tasks.",
     search:"SIGNUP",
     info:"Information about the roles",
@@ -1606,15 +1606,16 @@ export default {
         "Art Director (UI/UX Design)\n- Artistic\n- Accommodating\nAs an Art Director, you ensure that D-Dagen looks professional. You will have the opportunity to express your creativity and design through all of the graphics needed for D-Dagen. This Art Director role includes the responsibility for UX design for the website but also assists with print design. This includes designing UI/UX for the website, brochures, posters, branded clothing and more. Occasionally, you will also get to take some photos. No prior knowledge is required; you will have the chance to learn over time, and the most important thing is that you are driven and motivated. Of course, you will have access to all the programs you need!",
         "Art Director (Print Design)\n- Artistic\n- Accommodating\nAs an Art Director, you ensure that D-Dagen looks professional. You will have the opportunity to express your creativity and design through all of the graphics needed for D-Dagen. This Art Director role is primarily responsible for print design but receives support from the other Art Director. This includes brochures, posters, branded clothing and more. Occasionally, you will also get to take some photos. No prior knowledge is required; you will have the chance to learn over time, and the most important thing is that you are driven and motivated. Of course, you will have access to all the programs you need!",
         "Print Manager\n- Proactive\n- Artistic\nThe Print Manager is part of the PR team and is responsible for ensuring all printed materials are ordered and delivered on time. This includes items like stickers, patches, branded clothing, banners, brochures, and more. You'll work closely with the Art Director and assist with design work.",
-        "Social Media Manager\n- Good communicator\n- Initiating\n- Social (especially on social media)\n- Creative\nThe Social Media Manager is responsible for increasing D-Dagen's presence on platforms like Instagram, Facebook, and other social media sites. You'll have the freedom to choose which social media platforms to use and how to express the event's message (within reasonable boundaries). In this role, you'll work closely with the Art Director to create attractive posts. This is an ideal position for those who enjoy taking photos and posting stories!"
+        "Social Media Manager\n- Good communicator\n- Initiating\n- Social (especially on social media)\n- Creative\nThe Social Media Manager is responsible for increasing D-Dagen's presence on platforms like Instagram, Facebook, and other social media sites. You'll have the freedom to choose which social media platforms to use and how to express the event's message (within reasonable boundaries). In this role, you'll work closely with the Art Director to create attractive posts. This is an ideal position for those who enjoy taking photos and posting stories!",
       ]
     },
     devGroup:{
       header: "Dev Team",
       text: "The Dev Group is a technically skilled and innovative unit within D-Dagen. Its members are responsible for the development, maintenance, and enhancement of the D-Dagen website. They handle everything from backend programming and database management to frontend design and user experience, with a focus on creating a smooth and engaging digital platform for all visitors.",
       roles : [
-        "Web Manager\n- Independent\n- Initiating\nAs the Web Manager, you're responsible for ensuring the website looks good and functions properly. You'll also have significant opportunities to improve the website. Previous experience and knowledge in web development are definite assets. You'll work closely with the Art Director.",
-        "System Manager\n- Independent\n- Initiating\n- 'Yes, can do' attitude\nThe System Manager will collaborate extensively with the Web Manager on ambitious projects we plan to introduce at D-Dagen. We're looking for someone with the drive to create opportunities, and prior experience in app development is a big plus.",
+        "Dev Lead\n- Good communicator\n- Leader\n As Dev Lead, you head the Dev team. You drive and organize the team, ensuring everyone knows what to do regarding the website and lead the new application. Because you work so closely within the Dev team, you will become a very tight-knit group. As the lead, you will also communicate extensively with DDAs and Art Directors.",
+        "Web Developer\n- Independent\n- Initiating\nAs the Web Developer, you're responsible for ensuring the website looks good and functions properly. You'll also have significant opportunities to improve the website. Previous experience and knowledge in web development are definite assets. You'll work closely with the Art Director.",
+        "App developer\n- Independent\n- Initiating\n- 'Yes, can do' attitude\nThe System Manager will collaborate extensively with the Web Manager on ambitious projects we plan to introduce at D-Dagen. We're looking for someone with the drive to create opportunities, and prior experience in app development is a big plus.",
       ]
     },
     saleGroup:{
@@ -1635,7 +1636,8 @@ export default {
         "HR Manager\n- Good communicator\n- Leader\n- Thorough scheduler\nWhen D-Dagen kicks off in Nymble, we need much more staff than just the project team. This is where your primary responsibility lies. You will recruit staff, conduct team-building activities, and plan their schedules for the day. You will also be responsible for planning team-building activities for the project team together with the Lounge Manager. You will also ensure that D-Dagen meets JML standards.",
         "Lounge Manager\n- Service-oriented\n- Enjoys food\nThe lounge is where company representatives and staff can come during the day to take a break and relax. Your job is to ensure they can expect good food and the best possible service! You will also plan team-building activities for the project team together with the HR Manager and be responsible for ordering food for both team-building and major meetings.",
         "Party Manager\n- Fun-loving\n- Creative\n- Initiator\nThe Party Manager is responsible for organizing all major events, such as the company banquet and the appreciation dinner. This role is perfect for someone who is creative and enjoys having fun with others.",
-        "Venue Manager\n- Responsible\n- Proactive\nWithout a place to be, it's much harder to have successful events. You will become an expert on Nymble's venues and ensure that we follow their instructions and requirements. You will also help book venues for D-Dagen's other events."
+        "Venue Manager\n- Responsible\n- Proactive\nWithout a place to be, it's much harder to have successful events. You will become an expert on Nymble's venues and ensure that we follow their instructions and requirements. You will also help book venues for D-Dagen's other events.",
+        "Data Scientist\n- People Person\n- Analytical\n- Driven\nAs the Data Scientist you are responsible for creating a plan to collect information on how things are going and how things are changing between the years of D-Dagen. You are a corner stone in the future of D-Dagen allowing us to create concrete plans for how things need to change and what is working."
       ]
     },
     ecoGroup:{
