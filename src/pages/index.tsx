@@ -23,7 +23,6 @@ export default function Home() {
     setShowLogo(true);
   }, []);
 
-  const gifExists = true;
   const [showGif, setShowGif] = useState(false);
   const [showStaticFirst, setShowStaticFirst] = useState(true);
 
@@ -35,7 +34,7 @@ export default function Home() {
     const timer = setTimeout(() => {
       setShowGif(true);
       setShowStaticFirst(false);
-    }, 0); // millisecond delay before GIF starts
+    }, 2000); // 2 second delay before GIF starts
 
     return () => clearTimeout(timer);
   }, []);
@@ -54,9 +53,6 @@ export default function Home() {
   };
 
   const { title, description, url } = seoContent[t.locale as "sv" | "en"];
-
-  // Exhibitor registration is closed during the fair, the map and exhibitors take its place.
-  const showExhibitorAndMapButtons = false;
 
   return (
     <>
@@ -89,7 +85,7 @@ export default function Home() {
                 ${ hasLoadedBefore ? 'duration-0': 'delay-[100ms] duration-[800ms]'}   
                 ${ showPage ? "opacity-100" : "opacity-0" }
               `}
-              src={showGif && gifExists ? "/img/logos/2027/ddagen_2027_anim.gif" : "/img/logos/2027/ddagen_2027_anim_static.png"} // Use static version first
+              src={showGif ? "/img/d-dagen-logo-2526-4.gif" : "/img/d-dagen-logo-static.png"} // Use static version first
               alt="D-dagen Logo"
               ></img>
           </div>
@@ -111,31 +107,25 @@ export default function Home() {
             ${ hasLoadedBefore ? 'duration-0': 'delay-[300ms] duration-[800ms]'}
             ${ showPage ? "opacity-100" : "opacity-0" }
             `}>
-            { !showExhibitorAndMapButtons &&
+            {/* Exhibitor registration is closed during the fair, the map and exhibitors take its place.
             <Link
               className="bg-cerise py-2.5 px-6 rounded-full text-white text-center hover:scale-105 transition-transform"
               href="/företagsanmälan"
             >
               {t.home.exhibitButton}
-            </Link>}
-            {
-              showExhibitorAndMapButtons &&
-              <Link
+            </Link>*/}
+            <Link
               className="bg-cerise py-2.5 px-7 rounded-full text-white text-center hover:scale-105 transition-transform"
               href="/karta"
-              >
+            >
               {t.nav.map}
             </Link>
-            }
-            {
-              showExhibitorAndMapButtons &&
-              <Link
+            <Link
               className="bg-white py-2.5 px-7 rounded-full text-darkblue text-center hover:scale-105 transition-transform"
               href="/logos"
-              >
+            >
               {t.nav.logos}
             </Link>
-            }
           </div>
           
           <div className="hover:cursor-default pt-[40px] pb-[50px]">

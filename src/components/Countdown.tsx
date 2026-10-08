@@ -1,6 +1,5 @@
 import {useLocale} from "@/locales";
 import {useEffect, useState} from "react";
-import Confetti from "react-confetti";
 
 function TimeUnit({time, timeString,}: {time: number; timeString: string;}) {
   return (
@@ -18,45 +17,18 @@ function TimeUnit({time, timeString,}: {time: number; timeString: string;}) {
 export function Countdown() {
   const t = useLocale();
 
-  const enableConfettiDrop = true; // konfetti!!!
-
-  const target = new Date("2027-10-07T10:00:00+02:00");
-  const openTarget = new Date("2027-10-07T16:00:00+02:00");
-  
-  const [viewport, setViewport] = useState({width: 0, height: 0});
-  const [showConfetti, setShowConfetti] = useState(false);
   const [days, setDays] = useState(0);
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
 
+  const target = new Date("10/8/2026 10:00:00+02:00");
+  const openTarget = new Date("10/8/2026 16:00:00+02:00");
   useEffect(() => {
-    const updateViewport = () => {
-      setViewport({width: window.innerWidth, height: window.innerHeight});
-    };
 
-    updateViewport();
-    window.addEventListener("resize", updateViewport);
-
-    return () => window.removeEventListener("resize", updateViewport);
-  }, []);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setShowConfetti(true);
-    }, 2000);
-
-    return () => clearTimeout(timeout);
-  }, []);
-
-  useEffect(() => {
-    const updateCountdown = () => {
+    const interval = setInterval(() => {
       const now = new Date();
       const difference = target.getTime() - now.getTime();
-
-      if (difference <= 0) {
-        return;
-      }
 
       const d_diff = difference / (1000 * 60 * 60 * 24);
       setDays(difference < 0 ? 0 : Math.floor(d_diff));
@@ -70,11 +42,6 @@ export function Countdown() {
 
       const s_diff = (difference % (1000 * 60)) / 1000;
       setSeconds(difference < 0 ? 0 : Math.floor(s_diff));
-    }
-
-    updateCountdown();
-    const interval = setInterval(() => {
-      updateCountdown();
     }, 1000);
 
     return () => clearInterval(interval);
@@ -110,21 +77,6 @@ export function Countdown() {
 
   return (
     <div className="hover:cursor-default flex items-center justify-center">
-      {enableConfettiDrop && showConfetti && viewport.width > 0 && (
-        <Confetti
-          width={viewport.width}
-          height={viewport.height}
-          recycle={false}
-          numberOfPieces={500}
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            pointerEvents: "none",
-            zIndex: 50,
-          }}
-        />
-      )}
       
       <TimeUnit time={days} timeString={t.home.countDown.days} />
 

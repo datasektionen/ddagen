@@ -18,7 +18,7 @@ export default {
       "Vill du nå ut till tusentals civilingenjörs-studenter vid KTH? Som utställare på D-Dagen har du möjlighet att göra just det! Klicka här nedanför för att läsa mer och göra en intresseanmälan.",
     representativeButton: "Intresseanmälan",
     info: {
-      firstPart: "7 oktober",
+      firstPart: "8 oktober",
       secondPart: "10:00 - 16:00",
       thirdPart: "Nymble, KTH",
     },
@@ -636,7 +636,7 @@ export default {
   companyForm: {
     title: "Intresseanmälan",
     description:
-      "Fyll i formuläret för att registrera ert företag för D-Dagen 2027. OBS! En intresseanmälan är inte bindande.",
+      "Fyll i formuläret för att registrera ert företag för D-Dagen 2026. OBS! En intresseanmälan är inte bindande.",
     fields: {
       name: "Företagsnamn",
       foreignOrganization: "Utländsk organisation",
@@ -1081,7 +1081,7 @@ export default {
     table4row1:
       "VILKEN TYP AV EVENEMANG KAN VÅRT FÖRETAG ANORDNA TILLSAMMANS MED D-DAGEN?",
     table4text1:
-      "Vi samarbetar gärna med er för att organisera evenemang före och efter D-Dagen! Oavsett om ni är intresserade av lunchföreläsningar, hackathons eller något helt annat är ni välkomna att dela era idéer med oss. För mer information kontakta vår samarbetsansvarige på <a className='text-yellow' href='mailto:sean.zisheng@ddagen.se'>sean.zisheng@ddagen.se</a>.",
+      "Vi samarbetar gärna med er för att organisera evenemang före och efter D-Dagen! Oavsett om ni är intresserade av lunchföreläsningar, hackathons eller något helt annat är ni välkomna att dela era idéer med oss. För mer information kontakta vår sponsoransvarige på <a className='text-yellow' href='mailto:sean.zisheng@ddagen.se'>sean.zisheng@ddagen.se</a>.",
     productCatalog: "PRODUKTKATALOG",
     header: "FÖRETAG FAQ",
     catalogPath: "https://ddagen.se/downloadables/Product_Catalog_2026_sv.pdf",
@@ -1509,14 +1509,14 @@ export default {
     ],
     salesTeamRoles: [
       "Säljansvarig", "Säljare", "Säljare", "Säljare",
-      "Säljare", "Säljare", "Säljare","Samarbetsansvarig",
+      "Säljare", "Säljare", "Säljare","Sponsansvarig",
     ],
     devTeamRoles: [
       "Webb-Ansvarig", "Webbutvecklare", "Webbutvecklare",
       "Systemutvecklare",
     ],
     massTeamRoles: [
-      "Mäss-Ansvarig", "Logistik-Ansvarig", "Lokal-Ansvarig",
+      "Mäss-Ansvarig", "Logistik-Ansvarig", "Lokal-Ansvarig", 
       "Lounge-Ansvarig", "Fest-Ansvarig", "Personal-Ansvarig",
     ],
     ecoTeamRoles: ["Ekonomiansvarig","Vice Ekonomiansvarig", "Vice Ekonomiansvarig"],
@@ -1569,7 +1569,7 @@ export default {
   },
   sok:{
     notActive: "Går inte att söka just nu, håll koll på sociala medier för vidare information i framtiden",
-    header: "Sök Projektgruppen 27",
+    header: "Sök Projektgruppen 26",
     description: "Årets D-Dagen ska bli Datasektionens största och bästa arbetsmarknadsmässa någonsin! Detta är i alla fall visionen vi har som ansvariga i år. Dock är det omöjligt för oss att arrangera ett så här stort evenemang helt själva. Till vår hjälp behöver vi en ambitiös projektgrupp som har drivet att skapa någonting extraordinärt. Vi vill förbättra den interna kommunikation från tidigare år och kommer därför satsa extra mycket på teambuilding för att få en tajt grupp. Vi förväntar oss också att alla i projektgruppen är sociala med god samarbetsförmåga och självgående i sina uppgifter.",
     search:"SÖK",
     info:"Information om rollerna",
@@ -1595,9 +1595,9 @@ export default {
       header: "Dev-Gruppen",
       text: "Dev-gruppen är en tekniskt kompetent och innovativ grupp inom D-Dagen. Gruppen är ansvariga för utveckling, underhåll och förbättring av D-Dagens hemsida och bakomliggande digitala infrastruktur. De hanterar allt från backend-programmering och databashantering till frontend-design och användarupplevelse, med fokus på att skapa en smidig och engagerande digital plattform för alla besökare.",
       roles : [
-        "Dev Ansvarig\n- Bra kommunikatör\n- Ledare\n Som Dev Ansvarig är du ledare för Dev-gruppen. Det är du som driver och organiserar gruppen och ser till att alla vet vad de ska göra med hemsidan samt leder den nya appen. Eftersom du jobbar så tätt ihop inom Dev-gruppen kommer ni bli väldigt tajta tillsammans. Som ansvarig kommer du också kommunicera extra mycket med DDA:s och Art directors.",
+        "Webbansvarig\n- Bra kommunikatör\n- Ledare\n Som Webbansvarig är du ledare för Dev-gruppen. Det är du som driver och organiserar gruppen och ser till att alla vet vad de ska göra med hemsidan. Eftersom du jobbar så tätt ihop inom Dev-gruppen kommer ni bli väldigt tajta tillsammans. Som Webbansvarig kommer du också kommunicera extra mycket med DDA:s och Art directors.",
         "Webbutvecklare\n- Samarbetsvillig\n- Initiativtagande\n Som Webbutvecklare är det du som ser till att hemsidan ser ut och fungerar som den ska. Du har även stora möjligheter till att förbättra hemsidan. Kunskaper och tidigare erfarenheter inom webbutveckling är ett stort plus. Här jobbar du tätt intill Art Director.",
-        "Mobilutvecklare\n- Självständig\n- Initiativtagande\n- 'Yes, can do'-attityd\n Mobilutvecklare kommer att jobba mycket självständigt med ett nytt och ambitiöst projekt som vi hoppas introducera till D-Dagen. Mobilutvecklare arbetar tillsammans med Dev Ansvarig för att skapa den här nya delen av D-Dagen för att ge studenter, företag och personal en bättre upplevelse av D-Dagen. Vi vill ha någon med ett stort driv och teknisk kunnighet, samt är det ett stort plus om erfarenheter med app utveckling."
+        "Systemansvarig\n- Självständig\n- Initiativtagande\n- 'Yes, can do'-attityd\n Systemutvecklare kommer att jobba mycket tillsammans med webbansvarig med ambitiösa projekt som vi hoppas introducera till D-Dagen. Vi vill ha någon med ett stort driv och teknisk kunnighet, samt är det ett stort plus om erfarenheter med databaser finns och om Linux redan används som operativsystem."
       ]
     },
     saleGroup:{
@@ -1606,7 +1606,7 @@ export default {
       roles: [
         "Säljansvarig\n- Bra kommunikatör\n- Välplanerad\n- Ledare\n Som säljansvarig är du en operativ chef för säljarna. Du kommer vara den som utbildar säljarna i hur de ska arbeta, ser till att säljarna har allt de behöver och att arbetet flyter på enligt schemat.",
         "Säljare\n- Bra kommunikatör\n- Serviceinriktad\n- Övertygande\n Säljarna är de som främst har direkt kontakt med företagen. Ni kommer jobba som ett team för att sälja in D-Dagen till företagen och se till att D-Dagen fortsätter växa. Som säljare kommer du också att vara företagens primära informationskälla och rådgivare med bland annat tips och tricks de bör veta inför mässan. Inga tidigare säljerfarenheter behövs men är givetvis ett plus.",
-        "Samarbetsansvarig\n Bra kommunikatör\n- Initiativtagande\n- 'Pushig' säljarattityd\n Som sponsansvarig kommer du kontakta företag som inte kommer stå på mässan men ändå vill synas på andra sätt. Du kommer också hjälpa till med att arrangera lunchföreläsningar och andra företagsevents. Dina arbetsuppgifter innebär att du kommer jobba mycket tillsammans med PR-gruppen och resterande projektgruppen.",
+        "Sponsansvarig\n Bra kommunikatör\n- Initiativtagande\n- 'Pushig' säljarattityd\n Som sponsansvarig kommer du kontakta företag som inte kommer stå på mässan men ändå vill synas på andra sätt. Du kommer också hjälpa till med att arrangera lunchföreläsningar och andra företagsevents. Dina arbetsuppgifter innebär att du kommer jobba mycket tillsammans med PR-gruppen och resterande projektgruppen.",
       ]
     },
     massGroup:{
@@ -1619,7 +1619,6 @@ export default {
         "Loungeansvarig\n- Social\n- Serviceinriktad\n- Gillar mat och fika\n  Loungen är dit företagens representanter och personalen kan komma över dagen för att ta en paus och koppla av. Ditt jobb är att se till så de kan förvänta sig god mat och så bra service som bara möjligt! Det är även du som planerar projektgruppens teambuildings tillsammans med personalansvarig, och det är du som ansvarar för att beställa in mat till både teambuildings och stormöten. Du ansvarar även för att planera rekryteringspuben för dagspersonal med personalansvarig och festansvarig.",
         "Festansvarig\n- Rolig\n- Kreativ\n- Initiativtagande\n Festansvarig är den som fixar alla stora fester såsom Tacksittningen och även den största av dem alla: Företagsbanquetten som är den stora sittningen samma kväll som mässan! Detta är en perfekt roll för dig som är kreativ och gillar att ha det kul tillsammans med andra. Du ansvarar även för att planera rekryteringspuben för dagspersonal med personalansvarig och loungeansvarig.",
         "Lokalansvarig\n- Ansvarstagande\n- Proaktiv\n Utan någonstans att vara blir det mycket svårare att ha lyckade events. Du kommer bli experten på lokalerna i Nymble och se till att vi följer deras instruktioner och krav. Du kommer även få hjälpa till att boka lokaler för D-Dagens övriga evenemang.",
-        "Data Scientist\n- Social och utåtriktad\n- Analytisk\n- Drivande\nSom Data Scientist ansvarar du för att ta fram en plan för att samla in information om hur läget ser ut och hur förutsättningarna förändras mellan D-Dagens mässa. Du är en extrem viktig del av D-Dagens framtid och gör det möjligt för oss att skapa konkreta planer för vad som fungerar och vad som behöver förändras år till år."
       ]
     },
     ecoGroup:{

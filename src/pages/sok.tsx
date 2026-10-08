@@ -196,7 +196,7 @@ export default function SignupPage() {
         <div className="flex flex-row items-center justify-center">
           <Link
             className="flex flex-row items-center justify-center w-[175px] bg-cerise rounded-full h-[60px] mt-[30px] text-white text-center"
-            href="/pg27"
+            href="/pg26"
             target="_blank"
           >
             {t.sok.search}
@@ -294,7 +294,7 @@ export default function SignupPage() {
 
           <Link
             className="flex flex-row items-center justify-center w-[175px] bg-cerise rounded-full h-[60px] mt-[30px] text-white text-center"
-            href="/pg27"
+            href="/pg26"
             target="_blank"
           >
             {t.sok.search}
