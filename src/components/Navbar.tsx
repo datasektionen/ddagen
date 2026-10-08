@@ -271,6 +271,9 @@ export default function Navbar() {
     return () => window.removeEventListener("click", close);
   });
 
+  // Exhibitor registration is closed during the fair, the map takes its place.
+  const showMapButtons = false;
+
   return (
     <>
       <nav
@@ -399,19 +402,23 @@ export default function Navbar() {
                 ]}
               />
             </div>
-            {/* Exhibitor registration is closed during the fair, the map takes its place.
+            
+            { !showMapButtons &&
             <Link
               className="bg-cerise py-2.5 px-4 rounded-full text-center hover:scale-105 transition-transform"
               href="/företagsanmälan"
             >
               {t.companyForm}
-            </Link>*/}
-            <Link
+            </Link>}
+            {
+              showMapButtons &&
+              <Link
               className="bg-cerise py-2.5 px-7 lg:ml-2 rounded-full text-center hover:scale-105 transition-transform"
               href="/karta"
-            >
+              >
               {t.map}
             </Link>
+            }
             <button
               data-dont-close
               onClick={swapLocale}

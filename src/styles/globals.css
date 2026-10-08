@@ -51,9 +51,6 @@
      own bars (e.g. Safari's floating toolbar on iPhone) isn't white. */
   html,
   body {
-    background-color: #0f142d;
-  }
-  body {
     overscroll-behavior: none;
   }
 }

@@ -55,6 +55,9 @@ export default function Home() {
 
   const { title, description, url } = seoContent[t.locale as "sv" | "en"];
 
+  // Exhibitor registration is closed during the fair, the map and exhibitors take its place.
+  const showExhibitorAndMapButtons = false;
+
   return (
     <>
       <NextSeo
@@ -108,25 +111,31 @@ export default function Home() {
             ${ hasLoadedBefore ? 'duration-0': 'delay-[300ms] duration-[800ms]'}
             ${ showPage ? "opacity-100" : "opacity-0" }
             `}>
-            {/* Exhibitor registration is closed during the fair, the map and exhibitors take its place.
+            { !showExhibitorAndMapButtons &&
             <Link
               className="bg-cerise py-2.5 px-6 rounded-full text-white text-center hover:scale-105 transition-transform"
               href="/företagsanmälan"
             >
               {t.home.exhibitButton}
-            </Link>*/}
-            <Link
+            </Link>}
+            {
+              showExhibitorAndMapButtons &&
+              <Link
               className="bg-cerise py-2.5 px-7 rounded-full text-white text-center hover:scale-105 transition-transform"
               href="/karta"
-            >
+              >
               {t.nav.map}
             </Link>
-            <Link
+            }
+            {
+              showExhibitorAndMapButtons &&
+              <Link
               className="bg-white py-2.5 px-7 rounded-full text-darkblue text-center hover:scale-105 transition-transform"
               href="/logos"
-            >
+              >
               {t.nav.logos}
             </Link>
+            }
           </div>
           
           <div className="hover:cursor-default pt-[40px] pb-[50px]">
