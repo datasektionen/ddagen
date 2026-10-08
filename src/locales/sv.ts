@@ -18,7 +18,7 @@ export default {
       "Vill du nå ut till tusentals civilingenjörs-studenter vid KTH? Som utställare på D-Dagen har du möjlighet att göra just det! Klicka här nedanför för att läsa mer och göra en intresseanmälan.",
     representativeButton: "Intresseanmälan",
     info: {
-      firstPart: "8 oktober",
+      firstPart: "7 oktober 2027",
       secondPart: "10:00 - 16:00",
       thirdPart: "Nymble, KTH",
     },
@@ -636,7 +636,7 @@ export default {
   companyForm: {
     title: "Intresseanmälan",
     description:
-      "Fyll i formuläret för att registrera ert företag för D-Dagen 2026. OBS! En intresseanmälan är inte bindande.",
+      "Fyll i formuläret för att registrera ert företag för D-Dagen 2027. OBS! En intresseanmälan är inte bindande.",
     fields: {
       name: "Företagsnamn",
       foreignOrganization: "Utländsk organisation",

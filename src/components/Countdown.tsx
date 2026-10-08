@@ -1,5 +1,6 @@
 import {useLocale} from "@/locales";
 import {useEffect, useState} from "react";
+import Confetti from "react-confetti";
 
 function TimeUnit({time, timeString,}: {time: number; timeString: string;}) {
   return (
@@ -17,18 +18,24 @@ function TimeUnit({time, timeString,}: {time: number; timeString: string;}) {
 export function Countdown() {
   const t = useLocale();
 
+  const dropConfetti = true; // konfetti!!!
+
+  const target = new Date("2027-10-07T10:00:00+02:00");
+  const openTarget = new Date("2027-10-07T16:00:00+02:00");
+
   const [days, setDays] = useState(0);
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
 
-  const target = new Date("10/8/2026 10:00:00+02:00");
-  const openTarget = new Date("10/8/2026 16:00:00+02:00");
   useEffect(() => {
-
-    const interval = setInterval(() => {
+    const updateCountdown = () => {
       const now = new Date();
       const difference = target.getTime() - now.getTime();
+
+      if (difference <= 0) {
+        return;
+      }
 
       const d_diff = difference / (1000 * 60 * 60 * 24);
       setDays(difference < 0 ? 0 : Math.floor(d_diff));
@@ -42,6 +49,11 @@ export function Countdown() {
 
       const s_diff = (difference % (1000 * 60)) / 1000;
       setSeconds(difference < 0 ? 0 : Math.floor(s_diff));
+    }
+
+    updateCountdown();
+    const interval = setInterval(() => {
+      updateCountdown();
     }, 1000);
 
     return () => clearInterval(interval);
@@ -77,6 +89,7 @@ export function Countdown() {
 
   return (
     <div className="hover:cursor-default flex items-center justify-center">
+      {dropConfetti && <Confetti recycle={false} numberOfPieces={500} />}
       
       <TimeUnit time={days} timeString={t.home.countDown.days} />
 

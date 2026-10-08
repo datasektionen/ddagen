@@ -18,7 +18,7 @@ export default {
       "Do you want to reach thousands of Computer Science Engineering students at KTH? As an exhibitor at D-Dagen you have the opportunity to do so! Click the button below to read more and make an application of interest .",
     representativeButton: "Interest Registration",
     info: {
-      firstPart: "October 8th",
+      firstPart: "October 7th, 2027",
       secondPart: "10 AM - 4 PM",
       thirdPart: "Nymble, KTH",
     },
@@ -642,7 +642,7 @@ export default {
   companyForm: {
     title: "Sign up for D-Dagen",
     description:
-      "Fill in this form to sign up your company for D-Dagen 2026. Please note that signing up through to this form is not binding.",
+      "Fill in this form to sign up your company for D-Dagen 2027. Please note that signing up through to this form is not binding.",
     fields: {
       name: "Company Name",
       foreignOrganization: "Foreign organization",
