@@ -372,7 +372,7 @@ export default function Navbar() {
               <Group
                 links={[
                   { href: "/om-oss", text: t.about },
-                  { href: "/contact", text: t.contact },
+                  { href: "/kontakt", text: t.contact },
                   { href: "/historia", text: t.history },
                 ]}
               />
@@ -394,7 +394,7 @@ export default function Navbar() {
               class=" lg:ml-0"
                 links={[
                   { href: "/om-oss", text: t.about },
-                  { href: "/contact", text: t.contact },
+                  { href: "/kontakt", text: t.contact },
                   { href: "/historia", text: t.history },
                 ]}
               />
