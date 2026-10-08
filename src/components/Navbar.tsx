@@ -87,7 +87,7 @@ function Logo({ class: className }: { class?: string }) {
 
       `}
     >
-      2026
+      2027
     </p>
   </div>
   }
@@ -128,7 +128,7 @@ function Logo({ class: className }: { class?: string }) {
 
         `}
       >
-        2026
+        2027
       </p>
     </Link>
   );
@@ -271,6 +271,9 @@ export default function Navbar() {
     return () => window.removeEventListener("click", close);
   });
 
+  // Exhibitor registration is closed during the fair, the map takes its place.
+  const showMapButtons = false;
+
   return (
     <>
       <nav
@@ -378,6 +381,7 @@ export default function Navbar() {
               />
             </div>
             <NavLink class="px-0 w-[300px] lg:hidden" href="/partners">{t.partners}</NavLink>
+            <NavLink class="mt-4 px-0 w-[300px] lg:hidden" href="/sok">{t.sok}</NavLink>
           </div>
           <div
             className="
@@ -396,22 +400,27 @@ export default function Navbar() {
                   { href: "/om-oss", text: t.about },
                   { href: "/kontakt", text: t.contact },
                   { href: "/historia", text: t.history },
+                  { href: "/sok", text: t.sokShort },
                 ]}
               />
             </div>
-            {/* Exhibitor registration is closed during the fair, the map takes its place.
+            
+            { !showMapButtons &&
             <Link
               className="bg-cerise py-2.5 px-4 rounded-full text-center hover:scale-105 transition-transform"
               href="/företagsanmälan"
             >
               {t.companyForm}
-            </Link>*/}
-            <Link
+            </Link>}
+            {
+              showMapButtons &&
+              <Link
               className="bg-cerise py-2.5 px-7 lg:ml-2 rounded-full text-center hover:scale-105 transition-transform"
               href="/karta"
-            >
+              >
               {t.map}
             </Link>
+            }
             <button
               data-dont-close
               onClick={swapLocale}

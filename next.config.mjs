@@ -53,6 +53,11 @@ const config = {
         source: "/pg26",
         destination: "https://docs.google.com/forms/d/e/1FAIpQLSe-cj5fFzr-aM3QTG1Oufy2acHSRMi0j6sAUhtShRu0OF-vYg/viewform?usp=header",
         permanent: true,
+      },
+      {
+        source: "/pg27",
+        destination: "https://tally.so/r/jaOpOQ",
+        permanent: true,
       }
     ];
   },
