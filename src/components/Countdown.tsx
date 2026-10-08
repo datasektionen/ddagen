@@ -1,77 +1,145 @@
 import {useLocale} from "@/locales";
-import { Console } from "console";
 import {useEffect, useState} from "react";
+import Confetti from "react-confetti";
 
-function TimeUnit({time, timeString, index = 0}: {time: number; timeString: string, index?: number}){
-  // "w-1/2 max-auto bg-cerise py-2.5 rounded-full"
-  return(
-        <div className={`w-16 h-32 sm:w-24 sm:h-48
-            flex flex-col bg-cover bg-16
-            ${
-              index == 2 && "bg-[url('/img/ballonger/ballong_2.svg')]"
-              ||
-              index == 3 && "bg-[url('/img/ballonger/ballong_3.svg')]"
-              ||
-              index == 4 && "bg-[url('/img/ballonger/ballong_4.svg')]"
-              ||
-              "bg-[url('/img/ballonger/ballong_1.svg')]"
-            }`}>
-
-          <div className="w-16 h-20 sm:w-24 sm:h-[7.75rem] 
-              flex flex-col items-center justify-center">
-            <div className="text-white text-xl sm:text-4xl leading-[1.25rem] sm:leading-[1.75rem] text-center">
-              {time}
-            </div>
-            <div className="text-white text-xs sm:text-lg text-center">
-              {timeString}
-            </div>
-          </div>
-
-        </div>
-
-
+function TimeUnit({time, timeString,}: {time: number; timeString: string;}) {
+  return (
+    <div className="flex flex-col items-center text-center">
+      <div className="text-white text-3xl sm:text-4xl leading-none">
+        {time}
+      </div>
+      <div className="text-white text-sm sm:text-lg mt-1">
+        {timeString}
+      </div>
+    </div>
   );
 }
 
 export function Countdown() {
   const t = useLocale();
 
+  const enableConfettiDrop = true; // konfetti!!!
+
+  const target = new Date("2027-10-07T10:00:00+02:00");
+  const openTarget = new Date("2027-10-07T16:00:00+02:00");
+  
+  const [viewport, setViewport] = useState({width: 0, height: 0});
+  const [showConfetti, setShowConfetti] = useState(false);
   const [days, setDays] = useState(0);
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
-  useEffect(()=>{
-    const target = new Date("10/9/2025 10:00:00+02:00") // vilket datum är d-dagen?
-    const interval = setInterval(() =>{
+
+  useEffect(() => {
+    const updateViewport = () => {
+      setViewport({width: window.innerWidth, height: window.innerHeight});
+    };
+
+    updateViewport();
+    window.addEventListener("resize", updateViewport);
+
+    return () => window.removeEventListener("resize", updateViewport);
+  }, []);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShowConfetti(true);
+    }, 2000);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
+  useEffect(() => {
+    const updateCountdown = () => {
       const now = new Date();
       const difference = target.getTime() - now.getTime();
-      
-      
+
+      if (difference <= 0) {
+        return;
+      }
+
       const d_diff = difference / (1000 * 60 * 60 * 24);
-      const d = difference < 0 ? Math.ceil(d_diff) : Math.floor(d_diff);
-      setDays(d)
+      setDays(difference < 0 ? 0 : Math.floor(d_diff));
 
-      const h_diff = (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      const h = difference < 0 ? Math.ceil(h_diff) : Math.floor(h_diff);
-      setHours(h)
+      const h_diff =
+        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60);
+      setHours(difference < 0 ? 0 : Math.floor(h_diff));
 
-      const m_diff = (difference % (1000 * 60 * 60))/(1000*60)
-      const m = difference < 0 ? Math.ceil(m_diff) : Math.floor(m_diff) 
-      setMinutes(m)
+      const m_diff = (difference % (1000 * 60 * 60)) / (1000 * 60);
+      setMinutes(difference < 0 ? 0 : Math.floor(m_diff));
 
-      const s_diff = (difference % (1000 * 60))/1000
-      const s = difference < 0 ? Math.ceil(s_diff) : Math.floor(s_diff) 
-      setSeconds(s)
-    },1000)
-    return () => clearInterval(interval)
-  },[]);
+      const s_diff = (difference % (1000 * 60)) / 1000;
+      setSeconds(difference < 0 ? 0 : Math.floor(s_diff));
+    }
+
+    updateCountdown();
+    const interval = setInterval(() => {
+      updateCountdown();
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const now = new Date();
+  const isOpen = now > target && now < openTarget;
+  const isClosed = now > target && now > openTarget;
+
+  if(isOpen)return (
+    <div className="hover:cursor-default flex items-center justify-center">
+      <div className="flex flex-col items-center text-center">
+        <div className="text-white text-3xl sm:text-4xl leading-none">
+          {t.home.countDown.welcome}
+        </div>
+        <div className="text-white text-sm sm:text-lg mt-1">
+          {t.home.countDown.welcomeDisclaimer}
+        </div>
+      </div>
+    </div>
+  )
+
+  if(isClosed)return (
+    <div className="hover:cursor-default flex items-center justify-center">
+      <div className="flex flex-col items-center text-center">
+        <div className="text-white text-3xl sm:text-4xl leading-none">
+          {t.home.countDown.closed}
+        </div>
+      </div>
+    </div>
+  )
+
 
   return (
-    <div className="hover:cursor-default gap-5 columns-4 items-stretch flex items-center justify-center">
-      <TimeUnit time={days} timeString={t.home.countDown.days} index={1}/>
-      <TimeUnit time={hours} timeString={t.home.countDown.hours} index={2}/>
-      <TimeUnit time={minutes} timeString={t.home.countDown.minutes} index={3}/>
-      <TimeUnit time={seconds} timeString={t.home.countDown.seconds} index={4}/>
+    <div className="hover:cursor-default flex items-center justify-center">
+      {enableConfettiDrop && showConfetti && viewport.width > 0 && (
+        <Confetti
+          width={viewport.width}
+          height={viewport.height}
+          recycle={false}
+          numberOfPieces={500}
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            pointerEvents: "none",
+            zIndex: 50,
+          }}
+        />
+      )}
+      
+      <TimeUnit time={days} timeString={t.home.countDown.days} />
+
+      <div className="mx-6 h-14 w-[3px] bg-cerise" />
+
+      <TimeUnit time={hours} timeString={t.home.countDown.hours} />
+
+      <div className="mx-6 h-14 w-[3px] bg-cerise" />
+
+      <TimeUnit time={minutes} timeString={t.home.countDown.minutes} />
+
+      <div className="mx-6 h-14 w-[3px] bg-cerise" />
+
+      <TimeUnit time={seconds} timeString={t.home.countDown.seconds} />
+
     </div>
   );
 }

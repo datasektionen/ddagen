@@ -9,13 +9,13 @@ export default function ForCompanies() {
   const seoContent = {
     sv: {
       title: "För Företag - Träffa IT-studenter & Hitta Framtidens Talanger",
-      description: "D-Dagen är KTH Datasektionens årliga arbetsmarknadsdag där företag möter framtidens IT-talanger. Delta den 9 oktober på KTH Campus Valhallavägen och nätverka med civilingenjörsstudenter inom data och IT. Upptäck våra företagspaket och avsluta dagen med en exklusiv bankett. ",
+      description: "D-Dagen är KTH Datasektionens årliga arbetsmarknadsdag där företag möter framtidens IT-talanger. Delta den 8 oktober på KTH Campus Valhallavägen och nätverka med civilingenjörsstudenter inom data och IT. Upptäck våra företagspaket och avsluta dagen med en exklusiv bankett. ",
       url: "https://ddagen.se/förföretag",
     },
     en: {
       title: "For Companies - Meet IT Students & Recruit Top Talent",
-      description: "D-Dagen is KTH's annual career fair where companies connect with future IT professionals. Join us on October 9 at KTH Campus Valhallavägen to network with top engineering students in computer science and IT. Explore our company packages and end the day with an exclusive banquet.",
-      url: "https://ddagen.se/en/förstudenter",
+      description: "D-Dagen is KTH's annual career fair where companies connect with future IT professionals. Join us on October 8 at KTH Campus Valhallavägen to network with top engineering students in computer science and IT. Explore our company packages and end the day with an exclusive banquet.",
+      url: "https://ddagen.se/en/förföretag",
     },
   };
 
@@ -43,11 +43,13 @@ export default function ForCompanies() {
           <h1 className="uppercase text-center text-cerise pt-[110px] lg:pt-[140px] mb-4 text-5xl font-medium">
             {t.forCompanies.title}
           </h1>
-          <div className="flex flex-row items-center justify-center mt-[50px] px-5">
+
+          {/*<div className="flex flex-row items-center justify-center mt-[50px] px-5">
             <p className="text-white w-[300px] sm:w-[600px] text-center">
               {t.forCompanies.guideText}
             </p>
           </div>
+
           <div>
             <button className="mt-6">
               <a
@@ -57,47 +59,40 @@ export default function ForCompanies() {
                 {t.forCompanies.guideButtonText}
               </a>
             </button>
-          </div>
-
-          {/* Section of D-Dagen Info */}
-          <ImageTextSection
-            t={t}
-            leftSideImage={true}
-            imageProps={{src: "/img/ff3.webp", alt: "People talking"}}
-            className={`mt-[10px] lg:mt-[30px] mb-[20px] lg:mb-[40px]`}
-            >
-              <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl max-w-xl">
-                {t.forCompanies.aboutFair}
-              </h2>
-              <p className="text-white text-base sm:text-lg pt-4 max-w-xl">{t.forCompanies.fairText1}</p>
-              <p className="text-white text-base sm:text-lg pt-4 max-w-xl">{t.forCompanies.fairText2}</p>
-              <button className="mt-6">
-                  <a
-                    className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-medium px-6 py-2 max-lg:mx-auto w-max"
-                    href={t.faq.catalogPath}
-                  >
-                    {t.faq.productCatalog}
-                  </a>
-              </button>
-          </ImageTextSection>
+          </div>*/}
 
           {/* Section of packages */}
           <div className={`flex flex-col w-full 
-              lg:text-center justify-center items-center
-              mt-[20px] sm:mt-[60px] mb-[20px] sm:mb-[50px]
+              text-center justify-center items-center
+              mt-[10px] sm:mt-[30px] mb-[10px] sm:mb-[30px]
               bg-[rgba(11,15,36,0)]`}>
 
               {/* Text Section */}
-              <div className="flex flex-col max-w-2xl bg-[rgba(15,20,45,0.75)] py-4 rounded-lg">
-                <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl">
+              <div className="flex flex-col max-w-2xl max-sm:bg-[rgba(9, 45, 223, 0.75)] py-4 rounded-lg">
+                <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl text-center">
                   {t.forCompanies.companyPackages.title}
                 </h2>
-                <p className="text-white text-base sm:text-lg pt-2">
-                  {t.forCompanies.companyPackages.text}
-                  <br />
-                  {t.forCompanies.companyPackages.text2}
-                  <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>
-                </p>
+                <br />
+                {/* Buttons */}
+                <div className="flex gap-4 justify-center flex-wrap pt-[24px]">
+                  {/* Product Catalog button */}
+                  <button className="">
+                    <a
+                      className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-medium px-6 py-2 w-max"
+                      href={t.faq.catalogPath}
+                    >
+                      {t.faq.productCatalog}
+                    </a>
+                  </button>
+                  {/* Sign up button */}
+                  <Link
+                  className="block hover:scale-105 transition-transform rounded-full text-cerise bg-white font-medium px-6 py-2 w-max"
+                  href="/företagsanmälan"
+                  >
+                    {t.forCompanies.formButton}
+                  </Link>
+                </div>
+
               </div>
 
               {/* Product Cards Section */}
@@ -168,6 +163,37 @@ export default function ForCompanies() {
                   }
               </div>
           </div>
+
+          <div className="flex flex-col max-w-2xl bg-[rgba(15,20,45,0.75)] py-4 rounded-lg">
+            <p className="text-white text-base sm:text-lg pt-2">
+              {t.forCompanies.companyPackages.text}
+              <br />
+              {t.forCompanies.companyPackages.text2}
+              <a className='text-yellow' href='mailto:sales@ddagen.se'>sales@ddagen.se</a>
+            </p>
+          </div>
+          
+          {/* Section of D-Dagen Info */}
+          <ImageTextSection
+            t={t}
+            leftSideImage={true}
+            imageProps={{src: "/img/ff3.webp", alt: "People talking"}}
+            className={`mt-[10px] lg:mt-[30px] mb-[20px] lg:mb-[40px]`}
+            >
+              <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl max-w-xl">
+                {t.forCompanies.aboutFair}
+              </h2>
+              <p className="text-white text-base sm:text-lg pt-4 max-w-xl">{t.forCompanies.fairText1}</p>
+              <p className="text-white text-base sm:text-lg pt-4 max-w-xl">{t.forCompanies.fairText2}</p>
+              <button className="mt-6">
+                  <a
+                    className="block hover:scale-105 transition-transform bg-cerise rounded-full text-white text-base font-medium px-6 py-2 max-lg:mx-auto w-max"
+                    href={t.faq.catalogPath}
+                  >
+                    {t.faq.productCatalog}
+                  </a>
+              </button>
+          </ImageTextSection>
 
           {/* Section of D-Dagen Info */}
           <ImageTextSection

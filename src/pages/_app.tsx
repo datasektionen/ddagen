@@ -28,6 +28,8 @@ const App: AppType = ({ Component, pageProps }) => {
       <DefaultSeo {...SEO} />
       <Head>
         <link rel="icon" href="/img/favicon.ico" />
+        {/* Browser bars in the site's dark blue instead of white. */}
+        <meta name="theme-color" content="#0f142d" />
         {/* Hreflang meta tags for SEO */}
         {hreflangs.map(({ rel, hrefLang, href }) => (
           <link key={hrefLang} rel={rel} hrefLang={hrefLang} href={href} />
@@ -46,9 +48,9 @@ const App: AppType = ({ Component, pageProps }) => {
           id="main-content"
         >
           <div className="absolute w-full h-full z-[-2] bg-[#0F142D]"></div>
-          <div className="absolute w-full h-full z-[-1] 
-              bg-[url('/img/bg-spiral-mobile.png')] lg:bg-[url('/img/bg-spiral-desktop.png')] bg-[center_top_5rem] bg-blend-hue bg-repeat-y
-              bg-[length:100%]"></div>
+          <div className="absolute w-[20vw] lg:max-w-[300px] -left-1 h-full z-[-1] 
+            bg-[url('/img/background/spiral-26-full-repeated.svg')] bg-blend-hue bg-repeat-y
+            bg-[length:100%]"></div>
           <ModalContextProvider>
             <Component  {...pageProps} />
           </ModalContextProvider>
