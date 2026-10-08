@@ -23,7 +23,7 @@ export default function Home() {
     setShowLogo(true);
   }, []);
 
-  const gifExists = false;
+  const gifExists = true;
   const [showGif, setShowGif] = useState(false);
   const [showStaticFirst, setShowStaticFirst] = useState(true);
 
@@ -35,7 +35,7 @@ export default function Home() {
     const timer = setTimeout(() => {
       setShowGif(true);
       setShowStaticFirst(false);
-    }, 2000); // 2 second delay before GIF starts
+    }, 0); // millisecond delay before GIF starts
 
     return () => clearTimeout(timer);
   }, []);
@@ -86,7 +86,7 @@ export default function Home() {
                 ${ hasLoadedBefore ? 'duration-0': 'delay-[100ms] duration-[800ms]'}   
                 ${ showPage ? "opacity-100" : "opacity-0" }
               `}
-              src={showGif && gifExists ? "/img/d-dagen-logo-2526-4.gif" : "/img/logos/2027/ddagen_2027_static.png"} // Use static version first
+              src={showGif && gifExists ? "/img/logos/2027/ddagen_2027_anim.gif" : "/img/logos/2027/ddagen_2027_anim_static.png"} // Use static version first
               alt="D-dagen Logo"
               ></img>
           </div>

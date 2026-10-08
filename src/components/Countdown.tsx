@@ -18,12 +18,13 @@ function TimeUnit({time, timeString,}: {time: number; timeString: string;}) {
 export function Countdown() {
   const t = useLocale();
 
-  const dropConfetti = true; // konfetti!!!
+  const enableConfettiDrop = true; // konfetti!!!
 
   const target = new Date("2027-10-07T10:00:00+02:00");
   const openTarget = new Date("2027-10-07T16:00:00+02:00");
   
   const [viewport, setViewport] = useState({width: 0, height: 0});
+  const [showConfetti, setShowConfetti] = useState(false);
   const [days, setDays] = useState(0);
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -38,6 +39,14 @@ export function Countdown() {
     window.addEventListener("resize", updateViewport);
 
     return () => window.removeEventListener("resize", updateViewport);
+  }, []);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShowConfetti(true);
+    }, 2000);
+
+    return () => clearTimeout(timeout);
   }, []);
 
   useEffect(() => {
@@ -101,7 +110,7 @@ export function Countdown() {
 
   return (
     <div className="hover:cursor-default flex items-center justify-center">
-      {dropConfetti && viewport.width > 0 && (
+      {enableConfettiDrop && showConfetti && viewport.width > 0 && (
         <Confetti
           width={viewport.width}
           height={viewport.height}
