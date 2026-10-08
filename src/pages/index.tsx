@@ -111,30 +111,37 @@ export default function Home() {
             ${ hasLoadedBefore ? 'duration-0': 'delay-[300ms] duration-[800ms]'}
             ${ showPage ? "opacity-100" : "opacity-0" }
             `}>
-            { !showExhibitorAndMapButtons &&
-            <Link
-              className="bg-cerise py-2.5 px-6 rounded-full text-white text-center hover:scale-105 transition-transform"
-              href="/företagsanmälan"
-            >
-              {t.home.exhibitButton}
-            </Link>}
             {
-              showExhibitorAndMapButtons &&
+              showExhibitorAndMapButtons ?
+              <>
+                <Link
+                className="bg-cerise py-2.5 px-7 rounded-full text-white text-center hover:scale-105 transition-transform"
+                href="/karta"
+                >
+                {t.nav.map}
+              </Link>
               <Link
-              className="bg-cerise py-2.5 px-7 rounded-full text-white text-center hover:scale-105 transition-transform"
-              href="/karta"
-              >
-              {t.nav.map}
-            </Link>
-            }
-            {
-              showExhibitorAndMapButtons &&
+                className="bg-white py-2.5 px-7 rounded-full text-darkblue text-center hover:scale-105 transition-transform"
+                href="/logos"
+                >
+                {t.nav.logos}
+              </Link>
+            </>
+            :
+            <>
               <Link
-              className="bg-white py-2.5 px-7 rounded-full text-darkblue text-center hover:scale-105 transition-transform"
-              href="/logos"
+                className="bg-cerise py-2.5 px-6 rounded-full text-white text-center hover:scale-105 transition-transform"
+                href="/företagsanmälan"
               >
-              {t.nav.logos}
-            </Link>
+                {t.home.exhibitButton}
+              </Link>
+              <Link
+                className="bg-white py-2.5 px-7 rounded-full text-darkblue text-center hover:scale-105 transition-transform"
+                href="/sok"
+              >
+                {t.home.sokButton}
+              </Link>
+            </>
             }
           </div>
           

@@ -32,6 +32,7 @@ export default {
       closed: "The fair is now closed!"
     },
     exhibitButton: "Exhibit at D-Dagen",
+    sokButton: "Apply to D-Dagen",
     stats: [
       {
         value: "90+",
@@ -685,7 +686,8 @@ export default {
     partners: "Partners",
     meetings: "Company Meetings",
     map: "Map",
-    sok: "Signup for D-Dagen",
+    sok: "Apply for D-Dagen",
+    sokShort: "Apply",
   },
   footer: {
     header: "Organized by Datasektionen",

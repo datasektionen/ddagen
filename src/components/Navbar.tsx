@@ -381,6 +381,7 @@ export default function Navbar() {
               />
             </div>
             <NavLink class="px-0 w-[300px] lg:hidden" href="/partners">{t.partners}</NavLink>
+            <NavLink class="mt-4 px-0 w-[300px] lg:hidden" href="/sok">{t.sok}</NavLink>
           </div>
           <div
             className="
@@ -399,6 +400,7 @@ export default function Navbar() {
                   { href: "/om-oss", text: t.about },
                   { href: "/kontakt", text: t.contact },
                   { href: "/historia", text: t.history },
+                  { href: "/sok", text: t.sokShort },
                 ]}
               />
             </div>

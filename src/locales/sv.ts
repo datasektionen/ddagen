@@ -32,6 +32,7 @@ export default {
       closed: "Mässan är nu stängd!"
     },
     exhibitButton: "Ställ ut på D-Dagen",
+    sokButton: "Sök till D-Dagen",
     stats: [
       {
         value: "90+",
@@ -680,6 +681,7 @@ export default {
     meetings: "Kontaktsamtal",
     map: "Karta",
     sok: "Sök D-Dagen",
+    sokShort: "Sök",
   },
   footer: {
     header:
