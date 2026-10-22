@@ -213,19 +213,6 @@ export default function SignupPage() {
         <SingleTeam
           bgColor="bg-[#E2B7C9]"
           borderColor="border-[#E2B7C9]"
-          toReverse={true}
-          textColor="text-[#E2B7C9]"
-          image="/img/viceDDAsok.png"
-          teamInfo={[
-            t.sok.viceDDA.header,
-            t.sok.viceDDA.text,
-          ]}
-          roles={t.sok.viceDDA.roles}
-        />
-
-        <SingleTeam
-          bgColor="bg-[#E2B7C9]"
-          borderColor="border-[#E2B7C9]"
           toReverse={false}
           textColor="text-[#E2B7C9]"
           image="/img/projectGroup/g_pr.jpg"
