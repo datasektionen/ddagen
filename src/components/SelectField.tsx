@@ -27,6 +27,7 @@ export function SelectField<F extends Record<string, string>>({
 }) {
   return (
     <div className={"relative " + className}>
+      {!!fields[name] &&
       <label
         htmlFor={prefix + name}
         className="
@@ -38,6 +39,7 @@ export function SelectField<F extends Record<string, string>>({
       >
         {fields[name]}:
       </label>
+      }
       <Select 
           name={name}
           id={prefix + name}

@@ -87,7 +87,7 @@ function Logo({ class: className }: { class?: string }) {
 
       `}
     >
-      2025
+      2027
     </p>
   </div>
   }
@@ -128,7 +128,7 @@ function Logo({ class: className }: { class?: string }) {
 
         `}
       >
-        2025
+        2027
       </p>
     </Link>
   );
@@ -208,7 +208,7 @@ function Group({
             <img
             data-dont-close
 
-            src="/img/smCaret.svg/"
+            src="/icons/smCaret.svg/"
             className={`${
               dropped ? "rotate-180 " : ""
             }  h-4 mt-2 text-cerise  transition-transform duration-300 group`}
@@ -249,22 +249,12 @@ export default function Navbar() {
 
   const [open, setOpen] = useState(false);
 
-
-  const isLoggedIn = api.account.isLoggedIn.useQuery();
-  const logout = api.account.logout.useMutation();
-
   function swapLocale() {
     router.push(router.pathname, router.pathname, {
       locale: locale === "sv" ? "en" : "sv",
       scroll: false,
     });
   }
-
-  useEffect(() => {
-    if (logout.isSuccess) {
-      trpc.account.invalidate();
-    }
-  }, [logout.isSuccess]);
 
   useEffect(() => {
     function close(event: MouseEvent) {
@@ -280,6 +270,9 @@ export default function Navbar() {
     window.addEventListener("click", close);
     return () => window.removeEventListener("click", close);
   });
+
+  // Exhibitor registration is closed during the fair, the map takes its place.
+  const showMapButtons = false;
 
   return (
     <>
@@ -345,9 +338,10 @@ export default function Navbar() {
             <NavLink class="px-0 lg:px-4 p-4 w-[300px] lg:w-auto" href="/">
               {t.home}
             </NavLink>
-            <NavLink class="px-0 lg:px-4 xl:block hidden lg:pt-4 pb-4 w-[300px] lg:w-auto" href="/karta">
+            {/* The map is the pink button on the right during the fair.
+            <NavLink class="px-0 lg:px-4 p-4 lg:pt-4 w-[300px] lg:w-auto lg:hidden xl:block" href="/karta">
               {t.map}
-            </NavLink>    {/*<= this one was only used during the fair   */}
+            </NavLink>*/}
             <Group
               links={[
                 { href: "/förföretag", text: t.forCompanies },
@@ -355,9 +349,6 @@ export default function Navbar() {
                 //{ href: "/katalog", text: t.catalog },
                 //{ href: "/event", text: "event" },
                 { href: "/faq", text: "faq" },
-                ...(isLoggedIn.data == true
-                  ? [{ href: "/utställare", text: t.exhibitorSettings }]
-                  : []),
                 /*...(isLoggedIn.data == true
                   ? [
                       {
@@ -372,10 +363,11 @@ export default function Navbar() {
             <Group
               links={[
                 { href: "/förstudenter", text: t.forStudents },
-                { href: "/karta", text: t.map },
+                //{ href: "/karta", text: t.map }, 2026
+                { href: "/event", text: t.event }, //2026
                 { href: "/logos", text: t.logos },
-                /*{ href: "/student", text: t.meetings },*/
-                {href: "/sok", text:t.sok},
+                //{ href: "/kontaktsamtal", text: t.meetings },
+                //{ href: "/sok", text: t.sok }, 2026
               ]}
             />
             {/*<NavLink class="px-14 lg:px-0" href="/mässan">{t.about}</NavLink>*/}
@@ -383,36 +375,52 @@ export default function Navbar() {
               <Group
                 links={[
                   { href: "/om-oss", text: t.about },
+                  { href: "/kontakt", text: t.contact },
                   { href: "/historia", text: t.history },
                 ]}
               />
             </div>
+            <NavLink class="px-0 w-[300px] lg:hidden" href="/partners">{t.partners}</NavLink>
+            <NavLink class="mt-4 px-0 w-[300px] lg:hidden" href="/sok">{t.sok}</NavLink>
           </div>
           <div
             className="
             flex flex-row lg:justify-center items-center lg:pl-0 justify-center lg:pr-0
-            py-4 gap-3
+            py-4 gap-4
             lg:px-0 bg-black lg:bg-transparent lg:ml-auto
           "
           >
-            <NavLink class="hidden lg:block px-0 lg:px-4 p-4 w-[300px] lg:pr-2 lg:w-auto" href="/kontakt">
-              {t.contact}
+            <NavLink class="hidden lg:block px-0 lg:px-4 p-4 w-[300px] lg:pr-2 lg:w-auto" href="/partners">
+              {t.partners}
             </NavLink>
             <div className="hidden lg:block">
               <Group
               class=" lg:ml-0"
                 links={[
                   { href: "/om-oss", text: t.about },
+                  { href: "/kontakt", text: t.contact },
                   { href: "/historia", text: t.history },
+                  { href: "/sok", text: t.sokShort },
                 ]}
               />
             </div>
+            
+            { !showMapButtons &&
             <Link
               className="bg-cerise py-2.5 px-4 rounded-full text-center hover:scale-105 transition-transform"
               href="/företagsanmälan"
             >
               {t.companyForm}
+            </Link>}
+            {
+              showMapButtons &&
+              <Link
+              className="bg-cerise py-2.5 px-7 lg:ml-2 rounded-full text-center hover:scale-105 transition-transform"
+              href="/karta"
+              >
+              {t.map}
             </Link>
+            }
             <button
               data-dont-close
               onClick={swapLocale}

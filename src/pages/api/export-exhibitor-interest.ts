@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "@/server/db";
-import * as pls from "@/utils/pls";
+import * as global from "@/utils/global";
 
 export default async function handler(
     req: NextApiRequest,
@@ -8,10 +8,16 @@ export default async function handler(
 ) {
     if (req.method !== "GET") return res.status(405).end();
 
-    const apiKey = req.headers["authorization"];
-    if (apiKey == undefined) return res.status(400).end();
-    if (!(await pls.checkApiKey("read-registrations", apiKey))) {
-        return res.status(402).end();
+    const authHeader = req.headers["authorization"];
+    if (!authHeader || typeof authHeader !== "string") {
+        return res.status(400).end();
+    }
+
+    const rawKey = authHeader.replace("Bearer ", "");
+    const valid = await global.verifyApiKey(rawKey);
+
+    if (!valid) {
+        return res.status(403).end();
     }
 
     const exhibitors = await prisma.exhibitorInterestRegistration.findMany({
@@ -28,6 +34,7 @@ export default async function handler(
                 phoneNumber: e.phoneNumber,
                 email: e.email,
                 createdAt: e.createdAt,
+                // howDidYouFindUs: e.howDidYouFindUs
             }))
         )
     );
@@ -57,7 +64,7 @@ function importExhibitors() {
   ]]).setFontWeight("bold");
 
   sheet.getRange(2, 1, data.length, 6).setValues(data.map(row => [
-    row.name, "'" + row.organizationNumber, row.contactPerson, "'" + row.phoneNumber, row.email, row.createdAt,
+    row.name, "'" + row.organizationNumber, row.contactPerson, "'" + row.phoneNumber, row.email, row.createdAt
   ])).setBackground("#eee");
   sheet.getRange(2 + data.length, 1, 1, 6).setBackground("orange");
 

@@ -25,7 +25,7 @@ export default function JobOffers(
 
     return (
       
-        <div className="flex flex-col w-full items-center overflow-auto text-center">
+        <div className="flex flex-col w-full items-center overflow-auto text-center text-white">
 
             <h2 className="uppercase text-cerise text-2xl md:text-4xl font-normal px-[10px] break-words mb-8 pt-4 w-full">
                 {t.exhibitorSettings.table.row1.section2.header}

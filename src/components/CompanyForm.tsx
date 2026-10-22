@@ -23,6 +23,7 @@ export default function CompanyForm({
   const [email, setEmail] = useState("");
   const [contactPerson, setContactPerson] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [howDidYouFindUs, setHowDidYouFindUs] = useState("");
 
   async function addCompanyDocument(e: FormEvent) {
     e.preventDefault();
@@ -32,6 +33,7 @@ export default function CompanyForm({
       email,
       contactPerson,
       phoneNumber,
+      howDidYouFindUs,
       locale: t.locale,
     });
   }
@@ -90,7 +92,7 @@ export default function CompanyForm({
           setValue={setCompanyName}
           fields={t.companyForm.fields}
         />
-        <CheckMarkField 
+        <CheckMarkField
           name="foreignOrganization"
           checked={foreignOrganization}
           onClick={toggleForeignOrganization}
@@ -123,6 +125,14 @@ export default function CompanyForm({
           value={phoneNumber}
           setValue={setPhoneNumber}
           fields={t.companyForm.fields}
+        />
+        <InputField
+          name="howDidYouFindUs"
+          type="text"
+          value={howDidYouFindUs}
+          setValue={setHowDidYouFindUs}
+          fields={t.companyForm.fields}
+          required={false}
         />
 
         <div className="flex flex-col items-center justify-between">
@@ -160,7 +170,8 @@ export default function CompanyForm({
                   `Organisationsnummer: ${organizationNumber}.\n` +
                   `E-post: ${email}.\n` +
                   `Kontaktperson: ${contactPerson}.\n` +
-                  `Telefonnummer: ${phoneNumber}.\n`
+                  `Telefonnummer: ${phoneNumber}.\n` +
+                  `Hur hittade ni D-Dagen: ${howDidYouFindUs}\n`
                 )
               }
               className="text-cerise hover:underline"

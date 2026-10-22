@@ -160,10 +160,10 @@ export default function CompanyMeetingOffer(
                         <div className="flex justify-center gap-32 m-4">
                         <img className="h-[50px] cursor-pointer hover:scale-110 transition duration-100 ease-in-out"
                             onClick={declineOffer}
-                            src="/img/check.png"/>
+                            src="/icons/check.png"/>
                         <img className="h-[50px] cursor-pointer hover:scale-110 transition duration-100 ease-in-out"
                             onClick={()=>{setConfirmDelete(false)}} 
-                            src="/img/cross.png"/>
+                            src="/icons/cross.png"/>
                     </div>
                 </div>
                 </> : <>
@@ -189,10 +189,10 @@ export default function CompanyMeetingOffer(
                             {time != -1 && <> 
                                 <img className="h-[50px] cursor-pointer hover:scale-110 transition duration-100 ease-in-out"
                                     onClick={acceptOffer}
-                                    src="/img/check.png"/>
+                                    src="/icons/check.png"/>
                                 <img className="h-[50px] cursor-pointer hover:scale-110 transition duration-100 ease-in-out"
                                     onClick={()=>setConfirmDelete(true)} 
-                                    src="/img/cross.png"/>
+                                    src="/icons/cross.png"/>
                             </>
                             }
                         </div>
