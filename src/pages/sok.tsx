@@ -14,7 +14,6 @@ function SingleTeam({
   teamInfo,
   roles,
 }: {
-  show: boolean;
   bgColor: string;
   borderColor: string;
   toReverse: boolean;
