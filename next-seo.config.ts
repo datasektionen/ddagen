@@ -8,10 +8,10 @@ export default {
       site_name: 'D-Dagen',
       images: [
         {
-          url: 'https://dev.ddagen.se/img/logos/ddagen_2026_rectangle.png',
+          url: 'https://dev.ddagen.se/img/logos/ddagen_2027_rectangle.png',
           width: 1080,
           height: 608,
-          alt: 'D-Dagen 2026',
+          alt: 'D-Dagen 2027',
         }
       ],
     },
@@ -21,4 +21,4 @@ export default {
       cardType: 'summary_large_image',
     },
   };
-  
+
