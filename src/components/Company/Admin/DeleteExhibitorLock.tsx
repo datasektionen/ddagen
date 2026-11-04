@@ -7,7 +7,7 @@ export function DeleteExhibitorLock({
   closeModal,
 }: {
   t: Locale;
-  onSubmit: (passcode: string) => void;
+  onSubmit: (passcode: string) => void | boolean | Promise<void | boolean>;
   closeModal: () => void;
 }) {
   const modalRef = useRef<HTMLDivElement>(null);
@@ -20,14 +20,17 @@ export function DeleteExhibitorLock({
     }
   }
 
-  function handleSubmit(event: React.FormEvent) {
+  async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
     if (passcode.length !== 6 || isNaN(Number(passcode))) {
       setError("Passcode must be a 6-digit number.");
       return;
     }
     setError("");
-    onSubmit(passcode);
+    const submitted = await onSubmit(passcode);
+    if (submitted === false) {
+      setError("Incorrect passcode or deletion failed.");
+    }
   }
 
   return (

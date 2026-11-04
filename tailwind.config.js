@@ -19,8 +19,8 @@ module.exports = {
         white: "#ffffff",
       },
       backgroundImage: {
-        editIcon: 'url("/img/edit-icon.png")',
-        checkIcon: 'url("/img/check-icon.png")',
+        editIcon: 'url("/icons/edit-icon.png")',
+        checkIcon: 'url("/icons/check.png")',
       },
       screens: {
         xs: "500px",

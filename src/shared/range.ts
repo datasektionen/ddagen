@@ -1,3 +1,4 @@
 export function range(start: number, end: number) {
-  return [...Array(1 + end - start).keys()].map((v) => start + v);
+  let list = Array(1 + end - start);
+  return [...list].map((_, i) => start + i);
 }

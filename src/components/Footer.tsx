@@ -56,12 +56,12 @@ export default function Footer() {
             </a>
           </div>
         </div>
-        <div className="hidden md:flex md:flex-col items-center md:px-[25px] md:pt-6 lg:px-[80px]">
+        <div className="hidden md:flex md:flex-col items-center md:px-[25px] lg:px-[80px]">
           {hasMainSponsor ?
            <>
-            <p className="text-center text-white md:text-md lg:text-lg font-thin mb-5">{footer.sponsorText}</p>
-            <a target="_blank" href={footer.sponsorLink}>
-              <img className="md:min-w-[120px] w-[250px]" src="/img/omegapoint_logo.svg"></img>
+            <p className="text-center text-white md:text-md lg:text-lg font-thin mb-4">{footer.sponsorText}</p>
+            <a target="_blank" href={footer.sponsorLink} className="duration-200 ease hover:brightness-75 cursor-pointer">
+              <img className="h-full max-h-[150px]" src="/img/partners/ericsson_logo_white.svg"></img>
             </a>
            </> : 
            <p className="text-center text-white md:text-md lg:text-lg font-thin mt-5">{footer.notDecided}</p>
@@ -75,7 +75,7 @@ export default function Footer() {
             >
               <img
                 src="/img/linkedinLogo.svg"
-                className="hover:brightness-50 mb-2 h-[30px] md:h-[30px] md:mr-[6px]"
+                className="duration-200 ease hover:brightness-50 mb-2 h-[30px] md:h-[30px] md:mr-[6px]"
               ></img>
             </a>
             <a
@@ -84,7 +84,7 @@ export default function Footer() {
             >
               <img
                 src="/img/instagramLogo.svg"
-                className="hover:brightness-50 h-[30px] md:h-[30px] md:mr-[0px]"
+                className="duration-200 ease hover:brightness-50 h-[30px] md:h-[30px] md:mr-[0px]"
               ></img>
             </a>
             <a
@@ -93,7 +93,7 @@ export default function Footer() {
             >
               <img
                 src="/img/fbLogo.svg"
-                className="hover:brightness-50 h-[30px] md:h-[30px]"
+                className="duration-200 ease hover:brightness-50 h-[30px] md:h-[30px]"
               ></img>
             </a>
           </div>
@@ -110,12 +110,12 @@ export default function Footer() {
             <a className="text-cerise" href="mailto:sales@ddagen.se">sales@ddagen.se</a>
           </div>
         </div>
-        <div className="flex flex-col border-b-[0.5px] md:border-b-[0px] border-[#636363] w-[95%] py-4 md:hidden mb-3 px-[15%]">
+        <div className="flex flex-col border-b-[0.5px] md:border-b-[0px] border-[#636363] w-[95%] pb-6 md:hidden mb-2 px-[15%]">
           {hasMainSponsor ?
           <>
-          <p className="text-center text-white text-md font-thin mb-4">{footer.sponsorText}</p>
-          <a target="_blank" href={footer.sponsorLink}>
-            <img className="h-[125px]" src="/img/omegapoint_logo.svg"></img>
+          <p className="text-white text-md font-thin">{footer.sponsorText}</p>
+          <a target="_blank" href={footer.sponsorLink} className="w-fit p-4 pl-0 duration-200 ease hover:brightness-75 cursor-pointer">
+            <img className="h-[125px]" src="/img/partners/ericsson_logo_white.svg"></img>
           </a> </> :
           <p className="text-center text-white text-md font-thin mb-4">{footer.notDecided}</p>
           }
