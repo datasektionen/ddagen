@@ -20,9 +20,9 @@ export function Countdown() {
 
   const enableConfettiDrop = true; // konfetti!!!
 
-  const target = new Date("2027-10-07T10:00:00+02:00");
-  const openTarget = new Date("2027-10-07T16:00:00+02:00");
-  
+  const target = new Date("2027-10-14T10:00:00+02:00");
+  const openTarget = new Date("2027-10-14T16:00:00+02:00");
+
   const [viewport, setViewport] = useState({width: 0, height: 0});
   const [showConfetti, setShowConfetti] = useState(false);
   const [days, setDays] = useState(0);
@@ -125,7 +125,7 @@ export function Countdown() {
           }}
         />
       )}
-      
+
       <TimeUnit time={days} timeString={t.home.countDown.days} />
 
       <div className="mx-6 h-14 w-[3px] bg-cerise" />
