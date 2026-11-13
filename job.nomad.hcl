@@ -33,9 +33,13 @@ PORT={{ env "NOMAD_PORT_http" }}
 DATABASE_URL=postgres://ddagen:{{ .db_password }}@postgres.dsekt.internal:5432/ddagen
 LOGIN_API_KEY={{ .login_api_key }}
 SPAM_API_KEY={{ .spam_api_key }}
+OIDC_SECRET={{ .oidc_secret }}
+APP_URL={{ .app_url }}
 {{ end }}
 NODE_ENV=production
 PLS_URL=http://pls.nomad.dsekt.internal
+OIDC_PROVIDER=https://sso.datasektionen.se/op
+OIDC_ID=ddagen
 SPAM_URL=https://spam.datasektionen.se/api/legacy/sendmail
 ENV
         destination = "local/.env"

@@ -27,9 +27,25 @@ DATABASE_URL=postgresql://ddagen:ddagen@localhost:5432/ddagen?schema=public
 SPAM_API_KEY=2AkdhsQ9cTTSBKtNXdd6E07rqN8CFWvRqeY4GeAyXAn09urF
 SPAM_URL=https://spam.datasektionen.se/api/legacy/sendmail
 
+MOCK_OIDC=true
+
+OIDC_PROVIDER=http://localhost:7003
+OIDC_ID=client-id
+OIDC_SECRET=client-secret
+
+JWT_SECRET=super-long-random-string
+
+
+# --- Legacy --
 # If this is set to "true" or "false", that value will be used instead of querying pls at the URL given.
 PLS_URL=true
 # Use `PLS_URL=https://pls.datasektionen.se` to use the real pls
+```
+
+If you want to mock the SSO login nyckeln-i-lådan:
+
+```bash
+docker run -it --rm --name nyckeln -v ./config.yaml:/config.yaml -e CONFIG_FILE=/config.yaml -p 701:7001 -p 7002:7002 -p 7003:7003 -p 7004:7004 ghcr.io/datasektionen/nyckeln-under-dorrmattan
 ```
 
 Install npm dependencies:

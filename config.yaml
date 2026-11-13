@@ -1,0 +1,40 @@
+# OpenID Client configuration
+clients:
+  - id: "client-id" # use this in your oidc client
+    secret: "client-secret" # use this in your oidc client
+    allows_guests: false
+    redirect_uris: # URIs of your oidc client
+      - http://localhost:3000/logga-in
+      - http://localhost:3000/admin/logga-in
+
+# Users to log in via sso, and their pls permissions
+users:
+  - ug_kth_id: some-id
+    kth_id: turetek
+    email: turetek@kth.se
+    first_name: Ture
+    family_name: Teknolog
+    picture: https://thskth.se/wp-content/uploads/2023/06/ths-logo-bla-01-300x294-1.png
+    thumbnail: https://thskth.se/wp-content/uploads/2019/12/ths-logo-svart-01.png
+    pls_permissions:
+      sso:
+        - admin
+      calypso:
+        - drek
+        - dfunk
+    hive_tags:
+      - id: personal_email
+        content: turetek@gmail.com
+  - ug_kth_id: other-id
+    kth_id: pelle
+    email: pelle@kth.se
+    first_name: Pelle
+    family_name: Person
+    picture: https://thskth.se/wp-content/uploads/2023/06/ths-logo-bla-01-300x294-1.png
+    thumbnail: https://thskth.se/wp-content/uploads/2019/12/ths-logo-svart-01.png
+    pls_permissions:
+      sso:
+      calypso:
+    hive_tags:
+      - id: personal_email
+        content: pelle@gmail.com
